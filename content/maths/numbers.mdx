@@ -1,0 +1,546 @@
+---
+title: Numbers
+description: The basic fundamentals of working with numbers in mathematics.
+---
+
+import { NumberLine } from "../../src/components/number-line";
+import { AreaModel } from "../../src/components/area-model";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+{/* Keep this summary in sync with the sections below whenever they change. */}
+
+<Accordions>
+<Accordion title="Summary of definitions and rules">
+
+**Definitions**
+
+| Term              | Meaning                                                                           |
+| ----------------- | --------------------------------------------------------------------------------- |
+| Positive integers | $$1, 2, 3, \dots$$                                                                |
+| Natural numbers   | $$0, 1, 2, 3, \dots$$                                                             |
+| Negative integers | $$-1, -2, -3, \dots$$                                                             |
+| Integers          | All of the above: $$\dots, -2, -1, 0, 1, 2, \dots$$                               |
+| Origin            | The point $$0$$ on the number line                                                |
+| Opposite of $$a$$ | $$-a$$: the same distance from $$0$$, on the other side                           |
+| Additive inverse  | Another name for the opposite $$-a$$                                              |
+| Subtraction       | $$a - b$$ is shorthand for $$a + (-b)$$                                           |
+| Product           | $$ab$$ or $$a \cdot b$$: $$a$$ multiplied by $$b$$                                |
+| Power             | $$a^n = a \cdot a \cdots a$$ ($$n$$ copies of $$a$$), the $$n$$-th power of $$a$$ |
+| Base, exponent    | In $$a^n$$, $$a$$ is the base and $$n$$ is the exponent                           |
+
+**Addition rules** (for any integers $$a$$, $$b$$, $$c$$)
+
+| Rule                 | Statement                                              |
+| -------------------- | ------------------------------------------------------ |
+| Adding zero          | $$a + 0 = 0 + a = a$$                                  |
+| Adding an opposite   | $$a + (-a) = -a + a = 0$$                              |
+| Commutativity        | $$a + b = b + a$$                                      |
+| Associativity        | $$(a + b) + c = a + (b + c)$$                          |
+| Opposites are unique | If $$a + b = 0$$, then $$b = -a$$ and $$a = -b$$       |
+| Double opposite      | $$-(-a) = a$$                                          |
+| Opposite of a sum    | $$-(a + b) = -a - b$$                                  |
+| Positive + positive  | is positive                                            |
+| Negative + negative  | is negative                                            |
+| Rearranging          | If $$a + b = c$$, then $$a = c - b$$ and $$b = c - a$$ |
+
+**Multiplication rules** (for any integers $$a$$, $$b$$, $$c$$ and positive integers $$m$$, $$n$$)
+
+| Rule                     | Statement                                               |
+| ------------------------ | ------------------------------------------------------- |
+| Commutativity            | $$ab = ba$$                                             |
+| Associativity            | $$(ab)c = a(bc)$$                                       |
+| Multiplying by one       | $$1 \cdot a = a$$                                       |
+| Multiplying by zero      | $$0 \cdot a = 0$$                                       |
+| Distributivity           | $$a(b + c) = ab + ac$$ and $$(b + c)a = ba + ca$$       |
+| Multiplying by minus one | $$(-1)a = -a$$                                          |
+| Moving a minus sign      | $$-(ab) = (-a)b = a(-b)$$                               |
+| Two minus signs          | $$(-a)(-b) = ab$$                                       |
+| Signs of products        | same signs give positive, different signs give negative |
+| Multiplying powers       | $$a^m a^n = a^{m+n}$$                                   |
+| Power of a power         | $$(a^m)^n = a^{mn}$$                                    |
+| Power of a product       | $$(ab)^n = a^n b^n$$                                    |
+| Square of a sum          | $$(a + b)^2 = a^2 + 2ab + b^2$$                         |
+| Square of a difference   | $$(a - b)^2 = a^2 - 2ab + b^2$$                         |
+| Difference of squares    | $$(a + b)(a - b) = a^2 - b^2$$                          |
+
+</Accordion>
+</Accordions>
+
+## Integers
+
+Integers are the numbers we think of without decimals. The $$1,2,3,4$$ numbers. $$0$$ and $$-1$$ are
+also integers. There are different kinds of integers, though you might think of them as one type:
+
+- **Positive integers**: these are the counting numbers $$1, 2, 3, 4, \dots$$
+- **Natural numbers**: the positive integers together with $$0$$. $$0$$ is neither negative nor
+  positive.
+- **Negative integers**: the opposite of positive integers, these are written with a minus sign
+  $$-$$, such as $$-1, -2, -3, \dots$$.
+
+When we say **Integers** we generally refer both positive and negative integers, including $$0$$.
+
+### The number line
+
+A good way to picture the integers is as evenly spaced marks along a straight line that goes on
+forever in both directions. We pick one mark to be $$0$$, called the **origin**, and a fixed step
+size. Every step to the right is one more, and every step to the left is one less. Positive integers
+sit to the right of $$0$$ and negative integers to the left.
+
+<NumberLine from={-6} to={6} points={[0]} />
+
+The further right a number sits, the bigger it is, so $$-1$$ is bigger than $$-4$$ even though $$4$$
+is bigger than $$1$$.
+
+Integers show up whenever something can go above or below a starting point: floors above and below
+the ground floor of a building, a bank balance that can go into overdraft, or height above and below
+sea level.
+
+### Addition as movement
+
+Adding can be read as a walk along the number line.
+
+- Adding a **positive** number moves you **right** by that many steps. Starting at $$-2$$ and adding
+  $$6$$ lands on $$4$$:
+
+<NumberLine from={-4} to={6} points={[-2, 4]} jumps={[{ from: -2, to: 4 }]} />
+
+- Adding a **negative** number moves you **left** by that many steps. Starting at $$4$$ and adding
+  $$-7$$ lands on $$-3$$:
+
+<NumberLine from={-5} to={6} points={[4, -3]} jumps={[{ from: 4, to: -3 }]} />
+
+- **Subtracting** a number does the same as adding its opposite, so $$4 - 7$$ and $$4 + (-7)$$ are
+  the same walk, and both equal $$-3$$.
+
+### Zero and opposites
+
+Adding $$0$$ means taking no steps at all, so the number stays where it is. For any integer $$a$$:
+
+```math
+a + 0 = 0 + a = a
+```
+
+Every integer $$a$$ has an **opposite**, written $$-a$$. It sits the same distance from $$0$$, but
+on the other side. Adding a number to its opposite always walks you back to the origin:
+
+```math
+a + (-a) = 0 \quad \text{and} \quad -a + a = 0
+```
+
+<NumberLine from={-5} to={5} points={[-4, 4]} jumps={[{ from: 4, to: 0, label: "+(−4)" }]} />
+
+Because adding it "undoes" $$a$$, the opposite $$-a$$ is also called the **additive inverse** of
+$$a$$.
+
+Taking the opposite twice flips you to the other side and back again, so you end up where you
+started:
+
+```math
+-(-a) = a, \qquad \text{for example} \quad -(-7) = 7
+```
+
+### The minus sign does not mean "negative"
+
+It is tempting to read $$-a$$ as "a negative number", but that is only true when $$a$$ itself is
+positive. The minus sign means "the opposite of". If $$a = -2$$, then $$-a = -(-2) = 2$$, which is
+positive. Reading $$-a$$ out loud as "minus $$a$$" or "the opposite of $$a$$" avoids the confusion.
+
+## Rules for addition
+
+Addition of integers follows a handful of rules. The first two, along with one basic fact about
+positive numbers further down, are taken as given; everything else in this section can be worked out
+from them together with the facts about $$0$$ and opposites above.
+
+### Order does not matter
+
+Swapping the two numbers in a sum gives the same answer. This is called **commutativity**: for any
+integers $$a$$ and $$b$$,
+
+```math
+a + b = b + a
+```
+
+For example, $$6 + (-9) = -3$$ and $$(-9) + 6 = -3$$. On the number line the two walks take
+different routes but finish in the same place:
+
+<NumberLine
+  from={-4}
+  to={7}
+  points={[0, -3]}
+  jumps={[
+    { from: 0, to: 6 },
+    { from: 6, to: -3 },
+  ]}
+/>
+
+<NumberLine
+  from={-10}
+  to={1}
+  points={[0, -3]}
+  jumps={[
+    { from: 0, to: -9 },
+    { from: -9, to: -3 },
+  ]}
+/>
+
+### Grouping does not matter
+
+When adding three numbers, it does not matter which pair you add first. This is called
+**associativity**: for any integers $$a$$, $$b$$ and $$c$$,
+
+```math
+(a + b) + c = a + (b + c)
+```
+
+For example, with $$4$$, $$-6$$ and $$10$$:
+
+```math
+\begin{aligned}
+(4 + (-6)) + 10 &= -2 + 10 = 8 \\
+4 + ((-6) + 10) &= 4 + 4 = 8
+\end{aligned}
+```
+
+Since the grouping never changes the result, the brackets are usually left out and we simply write
+$$4 + (-6) + 10$$. Using both rules over and over, you can add any list of integers **in any order
+and in any grouping**. This is handy for spotting easy pairs:
+
+```math
+17 + (-8) + 3 + 8 = (17 + 3) + ((-8) + 8) = 20 + 0 = 20
+```
+
+### Writing subtraction
+
+Rather than writing $$a + (-b)$$ every time, we write it more briefly as $$a - b$$. They mean
+exactly the same thing, so subtraction is just adding an opposite. That means the two rules above
+apply to subtraction too, as long as each minus sign stays attached to the number after it:
+
+```math
+a - b + c = a + c - b
+```
+
+For example, $$9 - 12 + 5 = 9 + 5 - 12 = 14 - 12 = 2$$.
+
+### An opposite is the only way back to zero
+
+If two integers add up to $$0$$, each one must be the opposite of the other:
+
+```math
+\text{if } a + b = 0, \text{ then } b = -a \text{ and } a = -b
+```
+
+To see why, add $$-a$$ to both sides of $$a + b = 0$$. The left side becomes
+$$-a + a + b = 0 + b = b$$, and the right side becomes $$-a + 0 = -a$$, so $$b = -a$$. In other
+words, $$a$$ has only one opposite: nothing else added to $$a$$ gets you back to $$0$$.
+
+This also explains $$-(-a) = a$$ from earlier: since $$-a + a = 0$$, the rule says $$a$$ is the
+opposite of $$-a$$. Stacking up more minus signs just keeps flipping between $$a$$ and $$-a$$. An
+even number of minus signs gives back $$a$$, and an odd number gives $$-a$$:
+
+```math
+-(-(-(-6))) = 6, \qquad -(-(-6)) = -6
+```
+
+### The opposite of a sum
+
+To take the opposite of a sum, take the opposite of each part:
+
+```math
+-(a + b) = -a - b
+```
+
+This works because $$(a + b) + (-a - b)$$ can be regrouped as $$(a - a) + (b - b) = 0 + 0 = 0$$, and
+by the rule above, anything that adds to $$a + b$$ to give $$0$$ must be its opposite.
+
+Take care when the parts are already negative, because the minus signs combine:
+
+```math
+\begin{aligned}
+-(2 + 9) &= -2 - 9 = -11 \\
+-(-6 + 1) &= -(-6) - 1 = 6 - 1 = 5 \\
+-(8 - 13) &= -8 - (-13) = -8 + 13 = 5
+\end{aligned}
+```
+
+### Signs of sums
+
+- Adding two **positive** integers always gives a **positive** integer. This is taken as a basic
+  fact, for example $$28 + 14 = 42$$.
+- Adding two **negative** integers always gives a **negative** integer.
+
+The second fact follows from the first. A negative integer is the opposite of a positive one, so we
+can write $$a = -m$$ and $$b = -n$$ with $$m$$ and $$n$$ positive. Then
+$$a + b = -m - n = -(m + n)$$, and since $$m + n$$ is positive, $$a + b$$ is negative. For example,
+$$-5 + (-11) = -(5 + 11) = -16$$.
+
+When the signs are mixed, the result can go either way: $$-5 + 11 = 6$$ but $$5 + (-11) = -6$$.
+
+### Rearranging an equation
+
+These rules let us move numbers from one side of an equation to the other. If
+
+```math
+a + b = c
+```
+
+then adding $$-b$$ to both sides gives $$a + b - b = c - b$$, which simplifies to $$a = c - b$$. In
+the same way, $$b = c - a$$. In short, a number added on one side can be **subtracted from the other
+side**.
+
+This is how simple equations with an unknown are solved:
+
+- $$x + 8 = 3$$: subtract $$8$$ from both sides, so $$x = 3 - 8 = -5$$.
+- $$6 - y = 10$$: add $$y$$ to both sides to get $$6 = 10 + y$$, then subtract $$10$$ from both
+  sides, so $$y = -4$$.
+- $$-3 - z = -1$$: add $$z$$ to both sides to get $$-3 = -1 + z$$, then add $$1$$ to both sides, so
+  $$z = -2$$.
+
+Checking is easy: put the answer back in. For the last one, $$-3 - (-2) = -3 + 2 = -1$$.
+
+## Rules for multiplication
+
+Multiplying two integers always gives another integer. A product can be written with a dot,
+$$4 \cdot 9 = 36$$, or, when letters are involved, just by writing them side by side: $$ab$$ means
+$$a \cdot b$$. Like addition, multiplication follows a few basic rules, and these work the same way
+whether the numbers are positive, negative or zero.
+
+### Order and grouping
+
+Just as with addition, the order of the factors and the way they are grouped make no difference:
+
+```math
+ab = ba \qquad \text{and} \qquad (ab)c = a(bc)
+```
+
+For example, both groupings of $$2 \cdot 5 \cdot (-3)$$ give the same answer:
+
+```math
+\begin{aligned}
+(2 \cdot 5) \cdot (-3) &= 10 \cdot (-3) = -30 \\
+2 \cdot (5 \cdot (-3)) &= 2 \cdot (-15) = -30
+\end{aligned}
+```
+
+This means a long product can be rearranged freely. A useful habit is to gather all the plain
+numbers at the front and all the letters at the back:
+
+```math
+(4x)(-3y) = 4 \cdot (-3) \cdot xy = -12xy
+```
+
+```math
+(2a)(5b)(7c) = 2 \cdot 5 \cdot 7 \cdot abc = 70abc
+```
+
+### Multiplying by one and by zero
+
+Multiplying by $$1$$ leaves a number unchanged, and multiplying by $$0$$ always gives $$0$$:
+
+```math
+1 \cdot a = a \qquad \text{and} \qquad 0 \cdot a = 0
+```
+
+### Distributivity
+
+The rule that links multiplication and addition is **distributivity**. Multiplying a sum is the same
+as multiplying each part and then adding:
+
+```math
+a(b + c) = ab + ac \qquad \text{and} \qquad (b + c)a = ba + ca
+```
+
+A good way to picture this is as the area of a rectangle. A rectangle of height $$a$$ and width
+$$b + c$$ can be cut into two smaller rectangles, of areas $$ab$$ and $$ac$$:
+
+<AreaModel rows={["a"]} cols={["b", "c"]} cells={[["ab", "ac"]]} colSizes={[3, 2]} />
+
+This is what makes mental arithmetic like $$6 \cdot 13$$ easy: split $$13$$ into $$10 + 3$$, so
+$$6 \cdot 13 = 6 \cdot 10 + 6 \cdot 3 = 60 + 18 = 78$$. It is also how brackets are expanded:
+
+```math
+\begin{aligned}
+5(2x - 3y) &= 10x - 15y \\
+-2(4a - b) &= -8a + 2b
+\end{aligned}
+```
+
+Only one of the two forms needs to be assumed. Because the order of factors does not matter, the
+second follows from the first: $$(b + c)a = a(b + c) = ab + ac = ba + ca$$.
+
+Similarly, the rule $$0 \cdot a = 0$$ does not need to be assumed either; it can be worked out.
+Since $$0 + 1 = 1$$, distributivity gives
+
+```math
+0 \cdot a + a = 0 \cdot a + 1 \cdot a = (0 + 1)a = 1 \cdot a = a
+```
+
+So $$0 \cdot a + a = a$$. Subtracting $$a$$ from both sides leaves $$0 \cdot a = 0$$.
+
+### Minus signs in products
+
+Multiplying by $$-1$$ gives the opposite:
+
+```math
+(-1)a = -a
+```
+
+This is because $$(-1)a + a = (-1)a + 1 \cdot a = (-1 + 1)a = 0 \cdot a = 0$$, and the only number
+that adds to $$a$$ to give $$0$$ is $$-a$$.
+
+In the same way, a minus sign can be moved onto either factor of a product:
+
+```math
+-(ab) = (-a)b = a(-b)
+```
+
+To check the middle one, $$ab + (-a)b = (a + (-a))b = 0 \cdot b = 0$$, so $$(-a)b$$ is the opposite
+of $$ab$$. For example, $$-(4x) = (-4)x = 4(-x)$$.
+
+Moving the minus signs out one at a time shows what happens when **both** factors have one:
+
+```math
+(-a)(-b) = -(a(-b)) = -(-(ab)) = ab
+```
+
+So the two minus signs cancel. In particular $$(-1)(-1) = 1$$, and $$(-6)(-7) = 42$$. This gives the
+familiar sign rules:
+
+| Signs of the factors | Sign of the product | Example                |
+| -------------------- | ------------------- | ---------------------- |
+| positive × positive  | positive            | $$3 \cdot 8 = 24$$     |
+| negative × negative  | positive            | $$(-3)(-8) = 24$$      |
+| positive × negative  | negative            | $$3 \cdot (-8) = -24$$ |
+| negative × positive  | negative            | $$(-3) \cdot 8 = -24$$ |
+
+With more factors, count the minus signs: an even number of them gives a positive product, and an
+odd number gives a negative one. For example, $$(-2) \cdot 3 \cdot (-5) \cdot (-1)$$ has three minus
+signs, so it is $$-(2 \cdot 3 \cdot 5 \cdot 1) = -30$$.
+
+Minus signs are one of the most common sources of mistakes, so it pays to go slowly:
+
+```math
+-3(5a - 7b) = -15a + 21b
+```
+
+Here $$-3$$ times $$-7b$$ is $$+21b$$, not $$-21b$$.
+
+### Powers
+
+Multiplying a number by itself several times is written with a small raised number called the
+**exponent**:
+
+```math
+a^2 = aa, \qquad a^3 = aaa, \qquad a^n = \underbrace{a \cdot a \cdots a}_{n \text{ times}}
+```
+
+$$a^n$$ is read "$$a$$ to the power $$n$$" or "the $$n$$-th power of $$a$$", and $$a$$ is called the
+**base**. For example, $$2^5 = 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = 32$$.
+
+Three rules follow straight from counting how many times $$a$$ is multiplied (here $$m$$ and $$n$$
+are positive integers):
+
+- **Multiplying powers of the same base adds the exponents**, because $$m$$ copies of $$a$$ followed
+  by $$n$$ more copies is $$m + n$$ copies:
+
+  ```math
+  a^m a^n = a^{m+n} \qquad \text{for example} \quad x^2 x^4 = (xx)(xxxx) = x^6
+  ```
+
+- **A power of a power multiplies the exponents**, because $$n$$ groups of $$m$$ copies is $$mn$$
+  copies:
+
+  ```math
+  (a^m)^n = a^{mn} \qquad \text{for example} \quad (x^2)^3 = x^2 x^2 x^2 = x^6
+  ```
+
+- **A power of a product is the product of the powers**, because the factors can be rearranged:
+
+  ```math
+  (ab)^n = a^n b^n \qquad \text{for example} \quad (3y)^2 = 3y \cdot 3y = 9y^2
+  ```
+
+These combine, for example $$(3x^2)^3 = 3^3 (x^2)^3 = 27x^6$$.
+
+Because of the sign rules, a negative base gives a positive result for an even power and a negative
+result for an odd power: $$(-2)^4 = 16$$ but $$(-2)^3 = -8$$.
+
+Powers appear naturally in repeated growth. Suppose a culture of $$500$$ bacteria triples every
+hour. After one hour there are $$3 \cdot 500$$, after two hours $$3^2 \cdot 500$$, and after four
+hours
+
+```math
+3^4 \cdot 500 = 81 \cdot 500 = 40{,}500 \text{ bacteria}
+```
+
+### Three formulas worth memorising
+
+These three expansions come up constantly:
+
+```math
+\begin{aligned}
+(a + b)^2 &= a^2 + 2ab + b^2 &&\qquad \text{square of a sum} \\
+(a - b)^2 &= a^2 - 2ab + b^2 &&\qquad \text{square of a difference} \\
+(a + b)(a - b) &= a^2 - b^2 &&\qquad \text{difference of squares}
+\end{aligned}
+```
+
+Each one comes from distributivity, multiplying every part of the first bracket by every part of the
+second:
+
+```math
+\begin{aligned}
+(a + b)^2 &= (a + b)(a + b) = a(a + b) + b(a + b) = a^2 + ab + ba + b^2 = a^2 + 2ab + b^2 \\
+(a - b)^2 &= (a - b)(a - b) = a(a - b) - b(a - b) = a^2 - ab - ba + b^2 = a^2 - 2ab + b^2 \\
+(a + b)(a - b) &= a(a - b) + b(a - b) = a^2 - ab + ba - b^2 = a^2 - b^2
+\end{aligned}
+```
+
+The first one can be seen as a square of side $$a + b$$ cut into four pieces: one $$a^2$$, one
+$$b^2$$, and **two** rectangles of area $$ab$$. That is where the $$2ab$$ comes from, and why
+$$(a + b)^2$$ is not just $$a^2 + b^2$$.
+
+<AreaModel
+  rows={["a", "b"]}
+  cols={["a", "b"]}
+  cells={[
+    ["a²", "ab"],
+    ["ab", "b²"],
+  ]}
+  rowSizes={[3, 2]}
+  colSizes={[3, 2]}
+/>
+
+Some examples:
+
+```math
+\begin{aligned}
+(x + 4)^2 &= x^2 + 2 \cdot 4x + 4^2 = x^2 + 8x + 16 \\
+(5 - 2y)^2 &= 5^2 - 2 \cdot 5 \cdot 2y + (2y)^2 = 25 - 20y + 4y^2 \\
+(3a + 1)(3a - 1) &= (3a)^2 - 1^2 = 9a^2 - 1
+\end{aligned}
+```
+
+They are also handy for mental arithmetic: $$21^2 = (20 + 1)^2 = 400 + 40 + 1 = 441$$, and
+$$19 \cdot 21 = (20 - 1)(20 + 1) = 400 - 1 = 399$$.
+
+### Expanding longer products
+
+A product of three or more brackets is expanded two at a time. For example, to expand
+$$(x + 3)(x - 1)(2x + 1)$$, first multiply out the first two brackets:
+
+```math
+(x + 3)(x - 1) = x^2 - x + 3x - 3 = x^2 + 2x - 3
+```
+
+Then multiply that result by the last bracket, and collect terms with the same power of $$x$$:
+
+```math
+\begin{aligned}
+(x^2 + 2x - 3)(2x + 1) &= (x^2 + 2x - 3) \cdot 2x + (x^2 + 2x - 3) \cdot 1 \\
+&= 2x^3 + 4x^2 - 6x + x^2 + 2x - 3 \\
+&= 2x^3 + 5x^2 - 4x - 3
+\end{aligned}
+```
+
+A quick way to check an expansion is to try a value. With $$x = 2$$, the original is
+$$5 \cdot 1 \cdot 5 = 25$$, and the expansion gives $$16 + 20 - 8 - 3 = 25$$.
