@@ -1,0 +1,5 @@
+dist
+.source
+src/pages.gen.ts
+pnpm-lock.yaml
+books

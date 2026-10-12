@@ -19,6 +19,11 @@
     "noUncheckedIndexedAccess": true,
     "noEmit": true
   },
+  "mdx": {
+    "plugins": [
+      "remark-math"
+    ]
+  },
   "exclude": [
     "node_modules",
     "dist"
