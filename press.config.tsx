@@ -23,8 +23,9 @@ export default defineConfig({
   site: {
     name: "Lee Beydoun",
     // the URL where your site is deployed, needed for SEO features like sitemap:
-    // baseUrl: "https://example.com",
+    baseUrl: "https://leebeydoun.github.io/leekb",
   },
+  mode: "static",
   meta: {
     root() {
       return (
