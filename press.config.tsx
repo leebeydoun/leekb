@@ -2,6 +2,9 @@ import { defineConfig } from "fumapress";
 import { fumadocsMdx } from "fumapress/adapters/mdx";
 import { metaSchema, pageSchema } from "fumapress/adapters/mdx/schema";
 import { defineDocs } from "fumadocs-mdx/macro";
+import { createNotebookLayoutPage } from "fumapress/layouts/notebook";
+
+const NotebookLayout = createNotebookLayoutPage<typeof config.$context>();
 
 const docs = defineDocs({
   dir: "content",
@@ -18,7 +21,7 @@ const docs = defineDocs({
   },
 });
 
-export default defineConfig({
+const config = defineConfig({
   content: docs.toFumadocsSource(),
   site: {
     name: "Lee Beydoun",
@@ -26,6 +29,7 @@ export default defineConfig({
     baseUrl: "https://leebeydoun.github.io/leekb",
   },
   mode: "static",
+  renderPage: (props) => <NotebookLayout {...props} />,
   meta: {
     root() {
       return (
@@ -45,3 +49,5 @@ export default defineConfig({
     },
   },
 }).adapters(fumadocsMdx());
+
+export default config;
