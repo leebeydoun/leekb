@@ -38,7 +38,10 @@ export function AreaModel({
       >
         <div />
         {cols.map((label, j) => (
-          <div key={j} className="flex items-end justify-center pb-1 text-fd-muted-foreground">
+          <div
+            key={j}
+            className="flex items-end justify-center pb-1 text-fd-muted-foreground"
+          >
             {label}
           </div>
         ))}
@@ -51,7 +54,10 @@ export function AreaModel({
               <div
                 key={j}
                 className="flex items-center justify-center border border-fd-primary bg-fd-primary/10 text-lg"
-                style={{ marginTop: i > 0 ? -1 : 0, marginLeft: j > 0 ? -1 : 0 }}
+                style={{
+                  marginTop: i > 0 ? -1 : 0,
+                  marginLeft: j > 0 ? -1 : 0,
+                }}
               >
                 {cells[i]?.[j]}
               </div>

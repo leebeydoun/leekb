@@ -31,7 +31,7 @@ function createStatement(kind: keyof typeof colors) {
     return (
       <div
         id={id}
-        className="my-6 scroll-mt-24 rounded-lg border border-s-4 border-s-(--statement-color) bg-fd-card px-4 py-3 [&>:first-child]:mt-0 [&>:last-child]:mb-0"
+        className="my-6 scroll-mt-24 rounded-lg border border-s-4 border-s-(--statement-color) bg-fd-card px-4 py-3 *:first:mt-0 *:last:mb-0"
         style={{ "--statement-color": colors[kind] } as CSSProperties}
       >
         <p className="font-semibold">
@@ -65,10 +65,10 @@ export const Exercise = createStatement("Exercise");
 /** An unnumbered proof, ending with a ∎. */
 export function Proof({ children }: { children: ReactNode }) {
   return (
-    <div className="relative my-4 border-s-2 ps-4 pe-6 [&>:last-child]:mb-0">
+    <div className="relative my-4 border-s-2 ps-4 pe-6 *:last:mb-0">
       <p className="italic">Proof.</p>
       {children}
-      <span className="absolute end-0 bottom-0" aria-label="end of proof">
+      <span className="absolute inset-e-0 bottom-0" aria-label="end of proof">
         ∎
       </span>
     </div>
@@ -79,7 +79,15 @@ export function Proof({ children }: { children: ReactNode }) {
  * A link to a statement on the same page. Shows "Definition 4.1" (filled in at build time by
  * remark-statements) unless children are given.
  */
-export function Ref({ id, label, children }: { id: string; label?: string; children?: ReactNode }) {
+export function Ref({
+  id,
+  label,
+  children,
+}: {
+  id: string;
+  label?: string;
+  children?: ReactNode;
+}) {
   return <a href={`#${id}`}>{children ?? label}</a>;
 }
 

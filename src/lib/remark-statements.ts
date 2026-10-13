@@ -35,7 +35,9 @@ function isJsx(node: Node) {
 }
 
 function getAttribute(node: Node, name: string) {
-  const attribute = node.attributes?.find((a) => a.type === "mdxJsxAttribute" && a.name === name);
+  const attribute = node.attributes?.find(
+    (a) => a.type === "mdxJsxAttribute" && a.name === name,
+  );
   return typeof attribute?.value === "string" ? attribute.value : undefined;
 }
 
@@ -69,7 +71,8 @@ export function remarkStatements() {
 
       const id = getAttribute(node, "id");
       if (!id) return;
-      if (labels.has(id)) throw new Error(`Duplicate statement id "${id}" in ${file.path}`);
+      if (labels.has(id))
+        throw new Error(`Duplicate statement id "${id}" in ${file.path}`);
       labels.set(id, `${node.name} ${number}`);
     });
 
@@ -78,7 +81,10 @@ export function remarkStatements() {
       if (!isJsx(node) || node.name !== "Ref") return;
       const id = getAttribute(node, "id");
       const label = id && labels.get(id);
-      if (!label) throw new Error(`<Ref id="${id}" /> has no matching statement in ${file.path}`);
+      if (!label)
+        throw new Error(
+          `<Ref id="${id}" /> has no matching statement in ${file.path}`,
+        );
       setAttribute(node, "label", label);
     });
   };

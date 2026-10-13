@@ -59,7 +59,10 @@ export function NumberLine({
   const height = LINE_Y + 40;
   const x = (n: number) => PAD_X + (n - from) * unit;
   const ticks = Array.from({ length: count + 1 }, (_, i) => from + i);
-  const minorTicks = Array.from({ length: count * divisions + 1 }, (_, i) => from + i / divisions);
+  const minorTicks = Array.from(
+    { length: count * divisions + 1 },
+    (_, i) => from + i / divisions,
+  );
 
   return (
     <figure className="not-prose my-6">
