@@ -2,7 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 type StatementProps = {
-  /** anchor for linking and for <Ref id="..." /> */
+  /** anchor for linking and for :ref{#...} */
   id?: string;
   /** optional name shown after the number, e.g. "Even and odd" */
   title?: string;
@@ -75,27 +75,16 @@ export function Proof({ children }: { children: ReactNode }) {
   );
 }
 
-/**
- * A link to a statement on the same page. Shows "Definition 4.1" (filled in at build time by
- * remark-statements) unless children are given.
- */
-export function Ref({
-  id,
-  label,
-  children,
-}: {
-  id: string;
-  label?: string;
-  children?: ReactNode;
-}) {
-  return <a href={`#${id}`}>{children ?? label}</a>;
-}
+export { Ref } from "./ref";
 
-/** A worked solution, collapsed until the reader opens it. Put it inside an <Exercise>. */
+/** A worked solution, collapsed until the reader opens it. Put it inside an ::::exercise. */
 export function Solution({ children }: { children: ReactNode }) {
   return (
-    <Accordions className="my-4">
-      <Accordion title="Solution">{children}</Accordion>
-    </Accordions>
+    // data-ref-skip keeps the solution out of hover previews of the exercise
+    <div data-ref-skip>
+      <Accordions className="my-4">
+        <Accordion title="Solution">{children}</Accordion>
+      </Accordions>
+    </div>
   );
 }
