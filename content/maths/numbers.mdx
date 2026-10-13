@@ -1,11 +1,50 @@
 ---
 title: Numbers
-description: The basic fundamentals of working with numbers in mathematics.
+description: From whole numbers to fractions, the rules of arithmetic and why each one holds.
 ---
 
 import { NumberLine } from "../../src/components/number-line";
 import { AreaModel } from "../../src/components/area-model";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import {
+  Corollary,
+  Definition,
+  Example,
+  Exercise,
+  Lemma,
+  Proof,
+  Proposition,
+  Ref,
+  Remark,
+  Solution,
+  Theorem,
+} from "../../src/components/statement";
+
+Everyone learns to add, multiply and work with fractions long before asking _why_ the rules are what
+they are. Why is a negative times a negative positive? Why can't we divide by zero? Why do we flip a
+fraction to divide by it? This page answers questions like these by building up the numbers one step
+at a time.
+
+Each new kind of number fills a gap left by the one before:
+
+- The counting numbers $$1, 2, 3, \dots$$ can always be added, but not always subtracted: $$3 - 5$$
+  has no answer among them. Adding zero and the negative numbers gives the [integers](#integers),
+  where subtraction always works.
+- The integers can always be multiplied, but not always divided: $$3 \div 5$$ has no answer among
+  them. Adding fractions gives the [rational numbers](#rational-numbers), where every division
+  works, except division by zero.
+- Even the rational numbers have gaps. No fraction squares to exactly $$2$$, which is a first hint
+  that more numbers are still to come.
+
+Along the way the approach stays the same. We take a few basic rules as given, such as
+$$a + b = b + a$$, and show that everything else follows from them. Once a rule has been proved, it
+can be trusted in every case, not just the examples we happened to check. Having proved the rules,
+we use them: to tell when numbers are even, odd or divisible by others, to work with remainders, to
+simplify fractions and to solve everyday problems.
+
+The summary below collects every definition and rule on the page for quick reference, so it is best
+skipped on a first read. The page ends with [exercises](#exercises), each with a worked solution, to
+check your understanding.
 
 {/* Keep this summary in sync with the sections below whenever they change. */}
 
@@ -14,19 +53,35 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 **Definitions**
 
-| Term              | Meaning                                                                           |
-| ----------------- | --------------------------------------------------------------------------------- |
-| Positive integers | $$1, 2, 3, \dots$$                                                                |
-| Natural numbers   | $$0, 1, 2, 3, \dots$$                                                             |
-| Negative integers | $$-1, -2, -3, \dots$$                                                             |
-| Integers          | All of the above: $$\dots, -2, -1, 0, 1, 2, \dots$$                               |
-| Origin            | The point $$0$$ on the number line                                                |
-| Opposite of $$a$$ | $$-a$$: the same distance from $$0$$, on the other side                           |
-| Additive inverse  | Another name for the opposite $$-a$$                                              |
-| Subtraction       | $$a - b$$ is shorthand for $$a + (-b)$$                                           |
-| Product           | $$ab$$ or $$a \cdot b$$: $$a$$ multiplied by $$b$$                                |
-| Power             | $$a^n = a \cdot a \cdots a$$ ($$n$$ copies of $$a$$), the $$n$$-th power of $$a$$ |
-| Base, exponent    | In $$a^n$$, $$a$$ is the base and $$n$$ is the exponent                           |
+| Term                                                         | Meaning                                                                                          |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| <Ref id="integers">Positive integers</Ref>                   | $$1, 2, 3, \dots$$                                                                               |
+| <Ref id="integers">Natural numbers</Ref>                     | $$0, 1, 2, 3, \dots$$                                                                            |
+| <Ref id="integers">Negative integers</Ref>                   | $$-1, -2, -3, \dots$$                                                                            |
+| <Ref id="integers">Integers</Ref>                            | All of the above: $$\dots, -2, -1, 0, 1, 2, \dots$$                                              |
+| Origin                                                       | The point $$0$$ on the number line                                                               |
+| <Ref id="opposite">Opposite of $$a$$</Ref>                   | $$-a$$: the same distance from $$0$$, on the other side                                          |
+| <Ref id="opposite">Additive inverse</Ref>                    | Another name for the opposite $$-a$$                                                             |
+| <Ref id="subtraction">Subtraction</Ref>                      | $$a - b$$ is shorthand for $$a + (-b)$$                                                          |
+| Product                                                      | $$ab$$ or $$a \cdot b$$: $$a$$ multiplied by $$b$$                                               |
+| <Ref id="power">Power</Ref>                                  | $$a^n = a \cdot a \cdots a$$ ($$n$$ copies of $$a$$), the $$n$$-th power of $$a$$                |
+| <Ref id="power">Base, exponent</Ref>                         | In $$a^n$$, $$a$$ is the base and $$n$$ is the exponent                                          |
+| <Ref id="even-odd">Even</Ref>                                | An integer of the form $$2n$$, e.g. $$\dots, -2, 0, 2, 4, \dots$$                                |
+| <Ref id="even-odd">Odd</Ref>                                 | An integer of the form $$2n + 1$$, e.g. $$\dots, -1, 1, 3, 5, \dots$$                            |
+| <Ref id="divides">Divides</Ref>                              | $$d \mid n$$ ($$d$$ divides $$n$$) if $$n = dk$$ for some integer $$k$$                          |
+| <Ref id="congruence">Congruent</Ref>                         | $$a \equiv b \pmod{d}$$ ($$a$$ is congruent to $$b$$ modulo $$d$$) if $$d \mid a - b$$           |
+| <Ref id="rational">Rational number</Ref>                     | $$\frac{m}{n}$$ for integers $$m$$, $$n$$ with $$n \neq 0$$                                      |
+| <Ref id="rational">Numerator, denominator</Ref>              | In $$\frac{m}{n}$$, $$m$$ is the numerator and $$n$$ the denominator                             |
+| <Ref id="cross-multiplying">Equal fractions</Ref>            | $$\frac{m}{n} = \frac{r}{s}$$ exactly when $$ms = rn$$ (cross-multiplying)                       |
+| <Ref id="fraction-addition">Sum of fractions</Ref>           | $$\frac{m}{n} + \frac{r}{s} = \frac{ms + rn}{ns}$$                                               |
+| <Ref id="fraction-multiplication">Product of fractions</Ref> | $$\frac{m}{n} \cdot \frac{r}{s} = \frac{mr}{ns}$$                                                |
+| <Ref id="lowest-form">Common divisor</Ref>                   | An integer that divides both of two integers                                                     |
+| <Ref id="lowest-form">Lowest form</Ref>                      | $$\frac{r}{s}$$ with $$r$$, $$s$$ positive and no common positive divisor but $$1$$              |
+| <Ref id="irrational">Irrational</Ref>                        | A number that is not rational                                                                    |
+| <Ref id="factorial">Factorial</Ref>                          | $$n! = 1 \cdot 2 \cdots n$$, and $$0! = 1$$                                                      |
+| <Ref id="binomial">Binomial coefficient</Ref>                | $$\binom{m}{n} = \frac{m!}{n!\,(m - n)!}$$, the number of ways to choose $$n$$ things from $$m$$ |
+| <Ref id="inverse">Multiplicative inverse</Ref>               | $$a^{-1}$$ or $$\frac{1}{a}$$: the number with $$aa^{-1} = a^{-1}a = 1$$                         |
+| <Ref id="quotient">Quotient</Ref>                            | $$\frac{a}{b} = ab^{-1}$$ for rational numbers $$a$$, $$b$$ with $$b \neq 0$$                    |
 
 **Addition rules** (for any integers $$a$$, $$b$$, $$c$$)
 
@@ -62,6 +117,73 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 | Square of a sum          | $$(a + b)^2 = a^2 + 2ab + b^2$$                         |
 | Square of a difference   | $$(a - b)^2 = a^2 - 2ab + b^2$$                         |
 | Difference of squares    | $$(a + b)(a - b) = a^2 - b^2$$                          |
+| Square of three terms    | $$(a + b + c)^2 = a^2 + b^2 + c^2 + 2ab + 2bc + 2ca$$   |
+| Cube of a sum            | $$(a + b)^3 = a^3 + 3a^2 b + 3ab^2 + b^3$$              |
+| Cube of a difference     | $$(a - b)^3 = a^3 - 3a^2 b + 3ab^2 - b^3$$              |
+| Difference of cubes      | $$a^3 - b^3 = (a - b)(a^2 + ab + b^2)$$                 |
+| Sum of cubes             | $$a^3 + b^3 = (a + b)(a^2 - ab + b^2)$$                 |
+
+**Even, odd and divisibility rules**
+
+| Rule                                        | Statement                                                                     |
+| ------------------------------------------- | ----------------------------------------------------------------------------- |
+| Sums                                        | even + even = even, even + odd = odd, odd + odd = even                        |
+| Products                                    | even × anything = even, odd × odd = odd                                       |
+| Squares                                     | $$a^2$$ is even exactly when $$a$$ is even, and odd exactly when $$a$$ is odd |
+| Always divides                              | every integer $$n$$ is divisible by $$1$$ and by $$n$$                        |
+| Powers of −1                                | $$(-1)^n = 1$$ if $$n$$ is even, $$-1$$ if $$n$$ is odd                       |
+| <Ref id="multiples">Sums of multiples</Ref> | if $$d \mid m$$ and $$d \mid n$$, then $$d \mid m \pm n$$ and $$d \mid mc$$   |
+| <Ref id="squares-three">Squares and 3</Ref> | if $$3 \mid a^2$$, then $$3 \mid a$$                                          |
+
+**Congruence rules** (for any integers, with $$a \equiv b$$ and $$x \equiv y \pmod{d}$$)
+
+| Rule                                              | Statement                                                          |
+| ------------------------------------------------- | ------------------------------------------------------------------ |
+| <Ref id="congruence-equality">Reflexive</Ref>     | $$a \equiv a \pmod{d}$$                                            |
+| <Ref id="congruence-equality">Symmetric</Ref>     | if $$a \equiv b$$, then $$b \equiv a \pmod{d}$$                    |
+| <Ref id="congruence-equality">Transitive</Ref>    | if $$a \equiv b$$ and $$b \equiv c$$, then $$a \equiv c \pmod{d}$$ |
+| Divisible means $$\equiv 0$$                      | $$n \equiv 0 \pmod{d}$$ exactly when $$d \mid n$$                  |
+| <Ref id="congruence-arithmetic">Adding</Ref>      | $$a + x \equiv b + y \pmod{d}$$                                    |
+| <Ref id="congruence-arithmetic">Subtracting</Ref> | $$a - x \equiv b - y \pmod{d}$$                                    |
+| <Ref id="congruence-arithmetic">Multiplying</Ref> | $$ax \equiv by \pmod{d}$$                                          |
+| <Ref id="congruence-powers">Powers</Ref>          | $$a^n \equiv b^n \pmod{d}$$                                        |
+| No cancelling                                     | $$ca \equiv cb$$ does not always give $$a \equiv b$$               |
+
+**Fraction rules** (for integers $$a$$, $$m$$, $$n$$, $$r$$ with $$a \neq 0$$, $$n \neq 0$$, and
+positive $$k$$)
+
+| Rule                                                  | Statement                                                                          |
+| ----------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| <Ref id="fraction-cancel">Cancelling</Ref>            | $$\frac{am}{an} = \frac{m}{n}$$                                                    |
+| <Ref id="fraction-signs">Minus signs</Ref>            | $$-\frac{m}{n} = \frac{-m}{n} = \frac{m}{-n}$$ and $$\frac{-m}{-n} = \frac{m}{n}$$ |
+| Same denominator                                      | $$\frac{m}{n} + \frac{r}{n} = \frac{m + r}{n}$$                                    |
+| Zero                                                  | $$\frac{0}{n} = 0$$                                                                |
+| <Ref id="fraction-powers">Powers</Ref>                | $$\left(\frac{m}{n}\right)^k = \frac{m^k}{n^k}$$                                   |
+| <Ref id="positive-sum">Positive + positive</Ref>      | is positive                                                                        |
+| <Ref id="lowest-form-exists">Lowest form exists</Ref> | every positive rational number has a lowest form                                   |
+| Integer rules carry over                              | all the addition and multiplication rules above hold for rational numbers          |
+| <Ref id="sqrt-two">Square roots of 2 and 3</Ref>      | are irrational: no rational number squares to $$2$$ or $$3$$                       |
+
+**Factorial and binomial rules** (for natural numbers $$1 \le n \le m$$)
+
+| Rule                                       | Statement                                              |
+| ------------------------------------------ | ------------------------------------------------------ |
+| Step                                       | $$n! = n \cdot (n - 1)!$$                              |
+| <Ref id="binomial-symmetry">Symmetry</Ref> | $$\binom{m}{n} = \binom{m}{m - n}$$                    |
+| <Ref id="pascal">Pascal's rule</Ref>       | $$\binom{m}{n - 1} + \binom{m}{n} = \binom{m + 1}{n}$$ |
+
+**Inverse and quotient rules** (for rational numbers, with every denominator non-zero)
+
+| Rule                                                         | Statement                                                                              |
+| ------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| <Ref id="inverse-exists">Inverse of a fraction</Ref>         | $$\left(\frac{m}{n}\right)^{-1} = \frac{n}{m}$$ for $$m \neq 0$$; $$0$$ has no inverse |
+| <Ref id="inverse-unique">Inverses are unique</Ref>           | if $$ab = 1$$, then $$b = a^{-1}$$                                                     |
+| <Ref id="zero-product">Zero product</Ref>                    | if $$ab = 0$$, then $$a = 0$$ or $$b = 0$$                                             |
+| Dividing by a fraction                                       | $$\frac{a}{c/d} = a \cdot \frac{d}{c}$$                                                |
+| <Ref id="cross-multiplying-rational">Cross-multiplying</Ref> | $$\frac{a}{b} = \frac{c}{d}$$ exactly when $$ad = bc$$                                 |
+| <Ref id="cancel-product">Cancelling</Ref>                    | if $$ab = ac$$ and $$a \neq 0$$, then $$b = c$$; and $$\frac{ab}{ac} = \frac{b}{c}$$   |
+| <Ref id="adding-quotients">Adding quotients</Ref>            | $$\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}$$                                     |
+| <Ref id="sum-of-powers">Sum of powers</Ref>                  | $$\frac{x^n - 1}{x - 1} = x^{n-1} + \cdots + x + 1$$                                   |
 
 </Accordion>
 </Accordions>
@@ -70,15 +192,19 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 Integers are whole numbers: numbers with no fractional or decimal part, like $$1$$, $$2$$, $$3$$ and
 $$4$$. Zero and negative numbers such as $$-1$$ are integers too. Although we often think of them as
-one kind of number, they fall into a few groups:
+one kind of number, they fall into a few groups.
 
-- **Positive integers**: the counting numbers $$1, 2, 3, 4, \dots$$
-- **Negative integers**: the opposites of the positive integers, written with a minus sign, such as
+<Definition id="integers" title="Integers">
+
+- The **positive integers** are the counting numbers $$1, 2, 3, 4, \dots$$
+- The **negative integers** are the opposites of the positive integers, written with a minus sign:
   $$-1, -2, -3, \dots$$
-- **Zero**: $$0$$ itself, which is neither positive nor negative.
+- **Zero**, $$0$$, is neither positive nor negative.
 
-The positive integers together with $$0$$ are called the **natural numbers**. When we say
-**integers**, we mean all of these together: the positive integers, the negative integers and $$0$$.
+The **natural numbers** are the positive integers together with $$0$$. The **integers** are all of
+these together: the positive integers, the negative integers and $$0$$.
+
+</Definition>
 
 ### The number line
 
@@ -121,8 +247,16 @@ Adding $$0$$ means taking no steps at all, so the number stays where it is. For 
 a + 0 = 0 + a = a
 ```
 
-Every integer $$a$$ has an **opposite**, written $$-a$$. It sits the same distance from $$0$$, but
-on the other side. Adding a number to its opposite always walks you back to the origin:
+Every integer has an opposite on the other side of $$0$$.
+
+<Definition id="opposite" title="Opposite">
+
+The **opposite** of an integer $$a$$, written $$-a$$, is the integer the same distance from $$0$$ as
+$$a$$, but on the other side. It is also called the **additive inverse** of $$a$$.
+
+</Definition>
+
+Adding a number to its opposite always walks you back to the origin:
 
 ```math
 a + (-a) = 0 \quad \text{and} \quad -a + a = 0
@@ -130,8 +264,7 @@ a + (-a) = 0 \quad \text{and} \quad -a + a = 0
 
 <NumberLine from={-5} to={5} points={[-4, 4]} jumps={[{ from: 4, to: 0, label: "+(−4)" }]} />
 
-Because adding it "undoes" $$a$$, the opposite $$-a$$ is also called the **additive inverse** of
-$$a$$.
+This is where the name additive inverse comes from: adding $$-a$$ "undoes" adding $$a$$.
 
 Taking the opposite twice flips you to the other side and back again, so you end up where you
 started:
@@ -212,9 +345,16 @@ and in any grouping**. This is handy for spotting easy pairs:
 
 ### Writing subtraction
 
-Rather than writing $$a + (-b)$$ every time, we write it more briefly as $$a - b$$. They mean
-exactly the same thing, so subtraction is just adding an opposite. That means the two rules above
-apply to subtraction too, as long as each minus sign stays attached to the number after it:
+Rather than writing $$a + (-b)$$ every time, we write it more briefly.
+
+<Definition id="subtraction" title="Subtraction">
+
+For integers $$a$$ and $$b$$, $$a - b$$ means $$a + (-b)$$.
+
+</Definition>
+
+So subtraction is not a new operation, just adding an opposite. That means the two rules above apply
+to subtraction too, as long as each minus sign stays attached to the number after it:
 
 ```math
 a - b + c = a + c - b
@@ -427,15 +567,21 @@ Here $$-3$$ times $$-7b$$ is $$+21b$$, not $$-21b$$.
 
 ### Powers
 
-Multiplying a number by itself several times is written with a small raised number called the
-**exponent**:
+Multiplying a number by itself several times is written with a small raised number.
+
+<Definition id="power" title="Powers">
+
+For an integer $$a$$ and a positive integer $$n$$, the **$$n$$-th power** of $$a$$ is
 
 ```math
-a^2 = aa, \qquad a^3 = aaa, \qquad a^n = \underbrace{a \cdot a \cdots a}_{n \text{ times}}
+a^n = \underbrace{a \cdot a \cdots a}_{n \text{ times}}
 ```
 
-$$a^n$$ is read "$$a$$ to the power $$n$$" or "the $$n$$-th power of $$a$$", and $$a$$ is called the
-**base**. For example, $$2^5 = 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = 32$$.
+read "$$a$$ to the power $$n$$". The number $$a$$ is the **base** and $$n$$ is the **exponent**.
+
+</Definition>
+
+So $$a^2 = aa$$ and $$a^3 = aaa$$. For example, $$2^5 = 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = 32$$.
 
 Three rules follow straight from counting how many times $$a$$ is multiplied (here $$m$$ and $$n$$
 are positive integers):
@@ -473,9 +619,9 @@ hours
 3^4 \cdot 500 = 81 \cdot 500 = 40{,}500 \text{ bacteria}
 ```
 
-### Three formulas worth memorising
+### Formulas worth memorising
 
-These three expansions come up constantly:
+A handful of expansions come up constantly. The first three are about squares:
 
 ```math
 \begin{aligned}
@@ -524,6 +670,86 @@ Some examples:
 They are also handy for mental arithmetic: $$21^2 = (20 + 1)^2 = 400 + 40 + 1 = 441$$, and
 $$19 \cdot 21 = (20 - 1)(20 + 1) = 400 - 1 = 399$$.
 
+The same method works for a sum of three terms. Each term meets every other term twice, once from
+each bracket, giving
+
+```math
+(a + b + c)^2 = a^2 + b^2 + c^2 + 2ab + 2bc + 2ca
+```
+
+For example, $$(x + y + 1)^2 = x^2 + y^2 + 1 + 2xy + 2y + 2x$$.
+
+#### Cubes
+
+There are four matching formulas for cubes:
+
+```math
+\begin{aligned}
+(a + b)^3 &= a^3 + 3a^2 b + 3ab^2 + b^3 &&\qquad \text{cube of a sum} \\
+(a - b)^3 &= a^3 - 3a^2 b + 3ab^2 - b^3 &&\qquad \text{cube of a difference} \\
+a^3 - b^3 &= (a - b)(a^2 + ab + b^2) &&\qquad \text{difference of cubes} \\
+a^3 + b^3 &= (a + b)(a^2 - ab + b^2) &&\qquad \text{sum of cubes}
+\end{aligned}
+```
+
+The cube of a sum is the square of the sum, multiplied once more by $$a + b$$:
+
+```math
+\begin{aligned}
+(a + b)^3 &= (a^2 + 2ab + b^2)(a + b) \\
+&= a^3 + a^2 b + 2a^2 b + 2ab^2 + ab^2 + b^3 \\
+&= a^3 + 3a^2 b + 3ab^2 + b^3
+\end{aligned}
+```
+
+The cube of a difference needs no new work. Write $$a - b$$ as $$a + (-b)$$ and put $$-b$$ in place
+of $$b$$. Since $$(-b)^2 = b^2$$ but $$(-b)^3 = -b^3$$, the terms with an odd power of $$b$$ change
+sign and the others stay the same.
+
+For the difference of cubes, expand the right side. Multiplying by $$a$$ and by $$-b$$ gives two
+rows whose middle terms cancel, leaving only $$a^3$$ and $$-b^3$$:
+
+```math
+\begin{array}{rcrrrr}
+a(a^2 + ab + b^2) &=& a^3 & {} + a^2 b & {} + ab^2 & \\
+-b(a^2 + ab + b^2) &=& & {} - a^2 b & {} - ab^2 & {} - b^3 \\
+\hline
+(a - b)(a^2 + ab + b^2) &=& a^3 & & & {} - b^3
+\end{array}
+```
+
+The sum of cubes then follows by putting $$-b$$ in place of $$b$$ again: the left side becomes
+$$a^3 - (-b)^3 = a^3 + b^3$$, and the right side becomes $$(a + b)(a^2 - ab + b^2)$$.
+
+A few things help to remember these:
+
+- In the cube of a sum the numbers in front are $$1, 3, 3, 1$$, just as they are $$1, 2, 1$$ in the
+  square of a sum. Each term has total power $$3$$: $$a^3$$, then $$a^2 b$$, then $$ab^2$$, then
+  $$b^3$$.
+- In the difference and sum of cubes, the short bracket has the same sign as the left side, and the
+  middle term of the long bracket has the opposite sign.
+- A _sum_ of squares $$a^2 + b^2$$ has no formula like these. Only the difference of squares
+  factors.
+
+Some examples:
+
+```math
+\begin{aligned}
+(x + 2)^3 &= x^3 + 3 \cdot 2x^2 + 3 \cdot 4x + 8 = x^3 + 6x^2 + 12x + 8 \\
+x^3 - 8 &= x^3 - 2^3 = (x - 2)(x^2 + 2x + 4) \\
+27y^3 + 1 &= (3y)^3 + 1^3 = (3y + 1)(9y^2 - 3y + 1)
+\end{aligned}
+```
+
+They help with arithmetic too:
+
+```math
+\begin{aligned}
+9^3 &= (10 - 1)^3 = 1000 - 300 + 30 - 1 = 729 \\
+1001 &= 10^3 + 1^3 = (10 + 1)(100 - 10 + 1) = 11 \cdot 91
+\end{aligned}
+```
+
 ### Expanding longer products
 
 A product of three or more brackets is expanded two at a time. For example, to expand
@@ -545,3 +771,2722 @@ Then multiply that result by the last bracket, and collect terms with the same p
 
 A quick way to check an expansion is to try a value. With $$x = 2$$, the original is
 $$5 \cdot 1 \cdot 5 = 25$$, and the expansion gives $$16 + 20 - 8 - 3 = 25$$.
+
+## Even and odd integers; divisibility
+
+### Even and odd
+
+Counting up from $$1$$, the integers alternate between two kinds:
+
+- The **even** integers $$2, 4, 6, 8, 10, \dots$$ are the ones that can be split into pairs with
+  nothing left over.
+- The **odd** integers $$1, 3, 5, 7, 9, \dots$$ always have one left over.
+
+Both go up in steps of $$2$$, so they take turns along the number line. Here the even integers are
+marked:
+
+<NumberLine from={-1} to={10} points={[0, 2, 4, 6, 8, 10]} />
+
+"Split into pairs" means the number is $$2$$ times something, and "one left over" means one more
+than that.
+
+<Definition id="even-odd" title="Even and odd">
+
+An integer is **even** if it can be written as $$2n$$ for some integer $$n$$, and **odd** if it can
+be written as $$2n + 1$$ for some integer $$n$$.
+
+</Definition>
+
+For example, $$14 = 2 \cdot 7$$ and $$30 = 2 \cdot 15$$ are even, while $$1 = 2 \cdot 0 + 1$$,
+$$15 = 2 \cdot 7 + 1$$ and $$31 = 2 \cdot 15 + 1$$ are odd. Odd integers can equally be written as
+one _less_ than an even integer, $$2n - 1$$, so $$15 = 2 \cdot 8 - 1$$. Which form to use is just a
+matter of convenience.
+
+The same definitions work for zero and the negative integers: $$0 = 2 \cdot 0$$ is even,
+$$-6 = 2 \cdot (-3)$$ is even, and $$-5 = 2 \cdot (-3) + 1$$ is odd. Every integer is either even or
+odd, never both.
+
+### Adding even and odd integers
+
+Whether a sum is even or odd depends only on whether the parts are:
+
+| $$a$$ | $$b$$ | $$a + b$$ | Example        |
+| ----- | ----- | --------- | -------------- |
+| even  | even  | even      | $$8 + 6 = 14$$ |
+| even  | odd   | odd       | $$8 + 5 = 13$$ |
+| odd   | even  | odd       | $$7 + 6 = 13$$ |
+| odd   | odd   | even      | $$7 + 5 = 12$$ |
+
+Writing the numbers in the forms above shows why. If $$a = 2n$$ is even and $$b = 2k + 1$$ is odd,
+then
+
+```math
+a + b = 2n + 2k + 1 = 2(n + k) + 1
+```
+
+which is $$2$$ times an integer, plus $$1$$, so it is odd. If both are odd, $$a = 2n + 1$$ and
+$$b = 2k + 1$$, then the two leftover $$1$$s pair up with each other:
+
+```math
+a + b = 2n + 1 + 2k + 1 = 2(n + k + 1)
+```
+
+which is even. The other two rows work the same way.
+
+### Multiplying even and odd integers
+
+- An **even number times any integer is even**. If $$a = 2n$$, then $$ab = 2(nb)$$.
+- An **odd number times an odd number is odd**. If $$a = 2n + 1$$ and $$b = 2k + 1$$, then
+  $$ab = 4nk + 2n + 2k + 1 = 2(2nk + n + k) + 1$$.
+
+So a product is odd only when **every** factor is odd. For example, $$3 \cdot 5 \cdot 7 = 105$$ is
+odd, but $$3 \cdot 5 \cdot 7 \cdot 2 = 210$$ is even.
+
+### Squares
+
+A square has the same kind as the number being squared.
+
+<Proposition id="squares-parity" title="Squares of even and odd integers">
+
+The square of an even integer is even, and the square of an odd integer is odd.
+
+</Proposition>
+
+<Proof>
+
+We use the forms from <Ref id="even-odd" /> and check that the square has the same form.
+
+If $$a$$ is even, write $$a = 2n$$. Then $$a^2 = 4n^2 = 2(2n^2)$$, which is $$2$$ times an integer,
+so it is even.
+
+If $$a$$ is odd, write $$a = 2n + 1$$. Expanding with the square of a sum,
+
+```math
+a^2 = (2n + 1)^2 = 4n^2 + 4n + 1 = 2(2n^2 + 2n) + 1
+```
+
+The first two terms both contain a factor of $$2$$, so we can pull it out, leaving $$1$$ over. That
+is the form of an odd integer.
+
+</Proof>
+
+For example, $$6^2 = 36$$ is even and $$9^2 = 81$$ is odd. This also works backwards.
+
+<Corollary id="squares-parity-converse">
+
+If $$a^2$$ is even, then $$a$$ is even. If $$a^2$$ is odd, then $$a$$ is odd.
+
+</Corollary>
+
+<Proof>
+
+Every integer is either even or odd, so it is enough to rule out the wrong one. Suppose $$a^2$$ is
+even. If $$a$$ were odd, then by <Ref id="squares-parity" /> its square would be odd, which it is
+not. So $$a$$ must be even. The same reasoning with "even" and "odd" swapped proves the second
+statement.
+
+</Proof>
+
+So, for example, if $$a^2 = 144$$ then without working out $$a$$ we already know it is even.
+
+The same splitting into even and odd settles powers of $$-1$$. If $$n = 2k$$ is even, then
+$$(-1)^n = ((-1)^2)^k = 1^k = 1$$. If $$n = 2k + 1$$ is odd, then
+$$(-1)^n = (-1)^{2k} \cdot (-1) = -1$$. So $$(-1)^n$$ is $$1$$ when $$n$$ is even and $$-1$$ when
+$$n$$ is odd.
+
+### Divisibility
+
+Being even (<Ref id="even-odd" />) means being a multiple of $$2$$. The same idea works with any
+number in place of $$2$$.
+
+<Definition id="divides" title="Divisibility">
+
+An integer $$d$$ **divides** an integer $$n$$, or $$n$$ is **divisible** by $$d$$, if
+
+```math
+n = dk \qquad \text{for some integer } k
+```
+
+This is written $$d \mid n$$.
+
+</Definition>
+
+For example:
+
+- $$4 \mid 28$$, because $$28 = 4 \cdot 7$$.
+- $$6 \mid -42$$, because $$-42 = 6 \cdot (-7)$$.
+- $$5$$ does **not** divide $$12$$, because no integer $$k$$ gives $$5k = 12$$.
+
+So "even" is the same as "divisible by $$2$$". A few things are always true:
+
+- Every integer is divisible by $$1$$, because $$n = 1 \cdot n$$.
+- Every integer is divisible by itself, because $$n = n \cdot 1$$.
+- $$0$$ is divisible by every integer, because $$0 = d \cdot 0$$.
+
+A common question is how many times a number can be divided by $$2$$ (or $$3$$, or anything else).
+Splitting $$48$$ into factors of $$2$$ until an odd number is left gives
+
+```math
+\begin{aligned}
+48 &= 2 \cdot 24 = 2 \cdot 2 \cdot 12 = 2 \cdot 2 \cdot 2 \cdot 6 \\
+&= 2 \cdot 2 \cdot 2 \cdot 2 \cdot 3 = 2^4 \cdot 3
+\end{aligned}
+```
+
+so $$2^4 = 16$$ divides $$48$$, but $$2^5 = 32$$ does not. In the same way $$54 = 2 \cdot 3^3$$, so
+$$3^3 = 27$$ is the largest power of $$3$$ that divides $$54$$.
+
+### Sums and multiples of multiples
+
+If two numbers are both multiples of $$d$$, then so is anything built from them by adding,
+subtracting or multiplying.
+
+<Lemma id="multiples" title="Sums and multiples of multiples">
+
+Let $$d$$, $$m$$ and $$n$$ be integers with $$d \mid m$$ and $$d \mid n$$. Then $$d \mid m + n$$,
+$$d \mid m - n$$, and $$d \mid mc$$ for any integer $$c$$.
+
+</Lemma>
+
+<Proof>
+
+The statement is about multiples of $$d$$, so the natural first step is to unpack the definition of
+divisibility and write each number we know about as $$d$$ times something. Since $$d \mid m$$ and
+$$d \mid n$$, there are integers $$k$$ and $$l$$ with
+
+```math
+m = dk \qquad \text{and} \qquad n = dl
+```
+
+To show that a number is divisible by $$d$$, we need to write it as $$d$$ times an integer. So in
+each case we substitute and then pull out the common factor $$d$$ using distributivity:
+
+```math
+\begin{aligned}
+m + n &= dk + dl = d(k + l) \\
+m - n &= dk - dl = d(k - l) \\
+mc &= (dk)c = d(kc)
+\end{aligned}
+```
+
+The last line uses associativity to regroup the product. Because sums, differences and products of
+integers are integers, $$k + l$$, $$k - l$$ and $$kc$$ are all integers. So each of $$m + n$$,
+$$m - n$$ and $$mc$$ has been written as $$d$$ times an integer, which is exactly what $$d$$
+dividing it means.
+
+</Proof>
+
+For example, $$7 \mid 21$$ and $$7 \mid 35$$, so $$7$$ also divides $$21 + 35 = 56$$,
+$$21 - 35 = -14$$ and $$21 \cdot 4 = 84$$. This lemma is the only tool needed for everything below.
+
+### Congruence
+
+On a clock, $$15$$ o'clock is the same as $$3$$ o'clock: the two times differ by a whole number of
+turns of $$12$$ hours. Congruence makes this idea work for any whole number $$d$$ in place of
+$$12$$.
+
+<Definition id="congruence" title="Congruence">
+
+Let $$d$$ be a positive integer. Two integers $$a$$ and $$b$$ are **congruent modulo $$d$$** if
+their difference is a multiple of $$d$$:
+
+```math
+a \equiv b \pmod{d} \qquad \text{means} \qquad d \mid a - b
+```
+
+</Definition>
+
+For example:
+
+- $$17 \equiv 2 \pmod{5}$$, because $$17 - 2 = 15 = 5 \cdot 3$$.
+- $$-3 \equiv 2 \pmod{5}$$, because $$-3 - 2 = -5 = 5 \cdot (-1)$$.
+- $$15 \equiv 3 \pmod{12}$$, which is the clock example.
+- $$9 \not\equiv 4 \pmod{3}$$, because $$9 - 4 = 5$$ is not a multiple of $$3$$.
+
+On the number line, the integers congruent to $$2$$ modulo $$5$$ are spaced $$5$$ apart, in both
+directions:
+
+<NumberLine from={-4} to={13} points={[-3, 2, 7, 12]} />
+
+Two special cases are worth noticing:
+
+- $$n \equiv 0 \pmod{d}$$ exactly when $$d \mid n$$, since $$n - 0 = n$$. So "divisible by $$d$$"
+  and "congruent to $$0$$" say the same thing.
+- Modulo $$2$$, every even integer is $$\equiv 0$$ and every odd integer is $$\equiv 1$$. The rules
+  for adding and multiplying even and odd integers are really rules about congruence modulo $$2$$.
+
+### Congruence behaves like equality
+
+Congruence modulo a fixed $$d$$ has the three properties that make equality easy to work with.
+
+<Proposition id="congruence-equality" title="Congruence behaves like equality">
+
+Let $$d$$ be a positive integer and $$a$$, $$b$$, $$c$$ integers.
+
+1. $$a \equiv a \pmod{d}$$.
+2. If $$a \equiv b \pmod{d}$$, then $$b \equiv a \pmod{d}$$.
+3. If $$a \equiv b$$ and $$b \equiv c \pmod{d}$$, then $$a \equiv c \pmod{d}$$.
+
+</Proposition>
+
+<Proof>
+
+Each part is a statement about congruence, and congruence is defined in terms of divisibility. So in
+each case we translate "$$\equiv$$" into a statement about a difference being a multiple of $$d$$,
+and check that.
+
+1. To show $$a \equiv a$$, we need $$d \mid a - a$$. But $$a - a = 0$$, and $$0 = d \cdot 0$$ is a
+   multiple of $$d$$ (zero is divisible by everything).
+2. We are told $$d \mid a - b$$, so $$a - b = dk$$ for some integer $$k$$. We want $$d \mid b - a$$.
+   The key observation is that $$b - a$$ is just the opposite of $$a - b$$, so
+
+   ```math
+   b - a = -(a - b) = -(dk) = d(-k)
+   ```
+
+   Since $$-k$$ is an integer, $$b - a$$ is a multiple of $$d$$. In words: if two numbers differ by
+   a multiple of $$d$$, it doesn't matter which one we subtract from the other.
+
+3. We are told that $$a - b$$ and $$b - c$$ are both multiples of $$d$$, and we want $$a - c$$ to be
+   one too. The trick is to notice that the two differences we know about add up to the one we want,
+   because the $$b$$s cancel:
+
+   ```math
+   (a - b) + (b - c) = a - b + b - c = a - c
+   ```
+
+   By <Ref id="multiples" /> the sum of two multiples of $$d$$ is a multiple of $$d$$, so
+   $$d \mid a - c$$. On the number line: if it takes a whole number of steps of size $$d$$ to get
+   from $$a$$ to $$b$$, and from $$b$$ to $$c$$, then it takes a whole number of steps to get from
+   $$a$$ to $$c$$.
+
+</Proof>
+
+For example, $$23 \equiv 8$$ and $$8 \equiv -7 \pmod{5}$$, so $$23 \equiv -7 \pmod{5}$$. Check:
+$$23 - (-7) = 30$$.
+
+### Arithmetic with congruences
+
+Congruences can be added, subtracted and multiplied just like equations.
+
+<Theorem id="congruence-arithmetic" title="Arithmetic with congruences">
+
+Let $$d$$ be a positive integer, and suppose
+
+```math
+a \equiv b \pmod{d} \qquad \text{and} \qquad x \equiv y \pmod{d}
+```
+
+Then
+
+1. $$a + x \equiv b + y \pmod{d}$$,
+2. $$a - x \equiv b - y \pmod{d}$$,
+3. $$ax \equiv by \pmod{d}$$.
+
+</Theorem>
+
+<Proof>
+
+Throughout, we use the definition of congruence to turn what we know into statements about
+divisibility. We are told that
+
+```math
+d \mid a - b \qquad \text{and} \qquad d \mid x - y
+```
+
+In each part we want to show that $$d$$ divides the difference of the two sides. The strategy is the
+same every time: rewrite that difference so that it is built out of $$a - b$$ and $$x - y$$ by
+adding, subtracting or multiplying, and then apply <Ref id="multiples" />, which says that anything
+built from multiples of $$d$$ in this way is again a multiple of $$d$$.
+
+1. For $$a + x \equiv b + y$$ we need $$d \mid (a + x) - (b + y)$$. Removing the brackets and
+   regrouping, which is allowed because the order and grouping of a sum don't matter, pairs up $$a$$
+   with $$b$$ and $$x$$ with $$y$$:
+
+   ```math
+   (a + x) - (b + y) = a + x - b - y = (a - b) + (x - y)
+   ```
+
+   This is a sum of two multiples of $$d$$, so it is a multiple of $$d$$.
+
+2. For $$a - x \equiv b - y$$ the same regrouping gives
+
+   ```math
+   (a - x) - (b - y) = a - x - b + y = (a - b) - (x - y)
+   ```
+
+   which is a difference of two multiples of $$d$$, so again a multiple of $$d$$.
+
+3. For $$ax \equiv by$$ we need $$d \mid ax - by$$, and here the regrouping is less obvious, because
+   $$ax - by$$ doesn't split directly into $$a - b$$ and $$x - y$$. The idea is to go from $$ax$$ to
+   $$by$$ in two steps, changing one letter at a time: first change $$a$$ to $$b$$, giving $$bx$$,
+   and then change $$x$$ to $$y$$. In symbols, we subtract and add the "halfway" term $$bx$$, which
+   changes nothing because $$-bx + bx = 0$$:
+
+   ```math
+   \begin{aligned}
+   ax - by &= ax - bx + bx - by \\
+   &= (a - b)x + b(x - y)
+   \end{aligned}
+   ```
+
+   The second line factors $$x$$ out of the first two terms and $$b$$ out of the last two. Now
+   $$(a - b)x$$ is a multiple of $$a - b$$, so it is a multiple of $$d$$, and likewise $$b(x - y)$$
+   is a multiple of $$d$$. Their sum is therefore a multiple of $$d$$.
+
+</Proof>
+
+<Corollary id="congruence-constant">
+
+If $$a \equiv b \pmod{d}$$, then for any integer $$c$$,
+
+```math
+a + c \equiv b + c \pmod{d} \qquad \text{and} \qquad ca \equiv cb \pmod{d}
+```
+
+</Corollary>
+
+<Proof>
+
+The idea is that $$c$$ is congruent to itself, so we can use the pair $$c \equiv c$$ as the second
+congruence in <Ref id="congruence-arithmetic" />. By <Ref id="congruence-equality" />,
+$$c \equiv c \pmod{d}$$. Taking $$x = y = c$$ in the theorem, the adding part gives
+$$a + c \equiv b + c$$, and the multiplying part gives $$ac \equiv bc$$, which is the same as
+$$ca \equiv cb$$ because the order of a product doesn't matter.
+
+</Proof>
+
+<Proposition id="congruence-powers" title="Powers of congruences">
+
+If $$a \equiv b \pmod{d}$$, then $$a^n \equiv b^n \pmod{d}$$ for every positive integer $$n$$.
+
+</Proposition>
+
+<Proof>
+
+A power is a repeated product, and <Ref id="congruence-arithmetic" /> already tells us that we can
+multiply congruences. So we build up the powers one at a time.
+
+For $$n = 1$$ there is nothing to prove: $$a^1 = a$$ and $$b^1 = b$$.
+
+Now suppose we already know $$a^k \equiv b^k \pmod{d}$$ for some power $$k$$. Multiplying this
+congruence by $$a \equiv b$$, using part 3 of the theorem with $$a^k, b^k$$ in place of $$a, b$$ and
+$$a, b$$ in place of $$x, y$$, gives
+
+```math
+a^k \cdot a \equiv b^k \cdot b \pmod{d}
+\qquad \text{that is} \qquad
+a^{k+1} \equiv b^{k+1} \pmod{d}
+```
+
+So whenever the statement holds for one power, it also holds for the next. Starting from $$n = 1$$,
+it therefore holds for $$n = 2$$, then for $$n = 3$$, and so on, reaching every positive integer
+$$n$$. This style of argument, where we prove a first case and then show that each case leads to the
+next, is called **induction**.
+
+</Proof>
+
+The practical upshot is that **any number in a sum, difference or product can be swapped for a
+congruent one** without changing the answer modulo $$d$$. For example, to find
+$$38 \cdot 47 \pmod{5}$$, replace $$38$$ by $$3$$ and $$47$$ by $$2$$:
+
+```math
+38 \cdot 47 \equiv 3 \cdot 2 = 6 \equiv 1 \pmod{5}
+```
+
+Indeed $$38 \cdot 47 = 1786 = 5 \cdot 357 + 1$$.
+
+<Remark id="no-cancel" title="No cancelling">
+
+Division is the exception: a common factor **cannot** always be cancelled. For example,
+$$2 \cdot 3 \equiv 2 \cdot 8 \pmod{10}$$, since $$6$$ and $$16$$ differ by $$10$$, but
+$$3 \not\equiv 8 \pmod{10}$$.
+
+</Remark>
+
+### Using congruences
+
+**Large powers.** What is left over when $$7^{100}$$ is divided by $$5$$? Since $$7 \equiv 2$$,
+raising both sides to the fourth power with <Ref id="congruence-powers" /> gives
+$$7^4 \equiv 2^4 = 16 \equiv 1 \pmod{5}$$. Then, using a power of a power,
+
+```math
+7^{100} = (7^4)^{25} \equiv 1^{25} = 1 \pmod{5}
+```
+
+so the remainder is $$1$$, found without ever writing down the $$85$$-digit number $$7^{100}$$.
+
+**Squares divisible by 3.** The squares rule for even numbers has a version with $$3$$ in place of
+$$2$$.
+
+<Proposition id="squares-three" title="Squares divisible by 3">
+
+If $$a$$ is an integer and $$3 \mid a^2$$, then $$3 \mid a$$.
+
+</Proposition>
+
+<Proof>
+
+It is easier to prove this the other way round. Instead of showing "if $$3 \mid a^2$$ then
+$$3 \mid a$$", we show that if $$a$$ is **not** a multiple of $$3$$, then $$a^2$$ is **not** a
+multiple of $$3$$ either. These say the same thing: if $$3$$ did divide $$a^2$$ while not dividing
+$$a$$, that would contradict the second statement.
+
+First we sort the integers into three kinds. Counting along the integers, every third one is a
+multiple of $$3$$, so every integer is either a multiple of $$3$$ or one or two steps past one. That
+is, every integer can be written as
+
+```math
+3k, \qquad 3k + 1 \qquad \text{or} \qquad 3k + 2
+```
+
+for some integer $$k$$. In the language of congruence, $$a$$ is congruent to $$0$$, $$1$$ or $$2$$
+modulo $$3$$, since $$(3k + 1) - 1 = 3k$$ and $$(3k + 2) - 2 = 3k$$ are multiples of $$3$$.
+
+If $$a$$ is not a multiple of $$3$$, it is in one of the last two cases. Rather than squaring
+$$3k + 1$$ or $$3k + 2$$ directly, <Ref id="congruence-powers" /> lets us square the small number it
+is congruent to instead:
+
+| $$a \pmod{3}$$ | $$a^2 \pmod{3}$$     |
+| -------------- | -------------------- |
+| $$0$$          | $$0^2 = 0$$          |
+| $$1$$          | $$1^2 = 1$$          |
+| $$2$$          | $$2^2 = 4 \equiv 1$$ |
+
+The last row uses $$4 \equiv 1$$, because $$4 - 1 = 3$$. So in both of the cases that matter,
+$$a^2 \equiv 1 \pmod{3}$$, which means $$a^2$$ is one more than a multiple of $$3$$. A number cannot
+be both a multiple of $$3$$ and one more than a multiple of $$3$$, so $$a^2$$ is not divisible by
+$$3$$. This proves the statement the other way round, and so proves the proposition.
+
+</Proof>
+
+The same proof can be done without congruences, using the square of a sum. For $$a = 3k + 1$$ and
+$$a = 3k + 2$$,
+
+```math
+\begin{aligned}
+(3k + 1)^2 &= 9k^2 + 6k + 1 = 3(3k^2 + 2k) + 1 \\
+(3k + 2)^2 &= 9k^2 + 12k + 4 = 3(3k^2 + 4k + 1) + 1
+\end{aligned}
+```
+
+and both leave a remainder of $$1$$.
+
+## Rational numbers
+
+Integers are good for counting whole things, but not for sharing them. Splitting $$3$$ pizzas
+between $$4$$ people gives each person a piece of pizza that is not a whole number. Fractions fill
+this gap.
+
+### Fractions
+
+<Definition id="rational" title="Rational numbers">
+
+A **rational number** is a quotient of two integers,
+
+```math
+\frac{m}{n}, \qquad \text{also written } m/n,
+```
+
+where $$m$$ and $$n$$ are integers and $$n \neq 0$$. The top number $$m$$ is the **numerator** and
+the bottom number $$n$$ is the **denominator**.
+
+</Definition>
+
+For example, $$\frac{3}{4}$$, $$\frac{-5}{2}$$ and $$\frac{7}{3}$$ are rational numbers. The
+fraction $$\frac{m}{n}$$ answers the question "what number, multiplied by $$n$$, gives $$m$$?" That
+is why the denominator can never be $$0$$: no number multiplied by $$0$$ gives, say, $$5$$, so
+$$\frac{5}{0}$$ has no meaning.
+
+Decimals that stop are rational numbers too, since each decimal place is a number of tenths,
+hundredths and so on:
+
+```math
+0.75 = \frac{75}{100}, \qquad 2.5 = \frac{25}{10}, \qquad 0.03 = \frac{3}{100}
+```
+
+Rational numbers have places on the number line between the integers. To find $$\frac{2}{3}$$, cut
+the stretch from $$0$$ to $$1$$ into $$3$$ equal pieces and count $$2$$ of them from $$0$$. To find
+$$\frac{3}{2}$$, cut each whole step into $$2$$ pieces and count $$3$$ of them:
+
+<NumberLine
+  from={0}
+  to={2}
+  unit={300}
+  divisions={6}
+  points={[1 / 2, 2 / 3, 3 / 2]}
+  labels={[
+    { at: 1 / 2, text: "1/2" },
+    { at: 2 / 3, text: "2/3" },
+    { at: 3 / 2, text: "3/2" },
+  ]}
+/>
+
+As with the integers, a negative rational number sits on the other side of $$0$$, the same distance
+away:
+
+<NumberLine
+  from={-2}
+  to={2}
+  unit={150}
+  divisions={4}
+  points={[-3 / 2, -3 / 4, 3 / 4, 3 / 2]}
+  labels={[
+    { at: -3 / 2, text: "-3/2" },
+    { at: -3 / 4, text: "-3/4" },
+    { at: 3 / 4, text: "3/4" },
+    { at: 3 / 2, text: "3/2" },
+  ]}
+/>
+
+### When are two fractions equal?
+
+The same rational number can be written as a fraction in many ways. Cutting the stretch from $$0$$
+to $$1$$ into $$2$$ pieces and taking $$1$$ lands on the same point as cutting it into $$4$$ pieces
+and taking $$2$$, or into $$6$$ pieces and taking $$3$$:
+
+<NumberLine
+  from={0}
+  to={1}
+  unit={600}
+  divisions={4}
+  points={[1 / 2]}
+  labels={[{ at: 1 / 2, text: "1/2 = 2/4" }]}
+/>
+
+<NumberLine
+  from={0}
+  to={1}
+  unit={600}
+  divisions={6}
+  points={[1 / 2]}
+  labels={[{ at: 1 / 2, text: "1/2 = 3/6" }]}
+/>
+
+We need a test that decides when two fractions name the same number, without drawing pictures. If
+$$\frac{m}{n} = \frac{r}{s}$$, then multiplying both by $$ns$$ should give the same answer, and
+$$\frac{m}{n} \cdot ns = ms$$ while $$\frac{r}{s} \cdot ns = rn$$. We turn this into the rule that
+says what equality of fractions means.
+
+<Definition id="cross-multiplying" title="Equal fractions">
+
+For integers $$m$$, $$n$$, $$r$$, $$s$$ with $$n \neq 0$$ and $$s \neq 0$$,
+
+```math
+\frac{m}{n} = \frac{r}{s} \qquad \text{exactly when} \qquad ms = rn
+```
+
+Checking this is called **cross-multiplying**, because each numerator is multiplied by the other
+fraction's denominator.
+
+</Definition>
+
+For example:
+
+- $$\frac{2}{3} = \frac{10}{15}$$, because $$2 \cdot 15 = 30$$ and $$10 \cdot 3 = 30$$.
+- $$\frac{6}{8} = \frac{9}{12}$$, because both $$6 \cdot 12$$ and $$9 \cdot 8$$ are $$72$$.
+- $$\frac{-3}{4} = \frac{6}{-8}$$, because $$(-3)(-8) = 24$$ and $$6 \cdot 4 = 24$$.
+- $$\frac{3}{5} \neq \frac{5}{8}$$, because $$3 \cdot 8 = 24$$ but $$5 \cdot 5 = 25$$.
+
+An integer $$m$$ is treated as the same thing as the fraction $$\frac{m}{1}$$, so
+$$4 = \frac{4}{1}$$ and $$-7 = \frac{-7}{1}$$. This way every integer is also a rational number.
+Cross-multiplying against an integer is often a quick way to solve for an unknown:
+$$\frac{x}{5} = 3$$ means $$\frac{x}{5} = \frac{3}{1}$$, so $$x \cdot 1 = 3 \cdot 5$$ and
+$$x = 15$$.
+
+### Cancelling and minus signs
+
+The first consequence of cross-multiplying is that a common factor of the numerator and denominator
+can be cancelled.
+
+<Proposition id="fraction-cancel" title="Cancelling a common factor">
+
+Let $$a$$, $$m$$, $$n$$ be integers with $$a \neq 0$$ and $$n \neq 0$$. Then
+
+```math
+\frac{am}{an} = \frac{m}{n}
+```
+
+</Proposition>
+
+<Proof>
+
+By <Ref id="cross-multiplying" />, the two fractions are equal exactly when
+
+```math
+(am)n = m(an)
+```
+
+So all we need to check is that these two products of integers are the same. Both are the product of
+the three integers $$a$$, $$m$$ and $$n$$, just written in a different order and grouping. Since the
+order and grouping of a product don't matter, they are equal. The condition $$a \neq 0$$ is needed
+so that $$an$$ is not $$0$$, which keeps the left-hand side a genuine fraction.
+
+</Proof>
+
+For example, $$\frac{18}{24} = \frac{6 \cdot 3}{6 \cdot 4} = \frac{3}{4}$$. Read backwards, the same
+rule lets us multiply the top and bottom by the same number, which is how $$\frac{1}{2}$$ becomes
+$$\frac{2}{4}$$ and $$\frac{3}{6}$$.
+
+<Proposition id="fraction-signs" title="Minus signs in fractions">
+
+For integers $$m$$ and $$n$$ with $$n \neq 0$$,
+
+```math
+\frac{-m}{n} = \frac{m}{-n} \qquad \text{and} \qquad \frac{-m}{-n} = \frac{m}{n}
+```
+
+</Proposition>
+
+<Proof>
+
+Both are checked by cross-multiplying, using the rules for minus signs in products of integers.
+
+For the first, we need $$(-m)(-n) = mn$$, which is true because two minus signs in a product cancel.
+
+For the second, we need $$(-m)n = m(-n)$$. Both sides equal $$-(mn)$$, because a minus sign can be
+moved to either factor of a product.
+
+</Proof>
+
+So a single minus sign can sit on the top, on the bottom, or in front of the whole fraction, and two
+minus signs cancel. We usually move it to the top or the front: $$\frac{5}{-2} = \frac{-5}{2}$$.
+
+### Lowest form
+
+Cancelling makes a fraction smaller and simpler, and it is natural to keep going until nothing more
+can be cancelled.
+
+<Definition id="lowest-form" title="Common divisors and lowest form">
+
+A **common divisor** of two integers is an integer that divides both of them. A positive rational
+number is in **lowest form** when it is written as $$\frac{r}{s}$$ with $$r$$ and $$s$$ positive
+integers whose only positive common divisor is $$1$$.
+
+</Definition>
+
+A rational number is **positive** if it can be written as $$\frac{m}{n}$$ with $$m$$ and $$n$$ both
+positive integers, and **negative** if it can be written as $$-\frac{m}{n}$$ with $$m$$ and $$n$$
+positive. For example, $$\frac{36}{60}$$ has the common divisor $$12$$, and
+$$\frac{36}{60} = \frac{12 \cdot 3}{12 \cdot 5} = \frac{3}{5}$$, which is in lowest form since $$3$$
+and $$5$$ have no common divisor other than $$1$$.
+
+<Theorem id="lowest-form-exists" title="Every fraction has a lowest form">
+
+Every positive rational number can be written as a fraction in lowest form.
+
+</Theorem>
+
+<Proof>
+
+The plan is to cancel the biggest possible factor in one go, and then check that nothing more can be
+cancelled.
+
+Write the number as $$\frac{m}{n}$$ with $$m$$ and $$n$$ positive integers. The common divisors of
+$$m$$ and $$n$$ are not hard to pin down: $$1$$ is always one of them, and a positive divisor of
+$$m$$ can be no bigger than $$m$$ itself. So there are only finitely many positive common divisors,
+and we can pick the greatest, which we call $$d$$. Writing $$m = dr$$ and $$n = ds$$ with $$r$$ and
+$$s$$ positive integers, <Ref id="fraction-cancel" /> gives
+
+```math
+\frac{m}{n} = \frac{dr}{ds} = \frac{r}{s}
+```
+
+It remains to show that $$\frac{r}{s}$$ is in lowest form, meaning $$r$$ and $$s$$ have no common
+divisor bigger than $$1$$. We argue by contradiction: we suppose they do, and show this leads to
+something impossible.
+
+So suppose $$e > 1$$ divides both $$r$$ and $$s$$, say $$r = ex$$ and $$s = ey$$. Substituting,
+
+```math
+m = dr = (de)x \qquad \text{and} \qquad n = ds = (de)y
+```
+
+so $$de$$ is a common divisor of $$m$$ and $$n$$. But $$e > 1$$, so $$de$$ is bigger than $$d$$.
+That contradicts our choice of $$d$$ as the greatest common divisor. So no such $$e$$ exists, and
+$$\frac{r}{s}$$ is in lowest form.
+
+</Proof>
+
+<Example>
+
+A fraction in lowest form never has both its numerator and denominator even, since then $$2$$ would
+be a common divisor. So any positive rational number can be written as $$\frac{m}{n}$$ with at least
+one of $$m$$ and $$n$$ odd. This fact is the key to the proof that $$\sqrt{2}$$ is not rational
+below.
+
+</Example>
+
+### Adding fractions
+
+Adding fractions with the same denominator is like adding amounts of the same unit: $$2$$ sevenths
+and $$3$$ sevenths make $$5$$ sevenths, so $$\frac{2}{7} + \frac{3}{7} = \frac{5}{7}$$. When the
+denominators are different, we first rewrite both fractions so they share one. Multiplying the top
+and bottom of each by the other's denominator does this:
+
+```math
+\frac{m}{n} = \frac{ms}{ns} \qquad \text{and} \qquad \frac{r}{s} = \frac{rn}{ns}
+```
+
+Now both are counted in pieces of size $$\frac{1}{ns}$$, and we can add the numerators.
+
+<Definition id="fraction-addition" title="Adding fractions">
+
+For integers $$m$$, $$n$$, $$r$$, $$s$$ with $$n \neq 0$$ and $$s \neq 0$$,
+
+```math
+\frac{m}{n} + \frac{r}{n} = \frac{m + r}{n}
+\qquad \text{and} \qquad
+\frac{m}{n} + \frac{r}{s} = \frac{ms + rn}{ns}
+```
+
+</Definition>
+
+For example,
+
+```math
+\frac{1}{4} + \frac{2}{3} = \frac{1 \cdot 3 + 2 \cdot 4}{4 \cdot 3} = \frac{3 + 8}{12}
+= \frac{11}{12}
+```
+
+and with a negative fraction,
+
+```math
+\frac{5}{6} + \frac{-3}{4} = \frac{5 \cdot 4 + (-3) \cdot 6}{24} = \frac{20 - 18}{24} = \frac{2}{24}
+= \frac{1}{12}
+```
+
+The product of the denominators always works as a common denominator, but a smaller one is often
+easier. Here $$12$$ would do: $$\frac{10}{12} - \frac{9}{12} = \frac{1}{12}$$.
+
+<Remark title="The answer doesn't depend on how the fractions are written">
+
+The rule uses particular numerators and denominators, but the same rational number can be written in
+many ways. Fortunately, the answer comes out the same whichever way we write the fractions. For
+example $$\frac{1}{2} + \frac{1}{3} = \frac{5}{6}$$, and writing $$\frac{1}{2}$$ as $$\frac{2}{4}$$
+instead gives $$\frac{2}{4} + \frac{1}{3} = \frac{10}{12}$$, which is again $$\frac{5}{6}$$. This
+can be proved in general by cross-multiplying, and the same is true for multiplication below.
+
+</Remark>
+
+Zero and opposites behave just as they did for integers. Any fraction with numerator $$0$$ equals
+$$0$$, since $$\frac{0}{n} = \frac{0}{1}$$ by cross-multiplying ($$0 \cdot 1 = 0 \cdot n$$). So
+adding $$0$$ changes nothing:
+
+```math
+\frac{m}{n} + 0 = \frac{m}{n} + \frac{0}{n} = \frac{m + 0}{n} = \frac{m}{n}
+```
+
+The opposite of $$\frac{m}{n}$$ is $$\frac{-m}{n}$$, because
+$$\frac{m}{n} + \frac{-m}{n} = \frac{m - m}{n} = \frac{0}{n} = 0$$. Putting this together with the
+minus sign rules in <Ref id="fraction-signs" /> shows that
+
+```math
+-\frac{m}{n} = \frac{-m}{n} = \frac{m}{-n}
+```
+
+Addition of rational numbers is also commutative and associative, which we take as basic facts, as
+we did for integers. Every rule in [Rules for addition](#rules-for-addition) was proved from just
+these facts together with $$a + 0 = a$$ and $$a + (-a) = 0$$, so all of them hold for rational
+numbers as well. For instance, if $$a + b = 0$$ then $$b = -a$$, and $$-(a + b) = -a - b$$.
+
+<Proposition id="positive-sum" title="Sums of positive fractions">
+
+The sum of two positive rational numbers is positive.
+
+</Proposition>
+
+<Proof>
+
+Write the two numbers as $$\frac{m}{n}$$ and $$\frac{r}{s}$$ with $$m$$, $$n$$, $$r$$, $$s$$ all
+positive integers, which we can do because they are positive. By <Ref id="fraction-addition" />,
+their sum is
+
+```math
+\frac{ms + rn}{ns}
+```
+
+Products and sums of positive integers are positive, so $$ms + rn$$ and $$ns$$ are both positive
+integers. A fraction with positive numerator and denominator is positive by definition.
+
+</Proof>
+
+### Multiplying fractions
+
+Taking $$\frac{2}{3}$$ of $$\frac{4}{5}$$ of something means cutting it into $$5$$ pieces and
+keeping $$4$$, then cutting each of those into $$3$$ and keeping $$2$$ of every $$3$$. That leaves
+$$8$$ pieces, each one fifteenth of the whole, so the answer is $$\frac{8}{15}$$. In general we
+multiply the tops together and the bottoms together.
+
+<Definition id="fraction-multiplication" title="Multiplying fractions">
+
+For integers $$m$$, $$n$$, $$r$$, $$s$$ with $$n \neq 0$$ and $$s \neq 0$$,
+
+```math
+\frac{m}{n} \cdot \frac{r}{s} = \frac{mr}{ns}
+```
+
+</Definition>
+
+For example, $$\frac{2}{3} \cdot \frac{4}{5} = \frac{8}{15}$$, and
+$$\frac{-2}{3} \cdot \frac{9}{4} = \frac{-18}{12} = -\frac{3}{2}$$.
+
+It often pays to look for cancellations **before** multiplying out. Splitting each number into
+factors shows what cancels:
+
+```math
+\frac{6}{35} \cdot \frac{14}{9}
+= \frac{2 \cdot 3 \cdot 2 \cdot 7}{5 \cdot 7 \cdot 3 \cdot 3}
+= \frac{2 \cdot 2}{5 \cdot 3}
+= \frac{4}{15}
+```
+
+Multiplying out first would give $$\frac{84}{315}$$, which takes more work to simplify.
+
+Multiplication of rational numbers follows the same basic rules as for integers: it is commutative,
+associative and distributive over addition, and $$1 \cdot a = a$$ and $$0 \cdot a = 0$$. As with
+addition, every rule in [Rules for multiplication](#rules-for-multiplication) that was proved from
+these, including the [formulas worth memorising](#formulas-worth-memorising), holds for rational
+numbers too.
+
+<Proposition id="fraction-powers" title="Powers of fractions">
+
+For integers $$m$$ and $$n$$ with $$n \neq 0$$, and any positive integer $$k$$,
+
+```math
+\left(\frac{m}{n}\right)^k = \frac{m^k}{n^k}
+```
+
+</Proposition>
+
+<Proof>
+
+A power is a repeated product, and <Ref id="fraction-multiplication" /> says that multiplying
+fractions multiplies the tops and the bottoms separately. So multiplying $$k$$ copies of
+$$\frac{m}{n}$$ together gives a numerator of $$k$$ copies of $$m$$ multiplied together, and a
+denominator of $$k$$ copies of $$n$$:
+
+```math
+\left(\frac{m}{n}\right)^k
+= \underbrace{\frac{m}{n} \cdot \frac{m}{n} \cdots \frac{m}{n}}_{k \text{ times}}
+= \frac{m \cdot m \cdots m}{n \cdot n \cdots n}
+= \frac{m^k}{n^k}
+```
+
+</Proof>
+
+For example, $$\left(\frac{2}{3}\right)^3 = \frac{8}{27}$$ and
+$$\left(-\frac{1}{2}\right)^4 = \frac{1}{16}$$.
+
+<Example title="Halving over time">
+
+The amount of a medicine in the body halves every $$6$$ hours. Starting from $$80$$ mg, after $$6$$
+hours there is $$\frac{1}{2} \cdot 80$$ mg left, after $$12$$ hours $$\frac{1}{2}$$ of that, which
+is $$\left(\frac{1}{2}\right)^2 \cdot 80$$ mg, and so on. After $$24$$ hours, which is $$4$$
+halvings,
+
+```math
+\left(\frac{1}{2}\right)^4 \cdot 80 = \frac{80}{16} = 5 \text{ mg}
+```
+
+and after $$30$$ hours there is $$\frac{80}{32} = \frac{5}{2}$$ mg.
+
+</Example>
+
+### Solving equations
+
+Fractions mean that equations like $$3x = 8$$ now have an answer, $$x = \frac{8}{3}$$, found by
+dividing both sides by $$3$$. Combined with the rules for rearranging, this solves any equation in
+which $$x$$ appears only multiplied by numbers.
+
+<Example>
+
+Solve $$3(x + 4) = 20$$. Expanding the bracket gives $$3x + 12 = 20$$. Subtracting $$12$$ from both
+sides gives $$3x = 8$$, and dividing by $$3$$ gives $$x = \frac{8}{3}$$.
+
+</Example>
+
+<Example>
+
+Solve $$\frac{x}{3} + 1 = \frac{x}{2}$$. Fractions in an equation are easiest to clear first, by
+multiplying both sides by a common denominator. Multiplying by $$6$$ gives $$2x + 6 = 3x$$, and
+subtracting $$2x$$ from both sides gives $$x = 6$$. Check: $$\frac{6}{3} + 1 = 3$$ and
+$$\frac{6}{2} = 3$$.
+
+</Example>
+
+### The square root of 2 is not rational
+
+Is there a rational number whose square is $$2$$? Such a number would be a **square root** of $$2$$,
+written $$\sqrt{2}$$. Since $$1^2 = 1$$ is too small and $$2^2 = 4$$ is too big, a positive square
+root would lie between $$1$$ and $$2$$. We can hunt for it one decimal place at a time:
+
+| Try       | Square       |           |
+| --------- | ------------ | --------- |
+| $$1.4$$   | $$1.96$$     | too small |
+| $$1.5$$   | $$2.25$$     | too big   |
+| $$1.41$$  | $$1.9881$$   | too small |
+| $$1.42$$  | $$2.0164$$   | too big   |
+| $$1.414$$ | $$1.999396$$ | too small |
+| $$1.415$$ | $$2.002225$$ | too big   |
+
+Each step pins the answer down to one more decimal place, and the squares get closer and closer to
+$$2$$. But none of them ever hits $$2$$ exactly, and the next theorem shows that no amount of
+searching ever will.
+
+<Theorem id="sqrt-two" title="No rational square root of 2">
+
+There is no rational number whose square is $$2$$.
+
+</Theorem>
+
+<Proof>
+
+We argue by contradiction: we suppose such a number exists and show that this leads to something
+impossible.
+
+A number and its opposite have the same square, so if some rational number squared to $$2$$, a
+positive one would too (and $$0^2 = 0$$, so it can't be $$0$$). We can write this positive number in
+lowest form using <Ref id="lowest-form-exists" />, as $$\frac{m}{n}$$ with $$m$$ and $$n$$ positive
+integers. As in the example after that theorem, $$m$$ and $$n$$ are **not both even**. This is the
+fact we will contradict.
+
+Squaring with <Ref id="fraction-powers" />,
+
+```math
+\frac{m^2}{n^2} = 2 = \frac{2}{1}
+```
+
+and cross-multiplying gives
+
+```math
+m^2 = 2n^2
+```
+
+The right-hand side is $$2$$ times an integer, so $$m^2$$ is even.
+
+By <Ref id="squares-parity-converse" />, an integer with an even square is itself even, so $$m$$ is
+even and we can write $$m = 2k$$ for some integer $$k$$. Substituting this in,
+
+```math
+(2k)^2 = 4k^2 = 2n^2
+```
+
+and dividing both sides by $$2$$ gives $$n^2 = 2k^2$$. So $$n^2$$ is even too, and by the same
+corollary $$n$$ is even.
+
+We have now shown that $$m$$ and $$n$$ are both even, which contradicts the fact that they are not
+both even. So our assumption was false, and no rational number has square $$2$$.
+
+</Proof>
+
+<Definition id="irrational" title="Irrational numbers">
+
+A number that is not rational is called **irrational**.
+
+</Definition>
+
+So if there is a number whose square is $$2$$, it must be irrational. Exactly the same argument
+works for other numbers. For $$3$$, it uses <Ref id="squares-three" /> in place of the rule for even
+squares.
+
+<Proposition id="sqrt-three" title="No rational square root of 3">
+
+There is no rational number whose square is $$3$$.
+
+</Proposition>
+
+<Proof>
+
+Suppose there were one. As before, we may take it to be positive and write it in lowest form as
+$$\frac{m}{n}$$, so $$3$$ is not a common divisor of $$m$$ and $$n$$. Squaring and cross-multiplying
+gives $$m^2 = 3n^2$$, so $$3 \mid m^2$$, and by <Ref id="squares-three" />, $$3 \mid m$$. Writing
+$$m = 3k$$ gives $$9k^2 = 3n^2$$, so $$n^2 = 3k^2$$. Then $$3 \mid n^2$$, and so $$3 \mid n$$. Now
+$$3$$ divides both $$m$$ and $$n$$, which contradicts lowest form.
+
+</Proof>
+
+### Factorials and binomial coefficients
+
+This is a short first look at two ideas that will come back in more detail later. They fit here
+because working with them is mostly a matter of cancelling fractions.
+
+<Definition id="factorial" title="Factorial">
+
+For a positive integer $$n$$, **$$n$$ factorial**, written $$n!$$, is the product of the first $$n$$
+positive integers:
+
+```math
+n! = 1 \cdot 2 \cdot 3 \cdots n
+```
+
+We also define $$0! = 1$$.
+
+</Definition>
+
+Rather than multiplying everything out each time, notice that each factorial is the one before it
+times one more number: $$n! = n \cdot (n - 1)!$$. So the factorials can be built up a step at a
+time:
+
+| $$n$$ | $$n!$$                   |
+| ----- | ------------------------ |
+| $$1$$ | $$1$$                    |
+| $$2$$ | $$2 \cdot 1 = 2$$        |
+| $$3$$ | $$3 \cdot 2 = 6$$        |
+| $$4$$ | $$4 \cdot 6 = 24$$       |
+| $$5$$ | $$5 \cdot 24 = 120$$     |
+| $$6$$ | $$6 \cdot 120 = 720$$    |
+| $$7$$ | $$7 \cdot 720 = 5040$$   |
+| $$8$$ | $$8 \cdot 5040 = 40320$$ |
+
+Factorials grow very quickly. The same rule explains the choice $$0! = 1$$: taking $$n = 1$$ in
+$$n! = n \cdot (n - 1)!$$ gives $$1! = 1 \cdot 0!$$, which only works if $$0! = 1$$.
+
+<Definition id="binomial" title="Binomial coefficient">
+
+For natural numbers $$m$$ and $$n$$ with $$n$$ between $$0$$ and $$m$$, the **binomial coefficient**
+"$$m$$ choose $$n$$" is
+
+```math
+\binom{m}{n} = \frac{m!}{n!\,(m - n)!}
+```
+
+</Definition>
+
+It counts the number of ways to choose $$n$$ things out of $$m$$, when the order doesn't matter. For
+example, choosing $$2$$ toppings from $$4$$ (say $$a$$, $$b$$, $$c$$, $$d$$) can be done in $$6$$
+ways: $$ab$$, $$ac$$, $$ad$$, $$bc$$, $$bd$$, $$cd$$. The formula agrees:
+
+```math
+\binom{4}{2} = \frac{4!}{2!\,2!} = \frac{24}{2 \cdot 2} = 6
+```
+
+Writing the factorials out lets most of the product cancel before multiplying. For example,
+
+```math
+\binom{6}{3} = \frac{6!}{3!\,3!} = \frac{6 \cdot 5 \cdot 4 \cdot \cancel{3!}}{3! \cdot \cancel{3!}}
+= \frac{6 \cdot 5 \cdot 4}{6} = 20
+```
+
+and in the same way $$\binom{5}{2} = \frac{5 \cdot 4}{2} = 10$$. At the ends, $$\binom{m}{0} = 1$$
+and $$\binom{m}{m} = 1$$, since there is just one way to choose nothing, and one way to choose
+everything.
+
+<Proposition id="binomial-symmetry" title="Choosing what to leave out">
+
+For natural numbers $$m$$ and $$n$$ with $$n$$ between $$0$$ and $$m$$,
+
+```math
+\binom{m}{n} = \binom{m}{m - n}
+```
+
+</Proposition>
+
+<Proof>
+
+Choosing $$n$$ things to take is the same as choosing the $$m - n$$ things to leave behind, so the
+two counts should match. To check it with the formula, put $$m - n$$ in place of $$n$$. The second
+factor in the denominator becomes $$\big(m - (m - n)\big)! = n!$$, so
+
+```math
+\binom{m}{m - n} = \frac{m!}{(m - n)!\,n!}
+```
+
+This is the same fraction as $$\binom{m}{n}$$ with the two factors of the denominator swapped, and
+the order of a product doesn't matter.
+
+</Proof>
+
+For example, $$\binom{5}{2} = \binom{5}{3} = 10$$.
+
+<Proposition id="pascal" title="Pascal's rule">
+
+For natural numbers $$m$$ and $$n$$ with $$1 \le n \le m$$,
+
+```math
+\binom{m}{n - 1} + \binom{m}{n} = \binom{m + 1}{n}
+```
+
+</Proposition>
+
+<Proof>
+
+This is an exercise in adding fractions. Writing out both terms,
+
+```math
+\binom{m}{n - 1} + \binom{m}{n}
+= \frac{m!}{(n - 1)!\,(m - n + 1)!} + \frac{m!}{n!\,(m - n)!}
+```
+
+The denominators are different, but they are close. The rule $$k! = k \cdot (k - 1)!$$ says
+$$n! = n \cdot (n - 1)!$$ and $$(m - n + 1)! = (m - n + 1) \cdot (m - n)!$$. So multiplying the top
+and bottom of the first fraction by $$n$$, and of the second by $$m - n + 1$$, gives both the common
+denominator $$n!\,(m - n + 1)!$$:
+
+```math
+\begin{aligned}
+&= \frac{m! \cdot n}{n!\,(m - n + 1)!} + \frac{m! \cdot (m - n + 1)}{n!\,(m - n + 1)!} \\
+&= \frac{m! \cdot (n + m - n + 1)}{n!\,(m - n + 1)!}
+= \frac{m! \cdot (m + 1)}{n!\,(m - n + 1)!}
+\end{aligned}
+```
+
+In the second line we added the numerators and took out the common factor $$m!$$. Finally,
+$$m! \cdot (m + 1) = (m + 1)!$$ and $$m - n + 1 = (m + 1) - n$$, so this is
+
+```math
+\frac{(m + 1)!}{n!\,\big((m + 1) - n\big)!} = \binom{m + 1}{n}
+```
+
+</Proof>
+
+Pascal's rule means the binomial coefficients can be built without any factorials at all. Write them
+in rows, $$\binom{m}{0}, \binom{m}{1}, \dots, \binom{m}{m}$$ for $$m = 0, 1, 2, \dots$$. Each row
+starts and ends with $$1$$, and every other entry is the sum of the two entries just above it. This
+is **Pascal's triangle**:
+
+```math
+\begin{array}{c}
+1 \\
+1 \quad 1 \\
+1 \quad 2 \quad 1 \\
+1 \quad 3 \quad 3 \quad 1 \\
+1 \quad 4 \quad 6 \quad 4 \quad 1 \\
+1 \quad 5 \quad 10 \quad 10 \quad 5 \quad 1
+\end{array}
+```
+
+The row for $$m = 4$$ is $$1, 4, 6, 4, 1$$, and its middle entry is $$\binom{4}{2} = 6$$, the
+toppings count from before.
+
+## Multiplicative inverses
+
+Every integer has an opposite, which undoes adding it: $$a + (-a) = 0$$. Fractions give us the same
+thing for multiplication. This is the one big way rational numbers improve on the integers. For
+example, no integer multiplied by $$2$$ gives $$1$$, but $$\frac{1}{2} \cdot 2 = 1$$.
+
+### Inverses
+
+<Definition id="inverse" title="Multiplicative inverse">
+
+Let $$a$$ be a rational number. A **multiplicative inverse** of $$a$$ is a rational number $$b$$
+with
+
+```math
+ab = ba = 1
+```
+
+The inverse of $$a$$ is written $$a^{-1}$$ or $$\frac{1}{a}$$.
+
+</Definition>
+
+<Proposition id="inverse-exists" title="Every non-zero fraction has an inverse">
+
+Let $$m$$ and $$n$$ be non-zero integers. Then $$\frac{n}{m}$$ is an inverse of $$\frac{m}{n}$$.
+
+</Proposition>
+
+<Proof>
+
+We just multiply and check that we get $$1$$. By <Ref id="fraction-multiplication" />,
+
+```math
+\frac{m}{n} \cdot \frac{n}{m} = \frac{mn}{nm} = \frac{mn}{mn} = 1
+```
+
+The last step uses <Ref id="fraction-cancel" /> to cancel $$mn$$, which is allowed because $$m$$ and
+$$n$$ are both non-zero. The product the other way round is the same, since order doesn't matter.
+
+</Proof>
+
+So to invert a fraction, flip it upside down. The inverse of $$\frac{3}{7}$$ is $$\frac{7}{3}$$, the
+inverse of $$5 = \frac{5}{1}$$ is $$\frac{1}{5}$$, and the inverse of $$-\frac{2}{9}$$ is
+$$-\frac{9}{2}$$.
+
+The condition $$m \neq 0$$ matters: $$0$$ has **no** inverse, because $$0 \cdot b = 0$$ for every
+$$b$$, so it is never $$1$$. That is the real reason we can't divide by zero.
+
+<Proposition id="inverse-unique" title="Inverses are unique">
+
+Let $$a$$ and $$b$$ be rational numbers with $$a \neq 0$$. If $$ab = 1$$, then $$b = a^{-1}$$.
+
+</Proposition>
+
+<Proof>
+
+This mirrors the fact that an opposite is the only way back to zero. We are told that $$ab = 1$$,
+and want to get $$b$$ on its own, so we multiply both sides on the left by $$a^{-1}$$:
+
+```math
+a^{-1}(ab) = a^{-1} \cdot 1 = a^{-1}
+```
+
+On the left, regrouping gives $$a^{-1}(ab) = (a^{-1}a)b = 1 \cdot b = b$$. So the two sides say
+$$b = a^{-1}$$.
+
+</Proof>
+
+This gives a quick way to check that something is an inverse: just check that the product is $$1$$.
+Inverses also give us the most useful fact about products that equal zero.
+
+<Theorem id="zero-product" title="Products equal to zero">
+
+Let $$a$$ and $$b$$ be rational numbers. If $$ab = 0$$, then $$a = 0$$ or $$b = 0$$.
+
+</Theorem>
+
+<Proof>
+
+Either $$a = 0$$, in which case we are done, or $$a \neq 0$$. In the second case we show that $$b$$
+must be $$0$$. Since $$a \neq 0$$, it has an inverse, and multiplying both sides of $$ab = 0$$ by it
+gives
+
+```math
+a^{-1}(ab) = a^{-1} \cdot 0 = 0
+```
+
+As in the previous proof, the left side is $$(a^{-1}a)b = b$$, so $$b = 0$$.
+
+</Proof>
+
+This is how equations like $$(x - 3)(2x + 1) = 0$$ are solved. The product is zero, so one of the
+factors must be: either $$x - 3 = 0$$, giving $$x = 3$$, or $$2x + 1 = 0$$, giving
+$$x = -\frac{1}{2}$$.
+
+### Dividing by a rational number
+
+Dividing by $$b$$ should undo multiplying by $$b$$, and that is exactly what multiplying by
+$$b^{-1}$$ does.
+
+<Definition id="quotient" title="Quotient">
+
+For rational numbers $$a$$ and $$b$$ with $$b \neq 0$$, the quotient $$a$$ divided by $$b$$ is
+
+```math
+\frac{a}{b} = a b^{-1}
+```
+
+</Definition>
+
+This agrees with the fractions we already have: for integers $$m$$ and $$n$$,
+$$m n^{-1} = \frac{m}{1} \cdot \frac{1}{n} = \frac{m}{n}$$. It also explains the rule "to divide by
+a fraction, multiply by its flip". For example,
+
+```math
+\frac{2/3}{4/5} = \frac{2}{3} \cdot \frac{5}{4} = \frac{10}{12} = \frac{5}{6}
+```
+
+and a fraction with fractions inside can be simplified the same way:
+
+```math
+\frac{1 + \frac{1}{2}}{1 - \frac{1}{4}} = \frac{3/2}{3/4} = \frac{3}{2} \cdot \frac{4}{3} = 2
+```
+
+Earlier, cross-multiplying was simply the meaning of equality for fractions of integers. Now it can
+be proved, and for quotients of any rational numbers.
+
+<Theorem id="cross-multiplying-rational" title="Cross-multiplying">
+
+Let $$a$$, $$b$$, $$c$$, $$d$$ be rational numbers with $$b \neq 0$$ and $$d \neq 0$$. Then
+
+```math
+\frac{a}{b} = \frac{c}{d} \qquad \text{exactly when} \qquad ad = bc
+```
+
+</Theorem>
+
+<Proof>
+
+"Exactly when" means two things to prove: each statement leads to the other. Both directions work by
+multiplying through to clear the inverses.
+
+Suppose first that $$\frac{a}{b} = \frac{c}{d}$$, which by <Ref id="quotient" /> says
+$$ab^{-1} = cd^{-1}$$. Multiplying both sides by $$bd$$, the $$b^{-1}$$ on the left meets the $$b$$,
+and the $$d^{-1}$$ on the right meets the $$d$$:
+
+```math
+ab^{-1} \cdot bd = a \cdot (b^{-1}b) \cdot d = ad,
+\qquad
+cd^{-1} \cdot bd = c \cdot (d^{-1}d) \cdot b = cb
+```
+
+using that the order and grouping of a product don't matter. So $$ad = bc$$.
+
+Now suppose $$ad = bc$$. This time we multiply both sides by $$b^{-1}d^{-1}$$ to remove the $$b$$
+and the $$d$$:
+
+```math
+ad \cdot b^{-1}d^{-1} = a b^{-1} \cdot (d d^{-1}) = ab^{-1},
+\qquad
+bc \cdot b^{-1}d^{-1} = (b b^{-1}) \cdot c d^{-1} = cd^{-1}
+```
+
+So $$ab^{-1} = cd^{-1}$$, which is $$\frac{a}{b} = \frac{c}{d}$$.
+
+</Proof>
+
+<Example>
+
+Solve $$\frac{2x + 3}{x - 1} = 5$$. The left side only makes sense when $$x \neq 1$$.
+Cross-multiplying (with $$5 = \frac{5}{1}$$) gives $$2x + 3 = 5(x - 1) = 5x - 5$$. Rearranging,
+$$3 + 5 = 5x - 2x$$, so $$3x = 8$$ and $$x = \frac{8}{3}$$. Check: $$2x + 3 = \frac{25}{3}$$ and
+$$x - 1 = \frac{5}{3}$$, and $$\frac{25/3}{5/3} = 5$$.
+
+</Example>
+
+### Cancelling
+
+Inverses also let us cancel a common factor from both sides of an equation.
+
+<Proposition id="cancel-product" title="Cancelling a non-zero factor">
+
+Let $$a$$, $$b$$, $$c$$ be rational numbers with $$a \neq 0$$. If $$ab = ac$$, then $$b = c$$. Also,
+if $$c \neq 0$$ too,
+
+```math
+\frac{ab}{ac} = \frac{b}{c}
+```
+
+</Proposition>
+
+<Proof>
+
+For the first part, multiply both sides of $$ab = ac$$ by $$a^{-1}$$. The left becomes
+$$(a^{-1}a)b = b$$ and the right becomes $$(a^{-1}a)c = c$$, so $$b = c$$.
+
+For the second part, cross-multiply using <Ref id="cross-multiplying-rational" />. The two quotients
+are equal exactly when $$(ab)c = (ac)b$$, and both sides are the product of $$a$$, $$b$$ and $$c$$
+in a different order, so they are equal.
+
+</Proof>
+
+The condition $$a \neq 0$$ cannot be dropped: $$0 \cdot 2 = 0 \cdot 5$$, but $$2 \neq 5$$.
+
+As <Ref id="no-cancel" /> showed, cancelling can fail in other settings too: for congruences it can
+fail even when the factor is not zero.
+
+### Adding quotients
+
+Quotients of rational numbers add in exactly the same way as fractions of integers.
+
+<Proposition id="adding-quotients" title="Adding quotients">
+
+Let $$a$$, $$b$$, $$c$$, $$d$$ be rational numbers with $$b \neq 0$$ and $$d \neq 0$$. Then
+
+```math
+\frac{a}{b} + \frac{c}{b} = \frac{a + c}{b}
+\qquad \text{and} \qquad
+\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}
+```
+
+</Proposition>
+
+<Proof>
+
+For the first formula, both quotients contain the factor $$b^{-1}$$, so distributivity lets us take
+it out:
+
+```math
+\frac{a}{b} + \frac{c}{b} = ab^{-1} + cb^{-1} = (a + c)b^{-1} = \frac{a + c}{b}
+```
+
+For the second, we first give the two quotients a common denominator.
+
+By <Ref id="cancel-product" />, multiplying the top and bottom of a quotient by the same non-zero
+number doesn't change it, so
+
+```math
+\frac{a}{b} = \frac{ad}{bd} \qquad \text{and} \qquad \frac{c}{d} = \frac{bc}{bd}
+```
+
+Now both have the denominator $$bd$$, and the first formula adds them to give
+$$\frac{ad + bc}{bd}$$.
+
+</Proof>
+
+These rules work for expressions with letters in them too, as long as the denominators are not zero.
+
+<Remark title="Hidden conditions">
+
+An expression like $$\frac{1}{x - 2}$$ only makes sense when $$x \neq 2$$. From here on, whenever a
+letter appears in a denominator, we assume without saying so that it takes only values that keep
+every denominator non-zero.
+
+</Remark>
+
+<Example>
+
+Show that $$\frac{1}{x} - \frac{1}{x + 1} = \frac{1}{x(x + 1)}$$. Using the formula for adding
+quotients,
+
+```math
+\frac{1}{x} - \frac{1}{x + 1} = \frac{1 \cdot (x + 1) - x \cdot 1}{x(x + 1)}
+= \frac{x + 1 - x}{x(x + 1)} = \frac{1}{x(x + 1)}
+```
+
+For instance, with $$x = 3$$ this says $$\frac{1}{3} - \frac{1}{4} = \frac{1}{12}$$.
+
+</Example>
+
+Cross-multiplying is often the quickest way to prove that two quotients are equal, because it turns
+the question into one about products, which can simply be expanded.
+
+<Proposition id="sum-of-powers" title="Sum of powers">
+
+For a rational number $$x \neq 1$$ and a positive integer $$n$$,
+
+```math
+\frac{x^n - 1}{x - 1} = x^{n - 1} + x^{n - 2} + \cdots + x + 1
+```
+
+</Proposition>
+
+<Proof>
+
+The right side is $$\frac{x^{n-1} + \cdots + x + 1}{1}$$, so by cross-multiplying it is enough to
+show that
+
+```math
+(x - 1)(x^{n - 1} + x^{n - 2} + \cdots + x + 1) = x^n - 1
+```
+
+Expanding the left side, multiplying the bracket by $$x$$ and by $$-1$$ in turn, gives two rows:
+
+```math
+\begin{array}{ccccccccccc}
+x^n & + & x^{n - 1} & + & \cdots & + & x^2 & + & x & & \\
+    & - & x^{n - 1} & - & \cdots & - & x^2 & - & x & - & 1
+\end{array}
+```
+
+Every power from $$x^{n-1}$$ down to $$x$$ appears once with a plus sign and once with a minus sign,
+so they all cancel. Only the first and last terms survive, leaving $$x^n - 1$$.
+
+</Proof>
+
+For example, with $$n = 3$$ this says $$\frac{x^3 - 1}{x - 1} = x^2 + x + 1$$, and with $$x = 2$$ it
+says $$1 + 2 + 4 + 8 = \frac{2^4 - 1}{2 - 1} = 15$$.
+
+### Using quotients in problems
+
+Many formulas in science relate three quantities by a product, and quotients let us solve for any of
+them. For something moving at a steady speed $$s$$, the distance $$d$$ covered in time $$t$$ is
+
+```math
+d = st, \qquad \text{so} \qquad s = \frac{d}{t} \quad \text{and} \quad t = \frac{d}{s}
+```
+
+<Example title="Speed">
+
+A cyclist rides $$18$$ km in $$\frac{3}{4}$$ of an hour. Their speed is
+
+```math
+s = \frac{18}{3/4} = 18 \cdot \frac{4}{3} = 24 \text{ km per hour}
+```
+
+</Example>
+
+<Example title="A journey in two parts">
+
+A driver covers $$150$$ km in $$3$$ hours, partly on a motorway at $$70$$ km per hour and partly
+through towns at $$30$$ km per hour. How long were they in towns?
+
+Let $$x$$ be the time in towns, in hours. Then the time on the motorway is $$3 - x$$. The distances
+are $$30x$$ and $$70(3 - x)$$, and together they make $$150$$:
+
+```math
+30x + 70(3 - x) = 150
+```
+
+Expanding gives $$30x + 210 - 70x = 150$$, so $$210 - 150 = 40x$$, that is $$40x = 60$$ and
+$$x = \frac{60}{40} = \frac{3}{2}$$. The driver spent an hour and a half in towns. Check: $$45$$ km
+in towns plus $$70 \cdot \frac{3}{2} = 105$$ km on the motorway is $$150$$ km.
+
+</Example>
+
+<Example title="Mixtures">
+
+A $$10$$ litre jug holds a drink that is $$20\%$$ juice. How much should be poured out and replaced
+with pure juice to make it $$50\%$$ juice?
+
+Let $$x$$ be the number of litres replaced. After pouring out $$x$$ litres, $$10 - x$$ litres are
+left, of which $$\frac{20}{100} = \frac{1}{5}$$ is juice. Adding $$x$$ litres of juice must give
+$$\frac{1}{2}$$ of $$10$$, which is $$5$$ litres of juice:
+
+```math
+\frac{1}{5}(10 - x) + x = 5
+```
+
+Expanding, $$2 - \frac{1}{5}x + x = 5$$, so $$\frac{4}{5}x = 3$$. Multiplying both sides by
+$$\frac{5}{4}$$, the inverse of $$\frac{4}{5}$$, gives $$x = \frac{15}{4}$$. So
+$$\frac{15}{4} = 3.75$$ litres should be replaced.
+
+</Example>
+
+## Exercises
+
+These exercises go back over the whole chapter, in no particular order, so you have to work out
+which ideas each one needs. Most ask you to use an idea rather than repeat a calculation, and many
+ask for a short proof. Try each one before opening its solution.
+
+<Exercise>
+
+One tap fills a bath in $$6$$ minutes and another fills it in $$3$$ minutes. How long do they take
+together?
+
+<Solution>
+
+Think in terms of how much of the bath each tap fills per minute: $$\frac{1}{6}$$ and
+$$\frac{1}{3}$$. Together they fill
+
+```math
+\frac{1}{6} + \frac{1}{3} = \frac{1}{6} + \frac{2}{6} = \frac{1}{2}
+```
+
+of the bath per minute. The time for the whole bath is the inverse of that rate,
+$$\left(\frac{1}{2}\right)^{-1} = 2$$ minutes.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Use <Ref id="sum-of-powers" /> to add up $$1 + 3 + 9 + 27 + 81 + 243$$.
+
+<Solution>
+
+These are the powers $$3^0$$ to $$3^5$$, so with $$x = 3$$ and $$n = 6$$,
+
+```math
+1 + 3 + 3^2 + \cdots + 3^5 = \frac{3^6 - 1}{3 - 1} = \frac{728}{2} = 364
+```
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Work these out by picturing a walk along the number line:
+
+- (a) $$-4 + 9$$
+- (b) $$3 + (-8)$$
+- (c) $$-5 - 6$$
+- (d) $$-2 - (-7)$$
+
+<Solution>
+
+- (a) Start at $$-4$$ and move $$9$$ to the right: $$5$$.
+- (b) Start at $$3$$ and move $$8$$ to the left: $$-5$$.
+- (c) Subtracting $$6$$ is adding $$-6$$, so start at $$-5$$ and move $$6$$ to the left: $$-11$$.
+- (d) Subtracting $$-7$$ is adding its opposite, $$7$$, so start at $$-2$$ and move $$7$$ to the
+  right: $$5$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Show that no perfect square ends in the digit $$7$$.
+
+<Solution>
+
+The last digit of $$n^2$$ is its remainder modulo $$10$$. If $$n \equiv r \pmod{10}$$, where $$r$$
+is the last digit of $$n$$, then $$n^2 \equiv r^2 \pmod{10}$$, so only the last digit of $$n$$
+matters. Squaring the ten possible last digits:
+
+| $$r$$           | $$0$$ | $$1$$ | $$2$$ | $$3$$ | $$4$$ | $$5$$ | $$6$$ | $$7$$ | $$8$$ | $$9$$ |
+| --------------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+| $$r^2$$ ends in | $$0$$ | $$1$$ | $$4$$ | $$9$$ | $$6$$ | $$5$$ | $$6$$ | $$9$$ | $$4$$ | $$1$$ |
+
+The digit $$7$$ never appears, and nor do $$2$$, $$3$$ or $$8$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Prove that $$\binom{2n}{n}$$ is even for every positive integer $$n$$. (Hint: use Pascal's rule,
+then the symmetry rule.)
+
+<Solution>
+
+By <Ref id="pascal" /> with $$m = 2n - 1$$,
+
+```math
+\binom{2n}{n} = \binom{2n - 1}{n - 1} + \binom{2n - 1}{n}
+```
+
+By <Ref id="binomial-symmetry" />, choosing $$n - 1$$ things from $$2n - 1$$ gives the same count as
+choosing the other $$(2n - 1) - (n - 1) = n$$. So the two terms are equal, and
+
+```math
+\binom{2n}{n} = 2\binom{2n - 1}{n}
+```
+
+which is even. Check: $$\binom{2}{1} = 2$$, $$\binom{4}{2} = 6$$, $$\binom{6}{3} = 20$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Work out $$47 + (-18) + 53 + 18$$ in your head, by first rearranging the terms.
+
+<Solution>
+
+Since the order and grouping of a sum don't matter, pair up terms that are easy to add:
+
+```math
+(47 + 53) + \big((-18) + 18\big) = 100 + 0 = 100
+```
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Work out $$\frac{15}{28} \cdot \frac{14}{45}$$ and $$\frac{-9}{10} \cdot \frac{25}{-6}$$, cancelling
+before you multiply.
+
+<Solution>
+
+```math
+\frac{15}{28} \cdot \frac{14}{45} = \frac{15 \cdot 14}{28 \cdot 45}
+= \frac{15 \cdot 14}{(2 \cdot 14)(3 \cdot 15)} = \frac{1}{6}
+```
+
+For the second, the two minus signs cancel, so the answer is positive:
+
+```math
+\frac{-9}{10} \cdot \frac{25}{-6} = \frac{9 \cdot 25}{10 \cdot 6}
+= \frac{(3 \cdot 3)(5 \cdot 5)}{(2 \cdot 5)(2 \cdot 3)} = \frac{3 \cdot 5}{2 \cdot 2} = \frac{15}{4}
+```
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Work out $$\frac{10!}{8!}$$ and $$\frac{7!}{4!\,3!}$$ by cancelling rather than multiplying out.
+
+<Solution>
+
+$$10! = 10 \cdot 9 \cdot 8!$$, so $$\frac{10!}{8!} = 10 \cdot 9 = 90$$.
+
+$$7! = 7 \cdot 6 \cdot 5 \cdot 4!$$, so
+$$\frac{7!}{4!\,3!} = \frac{7 \cdot 6 \cdot 5}{3!} = \frac{210}{6} = 35$$. This is $$\binom{7}{3}$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Work out $$\left(\frac{3}{2}\right)^4$$ and $$\left(-\frac{2}{5}\right)^3$$.
+
+<Solution>
+
+By <Ref id="fraction-powers" />, raise the top and bottom separately:
+$$\left(\frac{3}{2}\right)^4 = \frac{81}{16}$$. For the second, an odd power of a negative number is
+negative: $$\left(-\frac{2}{5}\right)^3 = -\frac{8}{125}$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Prove that for any integers $$a$$ and $$b$$,
+
+```math
+(a - b) + (b - a) = 0
+```
+
+and use this to explain why $$-(a - b) = b - a$$.
+
+<Solution>
+
+Write each subtraction as adding an opposite and regroup so that opposites meet:
+
+```math
+(a - b) + (b - a) = a + (-b) + b + (-a) = \big(a + (-a)\big) + \big((-b) + b\big) = 0 + 0 = 0
+```
+
+An opposite is the only number that adds to give $$0$$: if $$x + y = 0$$ then $$y = -x$$. Here
+$$x = a - b$$ and $$y = b - a$$, so $$b - a = -(a - b)$$. Swapping the order of a subtraction
+changes the sign of the answer.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Use <Ref id="pascal" /> to write out the rows of Pascal's triangle for $$m = 6$$ and $$m = 7$$.
+Check $$\binom{7}{3}$$ from the formula.
+
+<Solution>
+
+Each entry is the sum of the two above it, starting from the row $$1, 5, 10, 10, 5, 1$$:
+
+```math
+\begin{array}{c}
+1 \quad 6 \quad 15 \quad 20 \quad 15 \quad 6 \quad 1 \\
+1 \quad 7 \quad 21 \quad 35 \quad 35 \quad 21 \quad 7 \quad 1
+\end{array}
+```
+
+The fourth entry of the $$m = 7$$ row is $$\binom{7}{3} = 35$$, and the formula agrees:
+$$\frac{7!}{3!\,4!} = 35$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise id="ex-consecutive-product">
+
+Prove that the product of two consecutive integers is always even.
+
+<Solution>
+
+Of two consecutive integers $$n$$ and $$n + 1$$, one is even and the other is odd, since even and
+odd integers take turns. An even number times any integer is even, so $$n(n + 1)$$ is even.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Prove that $$n^3 - n$$ is divisible by $$6$$ for every integer $$n$$.
+
+<Solution>
+
+First factor: $$n^3 - n = n(n^2 - 1) = (n - 1)n(n + 1)$$, a product of three consecutive integers.
+
+**Divisible by 3.** Modulo $$3$$, $$n$$ is congruent to $$0$$, $$1$$ or $$2$$. In each case one of
+the three factors is a multiple of $$3$$: $$n$$ itself if $$n \equiv 0$$, $$n - 1$$ if
+$$n \equiv 1$$, and $$n + 1$$ if $$n \equiv 2$$. So $$n^3 - n = 3m$$ for some integer $$m$$.
+
+**Divisible by 2.** By <Ref id="ex-consecutive-product" />, the product of the consecutive integers
+$$n$$ and $$n + 1$$ is even, so $$n^3 - n$$ is even too.
+
+**Putting them together.** $$3m$$ is even. If $$m$$ were odd, $$3m$$ would be odd times odd, which
+is odd. So $$m$$ is even, say $$m = 2k$$, and $$n^3 - n = 3 \cdot 2k = 6k$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Which of these are true?
+
+- (a) $$38 \equiv 3 \pmod{7}$$
+- (b) $$-4 \equiv 4 \pmod{7}$$
+- (c) $$100 \equiv 1 \pmod{9}$$
+- (d) $$25 \equiv 1 \pmod{13}$$
+- (e) $$17 \equiv -3 \pmod{5}$$
+
+<Solution>
+
+Check whether the difference is a multiple of the modulus.
+
+- (a) True: $$38 - 3 = 35 = 7 \cdot 5$$.
+- (b) False: $$-4 - 4 = -8$$, which is not a multiple of $$7$$.
+- (c) True: $$100 - 1 = 99 = 9 \cdot 11$$.
+- (d) False: $$25 - 1 = 24$$, which is not a multiple of $$13$$.
+- (e) True: $$17 - (-3) = 20 = 5 \cdot 4$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Find the largest power of $$2$$ that divides $$80$$, the largest power of $$3$$ that divides
+$$162$$, and the largest power of $$5$$ that divides $$1000$$.
+
+<Solution>
+
+Split off the factor in question until what is left is no longer divisible by it.
+
+- $$80 = 2 \cdot 40 = 2^2 \cdot 20 = 2^3 \cdot 10 = 2^4 \cdot 5$$, so the answer is $$2^4 = 16$$.
+- $$162 = 2 \cdot 81 = 2 \cdot 3^4$$, so the answer is $$3^4 = 81$$.
+- $$1000 = 10^3 = 2^3 \cdot 5^3$$, so the answer is $$5^3 = 125$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Prove in two different ways that $$7^n - 1$$ is divisible by $$6$$ for every positive integer $$n$$:
+once with congruences, and once with <Ref id="sum-of-powers" />.
+
+<Solution>
+
+**With congruences.** $$7 \equiv 1 \pmod{6}$$, so by <Ref id="congruence-powers" />,
+$$7^n \equiv 1^n = 1 \pmod{6}$$. That says exactly that $$6 \mid 7^n - 1$$.
+
+**With the sum of powers.** Cross-multiplying the formula with $$x = 7$$ gives
+
+```math
+7^n - 1 = (7 - 1)(7^{n - 1} + \cdots + 7 + 1) = 6(7^{n - 1} + \cdots + 7 + 1)
+```
+
+which is $$6$$ times an integer.
+
+The two proofs are really the same idea: $$x - 1$$ always divides $$x^n - 1$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+What is the last digit of $$3^{20}$$?
+
+<Solution>
+
+The last digit of a number is its remainder when divided by $$10$$, so we work modulo $$10$$. Powers
+of $$3$$ go $$3, 9, 27, 81$$, and $$81 \equiv 1 \pmod{10}$$. So
+
+```math
+3^{20} = (3^4)^5 = 81^5 \equiv 1^5 = 1 \pmod{10}
+```
+
+using <Ref id="congruence-powers" />. The last digit is $$1$$. (In fact $$3^{20} = 3486784401$$.)
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Use the difference of squares to work out $$31 \cdot 29$$ and $$52 \cdot 48$$ without long
+multiplication.
+
+<Solution>
+
+Both pairs sit evenly either side of a round number:
+
+```math
+31 \cdot 29 = (30 + 1)(30 - 1) = 900 - 1 = 899,
+\qquad
+52 \cdot 48 = (50 + 2)(50 - 2) = 2500 - 4 = 2496
+```
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Find the multiplicative inverses of $$\frac{4}{9}$$, $$-7$$, $$\frac{1}{5}$$ and $$0.25$$.
+
+<Solution>
+
+Flip each fraction, using <Ref id="inverse-exists" />.
+
+- $$\frac{4}{9}$$ has inverse $$\frac{9}{4}$$.
+- $$-7 = \frac{-7}{1}$$ has inverse $$\frac{1}{-7} = -\frac{1}{7}$$. The sign stays: the product of
+  the two must be $$+1$$.
+- $$\frac{1}{5}$$ has inverse $$5$$.
+- $$0.25 = \frac{1}{4}$$ has inverse $$4$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Prove that if $$a$$ is odd, then $$a^2 - 1$$ is divisible by $$8$$.
+
+Hint: use <Ref id="ex-consecutive-product" />.
+
+<Solution>
+
+Write $$a = 2k + 1$$. Then
+
+```math
+a^2 - 1 = 4k^2 + 4k + 1 - 1 = 4k(k + 1)
+```
+
+By <Ref id="ex-consecutive-product" />, $$k(k + 1)$$ is even, say $$k(k + 1) = 2m$$. So
+$$a^2 - 1 = 4 \cdot 2m = 8m$$. For example, $$7^2 - 1 = 48 = 8 \cdot 6$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Show that if $$a$$ and $$b$$ are both odd, then $$a^2 + b^2$$ is even but not divisible by $$4$$.
+
+<Solution>
+
+Write $$a = 2k + 1$$ and $$b = 2l + 1$$. Then
+
+```math
+a^2 + b^2 = (4k^2 + 4k + 1) + (4l^2 + 4l + 1) = 4(k^2 + k + l^2 + l) + 2
+```
+
+This is $$2$$ more than a multiple of $$4$$. It is even, being $$2(2k^2 + 2k + 2l^2 + 2l + 1)$$, but
+it is not a multiple of $$4$$, because the multiples of $$4$$ are spaced $$4$$ apart, and the number
+$$2$$ more than one of them is not one of them. For example, $$3^2 + 5^2 = 34$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Use the square of a sum and the square of a difference to work out $$101^2$$ and $$99^2$$.
+
+<Solution>
+
+```math
+101^2 = (100 + 1)^2 = 10000 + 200 + 1 = 10201,
+\qquad
+99^2 = (100 - 1)^2 = 10000 - 200 + 1 = 9801
+```
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Simplify $$-(-(-4))$$ and $$-(3 - 8)$$.
+
+<Solution>
+
+Each minus sign flips a number to the other side of $$0$$. Two flips cancel, since $$-(-a) = a$$, so
+$$-(-(-4)) = -4$$.
+
+For the second, either work out the bracket first, $$-(3 - 8) = -(-5) = 5$$, or use the opposite of
+a sum: $$-(3 - 8) = -3 + 8 = 5$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Show that there are no integers $$x$$ and $$y$$ with $$x^2 = 4y + 3$$.
+
+<Solution>
+
+Work modulo $$4$$. The right side is $$4y + 3 \equiv 3 \pmod{4}$$. For the left side, $$x$$ is
+congruent to $$0$$, $$1$$, $$2$$ or $$3$$, and squaring each with <Ref id="congruence-powers" />:
+
+| $$x \pmod{4}$$   | $$0$$ | $$1$$ | $$2$$          | $$3$$          |
+| ---------------- | ----- | ----- | -------------- | -------------- |
+| $$x^2 \pmod{4}$$ | $$0$$ | $$1$$ | $$4 \equiv 0$$ | $$9 \equiv 1$$ |
+
+A square is always congruent to $$0$$ or $$1$$ modulo $$4$$, never $$3$$, so the two sides can never
+be equal.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Find the remainder when $$123 \cdot 456$$ is divided by $$5$$, without multiplying out.
+
+<Solution>
+
+Swap each factor for a small number it is congruent to, using <Ref id="congruence-arithmetic" />:
+$$123 \equiv 3$$ and $$456 \equiv 1 \pmod{5}$$. So
+
+```math
+123 \cdot 456 \equiv 3 \cdot 1 = 3 \pmod{5}
+```
+
+and the remainder is $$3$$. (Indeed $$123 \cdot 456 = 56088$$.)
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Decide whether each pair of fractions is equal by cross-multiplying:
+
+- (a) $$\frac{14}{21}$$ and $$\frac{10}{15}$$
+- (b) $$\frac{7}{9}$$ and $$\frac{8}{10}$$
+- (c) $$\frac{-6}{8}$$ and $$\frac{9}{-12}$$
+
+<Solution>
+
+- (a) Equal: $$14 \cdot 15 = 210$$ and $$10 \cdot 21 = 210$$. Both are $$\frac{2}{3}$$.
+- (b) Not equal: $$7 \cdot 10 = 70$$ but $$8 \cdot 9 = 72$$.
+- (c) Equal: $$(-6)(-12) = 72$$ and $$9 \cdot 8 = 72$$. Both are $$-\frac{3}{4}$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Find the remainder when $$2^{50}$$ is divided by $$7$$.
+
+<Solution>
+
+Look for a small power of $$2$$ that is congruent to $$1$$: $$2^3 = 8 \equiv 1 \pmod{7}$$. Since
+$$50 = 3 \cdot 16 + 2$$,
+
+```math
+2^{50} = (2^3)^{16} \cdot 2^2 \equiv 1^{16} \cdot 4 = 4 \pmod{7}
+```
+
+So the remainder is $$4$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Solve $$(2x - 1)(3x + 4) = 0$$ and $$x^2 = 5x$$.
+
+<Solution>
+
+By <Ref id="zero-product" />, a product is zero only if one of its factors is. So in the first
+equation either $$2x - 1 = 0$$, giving $$x = \frac{1}{2}$$, or $$3x + 4 = 0$$, giving
+$$x = -\frac{4}{3}$$.
+
+For the second, it is tempting to divide by $$x$$ and get $$x = 5$$, but that loses a solution,
+because dividing by $$x$$ is only allowed when $$x \neq 0$$. Instead rearrange to $$x^2 - 5x = 0$$
+and factor: $$x(x - 5) = 0$$. So $$x = 0$$ or $$x = 5$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Simplify $$(a^2 b)^3 \cdot a b^2$$, and write $$(2^3)^2 \cdot 2^4$$ as a single power of $$2$$.
+
+<Solution>
+
+A power of a product is the product of the powers, and a power of a power multiplies the exponents,
+so $$(a^2 b)^3 = a^6 b^3$$. Multiplying powers of the same base adds the exponents:
+
+```math
+a^6 b^3 \cdot a b^2 = a^{6 + 1} b^{3 + 2} = a^7 b^5
+```
+
+Similarly, $$(2^3)^2 \cdot 2^4 = 2^6 \cdot 2^4 = 2^{10}$$, which is $$1024$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Expand $$(x + 6)^2$$, $$(2y - 3)^2$$ and $$(5a + 2b)(5a - 2b)$$.
+
+<Solution>
+
+Each one matches one of the formulas for squares.
+
+- Square of a sum: $$(x + 6)^2 = x^2 + 2 \cdot 6x + 36 = x^2 + 12x + 36$$.
+- Square of a difference, with $$2y$$ in place of $$a$$:
+  $$(2y - 3)^2 = 4y^2 - 2 \cdot 2y \cdot 3 + 9 = 4y^2 - 12y + 9$$.
+- Difference of squares: $$(5a + 2b)(5a - 2b) = (5a)^2 - (2b)^2 = 25a^2 - 4b^2$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Expand $$(x + 2)(x^2 - 3x + 4)$$, and check your answer by putting $$x = 1$$ into both sides.
+
+<Solution>
+
+Multiply each term of the first bracket by every term of the second, then collect like terms:
+
+```math
+\begin{aligned}
+(x + 2)(x^2 - 3x + 4) &= x^3 - 3x^2 + 4x + 2x^2 - 6x + 8 \\
+&= x^3 - x^2 - 2x + 8
+\end{aligned}
+```
+
+Check with $$x = 1$$: the left side is $$3 \cdot 2 = 6$$, and the right side is
+$$1 - 1 - 2 + 8 = 6$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Prove that $$(a + b)^2 - (a - b)^2 = 4ab$$ for all integers $$a$$ and $$b$$.
+
+<Solution>
+
+Expand both squares and subtract. Remember to subtract **every** term of the second square:
+
+```math
+(a^2 + 2ab + b^2) - (a^2 - 2ab + b^2) = a^2 + 2ab + b^2 - a^2 + 2ab - b^2 = 4ab
+```
+
+The $$a^2$$ and $$b^2$$ terms cancel, and the two $$2ab$$ terms add.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+A ball bounces back up to $$\frac{2}{3}$$ of the height it fell from. It is dropped from $$81$$ cm.
+How high does it rise after the fourth bounce? After which bounce does it first fail to reach $$10$$
+cm?
+
+<Solution>
+
+Each bounce multiplies the height by $$\frac{2}{3}$$, so after $$k$$ bounces the height is
+$$\left(\frac{2}{3}\right)^k \cdot 81$$. After four bounces,
+
+```math
+\left(\frac{2}{3}\right)^4 \cdot 81 = \frac{16}{81} \cdot 81 = 16 \text{ cm}
+```
+
+Continuing, the fifth bounce reaches $$\frac{2}{3} \cdot 16 = \frac{32}{3}$$ cm, which is
+$$10\frac{2}{3}$$ cm, still above $$10$$. The sixth reaches
+$$\frac{2}{3} \cdot \frac{32}{3} = \frac{64}{9}$$ cm, a little over $$7$$. So the sixth bounce is
+the first below $$10$$ cm.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Simplify $$\dfrac{\frac{2}{3} + \frac{1}{4}}{\frac{5}{6}}$$.
+
+<Solution>
+
+Simplify the top first: $$\frac{2}{3} + \frac{1}{4} = \frac{8}{12} + \frac{3}{12} = \frac{11}{12}$$.
+Then dividing by $$\frac{5}{6}$$ is multiplying by its inverse:
+
+```math
+\frac{11}{12} \cdot \frac{6}{5} = \frac{66}{60} = \frac{11}{10}
+```
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Prove that $$\frac{n + 1}{n}$$ is in lowest form for every positive integer $$n$$.
+
+<Solution>
+
+We need to show that the only positive common divisor of $$n + 1$$ and $$n$$ is $$1$$. Suppose $$d$$
+divides both. By <Ref id="multiples" />, $$d$$ also divides their difference,
+
+```math
+(n + 1) - n = 1
+```
+
+and the only positive integer dividing $$1$$ is $$1$$ itself. So $$d = 1$$. In words: two
+consecutive integers never share a factor bigger than $$1$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Add up the numbers in each of the rows $$m = 0, 1, 2, 3, 4, 5$$ of Pascal's triangle. What pattern
+do you see? Explain it by thinking about choosing.
+
+<Solution>
+
+The row sums are $$1, 2, 4, 8, 16, 32$$: the sum of row $$m$$ is $$2^m$$.
+
+Row $$m$$ adds up the ways to choose $$0$$ things, $$1$$ thing, and so on up to all $$m$$ things, so
+it counts every possible selection from $$m$$ things, of any size. Another way to count those
+selections is to go through the $$m$$ things one at a time and decide "in" or "out" for each. That
+is $$2$$ choices, $$m$$ times over, giving $$2^m$$ selections.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Suppose $$a$$ is a number with $$a^2 = 2$$. Show that $$1 + a$$ is not rational, and nor is $$3a$$.
+
+<Solution>
+
+Both work the same way: if they were rational, we could undo the operation and make $$a$$ rational,
+which <Ref id="sqrt-two" /> rules out.
+
+- If $$1 + a = q$$ with $$q$$ rational, then $$a = q - 1$$. A difference of two rational numbers is
+  rational, so $$a$$ would be rational.
+- If $$3a = q$$ with $$q$$ rational, then multiplying by the inverse of $$3$$ gives
+  $$a = \frac{q}{3}$$, which would be rational.
+
+The general lesson: adding a rational number to an irrational one, or multiplying it by a non-zero
+rational number, always gives an irrational number.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Prove that if $$d \mid a$$ and $$d \mid b$$, then $$d \mid 3a - 5b$$.
+
+<Solution>
+
+By <Ref id="multiples" />, a multiple of something divisible by $$d$$ is divisible by $$d$$, so
+$$d \mid 3a$$ and $$d \mid 5b$$. The difference of two numbers divisible by $$d$$ is divisible by
+$$d$$, so $$d \mid 3a - 5b$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Find every integer $$n$$ for which $$\frac{n + 3}{n - 1}$$ is an integer.
+
+<Solution>
+
+Rewrite the top so that it contains the bottom: $$n + 3 = (n - 1) + 4$$. Then, by adding quotients
+backwards,
+
+```math
+\frac{n + 3}{n - 1} = \frac{n - 1}{n - 1} + \frac{4}{n - 1} = 1 + \frac{4}{n - 1}
+```
+
+This is an integer exactly when $$\frac{4}{n - 1}$$ is, that is, when $$n - 1$$ divides $$4$$. The
+divisors of $$4$$ are $$\pm 1$$, $$\pm 2$$ and $$\pm 4$$, so $$n - 1$$ is one of these and
+
+```math
+n = 2,\ 0,\ 3,\ -1,\ 5,\ -3
+```
+
+For example, $$n = 5$$ gives $$\frac{8}{4} = 2$$, and $$n = -3$$ gives $$\frac{0}{-4} = 0$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Solve for $$x$$: (a) $$x + 12 = 5$$, (b) $$-7 - x = 3$$.
+
+<Solution>
+
+- (a) If $$x + 12 = 5$$, then $$x = 5 - 12 = -7$$.
+- (b) Add $$7$$ to both sides to get $$-x = 10$$. Taking opposites of both sides gives $$x = -10$$.
+  Check: $$-7 - (-10) = -7 + 10 = 3$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Without working out $$2^{10}$$, show that $$2^{10} - 1$$ is divisible by both $$31$$ and $$33$$.
+
+<Solution>
+
+Notice that $$2^{10} = (2^5)^2 = 32^2$$, so $$2^{10} - 1$$ is a difference of squares:
+
+```math
+2^{10} - 1 = 32^2 - 1^2 = (32 - 1)(32 + 1) = 31 \cdot 33
+```
+
+So it is a multiple of both. (Indeed $$2^{10} - 1 = 1023$$.)
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Put these integers in order from smallest to largest: $$3$$, $$-7$$, $$0$$, $$-2$$, $$5$$, $$-10$$.
+
+<Solution>
+
+$$-10 < -7 < -2 < 0 < 3 < 5$$.
+
+On the number line, smaller numbers sit further to the left. All the negative numbers are left of
+$$0$$, and among them the one furthest from $$0$$ is the smallest. That is why $$-10$$ comes before
+$$-7$$, even though $$10$$ is bigger than $$7$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Prove that the sum of any three consecutive integers is divisible by $$3$$.
+
+<Solution>
+
+Call the integers $$n$$, $$n + 1$$ and $$n + 2$$. Their sum is
+
+```math
+n + (n + 1) + (n + 2) = 3n + 3 = 3(n + 1)
+```
+
+which is $$3$$ times an integer. In fact the sum is $$3$$ times the middle number.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Find every $$x$$ among $$0, 1, \dots, 6$$ with $$3x \equiv 5 \pmod{7}$$.
+
+<Solution>
+
+Try them all, reducing each $$3x$$ modulo $$7$$:
+
+| $$x$$          | $$0$$ | $$1$$ | $$2$$ | $$3$$ | $$4$$ | $$5$$ | $$6$$ |
+| -------------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+| $$3x \bmod 7$$ | $$0$$ | $$3$$ | $$6$$ | $$2$$ | $$5$$ | $$1$$ | $$4$$ |
+
+Only $$x = 4$$ works: $$12 \equiv 5 \pmod{7}$$. Notice that the bottom row hits every remainder
+exactly once.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Show that $$\frac{1}{3}$$ cannot be written as a decimal that stops. (Hint: a decimal with $$k$$
+places is $$\frac{m}{10^k}$$ for some integer $$m$$.)
+
+<Solution>
+
+Suppose $$\frac{1}{3} = \frac{m}{10^k}$$. Cross-multiplying gives $$10^k = 3m$$, so $$3 \mid 10^k$$.
+But $$10 \equiv 1 \pmod{3}$$, so by <Ref id="congruence-powers" />,
+$$10^k \equiv 1^k = 1 \pmod{3}$$, which means $$10^k$$ is one more than a multiple of $$3$$ and so
+not a multiple of $$3$$. This contradiction shows no such decimal exists. That is why
+$$\frac{1}{3} = 0.333\ldots$$ goes on forever.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Write in lowest form: $$\frac{84}{126}$$, $$\frac{45}{75}$$, $$\frac{132}{48}$$.
+
+<Solution>
+
+Cancel the greatest common divisor in one go, or smaller common factors one at a time.
+
+- $$\frac{84}{126} = \frac{42 \cdot 2}{42 \cdot 3} = \frac{2}{3}$$.
+- $$\frac{45}{75} = \frac{15 \cdot 3}{15 \cdot 5} = \frac{3}{5}$$.
+- $$\frac{132}{48} = \frac{12 \cdot 11}{12 \cdot 4} = \frac{11}{4}$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Solve $$\frac{x + 1}{x - 2} = \frac{3}{2}$$.
+
+<Solution>
+
+For $$x \neq 2$$, cross-multiplying with <Ref id="cross-multiplying-rational" /> gives
+
+```math
+2(x + 1) = 3(x - 2), \qquad \text{so} \qquad 2x + 2 = 3x - 6
+```
+
+and $$x = 8$$. Check: $$\frac{9}{6} = \frac{3}{2}$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Show that $$\binom{n}{2} = \frac{n(n - 1)}{2}$$ for every integer $$n \ge 2$$, and explain, without
+using the fact that it counts something, why this is always an integer.
+
+<Solution>
+
+Cancel the factorials: $$n! = n(n - 1) \cdot (n - 2)!$$, so
+
+```math
+\binom{n}{2} = \frac{n!}{2!\,(n - 2)!} = \frac{n(n - 1) \cdot (n - 2)!}{2 \cdot (n - 2)!}
+= \frac{n(n - 1)}{2}
+```
+
+The numbers $$n - 1$$ and $$n$$ are consecutive, so one of them is even and their product is even.
+Dividing an even number by $$2$$ gives an integer. For example,
+$$\binom{10}{2} = \frac{90}{2} = 45$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Find a rational number between $$\frac{3}{7}$$ and $$\frac{4}{7}$$, and one between $$\frac{1}{3}$$
+and $$\frac{1}{2}$$. Explain why there is always a rational number between any two different
+rational numbers.
+
+<Solution>
+
+The number halfway between $$a$$ and $$b$$ is their average $$\frac{a + b}{2}$$.
+
+- Between $$\frac{3}{7}$$ and $$\frac{4}{7}$$: the two add up to $$1$$, so the average is
+  $$\frac{1}{2}$$.
+- Between $$\frac{1}{3}$$ and $$\frac{1}{2}$$: the two add up to
+  $$\frac{2}{6} + \frac{3}{6} = \frac{5}{6}$$, so the average is $$\frac{5}{12}$$.
+
+The average of two rational numbers is rational, since it is built from them by adding and
+multiplying by $$\frac{1}{2}$$, and it lies halfway between them. So between any two different
+rational numbers there is another, and repeating the argument gives infinitely many. Unlike the
+integers, the rational numbers have no "next" number.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Show that $$10 \equiv 1 \pmod{9}$$. Use this to explain why every number is congruent modulo $$9$$
+to the sum of its digits, and check whether $$4725$$ is divisible by $$9$$.
+
+<Solution>
+
+$$10 - 1 = 9$$, so $$10 \equiv 1 \pmod{9}$$. By <Ref id="congruence-powers" />, every power of
+$$10$$ is then congruent to $$1^k = 1$$. A number such as $$4725$$ is built from powers of $$10$$:
+
+```math
+4725 = 4 \cdot 1000 + 7 \cdot 100 + 2 \cdot 10 + 5 \equiv 4 + 7 + 2 + 5 = 18 \pmod{9}
+```
+
+and the same works for any number. Since $$18 \equiv 0 \pmod{9}$$, $$4725$$ is divisible by $$9$$.
+Indeed $$4725 = 9 \cdot 525$$. This is the familiar rule that a number is divisible by $$9$$ exactly
+when its digit sum is.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Put $$\frac{2}{3}$$, $$\frac{5}{8}$$ and $$\frac{3}{5}$$ in order from smallest to largest.
+
+<Solution>
+
+Fractions with the same denominator are easy to compare, so rewrite all three over $$120$$, which
+$$3$$, $$8$$ and $$5$$ all divide:
+
+```math
+\frac{2}{3} = \frac{80}{120}, \qquad \frac{5}{8} = \frac{75}{120},
+\qquad \frac{3}{5} = \frac{72}{120}
+```
+
+So $$\frac{3}{5} < \frac{5}{8} < \frac{2}{3}$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Prove that there is no rational number whose square is $$6$$.
+
+<Solution>
+
+Follow the proof of <Ref id="sqrt-two" />. Suppose $$\left(\frac{m}{n}\right)^2 = 6$$ with
+$$\frac{m}{n}$$ positive and in lowest form, so $$m$$ and $$n$$ are not both even. Cross-multiplying
+gives $$m^2 = 6n^2 = 2(3n^2)$$, so $$m^2$$ is even, and therefore $$m$$ is even. Write $$m = 2k$$:
+
+```math
+4k^2 = 6n^2, \qquad \text{so} \qquad 2k^2 = 3n^2
+```
+
+Now $$3n^2$$ is even. Since $$3$$ is odd, $$n^2$$ can't be odd (odd times odd is odd), so $$n^2$$ is
+even and $$n$$ is even. Then $$m$$ and $$n$$ are both even, a contradiction.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Solve $$\frac{2x}{3} - 1 = \frac{x}{4} + 4$$.
+
+<Solution>
+
+Clear the fractions by multiplying both sides by $$12$$, a common denominator of $$3$$ and $$4$$:
+
+```math
+8x - 12 = 3x + 48
+```
+
+Then $$8x - 3x = 48 + 12$$, so $$5x = 60$$ and $$x = 12$$. Check: $$\frac{24}{3} - 1 = 7$$ and
+$$\frac{12}{4} + 4 = 7$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Without working out the numbers, decide whether each is even or odd:
+
+- (a) $$37 \cdot 41 + 12$$
+- (b) $$2023^2$$
+- (c) $$15^3 + 7^2$$
+
+<Solution>
+
+- (a) $$37 \cdot 41$$ is odd times odd, so odd. Odd plus even ($$12$$) is odd.
+- (b) $$2023$$ is odd, so its square is odd.
+- (c) $$15^3$$ and $$7^2$$ are both products of odd numbers, so both are odd. Odd plus odd is even.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Work out $$(-3)(-4)(-5)$$, $$(-2)^5$$ and $$(-1)^{12} \cdot (-3)^2$$.
+
+<Solution>
+
+Count the minus signs: an even number of them gives a positive product, an odd number a negative
+one.
+
+- $$(-3)(-4)(-5)$$ has three minus signs, so it is $$-(3 \cdot 4 \cdot 5) = -60$$.
+- $$(-2)^5$$ has five, so it is $$-2^5 = -32$$.
+- $$(-1)^{12}$$ has twelve, so it is $$1$$, and $$(-3)^2 = 9$$. The product is $$9$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+List every way of choosing $$3$$ letters from $$a, b, c, d, e$$, and check that the number of ways
+agrees with $$\binom{5}{3}$$.
+
+<Solution>
+
+Listing them in alphabetical order so that none are missed or repeated:
+
+```math
+abc,\ abd,\ abe,\ acd,\ ace,\ ade,\ bcd,\ bce,\ bde,\ cde
+```
+
+That is $$10$$ ways, and $$\binom{5}{3} = \frac{5!}{3!\,2!} = \frac{120}{12} = 10$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Simplify $$\dfrac{1 - \frac{1}{x^2}}{1 - \frac{1}{x}}$$.
+
+<Solution>
+
+Write the top and the bottom as single fractions, then factor the top with the difference of
+squares:
+
+```math
+1 - \frac{1}{x^2} = \frac{x^2 - 1}{x^2} = \frac{(x - 1)(x + 1)}{x^2},
+\qquad
+1 - \frac{1}{x} = \frac{x - 1}{x}
+```
+
+Dividing is multiplying by the inverse, and then common factors cancel:
+
+```math
+\frac{(x - 1)(x + 1)}{x^2} \cdot \frac{x}{x - 1} = \frac{x + 1}{x}
+```
+
+Check with $$x = 2$$: the original is $$\frac{3/4}{1/2} = \frac{3}{2}$$, and so is
+$$\frac{2 + 1}{2}$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Work out $$\frac{3}{8} + \frac{5}{12}$$, $$\frac{2}{3} - \frac{7}{9}$$ and
+$$\frac{1}{2} + \frac{1}{3} + \frac{1}{6}$$.
+
+<Solution>
+
+Use the smallest convenient common denominator.
+
+- $$24$$ works for $$8$$ and $$12$$: $$\frac{9}{24} + \frac{10}{24} = \frac{19}{24}$$.
+- $$9$$ works for both: $$\frac{6}{9} - \frac{7}{9} = -\frac{1}{9}$$.
+- $$6$$ works for all three: $$\frac{3}{6} + \frac{2}{6} + \frac{1}{6} = \frac{6}{6} = 1$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+True or false? Give a proof or a counterexample.
+
+- (a) If $$d \mid a + b$$, then $$d \mid a$$ and $$d \mid b$$.
+- (b) If $$a \mid b$$ and $$b \mid c$$, then $$a \mid c$$.
+- (c) If $$4 \mid n^2$$, then $$4 \mid n$$.
+
+<Solution>
+
+- (a) False. $$3 \mid 1 + 2$$, but $$3$$ divides neither $$1$$ nor $$2$$.
+- (b) True. Write $$b = ak$$ and $$c = bl$$. Then $$c = (ak)l = a(kl)$$, a multiple of $$a$$.
+- (c) False. For $$n = 2$$, $$4 \mid 4 = n^2$$, but $$4$$ does not divide $$2$$.
+
+The rule in <Ref id="squares-parity-converse" /> is about $$2$$, not $$4$$: if $$2 \mid n^2$$ then
+$$2 \mid n$$. Part (c) shows it does not carry over to $$4$$.
+
+</Solution>
+
+</Exercise>
+
+<Exercise>
+
+Expand and simplify $$3(2x - 5) - 2(x - 4)$$.
+
+<Solution>
+
+Multiply out each bracket, taking care that the $$-2$$ multiplies **both** terms of the second one:
+
+```math
+3(2x - 5) - 2(x - 4) = 6x - 15 - 2x + 8 = 4x - 7
+```
+
+The $$+8$$ comes from $$(-2)(-4)$$.
+
+</Solution>
+
+</Exercise>
