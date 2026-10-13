@@ -4,9 +4,20 @@ type Jump = {
   label?: string;
 };
 
+type Label = {
+  at: number;
+  text: string;
+};
+
 type NumberLineProps = {
   from: number;
   to: number;
+  /** pixels per whole number, widen this to show fractions clearly */
+  unit?: number;
+  /** number of equal pieces to split each whole step into, drawn as small ticks */
+  divisions?: number;
+  /** text shown above the line at any point, e.g. a fraction */
+  labels?: Label[];
   /** points to mark with a filled dot */
   points?: number[];
   /** arcs drawn above the line, e.g. to show addition as movement */
@@ -15,7 +26,6 @@ type NumberLineProps = {
   caption?: string;
 };
 
-const UNIT = 48;
 const PAD_X = 28;
 // how far the curve control point sits above the line; wider jumps arc higher so nested jumps never cross
 function arcLift(jump: Jump) {
@@ -37,15 +47,19 @@ export function NumberLine({
   to,
   points = [],
   jumps = [],
+  unit = 48,
+  divisions = 1,
+  labels = [],
   caption,
 }: NumberLineProps) {
   const count = to - from;
-  const width = count * UNIT + PAD_X * 2;
+  const width = count * unit + PAD_X * 2;
   // leave room above the line for the tallest arc and its label
   const LINE_Y = Math.max(70, ...jumps.map((j) => arcLift(j) / 2 + 16));
   const height = LINE_Y + 40;
-  const x = (n: number) => PAD_X + (n - from) * UNIT;
+  const x = (n: number) => PAD_X + (n - from) * unit;
   const ticks = Array.from({ length: count + 1 }, (_, i) => from + i);
+  const minorTicks = Array.from({ length: count * divisions + 1 }, (_, i) => from + i / divisions);
 
   return (
     <figure className="not-prose my-6">
@@ -72,6 +86,20 @@ export function NumberLine({
           points={`${width - 2},${LINE_Y} ${width - 12},${LINE_Y - 5} ${width - 12},${LINE_Y + 5}`}
           fill="currentColor"
         />
+
+        {divisions > 1 &&
+          minorTicks.map((n, i) => (
+            <line
+              key={`minor-${i}`}
+              x1={x(n)}
+              x2={x(n)}
+              y1={LINE_Y - 4}
+              y2={LINE_Y + 4}
+              stroke="currentColor"
+              strokeWidth={1}
+              className="text-fd-muted-foreground"
+            />
+          ))}
 
         {ticks.map((n) => (
           <g key={n}>
@@ -134,6 +162,20 @@ export function NumberLine({
             </g>
           );
         })}
+
+        {labels.map((label, i) => (
+          <text
+            key={`label-${i}`}
+            x={x(label.at)}
+            y={LINE_Y - 14}
+            textAnchor="middle"
+            fontSize={14}
+            fontWeight={600}
+            className="fill-fd-primary"
+          >
+            {label.text.replace("-", "−")}
+          </text>
+        ))}
 
         {points.map((n) => (
           <circle

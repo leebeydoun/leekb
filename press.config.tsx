@@ -5,6 +5,7 @@ import { defineDocs } from "fumadocs-mdx/macro";
 import { applyMdxPreset } from "fumadocs-mdx/config";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import { remarkStatements } from "./src/lib/remark-statements";
 import { createNotebookLayoutPage } from "fumapress/layouts/notebook";
 
 const NotebookLayout = createNotebookLayoutPage<typeof config.$context>();
@@ -16,7 +17,7 @@ const docs = defineDocs({
     schema: pageSchema,
     lastModified: true,
     mdxOptions: applyMdxPreset({
-      remarkPlugins: [remarkMath],
+      remarkPlugins: [remarkMath, remarkStatements],
       rehypePlugins: (v) => [rehypeKatex, ...v],
     }),
     postprocess: {
