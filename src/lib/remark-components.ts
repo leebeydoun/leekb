@@ -6,6 +6,7 @@
  *             :::accordion[Title] ... :::
  *             :::area-model{row-sizes="3 2" col-sizes="3 2"} with a table inside, see below
  * One line:   ::number-line{from=-4 to=6 points="-2, 4" jumps="-2>4"}
+ *             ::quiz{src="numbers"}     (questions from public/quizzes/numbers.json, checked here)
  * Inline:     :ref{#id} or :ref[custom text]{#id}
  *
  * A block must have blank lines after its opening line and before its closing `:::`, otherwise
@@ -24,6 +25,9 @@ import type {
   MdxJsxFlowElement,
   MdxJsxTextElement,
 } from "mdast-util-mdx-jsx";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import katex from "katex";
 import { toString } from "mdast-util-to-string";
 import { valueToEstree } from "estree-util-value-to-estree";
 import { STATEMENT_KINDS } from "./remark-statements";
@@ -200,6 +204,96 @@ function areaModel(node: ContainerDirective, file: File): MdxJsxFlowElement {
   );
 }
 
+const MAX_STARS = 4;
+const REF = /:ref(?:\[[^\]]*\])?\{#([\w-]+)\}/g;
+const MATH = /\$\$([\s\S]+?)\$\$/g;
+
+// read a quiz file and check it, so a mistake fails the build rather than showing up in the browser;
+// returns the statement ids its text links to, for remark-statements to check and label
+function checkQuiz(src: string, file: File, node: Node) {
+  const path = join(process.cwd(), "public", "quizzes", `${src}.json`);
+  let data: unknown;
+  try {
+    data = JSON.parse(readFileSync(path, "utf8"));
+  } catch (error) {
+    fail(
+      file,
+      node,
+      `Could not read quiz ${path}: ${(error as Error).message}`,
+    );
+  }
+  const quiz = data as { title?: unknown; questions?: unknown };
+  if (typeof quiz.title !== "string")
+    fail(file, node, `${path} needs a "title"`);
+  if (!Array.isArray(quiz.questions) || quiz.questions.length === 0)
+    fail(file, node, `${path} needs a non-empty "questions" list`);
+
+  const ids = new Set<string>();
+  const refs = new Set<string>();
+  for (const [i, raw] of quiz.questions.entries()) {
+    const q = raw as Record<string, unknown>;
+    const where = `${path}, question ${i + 1}${typeof q.id === "string" ? ` (${q.id})` : ""}`;
+    const problem: (message: string) => never = (message) =>
+      fail(file, node, `${where}: ${message}`);
+
+    if (typeof q.id !== "string" || !/^[a-z0-9-]+$/.test(q.id))
+      problem(`"id" must be lowercase letters, digits and dashes`);
+    if (ids.has(q.id)) problem(`duplicate id`);
+    ids.add(q.id);
+    if (
+      !Number.isInteger(q.stars) ||
+      (q.stars as number) < 1 ||
+      (q.stars as number) > MAX_STARS
+    )
+      problem(`"stars" must be a whole number from 1 to ${MAX_STARS}`);
+    if (
+      !Array.isArray(q.options) ||
+      q.options.length < 2 ||
+      q.options.some((o) => typeof o !== "string")
+    )
+      problem(`"options" must be a list of at least two strings`);
+    if (
+      !Number.isInteger(q.answer) ||
+      (q.answer as number) < 0 ||
+      (q.answer as number) >= q.options.length
+    )
+      problem(`"answer" must be the index (from 0) of the correct option`);
+
+    if (typeof q.question !== "string") problem(`"question" must be text`);
+    if (typeof q.explanation !== "string")
+      problem(`"explanation" must be text`);
+    if (q.topic !== undefined && typeof q.topic !== "string")
+      problem(`"topic" must be text`);
+
+    // options are buttons, and a link inside a button is not allowed
+    if (
+      q.options.some(
+        (option) => option.includes(":ref") || option.includes("](#"),
+      )
+    )
+      problem(
+        `options cannot contain links; put them in the explanation instead`,
+      );
+
+    for (const text of [
+      q.question,
+      q.explanation,
+      q.topic ?? "",
+      ...q.options,
+    ]) {
+      for (const [, tex] of text.matchAll(MATH)) {
+        try {
+          katex.renderToString(tex!, { throwOnError: true });
+        } catch (error) {
+          problem(`bad maths $$${tex}$$: ${(error as Error).message}`);
+        }
+      }
+      for (const [, id] of text.matchAll(REF)) refs.add(id!);
+    }
+  }
+  return [...refs];
+}
+
 function convert(node: Directive, file: File): RootContent {
   const a = node.attributes ?? {};
 
@@ -220,6 +314,17 @@ function convert(node: Directive, file: File): RootContent {
 
   if (node.type === "leafDirective") {
     if (node.name === "number-line") return numberLine(node, file);
+    if (node.name === "quiz") {
+      if (!a.src)
+        fail(file, node, '::quiz needs a src, e.g. ::quiz{src="numbers"}');
+      const refs = checkQuiz(a.src, file, node);
+      return element(
+        "mdxJsxFlowElement",
+        "Quiz",
+        { src: a.src, refs: refs.join(",") },
+        [],
+      );
+    }
     fail(file, node, `Unknown directive ::${node.name}`);
   }
 

@@ -1,6 +1,7 @@
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 import { AreaModel } from "./area-model";
 import { NumberLine } from "./number-line";
+import { Quiz } from "./quiz";
 import {
   Conjecture,
   Corollary,
@@ -22,6 +23,7 @@ export const mdxComponents = {
   Accordions,
   AreaModel,
   NumberLine,
+  Quiz,
   Conjecture,
   Corollary,
   Definition,

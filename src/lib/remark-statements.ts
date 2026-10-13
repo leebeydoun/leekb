@@ -78,6 +78,25 @@ export function remarkStatements() {
 
     // second pass, so a Ref can point forwards as well as backwards
     walk(tree, (node) => {
+      // a quiz's text links to statements too, so look up their labels for it
+      if (isJsx(node) && node.name === "Quiz") {
+        const ids = (getAttribute(node, "refs") ?? "")
+          .split(",")
+          .filter(Boolean);
+        const quizLabels = Object.fromEntries(
+          ids.map((id) => {
+            const label = labels.get(id);
+            if (!label)
+              throw new Error(
+                `Quiz ${getAttribute(node, "src")} links to :ref{#${id}}, which has no matching statement in ${file.path}`,
+              );
+            return [id, label];
+          }),
+        );
+        node.attributes = node.attributes?.filter((a) => a.name !== "refs");
+        setAttribute(node, "labels", JSON.stringify(quizLabels));
+        return;
+      }
       if (!isJsx(node) || node.name !== "Ref") return;
       const id = getAttribute(node, "id");
       const label = id && labels.get(id);
