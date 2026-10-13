@@ -1,3 +1,5 @@
+import { Figure } from "./figure";
+
 type AreaModelProps = {
   /** labels down the left side (the parts of one factor) */
   rows: string[];
@@ -28,7 +30,7 @@ export function AreaModel({
   caption,
 }: AreaModelProps) {
   return (
-    <figure className="not-prose my-6 flex flex-col items-center">
+    <Figure caption={caption} className="flex flex-col items-center">
       <div
         className="grid font-serif italic text-fd-foreground"
         style={{
@@ -65,11 +67,6 @@ export function AreaModel({
           </div>
         ))}
       </div>
-      {caption && (
-        <figcaption className="mt-2 text-center text-sm text-fd-muted-foreground">
-          {caption}
-        </figcaption>
-      )}
-    </figure>
+    </Figure>
   );
 }

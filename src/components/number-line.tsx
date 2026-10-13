@@ -1,3 +1,5 @@
+import { Figure } from "./figure";
+
 type Jump = {
   from: number;
   to: number;
@@ -57,9 +59,13 @@ export function NumberLine({
 }: NumberLineProps) {
   const count = to - from;
   const width = count * unit + PAD_X * 2;
-  // leave room above the line for the tallest arc and its label
-  const LINE_Y = Math.max(70, ...jumps.map((j) => arcLift(j) / 2 + 16));
-  const height = LINE_Y + 40;
+  // leave room above the line for any labels and the tallest arc, and below it for the numbers;
+  // the frame around the figure supplies the padding
+  const LINE_Y = Math.max(
+    labels.length ? 36 : 16,
+    ...jumps.map((j) => arcLift(j) / 2 + 16),
+  );
+  const height = LINE_Y + 34;
   const x = (n: number) => PAD_X + (n - from) * unit;
   const ticks = Array.from({ length: count + 1 }, (_, i) => from + i);
   const minorTicks = Array.from(
@@ -68,7 +74,7 @@ export function NumberLine({
   );
 
   return (
-    <figure className="not-prose my-6">
+    <Figure caption={caption}>
       <svg
         viewBox={`0 0 ${width} ${height}`}
         className="w-full h-auto max-w-2xl mx-auto block text-fd-foreground"
@@ -193,11 +199,6 @@ export function NumberLine({
           />
         ))}
       </svg>
-      {caption && (
-        <figcaption className="mt-1 text-center text-sm text-fd-muted-foreground">
-          {caption}
-        </figcaption>
-      )}
-    </figure>
+    </Figure>
   );
 }
