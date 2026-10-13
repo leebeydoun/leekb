@@ -5,7 +5,7 @@ type AreaModelProps = {
   rows: string[];
   /** labels across the top (the parts of the other factor) */
   cols: string[];
-  /** the area of each piece, cells[row][col] */
+  /** the area of each piece, cells[row][col]; an empty string leaves that piece unshaded */
   cells: string[][];
   /** relative heights of the rows, defaults to equal */
   rowSizes?: number[];
@@ -55,7 +55,8 @@ export function AreaModel({
             {cols.map((_, j) => (
               <div
                 key={j}
-                className="flex items-center justify-center border border-fd-primary bg-fd-primary/10 text-lg"
+                // an empty cell is left unshaded, to show part of a whole
+                className={`flex items-center justify-center border border-fd-primary text-lg ${cells[i]?.[j] ? "bg-fd-primary/10" : ""}`}
                 style={{
                   marginTop: i > 0 ? -1 : 0,
                   marginLeft: j > 0 ? -1 : 0,

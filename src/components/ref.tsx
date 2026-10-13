@@ -7,13 +7,34 @@ type RefProps = {
   id: string;
   /** filled in at build time by remark-statements, e.g. "Definition 4.1" */
   label?: string;
+  /**
+   * filled in at build time: "#id" for a statement on this page, or "/maths/numbers/addition#id"
+   * for one on another page of the guide
+   */
+  href?: string;
   children?: ReactNode;
 };
 
-// copy the statement's rendered content (KaTeX included) from the page, without its ids so anchors
-// stay unique, and without solutions so an exercise preview doesn't give the answer away
-function previewHtml(id: string) {
-  const statement = document.getElementById(id);
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+// other pages are fetched once and kept, so hovering several links to one page costs one request
+const pages = new Map<string, Promise<Document | null>>();
+
+function fetchPage(path: string) {
+  let page = pages.get(path);
+  if (!page) {
+    page = fetch(BASE + path)
+      .then((response) => (response.ok ? response.text() : Promise.reject()))
+      .then((html) => new DOMParser().parseFromString(html, "text/html"))
+      .catch(() => null);
+    pages.set(path, page);
+  }
+  return page;
+}
+
+// copy the statement's rendered content (KaTeX included), without its ids so anchors stay unique,
+// and without solutions so an exercise preview doesn't give the answer away
+function previewHtml(statement: Element | null) {
   if (!statement) return "";
   const clone = statement.cloneNode(true) as HTMLElement;
   clone.querySelectorAll("[data-ref-skip]").forEach((el) => el.remove());
@@ -22,22 +43,32 @@ function previewHtml(id: string) {
 }
 
 /**
- * A link to a statement on the same page. Shows "Definition 4.1" unless children are given, and
- * previews the statement in a card on hover.
+ * A link to a statement in the guide. Shows "Definition 4.1" unless children are given, and
+ * previews the statement in a card on hover, fetching it from its page if it lives elsewhere.
  */
-export function Ref({ id, label, children }: RefProps) {
+export function Ref({ id, label, href = `#${id}`, children }: RefProps) {
   const [html, setHtml] = useState("");
+  const [path, hash] = href.split("#");
+  const elsewhere = Boolean(path);
 
   return (
     <PreviewCard.Root
       onOpenChange={(open) => {
-        if (open) setHtml(previewHtml(id));
+        if (!open) return;
+        if (!elsewhere) {
+          setHtml(previewHtml(document.getElementById(id)));
+          return;
+        }
+        setHtml(`<p>${label ?? ""}…</p>`);
+        void fetchPage(path!).then((page) =>
+          setHtml(page ? previewHtml(page.getElementById(hash ?? id)) : ""),
+        );
       }}
     >
       {/* a dotted underline sets these apart from ordinary links and hints at the preview; not-prose
           opts out of the typography link styles so these apply */}
       <PreviewCard.Trigger
-        href={`#${id}`}
+        href={elsewhere ? BASE + href : href}
         delay={300}
         className="not-prose font-medium text-fd-foreground underline decoration-fd-muted-foreground decoration-dotted decoration-[1.5px] underline-offset-[3.5px] transition-colors hover:decoration-fd-primary data-popup-open:decoration-fd-primary"
       >

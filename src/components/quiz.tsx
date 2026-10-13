@@ -18,6 +18,9 @@ type Question = {
   explanation: string;
 };
 
+/** statement id -> its label and link, e.g. { label: "Definition 3.1", href: "/maths/...#id" } */
+type Targets = Record<string, { label: string; href: string }>;
+
 type QuizData = { title: string; description?: string; questions: Question[] };
 
 /**
@@ -106,11 +109,11 @@ const TOKEN =
 
 function RichText({
   text,
-  labels,
+  targets,
   plain = false,
 }: {
   text: string;
-  labels: Record<string, string>;
+  targets: Targets;
   /** show links as plain text, for use inside buttons where links aren't allowed */
   plain?: boolean;
 }) {
@@ -124,10 +127,15 @@ function RichText({
       const html = katex.renderToString(tex, { throwOnError: false });
       parts.push(<span key={key} dangerouslySetInnerHTML={{ __html: html }} />);
     } else if (refId !== undefined && plain) {
-      parts.push(refText ?? labels[refId] ?? refId);
+      parts.push(refText ?? targets[refId]?.label ?? refId);
     } else if (refId !== undefined) {
       parts.push(
-        <Ref key={key} id={refId} label={labels[refId] ?? refId}>
+        <Ref
+          key={key}
+          id={refId}
+          label={targets[refId]?.label ?? refId}
+          href={targets[refId]?.href}
+        >
           {refText}
         </Ref>,
       );
@@ -177,12 +185,13 @@ function Stars({ count }: { count: number }) {
  */
 export function Quiz({
   src,
-  labels: labelsJson = "{}",
+  targets: targetsJson = "{}",
 }: {
   src: string;
-  labels?: string;
+  /** where each statement the quiz links to lives, filled in at build time by remark-statements */
+  targets?: string;
 }) {
-  const labels = JSON.parse(labelsJson) as Record<string, string>;
+  const targets = JSON.parse(targetsJson) as Targets;
   // every site on the same github.io domain shares storage, so include the base path in the key
   const storageKey = `quiz:${import.meta.env.BASE_URL}${src}`;
   const [data, setData] = useState<QuizData | null>(null);
@@ -217,7 +226,7 @@ export function Quiz({
     return (
       <div className={frame} data-quiz={src}>
         <p className="text-sm text-fd-muted-foreground">
-          The chapter review could not be loaded.
+          The review could not be loaded.
         </p>
       </div>
     );
@@ -225,9 +234,7 @@ export function Quiz({
   if (!data || !progress) {
     return (
       <div className={frame} data-quiz={src}>
-        <p className="text-sm text-fd-muted-foreground">
-          Loading the chapter review…
-        </p>
+        <p className="text-sm text-fd-muted-foreground">Loading the review…</p>
       </div>
     );
   }
@@ -382,7 +389,7 @@ export function Quiz({
                       {index + 1}.
                     </span>
                     <span className="flex-1">
-                      <RichText text={q.question} labels={labels} plain />
+                      <RichText text={q.question} targets={targets} plain />
                       {!(q.id in progress.answers) && (
                         <span className="text-fd-muted-foreground">
                           {" "}
@@ -481,7 +488,7 @@ export function Quiz({
       </div>
 
       <p className="mt-5 text-base leading-relaxed">
-        <RichText text={question.question} labels={labels} />
+        <RichText text={question.question} targets={targets} />
       </p>
 
       <div className="mt-4 grid gap-2" role="group" aria-label="Options">
@@ -509,7 +516,7 @@ export function Quiz({
                 {letter(i)}
               </span>
               <span className="pt-0.5">
-                <RichText text={option} labels={labels} />
+                <RichText text={option} targets={targets} />
               </span>
             </button>
           );
@@ -532,7 +539,7 @@ export function Quiz({
               : `Not quite. The answer is ${letter(question.answer)}.`}
           </p>
           <p className="mt-1">
-            <RichText text={question.explanation} labels={labels} />
+            <RichText text={question.explanation} targets={targets} />
           </p>
         </div>
       )}

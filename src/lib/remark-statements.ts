@@ -1,11 +1,18 @@
 /**
  * Numbers statement blocks (Definition, Theorem, ...) and resolves Ref links to them.
  *
- * Statements are numbered "section.n", where section counts the `##` headings on the page and n
- * counts statements of every kind within that section, so a page reads Definition 4.1, Lemma 4.2,
- * Theorem 4.3. A statement with an `id` can be referenced from anywhere on the page with
- * `:ref{#...}`, which renders as a link labelled e.g. "Definition 4.1".
+ * A guide is a folder of pages listed in its meta.json. Each page is a chapter numbered by its place
+ * in that list (an `index` page doesn't count), and statements are numbered "chapter.n" across the
+ * page, so the third page reads Definition 3.1, Lemma 3.2, Theorem 3.3. Exercises are counted on
+ * their own as Exercise 1, 2, 3, ... A statement with an `id` can be referenced from any page of the
+ * guide with `:ref{#...}`, which renders as a link labelled e.g. "Definition 3.1".
+ *
+ * A page outside such a folder is numbered "section.n" instead, where section counts its `##`
+ * headings, and its refs can only point within the page.
  */
+
+import { existsSync, readFileSync } from "node:fs";
+import { basename, dirname, join, relative } from "node:path";
 
 export const STATEMENT_KINDS = [
   "Definition",
@@ -27,6 +34,9 @@ type Node = {
   attributes?: Attribute[];
   children?: Node[];
 };
+
+/** where a statement lives and what it is called, e.g. "Definition 3.1" on /maths/numbers/addition */
+type Target = { label: string; href: string };
 
 const kinds = new Set<string>(STATEMENT_KINDS);
 
@@ -51,30 +61,105 @@ function walk(node: Node, visit: (node: Node) => void) {
   for (const child of node.children ?? []) walk(child, visit);
 }
 
+/** the site path of a content file, e.g. content/maths/numbers/index.mdx -> /maths/numbers */
+function pagePath(file: string) {
+  const path = relative(join(process.cwd(), "content"), file).replace(
+    /\.mdx?$/,
+    "",
+  );
+  return "/" + path.replace(/(^|\/)index$/, "");
+}
+
+// directive lines that open a statement, e.g. ":::definition[Integers]{#integers}"
+const OPENING = /^:{3,}([a-z]+)(?:\[[^\]]*\])?(?:\{([^}]*)\})?\s*$/;
+
+/**
+ * The guide a page belongs to: its chapter number, and the label and link of every statement on
+ * every page of the guide. Other pages are read straight from disk, since each page is compiled on
+ * its own.
+ */
+function readGuide(file: string) {
+  const dir = dirname(file);
+  const metaFile = join(dir, "meta.json");
+  if (!existsSync(metaFile)) return undefined;
+  const pages = (
+    JSON.parse(readFileSync(metaFile, "utf8")) as { pages?: string[] }
+  ).pages;
+  if (!pages) return undefined;
+
+  const chapters = pages.filter((page) => page !== "index");
+  // a folder's index page is usually left out of meta.json, but its links still need resolving
+  if (!pages.includes("index")) pages.unshift("index");
+  const slug = basename(file).replace(/\.mdx?$/, "");
+  const targets = new Map<string, Target>();
+
+  for (const page of pages) {
+    const path = join(dir, `${page}.mdx`);
+    if (!existsSync(path)) continue;
+    const chapter = chapters.indexOf(page) + 1;
+    let statements = 0;
+    let exercises = 0;
+    for (const line of readFileSync(path, "utf8").split("\n")) {
+      const match = OPENING.exec(line);
+      const kind =
+        match && STATEMENT_KINDS.find((k) => k.toLowerCase() === match[1]);
+      if (!kind) continue;
+      const number =
+        kind === "Exercise"
+          ? String(++exercises)
+          : `${chapter}.${++statements}`;
+      const id = /#([\w-]+)/.exec(match[2] ?? "")?.[1];
+      if (!id) continue;
+      if (targets.has(id))
+        throw new Error(`Duplicate statement id "${id}" in ${dir}`);
+      targets.set(id, {
+        label: `${kind} ${number}`,
+        href: `${pagePath(path)}#${id}`,
+      });
+    }
+  }
+  return { chapter: chapters.indexOf(slug) + 1, targets };
+}
+
 export function remarkStatements() {
   return (tree: Node, file: { path?: string }) => {
-    const labels = new Map<string, string>();
-    let section = 0;
-    let count = 0;
+    const guide = file.path ? readGuide(file.path) : undefined;
+    const local = new Map<string, Target>();
+    let section = guide?.chapter ?? 0;
+    let statements = 0;
+    let exercises = 0;
 
     walk(tree, (node) => {
-      if (node.type === "heading" && node.depth === 2) {
+      if (!guide && node.type === "heading" && node.depth === 2) {
         section++;
-        count = 0;
+        statements = 0;
         return;
       }
       if (!isJsx(node) || !node.name || !kinds.has(node.name)) return;
 
-      count++;
-      const number = section > 0 ? `${section}.${count}` : String(count);
+      let number: string;
+      if (guide && node.name === "Exercise") number = String(++exercises);
+      else
+        number =
+          section > 0 ? `${section}.${++statements}` : String(++statements);
       setAttribute(node, "number", number);
 
       const id = getAttribute(node, "id");
       if (!id) return;
-      if (labels.has(id))
+      const label = `${node.name} ${number}`;
+      if (local.has(id))
         throw new Error(`Duplicate statement id "${id}" in ${file.path}`);
-      labels.set(id, `${node.name} ${number}`);
+      local.set(id, { label, href: `#${id}` });
+      // the guide's numbers come from a quick scan of each file, so make sure it agrees with the page
+      const scanned = guide?.targets.get(id);
+      if (guide && scanned?.label !== label)
+        throw new Error(
+          `Statement "${id}" is ${label} on the page but ${scanned?.label ?? "missing"} in the guide scan, in ${file.path}`,
+        );
     });
+
+    // a statement on this page links by its anchor alone; one on another page by its full path
+    const find = (id: string) => local.get(id) ?? guide?.targets.get(id);
 
     // second pass, so a Ref can point forwards as well as backwards
     walk(tree, (node) => {
@@ -83,28 +168,29 @@ export function remarkStatements() {
         const ids = (getAttribute(node, "refs") ?? "")
           .split(",")
           .filter(Boolean);
-        const quizLabels = Object.fromEntries(
+        const targets = Object.fromEntries(
           ids.map((id) => {
-            const label = labels.get(id);
-            if (!label)
+            const target = find(id);
+            if (!target)
               throw new Error(
-                `Quiz ${getAttribute(node, "src")} links to :ref{#${id}}, which has no matching statement in ${file.path}`,
+                `Quiz ${getAttribute(node, "src")} links to :ref{#${id}}, which has no matching statement for ${file.path}`,
               );
-            return [id, label];
+            return [id, target];
           }),
         );
         node.attributes = node.attributes?.filter((a) => a.name !== "refs");
-        setAttribute(node, "labels", JSON.stringify(quizLabels));
+        setAttribute(node, "targets", JSON.stringify(targets));
         return;
       }
       if (!isJsx(node) || node.name !== "Ref") return;
       const id = getAttribute(node, "id");
-      const label = id && labels.get(id);
-      if (!label)
+      const target = id ? find(id) : undefined;
+      if (!target)
         throw new Error(
-          `:ref{#${id}} has no matching statement in ${file.path}`,
+          `:ref{#${id}} has no matching statement for ${file.path}`,
         );
-      setAttribute(node, "label", label);
+      setAttribute(node, "label", target.label);
+      setAttribute(node, "href", target.href);
     });
   };
 }
