@@ -1,6 +1,6 @@
 {
-  "title": "Chapter review: Numbers",
-  "description": "Questions on the ideas in this chapter, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
+  "title": "Review: Numbers",
+  "description": "Questions on the ideas in this guide, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
   "questions": [
     {
       "id": "zero-kind",
@@ -47,7 +47,7 @@
     {
       "id": "addition-assumed",
       "stars": 3,
-      "topic": "Rules for addition",
+      "topic": "Addition",
       "question": "Which of these facts about adding integers is taken as a basic rule, rather than proved?",
       "options": [
         "$$-(-a) = a$$",
@@ -56,12 +56,12 @@
         "The sum of two negative integers is negative"
       ],
       "answer": 1,
-      "explanation": "Commutativity and associativity are assumed, together with the facts about $$0$$ and opposites and that a sum of positive integers is positive. The other three options are all worked out from these in [Rules for addition](#rules-for-addition)."
+      "explanation": "Commutativity and associativity are assumed, together with the facts about $$0$$ and opposites and that a sum of positive integers is positive. The other three options are all worked out from these on the Addition page (:ref{#addition-rules})."
     },
     {
       "id": "subtraction-meaning",
       "stars": 1,
-      "topic": "Rules for addition",
+      "topic": "Addition",
       "question": "By definition, what does $$a - b$$ mean?",
       "options": [
         "$$a + (-b)$$",
@@ -75,7 +75,7 @@
     {
       "id": "subtraction-order",
       "stars": 2,
-      "topic": "Rules for addition",
+      "topic": "Addition",
       "question": "Is $$a - b = b - a$$ for all integers $$a$$ and $$b$$?",
       "options": [
         "Yes, because subtraction is a kind of addition and addition is commutative",
@@ -89,8 +89,8 @@
     {
       "id": "double-opposite",
       "stars": 2,
-      "topic": "Rules for addition",
-      "question": "Which fact does the chapter use to explain why $$-(-a) = a$$?",
+      "topic": "Addition",
+      "question": "Which fact does the guide use to explain why $$-(-a) = a$$?",
       "options": [
         "Two minus signs always cancel, which is taken as given",
         "Since $$-a + a = 0$$, and an opposite is the only number that adds to give $$0$$, $$a$$ must be the opposite of $$-a$$",
@@ -103,7 +103,7 @@
     {
       "id": "opposite-of-sum",
       "stars": 2,
-      "topic": "Rules for addition",
+      "topic": "Addition",
       "question": "Why is $$-(a + b) = -a - b$$?",
       "options": [
         "It is the definition of the opposite of a sum",
@@ -117,7 +117,7 @@
     {
       "id": "negative-sum",
       "stars": 2,
-      "topic": "Rules for addition",
+      "topic": "Addition",
       "question": "How is it shown that the sum of two negative integers is negative?",
       "options": [
         "It is assumed as a basic fact",
@@ -131,7 +131,7 @@
     {
       "id": "mixed-sum",
       "stars": 1,
-      "topic": "Rules for addition",
+      "topic": "Addition",
       "question": "What can be said about the sum of a positive integer and a negative integer?",
       "options": [
         "It is always negative",
@@ -145,8 +145,8 @@
     {
       "id": "zero-times",
       "stars": 3,
-      "topic": "Rules for multiplication",
-      "question": "The chapter shows that $$0 \\cdot a = 0$$ does not need to be assumed. Which argument does it use?",
+      "topic": "Multiplication",
+      "question": "The guide shows that $$0 \\cdot a = 0$$ does not need to be assumed. Which argument does it use?",
       "options": [
         "$$0$$ copies of $$a$$ is nothing",
         "$$0 \\cdot a + a = (0 + 1)a = a$$, then subtract $$a$$ from both sides",
@@ -154,12 +154,12 @@
         "$$0 \\cdot a = a \\cdot 0$$ by commutativity"
       ],
       "answer": 1,
-      "explanation": "Distributivity together with $$1 \\cdot a = a$$ gives $$0 \\cdot a + a = a$$, and subtracting $$a$$ leaves $$0 \\cdot a = 0$$. The third option needs $$(-a)a = -(a^2)$$, which the chapter proves using $$0 \\cdot a = 0$$, so it goes round in a circle. The fourth just swaps the order."
+      "explanation": "Distributivity together with $$1 \\cdot a = a$$ gives $$0 \\cdot a + a = a$$, and subtracting $$a$$ leaves $$0 \\cdot a = 0$$. The third option needs $$(-a)a = -(a^2)$$, which the guide proves using $$0 \\cdot a = 0$$, so it goes round in a circle. The fourth just swaps the order."
     },
     {
       "id": "minus-one",
       "stars": 3,
-      "topic": "Rules for multiplication",
+      "topic": "Multiplication",
       "question": "Why is $$(-1)a = -a$$?",
       "options": [
         "Because $$(-1)a + a = (-1 + 1)a = 0 \\cdot a = 0$$, and only $$-a$$ adds to $$a$$ to give $$0$$",
@@ -173,7 +173,7 @@
     {
       "id": "two-minus-signs",
       "stars": 2,
-      "topic": "Rules for multiplication",
+      "topic": "Multiplication",
       "question": "Why is $$(-a)(-b) = ab$$?",
       "options": [
         "It is one of the basic rules of multiplication",
@@ -187,7 +187,7 @@
     {
       "id": "count-minus-signs",
       "stars": 1,
-      "topic": "Rules for multiplication",
+      "topic": "Multiplication",
       "question": "A product has five negative factors and two positive factors, none of them $$0$$. What is its sign?",
       "options": [
         "Positive",
@@ -201,7 +201,7 @@
     {
       "id": "distributivity-forms",
       "stars": 3,
-      "topic": "Rules for multiplication",
+      "topic": "Multiplication",
       "question": "Distributivity has two forms, $$a(b + c) = ab + ac$$ and $$(b + c)a = ba + ca$$. Why does only one need to be assumed?",
       "options": [
         "Because commutativity of multiplication turns one into the other",
@@ -215,7 +215,7 @@
     {
       "id": "power-definition",
       "stars": 1,
-      "topic": "Rules for multiplication",
+      "topic": "Multiplication",
       "question": "For an integer $$a$$ and a positive integer $$n$$, what is $$a^n$$?",
       "options": [
         "$$a$$ multiplied by $$n$$",
@@ -229,7 +229,7 @@
     {
       "id": "power-rules",
       "stars": 2,
-      "topic": "Rules for multiplication",
+      "topic": "Multiplication",
       "question": "Which of these is **not** a rule for powers? (Here $$m$$ and $$n$$ are positive integers.)",
       "options": [
         "$$a^m a^n = a^{m+n}$$",
@@ -243,7 +243,7 @@
     {
       "id": "negative-base",
       "stars": 1,
-      "topic": "Rules for multiplication",
+      "topic": "Multiplication",
       "question": "If $$a$$ is a negative integer, when is $$a^n$$ positive?",
       "options": [
         "Always",
@@ -257,7 +257,7 @@
     {
       "id": "square-of-sum",
       "stars": 1,
-      "topic": "Rules for multiplication",
+      "topic": "Algebraic identities",
       "question": "Why is $$(a + b)^2$$ not usually equal to $$a^2 + b^2$$?",
       "options": [
         "Because squaring only works for single numbers",
@@ -271,7 +271,7 @@
     {
       "id": "no-sum-of-squares",
       "stars": 2,
-      "topic": "Rules for multiplication",
+      "topic": "Algebraic identities",
       "question": "Which of these has **no** factorising formula like the others?",
       "options": [
         "$$a^2 - b^2$$",
@@ -285,7 +285,7 @@
     {
       "id": "sum-of-cubes",
       "stars": 2,
-      "topic": "Rules for multiplication",
+      "topic": "Algebraic identities",
       "question": "Which factorisation is correct?",
       "options": [
         "$$a^3 + b^3 = (a + b)(a^2 + ab + b^2)$$",
@@ -299,7 +299,7 @@
     {
       "id": "cube-of-difference",
       "stars": 3,
-      "topic": "Rules for multiplication",
+      "topic": "Algebraic identities",
       "question": "How can $$(a - b)^3$$ be found from the formula for $$(a + b)^3$$ without new work?",
       "options": [
         "Replace $$a$$ by $$-a$$, which changes every sign",
@@ -313,7 +313,7 @@
     {
       "id": "odd-definition",
       "stars": 2,
-      "topic": "Even and odd integers; divisibility",
+      "topic": "Divisibility",
       "question": "Which is the definition of an odd integer?",
       "options": [
         "An integer that can be written as $$2n + 1$$ for some positive integer $$n$$",
@@ -327,7 +327,7 @@
     {
       "id": "zero-even",
       "stars": 1,
-      "topic": "Even and odd integers; divisibility",
+      "topic": "Divisibility",
       "question": "Is $$0$$ even?",
       "options": [
         "Yes, because $$0 = 2 \\cdot 0$$",
@@ -341,7 +341,7 @@
     {
       "id": "odd-plus-odd",
       "stars": 1,
-      "topic": "Even and odd integers; divisibility",
+      "topic": "Divisibility",
       "question": "Why is the sum of two odd integers always even?",
       "options": [
         "Because odd plus odd is a rule of arithmetic",
@@ -355,7 +355,7 @@
     {
       "id": "odd-product",
       "stars": 2,
-      "topic": "Even and odd integers; divisibility",
+      "topic": "Divisibility",
       "question": "When is a product of several integers odd?",
       "options": [
         "When at least one factor is odd",
@@ -369,8 +369,8 @@
     {
       "id": "even-square-converse",
       "stars": 3,
-      "topic": "Even and odd integers; divisibility",
-      "question": "How does the chapter prove that if $$a^2$$ is even, then $$a$$ is even?",
+      "topic": "Divisibility",
+      "question": "How does the guide prove that if $$a^2$$ is even, then $$a$$ is even?",
       "options": [
         "Write $$a^2 = 2k$$ and take square roots",
         "It is the same statement as “the square of an even integer is even”",
@@ -383,7 +383,7 @@
     {
       "id": "divides-definition",
       "stars": 1,
-      "topic": "Even and odd integers; divisibility",
+      "topic": "Divisibility",
       "question": "What does $$d \\mid n$$ mean?",
       "options": [
         "$$n = dk$$ for some integer $$k$$",
@@ -397,7 +397,7 @@
     {
       "id": "zero-divisible",
       "stars": 2,
-      "topic": "Even and odd integers; divisibility",
+      "topic": "Divisibility",
       "question": "Which statement is true?",
       "options": [
         "$$0$$ divides every integer",
@@ -411,7 +411,7 @@
     {
       "id": "multiples-lemma",
       "stars": 2,
-      "topic": "Even and odd integers; divisibility",
+      "topic": "Divisibility",
       "question": "Suppose $$d \\mid m$$ and $$d \\mid n$$. Which of these does **not** follow?",
       "options": [
         "$$d \\mid m + n$$",
@@ -425,7 +425,7 @@
     {
       "id": "congruence-definition",
       "stars": 1,
-      "topic": "Even and odd integers; divisibility",
+      "topic": "Congruence",
       "question": "What does $$a \\equiv b \\pmod{d}$$ mean?",
       "options": [
         "$$a = b + d$$",
@@ -439,7 +439,7 @@
     {
       "id": "congruent-to-zero",
       "stars": 1,
-      "topic": "Even and odd integers; divisibility",
+      "topic": "Congruence",
       "question": "Which statement says the same as $$n \\equiv 0 \\pmod{d}$$?",
       "options": [
         "$$n = 0$$",
@@ -453,7 +453,7 @@
     {
       "id": "transitivity-proof",
       "stars": 3,
-      "topic": "Even and odd integers; divisibility",
+      "topic": "Congruence",
       "question": "In proving “if $$a \\equiv b$$ and $$b \\equiv c$$, then $$a \\equiv c$$”, what is the key step?",
       "options": [
         "$$(a - b) + (b - c) = a - c$$, a sum of two multiples of $$d$$",
@@ -467,7 +467,7 @@
     {
       "id": "product-congruence",
       "stars": 4,
-      "topic": "Even and odd integers; divisibility",
+      "topic": "Congruence",
       "question": "To prove that $$a \\equiv b$$ and $$x \\equiv y$$ give $$ax \\equiv by \\pmod{d}$$, which rewriting of $$ax - by$$ does the proof use?",
       "options": [
         "$$ax - by = (a - b)(x - y)$$",
@@ -481,7 +481,7 @@
     {
       "id": "powers-induction",
       "stars": 3,
-      "topic": "Even and odd integers; divisibility",
+      "topic": "Congruence",
       "question": "How is it proved that $$a \\equiv b \\pmod{d}$$ gives $$a^n \\equiv b^n \\pmod{d}$$ for every positive integer $$n$$?",
       "options": [
         "By checking $$n = 1, 2, 3$$ and noticing the pattern",
@@ -495,7 +495,7 @@
     {
       "id": "congruence-cancel",
       "stars": 3,
-      "topic": "Even and odd integers; divisibility",
+      "topic": "Congruence",
       "question": "Which of these is **false** in general, for a positive integer $$d$$ and integers $$a$$, $$b$$, $$c$$?",
       "options": [
         "If $$a \\equiv b$$, then $$a + c \\equiv b + c \\pmod{d}$$",
@@ -509,7 +509,7 @@
     {
       "id": "contrapositive",
       "stars": 4,
-      "topic": "Reasoning",
+      "topic": "How proofs work",
       "question": "Which statement says exactly the same as “if $$3 \\mid a^2$$, then $$3 \\mid a$$”?",
       "options": [
         "If $$3 \\mid a$$, then $$3 \\mid a^2$$",
@@ -523,7 +523,7 @@
     {
       "id": "squares-mod-three",
       "stars": 4,
-      "topic": "Even and odd integers; divisibility",
+      "topic": "Congruence",
       "question": "Why can a square never be congruent to $$2$$ modulo $$3$$?",
       "options": [
         "Because every integer is $$\\equiv 0$$, $$1$$ or $$2$$, and their squares are $$\\equiv 0$$, $$1$$ and $$4 \\equiv 1$$",
@@ -594,7 +594,7 @@
       "id": "lowest-form-proof",
       "stars": 3,
       "topic": "Rational numbers",
-      "question": "How does the chapter prove that every positive rational number has a lowest form?",
+      "question": "How does the guide prove that every positive rational number has a lowest form?",
       "options": [
         "Keep cancelling factors of $$2$$ until the numerator is odd",
         "Cancel the greatest common divisor $$d$$; if anything bigger than $$1$$ still divided both, $$d$$ would not have been the greatest",
@@ -636,7 +636,7 @@
       "id": "rules-carry-over",
       "stars": 3,
       "topic": "Rational numbers",
-      "question": "Why do all the rules from [Rules for addition](#rules-for-addition), such as $$-(a + b) = -a - b$$, hold for rational numbers without new proofs?",
+      "question": "Why do all the rules for adding integers, such as $$-(a + b) = -a - b$$, hold for rational numbers without new proofs?",
       "options": [
         "Because every rational number is an integer",
         "Because they were proved using only commutativity, associativity, $$a + 0 = a$$ and $$a + (-a) = 0$$, which hold for rational numbers too",
@@ -663,7 +663,7 @@
     {
       "id": "irrational-definition",
       "stars": 1,
-      "topic": "Rational numbers",
+      "topic": "Irrational numbers",
       "question": "What does it mean for a number to be irrational?",
       "options": [
         "Its decimal goes on forever",
@@ -677,7 +677,7 @@
     {
       "id": "sqrt-two-contradiction",
       "stars": 3,
-      "topic": "Rational numbers",
+      "topic": "Irrational numbers",
       "question": "The proof that no rational number squares to $$2$$ is a proof by contradiction. Which fact does it contradict?",
       "options": [
         "That $$m^2 = 2n^2$$",
@@ -691,7 +691,7 @@
     {
       "id": "sqrt-two-ingredients",
       "stars": 4,
-      "topic": "Rational numbers",
+      "topic": "Irrational numbers",
       "question": "Which of these is **not** used in the proof that no rational number squares to $$2$$?",
       "options": [
         "Every positive rational number has a lowest form",
@@ -705,7 +705,7 @@
     {
       "id": "sqrt-three",
       "stars": 3,
-      "topic": "Rational numbers",
+      "topic": "Irrational numbers",
       "question": "To prove that no rational number squares to $$3$$, what replaces the rule “if $$a^2$$ is even then $$a$$ is even”?",
       "options": [
         "If $$3 \\mid a^2$$, then $$3 \\mid a$$",
@@ -719,7 +719,7 @@
     {
       "id": "factorial-zero",
       "stars": 2,
-      "topic": "Rational numbers",
+      "topic": "Factorials and binomial coefficients",
       "question": "Why is $$0!$$ defined to be $$1$$?",
       "options": [
         "Because $$0! = 0$$ would make every factorial $$0$$",
@@ -733,7 +733,7 @@
     {
       "id": "binomial-meaning",
       "stars": 1,
-      "topic": "Rational numbers",
+      "topic": "Factorials and binomial coefficients",
       "question": "What does $$\\binom{m}{n}$$ count?",
       "options": [
         "The ways to arrange $$m$$ things in a row",
@@ -747,7 +747,7 @@
     {
       "id": "binomial-symmetry",
       "stars": 2,
-      "topic": "Rational numbers",
+      "topic": "Factorials and binomial coefficients",
       "question": "Why is $$\\binom{m}{n} = \\binom{m}{m - n}$$?",
       "options": [
         "Choosing the $$n$$ things to take is the same as choosing the $$m - n$$ things to leave behind",
@@ -761,7 +761,7 @@
     {
       "id": "pascal",
       "stars": 3,
-      "topic": "Rational numbers",
+      "topic": "Factorials and binomial coefficients",
       "question": "Which identity is Pascal's rule?",
       "options": [
         "$$\\binom{m}{n} + \\binom{m}{n + 1} = \\binom{m}{n + 2}$$",
@@ -775,7 +775,7 @@
     {
       "id": "inverse-definition",
       "stars": 1,
-      "topic": "Multiplicative inverses",
+      "topic": "Inverses and division",
       "question": "What is a multiplicative inverse of a rational number $$a$$?",
       "options": [
         "A number $$b$$ with $$a + b = 0$$",
@@ -789,7 +789,7 @@
     {
       "id": "zero-no-inverse",
       "stars": 2,
-      "topic": "Multiplicative inverses",
+      "topic": "Inverses and division",
       "question": "Why does $$0$$ have no multiplicative inverse?",
       "options": [
         "Because $$0$$ is not a fraction",
@@ -803,7 +803,7 @@
     {
       "id": "inverse-unique",
       "stars": 3,
-      "topic": "Multiplicative inverses",
+      "topic": "Inverses and division",
       "question": "How is it shown that $$ab = 1$$ forces $$b = a^{-1}$$?",
       "options": [
         "Multiply both sides by $$a^{-1}$$ and regroup: $$a^{-1}(ab) = (a^{-1}a)b = b$$",
@@ -817,7 +817,7 @@
     {
       "id": "zero-product",
       "stars": 2,
-      "topic": "Multiplicative inverses",
+      "topic": "Inverses and division",
       "question": "Why must $$a = 0$$ or $$b = 0$$ when $$ab = 0$$?",
       "options": [
         "Because $$0$$ has no inverse",
@@ -831,7 +831,7 @@
     {
       "id": "quotient-definition",
       "stars": 1,
-      "topic": "Multiplicative inverses",
+      "topic": "Inverses and division",
       "question": "For rational numbers with $$b \\neq 0$$, how is $$\\frac{a}{b}$$ defined?",
       "options": [
         "$$a b^{-1}$$",
@@ -845,7 +845,7 @@
     {
       "id": "divide-by-fraction",
       "stars": 2,
-      "topic": "Multiplicative inverses",
+      "topic": "Inverses and division",
       "question": "Why does dividing by a fraction amount to multiplying by its flip?",
       "options": [
         "It is a shortcut with no reason behind it",
@@ -859,8 +859,8 @@
     {
       "id": "cross-multiplying-twice",
       "stars": 4,
-      "topic": "Multiplicative inverses",
-      "question": "Cross-multiplying appears twice in the chapter. What is the difference between the two?",
+      "topic": "Inverses and division",
+      "question": "Cross-multiplying appears twice in the guide. What is the difference between the two?",
       "options": [
         "There is none; it is stated twice for emphasis",
         "The first is for positive fractions only",
@@ -873,7 +873,7 @@
     {
       "id": "cancel-equation",
       "stars": 2,
-      "topic": "Multiplicative inverses",
+      "topic": "Inverses and division",
       "question": "When can $$ab = ac$$ be cancelled to $$b = c$$?",
       "options": [
         "Always",
@@ -887,7 +887,7 @@
     {
       "id": "hidden-condition",
       "stars": 1,
-      "topic": "Multiplicative inverses",
+      "topic": "Inverses and division",
       "question": "What is assumed about $$x$$ whenever $$\\frac{1}{x - 2}$$ appears?",
       "options": [
         "$$x \\neq 2$$",
@@ -901,7 +901,7 @@
     {
       "id": "sum-of-powers",
       "stars": 3,
-      "topic": "Multiplicative inverses",
+      "topic": "Inverses and division",
       "question": "How is $$\\frac{x^n - 1}{x - 1} = x^{n-1} + \\cdots + x + 1$$ proved, for $$x \\neq 1$$?",
       "options": [
         "By checking $$n = 1, 2, 3$$",
@@ -915,7 +915,7 @@
     {
       "id": "exactly-when",
       "stars": 2,
-      "topic": "Reasoning",
+      "topic": "How proofs work",
       "question": "To prove “$$P$$ exactly when $$Q$$”, what has to be shown?",
       "options": [
         "That $$P$$ is true",
@@ -929,7 +929,7 @@
     {
       "id": "contradiction",
       "stars": 2,
-      "topic": "Reasoning",
+      "topic": "How proofs work",
       "question": "What does a proof by contradiction do?",
       "options": [
         "Assumes the statement is false and shows this leads to something impossible",
@@ -943,7 +943,7 @@
     {
       "id": "examples-not-proof",
       "stars": 3,
-      "topic": "Reasoning",
+      "topic": "How proofs work",
       "question": "A rule has been checked for a thousand pairs of integers and always works. What does this establish?",
       "options": [
         "That it is true for all integers",
@@ -952,7 +952,245 @@
         "That it is probably an axiom"
       ],
       "answer": 2,
-      "explanation": "Checking cases can find a mistake but never covers every integer. That is why the chapter proves each rule from a few basic ones."
+      "explanation": "Checking cases can find a mistake but never covers every integer. That is why the guide proves each rule from a few basic ones."
+    },
+    {
+      "id": "counterexample",
+      "stars": 1,
+      "topic": "How proofs work",
+      "question": "How many counterexamples are needed to show that a statement about every integer is false?",
+      "options": [
+        "One",
+        "At least two",
+        "As many as there are integers",
+        "None; such statements can't be disproved"
+      ],
+      "answer": 0,
+      "explanation": "A single case where the statement fails is enough (:ref{#counterexample}). For example, $$a = b = 1$$ shows that $$(a + b)^2 = a^2 + b^2$$ is not true for every $$a$$ and $$b$$."
+    },
+    {
+      "id": "induction-steps",
+      "stars": 2,
+      "topic": "How proofs work",
+      "question": "A proof by induction that something holds for every positive integer $$n$$ must show which two things?",
+      "options": [
+        "It holds for $$n = 1$$ and for $$n = 2$$",
+        "It holds for $$n = 1$$, and whenever it holds for $$n = k$$ it holds for $$n = k + 1$$",
+        "It holds for a large $$n$$, and whenever it holds for $$n = k + 1$$ it holds for $$n = k$$",
+        "It holds whenever it holds for $$n = k + 1$$"
+      ],
+      "answer": 1,
+      "explanation": "Like a row of dominoes: the first one falls, and each one knocks over the next (:ref{#induction}). Without the first case nothing gets started."
+    },
+    {
+      "id": "order-definition",
+      "stars": 2,
+      "topic": "Addition",
+      "question": "How is $$a < b$$ defined for integers?",
+      "options": [
+        "$$a$$ is closer to $$0$$ than $$b$$",
+        "$$b - a$$ is positive",
+        "$$a - b$$ is positive",
+        "$$a$$ has fewer digits than $$b$$"
+      ],
+      "answer": 1,
+      "explanation": "On the number line, $$b - a$$ is the walk from $$a$$ to $$b$$, and it is positive when that walk goes right (:ref{#order}). So $$-10 < -7$$, because $$-7 - (-10) = 3$$."
+    },
+    {
+      "id": "inequality-negative",
+      "stars": 2,
+      "topic": "Multiplication",
+      "question": "If $$a < b$$ and $$c$$ is negative, what can be said about $$ac$$ and $$bc$$?",
+      "options": [
+        "$$ac < bc$$",
+        "$$ac > bc$$",
+        "$$ac = bc$$",
+        "Nothing; it depends on the numbers"
+      ],
+      "answer": 1,
+      "explanation": "Multiplying by a negative number reverses an inequality (:ref{#order-multiply}), because $$ac - bc = (b - a)(-c)$$ is a product of two positive integers. For example $$2 < 5$$ but $$-2 > -5$$."
+    },
+    {
+      "id": "zero-power",
+      "stars": 3,
+      "topic": "Multiplication",
+      "question": "Why is $$a^0$$ defined to be $$1$$ (for $$a \\neq 0$$)?",
+      "options": [
+        "Because multiplying no copies of $$a$$ leaves $$0$$",
+        "So that $$a^m a^n = a^{m+n}$$ still works when an exponent is $$0$$",
+        "Because every number to any power is at least $$1$$",
+        "It is an arbitrary convention with no reason"
+      ],
+      "answer": 1,
+      "explanation": "$$a^m a^0$$ should equal $$a^{m+0} = a^m$$, and the only number that does that is $$a^0 = 1$$ (:ref{#power})."
+    },
+    {
+      "id": "remainder-negative",
+      "stars": 2,
+      "topic": "Divisibility",
+      "question": "What is the remainder when $$-17$$ is divided by $$5$$?",
+      "options": [
+        "$$-2$$",
+        "$$2$$",
+        "$$3$$",
+        "$$-3$$"
+      ],
+      "answer": 2,
+      "explanation": "The remainder must satisfy $$0 \\le r < 5$$ (:ref{#division-remainder}), and $$-17 = 5 \\cdot (-4) + 3$$. Writing $$-17 = 5 \\cdot (-3) - 2$$ doesn't count, because $$-2$$ is not between $$0$$ and $$4$$."
+    },
+    {
+      "id": "remainder-unique",
+      "stars": 3,
+      "topic": "Divisibility",
+      "question": "Why can't an integer have two different remainders when divided by $$d$$?",
+      "options": [
+        "Because division always gives one answer",
+        "Two remainders would differ by a multiple of $$d$$, but they are both between $$0$$ and $$d - 1$$, so they are less than $$d$$ apart",
+        "Because the remainder is defined to be the smallest one",
+        "It can; the remainder depends on how the division is done"
+      ],
+      "answer": 1,
+      "explanation": "If $$dq + r = dq' + r'$$ then $$r' - r = d(q - q')$$ is a multiple of $$d$$, and the only multiple of $$d$$ strictly between $$-d$$ and $$d$$ is $$0$$ (:ref{#division-remainder})."
+    },
+    {
+      "id": "gcd-meaning",
+      "stars": 1,
+      "topic": "Divisibility",
+      "question": "What is the greatest common divisor of $$36$$ and $$60$$, and what does it mean?",
+      "options": [
+        "$$6$$: the largest number dividing both",
+        "$$12$$: the largest number dividing both",
+        "$$180$$: the smallest number both divide",
+        "$$2$$: the smallest number dividing both, other than $$1$$"
+      ],
+      "answer": 1,
+      "explanation": "The common divisors of $$36$$ and $$60$$ are $$1, 2, 3, 4, 6, 12$$, and the greatest is $$12$$ (:ref{#gcd}). The third option describes a different idea, the least common multiple."
+    },
+    {
+      "id": "same-remainder",
+      "stars": 1,
+      "topic": "Congruence",
+      "question": "Which statement says the same as $$a \\equiv b \\pmod{d}$$?",
+      "options": [
+        "$$a$$ and $$b$$ leave the same remainder when divided by $$d$$",
+        "$$a$$ and $$b$$ are both divisible by $$d$$",
+        "$$a \\div d = b \\div d$$",
+        "$$a$$ and $$b$$ differ by exactly $$d$$"
+      ],
+      "answer": 0,
+      "explanation": "Congruent numbers are the ones with the same remainder (:ref{#same-remainder}). They can differ by any multiple of $$d$$, not just $$d$$ itself: $$2 \\equiv 12 \\pmod{5}$$."
+    },
+    {
+      "id": "digit-sum-reason",
+      "stars": 3,
+      "topic": "Congruence",
+      "question": "Why is every number congruent to the sum of its digits modulo $$9$$?",
+      "options": [
+        "Because $$9$$ is the largest digit",
+        "Because $$10 \\equiv 1 \\pmod{9}$$, so every power of $$10$$ can be swapped for $$1$$",
+        "Because $$9$$ is odd",
+        "It is only true for numbers below $$100$$"
+      ],
+      "answer": 1,
+      "explanation": "A number is its digits times powers of $$10$$, and each power of $$10$$ is congruent to $$1^k = 1$$ (:ref{#digit-sum-test}). The same works modulo $$3$$, since $$3 \\mid 9$$."
+    },
+    {
+      "id": "exponent-not-reduced",
+      "stars": 4,
+      "topic": "Congruence",
+      "question": "Which of these is **not** a valid step, working modulo $$3$$?",
+      "options": [
+        "Replacing $$7$$ by $$1$$ in $$7 \\cdot 5$$",
+        "Replacing $$7$$ by $$1$$ in $$7^{10}$$",
+        "Replacing the exponent $$5$$ by $$2$$ in $$2^5$$",
+        "Replacing $$7$$ by $$-2$$ in $$7 + 5$$"
+      ],
+      "answer": 2,
+      "explanation": "Numbers being added, multiplied or raised to a power can be swapped for congruent ones, but exponents can't: $$2^5 = 32 \\equiv 2$$, while $$2^2 = 4 \\equiv 1 \\pmod{3}$$, even though $$5 \\equiv 2 \\pmod{3}$$."
+    },
+    {
+      "id": "compare-fractions",
+      "stars": 1,
+      "topic": "Rational numbers",
+      "question": "For positive denominators, how can you tell whether $$\\frac{m}{n} < \\frac{r}{s}$$?",
+      "options": [
+        "Check whether $$m < r$$",
+        "Check whether $$n > s$$",
+        "Check whether $$ms < rn$$",
+        "Check whether $$m + s < r + n$$"
+      ],
+      "answer": 2,
+      "explanation": "The difference $$\\frac{r}{s} - \\frac{m}{n} = \\frac{rn - ms}{ns}$$ has a positive denominator, so it is positive exactly when $$ms < rn$$ (:ref{#compare-fractions})."
+    },
+    {
+      "id": "positive-rational",
+      "stars": 2,
+      "topic": "Rational numbers",
+      "question": "Which of these is a positive rational number?",
+      "options": [
+        "$$\\frac{-3}{4}$$",
+        "$$\\frac{5}{-2}$$",
+        "$$\\frac{-3}{-4}$$",
+        "$$-\\frac{3}{4}$$"
+      ],
+      "answer": 2,
+      "explanation": "$$\\frac{-3}{-4} = \\frac{3}{4}$$, since two minus signs cancel, and that has a positive top and bottom (:ref{#positive-rational})."
+    },
+    {
+      "id": "repeating-decimal",
+      "stars": 3,
+      "topic": "Rational numbers",
+      "question": "Which of these numbers is rational?",
+      "options": [
+        "A number whose decimal goes on forever without repeating",
+        "$$0.272727\\ldots$$, with $$27$$ repeating forever",
+        "A number whose square is $$2$$",
+        "None of these"
+      ],
+      "answer": 1,
+      "explanation": "A repeating decimal can be turned back into a fraction: $$0.2727\\ldots = \\frac{27}{99} = \\frac{3}{11}$$. The rational numbers are exactly the decimals that stop or repeat."
+    },
+    {
+      "id": "negative-power",
+      "stars": 1,
+      "topic": "Inverses and division",
+      "question": "What is $$2^{-3}$$?",
+      "options": [
+        "$$-8$$",
+        "$$-6$$",
+        "$$\\frac{1}{8}$$",
+        "$$\\frac{1}{6}$$"
+      ],
+      "answer": 2,
+      "explanation": "A negative power means a power of the inverse: $$2^{-3} = \\left(\\frac{1}{2}\\right)^3 = \\frac{1}{8}$$ (:ref{#negative-powers}). It is never negative just because the exponent is."
+    },
+    {
+      "id": "choosing-divide",
+      "stars": 3,
+      "topic": "Factorials and binomial coefficients",
+      "question": "There are $$m(m - 1) \\cdots (m - n + 1)$$ ways to pick $$n$$ things from $$m$$ one at a time, in order. Why is $$\\binom{m}{n}$$ that number divided by $$n!$$?",
+      "options": [
+        "Because each selection is counted once for every order its $$n$$ things could be picked in, which is $$n!$$ times",
+        "Because $$n!$$ is the number of things left over",
+        "Because the first $$n$$ factors cancel",
+        "To make the answer an integer"
+      ],
+      "answer": 0,
+      "explanation": "Picking $$a$$ then $$b$$ and picking $$b$$ then $$a$$ give the same selection. Every selection of $$n$$ things turns up $$n!$$ times among the ordered picks, so dividing by $$n!$$ counts each one once (:ref{#binomial})."
+    },
+    {
+      "id": "binomial-theorem",
+      "stars": 4,
+      "topic": "Factorials and binomial coefficients",
+      "question": "Why is the coefficient of $$a^{m-n} b^n$$ in $$(a + b)^m$$ equal to $$\\binom{m}{n}$$?",
+      "options": [
+        "Because of the difference of squares",
+        "Because each such term comes from choosing which $$n$$ of the $$m$$ brackets supply a $$b$$",
+        "Because the coefficients always add up to $$m$$",
+        "It is only true for $$m \\le 3$$"
+      ],
+      "answer": 1,
+      "explanation": "Multiplying out $$m$$ brackets picks $$a$$ or $$b$$ from each one. The terms with $$n$$ factors of $$b$$ correspond to the $$\\binom{m}{n}$$ ways of choosing which brackets give $$b$$ (:ref{#binomial-theorem}). That is why $$(a + b)^3$$ has the coefficients $$1, 3, 3, 1$$."
     }
   ]
 }

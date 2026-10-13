@@ -1,0 +1,279 @@
+---
+title: Addition
+description: The rules for adding integers, and everything that follows from them.
+---
+
+Adding integers is something everyone can do. The aim of this page is to see that **all** of it
+follows from five simple rules. Once those are agreed, facts like $$-(-a) = a$$ or "two negatives
+add to a negative" no longer need to be memorised: they can be worked out, and they will carry over
+unchanged to fractions later on.
+
+## The rules we assume
+
+:::remark[Rules for addition]{#addition-rules}
+
+For any integers $$a$$, $$b$$ and $$c$$:
+
+1. **Order doesn't matter:** $$a + b = b + a$$.
+2. **Grouping doesn't matter:** $$(a + b) + c = a + (b + c)$$.
+3. **Adding zero:** $$a + 0 = a$$.
+4. **Adding an opposite:** $$a + (-a) = 0$$.
+5. **Positive sums:** if $$a$$ and $$b$$ are positive, so is $$a + b$$.
+
+These are taken as given. Everything else on this page is proved from them.
+
+:::
+
+The first two have names. Rule 1 is called **commutativity** and rule 2 **associativity**. Rules 3
+and 4 are the facts about zero and opposites from the [Integers](./integers.mdx) page.
+
+On the number line, commutativity says that two walks taking different routes finish in the same
+place. For example, $$6 + (-9) = -3$$ and $$(-9) + 6 = -3$$:
+
+::number-line{from=-4 to=7 points="0, -3" jumps="0>6, 6>-3"}
+
+::number-line{from=-10 to=1 points="0, -3" jumps="0>-9, -9>-3"}
+
+Associativity says that when adding three numbers, it doesn't matter which pair is added first. For
+example, with $$4$$, $$-6$$ and $$10$$:
+
+```math
+\begin{aligned}
+(4 + (-6)) + 10 &= -2 + 10 = 8 \\
+4 + ((-6) + 10) &= 4 + 4 = 8
+\end{aligned}
+```
+
+Since the grouping never changes the result, the brackets are usually left out and we simply write
+$$4 + (-6) + 10$$. Using both rules over and over, you can add any list of integers **in any order
+and in any grouping**. This is handy for spotting easy pairs:
+
+```math
+17 + (-8) + 3 + 8 = (17 + 3) + ((-8) + 8) = 20 + 0 = 20
+```
+
+Because order doesn't matter, rules 3 and 4 also hold the other way round: $$0 + a = a$$ and
+$$-a + a = 0$$.
+
+## Subtraction
+
+Rather than writing $$a + (-b)$$ every time, we write it more briefly.
+
+:::definition[Subtraction]{#subtraction}
+
+For integers $$a$$ and $$b$$, $$a - b$$ means $$a + (-b)$$.
+
+:::
+
+So subtraction is not a new operation, just adding an opposite. That means the rules for addition
+apply to subtraction too, as long as each minus sign stays attached to the number after it:
+
+```math
+a - b + c = a + c - b
+```
+
+For example, $$9 - 12 + 5 = 9 + 5 - 12 = 14 - 12 = 2$$.
+
+## Opposites
+
+The first result says that the opposite of a number is the **only** number that adds to it to give
+$$0$$. It is used constantly, because it gives a simple way to recognise an opposite: just check
+that the two add to $$0$$.
+
+:::proposition[Opposites are unique]{#opposite-unique}
+
+For integers $$a$$ and $$b$$, if $$a + b = 0$$, then $$b = -a$$ and $$a = -b$$.
+
+:::
+
+:::proof
+
+We want $$b$$ on its own, so we add $$-a$$ to both sides of $$a + b = 0$$. The left side becomes
+
+```math
+-a + (a + b) = (-a + a) + b = 0 + b = b
+```
+
+using associativity, then rule 4, then rule 3. The right side becomes $$-a + 0 = -a$$. So
+$$b = -a$$. Adding $$-b$$ to both sides instead shows in the same way that $$a = -b$$.
+
+:::
+
+:::corollary[Double opposites]{#double-opposite}
+
+For every integer $$a$$, $$-(-a) = a$$.
+
+:::
+
+:::proof
+
+Since $$-a + a = 0$$, :ref{#opposite-unique} with $$-a$$ and $$a$$ in place of $$a$$ and $$b$$ says
+that $$a$$ is the opposite of $$-a$$.
+
+:::
+
+Stacking up more minus signs just keeps flipping between $$a$$ and $$-a$$. An even number of minus
+signs gives back $$a$$, and an odd number gives $$-a$$:
+
+```math
+-(-(-(-6))) = 6, \qquad -(-(-6)) = -6
+```
+
+:::proposition[The opposite of a sum]{#opposite-sum}
+
+For integers $$a$$ and $$b$$,
+
+```math
+-(a + b) = -a - b
+```
+
+:::
+
+:::proof
+
+By :ref{#opposite-unique}, it is enough to show that $$-a - b$$ adds to $$a + b$$ to give $$0$$.
+Because order and grouping don't matter, we can pair each number with its opposite:
+
+```math
+(a + b) + (-a - b) = (a + (-a)) + (b + (-b)) = 0 + 0 = 0
+```
+
+:::
+
+Take care when the parts are already negative, because the minus signs combine:
+
+```math
+\begin{aligned}
+-(2 + 9) &= -2 - 9 = -11 \\
+-(-6 + 1) &= -(-6) - 1 = 6 - 1 = 5 \\
+-(8 - 13) &= -8 - (-13) = -8 + 13 = 5
+\end{aligned}
+```
+
+The last line is a special case worth remembering: $$-(a - b) = b - a$$. Swapping the two numbers in
+a subtraction gives the opposite answer.
+
+## Signs of sums
+
+Rule 5 says that two positive integers add to a positive integer. The matching fact for negative
+integers doesn't need to be assumed.
+
+:::proposition[Sums of negative integers]{#negative-sum}
+
+If $$a$$ and $$b$$ are negative integers, then $$a + b$$ is negative.
+
+:::
+
+:::proof
+
+A negative integer is the opposite of a positive one, so we can write $$a = -m$$ and $$b = -n$$ with
+$$m$$ and $$n$$ positive. By :ref{#opposite-sum},
+
+```math
+a + b = -m - n = -(m + n)
+```
+
+By rule 5, $$m + n$$ is positive, so its opposite $$a + b$$ is negative.
+
+:::
+
+For example, $$-5 + (-11) = -(5 + 11) = -16$$. When the signs are mixed, the result can go either
+way: $$-5 + 11 = 6$$ but $$5 + (-11) = -6$$.
+
+## Solving equations
+
+The rules let us move numbers from one side of an equation to the other.
+
+:::proposition[Rearranging]{#rearranging}
+
+For integers $$a$$, $$b$$ and $$c$$, if $$a + b = c$$, then $$a = c - b$$ and $$b = c - a$$.
+
+:::
+
+:::proof
+
+Add $$-b$$ to both sides of $$a + b = c$$. The left side becomes $$a + b + (-b) = a + 0 = a$$, and
+the right side becomes $$c + (-b) = c - b$$. The second part is the same with $$-a$$ in place of
+$$-b$$.
+
+:::
+
+In short, a number added on one side can be **subtracted from the other side**. This is how simple
+equations with an unknown are solved:
+
+- $$x + 8 = 3$$: subtract $$8$$ from both sides, so $$x = 3 - 8 = -5$$.
+- $$6 - y = 10$$: add $$y$$ to both sides to get $$6 = 10 + y$$, then subtract $$10$$ from both
+  sides, so $$y = -4$$.
+- $$-3 - z = -1$$: add $$z$$ to both sides to get $$-3 = -1 + z$$, then add $$1$$ to both sides, so
+  $$z = -2$$.
+
+Checking is easy: put the answer back in. For the last one, $$-3 - (-2) = -3 + 2 = -1$$.
+
+## Order and inequalities
+
+On the number line, $$b$$ is bigger than $$a$$ when it sits further right, that is, when getting
+from $$a$$ to $$b$$ means walking right. The walk from $$a$$ to $$b$$ is $$b - a$$ steps, which
+turns the picture into a definition.
+
+:::definition[Order]{#order}
+
+For integers $$a$$ and $$b$$, $$a$$ is **less than** $$b$$, written $$a < b$$, if $$b - a$$ is
+positive. We also write $$b > a$$ ("$$b$$ is greater than $$a$$") for the same thing, and
+$$a \le b$$ when $$a < b$$ or $$a = b$$.
+
+:::
+
+For example, $$-10 < -7$$, because $$-7 - (-10) = 3$$ is positive. And $$a > 0$$ says $$a - 0 = a$$
+is positive, so "$$a > 0$$" and "$$a$$ is positive" mean the same thing.
+
+:::proposition[Rules for order]{#order-rules}
+
+For integers $$a$$, $$b$$ and $$c$$:
+
+1. Exactly one of $$a < b$$, $$a = b$$ and $$a > b$$ is true.
+2. If $$a < b$$ and $$b < c$$, then $$a < c$$.
+3. If $$a < b$$, then $$a + c < b + c$$.
+
+:::
+
+:::proof
+
+1. The integer $$b - a$$ is exactly one of positive, zero or negative. If it is positive, then
+   $$a < b$$. If it is zero, then $$a = b$$ by :ref{#rearranging}. If it is negative, then its
+   opposite $$-(b - a) = a - b$$ is positive, so $$b < a$$.
+2. We know $$b - a$$ and $$c - b$$ are positive, and want $$c - a$$ to be. The two known differences
+   add up to the one we want, because the $$b$$s cancel: $$(c - b) + (b - a) = c - a$$. A sum of two
+   positive integers is positive by rule 5.
+3. $$(b + c) - (a + c) = b + c - a - c = b - a$$, which is positive.
+
+:::
+
+Part 2 says that inequalities can be chained, so $$-3 < 0 < 5$$ means $$-3 < 5$$. Part 3 says that
+adding the same number to both sides keeps an inequality true, just as it does for an equation. The
+rules for multiplying an inequality need the rules for multiplication, and appear on the next page.
+
+## Common mistakes
+
+- **Detaching a minus sign from its number.** $$9 - 12 + 5$$ is $$9 + (-12) + 5 = 2$$, not
+  $$9 - (12 + 5) = -8$$. Brackets after a minus sign change every term inside.
+- **Taking the opposite of only part of a sum.** $$-(a + b)$$ is $$-a - b$$, not $$-a + b$$.
+- **Assuming subtraction can be swapped.** $$a - b$$ and $$b - a$$ are opposites, not equal (unless
+  $$a = b$$).
+
+## In short
+
+- Five rules are assumed: order and grouping don't matter, $$a + 0 = a$$, $$a + (-a) = 0$$, and
+  positive plus positive is positive.
+- Subtraction means adding the opposite: $$a - b = a + (-b)$$.
+- Only the opposite adds to give $$0$$; so $$-(-a) = a$$ and $$-(a + b) = -a - b$$.
+- A number added on one side of an equation can be subtracted from the other.
+- $$a < b$$ means $$b - a$$ is positive; inequalities can be chained, and survive adding the same
+  number to both sides.
+
+## Practise
+
+- :ref{#ex-rearrange-sum}: using order and grouping.
+- :ref{#ex-swap-subtraction}: a proof with opposites.
+- :ref{#ex-minus-signs}: opposites of sums.
+- :ref{#ex-solve-linear}: solving equations.
+- :ref{#ex-order-integers}: order.

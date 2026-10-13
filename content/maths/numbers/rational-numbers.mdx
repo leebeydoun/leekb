@@ -1,0 +1,504 @@
+---
+title: Rational numbers
+description: Fractions, when they are equal, and how to add and multiply them.
+---
+
+Integers are good for counting whole things, but not for sharing them. Splitting $$3$$ pizzas
+between $$4$$ people gives each person a piece of pizza that is not a whole number. Fractions fill
+this gap. This page defines them, decides when two fractions are the same number, and sets up
+adding, multiplying and comparing them. Dividing gets its own page next, because it needs one more
+idea.
+
+## Fractions
+
+:::definition[Rational numbers]{#rational}
+
+A **rational number** is a number written as a fraction of two integers,
+
+```math
+\frac{m}{n}, \qquad \text{also written } m/n,
+```
+
+where $$m$$ and $$n$$ are integers and $$n \neq 0$$. The top number $$m$$ is the **numerator** and
+the bottom number $$n$$ is the **denominator**.
+
+:::
+
+For example, $$\frac{3}{4}$$, $$\frac{-5}{2}$$ and $$\frac{7}{3}$$ are rational numbers. The
+fraction $$\frac{m}{n}$$ answers the question "what number, multiplied by $$n$$, gives $$m$$?" That
+is why the denominator can never be $$0$$: no number multiplied by $$0$$ gives, say, $$5$$, so
+$$\frac{5}{0}$$ has no meaning.
+
+Rational numbers have places on the number line between the integers. To find $$\frac{2}{3}$$, cut
+the stretch from $$0$$ to $$1$$ into $$3$$ equal pieces and count $$2$$ of them from $$0$$. To find
+$$\frac{3}{2}$$, cut each whole step into $$2$$ pieces and count $$3$$ of them:
+
+::number-line{from=0 to=2 divisions=6 points="1/2, 2/3, 3/2" labelled}
+
+As with the integers, a negative rational number sits on the other side of $$0$$, the same distance
+away:
+
+::number-line{from=-2 to=2 divisions=4 points="-3/2, -3/4, 3/4, 3/2" labelled}
+
+## When are two fractions equal?
+
+The same rational number can be written as a fraction in many ways. Cutting the stretch from $$0$$
+to $$1$$ into $$2$$ pieces and taking $$1$$ lands on the same point as cutting it into $$4$$ pieces
+and taking $$2$$, or into $$6$$ pieces and taking $$3$$:
+
+::number-line{from=0 to=1 divisions=4 points="1/2" labels="1/2: 1/2 = 2/4"}
+
+::number-line{from=0 to=1 divisions=6 points="1/2" labels="1/2: 1/2 = 3/6"}
+
+We need a test that decides when two fractions name the same number, without drawing pictures. If
+$$\frac{m}{n} = \frac{r}{s}$$, then multiplying both by $$ns$$ should give the same answer, and
+$$\frac{m}{n} \cdot ns = ms$$ while $$\frac{r}{s} \cdot ns = rn$$. We turn this into the rule that
+says what equality of fractions means.
+
+:::definition[Equal fractions]{#cross-multiplying}
+
+For integers $$m$$, $$n$$, $$r$$, $$s$$ with $$n \neq 0$$ and $$s \neq 0$$,
+
+```math
+\frac{m}{n} = \frac{r}{s} \qquad \text{exactly when} \qquad ms = rn
+```
+
+Checking this is called **cross-multiplying**, because each numerator is multiplied by the other
+fraction's denominator.
+
+:::
+
+For now this rule is simply what "equal" means for fractions. Once division is set up properly on
+the [Inverses and division](./inverses.mdx) page, :ref{#cross-multiplying-rational} shows that it is
+not a choice at all: no other rule would be consistent with multiplying.
+
+For example:
+
+- $$\frac{2}{3} = \frac{10}{15}$$, because $$2 \cdot 15 = 30$$ and $$10 \cdot 3 = 30$$.
+- $$\frac{6}{8} = \frac{9}{12}$$, because both $$6 \cdot 12$$ and $$9 \cdot 8$$ are $$72$$.
+- $$\frac{-3}{4} = \frac{6}{-8}$$, because $$(-3)(-8) = 24$$ and $$6 \cdot 4 = 24$$.
+- $$\frac{3}{5} \neq \frac{5}{8}$$, because $$3 \cdot 8 = 24$$ but $$5 \cdot 5 = 25$$.
+
+An integer $$m$$ is treated as the same thing as the fraction $$\frac{m}{1}$$, so
+$$4 = \frac{4}{1}$$ and $$-7 = \frac{-7}{1}$$. This way every integer is also a rational number.
+Cross-multiplying against an integer is often a quick way to solve for an unknown:
+$$\frac{x}{5} = 3$$ means $$\frac{x}{5} = \frac{3}{1}$$, so $$x \cdot 1 = 3 \cdot 5$$ and
+$$x = 15$$.
+
+## Cancelling and minus signs
+
+The first consequence of cross-multiplying is that a common factor of the numerator and denominator
+can be cancelled.
+
+:::proposition[Cancelling a common factor]{#fraction-cancel}
+
+Let $$a$$, $$m$$, $$n$$ be integers with $$a \neq 0$$ and $$n \neq 0$$. Then
+
+```math
+\frac{am}{an} = \frac{m}{n}
+```
+
+:::
+
+:::proof
+
+By :ref{#cross-multiplying}, the two fractions are equal exactly when
+
+```math
+(am)n = m(an)
+```
+
+So all we need to check is that these two products of integers are the same. Both are the product of
+the three integers $$a$$, $$m$$ and $$n$$, just written in a different order and grouping. Since the
+order and grouping of a product don't matter, they are equal. The condition $$a \neq 0$$ is needed
+so that $$an$$ is not $$0$$, which keeps the left-hand side a genuine fraction.
+
+:::
+
+For example, $$\frac{18}{24} = \frac{6 \cdot 3}{6 \cdot 4} = \frac{3}{4}$$. Read backwards, the same
+rule lets us multiply the top and bottom by the same number, which is how $$\frac{1}{2}$$ becomes
+$$\frac{2}{4}$$ and $$\frac{3}{6}$$.
+
+:::proposition[Minus signs in fractions]{#fraction-signs}
+
+For integers $$m$$ and $$n$$ with $$n \neq 0$$,
+
+```math
+\frac{-m}{n} = \frac{m}{-n} \qquad \text{and} \qquad \frac{-m}{-n} = \frac{m}{n}
+```
+
+:::
+
+:::proof
+
+Both are checked by cross-multiplying, using the rules for minus signs in products of integers.
+
+For the first, we need $$(-m)(-n) = mn$$, which is true because two minus signs in a product cancel.
+
+For the second, we need $$(-m)n = m(-n)$$. Both sides equal $$-(mn)$$, because a minus sign can be
+moved to either factor of a product.
+
+:::
+
+So a single minus sign can sit on the top, on the bottom, or in front of the whole fraction, and two
+minus signs cancel. We usually move it to the top or the front: $$\frac{5}{-2} = \frac{-5}{2}$$.
+
+## Positive and negative fractions
+
+With the minus sign rules in hand, every fraction can be written with a positive denominator, and
+then the sign of the numerator decides which side of $$0$$ it is on.
+
+:::definition[Positive and negative rational numbers]{#positive-rational}
+
+A rational number is **positive** if it can be written as $$\frac{m}{n}$$ with $$m$$ and $$n$$ both
+positive integers, and **negative** if it can be written as $$-\frac{m}{n}$$ with $$m$$ and $$n$$
+positive.
+
+:::
+
+So $$\frac{-3}{-4} = \frac{3}{4}$$ is positive and $$\frac{5}{-2} = -\frac{5}{2}$$ is negative.
+Every rational number is positive, negative or $$0$$.
+
+## Lowest form
+
+Cancelling makes a fraction smaller and simpler, and it is natural to keep going until nothing more
+can be cancelled.
+
+:::definition[Lowest form]{#lowest-form}
+
+A positive rational number is in **lowest form** when it is written as $$\frac{r}{s}$$ with $$r$$
+and $$s$$ positive integers whose only positive common divisor is $$1$$ (:ref{#gcd}).
+
+:::
+
+For example, $$\frac{36}{60}$$ has the common divisor $$12$$, and
+$$\frac{36}{60} = \frac{12 \cdot 3}{12 \cdot 5} = \frac{3}{5}$$, which is in lowest form since $$3$$
+and $$5$$ have no common divisor other than $$1$$.
+
+:::theorem[Every fraction has a lowest form]{#lowest-form-exists}
+
+Every positive rational number can be written as a fraction in lowest form.
+
+:::
+
+:::proof
+
+The plan is to cancel the biggest possible factor in one go, and then check that nothing more can be
+cancelled.
+
+Write the number as $$\frac{m}{n}$$ with $$m$$ and $$n$$ positive integers, and let $$d$$ be their
+greatest common divisor (:ref{#gcd}). Writing $$m = dr$$ and $$n = ds$$ with $$r$$ and $$s$$
+positive integers, :ref{#fraction-cancel} gives
+
+```math
+\frac{m}{n} = \frac{dr}{ds} = \frac{r}{s}
+```
+
+It remains to show that $$\frac{r}{s}$$ is in lowest form, meaning $$r$$ and $$s$$ have no common
+divisor bigger than $$1$$. We argue by contradiction (:ref{#contradiction}): we suppose they do, and
+show this leads to something impossible.
+
+So suppose $$e > 1$$ divides both $$r$$ and $$s$$, say $$r = ex$$ and $$s = ey$$. Substituting,
+
+```math
+m = dr = (de)x \qquad \text{and} \qquad n = ds = (de)y
+```
+
+so $$de$$ is a common divisor of $$m$$ and $$n$$. But $$e > 1$$ and $$d > 0$$, so $$de > d$$ by
+:ref{#order-multiply}. That contradicts our choice of $$d$$ as the greatest common divisor. So no
+such $$e$$ exists, and $$\frac{r}{s}$$ is in lowest form.
+
+:::
+
+:::remark[Not both even]{#not-both-even}
+
+A fraction in lowest form never has both its numerator and denominator even, since then $$2$$ would
+be a common divisor. So any positive rational number can be written as $$\frac{m}{n}$$ with at least
+one of $$m$$ and $$n$$ odd. This fact is the key to the proof on the
+[Irrational numbers](./irrational-numbers.mdx) page that no fraction squares to $$2$$.
+
+:::
+
+## Adding fractions
+
+Adding fractions with the same denominator is like adding amounts of the same unit: $$2$$ sevenths
+and $$3$$ sevenths make $$5$$ sevenths, so $$\frac{2}{7} + \frac{3}{7} = \frac{5}{7}$$. When the
+denominators are different, we first rewrite both fractions so they share one. Multiplying the top
+and bottom of each by the other's denominator does this:
+
+```math
+\frac{m}{n} = \frac{ms}{ns} \qquad \text{and} \qquad \frac{r}{s} = \frac{rn}{ns}
+```
+
+Now both are counted in pieces of size $$\frac{1}{ns}$$, and we can add the numerators.
+
+:::definition[Adding fractions]{#fraction-addition}
+
+For integers $$m$$, $$n$$, $$r$$, $$s$$ with $$n \neq 0$$ and $$s \neq 0$$,
+
+```math
+\frac{m}{n} + \frac{r}{n} = \frac{m + r}{n}
+\qquad \text{and} \qquad
+\frac{m}{n} + \frac{r}{s} = \frac{ms + rn}{ns}
+```
+
+:::
+
+For example,
+
+```math
+\frac{1}{4} + \frac{2}{3} = \frac{1 \cdot 3 + 2 \cdot 4}{4 \cdot 3} = \frac{3 + 8}{12}
+= \frac{11}{12}
+```
+
+and with a negative fraction,
+
+```math
+\frac{5}{6} + \frac{-3}{4} = \frac{5 \cdot 4 + (-3) \cdot 6}{24} = \frac{20 - 18}{24} = \frac{2}{24}
+= \frac{1}{12}
+```
+
+The product of the denominators always works as a common denominator, but a smaller one is often
+easier. Here $$12$$ would do: $$\frac{10}{12} - \frac{9}{12} = \frac{1}{12}$$.
+
+:::remark[The answer doesn't depend on how the fractions are written]
+
+The rule uses particular numerators and denominators, but the same rational number can be written in
+many ways. Fortunately, the answer comes out the same whichever way we write the fractions. For
+example $$\frac{1}{2} + \frac{1}{3} = \frac{5}{6}$$, and writing $$\frac{1}{2}$$ as $$\frac{2}{4}$$
+instead gives $$\frac{2}{4} + \frac{1}{3} = \frac{10}{12}$$, which is again $$\frac{5}{6}$$. This
+can be proved in general by cross-multiplying, and the same is true for multiplication below.
+
+:::
+
+Zero and opposites behave just as they did for integers. Any fraction with numerator $$0$$ equals
+$$0$$, since $$\frac{0}{n} = \frac{0}{1}$$ by cross-multiplying ($$0 \cdot 1 = 0 \cdot n$$). So
+adding $$0$$ changes nothing:
+
+```math
+\frac{m}{n} + 0 = \frac{m}{n} + \frac{0}{n} = \frac{m + 0}{n} = \frac{m}{n}
+```
+
+The opposite of $$\frac{m}{n}$$ is $$\frac{-m}{n}$$, because
+$$\frac{m}{n} + \frac{-m}{n} = \frac{m - m}{n} = \frac{0}{n} = 0$$. Putting this together with the
+minus sign rules in :ref{#fraction-signs} shows that
+
+```math
+-\frac{m}{n} = \frac{-m}{n} = \frac{m}{-n}
+```
+
+Addition of rational numbers is also commutative and associative, which we take as basic facts, as
+we did for integers. Every rule in [Addition](./addition.mdx) was proved from just these facts
+together with $$a + 0 = a$$ and $$a + (-a) = 0$$, so all of them hold for rational numbers as well.
+For instance, if $$a + b = 0$$ then $$b = -a$$, and $$-(a + b) = -a - b$$.
+
+:::proposition[Sums of positive fractions]{#positive-sum}
+
+The sum of two positive rational numbers is positive.
+
+:::
+
+:::proof
+
+Write the two numbers as $$\frac{m}{n}$$ and $$\frac{r}{s}$$ with $$m$$, $$n$$, $$r$$, $$s$$ all
+positive integers, which we can do because they are positive. By :ref{#fraction-addition}, their sum
+is
+
+```math
+\frac{ms + rn}{ns}
+```
+
+Products and sums of positive integers are positive, so $$ms + rn$$ and $$ns$$ are both positive
+integers. A fraction with positive numerator and denominator is positive by definition.
+
+:::
+
+## Multiplying fractions
+
+Taking $$\frac{2}{3}$$ of $$\frac{4}{5}$$ of something is easiest to see with a square. Cut it into
+$$5$$ columns and keep $$4$$ of them; that is $$\frac{4}{5}$$. Then cut it into $$3$$ rows and keep
+$$2$$ of them; that takes $$\frac{2}{3}$$ of what was kept. The square is now in $$3 \cdot 5 = 15$$
+equal pieces, and $$2 \cdot 4 = 8$$ of them are kept:
+
+:::area-model{caption="Two thirds of four fifths: 8 of the 15 pieces"}
+
+|     | 1/5  | 1/5  | 1/5  | 1/5  | 1/5 |
+| --- | ---- | ---- | ---- | ---- | --- |
+| 1/3 | 1/15 | 1/15 | 1/15 | 1/15 |     |
+| 1/3 | 1/15 | 1/15 | 1/15 | 1/15 |     |
+| 1/3 |      |      |      |      |     |
+
+:::
+
+So the answer is $$\frac{8}{15}$$. In general the numbers of pieces multiply, so we multiply the
+tops together and the bottoms together.
+
+:::definition[Multiplying fractions]{#fraction-multiplication}
+
+For integers $$m$$, $$n$$, $$r$$, $$s$$ with $$n \neq 0$$ and $$s \neq 0$$,
+
+```math
+\frac{m}{n} \cdot \frac{r}{s} = \frac{mr}{ns}
+```
+
+:::
+
+For example, $$\frac{2}{3} \cdot \frac{4}{5} = \frac{8}{15}$$, and
+$$\frac{-2}{3} \cdot \frac{9}{4} = \frac{-18}{12} = -\frac{3}{2}$$.
+
+It often pays to look for cancellations **before** multiplying out. Splitting each number into
+factors shows what cancels:
+
+```math
+\frac{6}{35} \cdot \frac{14}{9}
+= \frac{2 \cdot 3 \cdot 2 \cdot 7}{5 \cdot 7 \cdot 3 \cdot 3}
+= \frac{2 \cdot 2}{5 \cdot 3}
+= \frac{4}{15}
+```
+
+Multiplying out first would give $$\frac{84}{315}$$, which takes more work to simplify.
+
+Multiplication of rational numbers follows the same basic rules as for integers: it is commutative,
+associative and distributive over addition, and $$1 \cdot a = a$$ and $$0 \cdot a = 0$$. As with
+addition, every rule in [Multiplication](./multiplication.mdx) that was proved from these, including
+the [algebraic identities](./identities.mdx), holds for rational numbers too.
+
+:::proposition[Powers of fractions]{#fraction-powers}
+
+For integers $$m$$ and $$n$$ with $$n \neq 0$$, and any positive integer $$k$$,
+
+```math
+\left(\frac{m}{n}\right)^k = \frac{m^k}{n^k}
+```
+
+:::
+
+:::proof
+
+A power is a repeated product, and :ref{#fraction-multiplication} says that multiplying fractions
+multiplies the tops and the bottoms separately. So multiplying $$k$$ copies of $$\frac{m}{n}$$
+together gives a numerator of $$k$$ copies of $$m$$ multiplied together, and a denominator of $$k$$
+copies of $$n$$:
+
+```math
+\left(\frac{m}{n}\right)^k
+= \underbrace{\frac{m}{n} \cdot \frac{m}{n} \cdots \frac{m}{n}}_{k \text{ times}}
+= \frac{m \cdot m \cdots m}{n \cdot n \cdots n}
+= \frac{m^k}{n^k}
+```
+
+:::
+
+For example, $$\left(\frac{2}{3}\right)^3 = \frac{8}{27}$$ and
+$$\left(-\frac{1}{2}\right)^4 = \frac{1}{16}$$.
+
+:::example[Halving over time]
+
+The amount of a medicine in the body halves every $$6$$ hours. Starting from $$80$$ mg, after $$6$$
+hours there is $$\frac{1}{2} \cdot 80$$ mg left, after $$12$$ hours $$\frac{1}{2}$$ of that, which
+is $$\left(\frac{1}{2}\right)^2 \cdot 80$$ mg, and so on. After $$24$$ hours, which is $$4$$
+halvings,
+
+```math
+\left(\frac{1}{2}\right)^4 \cdot 80 = \frac{80}{16} = 5 \text{ mg}
+```
+
+and after $$30$$ hours there is $$\frac{80}{32} = \frac{5}{2}$$ mg.
+
+:::
+
+## Comparing fractions
+
+Order works for rational numbers exactly as it did for integers (:ref{#order}): $$a < b$$ means that
+$$b - a$$ is positive, which on the number line means $$b$$ sits to the right of $$a$$. To compare
+two fractions in practice, cross-multiply.
+
+:::proposition[Comparing fractions]{#compare-fractions}
+
+For integers $$m$$, $$r$$ and positive integers $$n$$, $$s$$,
+
+```math
+\frac{m}{n} < \frac{r}{s} \qquad \text{exactly when} \qquad ms < rn
+```
+
+:::
+
+:::proof
+
+By :ref{#fraction-addition}, the difference is
+
+```math
+\frac{r}{s} - \frac{m}{n} = \frac{rn - ms}{ns}
+```
+
+Its denominator $$ns$$ is positive, so the difference is positive exactly when its numerator
+$$rn - ms$$ is, that is, when $$ms < rn$$.
+
+:::
+
+For example, $$\frac{5}{8} < \frac{2}{3}$$, because $$5 \cdot 3 = 15 < 16 = 2 \cdot 8$$. The rules
+for order carry over too: inequalities can be chained, survive adding the same number to both sides,
+and reverse when both sides are multiplied by a negative number.
+
+Unlike the integers, the rational numbers have no "next" number: between any two of them there is
+always another, such as the one halfway between. So the fractions are packed densely along the
+number line. The next pages show they still leave gaps.
+
+## Decimals
+
+A decimal that stops is a rational number, since each decimal place is a number of tenths,
+hundredths and so on. A decimal with $$k$$ places is an integer divided by $$10^k$$:
+
+```math
+0.75 = \frac{75}{100} = \frac{3}{4}, \qquad 2.5 = \frac{25}{10} = \frac{5}{2},
+\qquad 0.03 = \frac{3}{100}
+```
+
+The reverse is not always true. A fraction in lowest form has a stopping decimal only when its
+denominator divides a power of $$10$$, so $$\frac{1}{3}$$ becomes $$0.333\ldots$$, which goes on
+forever (:ref{#ex-one-third-decimal} proves this). But the digits of such a fraction always end up
+**repeating**, because dividing by $$n$$ can only leave $$n$$ different remainders, so the long
+division eventually repeats itself.
+
+Going the other way, a repeating decimal can be turned back into a fraction by shifting it. For
+$$x = 0.272727\ldots$$, the block $$27$$ repeats every two places, so multiplying by $$100$$ shifts
+it along by one block:
+
+```math
+100x = 27.2727\ldots \qquad \text{so} \qquad 100x - x = 27
+```
+
+The endless tails cancel, leaving $$99x = 27$$, so by cross-multiplying $$x = \frac{27}{99}$$, which
+is $$\frac{3}{11}$$ in lowest form. This treats an endless decimal as a number, which the rational
+numbers alone don't quite justify; the idea is made precise when the real numbers are introduced. So
+the rational numbers are exactly the decimals that stop or repeat. A decimal that never settles into
+a repeating pattern, like the one for a square root of $$2$$, is not a fraction at all.
+
+## Common mistakes
+
+- **Adding tops and bottoms.** $$\frac{1}{2} + \frac{1}{3}$$ is $$\frac{5}{6}$$, not
+  $$\frac{2}{5}$$.
+- **Cancelling across a sum.** $$\frac{2 + 3}{2}$$ is not $$3$$: only a common **factor** of the
+  whole top and the whole bottom can be cancelled.
+- **Comparing by size of the numbers.** $$\frac{1}{3}$$ is smaller than $$\frac{1}{2}$$, even though
+  $$3$$ is bigger than $$2$$.
+
+## In short
+
+- A rational number is $$\frac{m}{n}$$ with $$m$$, $$n$$ integers and $$n \neq 0$$.
+- $$\frac{m}{n} = \frac{r}{s}$$ exactly when $$ms = rn$$; common factors cancel, and minus signs can
+  move between top, bottom and front.
+- Every positive rational number has a lowest form, with no common factor but $$1$$.
+- $$\frac{m}{n} + \frac{r}{s} = \frac{ms + rn}{ns}$$ and
+  $$\frac{m}{n} \cdot \frac{r}{s} = \frac{mr}{ns}$$; all the rules for integers carry over.
+- To compare fractions with positive denominators, cross-multiply.
+- Rational numbers are exactly the decimals that stop or repeat.
+
+## Practise
+
+- :ref{#ex-equal-fractions} and :ref{#ex-lowest-form-practice}: equality and lowest form.
+- :ref{#ex-consecutive-lowest-form}: a proof about lowest form.
+- :ref{#ex-add-fractions} and :ref{#ex-cancel-before-multiplying}: adding and multiplying.
+- :ref{#ex-fraction-powers} and :ref{#ex-bouncing-ball}: powers of fractions.
+- :ref{#ex-order-fractions} and :ref{#ex-rational-between}: comparing fractions.
+- :ref{#ex-one-third-decimal}: decimals.

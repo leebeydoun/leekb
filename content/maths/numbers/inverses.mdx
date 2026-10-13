@@ -1,0 +1,456 @@
+---
+title: Inverses and division
+description: Multiplicative inverses, dividing by rational numbers, and solving equations.
+---
+
+Every integer has an opposite, which undoes adding it: $$a + (-a) = 0$$. Fractions give us the same
+thing for multiplication. This is the one big way rational numbers improve on the integers. For
+example, no integer multiplied by $$2$$ gives $$1$$, but $$\frac{1}{2} \cdot 2 = 1$$.
+
+This page uses that idea to make division precise. It explains why every number except $$0$$ can be
+divided by, why dividing by a fraction means multiplying by its flip, and how to solve equations
+that need dividing. Along the way, the rule for equal fractions, which was a definition on the
+previous page, turns out to be something we can prove.
+
+## Inverses
+
+:::definition[Multiplicative inverse]{#inverse}
+
+Let $$a$$ be a rational number. A **multiplicative inverse** of $$a$$ is a rational number $$b$$
+with
+
+```math
+ab = ba = 1
+```
+
+:::
+
+:::proposition[Every non-zero fraction has an inverse]{#inverse-exists}
+
+Let $$m$$ and $$n$$ be non-zero integers. Then $$\frac{n}{m}$$ is an inverse of $$\frac{m}{n}$$.
+
+:::
+
+:::proof
+
+We just multiply and check that we get $$1$$. By :ref{#fraction-multiplication},
+
+```math
+\frac{m}{n} \cdot \frac{n}{m} = \frac{mn}{nm} = \frac{mn}{mn} = 1
+```
+
+The last step uses :ref{#fraction-cancel} to cancel $$mn$$, which is allowed because $$m$$ and $$n$$
+are both non-zero. The product the other way round is the same, since order doesn't matter.
+
+:::
+
+So every non-zero rational number has an inverse, and the next result shows it has only one. We
+write it $$a^{-1}$$ or $$\frac{1}{a}$$. To invert a fraction, flip it upside down. The inverse of
+$$\frac{3}{7}$$ is $$\frac{7}{3}$$, the inverse of $$5 = \frac{5}{1}$$ is $$\frac{1}{5}$$, and the
+inverse of $$-\frac{2}{9}$$ is $$-\frac{9}{2}$$.
+
+The condition $$m \neq 0$$ matters: $$0$$ has **no** inverse, because $$0 \cdot b = 0$$ for every
+$$b$$, so it is never $$1$$. That is the real reason we can't divide by zero.
+
+:::proposition[Inverses are unique]{#inverse-unique}
+
+Let $$a$$ and $$b$$ be rational numbers with $$a \neq 0$$. If $$ab = 1$$, then $$b = a^{-1}$$.
+
+:::
+
+:::proof
+
+This mirrors the fact that an opposite is the only way back to zero. We are told that $$ab = 1$$,
+and want to get $$b$$ on its own, so we multiply both sides on the left by $$a^{-1}$$:
+
+```math
+a^{-1}(ab) = a^{-1} \cdot 1 = a^{-1}
+```
+
+On the left, regrouping gives $$a^{-1}(ab) = (a^{-1}a)b = 1 \cdot b = b$$. So the two sides say
+$$b = a^{-1}$$.
+
+:::
+
+This gives a quick way to check that something is an inverse: just check that the product is $$1$$.
+
+## Negative powers
+
+Inverses let powers have negative exponents too. Since $$a^{-1}$$ undoes one factor of $$a$$, it
+makes sense for $$a^{-n}$$ to undo $$n$$ of them.
+
+:::definition[Negative powers]{#negative-powers}
+
+For a non-zero rational number $$a$$ and a positive integer $$n$$,
+
+```math
+a^{-n} = \left(a^{-1}\right)^n = \underbrace{a^{-1} \cdot a^{-1} \cdots a^{-1}}_{n \text{ times}}
+```
+
+:::
+
+For example, $$2^{-3} = \left(\frac{1}{2}\right)^3 = \frac{1}{8}$$, and
+$$\left(\frac{2}{3}\right)^{-2} = \left(\frac{3}{2}\right)^2 = \frac{9}{4}$$. With this choice, the
+rules for powers (:ref{#power-rules}) work for **every** whole-number exponent, positive, negative
+or zero. Each $$a^{-1}$$ cancels one $$a$$, since $$a^{-1}a = 1$$, so for example
+
+```math
+a^5 a^{-2} = (a \cdot a \cdot a \cdot a \cdot a)(a^{-1} \cdot a^{-1}) = a \cdot a \cdot a = a^3
+= a^{5 + (-2)}
+```
+
+and $$a^n a^{-n} = a^0 = 1$$, which is where the choice $$a^0 = 1$$ from the
+[Multiplication](./multiplication.mdx) page fits in.
+
+## Products equal to zero
+
+Inverses also give us the most useful fact about products that equal zero.
+
+:::theorem[Products equal to zero]{#zero-product}
+
+Let $$a$$ and $$b$$ be rational numbers. If $$ab = 0$$, then $$a = 0$$ or $$b = 0$$.
+
+:::
+
+:::proof
+
+Either $$a = 0$$, in which case we are done, or $$a \neq 0$$. In the second case we show that $$b$$
+must be $$0$$. Since $$a \neq 0$$, it has an inverse, and multiplying both sides of $$ab = 0$$ by it
+gives
+
+```math
+a^{-1}(ab) = a^{-1} \cdot 0 = 0
+```
+
+As in the previous proof, the left side is $$(a^{-1}a)b = b$$, so $$b = 0$$.
+
+:::
+
+This is how equations like $$(x - 3)(2x + 1) = 0$$ are solved. The product is zero, so one of the
+factors must be: either $$x - 3 = 0$$, giving $$x = 3$$, or $$2x + 1 = 0$$, giving
+$$x = -\frac{1}{2}$$.
+
+## Dividing by a rational number
+
+Dividing by $$b$$ should undo multiplying by $$b$$, and that is exactly what multiplying by
+$$b^{-1}$$ does.
+
+:::definition[Quotient]{#quotient}
+
+For rational numbers $$a$$ and $$b$$ with $$b \neq 0$$, the quotient $$a$$ divided by $$b$$ is
+
+```math
+\frac{a}{b} = a b^{-1}
+```
+
+:::
+
+This agrees with the fractions we already have: for integers $$m$$ and $$n$$,
+$$m n^{-1} = \frac{m}{1} \cdot \frac{1}{n} = \frac{m}{n}$$. It also explains the rule "to divide by
+a fraction, multiply by its flip". For example,
+
+```math
+\frac{2/3}{4/5} = \frac{2}{3} \cdot \frac{5}{4} = \frac{10}{12} = \frac{5}{6}
+```
+
+and a fraction with fractions inside can be simplified the same way:
+
+```math
+\frac{1 + \frac{1}{2}}{1 - \frac{1}{4}} = \frac{3/2}{3/4} = \frac{3}{2} \cdot \frac{4}{3} = 2
+```
+
+Earlier, cross-multiplying was simply the meaning of equality for fractions of integers. Now it can
+be proved, and for quotients of any rational numbers.
+
+:::theorem[Cross-multiplying]{#cross-multiplying-rational}
+
+Let $$a$$, $$b$$, $$c$$, $$d$$ be rational numbers with $$b \neq 0$$ and $$d \neq 0$$. Then
+
+```math
+\frac{a}{b} = \frac{c}{d} \qquad \text{exactly when} \qquad ad = bc
+```
+
+:::
+
+:::proof
+
+"Exactly when" means two things to prove: each statement leads to the other. Both directions work by
+multiplying through to clear the inverses.
+
+Suppose first that $$\frac{a}{b} = \frac{c}{d}$$, which by :ref{#quotient} says
+$$ab^{-1} = cd^{-1}$$. Multiplying both sides by $$bd$$, the $$b^{-1}$$ on the left meets the $$b$$,
+and the $$d^{-1}$$ on the right meets the $$d$$:
+
+```math
+ab^{-1} \cdot bd = a \cdot (b^{-1}b) \cdot d = ad,
+\qquad
+cd^{-1} \cdot bd = c \cdot (d^{-1}d) \cdot b = cb
+```
+
+using that the order and grouping of a product don't matter. So $$ad = bc$$.
+
+Now suppose $$ad = bc$$. This time we multiply both sides by $$b^{-1}d^{-1}$$ to remove the $$b$$
+and the $$d$$:
+
+```math
+ad \cdot b^{-1}d^{-1} = a b^{-1} \cdot (d d^{-1}) = ab^{-1},
+\qquad
+bc \cdot b^{-1}d^{-1} = (b b^{-1}) \cdot c d^{-1} = cd^{-1}
+```
+
+So $$ab^{-1} = cd^{-1}$$, which is $$\frac{a}{b} = \frac{c}{d}$$.
+
+:::
+
+## Solving equations
+
+Inverses mean that equations like $$3x = 8$$ now have an answer. Multiplying both sides by
+$$3^{-1} = \frac{1}{3}$$, which is what dividing both sides by $$3$$ means, gives
+$$x = \frac{8}{3}$$. Combined with the rules for rearranging (:ref{#rearranging}), this solves any
+equation in which $$x$$ appears only multiplied by numbers.
+
+:::example
+
+Solve $$3(x + 4) = 20$$. Expanding the bracket gives $$3x + 12 = 20$$. Subtracting $$12$$ from both
+sides gives $$3x = 8$$, and dividing by $$3$$ gives $$x = \frac{8}{3}$$.
+
+:::
+
+:::example
+
+Solve $$\frac{x}{3} + 1 = \frac{x}{2}$$. Fractions in an equation are easiest to clear first, by
+multiplying both sides by a common denominator. Multiplying by $$6$$ gives $$2x + 6 = 3x$$, and
+subtracting $$2x$$ from both sides gives $$x = 6$$. Check: $$\frac{6}{3} + 1 = 3$$ and
+$$\frac{6}{2} = 3$$.
+
+:::
+
+When the unknown appears in a denominator, cross-multiplying turns the equation into one without
+fractions.
+
+:::example
+
+Solve $$\frac{2x + 3}{x - 1} = 5$$. The left side only makes sense when $$x \neq 1$$.
+Cross-multiplying (with $$5 = \frac{5}{1}$$) gives $$2x + 3 = 5(x - 1) = 5x - 5$$. Rearranging,
+$$3 + 5 = 5x - 2x$$, so $$3x = 8$$ and $$x = \frac{8}{3}$$. Check: $$2x + 3 = \frac{25}{3}$$ and
+$$x - 1 = \frac{5}{3}$$, and $$\frac{25/3}{5/3} = 5$$.
+
+:::
+
+## Cancelling
+
+Inverses also let us cancel a common factor from both sides of an equation.
+
+:::proposition[Cancelling a non-zero factor]{#cancel-product}
+
+Let $$a$$, $$b$$, $$c$$ be rational numbers with $$a \neq 0$$. If $$ab = ac$$, then $$b = c$$. Also,
+if $$c \neq 0$$ too,
+
+```math
+\frac{ab}{ac} = \frac{b}{c}
+```
+
+:::
+
+:::proof
+
+For the first part, multiply both sides of $$ab = ac$$ by $$a^{-1}$$. The left becomes
+$$(a^{-1}a)b = b$$ and the right becomes $$(a^{-1}a)c = c$$, so $$b = c$$.
+
+For the second part, cross-multiply using :ref{#cross-multiplying-rational}. The two quotients are
+equal exactly when $$(ab)c = (ac)b$$, and both sides are the product of $$a$$, $$b$$ and $$c$$ in a
+different order, so they are equal.
+
+:::
+
+The condition $$a \neq 0$$ cannot be dropped: $$0 \cdot 2 = 0 \cdot 5$$, but $$2 \neq 5$$.
+
+As :ref{#no-cancel} showed, cancelling can fail in other settings too: for congruences it can fail
+even when the factor is not zero.
+
+## Adding quotients
+
+Quotients of rational numbers add in exactly the same way as fractions of integers.
+
+:::proposition[Adding quotients]{#adding-quotients}
+
+Let $$a$$, $$b$$, $$c$$, $$d$$ be rational numbers with $$b \neq 0$$ and $$d \neq 0$$. Then
+
+```math
+\frac{a}{b} + \frac{c}{b} = \frac{a + c}{b}
+\qquad \text{and} \qquad
+\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}
+```
+
+:::
+
+:::proof
+
+For the first formula, both quotients contain the factor $$b^{-1}$$, so distributivity lets us take
+it out:
+
+```math
+\frac{a}{b} + \frac{c}{b} = ab^{-1} + cb^{-1} = (a + c)b^{-1} = \frac{a + c}{b}
+```
+
+For the second, we first give the two quotients a common denominator.
+
+By :ref{#cancel-product}, multiplying the top and bottom of a quotient by the same non-zero number
+doesn't change it, so
+
+```math
+\frac{a}{b} = \frac{ad}{bd} \qquad \text{and} \qquad \frac{c}{d} = \frac{bc}{bd}
+```
+
+Now both have the denominator $$bd$$, and the first formula adds them to give
+$$\frac{ad + bc}{bd}$$.
+
+:::
+
+These rules work for expressions with letters in them too, as long as the denominators are not zero.
+
+:::remark[Hidden conditions]
+
+An expression like $$\frac{1}{x - 2}$$ only makes sense when $$x \neq 2$$. From here on, whenever a
+letter appears in a denominator, we assume without saying so that it takes only values that keep
+every denominator non-zero.
+
+:::
+
+:::example
+
+Show that $$\frac{1}{x} - \frac{1}{x + 1} = \frac{1}{x(x + 1)}$$. Using the formula for adding
+quotients,
+
+```math
+\frac{1}{x} - \frac{1}{x + 1} = \frac{1 \cdot (x + 1) - x \cdot 1}{x(x + 1)}
+= \frac{x + 1 - x}{x(x + 1)} = \frac{1}{x(x + 1)}
+```
+
+For instance, with $$x = 3$$ this says $$\frac{1}{3} - \frac{1}{4} = \frac{1}{12}$$.
+
+:::
+
+Cross-multiplying is often the quickest way to prove that two quotients are equal, because it turns
+the question into one about products, which can simply be expanded.
+
+:::proposition[Sum of powers]{#sum-of-powers}
+
+For a rational number $$x \neq 1$$ and a positive integer $$n$$,
+
+```math
+\frac{x^n - 1}{x - 1} = x^{n - 1} + x^{n - 2} + \cdots + x + 1
+```
+
+:::
+
+:::proof
+
+The right side is $$\frac{x^{n-1} + \cdots + x + 1}{1}$$, so by cross-multiplying it is enough to
+show that
+
+```math
+(x - 1)(x^{n - 1} + x^{n - 2} + \cdots + x + 1) = x^n - 1
+```
+
+Expanding the left side, multiplying the bracket by $$x$$ and by $$-1$$ in turn, gives two rows:
+
+```math
+\begin{array}{ccccccccccc}
+x^n & + & x^{n - 1} & + & \cdots & + & x^2 & + & x & & \\
+    & - & x^{n - 1} & - & \cdots & - & x^2 & - & x & - & 1
+\end{array}
+```
+
+Every power from $$x^{n-1}$$ down to $$x$$ appears once with a plus sign and once with a minus sign,
+so they all cancel. Only the first and last terms survive, leaving $$x^n - 1$$.
+
+:::
+
+For example, with $$n = 3$$ this says $$\frac{x^3 - 1}{x - 1} = x^2 + x + 1$$, and with $$x = 2$$ it
+says $$1 + 2 + 4 + 8 = \frac{2^4 - 1}{2 - 1} = 15$$.
+
+## Using quotients in problems
+
+Many formulas in science relate three quantities by a product, and quotients let us solve for any of
+them. For something moving at a steady speed $$s$$, the distance $$d$$ covered in time $$t$$ is
+
+```math
+d = st, \qquad \text{so} \qquad s = \frac{d}{t} \quad \text{and} \quad t = \frac{d}{s}
+```
+
+:::example[Speed]
+
+A cyclist rides $$18$$ km in $$\frac{3}{4}$$ of an hour. Their speed is
+
+```math
+s = \frac{18}{3/4} = 18 \cdot \frac{4}{3} = 24 \text{ km per hour}
+```
+
+:::
+
+:::example[A journey in two parts]
+
+A driver covers $$150$$ km in $$3$$ hours, partly on a motorway at $$70$$ km per hour and partly
+through towns at $$30$$ km per hour. How long were they in towns?
+
+Let $$x$$ be the time in towns, in hours. Then the time on the motorway is $$3 - x$$. The distances
+are $$30x$$ and $$70(3 - x)$$, and together they make $$150$$:
+
+```math
+30x + 70(3 - x) = 150
+```
+
+Expanding gives $$30x + 210 - 70x = 150$$, so $$210 - 150 = 40x$$, that is $$40x = 60$$ and
+$$x = \frac{60}{40} = \frac{3}{2}$$. The driver spent an hour and a half in towns. Check: $$45$$ km
+in towns plus $$70 \cdot \frac{3}{2} = 105$$ km on the motorway is $$150$$ km.
+
+:::
+
+:::example[Mixtures]
+
+A $$10$$ litre jug holds a drink that is $$20\%$$ juice. How much should be poured out and replaced
+with pure juice to make it $$50\%$$ juice?
+
+Let $$x$$ be the number of litres replaced. After pouring out $$x$$ litres, $$10 - x$$ litres are
+left, of which $$\frac{20}{100} = \frac{1}{5}$$ is juice. Adding $$x$$ litres of juice must give
+$$\frac{1}{2}$$ of $$10$$, which is $$5$$ litres of juice:
+
+```math
+\frac{1}{5}(10 - x) + x = 5
+```
+
+Expanding, $$2 - \frac{1}{5}x + x = 5$$, so $$\frac{4}{5}x = 3$$. Multiplying both sides by
+$$\frac{5}{4}$$, the inverse of $$\frac{4}{5}$$, gives $$x = \frac{15}{4}$$. So
+$$\frac{15}{4} = 3.75$$ litres should be replaced.
+
+:::
+
+## Common mistakes
+
+- **Dividing by something that might be zero.** Dividing both sides of $$x^2 = 5x$$ by $$x$$ loses
+  the solution $$x = 0$$. Factorise instead: $$x(x - 5) = 0$$.
+- **Inverting a sum term by term.** $$\frac{1}{a + b}$$ is not $$\frac{1}{a} + \frac{1}{b}$$: try
+  $$a = b = 1$$.
+- **Forgetting hidden conditions.** An answer that makes a denominator zero is not a solution.
+
+## In short
+
+- Every non-zero rational number $$a$$ has exactly one inverse $$a^{-1}$$, with $$aa^{-1} = 1$$; for
+  a fraction, flip it. $$0$$ has no inverse.
+- $$a^{-n} = (a^{-1})^n$$, and the rules for powers hold for every whole-number exponent.
+- If $$ab = 0$$, then $$a = 0$$ or $$b = 0$$.
+- Dividing by $$b$$ means multiplying by $$b^{-1}$$, so dividing by a fraction means multiplying by
+  its flip.
+- $$\frac{a}{b} = \frac{c}{d}$$ exactly when $$ad = bc$$, now proved for any rational numbers.
+- A non-zero common factor can be cancelled, and quotients add like fractions.
+
+## Practise
+
+- :ref{#ex-find-inverses}: finding inverses.
+- :ref{#ex-zero-product}: products equal to zero.
+- :ref{#ex-compound-fraction} and :ref{#ex-simplify-compound}: fractions within fractions.
+- :ref{#ex-clear-fractions} and :ref{#ex-solve-quotient-equation}: solving equations.
+- :ref{#ex-integer-quotient}: a quotient that must be an integer.
+- :ref{#ex-powers-of-three-sum}: the sum of powers.
+- :ref{#ex-bath-taps}: a word problem.

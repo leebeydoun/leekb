@@ -1,0 +1,306 @@
+---
+title: Multiplication
+description: The rules for multiplying integers, why minus times minus is plus, and powers.
+---
+
+Multiplication has its own short list of basic rules, plus one rule that ties it to addition. From
+these, everything else follows, including the sign rules that are usually just memorised. In
+particular, this page answers the question everybody asks at some point: why is a negative times a
+negative positive?
+
+A product can be written with a dot, $$4 \cdot 9 = 36$$, or, when letters are involved, just by
+writing them side by side: $$ab$$ means $$a \cdot b$$.
+
+## The rules we assume
+
+:::remark[Rules for multiplication]{#multiplication-rules}
+
+For any integers $$a$$, $$b$$ and $$c$$:
+
+1. **Order doesn't matter:** $$ab = ba$$.
+2. **Grouping doesn't matter:** $$(ab)c = a(bc)$$.
+3. **Multiplying by one:** $$1 \cdot a = a$$.
+4. **Distributivity:** $$a(b + c) = ab + ac$$.
+5. **Positive products:** if $$a$$ and $$b$$ are positive, so is $$ab$$.
+
+These are taken as given, together with the [rules for addition](./addition.mdx). Everything else on
+this page is proved from them.
+
+:::
+
+Rules 1 and 2 work just as they do for addition. For example, both groupings of
+$$2 \cdot 5 \cdot (-3)$$ give the same answer:
+
+```math
+\begin{aligned}
+(2 \cdot 5) \cdot (-3) &= 10 \cdot (-3) = -30 \\
+2 \cdot (5 \cdot (-3)) &= 2 \cdot (-15) = -30
+\end{aligned}
+```
+
+So a long product can be rearranged freely. A useful habit is to gather all the plain numbers at the
+front and all the letters at the back:
+
+```math
+(4x)(-3y) = 4 \cdot (-3) \cdot xy = -12xy,
+\qquad
+(2a)(5b)(7c) = 2 \cdot 5 \cdot 7 \cdot abc = 70abc
+```
+
+## Distributivity
+
+Rule 4 is the one that links multiplication and addition: multiplying a sum is the same as
+multiplying each part and then adding. A good way to picture it is as the area of a rectangle. A
+rectangle of height $$a$$ and width $$b + c$$ can be cut into two smaller rectangles, of areas
+$$ab$$ and $$ac$$:
+
+:::area-model{col-sizes="3 2"}
+
+|     | b   | c   |
+| --- | --- | --- |
+| a   | ab  | ac  |
+
+:::
+
+This is what makes mental arithmetic like $$6 \cdot 13$$ easy: split $$13$$ into $$10 + 3$$, so
+$$6 \cdot 13 = 6 \cdot 10 + 6 \cdot 3 = 60 + 18 = 78$$. It is also how brackets are expanded:
+
+```math
+\begin{aligned}
+5(2x - 3y) &= 10x - 15y \\
+-2(4a - b) &= -8a + 2b
+\end{aligned}
+```
+
+The rule also works with the sum on the left, $$(b + c)a = ba + ca$$. This doesn't need to be
+assumed separately, because the order of factors doesn't matter:
+$$(b + c)a = a(b + c) = ab + ac = ba + ca$$.
+
+## Multiplying by zero
+
+It may be surprising that $$0 \cdot a = 0$$ isn't on the list of rules. It doesn't need to be,
+because it follows from the others.
+
+:::proposition[Multiplying by zero]{#zero-times}
+
+For every integer $$a$$, $$0 \cdot a = 0$$.
+
+:::
+
+:::proof
+
+Since $$0 + 1 = 1$$, distributivity gives
+
+```math
+0 \cdot a + a = 0 \cdot a + 1 \cdot a = (0 + 1)a = 1 \cdot a = a
+```
+
+So $$0 \cdot a + a = a$$. Subtracting $$a$$ from both sides (:ref{#rearranging}) leaves
+$$0 \cdot a = a - a = 0$$.
+
+:::
+
+## Minus signs in products
+
+Distributivity also decides what minus signs do in a product. The trick each time is the same as on
+the previous page: to show that something is the opposite of $$x$$, check that it adds to $$x$$ to
+give $$0$$, and use :ref{#opposite-unique}.
+
+:::proposition[Multiplying by minus one]{#minus-one}
+
+For every integer $$a$$, $$(-1)a = -a$$.
+
+:::
+
+:::proof
+
+Adding $$a$$ and using distributivity,
+
+```math
+(-1)a + a = (-1)a + 1 \cdot a = (-1 + 1)a = 0 \cdot a = 0
+```
+
+by :ref{#zero-times}. So $$(-1)a$$ adds to $$a$$ to give $$0$$, which makes it the opposite of
+$$a$$.
+
+:::
+
+:::proposition[Moving a minus sign]{#minus-in-product}
+
+For integers $$a$$ and $$b$$,
+
+```math
+-(ab) = (-a)b = a(-b)
+```
+
+:::
+
+:::proof
+
+For the middle one, $$ab + (-a)b = (a + (-a))b = 0 \cdot b = 0$$, so $$(-a)b$$ is the opposite of
+$$ab$$. The last one is the same with the order of the factors swapped.
+
+:::
+
+For example, $$-(4x) = (-4)x = 4(-x)$$. Now for the famous one. Before proving it, here is why it
+**has** to be true. Watch what happens to multiples of $$-2$$ as the first factor goes down by one
+each time:
+
+| Product | $$3 \cdot (-2)$$ | $$2 \cdot (-2)$$ | $$1 \cdot (-2)$$ | $$0 \cdot (-2)$$ | $$(-1) \cdot (-2)$$ |
+| ------- | ---------------- | ---------------- | ---------------- | ---------------- | ------------------- |
+| Value   | $$-6$$           | $$-4$$           | $$-2$$           | $$0$$            | ?                   |
+
+Each step down adds $$2$$ to the answer, because one fewer copy of $$-2$$ is being added. For the
+pattern to continue, $$(-1)(-2)$$ must be $$0 + 2 = 2$$. Any other answer would break
+distributivity.
+
+:::theorem[Two minus signs]{#two-minus}
+
+For integers $$a$$ and $$b$$, $$(-a)(-b) = ab$$.
+
+:::
+
+:::proof
+
+Move the minus signs out one at a time with :ref{#minus-in-product}, then use
+:ref{#double-opposite}:
+
+```math
+(-a)(-b) = -(a(-b)) = -(-(ab)) = ab
+```
+
+:::
+
+In particular $$(-1)(-1) = 1$$, and $$(-6)(-7) = 42$$. Together with rule 5, this gives the familiar
+sign rules:
+
+| Signs of the factors | Sign of the product | Example                |
+| -------------------- | ------------------- | ---------------------- |
+| positive × positive  | positive            | $$3 \cdot 8 = 24$$     |
+| negative × negative  | positive            | $$(-3)(-8) = 24$$      |
+| positive × negative  | negative            | $$3 \cdot (-8) = -24$$ |
+| negative × positive  | negative            | $$(-3) \cdot 8 = -24$$ |
+
+With more factors, count the minus signs: each pair cancels, so an even number of them gives a
+positive product, and an odd number gives a negative one. For example,
+$$(-2) \cdot 3 \cdot (-5) \cdot (-1)$$ has three minus signs, so it is
+$$-(2 \cdot 3 \cdot 5 \cdot 1) = -30$$.
+
+Minus signs are one of the most common sources of mistakes, so it pays to go slowly:
+
+```math
+-3(5a - 7b) = -15a + 21b
+```
+
+Here $$-3$$ times $$-7b$$ is $$+21b$$, not $$-21b$$.
+
+## Multiplying inequalities
+
+Adding the same number to both sides keeps an inequality true (:ref{#order-rules}). Multiplying is
+more delicate: it depends on the sign of the number.
+
+:::proposition[Multiplying an inequality]{#order-multiply}
+
+Let $$a$$, $$b$$ and $$c$$ be integers with $$a < b$$.
+
+1. If $$c > 0$$, then $$ac < bc$$.
+2. If $$c < 0$$, then $$ac > bc$$.
+
+:::
+
+:::proof
+
+By :ref{#order}, $$b - a$$ is positive.
+
+1. $$bc - ac = (b - a)c$$, a product of two positive integers, which is positive by rule 5. So
+   $$ac < bc$$.
+2. Now $$-c$$ is positive, and $$ac - bc = (b - a)(-c)$$, which is positive for the same reason. So
+   $$bc < ac$$.
+
+:::
+
+So multiplying both sides by a negative number **reverses** an inequality: $$2 < 5$$, but
+$$-2 > -5$$. On the number line, multiplying by $$-1$$ swaps every number with its mirror image,
+which turns left into right.
+
+## Powers
+
+Multiplying a number by itself several times is written with a small raised number.
+
+:::definition[Powers]{#power}
+
+For an integer $$a$$ and a positive integer $$n$$, the **$$n$$-th power** of $$a$$ is
+
+```math
+a^n = \underbrace{a \cdot a \cdots a}_{n \text{ times}}
+```
+
+read "$$a$$ to the power $$n$$". The number $$a$$ is the **base** and $$n$$ is the **exponent**. A
+single copy is just the number itself, $$a^1 = a$$. We also set $$a^0 = 1$$ when $$a \neq 0$$, for a
+reason explained below.
+
+:::
+
+So $$a^2 = aa$$ and $$a^3 = aaa$$. For example, $$2^5 = 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = 32$$.
+
+:::proposition[Rules for powers]{#power-rules}
+
+For integers $$a$$ and $$b$$ and positive integers $$m$$ and $$n$$:
+
+1. $$a^m a^n = a^{m+n}$$
+2. $$(a^m)^n = a^{mn}$$
+3. $$(ab)^n = a^n b^n$$
+
+:::
+
+:::proof
+
+Each one comes from counting copies, using that a product can be rearranged freely.
+
+1. $$m$$ copies of $$a$$ followed by $$n$$ more copies is $$m + n$$ copies.
+2. $$n$$ groups of $$m$$ copies is $$mn$$ copies.
+3. $$(ab)^n$$ is $$n$$ copies of $$ab$$. Rearranging puts the $$n$$ copies of $$a$$ first and the
+   $$n$$ copies of $$b$$ after them.
+
+:::
+
+For example, $$x^2 x^4 = (xx)(xxxx) = x^6$$, $$(x^2)^3 = x^2 x^2 x^2 = x^6$$ and $$(3y)^2 = 9y^2$$.
+They also combine: $$(3x^2)^3 = 3^3 (x^2)^3 = 27x^6$$.
+
+The choice $$a^0 = 1$$ is the only one that keeps rule 1 working when an exponent is $$0$$:
+$$a^m a^0$$ should be $$a^{m+0} = a^m$$, which forces $$a^0 = 1$$.
+
+Because of the sign rules, a negative base gives a positive result for an even power and a negative
+result for an odd power: $$(-2)^4 = 16$$ but $$(-2)^3 = -8$$.
+
+Powers appear naturally in repeated growth. Suppose a culture of $$500$$ bacteria triples every
+hour. After one hour there are $$3 \cdot 500$$, after two hours $$3^2 \cdot 500$$, and after four
+hours
+
+```math
+3^4 \cdot 500 = 81 \cdot 500 = 40{,}500 \text{ bacteria}
+```
+
+## Common mistakes
+
+- **Losing a minus sign when expanding.** In $$-3(5a - 7b)$$, the $$-3$$ multiplies both terms, and
+  $$(-3)(-7b) = +21b$$.
+- **Confusing $$-2^4$$ with $$(-2)^4$$.** The power applies to what is directly below it:
+  $$-2^4 = -(2^4) = -16$$, but $$(-2)^4 = 16$$.
+- **Powering only part of a product.** $$(3x)^2 = 9x^2$$, not $$3x^2$$.
+- **Forgetting to flip an inequality.** Multiplying both sides by a negative number reverses it.
+
+## In short
+
+- Five rules are assumed: order and grouping don't matter, $$1 \cdot a = a$$, distributivity, and
+  positive times positive is positive.
+- From them: $$0 \cdot a = 0$$, $$(-1)a = -a$$, and $$(-a)(-b) = ab$$.
+- An even number of minus signs gives a positive product; an odd number gives a negative one.
+- Multiplying an inequality by a positive number keeps it; by a negative number reverses it.
+- $$a^m a^n = a^{m+n}$$, $$(a^m)^n = a^{mn}$$, $$(ab)^n = a^n b^n$$, and $$a^0 = 1$$.
+
+## Practise
+
+- :ref{#ex-sign-counting}: counting minus signs.
+- :ref{#ex-power-rules}: the rules for powers.
+- :ref{#ex-expand-simplify}: expanding brackets carefully.

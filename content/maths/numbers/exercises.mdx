@@ -1,0 +1,1176 @@
+---
+title: Exercises
+description: Sixty exercises on the whole guide, with worked solutions.
+---
+
+These exercises go back over the whole guide, in no particular order, so you have to work out which
+ideas each one needs. Most ask you to use an idea rather than repeat a calculation, and many ask for
+a short proof. Try each one before opening its solution.
+
+To practise one topic at a time, use the list at the end of each page, which links to the exercises
+on that topic.
+
+::::exercise{#ex-bath-taps}
+
+One tap fills a bath in $$6$$ minutes and another fills it in $$3$$ minutes. How long do they take
+together?
+
+:::solution
+
+Think in terms of how much of the bath each tap fills per minute: $$\frac{1}{6}$$ and
+$$\frac{1}{3}$$. Together they fill
+
+```math
+\frac{1}{6} + \frac{1}{3} = \frac{1}{6} + \frac{2}{6} = \frac{1}{2}
+```
+
+of the bath per minute. The time for the whole bath is the inverse of that rate,
+$$\left(\frac{1}{2}\right)^{-1} = 2$$ minutes.
+
+:::
+
+::::
+
+::::exercise{#ex-powers-of-three-sum}
+
+Use :ref{#sum-of-powers} to add up $$1 + 3 + 9 + 27 + 81 + 243$$.
+
+:::solution
+
+These are the powers $$3^0$$ to $$3^5$$, so with $$x = 3$$ and $$n = 6$$,
+
+```math
+1 + 3 + 3^2 + \cdots + 3^5 = \frac{3^6 - 1}{3 - 1} = \frac{728}{2} = 364
+```
+
+:::
+
+::::
+
+::::exercise{#ex-number-line-walks}
+
+Work these out by picturing a walk along the number line:
+
+- (a) $$-4 + 9$$
+- (b) $$3 + (-8)$$
+- (c) $$-5 - 6$$
+- (d) $$-2 - (-7)$$
+
+:::solution
+
+- (a) Start at $$-4$$ and move $$9$$ to the right: $$5$$.
+- (b) Start at $$3$$ and move $$8$$ to the left: $$-5$$.
+- (c) Subtracting $$6$$ is adding $$-6$$, so start at $$-5$$ and move $$6$$ to the left: $$-11$$.
+- (d) Subtracting $$-7$$ is adding its opposite, $$7$$, so start at $$-2$$ and move $$7$$ to the
+  right: $$5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-square-last-digit}
+
+Show that no perfect square ends in the digit $$7$$.
+
+:::solution
+
+The last digit of $$n^2$$ is its remainder modulo $$10$$. If $$n \equiv r \pmod{10}$$, where $$r$$
+is the last digit of $$n$$, then $$n^2 \equiv r^2 \pmod{10}$$, so only the last digit of $$n$$
+matters. Squaring the ten possible last digits:
+
+| $$r$$           | $$0$$ | $$1$$ | $$2$$ | $$3$$ | $$4$$ | $$5$$ | $$6$$ | $$7$$ | $$8$$ | $$9$$ |
+| --------------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+| $$r^2$$ ends in | $$0$$ | $$1$$ | $$4$$ | $$9$$ | $$6$$ | $$5$$ | $$6$$ | $$9$$ | $$4$$ | $$1$$ |
+
+The digit $$7$$ never appears, and nor do $$2$$, $$3$$ or $$8$$.
+
+:::
+
+::::
+
+::::exercise{#ex-central-binomial-even}
+
+Prove that $$\binom{2n}{n}$$ is even for every positive integer $$n$$. (Hint: use Pascal's rule,
+then the symmetry rule.)
+
+:::solution
+
+By :ref{#pascal} with $$m = 2n - 1$$,
+
+```math
+\binom{2n}{n} = \binom{2n - 1}{n - 1} + \binom{2n - 1}{n}
+```
+
+By :ref{#binomial-symmetry}, choosing $$n - 1$$ things from $$2n - 1$$ gives the same count as
+choosing the other $$(2n - 1) - (n - 1) = n$$. So the two terms are equal, and
+
+```math
+\binom{2n}{n} = 2\binom{2n - 1}{n}
+```
+
+which is even. Check: $$\binom{2}{1} = 2$$, $$\binom{4}{2} = 6$$, $$\binom{6}{3} = 20$$.
+
+:::
+
+::::
+
+::::exercise{#ex-rearrange-sum}
+
+Work out $$47 + (-18) + 53 + 18$$ in your head, by first rearranging the terms.
+
+:::solution
+
+Since the order and grouping of a sum don't matter, pair up terms that are easy to add:
+
+```math
+(47 + 53) + \big((-18) + 18\big) = 100 + 0 = 100
+```
+
+:::
+
+::::
+
+::::exercise{#ex-cancel-before-multiplying}
+
+Work out $$\frac{15}{28} \cdot \frac{14}{45}$$ and $$\frac{-9}{10} \cdot \frac{25}{-6}$$, cancelling
+before you multiply.
+
+:::solution
+
+```math
+\frac{15}{28} \cdot \frac{14}{45} = \frac{15 \cdot 14}{28 \cdot 45}
+= \frac{15 \cdot 14}{(2 \cdot 14)(3 \cdot 15)} = \frac{1}{6}
+```
+
+For the second, the two minus signs cancel, so the answer is positive:
+
+```math
+\frac{-9}{10} \cdot \frac{25}{-6} = \frac{9 \cdot 25}{10 \cdot 6}
+= \frac{(3 \cdot 3)(5 \cdot 5)}{(2 \cdot 5)(2 \cdot 3)} = \frac{3 \cdot 5}{2 \cdot 2} = \frac{15}{4}
+```
+
+:::
+
+::::
+
+::::exercise{#ex-factorial-quotients}
+
+Work out $$\frac{10!}{8!}$$ and $$\frac{7!}{4!\,3!}$$ by cancelling rather than multiplying out.
+
+:::solution
+
+$$10! = 10 \cdot 9 \cdot 8!$$, so $$\frac{10!}{8!} = 10 \cdot 9 = 90$$.
+
+$$7! = 7 \cdot 6 \cdot 5 \cdot 4!$$, so
+$$\frac{7!}{4!\,3!} = \frac{7 \cdot 6 \cdot 5}{3!} = \frac{210}{6} = 35$$. This is $$\binom{7}{3}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-fraction-powers}
+
+Work out $$\left(\frac{3}{2}\right)^4$$ and $$\left(-\frac{2}{5}\right)^3$$.
+
+:::solution
+
+By :ref{#fraction-powers}, raise the top and bottom separately:
+$$\left(\frac{3}{2}\right)^4 = \frac{81}{16}$$. For the second, an odd power of a negative number is
+negative: $$\left(-\frac{2}{5}\right)^3 = -\frac{8}{125}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-swap-subtraction}
+
+Prove that for any integers $$a$$ and $$b$$,
+
+```math
+(a - b) + (b - a) = 0
+```
+
+and use this to explain why $$-(a - b) = b - a$$.
+
+:::solution
+
+Write each subtraction as adding an opposite and regroup so that opposites meet:
+
+```math
+(a - b) + (b - a) = a + (-b) + b + (-a) = \big(a + (-a)\big) + \big((-b) + b\big) = 0 + 0 = 0
+```
+
+An opposite is the only number that adds to give $$0$$: if $$x + y = 0$$ then $$y = -x$$. Here
+$$x = a - b$$ and $$y = b - a$$, so $$b - a = -(a - b)$$. Swapping the order of a subtraction
+changes the sign of the answer.
+
+:::
+
+::::
+
+::::exercise{#ex-pascal-rows}
+
+Use :ref{#pascal} to write out the rows of Pascal's triangle for $$m = 6$$ and $$m = 7$$. Check
+$$\binom{7}{3}$$ from the formula.
+
+:::solution
+
+Each entry is the sum of the two above it, starting from the row $$1, 5, 10, 10, 5, 1$$:
+
+```math
+\begin{array}{c}
+1 \quad 6 \quad 15 \quad 20 \quad 15 \quad 6 \quad 1 \\
+1 \quad 7 \quad 21 \quad 35 \quad 35 \quad 21 \quad 7 \quad 1
+\end{array}
+```
+
+The fourth entry of the $$m = 7$$ row is $$\binom{7}{3} = 35$$, and the formula agrees:
+$$\frac{7!}{3!\,4!} = 35$$.
+
+:::
+
+::::
+
+::::exercise{#ex-consecutive-product}
+
+Prove that the product of two consecutive integers is always even.
+
+:::solution
+
+Of two consecutive integers $$n$$ and $$n + 1$$, one is even and the other is odd, since even and
+odd integers take turns. An even number times any integer is even, so $$n(n + 1)$$ is even.
+
+:::
+
+::::
+
+::::exercise{#ex-cube-minus-n}
+
+Prove that $$n^3 - n$$ is divisible by $$6$$ for every integer $$n$$.
+
+:::solution
+
+First factor: $$n^3 - n = n(n^2 - 1) = (n - 1)n(n + 1)$$, a product of three consecutive integers.
+
+**Divisible by 3.** Modulo $$3$$, $$n$$ is congruent to $$0$$, $$1$$ or $$2$$. In each case one of
+the three factors is a multiple of $$3$$: $$n$$ itself if $$n \equiv 0$$, $$n - 1$$ if
+$$n \equiv 1$$, and $$n + 1$$ if $$n \equiv 2$$. So $$n^3 - n = 3m$$ for some integer $$m$$.
+
+**Divisible by 2.** By :ref{#ex-consecutive-product}, the product of the consecutive integers $$n$$
+and $$n + 1$$ is even, so $$n^3 - n$$ is even too.
+
+**Putting them together.** $$3m$$ is even. If $$m$$ were odd, $$3m$$ would be odd times odd, which
+is odd. So $$m$$ is even, say $$m = 2k$$, and $$n^3 - n = 3 \cdot 2k = 6k$$.
+
+:::
+
+::::
+
+::::exercise{#ex-which-congruent}
+
+Which of these are true?
+
+- (a) $$38 \equiv 3 \pmod{7}$$
+- (b) $$-4 \equiv 4 \pmod{7}$$
+- (c) $$100 \equiv 1 \pmod{9}$$
+- (d) $$25 \equiv 1 \pmod{13}$$
+- (e) $$17 \equiv -3 \pmod{5}$$
+
+:::solution
+
+Check whether the difference is a multiple of the modulus.
+
+- (a) True: $$38 - 3 = 35 = 7 \cdot 5$$.
+- (b) False: $$-4 - 4 = -8$$, which is not a multiple of $$7$$.
+- (c) True: $$100 - 1 = 99 = 9 \cdot 11$$.
+- (d) False: $$25 - 1 = 24$$, which is not a multiple of $$13$$.
+- (e) True: $$17 - (-3) = 20 = 5 \cdot 4$$.
+
+:::
+
+::::
+
+::::exercise{#ex-largest-powers}
+
+Find the largest power of $$2$$ that divides $$80$$, the largest power of $$3$$ that divides
+$$162$$, and the largest power of $$5$$ that divides $$1000$$.
+
+:::solution
+
+Split off the factor in question until what is left is no longer divisible by it.
+
+- $$80 = 2 \cdot 40 = 2^2 \cdot 20 = 2^3 \cdot 10 = 2^4 \cdot 5$$, so the answer is $$2^4 = 16$$.
+- $$162 = 2 \cdot 81 = 2 \cdot 3^4$$, so the answer is $$3^4 = 81$$.
+- $$1000 = 10^3 = 2^3 \cdot 5^3$$, so the answer is $$5^3 = 125$$.
+
+:::
+
+::::
+
+::::exercise{#ex-seven-power-minus-one}
+
+Prove in two different ways that $$7^n - 1$$ is divisible by $$6$$ for every positive integer $$n$$:
+once with congruences, and once with :ref{#sum-of-powers}.
+
+:::solution
+
+**With congruences.** $$7 \equiv 1 \pmod{6}$$, so by :ref{#congruence-powers},
+$$7^n \equiv 1^n = 1 \pmod{6}$$. That says exactly that $$6 \mid 7^n - 1$$.
+
+**With the sum of powers.** Cross-multiplying the formula with $$x = 7$$ gives
+
+```math
+7^n - 1 = (7 - 1)(7^{n - 1} + \cdots + 7 + 1) = 6(7^{n - 1} + \cdots + 7 + 1)
+```
+
+which is $$6$$ times an integer.
+
+The two proofs are really the same idea: $$x - 1$$ always divides $$x^n - 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-last-digit-power}
+
+What is the last digit of $$3^{20}$$?
+
+:::solution
+
+The last digit of a number is its remainder when divided by $$10$$, so we work modulo $$10$$. Powers
+of $$3$$ go $$3, 9, 27, 81$$, and $$81 \equiv 1 \pmod{10}$$. So
+
+```math
+3^{20} = (3^4)^5 = 81^5 \equiv 1^5 = 1 \pmod{10}
+```
+
+using :ref{#congruence-powers}. The last digit is $$1$$. (In fact $$3^{20} = 3486784401$$.)
+
+:::
+
+::::
+
+::::exercise{#ex-difference-of-squares-arithmetic}
+
+Use the difference of squares to work out $$31 \cdot 29$$ and $$52 \cdot 48$$ without long
+multiplication.
+
+:::solution
+
+Both pairs sit evenly either side of a round number:
+
+```math
+31 \cdot 29 = (30 + 1)(30 - 1) = 900 - 1 = 899,
+\qquad
+52 \cdot 48 = (50 + 2)(50 - 2) = 2500 - 4 = 2496
+```
+
+:::
+
+::::
+
+::::exercise{#ex-find-inverses}
+
+Find the multiplicative inverses of $$\frac{4}{9}$$, $$-7$$, $$\frac{1}{5}$$ and $$0.25$$.
+
+:::solution
+
+Flip each fraction, using :ref{#inverse-exists}.
+
+- $$\frac{4}{9}$$ has inverse $$\frac{9}{4}$$.
+- $$-7 = \frac{-7}{1}$$ has inverse $$\frac{1}{-7} = -\frac{1}{7}$$. The sign stays: the product of
+  the two must be $$+1$$.
+- $$\frac{1}{5}$$ has inverse $$5$$.
+- $$0.25 = \frac{1}{4}$$ has inverse $$4$$.
+
+:::
+
+::::
+
+::::exercise{#ex-odd-square-minus-one}
+
+Prove that if $$a$$ is odd, then $$a^2 - 1$$ is divisible by $$8$$.
+
+Hint: use :ref{#ex-consecutive-product}.
+
+:::solution
+
+Write $$a = 2k + 1$$. Then
+
+```math
+a^2 - 1 = 4k^2 + 4k + 1 - 1 = 4k(k + 1)
+```
+
+By :ref{#ex-consecutive-product}, $$k(k + 1)$$ is even, say $$k(k + 1) = 2m$$. So
+$$a^2 - 1 = 4 \cdot 2m = 8m$$. For example, $$7^2 - 1 = 48 = 8 \cdot 6$$.
+
+:::
+
+::::
+
+::::exercise{#ex-two-odd-squares}
+
+Show that if $$a$$ and $$b$$ are both odd, then $$a^2 + b^2$$ is even but not divisible by $$4$$.
+
+:::solution
+
+Write $$a = 2k + 1$$ and $$b = 2l + 1$$. Then
+
+```math
+a^2 + b^2 = (4k^2 + 4k + 1) + (4l^2 + 4l + 1) = 4(k^2 + k + l^2 + l) + 2
+```
+
+This is $$2$$ more than a multiple of $$4$$. It is even, being $$2(2k^2 + 2k + 2l^2 + 2l + 1)$$, but
+it is not a multiple of $$4$$, because the multiples of $$4$$ are spaced $$4$$ apart, and the number
+$$2$$ more than one of them is not one of them. For example, $$3^2 + 5^2 = 34$$.
+
+:::
+
+::::
+
+::::exercise{#ex-square-arithmetic}
+
+Use the square of a sum and the square of a difference to work out $$101^2$$ and $$99^2$$.
+
+:::solution
+
+```math
+101^2 = (100 + 1)^2 = 10000 + 200 + 1 = 10201,
+\qquad
+99^2 = (100 - 1)^2 = 10000 - 200 + 1 = 9801
+```
+
+:::
+
+::::
+
+::::exercise{#ex-minus-signs}
+
+Simplify $$-(-(-4))$$ and $$-(3 - 8)$$.
+
+:::solution
+
+Each minus sign flips a number to the other side of $$0$$. Two flips cancel, since $$-(-a) = a$$, so
+$$-(-(-4)) = -4$$.
+
+For the second, either work out the bracket first, $$-(3 - 8) = -(-5) = 5$$, or use the opposite of
+a sum: $$-(3 - 8) = -3 + 8 = 5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-no-square-four-y-plus-three}
+
+Show that there are no integers $$x$$ and $$y$$ with $$x^2 = 4y + 3$$.
+
+:::solution
+
+Work modulo $$4$$. The right side is $$4y + 3 \equiv 3 \pmod{4}$$. For the left side, $$x$$ is
+congruent to $$0$$, $$1$$, $$2$$ or $$3$$, and squaring each with :ref{#congruence-powers}:
+
+| $$x \pmod{4}$$   | $$0$$ | $$1$$ | $$2$$          | $$3$$          |
+| ---------------- | ----- | ----- | -------------- | -------------- |
+| $$x^2 \pmod{4}$$ | $$0$$ | $$1$$ | $$4 \equiv 0$$ | $$9 \equiv 1$$ |
+
+A square is always congruent to $$0$$ or $$1$$ modulo $$4$$, never $$3$$, so the two sides can never
+be equal.
+
+:::
+
+::::
+
+::::exercise{#ex-remainder-product}
+
+Find the remainder when $$123 \cdot 456$$ is divided by $$5$$, without multiplying out.
+
+:::solution
+
+Swap each factor for a small number it is congruent to, using :ref{#congruence-arithmetic}:
+$$123 \equiv 3$$ and $$456 \equiv 1 \pmod{5}$$. So
+
+```math
+123 \cdot 456 \equiv 3 \cdot 1 = 3 \pmod{5}
+```
+
+and the remainder is $$3$$. (Indeed $$123 \cdot 456 = 56088$$.)
+
+:::
+
+::::
+
+::::exercise{#ex-equal-fractions}
+
+Decide whether each pair of fractions is equal by cross-multiplying:
+
+- (a) $$\frac{14}{21}$$ and $$\frac{10}{15}$$
+- (b) $$\frac{7}{9}$$ and $$\frac{8}{10}$$
+- (c) $$\frac{-6}{8}$$ and $$\frac{9}{-12}$$
+
+:::solution
+
+- (a) Equal: $$14 \cdot 15 = 210$$ and $$10 \cdot 21 = 210$$. Both are $$\frac{2}{3}$$.
+- (b) Not equal: $$7 \cdot 10 = 70$$ but $$8 \cdot 9 = 72$$.
+- (c) Equal: $$(-6)(-12) = 72$$ and $$9 \cdot 8 = 72$$. Both are $$-\frac{3}{4}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-power-remainder}
+
+Find the remainder when $$2^{50}$$ is divided by $$7$$.
+
+:::solution
+
+Look for a small power of $$2$$ that is congruent to $$1$$: $$2^3 = 8 \equiv 1 \pmod{7}$$. Since
+$$50 = 3 \cdot 16 + 2$$,
+
+```math
+2^{50} = (2^3)^{16} \cdot 2^2 \equiv 1^{16} \cdot 4 = 4 \pmod{7}
+```
+
+So the remainder is $$4$$.
+
+:::
+
+::::
+
+::::exercise{#ex-zero-product}
+
+Solve $$(2x - 1)(3x + 4) = 0$$ and $$x^2 = 5x$$.
+
+:::solution
+
+By :ref{#zero-product}, a product is zero only if one of its factors is. So in the first equation
+either $$2x - 1 = 0$$, giving $$x = \frac{1}{2}$$, or $$3x + 4 = 0$$, giving $$x = -\frac{4}{3}$$.
+
+For the second, it is tempting to divide by $$x$$ and get $$x = 5$$, but that loses a solution,
+because dividing by $$x$$ is only allowed when $$x \neq 0$$. Instead rearrange to $$x^2 - 5x = 0$$
+and factor: $$x(x - 5) = 0$$. So $$x = 0$$ or $$x = 5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-power-rules}
+
+Simplify $$(a^2 b)^3 \cdot a b^2$$, and write $$(2^3)^2 \cdot 2^4$$ as a single power of $$2$$.
+
+:::solution
+
+A power of a product is the product of the powers, and a power of a power multiplies the exponents,
+so $$(a^2 b)^3 = a^6 b^3$$. Multiplying powers of the same base adds the exponents:
+
+```math
+a^6 b^3 \cdot a b^2 = a^{6 + 1} b^{3 + 2} = a^7 b^5
+```
+
+Similarly, $$(2^3)^2 \cdot 2^4 = 2^6 \cdot 2^4 = 2^{10}$$, which is $$1024$$.
+
+:::
+
+::::
+
+::::exercise{#ex-expand-squares}
+
+Expand $$(x + 6)^2$$, $$(2y - 3)^2$$ and $$(5a + 2b)(5a - 2b)$$.
+
+:::solution
+
+Each one matches one of the formulas for squares.
+
+- Square of a sum: $$(x + 6)^2 = x^2 + 2 \cdot 6x + 36 = x^2 + 12x + 36$$.
+- Square of a difference, with $$2y$$ in place of $$a$$:
+  $$(2y - 3)^2 = 4y^2 - 2 \cdot 2y \cdot 3 + 9 = 4y^2 - 12y + 9$$.
+- Difference of squares: $$(5a + 2b)(5a - 2b) = (5a)^2 - (2b)^2 = 25a^2 - 4b^2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-expand-product}
+
+Expand $$(x + 2)(x^2 - 3x + 4)$$, and check your answer by putting $$x = 1$$ into both sides.
+
+:::solution
+
+Multiply each term of the first bracket by every term of the second, then collect like terms:
+
+```math
+\begin{aligned}
+(x + 2)(x^2 - 3x + 4) &= x^3 - 3x^2 + 4x + 2x^2 - 6x + 8 \\
+&= x^3 - x^2 - 2x + 8
+\end{aligned}
+```
+
+Check with $$x = 1$$: the left side is $$3 \cdot 2 = 6$$, and the right side is
+$$1 - 1 - 2 + 8 = 6$$.
+
+:::
+
+::::
+
+::::exercise{#ex-squares-difference-identity}
+
+Prove that $$(a + b)^2 - (a - b)^2 = 4ab$$ for all integers $$a$$ and $$b$$.
+
+:::solution
+
+Expand both squares and subtract. Remember to subtract **every** term of the second square:
+
+```math
+(a^2 + 2ab + b^2) - (a^2 - 2ab + b^2) = a^2 + 2ab + b^2 - a^2 + 2ab - b^2 = 4ab
+```
+
+The $$a^2$$ and $$b^2$$ terms cancel, and the two $$2ab$$ terms add.
+
+:::
+
+::::
+
+::::exercise{#ex-bouncing-ball}
+
+A ball bounces back up to $$\frac{2}{3}$$ of the height it fell from. It is dropped from $$81$$ cm.
+How high does it rise after the fourth bounce? After which bounce does it first fail to reach $$10$$
+cm?
+
+:::solution
+
+Each bounce multiplies the height by $$\frac{2}{3}$$, so after $$k$$ bounces the height is
+$$\left(\frac{2}{3}\right)^k \cdot 81$$. After four bounces,
+
+```math
+\left(\frac{2}{3}\right)^4 \cdot 81 = \frac{16}{81} \cdot 81 = 16 \text{ cm}
+```
+
+Continuing, the fifth bounce reaches $$\frac{2}{3} \cdot 16 = \frac{32}{3}$$ cm, which is
+$$10\frac{2}{3}$$ cm, still above $$10$$. The sixth reaches
+$$\frac{2}{3} \cdot \frac{32}{3} = \frac{64}{9}$$ cm, a little over $$7$$. So the sixth bounce is
+the first below $$10$$ cm.
+
+:::
+
+::::
+
+::::exercise{#ex-compound-fraction}
+
+Simplify $$\dfrac{\frac{2}{3} + \frac{1}{4}}{\frac{5}{6}}$$.
+
+:::solution
+
+Simplify the top first: $$\frac{2}{3} + \frac{1}{4} = \frac{8}{12} + \frac{3}{12} = \frac{11}{12}$$.
+Then dividing by $$\frac{5}{6}$$ is multiplying by its inverse:
+
+```math
+\frac{11}{12} \cdot \frac{6}{5} = \frac{66}{60} = \frac{11}{10}
+```
+
+:::
+
+::::
+
+::::exercise{#ex-consecutive-lowest-form}
+
+Prove that $$\frac{n + 1}{n}$$ is in lowest form for every positive integer $$n$$.
+
+:::solution
+
+We need to show that the only positive common divisor of $$n + 1$$ and $$n$$ is $$1$$. Suppose $$d$$
+divides both. By :ref{#multiples}, $$d$$ also divides their difference,
+
+```math
+(n + 1) - n = 1
+```
+
+and the only positive integer dividing $$1$$ is $$1$$ itself. So $$d = 1$$. In words: two
+consecutive integers never share a factor bigger than $$1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-pascal-row-sums}
+
+Add up the numbers in each of the rows $$m = 0, 1, 2, 3, 4, 5$$ of Pascal's triangle. What pattern
+do you see? Explain it by thinking about choosing.
+
+:::solution
+
+The row sums are $$1, 2, 4, 8, 16, 32$$: the sum of row $$m$$ is $$2^m$$.
+
+Row $$m$$ adds up the ways to choose $$0$$ things, $$1$$ thing, and so on up to all $$m$$ things, so
+it counts every possible selection from $$m$$ things, of any size. Another way to count those
+selections is to go through the $$m$$ things one at a time and decide "in" or "out" for each. That
+is $$2$$ choices, $$m$$ times over, giving $$2^m$$ selections.
+
+:::
+
+::::
+
+::::exercise{#ex-irrational-sums}
+
+Suppose $$a$$ is a number with $$a^2 = 2$$. Show that $$1 + a$$ is not rational, and nor is $$3a$$.
+
+:::solution
+
+Both work the same way: if they were rational, we could undo the operation and make $$a$$ rational,
+which :ref{#sqrt-two} rules out.
+
+- If $$1 + a = q$$ with $$q$$ rational, then $$a = q - 1$$. A difference of two rational numbers is
+  rational, so $$a$$ would be rational.
+- If $$3a = q$$ with $$q$$ rational, then multiplying by the inverse of $$3$$ gives
+  $$a = \frac{q}{3}$$, which would be rational.
+
+The general lesson: adding a rational number to an irrational one, or multiplying it by a non-zero
+rational number, always gives an irrational number.
+
+:::
+
+::::
+
+::::exercise{#ex-combination-divisible}
+
+Prove that if $$d \mid a$$ and $$d \mid b$$, then $$d \mid 3a - 5b$$.
+
+:::solution
+
+By :ref{#multiples}, a multiple of something divisible by $$d$$ is divisible by $$d$$, so
+$$d \mid 3a$$ and $$d \mid 5b$$. The difference of two numbers divisible by $$d$$ is divisible by
+$$d$$, so $$d \mid 3a - 5b$$.
+
+:::
+
+::::
+
+::::exercise{#ex-integer-quotient}
+
+Find every integer $$n$$ for which $$\frac{n + 3}{n - 1}$$ is an integer.
+
+:::solution
+
+Rewrite the top so that it contains the bottom: $$n + 3 = (n - 1) + 4$$. Then, by adding quotients
+backwards,
+
+```math
+\frac{n + 3}{n - 1} = \frac{n - 1}{n - 1} + \frac{4}{n - 1} = 1 + \frac{4}{n - 1}
+```
+
+This is an integer exactly when $$\frac{4}{n - 1}$$ is, that is, when $$n - 1$$ divides $$4$$. The
+divisors of $$4$$ are $$\pm 1$$, $$\pm 2$$ and $$\pm 4$$, so $$n - 1$$ is one of these and
+
+```math
+n = 2,\ 0,\ 3,\ -1,\ 5,\ -3
+```
+
+For example, $$n = 5$$ gives $$\frac{8}{4} = 2$$, and $$n = -3$$ gives $$\frac{0}{-4} = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-solve-linear}
+
+Solve for $$x$$: (a) $$x + 12 = 5$$, (b) $$-7 - x = 3$$.
+
+:::solution
+
+- (a) If $$x + 12 = 5$$, then $$x = 5 - 12 = -7$$.
+- (b) Add $$7$$ to both sides to get $$-x = 10$$. Taking opposites of both sides gives $$x = -10$$.
+  Check: $$-7 - (-10) = -7 + 10 = 3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-two-power-ten}
+
+Without working out $$2^{10}$$, show that $$2^{10} - 1$$ is divisible by both $$31$$ and $$33$$.
+
+:::solution
+
+Notice that $$2^{10} = (2^5)^2 = 32^2$$, so $$2^{10} - 1$$ is a difference of squares:
+
+```math
+2^{10} - 1 = 32^2 - 1^2 = (32 - 1)(32 + 1) = 31 \cdot 33
+```
+
+So it is a multiple of both. (Indeed $$2^{10} - 1 = 1023$$.)
+
+:::
+
+::::
+
+::::exercise{#ex-order-integers}
+
+Put these integers in order from smallest to largest: $$3$$, $$-7$$, $$0$$, $$-2$$, $$5$$, $$-10$$.
+
+:::solution
+
+$$-10 < -7 < -2 < 0 < 3 < 5$$.
+
+On the number line, smaller numbers sit further to the left. All the negative numbers are left of
+$$0$$, and among them the one furthest from $$0$$ is the smallest. That is why $$-10$$ comes before
+$$-7$$, even though $$10$$ is bigger than $$7$$.
+
+:::
+
+::::
+
+::::exercise{#ex-three-consecutive-sum}
+
+Prove that the sum of any three consecutive integers is divisible by $$3$$.
+
+:::solution
+
+Call the integers $$n$$, $$n + 1$$ and $$n + 2$$. Their sum is
+
+```math
+n + (n + 1) + (n + 2) = 3n + 3 = 3(n + 1)
+```
+
+which is $$3$$ times an integer. In fact the sum is $$3$$ times the middle number.
+
+:::
+
+::::
+
+::::exercise{#ex-solve-congruence}
+
+Find every $$x$$ among $$0, 1, \dots, 6$$ with $$3x \equiv 5 \pmod{7}$$.
+
+:::solution
+
+Try them all, reducing each $$3x$$ modulo $$7$$:
+
+| $$x$$          | $$0$$ | $$1$$ | $$2$$ | $$3$$ | $$4$$ | $$5$$ | $$6$$ |
+| -------------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+| $$3x \bmod 7$$ | $$0$$ | $$3$$ | $$6$$ | $$2$$ | $$5$$ | $$1$$ | $$4$$ |
+
+Only $$x = 4$$ works: $$12 \equiv 5 \pmod{7}$$. Notice that the bottom row hits every remainder
+exactly once.
+
+:::
+
+::::
+
+::::exercise{#ex-one-third-decimal}
+
+Show that $$\frac{1}{3}$$ cannot be written as a decimal that stops. (Hint: a decimal with $$k$$
+places is $$\frac{m}{10^k}$$ for some integer $$m$$.)
+
+:::solution
+
+Suppose $$\frac{1}{3} = \frac{m}{10^k}$$. Cross-multiplying gives $$10^k = 3m$$, so $$3 \mid 10^k$$.
+But $$10 \equiv 1 \pmod{3}$$, so by :ref{#congruence-powers}, $$10^k \equiv 1^k = 1 \pmod{3}$$,
+which means $$10^k$$ is one more than a multiple of $$3$$ and so not a multiple of $$3$$. This
+contradiction shows no such decimal exists. That is why $$\frac{1}{3} = 0.333\ldots$$ goes on
+forever.
+
+:::
+
+::::
+
+::::exercise{#ex-lowest-form-practice}
+
+Write in lowest form: $$\frac{84}{126}$$, $$\frac{45}{75}$$, $$\frac{132}{48}$$.
+
+:::solution
+
+Cancel the greatest common divisor in one go, or smaller common factors one at a time.
+
+- $$\frac{84}{126} = \frac{42 \cdot 2}{42 \cdot 3} = \frac{2}{3}$$.
+- $$\frac{45}{75} = \frac{15 \cdot 3}{15 \cdot 5} = \frac{3}{5}$$.
+- $$\frac{132}{48} = \frac{12 \cdot 11}{12 \cdot 4} = \frac{11}{4}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-solve-quotient-equation}
+
+Solve $$\frac{x + 1}{x - 2} = \frac{3}{2}$$.
+
+:::solution
+
+For $$x \neq 2$$, cross-multiplying with :ref{#cross-multiplying-rational} gives
+
+```math
+2(x + 1) = 3(x - 2), \qquad \text{so} \qquad 2x + 2 = 3x - 6
+```
+
+and $$x = 8$$. Check: $$\frac{9}{6} = \frac{3}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-choose-two}
+
+Show that $$\binom{n}{2} = \frac{n(n - 1)}{2}$$ for every integer $$n \ge 2$$, and explain, without
+using the fact that it counts something, why this is always an integer.
+
+:::solution
+
+Cancel the factorials: $$n! = n(n - 1) \cdot (n - 2)!$$, so
+
+```math
+\binom{n}{2} = \frac{n!}{2!\,(n - 2)!} = \frac{n(n - 1) \cdot (n - 2)!}{2 \cdot (n - 2)!}
+= \frac{n(n - 1)}{2}
+```
+
+The numbers $$n - 1$$ and $$n$$ are consecutive, so one of them is even and their product is even.
+Dividing an even number by $$2$$ gives an integer. For example,
+$$\binom{10}{2} = \frac{90}{2} = 45$$.
+
+:::
+
+::::
+
+::::exercise{#ex-rational-between}
+
+Find a rational number between $$\frac{3}{7}$$ and $$\frac{4}{7}$$, and one between $$\frac{1}{3}$$
+and $$\frac{1}{2}$$. Explain why there is always a rational number between any two different
+rational numbers.
+
+:::solution
+
+The number halfway between $$a$$ and $$b$$ is their average $$\frac{a + b}{2}$$.
+
+- Between $$\frac{3}{7}$$ and $$\frac{4}{7}$$: the two add up to $$1$$, so the average is
+  $$\frac{1}{2}$$.
+- Between $$\frac{1}{3}$$ and $$\frac{1}{2}$$: the two add up to
+  $$\frac{2}{6} + \frac{3}{6} = \frac{5}{6}$$, so the average is $$\frac{5}{12}$$.
+
+The average of two rational numbers is rational, since it is built from them by adding and
+multiplying by $$\frac{1}{2}$$, and it lies halfway between them. So between any two different
+rational numbers there is another, and repeating the argument gives infinitely many. Unlike the
+integers, the rational numbers have no "next" number.
+
+:::
+
+::::
+
+::::exercise{#ex-test-for-eleven}
+
+Show that $$10 \equiv -1 \pmod{11}$$. Use this to explain why a number is divisible by $$11$$
+exactly when the alternating sum of its digits is (add the last digit, subtract the one before, add
+the one before that, and so on). Then decide whether $$9295$$ is divisible by $$11$$.
+
+:::solution
+
+$$10 - (-1) = 11$$, so $$10 \equiv -1 \pmod{11}$$. By :ref{#congruence-powers},
+$$10^k \equiv (-1)^k$$, which is $$1$$ for even $$k$$ and $$-1$$ for odd $$k$$. So the powers of
+$$10$$ that make up a number are alternately congruent to $$1$$ and $$-1$$, starting from the units:
+
+```math
+9295 = 9 \cdot 10^3 + 2 \cdot 10^2 + 9 \cdot 10 + 5 \equiv -9 + 2 - 9 + 5 = -11 \pmod{11}
+```
+
+The same works for any number, so a number is congruent to its alternating digit sum. Here
+$$-11 \equiv 0 \pmod{11}$$, so $$9295$$ is divisible by $$11$$. Indeed $$9295 = 11 \cdot 845$$.
+
+This works just like the test for $$9$$ on the [Congruence](./congruence.mdx) page, with $$-1$$ in
+place of $$1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-order-fractions}
+
+Put $$\frac{2}{3}$$, $$\frac{5}{8}$$ and $$\frac{3}{5}$$ in order from smallest to largest.
+
+:::solution
+
+Fractions with the same denominator are easy to compare, so rewrite all three over $$120$$, which
+$$3$$, $$8$$ and $$5$$ all divide:
+
+```math
+\frac{2}{3} = \frac{80}{120}, \qquad \frac{5}{8} = \frac{75}{120},
+\qquad \frac{3}{5} = \frac{72}{120}
+```
+
+So $$\frac{3}{5} < \frac{5}{8} < \frac{2}{3}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sqrt-six}
+
+Prove that there is no rational number whose square is $$6$$.
+
+:::solution
+
+Follow the proof of :ref{#sqrt-two}. Suppose $$\left(\frac{m}{n}\right)^2 = 6$$ with $$\frac{m}{n}$$
+positive and in lowest form, so $$m$$ and $$n$$ are not both even. Cross-multiplying gives
+$$m^2 = 6n^2 = 2(3n^2)$$, so $$m^2$$ is even, and therefore $$m$$ is even. Write $$m = 2k$$:
+
+```math
+4k^2 = 6n^2, \qquad \text{so} \qquad 2k^2 = 3n^2
+```
+
+Now $$3n^2$$ is even. Since $$3$$ is odd, $$n^2$$ can't be odd (odd times odd is odd), so $$n^2$$ is
+even and $$n$$ is even. Then $$m$$ and $$n$$ are both even, a contradiction.
+
+:::
+
+::::
+
+::::exercise{#ex-clear-fractions}
+
+Solve $$\frac{2x}{3} - 1 = \frac{x}{4} + 4$$.
+
+:::solution
+
+Clear the fractions by multiplying both sides by $$12$$, a common denominator of $$3$$ and $$4$$:
+
+```math
+8x - 12 = 3x + 48
+```
+
+Then $$8x - 3x = 48 + 12$$, so $$5x = 60$$ and $$x = 12$$. Check: $$\frac{24}{3} - 1 = 7$$ and
+$$\frac{12}{4} + 4 = 7$$.
+
+:::
+
+::::
+
+::::exercise{#ex-parity-without-computing}
+
+Without working out the numbers, decide whether each is even or odd:
+
+- (a) $$37 \cdot 41 + 12$$
+- (b) $$2023^2$$
+- (c) $$15^3 + 7^2$$
+
+:::solution
+
+- (a) $$37 \cdot 41$$ is odd times odd, so odd. Odd plus even ($$12$$) is odd.
+- (b) $$2023$$ is odd, so its square is odd.
+- (c) $$15^3$$ and $$7^2$$ are both products of odd numbers, so both are odd. Odd plus odd is even.
+
+:::
+
+::::
+
+::::exercise{#ex-sign-counting}
+
+Work out $$(-3)(-4)(-5)$$, $$(-2)^5$$ and $$(-1)^{12} \cdot (-3)^2$$.
+
+:::solution
+
+Count the minus signs: an even number of them gives a positive product, an odd number a negative
+one.
+
+- $$(-3)(-4)(-5)$$ has three minus signs, so it is $$-(3 \cdot 4 \cdot 5) = -60$$.
+- $$(-2)^5$$ has five, so it is $$-2^5 = -32$$.
+- $$(-1)^{12}$$ has twelve, so it is $$1$$, and $$(-3)^2 = 9$$. The product is $$9$$.
+
+:::
+
+::::
+
+::::exercise{#ex-list-choices}
+
+List every way of choosing $$3$$ letters from $$a, b, c, d, e$$, and check that the number of ways
+agrees with $$\binom{5}{3}$$.
+
+:::solution
+
+Listing them in alphabetical order so that none are missed or repeated:
+
+```math
+abc,\ abd,\ abe,\ acd,\ ace,\ ade,\ bcd,\ bce,\ bde,\ cde
+```
+
+That is $$10$$ ways, and $$\binom{5}{3} = \frac{5!}{3!\,2!} = \frac{120}{12} = 10$$.
+
+:::
+
+::::
+
+::::exercise{#ex-simplify-compound}
+
+Simplify $$\dfrac{1 - \frac{1}{x^2}}{1 - \frac{1}{x}}$$.
+
+:::solution
+
+Write the top and the bottom as single fractions, then factor the top with the difference of
+squares:
+
+```math
+1 - \frac{1}{x^2} = \frac{x^2 - 1}{x^2} = \frac{(x - 1)(x + 1)}{x^2},
+\qquad
+1 - \frac{1}{x} = \frac{x - 1}{x}
+```
+
+Dividing is multiplying by the inverse, and then common factors cancel:
+
+```math
+\frac{(x - 1)(x + 1)}{x^2} \cdot \frac{x}{x - 1} = \frac{x + 1}{x}
+```
+
+Check with $$x = 2$$: the original is $$\frac{3/4}{1/2} = \frac{3}{2}$$, and so is
+$$\frac{2 + 1}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-add-fractions}
+
+Work out $$\frac{3}{8} + \frac{5}{12}$$, $$\frac{2}{3} - \frac{7}{9}$$ and
+$$\frac{1}{2} + \frac{1}{3} + \frac{1}{6}$$.
+
+:::solution
+
+Use the smallest convenient common denominator.
+
+- $$24$$ works for $$8$$ and $$12$$: $$\frac{9}{24} + \frac{10}{24} = \frac{19}{24}$$.
+- $$9$$ works for both: $$\frac{6}{9} - \frac{7}{9} = -\frac{1}{9}$$.
+- $$6$$ works for all three: $$\frac{3}{6} + \frac{2}{6} + \frac{1}{6} = \frac{6}{6} = 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-true-or-false-divisibility}
+
+True or false? Give a proof or a counterexample.
+
+- (a) If $$d \mid a + b$$, then $$d \mid a$$ and $$d \mid b$$.
+- (b) If $$a \mid b$$ and $$b \mid c$$, then $$a \mid c$$.
+- (c) If $$4 \mid n^2$$, then $$4 \mid n$$.
+
+:::solution
+
+- (a) False. $$3 \mid 1 + 2$$, but $$3$$ divides neither $$1$$ nor $$2$$.
+- (b) True. Write $$b = ak$$ and $$c = bl$$. Then $$c = (ak)l = a(kl)$$, a multiple of $$a$$.
+- (c) False. For $$n = 2$$, $$4 \mid 4 = n^2$$, but $$4$$ does not divide $$2$$.
+
+The rule in :ref{#squares-parity-converse} is about $$2$$, not $$4$$: if $$2 \mid n^2$$ then
+$$2 \mid n$$. Part (c) shows it does not carry over to $$4$$.
+
+:::
+
+::::
+
+::::exercise{#ex-expand-simplify}
+
+Expand and simplify $$3(2x - 5) - 2(x - 4)$$.
+
+:::solution
+
+Multiply out each bracket, taking care that the $$-2$$ multiplies **both** terms of the second one:
+
+```math
+3(2x - 5) - 2(x - 4) = 6x - 15 - 2x + 8 = 4x - 7
+```
+
+The $$+8$$ comes from $$(-2)(-4)$$.
+
+:::
+
+::::

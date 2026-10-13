@@ -1,0 +1,117 @@
+---
+title: Integers
+description: Whole numbers, negatives, opposites and the number line.
+---
+
+Counting numbers are enough for counting things, but not for describing changes that can go either
+way: a temperature that falls below freezing, a bank balance in overdraft, a lift going down past
+the ground floor. For that we need numbers on both sides of zero. This page sets them up and fixes
+the words used for them on every later page.
+
+## The number line
+
+A good way to picture whole numbers is as evenly spaced marks along a straight line that goes on
+forever in both directions. We pick one mark to be $$0$$, called the **origin**, and a fixed step
+size. Every step to the right is one more, and every step to the left is one less.
+
+::number-line{from=-6 to=6 points="0"}
+
+The counting numbers $$1, 2, 3, \dots$$ sit to the right of $$0$$. Each of them has a mirror image
+on the left, the same number of steps from $$0$$ but in the other direction. The mirror image of
+$$3$$ is written $$-3$$, read "minus three".
+
+## Integers
+
+:::definition[Integers]{#integers}
+
+- The **positive integers** are the counting numbers $$1, 2, 3, 4, \dots$$
+- The **negative integers** are their mirror images on the other side of $$0$$, written with a minus
+  sign: $$-1, -2, -3, \dots$$
+- **Zero**, $$0$$, is neither positive nor negative.
+
+The **natural numbers** are the positive integers together with $$0$$. The **integers** are all of
+these together: the positive integers, the negative integers and $$0$$.
+
+:::
+
+Integers are whole numbers: they have no fractional or decimal part. Some books leave $$0$$ out of
+the natural numbers; in this guide it is always included.
+
+The further right a number sits on the line, the bigger it is. So $$-1$$ is bigger than $$-4$$, even
+though $$4$$ is bigger than $$1$$: on the left of $$0$$, the number further from $$0$$ is the
+smaller one. The [Addition](./addition.mdx) page turns "bigger" into a precise definition.
+
+## Opposites
+
+The mirror image idea works for every integer, not just the positive ones.
+
+:::definition[Opposite]{#opposite}
+
+The **opposite** of an integer $$a$$, written $$-a$$, is the integer the same distance from $$0$$ as
+$$a$$, but on the other side. It is also called the **additive inverse** of $$a$$. The opposite of
+$$0$$ is $$0$$ itself.
+
+:::
+
+So the opposite of $$5$$ is $$-5$$, and the opposite of $$-5$$ is $$5$$. Taking the opposite twice
+flips a number to the other side and back again, so you end up where you started:
+
+```math
+-(-a) = a, \qquad \text{for example} \quad -(-7) = 7
+```
+
+## Addition as movement
+
+Adding can be read as a walk along the number line.
+
+- Adding a **positive** number moves you **right** by that many steps. Starting at $$-2$$ and adding
+  $$6$$ lands on $$4$$:
+
+::number-line{from=-4 to=6 points="-2, 4" jumps="-2>4"}
+
+- Adding a **negative** number moves you **left** by that many steps. Starting at $$4$$ and adding
+  $$-7$$ lands on $$-3$$:
+
+::number-line{from=-5 to=6 points="4, -3" jumps="4>-3"}
+
+- Adding $$0$$ means taking no steps at all, so the number stays where it is: $$a + 0 = a$$.
+
+Adding a number to its opposite always walks you back to the origin, because the opposite is the
+same distance from $$0$$ in the other direction:
+
+```math
+a + (-a) = 0 \quad \text{and} \quad -a + a = 0
+```
+
+::number-line{from=-5 to=5 points="-4, 4" jumps="4>0: +(−4)"}
+
+This is where the name additive inverse comes from: adding $$-a$$ undoes adding $$a$$. Subtracting
+works the same way: taking away $$7$$ from $$4$$ is the same walk as adding $$-7$$, and both land on
+$$-3$$. The next page makes this the definition of subtraction.
+
+## The minus sign does not mean "negative"
+
+It is tempting to read $$-a$$ as "a negative number", but that is only true when $$a$$ itself is
+positive. The minus sign means "the opposite of". If $$a = -2$$, then $$-a = -(-2) = 2$$, which is
+positive. Reading $$-a$$ out loud as "minus $$a$$" or "the opposite of $$a$$" avoids the confusion.
+
+## Common mistakes
+
+- **Thinking $$-a$$ is always negative.** It is the opposite of $$a$$, which is positive when $$a$$
+  is negative.
+- **Comparing negatives by size alone.** $$-10$$ is further from $$0$$ than $$-7$$, but it is the
+  **smaller** number, because it sits further left.
+
+## In short
+
+- The integers are the positive integers, their opposites, and $$0$$; the natural numbers are
+  $$0, 1, 2, \dots$$
+- On the number line, further right means bigger.
+- The opposite $$-a$$ is the same distance from $$0$$ on the other side, and $$-(-a) = a$$.
+- Adding is walking along the line: right for positive numbers, left for negative ones.
+
+## Practise
+
+- :ref{#ex-order-integers}: putting integers in order.
+- :ref{#ex-number-line-walks}: adding and subtracting on the number line.
+- :ref{#ex-minus-signs}: opposites of opposites.

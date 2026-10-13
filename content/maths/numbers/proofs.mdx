@@ -1,0 +1,244 @@
+---
+title: How proofs work
+description: The kinds of argument used throughout this guide, each with a small example.
+---
+
+This guide doesn't just state rules; it shows why each one has to hold. The arguments that do this
+are called **proofs**. Most of them are built from a handful of patterns, and it is much easier to
+follow a proof once you recognise the pattern it uses. This page collects those patterns in one
+place. Later pages link back here whenever one of them is used.
+
+## What a proof is
+
+A proof is a chain of steps, each one following from things already known: the definitions, the
+basic rules we agree to take as given, and results proved earlier. The point of a proof is that it
+settles a question **for every case at once**, including the infinitely many cases nobody will ever
+check by hand.
+
+Statements in this guide usually talk about letters, as in "for any integers $$a$$ and $$b$$,
+$$a + b = b + a$$". A letter like this stands for any number of the kind stated, all at once. A
+proof about $$a$$ and $$b$$ can only use what is true of every integer, so it covers all of them.
+Two phrases come up again and again:
+
+- **"For every"** (or "for any", "for all") means the statement holds no matter which number is
+  chosen.
+- **"For some"** (or "there is") means at least one number makes it hold. For example, "$$n$$ is
+  even" means $$n = 2k$$ for **some** integer $$k$$.
+
+## Direct proofs
+
+The most common pattern starts from what we are told, unpacks the definitions, and works step by
+step towards what we want.
+
+:::example[A direct proof]
+
+**Claim.** If $$a$$ and $$b$$ are even, then $$a + b$$ is even.
+
+Being even means being $$2$$ times an integer (:ref{#even-odd}). So we can write $$a = 2k$$ and
+$$b = 2l$$ for some integers $$k$$ and $$l$$. Then
+
+```math
+a + b = 2k + 2l = 2(k + l)
+```
+
+which is $$2$$ times the integer $$k + l$$, so $$a + b$$ is even.
+
+:::
+
+Notice the shape: **write down what the definitions say, then rearrange until the conclusion
+appears.** When you're stuck on a proof, unpacking the definitions is nearly always the right first
+step.
+
+## Examples don't prove, but one example can disprove
+
+Checking examples is a good way to guess what's true, but it can never prove a "for every"
+statement, because there are always more cases left. On the other hand, a single example where a
+statement fails is enough to show that it is false.
+
+:::definition[Counterexample]{#counterexample}
+
+A **counterexample** to a statement about every number is one particular number for which the
+statement is false.
+
+:::
+
+:::example[Patterns can break]
+
+Is $$n^2 + n + 11$$ never a multiple of $$11$$, for positive integers $$n$$? Checking the first few
+values gives
+
+```math
+13,\ 17,\ 23,\ 31,\ 41,\ 53,\ 67,\ 83,\ 101
+```
+
+for $$n = 1, \dots, 9$$, and none is a multiple of $$11$$. But $$n = 10$$ gives
+$$100 + 10 + 11 = 121 = 11 \cdot 11$$. Nine cases in a row looked convincing, and the tenth is a
+counterexample.
+
+:::
+
+A counterexample is also the quickest way to catch a tempting mistake. Is $$(a + b)^2$$ the same as
+$$a^2 + b^2$$? Taking $$a = b = 1$$ gives $$4$$ on the left and $$2$$ on the right, so no.
+
+## If, then, and the other way round
+
+Many statements have the form "**if** $$P$$, **then** $$Q$$". Two other statements are built from
+the same parts, and it is important to keep them apart.
+
+:::definition[Converse and contrapositive]{#contrapositive}
+
+For a statement "if $$P$$, then $$Q$$":
+
+- its **converse** is "if $$Q$$, then $$P$$";
+- its **contrapositive** is "if not $$Q$$, then not $$P$$".
+
+:::
+
+Take "if $$n$$ is a multiple of $$4$$, then $$n$$ is even", which is true.
+
+- The converse, "if $$n$$ is even, then $$n$$ is a multiple of $$4$$", is **false**: $$6$$ is a
+  counterexample. A statement and its converse are different claims, and one can be true while the
+  other is false.
+- The contrapositive, "if $$n$$ is not even, then $$n$$ is not a multiple of $$4$$", is true, and
+  that is no accident.
+
+:::proposition[A statement and its contrapositive]{#contrapositive-equivalent}
+
+A statement "if $$P$$, then $$Q$$" and its contrapositive "if not $$Q$$, then not $$P$$" are either
+both true or both false.
+
+:::
+
+:::proof
+
+Suppose "if $$P$$, then $$Q$$" is true, and that $$Q$$ fails. If $$P$$ held, then $$Q$$ would hold
+too, which it doesn't. So $$P$$ fails, which is what the contrapositive says.
+
+The same argument run the other way shows that if the contrapositive is true, so is the original:
+the contrapositive of "if not $$Q$$, then not $$P$$" is "if $$P$$, then $$Q$$" again.
+
+:::
+
+So whenever "if $$P$$ then $$Q$$" is awkward to prove directly, we can prove "if not $$Q$$ then not
+$$P$$" instead. This guide does that to show that if $$3$$ divides $$a^2$$ then $$3$$ divides $$a$$,
+because it is easier to start from a number that is **not** a multiple of $$3$$.
+
+## "Exactly when"
+
+Sometimes a statement and its converse are both true, and we say so in one go.
+
+:::definition[Exactly when]{#exactly-when}
+
+"$$P$$ **exactly when** $$Q$$" (also written "$$P$$ if and only if $$Q$$") means both "if $$P$$,
+then $$Q$$" and "if $$Q$$, then $$P$$".
+
+:::
+
+Proving an "exactly when" statement therefore takes **two** proofs, one in each direction. For
+example, "an integer is even exactly when its square is even" needs a proof that even numbers have
+even squares, and a separate proof that a number with an even square is even.
+
+## Proof by contradiction
+
+To prove that something is true, we can suppose that it is **false** and show that this leads to
+something impossible. Since a false starting point is the only way to reach an impossible conclusion
+by correct steps, the supposition must have been wrong.
+
+:::example[There is no largest integer]{#contradiction}
+
+Suppose there were a largest integer, and call it $$N$$. Then $$N + 1$$ is also an integer, and it
+is bigger than $$N$$. That contradicts $$N$$ being the largest. So there is no largest integer.
+
+:::
+
+The most famous proof by contradiction in this guide shows that no fraction squares to $$2$$. It
+supposes that one does, writes it in lowest form, and shows that its top and bottom would then both
+have to be even, which lowest form rules out.
+
+## Splitting into cases
+
+When every number falls into one of a few kinds, we can prove a statement by checking each kind
+separately. Every integer is either even or odd, so a statement proved for even numbers and for odd
+numbers is proved for all of them.
+
+:::example[Two cases]
+
+**Claim.** For every integer $$n$$, the number $$n^2 + n$$ is even.
+
+If $$n = 2k$$ is even, then $$n^2 + n = 4k^2 + 2k = 2(2k^2 + k)$$, which is even. If $$n = 2k + 1$$
+is odd, then
+
+```math
+n^2 + n = (4k^2 + 4k + 1) + (2k + 1) = 4k^2 + 6k + 2 = 2(2k^2 + 3k + 1)
+```
+
+which is even too. The two cases cover every integer.
+
+:::
+
+The cases must really cover everything. Later the integers are split three ways, by their remainder
+when divided by $$3$$, and the same idea works with any number of cases.
+
+## Proof by induction
+
+Some statements are about every positive integer $$n$$: "for $$n = 1, 2, 3, \dots$$, something
+holds". Induction proves all of them with two steps. Picture an endless row of dominoes: if the
+first one falls, and each falling domino knocks over the next, then every domino falls.
+
+:::remark[Induction]{#induction}
+
+To prove a statement for every positive integer $$n$$, it is enough to show that:
+
+1. it holds for $$n = 1$$, and
+2. whenever it holds for some $$n = k$$, it also holds for $$n = k + 1$$.
+
+We take this as a basic fact about the positive integers: starting from $$1$$ and adding $$1$$ over
+and over reaches every one of them.
+
+:::
+
+:::example[Adding up 1 to n]
+
+**Claim.** For every positive integer $$n$$, $$2(1 + 2 + \cdots + n) = n(n + 1)$$.
+
+For $$n = 1$$, both sides are $$2$$.
+
+Now suppose it holds for some $$n = k$$, so $$2(1 + \cdots + k) = k(k + 1)$$. Adding $$k + 1$$ to
+the sum adds $$2(k + 1)$$ to the left side, so
+
+```math
+2\big(1 + \cdots + k + (k + 1)\big) = k(k + 1) + 2(k + 1) = (k + 1)(k + 2)
+```
+
+That is the statement for $$n = k + 1$$. By induction it holds for every $$n$$. For example, with
+$$n = 100$$, the numbers $$1$$ to $$100$$ add up to $$\frac{100 \cdot 101}{2} = 5050$$.
+
+:::
+
+The second step never proves anything on its own; it only says how to pass from one case to the
+next. Without a first case, nothing gets started.
+
+## Common mistakes
+
+- **Treating examples as a proof.** However many cases you check, a "for every" claim needs an
+  argument that covers all of them.
+- **Proving the converse instead.** "If $$P$$ then $$Q$$" and "if $$Q$$ then $$P$$" are different
+  statements. Make sure you start from what you're told.
+- **Using what you want to prove.** A step that quietly assumes the conclusion makes the whole
+  argument go round in a circle.
+
+## In short
+
+- A proof settles a statement for every case at once; examples can suggest, but never prove.
+- One counterexample is enough to show a "for every" statement is false.
+- A statement and its contrapositive stand or fall together; its converse is a different claim.
+- "Exactly when" needs a proof in each direction.
+- Proof by contradiction supposes the opposite and reaches something impossible.
+- Induction proves a first case and shows each case leads to the next.
+
+## Practise
+
+- :ref{#ex-true-or-false-divisibility}: proofs and counterexamples.
+- :ref{#ex-three-consecutive-sum}: a direct proof.
+- :ref{#ex-consecutive-product}: splitting into cases.
+- :ref{#ex-sqrt-six}: proof by contradiction.

@@ -1,0 +1,262 @@
+---
+title: Factorials and binomial coefficients
+description:
+  Counting choices, and where the numbers in the formulas for squares and cubes come from.
+---
+
+How many ways are there to choose $$3$$ toppings from $$5$$? Why are the numbers in front of
+$$(a + b)^3 = a^3 + 3a^2 b + 3ab^2 + b^3$$ exactly $$1, 3, 3, 1$$? Both questions have the same
+answer, and this page builds it from two ideas: factorials and binomial coefficients. Working with
+them is mostly a matter of cancelling fractions, which is why they fit here. They come back in much
+more detail in a later guide on counting.
+
+## Factorials
+
+:::definition[Factorial]{#factorial}
+
+For a positive integer $$n$$, **$$n$$ factorial**, written $$n!$$, is the product of the first $$n$$
+positive integers:
+
+```math
+n! = 1 \cdot 2 \cdot 3 \cdots n
+```
+
+We also define $$0! = 1$$.
+
+:::
+
+Rather than multiplying everything out each time, notice that each factorial is the one before it
+times one more number: $$n! = n \cdot (n - 1)!$$. So the factorials can be built up a step at a
+time:
+
+| $$n$$ | $$n!$$                   |
+| ----- | ------------------------ |
+| $$1$$ | $$1$$                    |
+| $$2$$ | $$2 \cdot 1 = 2$$        |
+| $$3$$ | $$3 \cdot 2 = 6$$        |
+| $$4$$ | $$4 \cdot 6 = 24$$       |
+| $$5$$ | $$5 \cdot 24 = 120$$     |
+| $$6$$ | $$6 \cdot 120 = 720$$    |
+| $$7$$ | $$7 \cdot 720 = 5040$$   |
+| $$8$$ | $$8 \cdot 5040 = 40320$$ |
+
+Factorials grow very quickly. The same rule explains the choice $$0! = 1$$: taking $$n = 1$$ in
+$$n! = n \cdot (n - 1)!$$ gives $$1! = 1 \cdot 0!$$, which only works if $$0! = 1$$.
+
+## Choosing
+
+Factorials count **arrangements**. To put $$n$$ different things in a row, there are $$n$$ choices
+for the first place, then $$n - 1$$ left for the second, and so on down to $$1$$ for the last. So
+there are $$n \cdot (n - 1) \cdots 1 = n!$$ ways. For example, the letters $$a$$, $$b$$, $$c$$ can
+be arranged in $$3! = 6$$ ways: $$abc$$, $$acb$$, $$bac$$, $$bca$$, $$cab$$, $$cba$$.
+
+Now suppose we want to **choose** $$n$$ things out of $$m$$, where only the selection matters, not
+the order. Picking them one at a time in order gives $$m$$ choices for the first, $$m - 1$$ for the
+second, and so on, $$n$$ times:
+
+```math
+m(m - 1) \cdots (m - n + 1) = \frac{m!}{(m - n)!}
+```
+
+ordered picks. (The fraction is the product of all the numbers from $$m$$ down to $$1$$, with the
+ones from $$m - n$$ down cancelled.) But every selection has been counted once for each order its
+$$n$$ things could be picked in, which is $$n!$$ times. Dividing by $$n!$$ counts each selection
+once.
+
+:::definition[Binomial coefficient]{#binomial}
+
+For natural numbers $$m$$ and $$n$$ with $$n$$ between $$0$$ and $$m$$, the **binomial coefficient**
+"$$m$$ choose $$n$$" is
+
+```math
+\binom{m}{n} = \frac{m!}{n!\,(m - n)!}
+```
+
+:::
+
+By the argument above, it counts the number of ways to choose $$n$$ things out of $$m$$, when the
+order doesn't matter. For example, choosing $$2$$ toppings from $$4$$ (say $$a$$, $$b$$, $$c$$,
+$$d$$) gives $$4 \cdot 3 = 12$$ ordered picks, and each pair is counted twice ($$ab$$ and $$ba$$),
+so there are $$6$$ ways: $$ab$$, $$ac$$, $$ad$$, $$bc$$, $$bd$$, $$cd$$. The formula agrees:
+
+```math
+\binom{4}{2} = \frac{4!}{2!\,2!} = \frac{24}{2 \cdot 2} = 6
+```
+
+Writing the factorials out lets most of the product cancel before multiplying. For example,
+
+```math
+\binom{6}{3} = \frac{6!}{3!\,3!} = \frac{6 \cdot 5 \cdot 4 \cdot \cancel{3!}}{3! \cdot \cancel{3!}}
+= \frac{6 \cdot 5 \cdot 4}{6} = 20
+```
+
+and in the same way $$\binom{5}{2} = \frac{5 \cdot 4}{2} = 10$$. At the ends, $$\binom{m}{0} = 1$$
+and $$\binom{m}{m} = 1$$, since there is just one way to choose nothing, and one way to choose
+everything.
+
+## Two rules for binomial coefficients
+
+:::proposition[Choosing what to leave out]{#binomial-symmetry}
+
+For natural numbers $$m$$ and $$n$$ with $$n$$ between $$0$$ and $$m$$,
+
+```math
+\binom{m}{n} = \binom{m}{m - n}
+```
+
+:::
+
+:::proof
+
+Choosing $$n$$ things to take is the same as choosing the $$m - n$$ things to leave behind, so the
+two counts should match. To check it with the formula, put $$m - n$$ in place of $$n$$. The second
+factor in the denominator becomes $$\big(m - (m - n)\big)! = n!$$, so
+
+```math
+\binom{m}{m - n} = \frac{m!}{(m - n)!\,n!}
+```
+
+This is the same fraction as $$\binom{m}{n}$$ with the two factors of the denominator swapped, and
+the order of a product doesn't matter.
+
+:::
+
+For example, $$\binom{5}{2} = \binom{5}{3} = 10$$.
+
+:::proposition[Pascal's rule]{#pascal}
+
+For natural numbers $$m$$ and $$n$$ with $$1 \le n \le m$$,
+
+```math
+\binom{m}{n - 1} + \binom{m}{n} = \binom{m + 1}{n}
+```
+
+:::
+
+:::proof
+
+This is an exercise in adding fractions. Writing out both terms,
+
+```math
+\binom{m}{n - 1} + \binom{m}{n}
+= \frac{m!}{(n - 1)!\,(m - n + 1)!} + \frac{m!}{n!\,(m - n)!}
+```
+
+The denominators are different, but they are close. The rule $$k! = k \cdot (k - 1)!$$ says
+$$n! = n \cdot (n - 1)!$$ and $$(m - n + 1)! = (m - n + 1) \cdot (m - n)!$$. So multiplying the top
+and bottom of the first fraction by $$n$$, and of the second by $$m - n + 1$$, gives both the common
+denominator $$n!\,(m - n + 1)!$$:
+
+```math
+\begin{aligned}
+&= \frac{m! \cdot n}{n!\,(m - n + 1)!} + \frac{m! \cdot (m - n + 1)}{n!\,(m - n + 1)!} \\
+&= \frac{m! \cdot (n + m - n + 1)}{n!\,(m - n + 1)!}
+= \frac{m! \cdot (m + 1)}{n!\,(m - n + 1)!}
+\end{aligned}
+```
+
+In the second line we added the numerators and took out the common factor $$m!$$. Finally,
+$$m! \cdot (m + 1) = (m + 1)!$$ and $$m - n + 1 = (m + 1) - n$$, so this is
+
+```math
+\frac{(m + 1)!}{n!\,\big((m + 1) - n\big)!} = \binom{m + 1}{n}
+```
+
+:::
+
+## Pascal's triangle
+
+Pascal's rule means the binomial coefficients can be built without any factorials at all. Write them
+in rows, $$\binom{m}{0}, \binom{m}{1}, \dots, \binom{m}{m}$$ for $$m = 0, 1, 2, \dots$$. Each row
+starts and ends with $$1$$, and every other entry is the sum of the two entries just above it. This
+is **Pascal's triangle**:
+
+```math
+\begin{array}{c}
+1 \\
+1 \quad 1 \\
+1 \quad 2 \quad 1 \\
+1 \quad 3 \quad 3 \quad 1 \\
+1 \quad 4 \quad 6 \quad 4 \quad 1 \\
+1 \quad 5 \quad 10 \quad 10 \quad 5 \quad 1
+\end{array}
+```
+
+The row for $$m = 4$$ is $$1, 4, 6, 4, 1$$, and its middle entry is $$\binom{4}{2} = 6$$, the
+toppings count from before.
+
+## The binomial theorem
+
+Compare the rows of the triangle with the formulas on the [Algebraic identities](./identities.mdx)
+page: $$(a + b)^2 = a^2 + 2ab + b^2$$ has the numbers $$1, 2, 1$$ in front, and $$(a + b)^3$$ has
+$$1, 3, 3, 1$$. These are rows $$2$$ and $$3$$. That is no coincidence, and it works for every
+power.
+
+:::theorem[The binomial theorem]{#binomial-theorem}
+
+For any numbers $$a$$ and $$b$$ and any positive integer $$m$$,
+
+```math
+(a + b)^m = \binom{m}{0} a^m + \binom{m}{1} a^{m-1} b + \binom{m}{2} a^{m-2} b^2 + \cdots
++ \binom{m}{m} b^m
+```
+
+The term with $$b^n$$ is $$\binom{m}{n} a^{m-n} b^n$$.
+
+:::
+
+:::proof
+
+Think of $$(a + b)^m$$ as $$m$$ brackets multiplied together:
+
+```math
+(a + b)(a + b) \cdots (a + b)
+```
+
+Multiplying out, every term is made by picking either $$a$$ or $$b$$ from each bracket and
+multiplying the picks together. A term with $$n$$ factors of $$b$$ has $$m - n$$ factors of $$a$$,
+so it is $$a^{m-n} b^n$$. How many times does it appear? Once for every way of deciding which $$n$$
+of the $$m$$ brackets supply the $$b$$s, and that is $$\binom{m}{n}$$ ways. Collecting these equal
+terms gives $$\binom{m}{n} a^{m-n} b^n$$.
+
+:::
+
+So expanding any power of a sum just needs a row of Pascal's triangle. Row $$4$$ is
+$$1, 4, 6, 4, 1$$, so
+
+```math
+(a + b)^4 = a^4 + 4a^3 b + 6a^2 b^2 + 4ab^3 + b^4
+```
+
+and with $$a = x$$ and $$b = -1$$, using row $$5$$,
+
+```math
+(x - 1)^5 = x^5 - 5x^4 + 10x^3 - 10x^2 + 5x - 1
+```
+
+where the signs alternate because odd powers of $$-1$$ are negative. Taking $$a = b = 1$$ shows that
+each row of the triangle adds up to $$(1 + 1)^m = 2^m$$.
+
+## Common mistakes
+
+- **Counting ordered picks instead of selections.** Picking $$2$$ from $$4$$ in order gives $$12$$,
+  but there are only $$6$$ selections, because $$ab$$ and $$ba$$ are the same.
+- **Forgetting $$0! = 1$$.** Without it, $$\binom{m}{0}$$ and $$\binom{m}{m}$$ wouldn't make sense.
+- **Multiplying out factorials before cancelling.** $$\frac{10!}{8!} = 10 \cdot 9$$; there is no
+  need to work out $$10!$$.
+
+## In short
+
+- $$n! = 1 \cdot 2 \cdots n$$ counts the arrangements of $$n$$ things, and $$0! = 1$$.
+- $$\binom{m}{n} = \frac{m!}{n!\,(m - n)!}$$ counts the ways to choose $$n$$ things from $$m$$.
+- $$\binom{m}{n} = \binom{m}{m - n}$$, and Pascal's rule builds each row of the triangle from the
+  one above.
+- The binomial theorem: the coefficients of $$(a + b)^m$$ are row $$m$$ of Pascal's triangle.
+
+## Practise
+
+- :ref{#ex-factorial-quotients}: cancelling factorials.
+- :ref{#ex-list-choices}: counting choices by listing.
+- :ref{#ex-choose-two}: a formula for choosing two.
+- :ref{#ex-pascal-rows} and :ref{#ex-pascal-row-sums}: Pascal's triangle.
+- :ref{#ex-central-binomial-even}: a proof with Pascal's rule.

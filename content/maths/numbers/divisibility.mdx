@@ -1,0 +1,357 @@
+---
+title: Divisibility
+description: Even and odd integers, divisibility, remainders and common divisors.
+---
+
+Some questions about whole numbers can be answered without working anything out. Is
+$$37 \cdot 41 + 12$$ even or odd? Can a square ever be one less than a multiple of $$4$$? Questions
+like these are about how numbers split into equal parts, and this page builds the language for them:
+even and odd, divisibility, remainders and common divisors. The next page,
+[Congruence](./congruence.mdx), turns that language into a way of calculating.
+
+## Even and odd
+
+Counting up from $$1$$, the integers alternate between two kinds:
+
+- The **even** integers $$2, 4, 6, 8, 10, \dots$$ are the ones that can be split into pairs with
+  nothing left over.
+- The **odd** integers $$1, 3, 5, 7, 9, \dots$$ always have one left over.
+
+Both go up in steps of $$2$$, so they take turns along the number line. Here the even integers are
+marked:
+
+::number-line{from=-1 to=10 points="0, 2, 4, 6, 8, 10"}
+
+"Split into pairs" means the number is $$2$$ times something, and "one left over" means one more
+than that.
+
+:::definition[Even and odd]{#even-odd}
+
+An integer is **even** if it can be written as $$2n$$ for some integer $$n$$, and **odd** if it can
+be written as $$2n + 1$$ for some integer $$n$$.
+
+:::
+
+For example, $$14 = 2 \cdot 7$$ and $$30 = 2 \cdot 15$$ are even, while $$1 = 2 \cdot 0 + 1$$,
+$$15 = 2 \cdot 7 + 1$$ and $$31 = 2 \cdot 15 + 1$$ are odd. Odd integers can equally be written as
+one _less_ than an even integer, $$2n - 1$$, so $$15 = 2 \cdot 8 - 1$$. Which form to use is just a
+matter of convenience.
+
+The same definitions work for zero and the negative integers: $$0 = 2 \cdot 0$$ is even,
+$$-6 = 2 \cdot (-3)$$ is even, and $$-5 = 2 \cdot (-3) + 1$$ is odd. Every integer is either even or
+odd, and never both. The number line makes this look obvious, and it is proved
+[below](#division-with-remainder) as part of a more general fact.
+
+## Sums and products of even and odd integers
+
+Whether a sum or product is even or odd depends only on whether its parts are.
+
+:::proposition[Adding even and odd integers]{#parity-sums}
+
+| $$a$$ | $$b$$ | $$a + b$$ | Example        |
+| ----- | ----- | --------- | -------------- |
+| even  | even  | even      | $$8 + 6 = 14$$ |
+| even  | odd   | odd       | $$8 + 5 = 13$$ |
+| odd   | even  | odd       | $$7 + 6 = 13$$ |
+| odd   | odd   | even      | $$7 + 5 = 12$$ |
+
+:::
+
+:::proof
+
+Write the numbers in the forms from :ref{#even-odd}. If $$a = 2n$$ is even and $$b = 2k + 1$$ is
+odd, then
+
+```math
+a + b = 2n + 2k + 1 = 2(n + k) + 1
+```
+
+which is $$2$$ times an integer, plus $$1$$, so it is odd. If both are odd, $$a = 2n + 1$$ and
+$$b = 2k + 1$$, then the two leftover $$1$$s pair up with each other:
+
+```math
+a + b = 2n + 1 + 2k + 1 = 2(n + k + 1)
+```
+
+which is even. The other two rows work the same way.
+
+:::
+
+:::proposition[Multiplying even and odd integers]{#parity-products}
+
+An even integer times any integer is even, and an odd integer times an odd integer is odd.
+
+:::
+
+:::proof
+
+If $$a = 2n$$, then $$ab = 2(nb)$$ is even. If $$a = 2n + 1$$ and $$b = 2k + 1$$, then
+
+```math
+ab = 4nk + 2n + 2k + 1 = 2(2nk + n + k) + 1
+```
+
+which is odd.
+
+:::
+
+So a product is odd only when **every** factor is odd. For example, $$3 \cdot 5 \cdot 7 = 105$$ is
+odd, but $$3 \cdot 5 \cdot 7 \cdot 2 = 210$$ is even.
+
+## Squares
+
+A square has the same kind as the number being squared.
+
+:::proposition[Squares of even and odd integers]{#squares-parity}
+
+The square of an even integer is even, and the square of an odd integer is odd.
+
+:::
+
+:::proof
+
+We use the forms from :ref{#even-odd} and check that the square has the same form.
+
+If $$a$$ is even, write $$a = 2n$$. Then $$a^2 = 4n^2 = 2(2n^2)$$, which is $$2$$ times an integer,
+so it is even.
+
+If $$a$$ is odd, write $$a = 2n + 1$$. Expanding with the square of a sum,
+
+```math
+a^2 = (2n + 1)^2 = 4n^2 + 4n + 1 = 2(2n^2 + 2n) + 1
+```
+
+The first two terms both contain a factor of $$2$$, so we can pull it out, leaving $$1$$ over. That
+is the form of an odd integer.
+
+:::
+
+For example, $$6^2 = 36$$ is even and $$9^2 = 81$$ is odd. This also works backwards.
+
+:::corollary[Numbers with even or odd squares]{#squares-parity-converse}
+
+If $$a^2$$ is even, then $$a$$ is even. If $$a^2$$ is odd, then $$a$$ is odd.
+
+:::
+
+:::proof
+
+Every integer is either even or odd, so it is enough to rule out the wrong one. Suppose $$a^2$$ is
+even. If $$a$$ were odd, then by :ref{#squares-parity} its square would be odd, which it is not. So
+$$a$$ must be even. The same reasoning with "even" and "odd" swapped proves the second statement.
+
+:::
+
+This is an example of proving the contrapositive (:ref{#contrapositive}): "if $$a$$ is odd then
+$$a^2$$ is odd" says the same as "if $$a^2$$ is not odd then $$a$$ is not odd". So, for example, if
+$$a^2 = 144$$ then without working out $$a$$ we already know it is even.
+
+The same splitting into even and odd settles powers of $$-1$$. If $$n = 2k$$ is even, then
+$$(-1)^n = ((-1)^2)^k = 1^k = 1$$. If $$n = 2k + 1$$ is odd, then
+$$(-1)^n = (-1)^{2k} \cdot (-1) = -1$$. So $$(-1)^n$$ is $$1$$ when $$n$$ is even and $$-1$$ when
+$$n$$ is odd.
+
+## Divisibility
+
+Being even means being a multiple of $$2$$. The same idea works with any number in place of $$2$$.
+
+:::definition[Divisibility]{#divides}
+
+An integer $$d$$ **divides** an integer $$n$$, or $$n$$ is **divisible** by $$d$$, if
+
+```math
+n = dk \qquad \text{for some integer } k
+```
+
+This is written $$d \mid n$$, and $$d$$ is called a **divisor** of $$n$$.
+
+:::
+
+For example:
+
+- $$4 \mid 28$$, because $$28 = 4 \cdot 7$$.
+- $$6 \mid -42$$, because $$-42 = 6 \cdot (-7)$$.
+- $$5$$ does **not** divide $$12$$, because no integer $$k$$ gives $$5k = 12$$. This is written
+  $$5 \nmid 12$$.
+
+So "even" is the same as "divisible by $$2$$". A few things are always true:
+
+- Every integer is divisible by $$1$$, because $$n = 1 \cdot n$$.
+- Every integer is divisible by itself, because $$n = n \cdot 1$$.
+- $$0$$ is divisible by every integer, because $$0 = d \cdot 0$$.
+
+A common question is how many times a number can be divided by $$2$$ (or $$3$$, or anything else).
+Splitting $$48$$ into factors of $$2$$ until an odd number is left gives
+
+```math
+\begin{aligned}
+48 &= 2 \cdot 24 = 2 \cdot 2 \cdot 12 = 2 \cdot 2 \cdot 2 \cdot 6 \\
+&= 2 \cdot 2 \cdot 2 \cdot 2 \cdot 3 = 2^4 \cdot 3
+\end{aligned}
+```
+
+so $$2^4 = 16$$ divides $$48$$, but $$2^5 = 32$$ does not. In the same way $$54 = 2 \cdot 3^3$$, so
+$$3^3 = 27$$ is the largest power of $$3$$ that divides $$54$$.
+
+## Combining multiples
+
+If two numbers are both multiples of $$d$$, then so is anything built from them by adding,
+subtracting or multiplying.
+
+:::lemma[Combining multiples]{#multiples}
+
+Let $$d$$, $$m$$ and $$n$$ be integers with $$d \mid m$$ and $$d \mid n$$. Then $$d \mid m + n$$,
+$$d \mid m - n$$, and $$d \mid mc$$ for any integer $$c$$.
+
+:::
+
+:::proof
+
+The statement is about multiples of $$d$$, so the natural first step is to unpack the definition of
+divisibility and write each number we know about as $$d$$ times something. Since $$d \mid m$$ and
+$$d \mid n$$, there are integers $$k$$ and $$l$$ with
+
+```math
+m = dk \qquad \text{and} \qquad n = dl
+```
+
+To show that a number is divisible by $$d$$, we need to write it as $$d$$ times an integer. So in
+each case we substitute and then pull out the common factor $$d$$ using distributivity:
+
+```math
+\begin{aligned}
+m + n &= dk + dl = d(k + l) \\
+m - n &= dk - dl = d(k - l) \\
+mc &= (dk)c = d(kc)
+\end{aligned}
+```
+
+The last line uses associativity to regroup the product. Because sums, differences and products of
+integers are integers, $$k + l$$, $$k - l$$ and $$kc$$ are all integers. So each of $$m + n$$,
+$$m - n$$ and $$mc$$ has been written as $$d$$ times an integer, which is exactly what $$d$$
+dividing it means.
+
+:::
+
+For example, $$7 \mid 21$$ and $$7 \mid 35$$, so $$7$$ also divides $$21 + 35 = 56$$,
+$$21 - 35 = -14$$ and $$21 \cdot 4 = 84$$. This lemma is used again and again on the next page.
+
+## Division with remainder
+
+Most numbers aren't divisible by a given $$d$$, but they always land somewhere between two multiples
+of it. Picture the multiples of $$5$$ on the number line. They cut it into stretches $$5$$ steps
+long, and $$17$$ lands in the stretch that starts at $$15$$, two steps in:
+
+::number-line{from=0 to=20 unit=30 points="0, 5, 10, 15, 20" jumps="15>17: + 2"}
+
+So $$17 = 5 \cdot 3 + 2$$: three whole fives, and $$2$$ left over.
+
+:::theorem[Division with remainder]{#division-remainder}
+
+Let $$n$$ and $$d$$ be integers with $$d > 0$$. Then there are integers $$q$$ and $$r$$ with
+
+```math
+n = dq + r \qquad \text{and} \qquad 0 \le r < d
+```
+
+and there is only one such pair. The number $$q$$ is called the **quotient** and $$r$$ the
+**remainder** when $$n$$ is divided by $$d$$.
+
+:::
+
+:::proof
+
+**There is such a pair.** The multiples $$\dots, -2d, -d, 0, d, 2d, \dots$$ are spaced $$d$$ apart
+along the whole number line, so $$n$$ lies in exactly one of the stretches from a multiple $$dq$$ up
+to (but not including) the next one, $$dq + d$$. Then $$r = n - dq$$ is how far $$n$$ is past
+$$dq$$, so $$0 \le r < d$$, and $$n = dq + r$$.
+
+**There is only one.** Suppose $$n = dq + r = dq' + r'$$, with both remainders between $$0$$ and
+$$d - 1$$. Rearranging gives
+
+```math
+d(q - q') = r' - r
+```
+
+The right side is between $$-(d - 1)$$ and $$d - 1$$. But the left side is a multiple of $$d$$, and
+the only multiple of $$d$$ that close to $$0$$ is $$0$$ itself: if $$q - q' \ge 1$$ then
+$$d(q - q') \ge d$$, and if $$q - q' \le -1$$ then $$d(q - q') \le -d$$, by :ref{#order-multiply}.
+So $$r' - r = 0$$ and $$d(q - q') = 0$$, which means $$r = r'$$ and $$q = q'$$.
+
+:::
+
+For example, dividing $$17$$ by $$5$$ gives quotient $$3$$ and remainder $$2$$. For a negative
+number the remainder is still between $$0$$ and $$d - 1$$: $$-17 = 5 \cdot (-4) + 3$$, so the
+remainder is $$3$$, not $$-2$$. And $$d \mid n$$ says exactly that the remainder is $$0$$.
+
+Dividing by $$2$$ settles the claim from the start of the page.
+
+:::corollary[Even or odd]{#even-or-odd}
+
+Every integer is either even or odd, and not both.
+
+:::
+
+:::proof
+
+By :ref{#division-remainder} with $$d = 2$$, every integer can be written as $$2q + r$$ with
+$$r = 0$$ or $$r = 1$$, and in only one way. Remainder $$0$$ means even, and remainder $$1$$ means
+odd.
+
+:::
+
+In the same way, dividing by $$3$$ sorts every integer into exactly one of three kinds,
+
+```math
+3k, \qquad 3k + 1 \qquad \text{or} \qquad 3k + 2
+```
+
+and splitting into these cases is a common way to prove things about multiples of $$3$$.
+
+## Common divisors
+
+:::definition[Common divisors]{#gcd}
+
+A **common divisor** of two integers is an integer that divides both of them. For positive integers
+$$m$$ and $$n$$, the largest of their common divisors is their **greatest common divisor**.
+
+:::
+
+For example, the positive divisors of $$36$$ are $$1, 2, 3, 4, 6, 9, 12, 18, 36$$, and those of
+$$60$$ are $$1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60$$. The common ones are $$1, 2, 3, 4, 6, 12$$,
+so the greatest common divisor of $$36$$ and $$60$$ is $$12$$.
+
+There always is a greatest one. A positive divisor $$d$$ of a positive integer $$m$$ is never bigger
+than $$m$$, because $$m = dk$$ with $$k \ge 1$$, so $$m \ge d$$. That leaves only finitely many
+candidates, and $$1$$ is always one of them. When the greatest common divisor is $$1$$, the two
+numbers share no factor worth cancelling; that is what lowest form means for fractions, on the
+[Rational numbers](./rational-numbers.mdx) page.
+
+## Common mistakes
+
+- **Forgetting that $$0$$ is even.** $$0 = 2 \cdot 0$$.
+- **Mixing up $$d \mid n$$ and $$n \mid d$$.** $$3 \mid 12$$ is true, but $$12 \mid 3$$ is not.
+- **Reading the lemma backwards.** If $$d$$ divides $$a + b$$, it need not divide $$a$$ or $$b$$:
+  $$3 \mid 1 + 2$$.
+- **Negative remainders.** The remainder is always between $$0$$ and $$d - 1$$, even for negative
+  numbers.
+
+## In short
+
+- Even means $$2n$$, odd means $$2n + 1$$, and every integer is exactly one of them.
+- Odd plus odd is even; a product is odd only when every factor is odd; $$a^2$$ has the same kind as
+  $$a$$.
+- $$d \mid n$$ means $$n = dk$$; sums, differences and multiples of multiples of $$d$$ are multiples
+  of $$d$$.
+- Dividing $$n$$ by $$d > 0$$ leaves a unique remainder $$r$$ with $$0 \le r < d$$.
+- The greatest common divisor is the largest number dividing both.
+
+## Practise
+
+- :ref{#ex-parity-without-computing}: even or odd without calculating.
+- :ref{#ex-consecutive-product} and :ref{#ex-three-consecutive-sum}: consecutive integers.
+- :ref{#ex-combination-divisible}: combining multiples.
+- :ref{#ex-largest-powers}: powers that divide a number.
+- :ref{#ex-odd-square-minus-one} and :ref{#ex-two-odd-squares}: squares of odd numbers.
+- :ref{#ex-cube-minus-n}: splitting into cases by remainder.
+- :ref{#ex-true-or-false-divisibility}: proofs and counterexamples.
