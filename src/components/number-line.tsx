@@ -12,7 +12,10 @@ type Label = {
 type NumberLineProps = {
   from: number;
   to: number;
-  /** pixels per whole number, widen this to show fractions clearly */
+  /**
+   * pixels per whole number; defaults to 48, or with divisions to whatever makes the line 600px
+   * wide, so fractions are easy to see and text stays the same size as on other lines
+   */
   unit?: number;
   /** number of equal pieces to split each whole step into, drawn as small ticks */
   divisions?: number;
@@ -47,8 +50,8 @@ export function NumberLine({
   to,
   points = [],
   jumps = [],
-  unit = 48,
   divisions = 1,
+  unit = divisions > 1 ? 600 / (to - from) : 48,
   labels = [],
   caption,
 }: NumberLineProps) {

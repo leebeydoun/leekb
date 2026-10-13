@@ -4,8 +4,12 @@ import { metaSchema, pageSchema } from "fumapress/adapters/mdx/schema";
 import { defineDocs } from "fumadocs-mdx/macro";
 import { applyMdxPreset } from "fumadocs-mdx/config";
 import remarkMath from "remark-math";
+import remarkDirective from "remark-directive";
+import defaultMdxComponents, { createRelativeLink } from "fumadocs-ui/mdx";
 import rehypeKatex from "rehype-katex";
+import { remarkComponents } from "./src/lib/remark-components";
 import { remarkStatements } from "./src/lib/remark-statements";
+import { mdxComponents } from "./src/components/mdx";
 import { createNotebookLayoutPage } from "fumapress/layouts/notebook";
 
 const NotebookLayout = createNotebookLayoutPage<typeof config.$context>();
@@ -17,7 +21,12 @@ const docs = defineDocs({
     schema: pageSchema,
     lastModified: true,
     mdxOptions: applyMdxPreset({
-      remarkPlugins: [remarkMath, remarkStatements],
+      remarkPlugins: [
+        remarkMath,
+        remarkDirective,
+        remarkComponents,
+        remarkStatements,
+      ],
       rehypePlugins: (v) => [rehypeKatex, ...v],
     }),
     postprocess: {
@@ -56,6 +65,17 @@ const config = defineConfig({
       );
     },
   },
-}).adapters(fumadocsMdx());
+}).adapters(
+  fumadocsMdx({
+    // the defaults, plus our components so content files can use them without importing
+    async getMdxComponents(page) {
+      return {
+        ...defaultMdxComponents,
+        a: createRelativeLink(await this.getLoader(), page),
+        ...mdxComponents,
+      };
+    },
+  }),
+);
 
 export default config;

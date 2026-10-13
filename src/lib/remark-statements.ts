@@ -1,10 +1,10 @@
 /**
- * Numbers statement blocks (<Definition>, <Theorem>, ...) and resolves <Ref> elements to them.
+ * Numbers statement blocks (Definition, Theorem, ...) and resolves Ref links to them.
  *
  * Statements are numbered "section.n", where section counts the `##` headings on the page and n
  * counts statements of every kind within that section, so a page reads Definition 4.1, Lemma 4.2,
  * Theorem 4.3. A statement with an `id` can be referenced from anywhere on the page with
- * `<Ref id="..." />`, which renders as a link labelled e.g. "Definition 4.1".
+ * `:ref{#...}`, which renders as a link labelled e.g. "Definition 4.1".
  */
 
 export const STATEMENT_KINDS = [
@@ -83,7 +83,7 @@ export function remarkStatements() {
       const label = id && labels.get(id);
       if (!label)
         throw new Error(
-          `<Ref id="${id}" /> has no matching statement in ${file.path}`,
+          `:ref{#${id}} has no matching statement in ${file.path}`,
         );
       setAttribute(node, "label", label);
     });

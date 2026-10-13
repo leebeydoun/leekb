@@ -1,0 +1,37 @@
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import { AreaModel } from "./area-model";
+import { NumberLine } from "./number-line";
+import {
+  Conjecture,
+  Corollary,
+  Definition,
+  Example,
+  Exercise,
+  Lemma,
+  Proof,
+  Proposition,
+  Ref,
+  Remark,
+  Solution,
+  Theorem,
+} from "./statement";
+
+/** Components available on every page, created from directives by remark-components. */
+export const mdxComponents = {
+  Accordion,
+  Accordions,
+  AreaModel,
+  NumberLine,
+  Conjecture,
+  Corollary,
+  Definition,
+  Example,
+  Exercise,
+  Lemma,
+  Proof,
+  Proposition,
+  Ref,
+  Remark,
+  Solution,
+  Theorem,
+};
