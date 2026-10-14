@@ -1,0 +1,218 @@
+---
+title: Three equations in three unknowns
+description: Reducing three equations in three unknowns to two, and what can go wrong.
+---
+
+With three unknown quantities, three facts are needed to pin them down. The good news is that no new
+idea is needed: eliminating one unknown turns three equations in three unknowns into two equations
+in two unknowns, which the earlier pages already solve. This page shows how to organise the work so
+it stays manageable.
+
+## Linear equations in three unknowns
+
+:::definition[Linear equation in three unknowns]{#linear-three}
+
+A **linear equation** in three unknowns $$x$$, $$y$$ and $$z$$ is one that can be brought to the
+form
+
+```math
+ax + by + cz = d
+```
+
+where $$a$$, $$b$$, $$c$$ and $$d$$ are numbers and $$a$$, $$b$$ and $$c$$ are not all zero. A
+**solution** is a triple of numbers $$(x, y, z)$$ that makes it true.
+
+:::
+
+Everything said about systems on the [Two equations in two unknowns](./two-unknowns.mdx) page works
+just as well here. In particular, :ref{#combining} holds for any number of equations, with the same
+proof: adding a multiple of one equation to another, multiplying an equation by a non-zero number,
+or reordering the equations always gives an equivalent system.
+
+## The method
+
+:::remark[Solving three equations]{#three-method}
+
+1. **Choose** an unknown to eliminate first, ideally one with simple coefficients, such as $$1$$ or
+   $$-1$$.
+2. **Eliminate it twice:** combine two of the equations to remove it, then combine a **different**
+   pair (one of them can be reused) to remove it again. This gives two equations in the other two
+   unknowns.
+3. **Solve** those two equations, by elimination or substitution.
+4. **Back-substitute** both values into an original equation that contains the third unknown, and
+   solve for it.
+5. **Check** all three values in all three original equations.
+
+:::
+
+:::example[A first example]
+
+Solve
+
+```math
+\begin{aligned}
+x + y + z &= 6 &\quad (1) \\
+2x - y + z &= 3 &\quad (2) \\
+x + 2y - z &= 2 &\quad (3)
+\end{aligned}
+```
+
+**Choose.** The coefficients of $$z$$ are $$1$$, $$1$$ and $$-1$$, so $$z$$ is easiest to remove.
+
+**Eliminate twice.** Adding (1) and (3) removes $$z$$, and so does adding (2) and (3):
+
+```math
+\begin{aligned}
+2x + 3y &= 8 &\quad (4) \\
+3x + y &= 5 &\quad (5)
+\end{aligned}
+```
+
+**Solve.** From (5), $$y = 5 - 3x$$. Substituting into (4), $$2x + 15 - 9x = 8$$, so $$-7x = -7$$
+and $$x = 1$$. Then $$y = 5 - 3 = 2$$.
+
+**Back-substitute** into (1): $$1 + 2 + z = 6$$, so $$z = 3$$.
+
+**Check.** (1): $$1 + 2 + 3 = 6$$. (2): $$2 - 2 + 3 = 3$$. (3): $$1 + 4 - 3 = 2$$. The solution is
+$$(1, 2, 3)$$.
+
+:::
+
+Why is it fine to set two of the original equations aside? Each new equation is made from a pair,
+with non-zero multipliers, so the step can be undone: the new equation together with one equation of
+its pair gives back the other, by :ref{#combining}. Start from the original equation used for
+back-substitution. Since the two pairs are different and between them use all three originals, the
+new equations give back the other two originals, one after the other. So the kept equation and the
+two new ones form an equivalent system: no solution is lost, and none is gained.
+
+Step 2 is where mistakes happen. Both new equations must be free of the **same** unknown, and they
+must come from different pairs. Combining (1) and (3) twice in different ways would only give the
+same information twice.
+
+:::example[A fractional answer]
+
+Solve
+
+```math
+\begin{aligned}
+2x + 3y - z &= 5 &\quad (1) \\
+x - y + 2z &= 7 &\quad (2) \\
+3x + y + z &= 10 &\quad (3)
+\end{aligned}
+```
+
+**Eliminate $$z$$ twice.** Twice (1) plus (2), and (1) plus (3):
+
+```math
+\begin{aligned}
+5x + 5y &= 17 &\quad (4) \\
+5x + 4y &= 15 &\quad (5)
+\end{aligned}
+```
+
+**Solve.** Subtracting (5) from (4), $$y = 2$$. Then (5) gives $$5x = 7$$, so $$x = \frac{7}{5}$$.
+
+**Back-substitute.** Rearranging (1), $$z = 2x + 3y - 5 = \frac{14}{5} + 6 - 5 = \frac{19}{5}$$.
+
+**Check.** (2): $$\frac{7}{5} - 2 + \frac{38}{5} = 9 - 2 = 7$$. (3):
+$$\frac{21}{5} + 2 + \frac{19}{5} = 8 + 2 = 10$$. (1) holds by the way $$z$$ was found. The solution
+is $$(\frac{7}{5}, 2, \frac{19}{5})$$.
+
+:::
+
+## Clearing fractions first
+
+With fractions in the coefficients, multiply each equation by a common denominator before doing
+anything else. Each equation can use its own multiplier.
+
+:::example[Fractions in the equations]
+
+Solve
+
+```math
+\begin{aligned}
+\tfrac{1}{2}x + \tfrac{1}{3}y + \tfrac{1}{6}z &= 3 &\quad (1) \\
+x - \tfrac{1}{3}y + \tfrac{1}{2}z &= 4 &\quad (2) \\
+\tfrac{1}{4}x + \tfrac{1}{3}y - \tfrac{1}{6}z &= \tfrac{1}{2} &\quad (3)
+\end{aligned}
+```
+
+Multiplying (1) and (2) by $$6$$ and (3) by $$12$$:
+
+```math
+\begin{aligned}
+3x + 2y + z &= 18 &\quad (4) \\
+6x - 2y + 3z &= 24 &\quad (5) \\
+3x + 4y - 2z &= 6 &\quad (6)
+\end{aligned}
+```
+
+**Eliminate $$y$$ twice.** (4) plus (5) gives $$9x + 4z = 42$$. Twice (4) minus (6) gives
+$$3x + 4z = 30$$.
+
+**Solve.** Subtracting the second from the first, $$6x = 12$$, so $$x = 2$$, and then
+$$4z = 30 - 6 = 24$$, so $$z = 6$$.
+
+**Back-substitute** into (4): $$6 + 2y + 6 = 18$$, so $$y = 3$$.
+
+**Check** in the **original** equations. (1): $$1 + 1 + 1 = 3$$. (2): $$2 - 1 + 3 = 4$$. (3):
+$$\frac{1}{2} + 1 - 1 = \frac{1}{2}$$. The solution is $$(2, 3, 6)$$.
+
+:::
+
+## No solution, or infinitely many
+
+Just as with two unknowns, a system of three can have no solution or infinitely many, and
+elimination shows it the same way: a line like $$0 = 3$$ means none, and a line like $$0 = 0$$ means
+one equation was saying nothing new.
+
+:::example[No solution]
+
+In
+
+```math
+\begin{aligned}
+x + y + z &= 2 &\quad (1) \\
+x - y + z &= 0 &\quad (2) \\
+2x + 2z &= 5 &\quad (3)
+\end{aligned}
+```
+
+adding (1) and (2) gives $$2x + 2z = 2$$. Subtracting this from (3) gives $$0 = 3$$, so there is no
+solution: (1) and (2) together force $$2x + 2z$$ to be $$2$$, but (3) says it is $$5$$.
+
+:::
+
+:::example[Infinitely many solutions]
+
+Change the last equation to $$2x + 2z = 2$$. Now subtracting gives $$0 = 0$$: equation (3) is just
+(1) plus (2), and says nothing new. The system has the same solutions as (1) and (2) alone.
+Subtracting (2) from (1) gives $$2y = 2$$, so $$y = 1$$, and then $$x + z = 1$$. Choosing any number
+$$t$$ for $$z$$, the solutions are
+
+```math
+(1 - t,\ 1,\ t) \qquad\text{for every number } t
+```
+
+:::
+
+There is a determinant for three equations too, which decides in advance whether there is exactly
+one solution. It is a longer formula, and it belongs to a later guide on matrices.
+
+## Common mistakes
+
+- **Eliminating different unknowns in step 2.** If one new equation has no $$z$$ and the other no
+  $$y$$, you still have three unknowns between them. Remove the **same** unknown both times.
+- **Reusing the same pair.** Two combinations of (1) and (3) alone can't replace the information in
+  (2). Each original equation must be used at least once.
+- **Checking in the cleared equations only.** A slip while clearing fractions won't show up there.
+  Check in the original equations.
+- **Losing track of which equation is which.** Number every new equation, and say how it was made.
+
+## In short
+
+- Three unknowns need three equations. Eliminate the same unknown from two different pairs, to get
+  two equations in two unknowns.
+- Solve those, back-substitute to find the third unknown, and check in all three original equations.
+- Clear fractions first. A line like $$0 = 3$$ means no solution; $$0 = 0$$ means an equation was
+  redundant, and there may be infinitely many.

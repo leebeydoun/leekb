@@ -1,0 +1,949 @@
+---
+title: Exercises
+description: Exercises on the whole guide, with worked solutions.
+---
+
+These exercises follow the order of the guide, from single equations to systems of three. Some ask
+for an answer, and some ask why something is true. Try each one before opening its solution, and
+check your answers in the original equations, just as the guide recommends.
+
+## Equations in one unknown
+
+::::exercise{#ex-one-unknown-basic}
+
+Solve $$7x - 4 = 3x + 10$$.
+
+:::solution
+
+Subtracting $$3x$$ and adding $$4$$ to both sides gives $$4x = 14$$, so $$x = \frac{7}{2}$$.
+
+**Check:** $$7 \cdot \frac{7}{2} - 4 = \frac{41}{2}$$ and
+$$3 \cdot \frac{7}{2} + 10 = \frac{41}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-one-unknown-brackets}
+
+Solve $$3(2x - 1) = 4(x + 2)$$.
+
+:::solution
+
+Expanding, $$6x - 3 = 4x + 8$$. Subtracting $$4x$$ and adding $$3$$ gives $$2x = 11$$, so
+$$x = \frac{11}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-one-unknown-fractions}
+
+Solve $$\frac{x}{3} + \frac{x}{4} = 14$$.
+
+:::solution
+
+Multiplying both sides by $$12$$ clears the fractions: $$4x + 3x = 168$$, so $$7x = 168$$ and
+$$x = 24$$. **Check:** $$8 + 6 = 14$$.
+
+:::
+
+::::
+
+::::exercise{#ex-one-unknown-two-fractions}
+
+Solve $$\frac{2x + 1}{5} - \frac{x - 2}{3} = 1$$.
+
+:::solution
+
+Multiplying by $$15$$, and keeping the brackets so the minus sign applies to the whole of the second
+numerator:
+
+```math
+3(2x + 1) - 5(x - 2) = 15
+```
+
+Expanding, $$6x + 3 - 5x + 10 = 15$$, so $$x + 13 = 15$$ and $$x = 2$$. **Check:**
+$$\frac{5}{5} - \frac{0}{3} = 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-none-or-all}
+
+For each equation, say whether it has one solution, none, or every number as a solution.
+
+1. $$4(x - 2) = 4x - 8$$
+2. $$4(x - 2) = 4x - 6$$
+3. $$4(x - 2) = 2x - 8$$
+
+:::solution
+
+1. Expanding gives $$4x - 8 = 4x - 8$$, which is $$0 \cdot x = 0$$: **every number** is a solution.
+2. Expanding gives $$4x - 8 = 4x - 6$$, which is $$0 \cdot x = 2$$: **no solution**.
+3. Expanding gives $$4x - 8 = 2x - 8$$, which is $$2x = 0$$: **one solution**, $$x = 0$$.
+
+This is :ref{#one-unknown} in each of its three cases.
+
+:::
+
+::::
+
+::::exercise{#ex-unsafe-multiply}
+
+Multiply both sides of $$x + 1 = 2$$ by $$x$$, and solve the resulting equation. Which of its
+solutions are solutions of $$x + 1 = 2$$? Explain what went wrong.
+
+:::solution
+
+Multiplying by $$x$$ gives $$x^2 + x = 2x$$, so $$x^2 - x = 0$$, that is, $$x(x - 1) = 0$$. By
+:ref{#numbers/zero-product} its solutions are $$x = 0$$ and $$x = 1$$.
+
+Only $$x = 1$$ solves $$x + 1 = 2$$. The extra solution $$x = 0$$ appeared because multiplying by
+$$x$$ is not a safe step (:ref{#safe-steps}): when $$x = 0$$ it multiplies by zero, which makes both
+sides $$0$$ whatever they were before.
+
+:::
+
+::::
+
+::::exercise{#ex-parameter-one-unknown}
+
+For which numbers $$a$$ does $$ax + 3 = 2x + 7$$ have exactly one solution? What is it? What happens
+for the other values of $$a$$?
+
+:::solution
+
+Rearranging gives $$(a - 2)x = 4$$. By :ref{#one-unknown}, there is exactly one solution when
+$$a - 2 \neq 0$$, that is, when $$a \neq 2$$, and it is $$x = \frac{4}{a - 2}$$.
+
+When $$a = 2$$ the equation becomes $$0 \cdot x = 4$$, which has no solution.
+
+:::
+
+::::
+
+::::exercise{#ex-unknown-in-denominator}
+
+Solve $$\frac{x + 3}{x - 1} = 3$$.
+
+:::solution
+
+The left side only makes sense when $$x \neq 1$$. For such $$x$$, multiplying both sides by
+$$x - 1$$ is safe, since it isn't zero: $$x + 3 = 3(x - 1) = 3x - 3$$. So $$2x = 6$$ and $$x = 3$$,
+which is allowed since $$3 \neq 1$$.
+
+**Check:** $$\frac{6}{2} = 3$$.
+
+:::
+
+::::
+
+## Two unknowns: elimination
+
+::::exercise{#ex-elim-sum-difference}
+
+Solve $$x + y = 7$$ and $$x - y = 3$$.
+
+:::solution
+
+Adding the equations, $$2x = 10$$, so $$x = 5$$. Then $$y = 7 - 5 = 2$$. The solution is $$(5, 2)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-elim-add}
+
+Solve $$2x + y = 11$$ and $$x - y = 1$$.
+
+:::solution
+
+The coefficients of $$y$$ are already opposite, so add: $$3x = 12$$ and $$x = 4$$. Then from the
+second equation $$y = x - 1 = 3$$. The solution is $$(4, 3)$$. **Check:** $$8 + 3 = 11$$.
+
+:::
+
+::::
+
+::::exercise{#ex-elim-one-multiplier}
+
+Solve $$5x + 2y = 1$$ and $$3x + 4y = 9$$.
+
+:::solution
+
+Multiplying the first equation by $$2$$ gives $$10x + 4y = 2$$. Subtracting the second equation,
+$$7x = -7$$, so $$x = -1$$. Then $$5 \cdot (-1) + 2y = 1$$ gives $$2y = 6$$ and $$y = 3$$.
+
+**Check:** $$3 \cdot (-1) + 4 \cdot 3 = 9$$. The solution is $$(-1, 3)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-elim-zero-answer}
+
+Solve $$4x - 3y = 6$$ and $$6x + 5y = -10$$.
+
+:::solution
+
+To eliminate $$x$$, multiply the first by $$3$$ and the second by $$2$$: $$12x - 9y = 18$$ and
+$$12x + 10y = -20$$. Subtracting the first from the second, $$19y = -38$$, so $$y = -2$$. Then
+$$4x + 6 = 6$$, so $$x = 0$$.
+
+**Check:** $$6 \cdot 0 + 5 \cdot (-2) = -10$$. The solution is $$(0, -2)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-elim-both-multipliers}
+
+Solve $$2x + 3y = 4$$ and $$3x + 5y = 5$$.
+
+:::solution
+
+Multiply the first by $$3$$ and the second by $$2$$: $$6x + 9y = 12$$ and $$6x + 10y = 10$$.
+Subtracting, $$y = -2$$. Then $$2x - 6 = 4$$, so $$x = 5$$.
+
+**Check:** $$15 - 10 = 5$$. The solution is $$(5, -2)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-elim-fraction-answer}
+
+Solve $$7x - 2y = 3$$ and $$3x + 5y = 4$$.
+
+:::solution
+
+To eliminate $$y$$, multiply the first by $$5$$ and the second by $$2$$, and add:
+
+```math
+35x - 10y = 15, \qquad 6x + 10y = 8 \qquad\longrightarrow\qquad 41x = 23
+```
+
+so $$x = \frac{23}{41}$$. To avoid back-substituting a fraction, eliminate $$x$$ too: multiply the
+first by $$3$$ and the second by $$7$$, and subtract the first from the second:
+
+```math
+21x - 6y = 9, \qquad 21x + 35y = 28 \qquad\longrightarrow\qquad 41y = 19
+```
+
+so $$y = \frac{19}{41}$$. **Check:** $$\frac{161}{41} - \frac{38}{41} = \frac{123}{41} = 3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-elim-clear-fractions}
+
+Solve $$\frac{x}{2} + \frac{y}{3} = 3$$ and $$\frac{x}{4} - \frac{y}{6} = \frac{1}{2}$$.
+
+:::solution
+
+Multiply the first by $$6$$ and the second by $$12$$: $$3x + 2y = 18$$ and $$3x - 2y = 6$$. Adding,
+$$6x = 24$$, so $$x = 4$$, and then $$2y = 18 - 12 = 6$$, so $$y = 3$$.
+
+**Check:** $$2 + 1 = 3$$ and $$1 - \frac{1}{2} = \frac{1}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-elim-decimals}
+
+Solve $$0.3x + 0.2y = 1.3$$ and $$0.5x - 0.1y = 0$$.
+
+:::solution
+
+Multiplying both equations by $$10$$ clears the decimals: $$3x + 2y = 13$$ and $$5x - y = 0$$. The
+second says $$y = 5x$$, so $$3x + 10x = 13$$, giving $$x = 1$$ and $$y = 5$$.
+
+**Check:** $$0.3 + 1 = 1.3$$ and $$0.5 - 0.5 = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-elim-letters}
+
+Solve $$x + y = s$$ and $$x - y = d$$ for $$x$$ and $$y$$, in terms of the numbers $$s$$ and $$d$$.
+Use your answer to find two numbers whose sum is $$41$$ and whose difference is $$9$$.
+
+:::solution
+
+Adding gives $$2x = s + d$$, and subtracting gives $$2y = s - d$$, so
+
+```math
+x = \frac{s + d}{2}, \qquad y = \frac{s - d}{2}
+```
+
+With $$s = 41$$ and $$d = 9$$: $$x = 25$$ and $$y = 16$$.
+
+:::
+
+::::
+
+## Two unknowns: substitution
+
+::::exercise{#ex-sub-given}
+
+Solve $$y = 3x - 1$$ and $$2x + y = 9$$.
+
+:::solution
+
+Substituting, $$2x + (3x - 1) = 9$$, so $$5x = 10$$ and $$x = 2$$. Then $$y = 6 - 1 = 5$$. The
+solution is $$(2, 5)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sub-x-given}
+
+Solve $$x = 2y + 3$$ and $$3x - 4y = 13$$.
+
+:::solution
+
+Substituting, $$3(2y + 3) - 4y = 13$$, so $$6y + 9 - 4y = 13$$, $$2y = 4$$ and $$y = 2$$. Then
+$$x = 4 + 3 = 7$$. The solution is $$(7, 2)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sub-rearrange}
+
+Solve $$x + 4y = 2$$ and $$3x - 2y = 13$$ by substitution.
+
+:::solution
+
+From the first, $$x = 2 - 4y$$. Substituting, $$3(2 - 4y) - 2y = 13$$, so $$6 - 14y = 13$$,
+$$y = -\frac{1}{2}$$. Then $$x = 2 + 2 = 4$$.
+
+**Check:** $$12 + 1 = 13$$. The solution is $$(4, -\frac{1}{2})$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sub-nonlinear}
+
+Solve $$y = x + 2$$ and $$xy = 15$$.
+
+:::solution
+
+Elimination doesn't apply, since $$xy$$ isn't linear, but substitution does: $$x(x + 2) = 15$$, so
+$$x^2 + 2x - 15 = 0$$, which factorises as $$(x + 5)(x - 3) = 0$$. By :ref{#numbers/zero-product},
+$$x = 3$$ or $$x = -5$$.
+
+So there are two solutions, $$(3, 5)$$ and $$(-5, -3)$$. Both check: $$3 \cdot 5 = 15$$ and
+$$(-5)(-3) = 15$$. (Two solutions is possible here only because the system isn't linear.)
+
+:::
+
+::::
+
+::::exercise{#ex-sub-always-true}
+
+Try to solve $$y = 2x - 1$$ and $$4x - 2y = 2$$ by substitution. What happens, and what are the
+solutions?
+
+:::solution
+
+Substituting, $$4x - 2(2x - 1) = 2$$, so $$4x - 4x + 2 = 2$$, that is, $$2 = 2$$. The $$x$$ has
+vanished and what is left is always true, so the second equation says nothing new: it is the first
+rearranged and doubled.
+
+So there are infinitely many solutions: $$(t, 2t - 1)$$ for every number $$t$$.
+
+:::
+
+::::
+
+## No solution, or infinitely many
+
+::::exercise{#ex-count-solutions}
+
+Without solving, say how many solutions each system has.
+
+1. $$2x - 3y = 1$$ and $$4x - 6y = 2$$
+2. $$2x - 3y = 1$$ and $$4x - 6y = 3$$
+3. $$2x - 3y = 1$$ and $$4x + 6y = 2$$
+
+:::solution
+
+1. The determinant is $$2 \cdot (-6) - (-3) \cdot 4 = 0$$, and the second equation is exactly twice
+   the first, so they describe the same line: **infinitely many**.
+2. The determinant is again $$0$$. The left side of the second is twice the first's, but
+   $$3 \neq 2 \cdot 1$$, so the equations contradict each other: **none**.
+3. The determinant is $$2 \cdot 6 - (-3) \cdot 4 = 24 \neq 0$$: **exactly one**, by
+   :ref{#determinant-test}.
+
+:::
+
+::::
+
+::::exercise{#ex-describe-infinite}
+
+Find all solutions of $$3x - y = 2$$ and $$-6x + 2y = -4$$.
+
+:::solution
+
+The second equation is $$-2$$ times the first, so the system has the same solutions as
+$$3x - y = 2$$ alone, that is, $$y = 3x - 2$$. Choosing any number $$t$$ for $$x$$, the solutions
+are $$(t, 3t - 2)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-parameter-k}
+
+For which numbers $$k$$ does the system $$x + ky = 1$$, $$2x + 6y = 5$$ have exactly one solution?
+How many solutions are there for the other values of $$k$$?
+
+:::solution
+
+The determinant is $$1 \cdot 6 - k \cdot 2 = 6 - 2k$$, which is zero only when $$k = 3$$. So there
+is exactly one solution for every $$k \neq 3$$.
+
+When $$k = 3$$ the system is $$x + 3y = 1$$ and $$2x + 6y = 5$$. Subtracting twice the first from
+the second gives $$0 = 3$$, so there is **no** solution.
+
+:::
+
+::::
+
+::::exercise{#ex-nonzero-solutions}
+
+For which numbers $$k$$ does $$kx + 2y = 0$$, $$8x + ky = 0$$ have a solution other than
+$$x = y = 0$$?
+
+:::solution
+
+By :ref{#zero-right-side}, there are other solutions exactly when the determinant is zero:
+$$k \cdot k - 2 \cdot 8 = k^2 - 16 = 0$$. That is $$(k - 4)(k + 4) = 0$$, so $$k = 4$$ or
+$$k = -4$$.
+
+For example, with $$k = 4$$ both equations are multiples of $$2x + y = 0$$, which is solved by
+$$(1, -2)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-general-formula}
+
+Let $$a$$, $$b$$, $$c$$, $$d$$ be numbers with $$ad - bc \neq 0$$. Solve $$ax + by = 1$$,
+$$cx + dy = 2$$ for $$x$$ and $$y$$ in terms of $$a$$, $$b$$, $$c$$ and $$d$$.
+
+:::solution
+
+By :ref{#determinant-test} with $$u = 1$$ and $$v = 2$$,
+
+```math
+x = \frac{d - 2b}{ad - bc}, \qquad y = \frac{2a - c}{ad - bc}
+```
+
+To find this without the formula, eliminate $$y$$ (multiply the first by $$d$$, the second by $$b$$,
+and subtract) to get $$(ad - bc)x = d - 2b$$, and eliminate $$x$$ to get $$(ad - bc)y = 2a - c$$.
+
+:::
+
+::::
+
+::::exercise{#ex-zero-solution-proof}
+
+Show without using the formula in :ref{#determinant-test} that if $$ad - bc \neq 0$$, the only
+solution of $$ax + by = 0$$, $$cx + dy = 0$$ is $$x = y = 0$$.
+
+:::solution
+
+Suppose $$(x, y)$$ is a solution. Multiplying the first equation by $$d$$ and the second by $$b$$
+and subtracting gives
+
+```math
+(ad - bc)x = d \cdot 0 - b \cdot 0 = 0
+```
+
+Since $$ad - bc \neq 0$$, :ref{#numbers/zero-product} gives $$x = 0$$. In the same way, multiplying
+the first by $$c$$ and the second by $$a$$ and subtracting gives $$(ad - bc)y = 0$$, so $$y = 0$$.
+And $$(0, 0)$$ is certainly a solution, so it is the only one.
+
+:::
+
+::::
+
+::::exercise{#ex-find-coefficients}
+
+Find numbers $$a$$ and $$b$$ so that $$(2, -1)$$ is a solution of both $$ax + by = 7$$ and
+$$bx + ay = 1$$.
+
+:::solution
+
+Here $$x$$ and $$y$$ are known and $$a$$ and $$b$$ are the unknowns. Putting in $$x = 2$$ and
+$$y = -1$$:
+
+```math
+2a - b = 7, \qquad 2b - a = 1
+```
+
+From the second, $$a = 2b - 1$$. Then $$2(2b - 1) - b = 7$$, so $$3b = 9$$, $$b = 3$$ and $$a = 5$$.
+**Check:** $$10 - 3 = 7$$ and $$6 - 5 = 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-never-two}
+
+Explain why a system of two linear equations in two unknowns can never have exactly two solutions.
+
+:::solution
+
+If the determinant is not zero, there is exactly one solution by :ref{#determinant-test}. If it is
+zero, there are none or infinitely many by :ref{#determinant-zero}. Two is not among the
+possibilities.
+
+There is also a direct reason. If $$(x_1, y_1)$$ and $$(x_2, y_2)$$ are two different solutions,
+then subtracting shows that $$(p, q) = (x_2 - x_1, y_2 - y_1)$$ makes both left-hand sides $$0$$. As
+in the proof of :ref{#determinant-zero}, every pair $$(x_1 + tp, y_1 + tq)$$ is then a solution, so
+there are infinitely many.
+
+:::
+
+::::
+
+## Equations as lines
+
+::::exercise{#ex-slope-intercepts}
+
+For the line $$3x + 2y = 6$$, find its slope, where it crosses the $$y$$-axis, and where it crosses
+the $$x$$-axis.
+
+:::solution
+
+Rearranging, $$2y = -3x + 6$$, so $$y = -\frac{3}{2}x + 3$$. The slope is $$-\frac{3}{2}$$ and it
+crosses the $$y$$-axis at $$(0, 3)$$. Putting $$y = 0$$ gives $$3x = 6$$, so it crosses the
+$$x$$-axis at $$(2, 0)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-parallel-check}
+
+Are the lines $$2x - 5y = 3$$ and $$-4x + 10y = 1$$ parallel, the same line, or crossing? How many
+solutions does the system have?
+
+:::solution
+
+The determinant is $$2 \cdot 10 - (-5)(-4) = 20 - 20 = 0$$, so by :ref{#parallel-test} the lines
+have the same slope. The second left side is $$-2$$ times the first, but $$1 \neq -2 \cdot 3$$, so
+they are different lines: **parallel**, and the system has **no** solution.
+
+:::
+
+::::
+
+::::exercise{#ex-through-crossing}
+
+Find the number $$c$$ for which the line $$3x - y = c$$ passes through the point where $$x + y = 4$$
+and $$x - y = 2$$ cross.
+
+:::solution
+
+Adding $$x + y = 4$$ and $$x - y = 2$$ gives $$2x = 6$$, so $$x = 3$$ and $$y = 1$$: the lines cross
+at $$(3, 1)$$. For $$3x - y = c$$ to pass through it, $$c = 9 - 1 = 8$$.
+
+:::
+
+::::
+
+::::exercise{#ex-parallel-through-point}
+
+Find the equation, in the form $$y = mx + k$$, of the line parallel to $$2x + y = 4$$ that passes
+through $$(1, 5)$$.
+
+:::solution
+
+$$2x + y = 4$$ is $$y = -2x + 4$$, with slope $$-2$$. A parallel line has the same slope, so it is
+$$y = -2x + k$$ for some $$k$$. Passing through $$(1, 5)$$ means $$5 = -2 + k$$, so $$k = 7$$: the
+line is $$y = -2x + 7$$.
+
+:::
+
+::::
+
+## Word problems
+
+::::exercise{#ex-word-cinema}
+
+Three adult and two child cinema tickets cost £44. Two adult and five child tickets also cost £44.
+What does each kind of ticket cost?
+
+:::solution
+
+Let $$a$$ and $$c$$ be the prices of an adult and a child ticket, in pounds: $$3a + 2c = 44$$ and
+$$2a + 5c = 44$$. Multiplying the first by $$2$$ and the second by $$3$$ and subtracting:
+$$6a + 4c = 88$$ and $$6a + 15c = 132$$ give $$11c = 44$$, so $$c = 4$$. Then $$3a = 44 - 8 = 36$$,
+so $$a = 12$$.
+
+An adult ticket costs £12 and a child ticket £4. **Check:** $$24 + 20 = 44$$.
+
+:::
+
+::::
+
+::::exercise{#ex-word-salt}
+
+How many litres of a $$10\%$$ salt solution and of a $$25\%$$ salt solution must be mixed to make
+$$30$$ litres of a $$15\%$$ solution?
+
+:::solution
+
+Let $$x$$ and $$y$$ be the litres of the $$10\%$$ and $$25\%$$ solutions. The volumes give
+$$x + y = 30$$. The amount of salt gives $$0.1x + 0.25y = 0.15 \cdot 30 = 4.5$$, or, multiplying by
+$$20$$, $$2x + 5y = 90$$.
+
+Subtracting twice the first equation, $$3y = 30$$, so $$y = 10$$ and $$x = 20$$: $$20$$ litres of
+the $$10\%$$ solution and $$10$$ litres of the $$25\%$$ solution. **Check:** $$2 + 2.5 = 4.5$$
+litres of salt in $$30$$ litres is $$15\%$$.
+
+:::
+
+::::
+
+::::exercise{#ex-word-wind}
+
+A plane flies $$1500$$ km with the wind behind it in $$3$$ hours, and back against the wind in $$5$$
+hours. Find the plane's speed in still air and the speed of the wind.
+
+:::solution
+
+Let $$p$$ and $$w$$ be the speeds of the plane and the wind, in km per hour. With the wind,
+$$3(p + w) = 1500$$, so $$p + w = 500$$. Against it, $$5(p - w) = 1500$$, so $$p - w = 300$$.
+
+Adding, $$2p = 800$$, so $$p = 400$$ and $$w = 100$$.
+
+:::
+
+::::
+
+::::exercise{#ex-word-ages}
+
+A father is four times as old as his son. In $$20$$ years he will be twice as old as his son. How
+old are they now?
+
+:::solution
+
+Let $$f$$ and $$s$$ be their ages now. Then $$f = 4s$$ and $$f + 20 = 2(s + 20)$$. Substituting,
+$$4s + 20 = 2s + 40$$, so $$s = 10$$ and $$f = 40$$.
+
+**Check:** in $$20$$ years they will be $$60$$ and $$30$$.
+
+:::
+
+::::
+
+::::exercise{#ex-word-digits}
+
+The digits of a two-digit number add up to $$11$$. Reversing the digits makes the number $$27$$
+larger. What is the number?
+
+:::solution
+
+Let $$t$$ be the tens digit and $$u$$ the units digit, so the number is $$10t + u$$ and the reversed
+number is $$10u + t$$. Then
+
+```math
+t + u = 11, \qquad (10u + t) - (10t + u) = 27
+```
+
+The second simplifies to $$9u - 9t = 27$$, so $$u - t = 3$$. Adding this to the first, $$2u = 14$$,
+so $$u = 7$$ and $$t = 4$$. The number is $$47$$. **Check:** $$74 - 47 = 27$$.
+
+:::
+
+::::
+
+::::exercise{#ex-word-rectangle}
+
+A rectangle has perimeter $$46$$ cm, and its length is $$5$$ cm more than twice its width. Find its
+length and width.
+
+:::solution
+
+Let $$l$$ and $$w$$ be the length and width in cm. Then $$2l + 2w = 46$$ and $$l = 2w + 5$$.
+Substituting, $$2(2w + 5) + 2w = 46$$, so $$6w = 36$$, $$w = 6$$ and $$l = 17$$.
+
+:::
+
+::::
+
+::::exercise{#ex-word-investment}
+
+£5000 is split between two savings accounts, paying $$3\%$$ and $$5\%$$ interest a year. The total
+interest after one year is £190. How much is in each account?
+
+:::solution
+
+Let $$x$$ and $$y$$ be the amounts at $$3\%$$ and $$5\%$$, in pounds. Then $$x + y = 5000$$ and
+$$0.03x + 0.05y = 190$$, or, multiplying by $$100$$, $$3x + 5y = 19000$$.
+
+Subtracting $$3$$ times the first equation, $$2y = 4000$$, so $$y = 2000$$ and $$x = 3000$$.
+**Check:** $$90 + 100 = 190$$.
+
+:::
+
+::::
+
+::::exercise{#ex-word-impossible}
+
+A jar holds $$15$$ coins, all 20p and 50p pieces, worth £2 in total. How many of each are there?
+
+:::solution
+
+Let $$x$$ be the number of 20p coins and $$y$$ the number of 50p coins. In pence, $$x + y = 15$$ and
+$$20x + 50y = 200$$. Substituting $$y = 15 - x$$: $$20x + 750 - 50x = 200$$, so $$30x = 550$$ and
+$$x = \frac{55}{3}$$.
+
+That isn't a whole number, so no such jar exists. In fact $$15$$ coins of at least 20p each are
+worth at least £3, so £2 was never possible.
+
+:::
+
+::::
+
+## Three unknowns
+
+::::exercise{#ex-three-quick}
+
+Solve $$x + y + z = 9$$, $$x - y + z = 3$$, $$x + y - z = 1$$.
+
+:::solution
+
+Subtracting the second equation from the first gives $$2y = 6$$, so $$y = 3$$. Subtracting the third
+from the first gives $$2z = 8$$, so $$z = 4$$. Then $$x = 9 - 3 - 4 = 2$$.
+
+**Check:** $$2 - 3 + 4 = 3$$ and $$2 + 3 - 4 = 1$$. The solution is $$(2, 3, 4)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-three-standard}
+
+Solve
+
+```math
+\begin{aligned}
+2x + y - z &= 3 \\
+x - y + 2z &= 8 \\
+3x + 2y + z &= 9
+\end{aligned}
+```
+
+:::solution
+
+Eliminate $$y$$ twice. Adding the first two equations gives $$3x + z = 11$$. Twice the second plus
+the third gives $$5x + 5z = 25$$, that is, $$x + z = 5$$.
+
+Subtracting, $$2x = 6$$, so $$x = 3$$ and $$z = 2$$. Then the first equation gives
+$$6 + y - 2 = 3$$, so $$y = -1$$.
+
+**Check:** $$3 + 1 + 4 = 8$$ and $$9 - 2 + 2 = 9$$. The solution is $$(3, -1, 2)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-three-small-answer}
+
+Solve
+
+```math
+\begin{aligned}
+x + 2y + 3z &= 14 \\
+2x - y + z &= 3 \\
+3x + y - 2z &= -1
+\end{aligned}
+```
+
+:::solution
+
+Eliminate $$y$$. Twice the second plus the first gives $$5x + 5z = 20$$, so $$x + z = 4$$. The
+second plus the third gives $$5x - z = 2$$.
+
+Adding these, $$6x = 6$$, so $$x = 1$$ and $$z = 3$$. Then the second equation gives
+$$2 - y + 3 = 3$$, so $$y = 2$$.
+
+**Check:** $$1 + 4 + 9 = 14$$ and $$3 + 2 - 6 = -1$$. The solution is $$(1, 2, 3)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-three-fractions-answer}
+
+Solve
+
+```math
+\begin{aligned}
+x + y + z &= 4 \\
+2x - y + 3z &= 5 \\
+x + 3y - 2z &= 1
+\end{aligned}
+```
+
+:::solution
+
+Eliminate $$y$$. The first plus the second gives $$3x + 4z = 9$$. Three times the first minus the
+third gives $$2x + 5z = 11$$.
+
+Multiplying these by $$2$$ and $$3$$ and subtracting: $$6x + 8z = 18$$ and $$6x + 15z = 33$$ give
+$$7z = 15$$, so $$z = \frac{15}{7}$$. Then $$2x = 11 - \frac{75}{7} = \frac{2}{7}$$, so
+$$x = \frac{1}{7}$$, and $$y = 4 - \frac{1}{7} - \frac{15}{7} = \frac{12}{7}$$.
+
+**Check** in the second equation: $$\frac{2}{7} - \frac{12}{7} + \frac{45}{7} = \frac{35}{7} = 5$$.
+The solution is $$(\frac{1}{7}, \frac{12}{7}, \frac{15}{7})$$.
+
+:::
+
+::::
+
+::::exercise{#ex-three-clear-fractions}
+
+Solve
+
+```math
+\begin{aligned}
+\tfrac{1}{3}x + \tfrac{1}{2}y + \tfrac{1}{4}z &= 2 \\
+\tfrac{1}{2}x - \tfrac{1}{4}y + \tfrac{1}{2}z &= \tfrac{11}{2} \\
+\tfrac{1}{6}x + \tfrac{1}{3}y - \tfrac{1}{2}z &= -\tfrac{5}{3}
+\end{aligned}
+```
+
+:::solution
+
+Multiply the equations by $$12$$, $$4$$ and $$6$$:
+
+```math
+\begin{aligned}
+4x + 6y + 3z &= 24 &\quad (1) \\
+2x - y + 2z &= 22 &\quad (2) \\
+x + 2y - 3z &= -10 &\quad (3)
+\end{aligned}
+```
+
+Eliminate $$z$$. (1) plus (3) gives $$5x + 8y = 14$$. Three times (2) plus twice (3) gives
+$$8x + y = 46$$.
+
+From the second, $$y = 46 - 8x$$, so $$5x + 368 - 64x = 14$$, $$59x = 354$$ and $$x = 6$$. Then
+$$y = -2$$, and (2) gives $$12 + 2 + 2z = 22$$, so $$z = 4$$.
+
+**Check** in the original first equation: $$2 - 1 + 1 = 2$$. The solution is $$(6, -2, 4)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-three-none}
+
+Show that this system has no solution:
+
+```math
+\begin{aligned}
+x + 2y - z &= 1 \\
+2x + y + z &= 4 \\
+3x + 3y &= 7
+\end{aligned}
+```
+
+:::solution
+
+Adding the first two equations gives $$3x + 3y = 5$$. But the third says $$3x + 3y = 7$$, and
+subtracting gives $$0 = 2$$. No values of $$x$$, $$y$$, $$z$$ can make $$3x + 3y$$ both $$5$$ and
+$$7$$, so there is no solution.
+
+:::
+
+::::
+
+::::exercise{#ex-three-infinite}
+
+Find all solutions of
+
+```math
+\begin{aligned}
+x + y + z &= 3 \\
+x - y + 3z &= 1 \\
+2x + 4z &= 4
+\end{aligned}
+```
+
+:::solution
+
+The first two equations add up to $$2x + 4z = 4$$, which is the third, so the third says nothing
+new.
+
+Subtracting the second from the first, $$2y - 2z = 2$$, so $$y = 1 + z$$. Then the first gives
+$$x = 3 - y - z = 2 - 2z$$. Choosing any number $$t$$ for $$z$$, the solutions are
+
+```math
+(2 - 2t,\ 1 + t,\ t)
+```
+
+For example, $$t = 0$$ gives $$(2, 1, 0)$$, which checks in all three equations.
+
+:::
+
+::::
+
+::::exercise{#ex-three-cafe}
+
+At a café, two coffees, a tea and a cake cost £9; a coffee, two teas and a cake cost £8; and a
+coffee, a tea and two cakes cost £11. What does each item cost?
+
+:::solution
+
+Let $$c$$, $$t$$ and $$k$$ be the prices of a coffee, a tea and a cake, in pounds:
+
+```math
+2c + t + k = 9, \qquad c + 2t + k = 8, \qquad c + t + 2k = 11
+```
+
+A shortcut: adding all three equations gives $$4c + 4t + 4k = 28$$, so $$c + t + k = 7$$.
+Subtracting this from each equation in turn gives $$c = 2$$, $$t = 1$$ and $$k = 4$$.
+
+A coffee costs £2, a tea £1 and a cake £4.
+
+:::
+
+::::
+
+::::exercise{#ex-three-coins}
+
+A jar holds $$30$$ coins, all 5p, 10p and 20p pieces, worth £4.60 in total. There are twice as many
+10p coins as 5p coins. How many of each are there?
+
+:::solution
+
+Let $$x$$, $$y$$ and $$z$$ be the numbers of 5p, 10p and 20p coins. In pence,
+
+```math
+x + y + z = 30, \qquad 5x + 10y + 20z = 460, \qquad y = 2x
+```
+
+Substituting $$y = 2x$$: $$3x + z = 30$$ and $$25x + 20z = 460$$. From the first, $$z = 30 - 3x$$,
+so $$25x + 600 - 60x = 460$$, $$35x = 140$$ and $$x = 4$$. Then $$y = 8$$ and $$z = 18$$.
+
+**Check:** $$4 + 8 + 18 = 30$$ coins, worth $$20 + 80 + 360 = 460$$ pence.
+
+:::
+
+::::

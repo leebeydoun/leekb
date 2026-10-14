@@ -1,0 +1,153 @@
+---
+title: Substitution
+description: Solving a system by rearranging one equation and putting it into the other.
+---
+
+Elimination always works, but it isn't always the quickest route. When one equation already says
+what one unknown is, as in $$y = 2x - 3$$, it is simpler to put that straight into the other
+equation. This is called **substitution**, and it is the second standard way of solving a system.
+
+## The method
+
+:::remark[Substitution]{#substitution}
+
+To solve two linear equations in $$x$$ and $$y$$:
+
+1. **Rearrange** one equation to say what one unknown equals, say $$y = \ldots$$, with only $$x$$
+   and numbers on the right. Pick the equation and the unknown that make this easiest.
+2. **Substitute:** replace that unknown in the **other** equation by the expression, in brackets.
+   The result is an equation in $$x$$ alone.
+3. **Solve** it for $$x$$, using :ref{#one-unknown}.
+4. **Back-substitute** the value of $$x$$ into the expression from step 1 to find $$y$$.
+5. **Check** both values in both original equations.
+
+:::
+
+:::example[A first example]
+
+Solve
+
+```math
+\begin{aligned}
+y &= 2x - 3 &\quad (1) \\
+4x + 3y &= 11 &\quad (2)
+\end{aligned}
+```
+
+**Rearrange.** Equation (1) already gives $$y$$.
+
+**Substitute** $$2x - 3$$ for $$y$$ in (2):
+
+```math
+4x + 3(2x - 3) = 11
+```
+
+**Solve.** Expanding, $$4x + 6x - 9 = 11$$, so $$10x = 20$$ and $$x = 2$$.
+
+**Back-substitute** into (1): $$y = 2 \cdot 2 - 3 = 1$$.
+
+**Check.** In (1): $$2 \cdot 2 - 3 = 1$$. In (2): $$4 \cdot 2 + 3 \cdot 1 = 11$$. The solution is
+$$(2, 1)$$.
+
+:::
+
+The brackets in step 2 matter. Without them, $$4x + 3 \cdot 2x - 3$$ would multiply only the $$2x$$
+by $$3$$, and the answer would come out wrong.
+
+## Why it works
+
+Substitution looks different from elimination, but it rests on the same idea: each step replaces the
+system by an equivalent one.
+
+:::proposition[Substitution gives an equivalent system]{#substitution-works}
+
+Suppose one equation of a system says $$y = E$$, where $$E$$ is an expression in $$x$$ and numbers.
+Replacing $$y$$ by $$E$$ in the other equation, and keeping $$y = E$$, gives an equivalent system.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/System_of_linear_equations#Elimination_of_variables"}
+
+Call the other equation $$L = R$$, and write $$L'$$ and $$R'$$ for its two sides with $$E$$ put in
+place of $$y$$. We compare the systems "$$y = E$$ and $$L = R$$" and "$$y = E$$ and $$L' = R'$$".
+
+Take any values of $$x$$ and $$y$$ for which $$y = E$$ is true. For these values, $$y$$ and $$E$$
+are the same number, so putting one in place of the other doesn't change the value of either side:
+$$L$$ has the same value as $$L'$$, and $$R$$ the same value as $$R'$$. So $$L = R$$ is true for
+these values exactly when $$L' = R'$$ is.
+
+Both systems include $$y = E$$, so a pair that solves either system makes $$y = E$$ true, and then
+by the last paragraph it solves the other system too. So the two systems have the same solutions.
+
+:::
+
+The new equation $$L' = R'$$ only involves $$x$$, so solving it gives every possible value of $$x$$,
+and $$y = E$$ then gives the matching $$y$$.
+
+## When the rearranging needs fractions
+
+Sometimes no unknown has coefficient $$1$$, and rearranging brings in fractions. Substitution still
+works, but elimination may be tidier.
+
+:::example[Substitution with fractions]
+
+Solve
+
+```math
+\begin{aligned}
+2x + 3y &= 12 &\quad (1) \\
+5x - 2y &= 11 &\quad (2)
+\end{aligned}
+```
+
+From (1), $$3y = 12 - 2x$$, so $$y = 4 - \frac{2}{3}x$$. Substituting into (2):
+
+```math
+5x - 2\left(4 - \tfrac{2}{3}x\right) = 11
+\qquad\text{so}\qquad
+5x - 8 + \tfrac{4}{3}x = 11
+```
+
+Multiplying by $$3$$ to clear the fraction, $$15x - 24 + 4x = 33$$, so $$19x = 57$$ and $$x = 3$$.
+Then $$y = 4 - 2 = 2$$.
+
+**Check:** $$2 \cdot 3 + 3 \cdot 2 = 12$$ and $$5 \cdot 3 - 2 \cdot 2 = 11$$.
+
+By elimination instead, multiplying (1) by $$2$$ and (2) by $$3$$ and adding gives $$19x = 57$$ in
+one line.
+
+:::
+
+## Which method to use
+
+Both methods always give the same answer, because both replace the system by equivalent ones. Choose
+by what the equations look like:
+
+| The equations look like…                                      | Try          |
+| ------------------------------------------------------------- | ------------ |
+| One of them says $$y = \ldots$$ or $$x = \ldots$$ already     | Substitution |
+| Some unknown has coefficient $$1$$ or $$-1$$                  | Substitution |
+| Coefficients of one unknown are equal, opposite, or multiples | Elimination  |
+| Everything has awkward coefficients                           | Elimination  |
+
+Substitution has one more advantage: it works when the second equation isn't linear. Solving
+$$y = x + 1$$ together with $$xy = 6$$ by substitution gives $$x(x + 1) = 6$$, an equation in $$x$$
+alone, while elimination has nothing to cancel.
+
+## Common mistakes
+
+- **Leaving out the brackets.** Substitute $$2x - 3$$ as $$(2x - 3)$$, so a number in front
+  multiplies all of it.
+- **Substituting back into the same equation.** Putting $$y = 2x - 3$$ into $$y = 2x - 3$$ gives
+  $$2x - 3 = 2x - 3$$, which is true for every $$x$$ and says nothing. Substitute into the **other**
+  equation.
+- **Rearranging wrongly.** From $$2x + 3y = 12$$, $$y = \frac{12 - 2x}{3}$$, not $$12 - 2x - 3$$:
+  divide **every** term by $$3$$.
+
+## In short
+
+- Substitution: rearrange one equation as $$y = \ldots$$, put it in brackets into the other
+  equation, solve for $$x$$, then find $$y$$.
+- It gives an equivalent system, for the same reason as elimination.
+- Use it when an unknown is already on its own or has coefficient $$\pm 1$$; otherwise elimination
+  is usually tidier.

@@ -62,6 +62,24 @@ export const Example = createStatement("Example");
 export const Remark = createStatement("Remark");
 export const Exercise = createStatement("Exercise");
 
+/** A link to an outside source, e.g. "See also: Wikipedia: Linear equation". */
+export function SeeAlso({
+  source,
+  sourceTitle,
+}: {
+  source: string;
+  sourceTitle?: string;
+}) {
+  return (
+    <p className="text-sm text-fd-muted-foreground">
+      See also:{" "}
+      <a href={source} target="_blank" rel="noreferrer">
+        {sourceTitle ?? source}
+      </a>
+    </p>
+  );
+}
+
 /** An unnumbered proof, ending with a ∎ and a link to an outside source for it. */
 export function Proof({
   source,
@@ -77,14 +95,7 @@ export function Proof({
     <div className="relative my-4 border-s-2 ps-4 pe-6 *:last:mb-0">
       <p className="italic">Proof.</p>
       {children}
-      {source && (
-        <p className="text-sm text-fd-muted-foreground">
-          See also:{" "}
-          <a href={source} target="_blank" rel="noreferrer">
-            {sourceTitle ?? source}
-          </a>
-        </p>
-      )}
+      {source && <SeeAlso source={source} sourceTitle={sourceTitle} />}
       <span className="absolute inset-e-0 bottom-0" aria-label="end of proof">
         ∎
       </span>

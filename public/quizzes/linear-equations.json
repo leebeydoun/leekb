@@ -1,0 +1,676 @@
+{
+  "title": "Review: Linear equations",
+  "description": "Questions on the ideas in this guide, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
+  "questions": [
+    {
+      "id": "what-solving-means",
+      "stars": 1,
+      "topic": "Equations and solutions",
+      "question": "What does it mean to solve an equation?",
+      "options": [
+        "Find one value of the unknown that makes it true",
+        "Find every value of the unknown that makes it true, and know there are no others",
+        "Rewrite it so that the unknown is on the left",
+        "Show that both sides are equal for every value of the unknown"
+      ],
+      "answer": 1,
+      "explanation": "A solution makes the equation true, and solving means finding **all** solutions (:ref{#solution}). Checking that one value works doesn't rule out others."
+    },
+    {
+      "id": "equivalent-meaning",
+      "stars": 1,
+      "topic": "Equations and solutions",
+      "question": "When are two equations called equivalent?",
+      "options": [
+        "When they have exactly the same solutions",
+        "When they have at least one solution in common",
+        "When they look the same after expanding brackets",
+        "When one is a multiple of the other"
+      ],
+      "answer": 0,
+      "explanation": "Equivalent equations have exactly the same solutions (:ref{#equivalent}). Sharing one solution isn't enough: $$x^2 = 4$$ and $$x = 2$$ share a solution but aren't equivalent."
+    },
+    {
+      "id": "safe-multiply",
+      "stars": 2,
+      "topic": "Equations and solutions",
+      "question": "Why is multiplying both sides of an equation by $$0$$ not a safe step?",
+      "options": [
+        "It changes the left side but not the right",
+        "It is safe; only dividing by $$0$$ is a problem",
+        "It always produces an equation with no solution",
+        "It can't be undone, so it can let in false solutions"
+      ],
+      "answer": 3,
+      "explanation": "Multiplying by $$0$$ turns any equation into $$0 = 0$$, which every number satisfies. A step is safe when it can be undone, and multiplying by $$c$$ can be undone only when $$c \\neq 0$$ (:ref{#safe-steps})."
+    },
+    {
+      "id": "multiply-by-expression",
+      "stars": 3,
+      "topic": "Equations and solutions",
+      "question": "Multiplying both sides of $$x = 3$$ by $$x - 1$$ gives $$x(x - 1) = 3(x - 1)$$. What has happened?",
+      "options": [
+        "Nothing: the equations are equivalent",
+        "The solution $$x = 3$$ has been lost",
+        "A false solution, $$x = 1$$, has been added, because $$x - 1$$ is zero there",
+        "The new equation has no solutions"
+      ],
+      "answer": 2,
+      "explanation": "At $$x = 1$$ both sides of the new equation are $$0$$, so $$x = 1$$ solves it but not $$x = 3$$. Multiplying by an expression is only safe where it isn't zero (:ref{#safe-steps})."
+    },
+    {
+      "id": "squaring-unsafe",
+      "stars": 2,
+      "topic": "Equations and solutions",
+      "question": "Why can squaring both sides of an equation add solutions?",
+      "options": [
+        "Because squaring makes every number positive",
+        "Because a number and its opposite have the same square, so the step can't be undone",
+        "Because squaring is not allowed in algebra",
+        "It can't; squaring always gives an equivalent equation"
+      ],
+      "answer": 1,
+      "explanation": "Squaring $$x = 3$$ gives $$x^2 = 9$$, which $$x = -3$$ also solves. Since $$3$$ and $$-3$$ square to the same thing, the step can't be reversed, so answers must be checked in the original equation."
+    },
+    {
+      "id": "ax-equals-c-cases",
+      "stars": 2,
+      "topic": "Equations and solutions",
+      "question": "How many solutions does $$ax = c$$ have when $$a = 0$$ and $$c \\neq 0$$?",
+      "options": [
+        "None",
+        "Exactly one",
+        "Infinitely many",
+        "It depends on whether $$c$$ is positive"
+      ],
+      "answer": 0,
+      "explanation": "The left side is $$0 \\cdot x = 0$$ for every $$x$$, which never equals $$c \\neq 0$$ (:ref{#one-unknown})."
+    },
+    {
+      "id": "x-vanishes",
+      "stars": 3,
+      "topic": "Equations and solutions",
+      "question": "While solving a linear equation in $$x$$, the $$x$$ disappears and you are left with $$5 = 5$$. What does that tell you?",
+      "options": [
+        "The equation has no solution",
+        "The only solution is $$x = 5$$",
+        "You must have made a mistake",
+        "Every number is a solution"
+      ],
+      "answer": 3,
+      "explanation": "The equation has become $$0 \\cdot x = 0$$, which every number solves (:ref{#one-unknown}). A false line like $$5 = 7$$ would mean no solution instead."
+    },
+    {
+      "id": "one-solution-condition",
+      "stars": 2,
+      "topic": "Equations and solutions",
+      "question": "For which numbers $$a$$ does $$ax = c$$ have exactly one solution, whatever $$c$$ is?",
+      "options": [
+        "Only $$a = 1$$",
+        "Every positive $$a$$",
+        "Every $$a \\neq 0$$",
+        "Every $$a$$ that divides $$c$$"
+      ],
+      "answer": 2,
+      "explanation": "When $$a \\neq 0$$, $$a$$ has an inverse, and multiplying by it gives the single solution $$x = \\frac{c}{a}$$ (:ref{#one-unknown})."
+    },
+    {
+      "id": "one-equation-two-unknowns",
+      "stars": 1,
+      "topic": "Two equations in two unknowns",
+      "question": "How many solutions does a single equation like $$x + y = 5$$ have?",
+      "options": ["None", "Infinitely many", "Exactly two", "Exactly one"],
+      "answer": 1,
+      "explanation": "Any $$x$$ can be chosen, and then $$y = 5 - x$$ is forced, so there are infinitely many pairs (:ref{#linear-two})."
+    },
+    {
+      "id": "system-solution",
+      "stars": 1,
+      "topic": "Two equations in two unknowns",
+      "question": "What is a solution of a system of equations?",
+      "options": [
+        "Values that make every equation true at the same time",
+        "Values that make at least one of the equations true",
+        "A solution of the first equation",
+        "The equation you get by adding all the equations"
+      ],
+      "answer": 0,
+      "explanation": "A system's equations must hold simultaneously, so a solution makes **every** one of them true (:ref{#system})."
+    },
+    {
+      "id": "combining-why-allowed",
+      "stars": 2,
+      "topic": "Two equations in two unknowns",
+      "question": "Why may you add two equations of a system together?",
+      "options": [
+        "Because adding equations always gives a simpler equation",
+        "You may only subtract equations, not add them",
+        "Because addition is commutative",
+        "Because if both are true for some values, the two left sides are equal to the two right sides, so their sums are equal too"
+      ],
+      "answer": 3,
+      "explanation": "For values that solve the system, each left side equals its right side, so the sums agree. Combined with the fact that the step can be undone, this gives :ref{#combining}."
+    },
+    {
+      "id": "combining-reversible",
+      "stars": 3,
+      "topic": "Two equations in two unknowns",
+      "question": "Replacing equation (2) by (2) plus $$k$$ times (1) gives an equivalent system. Which fact makes the step reversible?",
+      "options": [
+        "$$k$$ must be positive",
+        "$$k$$ must be a whole number",
+        "Equation (1) is kept, so subtracting $$k$$ times (1) recovers (2)",
+        "Both equations must have the same right-hand side"
+      ],
+      "answer": 2,
+      "explanation": "Because (1) is still in the system, the new equation minus $$k$$ times (1) gives back (2). That is why no solutions are gained or lost (:ref{#combining}). It works for any number $$k$$."
+    },
+    {
+      "id": "why-answer-is-only",
+      "stars": 3,
+      "topic": "Two equations in two unknowns",
+      "question": "Elimination turns a system into $$x = 3$$, $$y = 2$$. Why does that prove $$(3, 2)$$ is the **only** solution of the original system?",
+      "options": [
+        "Because elimination always finds exactly one answer",
+        "Because every step gave an equivalent system, so the original has exactly the same solutions as the last one",
+        "Because it was checked in one of the equations",
+        "It doesn't; there could be other solutions"
+      ],
+      "answer": 1,
+      "explanation": "Each step of elimination replaces the system by an equivalent one (:ref{#combining}), so the original system has exactly the solutions of the final one, which is just $$(3, 2)$$."
+    },
+    {
+      "id": "add-or-subtract",
+      "stars": 1,
+      "topic": "Two equations in two unknowns",
+      "question": "After matching, the coefficients of $$y$$ are $$6$$ and $$-6$$. What do you do next?",
+      "options": [
+        "Add the equations",
+        "Subtract the equations",
+        "Multiply the equations",
+        "Divide one equation by the other"
+      ],
+      "answer": 0,
+      "explanation": "Opposite coefficients cancel when the equations are **added**; equal ones cancel when they are subtracted (:ref{#elimination})."
+    },
+    {
+      "id": "which-to-eliminate",
+      "stars": 2,
+      "topic": "Two equations in two unknowns",
+      "question": "Does the solution depend on which unknown you eliminate first?",
+      "options": [
+        "Yes, eliminating $$x$$ first gives a different answer from eliminating $$y$$",
+        "Only if the system has no solution",
+        "Only if the coefficients are fractions",
+        "No: both routes give equivalent systems, so they reach the same solution"
+      ],
+      "answer": 3,
+      "explanation": "Every elimination step gives an equivalent system (:ref{#combining}), so whichever unknown goes first, the solutions are the same. Choose the one that keeps the numbers small."
+    },
+    {
+      "id": "check-both",
+      "stars": 2,
+      "topic": "Two equations in two unknowns",
+      "question": "After back-substituting into equation (1), why should you check the answer in equation (2)?",
+      "options": [
+        "Checking is never needed if elimination was used",
+        "Because (2) is always the harder equation",
+        "Equation (1) is automatically satisfied by back-substitution, so only (2) can catch a slip",
+        "To find the value of the second unknown"
+      ],
+      "answer": 2,
+      "explanation": "Back-substitution forces the pair to satisfy the equation you used, so a slip earlier on only shows up in the **other** equation (:ref{#elimination})."
+    },
+    {
+      "id": "clear-fractions-safe",
+      "stars": 2,
+      "topic": "Two equations in two unknowns",
+      "question": "Why is it fine to multiply one equation of a system by $$6$$ and another by $$12$$ to clear fractions?",
+      "options": [
+        "Because the multipliers are both even",
+        "Because multiplying an equation by a non-zero number doesn't change its solutions",
+        "Because both equations must be multiplied by the same number",
+        "It isn't; it changes the solution"
+      ],
+      "answer": 1,
+      "explanation": "Each equation can be multiplied by its own non-zero number without changing its solutions (:ref{#safe-steps}), so the system's solutions don't change either (:ref{#combining})."
+    },
+    {
+      "id": "substitution-brackets",
+      "stars": 1,
+      "topic": "Substitution",
+      "question": "Substituting $$y = 2x - 3$$ into $$4x + 3y = 11$$, which is right?",
+      "options": [
+        "$$4x + 3(2x - 3) = 11$$",
+        "$$4x + 3 \\cdot 2x - 3 = 11$$",
+        "$$4x + 2x - 3 = 11$$",
+        "$$4(2x - 3) + 3y = 11$$"
+      ],
+      "answer": 0,
+      "explanation": "The whole expression replaces $$y$$, so it goes in brackets and the $$3$$ multiplies all of it (:ref{#substitution})."
+    },
+    {
+      "id": "substitution-same-equation",
+      "stars": 2,
+      "topic": "Substitution",
+      "question": "What happens if you substitute $$y = 2x - 3$$ back into the equation it came from?",
+      "options": [
+        "You get the value of $$x$$",
+        "You get the value of $$y$$",
+        "You get a contradiction",
+        "You get something always true, which tells you nothing"
+      ],
+      "answer": 3,
+      "explanation": "The equation becomes $$2x - 3 = 2x - 3$$, true for every $$x$$. The expression must go into the **other** equation (:ref{#substitution})."
+    },
+    {
+      "id": "substitution-why",
+      "stars": 3,
+      "topic": "Substitution",
+      "question": "Why does replacing $$y$$ by $$E$$ in the other equation, while keeping $$y = E$$, give an equivalent system?",
+      "options": [
+        "Because $$E$$ has no $$y$$ in it",
+        "Because substitution is a kind of elimination",
+        "Because whenever $$y = E$$ holds, $$y$$ and $$E$$ are the same number, so swapping one for the other can't change whether an equation is true",
+        "Because the other equation is linear"
+      ],
+      "answer": 2,
+      "explanation": "Both systems contain $$y = E$$. For values where that holds, putting $$E$$ in place of $$y$$ leaves both sides of the other equation unchanged (:ref{#substitution-works})."
+    },
+    {
+      "id": "substitution-nonlinear",
+      "stars": 3,
+      "topic": "Substitution",
+      "question": "Which method can solve $$y = x + 1$$ together with $$xy = 6$$?",
+      "options": [
+        "Only elimination",
+        "Only substitution",
+        "Both work equally well",
+        "Neither"
+      ],
+      "answer": 1,
+      "explanation": "Substitution gives $$x(x + 1) = 6$$, an equation in $$x$$ alone. Elimination relies on matching coefficients of linear terms, and $$xy$$ has nothing to cancel against."
+    },
+    {
+      "id": "when-substitution",
+      "stars": 1,
+      "topic": "Substitution",
+      "question": "When is substitution usually the quicker method?",
+      "options": [
+        "When an unknown is already on its own, or has coefficient $$1$$ or $$-1$$",
+        "When all the coefficients are large",
+        "When the system has three equations",
+        "Never; elimination is always quicker"
+      ],
+      "answer": 0,
+      "explanation": "If one equation already says $$y = \\ldots$$, or rearranges without fractions, substitution is direct (:ref{#substitution}). With awkward coefficients elimination is usually tidier."
+    },
+    {
+      "id": "zero-equals-two",
+      "stars": 1,
+      "topic": "No solution, or infinitely many",
+      "question": "Elimination leaves the line $$0 = 2$$. What does that mean?",
+      "options": [
+        "The system has infinitely many solutions",
+        "You must divide by zero",
+        "The solution is $$x = 0$$, $$y = 2$$",
+        "The system has no solution"
+      ],
+      "answer": 3,
+      "explanation": "Every step gave an equivalent system, and no values make $$0 = 2$$ true, so the original system has no solution: it is inconsistent (:ref{#consistent})."
+    },
+    {
+      "id": "zero-equals-zero",
+      "stars": 2,
+      "topic": "No solution, or infinitely many",
+      "question": "Elimination leaves the line $$0 = 0$$. What does that mean?",
+      "options": [
+        "The system has no solution",
+        "The only solution is $$(0, 0)$$",
+        "One equation said nothing new, and there are infinitely many solutions",
+        "The system has exactly one solution"
+      ],
+      "answer": 2,
+      "explanation": "$$0 = 0$$ is true for all values, so it puts no condition on the unknowns. One equation was a multiple of the other, and the solutions are those of a single equation, of which there are infinitely many."
+    },
+    {
+      "id": "inconsistent-def",
+      "stars": 1,
+      "topic": "No solution, or infinitely many",
+      "question": "What is an inconsistent system?",
+      "options": [
+        "One with infinitely many solutions",
+        "One with no solution",
+        "One whose equations have different numbers of unknowns",
+        "One with fractions in it"
+      ],
+      "answer": 1,
+      "explanation": "A system is consistent if it has at least one solution, and inconsistent if it has none (:ref{#consistent})."
+    },
+    {
+      "id": "determinant-formula",
+      "stars": 1,
+      "topic": "No solution, or infinitely many",
+      "question": "What is the determinant of the system $$ax + by = u$$, $$cx + dy = v$$?",
+      "options": ["$$ad - bc$$", "$$ab - cd$$", "$$ac - bd$$", "$$uv - ad$$"],
+      "answer": 0,
+      "explanation": "It is the product down one diagonal of the coefficients minus the product down the other: $$ad - bc$$ (:ref{#determinant})."
+    },
+    {
+      "id": "determinant-nonzero",
+      "stars": 2,
+      "topic": "No solution, or infinitely many",
+      "question": "If the determinant of a two-equation system is not zero, how many solutions are there?",
+      "options": [
+        "None",
+        "It depends on the right-hand sides",
+        "Infinitely many",
+        "Exactly one"
+      ],
+      "answer": 3,
+      "explanation": "A non-zero determinant guarantees exactly one solution, whatever the right-hand sides are (:ref{#determinant-test})."
+    },
+    {
+      "id": "determinant-zero-cases",
+      "stars": 2,
+      "topic": "No solution, or infinitely many",
+      "question": "If the determinant is zero, what can the number of solutions be?",
+      "options": [
+        "Only none",
+        "Exactly one",
+        "None or infinitely many",
+        "Exactly two"
+      ],
+      "answer": 2,
+      "explanation": "With a zero determinant there is never exactly one solution: there are none or infinitely many, depending on the right-hand sides (:ref{#determinant-zero})."
+    },
+    {
+      "id": "formula-why-check",
+      "stars": 4,
+      "topic": "No solution, or infinitely many",
+      "question": "In the proof of the formula for the solution, why isn't it enough to derive it by elimination; why must it also be checked?",
+      "options": [
+        "Because elimination only works for whole numbers",
+        "Because the elimination used multiplications by $$a$$, $$b$$, $$c$$, $$d$$, which might be zero, so those steps weren't known to be reversible",
+        "Because the formula might divide by zero",
+        "It is enough; the check is optional"
+      ],
+      "answer": 1,
+      "explanation": "Deriving it showed that any solution must be that pair. Since some multipliers could be zero, the steps might not be reversible, so the proof checks directly that the pair really works (:ref{#determinant-test})."
+    },
+    {
+      "id": "never-two",
+      "stars": 3,
+      "topic": "No solution, or infinitely many",
+      "question": "Can a system of two linear equations in two unknowns have exactly two solutions?",
+      "options": [
+        "No: it has exactly one, none or infinitely many",
+        "Yes, if the right-hand sides are equal",
+        "Yes, if the determinant is zero",
+        "Only if the equations are the same"
+      ],
+      "answer": 0,
+      "explanation": "A non-zero determinant gives exactly one (:ref{#determinant-test}); a zero one gives none or infinitely many (:ref{#determinant-zero}). Indeed, two solutions would give a whole line of them."
+    },
+    {
+      "id": "zero-right-sides",
+      "stars": 3,
+      "topic": "No solution, or infinitely many",
+      "question": "When does $$ax + by = 0$$, $$cx + dy = 0$$ have a solution other than $$(0, 0)$$?",
+      "options": [
+        "Always",
+        "Never",
+        "Exactly when $$ad - bc \\neq 0$$",
+        "Exactly when $$ad - bc = 0$$"
+      ],
+      "answer": 3,
+      "explanation": "$$(0, 0)$$ is always a solution. A non-zero determinant makes it the only one, and a zero determinant gives infinitely many (:ref{#zero-right-side})."
+    },
+    {
+      "id": "infinitely-many-describe",
+      "stars": 2,
+      "topic": "No solution, or infinitely many",
+      "question": "The solutions of a system are written $$(3 - 2t, t)$$ for every number $$t$$. What does the $$t$$ do?",
+      "options": [
+        "It is a third unknown to be solved for",
+        "It must equal $$0$$",
+        "It is a free choice: each value of $$t$$ gives one of the infinitely many solutions",
+        "It is the determinant"
+      ],
+      "answer": 2,
+      "explanation": "Choosing $$y = t$$ freely forces $$x = 3 - 2t$$, and different values of $$t$$ give different solutions. This is how infinitely many solutions are written down exactly."
+    },
+    {
+      "id": "direction-proof",
+      "stars": 4,
+      "topic": "No solution, or infinitely many",
+      "question": "In the proof that a zero determinant gives infinitely many solutions (once there is one), why is a pair $$(p, q)$$ with $$ap + bq = 0$$ and $$cp + dq = 0$$ useful?",
+      "options": [
+        "It is the solution of the system",
+        "Adding any multiple $$t(p, q)$$ to a solution leaves both left-hand sides unchanged, giving more solutions",
+        "It shows the determinant is zero",
+        "It shows the system is inconsistent"
+      ],
+      "answer": 1,
+      "explanation": "If $$(x_0, y_0)$$ is a solution, then $$a(x_0 + tp) + b(y_0 + tq) = u + t \\cdot 0 = u$$, and likewise for the second equation, so every $$t$$ gives a solution (:ref{#determinant-zero})."
+    },
+    {
+      "id": "graph-meaning",
+      "stars": 1,
+      "topic": "Equations as lines",
+      "question": "What is the graph of an equation in $$x$$ and $$y$$?",
+      "options": [
+        "The set of all points whose coordinates solve the equation",
+        "A picture of the left-hand side",
+        "The point where it crosses the $$y$$-axis",
+        "Its slope"
+      ],
+      "answer": 0,
+      "explanation": "The graph is all the points $$(x, y)$$ that are solutions (:ref{#graph}). For a linear equation it is a straight line (:ref{#line})."
+    },
+    {
+      "id": "solution-as-crossing",
+      "stars": 1,
+      "topic": "Equations as lines",
+      "question": "What does the solution of a system of two linear equations look like on a graph?",
+      "options": [
+        "The origin",
+        "The point where each line crosses the $$x$$-axis",
+        "The steeper of the two lines",
+        "The point where the lines cross"
+      ],
+      "answer": 3,
+      "explanation": "A solution lies on both lines, so it is a point where they cross."
+    },
+    {
+      "id": "parallel-means",
+      "stars": 2,
+      "topic": "Equations as lines",
+      "question": "Two different lines are parallel. What does that say about the system?",
+      "options": [
+        "It has exactly one solution",
+        "It has infinitely many solutions",
+        "It has no solution",
+        "It has two solutions"
+      ],
+      "answer": 2,
+      "explanation": "Parallel lines never meet, so no point lies on both: the system is inconsistent. This matches a zero determinant with contradicting equations (:ref{#parallel-test})."
+    },
+    {
+      "id": "same-line-means",
+      "stars": 2,
+      "topic": "Equations as lines",
+      "question": "Two equations draw the same line. How many solutions does the system have?",
+      "options": ["None", "Infinitely many", "Exactly two", "Exactly one"],
+      "answer": 1,
+      "explanation": "Every point on the line lies on both graphs, so every one is a solution."
+    },
+    {
+      "id": "slope-sign",
+      "stars": 2,
+      "topic": "Equations as lines",
+      "question": "What is the slope of $$3x + 2y = 6$$?",
+      "options": ["$$-\\frac{3}{2}$$", "$$3$$", "$$\\frac{2}{3}$$", "$$6$$"],
+      "answer": 0,
+      "explanation": "Rearranging gives $$y = -\\frac{3}{2}x + 3$$, so the slope is $$-\\frac{a}{b} = -\\frac{3}{2}$$ (:ref{#slope})."
+    },
+    {
+      "id": "vertical-line",
+      "stars": 3,
+      "topic": "Equations as lines",
+      "question": "Which equation $$ax + by = c$$ gives a vertical line with no slope?",
+      "options": [
+        "One with $$a = 0$$",
+        "One with $$a = b$$",
+        "One with $$c = 0$$",
+        "One with $$b = 0$$"
+      ],
+      "answer": 3,
+      "explanation": "When $$b = 0$$ the equation is $$ax = c$$, which fixes $$x$$ and lets $$y$$ be anything: a vertical line. The slope $$-\\frac{a}{b}$$ isn't defined (:ref{#slope})."
+    },
+    {
+      "id": "determinant-geometry",
+      "stars": 3,
+      "topic": "Equations as lines",
+      "question": "What does a zero determinant mean for the two lines?",
+      "options": [
+        "They cross exactly once",
+        "They cross at the origin",
+        "They point the same way: parallel or the same line",
+        "They are at right angles"
+      ],
+      "answer": 2,
+      "explanation": "For non-vertical lines, $$ad - bc = 0$$ exactly when the slopes are equal (:ref{#parallel-test}), so the lines are parallel or coincide."
+    },
+    {
+      "id": "drawing-vs-algebra",
+      "stars": 2,
+      "topic": "Equations as lines",
+      "question": "Why solve a system with algebra rather than reading the crossing point off a drawing?",
+      "options": [
+        "Drawings always give the wrong answer",
+        "Drawings are only approximate, while elimination gives the exact point",
+        "Algebra is quicker to draw",
+        "Lines can't be drawn accurately for whole numbers"
+      ],
+      "answer": 1,
+      "explanation": "A sketch shows roughly where lines meet, but a crossing point like $$(\\frac{31}{38}, -\\frac{8}{19})$$ can only be found exactly by algebra. The picture is for understanding and checking."
+    },
+    {
+      "id": "word-unknowns",
+      "stars": 1,
+      "topic": "Word problems",
+      "question": "What is the first step in turning a word problem into equations?",
+      "options": [
+        "Say exactly what each unknown stands for, with units",
+        "Write down every number in the problem",
+        "Guess the answer",
+        "Add up all the numbers"
+      ],
+      "answer": 0,
+      "explanation": "Naming each unknown precisely, with units, avoids mixing quantities up later (:ref{#word-problem-steps})."
+    },
+    {
+      "id": "word-value-equation",
+      "stars": 2,
+      "topic": "Word problems",
+      "question": "In a mixture problem, what does the value equation add up?",
+      "options": [
+        "The prices per kilogram",
+        "The prices minus the amounts",
+        "The amounts of each ingredient",
+        "Each amount times its price per unit"
+      ],
+      "answer": 3,
+      "explanation": "The total value is the amount of each ingredient multiplied by its price, added up. The prices on their own don't add up to anything meaningful."
+    },
+    {
+      "id": "word-negative-answer",
+      "stars": 2,
+      "topic": "Word problems",
+      "question": "Solving a word problem gives $$-5$$ coins of one kind. What should you conclude?",
+      "options": [
+        "Round it to $$0$$",
+        "The answer is $$5$$ coins; ignore the sign",
+        "There is a mistake, or the situation described is impossible",
+        "The system has no solution"
+      ],
+      "answer": 2,
+      "explanation": "The system may well have a solution, but the story rules it out. Checking against the story is the last step of the method (:ref{#word-problem-steps})."
+    },
+    {
+      "id": "word-current",
+      "stars": 2,
+      "topic": "Word problems",
+      "question": "A boat's speed in still water is $$b$$ and the current's is $$s$$. What is its speed going upstream?",
+      "options": ["$$b + s$$", "$$b - s$$", "$$s - b$$", "$$bs$$"],
+      "answer": 1,
+      "explanation": "Upstream the current works against the boat, so its speed is $$b - s$$; downstream it is $$b + s$$."
+    },
+    {
+      "id": "three-eliminate-same",
+      "stars": 2,
+      "topic": "Three equations in three unknowns",
+      "question": "When solving three equations, why must both new equations be free of the same unknown?",
+      "options": [
+        "So that they form two equations in the same two unknowns",
+        "Because the third unknown is always zero",
+        "To make the numbers smaller",
+        "It doesn't matter which unknowns they are free of"
+      ],
+      "answer": 0,
+      "explanation": "If one new equation lacks $$z$$ and the other lacks $$y$$, all three unknowns are still involved. Removing the same one twice leaves a two-unknown system (:ref{#three-method})."
+    },
+    {
+      "id": "three-different-pairs",
+      "stars": 3,
+      "topic": "Three equations in three unknowns",
+      "question": "Why must the two eliminations in step 2 use different pairs of equations?",
+      "options": [
+        "They don't; any two combinations will do",
+        "Because each equation may only be used once",
+        "Because it makes the numbers smaller",
+        "Using one pair twice only repeats the information in those two equations, and loses the third"
+      ],
+      "answer": 3,
+      "explanation": "Two combinations of the same pair carry only what those two equations say. The third equation has to be used, or its condition is lost (:ref{#three-method})."
+    },
+    {
+      "id": "three-how-many",
+      "stars": 1,
+      "topic": "Three equations in three unknowns",
+      "question": "How many equations are usually needed to pin down three unknowns?",
+      "options": ["One", "Two", "Three", "Six"],
+      "answer": 2,
+      "explanation": "Each independent fact removes one degree of freedom, so three unknowns usually need three equations (:ref{#linear-three})."
+    },
+    {
+      "id": "three-zero-zero",
+      "stars": 3,
+      "topic": "Three equations in three unknowns",
+      "question": "Solving three equations in three unknowns, you reach $$0 = 0$$. What has happened?",
+      "options": [
+        "The system has no solution",
+        "One of the equations was a combination of the others, so it said nothing new",
+        "The solution is $$(0, 0, 0)$$",
+        "You must start again with a different unknown"
+      ],
+      "answer": 1,
+      "explanation": "An always-true line means one equation followed from the others. The system then has the solutions of the remaining two, and may have infinitely many."
+    },
+    {
+      "id": "three-check-original",
+      "stars": 2,
+      "topic": "Three equations in three unknowns",
+      "question": "After clearing fractions and solving, where should you check the answer?",
+      "options": [
+        "In the original equations",
+        "In the cleared equations",
+        "In the two-unknown system",
+        "Checking isn't needed"
+      ],
+      "answer": 0,
+      "explanation": "A slip while clearing fractions wouldn't show up in the cleared equations, so the check belongs in the original ones."
+    }
+  ]
+}

@@ -1,0 +1,309 @@
+---
+title: No solution, or infinitely many
+description: When a system has no solution or infinitely many, and the test that tells in advance.
+---
+
+So far every system has had exactly one solution. That is the usual case, but not the only one. Two
+equations can contradict each other, so that nothing satisfies both, or one can just repeat the
+other, so that there are infinitely many solutions. This page shows how each case shows up when
+solving, and gives a single number, worked out from the coefficients, that says in advance which
+case you are in.
+
+## When the equations contradict each other
+
+:::example[No solution]
+
+Try to solve
+
+```math
+\begin{aligned}
+x + 2y &= 3 &\quad (1) \\
+x + 2y &= 5 &\quad (2)
+\end{aligned}
+```
+
+Subtracting (1) from (2) eliminates $$x$$, but $$y$$ disappears too:
+
+```math
+0 = 2
+```
+
+:::
+
+The last line is false whatever $$x$$ and $$y$$ are. Since every step gave an equivalent system
+(:ref{#combining}), the original system has the same solutions as one containing the equation
+$$0 = 2$$, which is none at all. Looking back, this is obvious: the same quantity $$x + 2y$$ can't
+be both $$3$$ and $$5$$.
+
+:::definition[Consistent and inconsistent]{#consistent}
+
+A system is **consistent** if it has at least one solution, and **inconsistent** if it has none.
+
+:::
+
+The contradiction isn't always visible at a glance. In
+
+```math
+\begin{aligned}
+2x - 3y &= 4 \\
+-6x + 9y &= 7
+\end{aligned}
+```
+
+multiplying the first equation by $$3$$ and adding gives $$0 = 19$$. The second equation's left side
+is $$-3$$ times the first one's, but its right side isn't $$-3 \cdot 4$$.
+
+## When one equation repeats the other
+
+:::example[Infinitely many solutions]
+
+Try to solve
+
+```math
+\begin{aligned}
+x + 2y &= 3 &\quad (1) \\
+3x + 6y &= 9 &\quad (2)
+\end{aligned}
+```
+
+Subtracting $$3$$ times (1) from (2) gives
+
+```math
+0 = 0
+```
+
+:::
+
+This time the last line is true whatever $$x$$ and $$y$$ are, so it puts no condition on them at
+all. Equation (2) is just (1) multiplied by $$3$$, so it says nothing new, and the system has the
+same solutions as (1) alone. There are infinitely many: choose any number $$t$$ for $$y$$, and then
+$$x = 3 - 2t$$. So the solutions are
+
+```math
+(3 - 2t,\ t) \qquad\text{for every number } t
+```
+
+For example $$t = 0$$ gives $$(3, 0)$$, $$t = 1$$ gives $$(1, 1)$$ and $$t = -2$$ gives $$(7, -2)$$.
+Describing the solutions with a free letter like $$t$$ like this is how "infinitely many" is written
+down exactly.
+
+## A test that tells in advance
+
+All three cases come down to one number. Write a general system with letters for the coefficients:
+
+```math
+\begin{aligned}
+ax + by &= u &\quad (1) \\
+cx + dy &= v &\quad (2)
+\end{aligned}
+```
+
+:::definition[Determinant]{#determinant}
+
+The **determinant** of this system is the number
+
+```math
+ad - bc
+```
+
+the product of the coefficients on one diagonal, minus the product on the other:
+
+| $$x$$ | $$y$$ |
+| ----- | ----- |
+| $$a$$ | $$b$$ |
+| $$c$$ | $$d$$ |
+
+:::
+
+For the system $$3x + 2y = 7$$ and $$5x - 3y = 37$$, the determinant is
+$$3 \cdot (-3) - 2 \cdot 5 = -19$$. For $$x + 2y = 3$$ and $$3x + 6y = 9$$, it is
+$$1 \cdot 6 - 2 \cdot 3 = 0$$.
+
+:::theorem[Exactly one solution]{#determinant-test}
+
+If $$ad - bc \neq 0$$, the system has exactly one solution, namely
+
+```math
+x = \frac{du - bv}{ad - bc}, \qquad y = \frac{av - cu}{ad - bc}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Cramer%27s_rule#Explicit_formulas_for_small_systems"}
+
+There are two things to show: that a solution can only be this pair, and that this pair really is a
+solution.
+
+**Only this pair can work.** Suppose $$(x, y)$$ is a solution. Eliminate $$y$$ by multiplying (1) by
+$$d$$ and (2) by $$b$$, and subtracting:
+
+```math
+\begin{aligned}
+adx + bdy &= du \\
+bcx + bdy &= bv
+\end{aligned}
+\qquad\longrightarrow\qquad
+(ad - bc)x = du - bv
+```
+
+Similarly, eliminate $$x$$ by multiplying (1) by $$c$$ and (2) by $$a$$, and subtracting the first
+from the second:
+
+```math
+\begin{aligned}
+acx + bcy &= cu \\
+acx + ady &= av
+\end{aligned}
+\qquad\longrightarrow\qquad
+(ad - bc)y = av - cu
+```
+
+Since $$ad - bc \neq 0$$, each of these has exactly one solution by :ref{#one-unknown}, which is the
+pair in the theorem. So no other pair can solve the system.
+
+**This pair does work.** Write $$D = ad - bc$$. Putting the pair into the left side of (1),
+
+```math
+a \cdot \frac{du - bv}{D} + b \cdot \frac{av - cu}{D}
+= \frac{adu - abv + abv - bcu}{D}
+= \frac{(ad - bc)u}{D}
+= u
+```
+
+which is the right side of (1). In the same way, the left side of (2) is
+
+```math
+c \cdot \frac{du - bv}{D} + d \cdot \frac{av - cu}{D}
+= \frac{cdu - bcv + adv - cdu}{D}
+= \frac{(ad - bc)v}{D}
+= v
+```
+
+So the pair solves both equations.
+
+:::
+
+The first half of the proof is just elimination done once and for all with letters. The second half
+is needed because the elimination steps used here (multiplying by $$d$$, say) might multiply by
+zero, so they weren't all known to be safe; checking directly settles it.
+
+:::example[Using the formula]
+
+For $$3x + 2y = 7$$ and $$5x - 3y = 37$$: $$a = 3$$, $$b = 2$$, $$c = 5$$, $$d = -3$$, $$u = 7$$ and
+$$v = 37$$. The determinant is $$-19$$, so
+
+```math
+x = \frac{(-3) \cdot 7 - 2 \cdot 37}{-19} = \frac{-95}{-19} = 5,
+\qquad
+y = \frac{3 \cdot 37 - 5 \cdot 7}{-19} = \frac{76}{-19} = -4
+```
+
+which matches the answer found by elimination on the
+[Two equations in two unknowns](./two-unknowns.mdx) page.
+
+:::
+
+The formula is worth knowing, but for particular numbers elimination is usually quicker and less
+error-prone. Its real value is the test: a non-zero determinant guarantees exactly one solution.
+
+## When the determinant is zero
+
+:::theorem[Zero determinant]{#determinant-zero}
+
+If $$ad - bc = 0$$, the system has either no solution or infinitely many. It never has exactly one.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Cramer%27s_rule#Inconsistent_and_indeterminate_cases"}
+
+If the system has no solution, there is nothing to prove. So suppose it has a solution
+$$(x_0, y_0)$$. We find infinitely many more by moving away from it in a direction that changes
+neither left-hand side.
+
+**Finding a direction.** We want a pair $$(p, q)$$, not both zero, with
+
+```math
+ap + bq = 0 \qquad\text{and}\qquad cp + dq = 0
+```
+
+- If $$a$$ and $$b$$ are not both zero, take $$(p, q) = (b, -a)$$. Then $$ap + bq = ab - ba = 0$$,
+  and $$cp + dq = cb - da = -(ad - bc) = 0$$.
+- If $$a = b = 0$$ but $$c$$ and $$d$$ are not both zero, take $$(p, q) = (d, -c)$$. Then
+  $$ap + bq = 0$$ because $$a = b = 0$$, and $$cp + dq = cd - dc = 0$$.
+- If all four coefficients are zero, take $$(p, q) = (1, 0)$$.
+
+**Moving in that direction.** For any number $$t$$, put $$x = x_0 + tp$$ and $$y = y_0 + tq$$. Then
+
+```math
+ax + by = (ax_0 + by_0) + t(ap + bq) = u + t \cdot 0 = u
+```
+
+and in the same way $$cx + dy = v + t(cp + dq) = v$$. So every such pair is a solution.
+
+**These are all different.** Take two different numbers $$s$$ and $$t$$. The pairs they give differ
+by $$(t - s)p$$ in $$x$$ and $$(t - s)q$$ in $$y$$. Since $$t - s \neq 0$$, and $$p$$ and $$q$$ are
+not both zero, at least one of these differences is non-zero by :ref{#numbers/zero-product}. So
+different values of $$t$$ give different pairs, and there are infinitely many of them.
+
+:::
+
+Putting the two theorems together:
+
+| Determinant $$ad - bc$$ | Number of solutions | What elimination ends with            |
+| ----------------------- | ------------------- | ------------------------------------- |
+| not zero                | exactly one         | a value for each unknown              |
+| zero                    | none                | something false, like $$0 = 2$$       |
+| zero                    | infinitely many     | something always true, like $$0 = 0$$ |
+
+In both examples on this page, the left-hand side of (2) is a multiple of the left-hand side of (1):
+$$x + 2y$$ twice over, and $$3x + 6y = 3(x + 2y)$$. Whether there are no solutions or infinitely
+many then depends on whether the right-hand sides are related by the same multiple. The
+[next page](./lines.mdx) shows the picture: a zero determinant means the two lines are parallel or
+the same.
+
+## When both right-hand sides are zero
+
+A system whose right-hand sides are both $$0$$ always has at least one solution, $$x = y = 0$$. The
+test says when that is the only one.
+
+:::corollary[Only the zero solution]{#zero-right-side}
+
+If $$ad - bc \neq 0$$, the only solution of
+
+```math
+\begin{aligned}
+ax + by &= 0 \\
+cx + dy &= 0
+\end{aligned}
+```
+
+is $$x = 0$$, $$y = 0$$. If $$ad - bc = 0$$, it has infinitely many solutions.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/System_of_linear_equations#Homogeneous_solution_set"}
+
+If $$ad - bc \neq 0$$, by :ref{#determinant-test} there is exactly one solution, and $$(0, 0)$$ is
+one, so it is the only one. (The formula agrees: with $$u = v = 0$$ both numerators are $$0$$.)
+
+If $$ad - bc = 0$$, the system has a solution, $$(0, 0)$$, so by :ref{#determinant-zero} it has
+infinitely many.
+
+:::
+
+## Common mistakes
+
+- **Reading $$0 = 0$$ as "no solution".** It means the equations agree, and there are infinitely
+  many solutions. It's $$0 = 2$$ (something false) that means there are none.
+- **Stopping at "infinitely many".** Say what they are, for example $$(3 - 2t, t)$$ for every $$t$$.
+- **Mixing up the determinant.** It is $$ad - bc$$: the top-left times bottom-right, minus the
+  top-right times bottom-left, with the equations written in the same order of unknowns.
+
+## In short
+
+- A system can have exactly one solution, none (it's **inconsistent**), or infinitely many.
+- Elimination shows which: a false line like $$0 = 2$$ means none, an always-true line like
+  $$0 = 0$$ means infinitely many.
+- The **determinant** $$ad - bc$$ decides in advance: not zero means exactly one solution, given by
+  a formula; zero means none or infinitely many.
+- With both right-hand sides $$0$$, the only solution is $$(0, 0)$$ exactly when $$ad - bc \neq 0$$.

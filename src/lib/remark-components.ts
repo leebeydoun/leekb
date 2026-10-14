@@ -7,8 +7,11 @@
  *             :::accordion[Title] ... :::
  *             :::area-model{row-sizes="3 2" col-sizes="3 2"} with a table inside, see below
  * One line:   ::number-line{from=-4 to=6 points="-2, 4" jumps="-2>4"}
+ *             ::graph{lines="2x + y = 1; 3x - 2y = 4" points="6/7, -5/7" x="-4 4" y="-4 4"}
  *             ::quiz{src="numbers"}     (questions from public/quizzes/numbers.json, checked here)
- * Inline:     :ref{#id} or :ref[custom text]{#id}
+ *             ::see-also{src="https://en.wikipedia.org/wiki/..."}     (a source for an unproved
+ *             statement, placed inside it)
+ * Inline:     :ref{#id} or :ref[custom text]{#id}, or :ref{#numbers/id} for another guide
  *
  * A block must have blank lines after its opening line and before its closing `:::`, otherwise
  * Prettier joins the lines and breaks it. A block nested inside another needs one colon fewer than
@@ -205,8 +208,81 @@ function areaModel(node: ContainerDirective, file: File): MdxJsxFlowElement {
   );
 }
 
+// "2x - 3y = 4" -> ax + by = c with a = 2, b = -3, c = 4; terms may sit on either side and use
+// fractions, e.g. "y = 1/2x + 1"
+function parseLinear(text: string, file: File, node: Node) {
+  const sides = text.replace(/−/g, "-").replace(/\s+/g, "").split("=");
+  if (sides.length !== 2) fail(file, node, `"${text}" needs exactly one "="`);
+  const totals = { x: 0, y: 0, c: 0 };
+  sides.forEach((side, i) => {
+    const sign = i === 0 ? 1 : -1;
+    const terms = side.match(/[+-]?[^+-]+/g);
+    if (!terms) fail(file, node, `"${text}" has an empty side`);
+    for (const term of terms) {
+      const match = /^([+-]?)(\d+(?:\.\d+)?(?:\/\d+)?)?([xy])?$/.exec(term);
+      if (!match || (!match[2] && !match[3]))
+        fail(file, node, `Can't read "${term}" in "${text}"`);
+      const size = match[2] ? parseNumber(match[2], file, node) : 1;
+      const value = (match[1] === "-" ? -1 : 1) * size * sign;
+      totals[(match[3] as "x" | "y" | undefined) ?? "c"] += value;
+    }
+  });
+  // the constant moves to the right-hand side
+  const { x: a, y: b, c } = totals;
+  if (a === 0 && b === 0) fail(file, node, `"${text}" has no x or y`);
+  return { a, b, c: -c, label: text.trim() };
+}
+
+function graph(node: LeafDirective, file: File): MdxJsxFlowElement {
+  const a = node.attributes ?? {};
+  if (!a.lines)
+    fail(file, node, '::graph needs lines, e.g. lines="x + y = 2; x - y = 0"');
+  const list = (text?: string | null) =>
+    (text ?? "")
+      .split(";")
+      .map((item) => item.trim())
+      .filter(Boolean);
+  const range = (text: string | null | undefined, name: string) => {
+    if (!text) return undefined;
+    const [min, max] = text
+      .trim()
+      .split(/\s+/)
+      .map((n) => parseNumber(n, file, node));
+    if (min === undefined || max === undefined || min >= max)
+      fail(
+        file,
+        node,
+        `${name} should be two numbers, smallest first, e.g. ${name}="-4 4"`,
+      );
+    return [min, max];
+  };
+  // "6/7, -5/7" marks the point (6/7, -5/7), labelled as written
+  const points = list(a.points).map((point) => {
+    const [x, y] = splitOnce(point, ",");
+    if (y === undefined)
+      fail(file, node, `Point "${point}" needs an x and a y`);
+    return {
+      x: parseNumber(x, file, node),
+      y: parseNumber(y, file, node),
+      label: `(${x}, ${y})`.replace(/-/g, "−"),
+    };
+  });
+  return element(
+    "mdxJsxFlowElement",
+    "Graph",
+    {
+      lines: list(a.lines).map((line) => parseLinear(line, file, node)),
+      points,
+      x: range(a.x, "x"),
+      y: range(a.y, "y"),
+      caption: a.caption ?? undefined,
+    },
+    [],
+  );
+}
+
 const MAX_STARS = 4;
-const REF = /:ref(?:\[[^\]]*\])?\{#([\w-]+)\}/g;
+const REF = /:ref(?:\[[^\]]*\])?\{#([\w/-]+)\}/g;
 const MATH = /\$\$([\s\S]+?)\$\$/g;
 
 // read a quiz file and check it, so a mistake fails the build rather than showing up in the browser;
@@ -368,6 +444,25 @@ function convert(node: Directive, file: File): RootContent {
 
   if (node.type === "leafDirective") {
     if (node.name === "number-line") return numberLine(node, file);
+    if (node.name === "graph") return graph(node, file);
+    // a source for a statement taken without proof, e.g. a remark
+    if (node.name === "see-also") {
+      if (!a.src)
+        fail(
+          file,
+          node,
+          '::see-also needs a src, e.g. ::see-also{src="https://..."}',
+        );
+      return element(
+        "mdxJsxFlowElement",
+        "SeeAlso",
+        {
+          source: a.src ?? undefined,
+          sourceTitle: proofSource(a.src, file, node),
+        },
+        [],
+      );
+    }
     if (node.name === "quiz") {
       if (!a.src)
         fail(file, node, '::quiz needs a src, e.g. ::quiz{src="numbers"}');

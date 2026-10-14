@@ -1,0 +1,139 @@
+---
+title: Equations as lines
+description: Picturing a linear equation as a straight line, and a system as lines that cross.
+---
+
+There is a picture behind everything in this guide. Each linear equation in $$x$$ and $$y$$ draws a
+straight line, and solving a system means finding where the lines cross. The three cases from the
+[previous page](./special-cases.mdx), one solution, none, or infinitely many, become three ways two
+lines can sit: crossing once, parallel, or on top of each other.
+
+## Points and coordinates
+
+Draw two number lines at right angles, crossing at their zeros: the **$$x$$-axis** across and the
+**$$y$$-axis** up. Every pair of numbers $$(x, y)$$ now names a point: go $$x$$ steps across (left
+if $$x$$ is negative) and then $$y$$ steps up (down if $$y$$ is negative). The numbers $$x$$ and
+$$y$$ are the point's **coordinates**, and the point where the axes cross, $$(0, 0)$$, is the
+**origin**.
+
+A later guide on coordinate geometry builds this up properly. Here we only need the picture.
+
+## The graph of an equation
+
+:::definition[Graph]{#graph}
+
+The **graph** of an equation in $$x$$ and $$y$$ is the set of all points $$(x, y)$$ whose
+coordinates are a solution of the equation.
+
+:::
+
+Take $$2x + y = 4$$. Some of its solutions are $$(0, 4)$$, $$(1, 2)$$ and $$(2, 0)$$, and plotting
+them shows they lie in a straight line. So do all the others, like $$(\frac{1}{2}, 3)$$ and
+$$(3, -2)$$:
+
+::graph{lines="2x + y = 4" points="0, 4; 1, 2; 2, 0; 3, -2" x="-2 5" y="-3 5"}
+
+:::remark[Linear equations draw lines]{#line}
+
+The graph of a linear equation $$ax + by = c$$ (with $$a$$ and $$b$$ not both zero) is always a
+straight line, and every straight line is the graph of such an equation. This is where the name
+**linear** comes from. We take it from the picture for now; the guide on coordinate geometry proves
+it.
+
+::see-also{src="https://en.wikipedia.org/wiki/Linear_equation#Geometric_interpretation"}
+
+:::
+
+Since two points fix a line, the quickest way to draw one is to find two solutions, usually by
+putting $$x = 0$$ and then $$y = 0$$. For $$2x + y = 4$$ these give $$(0, 4)$$ and $$(2, 0)$$, where
+the line crosses the axes.
+
+## Systems as crossing lines
+
+A solution of a system makes both equations true, so it is a point on **both** lines: a point where
+they cross.
+
+::graph{lines="x + y = 5; x - y = 1" points="3, 2" x="-2 6" y="-2 6"}
+
+Solving by elimination finds the crossing point exactly, even when it is somewhere awkward like
+$$(\frac{31}{38}, -\frac{8}{19})$$ that no drawing could read off. The picture explains what is
+going on; the algebra gets the answer.
+
+Two lines can sit in three ways, matching the three cases on the previous page.
+
+**Crossing once: exactly one solution.** This is the usual case, as above.
+
+**Parallel: no solution.** The lines $$x + 2y = 3$$ and $$x + 2y = 5$$ never meet, because no point
+can have $$x + 2y$$ equal to both $$3$$ and $$5$$.
+
+::graph{lines="x + 2y = 3; x + 2y = 5" x="-3 6" y="-2 4"}
+
+**The same line: infinitely many solutions.** The equations $$x + 2y = 3$$ and $$3x + 6y = 9$$
+describe the same line, since the second is the first multiplied by $$3$$. Every point on it is a
+solution, which is why there are infinitely many.
+
+::graph{lines="x + 2y = 3; 3x + 6y = 9" points="3, 0; 1, 1; -1, 2" x="-3 6" y="-2 4"}
+
+## Slope
+
+How steeply a line climbs is measured by a single number.
+
+:::definition[Slope]{#slope}
+
+If $$b \neq 0$$, the equation $$ax + by = c$$ can be rearranged as
+
+```math
+y = mx + k, \qquad\text{where}\quad m = -\frac{a}{b}, \quad k = \frac{c}{b}
+```
+
+The number $$m$$ is the **slope** of the line: each step of $$1$$ to the right changes $$y$$ by
+$$m$$. The number $$k$$ is where the line crosses the $$y$$-axis, since $$x = 0$$ gives $$y = k$$.
+
+:::
+
+For $$2x + y = 4$$, rearranging gives $$y = -2x + 4$$: the slope is $$-2$$, so the line drops by
+$$2$$ for each step right, and it crosses the $$y$$-axis at $$4$$, as in the first picture. When
+$$b = 0$$ the equation is $$ax = c$$, which says $$x = \frac{c}{a}$$: a vertical line, which has no
+slope.
+
+Two different lines are parallel exactly when they have the same slope (or are both vertical), and
+this is what the determinant detects.
+
+:::proposition[Zero determinant means parallel or equal]{#parallel-test}
+
+Take two lines $$ax + by = u$$ and $$cx + dy = v$$, neither vertical, so $$b \neq 0$$ and
+$$d \neq 0$$. They have the same slope exactly when $$ad - bc = 0$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Slope#Algebra_and_geometry"}
+
+The slopes are $$-\frac{a}{b}$$ and $$-\frac{c}{d}$$. They are equal exactly when
+$$\frac{a}{b} = \frac{c}{d}$$, by multiplying both sides by $$-1$$ (:ref{#safe-steps}). Since $$b$$
+and $$d$$ are not zero, cross-multiplying (:ref{#numbers/cross-multiplying-rational}) shows this
+happens exactly when $$ad = bc$$, that is, when $$ad - bc = 0$$.
+
+:::
+
+If one line is vertical and the other isn't, say $$b = 0$$ and $$d \neq 0$$, then $$a \neq 0$$ and
+$$ad - bc = ad \neq 0$$: the lines cross once, as they should. If both are vertical, $$b = d = 0$$
+and $$ad - bc = 0$$: they are parallel or the same. So in every case, a zero determinant means the
+lines point the same way, and a non-zero one means they cross exactly once, matching
+:ref{#determinant-test} and :ref{#determinant-zero}.
+
+## Common mistakes
+
+- **Reading answers off a drawing.** A sketch shows roughly where lines cross, but not exactly. Use
+  the algebra for the answer and the picture to check it is sensible.
+- **Getting the slope from $$ax + by = c$$ directly.** The slope of $$2x + y = 4$$ is $$-2$$, not
+  $$2$$: rearrange to $$y = \ldots$$ first.
+- **Thinking parallel lines must look alike.** $$x + 2y = 3$$ and $$-2x - 4y = 7$$ are parallel,
+  even though their equations look different.
+
+## In short
+
+- A linear equation's solutions form a straight line, its **graph**.
+- A system's solution is where the lines cross: once (one solution), never (parallel, no solution),
+  or everywhere (the same line, infinitely many).
+- Rearranged as $$y = mx + k$$, the number $$m$$ is the **slope**; lines with the same slope are
+  parallel or equal, which is exactly when the determinant is zero.

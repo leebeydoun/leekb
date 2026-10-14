@@ -1,0 +1,204 @@
+---
+title: Word problems
+description: Turning a story into a system of equations, solving it, and checking the answer.
+---
+
+Systems of equations earn their keep on questions phrased in words: prices, mixtures, speeds, ages.
+The algebra is the easy part, since the earlier pages already cover it. The real skill is turning
+the story into equations, and then checking that the answer makes sense in the story. This page
+works through the common kinds, one at a time.
+
+## A method
+
+:::remark[Solving a word problem]{#word-problem-steps}
+
+1. **Name the unknowns.** Say exactly what each letter stands for, with units: "let $$a$$ be the
+   number of adult tickets", not just "let $$a$$ be adults".
+2. **Write one equation per fact.** Each sentence that gives a number usually gives one equation.
+   Two unknowns need two independent facts.
+3. **Solve** the system, by elimination or substitution.
+4. **Answer the question asked,** in words and with units.
+5. **Check** the answer against the story, not just the equations: it should satisfy every fact, and
+   make sense (no negative ticket counts, no fractions of a person).
+
+:::
+
+Two kinds of fact come up again and again. A **counting** fact says how many things there are in
+total, like $$a + c = 250$$. A **value** fact says what they are worth in total, and multiplies each
+count by its value per item, like $$8a + 5c = 1640$$.
+
+## Tickets: counting and value
+
+:::example[Theatre tickets]
+
+A school play sold $$250$$ tickets. Adult tickets cost £8 and child tickets £5, and the takings were
+£1640. How many of each were sold?
+
+**Unknowns.** Let $$a$$ be the number of adult tickets and $$c$$ the number of child tickets.
+
+**Equations.** There are $$250$$ tickets in all, and the adult tickets bring in $$8a$$ pounds and
+the child tickets $$5c$$:
+
+```math
+\begin{aligned}
+a + c &= 250 &\quad (1) \\
+8a + 5c &= 1640 &\quad (2)
+\end{aligned}
+```
+
+**Solve.** From (1), $$c = 250 - a$$. Substituting into (2), $$8a + 1250 - 5a = 1640$$, so
+$$3a = 390$$ and $$a = 130$$. Then $$c = 120$$.
+
+**Answer.** $$130$$ adult tickets and $$120$$ child tickets.
+
+**Check.** $$130 + 120 = 250$$ tickets, and $$130 \cdot 8 + 120 \cdot 5 = 1040 + 600 = 1640$$
+pounds.
+
+:::
+
+## Mixtures
+
+Mixture problems are the same shape: an amount of each ingredient, and a total value.
+
+:::example[Blending coffee]
+
+A roaster blends beans costing £12 per kilogram with beans costing £20 per kilogram, to make $$40$$
+kg of a blend worth £15 per kilogram. How much of each goes in?
+
+**Unknowns.** Let $$x$$ be the kilograms of £12 beans and $$y$$ the kilograms of £20 beans.
+
+**Equations.** The weights add up to $$40$$ kg, and the values add up to the value of the blend,
+$$40 \cdot 15 = 600$$ pounds:
+
+```math
+\begin{aligned}
+x + y &= 40 &\quad (1) \\
+12x + 20y &= 600 &\quad (2)
+\end{aligned}
+```
+
+**Solve.** Multiplying (1) by $$12$$ and subtracting from (2): $$8y = 120$$, so $$y = 15$$ and
+$$x = 25$$.
+
+**Answer.** $$25$$ kg of the £12 beans and $$15$$ kg of the £20 beans.
+
+**Check.** $$25 + 15 = 40$$ kg, worth $$25 \cdot 12 + 15 \cdot 20 = 300 + 300 = 600$$ pounds, which
+is £15 per kilogram.
+
+:::
+
+A quick sense check: the blend price, £15, is nearer to £12 than to £20, so there should be more of
+the cheaper beans. There are.
+
+## Speeds with and against a current
+
+Distance, speed and time are linked by
+
+```math
+\text{distance} = \text{speed} \times \text{time}
+```
+
+A current, or a wind, adds to a speed in one direction and takes away from it in the other.
+
+:::example[A boat on a river]
+
+A boat travels $$36$$ km downstream in $$2$$ hours, and makes the same trip back upstream in $$3$$
+hours. How fast does the boat go in still water, and how fast is the current?
+
+**Unknowns.** Let $$b$$ be the boat's speed in still water and $$s$$ the speed of the current, both
+in km per hour.
+
+**Equations.** Going downstream the current helps, so the speed is $$b + s$$. Going upstream it
+hinders, so the speed is $$b - s$$. Each trip is $$36$$ km:
+
+```math
+\begin{aligned}
+2(b + s) &= 36 \\
+3(b - s) &= 36
+\end{aligned}
+\qquad\text{that is,}\qquad
+\begin{aligned}
+b + s &= 18 \\
+b - s &= 12
+\end{aligned}
+```
+
+**Solve.** Adding, $$2b = 30$$, so $$b = 15$$, and then $$s = 3$$.
+
+**Answer.** The boat goes $$15$$ km per hour in still water, and the current flows at $$3$$ km per
+hour.
+
+**Check.** Downstream, $$18$$ km per hour for $$2$$ hours is $$36$$ km. Upstream, $$12$$ km per hour
+for $$3$$ hours is $$36$$ km.
+
+:::
+
+## Ages
+
+Age problems compare people at two different times. The trick is that in $$n$$ years, **everyone**
+is $$n$$ years older.
+
+:::example[Ages]
+
+Ana is three times as old as her brother. In six years' time, she will be twice as old as him. How
+old are they now?
+
+**Unknowns.** Let $$a$$ be Ana's age now and $$b$$ her brother's, in years.
+
+**Equations.** Now, $$a = 3b$$. In six years they will be $$a + 6$$ and $$b + 6$$, so
+$$a + 6 = 2(b + 6)$$.
+
+**Solve.** Substituting $$a = 3b$$: $$3b + 6 = 2b + 12$$, so $$b = 6$$ and $$a = 18$$.
+
+**Answer.** Ana is $$18$$ and her brother is $$6$$.
+
+**Check.** $$18 = 3 \cdot 6$$, and in six years $$24 = 2 \cdot 12$$.
+
+:::
+
+## When the answer doesn't make sense
+
+The algebra always produces numbers, but the story may rule them out. Then the honest answer is that
+the situation described can't happen.
+
+:::example[An impossible bag of coins]
+
+A bag holds $$20$$ coins, all 10p and 50p pieces, worth £12 altogether. How many of each are there?
+
+Let $$x$$ be the number of 10p coins and $$y$$ the number of 50p coins. Working in pence,
+
+```math
+\begin{aligned}
+x + y &= 20 \\
+10x + 50y &= 1200
+\end{aligned}
+```
+
+Substituting $$y = 20 - x$$: $$10x + 1000 - 50x = 1200$$, so $$-40x = 200$$ and $$x = -5$$. Then
+$$y = 25$$.
+
+The system has a solution, but a bag can't hold $$-5$$ coins. Even $$20$$ coins that were all 50p
+pieces would only make £10, so no such bag exists. Checking against the story caught what the
+algebra couldn't.
+
+:::
+
+## Common mistakes
+
+- **Vague unknowns.** "Let $$x$$ be coffee" leads to mixing up kilograms and pounds. Say what is
+  being counted, and in what units.
+- **Mixing units.** Pounds and pence, or minutes and hours, in the same equation give nonsense.
+  Convert everything first.
+- **Adding prices instead of values.** In a mixture, the value equation multiplies each amount by
+  its price; the prices themselves don't add up to anything meaningful.
+- **Forgetting to age everyone.** In "in six years' time", both people get six years older.
+- **Skipping the story check.** A negative or fractional count means a mistake, or an impossible
+  situation.
+
+## In short
+
+- Name each unknown precisely, with units, and write one equation per fact.
+- Most problems combine a **counting** equation (how many in total) with a **value** equation (what
+  they are worth, or how far they go, in total).
+- Answer the question that was asked, and check the answer against the story, not just the
+  equations.

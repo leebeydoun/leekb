@@ -7,8 +7,11 @@
  * their own as Exercise 1, 2, 3, ... A statement with an `id` can be referenced from any page of the
  * guide with `:ref{#...}`, which renders as a link labelled e.g. "Definition 3.1".
  *
+ * A statement in another guide next to this one is referenced by that guide's folder name, as in
+ * `:ref{#numbers/cancel-product}`, which renders as e.g. "Proposition 9.6 of Numbers".
+ *
  * A page outside such a folder is numbered "section.n" instead, where section counts its `##`
- * headings, and its refs can only point within the page.
+ * headings, and its refs can only point within the page or to other guides.
  */
 
 import { existsSync, readFileSync } from "node:fs";
@@ -79,12 +82,20 @@ const OPENING = /^:{3,}([a-z]+)(?:\[[^\]]*\])?(?:\{([^}]*)\})?\s*$/;
  * its own.
  */
 function readGuide(file: string) {
-  const dir = dirname(file);
+  const guide = readFolder(dirname(file));
+  if (!guide) return undefined;
+  const slug = basename(file).replace(/\.mdx?$/, "");
+  return { chapter: guide.chapters.indexOf(slug) + 1, targets: guide.targets };
+}
+
+function readFolder(dir: string) {
   const metaFile = join(dir, "meta.json");
   if (!existsSync(metaFile)) return undefined;
-  const pages = (
-    JSON.parse(readFileSync(metaFile, "utf8")) as { pages?: string[] }
-  ).pages;
+  const meta = JSON.parse(readFileSync(metaFile, "utf8")) as {
+    title?: string;
+    pages?: string[];
+  };
+  const pages = meta.pages && [...meta.pages];
   if (!pages) return undefined;
 
   const chapters = pages.filter(
@@ -92,7 +103,6 @@ function readGuide(file: string) {
   );
   // a folder's index page is usually left out of meta.json, but its links still need resolving
   if (!pages.includes("index")) pages.unshift("index");
-  const slug = basename(file).replace(/\.mdx?$/, "");
   const targets = new Map<string, Target>();
 
   for (const page of pages) {
@@ -120,7 +130,17 @@ function readGuide(file: string) {
       });
     }
   }
-  return { chapter: chapters.indexOf(slug) + 1, targets };
+  return { title: meta.title ?? basename(dir), chapters, targets };
+}
+
+// a statement in a neighbouring guide, from an id like "numbers/cancel-product"
+function findInOtherGuide(id: string, file: string): Target | undefined {
+  const slash = id.lastIndexOf("/");
+  const folder = id.slice(0, slash);
+  // guides sit side by side, so look next to the folder this page's guide lives in
+  const guide = readFolder(join(dirname(dirname(file)), folder));
+  const target = guide?.targets.get(id.slice(slash + 1));
+  return target && { ...target, label: `${target.label} of ${guide!.title}` };
 }
 
 export function remarkStatements() {
@@ -161,7 +181,10 @@ export function remarkStatements() {
     });
 
     // a statement on this page links by its anchor alone; one on another page by its full path
-    const find = (id: string) => local.get(id) ?? guide?.targets.get(id);
+    const find = (id: string) =>
+      id.includes("/")
+        ? file.path && findInOtherGuide(id, file.path)
+        : (local.get(id) ?? guide?.targets.get(id));
 
     // second pass, so a Ref can point forwards as well as backwards
     walk(tree, (node) => {

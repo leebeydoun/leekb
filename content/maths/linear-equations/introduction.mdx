@@ -1,0 +1,92 @@
+---
+title: Introduction
+description: Solving linear equations and systems of them, and why the methods work.
+---
+
+A great many questions come down to a few unknown numbers tied together by a few facts. Four coffees
+and two teas cost £14; a coffee and three teas cost £8.50; what does each cost? A boat takes two
+hours downstream and three hours back; how fast is the current? Each fact becomes an equation, and
+the answer is the set of numbers that makes every equation true at once.
+
+This guide is about the simplest and most common kind, **linear** equations, where the unknowns are
+only multiplied by numbers and added together. It covers how to solve them, and also why the methods
+work, what can go wrong, and how to tell in advance whether a system has one solution, none, or
+infinitely many.
+
+It builds on the [Numbers](../numbers/introduction.mdx) guide, especially the pages on rational
+numbers and inverses, and links back to it where a result from there is used.
+
+## The guide
+
+1. [Equations and solutions](./equations.mdx): what solving means, which steps are safe, and
+   equations in one unknown.
+2. [Two equations in two unknowns](./two-unknowns.mdx): systems, and solving them by elimination.
+3. [Substitution](./substitution.mdx): the other standard method, and when to choose it.
+4. [No solution, or infinitely many](./special-cases.mdx): the unusual cases, and the determinant,
+   which tells them apart in advance.
+5. [Equations as lines](./lines.mdx): the picture behind it all, where a solution is the point at
+   which lines cross.
+6. [Word problems](./word-problems.mdx): turning a story into equations, and checking the answer
+   against the story.
+7. [Three equations in three unknowns](./three-unknowns.mdx): reducing three unknowns to two.
+8. [Exercises](./exercises.mdx): exercises on the whole guide, with worked solutions.
+
+## How to read this guide
+
+- **Definitions**, **theorems**, **propositions** and the rest are used just as in the Numbers
+  guide, and numbered by page: Theorem 4.2 is the second statement on page 4. Hover over a link to
+  one, like :ref{#determinant-test}, to see it without leaving the page.
+- Links to results in the Numbers guide say so, like :ref{#numbers/cancel-product}.
+- Every proof ends with a link to an outside source that proves the same fact, for a second
+  explanation.
+- Each page ends with the most common mistakes and a short summary.
+
+The review below is a multiple choice quiz on the ideas in the guide. Try it now to see what you
+already know, or come back to it after reading. The summary after it collects every definition and
+rule for quick reference.
+
+::quiz{src="linear-equations"}
+
+{/* Keep this summary in sync with the pages whenever they change. */}
+
+:::accordion[Summary of definitions and rules]
+
+**Definitions**
+
+| Term                                    | Meaning                                                              |
+| --------------------------------------- | -------------------------------------------------------------------- |
+| :ref[Solution]{#solution}               | Values of the unknowns that make the equation true                   |
+| :ref[Equivalent equations]{#equivalent} | Equations with exactly the same solutions                            |
+| :ref[Linear equation]{#linear-one}      | One that can be brought to $$ax = c$$, or $$ax + by = c$$, and so on |
+| :ref[System]{#system}                   | Equations to be satisfied at the same time                           |
+| :ref[Consistent]{#consistent}           | Having at least one solution; **inconsistent** means having none     |
+| :ref[Determinant]{#determinant}         | $$ad - bc$$, for $$ax + by = u$$ and $$cx + dy = v$$                 |
+| :ref[Graph]{#graph}                     | All points $$(x, y)$$ whose coordinates solve the equation           |
+| :ref[Slope]{#slope}                     | $$m$$ in $$y = mx + k$$: how much $$y$$ changes per step right       |
+
+**Equations and solutions**
+
+| Rule                               | Statement                                                                     |
+| ---------------------------------- | ----------------------------------------------------------------------------- |
+| :ref[Safe steps]{#safe-steps}      | Add the same thing to both sides, or multiply both sides by a non-zero number |
+| :ref[Solving ax = c]{#one-unknown} | $$a \neq 0$$: one solution $$\frac{c}{a}$$; $$a = 0$$: none, or every number  |
+
+**Two unknowns**
+
+| Rule                                           | Statement                                                                                          |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| :ref[Combining equations]{#combining}          | Adding a multiple of one equation to another gives an equivalent system                            |
+| :ref[Elimination]{#elimination}                | Match one unknown's coefficients, add or subtract, solve, back-substitute                          |
+| :ref[Substitution]{#substitution}              | Rearrange one equation as $$y = \ldots$$ and put it into the other                                 |
+| :ref[Exactly one solution]{#determinant-test}  | $$ad - bc \neq 0$$: one solution, $$x = \frac{du - bv}{ad - bc}$$, $$y = \frac{av - cu}{ad - bc}$$ |
+| :ref[Zero determinant]{#determinant-zero}      | $$ad - bc = 0$$: no solution or infinitely many                                                    |
+| :ref[Only the zero solution]{#zero-right-side} | With $$u = v = 0$$: only $$(0, 0)$$ exactly when $$ad - bc \neq 0$$                                |
+| :ref[Same slope]{#parallel-test}               | Non-vertical lines have the same slope exactly when $$ad - bc = 0$$                                |
+
+**Three unknowns**
+
+| Rule                        | Statement                                                                             |
+| --------------------------- | ------------------------------------------------------------------------------------- |
+| :ref[Method]{#three-method} | Eliminate the same unknown from two different pairs, then solve the two that are left |
+
+:::

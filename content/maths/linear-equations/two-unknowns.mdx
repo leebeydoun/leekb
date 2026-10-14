@@ -1,0 +1,297 @@
+---
+title: Two equations in two unknowns
+description: Systems of two linear equations, and solving them by elimination.
+---
+
+Many questions have two unknown quantities tied together by two facts. A café sells coffees and
+teas: four coffees and two teas cost £14, and one coffee and three teas cost £8.50. What does each
+drink cost? Neither fact on its own is enough, but together they pin both prices down. This page
+shows how to find them.
+
+## One equation, two unknowns
+
+:::definition[Linear equation in two unknowns]{#linear-two}
+
+A **linear equation** in two unknowns $$x$$ and $$y$$ is one that can be brought to the form
+
+```math
+ax + by = c
+```
+
+by safe steps (:ref{#safe-steps}), where $$a$$, $$b$$ and $$c$$ are numbers and $$a$$ and $$b$$ are
+not both zero. A **solution** is a pair of numbers, one for $$x$$ and one for $$y$$, that makes it
+true. We write the pair as $$(x, y)$$, with $$x$$ first.
+
+:::
+
+A single equation like $$x + y = 5$$ has far too many solutions to pin anything down: $$(0, 5)$$,
+$$(1, 4)$$, $$(2, 3)$$, $$(\frac{1}{2}, \frac{9}{2})$$, $$(-10, 15)$$ and so on. Any $$x$$ at all
+can be chosen, and then $$y = 5 - x$$ is forced. So one equation in two unknowns has infinitely many
+solutions.
+
+## Systems of equations
+
+A second equation cuts the possibilities down. Of all the solutions of $$x + y = 5$$, only one also
+solves $$x - y = 1$$, namely $$(3, 2)$$.
+
+:::definition[Systems]{#system}
+
+A **system** of equations is a list of equations to be satisfied at the same time. A **solution** of
+the system is a choice of values for the unknowns that makes **every** equation in the list true.
+Two systems are **equivalent** if they have exactly the same solutions.
+
+:::
+
+Equations in a system are often called **simultaneous equations**, because they must hold
+simultaneously. It is usual to number them so they can be referred to:
+
+```math
+\begin{aligned}
+x + y &= 5 &\quad (1) \\
+x - y &= 1 &\quad (2)
+\end{aligned}
+```
+
+## The idea of elimination
+
+Adding equations (1) and (2), left side to left side and right side to right side, gives
+
+```math
+(x + y) + (x - y) = 5 + 1, \qquad\text{that is,}\qquad 2x = 6
+```
+
+The $$y$$ has gone, because $$+y$$ and $$-y$$ cancel. What is left is an equation in $$x$$ alone,
+which says $$x = 3$$. Putting this back into (1) gives $$3 + y = 5$$, so $$y = 2$$.
+
+Two questions need answering before this can be trusted.
+
+1. **Is it allowed to add two equations?** Yes: if $$(x, y)$$ makes both equations true, then the
+   two left sides are the numbers $$5$$ and $$1$$, so their sum is $$6$$.
+2. **Could the system have other solutions that this misses, or could $$(3, 2)$$ be a false one?**
+   The next proposition shows that neither can happen, as long as each step is reversible.
+
+:::proposition[Combining equations]{#combining}
+
+Take a system of two equations
+
+```math
+\begin{aligned}
+L_1 &= R_1 &\quad (1) \\
+L_2 &= R_2 &\quad (2)
+\end{aligned}
+```
+
+and a number $$k$$. Replacing equation (2) by "(2) plus $$k$$ times (1)", that is, by
+
+```math
+L_2 + kL_1 = R_2 + kR_1
+```
+
+and keeping (1) as it is, gives an equivalent system. So does multiplying either equation by a
+non-zero number, or swapping the order of the equations.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Gaussian_elimination#Row_operations"}
+
+We show the two systems have the same solutions, one direction at a time.
+
+**Old solutions solve the new system.** Suppose some values of the unknowns make (1) and (2) true.
+Then $$L_1$$ and $$R_1$$ are the same number, and so are $$L_2$$ and $$R_2$$. Adding $$k$$ times the
+first pair to the second gives equal results, so $$L_2 + kL_1 = R_2 + kR_1$$ is true. Equation (1)
+is unchanged, so it is still true.
+
+**New solutions solve the old system.** Suppose some values make (1) and the new equation true. The
+step can be undone by adding $$-k$$ times (1) to the new equation:
+
+```math
+(L_2 + kL_1) - kL_1 = (R_2 + kR_1) - kR_1
+```
+
+which simplifies to $$L_2 = R_2$$. By the same argument as before, this is true for those values, so
+(2) holds. So those values solve the old system.
+
+Multiplying one equation by a non-zero number doesn't change its solutions, by :ref{#safe-steps}, so
+it doesn't change the solutions of the system. Swapping the order changes nothing at all, since a
+solution must satisfy both equations either way.
+
+:::
+
+So every step of elimination swaps the system for an equivalent one. When the system finally reads
+$$x = 3$$ and $$y = 2$$, those are its only solution, and the original system has exactly the same
+solution. Checking the answer in the original equations is still a good habit, because it catches
+arithmetic slips.
+
+## The elimination method
+
+Usually neither unknown cancels straight away. The trick is to multiply the equations first so that
+one unknown has matching coefficients.
+
+:::remark[Elimination]{#elimination}
+
+To solve two linear equations in $$x$$ and $$y$$:
+
+1. **Choose** an unknown to eliminate, say $$x$$.
+2. **Match** its coefficients: multiply each equation by a non-zero number so that $$x$$ has the
+   same coefficient in both, or opposite coefficients.
+3. **Eliminate:** subtract the equations if the coefficients are the same, or add them if they are
+   opposite. The result is an equation in $$y$$ alone.
+4. **Solve** that equation for $$y$$, using :ref{#one-unknown}.
+5. **Back-substitute:** put the value of $$y$$ into either original equation and solve for $$x$$.
+6. **Check** both values in **both** original equations.
+
+:::
+
+:::example[Eliminating x]
+
+Solve
+
+```math
+\begin{aligned}
+3x + 2y &= 7 &\quad (1) \\
+5x - 3y &= 37 &\quad (2)
+\end{aligned}
+```
+
+**Match.** The coefficients of $$x$$ are $$3$$ and $$5$$. Multiplying (1) by $$5$$ and (2) by $$3$$
+makes both of them $$15$$:
+
+```math
+\begin{aligned}
+15x + 10y &= 35 \\
+15x - 9y &= 111
+\end{aligned}
+```
+
+**Eliminate.** Subtracting the second from the first removes $$x$$:
+
+```math
+10y - (-9y) = 35 - 111, \qquad\text{so}\qquad 19y = -76
+```
+
+**Solve.** $$y = \frac{-76}{19} = -4$$.
+
+**Back-substitute** into (1): $$3x + 2 \cdot (-4) = 7$$, so $$3x = 15$$ and $$x = 5$$.
+
+**Check.** In (1): $$3 \cdot 5 + 2 \cdot (-4) = 15 - 8 = 7$$. In (2):
+$$5 \cdot 5 - 3 \cdot (-4) = 25 + 12 = 37$$. The solution is $$(5, -4)$$.
+
+:::
+
+The same system can be solved by eliminating $$y$$ instead, and it is worth seeing that the answer
+doesn't depend on the choice.
+
+:::example[Eliminating y instead]
+
+In the same system, the coefficients of $$y$$ are $$2$$ and $$-3$$. Multiplying (1) by $$3$$ and (2)
+by $$2$$ makes them $$6$$ and $$-6$$, which are opposite, so this time we **add**:
+
+```math
+\begin{aligned}
+9x + 6y &= 21 \\
+10x - 6y &= 74
+\end{aligned}
+\qquad\longrightarrow\qquad 19x = 95
+```
+
+So $$x = 5$$, and putting this into (1) gives $$15 + 2y = 7$$, so $$y = -4$$, as before.
+
+:::
+
+Choose whichever unknown makes the numbers smallest. If one coefficient is already a multiple of the
+other, only one equation needs multiplying.
+
+:::example[Fractions in the answer]
+
+Solve
+
+```math
+\begin{aligned}
+4x + 3y &= 2 &\quad (1) \\
+6x - 5y &= 7 &\quad (2)
+\end{aligned}
+```
+
+Multiplying (1) by $$3$$ and (2) by $$2$$ gives $$12x + 9y = 6$$ and $$12x - 10y = 14$$.
+Subtracting, $$19y = -8$$, so $$y = -\frac{8}{19}$$.
+
+Back in (1): $$4x - \frac{24}{19} = 2$$, so $$4x = \frac{38}{19} + \frac{24}{19} = \frac{62}{19}$$
+and $$x = \frac{62}{76} = \frac{31}{38}$$.
+
+**Check** in (2): $$6 \cdot \frac{31}{38} = \frac{93}{19}$$ and
+$$5 \cdot \left(-\frac{8}{19}\right) = -\frac{40}{19}$$, so
+$$6x - 5y = \frac{93}{19} + \frac{40}{19} = \frac{133}{19} = 7$$.
+
+:::
+
+When the answer has fractions, back-substitution gets messy. An alternative is to eliminate a second
+time, the other way, to find $$x$$ directly from the original equations. Here, multiplying (1) by
+$$5$$ and (2) by $$3$$ and adding gives $$38x = 31$$ straight away.
+
+## Equations with fractions
+
+If the equations themselves contain fractions, clear them first by multiplying each equation by a
+common denominator, a safe step by :ref{#combining}.
+
+:::example[Clearing fractions first]
+
+Solve
+
+```math
+\begin{aligned}
+\tfrac{1}{2}x + \tfrac{1}{3}y &= 4 &\quad (1) \\
+\tfrac{1}{4}x - \tfrac{1}{6}y &= 0 &\quad (2)
+\end{aligned}
+```
+
+Multiplying (1) by $$6$$ and (2) by $$12$$ gives
+
+```math
+\begin{aligned}
+3x + 2y &= 24 \\
+3x - 2y &= 0
+\end{aligned}
+```
+
+Adding, $$6x = 24$$, so $$x = 4$$. Then $$12 + 2y = 24$$, so $$y = 6$$.
+
+**Check:** $$\frac{4}{2} + \frac{6}{3} = 2 + 2 = 4$$ and $$\frac{4}{4} - \frac{6}{6} = 0$$.
+
+:::
+
+## Back to the café
+
+Let $$c$$ be the price of a coffee and $$t$$ the price of a tea, in pounds. The two facts are
+
+```math
+\begin{aligned}
+4c + 2t &= 14 &\quad (1) \\
+c + 3t &= 8.5 &\quad (2)
+\end{aligned}
+```
+
+Multiplying (2) by $$4$$ gives $$4c + 12t = 34$$, and subtracting (1) from this gives $$10t = 20$$,
+so $$t = 2$$. Then (2) gives $$c = 8.5 - 6 = 2.5$$. A coffee costs £2.50 and a tea £2. Check:
+$$4 \cdot 2.5 + 2 \cdot 2 = 14$$ and $$2.5 + 3 \cdot 2 = 8.5$$.
+
+The [Word problems](./word-problems.mdx) page has many more like this.
+
+## Common mistakes
+
+- **Multiplying only one side.** Multiplying an equation by $$5$$ means multiplying **every** term
+  on both sides, including the right-hand side.
+- **Sign slips when subtracting.** Subtracting $$15x - 9y = 111$$ from $$15x + 10y = 35$$ gives
+  $$10y - (-9y) = 19y$$, not $$y$$. Writing the brackets in avoids this.
+- **Adding when you should subtract.** Same coefficients: subtract. Opposite coefficients: add.
+- **Checking in only one equation.** Back-substitution makes the answer satisfy the equation you
+  used, so check the **other** one too.
+- **Forgetting the second unknown.** Finding $$y$$ is only halfway; the solution is the pair.
+
+## In short
+
+- A linear equation in two unknowns has infinitely many solutions on its own; a system of two
+  usually pins down exactly one pair.
+- Adding a multiple of one equation to another, multiplying an equation by a non-zero number and
+  swapping equations all give equivalent systems.
+- Elimination: match the coefficients of one unknown, add or subtract to remove it, solve for the
+  other, back-substitute, then check in both equations.
