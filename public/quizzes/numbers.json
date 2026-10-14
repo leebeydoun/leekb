@@ -1045,12 +1045,12 @@
       "question": "Why can't an integer have two different remainders when divided by $$d$$?",
       "options": [
         "Because division always gives one answer",
-        "Two remainders would differ by a multiple of $$d$$, but they are both between $$0$$ and $$d - 1$$, so they are less than $$d$$ apart",
+        "A remainder between $$0$$ and $$d - 1$$ forces $$dq \\le n < dq + d$$, and $$n$$ lies between only one such pair of neighbouring multiples, so $$q$$, and then $$r$$, is fixed",
         "Because the remainder is defined to be the smallest one",
         "It can; the remainder depends on how the division is done"
       ],
       "answer": 1,
-      "explanation": "If $$dq + r = dq' + r'$$ then $$r' - r = d(q - q')$$ is a multiple of $$d$$, and the only multiple of $$d$$ strictly between $$-d$$ and $$d$$ is $$0$$ (:ref{#division-remainder})."
+      "explanation": "From $$n = dq + r$$ with $$0 \\le r < d$$ we get $$dq \\le n < dq + d$$: $$n$$ sits in the stretch starting at the multiple $$dq$$. It sits in only one stretch, so $$q$$ is fixed, and so is $$r = n - dq$$ (:ref{#division-remainder})."
     },
     {
       "id": "gcd-meaning",

@@ -100,18 +100,22 @@ Let $$a$$, $$m$$, $$n$$ be integers with $$a \neq 0$$ and $$n \neq 0$$. Then
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Fraction#Equivalent_fractions"}
 
-By :ref{#cross-multiplying}, the two fractions are equal exactly when
+First, the left-hand side is a genuine fraction: its denominator $$an$$ is not $$0$$. That is
+because $$a$$ and $$n$$ are both non-zero, so each is positive or negative, and the sign rules (rule
+5 of :ref{#multiplication-rules}, :ref{#minus-in-product} and :ref{#two-minus}) make their product
+positive or negative too, never $$0$$.
+
+Now by :ref{#cross-multiplying}, the two fractions are equal exactly when
 
 ```math
 (am)n = m(an)
 ```
 
-So all we need to check is that these two products of integers are the same. Both are the product of
-the three integers $$a$$, $$m$$ and $$n$$, just written in a different order and grouping. Since the
-order and grouping of a product don't matter, they are equal. The condition $$a \neq 0$$ is needed
-so that $$an$$ is not $$0$$, which keeps the left-hand side a genuine fraction.
+Both sides are the product of the same three integers $$a$$, $$m$$ and $$n$$, just written in a
+different order and grouping. Order and grouping don't matter in a product
+(:ref{#multiplication-rules}), so the two sides are equal.
 
 :::
 
@@ -129,14 +133,17 @@ For integers $$m$$ and $$n$$ with $$n \neq 0$$,
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Fraction"}
 
-Both are checked by cross-multiplying, using the rules for minus signs in products of integers.
+Both are checked by cross-multiplying (:ref{#cross-multiplying}), using the rules for minus signs in
+products of integers. All the denominators are non-zero, since $$n \neq 0$$ means $$-n \neq 0$$ too.
 
-For the first, we need $$(-m)(-n) = mn$$, which is true because two minus signs in a product cancel.
+For the first, $$\frac{-m}{n} = \frac{m}{-n}$$, cross-multiplying asks for $$(-m)(-n) = mn$$. This
+is true because two minus signs in a product cancel (:ref{#two-minus}).
 
-For the second, we need $$(-m)n = m(-n)$$. Both sides equal $$-(mn)$$, because a minus sign can be
-moved to either factor of a product.
+For the second, $$\frac{-m}{-n} = \frac{m}{n}$$, cross-multiplying asks for $$(-m)n = m(-n)$$. Both
+sides equal $$-(mn)$$, because a minus sign can be moved to either factor of a product
+(:ref{#minus-in-product}).
 
 :::
 
@@ -181,32 +188,38 @@ Every positive rational number can be written as a fraction in lowest form.
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Integers_Divided_by_GCD_are_Coprime#Proof_2"}
 
 The plan is to cancel the biggest possible factor in one go, and then check that nothing more can be
-cancelled.
+cancelled. For example, $$\frac{36}{60}$$ has greatest common divisor $$12$$, and cancelling it
+leaves $$\frac{3}{5}$$, where nothing more cancels.
 
-Write the number as $$\frac{m}{n}$$ with $$m$$ and $$n$$ positive integers, and let $$d$$ be their
-greatest common divisor (:ref{#gcd}). Writing $$m = dr$$ and $$n = ds$$ with $$r$$ and $$s$$
-positive integers, :ref{#fraction-cancel} gives
+**Step 1: cancel the greatest common divisor.** Write the number as $$\frac{m}{n}$$ with $$m$$ and
+$$n$$ positive integers, and let $$d$$ be their greatest common divisor (:ref{#gcd}). Since $$1$$ is
+a common divisor, $$d \ge 1$$, so $$d$$ is positive. As $$d$$ divides both numbers, we can write
+$$m = dr$$ and $$n = ds$$ for some integers $$r$$ and $$s$$. These are positive: if $$r$$ were $$0$$
+or negative, then $$m = dr$$ would be $$0$$ or negative too, and the same goes for $$s$$. Now
+:ref{#fraction-cancel} gives
 
 ```math
 \frac{m}{n} = \frac{dr}{ds} = \frac{r}{s}
 ```
 
-It remains to show that $$\frac{r}{s}$$ is in lowest form, meaning $$r$$ and $$s$$ have no common
-divisor bigger than $$1$$. We argue by contradiction (:ref{#contradiction}): we suppose they do, and
+**Step 2: nothing more cancels.** It remains to show that $$r$$ and $$s$$ have no positive common
+divisor other than $$1$$. We argue by contradiction (:ref{#contradiction}): suppose they do, and
 show this leads to something impossible.
 
-So suppose $$e > 1$$ divides both $$r$$ and $$s$$, say $$r = ex$$ and $$s = ey$$. Substituting,
+So suppose some integer $$e > 1$$ divides both $$r$$ and $$s$$, say $$r = ex$$ and $$s = ey$$.
+Substituting,
 
 ```math
 m = dr = (de)x \qquad \text{and} \qquad n = ds = (de)y
 ```
 
-so $$de$$ is a common divisor of $$m$$ and $$n$$. But $$e > 1$$ and $$d > 0$$, so $$de > d$$ by
-:ref{#order-multiply}. That contradicts our choice of $$d$$ as the greatest common divisor. So no
-such $$e$$ exists, and $$\frac{r}{s}$$ is in lowest form.
+so $$de$$ is a common divisor of $$m$$ and $$n$$. Multiplying $$1 < e$$ by the positive number $$d$$
+gives $$d < de$$ (:ref{#order-multiply}). So $$de$$ is a common divisor bigger than $$d$$, which
+contradicts the choice of $$d$$ as the **greatest** common divisor. So no such $$e$$ exists, and
+$$\frac{r}{s}$$ is in lowest form.
 
 :::
 
@@ -298,18 +311,20 @@ The sum of two positive rational numbers is positive.
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Rational_Numbers_form_Ordered_Integral_Domain#Proof_2"}
 
-Write the two numbers as $$\frac{m}{n}$$ and $$\frac{r}{s}$$ with $$m$$, $$n$$, $$r$$, $$s$$ all
-positive integers, which we can do because they are positive. By :ref{#fraction-addition}, their sum
-is
+Since the two numbers are positive, :ref{#positive-rational} lets us write them as $$\frac{m}{n}$$
+and $$\frac{r}{s}$$ with $$m$$, $$n$$, $$r$$, $$s$$ all positive integers. By
+:ref{#fraction-addition}, their sum is
 
 ```math
 \frac{ms + rn}{ns}
 ```
 
-Products and sums of positive integers are positive, so $$ms + rn$$ and $$ns$$ are both positive
-integers. A fraction with positive numerator and denominator is positive by definition.
+Products of positive integers are positive (rule 5 of :ref{#multiplication-rules}), so $$ms$$,
+$$rn$$ and $$ns$$ are positive. Sums of positive integers are positive too (rule 5 of
+:ref{#addition-rules}), so $$ms + rn$$ is positive. So the sum is a fraction with a positive
+numerator and a positive denominator, which is positive by :ref{#positive-rational}.
 
 :::
 
@@ -373,12 +388,12 @@ For integers $$m$$ and $$n$$ with $$n \neq 0$$, and any positive integer $$k$$,
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Rational_number#Exponentiation_to_integer_power"}
 
-A power is a repeated product, and :ref{#fraction-multiplication} says that multiplying fractions
-multiplies the tops and the bottoms separately. So multiplying $$k$$ copies of $$\frac{m}{n}$$
-together gives a numerator of $$k$$ copies of $$m$$ multiplied together, and a denominator of $$k$$
-copies of $$n$$:
+A power is a repeated product (:ref{#power}), and :ref{#fraction-multiplication} says that
+multiplying fractions multiplies the tops and the bottoms separately. So multiplying $$k$$ copies of
+$$\frac{m}{n}$$ together gives a numerator of $$k$$ copies of $$m$$ multiplied together, and a
+denominator of $$k$$ copies of $$n$$:
 
 ```math
 \left(\frac{m}{n}\right)^k
@@ -423,16 +438,40 @@ For integers $$m$$, $$r$$ and positive integers $$n$$, $$s$$,
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Fraction#Comparing_fractions"}
 
-By :ref{#fraction-addition}, the difference is
+By the meaning of $$<$$, the left-hand side says that the difference $$\frac{r}{s} - \frac{m}{n}$$
+is positive. So the plan is to work out that difference as a single fraction, and see when it is
+positive.
+
+**The difference.** Subtracting means adding the opposite, and the opposite of $$\frac{m}{n}$$ is
+$$\frac{-m}{n}$$. So by :ref{#fraction-addition},
 
 ```math
-\frac{r}{s} - \frac{m}{n} = \frac{rn - ms}{ns}
+\frac{r}{s} - \frac{m}{n} = \frac{r}{s} + \frac{-m}{n} = \frac{rn + (-m)s}{sn}
+= \frac{rn - ms}{ns}
 ```
 
-Its denominator $$ns$$ is positive, so the difference is positive exactly when its numerator
-$$rn - ms$$ is, that is, when $$ms < rn$$.
+The denominator $$ns$$ is a positive integer, since $$n$$ and $$s$$ are (rule 5 of
+:ref{#multiplication-rules}). Now there are two directions to prove (:ref{#exactly-when}).
+
+**If $$ms < rn$$, the difference is positive.** Then $$rn - ms$$ is a positive integer, so the
+difference is a fraction with positive top and bottom, which is positive by
+:ref{#positive-rational}.
+
+**If the difference is positive, then $$ms < rn$$.** This direction needs a little care, because
+"positive" only says that the difference **can** be written with a positive top and bottom, perhaps
+not the way we wrote it. So suppose it equals $$\frac{x}{y}$$ with $$x$$ and $$y$$ positive
+integers. Cross-multiplying (:ref{#cross-multiplying}) gives
+
+```math
+(rn - ms) \cdot y = x \cdot ns
+```
+
+The right-hand side is a product of positive integers, so it is positive. If $$rn - ms$$ were $$0$$,
+the left-hand side would be $$0$$ (:ref{#zero-times}). If $$rn - ms$$ were negative, the left-hand
+side would be a negative times a positive, which is negative (:ref{#minus-in-product}). Neither can
+equal a positive number, so $$rn - ms$$ is positive, which says $$ms < rn$$.
 
 :::
 
@@ -493,12 +532,3 @@ a repeating pattern, like the one for a square root of $$2$$, is not a fraction 
   $$\frac{m}{n} \cdot \frac{r}{s} = \frac{mr}{ns}$$; all the rules for integers carry over.
 - To compare fractions with positive denominators, cross-multiply.
 - Rational numbers are exactly the decimals that stop or repeat.
-
-## Practise
-
-- :ref{#ex-equal-fractions} and :ref{#ex-lowest-form-practice}: equality and lowest form.
-- :ref{#ex-consecutive-lowest-form}: a proof about lowest form.
-- :ref{#ex-add-fractions} and :ref{#ex-cancel-before-multiplying}: adding and multiplying.
-- :ref{#ex-fraction-powers} and :ref{#ex-bouncing-ball}: powers of fractions.
-- :ref{#ex-order-fractions} and :ref{#ex-rational-between}: comparing fractions.
-- :ref{#ex-one-third-decimal}: decimals.

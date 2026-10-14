@@ -47,22 +47,33 @@ same remainder when divided by $$d$$.
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Integer_Congruence"}
 
 There are two directions to prove (:ref{#exactly-when}).
 
-If $$a$$ and $$b$$ leave the same remainder $$r$$, write $$a = dq + r$$ and $$b = dq' + r$$. Then
-$$a - b = dq - dq' = d(q - q')$$, a multiple of $$d$$, so $$a \equiv b \pmod{d}$$.
-
-Now suppose $$a \equiv b$$, so $$a - b = dk$$ for some integer $$k$$. Divide $$b$$ by $$d$$ to get
-$$b = dq + r$$ with $$0 \le r < d$$. Then
+**Same remainder gives congruent.** If $$a$$ and $$b$$ leave the same remainder $$r$$, write
+$$a = dq + r$$ and $$b = dq' + r$$. Subtracting, the two $$r$$s cancel:
 
 ```math
-a = b + dk = d(q + k) + r
+a - b = (dq + r) - (dq' + r) = dq - dq' = d(q - q')
 ```
 
-with the same $$r$$, still between $$0$$ and $$d - 1$$. By :ref{#division-remainder} a number has
-only one remainder, so the remainder of $$a$$ is $$r$$ too.
+This is a multiple of $$d$$, so $$a \equiv b \pmod{d}$$.
+
+**Congruent gives same remainder.** Suppose $$a \equiv b$$, so $$a - b = dk$$ for some integer
+$$k$$, which rearranges to $$a = b + dk$$ (:ref{#rearranging}). Divide $$b$$ by $$d$$
+(:ref{#division-remainder}) to get $$b = dq + r$$ with $$0 \le r < d$$. Then
+
+```math
+a = b + dk = dq + r + dk = d(q + k) + r
+```
+
+This writes $$a$$ as $$d$$ times an integer plus the same $$r$$, which is still between $$0$$ and
+$$d - 1$$. By :ref{#division-remainder} a number has only one such remainder, so the remainder of
+$$a$$ is $$r$$ too.
+
+For example, $$17 \equiv 2 \pmod{5}$$ with $$17 - 2 = 5 \cdot 3$$. Since $$2 = 5 \cdot 0 + 2$$, the
+second step gives $$17 = 5 \cdot (0 + 3) + 2$$, and both leave remainder $$2$$.
 
 :::
 
@@ -92,7 +103,7 @@ Let $$d$$ be a positive integer and $$a$$, $$b$$, $$c$$ integers.
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Congruence_Modulo_Integer_is_Equivalence_Relation"}
 
 Each part is a statement about congruence, and congruence is defined in terms of divisibility. So in
 each case we translate "$$\equiv$$" into a statement about a difference being a multiple of $$d$$,
@@ -148,7 +159,7 @@ Then
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Modulo_Multiplication_is_Well-Defined"}
 
 Throughout, we use the definition of congruence to turn what we know into statements about
 divisibility. We are told that
@@ -209,7 +220,7 @@ a + c \equiv b + c \pmod{d} \qquad \text{and} \qquad ca \equiv cb \pmod{d}
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Congruence_of_Sum_with_Constant"}
 
 The idea is that $$c$$ is congruent to itself, so we can use the pair $$c \equiv c$$ as the second
 congruence in :ref{#congruence-arithmetic}. By :ref{#congruence-equality}, $$c \equiv c \pmod{d}$$.
@@ -225,7 +236,7 @@ If $$a \equiv b \pmod{d}$$, then $$a^n \equiv b^n \pmod{d}$$ for every positive 
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Congruence_of_Powers"}
 
 A power is a repeated product, and :ref{#congruence-arithmetic} already tells us that we can
 multiply congruences. So we build up the powers one at a time.
@@ -241,6 +252,8 @@ a^k \cdot a \equiv b^k \cdot b \pmod{d}
 \qquad \text{that is} \qquad
 a^{k+1} \equiv b^{k+1} \pmod{d}
 ```
+
+The second form uses $$a^k a^1 = a^{k+1}$$ from :ref{#power-rules}, and the same for $$b$$.
 
 So whenever the statement holds for one power, it also holds for the next. Starting from $$n = 1$$,
 it therefore holds for $$n = 2$$, then for $$n = 3$$, and so on, reaching every positive integer
@@ -287,7 +300,7 @@ If $$a$$ is an integer and $$3 \mid a^2$$, then $$3 \mid a$$.
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Square_Modulo_3"}
 
 It is easier to prove the contrapositive (:ref{#contrapositive}). Instead of showing "if
 $$3 \mid a^2$$ then $$3 \mid a$$", we show that if $$a$$ is **not** a multiple of $$3$$, then
@@ -307,10 +320,12 @@ congruent to instead:
 | $$1$$          | $$1^2 = 1$$          |
 | $$2$$          | $$2^2 = 4 \equiv 1$$ |
 
-The last row uses $$4 \equiv 1$$, because $$4 - 1 = 3$$. So in both of the cases that matter,
-$$a^2 \equiv 1 \pmod{3}$$, which means $$a^2$$ is one more than a multiple of $$3$$. A number cannot
-be both a multiple of $$3$$ and one more than a multiple of $$3$$, so $$a^2$$ is not divisible by
-$$3$$. This proves the contrapositive, and so proves the proposition.
+The last row uses $$4 \equiv 1$$, because $$4 - 1 = 3$$, and then chains $$a^2 \equiv 4$$ with
+$$4 \equiv 1$$ (transitivity, :ref{#congruence-equality}). So in both of the cases that matter,
+$$a^2 \equiv 1 \pmod{3}$$, which by :ref{#same-remainder} means $$a^2$$ leaves remainder $$1$$ when
+divided by $$3$$. A multiple of $$3$$ leaves remainder $$0$$, and a number has only one remainder
+(:ref{#division-remainder}), so $$a^2$$ is not divisible by $$3$$. This proves the contrapositive,
+and so proves the proposition.
 
 :::
 
@@ -338,19 +353,37 @@ it is divisible by $$9$$ exactly when its digit sum is, and the same for $$3$$.
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Divisibility_rule#Case_where_all_digits_are_summed"}
 
-The key fact is that $$10 \equiv 1 \pmod{9}$$, since $$10 - 1 = 9$$. By :ref{#congruence-powers},
-every power of $$10$$ is then congruent to $$1^k = 1$$. A number is built from its digits and powers
-of $$10$$, so each power of $$10$$ can be swapped for $$1$$. For example,
+The plan is to write the number using its digits and powers of $$10$$, and then swap every power of
+$$10$$ for $$1$$.
+
+**Step 1: every power of $$10$$ is congruent to $$1$$.** We have $$10 \equiv 1 \pmod{9}$$, since
+$$10 - 1 = 9$$. By :ref{#congruence-powers}, $$10^k \equiv 1^k = 1 \pmod{9}$$ for every positive
+integer $$k$$.
+
+**Step 2: swap them out.** A number is its digits times powers of $$10$$, added up. For example,
 
 ```math
-4725 = 4 \cdot 10^3 + 7 \cdot 10^2 + 2 \cdot 10 + 5 \equiv 4 + 7 + 2 + 5 = 18 \pmod{9}
+4725 = 4 \cdot 10^3 + 7 \cdot 10^2 + 2 \cdot 10 + 5
 ```
 
-and the same works for any number. Since $$3 \mid 9$$, we also have $$10 \equiv 1 \pmod{3}$$, and
-the same argument works modulo $$3$$. Finally, by :ref{#same-remainder}, a number and its digit sum
-have the same remainder, so one is divisible exactly when the other is.
+By :ref{#congruence-constant}, multiplying $$10^k \equiv 1$$ by a digit keeps it true, so
+$$4 \cdot 10^3 \equiv 4$$, $$7 \cdot 10^2 \equiv 7$$ and $$2 \cdot 10 \equiv 2$$. Adding these
+congruences (:ref{#congruence-arithmetic}), together with $$5 \equiv 5$$, gives
+
+```math
+4725 \equiv 4 + 7 + 2 + 5 = 18 \pmod{9}
+```
+
+The same steps work for any number, however many digits it has: each digit times its power of $$10$$
+is congruent to just the digit, so the whole number is congruent to its digit sum.
+
+**Step 3: modulo $$3$$.** Since $$10 - 1 = 9 = 3 \cdot 3$$, we also have $$10 \equiv 1 \pmod{3}$$,
+and Steps 1 and 2 work in exactly the same way modulo $$3$$.
+
+**Step 4: divisibility.** By :ref{#same-remainder}, a number and its digit sum leave the same
+remainder. So one leaves remainder $$0$$, that is, is divisible, exactly when the other does.
 
 :::
 
@@ -378,13 +411,3 @@ so $$987654321$$ is divisible by $$9$$.
   product can be swapped for a congruent one.
 - Common factors cannot always be cancelled.
 - A number is congruent to its digit sum modulo $$9$$ and modulo $$3$$.
-
-## Practise
-
-- :ref{#ex-which-congruent}: checking congruences.
-- :ref{#ex-remainder-product}: swapping numbers for congruent ones.
-- :ref{#ex-last-digit-power}, :ref{#ex-power-remainder} and :ref{#ex-seven-power-minus-one}: large
-  powers.
-- :ref{#ex-square-last-digit} and :ref{#ex-no-square-four-y-plus-three}: what squares can be.
-- :ref{#ex-solve-congruence}: solving a congruence.
-- :ref{#ex-test-for-eleven}: a divisibility test.

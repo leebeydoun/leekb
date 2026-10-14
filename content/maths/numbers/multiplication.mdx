@@ -87,16 +87,19 @@ For every integer $$a$$, $$0 \cdot a = 0$$.
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Ring_Product_with_Zero"}
 
-Since $$0 + 1 = 1$$, distributivity gives
+The plan is to show that adding $$a$$ to $$0 \cdot a$$ gives back $$a$$, and then subtract $$a$$.
+
+Using rule 3, then distributivity with the sum on the left (explained above), then $$0 + 1 = 1$$,
+then rule 3 again:
 
 ```math
 0 \cdot a + a = 0 \cdot a + 1 \cdot a = (0 + 1)a = 1 \cdot a = a
 ```
 
 So $$0 \cdot a + a = a$$. Subtracting $$a$$ from both sides (:ref{#rearranging}) leaves
-$$0 \cdot a = a - a = 0$$.
+$$0 \cdot a = a - a$$, and $$a - a = a + (-a) = 0$$ by the rules for addition.
 
 :::
 
@@ -112,15 +115,16 @@ For every integer $$a$$, $$(-1)a = -a$$.
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Product_with_Ring_Negative#Corollary"}
 
-Adding $$a$$ and using distributivity,
+By :ref{#opposite-unique}, it is enough to show that $$(-1)a$$ adds to $$a$$ to give $$0$$. Writing
+$$a$$ as $$1 \cdot a$$ and using distributivity,
 
 ```math
 (-1)a + a = (-1)a + 1 \cdot a = (-1 + 1)a = 0 \cdot a = 0
 ```
 
-by :ref{#zero-times}. So $$(-1)a$$ adds to $$a$$ to give $$0$$, which makes it the opposite of
+The last two steps use $$-1 + 1 = 0$$ and then :ref{#zero-times}. So $$(-1)a$$ is the opposite of
 $$a$$.
 
 :::
@@ -135,10 +139,26 @@ For integers $$a$$ and $$b$$,
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Product_with_Ring_Negative"}
 
-For the middle one, $$ab + (-a)b = (a + (-a))b = 0 \cdot b = 0$$, so $$(-a)b$$ is the opposite of
-$$ab$$. The last one is the same with the order of the factors swapped.
+Both use the same trick: to show that something is $$-(ab)$$, check that it adds to $$ab$$ to give
+$$0$$, and use :ref{#opposite-unique}.
+
+**$$(-a)b = -(ab)$$.** Taking out the common factor $$b$$ with distributivity,
+
+```math
+ab + (-a)b = (a + (-a))b = 0 \cdot b = 0
+```
+
+using $$a + (-a) = 0$$ and :ref{#zero-times}. So $$(-a)b$$ is the opposite of $$ab$$.
+
+**$$a(-b) = -(ab)$$.** This time the common factor is $$a$$:
+
+```math
+ab + a(-b) = a(b + (-b)) = a \cdot 0 = 0
+```
+
+since $$a \cdot 0 = 0 \cdot a = 0$$. So $$a(-b)$$ is the opposite of $$ab$$ too.
 
 :::
 
@@ -160,7 +180,7 @@ For integers $$a$$ and $$b$$, $$(-a)(-b) = ab$$.
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Negative_number#Multiplication"}
 
 Move the minus signs out one at a time with :ref{#minus-in-product}, then use
 :ref{#double-opposite}:
@@ -168,6 +188,10 @@ Move the minus signs out one at a time with :ref{#minus-in-product}, then use
 ```math
 (-a)(-b) = -(a(-b)) = -(-(ab)) = ab
 ```
+
+In the first step, the minus sign on the first factor comes out to the front, leaving $$-(a(-b))$$.
+In the second, the minus sign on $$b$$ comes out too, giving $$a(-b) = -(ab)$$. That leaves two
+minus signs in front of $$ab$$, and they cancel.
 
 :::
 
@@ -208,14 +232,32 @@ Let $$a$$, $$b$$ and $$c$$ be integers with $$a < b$$.
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Relation_Induced_by_Strict_Positivity_Property_is_Compatible_with_Multiplication"}
 
-By :ref{#order}, $$b - a$$ is positive.
+By :ref{#order}, $$a < b$$ means $$b - a$$ is positive. In each part, we write the difference we
+want to be positive as a product of $$b - a$$ and a positive number, then use rule 5.
 
-1. $$bc - ac = (b - a)c$$, a product of two positive integers, which is positive by rule 5. So
-   $$ac < bc$$.
-2. Now $$-c$$ is positive, and $$ac - bc = (b - a)(-c)$$, which is positive for the same reason. So
-   $$bc < ac$$.
+1. Expanding with distributivity and moving the minus sign with :ref{#minus-in-product},
+
+   ```math
+   (b - a)c = bc + (-a)c = bc - ac
+   ```
+
+   This is a product of two positive integers, so it is positive by rule 5. So $$bc - ac$$ is
+   positive, which means $$ac < bc$$.
+
+2. This time $$c < 0$$, which means $$0 - c = -c$$ is positive. Expanding in the same way, and using
+   :ref{#two-minus} for $$(-a)(-c) = ac$$,
+
+   ```math
+   (b - a)(-c) = b(-c) + (-a)(-c) = -(bc) + ac = ac - bc
+   ```
+
+   This is a product of two positive integers, so it is positive. So $$ac - bc$$ is positive, which
+   means $$bc < ac$$, that is, $$ac > bc$$.
+
+For example, $$2 < 5$$, and multiplying by $$c = -3$$ gives $$-6$$ and $$-15$$, with $$-6 > -15$$
+because $$-6 - (-15) = 9$$ is positive.
 
 :::
 
@@ -253,14 +295,19 @@ For integers $$a$$ and $$b$$ and positive integers $$m$$ and $$n$$:
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Exponentiation#Positive_exponents"}
 
-Each one comes from counting copies, using that a product can be rearranged freely.
+Each one comes from writing both sides out as products and counting copies. Since order and grouping
+don't matter in a product, two products with the same factors, the same number of times each, are
+equal.
 
-1. $$m$$ copies of $$a$$ followed by $$n$$ more copies is $$m + n$$ copies.
-2. $$n$$ groups of $$m$$ copies is $$mn$$ copies.
-3. $$(ab)^n$$ is $$n$$ copies of $$ab$$. Rearranging puts the $$n$$ copies of $$a$$ first and the
-   $$n$$ copies of $$b$$ after them.
+1. $$a^m a^n$$ is $$m$$ copies of $$a$$ followed by $$n$$ more copies, which is $$m + n$$ copies,
+   that is, $$a^{m+n}$$.
+2. $$(a^m)^n$$ is $$n$$ copies of $$a^m$$. Each of those is $$m$$ copies of $$a$$, so altogether
+   there are $$n$$ groups of $$m$$, which is $$mn$$ copies of $$a$$.
+3. $$(ab)^n$$ is $$n$$ copies of $$ab$$, so it contains $$n$$ copies of $$a$$ and $$n$$ copies of
+   $$b$$. Rearranging puts all the copies of $$a$$ first and all the copies of $$b$$ after them,
+   giving $$a^n b^n$$. For example, $$(ab)^3 = ababab = aaabbb = a^3 b^3$$.
 
 :::
 
@@ -298,9 +345,3 @@ hours
 - An even number of minus signs gives a positive product; an odd number gives a negative one.
 - Multiplying an inequality by a positive number keeps it; by a negative number reverses it.
 - $$a^m a^n = a^{m+n}$$, $$(a^m)^n = a^{mn}$$, $$(ab)^n = a^n b^n$$, and $$a^0 = 1$$.
-
-## Practise
-
-- :ref{#ex-sign-counting}: counting minus signs.
-- :ref{#ex-power-rules}: the rules for powers.
-- :ref{#ex-expand-simplify}: expanding brackets carefully.

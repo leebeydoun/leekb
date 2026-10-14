@@ -62,12 +62,29 @@ export const Example = createStatement("Example");
 export const Remark = createStatement("Remark");
 export const Exercise = createStatement("Exercise");
 
-/** An unnumbered proof, ending with a ∎. */
-export function Proof({ children }: { children: ReactNode }) {
+/** An unnumbered proof, ending with a ∎ and a link to an outside source for it. */
+export function Proof({
+  source,
+  sourceTitle,
+  children,
+}: {
+  source?: string;
+  /** filled in at build time from the source URL, e.g. "Wikipedia: Euclidean division" */
+  sourceTitle?: string;
+  children: ReactNode;
+}) {
   return (
     <div className="relative my-4 border-s-2 ps-4 pe-6 *:last:mb-0">
       <p className="italic">Proof.</p>
       {children}
+      {source && (
+        <p className="text-sm text-fd-muted-foreground">
+          See also:{" "}
+          <a href={source} target="_blank" rel="noreferrer">
+            {sourceTitle ?? source}
+          </a>
+        </p>
+      )}
       <span className="absolute inset-e-0 bottom-0" aria-label="end of proof">
         ∎
       </span>

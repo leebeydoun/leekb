@@ -106,11 +106,12 @@ For natural numbers $$m$$ and $$n$$ with $$n$$ between $$0$$ and $$m$$,
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Binomial_coefficient#Factorial_formula"}
 
 Choosing $$n$$ things to take is the same as choosing the $$m - n$$ things to leave behind, so the
-two counts should match. To check it with the formula, put $$m - n$$ in place of $$n$$. The second
-factor in the denominator becomes $$\big(m - (m - n)\big)! = n!$$, so
+two counts should match. To check it with the formula (:ref{#binomial}), put $$m - n$$ in place of
+$$n$$. This is allowed, because $$m - n$$ is also between $$0$$ and $$m$$. The second factor in the
+denominator becomes $$\big(m - (m - n)\big)! = n!$$, so
 
 ```math
 \binom{m}{m - n} = \frac{m!}{(m - n)!\,n!}
@@ -133,19 +134,35 @@ For natural numbers $$m$$ and $$n$$ with $$1 \le n \le m$$,
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Pascal%27s_rule#Algebraic_proof"}
 
-This is an exercise in adding fractions. Writing out both terms,
+This is an exercise in adding fractions. The plan is to write both terms as fractions using
+:ref{#binomial}, give them a common denominator, add, and recognise the answer as
+$$\binom{m + 1}{n}$$.
+
+**Write out both terms.** For the first term, the bottom of the binomial coefficient is $$n - 1$$,
+and $$m - (n - 1) = m - n + 1$$. So
 
 ```math
 \binom{m}{n - 1} + \binom{m}{n}
 = \frac{m!}{(n - 1)!\,(m - n + 1)!} + \frac{m!}{n!\,(m - n)!}
 ```
 
-The denominators are different, but they are close. The rule $$k! = k \cdot (k - 1)!$$ says
-$$n! = n \cdot (n - 1)!$$ and $$(m - n + 1)! = (m - n + 1) \cdot (m - n)!$$. So multiplying the top
-and bottom of the first fraction by $$n$$, and of the second by $$m - n + 1$$, gives both the common
-denominator $$n!\,(m - n + 1)!$$:
+Both coefficients make sense because $$1 \le n \le m$$, so $$n - 1$$ and $$n$$ are both between
+$$0$$ and $$m$$.
+
+**Find a common denominator.** The denominators are different, but they are close. The rule
+$$k! = k \cdot (k - 1)!$$, for any positive integer $$k$$, says
+
+```math
+n! = n \cdot (n - 1)! \qquad \text{and} \qquad (m - n + 1)! = (m - n + 1) \cdot (m - n)!
+```
+
+(both $$n$$ and $$m - n + 1$$ are at least $$1$$). So multiplying the top and bottom of the first
+fraction by $$n$$, and of the second by $$m - n + 1$$, gives both the denominator
+$$n!\,(m - n + 1)!$$, without changing their values (:ref{#fraction-cancel}).
+
+**Add.** Adding the numerators over the common denominator (:ref{#fraction-addition}):
 
 ```math
 \begin{aligned}
@@ -155,12 +172,18 @@ denominator $$n!\,(m - n + 1)!$$:
 \end{aligned}
 ```
 
-In the second line we added the numerators and took out the common factor $$m!$$. Finally,
-$$m! \cdot (m + 1) = (m + 1)!$$ and $$m - n + 1 = (m + 1) - n$$, so this is
+In the second line we added the numerators, took out the common factor $$m!$$, and noticed that
+$$n$$ and $$-n$$ cancel.
+
+**Recognise the answer.** Finally, $$m! \cdot (m + 1) = (m + 1)!$$ and $$m - n + 1 = (m + 1) - n$$,
+so this is
 
 ```math
 \frac{(m + 1)!}{n!\,\big((m + 1) - n\big)!} = \binom{m + 1}{n}
 ```
+
+For example, with $$m = 4$$ and $$n = 2$$ this says $$\binom{4}{1} + \binom{4}{2} = 4 + 6 = 10$$,
+which is $$\binom{5}{2}$$.
 
 :::
 
@@ -205,19 +228,36 @@ The term with $$b^n$$ is $$\binom{m}{n} a^{m-n} b^n$$.
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Binomial_theorem#Combinatorial_proof"}
 
-Think of $$(a + b)^m$$ as $$m$$ brackets multiplied together:
+The idea is to multiply out the brackets without simplifying, and then count how many times each
+kind of term turns up. Think of $$(a + b)^m$$ as $$m$$ brackets multiplied together:
 
 ```math
 (a + b)(a + b) \cdots (a + b)
 ```
 
-Multiplying out, every term is made by picking either $$a$$ or $$b$$ from each bracket and
-multiplying the picks together. A term with $$n$$ factors of $$b$$ has $$m - n$$ factors of $$a$$,
-so it is $$a^{m-n} b^n$$. How many times does it appear? Once for every way of deciding which $$n$$
-of the $$m$$ brackets supply the $$b$$s, and that is $$\binom{m}{n}$$ ways. Collecting these equal
-terms gives $$\binom{m}{n} a^{m-n} b^n$$.
+**What the terms look like.** Multiplying out with distributivity, every term is made by picking
+either $$a$$ or $$b$$ from each bracket and multiplying the picks together. For example, with
+$$m = 3$$ there are $$2 \cdot 2 \cdot 2 = 8$$ terms:
+
+```math
+aaa + aab + aba + abb + baa + bab + bba + bbb
+```
+
+Since the order of a product doesn't matter, a term with $$n$$ factors of $$b$$ has $$m - n$$
+factors of $$a$$, so it equals $$a^{m-n} b^n$$. (At the ends, $$n = 0$$ and $$n = m$$, the terms are
+just $$a^m$$ and $$b^m$$.)
+
+**How many there are.** A term with exactly $$n$$ factors of $$b$$ is decided by which $$n$$ of the
+$$m$$ brackets supply the $$b$$s. So these terms match up with the ways of choosing $$n$$ brackets
+out of $$m$$, and there are $$\binom{m}{n}$$ of them, by the counting meaning of :ref{#binomial}.
+With $$m = 3$$ and $$n = 1$$, the terms with exactly one $$b$$ are $$aab$$, $$aba$$ and $$baa$$:
+there are $$3 = \binom{3}{1}$$ of them, one for each choice of the bracket that supplies the $$b$$.
+Together they make the $$3a^2 b$$ in $$(a + b)^3$$.
+
+**Collect.** Adding up these $$\binom{m}{n}$$ equal terms gives $$\binom{m}{n} a^{m-n} b^n$$, for
+each $$n$$ from $$0$$ to $$m$$, which is the formula.
 
 :::
 
@@ -252,11 +292,3 @@ each row of the triangle adds up to $$(1 + 1)^m = 2^m$$.
 - $$\binom{m}{n} = \binom{m}{m - n}$$, and Pascal's rule builds each row of the triangle from the
   one above.
 - The binomial theorem: the coefficients of $$(a + b)^m$$ are row $$m$$ of Pascal's triangle.
-
-## Practise
-
-- :ref{#ex-factorial-quotients}: cancelling factorials.
-- :ref{#ex-list-choices}: counting choices by listing.
-- :ref{#ex-choose-two}: a formula for choosing two.
-- :ref{#ex-pascal-rows} and :ref{#ex-pascal-row-sums}: Pascal's triangle.
-- :ref{#ex-central-binomial-even}: a proof with Pascal's rule.

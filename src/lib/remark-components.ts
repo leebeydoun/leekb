@@ -3,6 +3,7 @@
  * need no JSX or imports. Runs before remark-statements, which numbers the statements it creates.
  *
  * Blocks:     :::definition[Title]{#id} ... :::     (any statement kind, also proof and solution)
+ *             :::proof{source="https://en.wikipedia.org/wiki/..."} ... :::     (source required)
  *             :::accordion[Title] ... :::
  *             :::area-model{row-sizes="3 2" col-sizes="3 2"} with a table inside, see below
  * One line:   ::number-line{from=-4 to=6 points="-2, 4" jumps="-2>4"}
@@ -294,6 +295,45 @@ function checkQuiz(src: string, file: File, node: Node) {
   return [...refs];
 }
 
+// sites a proof can cite, by host, so the link reads e.g. "Wikipedia: Euclidean division"
+const SOURCE_SITES: Record<string, string> = {
+  "en.wikipedia.org": "Wikipedia",
+  "proofwiki.org": "ProofWiki",
+  "mathworld.wolfram.com": "MathWorld",
+  "brilliant.org": "Brilliant",
+  "www.khanacademy.org": "Khan Academy",
+  "math.libretexts.org": "LibreTexts",
+  "artofproblemsolving.com": "Art of Problem Solving",
+};
+
+// every proof links to an outside source a reader can check it against
+function proofSource(url: string | null | undefined, file: File, node: Node) {
+  if (!url)
+    fail(
+      file,
+      node,
+      ':::proof needs a source, e.g. :::proof{source="https://en.wikipedia.org/..."}',
+    );
+  let parsed: URL;
+  try {
+    parsed = new URL(url);
+  } catch {
+    fail(file, node, `"${url}" is not a valid source URL`);
+  }
+  if (parsed.protocol !== "https:")
+    fail(file, node, `Source "${url}" must use https`);
+  const site = SOURCE_SITES[parsed.hostname];
+  if (!site)
+    fail(file, node, `Add ${parsed.hostname} to SOURCE_SITES to cite it`);
+  // the page name is the last part of the path, e.g. /wiki/Euclidean_division
+  const page = decodeURIComponent(
+    parsed.pathname.split("/").filter(Boolean).pop() ?? "",
+  )
+    .replace(/_/g, " ")
+    .replace(/\.html?$/, "");
+  return page ? `${site}: ${page}` : site;
+}
+
 function convert(node: Directive, file: File): RootContent {
   const a = node.attributes ?? {};
 
@@ -340,6 +380,17 @@ function convert(node: Directive, file: File): RootContent {
     );
     return element("mdxJsxFlowElement", "Accordions", {}, [accordion]);
   }
+
+  if (node.name === "proof")
+    return element(
+      "mdxJsxFlowElement",
+      "Proof",
+      {
+        source: a.source ?? undefined,
+        sourceTitle: proofSource(a.source, file, node),
+      },
+      children,
+    );
 
   const name = blocks.get(node.name);
   if (!name) fail(file, node, `Unknown directive :::${node.name}`);

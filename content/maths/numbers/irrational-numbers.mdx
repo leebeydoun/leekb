@@ -35,43 +35,53 @@ There is no rational number whose square is $$2$$.
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Square_root_of_2#Proof_by_infinite_descent"}
 
 We argue by contradiction (:ref{#contradiction}): we suppose such a number exists and show that this
-leads to something impossible.
+leads to something impossible. The plan is:
 
-A number and its opposite have the same square, so if some rational number squared to $$2$$, a
-positive one would too (and $$0^2 = 0$$, so it can't be $$0$$). We can write this positive number in
-lowest form using :ref{#lowest-form-exists}, as $$\frac{m}{n}$$ with $$m$$ and $$n$$ positive
-integers. By :ref{#not-both-even}, $$m$$ and $$n$$ are **not both even**. This is the fact we will
-contradict.
+1. write the number as a fraction $$\frac{m}{n}$$ in lowest form, so $$m$$ and $$n$$ are not both
+   even;
+2. show that $$m$$ is even;
+3. show that $$n$$ is even too, which contradicts step 1.
 
-Squaring with :ref{#fraction-powers},
+**Step 1: a fraction in lowest form.** Suppose some rational number $$x$$ has $$x^2 = 2$$. It isn't
+$$0$$, because $$0^2 = 0$$. If it is negative, then $$-x$$ is positive, and
+$$(-x)^2 = (-x)(-x) = x \cdot x = 2$$ by :ref{#two-minus}. So either way there is a **positive**
+rational number whose square is $$2$$.
+
+By :ref{#lowest-form-exists}, we can write this positive number in lowest form as $$\frac{m}{n}$$,
+with $$m$$ and $$n$$ positive integers. By :ref{#not-both-even}, $$m$$ and $$n$$ are **not both
+even**. This is the fact we will contradict.
+
+**Step 2: $$m$$ is even.** Squaring with :ref{#fraction-powers},
 
 ```math
 \frac{m^2}{n^2} = 2 = \frac{2}{1}
 ```
 
-and cross-multiplying gives
+and cross-multiplying (:ref{#cross-multiplying}) gives $$m^2 \cdot 1 = 2 \cdot n^2$$, that is,
 
 ```math
 m^2 = 2n^2
 ```
 
-The right-hand side is $$2$$ times an integer, so $$m^2$$ is even.
+The right-hand side is $$2$$ times an integer, so $$m^2$$ is even. By
+:ref{#squares-parity-converse}, an integer with an even square is itself even, so $$m$$ is even.
 
-By :ref{#squares-parity-converse}, an integer with an even square is itself even, so $$m$$ is even
-and we can write $$m = 2k$$ for some integer $$k$$. Substituting this in,
+**Step 3: $$n$$ is even.** Since $$m$$ is even, we can write $$m = 2k$$ for some integer $$k$$.
+Substituting this into $$m^2 = 2n^2$$,
 
 ```math
 (2k)^2 = 4k^2 = 2n^2
 ```
 
-and cancelling the factor $$2$$ from both sides (:ref{#cancel-product}) gives $$n^2 = 2k^2$$. So
-$$n^2$$ is even too, and by the same corollary $$n$$ is even.
+Writing the left side as $$2 \cdot 2k^2$$ and cancelling the factor $$2$$ from both sides
+(:ref{#cancel-product}) gives $$n^2 = 2k^2$$. So $$n^2$$ is even, and by
+:ref{#squares-parity-converse} again, $$n$$ is even.
 
-We have now shown that $$m$$ and $$n$$ are both even, which contradicts the fact that they are not
-both even. So our assumption was false, and no rational number has square $$2$$.
+**The contradiction.** Steps 2 and 3 show that $$m$$ and $$n$$ are both even, but step 1 says they
+are not both even. So our supposition was false, and no rational number has square $$2$$.
 
 :::
 
@@ -99,13 +109,30 @@ There is no rational number whose square is $$3$$.
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Quadratic_irrational_number#Square_root_of_non-square_is_irrational"}
 
-Suppose there were one. As before, we may take it to be positive and write it in lowest form as
-$$\frac{m}{n}$$, so $$3$$ is not a common divisor of $$m$$ and $$n$$. Squaring and cross-multiplying
-gives $$m^2 = 3n^2$$, so $$3 \mid m^2$$, and by :ref{#squares-three}, $$3 \mid m$$. Writing
-$$m = 3k$$ gives $$9k^2 = 3n^2$$, so $$n^2 = 3k^2$$. Then $$3 \mid n^2$$, and so $$3 \mid n$$. Now
-$$3$$ divides both $$m$$ and $$n$$, which contradicts lowest form.
+The plan is the same as for :ref{#sqrt-two}, with "is a multiple of $$3$$" in place of "is even".
+
+**A fraction in lowest form.** Suppose some rational number squares to $$3$$. Exactly as before, we
+may take it to be positive and write it in lowest form as $$\frac{m}{n}$$ with $$m$$ and $$n$$
+positive integers (:ref{#lowest-form-exists}). In lowest form the only positive common divisor of
+$$m$$ and $$n$$ is $$1$$, so $$3$$ does **not** divide both of them.
+
+**$$m$$ is a multiple of $$3$$.** Squaring and cross-multiplying as before gives
+
+```math
+m^2 = 3n^2
+```
+
+so $$3 \mid m^2$$, and by :ref{#squares-three}, $$3 \mid m$$.
+
+**$$n$$ is a multiple of $$3$$.** Write $$m = 3k$$ for some integer $$k$$. Substituting,
+$$9k^2 = 3n^2$$, that is, $$3 \cdot 3k^2 = 3n^2$$. Cancelling the factor $$3$$
+(:ref{#cancel-product}) gives $$n^2 = 3k^2$$. So $$3 \mid n^2$$, and by :ref{#squares-three} again,
+$$3 \mid n$$.
+
+**The contradiction.** Now $$3$$ divides both $$m$$ and $$n$$, which contradicts the fraction being
+in lowest form. So no rational number has square $$3$$.
 
 :::
 
@@ -128,8 +155,3 @@ facts about prime numbers that come later.
   that its top and bottom share a factor.
 - A number that is not rational is irrational.
 - The rationals leave gaps on the number line, which the real numbers will fill.
-
-## Practise
-
-- :ref{#ex-sqrt-six}: the square root of 6.
-- :ref{#ex-irrational-sums}: sums and multiples of an irrational number.

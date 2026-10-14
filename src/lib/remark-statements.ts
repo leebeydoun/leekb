@@ -2,8 +2,8 @@
  * Numbers statement blocks (Definition, Theorem, ...) and resolves Ref links to them.
  *
  * A guide is a folder of pages listed in its meta.json. Each page is a chapter numbered by its place
- * in that list (an `index` page doesn't count), and statements are numbered "chapter.n" across the
- * page, so the third page reads Definition 3.1, Lemma 3.2, Theorem 3.3. Exercises are counted on
+ * in that list (an `index` or `introduction` page doesn't count), and statements are numbered
+ * "chapter.n" across the page, so the third page reads Definition 3.1, Lemma 3.2, Theorem 3.3. Exercises are counted on
  * their own as Exercise 1, 2, 3, ... A statement with an `id` can be referenced from any page of the
  * guide with `:ref{#...}`, which renders as a link labelled e.g. "Definition 3.1".
  *
@@ -87,7 +87,9 @@ function readGuide(file: string) {
   ).pages;
   if (!pages) return undefined;
 
-  const chapters = pages.filter((page) => page !== "index");
+  const chapters = pages.filter(
+    (page) => page !== "index" && page !== "introduction",
+  );
   // a folder's index page is usually left out of meta.json, but its links still need resolving
   if (!pages.includes("index")) pages.unshift("index");
   const slug = basename(file).replace(/\.mdx?$/, "");

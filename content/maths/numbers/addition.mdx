@@ -86,16 +86,25 @@ For integers $$a$$ and $$b$$, if $$a + b = 0$$, then $$b = -a$$ and $$a = -b$$.
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Group_(mathematics)#Uniqueness_of_inverses"}
 
-We want $$b$$ on its own, so we add $$-a$$ to both sides of $$a + b = 0$$. The left side becomes
+The idea is to get $$b$$ on its own by adding $$-a$$ to both sides of $$a + b = 0$$. Two things that
+are equal stay equal when the same number is added to both.
+
+The left side becomes
 
 ```math
 -a + (a + b) = (-a + a) + b = 0 + b = b
 ```
 
-using associativity, then rule 4, then rule 3. The right side becomes $$-a + 0 = -a$$. So
-$$b = -a$$. Adding $$-b$$ to both sides instead shows in the same way that $$a = -b$$.
+The first step regroups (rule 2). The next two use $$-a + a = 0$$ and $$0 + b = b$$, which are rules
+4 and 3 the other way round; that is allowed because order doesn't matter (rule 1).
+
+The right side becomes $$-a + 0 = -a$$ (rule 3). The two sides are still equal, so $$b = -a$$.
+
+For $$a = -b$$, add $$-b$$ to both sides instead. In the same way, the left side becomes
+$$(a + b) + (-b) = a + (b + (-b)) = a + 0 = a$$ and the right side becomes $$0 + (-b) = -b$$, so
+$$a = -b$$.
 
 :::
 
@@ -105,10 +114,11 @@ For every integer $$a$$, $$-(-a) = a$$.
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Inverse_of_Group_Inverse"}
 
-Since $$-a + a = 0$$, :ref{#opposite-unique} with $$-a$$ and $$a$$ in place of $$a$$ and $$b$$ says
-that $$a$$ is the opposite of $$-a$$.
+We know $$-a + a = 0$$ (rule 4 the other way round). So $$-a$$ and $$a$$ are two numbers that add to
+$$0$$, and :ref{#opposite-unique}, with $$-a$$ in place of $$a$$ and $$a$$ in place of $$b$$, says
+that the second is the opposite of the first: $$a = -(-a)$$.
 
 :::
 
@@ -129,14 +139,20 @@ For integers $$a$$ and $$b$$,
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Inverse_of_Group_Product"}
 
-By :ref{#opposite-unique}, it is enough to show that $$-a - b$$ adds to $$a + b$$ to give $$0$$.
-Because order and grouping don't matter, we can pair each number with its opposite:
+By :ref{#opposite-unique}, anything that adds to $$a + b$$ to give $$0$$ must be $$-(a + b)$$. So it
+is enough to check that $$-a - b$$, which means $$-a + (-b)$$, adds to $$a + b$$ to give $$0$$.
+
+Because order and grouping don't matter, we can rearrange the four numbers to pair each one with its
+opposite, then use rule 4 twice:
 
 ```math
-(a + b) + (-a - b) = (a + (-a)) + (b + (-b)) = 0 + 0 = 0
+(a + b) + (-a + (-b)) = (a + (-a)) + (b + (-b)) = 0 + 0 = 0
 ```
+
+For example, with $$a = 2$$ and $$b = 9$$: $$11 + (-2 - 9) = 11 + (-11) = 0$$, so
+$$-(2 + 9) = -2 - 9$$.
 
 :::
 
@@ -164,16 +180,20 @@ If $$a$$ and $$b$$ are negative integers, then $$a + b$$ is negative.
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Negative_number#Addition"}
 
-A negative integer is the opposite of a positive one, so we can write $$a = -m$$ and $$b = -n$$ with
-$$m$$ and $$n$$ positive. By :ref{#opposite-sum},
+The plan is to rewrite $$a + b$$ as the opposite of a sum of two positive integers.
+
+By :ref{#integers}, each negative integer is the opposite of a positive one, so we can write
+$$a = -m$$ and $$b = -n$$ with $$m$$ and $$n$$ positive. Then, reading :ref{#opposite-sum} from
+right to left,
 
 ```math
-a + b = -m - n = -(m + n)
+a + b = -m + (-n) = -m - n = -(m + n)
 ```
 
-By rule 5, $$m + n$$ is positive, so its opposite $$a + b$$ is negative.
+By rule 5, $$m + n$$ is positive. So $$a + b$$ is the opposite of a positive integer, which means it
+is negative.
 
 :::
 
@@ -190,11 +210,24 @@ For integers $$a$$, $$b$$ and $$c$$, if $$a + b = c$$, then $$a = c - b$$ and $$
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Group_(mathematics)#Division"}
 
-Add $$-b$$ to both sides of $$a + b = c$$. The left side becomes $$a + b + (-b) = a + 0 = a$$, and
-the right side becomes $$c + (-b) = c - b$$. The second part is the same with $$-a$$ in place of
-$$-b$$.
+To get $$a$$ on its own, add $$-b$$ to both sides of $$a + b = c$$. The left side becomes
+
+```math
+(a + b) + (-b) = a + (b + (-b)) = a + 0 = a
+```
+
+by regrouping, then rules 4 and 3. The right side becomes $$c + (-b)$$, which is $$c - b$$ by
+:ref{#subtraction}. So $$a = c - b$$.
+
+To get $$b$$ on its own, add $$-a$$ instead. Swapping the order first (rule 1),
+
+```math
+(a + b) + (-a) = (b + a) + (-a) = b + (a + (-a)) = b + 0 = b
+```
+
+and the right side becomes $$c + (-a) = c - a$$. So $$b = c - a$$.
 
 :::
 
@@ -236,15 +269,45 @@ For integers $$a$$, $$b$$ and $$c$$:
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Strict_Positivity_Property_induces_Total_Ordering"}
 
-1. The integer $$b - a$$ is exactly one of positive, zero or negative. If it is positive, then
-   $$a < b$$. If it is zero, then $$a = b$$ by :ref{#rearranging}. If it is negative, then its
-   opposite $$-(b - a) = a - b$$ is positive, so $$b < a$$.
-2. We know $$b - a$$ and $$c - b$$ are positive, and want $$c - a$$ to be. The two known differences
-   add up to the one we want, because the $$b$$s cancel: $$(c - b) + (b - a) = c - a$$. A sum of two
-   positive integers is positive by rule 5.
-3. $$(b + c) - (a + c) = b + c - a - c = b - a$$, which is positive.
+All three parts work the same way: turn each inequality into a statement that some difference is
+positive, using :ref{#order}, and then work with the differences.
+
+**Part 1.** Write $$d = b - a$$. The idea is that each of the three statements is really a statement
+about the sign of $$d$$:
+
+- **$$a < b$$ exactly when $$d$$ is positive.** This is the definition of $$<$$.
+- **$$a = b$$ exactly when $$d = 0$$.** If $$a = b$$, then $$d = a + (-a) = 0$$ by rule 4.
+  Conversely, if $$b + (-a) = 0$$, then :ref{#opposite-unique} gives $$b = -(-a)$$, which is $$a$$
+  by :ref{#double-opposite}.
+- **$$a > b$$ exactly when $$d$$ is negative.** By definition, $$a > b$$ means $$a - b$$ is
+  positive. And $$a - b$$ is the opposite of $$d$$: by :ref{#opposite-sum} and
+  :ref{#double-opposite}, $$-(b + (-a)) = -b + a = a - b$$. Now $$-d$$ is positive exactly when
+  $$d$$ is negative: if $$d = -p$$ with $$p$$ positive then $$-d = p$$, and if $$-d$$ is positive
+  then $$d = -(-d)$$ is the opposite of a positive integer.
+
+By :ref{#integers}, the integer $$d$$ is exactly one of positive, zero and negative. So exactly one
+of the three statements is true. For example, with $$a = 3$$ and $$b = 7$$, $$d = 4$$ is positive,
+so $$3 < 7$$, and $$3 = 7$$ and $$3 > 7$$ are both false.
+
+**Part 2.** We know $$b - a$$ and $$c - b$$ are positive, and want $$c - a$$ to be positive. The two
+known differences add up to the one we want, because the $$b$$s cancel:
+
+```math
+(c - b) + (b - a) = c + (-b + b) + (-a) = c + 0 + (-a) = c - a
+```
+
+A sum of two positive integers is positive by rule 5, so $$c - a$$ is positive, that is, $$a < c$$.
+
+**Part 3.** We know $$b - a$$ is positive, and want $$(b + c) - (a + c)$$ to be positive. Using
+:ref{#opposite-sum} to take the opposite of $$a + c$$, then letting $$c$$ and $$-c$$ cancel,
+
+```math
+(b + c) - (a + c) = b + c + (-a) + (-c) = b + (-a) + (c + (-c)) = b - a
+```
+
+which is positive. So $$a + c < b + c$$.
 
 :::
 
@@ -269,11 +332,3 @@ rules for multiplying an inequality need the rules for multiplication, and appea
 - A number added on one side of an equation can be subtracted from the other.
 - $$a < b$$ means $$b - a$$ is positive; inequalities can be chained, and survive adding the same
   number to both sides.
-
-## Practise
-
-- :ref{#ex-rearrange-sum}: using order and grouping.
-- :ref{#ex-swap-subtraction}: a proof with opposites.
-- :ref{#ex-minus-signs}: opposites of sums.
-- :ref{#ex-solve-linear}: solving equations.
-- :ref{#ex-order-integers}: order.

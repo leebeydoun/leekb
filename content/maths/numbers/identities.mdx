@@ -26,10 +26,10 @@ For any $$a$$ and $$b$$:
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Square_of_Sum"}
 
-Each one comes from distributivity, multiplying every part of the first bracket by every part of the
-second:
+Each one comes from distributivity (:ref{#multiplication-rules}), multiplying every part of the
+first bracket by every part of the second:
 
 ```math
 \begin{aligned}
@@ -96,9 +96,10 @@ a^3 + b^3 &= (a + b)(a^2 - ab + b^2) &&\qquad \text{sum of cubes}
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Sum_of_two_cubes#Proof"}
 
-The cube of a sum is the square of the sum, multiplied once more by $$a + b$$:
+The cube of a sum is the square of the sum (:ref{#square-formulas}), multiplied once more by
+$$a + b$$:
 
 ```math
 \begin{aligned}
@@ -108,9 +109,13 @@ The cube of a sum is the square of the sum, multiplied once more by $$a + b$$:
 \end{aligned}
 ```
 
-The cube of a difference needs no new work. Write $$a - b$$ as $$a + (-b)$$ and put $$-b$$ in place
-of $$b$$. Since $$(-b)^2 = b^2$$ but $$(-b)^3 = -b^3$$, the terms with an odd power of $$b$$ change
-sign and the others stay the same.
+The cube of a difference needs no new work. The cube of a sum holds for **any** $$b$$, so we may use
+it with $$-b$$ in place of $$b$$, since $$a + (-b)$$ is just $$a - b$$. Since $$(-b)^2 = b^2$$ but
+$$(-b)^3 = -b^3$$, the terms with an odd power of $$b$$ change sign and the others stay the same:
+
+```math
+(a - b)^3 = a^3 + 3a^2 (-b) + 3a(-b)^2 + (-b)^3 = a^3 - 3a^2 b + 3ab^2 - b^3
+```
 
 For the difference of cubes, expand the right side. Multiplying by $$a$$ and by $$-b$$ gives two
 rows whose middle terms cancel, leaving only $$a^3$$ and $$-b^3$$:
@@ -196,11 +201,3 @@ $$5 \cdot 1 \cdot 5 = 25$$, and the expansion gives $$16 + 20 - 8 - 3 = 25$$.
 - $$(a \pm b)^3 = a^3 \pm 3a^2 b + 3ab^2 \pm b^3$$.
 - $$a^3 - b^3 = (a - b)(a^2 + ab + b^2)$$ and $$a^3 + b^3 = (a + b)(a^2 - ab + b^2)$$.
 - Longer products are expanded two brackets at a time, and checked by trying a value.
-
-## Practise
-
-- :ref{#ex-expand-squares}: expanding with the square formulas.
-- :ref{#ex-square-arithmetic} and :ref{#ex-difference-of-squares-arithmetic}: mental arithmetic.
-- :ref{#ex-squares-difference-identity}: a short proof.
-- :ref{#ex-two-power-ten}: factorising with the difference of squares.
-- :ref{#ex-expand-product}: a longer product.

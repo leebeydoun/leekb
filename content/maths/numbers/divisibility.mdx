@@ -57,23 +57,30 @@ Whether a sum or product is even or odd depends only on whether its parts are.
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Sum_of_Even_Number_of_Odd_Numbers_is_Even"}
 
-Write the numbers in the forms from :ref{#even-odd}. If $$a = 2n$$ is even and $$b = 2k + 1$$ is
-odd, then
+Write the numbers in the forms from :ref{#even-odd}, add, and pull out a factor of $$2$$ with
+distributivity. In each case $$n$$ and $$k$$ are integers, so $$n + k$$ and $$n + k + 1$$ are too.
+
+If both are even, $$a = 2n$$ and $$b = 2k$$, then $$a + b = 2(n + k)$$, which is even.
+
+If $$a = 2n$$ is even and $$b = 2k + 1$$ is odd, then
 
 ```math
 a + b = 2n + 2k + 1 = 2(n + k) + 1
 ```
 
-which is $$2$$ times an integer, plus $$1$$, so it is odd. If both are odd, $$a = 2n + 1$$ and
-$$b = 2k + 1$$, then the two leftover $$1$$s pair up with each other:
+which is $$2$$ times an integer, plus $$1$$, so it is odd. The row with $$a$$ odd and $$b$$ even is
+the same sum in the other order, since $$a + b = b + a$$.
+
+If both are odd, $$a = 2n + 1$$ and $$b = 2k + 1$$, then the two leftover $$1$$s pair up with each
+other:
 
 ```math
 a + b = 2n + 1 + 2k + 1 = 2(n + k + 1)
 ```
 
-which is even. The other two rows work the same way.
+which is even.
 
 :::
 
@@ -83,12 +90,17 @@ An even integer times any integer is even, and an odd integer times an odd integ
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Odd_Number_multiplied_by_Odd_Number_is_Odd"}
 
-If $$a = 2n$$, then $$ab = 2(nb)$$ is even. If $$a = 2n + 1$$ and $$b = 2k + 1$$, then
+If $$a = 2n$$ is even and $$b$$ is any integer, then regrouping the product gives
+$$ab = (2n)b = 2(nb)$$, which is even. Since $$ab = ba$$, it doesn't matter which side the even
+factor is on.
+
+If $$a = 2n + 1$$ and $$b = 2k + 1$$ are both odd, multiply out the brackets and pull out a $$2$$
+from every term except the last:
 
 ```math
-ab = 4nk + 2n + 2k + 1 = 2(2nk + n + k) + 1
+ab = (2n + 1)(2k + 1) = 4nk + 2n + 2k + 1 = 2(2nk + n + k) + 1
 ```
 
 which is odd.
@@ -108,14 +120,14 @@ The square of an even integer is even, and the square of an odd integer is odd.
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Parity_of_Integer_equals_Parity_of_its_Square"}
 
 We use the forms from :ref{#even-odd} and check that the square has the same form.
 
-If $$a$$ is even, write $$a = 2n$$. Then $$a^2 = 4n^2 = 2(2n^2)$$, which is $$2$$ times an integer,
-so it is even.
+If $$a$$ is even, write $$a = 2n$$. Then $$a^2 = (2n)^2 = 4n^2 = 2(2n^2)$$ (:ref{#power-rules}),
+which is $$2$$ times an integer, so it is even.
 
-If $$a$$ is odd, write $$a = 2n + 1$$. Expanding with the square of a sum,
+If $$a$$ is odd, write $$a = 2n + 1$$. Expanding with the square of a sum (:ref{#square-formulas}),
 
 ```math
 a^2 = (2n + 1)^2 = 4n^2 + 4n + 1 = 2(2n^2 + 2n) + 1
@@ -134,11 +146,15 @@ If $$a^2$$ is even, then $$a$$ is even. If $$a^2$$ is odd, then $$a$$ is odd.
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Parity_of_Integer_equals_Parity_of_its_Square"}
 
-Every integer is either even or odd, so it is enough to rule out the wrong one. Suppose $$a^2$$ is
-even. If $$a$$ were odd, then by :ref{#squares-parity} its square would be odd, which it is not. So
-$$a$$ must be even. The same reasoning with "even" and "odd" swapped proves the second statement.
+This uses the fact that every integer is either even or odd, and never both (:ref{#even-or-odd}).
+That is proved further down the page, using only division with remainder, so it is safe to use here.
+Because $$a$$ has to be one of the two, it is enough to rule out the wrong one.
+
+Suppose $$a^2$$ is even. If $$a$$ were odd, then by :ref{#squares-parity} its square would be odd.
+But $$a^2$$ is even, and no integer is both even and odd, so this can't happen. So $$a$$ must be
+even. The same reasoning with "even" and "odd" swapped proves the second statement.
 
 :::
 
@@ -205,7 +221,7 @@ $$d \mid m - n$$, and $$d \mid mc$$ for any integer $$c$$.
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Common_Divisor_Divides_Integer_Combination"}
 
 The statement is about multiples of $$d$$, so the natural first step is to unpack the definition of
 divisibility and write each number we know about as $$d$$ times something. Since $$d \mid m$$ and
@@ -259,30 +275,95 @@ and there is only one such pair. The number $$q$$ is called the **quotient** and
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_division#Proof"}
 
-**There is such a pair.** The multiples $$\dots, -2d, -d, 0, d, 2d, \dots$$ are spaced $$d$$ apart
-along the whole number line, so $$n$$ lies in exactly one of the stretches from a multiple $$dq$$ up
-to (but not including) the next one, $$dq + d$$. Then $$r = n - dq$$ is how far $$n$$ is past
-$$dq$$, so $$0 \le r < d$$, and $$n = dq + r$$.
+The theorem makes two claims: that a quotient and remainder **exist**, and that there is **only
+one** possible pair. We prove them separately.
 
-**There is only one.** Suppose $$n = dq + r = dq' + r'$$, with both remainders between $$0$$ and
-$$d - 1$$. Rearranging gives
+**Part 1: there is such a pair.** The idea is the picture above, for any $$n$$ and $$d$$.
+
+The multiples of $$d$$,
 
 ```math
-d(q - q') = r' - r
+\dots, \; -2d, \; -d, \; 0, \; d, \; 2d, \; 3d, \; \dots
 ```
 
-The right side is between $$-(d - 1)$$ and $$d - 1$$. But the left side is a multiple of $$d$$, and
-the only multiple of $$d$$ that close to $$0$$ is $$0$$ itself: if $$q - q' \ge 1$$ then
-$$d(q - q') \ge d$$, and if $$q - q' \le -1$$ then $$d(q - q') \le -d$$, by :ref{#order-multiply}.
-So $$r' - r = 0$$ and $$d(q - q') = 0$$, which means $$r = r'$$ and $$q = q'$$.
+are spaced $$d$$ apart and go on forever in both directions. Between them, they cut the whole number
+line into stretches of length $$d$$, each starting at a multiple and stopping just before the next
+one. Every integer $$n$$ lands in one of these stretches. This is clear from the picture, and we
+take it as a basic fact about the integers rather than proving it, just as we take induction
+(:ref{#induction}). (Part 2 shows that $$n$$ can't land in two stretches.)
+
+Call the multiple at the start of $$n$$'s stretch $$dq$$. In other words, $$dq$$ is the largest
+multiple of $$d$$ that is not bigger than $$n$$, so
+
+```math
+dq \le n < dq + d
+```
+
+Now let $$r = n - dq$$, which is how many steps $$n$$ is past the start of its stretch. Subtracting
+$$dq$$ from each part of the line above (:ref{#order-rules}) gives
+
+```math
+0 \le r < d
+```
+
+and $$r = n - dq$$ rearranges to $$n = dq + r$$. So $$q$$ and $$r$$ are the pair we wanted.
+
+For example, with $$n = 17$$ and $$d = 5$$, the stretch containing $$17$$ runs from $$15$$ up to
+(but not including) $$20$$. So $$dq = 15$$, $$q = 3$$, and $$r = 17 - 15 = 2$$.
+
+**Part 2: there is only one pair.** First, an example of why. With $$n = 17$$ and $$d = 5$$, every
+choice of quotient gives some remainder, but only one of them lands between $$0$$ and $$4$$:
+
+| Quotient $$q$$           | $$2$$       | $$3$$ | $$4$$        |
+| ------------------------ | ----------- | ----- | ------------ |
+| Remainder $$17 - 5q$$    | $$7$$       | $$2$$ | $$-3$$       |
+| Between $$0$$ and $$4$$? | no, too big | yes   | no, negative |
+
+Taking one fewer $$5$$ leaves too much over, and taking one more $$5$$ overshoots. The proof shows
+the same thing happens in general, using the stretches from Part 1.
+
+Suppose $$n = dq + r$$ for some integers $$q$$ and $$r$$ with $$0 \le r < d$$. This could be any
+such pair, not necessarily the one from Part 1. The two facts about $$r$$ say where $$n$$ sits:
+
+- $$r \ge 0$$ means $$n = dq + r$$ is **at least** $$dq$$.
+- $$r < d$$ means $$n = dq + r$$ is **less than** $$dq + d$$.
+
+Together, $$dq \le n < dq + d$$: $$n$$ lies in the stretch that starts at the multiple $$dq$$.
+
+So any valid pair puts $$n$$ in a stretch. The last thing to check is that $$n$$ can't be in two
+different stretches, because the stretches don't overlap. Suppose two pairs put $$n$$ in the
+stretches starting at $$dq$$ and $$dq'$$, so
+
+```math
+dq \le n < dq + d \qquad \text{and} \qquad dq' \le n < dq' + d
+```
+
+If $$q < q'$$, then $$q' \ge q + 1$$, because there is no integer strictly between $$q$$ and
+$$q + 1$$. From this, $$dq' \ge d(q + 1) = dq + d$$:
+
+- if $$q' = q + 1$$, then $$dq' = d(q + 1)$$, so the two sides are equal;
+- if $$q' > q + 1$$, then multiplying by the positive number $$d$$ keeps the inequality
+  (:ref{#order-multiply}), so $$dq' > d(q + 1)$$.
+
+In words, the second stretch starts at or after the point where the first one ends. But $$n$$ is
+before the end of the first stretch and at or after the start of the second:
+
+```math
+n < dq + d \le dq' \le n
+```
+
+which says $$n < n$$, which is impossible. Swapping the roles of the two pairs rules out $$q' < q$$
+in the same way. So $$q = q'$$: every valid pair has the same quotient.
+
+Once $$q$$ is fixed, so is $$r$$, because it has to be $$n - dq$$. So there is only one pair.
 
 :::
 
-For example, dividing $$17$$ by $$5$$ gives quotient $$3$$ and remainder $$2$$. For a negative
-number the remainder is still between $$0$$ and $$d - 1$$: $$-17 = 5 \cdot (-4) + 3$$, so the
-remainder is $$3$$, not $$-2$$. And $$d \mid n$$ says exactly that the remainder is $$0$$.
+For a negative number the remainder is still between $$0$$ and $$d - 1$$:
+$$-17 = 5 \cdot (-4) + 3$$, so the remainder is $$3$$, not $$-2$$. And $$d \mid n$$ says exactly
+that the remainder is $$0$$.
 
 Dividing by $$2$$ settles the claim from the start of the page.
 
@@ -292,11 +373,20 @@ Every integer is either even or odd, and not both.
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Odd_Integer"}
 
-By :ref{#division-remainder} with $$d = 2$$, every integer can be written as $$2q + r$$ with
-$$r = 0$$ or $$r = 1$$, and in only one way. Remainder $$0$$ means even, and remainder $$1$$ means
-odd.
+Take :ref{#division-remainder} with $$d = 2$$. The remainder is between $$0$$ and $$1$$, so every
+integer $$n$$ can be written as
+
+```math
+n = 2q + 0 \qquad \text{or} \qquad n = 2q + 1
+```
+
+The first form says $$n$$ is even and the second says $$n$$ is odd (:ref{#even-odd}), so $$n$$ is at
+least one of them.
+
+It can't be both. If $$n = 2k$$ and also $$n = 2m + 1$$, then $$n$$ would have two different
+remainders, $$0$$ and $$1$$, when divided by $$2$$. The theorem says there is only one.
 
 :::
 
@@ -345,13 +435,3 @@ numbers share no factor worth cancelling; that is what lowest form means for fra
   of $$d$$.
 - Dividing $$n$$ by $$d > 0$$ leaves a unique remainder $$r$$ with $$0 \le r < d$$.
 - The greatest common divisor is the largest number dividing both.
-
-## Practise
-
-- :ref{#ex-parity-without-computing}: even or odd without calculating.
-- :ref{#ex-consecutive-product} and :ref{#ex-three-consecutive-sum}: consecutive integers.
-- :ref{#ex-combination-divisible}: combining multiples.
-- :ref{#ex-largest-powers}: powers that divide a number.
-- :ref{#ex-odd-square-minus-one} and :ref{#ex-two-odd-squares}: squares of odd numbers.
-- :ref{#ex-cube-minus-n}: splitting into cases by remainder.
-- :ref{#ex-true-or-false-divisibility}: proofs and counterexamples.

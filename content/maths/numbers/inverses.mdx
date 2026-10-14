@@ -31,16 +31,22 @@ Let $$m$$ and $$n$$ be non-zero integers. Then $$\frac{n}{m}$$ is an inverse of 
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Fraction#Reciprocals_and_the_invisible_denominator"}
 
-We just multiply and check that we get $$1$$. By :ref{#fraction-multiplication},
+First, $$\frac{n}{m}$$ is a genuine fraction, because its denominator $$m$$ is not $$0$$. Now we
+just multiply and check that we get $$1$$. By :ref{#fraction-multiplication},
 
 ```math
-\frac{m}{n} \cdot \frac{n}{m} = \frac{mn}{nm} = \frac{mn}{mn} = 1
+\frac{m}{n} \cdot \frac{n}{m} = \frac{mn}{nm} = \frac{mn}{mn} = \frac{mn \cdot 1}{mn \cdot 1}
+= \frac{1}{1} = 1
 ```
 
-The last step uses :ref{#fraction-cancel} to cancel $$mn$$, which is allowed because $$m$$ and $$n$$
-are both non-zero. The product the other way round is the same, since order doesn't matter.
+using $$nm = mn$$ in the second step. The next step cancels the common factor $$mn$$ with
+:ref{#fraction-cancel}, which is allowed because $$mn \neq 0$$: a product of two non-zero integers
+is never $$0$$, as in the proof of :ref{#fraction-cancel}. The product the other way round,
+$$\frac{n}{m} \cdot \frac{m}{n}$$, is the same, since order doesn't matter in a product.
+
+For example, $$\frac{3}{7} \cdot \frac{7}{3} = \frac{21}{21} = 1$$.
 
 :::
 
@@ -58,17 +64,25 @@ Let $$a$$ and $$b$$ be rational numbers with $$a \neq 0$$. If $$ab = 1$$, then $
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Group_(mathematics)#Uniqueness_of_inverses"}
 
-This mirrors the fact that an opposite is the only way back to zero. We are told that $$ab = 1$$,
-and want to get $$b$$ on its own, so we multiply both sides on the left by $$a^{-1}$$:
+This mirrors the fact that an opposite is the only way back to zero (:ref{#opposite-unique}).
+
+First, $$a$$ really does have an inverse to compare $$b$$ with. Write $$a = \frac{m}{n}$$. The
+numerator $$m$$ is not $$0$$, because $$\frac{0}{n} = 0$$ and $$a \neq 0$$. So by
+:ref{#inverse-exists}, $$\frac{n}{m}$$ is an inverse of $$a$$; call it $$a^{-1}$$.
+
+The idea is now to start from $$b$$ and slip in a factor $$a^{-1}a = 1$$, so that the given
+$$ab = 1$$ can be used:
 
 ```math
-a^{-1}(ab) = a^{-1} \cdot 1 = a^{-1}
+b = 1 \cdot b = (a^{-1}a)b = a^{-1}(ab) = a^{-1} \cdot 1 = a^{-1}
 ```
 
-On the left, regrouping gives $$a^{-1}(ab) = (a^{-1}a)b = 1 \cdot b = b$$. So the two sides say
-$$b = a^{-1}$$.
+Step by step: multiplying by $$1$$ changes nothing; $$a^{-1}a = 1$$ because $$a^{-1}$$ is an inverse
+of $$a$$; the grouping of a product doesn't matter; $$ab = 1$$ is what we were told; and multiplying
+by $$1$$ changes nothing again. So $$b = a^{-1}$$: any number that multiplies with $$a$$ to give
+$$1$$ is the same as the inverse we already had, so there is only one.
 
 :::
 
@@ -112,17 +126,21 @@ Let $$a$$ and $$b$$ be rational numbers. If $$ab = 0$$, then $$a = 0$$ or $$b = 
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Field_has_no_Proper_Zero_Divisors#Proof_2"}
 
-Either $$a = 0$$, in which case we are done, or $$a \neq 0$$. In the second case we show that $$b$$
-must be $$0$$. Since $$a \neq 0$$, it has an inverse, and multiplying both sides of $$ab = 0$$ by it
-gives
+There are two cases. Either $$a = 0$$, in which case we are done, or $$a \neq 0$$. In the second
+case we show that $$b$$ must be $$0$$.
+
+Since $$a \neq 0$$, it has an inverse $$a^{-1}$$ (:ref{#inverse-exists}). Multiplying both sides of
+$$ab = 0$$ by it gives
 
 ```math
 a^{-1}(ab) = a^{-1} \cdot 0 = 0
 ```
 
-As in the previous proof, the left side is $$(a^{-1}a)b = b$$, so $$b = 0$$.
+where the right-hand side is $$0$$ because anything times $$0$$ is $$0$$ (:ref{#zero-times}). On the
+left, regrouping gives $$a^{-1}(ab) = (a^{-1}a)b = 1 \cdot b = b$$, just as in the previous proof.
+So $$b = 0$$.
 
 :::
 
@@ -172,10 +190,12 @@ Let $$a$$, $$b$$, $$c$$, $$d$$ be rational numbers with $$b \neq 0$$ and $$d \ne
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Cross-multiplication#Procedure"}
 
-"Exactly when" means two things to prove: each statement leads to the other. Both directions work by
-multiplying through to clear the inverses.
+"Exactly when" means two things to prove: each statement leads to the other (:ref{#exactly-when}).
+Both directions work by multiplying both sides by the same number, chosen so that each $$b$$ meets a
+$$b^{-1}$$ and each $$d$$ meets a $$d^{-1}$$, which cancel to $$1$$. The inverses $$b^{-1}$$ and
+$$d^{-1}$$ exist because $$b$$ and $$d$$ are not $$0$$.
 
 Suppose first that $$\frac{a}{b} = \frac{c}{d}$$, which by :ref{#quotient} says
 $$ab^{-1} = cd^{-1}$$. Multiplying both sides by $$bd$$, the $$b^{-1}$$ on the left meets the $$b$$,
@@ -199,6 +219,9 @@ bc \cdot b^{-1}d^{-1} = (b b^{-1}) \cdot c d^{-1} = cd^{-1}
 ```
 
 So $$ab^{-1} = cd^{-1}$$, which is $$\frac{a}{b} = \frac{c}{d}$$.
+
+For example, $$\frac{1/2}{3} = \frac{1}{6}$$, and cross-multiplying checks it:
+$$\frac{1}{2} \cdot 6 = 3 = 3 \cdot 1$$.
 
 :::
 
@@ -252,14 +275,24 @@ if $$c \neq 0$$ too,
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Cancellation_Laws#Proof_1"}
 
-For the first part, multiply both sides of $$ab = ac$$ by $$a^{-1}$$. The left becomes
-$$(a^{-1}a)b = b$$ and the right becomes $$(a^{-1}a)c = c$$, so $$b = c$$.
+**First part.** Since $$a \neq 0$$, it has an inverse $$a^{-1}$$ (:ref{#inverse-exists}). Multiply
+both sides of $$ab = ac$$ by it, and regroup:
 
-For the second part, cross-multiply using :ref{#cross-multiplying-rational}. The two quotients are
-equal exactly when $$(ab)c = (ac)b$$, and both sides are the product of $$a$$, $$b$$ and $$c$$ in a
-different order, so they are equal.
+```math
+a^{-1}(ab) = (a^{-1}a)b = 1 \cdot b = b,
+\qquad
+a^{-1}(ac) = (a^{-1}a)c = 1 \cdot c = c
+```
+
+The two left-hand sides are equal, because they come from multiplying equal numbers by the same
+$$a^{-1}$$. So $$b = c$$.
+
+**Second part.** First, $$\frac{ab}{ac}$$ makes sense: $$a$$ and $$c$$ are both non-zero, so their
+product $$ac$$ is not $$0$$ by :ref{#zero-product}. Now cross-multiply using
+:ref{#cross-multiplying-rational}. The two quotients are equal exactly when $$(ab)c = (ac)b$$, and
+both sides are the product of $$a$$, $$b$$ and $$c$$ in a different order, so they are equal.
 
 :::
 
@@ -284,22 +317,26 @@ Let $$a$$, $$b$$, $$c$$, $$d$$ be rational numbers with $$b \neq 0$$ and $$d \ne
 
 :::
 
-:::proof
+:::proof{source="https://en.wikipedia.org/wiki/Fraction#Adding_unlike_quantities"}
 
-For the first formula, both quotients contain the factor $$b^{-1}$$, so distributivity lets us take
-it out:
+**Same denominator.** By :ref{#quotient}, both quotients contain the factor $$b^{-1}$$, so
+distributivity lets us take it out:
 
 ```math
 \frac{a}{b} + \frac{c}{b} = ab^{-1} + cb^{-1} = (a + c)b^{-1} = \frac{a + c}{b}
 ```
 
-For the second, we first give the two quotients a common denominator.
+**Different denominators.** The plan is to rewrite both quotients with the same denominator $$bd$$,
+and then use the first formula. Note that $$bd \neq 0$$ by :ref{#zero-product}, since $$b$$ and
+$$d$$ are both non-zero.
 
-By :ref{#cancel-product}, multiplying the top and bottom of a quotient by the same non-zero number
-doesn't change it, so
+The second part of :ref{#cancel-product} says that a non-zero common factor of the top and bottom
+can be cancelled. Read backwards, multiplying the top and bottom by the same non-zero number doesn't
+change a quotient. Multiplying $$\frac{a}{b}$$ through by $$d$$, and $$\frac{c}{d}$$ through by
+$$b$$, gives
 
 ```math
-\frac{a}{b} = \frac{ad}{bd} \qquad \text{and} \qquad \frac{c}{d} = \frac{bc}{bd}
+\frac{a}{b} = \frac{da}{db} = \frac{ad}{bd} \qquad \text{and} \qquad \frac{c}{d} = \frac{bc}{bd}
 ```
 
 Now both have the denominator $$bd$$, and the first formula adds them to give
@@ -344,16 +381,24 @@ For a rational number $$x \neq 1$$ and a positive integer $$n$$,
 
 :::
 
-:::proof
+:::proof{source="https://proofwiki.org/wiki/Sum_of_Geometric_Sequence#Proof_2"}
 
-The right side is $$\frac{x^{n-1} + \cdots + x + 1}{1}$$, so by cross-multiplying it is enough to
-show that
+Since $$x \neq 1$$, the denominator $$x - 1$$ is not $$0$$, so the left side makes sense. The right
+side is the same as $$\frac{x^{n-1} + \cdots + x + 1}{1}$$, so by cross-multiplying
+(:ref{#cross-multiplying-rational}) it is enough to show that
 
 ```math
 (x - 1)(x^{n - 1} + x^{n - 2} + \cdots + x + 1) = x^n - 1
 ```
 
-Expanding the left side, multiplying the bracket by $$x$$ and by $$-1$$ in turn, gives two rows:
+To see the idea, take $$n = 3$$ first:
+
+```math
+(x - 1)(x^2 + x + 1) = (x^3 + x^2 + x) - (x^2 + x + 1) = x^3 - 1
+```
+
+The $$x^2$$ and $$x$$ appear once with each sign and cancel. In general, expanding the left side,
+multiplying the bracket by $$x$$ and by $$-1$$ in turn, gives two rows:
 
 ```math
 \begin{array}{ccccccccccc}
@@ -444,13 +489,3 @@ $$\frac{15}{4} = 3.75$$ litres should be replaced.
   its flip.
 - $$\frac{a}{b} = \frac{c}{d}$$ exactly when $$ad = bc$$, now proved for any rational numbers.
 - A non-zero common factor can be cancelled, and quotients add like fractions.
-
-## Practise
-
-- :ref{#ex-find-inverses}: finding inverses.
-- :ref{#ex-zero-product}: products equal to zero.
-- :ref{#ex-compound-fraction} and :ref{#ex-simplify-compound}: fractions within fractions.
-- :ref{#ex-clear-fractions} and :ref{#ex-solve-quotient-equation}: solving equations.
-- :ref{#ex-integer-quotient}: a quotient that must be an integer.
-- :ref{#ex-powers-of-three-sum}: the sum of powers.
-- :ref{#ex-bath-taps}: a word problem.

@@ -1,6 +1,7 @@
 {
   "title": "Numbers",
   "pages": [
+    "introduction",
     "proofs",
     "integers",
     "addition",
