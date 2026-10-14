@@ -304,6 +304,16 @@ const SOURCE_SITES: Record<string, string> = {
   "www.khanacademy.org": "Khan Academy",
   "math.libretexts.org": "LibreTexts",
   "artofproblemsolving.com": "Art of Problem Solving",
+  "www.mathsisfun.com": "Maths Is Fun",
+  "www.cut-the-knot.org": "Cut the Knot",
+  "nrich.maths.org": "NRICH",
+  "www.bbc.co.uk": "BBC Bitesize",
+  "openstax.org": "OpenStax",
+  "en.wikibooks.org": "Wikibooks",
+  "www.purplemath.com": "Purplemath",
+  "betterexplained.com": "BetterExplained",
+  "math.stackexchange.com": "Math Stack Exchange",
+  "www.cuemath.com": "Cuemath",
 };
 
 // every proof links to an outside source a reader can check it against
@@ -325,13 +335,17 @@ function proofSource(url: string | null | undefined, file: File, node: Node) {
   const site = SOURCE_SITES[parsed.hostname];
   if (!site)
     fail(file, node, `Add ${parsed.hostname} to SOURCE_SITES to cite it`);
-  // the page name is the last part of the path, e.g. /wiki/Euclidean_division
+  // the page name is the last part of the path, e.g. /wiki/Euclidean_division -> "Euclidean
+  // division", or /questions/123/why-is-it-true -> "Why is it true"
   const page = decodeURIComponent(
     parsed.pathname.split("/").filter(Boolean).pop() ?? "",
   )
-    .replace(/_/g, " ")
-    .replace(/\.html?$/, "");
-  return page ? `${site}: ${page}` : site;
+    .replace(/\.(html?|php|asp|shtml)$/, "")
+    // wiki titles use _ for spaces and keep real hyphens; other sites use - for spaces
+    .replace(parsed.hostname.includes("wiki") ? /_+/g : /[_-]+/g, " ")
+    .trim();
+  const name = page.charAt(0).toUpperCase() + page.slice(1);
+  return name ? `${site}: ${name}` : site;
 }
 
 function convert(node: Directive, file: File): RootContent {
