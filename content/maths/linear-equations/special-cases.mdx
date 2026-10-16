@@ -84,8 +84,8 @@ $$x = 3 - 2t$$. So the solutions are
 ```
 
 For example $$t = 0$$ gives $$(3, 0)$$, $$t = 1$$ gives $$(1, 1)$$ and $$t = -2$$ gives $$(7, -2)$$.
-Describing the solutions with a free letter like $$t$$ like this is how "infinitely many" is written
-down exactly.
+Describing the solutions with a free letter such as $$t$$ is how "infinitely many" is written down
+exactly.
 
 ## A test that tells in advance
 
@@ -106,7 +106,8 @@ The **determinant** of this system is the number
 ad - bc
 ```
 
-the product of the coefficients on one diagonal, minus the product on the other:
+Write the coefficients in a grid, in the same places as in the equations. The determinant is
+top-left times bottom-right, minus top-right times bottom-left:
 
 | $$x$$ | $$y$$ |
 | ----- | ----- |
@@ -183,9 +184,10 @@ So the pair solves both equations.
 
 :::
 
-The first half of the proof is just elimination done once and for all with letters. The second half
-is needed because the elimination steps used here (multiplying by $$d$$, say) might multiply by
-zero, so they weren't all known to be safe; checking directly settles it.
+The first half of the proof is just elimination, done once and for all with letters. Why is the
+second half needed? The first half multiplied the equations by $$d$$, $$b$$, $$c$$ and $$a$$, and
+some of these might be $$0$$. Multiplying by $$0$$ isn't a safe step, so the first half only shows
+that a solution would have to be this pair. Checking the pair directly shows that it really is one.
 
 :::example[Using the formula]
 
@@ -255,11 +257,12 @@ Putting the two theorems together:
 | zero                    | none                | something false, like $$0 = 2$$       |
 | zero                    | infinitely many     | something always true, like $$0 = 0$$ |
 
-In both examples on this page, the left-hand side of (2) is a multiple of the left-hand side of (1):
-$$x + 2y$$ twice over, and $$3x + 6y = 3(x + 2y)$$. Whether there are no solutions or infinitely
-many then depends on whether the right-hand sides are related by the same multiple. The
-[next page](./lines.mdx) shows the picture: a zero determinant means the two lines are parallel or
-the same.
+In both examples on this page, one left-hand side is a multiple of the other. In the first, both are
+$$x + 2y$$; in the second, $$3x + 6y = 3(x + 2y)$$. What decides between the two cases is the
+right-hand sides. If they are related by the same multiple, as $$9 = 3 \cdot 3$$ is, the second
+equation repeats the first and there are infinitely many solutions. If not, as with $$3$$ and $$5$$,
+the equations contradict each other and there are none. The [next page](./lines.mdx) shows the
+picture: a zero determinant means the two lines are parallel or the same.
 
 ## When both right-hand sides are zero
 

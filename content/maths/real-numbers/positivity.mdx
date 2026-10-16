@@ -1,0 +1,189 @@
+---
+title: Positive and negative
+description: The two rules for positive numbers, and the sign rules that follow from them.
+---
+
+On the number line, the positive numbers lie to the right of $$0$$ and the negative ones to the
+left. Everything we know about signs, from "minus times minus is plus" to "a square is never
+negative", follows from just two rules about positive numbers. This page states them and proves the
+rest, which also sets up the rules for inequalities on the next page.
+
+## Two rules for positive numbers
+
+We don't define "positive" from anything simpler. Instead, some real numbers are called
+**positive**, written $$a > 0$$, and we take two rules about them as given. Everything else about
+signs is proved from these.
+
+:::remark[Rules for positivity]{#positivity}
+
+1. **Positive sums and products:** if $$a$$ and $$b$$ are positive, so are $$a + b$$ and $$ab$$.
+2. **Exactly one:** for every real number $$a$$, exactly one of these is true: $$a$$ is positive,
+   $$a = 0$$, or $$-a$$ is positive.
+
+These are taken as given, together with the [rules of arithmetic](./real-line.mdx).
+
+::see-also{src="https://en.wikipedia.org/wiki/Ordered_field#Positive_cone"}
+
+:::
+
+:::definition[Negative numbers]{#negative}
+
+A real number $$a$$ is **negative**, written $$a < 0$$, if $$-a$$ is positive.
+
+:::
+
+So rule 2 splits the real numbers into three parts: every real number is exactly one of positive,
+zero and negative. The positive numbers are the ones shaded here:
+
+::number-line{from=-5 to=5 intervals="(0, oo)"}
+
+## One is positive
+
+It may seem obvious that $$1$$ is positive, but nothing so far says so. It follows from the two
+rules.
+
+:::proposition[One is positive]{#one-positive}
+
+The number $$1$$ is positive.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Ordered_field#Properties_of_ordered_fields"}
+
+Since $$1 \neq 0$$, rule 2 says that exactly one of $$1$$ and $$-1$$ is positive. We show that it
+can't be $$-1$$, by contradiction (:ref{#numbers/contradiction}).
+
+Suppose $$-1$$ were positive. Then by rule 1 the product $$(-1)(-1)$$ would be positive too. But
+$$(-1)(-1) = 1$$, because two minus signs cancel (:ref{#numbers/two-minus}). So $$1$$ and $$-1$$
+would both be positive, which rule 2 forbids. So $$-1$$ is not positive, and therefore $$1$$ is.
+
+:::
+
+Rule 1 then makes $$2 = 1 + 1$$ positive, then $$3 = 2 + 1$$, and so on: the positive integers are
+positive real numbers, as they should be.
+
+This also explains why the remainders on division by $$5$$, from the
+[previous page](./real-line.mdx), can't be split into positive and negative in the same way, even
+though they follow all the rules of arithmetic. If they could, $$1$$ would be positive, and adding
+it up five times would make $$1 + 1 + 1 + 1 + 1$$ positive. But in that system the sum is $$0$$,
+which rule 2 says is not positive.
+
+## Signs of products
+
+:::proposition[Signs of products]{#sign-rules}
+
+Let $$a$$ and $$b$$ be real numbers.
+
+1. If $$a$$ is positive and $$b$$ is negative, then $$ab$$ is negative.
+2. If $$a$$ and $$b$$ are both negative, then $$ab$$ is positive.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Ordered_field#Properties_of_ordered_fields"}
+
+**Part 1.** Since $$b$$ is negative, $$-b$$ is positive. By rule 1, $$a(-b)$$ is positive. Moving
+the minus sign out (:ref{#numbers/minus-in-product}), $$a(-b) = -(ab)$$. So $$-(ab)$$ is positive,
+which says that $$ab$$ is negative.
+
+**Part 2.** Now $$-a$$ and $$-b$$ are both positive, so their product $$(-a)(-b)$$ is positive by
+rule 1. Two minus signs cancel (:ref{#numbers/two-minus}), so $$(-a)(-b) = ab$$, and $$ab$$ is
+positive.
+
+:::
+
+Together with rule 1 and $$0 \cdot b = 0$$, this settles the sign of every product: it is positive
+when the signs match, negative when they differ, and $$0$$ when either factor is $$0$$.
+
+## Squares
+
+:::corollary[Squares are never negative]{#squares-positive}
+
+For every real number $$a$$:
+
+1. If $$a \neq 0$$, then $$a^2$$ is positive. If $$a = 0$$, then $$a^2 = 0$$. So $$a^2$$ is never
+   negative.
+2. If $$a^2 + b^2 = 0$$, then $$a = 0$$ and $$b = 0$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Ordered_field#Properties_of_ordered_fields"}
+
+**Part 1.** If $$a$$ is positive, $$a^2 = a \cdot a$$ is positive by rule 1. If $$a$$ is negative,
+$$a^2$$ is a product of two negative numbers, which is positive by :ref{#sign-rules}. If $$a = 0$$,
+then $$a^2 = 0$$.
+
+**Part 2.** We prove the contrapositive (:ref{#numbers/contrapositive}): if $$a$$ and $$b$$ are not
+both $$0$$, then $$a^2 + b^2 \neq 0$$. Say $$a \neq 0$$; the case $$b \neq 0$$ is the same. Then
+$$a^2$$ is positive. If $$b = 0$$, the sum is just $$a^2$$, which is positive. Otherwise $$b^2$$ is
+positive too, and the sum of two positive numbers is positive. Either way the sum is positive, so it
+isn't $$0$$.
+
+:::
+
+So an equation like $$x^2 = -4$$ has no real solution at all: the left side is never negative, and
+the right side is. Likewise $$x^2 + 1$$ is always at least $$1$$, so it is never $$0$$.
+
+## Signs of inverses and quotients
+
+:::proposition[Signs of inverses]{#inverse-sign}
+
+If $$a$$ is positive, so is $$\frac{1}{a}$$. If $$a$$ is negative, so is $$\frac{1}{a}$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Inequality_(mathematics)#Multiplicative_inverse"}
+
+We know $$a \cdot \frac{1}{a} = 1$$, which is positive by :ref{#one-positive}. First,
+$$\frac{1}{a} \neq 0$$, since otherwise the product would be $$0$$ (:ref{#numbers/zero-times}).
+
+Suppose $$a$$ is positive. If $$\frac{1}{a}$$ were negative, the product $$a \cdot \frac{1}{a}$$
+would be negative by :ref{#sign-rules}, so $$1$$ would be both positive and negative, which rule 2
+forbids. So $$\frac{1}{a}$$ is positive.
+
+Suppose $$a$$ is negative. If $$\frac{1}{a}$$ were positive, the product would again be negative, by
+part 1 of :ref{#sign-rules} with the factors swapped; that is impossible for the same reason. So
+$$\frac{1}{a}$$ is negative.
+
+:::
+
+A quotient $$\frac{a}{b}$$ means $$a \cdot \frac{1}{b}$$ (:ref{#numbers/quotient}), so it follows
+the same sign rules as a product.
+
+:::corollary[Signs of quotients]{#quotient-sign}
+
+If $$b \neq 0$$, then $$\frac{a}{b}$$ is positive when $$a$$ and $$b$$ have the same sign, negative
+when they have opposite signs, and $$0$$ when $$a = 0$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Inequality_(mathematics)#Multiplicative_inverse"}
+
+Write $$\frac{a}{b} = a \cdot \frac{1}{b}$$. By :ref{#inverse-sign}, $$\frac{1}{b}$$ has the same
+sign as $$b$$, so this is a product of $$a$$ with a number of the same sign as $$b$$. Its sign is
+then given by rule 1 and :ref{#sign-rules}: positive when the signs match and negative when they
+differ. If $$a = 0$$, the product is $$0$$.
+
+:::
+
+For example, $$\frac{-3}{-4}$$ is positive and $$\frac{5}{-2}$$ is negative, without working out
+either one.
+
+## Common mistakes
+
+- **Reading $$-a$$ as "a negative number".** The minus sign means "the opposite of". If $$a = -3$$,
+  then $$-a = 3$$ is positive.
+- **Calling $$0$$ positive or negative.** It is neither: rule 2 puts it in a class of its own. Use
+  "not negative" for "positive or zero".
+- **Thinking $$-a^2$$ is a square.** It means $$-(a^2)$$, which is never positive. The square of
+  $$-a$$ is $$(-a)^2 = a^2$$.
+- **Expecting $$x^2 = -4$$ to have a solution.** No real number squares to a negative number.
+
+## In short
+
+- Two rules: sums and products of positive numbers are positive, and every number is exactly one of
+  positive, zero and negative. A number is negative when its opposite is positive.
+- From them: $$1$$ is positive, and a product or quotient is positive when the signs match and
+  negative when they differ.
+- A square is never negative, and it is $$0$$ only for $$0$$. A sum of two squares is $$0$$ only
+  when both numbers are.
+- $$\frac{1}{a}$$ has the same sign as $$a$$.

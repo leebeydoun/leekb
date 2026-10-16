@@ -1,0 +1,776 @@
+{
+  "title": "Review: Real numbers",
+  "description": "Questions on the ideas in this guide, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
+  "questions": [
+    {
+      "id": "why-reals",
+      "stars": 1,
+      "topic": "The real line",
+      "question": "Why do we need numbers beyond the rational numbers?",
+      "options": [
+        "Fractions can't be added together",
+        "Some lengths, like the diagonal of a $$1$$ by $$1$$ square, are not fractions",
+        "There are only finitely many fractions",
+        "Fractions can't be negative"
+      ],
+      "answer": 1,
+      "explanation": "The diagonal $$d$$ of a unit square has $$d^2 = 2$$, and no fraction squares to $$2$$ (:ref{#numbers/sqrt-two}). The real numbers fill such gaps (:ref{#real})."
+    },
+    {
+      "id": "rational-is-real",
+      "stars": 1,
+      "topic": "The real line",
+      "question": "Which statement about $$\\frac{1}{3}$$ is true?",
+      "options": [
+        "It is a real number, because every rational number is real",
+        "It is irrational, because its decimal goes on forever",
+        "It is not a real number, because its decimal never stops",
+        "It is real but neither rational nor irrational"
+      ],
+      "answer": 0,
+      "explanation": "The real numbers are the rational and irrational numbers together (:ref{#real}). An endless decimal that repeats, like $$0.333\\ldots$$, is rational."
+    },
+    {
+      "id": "point-nine",
+      "stars": 2,
+      "topic": "The real line",
+      "question": "What number does the decimal $$0.999\\ldots$$, with $$9$$s forever, stand for?",
+      "options": [
+        "It doesn't stand for any number",
+        "The largest number less than $$1$$",
+        "A number infinitely close to $$1$$ but not equal to it",
+        "Exactly $$1$$"
+      ],
+      "answer": 3,
+      "explanation": "$$0.999\\ldots = 1$$ (:ref{#point-nine}). No real number is the largest one below $$1$$: the average of it and $$1$$ would be larger still (:ref{#between})."
+    },
+    {
+      "id": "decimal-meaning",
+      "stars": 3,
+      "topic": "The real line",
+      "question": "According to the guide, which numbers does the decimal $$3.14159\\ldots$$ lie between?",
+      "options": [
+        "$$3.14159$$ and $$3.14160$$, and no other pair",
+        "Only $$3$$ and $$4$$",
+        "$$3.14$$ and $$3.15$$, and also $$3.141$$ and $$3.142$$, and so on for every cut-off",
+        "It doesn't lie between any two decimals that stop"
+      ],
+      "answer": 2,
+      "explanation": "An endless decimal names the number lying between each cut-off and that cut-off plus one in the last place, for every number of places (:ref{#no-gaps})."
+    },
+    {
+      "id": "same-rules",
+      "stars": 2,
+      "topic": "The real line",
+      "question": "The remainders on division by $$5$$ obey every rule of arithmetic for real numbers. What do they lack?",
+      "options": [
+        "Inverses for non-zero remainders",
+        "An order: they can't be split into positive and negative numbers in a sensible way",
+        "A zero",
+        "Distributivity"
+      ],
+      "answer": 1,
+      "explanation": "Each non-zero remainder has an inverse, so all the rules in :ref{#real-rules} hold. But $$1 + 1 + 1 + 1 + 1 = 0$$ there, which is impossible if $$1$$ is positive (:ref{#one-positive})."
+    },
+    {
+      "id": "numbers-carry-over",
+      "stars": 2,
+      "topic": "The real line",
+      "question": "Why do results from the Numbers guide, like $$(-a)(-b) = ab$$, hold for real numbers?",
+      "options": [
+        "Their proofs used only rules of arithmetic that real numbers also obey",
+        "Every real number is a fraction",
+        "They were checked on many examples",
+        "They are taken as extra rules for real numbers"
+      ],
+      "answer": 0,
+      "explanation": "Those proofs used only the rules for addition and multiplication, which real numbers share (:ref{#real-rules}), so the same proofs work."
+    },
+    {
+      "id": "positivity-rules",
+      "stars": 1,
+      "topic": "Positive and negative",
+      "question": "Which of these is one of the two rules for positive numbers?",
+      "options": [
+        "Every number is positive or negative",
+        "If $$a$$ is positive, so is $$-a$$",
+        "If $$a$$ and $$b$$ are positive, so is $$a - b$$",
+        "If $$a$$ and $$b$$ are positive, so are $$a + b$$ and $$ab$$"
+      ],
+      "answer": 3,
+      "explanation": "The rules are that sums and products of positive numbers are positive, and that every number is exactly one of positive, zero, or having a positive opposite (:ref{#positivity})."
+    },
+    {
+      "id": "zero-sign",
+      "stars": 1,
+      "topic": "Positive and negative",
+      "question": "Is $$0$$ positive, negative, or neither?",
+      "options": [
+        "Positive",
+        "Both",
+        "Neither",
+        "Negative"
+      ],
+      "answer": 2,
+      "explanation": "Rule 2 of :ref{#positivity} says exactly one of: $$a$$ positive, $$a = 0$$, $$-a$$ positive. For $$0$$ it is the middle one, so $$0$$ is neither positive nor negative."
+    },
+    {
+      "id": "one-positive-proof",
+      "stars": 3,
+      "topic": "Positive and negative",
+      "question": "How does the guide prove that $$1$$ is positive?",
+      "options": [
+        "It is one of the rules taken as given",
+        "If $$-1$$ were positive, then $$(-1)(-1) = 1$$ would be positive too, so both would be, which is impossible",
+        "Because $$1 > 0$$ on the number line",
+        "Because $$1 = 1^2$$ and $$1$$ is a whole number"
+      ],
+      "answer": 1,
+      "explanation": "The proof of :ref{#one-positive} is by contradiction: $$-1$$ positive would make $$(-1)(-1) = 1$$ positive, breaking the rule that exactly one of $$1$$ and $$-1$$ is positive."
+    },
+    {
+      "id": "minus-a",
+      "stars": 2,
+      "topic": "Positive and negative",
+      "question": "If $$a = -4$$, what can be said about $$-a$$?",
+      "options": [
+        "It is positive",
+        "It is negative",
+        "It is zero",
+        "Nothing without more information"
+      ],
+      "answer": 0,
+      "explanation": "$$-a$$ means the opposite of $$a$$, here $$4$$, which is positive. A minus sign doesn't make a number negative (:ref{#negative})."
+    },
+    {
+      "id": "squares-sign",
+      "stars": 1,
+      "topic": "Positive and negative",
+      "question": "Which is true for every real number $$a$$?",
+      "options": [
+        "$$-a^2 \\ge 0$$",
+        "$$a^2 > 0$$",
+        "$$a^2 > a$$",
+        "$$a^2 \\ge 0$$"
+      ],
+      "answer": 3,
+      "explanation": "A square is positive unless the number is $$0$$, when it is $$0$$ (:ref{#squares-positive}). So $$a^2 > 0$$ fails for $$a = 0$$."
+    },
+    {
+      "id": "sum-squares-zero",
+      "stars": 3,
+      "topic": "Positive and negative",
+      "question": "If $$a^2 + b^2 = 0$$, what follows?",
+      "options": [
+        "$$a = b$$, but they could be any number",
+        "$$a = -b$$",
+        "$$a = 0$$ and $$b = 0$$",
+        "Nothing; it can't happen"
+      ],
+      "answer": 2,
+      "explanation": "If either were non-zero its square would be positive, and the sum would be positive (:ref{#squares-positive})."
+    },
+    {
+      "id": "inverse-sign",
+      "stars": 2,
+      "topic": "Positive and negative",
+      "question": "If $$a$$ is negative, what is the sign of $$\\frac{1}{a}$$?",
+      "options": [
+        "Positive",
+        "Negative",
+        "It depends on how big $$a$$ is",
+        "It is $$0$$"
+      ],
+      "answer": 1,
+      "explanation": "$$a \\cdot \\frac{1}{a} = 1$$ is positive, which needs the two factors to have the same sign (:ref{#inverse-sign})."
+    },
+    {
+      "id": "order-definition",
+      "stars": 1,
+      "topic": "Order and inequalities",
+      "question": "What does $$a < b$$ mean?",
+      "options": [
+        "$$b - a$$ is positive",
+        "$$a - b$$ is positive",
+        "$$a$$ is closer to $$0$$ than $$b$$",
+        "$$\\frac{a}{b} < 1$$"
+      ],
+      "answer": 0,
+      "explanation": "By :ref{#real-order}, $$a < b$$ means $$b - a$$ is positive. On the number line, $$a$$ is to the left of $$b$$."
+    },
+    {
+      "id": "multiply-negative",
+      "stars": 1,
+      "topic": "Order and inequalities",
+      "question": "If $$a < b$$, what can be said about $$-2a$$ and $$-2b$$?",
+      "options": [
+        "Nothing in general",
+        "$$-2a < -2b$$",
+        "$$-2a = -2b$$",
+        "$$-2a > -2b$$"
+      ],
+      "answer": 3,
+      "explanation": "Multiplying by a negative number reverses an inequality (rule 5 of :ref{#inequality-rules})."
+    },
+    {
+      "id": "subtract-inequalities",
+      "stars": 3,
+      "topic": "Order and inequalities",
+      "question": "If $$a < b$$ and $$c < d$$, which of these always follows?",
+      "options": [
+        "$$ac < bd$$",
+        "$$a - c < b - d$$",
+        "$$a + c < b + d$$",
+        "$$\\frac{a}{c} < \\frac{b}{d}$$"
+      ],
+      "answer": 2,
+      "explanation": "Inequalities the same way round can be added (:ref{#combine-inequalities}). Subtracting fails, for example $$1 < 5$$ and $$0 < 10$$ but $$1 - 0 > 5 - 10$$, and multiplying needs everything non-negative."
+    },
+    {
+      "id": "reciprocals",
+      "stars": 2,
+      "topic": "Order and inequalities",
+      "question": "If $$0 < a < b$$, how do $$\\frac{1}{a}$$ and $$\\frac{1}{b}$$ compare?",
+      "options": [
+        "$$\\frac{1}{a} < \\frac{1}{b}$$",
+        "$$\\frac{1}{b} < \\frac{1}{a}$$",
+        "They are equal",
+        "It depends on $$a$$ and $$b$$"
+      ],
+      "answer": 1,
+      "explanation": "For positive numbers, reciprocals reverse the order (:ref{#reciprocal-order}): $$2 < 3$$ but $$\\frac{1}{3} < \\frac{1}{2}$$."
+    },
+    {
+      "id": "squares-order",
+      "stars": 2,
+      "topic": "Order and inequalities",
+      "question": "When does $$a < b$$ guarantee $$a^2 < b^2$$?",
+      "options": [
+        "When $$a \\ge 0$$",
+        "Always",
+        "When $$b \\ge 0$$",
+        "Never"
+      ],
+      "answer": 0,
+      "explanation": "By :ref{#power-order}, powers keep order for non-negative numbers. Without that, $$-3 < 2$$ but $$9 > 4$$."
+    },
+    {
+      "id": "cross-multiply-condition",
+      "stars": 3,
+      "topic": "Order and inequalities",
+      "question": "Cross-multiplying, $$\\frac{a}{b} < \\frac{c}{d}$$ exactly when $$ad < bc$$. What condition does this need?",
+      "options": [
+        "No condition",
+        "$$a$$ and $$c$$ positive",
+        "$$b \\neq 0$$ and $$d \\neq 0$$ only",
+        "$$b > 0$$ and $$d > 0$$"
+      ],
+      "answer": 3,
+      "explanation": "The proof multiplies by $$bd$$, which must be positive to keep the inequality the same way round (:ref{#cross-multiplying-inequality})."
+    },
+    {
+      "id": "mediant",
+      "stars": 2,
+      "topic": "Order and inequalities",
+      "question": "Where does $$\\frac{2 + 3}{5 + 4} = \\frac{5}{9}$$ lie, compared with $$\\frac{2}{5}$$ and $$\\frac{3}{4}$$?",
+      "options": [
+        "Above both",
+        "Below both",
+        "Between them",
+        "It equals their sum"
+      ],
+      "answer": 2,
+      "explanation": "The mediant of two fractions with positive denominators always lies between them (:ref{#mediant}), even though it isn't their sum."
+    },
+    {
+      "id": "two-squares",
+      "stars": 3,
+      "topic": "Order and inequalities",
+      "question": "What does the guide use to prove $$a^2 + b^2 \\ge 2ab$$?",
+      "options": [
+        "Induction on $$a$$",
+        "$$(a - b)^2 \\ge 0$$, expanded",
+        "$$(a + b)^2 = a^2 + b^2$$",
+        "The triangle inequality"
+      ],
+      "answer": 1,
+      "explanation": "Squares are never negative, so $$(a - b)^2 = a^2 - 2ab + b^2 \\ge 0$$ (:ref{#two-squares})."
+    },
+    {
+      "id": "between",
+      "stars": 2,
+      "topic": "Order and inequalities",
+      "question": "Why is there no smallest positive real number?",
+      "options": [
+        "For any positive $$a$$, the number $$\\frac{a}{2}$$ is positive and smaller",
+        "Because $$0$$ is the smallest",
+        "Because $$0.000\\ldots1$$ is smaller than every positive number",
+        "There is one, but it has no decimal"
+      ],
+      "answer": 0,
+      "explanation": "The average of $$0$$ and $$a$$ lies between them (:ref{#between}), so every positive number has a smaller positive one."
+    },
+    {
+      "id": "root-meaning",
+      "stars": 1,
+      "topic": "Square roots",
+      "question": "What is $$\\sqrt{25}$$?",
+      "options": [
+        "$$12.5$$",
+        "$$-5$$",
+        "$$5$$ and $$-5$$",
+        "$$5$$"
+      ],
+      "answer": 3,
+      "explanation": "$$\\sqrt{a}$$ means the non-negative number whose square is $$a$$ (:ref{#square-root}). The **equation** $$x^2 = 25$$ has two solutions, $$\\pm 5$$."
+    },
+    {
+      "id": "how-many-roots",
+      "stars": 1,
+      "topic": "Square roots",
+      "question": "How many real solutions does $$x^2 = 7$$ have?",
+      "options": [
+        "None",
+        "One",
+        "Two",
+        "Infinitely many"
+      ],
+      "answer": 2,
+      "explanation": "A positive number has exactly two square roots, opposites of each other: here $$\\pm\\sqrt{7}$$ (:ref{#square-root-count})."
+    },
+    {
+      "id": "negative-square",
+      "stars": 1,
+      "topic": "Square roots",
+      "question": "How many real solutions does $$x^2 = -9$$ have?",
+      "options": [
+        "Two",
+        "None",
+        "One",
+        "Infinitely many"
+      ],
+      "answer": 1,
+      "explanation": "A square is never negative (:ref{#squares-positive}), so no real number squares to $$-9$$."
+    },
+    {
+      "id": "root-assumed",
+      "stars": 2,
+      "topic": "Square roots",
+      "question": "Which fact about square roots does the guide take as given rather than prove?",
+      "options": [
+        "That every positive number has at least one square root",
+        "That a positive number has exactly two square roots",
+        "That $$\\sqrt{ab} = \\sqrt{a}\\sqrt{b}$$",
+        "That $$\\sqrt{2}$$ is irrational"
+      ],
+      "answer": 0,
+      "explanation": "Existence is assumed (:ref{#square-roots-exist}), as a consequence of the real line having no gaps. That there are exactly two is then proved (:ref{#square-root-count})."
+    },
+    {
+      "id": "root-sum",
+      "stars": 2,
+      "topic": "Square roots",
+      "question": "Which of these is true for all $$a, b > 0$$?",
+      "options": [
+        "$$\\sqrt{a^2 + b^2} = a + b$$",
+        "$$\\sqrt{a + b} = \\sqrt{a} + \\sqrt{b}$$",
+        "$$\\sqrt{a - b} = \\sqrt{a} - \\sqrt{b}$$",
+        "$$\\sqrt{ab} = \\sqrt{a}\\sqrt{b}$$"
+      ],
+      "answer": 3,
+      "explanation": "Roots split over products and quotients (:ref{#root-product}), but not over sums: $$\\sqrt{9 + 16} = 5$$, not $$7$$."
+    },
+    {
+      "id": "equal-squares",
+      "stars": 2,
+      "topic": "Square roots",
+      "question": "If $$x^2 = y^2$$, what follows?",
+      "options": [
+        "$$x = -y$$",
+        "$$x = y$$",
+        "$$x = y$$ or $$x = -y$$",
+        "$$x = y = 0$$"
+      ],
+      "answer": 2,
+      "explanation": "$$x^2 - y^2 = (x - y)(x + y) = 0$$, so one factor is $$0$$ (:ref{#equal-squares}). Only when both are non-negative must $$x = y$$."
+    },
+    {
+      "id": "irrational-sum",
+      "stars": 3,
+      "topic": "Square roots",
+      "question": "Which of these must be irrational?",
+      "options": [
+        "$$\\sqrt{3}\\,\\sqrt{12}$$",
+        "$$5 + \\sqrt{3}$$",
+        "$$\\sqrt{2} + (3 - \\sqrt{2})$$",
+        "$$\\frac{\\sqrt{8}}{\\sqrt{2}}$$"
+      ],
+      "answer": 1,
+      "explanation": "A rational number plus an irrational one is irrational (:ref{#rational-irrational}). The others are $$6$$, $$3$$ and $$2$$."
+    },
+    {
+      "id": "am-gm",
+      "stars": 2,
+      "topic": "Square roots",
+      "question": "For $$a, b \\ge 0$$, how do $$\\frac{a + b}{2}$$ and $$\\sqrt{ab}$$ compare?",
+      "options": [
+        "$$\\frac{a + b}{2} \\ge \\sqrt{ab}$$, equal only when $$a = b$$",
+        "$$\\frac{a + b}{2} \\le \\sqrt{ab}$$",
+        "They are always equal",
+        "It depends on whether $$a < b$$"
+      ],
+      "answer": 0,
+      "explanation": "This is the AM–GM inequality (:ref{#am-gm}), from $$\\left(\\sqrt{a} - \\sqrt{b}\\right)^2 \\ge 0$$."
+    },
+    {
+      "id": "am-gm-use",
+      "stars": 4,
+      "topic": "Square roots",
+      "question": "A rectangle has area $$49$$. What is the smallest its perimeter can be?",
+      "options": [
+        "There is no smallest perimeter",
+        "$$14$$",
+        "$$49$$",
+        "$$28$$, for a $$7$$ by $$7$$ square"
+      ],
+      "answer": 3,
+      "explanation": "With sides $$x$$ and $$y$$, AM–GM gives $$x + y \\ge 2\\sqrt{xy} = 14$$ (:ref{#am-gm}), so the perimeter $$2(x + y)$$ is at least $$28$$, with equality only for the square."
+    },
+    {
+      "id": "conjugate",
+      "stars": 1,
+      "topic": "Working with square roots",
+      "question": "What is the conjugate of $$4 - \\sqrt{3}$$, and what is their product?",
+      "options": [
+        "$$-4 + \\sqrt{3}$$, with product $$-13$$",
+        "$$4 + \\sqrt{3}$$, with product $$19$$",
+        "$$4 + \\sqrt{3}$$, with product $$13$$",
+        "$$4 - \\sqrt{3}$$, with product $$13$$"
+      ],
+      "answer": 2,
+      "explanation": "$$(4 - \\sqrt{3})(4 + \\sqrt{3}) = 16 - 3 = 13$$, by the difference of two squares."
+    },
+    {
+      "id": "rationalise-why",
+      "stars": 2,
+      "topic": "Working with square roots",
+      "question": "Why does rationalising a denominator not change the value of a fraction?",
+      "options": [
+        "Square roots are always rational",
+        "The top and the bottom are multiplied by the same non-zero number",
+        "Only the bottom is changed",
+        "It does change the value slightly"
+      ],
+      "answer": 1,
+      "explanation": "Multiplying top and bottom by the same non-zero number gives an equal fraction (:ref{#numbers/cancel-product})."
+    },
+    {
+      "id": "inverse-form",
+      "stars": 3,
+      "topic": "Working with square roots",
+      "question": "Why is $$a^2 - 2b^2 \\neq 0$$ when $$a + b\\sqrt{2} \\neq 0$$, with $$a$$ and $$b$$ rational?",
+      "options": [
+        "Otherwise $$\\left(\\frac{a}{b}\\right)^2 = 2$$ or $$a = b = 0$$, both impossible",
+        "Because squares are positive",
+        "Because $$a$$ and $$b$$ are integers",
+        "Because $$2b^2$$ is always bigger than $$a^2$$"
+      ],
+      "answer": 0,
+      "explanation": "If $$b \\neq 0$$, $$a^2 = 2b^2$$ would make $$\\frac{a}{b}$$ a rational square root of $$2$$. If $$b = 0$$, $$a \\neq 0$$. See :ref{#root-two-form}."
+    },
+    {
+      "id": "squaring-false",
+      "stars": 2,
+      "topic": "Working with square roots",
+      "question": "Squaring both sides of an equation can add false solutions. Why?",
+      "options": [
+        "Squaring loses solutions",
+        "Squaring always changes the solutions",
+        "Square roots can be negative",
+        "Values that make the two sides opposites also make their squares equal"
+      ],
+      "answer": 3,
+      "explanation": "If $$A = -B$$ then $$A^2 = B^2$$ too. Squaring is reversible only when both sides are non-negative (:ref{#squaring-sides})."
+    },
+    {
+      "id": "squaring-check",
+      "stars": 3,
+      "topic": "Working with square roots",
+      "question": "Squaring $$\\sqrt{x + 7} = x + 1$$ gives $$x = 2$$ or $$x = -3$$. Which are solutions of the original equation?",
+      "options": [
+        "Both",
+        "Only $$x = -3$$",
+        "Only $$x = 2$$",
+        "Neither"
+      ],
+      "answer": 2,
+      "explanation": "At $$x = -3$$ the left side is $$\\sqrt{4} = 2$$ but the right side is $$-2$$. Every answer found by squaring must be checked (:ref{#squaring-sides})."
+    },
+    {
+      "id": "abs-definition",
+      "stars": 1,
+      "topic": "Absolute value",
+      "question": "What is $$|x|$$ when $$x < 0$$?",
+      "options": [
+        "$$x$$",
+        "$$-x$$",
+        "$$0$$",
+        "It isn't defined"
+      ],
+      "answer": 1,
+      "explanation": "For negative $$x$$, $$|x| = -x$$, which is positive (:ref{#absolute-value})."
+    },
+    {
+      "id": "abs-root",
+      "stars": 2,
+      "topic": "Absolute value",
+      "question": "Which is equal to $$\\sqrt{x^2}$$ for every real $$x$$?",
+      "options": [
+        "$$|x|$$",
+        "$$x$$",
+        "$$-x$$",
+        "$$\\pm x$$"
+      ],
+      "answer": 0,
+      "explanation": "$$\\sqrt{x^2}$$ is the non-negative number whose square is $$x^2$$, which is $$|x|$$ (:ref{#abs-basics}). For $$x = -3$$ it is $$3$$."
+    },
+    {
+      "id": "distance",
+      "stars": 1,
+      "topic": "Absolute value",
+      "question": "What is the distance between $$-4$$ and $$2$$?",
+      "options": [
+        "$$-2$$",
+        "$$-6$$",
+        "$$2$$",
+        "$$6$$"
+      ],
+      "answer": 3,
+      "explanation": "The distance is $$|-4 - 2| = |-6| = 6$$ (:ref{#distance})."
+    },
+    {
+      "id": "triangle",
+      "stars": 3,
+      "topic": "Absolute value",
+      "question": "When is $$|a + b| = |a| + |b|$$?",
+      "options": [
+        "Only when $$a = b$$",
+        "Always",
+        "Exactly when $$ab \\ge 0$$",
+        "Never"
+      ],
+      "answer": 2,
+      "explanation": "The triangle inequality $$|a + b| \\le |a| + |b|$$ is an equality exactly when $$a$$ and $$b$$ don't have opposite signs (:ref{#triangle-inequality})."
+    },
+    {
+      "id": "abs-equation-check",
+      "stars": 3,
+      "topic": "Absolute value",
+      "question": "Solving $$|x - 3| = 2x$$ by cases gives $$x = -3$$ and $$x = 1$$. Why is $$x = -3$$ rejected?",
+      "options": [
+        "Because $$-3$$ is negative",
+        "The right side $$2x$$ is then negative, and an absolute value can't be",
+        "Because it makes $$x - 3 = 0$$",
+        "It isn't rejected"
+      ],
+      "answer": 1,
+      "explanation": ":ref{#abs-equation} only applies when the right side is not negative. At $$x = -3$$, $$|-3 - 3| = 6$$, not $$-6$$."
+    },
+    {
+      "id": "abs-equal",
+      "stars": 4,
+      "topic": "Absolute value",
+      "question": "What does $$|x - 1| = |x + 5|$$ say about $$x$$ on the number line?",
+      "options": [
+        "It is the same distance from $$1$$ as from $$-5$$, so it is $$-2$$",
+        "It is $$1$$ or $$-5$$",
+        "It is between $$1$$ and $$5$$",
+        "Every number works"
+      ],
+      "answer": 0,
+      "explanation": "$$|x - 1|$$ and $$|x - (-5)|$$ are distances (:ref{#distance}), so $$x$$ is halfway between $$1$$ and $$-5$$."
+    },
+    {
+      "id": "odd-root",
+      "stars": 1,
+      "topic": "Roots and fractional powers",
+      "question": "How many real solutions does $$x^3 = -8$$ have?",
+      "options": [
+        "Three",
+        "Two, $$x = \\pm 2$$",
+        "None",
+        "One, $$x = -2$$"
+      ],
+      "answer": 3,
+      "explanation": "For odd $$n$$, $$x^n = a$$ has exactly one real solution for every $$a$$ (:ref{#power-equation})."
+    },
+    {
+      "id": "even-root",
+      "stars": 2,
+      "topic": "Roots and fractional powers",
+      "question": "How many real solutions does $$x^4 = 81$$ have?",
+      "options": [
+        "Four",
+        "One, $$x = 3$$",
+        "Two, $$x = \\pm 3$$",
+        "None"
+      ],
+      "answer": 2,
+      "explanation": "For even $$n$$ and $$a > 0$$, $$x^n = a$$ has two solutions $$\\pm\\sqrt[n]{a}$$ (:ref{#power-equation})."
+    },
+    {
+      "id": "fractional-power",
+      "stars": 1,
+      "topic": "Roots and fractional powers",
+      "question": "What is $$8^{2/3}$$?",
+      "options": [
+        "$$\\frac{16}{3}$$",
+        "$$4$$",
+        "$$\\frac{1}{4}$$",
+        "$$512^{1/2}$$ only, which isn't a whole number"
+      ],
+      "answer": 1,
+      "explanation": "$$8^{2/3} = \\left(\\sqrt[3]{8}\\right)^2 = 2^2 = 4$$ (:ref{#rational-power})."
+    },
+    {
+      "id": "one-over-n",
+      "stars": 2,
+      "topic": "Roots and fractional powers",
+      "question": "What does $$a^{1/n}$$ mean, for $$a > 0$$?",
+      "options": [
+        "The positive $$n$$-th root of $$a$$",
+        "$$\\frac{1}{a^n}$$",
+        "$$\\frac{a}{n}$$",
+        "$$a^{-n}$$"
+      ],
+      "answer": 0,
+      "explanation": "$$a^{1/n} = \\sqrt[n]{a}$$ (:ref{#nth-root}). It is $$a^{-n}$$ that equals $$\\frac{1}{a^n}$$."
+    },
+    {
+      "id": "well-defined",
+      "stars": 3,
+      "topic": "Roots and fractional powers",
+      "question": "Why must the guide check that $$a^{2/3}$$ and $$a^{4/6}$$ agree?",
+      "options": [
+        "It doesn't need checking",
+        "Because $$2/3$$ is irrational",
+        "Because $$a$$ might be negative",
+        "The same fraction can be written in many ways, and the definition uses its top and bottom"
+      ],
+      "answer": 3,
+      "explanation": "$$a^{m/n}$$ is defined using $$m$$ and $$n$$, so different ways of writing the same fraction must give the same value (:ref{#rational-power-well-defined})."
+    },
+    {
+      "id": "positive-base",
+      "stars": 4,
+      "topic": "Roots and fractional powers",
+      "question": "Why are fractional powers only defined for positive bases?",
+      "options": [
+        "Powers of negative numbers are always positive",
+        "Negative numbers have no roots at all",
+        "For a negative base, the value would depend on how the exponent is written",
+        "So that $$0^{1/2}$$ is defined"
+      ],
+      "answer": 2,
+      "explanation": "$$\\sqrt[3]{-8} = -2$$, but $$\\frac{1}{3} = \\frac{2}{6}$$ and $$\\sqrt[6]{(-8)^2} = 2$$. See the guide's discussion after :ref{#rational-power-laws}."
+    },
+    {
+      "id": "power-laws",
+      "stars": 2,
+      "topic": "Roots and fractional powers",
+      "question": "Which is $$x^{1/2} \\cdot x^{1/3}$$, for $$x > 0$$?",
+      "options": [
+        "$$x^{1/6}$$",
+        "$$x^{5/6}$$",
+        "$$x^{1/5}$$",
+        "$$x^{2/5}$$"
+      ],
+      "answer": 1,
+      "explanation": "Exponents add: $$\\frac{1}{2} + \\frac{1}{3} = \\frac{5}{6}$$ (:ref{#rational-power-laws})."
+    },
+    {
+      "id": "interval-notation",
+      "stars": 1,
+      "topic": "Solving inequalities",
+      "question": "Which numbers make up the interval $$[-1, 4)$$?",
+      "options": [
+        "$$-1 \\le x < 4$$",
+        "$$-1 < x \\le 4$$",
+        "$$-1 < x < 4$$",
+        "$$-1 \\le x \\le 4$$"
+      ],
+      "answer": 0,
+      "explanation": "A square bracket includes the endpoint and a round one leaves it out (:ref{#interval})."
+    },
+    {
+      "id": "infinity-bracket",
+      "stars": 2,
+      "topic": "Solving inequalities",
+      "question": "Why is $$[5, \\infty]$$ wrong as a way to write the numbers $$x \\ge 5$$?",
+      "options": [
+        "It is correct",
+        "It should be $$(5, \\infty)$$",
+        "Intervals can't be infinite",
+        "$$\\infty$$ is not a number, so it can't be included as an endpoint"
+      ],
+      "answer": 3,
+      "explanation": "The symbol $$\\infty$$ only says the interval goes on forever, so that end always takes a round bracket: $$[5, \\infty)$$ (:ref{#interval})."
+    },
+    {
+      "id": "unsafe-multiply",
+      "stars": 3,
+      "topic": "Solving inequalities",
+      "question": "Why is multiplying both sides of $$\\frac{3x - 1}{x + 2} \\ge 2$$ by $$x + 2$$ unsafe?",
+      "options": [
+        "Because $$x + 2$$ is irrational",
+        "It could make the inequality an equation",
+        "Its sign depends on $$x$$, and a negative multiplier reverses the inequality",
+        "It isn't unsafe"
+      ],
+      "answer": 2,
+      "explanation": "Only multiplying by a number of known sign is a safe step (:ref{#inequality-steps}). A sign table avoids the problem."
+    },
+    {
+      "id": "sign-table",
+      "stars": 2,
+      "topic": "Solving inequalities",
+      "question": "What are the solutions of $$(x - 1)(x + 4) < 0$$?",
+      "options": [
+        "$$x < -4$$ or $$x > 1$$",
+        "$$-4 < x < 1$$",
+        "$$x < 1$$",
+        "$$x > -4$$"
+      ],
+      "answer": 1,
+      "explanation": "A product is negative exactly when the factors have opposite signs (:ref{#product-sign}), which happens between $$-4$$ and $$1$$."
+    },
+    {
+      "id": "square-inequality",
+      "stars": 2,
+      "topic": "Solving inequalities",
+      "question": "What are the solutions of $$x^2 < 9$$?",
+      "options": [
+        "$$-3 < x < 3$$",
+        "$$x < 3$$",
+        "$$x < \\pm 3$$",
+        "$$x > -3$$"
+      ],
+      "answer": 0,
+      "explanation": "For $$c > 0$$, $$x^2 < c$$ exactly when $$-\\sqrt{c} < x < \\sqrt{c}$$ (:ref{#square-inequality}). $$x = -10$$ satisfies $$x < 3$$ but not $$x^2 < 9$$."
+    },
+    {
+      "id": "abs-inequality",
+      "stars": 2,
+      "topic": "Solving inequalities",
+      "question": "What are the solutions of $$|x - 5| < 2$$?",
+      "options": [
+        "$$-2 < x < 2$$",
+        "$$x < 7$$",
+        "$$x < 3$$ or $$x > 7$$",
+        "$$3 < x < 7$$"
+      ],
+      "answer": 3,
+      "explanation": "The numbers within $$2$$ of $$5$$ (:ref{#abs-inequality})."
+    }
+  ]
+}

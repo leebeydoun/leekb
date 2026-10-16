@@ -78,12 +78,16 @@ $$(1, 2, 3)$$.
 
 :::
 
-Why is it fine to set two of the original equations aside? Each new equation is made from a pair,
-with non-zero multipliers, so the step can be undone: the new equation together with one equation of
-its pair gives back the other, by :ref{#combining}. Start from the original equation used for
-back-substitution. Since the two pairs are different and between them use all three originals, the
-new equations give back the other two originals, one after the other. So the kept equation and the
-two new ones form an equivalent system: no solution is lost, and none is gained.
+Why is it fine to set two of the original equations aside? Take the first example. The new equations
+are (4), which is (1) plus (3), and (5), which is (2) plus (3), and (1) is kept for
+back-substitution. Nothing is lost, because the originals can be got back: (3) is (4) minus (1), and
+then (2) is (5) minus (3). So by :ref{#combining}, the system (1), (4), (5) has exactly the same
+solutions as (1), (2), (3).
+
+The same works in general. Each new equation is made from a pair with non-zero multipliers, so
+together with one equation of its pair it gives back the other. As long as the two pairs are
+different, the originals can be recovered one after another, starting from the equation kept for
+back-substitution.
 
 Step 2 is where mistakes happen. Both new equations must be free of the **same** unknown, and they
 must come from different pairs. Combining (1) and (3) twice in different ways would only give the

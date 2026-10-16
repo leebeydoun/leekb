@@ -1,0 +1,251 @@
+---
+title: Working with square roots
+description:
+  Conjugates, rationalising, numbers of the form a + b√2, and equations with square roots.
+---
+
+Expressions with square roots in them can usually be rewritten in a more convenient form, and one
+identity does almost all the work: $$(x + y)(x - y) = x^2 - y^2$$. This page uses it to move square
+roots out of the bottom (or the top) of a fraction, to show that numbers like $$3 + 2\sqrt{2}$$ can
+be divided as well as multiplied, and then turns to equations with an unknown under a square root,
+where squaring both sides can add false solutions.
+
+## Conjugates
+
+The numbers $$p + \sqrt{q}$$ and $$p - \sqrt{q}$$ are called **conjugates** of each other. Their
+product has no square root left in it, by the difference of two squares
+(:ref{#numbers/square-formulas}):
+
+```math
+\left(p + \sqrt{q}\right)\left(p - \sqrt{q}\right) = p^2 - \left(\sqrt{q}\right)^2 = p^2 - q
+```
+
+For example, $$\left(3 + \sqrt{2}\right)\left(3 - \sqrt{2}\right) = 9 - 2 = 7$$. The same works with
+two roots: $$\left(\sqrt{a} + \sqrt{b}\right)\left(\sqrt{a} - \sqrt{b}\right) = a - b$$.
+
+## Rationalising the denominator
+
+A fraction with a square root on the bottom can be rewritten with a rational number on the bottom
+instead, by multiplying the top and the bottom by the same thing. This is called **rationalising the
+denominator**. It doesn't change the value: multiplying top and bottom by the same non-zero number
+gives an equal fraction (:ref{#numbers/cancel-product}).
+
+When the bottom is a single root, multiply by that root:
+
+```math
+\frac{1}{\sqrt{3}} = \frac{1 \cdot \sqrt{3}}{\sqrt{3} \cdot \sqrt{3}} = \frac{\sqrt{3}}{3},
+\qquad
+\frac{10}{\sqrt{5}} = \frac{10\sqrt{5}}{5} = 2\sqrt{5}
+```
+
+When the bottom is a sum or difference, multiply by its conjugate.
+
+:::example[A conjugate on the bottom]
+
+Rationalise the denominator of $$\frac{7}{3 - \sqrt{2}}$$.
+
+Multiply the top and the bottom by the conjugate $$3 + \sqrt{2}$$:
+
+```math
+\frac{7}{3 - \sqrt{2}}
+= \frac{7\left(3 + \sqrt{2}\right)}{\left(3 - \sqrt{2}\right)\left(3 + \sqrt{2}\right)}
+= \frac{7\left(3 + \sqrt{2}\right)}{9 - 2}
+= 3 + \sqrt{2}
+```
+
+**Check:** $$\left(3 + \sqrt{2}\right)\left(3 - \sqrt{2}\right) = 7$$, so $$3 + \sqrt{2}$$ really is
+$$7$$ divided by $$3 - \sqrt{2}$$.
+
+:::
+
+:::example[Two roots on the bottom]
+
+Rationalise the denominator of $$\frac{1}{\sqrt{6} - \sqrt{2}}$$. Its conjugate is
+$$\sqrt{6} + \sqrt{2}$$:
+
+```math
+\frac{1}{\sqrt{6} - \sqrt{2}}
+= \frac{\sqrt{6} + \sqrt{2}}{\left(\sqrt{6} - \sqrt{2}\right)\left(\sqrt{6} + \sqrt{2}\right)}
+= \frac{\sqrt{6} + \sqrt{2}}{6 - 2}
+= \frac{\sqrt{6} + \sqrt{2}}{4}
+```
+
+:::
+
+Rationalising is not always an improvement. It is useful when the result is simpler, or easier to
+compare or estimate, but a root on the bottom is not an error.
+
+## Rationalising the numerator
+
+The same trick can move a root from the top to the bottom, which is called **rationalising the
+numerator**. That is useful when the top is a difference of two nearly equal roots.
+
+:::example[How far apart are √101 and √100?]
+
+Multiply the difference by $$\frac{\sqrt{101} + \sqrt{100}}{\sqrt{101} + \sqrt{100}}$$, which is
+$$1$$, so the value doesn't change. The top then becomes a difference of two squares:
+
+```math
+\sqrt{101} - \sqrt{100}
+= \frac{\left(\sqrt{101} - \sqrt{100}\right)\left(\sqrt{101} + \sqrt{100}\right)}
+       {\sqrt{101} + \sqrt{100}}
+= \frac{101 - 100}{\sqrt{101} + 10}
+= \frac{1}{\sqrt{101} + 10}
+```
+
+Since $$\sqrt{101} > 10$$, the bottom is more than $$20$$, so the difference is less than
+$$\frac{1}{20} = 0.05$$. The original form, a difference of two numbers near $$10$$, hides how small
+it is.
+
+:::
+
+In the same way, $$\sqrt{n + 1} - \sqrt{n} = \frac{1}{\sqrt{n + 1} + \sqrt{n}}$$ for every
+$$n \ge 0$$, which shows that the gaps between the square roots of consecutive whole numbers shrink
+as the numbers grow.
+
+## Numbers of the form a + b√2
+
+Adding, subtracting and multiplying numbers like $$3 + 2\sqrt{2}$$ gives numbers of the same kind:
+
+```math
+\left(3 + 2\sqrt{2}\right)\left(1 - \sqrt{2}\right)
+= 3 - 3\sqrt{2} + 2\sqrt{2} - 2 \cdot 2
+= -1 - \sqrt{2}
+```
+
+Conjugates show that dividing does too.
+
+:::proposition[Numbers of the form a + b√2]{#root-two-form}
+
+Let $$a$$, $$b$$, $$c$$ and $$d$$ be rational numbers.
+
+1. The sum, difference and product of $$a + b\sqrt{2}$$ and $$c + d\sqrt{2}$$ can each be written as
+   $$e + f\sqrt{2}$$ with $$e$$ and $$f$$ rational.
+2. If $$a + b\sqrt{2} \neq 0$$, its inverse can also be written in this form:
+
+   ```math
+   \frac{1}{a + b\sqrt{2}} = \frac{a}{a^2 - 2b^2} - \frac{b}{a^2 - 2b^2}\sqrt{2}
+   ```
+
+3. A number can be written in this form in only one way: if $$a + b\sqrt{2} = c + d\sqrt{2}$$, then
+   $$a = c$$ and $$b = d$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Conjugate_(square_roots)#Properties"}
+
+**Part 1.** Collecting terms, the sum is $$(a + c) + (b + d)\sqrt{2}$$ and the difference is
+$$(a - c) + (b - d)\sqrt{2}$$. Expanding the product, using $$\sqrt{2}\sqrt{2} = 2$$,
+
+```math
+\left(a + b\sqrt{2}\right)\left(c + d\sqrt{2}\right) = (ac + 2bd) + (ad + bc)\sqrt{2}
+```
+
+In each case the numbers in front are rational, because sums and products of rational numbers are
+rational.
+
+**Part 2.** First, $$a^2 - 2b^2 \neq 0$$. If $$b = 0$$, then $$a \neq 0$$, since the number isn't
+$$0$$, so $$a^2 - 2b^2 = a^2$$ is not $$0$$. If $$b \neq 0$$ and $$a^2 = 2b^2$$, then
+$$\left(\frac{a}{b}\right)^2 = 2$$, so a rational number would square to $$2$$, which is impossible
+(:ref{#numbers/sqrt-two}).
+
+Now multiply top and bottom by the conjugate $$a - b\sqrt{2}$$. It is not $$0$$, since its product
+with $$a + b\sqrt{2}$$ is $$a^2 - 2b^2$$, which is not $$0$$. So
+
+```math
+\frac{1}{a + b\sqrt{2}}
+= \frac{a - b\sqrt{2}}{\left(a + b\sqrt{2}\right)\left(a - b\sqrt{2}\right)}
+= \frac{a - b\sqrt{2}}{a^2 - 2b^2}
+```
+
+which is the form claimed, with rational numbers in front.
+
+**Part 3.** Suppose $$a + b\sqrt{2} = c + d\sqrt{2}$$ but $$b \neq d$$. Rearranging,
+$$\sqrt{2} = \frac{a - c}{d - b}$$, a quotient of rational numbers, so $$\sqrt{2}$$ would be
+rational. That is impossible, so $$b = d$$, and then $$a = c$$ too.
+
+:::
+
+For example, with $$a = 3$$ and $$b = 2$$, $$a^2 - 2b^2 = 1$$, so
+$$\frac{1}{3 + 2\sqrt{2}} = 3 - 2\sqrt{2}$$. The same holds with $$\sqrt{2}$$ replaced by
+$$\sqrt{3}$$, or by any other square root of a rational number that is itself irrational, and is
+proved the same way.
+
+## Equations with square roots
+
+To solve an equation with the unknown under a square root, the usual move is to get the root on its
+own and square both sides. But squaring is not a safe step: as the
+[Linear equations](../linear-equations/equations.mdx) guide pointed out, it can let in false
+solutions, because $$A$$ and $$-A$$ have the same square. Here is exactly what squaring does and
+doesn't do.
+
+:::proposition[Squaring both sides]{#squaring-sides}
+
+If $$A = B$$, then $$A^2 = B^2$$. If $$A \ge 0$$ and $$B \ge 0$$, the reverse holds too:
+$$A^2 = B^2$$ gives $$A = B$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Extraneous_and_missing_solutions#Other_operations"}
+
+If $$A = B$$, then $$A^2 = A \cdot A = B \cdot B = B^2$$. For the reverse, if $$A^2 = B^2$$ and both
+are not negative, then $$A = B$$ by :ref{#equal-squares}.
+
+:::
+
+So squaring never loses a solution, but it can gain some: any value that makes the two sides
+opposites, $$A = -B$$, also makes the squares equal. The fix is to **check every answer in the
+original equation**.
+
+:::example[A false solution]
+
+Solve $$\sqrt{x + 7} = x + 1$$.
+
+Squaring both sides, $$x + 7 = (x + 1)^2 = x^2 + 2x + 1$$, so $$x^2 + x - 6 = 0$$. This factors as
+$$(x + 3)(x - 2) = 0$$, so by :ref{#numbers/zero-product}, $$x = -3$$ or $$x = 2$$.
+
+**Check** each in the original equation:
+
+- $$x = 2$$: the left side is $$\sqrt{9} = 3$$ and the right side is $$2 + 1 = 3$$. A solution.
+- $$x = -3$$: the left side is $$\sqrt{4} = 2$$, but the right side is $$-3 + 1 = -2$$. Not a
+  solution: it solves $$\sqrt{x + 7} = -(x + 1)$$ instead, which squares to the same thing.
+
+So the only solution is $$x = 2$$.
+
+:::
+
+:::example[Two roots]
+
+Solve $$\sqrt{x + 5} - \sqrt{x} = 1$$.
+
+Get one root on its own first: $$\sqrt{x + 5} = 1 + \sqrt{x}$$. Squaring,
+$$x + 5 = 1 + 2\sqrt{x} + x$$, so $$2\sqrt{x} = 4$$ and $$\sqrt{x} = 2$$. Squaring again, $$x = 4$$.
+
+**Check:** $$\sqrt{9} - \sqrt{4} = 3 - 2 = 1$$. So $$x = 4$$.
+
+:::
+
+Sometimes there is no solution at all, and it can be seen without squaring. The equation
+$$\sqrt{x} + 3 = 1$$ would need $$\sqrt{x} = -2$$, but a square root is never negative.
+
+## Common mistakes
+
+- **Squaring a sum term by term.** $$\left(1 + \sqrt{x}\right)^2$$ is $$1 + 2\sqrt{x} + x$$, not
+  $$1 + x$$. Don't forget the middle term.
+- **Skipping the check.** After squaring both sides, every answer must be checked in the original
+  equation, and false ones thrown out.
+- **Multiplying only the bottom.** Rationalising multiplies the top **and** the bottom by the same
+  number; otherwise the value changes.
+- **Using the wrong conjugate.** The conjugate of $$3 - \sqrt{2}$$ is $$3 + \sqrt{2}$$; multiplying
+  by $$3 - \sqrt{2}$$ again leaves a square root behind.
+
+## In short
+
+- Conjugates multiply to remove square roots: $$p + \sqrt{q}$$ times $$p - \sqrt{q}$$ is
+  $$p^2 - q$$.
+- Rationalising multiplies top and bottom by a root or a conjugate, to move roots out of the bottom
+  (or the top) of a fraction.
+- Numbers $$a + b\sqrt{2}$$ with $$a$$, $$b$$ rational can be added, subtracted, multiplied and
+  divided, and stay of that form.
+- Squaring both sides of an equation keeps every solution but can add false ones, so check each
+  answer in the original equation.

@@ -1,0 +1,323 @@
+---
+title: Order and inequalities
+description: Comparing real numbers, the rules for inequalities, and some useful inequalities.
+---
+
+Saying that one number is bigger than another is a statement about a difference: $$7$$ is bigger
+than $$4$$ because $$7 - 4$$ is positive. So the rules for positive numbers from the
+[previous page](./positivity.mdx) turn straight into rules for inequalities. This page proves them,
+and then uses them for some inequalities that come up again and again.
+
+## Comparing numbers
+
+:::definition[Order]{#real-order}
+
+For real numbers $$a$$ and $$b$$, $$a$$ is **less than** $$b$$, written $$a < b$$, if $$b - a$$ is
+positive. We also write $$b > a$$ for the same thing. We write $$a \le b$$ when $$a < b$$ or
+$$a = b$$, and $$b \ge a$$ for the same thing.
+
+:::
+
+This is the same as the definition for integers (:ref{#numbers/order}). In particular $$a > 0$$
+means $$a - 0 = a$$ is positive, and $$a < 0$$ means $$0 - a = -a$$ is positive, that is, $$a$$ is
+negative. On the number line, $$a < b$$ means $$a$$ lies to the left of $$b$$. For example,
+$$-3 < -1$$ because $$-1 - (-3) = 2$$ is positive:
+
+::number-line{from=-4 to=2 points="-3, -1"}
+
+## The rules for inequalities
+
+:::proposition[Rules for inequalities]{#inequality-rules}
+
+For real numbers $$a$$, $$b$$ and $$c$$:
+
+1. **Exactly one:** exactly one of $$a < b$$, $$a = b$$ and $$a > b$$ is true.
+2. **Chaining:** if $$a < b$$ and $$b < c$$, then $$a < c$$.
+3. **Adding:** if $$a < b$$, then $$a + c < b + c$$.
+4. **Multiplying by a positive number:** if $$a < b$$ and $$c > 0$$, then $$ac < bc$$.
+5. **Multiplying by a negative number:** if $$a < b$$ and $$c < 0$$, then $$ac > bc$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Inequality_(mathematics)#Properties_on_the_number_line"}
+
+Each part turns the inequalities into statements that certain differences are positive, using
+:ref{#real-order}, and then uses the [rules for positivity](./positivity.mdx).
+
+**Part 1.** Let $$d = b - a$$. By rule 2 for positivity, exactly one of these is true: $$d$$ is
+positive, $$d = 0$$, or $$-d$$ is positive. The first says $$a < b$$. The second says $$a = b$$. The
+third says $$a > b$$, because $$-d = -(b - a) = a - b$$.
+
+**Part 2.** The differences $$b - a$$ and $$c - b$$ are positive, so their sum is positive by rule 1
+for positivity. The $$b$$s cancel in the sum, which is $$(c - b) + (b - a) = c - a$$. So $$a < c$$.
+
+**Part 3.** $$(b + c) - (a + c) = b - a$$, which is positive.
+
+**Part 4.** $$b - a$$ and $$c$$ are positive, so their product is positive by rule 1. By
+distributivity it is $$(b - a)c = bc - ac$$, so $$ac < bc$$.
+
+**Part 5.** Now $$b - a$$ and $$-c$$ are positive, so $$(b - a)(-c)$$ is positive. Expanding,
+$$(b - a)(-c) = -bc + ac = ac - bc$$. So $$ac - bc$$ is positive, which says $$ac > bc$$.
+
+:::
+
+Rule 5 is the one to watch: multiplying both sides by a negative number **reverses** the inequality.
+For example, $$2 < 5$$, but multiplying by $$-3$$ gives $$-6 > -15$$. On the number line,
+multiplying by $$-1$$ reflects everything about $$0$$, which swaps left and right.
+
+The same rules hold for $$\le$$, because $$a \le b$$ means $$a < b$$ or $$a = b$$, and each rule can
+be applied to each case. For example, if $$a \le b$$ and $$c > 0$$, then $$ac \le bc$$.
+
+## Combining inequalities
+
+:::proposition[Adding and multiplying inequalities]{#combine-inequalities}
+
+1. If $$a < b$$ and $$c < d$$, then $$a + c < b + d$$.
+2. If $$0 \le a < b$$ and $$0 \le c < d$$, then $$ac < bd$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Ordered_field#Properties_of_ordered_fields"}
+
+**Part 1.** Adding $$c$$ to both sides of $$a < b$$ gives $$a + c < b + c$$, and adding $$b$$ to
+both sides of $$c < d$$ gives $$b + c < b + d$$. Chaining the two, $$a + c < b + d$$.
+
+**Part 2.** We go from $$ac$$ to $$bd$$ in two steps, changing one factor at a time. First,
+$$ac \le bc$$: if $$c = 0$$ both sides are $$0$$, and if $$c > 0$$ this is rule 4. Second, $$b$$ is
+positive, since $$b > a \ge 0$$, so multiplying $$c < d$$ by $$b$$ gives $$bc < bd$$. Chaining,
+$$ac < bd$$.
+
+:::
+
+The conditions in part 2 matter. Without them it can fail: $$-5 < 1$$ and $$-2 < 1$$, but
+$$(-5)(-2) = 10$$ is not less than $$1 \cdot 1 = 1$$. And inequalities can't be subtracted:
+$$1 < 5$$ and $$0 < 10$$, but $$1 - 0 = 1$$ is not less than $$5 - 10 = -5$$.
+
+## Reciprocals and powers
+
+:::proposition[Reciprocals reverse order]{#reciprocal-order}
+
+If $$0 < a < b$$, then $$0 < \frac{1}{b} < \frac{1}{a}$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Inequality_(mathematics)#Multiplicative_inverse"}
+
+By :ref{#inverse-sign}, $$\frac{1}{a}$$ and $$\frac{1}{b}$$ are positive, so their product
+$$\frac{1}{ab}$$ is positive. Multiplying both sides of $$a < b$$ by it keeps the inequality the
+same way round (rule 4):
+
+```math
+\frac{a}{ab} < \frac{b}{ab}, \qquad \text{that is,} \qquad \frac{1}{b} < \frac{1}{a}
+```
+
+:::
+
+So $$2 < 3$$ gives $$\frac{1}{3} < \frac{1}{2}$$: sharing among more people gives each a smaller
+share. The same holds for two negative numbers, and is proved the same way.
+
+:::proposition[Powers keep order]{#power-order}
+
+If $$0 \le a < b$$, then $$a^n < b^n$$ for every positive integer $$n$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Power_Function_is_Strictly_Increasing_over_Positive_Reals/Natural_Exponent"}
+
+By induction on $$n$$ (:ref{#numbers/induction}). For $$n = 1$$ it says $$a < b$$, which is given.
+
+Suppose $$a^n < b^n$$ for some $$n$$. Since $$a \ge 0$$, $$a^n$$ is a product of numbers that are
+not negative, so $$a^n \ge 0$$. Now part 2 of :ref{#combine-inequalities}, applied to
+$$0 \le a^n < b^n$$ and $$0 \le a < b$$, gives $$a^n \cdot a < b^n \cdot b$$, that is,
+$$a^{n+1} < b^{n+1}$$.
+
+:::
+
+The condition $$a \ge 0$$ matters: $$-3 < 2$$, but $$(-3)^2 = 9$$ is bigger than $$2^2 = 4$$.
+
+The result also works backwards, which is how it is usually used.
+
+:::corollary[Comparing by powers]{#power-order-converse}
+
+Let $$a \ge 0$$ and $$b \ge 0$$, and let $$n$$ be a positive integer. If $$a^n < b^n$$, then
+$$a < b$$. If $$a^n = b^n$$, then $$a = b$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Power_Function_is_Strictly_Increasing_over_Positive_Reals/Natural_Exponent"}
+
+By part 1 of :ref{#inequality-rules}, exactly one of $$a < b$$, $$a = b$$ and $$a > b$$ is true. If
+$$a > b$$, then $$b^n < a^n$$ by :ref{#power-order}, with the roles of $$a$$ and $$b$$ swapped.
+
+- If $$a^n < b^n$$, then $$a = b$$ is ruled out, since it would make the powers equal, and $$a > b$$
+  is ruled out, since it would make $$b^n < a^n$$. So $$a < b$$.
+- If $$a^n = b^n$$, then $$a < b$$ would make $$a^n < b^n$$, and $$a > b$$ would make $$b^n < a^n$$.
+  Neither is possible, so $$a = b$$.
+
+:::
+
+## Comparing fractions
+
+:::theorem[Cross-multiplying inequalities]{#cross-multiplying-inequality}
+
+Let $$b > 0$$ and $$d > 0$$. Then $$\frac{a}{b} < \frac{c}{d}$$ exactly when $$ad < bc$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Inequality_(mathematics)#Multiplication_and_division"}
+
+There are two directions (:ref{#numbers/exactly-when}). The number $$bd$$ is positive, by rule 1 for
+positivity.
+
+If $$\frac{a}{b} < \frac{c}{d}$$, multiplying both sides by $$bd$$ (rule 4) gives
+$$\frac{a}{b} \cdot bd < \frac{c}{d} \cdot bd$$. The $$b$$ cancels on the left and the $$d$$ on the
+right, leaving $$ad < cb$$.
+
+If $$ad < bc$$, multiply both sides by $$\frac{1}{bd}$$, which is positive by :ref{#inverse-sign}.
+This gives $$\frac{ad}{bd} < \frac{bc}{bd}$$, which simplifies to $$\frac{a}{b} < \frac{c}{d}$$.
+
+:::
+
+For example, $$\frac{5}{8} < \frac{2}{3}$$ because $$5 \cdot 3 = 15$$ is less than
+$$8 \cdot 2 = 16$$. The denominators must be positive: with a negative one, multiplying through
+reverses the inequality.
+
+A curious fact follows. Adding the tops and adding the bottoms of two fractions is **not** how to
+add them, but it does give a number between them.
+
+:::proposition[The mediant lies between]{#mediant}
+
+Let $$b > 0$$ and $$d > 0$$, and suppose $$\frac{a}{b} < \frac{c}{d}$$. Then
+
+```math
+\frac{a}{b} < \frac{a + c}{b + d} < \frac{c}{d}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Mediant_(mathematics)#Properties"}
+
+By :ref{#cross-multiplying-inequality}, the assumption says $$ad < bc$$. All the denominators are
+positive, so each inequality we want can also be checked by cross-multiplying.
+
+- **Left inequality.** We need $$a(b + d) < (a + c)b$$, that is, $$ab + ad < ab + bc$$. Subtracting
+  $$ab$$ from both sides, this is $$ad < bc$$, which is true.
+- **Right inequality.** We need $$(a + c)d < c(b + d)$$, that is, $$ad + cd < bc + cd$$. Subtracting
+  $$cd$$, this is again $$ad < bc$$.
+
+:::
+
+For example, between $$\frac{1}{3}$$ and $$\frac{1}{2}$$ lies $$\frac{1 + 1}{3 + 2} = \frac{2}{5}$$.
+A team that wins $$1$$ game out of $$3$$ and then $$1$$ out of $$2$$ has won $$2$$ out of $$5$$,
+which is between its two rates.
+
+## Numbers in between
+
+:::proposition[The average lies between]{#between}
+
+If $$a < b$$, then $$a < \frac{a + b}{2} < b$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Ordered_field#Properties_of_ordered_fields"}
+
+Adding $$a$$ to both sides of $$a < b$$ gives $$2a < a + b$$, and adding $$b$$ instead gives
+$$a + b < 2b$$. Chaining, $$2a < a + b < 2b$$. Multiplying through by $$\frac{1}{2}$$, which is
+positive by :ref{#inverse-sign}, gives $$a < \frac{a + b}{2} < b$$.
+
+:::
+
+So no real number has a "next" one: between any two there is always another, and so infinitely many.
+
+The same idea, with the decimals from the [real line](./real-line.mdx), settles the question about
+$$0.999\ldots$$.
+
+:::proposition[0.999… is 1]{#point-nine}
+
+The decimal $$0.999\ldots$$, with $$9$$s forever, stands for the number $$1$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/0.999...#Elementary_proof"}
+
+Let $$x$$ be the number that $$0.999\ldots$$ stands for. Cut off after $$n$$ places, the decimal is
+$$0.99\ldots9 = 1 - \frac{1}{10^n}$$, so by :ref{#no-gaps}, $$x$$ lies between that and
+$$1 - \frac{1}{10^n} + \frac{1}{10^n} = 1$$. So for every $$n$$,
+
+```math
+1 - \frac{1}{10^n} \le x \le 1, \qquad \text{that is,} \qquad 0 \le 1 - x \le \frac{1}{10^n}
+```
+
+for every $$n$$. We show $$1 - x = 0$$ by contradiction (:ref{#numbers/contradiction}).
+
+Suppose $$d = 1 - x$$ is positive. Then $$\frac{1}{d}$$ is a positive real number, so by part 2 of
+:ref{#no-gaps} it is less than some positive integer $$N$$. If $$N$$ has $$k$$ digits, then
+$$N < 10^k$$, so $$\frac{1}{d} < 10^k$$. Reciprocals reverse order (:ref{#reciprocal-order}), so
+$$d > \frac{1}{10^k}$$. But the inequality above, with $$n = k$$, says $$d \le \frac{1}{10^k}$$.
+This is a contradiction, so $$d$$ is not positive. Since $$d \ge 0$$, it must be $$0$$, and
+$$x = 1$$.
+
+:::
+
+The heart of the proof is that no positive number is smaller than every one of $$\frac{1}{10}$$,
+$$\frac{1}{100}$$, $$\frac{1}{1000}$$, …. That is true for the real numbers because none of them is
+bigger than every integer.
+
+## Sums of squares
+
+A square is never negative (:ref{#squares-positive}). Applying that to $$a - b$$ gives a
+surprisingly useful inequality.
+
+:::proposition[Two squares]{#two-squares}
+
+For all real numbers $$a$$ and $$b$$,
+
+```math
+a^2 + b^2 \ge 2ab
+```
+
+with equality only when $$a = b$$.
+
+:::
+
+:::proof{source="https://brilliant.org/wiki/arithmetic-mean-geometric-mean/"}
+
+By :ref{#squares-positive}, $$(a - b)^2 \ge 0$$, and it is $$0$$ only when $$a - b = 0$$. Expanding
+the square (:ref{#numbers/square-formulas}),
+
+```math
+a^2 - 2ab + b^2 \ge 0
+```
+
+Adding $$2ab$$ to both sides gives $$a^2 + b^2 \ge 2ab$$, with equality exactly when
+$$(a - b)^2 = 0$$, that is, when $$a = b$$.
+
+:::
+
+For example, with $$a = x$$ and $$b = 1$$: $$x^2 + 1 \ge 2x$$ for every $$x$$. The
+[Square roots](./square-roots.mdx) page turns this into the inequality between the average of two
+numbers and their geometric mean.
+
+## Common mistakes
+
+- **Forgetting to reverse.** Multiplying or dividing both sides by a negative number reverses the
+  inequality: from $$-2x < 6$$, dividing by $$-2$$ gives $$x > -3$$, not $$x < -3$$.
+- **Subtracting or dividing inequalities.** Two inequalities the same way round can be added, but
+  not subtracted or divided.
+- **Squaring both sides blindly.** $$a < b$$ gives $$a^2 < b^2$$ only when $$a \ge 0$$; for example
+  $$-4 < 1$$ but $$16 > 1$$.
+- **Reversing reciprocals across zero.** Taking reciprocals reverses $$a < b$$ only when $$a$$ and
+  $$b$$ have the same sign. When $$a < 0 < b$$ the order stays: $$-1 < 2$$ and
+  $$\frac{1}{-1} < \frac{1}{2}$$.
+
+## In short
+
+- $$a < b$$ means $$b - a$$ is positive. Exactly one of $$a < b$$, $$a = b$$, $$a > b$$ is true.
+- Inequalities can be chained, and the same number can be added to both sides. Multiplying by a
+  positive number keeps the inequality; multiplying by a negative number reverses it.
+- Inequalities the same way round can be added, and multiplied when everything is non-negative.
+- For non-negative numbers, powers keep order, and comparing powers compares the numbers.
+  Reciprocals of positive numbers reverse order.
+- With positive denominators, $$\frac{a}{b} < \frac{c}{d}$$ exactly when $$ad < bc$$.
+- Between any two numbers lies their average, and $$0.999\ldots = 1$$.
+- $$a^2 + b^2 \ge 2ab$$, with equality only when $$a = b$$.

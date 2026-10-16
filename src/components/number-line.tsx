@@ -11,6 +11,15 @@ type Label = {
   text: string;
 };
 
+/** a stretch of the line to shade; a missing end runs on forever */
+type Interval = {
+  start: number | null;
+  end: number | null;
+  /** whether the endpoint itself is included, drawn as a filled dot rather than a hollow one */
+  startClosed: boolean;
+  endClosed: boolean;
+};
+
 type NumberLineProps = {
   from: number;
   to: number;
@@ -27,11 +36,15 @@ type NumberLineProps = {
   points?: number[];
   /** arcs drawn above the line, e.g. to show addition as movement */
   jumps?: Jump[];
+  /** stretches of the line to shade, e.g. the numbers solving an inequality */
+  intervals?: Interval[];
   /** optional caption shown under the line */
   caption?: string;
 };
 
 const PAD_X = 28;
+// the colour of shaded intervals: a mid-tone blue that reads on light and dark backgrounds
+const SHADE = "#3b82f6";
 // how far the curve control point sits above the line; wider jumps arc higher so nested jumps never cross
 function arcLift(jump: Jump) {
   return 24 + 14 * Math.abs(jump.to - jump.from);
@@ -55,6 +68,7 @@ export function NumberLine({
   divisions = 1,
   unit = divisions > 1 ? 600 / (to - from) : 48,
   labels = [],
+  intervals = [],
   caption,
 }: NumberLineProps) {
   const count = to - from;
@@ -171,6 +185,56 @@ export function NumberLine({
               >
                 {jump.label ?? defaultJumpLabel(jump)}
               </text>
+            </g>
+          );
+        })}
+
+        {intervals.map((interval, i) => {
+          // an endless interval runs to the arrowhead at that end of the line
+          const x1 = interval.start === null ? 4 : x(interval.start);
+          const x2 = interval.end === null ? width - 4 : x(interval.end);
+          const ends = [
+            { at: interval.start, closed: interval.startClosed },
+            { at: interval.end, closed: interval.endClosed },
+          ];
+          return (
+            <g key={`interval-${i}`}>
+              <line
+                x1={x1}
+                x2={x2}
+                y1={LINE_Y}
+                y2={LINE_Y}
+                stroke={SHADE}
+                strokeWidth={5}
+                strokeLinecap="round"
+              />
+              {interval.start === null && (
+                <polygon
+                  points={`0,${LINE_Y} 12,${LINE_Y - 7} 12,${LINE_Y + 7}`}
+                  fill={SHADE}
+                />
+              )}
+              {interval.end === null && (
+                <polygon
+                  points={`${width},${LINE_Y} ${width - 12},${LINE_Y - 7} ${width - 12},${LINE_Y + 7}`}
+                  fill={SHADE}
+                />
+              )}
+              {ends.map(
+                ({ at, closed }, j) =>
+                  at !== null && (
+                    // a hollow dot is filled with the card colour, so the line doesn't show through
+                    <circle
+                      key={j}
+                      cx={x(at)}
+                      cy={LINE_Y}
+                      r={6}
+                      stroke={SHADE}
+                      strokeWidth={2.5}
+                      fill={closed ? SHADE : "var(--color-fd-card)"}
+                    />
+                  ),
+              )}
             </g>
           );
         })}

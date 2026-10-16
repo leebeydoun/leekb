@@ -108,18 +108,23 @@ $$d \neq 0$$. They have the same slope exactly when $$ad - bc = 0$$.
 
 :::proof{source="https://en.wikipedia.org/wiki/Slope#Algebra_and_geometry"}
 
-The slopes are $$-\frac{a}{b}$$ and $$-\frac{c}{d}$$. They are equal exactly when
-$$\frac{a}{b} = \frac{c}{d}$$, by multiplying both sides by $$-1$$ (:ref{#safe-steps}). Since $$b$$
-and $$d$$ are not zero, cross-multiplying (:ref{#numbers/cross-multiplying-rational}) shows this
-happens exactly when $$ad = bc$$, that is, when $$ad - bc = 0$$.
+The slopes are $$-\frac{a}{b}$$ and $$-\frac{c}{d}$$. Multiplying both by $$-1$$, a safe step
+(:ref{#safe-steps}), shows they are equal exactly when $$\frac{a}{b} = \frac{c}{d}$$. Since $$b$$
+and $$d$$ are not zero, cross-multiplying (:ref{#numbers/cross-multiplying-rational}) shows that
+this happens exactly when $$ad = bc$$, that is, when $$ad - bc = 0$$.
 
 :::
 
-If one line is vertical and the other isn't, say $$b = 0$$ and $$d \neq 0$$, then $$a \neq 0$$ and
-$$ad - bc = ad \neq 0$$: the lines cross once, as they should. If both are vertical, $$b = d = 0$$
-and $$ad - bc = 0$$: they are parallel or the same. So in every case, a zero determinant means the
-lines point the same way, and a non-zero one means they cross exactly once, matching
-:ref{#determinant-test} and :ref{#determinant-zero}.
+For example, $$x + 2y = 3$$ and $$-2x - 4y = 7$$ both have slope $$-\frac{1}{2}$$, and their
+determinant is $$1 \cdot (-4) - 2 \cdot (-2) = 0$$.
+
+The proposition leaves out vertical lines, but they fit the same pattern. If one line is vertical
+and the other isn't, say $$b = 0$$ and $$d \neq 0$$, then $$a \neq 0$$ (since $$a$$ and $$b$$ are
+not both zero), so $$ad - bc = ad$$ is a product of non-zero numbers, which is not zero: the lines
+cross once, as they should. If both are vertical, $$b = d = 0$$ and $$ad - bc = 0$$: they are
+parallel or the same. So in every case, a zero determinant means the lines point the same way, and a
+non-zero one means they cross exactly once, matching :ref{#determinant-test} and
+:ref{#determinant-zero}.
 
 ## Common mistakes
 

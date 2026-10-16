@@ -6,7 +6,7 @@
  *             :::proof{source="https://en.wikipedia.org/wiki/..."} ... :::     (source required)
  *             :::accordion[Title] ... :::
  *             :::area-model{row-sizes="3 2" col-sizes="3 2"} with a table inside, see below
- * One line:   ::number-line{from=-4 to=6 points="-2, 4" jumps="-2>4"}
+ * One line:   ::number-line{from=-4 to=6 points="-2, 4" jumps="-2>4" intervals="(-2, 3]; [5, oo)"}
  *             ::graph{lines="2x + y = 1; 3x - 2y = 4" points="6/7, -5/7" x="-4 4" y="-4 4"}
  *             ::quiz{src="numbers"}     (questions from public/quizzes/numbers.json, checked here)
  *             ::see-also{src="https://en.wikipedia.org/wiki/..."}     (a source for an unproved
@@ -152,6 +152,30 @@ function numberLine(node: LeafDirective, file: File): MdxJsxFlowElement {
   // "1/2" labels the point 1/2 with its own text, and "1/2: 1/2 = 2/4" gives the text explicitly;
   // the bare `labelled` flag labels every point
   const labelTexts = "labelled" in a ? points : parseList(a.labels);
+  // "(-2, 3]" shades the numbers from -2 to 3, leaving out -2 and including 3; "[1, oo)" runs on
+  // forever to the right and "(-oo, 0)" to the left. Several are separated by ";"
+  const intervals = (a.intervals ?? "")
+    .split(";")
+    .map((item) => item.trim())
+    .filter(Boolean)
+    .map((item) => {
+      const match = /^([[(])\s*([^,]+?)\s*,\s*([^\])]+?)\s*([\])])$/.exec(item);
+      if (!match)
+        fail(file, node, `interval "${item}" should look like "(-2, 3]"`);
+      const [, open, lo, hi, close] = match as unknown as string[];
+      const start = lo === "-oo" ? null : num(lo!);
+      const end = hi === "oo" ? null : num(hi!);
+      if ((start === null && open === "[") || (end === null && close === "]"))
+        fail(file, node, `interval "${item}" can't include an endless end`);
+      if (start !== null && end !== null && start >= end)
+        fail(file, node, `interval "${item}" should go from smaller to larger`);
+      return {
+        start,
+        end,
+        startClosed: open === "[",
+        endClosed: close === "]",
+      };
+    });
   const labels = labelTexts.map((item) => {
     const [at, text] = splitOnce(item, ":");
     return { at: num(at), text: text ?? at };
@@ -168,6 +192,7 @@ function numberLine(node: LeafDirective, file: File): MdxJsxFlowElement {
       points: points.length ? points.map(num) : undefined,
       jumps: jumps.length ? jumps : undefined,
       labels: labels.length ? labels : undefined,
+      intervals: intervals.length ? intervals : undefined,
       caption: a.caption ?? undefined,
     },
     [],

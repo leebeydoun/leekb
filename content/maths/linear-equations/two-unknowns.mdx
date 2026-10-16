@@ -32,7 +32,7 @@ solutions.
 ## Systems of equations
 
 A second equation cuts the possibilities down. Of all the solutions of $$x + y = 5$$, only one also
-solves $$x - y = 1$$, namely $$(3, 2)$$.
+solves $$x - y = 1$$, namely $$(3, 2)$$, as this page will show.
 
 :::definition[Systems]{#system}
 
@@ -97,19 +97,19 @@ non-zero number, or swapping the order of the equations.
 We show the two systems have the same solutions, one direction at a time.
 
 **Old solutions solve the new system.** Suppose some values of the unknowns make (1) and (2) true.
-Then $$L_1$$ and $$R_1$$ are the same number, and so are $$L_2$$ and $$R_2$$. Adding $$k$$ times the
-first pair to the second gives equal results, so $$L_2 + kL_1 = R_2 + kR_1$$ is true. Equation (1)
-is unchanged, so it is still true.
+Then $$L_1$$ and $$R_1$$ are the same number, so $$kL_1$$ and $$kR_1$$ are equal too. Adding these
+equal numbers to the equal numbers $$L_2$$ and $$R_2$$ gives equal results, so
+$$L_2 + kL_1 = R_2 + kR_1$$ is true. Equation (1) is unchanged, so it is still true.
 
 **New solutions solve the old system.** Suppose some values make (1) and the new equation true. The
-step can be undone by adding $$-k$$ times (1) to the new equation:
+step can be undone by adding $$-k$$ times (1) to the new equation. That is a step of the same kind,
+so by the first part it turns true equations into true ones: for those values,
 
 ```math
 (L_2 + kL_1) - kL_1 = (R_2 + kR_1) - kR_1
 ```
 
-which simplifies to $$L_2 = R_2$$. By the same argument as before, this is true for those values, so
-(2) holds. So those values solve the old system.
+is true. It simplifies to $$L_2 = R_2$$, so (2) holds, and those values solve the old system.
 
 Multiplying one equation by a non-zero number doesn't change its solutions, by :ref{#safe-steps}, so
 it doesn't change the solutions of the system. Swapping the order changes nothing at all, since a
@@ -117,10 +117,11 @@ solution must satisfy both equations either way.
 
 :::
 
-So every step of elimination swaps the system for an equivalent one. When the system finally reads
-$$x = 3$$ and $$y = 2$$, those are its only solution, and the original system has exactly the same
-solution. Checking the answer in the original equations is still a good habit, because it catches
-arithmetic slips.
+Each step of elimination is one of these moves, so it replaces the system by an equivalent one. In
+the example, adding (1) to (2) turns the system into $$x + y = 5$$ and $$2x = 6$$, which has exactly
+the same solutions. That system has only the solution $$(3, 2)$$, so the original system has only
+that solution too. Checking the answer in the original equations is still a good habit, because it
+catches arithmetic slips.
 
 ## The elimination method
 
@@ -199,7 +200,8 @@ So $$x = 5$$, and putting this into (1) gives $$15 + 2y = 7$$, so $$y = -4$$, as
 :::
 
 Choose whichever unknown makes the numbers smallest. If one coefficient is already a multiple of the
-other, only one equation needs multiplying.
+other, only one equation needs multiplying: for $$2x + y = 5$$ and $$6x - 4y = 1$$, multiplying the
+first equation by $$3$$ makes both coefficients of $$x$$ equal to $$6$$.
 
 :::example[Fractions in the answer]
 
@@ -273,8 +275,6 @@ c + 3t &= 8.5 &\quad (2)
 Multiplying (2) by $$4$$ gives $$4c + 12t = 34$$, and subtracting (1) from this gives $$10t = 20$$,
 so $$t = 2$$. Then (2) gives $$c = 8.5 - 6 = 2.5$$. A coffee costs £2.50 and a tea £2. Check:
 $$4 \cdot 2.5 + 2 \cdot 2 = 14$$ and $$2.5 + 3 \cdot 2 = 8.5$$.
-
-The [Word problems](./word-problems.mdx) page has many more like this.
 
 ## Common mistakes
 

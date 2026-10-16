@@ -1,0 +1,185 @@
+---
+title: The real line
+description:
+  What real numbers are, why the fractions leave gaps, and the rules of arithmetic they obey.
+---
+
+The rational numbers are packed tightly along the number line: between any two of them there is
+always another. Even so, they leave gaps. The [Numbers](../numbers/irrational-numbers.mdx) guide
+showed that no fraction squares to $$2$$ (:ref{#numbers/sqrt-two}), yet a length whose square is
+$$2$$ is easy to draw. The **real numbers** fill every gap, so that every point of the line has a
+number. This page says what they are, and which rules of arithmetic they share with the fractions.
+
+## A length that isn't a fraction
+
+Draw a $$2$$ by $$2$$ square, split into four $$1$$ by $$1$$ squares. In each small square, draw the
+diagonal that doesn't touch the centre of the big square. The four diagonals join up into a tilted
+square, standing on its corner, with the centre of the big square in the middle of it.
+
+Each diagonal cuts its small square into two halves, and exactly one half of each lies inside the
+tilted square. So the tilted square is made of four halves of a $$1$$ by $$1$$ square, and its area
+is
+
+```math
+4 \cdot \tfrac{1}{2} = 2
+```
+
+Its sides are the diagonals. Call their length $$d$$. The area of a square is its side squared, so
+$$d^2 = 2$$, and $$d$$ is not a fraction. So a perfectly ordinary length, the diagonal of a $$1$$ by
+$$1$$ square, needs a number that the fractions don't have.
+
+## Real numbers
+
+:::definition[Real numbers]{#real}
+
+The **real numbers** are the numbers that mark the points of the number line: each point corresponds
+to exactly one real number, and each real number to exactly one point. Every real number can be
+written as a decimal, which may go on forever, like $$1.41421356\ldots$$.
+
+:::
+
+The rational numbers are real numbers: they are exactly the decimals that stop or repeat, as the
+Numbers guide explained. The rest, whose decimals go on forever without repeating, are the
+**irrational** numbers (:ref{#numbers/irrational}). So every real number is either rational or
+irrational, and not both.
+
+Building the real numbers carefully from the fractions takes a good deal of work, which belongs to a
+later course. Here we take two facts about them as given.
+
+:::remark[No gaps]{#no-gaps}
+
+1. Every decimal, whether it stops or goes on forever, stands for a real number, and its digits pin
+   that number down. For example, $$3.14159\ldots$$ stands for a number between $$3.1$$ and $$3.2$$,
+   between $$3.14$$ and $$3.15$$, between $$3.141$$ and $$3.142$$, and so on. In general, if a
+   decimal that isn't negative is cut off after $$n$$ places, giving $$c$$, the number lies between
+   $$c$$ and $$c + \frac{1}{10^n}$$.
+2. Every real number lies between two integers that are next to each other: for each real number
+   $$x$$ there is an integer $$n$$ with $$n \le x < n + 1$$. The integer $$n$$ is the part of $$x$$
+   before the decimal point, when $$x$$ is not negative.
+
+::see-also{src="https://en.wikipedia.org/wiki/Real_number#Decimal_representation"}
+
+:::
+
+## Decimals as approximations
+
+The decimal for a real number pins it down one digit at a time. Since $$1.4^2 = 1.96$$ and
+$$1.5^2 = 2.25$$, the number $$d$$ whose square is $$2$$ lies between $$1.4$$ and $$1.5$$:
+
+::number-line{from=1 to=2 divisions=10 intervals="[1.4, 1.5]" labels="1.4, 1.5"}
+
+Each further digit traps it in a stretch ten times shorter. Since $$1.41^2 = 1.9881$$ and
+$$1.42^2 = 2.0164$$, it lies between $$1.41$$ and $$1.42$$, and so on forever. Because $$d$$ is
+irrational, the decimal never stops and never settles into a repeating pattern.
+
+A decimal cut off after a few places is an **approximation**, not the number itself. For example,
+$$1.414^2 = 1.999396$$, which is close to $$2$$ but not equal to it.
+
+## Is 0.999… equal to 1?
+
+Endless decimals have one surprise. The Numbers guide turned repeating decimals into fractions by
+shifting them. The same trick, applied to $$x = 0.999\ldots$$, gives
+
+```math
+10x = 9.999\ldots \qquad \text{so} \qquad 10x - x = 9 \qquad \text{and} \qquad x = 1
+```
+
+So $$0.999\ldots$$ and $$1$$ are two decimals for the **same** real number. That can feel wrong:
+surely $$0.999\ldots$$ stops just short of $$1$$? But then there would be a positive gap between
+them, and that gap would have to be smaller than $$1 - 0.9 = 0.1$$, smaller than
+$$1 - 0.99 = 0.01$$, smaller than $$0.001$$, and so on forever. No positive number is that small.
+The careful proof needs the rules for inequalities, so it comes on the
+[Order and inequalities](./order.mdx) page, as :ref{#point-nine}.
+
+The same happens for any decimal that ends in endless $$9$$s: $$0.24999\ldots = 0.25$$. This is the
+only way a real number can have two different decimals.
+
+## The rules of arithmetic
+
+Real numbers can be added and multiplied, and the results are again real numbers. The rules they
+follow are the same ones the fractions follow.
+
+:::remark[Rules for real numbers]{#real-rules}
+
+For all real numbers $$a$$, $$b$$ and $$c$$:
+
+1. **Order doesn't matter:** $$a + b = b + a$$ and $$ab = ba$$.
+2. **Grouping doesn't matter:** $$(a + b) + c = a + (b + c)$$ and $$(ab)c = a(bc)$$.
+3. **Zero and one:** $$a + 0 = a$$ and $$1 \cdot a = a$$, and $$0 \neq 1$$.
+4. **Opposites:** there is a number $$-a$$ with $$a + (-a) = 0$$.
+5. **Inverses:** if $$a \neq 0$$, there is a number $$a^{-1}$$, also written $$\frac{1}{a}$$, with
+   $$a \cdot a^{-1} = 1$$.
+6. **Distributivity:** $$a(b + c) = ab + ac$$.
+
+These are taken as given. Rules for positive and negative numbers come on the next page.
+
+::see-also{src="https://en.wikipedia.org/wiki/Real_number#Arithmetic"}
+
+:::
+
+These are the rules of arithmetic from the Numbers guide, plus rule 5: every non-zero number has an
+inverse. (The Numbers guide also had rules about positive numbers; their real-number versions come
+on the next page.) So any result the Numbers guide proved from these rules alone holds for real
+numbers too, with the same proof. For example:
+
+- $$0 \cdot a = 0$$ (:ref{#numbers/zero-times}) and $$(-a)(-b) = ab$$ (:ref{#numbers/two-minus}).
+- If $$ab = 0$$, then $$a = 0$$ or $$b = 0$$ (:ref{#numbers/zero-product}).
+- If $$ab = ac$$ and $$a \neq 0$$, then $$b = c$$ (:ref{#numbers/cancel-product}).
+- $$\frac{a}{b} = \frac{c}{d}$$ exactly when $$ad = bc$$
+  (:ref{#numbers/cross-multiplying-rational}).
+- $$(a + b)^2 = a^2 + 2ab + b^2$$ and the other formulas for squares
+  (:ref{#numbers/square-formulas}).
+- The rules for powers (:ref{#numbers/power-rules}), including negative powers
+  (:ref{#numbers/negative-powers}).
+
+Likewise, everything in the [Linear equations](../linear-equations/introduction.mdx) guide holds for
+real numbers: a system like $$\sqrt{2}x + y = 1$$, $$x - y = 3$$ is solved exactly as before.
+
+## Other systems obey the same rules
+
+The rules in the box don't describe the real numbers completely, because other systems obey them
+too. Here is one with only five numbers. The Numbers guide's page on
+[congruence](../numbers/congruence.mdx) showed that remainders on division by $$5$$ can be added and
+multiplied, by working out the answer and keeping only its remainder. The remainders are
+$$0, 1, 2, 3, 4$$, and for example
+
+```math
+3 + 4 = 7 \equiv 2, \qquad 3 \cdot 4 = 12 \equiv 2, \qquad 2 \cdot 3 = 6 \equiv 1 \pmod 5
+```
+
+Since arithmetic with congruences works like ordinary arithmetic
+(:ref{#numbers/congruence-arithmetic}), rules 1, 2, 3, 4 and 6 hold. Rule 5 holds too: each non-zero
+remainder has an inverse, because $$1 \cdot 1 = 1$$, $$2 \cdot 3 \equiv 1$$ and
+$$4 \cdot 4 \equiv 1$$.
+
+So these five remainders obey every rule in the box, yet they are nothing like the number line: in
+this system $$1 + 1 + 1 + 1 + 1 = 0$$. Two more properties single out the real numbers. **Order**,
+the subject of the next two pages, rules out systems like this one. **Having no gaps** rules out the
+rational numbers.
+
+| System                      | Rules of arithmetic       | Order (next page) | No gaps       |
+| --------------------------- | ------------------------- | ----------------- | ------------- |
+| Integers                    | all but rule 5 (inverses) | yes               | no            |
+| Rational numbers            | all                       | yes               | no            |
+| Real numbers                | all                       | yes               | yes           |
+| Remainders on division by 5 | all                       | no                | doesn't apply |
+
+## Common mistakes
+
+- **Thinking "real" means "irrational".** Every rational number is a real number too. The real
+  numbers are the rational and the irrational numbers together.
+- **Treating an approximation as the number.** $$1.414$$ is close to the number whose square is
+  $$2$$, but $$1.414^2 = 1.999396$$, not $$2$$.
+- **Thinking $$0.999\ldots$$ is slightly less than $$1$$.** It is exactly $$1$$: there is no gap
+  between them for a difference to fit in.
+- **Concluding that a number doesn't exist because it isn't a fraction.** The diagonal of a unit
+  square is a perfectly good length; it is a real number that isn't rational.
+
+## In short
+
+- The real numbers mark every point of the number line. Each one has a decimal, possibly endless,
+  and every decimal names one.
+- The rational numbers are the decimals that stop or repeat; the rest are irrational.
+- Real numbers follow the same rules of arithmetic as fractions, so every result proved from those
+  rules in the Numbers guide holds for them too.
+- Those rules alone don't pin down the real numbers. Order and having no gaps do.

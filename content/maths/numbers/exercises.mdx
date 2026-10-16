@@ -234,8 +234,14 @@ Prove that the product of two consecutive integers is always even.
 
 :::solution
 
-Of two consecutive integers $$n$$ and $$n + 1$$, one is even and the other is odd, since even and
-odd integers take turns. An even number times any integer is even, so $$n(n + 1)$$ is even.
+Take two consecutive integers $$n$$ and $$n + 1$$. Every integer is even or odd
+(:ref{#even-or-odd}), so there are two cases.
+
+- If $$n$$ is even, the product $$n(n + 1)$$ has an even factor.
+- If $$n$$ is odd, then $$n + 1$$ is odd plus odd, which is even (:ref{#parity-sums}), so again the
+  product has an even factor.
+
+An even integer times any integer is even (:ref{#parity-products}), so $$n(n + 1)$$ is even.
 
 :::
 
@@ -417,9 +423,10 @@ Write $$a = 2k + 1$$ and $$b = 2l + 1$$. Then
 a^2 + b^2 = (4k^2 + 4k + 1) + (4l^2 + 4l + 1) = 4(k^2 + k + l^2 + l) + 2
 ```
 
-This is $$2$$ more than a multiple of $$4$$. It is even, being $$2(2k^2 + 2k + 2l^2 + 2l + 1)$$, but
-it is not a multiple of $$4$$, because the multiples of $$4$$ are spaced $$4$$ apart, and the number
-$$2$$ more than one of them is not one of them. For example, $$3^2 + 5^2 = 34$$.
+This is $$2$$ more than a multiple of $$4$$. It is even, being $$2(2k^2 + 2k + 2l^2 + 2l + 1)$$. But
+it leaves remainder $$2$$ when divided by $$4$$, while a multiple of $$4$$ leaves remainder $$0$$,
+and a number has only one remainder (:ref{#division-remainder}). So it is not a multiple of $$4$$.
+For example, $$3^2 + 5^2 = 34 = 4 \cdot 8 + 2$$.
 
 :::
 
@@ -916,8 +923,8 @@ Cancel the factorials: $$n! = n(n - 1) \cdot (n - 2)!$$, so
 = \frac{n(n - 1)}{2}
 ```
 
-The numbers $$n - 1$$ and $$n$$ are consecutive, so one of them is even and their product is even.
-Dividing an even number by $$2$$ gives an integer. For example,
+The numbers $$n - 1$$ and $$n$$ are consecutive, so their product is even
+(:ref{#ex-consecutive-product}). Dividing an even number by $$2$$ gives an integer. For example,
 $$\binom{10}{2} = \frac{90}{2} = 45$$.
 
 :::

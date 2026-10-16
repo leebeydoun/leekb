@@ -1,0 +1,298 @@
+---
+title: Roots and fractional powers
+description: nth roots, how many solutions xⁿ = a has, and powers with fractional exponents.
+---
+
+Square roots undo squaring. In the same way, cube roots undo cubing, fourth roots undo fourth
+powers, and so on. This page shows how many real solutions an equation like $$x^n = a$$ has, which
+depends on whether $$n$$ is odd or even, and then uses roots to give a meaning to powers like
+$$8^{2/3}$$ and $$16^{-3/4}$$, in a way that keeps all the usual rules for powers working.
+
+## nth roots
+
+As with square roots, we take it as given that positive numbers have roots of every order. This is
+another consequence of the real numbers having no gaps.
+
+:::remark[Roots exist]{#nth-roots-exist}
+
+For every positive real number $$a$$ and every positive integer $$n$$, there is a positive real
+number $$r$$ with $$r^n = a$$.
+
+::see-also{src="https://en.wikipedia.org/wiki/Nth_root#Definition_and_notation"}
+
+:::
+
+:::proposition[Only one positive root]{#nth-root-unique}
+
+For $$a > 0$$ and a positive integer $$n$$, there is only one positive number $$r$$ with
+$$r^n = a$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Exponentiation#Rational_exponents"}
+
+If $$r$$ and $$s$$ are positive and $$r^n = a = s^n$$, then $$r = s$$ by
+:ref{#power-order-converse}.
+
+:::
+
+:::definition[nth root]{#nth-root}
+
+For $$a \ge 0$$ and a positive integer $$n$$, the **$$n$$-th root** of $$a$$, written
+$$\sqrt[n]{a}$$ or $$a^{1/n}$$, is the number $$r \ge 0$$ with $$r^n = a$$. In particular
+$$\sqrt[n]{0} = 0$$.
+
+:::
+
+For $$n = 2$$ this is the square root, and for $$n = 3$$ it is called the **cube root**. For
+example, $$\sqrt[3]{64} = 4$$ because $$4^3 = 64$$, $$\sqrt[4]{81} = 3$$ because $$3^4 = 81$$, and
+$$\sqrt[5]{\frac{1}{32}} = \frac{1}{2}$$ because $$\left(\frac{1}{2}\right)^5 = \frac{1}{32}$$.
+
+Roots split over products, just like square roots, and with the same proof.
+
+:::proposition[Roots of products]{#nth-root-product}
+
+For $$a \ge 0$$, $$b \ge 0$$ and a positive integer $$n$$,
+$$\sqrt[n]{ab} = \sqrt[n]{a}\,\sqrt[n]{b}$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Nth_root#Identities_and_properties"}
+
+The product $$\sqrt[n]{a}\,\sqrt[n]{b}$$ is not negative, and by the rules for powers
+(:ref{#numbers/power-rules}) its $$n$$-th power is
+
+```math
+\left(\sqrt[n]{a}\,\sqrt[n]{b}\right)^n = \left(\sqrt[n]{a}\right)^n \left(\sqrt[n]{b}\right)^n = ab
+```
+
+The only non-negative number whose $$n$$-th power is $$ab$$ is $$\sqrt[n]{ab}$$, by
+:ref{#power-order-converse}. So the two are equal.
+
+:::
+
+For example, $$\sqrt[3]{54} = \sqrt[3]{27}\,\sqrt[3]{2} = 3\sqrt[3]{2}$$.
+
+## How many solutions does xⁿ = a have?
+
+For square roots, $$x^2 = a$$ has two solutions when $$a > 0$$ and none when $$a < 0$$. For higher
+powers the answer depends on whether $$n$$ is even or odd, because of how powers treat signs: an
+even power of a negative number is positive, and an odd power is negative. For example
+$$(-2)^4 = 16$$ but $$(-2)^3 = -8$$.
+
+:::theorem[Solving xⁿ = a]{#power-equation}
+
+Let $$n$$ be a positive integer and $$a$$ a real number.
+
+1. **If $$n$$ is odd,** $$x^n = a$$ has exactly one real solution. It is $$\sqrt[n]{a}$$ when
+   $$a \ge 0$$, and $$-\sqrt[n]{-a}$$ when $$a < 0$$.
+2. **If $$n$$ is even,** $$x^n = a$$ has two solutions $$\pm\sqrt[n]{a}$$ when $$a > 0$$, the one
+   solution $$0$$ when $$a = 0$$, and none when $$a < 0$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Exponentiation#Rational_exponents"}
+
+Two facts about signs do most of the work.
+
+- **Powers of the opposite.** $$(-x)^n = (-1)^n x^n$$, by the rules for powers. For even $$n$$,
+  $$(-1)^n = 1$$, since the minus signs pair off (:ref{#numbers/two-minus}), so $$(-x)^n = x^n$$.
+  For odd $$n$$, $$(-1)^n = -1$$, so $$(-x)^n = -x^n$$.
+- **Sizes.** $$|x^n| = |x|^n$$, by :ref{#abs-product} used $$n - 1$$ times.
+
+**Odd $$n$$.** Suppose $$x^n = a$$. We find $$x$$ in two steps: its size, then its sign.
+
+- _Size._ Taking absolute values, $$|x|^n = |a|$$. So $$|x|$$ is the non-negative $$n$$-th root of
+  $$|a|$$, that is, $$|x| = \sqrt[n]{|a|}$$, by :ref{#nth-root-unique} (and $$x = 0$$ if $$a = 0$$).
+- _Sign._ For odd $$n$$, $$x^n$$ has the same sign as $$x$$: if $$x > 0$$ then $$x^n > 0$$, and if
+  $$x < 0$$ then $$x^n = -(-x)^n$$ is negative. So $$x$$ has the same sign as $$a$$.
+
+Putting these together: if $$a \ge 0$$, then $$x = |x| = \sqrt[n]{a}$$, and if $$a < 0$$, then
+$$x = -|x| = -\sqrt[n]{-a}$$. So there is at most one solution. It really is a solution:
+$$\left(\sqrt[n]{a}\right)^n = a$$, and
+$$\left(-\sqrt[n]{-a}\right)^n = -\left(\sqrt[n]{-a}\right)^n = -(-a) = a$$.
+
+**Even $$n$$.** Write $$n = 2k$$. Then $$x^n = \left(x^k\right)^2$$ is a square, which is never
+negative (:ref{#squares-positive}). So when $$a < 0$$ there is no solution. When $$a = 0$$,
+$$x^n = 0$$ forces $$x = 0$$, by :ref{#numbers/zero-product}. When $$a > 0$$, any solution has
+$$|x|^n = a$$, so $$|x| = \sqrt[n]{a}$$ and $$x = \pm\sqrt[n]{a}$$. Both of these work, since
+$$\left(-\sqrt[n]{a}\right)^n = \left(\sqrt[n]{a}\right)^n = a$$ for even $$n$$.
+
+:::
+
+So an odd root can be taken of any real number, and we write $$\sqrt[n]{a}$$ for the single solution
+of $$x^n = a$$ even when $$a$$ is negative. For example $$\sqrt[3]{-8} = -2$$, because
+$$(-2)^3 = -8$$. Even roots of negative numbers don't exist among the real numbers.
+
+| Equation           | Solutions                                      |
+| ------------------ | ---------------------------------------------- |
+| $$x^3 = -27$$      | $$x = -3$$ only                                |
+| $$x^4 = 16$$       | $$x = 2$$ and $$x = -2$$                       |
+| $$x^5 = 0$$        | $$x = 0$$ only                                 |
+| $$x^6 = -1$$       | none                                           |
+| $$(x - 1)^4 = 81$$ | $$x - 1 = \pm 3$$, so $$x = 4$$ and $$x = -2$$ |
+
+## Fractional powers
+
+The [Numbers](../numbers/inverses.mdx) guide gave a meaning to $$a^n$$ for every integer $$n$$,
+positive, negative or zero. Roots let us go further, to exponents that are fractions. We choose the
+meaning that keeps the rule $$(a^m)^n = a^{mn}$$ working:
+
+- $$\left(a^{1/n}\right)^n$$ should be $$a^{(1/n) \cdot n} = a^1 = a$$. So $$a^{1/n}$$ has to be an
+  $$n$$-th root of $$a$$, and we take the positive one.
+- $$a^{m/n} = a^{(1/n) \cdot m}$$ should then be $$\left(a^{1/n}\right)^m$$.
+
+:::definition[Fractional powers]{#rational-power}
+
+Let $$a > 0$$. For an integer $$m$$ and a positive integer $$n$$,
+
+```math
+a^{m/n} = \left(\sqrt[n]{a}\right)^m
+```
+
+:::
+
+For example, $$8^{2/3} = \left(\sqrt[3]{8}\right)^2 = 2^2 = 4$$, and
+$$16^{-3/4} = \left(\sqrt[4]{16}\right)^{-3} = 2^{-3} = \frac{1}{8}$$.
+
+There is a catch to deal with. The same fraction can be written in many ways, such as
+$$\frac{2}{3} = \frac{4}{6}$$, and the definition must give the same answer for each of them.
+
+:::proposition[Fractional powers are well defined]{#rational-power-well-defined}
+
+Let $$a > 0$$.
+
+1. If $$\frac{m}{n} = \frac{m'}{n'}$$, with $$n$$ and $$n'$$ positive, then
+   $$\left(\sqrt[n]{a}\right)^m = \left(\sqrt[n']{a}\right)^{m'}$$.
+2. $$a^{m/n} = \sqrt[n]{a^m}$$: taking the root first or the power first gives the same answer.
+3. When $$n = 1$$, $$a^{m/1}$$ is the ordinary power $$a^m$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Exponentiation#Rational_exponents"}
+
+Throughout, we use the rules for powers with integer exponents, from the Numbers guide, and the fact
+that a positive number has only one positive $$n$$-th root (:ref{#nth-root-unique}). All the numbers
+involved are positive.
+
+**Scaling top and bottom.** First we show that $$\frac{m}{n}$$ and $$\frac{km}{kn}$$ give the same
+value, for any positive integer $$k$$. Let $$s = \sqrt[kn]{a}$$, so $$s^{kn} = a$$. Then
+$$\left(s^k\right)^n = a$$, so $$s^k$$ is a positive $$n$$-th root of $$a$$, which means
+$$s^k = \sqrt[n]{a}$$. So
+
+```math
+\left(\sqrt[kn]{a}\right)^{km} = s^{km} = \left(s^k\right)^m = \left(\sqrt[n]{a}\right)^m
+```
+
+**Part 1.** If $$\frac{m}{n} = \frac{m'}{n'}$$, then $$mn' = m'n$$ by cross-multiplying. So the two
+fractions can both be scaled to the same one: $$\frac{m}{n} = \frac{mn'}{nn'}$$ and
+$$\frac{m'}{n'} = \frac{m'n}{n'n}$$, which has the same top and bottom. By the step above, both give
+the same value as $$\frac{mn'}{nn'}$$.
+
+**Part 2.** The number $$\left(\sqrt[n]{a}\right)^m$$ is positive, and its $$n$$-th power is
+$$\left(\left(\sqrt[n]{a}\right)^n\right)^m = a^m$$. So it is the positive $$n$$-th root of $$a^m$$.
+
+**Part 3.** $$\sqrt[1]{a} = a$$, so $$a^{m/1} = a^m$$.
+
+:::
+
+So $$8^{2/3}$$ can also be worked out as $$\sqrt[3]{8^2} = \sqrt[3]{64} = 4$$. Usually taking the
+root first keeps the numbers smaller.
+
+## The rules for powers
+
+The point of the definition is that the familiar rules keep working.
+
+:::theorem[Rules for fractional powers]{#rational-power-laws}
+
+For $$a > 0$$, $$b > 0$$ and rational numbers $$p$$ and $$q$$:
+
+1. $$a^p a^q = a^{p + q}$$
+2. $$\left(a^p\right)^q = a^{pq}$$
+3. $$(ab)^p = a^p b^p$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Exponentiation#Rational_exponents"}
+
+Each rule is reduced to the rules for integer powers, by writing the exponents over suitable
+denominators. That is allowed by :ref{#rational-power-well-defined}.
+
+**Rule 1.** Write $$p = \frac{m}{n}$$ and $$q = \frac{k}{n}$$ with the same positive denominator
+$$n$$, and let $$r = \sqrt[n]{a}$$. Then
+
+```math
+a^p a^q = r^m r^k = r^{m + k} = a^{(m + k)/n} = a^{p + q}
+```
+
+**Rule 2.** Write $$p = \frac{m}{n}$$ and $$q = \frac{k}{l}$$ with $$n$$ and $$l$$ positive, and let
+$$s = \sqrt[nl]{a}$$. As in the proof of :ref{#rational-power-well-defined}, $$s^l = \sqrt[n]{a}$$,
+so $$a^p = \left(s^l\right)^m = s^{lm}$$. Next, $$s^m$$ is positive and
+$$\left(s^m\right)^l = s^{lm} = a^p$$, so $$s^m$$ is the positive $$l$$-th root of $$a^p$$
+(:ref{#nth-root-unique}). So, by the definition of $$\left(a^p\right)^{k/l}$$,
+
+```math
+\left(a^p\right)^q = \left(\sqrt[l]{a^p}\right)^k = \left(s^m\right)^k = s^{mk} = a^{mk/(nl)} = a^{pq}
+```
+
+**Rule 3.** Write $$p = \frac{m}{n}$$. By :ref{#nth-root-product},
+$$\sqrt[n]{ab} = \sqrt[n]{a}\,\sqrt[n]{b}$$, and then the integer rule $$(xy)^m = x^m y^m$$ gives
+$$(ab)^{m/n} = \left(\sqrt[n]{a}\right)^m \left(\sqrt[n]{b}\right)^m = a^p b^p$$.
+
+:::
+
+Two special cases are worth noting. Taking $$q = -p$$ in rule 1 gives $$a^p a^{-p} = a^0 = 1$$, so
+$$a^{-p} = \frac{1}{a^p}$$: a negative power is the reciprocal of the positive one. And powers of
+roots can now be handled with ordinary arithmetic on the exponents:
+
+```math
+\sqrt{x}\,\sqrt[3]{x} = x^{1/2} x^{1/3} = x^{5/6},
+\qquad
+\left(\frac{4}{9}\right)^{3/2} = \frac{4^{3/2}}{9^{3/2}} = \frac{8}{27},
+\qquad
+\sqrt{\sqrt{a}} = \left(a^{1/2}\right)^{1/2} = a^{1/4}
+```
+
+## Why the base must be positive
+
+The definition only allows a positive base, and the reason is the catch from before. For a negative
+base the answer would depend on how the exponent is written. With odd roots of negative numbers,
+$$(-8)^{1/3}$$ could sensibly mean $$\sqrt[3]{-8} = -2$$. But $$\frac{1}{3} = \frac{2}{6}$$, and
+$$\sqrt[6]{(-8)^2} = \sqrt[6]{64} = 2$$. So $$(-8)^{1/3}$$ is better avoided; we write
+$$\sqrt[3]{-8}$$ when that is what's meant.
+
+## Irrational exponents
+
+What would $$2^{\sqrt{2}}$$ mean? Since $$\sqrt{2} = 1.41421\ldots$$, the powers
+
+```math
+2^{1.4}, \quad 2^{1.41}, \quad 2^{1.414}, \quad 2^{1.4142}, \quad \ldots
+```
+
+are all defined, because each exponent is a fraction such as $$\frac{1414}{1000}$$, and they settle
+down to a single real number, about $$2.665$$. That number is $$2^{\sqrt{2}}$$. Making this precise,
+and checking that the rules for powers still hold, belongs to a later guide. Until then, we take it
+that $$a^x$$ makes sense for every $$a > 0$$ and every real $$x$$, and obeys the same three rules.
+
+## Common mistakes
+
+- **Reading $$a^{1/n}$$ as $$\frac{1}{a^n}$$.** $$a^{1/n}$$ is a root; it is $$a^{-n}$$ that equals
+  $$\frac{1}{a^n}$$. So $$8^{1/3} = 2$$, while $$8^{-1} = \frac{1}{8}$$.
+- **Losing solutions of even powers.** $$x^4 = 16$$ has two solutions, $$2$$ and $$-2$$.
+- **Inventing solutions of odd powers.** $$x^3 = 8$$ has only one, $$2$$; $$(-2)^3 = -8$$.
+- **Mixing up the rules.** Same exponent, different bases: multiply the bases, so
+  $$2^{1/2}\,3^{1/2} = 6^{1/2}$$. Same base, different exponents: add the exponents, so
+  $$2^{1/2}\,2^{1/3} = 2^{5/6}$$, not $$2^{1/6}$$ or $$4^{5/6}$$.
+- **Using fractional powers of negative numbers.** Write an odd root of a negative number as a root,
+  like $$\sqrt[3]{-8}$$, not as $$(-8)^{1/3}$$.
+
+## In short
+
+- Every positive number has exactly one positive $$n$$-th root, written $$\sqrt[n]{a}$$ or
+  $$a^{1/n}$$.
+- $$x^n = a$$ has one solution for odd $$n$$, whatever $$a$$ is. For even $$n$$ it has two when
+  $$a > 0$$, one when $$a = 0$$, and none when $$a < 0$$.
+- For $$a > 0$$, $$a^{m/n} = \left(\sqrt[n]{a}\right)^m = \sqrt[n]{a^m}$$, and the value doesn't
+  depend on how the fraction is written.
+- The rules $$a^p a^q = a^{p+q}$$, $$(a^p)^q = a^{pq}$$ and $$(ab)^p = a^p b^p$$ hold for all
+  rational exponents, with positive bases.

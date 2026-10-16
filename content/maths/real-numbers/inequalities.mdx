@@ -1,0 +1,298 @@
+---
+title: Solving inequalities
+description:
+  Intervals, solving inequalities step by step, sign tables, and inequalities with squares and
+  absolute values.
+---
+
+An equation usually has a few solutions; an inequality like $$2x + 1 < 7$$ usually has infinitely
+many, filling a whole stretch of the number line. Solving it means describing that stretch exactly.
+This page introduces the notation for such stretches, the **intervals**, shows which steps are safe
+when solving an inequality, and then deals with products, quotients, squares and absolute values.
+
+## Intervals
+
+:::definition[Intervals]{#interval}
+
+For real numbers $$a < b$$, the **intervals** with endpoints $$a$$ and $$b$$ are
+
+| Notation   | The numbers $$x$$ with | Name      |
+| ---------- | ---------------------- | --------- |
+| $$(a, b)$$ | $$a < x < b$$          | open      |
+| $$[a, b]$$ | $$a \le x \le b$$      | closed    |
+| $$[a, b)$$ | $$a \le x < b$$        | half-open |
+| $$(a, b]$$ | $$a < x \le b$$        | half-open |
+
+and the **infinite intervals** $$(a, \infty)$$, $$[a, \infty)$$, $$(-\infty, b)$$ and
+$$(-\infty, b]$$ are the numbers with $$x > a$$, $$x \ge a$$, $$x < b$$ and $$x \le b$$. All the
+real numbers together are written $$(-\infty, \infty)$$.
+
+:::
+
+A square bracket includes the endpoint and a round one leaves it out. In pictures, an included
+endpoint is a filled dot and a left-out one is a hollow dot. Here are $$(-2, 3]$$ and
+$$[5, \infty)$$:
+
+::number-line{from=-4 to=8 intervals="(-2, 3]; [5, oo)"}
+
+The symbol $$\infty$$, read "infinity", is not a number. In $$[5, \infty)$$ it just says that the
+interval goes on forever to the right, which is why that end always has a round bracket.
+
+A solution can be made of several intervals. The word **or** joins them, or the symbol $$\cup$$,
+read "union": $$(-\infty, -1) \cup (2, \infty)$$ means the numbers that are less than $$-1$$ or
+greater than $$2$$.
+
+## Safe steps for inequalities
+
+As with equations, an inequality is solved by replacing it with simpler and simpler ones that have
+exactly the same solutions. These steps are safe.
+
+:::proposition[Safe steps for inequalities]{#inequality-steps}
+
+Changing an inequality in any of these ways gives one with exactly the same solutions:
+
+1. Adding the same number or expression to both sides.
+2. Multiplying both sides by the same **positive** number.
+3. Multiplying both sides by the same **negative** number and **reversing** the inequality.
+4. Rewriting either side as something equal to it.
+
+:::
+
+:::proof{source="https://www.mathsisfun.com/algebra/inequality-solving.html"}
+
+As for equations, we check that each step keeps every solution and can be undone. For particular
+values of the unknowns, both sides are just numbers, so the rules for inequalities
+(:ref{#inequality-rules}) apply.
+
+1. Adding $$c$$ keeps the inequality, by rule 3. Adding $$-c$$ undoes it.
+2. Multiplying by $$c > 0$$ keeps the inequality, by rule 4. Multiplying by $$\frac{1}{c}$$, which
+   is also positive (:ref{#inverse-sign}), undoes it.
+3. Multiplying by $$c < 0$$ and reversing keeps it true, by rule 5. Multiplying by $$\frac{1}{c}$$,
+   which is also negative, and reversing again, undoes it.
+4. Replacing a side by something equal to it doesn't change its value.
+
+The same holds for $$\le$$ and $$\ge$$, since each is "$$<$$ or $$=$$", and equations already obey
+these steps.
+
+:::
+
+Dividing by a number is multiplying by its reciprocal, so the same rules apply: dividing by a
+negative number reverses the inequality.
+
+## Linear inequalities
+
+:::example[A first inequality]
+
+Solve $$4x - 7 > 5$$.
+
+Adding $$7$$ to both sides gives $$4x > 12$$. Multiplying by $$\frac{1}{4}$$, which is positive,
+gives $$x > 3$$. The solutions are the interval $$(3, \infty)$$.
+
+:::
+
+:::example[Dividing by a negative number]
+
+Solve $$2 - 3x \le 11$$.
+
+Subtracting $$2$$ gives $$-3x \le 9$$. Dividing by $$-3$$ reverses the inequality: $$x \ge -3$$. The
+solutions are $$[-3, \infty)$$.
+
+**Check** with a number on each side of $$-3$$: $$x = 0$$ gives $$2 \le 11$$, which is true, and
+$$x = -4$$ gives $$14 \le 11$$, which is false.
+
+:::
+
+When $$x$$ appears on both sides, collect it on one side, as with equations. For example,
+$$2x + 9 < 5x - 3$$ becomes $$12 < 3x$$, so $$4 < x$$, that is, $$x > 4$$.
+
+A **double inequality** like $$-5 \le 3x + 1 < 7$$ says two things at once, and the same step can be
+applied to all three parts. Subtracting $$1$$ gives $$-6 \le 3x < 6$$, and dividing by $$3$$ gives
+$$-2 \le x < 2$$, the interval $$[-2, 2)$$:
+
+::number-line{from=-4 to=4 intervals="[-2, 2)"}
+
+## Products and sign tables
+
+To solve an inequality like $$(x - 2)(x + 3) < 0$$, it is enough to know when each factor is
+positive or negative, because of the sign rules.
+
+:::proposition[Signs of products]{#product-sign}
+
+For real numbers $$a$$ and $$b$$:
+
+1. $$ab > 0$$ exactly when $$a$$ and $$b$$ are both positive or both negative.
+2. $$ab < 0$$ exactly when one is positive and the other negative.
+
+The same holds for $$\frac{a}{b}$$, when $$b \neq 0$$.
+
+:::
+
+:::proof{source="https://www.mathsisfun.com/algebra/inequality-quadratic-solving.html"}
+
+Each of $$a$$ and $$b$$ is positive, negative or zero. If either is zero, $$ab = 0$$
+(:ref{#numbers/zero-times}), which is neither positive nor negative. Otherwise, rule 1 for
+positivity and :ref{#sign-rules} say that $$ab$$ is positive when the signs match and negative when
+they differ. Going through the cases, $$ab > 0$$ happens exactly when the signs match, and
+$$ab < 0$$ exactly when they differ. For quotients, use :ref{#quotient-sign} in the same way.
+
+:::
+
+A factor like $$x - 2$$ is negative for $$x < 2$$, zero at $$x = 2$$, and positive for $$x > 2$$. So
+the points where the factors are zero split the line into pieces, and on each piece every factor
+keeps the same sign. A **sign table** records them.
+
+:::example[A sign table]
+
+Solve $$(x - 2)(x + 3) < 0$$.
+
+The factors are zero at $$x = 2$$ and $$x = -3$$. These split the line into three pieces:
+
+|                    | $$x < -3$$ | $$-3 < x < 2$$ | $$x > 2$$ |
+| ------------------ | ---------- | -------------- | --------- |
+| $$x + 3$$          | $$-$$      | $$+$$          | $$+$$     |
+| $$x - 2$$          | $$-$$      | $$-$$          | $$+$$     |
+| $$(x - 2)(x + 3)$$ | $$+$$      | $$-$$          | $$+$$     |
+
+The product is negative only in the middle, and at $$x = -3$$ and $$x = 2$$ it is $$0$$, which is
+not less than $$0$$. So the solutions are $$(-3, 2)$$.
+
+:::
+
+For $$(x - 2)(x + 3) \ge 0$$ instead, the same table gives the outer pieces, now with their
+endpoints, since $$0 \ge 0$$: the solutions are $$(-\infty, -3] \cup [2, \infty)$$.
+
+## Quotients
+
+An inequality with $$x$$ on the bottom of a fraction needs care. Multiplying both sides by the
+bottom is only safe if its sign is known, and it changes with $$x$$. The safest route is to get
+$$0$$ on one side, combine into a single fraction, and use a sign table.
+
+:::example[x on the bottom]
+
+Solve $$\frac{3x - 1}{x + 2} \ge 2$$.
+
+The left side doesn't exist at $$x = -2$$, so that value is never a solution. Subtracting $$2$$ and
+putting everything over the same denominator,
+
+```math
+\frac{3x - 1}{x + 2} - \frac{2(x + 2)}{x + 2} = \frac{x - 5}{x + 2} \ge 0
+```
+
+The top is zero at $$x = 5$$ and the bottom at $$x = -2$$:
+
+|                         | $$x < -2$$ | $$-2 < x < 5$$ | $$x > 5$$ |
+| ----------------------- | ---------- | -------------- | --------- |
+| $$x + 2$$               | $$-$$      | $$+$$          | $$+$$     |
+| $$x - 5$$               | $$-$$      | $$-$$          | $$+$$     |
+| $$\frac{x - 5}{x + 2}$$ | $$+$$      | $$-$$          | $$+$$     |
+
+The quotient is positive on the outer pieces and $$0$$ at $$x = 5$$. So the solutions are
+$$(-\infty, -2) \cup [5, \infty)$$, with $$-2$$ left out and $$5$$ included.
+
+:::
+
+Multiplying through by $$x + 2$$ without care would have given $$3x - 1 \ge 2x + 4$$, so
+$$x \ge 5$$, which misses every solution below $$-2$$. Splitting into the cases $$x + 2 > 0$$ and
+$$x + 2 < 0$$ also works, but the sign table keeps track of everything at once.
+
+## Squares
+
+:::proposition[Comparing a square with a number]{#square-inequality}
+
+Let $$c > 0$$. Then
+
+1. $$x^2 < c$$ exactly when $$-\sqrt{c} < x < \sqrt{c}$$.
+2. $$x^2 > c$$ exactly when $$x < -\sqrt{c}$$ or $$x > \sqrt{c}$$.
+
+:::
+
+:::proof{source="https://www.mathsisfun.com/algebra/inequality-quadratic-solving.html"}
+
+Write $$s = \sqrt{c}$$, which is positive, so $$c = s^2$$. Then by the difference of two squares
+(:ref{#numbers/square-formulas}),
+
+```math
+x^2 - c = (x - s)(x + s)
+```
+
+Since $$-s < s$$, the factor $$x + s$$ is negative for $$x < -s$$ and positive for $$x > -s$$, and
+$$x - s$$ is negative for $$x < s$$ and positive for $$x > s$$. So the sign table is the same as in
+the example above: the product is negative exactly when $$-s < x < s$$, and positive exactly when
+$$x < -s$$ or $$x > s$$. By :ref{#product-sign}, these are the solutions of $$x^2 - c < 0$$ and
+$$x^2 - c > 0$$.
+
+:::
+
+For example, $$x^2 \le 9$$ gives $$[-3, 3]$$, and $$x^2 > 5$$ gives
+$$\left(-\infty, -\sqrt{5}\right) \cup \left(\sqrt{5}, \infty\right)$$. The cases with $$c \le 0$$
+need no work: $$x^2 < -1$$ has no solutions and $$x^2 \ge 0$$ is true for every $$x$$, because
+squares are never negative.
+
+A common slip is to "take square roots" of $$x^2 < 9$$ and write $$x < 3$$. That keeps $$x = -10$$,
+whose square is $$100$$.
+
+## Absolute values
+
+The inequality $$|x - a| < r$$ says that the distance from $$x$$ to $$a$$ is less than $$r$$, so
+$$x$$ lies within $$r$$ of $$a$$ on either side.
+
+:::proposition[Absolute value inequalities]{#abs-inequality}
+
+Let $$r > 0$$. Then
+
+1. $$|x - a| < r$$ exactly when $$a - r < x < a + r$$.
+2. $$|x - a| > r$$ exactly when $$x < a - r$$ or $$x > a + r$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Absolute_value#Real_numbers"}
+
+Write $$y = x - a$$. Both $$|y|$$ and $$r$$ are not negative, so $$|y| < r$$ exactly when
+$$|y|^2 < r^2$$, by :ref{#power-order} and :ref{#power-order-converse}. And $$|y|^2 = y^2$$
+(:ref{#abs-basics}). So $$|y| < r$$ exactly when $$y^2 < r^2$$, which by :ref{#square-inequality}
+(with $$c = r^2$$ and $$\sqrt{c} = r$$) happens exactly when $$-r < y < r$$. Adding $$a$$ throughout
+gives $$a - r < x < a + r$$.
+
+Part 2 works the same way, with the second part of :ref{#square-inequality}.
+
+:::
+
+:::example[Within a distance]
+
+Solve $$|x - 3| < 2$$: the numbers within $$2$$ of $$3$$. By :ref{#abs-inequality}, $$1 < x < 5$$,
+the interval $$(1, 5)$$.
+
+::number-line{from=0 to=6 points="3" intervals="(1, 5)"}
+
+:::
+
+:::example[Further than a distance]
+
+Solve $$|2x + 1| \ge 5$$.
+
+The same reasoning works for $$\ge$$, with the endpoints now included: $$2x + 1 \le -5$$ or
+$$2x + 1 \ge 5$$. The first gives $$x \le -3$$ and the second $$x \ge 2$$. So the solutions are
+$$(-\infty, -3] \cup [2, \infty)$$.
+
+:::
+
+## Common mistakes
+
+- **Not reversing.** Multiplying or dividing by a negative number reverses the inequality.
+- **Multiplying by an expression of unknown sign.** In $$\frac{3x - 1}{x + 2} \ge 2$$, multiplying
+  by $$x + 2$$ is only safe when $$x + 2 > 0$$. Use a sign table instead.
+- **Including points where the expression doesn't exist.** A value that makes a denominator $$0$$ is
+  never a solution.
+- **"Square rooting" an inequality.** $$x^2 < 9$$ means $$-3 < x < 3$$, not $$x < 3$$.
+- **Wrong brackets.** $$\infty$$ always gets a round bracket, and an endpoint gets a square bracket
+  only if it is a solution.
+
+## In short
+
+- Intervals like $$(a, b)$$, $$[a, b]$$ and $$[a, \infty)$$ describe stretches of the line; square
+  brackets include the endpoint and round ones don't.
+- Adding the same thing to both sides, and multiplying by a positive number, are safe. Multiplying
+  by a negative number is safe only if the inequality is reversed.
+- For products and quotients, find where each factor is zero and use a sign table.
+- For $$c > 0$$: $$x^2 < c$$ means $$-\sqrt{c} < x < \sqrt{c}$$, and $$|x - a| < r$$ means
+  $$a - r < x < a + r$$.

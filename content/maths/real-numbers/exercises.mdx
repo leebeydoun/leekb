@@ -1,0 +1,879 @@
+---
+title: Exercises
+description: Exercises on the whole guide, with worked solutions.
+---
+
+These exercises follow the order of the guide, from decimals to inequalities. Some ask for an
+answer, and some ask why something is true. Try each one before opening its solution, and check
+answers in the original question, especially after squaring or multiplying by an expression.
+
+## The real line
+
+::::exercise{#ex-repeating-decimals}
+
+Write $$0.454545\ldots$$ and $$1.2333\ldots$$ as fractions in lowest form.
+
+:::solution
+
+For $$x = 0.4545\ldots$$, the block $$45$$ repeats every two places, so $$100x = 45.4545\ldots$$ and
+$$99x = 45$$. So $$x = \frac{45}{99} = \frac{5}{11}$$.
+
+For $$y = 1.2333\ldots$$, only the $$3$$ repeats, and it starts one place after the point. So
+$$10y = 12.333\ldots$$ and $$100y = 123.333\ldots$$, and subtracting, $$90y = 111$$. So
+$$y = \frac{111}{90} = \frac{37}{30}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-two-decimals}
+
+Write $$2.47999\ldots$$, with $$9$$s forever, as a decimal that stops. Which real numbers have two
+different decimals?
+
+:::solution
+
+$$2.47999\ldots = 2.47 + 0.00999\ldots$$, and $$0.00999\ldots$$ is $$0.999\ldots$$ divided by
+$$100$$, which is $$\frac{1}{100}$$ by :ref{#point-nine}. So $$2.47999\ldots = 2.48$$.
+
+The numbers with two decimals are exactly those with a decimal that stops (other than $$0$$): one
+version stops, and the other lowers the last digit by one and continues with $$9$$s forever.
+
+:::
+
+::::
+
+::::exercise{#ex-root-three-digits}
+
+Find the first two decimal places of the number whose square is $$3$$, by squaring.
+
+:::solution
+
+Since $$1.7^2 = 2.89$$ and $$1.8^2 = 3.24$$, the number lies between $$1.7$$ and $$1.8$$. Since
+$$1.73^2 = 2.9929$$ and $$1.74^2 = 3.0276$$, it lies between $$1.73$$ and $$1.74$$. So it begins
+$$1.73\ldots$$.
+
+:::
+
+::::
+
+::::exercise{#ex-remainders-four}
+
+Remainders on division by $$4$$ can be added and multiplied in the same way as remainders on
+division by $$5$$. Which rule for real numbers (:ref{#real-rules}) fails for them?
+
+:::solution
+
+Rule 5, inverses. The remainder $$2$$ is not $$0$$, but $$2 \cdot 0 = 0$$, $$2 \cdot 1 = 2$$,
+$$2 \cdot 2 = 4 \equiv 0$$ and $$2 \cdot 3 = 6 \equiv 2$$. None of these is $$1$$, so $$2$$ has no
+inverse.
+
+:::
+
+::::
+
+## Positive and negative
+
+::::exercise{#ex-sign-without-working}
+
+Without working out its value, decide whether $$\frac{(-3)(-7)(-2)}{-5}$$ is positive or negative.
+
+:::solution
+
+The top has three negative factors. The first two multiply to a positive number, and then a positive
+times a negative is negative, so the top is negative (:ref{#sign-rules}). A negative divided by a
+negative is positive (:ref{#quotient-sign}). So the number is positive. (It is $$\frac{42}{5}$$.)
+
+:::
+
+::::
+
+::::exercise{#ex-negative-difference}
+
+Prove that if $$a$$ is negative and $$b$$ is positive, then $$a - b$$ is negative.
+
+:::solution
+
+We need $$-(a - b)$$ to be positive. By :ref{#numbers/opposite-sum}, $$-(a - b) = -a + b$$. Since
+$$a$$ is negative, $$-a$$ is positive, and $$b$$ is positive, so their sum is positive by rule 1 for
+positivity (:ref{#positivity}).
+
+:::
+
+::::
+
+::::exercise{#ex-both-negative}
+
+Suppose $$ab > 0$$ and $$a + b < 0$$. Show that $$a$$ and $$b$$ are both negative.
+
+:::solution
+
+Neither is $$0$$, since then $$ab = 0$$. So by :ref{#sign-rules}, $$ab > 0$$ means they have the
+same sign. If both were positive, $$a + b$$ would be positive by rule 1 for positivity, but it is
+negative. So both are negative.
+
+:::
+
+::::
+
+::::exercise{#ex-always-positive}
+
+Show that $$x^2 + 2x + 2$$ is positive for every real number $$x$$.
+
+:::solution
+
+By the formula for the square of a sum, $$x^2 + 2x + 2 = (x + 1)^2 + 1$$. The square is not negative
+(:ref{#squares-positive}), so the whole expression is at least $$1$$, which is positive.
+
+:::
+
+::::
+
+::::exercise{#ex-squares-sum-zero}
+
+Find all real numbers $$x$$ and $$y$$ with $$(x - 2)^2 + (y + 1)^2 = 0$$.
+
+:::solution
+
+By part 2 of :ref{#squares-positive}, a sum of two squares is $$0$$ only when both numbers are
+$$0$$. So $$x - 2 = 0$$ and $$y + 1 = 0$$: the only solution is $$x = 2$$, $$y = -1$$.
+
+:::
+
+::::
+
+## Order and inequalities
+
+::::exercise{#ex-negate-inequality}
+
+Prove that if $$a < b$$, then $$-b < -a$$.
+
+:::solution
+
+Multiply both sides of $$a < b$$ by $$-1$$, which is negative, so the inequality reverses (rule 5 of
+:ref{#inequality-rules}): $$-a > -b$$, that is, $$-b < -a$$.
+
+:::
+
+::::
+
+::::exercise{#ex-reciprocals-negative}
+
+Prove that if $$a < b < 0$$, then $$\frac{1}{b} < \frac{1}{a}$$.
+
+:::solution
+
+Both $$a$$ and $$b$$ are negative, so $$ab$$ is positive (:ref{#sign-rules}), and so is
+$$\frac{1}{ab}$$ (:ref{#inverse-sign}). Multiplying $$a < b$$ by it keeps the inequality:
+$$\frac{a}{ab} < \frac{b}{ab}$$, that is, $$\frac{1}{b} < \frac{1}{a}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-compare-two-fractions}
+
+Which is bigger, $$\frac{7}{12}$$ or $$\frac{11}{19}$$?
+
+:::solution
+
+Cross-multiplying (:ref{#cross-multiplying-inequality}): $$7 \cdot 19 = 133$$ and
+$$12 \cdot 11 = 132$$. Since $$132 < 133$$, $$\frac{11}{19} < \frac{7}{12}$$. So $$\frac{7}{12}$$ is
+bigger, though only just.
+
+:::
+
+::::
+
+::::exercise{#ex-fraction-between}
+
+Find a fraction between $$\frac{3}{7}$$ and $$\frac{4}{9}$$.
+
+:::solution
+
+First, $$\frac{3}{7} < \frac{4}{9}$$, since $$3 \cdot 9 = 27 < 28 = 7 \cdot 4$$. By :ref{#mediant},
+the mediant $$\frac{3 + 4}{7 + 9} = \frac{7}{16}$$ lies between them.
+
+**Check:** in decimals, $$\frac{3}{7} = 0.428\ldots$$, $$\frac{7}{16} = 0.4375$$ and
+$$\frac{4}{9} = 0.444\ldots$$.
+
+:::
+
+::::
+
+::::exercise{#ex-compare-powers}
+
+Which is bigger, $$2^{30}$$ or $$3^{20}$$?
+
+:::solution
+
+Write both as tenth powers: $$2^{30} = \left(2^3\right)^{10} = 8^{10}$$ and
+$$3^{20} = \left(3^2\right)^{10} = 9^{10}$$. Since $$0 \le 8 < 9$$, :ref{#power-order} gives
+$$8^{10} < 9^{10}$$. So $$3^{20}$$ is bigger.
+
+:::
+
+::::
+
+::::exercise{#ex-three-squares}
+
+Prove that $$a^2 + b^2 + c^2 \ge ab + bc + ca$$ for all real numbers $$a$$, $$b$$ and $$c$$.
+
+:::solution
+
+By :ref{#two-squares}, $$a^2 + b^2 \ge 2ab$$, $$b^2 + c^2 \ge 2bc$$ and $$c^2 + a^2 \ge 2ca$$.
+Adding the three (:ref{#combine-inequalities}, which works the same for $$\ge$$),
+
+```math
+2a^2 + 2b^2 + 2c^2 \ge 2ab + 2bc + 2ca
+```
+
+and multiplying by $$\frac{1}{2}$$ gives the result.
+
+:::
+
+::::
+
+::::exercise{#ex-square-smaller}
+
+Prove that if $$0 < x < 1$$, then $$x^2 < x$$.
+
+:::solution
+
+Multiply both sides of $$x < 1$$ by $$x$$, which is positive (rule 4 of :ref{#inequality-rules}):
+$$x \cdot x < 1 \cdot x$$, that is, $$x^2 < x$$.
+
+:::
+
+::::
+
+::::exercise{#ex-no-smallest-positive}
+
+Show that there is no smallest positive real number.
+
+:::solution
+
+By contradiction: suppose $$a$$ were the smallest positive number. Then $$\frac{a}{2}$$ is positive,
+as a product of positive numbers, and by :ref{#between} with $$0 < a$$ it is less than $$a$$. That
+contradicts $$a$$ being the smallest.
+
+:::
+
+::::
+
+## Square roots
+
+::::exercise{#ex-simplify-roots}
+
+Simplify $$\sqrt{50} + \sqrt{32} - \sqrt{18}$$, $$\sqrt{45}\,\sqrt{20}$$ and
+$$\sqrt{\frac{27}{4}}$$.
+
+:::solution
+
+Pulling out square factors (:ref{#root-product}): $$\sqrt{50} = 5\sqrt{2}$$,
+$$\sqrt{32} = 4\sqrt{2}$$ and $$\sqrt{18} = 3\sqrt{2}$$, so the first is
+$$(5 + 4 - 3)\sqrt{2} = 6\sqrt{2}$$.
+
+$$\sqrt{45}\,\sqrt{20} = \sqrt{900} = 30$$.
+
+$$\sqrt{\frac{27}{4}} = \frac{\sqrt{27}}{\sqrt{4}} = \frac{3\sqrt{3}}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-solve-squares}
+
+Solve $$(2x - 1)^2 = 9$$, $$3x^2 = 75$$ and $$x^2 + 5 = 3$$.
+
+:::solution
+
+By :ref{#square-root-count}:
+
+- $$2x - 1 = \pm 3$$, so $$2x = 4$$ or $$2x = -2$$: $$x = 2$$ or $$x = -1$$.
+- $$x^2 = 25$$, so $$x = 5$$ or $$x = -5$$.
+- $$x^2 = -2$$, which has no solution, since squares are never negative.
+
+:::
+
+::::
+
+::::exercise{#ex-root-of-sum}
+
+For which numbers $$a \ge 0$$ and $$b \ge 0$$ is $$\sqrt{a + b} = \sqrt{a} + \sqrt{b}$$?
+
+:::solution
+
+Both sides are not negative, so they are equal exactly when their squares are
+(:ref{#squaring-sides}): $$a + b = a + 2\sqrt{a}\sqrt{b} + b$$, that is, $$\sqrt{ab} = 0$$. That
+happens exactly when $$ab = 0$$, so when $$a = 0$$ or $$b = 0$$. Only then does the root split over
+the sum.
+
+:::
+
+::::
+
+::::exercise{#ex-compare-root-sums}
+
+Which is bigger, $$\sqrt{2} + \sqrt{3}$$ or $$\sqrt{10}$$?
+
+:::solution
+
+Both are positive, so compare their squares (:ref{#power-order-converse}).
+$$\left(\sqrt{2} + \sqrt{3}\right)^2 = 2 + 2\sqrt{6} + 3 = 5 + 2\sqrt{6}$$, and
+$$\left(\sqrt{10}\right)^2 = 10$$. So compare $$2\sqrt{6}$$ with $$5$$, again by squaring: $$24$$
+against $$25$$. Since $$24 < 25$$, $$2\sqrt{6} < 5$$, so $$5 + 2\sqrt{6} < 10$$, and
+$$\sqrt{2} + \sqrt{3} < \sqrt{10}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-order-roots}
+
+Put $$\sqrt{15}$$, $$4$$, $$2\sqrt{3}$$ and $$\sqrt{17}$$ in order, smallest first.
+
+:::solution
+
+Write each as a single square root: $$4 = \sqrt{16}$$ and $$2\sqrt{3} = \sqrt{12}$$. By
+:ref{#root-order}, the order follows the numbers under the roots:
+$$2\sqrt{3} < \sqrt{15} < 4 < \sqrt{17}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-which-irrational}
+
+Which of these are irrational? $$3 + \sqrt{2}$$, $$\sqrt{2}\,\sqrt{8}$$,
+$$\frac{\sqrt{12}}{\sqrt{3}}$$, $$\frac{2}{\sqrt{2}}$$ and $$\left(1 + \sqrt{2}\right)^2$$.
+
+:::solution
+
+- $$3 + \sqrt{2}$$ is irrational, by :ref{#rational-irrational}.
+- $$\sqrt{2}\,\sqrt{8} = \sqrt{16} = 4$$ is rational.
+- $$\frac{\sqrt{12}}{\sqrt{3}} = \sqrt{4} = 2$$ is rational.
+- $$\frac{2}{\sqrt{2}} = \sqrt{2}$$ is irrational.
+- $$\left(1 + \sqrt{2}\right)^2 = 3 + 2\sqrt{2}$$ is irrational: $$2\sqrt{2}$$ is irrational, as a
+  non-zero rational times an irrational number, and adding $$3$$ keeps it irrational.
+
+:::
+
+::::
+
+::::exercise{#ex-root-two-plus-three}
+
+Prove that $$\sqrt{2} + \sqrt{3}$$ is irrational.
+
+:::solution
+
+By contradiction: suppose $$\sqrt{2} + \sqrt{3} = r$$ with $$r$$ rational. It is positive, so
+$$r \neq 0$$. Then $$\sqrt{3} = r - \sqrt{2}$$, and squaring,
+
+```math
+3 = r^2 - 2r\sqrt{2} + 2, \qquad \text{so} \qquad \sqrt{2} = \frac{r^2 - 1}{2r}
+```
+
+The right side is rational, but $$\sqrt{2}$$ is not (:ref{#numbers/sqrt-two}), a contradiction.
+
+:::
+
+::::
+
+::::exercise{#ex-am-gm-uses}
+
+Use the AM–GM inequality to show that $$x + \frac{4}{x} \ge 4$$ for every $$x > 0$$, and find when
+equality holds. Then show that two positive numbers with sum $$10$$ have product at most $$25$$.
+
+:::solution
+
+By :ref{#am-gm} with $$a = x$$ and $$b = \frac{4}{x}$$:
+$$x + \frac{4}{x} \ge 2\sqrt{x \cdot \frac{4}{x}} = 2\sqrt{4} = 4$$. Equality holds only when
+$$x = \frac{4}{x}$$, that is, $$x^2 = 4$$, so $$x = 2$$.
+
+If $$a + b = 10$$, then $$\sqrt{ab} \le \frac{a + b}{2} = 5$$, so $$ab \le 25$$ by
+:ref{#power-order}. The product is exactly $$25$$ when $$a = b = 5$$.
+
+:::
+
+::::
+
+## Working with square roots
+
+::::exercise{#ex-rationalise-denominators}
+
+Rationalise the denominators of $$\frac{6}{\sqrt{3}}$$, $$\frac{1}{2 + \sqrt{3}}$$ and
+$$\frac{\sqrt{5} + 1}{\sqrt{5} - 1}$$.
+
+:::solution
+
+- $$\frac{6}{\sqrt{3}} = \frac{6\sqrt{3}}{3} = 2\sqrt{3}$$.
+- $$\frac{1}{2 + \sqrt{3}} = \frac{2 - \sqrt{3}}{4 - 3} = 2 - \sqrt{3}$$.
+- Multiplying top and bottom by $$\sqrt{5} + 1$$:
+  $$\frac{\left(\sqrt{5} + 1\right)^2}{5 - 1} = \frac{6 + 2\sqrt{5}}{4} = \frac{3 + \sqrt{5}}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-rationalise-two-roots}
+
+Rationalise the denominator of $$\frac{4}{\sqrt{7} + \sqrt{3}}$$.
+
+:::solution
+
+Multiplying top and bottom by the conjugate $$\sqrt{7} - \sqrt{3}$$, the bottom becomes
+$$7 - 3 = 4$$, so the fraction is
+$$\frac{4\left(\sqrt{7} - \sqrt{3}\right)}{4} = \sqrt{7} - \sqrt{3}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-a-plus-b-root-two}
+
+Write $$\frac{1}{1 + \sqrt{2}}$$ and $$\frac{2 + \sqrt{2}}{3 - \sqrt{2}}$$ in the form
+$$a + b\sqrt{2}$$ with $$a$$ and $$b$$ rational.
+
+:::solution
+
+$$\frac{1}{1 + \sqrt{2}} = \frac{1 - \sqrt{2}}{1 - 2} = -1 + \sqrt{2}$$.
+
+For the second, multiply top and bottom by $$3 + \sqrt{2}$$. The bottom becomes $$9 - 2 = 7$$, and
+the top $$\left(2 + \sqrt{2}\right)\left(3 + \sqrt{2}\right)$$, which is
+$$6 + 2\sqrt{2} + 3\sqrt{2} + 2 = 8 + 5\sqrt{2}$$. So the number is
+$$\frac{8}{7} + \frac{5}{7}\sqrt{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-root-three-form}
+
+Work out $$\left(1 + \sqrt{3}\right)\left(2 - \sqrt{3}\right)$$ and the inverse of $$2 + \sqrt{3}$$,
+each in the form $$a + b\sqrt{3}$$.
+
+:::solution
+
+$$\left(1 + \sqrt{3}\right)\left(2 - \sqrt{3}\right) = 2 - \sqrt{3} + 2\sqrt{3} - 3 = -1 + \sqrt{3}$$.
+
+$$\frac{1}{2 + \sqrt{3}} = \frac{2 - \sqrt{3}}{4 - 3} = 2 - \sqrt{3}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-root-equation}
+
+Solve $$\sqrt{3x + 1} = x - 1$$.
+
+:::solution
+
+Squaring, $$3x + 1 = x^2 - 2x + 1$$, so $$x^2 - 5x = 0$$, that is, $$x(x - 5) = 0$$. So $$x = 0$$ or
+$$x = 5$$.
+
+**Check** in the original equation. For $$x = 0$$: $$\sqrt{1} = 1$$, but $$0 - 1 = -1$$, so this is
+a false solution. For $$x = 5$$: $$\sqrt{16} = 4 = 5 - 1$$. So the only solution is $$x = 5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-root-equation-two-roots}
+
+Solve $$\sqrt{x + 9} = 1 + \sqrt{x}$$.
+
+:::solution
+
+Squaring, $$x + 9 = 1 + 2\sqrt{x} + x$$, so $$2\sqrt{x} = 8$$ and $$\sqrt{x} = 4$$, giving
+$$x = 16$$.
+
+**Check:** $$\sqrt{25} = 5$$ and $$1 + \sqrt{16} = 5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-root-equation-none}
+
+Explain, without squaring, why $$\sqrt{x - 2} + 4 = 1$$ has no solution.
+
+:::solution
+
+It says $$\sqrt{x - 2} = -3$$. A square root is never negative, so no $$x$$ can make this true.
+
+:::
+
+::::
+
+::::exercise{#ex-root-gaps}
+
+Show that $$\sqrt{n + 1} - \sqrt{n} < \frac{1}{2\sqrt{n}}$$ for every $$n \ge 1$$.
+
+:::solution
+
+Rationalising the numerator, $$\sqrt{n + 1} - \sqrt{n} = \frac{1}{\sqrt{n + 1} + \sqrt{n}}$$. Since
+$$\sqrt{n + 1} > \sqrt{n}$$ (:ref{#root-order}), the bottom is more than $$2\sqrt{n}$$, and
+reciprocals reverse order (:ref{#reciprocal-order}). So the difference is less than
+$$\frac{1}{2\sqrt{n}}$$.
+
+:::
+
+::::
+
+## Absolute value
+
+::::exercise{#ex-abs-evaluate}
+
+Write without absolute value signs: $$|-7| + |3 - 10|$$, $$\left|2 - \sqrt{5}\right|$$ and
+$$\left|x^2 + 1\right|$$.
+
+:::solution
+
+- $$|-7| + |3 - 10| = 7 + 7 = 14$$.
+- $$\sqrt{5} > \sqrt{4} = 2$$, so $$2 - \sqrt{5}$$ is negative and its absolute value is
+  $$\sqrt{5} - 2$$.
+- $$x^2 + 1$$ is always positive, so $$\left|x^2 + 1\right| = x^2 + 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-abs-equations}
+
+Solve $$|x + 2| = 5$$, $$|4 - x| = 1$$, $$|2x - 5| = 0$$ and $$|x| = -1$$.
+
+:::solution
+
+By :ref{#abs-equation}:
+
+- $$x + 2 = \pm 5$$, so $$x = 3$$ or $$x = -7$$.
+- $$4 - x = \pm 1$$, so $$x = 3$$ or $$x = 5$$.
+- $$2x - 5 = 0$$, so $$x = \frac{5}{2}$$.
+- No solution, since an absolute value is never negative.
+
+:::
+
+::::
+
+::::exercise{#ex-abs-x-both-sides}
+
+Solve $$|2x - 1| = x + 4$$.
+
+:::solution
+
+Either $$2x - 1 = x + 4$$, giving $$x = 5$$, or $$2x - 1 = -(x + 4)$$, giving $$3x = -3$$ and
+$$x = -1$$. The right side must not be negative: it is $$9$$ for $$x = 5$$ and $$3$$ for $$x = -1$$,
+so both are solutions.
+
+**Check:** $$|9| = 9$$ and $$|-3| = 3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-abs-equal}
+
+Solve $$|x + 1| = |x - 7|$$ and $$|2x - 1| = |x + 2|$$.
+
+:::solution
+
+Two numbers have the same absolute value exactly when they are equal or opposite, by
+:ref{#equal-squares} with part 4 of :ref{#abs-basics}.
+
+- $$x + 1 = x - 7$$ is impossible, and $$x + 1 = -(x - 7)$$ gives $$2x = 6$$, so $$x = 3$$: the
+  point halfway between $$-1$$ and $$7$$.
+- $$2x - 1 = x + 2$$ gives $$x = 3$$, and $$2x - 1 = -(x + 2)$$ gives $$3x = -1$$, so
+  $$x = -\frac{1}{3}$$. **Check:** $$|5| = |5|$$, and
+  $$\left|-\frac{5}{3}\right| = \left|\frac{5}{3}\right|$$.
+
+:::
+
+::::
+
+::::exercise{#ex-reverse-triangle}
+
+Prove that $$\big||a| - |b|\big| \le |a - b|$$ for all real numbers $$a$$ and $$b$$.
+
+:::solution
+
+Since $$a = (a - b) + b$$, the triangle inequality (:ref{#triangle-inequality}) gives
+$$|a| \le |a - b| + |b|$$, so $$|a| - |b| \le |a - b|$$. Swapping $$a$$ and $$b$$, and using
+$$|b - a| = |a - b|$$, gives $$|b| - |a| \le |a - b|$$. The absolute value of $$|a| - |b|$$ is one
+of these two left-hand sides, so it is at most $$|a - b|$$.
+
+:::
+
+::::
+
+::::exercise{#ex-triangle-equality}
+
+For which $$x$$ is $$|x + 3| = |x| + 3$$?
+
+:::solution
+
+By :ref{#triangle-inequality}, $$|x + 3| = |x| + |3|$$ exactly when $$3x \ge 0$$, that is, when
+$$x \ge 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-root-of-square}
+
+Simplify $$\sqrt{x^2 - 6x + 9}$$, and find its value when $$x = 1$$.
+
+:::solution
+
+$$x^2 - 6x + 9 = (x - 3)^2$$, so by part 4 of :ref{#abs-basics} the root is $$|x - 3|$$, not
+$$x - 3$$. When $$x = 1$$ it is $$|-2| = 2$$; indeed $$\sqrt{1 - 6 + 9} = \sqrt{4} = 2$$.
+
+:::
+
+::::
+
+## Roots and fractional powers
+
+::::exercise{#ex-evaluate-powers}
+
+Work out $$27^{2/3}$$, $$32^{-2/5}$$, $$\left(\frac{1}{16}\right)^{-3/4}$$ and $$125^{4/3}$$.
+
+:::solution
+
+Taking the root first (:ref{#rational-power}):
+
+- $$27^{2/3} = \left(\sqrt[3]{27}\right)^2 = 3^2 = 9$$.
+- $$32^{-2/5} = \left(\sqrt[5]{32}\right)^{-2} = 2^{-2} = \frac{1}{4}$$.
+- $$\left(\frac{1}{16}\right)^{-3/4} = \left(\frac{1}{2}\right)^{-3} = 2^3 = 8$$.
+- $$125^{4/3} = 5^4 = 625$$.
+
+:::
+
+::::
+
+::::exercise{#ex-simplify-powers}
+
+Write each as a single power of $$x$$, for $$x > 0$$: $$x^{1/2} x^{3/4}$$,
+$$\left(x^{2/3}\right)^{3/4}$$, $$\frac{x^{1/3}}{x}$$ and $$\sqrt{x}\,\sqrt[3]{x^2}$$.
+
+:::solution
+
+By :ref{#rational-power-laws}:
+
+- $$x^{1/2 + 3/4} = x^{5/4}$$.
+- $$x^{(2/3)(3/4)} = x^{1/2}$$.
+- $$x^{1/3} x^{-1} = x^{-2/3}$$.
+- $$x^{1/2} x^{2/3} = x^{7/6}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-solve-powers}
+
+Solve $$x^3 = -64$$, $$x^4 = \frac{625}{16}$$, $$(2x - 1)^4 = 16$$ and $$x^6 = -64$$.
+
+:::solution
+
+By :ref{#power-equation}:
+
+- Odd power: the one solution is $$x = -\sqrt[3]{64} = -4$$.
+- Even power of a positive number: $$x = \pm\sqrt[4]{\frac{625}{16}} = \pm\frac{5}{2}$$.
+- $$2x - 1 = \pm 2$$, so $$x = \frac{3}{2}$$ or $$x = -\frac{1}{2}$$.
+- An even power is never negative, so there is no solution.
+
+:::
+
+::::
+
+::::exercise{#ex-negative-power-equations}
+
+Solve $$x^{-2} = 9$$ and $$(x - 2)^{-3} = 8$$.
+
+:::solution
+
+$$x^{-2} = \frac{1}{x^2}$$, so the equation says $$x^2 = \frac{1}{9}$$, and $$x = \pm\frac{1}{3}$$.
+
+$$(x - 2)^{-3} = 8$$ says $$(x - 2)^3 = \frac{1}{8}$$. An odd power has one solution, so
+$$x - 2 = \frac{1}{2}$$ and $$x = \frac{5}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-cube-root-two}
+
+Prove that $$\sqrt[3]{2}$$ is irrational.
+
+:::solution
+
+By contradiction: suppose it is rational. It is positive, so we can write it in lowest form as
+$$\frac{m}{n}$$ with $$m$$ and $$n$$ positive integers, not both even
+(:ref{#numbers/lowest-form-exists}, :ref{#numbers/not-both-even}). Cubing, $$m^3 = 2n^3$$, so
+$$m^3$$ is even. If $$m$$ were odd, $$m^3$$ would be a product of odd numbers, which is odd
+(:ref{#numbers/parity-products}); so $$m$$ is even, say $$m = 2k$$. Then $$8k^3 = 2n^3$$, so
+$$n^3 = 4k^3$$ is even, and $$n$$ is even in the same way. Now both are even, a contradiction.
+
+:::
+
+::::
+
+::::exercise{#ex-compare-roots}
+
+Which is bigger, $$\sqrt[3]{3}$$ or $$\sqrt{2}$$?
+
+:::solution
+
+Both are positive, so compare their sixth powers (:ref{#power-order-converse}):
+$$\left(\sqrt[3]{3}\right)^6 = 3^2 = 9$$ and $$\left(\sqrt{2}\right)^6 = 2^3 = 8$$. Since $$8 < 9$$,
+$$\sqrt{2} < \sqrt[3]{3}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-two-routes}
+
+Work out $$4^{3/2}$$ by taking the root first, and again by taking the power first.
+
+:::solution
+
+Root first: $$\left(\sqrt{4}\right)^3 = 2^3 = 8$$. Power first: $$\sqrt{4^3} = \sqrt{64} = 8$$. They
+agree, as :ref{#rational-power-well-defined} promises.
+
+:::
+
+::::
+
+## Solving inequalities
+
+::::exercise{#ex-linear-inequalities}
+
+Solve, and write each answer as an interval: $$5x + 2 > -13$$, $$7 - 2x \ge 3x + 22$$ and
+$$-1 < \frac{2x - 3}{5} \le 3$$.
+
+:::solution
+
+- Subtracting $$2$$, $$5x > -15$$, so $$x > -3$$: the interval $$(-3, \infty)$$.
+- Collecting terms, $$-15 \ge 5x$$, so $$x \le -3$$: the interval $$(-\infty, -3]$$.
+- Multiplying all three parts by $$5$$, $$-5 < 2x - 3 \le 15$$. Adding $$3$$, $$-2 < 2x \le 18$$,
+  and halving, $$-1 < x \le 9$$: the interval $$(-1, 9]$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sign-tables}
+
+Solve $$(x + 4)(x - 1) > 0$$, $$x(x - 3) \le 0$$ and $$(x - 1)(x - 2)(x - 3) < 0$$.
+
+:::solution
+
+- The factors change sign at $$-4$$ and $$1$$. The product is positive when both factors have the
+  same sign: $$(-\infty, -4) \cup (1, \infty)$$.
+- The factors change sign at $$0$$ and $$3$$, and the product is negative in between and $$0$$ at
+  the ends: $$[0, 3]$$.
+- With three factors, the sign changes at $$1$$, $$2$$ and $$3$$. For $$x > 3$$ all three are
+  positive; between $$2$$ and $$3$$ one is negative; between $$1$$ and $$2$$, two; below $$1$$, all
+  three. So the product is negative on $$(-\infty, 1) \cup (2, 3)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-quotient-inequalities}
+
+Solve $$\frac{x + 1}{x - 3} < 0$$ and $$\frac{2x + 1}{x - 1} \le 1$$.
+
+:::solution
+
+- By :ref{#product-sign}, the quotient is negative when the top and bottom have opposite signs,
+  which happens between $$-1$$ and $$3$$: the interval $$(-1, 3)$$.
+- Subtracting $$1$$: $$\frac{2x + 1 - (x - 1)}{x - 1} = \frac{x + 2}{x - 1} \le 0$$. The top changes
+  sign at $$-2$$ and the bottom at $$1$$. The quotient is negative between them, $$0$$ at
+  $$x = -2$$, and undefined at $$x = 1$$. So the solutions are $$[-2, 1)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-reciprocal-inequality}
+
+Solve $$\frac{1}{x} < 2$$.
+
+:::solution
+
+Multiplying by $$x$$ is unsafe, since its sign is unknown. Instead subtract $$2$$:
+$$\frac{1 - 2x}{x} < 0$$. The top changes sign at $$\frac{1}{2}$$ and the bottom at $$0$$. The
+quotient is negative when $$x < 0$$ (top positive, bottom negative) and when $$x > \frac{1}{2}$$
+(top negative, bottom positive). So the solutions are
+$$(-\infty, 0) \cup \left(\frac{1}{2}, \infty\right)$$.
+
+**Check:** $$x = 1$$ gives $$1 < 2$$, true; $$x = \frac{1}{4}$$ gives $$4 < 2$$, false.
+
+:::
+
+::::
+
+::::exercise{#ex-square-inequalities}
+
+Solve $$x^2 < 16$$, $$x^2 \ge 3$$, $$(x - 1)^2 \le 4$$ and $$x^2 > -2$$.
+
+:::solution
+
+By :ref{#square-inequality}:
+
+- $$-4 < x < 4$$: the interval $$(-4, 4)$$.
+- $$x \le -\sqrt{3}$$ or $$x \ge \sqrt{3}$$:
+  $$\left(-\infty, -\sqrt{3}\right] \cup \left[\sqrt{3}, \infty\right)$$.
+- $$-2 \le x - 1 \le 2$$, so $$-1 \le x \le 3$$: the interval $$[-1, 3]$$.
+- Every real number, since a square is never negative.
+
+:::
+
+::::
+
+::::exercise{#ex-square-less-than-itself}
+
+Solve $$x^2 < x$$.
+
+:::solution
+
+Subtracting $$x$$, $$x^2 - x = x(x - 1) < 0$$. The product is negative when the factors have
+opposite signs, which happens exactly when $$0 < x < 1$$. So the solutions are $$(0, 1)$$, matching
+:ref{#ex-square-smaller}.
+
+:::
+
+::::
+
+::::exercise{#ex-abs-inequalities}
+
+Solve $$|x + 2| < 3$$, $$|3x - 6| \le 9$$, $$|x - 1| > 2$$ and $$|5 - 2x| \ge 1$$.
+
+:::solution
+
+By :ref{#abs-inequality}:
+
+- $$|x - (-2)| < 3$$ gives $$-5 < x < 1$$: $$(-5, 1)$$.
+- $$|3x - 6| = 3|x - 2|$$, so the inequality says $$|x - 2| \le 3$$: $$[-1, 5]$$.
+- $$x < -1$$ or $$x > 3$$: $$(-\infty, -1) \cup (3, \infty)$$.
+- $$|5 - 2x| = |2x - 5|$$, so $$2x - 5 \le -1$$ or $$2x - 5 \ge 1$$: $$x \le 2$$ or $$x \ge 3$$,
+  that is, $$(-\infty, 2] \cup [3, \infty)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-interval-as-abs}
+
+Write the interval $$(2, 8)$$ as the solutions of an inequality $$|x - a| < r$$.
+
+:::solution
+
+The middle of the interval is $$a = \frac{2 + 8}{2} = 5$$, and each end is $$r = 3$$ away from it.
+So $$(2, 8)$$ is the set of solutions of $$|x - 5| < 3$$.
+
+:::
+
+::::

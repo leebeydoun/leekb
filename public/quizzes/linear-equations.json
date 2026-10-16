@@ -119,7 +119,12 @@
       "stars": 1,
       "topic": "Two equations in two unknowns",
       "question": "How many solutions does a single equation like $$x + y = 5$$ have?",
-      "options": ["None", "Infinitely many", "Exactly two", "Exactly one"],
+      "options": [
+        "None",
+        "Infinitely many",
+        "Exactly two",
+        "Exactly one"
+      ],
       "answer": 1,
       "explanation": "Any $$x$$ can be chosen, and then $$y = 5 - x$$ is forced, so there are infinitely many pairs (:ref{#linear-two})."
     },
@@ -352,7 +357,12 @@
       "stars": 1,
       "topic": "No solution, or infinitely many",
       "question": "What is the determinant of the system $$ax + by = u$$, $$cx + dy = v$$?",
-      "options": ["$$ad - bc$$", "$$ab - cd$$", "$$ac - bd$$", "$$uv - ad$$"],
+      "options": [
+        "$$ad - bc$$",
+        "$$ab - cd$$",
+        "$$ac - bd$$",
+        "$$uv - ad$$"
+      ],
       "answer": 0,
       "explanation": "It is the product down one diagonal of the coefficients minus the product down the other: $$ad - bc$$ (:ref{#determinant})."
     },
@@ -501,7 +511,12 @@
       "stars": 2,
       "topic": "Equations as lines",
       "question": "Two equations draw the same line. How many solutions does the system have?",
-      "options": ["None", "Infinitely many", "Exactly two", "Exactly one"],
+      "options": [
+        "None",
+        "Infinitely many",
+        "Exactly two",
+        "Exactly one"
+      ],
       "answer": 1,
       "explanation": "Every point on the line lies on both graphs, so every one is a solution."
     },
@@ -510,7 +525,12 @@
       "stars": 2,
       "topic": "Equations as lines",
       "question": "What is the slope of $$3x + 2y = 6$$?",
-      "options": ["$$-\\frac{3}{2}$$", "$$3$$", "$$\\frac{2}{3}$$", "$$6$$"],
+      "options": [
+        "$$-\\frac{3}{2}$$",
+        "$$3$$",
+        "$$\\frac{2}{3}$$",
+        "$$6$$"
+      ],
       "answer": 0,
       "explanation": "Rearranging gives $$y = -\\frac{3}{2}x + 3$$, so the slope is $$-\\frac{a}{b} = -\\frac{3}{2}$$ (:ref{#slope})."
     },
@@ -557,57 +577,6 @@
       "explanation": "A sketch shows roughly where lines meet, but a crossing point like $$(\\frac{31}{38}, -\\frac{8}{19})$$ can only be found exactly by algebra. The picture is for understanding and checking."
     },
     {
-      "id": "word-unknowns",
-      "stars": 1,
-      "topic": "Word problems",
-      "question": "What is the first step in turning a word problem into equations?",
-      "options": [
-        "Say exactly what each unknown stands for, with units",
-        "Write down every number in the problem",
-        "Guess the answer",
-        "Add up all the numbers"
-      ],
-      "answer": 0,
-      "explanation": "Naming each unknown precisely, with units, avoids mixing quantities up later (:ref{#word-problem-steps})."
-    },
-    {
-      "id": "word-value-equation",
-      "stars": 2,
-      "topic": "Word problems",
-      "question": "In a mixture problem, what does the value equation add up?",
-      "options": [
-        "The prices per kilogram",
-        "The prices minus the amounts",
-        "The amounts of each ingredient",
-        "Each amount times its price per unit"
-      ],
-      "answer": 3,
-      "explanation": "The total value is the amount of each ingredient multiplied by its price, added up. The prices on their own don't add up to anything meaningful."
-    },
-    {
-      "id": "word-negative-answer",
-      "stars": 2,
-      "topic": "Word problems",
-      "question": "Solving a word problem gives $$-5$$ coins of one kind. What should you conclude?",
-      "options": [
-        "Round it to $$0$$",
-        "The answer is $$5$$ coins; ignore the sign",
-        "There is a mistake, or the situation described is impossible",
-        "The system has no solution"
-      ],
-      "answer": 2,
-      "explanation": "The system may well have a solution, but the story rules it out. Checking against the story is the last step of the method (:ref{#word-problem-steps})."
-    },
-    {
-      "id": "word-current",
-      "stars": 2,
-      "topic": "Word problems",
-      "question": "A boat's speed in still water is $$b$$ and the current's is $$s$$. What is its speed going upstream?",
-      "options": ["$$b + s$$", "$$b - s$$", "$$s - b$$", "$$bs$$"],
-      "answer": 1,
-      "explanation": "Upstream the current works against the boat, so its speed is $$b - s$$; downstream it is $$b + s$$."
-    },
-    {
       "id": "three-eliminate-same",
       "stars": 2,
       "topic": "Three equations in three unknowns",
@@ -640,7 +609,12 @@
       "stars": 1,
       "topic": "Three equations in three unknowns",
       "question": "How many equations are usually needed to pin down three unknowns?",
-      "options": ["One", "Two", "Three", "Six"],
+      "options": [
+        "One",
+        "Two",
+        "Three",
+        "Six"
+      ],
       "answer": 2,
       "explanation": "Each independent fact removes one degree of freedom, so three unknowns usually need three equations (:ref{#linear-three})."
     },
