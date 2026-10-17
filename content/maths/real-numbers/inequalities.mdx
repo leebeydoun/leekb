@@ -59,6 +59,8 @@ amount. Multiplying by a negative number flips the order, so the inequality sign
 round to match. Each of these moves can also be undone by another move of the same kind, which is
 why nothing is gained or lost. These steps are safe.
 
+<InequalityScale a={-1} b={2} />
+
 :::proposition[Safe steps for inequalities]{#inequality-steps}
 
 Changing an inequality in any of these ways gives one with exactly the same solutions:
@@ -161,6 +163,10 @@ A factor like $$x - 2$$ is negative for $$x < 2$$, zero at $$x = 2$$, and positi
 the points where the factors are zero split the line into pieces, and on each piece every factor
 keeps the same sign. A **sign table** records them.
 
+Try it: move $$x$$ along the line and watch the signs of the two factors change at $$-3$$ and $$2$$.
+
+<SolutionScanner kind="product" roots={[2, -3]} sense="<" />
+
 :::example[A sign table]
 
 Solve $$(x - 2)(x + 3) < 0$$.
@@ -224,6 +230,8 @@ square. Both $$3$$ and $$-3$$ square to $$9$$. So $$x^2 < 9$$ says that $$x$$ is
 away from $$0$$, on either side, which means $$x$$ lies between $$-3$$ and $$3$$. And $$x^2 > 9$$
 says that $$x$$ is more than $$3$$ away from $$0$$, so it is either below $$-3$$ or above $$3$$.
 
+<SolutionScanner kind="square" bound={9} sense="<" />
+
 :::proposition[Comparing a square with a number]{#square-inequality}
 
 Let $$c > 0$$. Then
@@ -264,6 +272,8 @@ The inequality $$|x - a| < r$$ says that the distance from $$x$$ to $$a$$ is les
 $$x$$ lies within $$r$$ of $$a$$ on either side. That is a single stretch centred on $$a$$. In the
 same way, $$|x - a| > r$$ says that $$x$$ is further than $$r$$ from $$a$$, so it lies outside that
 stretch, off one end or the other.
+
+<SolutionScanner kind="abs" centre={1} radius={3} sense=">" />
 
 :::proposition[Absolute value inequalities]{#abs-inequality}
 

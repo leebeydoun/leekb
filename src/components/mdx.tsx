@@ -3,6 +3,21 @@ import { AreaModel } from "./area-model";
 import { DiagonalSquare } from "./diagonal-square";
 import { Graph } from "./graph";
 import { NumberLine } from "./number-line";
+import { NumberLineWalk } from "./interactive/walk";
+import {
+  InequalityScale,
+  InequalityShift,
+} from "./interactive/inequality-moves";
+import { ReciprocalSlider } from "./interactive/reciprocal";
+import { TriangleInequality } from "./interactive/triangle-inequality";
+import { SolutionScanner } from "./interactive/solution-scanner";
+import { GrowingSquare } from "./interactive/growing-square";
+import { RectangleFence } from "./interactive/rectangle-fence";
+import { ClockArithmetic } from "./interactive/clock";
+import { RowsOfDots } from "./interactive/dots";
+import { TwoLines } from "./interactive/two-lines";
+import { SlopeExplorer } from "./interactive/slope";
+import { FractionBars } from "./interactive/fraction-bars";
 import { Quiz } from "./quiz";
 import {
   Conjecture,
@@ -20,7 +35,10 @@ import {
   Theorem,
 } from "./statement";
 
-/** Components available on every page, created from directives by remark-components. */
+/**
+ * Components available on every page: most are created from directives by remark-components, and
+ * the interactive diagrams are written as JSX straight into the content.
+ */
 export const mdxComponents = {
   Accordion,
   Accordions,
@@ -42,4 +60,18 @@ export const mdxComponents = {
   SeeAlso,
   Solution,
   Theorem,
+  // interactive diagrams
+  NumberLineWalk,
+  InequalityScale,
+  InequalityShift,
+  ReciprocalSlider,
+  TriangleInequality,
+  SolutionScanner,
+  GrowingSquare,
+  RectangleFence,
+  ClockArithmetic,
+  RowsOfDots,
+  TwoLines,
+  SlopeExplorer,
+  FractionBars,
 };
