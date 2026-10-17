@@ -10,6 +10,12 @@ $$8^{2/3}$$ and $$16^{-3/4}$$, in a way that keeps all the usual rules for power
 
 ## nth roots
 
+The square root of $$9$$ is the positive number whose square is $$9$$. In the same way, the cube
+root of $$8$$ is the number whose cube is $$8$$, namely $$2$$, and the fourth root of $$81$$ is the
+positive number whose fourth power is $$81$$, namely $$3$$. For this to be a sound definition, such
+a root has to exist, and there has to be only one positive choice, so that the root has a single
+clear value.
+
 As with square roots, we take it as given that positive numbers have roots of every order. This is
 another consequence of the real numbers having no gaps.
 
@@ -80,6 +86,10 @@ powers the answer depends on whether $$n$$ is even or odd, because of how powers
 even power of a negative number is positive, and an odd power is negative. For example
 $$(-2)^4 = 16$$ but $$(-2)^3 = -8$$.
 
+So an odd power keeps the sign of a number. Every number, positive or negative, is then the odd
+power of exactly one number, with the same sign. An even power makes every sign positive. A negative
+number can't be reached at all, and a positive one is reached twice, from a number and its opposite.
+
 :::theorem[Solving xⁿ = a]{#power-equation}
 
 Let $$n$$ be a positive integer and $$a$$ a real number.
@@ -135,8 +145,12 @@ $$(-2)^3 = -8$$. Even roots of negative numbers don't exist among the real numbe
 ## Fractional powers
 
 The [Numbers](../numbers/inverses.mdx) guide gave a meaning to $$a^n$$ for every integer $$n$$,
-positive, negative or zero. Roots let us go further, to exponents that are fractions. We choose the
-meaning that keeps the rule $$(a^m)^n = a^{mn}$$ working:
+positive, negative or zero. Roots let us go further, to exponents that are fractions.
+
+The idea is to let the rules for powers decide. Three thirds make one, so if the rules are to keep
+working, cubing $$8^{1/3}$$ should give $$8^1 = 8$$. That means $$8^{1/3}$$ has to be a number whose
+cube is $$8$$, which is $$2$$. Then $$8^{2/3}$$, two lots of a third, should be $$2^2 = 4$$. In
+general, we choose the meaning that keeps the rule $$(a^m)^n = a^{mn}$$ working:
 
 - $$\left(a^{1/n}\right)^n$$ should be $$a^{(1/n) \cdot n} = a^1 = a$$. So $$a^{1/n}$$ has to be an
   $$n$$-th root of $$a$$, and we take the positive one.
@@ -201,7 +215,11 @@ root first keeps the numbers smaller.
 
 ## The rules for powers
 
-The point of the definition is that the familiar rules keep working.
+The point of the definition is that the familiar rules keep working. For whole-number exponents, the
+rules come from counting: $$2^3 \cdot 2^2$$ is three $$2$$s times two $$2$$s, which is five $$2$$s
+in all. Fractional powers can't be counted like that. But each one is built from a root and a
+whole-number power, so each rule can be checked by writing the exponents as fractions with suitable
+bottoms and falling back on the whole-number rules.
 
 :::theorem[Rules for fractional powers]{#rational-power-laws}
 

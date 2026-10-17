@@ -13,6 +13,12 @@ writing them side by side: $$ab$$ means $$a \cdot b$$.
 
 ## The rules we assume
 
+For counting numbers, multiplying is counting a grid of dots. Three rows of four is $$12$$ dots, and
+turning the grid on its side shows four rows of three, also $$12$$. A box of dots that is $$2$$ by
+$$3$$ by $$4$$ can be counted layer by layer in any direction and always gives $$24$$. Facts like
+these are what the rules below record. We take them as given for all integers, negative ones
+included, and then see what they force negative numbers to do.
+
 :::remark[Rules for multiplication]{#multiplication-rules}
 
 For any integers $$a$$, $$b$$ and $$c$$:
@@ -78,8 +84,10 @@ $$(b + c)a = a(b + c) = ab + ac = ba + ca$$.
 
 ## Multiplying by zero
 
-It may be surprising that $$0 \cdot a = 0$$ isn't on the list of rules. It doesn't need to be,
-because it follows from the others.
+Multiplying by $$0$$ means taking no copies of something, and no copies of anything is nothing. So
+$$0 \cdot 7 = 0$$ and $$0 \cdot (-7) = 0$$ should both hold. It may be surprising that
+$$0 \cdot a = 0$$ isn't on the list of rules. It doesn't need to be, because it follows from the
+others.
 
 :::proposition[Multiplying by zero]{#zero-times}
 
@@ -104,6 +112,11 @@ $$0 \cdot a = a - a$$, and $$a - a = a + (-a) = 0$$ by the rules for addition.
 :::
 
 ## Minus signs in products
+
+Start with something everyone agrees on: $$3 \cdot (-2)$$ is three lots of $$-2$$, which is three
+steps of $$2$$ to the left, landing on $$-6$$. That is the opposite of $$3 \cdot 2 = 6$$. So putting
+a minus sign on one factor seems to flip the answer to its opposite, as if multiplying by $$-1$$
+mirrors a number across $$0$$. The results below show that this is not a coincidence.
 
 Distributivity also decides what minus signs do in a product. The trick each time is the same as on
 the previous page: to show that something is the opposite of $$x$$, check that it adds to $$x$$ to
@@ -220,6 +233,12 @@ Here $$-3$$ times $$-7b$$ is $$+21b$$, not $$-21b$$.
 
 ## Multiplying inequalities
 
+Picture $$2 < 5$$ as two points on the number line, with $$2$$ on the left. Multiplying both by
+$$3$$ stretches the line out from $$0$$, carrying them to $$6$$ and $$15$$. They move apart, but
+$$6$$ is still on the left, so the order is kept. Multiplying by $$-1$$ instead mirrors the line
+across $$0$$, carrying them to $$-2$$ and $$-5$$. Now $$-2$$ is on the right, so the order has
+flipped. Multiplying by any other negative number is a stretch or a squash, followed by this flip.
+
 Adding the same number to both sides keeps an inequality true (:ref{#order-rules}). Multiplying is
 more delicate: it depends on the sign of the number.
 
@@ -267,7 +286,11 @@ which turns left into right.
 
 ## Powers
 
-Multiplying a number by itself several times is written with a small raised number.
+Multiplication is a shorthand for adding the same number again and again: $$5 \cdot 3$$ saves
+writing $$3 + 3 + 3 + 3 + 3$$. Powers do the same job one level up. Repeated multiplication turns up
+whenever something doubles, triples or grows by the same factor over and over, and writing
+$$2 \cdot 2 \cdot 2 \cdot 2 \cdot 2$$ in full quickly gets tiresome. So multiplying a number by
+itself several times is written with a small raised number.
 
 :::definition[Powers]{#power}
 

@@ -11,6 +11,11 @@ $$\sqrt{\ }$$ means, and works out the rules for calculating with it.
 
 ## Every positive number has a square root
 
+Picture a square whose side starts at $$0$$ and slowly grows. Its area starts at $$0$$ and grows
+too, steadily and without jumping, so it should pass through every positive value on the way. With
+only fractions for the side, it would skip over some areas, such as $$2$$. The real numbers have no
+gaps, so nothing is skipped.
+
 The first page found the number whose square is $$2$$ one decimal digit at a time, and the same
 digit-by-digit search works for any positive number. We take the result as given.
 
@@ -22,7 +27,10 @@ For every positive real number $$a$$, there is a real number $$b$$ with $$b^2 = 
 
 :::
 
-How many such numbers are there? Exactly two.
+How many such numbers are there? A number and its opposite have the same square: $$3^2$$ and
+$$(-3)^2$$ are both $$9$$. So square roots come in pairs, and the theorem says there are no others.
+A positive number has exactly two, $$0$$ has only itself, and a negative number has none, since no
+square is negative.
 
 :::theorem[Solving x² = a]{#square-root-count}
 
@@ -108,6 +116,11 @@ check that $$c \ge 0$$ and $$c^2 = a$$. The proofs below use this test again and
 
 ## Rules for square roots
 
+Taking a square root undoes squaring, so its rules mirror the rules for squares. Squaring splits
+over products: $$(2 \cdot 3)^2 = 4 \cdot 9$$. Read backwards, the square root of $$4 \cdot 9$$ is
+$$2 \cdot 3$$, the product of the square roots of $$4$$ and $$9$$. The same goes for quotients. And
+since a bigger square has a longer side, a bigger number has a bigger square root.
+
 :::proposition[Roots of products and quotients]{#root-product}
 
 For $$a \ge 0$$ and $$b \ge 0$$,
@@ -177,6 +190,11 @@ So, for example, $$\sqrt{10}$$ lies between $$\sqrt{9} = 3$$ and $$\sqrt{16} = 4
 The Numbers guide proved that $$\sqrt{2}$$ and $$\sqrt{3}$$ are irrational (:ref{#numbers/sqrt-two},
 :ref{#numbers/sqrt-three}). Many more irrational numbers can be built from them.
 
+The idea is that adding a fraction, or multiplying by a fraction other than $$0$$, can always be
+undone with another fraction. If adding $$1$$ to some number gave a fraction, then taking $$1$$ away
+again would show that the number was a fraction all along. So shifting or scaling an irrational
+number in this way can't make it rational.
+
 :::theorem[Rational plus irrational]{#rational-irrational}
 
 Let $$r$$ be rational and $$x$$ irrational. Then $$r + x$$ is irrational, and if $$r \neq 0$$, so is
@@ -209,6 +227,12 @@ $$\sqrt{2} + (1 - \sqrt{2}) = 1$$ and $$\sqrt{2} \cdot \sqrt{2} = 2$$.
 For two numbers $$a$$ and $$b$$, the ordinary average $$\frac{a + b}{2}$$ is called their
 **arithmetic mean**. When they are not negative, $$\sqrt{ab}$$ is called their **geometric mean**:
 it is the side of a square with the same area as an $$a$$ by $$b$$ rectangle.
+
+Try a few pairs. For $$4$$ and $$4$$, both means are $$4$$. For $$2$$ and $$8$$, the average is
+$$5$$ but the geometric mean is $$\sqrt{16} = 4$$. For $$1$$ and $$16$$, the average is $$8.5$$ and
+the geometric mean is still $$4$$. Keeping the product the same while moving the numbers further
+apart makes the average pull further ahead, and the two means agree only when the numbers are equal.
+In terms of shapes, a square encloses a given area with less fence than any other rectangle.
 
 :::theorem[AM–GM inequality]{#am-gm}
 

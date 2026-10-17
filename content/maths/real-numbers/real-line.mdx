@@ -12,9 +12,14 @@ number. This page says what they are, and which rules of arithmetic they share w
 
 ## A length that isn't a fraction
 
+It is tempting to think that any length can be measured exactly by a fraction, as long as the unit
+is cut into small enough pieces. A simple drawing shows that this is wrong.
+
 Draw a $$2$$ by $$2$$ square, split into four $$1$$ by $$1$$ squares. In each small square, draw the
 diagonal that doesn't touch the centre of the big square. The four diagonals join up into a tilted
 square, standing on its corner, with the centre of the big square in the middle of it.
+
+::diagonal-square
 
 Each diagonal cuts its small square into two halves, and exactly one half of each lies inside the
 tilted square. So the tilted square is made of four halves of a $$1$$ by $$1$$ square, and its area
@@ -29,6 +34,12 @@ $$d^2 = 2$$, and $$d$$ is not a fraction. So a perfectly ordinary length, the di
 $$1$$ square, needs a number that the fractions don't have.
 
 ## Real numbers
+
+Picture the number line as a solid ruler with no holes in it. The fractions mark a great many of its
+points, but not all of them: the end of the diagonal above, laid along the ruler from $$0$$, lands
+on a point with no fraction. The idea of the real numbers is simply to give every point a number.
+Decimals are the natural way to name them, since each extra digit says more precisely where the
+point is.
 
 :::definition[Real numbers]{#real}
 
@@ -77,8 +88,9 @@ $$1.414^2 = 1.999396$$, which is close to $$2$$ but not equal to it.
 
 ## Is 0.999… equal to 1?
 
-Endless decimals have one surprise. The Numbers guide turned repeating decimals into fractions by
-shifting them. The same trick, applied to $$x = 0.999\ldots$$, gives
+Endless decimals have one surprise. The [Numbers](../numbers/rational-numbers.mdx#decimals) guide
+turned repeating decimals into fractions by shifting them. The same trick, applied to
+$$x = 0.999\ldots$$, gives
 
 ```math
 10x = 9.999\ldots \qquad \text{so} \qquad 10x - x = 9 \qquad \text{and} \qquad x = 1
@@ -97,7 +109,10 @@ only way a real number can have two different decimals.
 ## The rules of arithmetic
 
 Real numbers can be added and multiplied, and the results are again real numbers. The rules they
-follow are the same ones the fractions follow.
+follow are the same ones the fractions follow. They are the habits of everyday arithmetic, such as
+$$3 + 5 = 5 + 3$$, or working out $$4 \cdot 7 + 4 \cdot 3$$ as $$4 \cdot 10$$. Writing them down
+matters because they are exactly what algebra relies on. Once we know the real numbers obey them,
+the familiar steps for rearranging and simplifying expressions still work.
 
 :::remark[Rules for real numbers]{#real-rules}
 
@@ -137,25 +152,62 @@ real numbers: a system like $$\sqrt{2}x + y = 1$$, $$x - y = 3$$ is solved exact
 
 ## Other systems obey the same rules
 
-The rules in the box don't describe the real numbers completely, because other systems obey them
-too. Here is one with only five numbers. The Numbers guide's page on
-[congruence](../numbers/congruence.mdx) showed that remainders on division by $$5$$ can be added and
-multiplied, by working out the answer and keeping only its remainder. The remainders are
-$$0, 1, 2, 3, 4$$, and for example
+The box above lists six rules of arithmetic for real numbers. Do those rules on their own describe
+the real numbers? In other words, if some collection of numbers can be added and multiplied and
+obeys all six rules, must it be the real numbers? The answer is no, and a collection of just five
+numbers shows why.
+
+### Arithmetic with five numbers
+
+Take the numbers $$0, 1, 2, 3, 4$$, and do arithmetic the way a clock with five hours would: add or
+multiply as usual, then if the answer is $$5$$ or more, keep only its remainder on division by
+$$5$$. For example:
+
+- $$3 + 4 = 7$$, which leaves remainder $$2$$, so here $$3 + 4$$ is $$2$$.
+- $$3 \cdot 4 = 12$$, which leaves remainder $$2$$, so here $$3 \cdot 4$$ is $$2$$.
+- $$2 \cdot 3 = 6$$, which leaves remainder $$1$$, so here $$2 \cdot 3$$ is $$1$$.
+
+This is the arithmetic of congruences on division by $$5$$ from the Numbers guide's
+[Congruence](../numbers/congruence.mdx) page, where $$7 \equiv 2 \pmod 5$$, for example.
+
+Now check the six rules one by one.
+
+- **Rules 1, 2 and 6** (order, grouping, distributivity). Each answer comes from ordinary
+  arithmetic, where these rules hold, followed by taking the remainder. Taking remainders doesn't
+  break them, because numbers with the same remainder give sums and products with the same remainder
+  (:ref{#numbers/congruence-arithmetic}).
+- **Rule 3** (zero and one). Adding $$0$$ or multiplying by $$1$$ changes nothing, and $$0$$ and
+  $$1$$ are different numbers.
+- **Rule 4** (opposites). Each number has a partner that it adds with to give $$0$$: $$1 + 4 = 5$$
+  and $$2 + 3 = 5$$, both of which leave remainder $$0$$, and $$0 + 0 = 0$$. So here $$-1$$ is $$4$$
+  and $$-2$$ is $$3$$.
+- **Rule 5** (inverses). Each number except $$0$$ has a partner that it multiplies with to give
+  $$1$$: $$1 \cdot 1 = 1$$, and $$2 \cdot 3 = 6$$ and $$4 \cdot 4 = 16$$ both leave remainder $$1$$.
+  So here $$\frac{1}{2}$$ is $$3$$ and $$\frac{1}{4}$$ is $$4$$.
+
+### What the rules leave out
+
+So these five numbers obey every rule in the box, yet they behave nothing like the number line. Add
+$$1$$ to itself five times:
 
 ```math
-3 + 4 = 7 \equiv 2, \qquad 3 \cdot 4 = 12 \equiv 2, \qquad 2 \cdot 3 = 6 \equiv 1 \pmod 5
+1 + 1 + 1 + 1 + 1 = 5, \text{ which leaves remainder } 0
 ```
 
-Since arithmetic with congruences works like ordinary arithmetic
-(:ref{#numbers/congruence-arithmetic}), rules 1, 2, 3, 4 and 6 hold. Rule 5 holds too: each non-zero
-remainder has an inverse, because $$1 \cdot 1 = 1$$, $$2 \cdot 3 \equiv 1$$ and
-$$4 \cdot 4 \equiv 1$$.
+On the number line, adding $$1$$ always moves to the right, so it never comes back to $$0$$. The
+rules of arithmetic can't tell the difference, so the real numbers need more than them. Two more
+properties do the job.
 
-So these five remainders obey every rule in the box, yet they are nothing like the number line: in
-this system $$1 + 1 + 1 + 1 + 1 = 0$$. Two more properties single out the real numbers. **Order**,
-the subject of the next two pages, rules out systems like this one. **Having no gaps** rules out the
-rational numbers.
+- **Order.** Real numbers come with a notion of positive and negative, with rules such as "the sum
+  of two positive numbers is positive". The five numbers can't have one. The next page shows that in
+  any such order $$1$$ is positive (:ref{#one-positive}), and then $$1 + 1 + 1 + 1 + 1$$ would be
+  positive too, but it is $$0$$.
+- **No gaps.** The rational numbers obey the rules of arithmetic and have an order, but they have
+  gaps, like the missing length $$d$$ with $$d^2 = 2$$ from the start of this page. Having no gaps
+  (:ref{#no-gaps}) is what sets the real numbers apart from them.
+
+The table sums this up. Gaps only make sense for numbers in order along a line, so that column
+doesn't apply to the five remainders.
 
 | System                      | Rules of arithmetic       | Order (next page) | No gaps       |
 | --------------------------- | ------------------------- | ----------------- | ------------- |

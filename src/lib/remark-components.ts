@@ -8,6 +8,7 @@
  *             :::area-model{row-sizes="3 2" col-sizes="3 2"} with a table inside, see below
  * One line:   ::number-line{from=-4 to=6 points="-2, 4" jumps="-2>4" intervals="(-2, 3]; [5, oo)"}
  *             ::graph{lines="2x + y = 1; 3x - 2y = 4" points="6/7, -5/7" x="-4 4" y="-4 4"}
+ *             ::diagonal-square     (the tilted square of area 2 inside a 2 by 2 square)
  *             ::quiz{src="numbers"}     (questions from public/quizzes/numbers.json, checked here)
  *             ::see-also{src="https://en.wikipedia.org/wiki/..."}     (a source for an unproved
  *             statement, placed inside it)
@@ -470,6 +471,8 @@ function convert(node: Directive, file: File): RootContent {
   if (node.type === "leafDirective") {
     if (node.name === "number-line") return numberLine(node, file);
     if (node.name === "graph") return graph(node, file);
+    if (node.name === "diagonal-square")
+      return element("mdxJsxFlowElement", "DiagonalSquare", {}, []);
     // a source for a statement taken without proof, e.g. a remark
     if (node.name === "see-also") {
       if (!a.src)

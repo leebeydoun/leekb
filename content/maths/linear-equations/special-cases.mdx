@@ -11,6 +11,11 @@ case you are in.
 
 ## When the equations contradict each other
 
+Two equations can ask for something impossible. If one says a coffee and two teas cost £3, and the
+other says a coffee and two teas cost £5, no prices fit both. Elimination exposes this. In trying to
+remove one unknown, everything with an unknown in it cancels, and what is left is a false statement
+about plain numbers.
+
 :::example[No solution]
 
 Try to solve
@@ -55,6 +60,11 @@ is $$-3$$ times the first one's, but its right side isn't $$-3 \cdot 4$$.
 
 ## When one equation repeats the other
 
+The opposite can happen too: the second equation can be the first in disguise. If a coffee and two
+teas cost £3, then three coffees and six teas must cost £9, so being told the second fact adds
+nothing. Then there is really only one equation in two unknowns, and that leaves infinitely many
+possibilities.
+
 :::example[Infinitely many solutions]
 
 Try to solve
@@ -89,7 +99,12 @@ exactly.
 
 ## A test that tells in advance
 
-All three cases come down to one number. Write a general system with letters for the coefficients:
+In both examples above, the left side of one equation is a multiple of the other's, so removing one
+unknown removes the other as well. Then the right-hand sides decide between no solution and
+infinitely many. If the left sides are not linked in this way, elimination always leaves a value for
+each unknown, whatever the right-hand sides are. So whether there is exactly one solution depends
+only on the coefficients, and all three cases come down to one number. Write a general system with
+letters for the coefficients:
 
 ```math
 \begin{aligned}
@@ -209,6 +224,13 @@ The formula is worth knowing, but for particular numbers elimination is usually 
 error-prone. Its real value is the test: a non-zero determinant guarantees exactly one solution.
 
 ## When the determinant is zero
+
+A zero determinant means the two left-hand sides are tied together, one a multiple of the other.
+Then the two equations are really making claims about the same quantity. Either the claims agree,
+and the second equation adds nothing, or they disagree, and nothing works. There is no room for
+exactly one answer. The proof makes the "infinitely many" case concrete: starting from one solution,
+you can keep moving in a direction that leaves both left-hand sides unchanged, and every pair you
+reach is a solution too.
 
 :::theorem[Zero determinant]{#determinant-zero}
 

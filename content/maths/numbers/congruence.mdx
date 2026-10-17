@@ -89,6 +89,12 @@ Two special cases are worth noticing:
 
 ## Congruence behaves like equality
 
+Congruence is meant to say that two numbers are "the same" as far as remainders go, so it should
+behave like being equal. Thinking of congruent numbers as the same place on a clock, the basic facts
+are easy to believe. Every number is at its own place. If $$15$$ o'clock is where $$3$$ o'clock is,
+then $$3$$ o'clock is where $$15$$ o'clock is. And if $$27$$ is where $$15$$ is, and $$15$$ is where
+$$3$$ is, then $$27$$ is where $$3$$ is.
+
 Congruence modulo a fixed $$d$$ has the three properties that make equality easy to work with. They
 have names: congruence is **reflexive** (every number is congruent to itself), **symmetric** (it can
 be read either way round) and **transitive** (congruences can be chained).
@@ -141,7 +147,15 @@ $$23 - (-7) = 30$$.
 
 ## Arithmetic with congruences
 
-Congruences can be added, subtracted and multiplied just like equations.
+Congruences can be added, subtracted and multiplied just like equations. On the clock, it makes no
+difference whether you call the time $$15$$ o'clock or $$3$$ o'clock: five hours later you are at
+the same place either way. In the same way, the remainder of a sum or product depends only on the
+remainders of its parts. A familiar case is the last digit, which is the remainder on dividing by
+$$10$$. The product $$13 \cdot 17$$ ends in $$1$$ because $$3 \cdot 7 = 21$$ ends in $$1$$, and
+nothing else about $$13$$ and $$17$$ matters. Indeed $$13 \cdot 17 = 221$$.
+
+So we may swap a number for any other with the same remainder, do the sum with the smaller one, and
+get the right remainder at the end.
 
 :::theorem[Arithmetic with congruences]{#congruence-arithmetic}
 
@@ -281,6 +295,10 @@ $$3 \not\equiv 8 \pmod{10}$$.
 
 ## Using congruences
 
+The rules above mean we can make numbers small before doing anything with them. Instead of working
+out a huge number and then dividing it, we replace each part by its remainder straight away, and
+keep replacing as we go. The numbers never get large, and the remainder at the end is still right.
+
 **Large powers.** What is left over when $$7^{100}$$ is divided by $$5$$? Since $$7 \equiv 2$$,
 raising both sides to the fourth power with :ref{#congruence-powers} gives
 $$7^4 \equiv 2^4 = 16 \equiv 1 \pmod{5}$$. Then, using a power of a power,
@@ -345,6 +363,12 @@ and both leave a remainder of $$1$$.
 
 A well-known shortcut says that a number is divisible by $$9$$ exactly when the sum of its digits
 is. Congruence explains why it works, and why the same goes for $$3$$.
+
+The key is that $$10$$ is one more than $$9$$. So $$10$$ is a nine with $$1$$ left over, $$100$$ is
+$$99$$ with $$1$$ left over, and $$1000$$ is $$999$$ with $$1$$ left over. In $$4725$$, the four
+thousands leave $$4$$ over once the nines are taken out, the seven hundreds leave $$7$$, the two
+tens leave $$2$$, and the $$5$$ units are just $$5$$. So $$4725$$ leaves the same remainder on
+division by $$9$$ as $$4 + 7 + 2 + 5$$, its digit sum.
 
 :::proposition[Digit sums]{#digit-sum-test}
 

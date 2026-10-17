@@ -29,6 +29,14 @@ searching ever will.
 
 ## The proof
 
+The idea is that a fraction squaring to $$2$$ could be simplified forever. Suppose some fraction did
+square to $$2$$. The argument below shows that its top and bottom would both have to be even. Then
+we could cancel a $$2$$ from each, giving a fraction with smaller top and bottom that still squares
+to $$2$$. Its top and bottom would again both be even, so we could cancel again, and so on without
+end. But positive whole numbers can't be halved forever, so no such fraction can exist. The proof
+packages this neatly by starting with a fraction that has already been simplified as far as it can
+go.
+
 :::theorem[No rational square root of 2]{#sqrt-two}
 
 There is no rational number whose square is $$2$$.
@@ -87,6 +95,10 @@ are not both even. So our supposition was false, and no rational number has squa
 
 ## Irrational numbers
 
+The theorem shows that fractions are not enough to measure every length. The diagonal of a square
+with sides of length $$1$$ is a perfectly real length, but no fraction describes it. Numbers like
+this need a name.
+
 :::definition[Irrational numbers]{#irrational}
 
 A number that is not rational is called **irrational**.
@@ -101,8 +113,11 @@ numbers**, which fill in all the gaps between the fractions. They are the subjec
 
 ## Other square roots
 
-Exactly the same argument works for other numbers. For $$3$$, it uses :ref{#squares-three} in place
-of the rule for even squares.
+What made the proof work was one fact about $$2$$: if $$2$$ divides a square, it divides the number
+being squared. The number $$3$$ has the same property, so exactly the same argument works for it.
+For $$3$$, the proof uses :ref{#squares-three} in place of the rule for even squares. The argument
+must break down somewhere for $$4$$, since $$\sqrt{4} = 2$$ is rational, and it breaks at exactly
+this fact: $$4$$ divides $$2^2 = 4$$ but does not divide $$2$$.
 
 :::proposition[No rational square root of 3]{#sqrt-three}
 

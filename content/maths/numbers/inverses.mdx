@@ -14,6 +14,13 @@ previous page, turns out to be something we can prove.
 
 ## Inverses
 
+Adding a number can be undone by adding its opposite: add $$5$$, then add $$-5$$, and you are back
+where you started. Multiplying can be undone in a similar way. Multiply by $$3$$ and then by
+$$\frac{1}{3}$$, and you are back where you started, because $$3 \cdot \frac{1}{3} = 1$$ and
+multiplying by $$1$$ changes nothing. A number that multiplies with another to give $$1$$ is called
+its inverse. Among the integers only $$1$$ and $$-1$$ have inverses, but every fraction except $$0$$
+has one.
+
 :::definition[Multiplicative inverse]{#inverse}
 
 Let $$a$$ be a rational number. A **multiplicative inverse** of $$a$$ is a rational number $$b$$
@@ -90,8 +97,11 @@ This gives a quick way to check that something is an inverse: just check that th
 
 ## Negative powers
 
-Inverses let powers have negative exponents too. Since $$a^{-1}$$ undoes one factor of $$a$$, it
-makes sense for $$a^{-n}$$ to undo $$n$$ of them.
+Look at the powers of $$2$$ going down: $$16$$, $$8$$, $$4$$, $$2$$, $$1$$. Each time the exponent
+drops by one, the answer is halved. Carrying the pattern on past $$2^0 = 1$$ gives $$\frac{1}{2}$$,
+then $$\frac{1}{4}$$, then $$\frac{1}{8}$$, so $$2^{-1}$$ should be $$\frac{1}{2}$$ and $$2^{-3}$$
+should be $$\frac{1}{8}$$. Inverses let powers have negative exponents in exactly this way. Since
+$$a^{-1}$$ undoes one factor of $$a$$, it makes sense for $$a^{-n}$$ to undo $$n$$ of them.
 
 :::definition[Negative powers]{#negative-powers}
 
@@ -117,6 +127,14 @@ and $$a^n a^{-n} = a^0 = 1$$, which is where the choice $$a^0 = 1$$ from the
 [Multiplication](./multiplication.mdx) page fits in.
 
 ## Products equal to zero
+
+Two numbers that are not zero never multiply to give zero. For whole numbers this is no surprise,
+but with fractions you might wonder whether two very small numbers could multiply to exactly $$0$$.
+They can't: $$\frac{1}{1000} \cdot \frac{1}{1000} = \frac{1}{1000000}$$ is smaller still, but not
+zero. The reason is that multiplying by a non-zero number can always be undone, by multiplying by
+its inverse. If multiplying $$b$$ by a non-zero number gave $$0$$, undoing it would turn $$0$$ back
+into $$b$$. But undoing it means multiplying $$0$$ by the inverse, and anything times $$0$$ is
+$$0$$. So $$b$$ must have been $$0$$ all along.
 
 Inverses also give us the most useful fact about products that equal zero.
 
@@ -150,8 +168,10 @@ $$x = -\frac{1}{2}$$.
 
 ## Dividing by a rational number
 
-Dividing by $$b$$ should undo multiplying by $$b$$, and that is exactly what multiplying by
-$$b^{-1}$$ does.
+Dividing asks how many times one number fits into another. How many halves fit into $$3$$? Each
+whole holds $$2$$ halves, so $$3$$ holds $$3 \cdot 2 = 6$$ of them. Dividing by $$\frac{1}{2}$$ gave
+the same answer as multiplying by $$2$$, its flip. That is no accident. Dividing by $$b$$ should
+undo multiplying by $$b$$, and that is exactly what multiplying by $$b^{-1}$$ does.
 
 :::definition[Quotient]{#quotient}
 
@@ -262,6 +282,11 @@ $$x - 1 = \frac{5}{3}$$, and $$\frac{25/3}{5/3} = 5$$.
 
 ## Cancelling
 
+If $$3$$ times one number equals $$3$$ times another, the two numbers must be the same, because
+multiplying by $$3$$ can be undone by multiplying by $$\frac{1}{3}$$. The same goes for any non-zero
+factor. Zero is the exception: multiplying by $$0$$ turns every number into $$0$$, so it wipes out
+any difference and can't be undone.
+
 Inverses also let us cancel a common factor from both sides of an equation.
 
 :::proposition[Cancelling a non-zero factor]{#cancel-product}
@@ -303,7 +328,10 @@ even when the factor is not zero.
 
 ## Adding quotients
 
-Quotients of rational numbers add in exactly the same way as fractions of integers.
+A quotient like $$\frac{1/2}{3}$$ is a fraction whose top and bottom happen to be fractions
+themselves. The idea behind adding fractions still applies: rewrite both so they share a
+denominator, then add the tops. So quotients of rational numbers add in exactly the same way as
+fractions of integers.
 
 :::proposition[Adding quotients]{#adding-quotients}
 

@@ -44,7 +44,17 @@ odd, and never both. The number line makes this look obvious, and it is proved
 
 ## Sums and products of even and odd integers
 
-Whether a sum or product is even or odd depends only on whether its parts are.
+Whether a sum or product is even or odd depends only on whether its parts are. Think of each number
+as a pile of objects split into pairs. An even pile has no object left over, and an odd pile has
+one. Putting two piles together keeps all the pairs, so the only question is what happens to the
+leftovers. One leftover stays on its own, so even plus odd is odd. Two leftovers form a new pair, so
+odd plus odd is even: $$7 + 5$$ has pairs from each pile, and the spare $$1$$ from $$7$$ pairs up
+with the spare $$1$$ from $$5$$.
+
+For products, $$3 \cdot 5$$ means three piles of $$5$$. If any factor is even, the product is a
+number of copies of an even pile, or an even number of copies of a pile, and either way it splits
+into pairs. If both factors are odd, there is an odd number of leftovers, one from each odd pile, so
+one is still left over at the end.
 
 :::proposition[Adding even and odd integers]{#parity-sums}
 
@@ -112,7 +122,10 @@ odd, but $$3 \cdot 5 \cdot 7 \cdot 2 = 210$$ is even.
 
 ## Squares
 
-A square has the same kind as the number being squared.
+A square has the same kind as the number being squared. This is what the rule for products predicts,
+since a square is a number times itself: an even number times anything is even, and an odd number
+times an odd number is odd. So $$6^2$$ must be even and $$9^2$$ must be odd, without working either
+out.
 
 :::proposition[Squares of even and odd integers]{#squares-parity}
 
@@ -170,6 +183,10 @@ $$n$$ is odd.
 ## Divisibility
 
 Being even means being a multiple of $$2$$. The same idea works with any number in place of $$2$$.
+Saying that $$4$$ divides $$28$$ means $$28$$ objects can be put into rows of $$4$$ with none left
+over. Here there are $$7$$ rows. On the number line, it means you can get from $$0$$ to $$28$$ in
+equal steps of $$4$$. The definition just says this with a multiplication: $$28$$ is $$4$$ times a
+whole number.
 
 :::definition[Divisibility]{#divides}
 
@@ -212,7 +229,10 @@ $$3^3 = 27$$ is the largest power of $$3$$ that divides $$54$$.
 ## Combining multiples
 
 If two numbers are both multiples of $$d$$, then so is anything built from them by adding,
-subtracting or multiplying.
+subtracting or multiplying. Think of rows of $$7$$: $$21$$ is three rows and $$35$$ is five rows.
+Put them together and you have eight rows, which is $$56$$. Take three rows away from five rows and
+two rows are left, so the difference is a multiple of $$7$$ too. And four copies of three rows is
+twelve rows. Nothing ever breaks a row, so the answer is always a whole number of rows.
 
 :::lemma[Combining multiples]{#multiples}
 
@@ -399,6 +419,12 @@ In the same way, dividing by $$3$$ sorts every integer into exactly one of three
 and splitting into these cases is a common way to prove things about multiples of $$3$$.
 
 ## Common divisors
+
+Two numbers often have divisors in common. For example, $$36$$ and $$60$$ are both multiples of
+$$12$$: one is $$3$$ twelves and the other is $$5$$ twelves. A common divisor is a step size that
+reaches both numbers exactly from $$0$$. The greatest one is the biggest step size that does this.
+It is the largest factor that can be taken out of both at once, which is what is needed to simplify
+a fraction like $$\tfrac{36}{60}$$ all the way down to $$\tfrac{3}{5}$$ in one go.
 
 :::definition[Common divisors]{#gcd}
 

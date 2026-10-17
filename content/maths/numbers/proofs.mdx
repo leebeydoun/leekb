@@ -15,6 +15,11 @@ here whenever a pattern is used, so this is also a page to come back to.
 
 ## What a proof is
 
+Think of a proof as an explanation good enough to convince a careful sceptic. Saying "I tried
+$$2 + 4$$, $$6 + 8$$ and $$10 + 12$$, and they all came out even" won't do, because the sceptic can
+always ask about the next pair. What convinces them is a reason that works for every pair at once. A
+proof is that kind of reason, written so that each step can be checked.
+
 A **proof** is a chain of steps that starts from things we already accept and ends at the statement
 we want. Every step has to be justified by one of three things:
 
@@ -232,7 +237,12 @@ much easier to start from a number that is **not** a multiple of $$3$$ and look 
 
 ## "Exactly when"
 
-Sometimes a statement and its converse are both true, and we want to say so in one go.
+Some tests work in both directions. A whole number is even when its last digit is $$0$$, $$2$$,
+$$4$$, $$6$$ or $$8$$, and a number whose last digit is one of those is even. Each fact gives you
+the other, so the two descriptions pick out exactly the same numbers. That is a much stronger link
+than a one-way "if, then".
+
+So sometimes a statement and its converse are both true, and we want to say so in one go.
 
 :::definition[Exactly when]{#exactly-when}
 
@@ -263,8 +273,12 @@ contrapositive.
 
 ## Proof by contradiction
 
-To prove that something is true, we can suppose that it is **false**, and show that this leads to
-something impossible.
+People argue this way all the time. "If it had rained in the night, the pavement would be wet. The
+pavement is dry, so it didn't rain." You take the idea you want to rule out, follow it to its
+consequences, and find one that can't be right. Then the idea itself has to go.
+
+In a proof, the idea we want to rule out is that the statement is false. So to prove that something
+is true, we can suppose that it is **false**, and show that this leads to something impossible.
 
 :::remark[Proof by contradiction]{#contradiction}
 
@@ -420,6 +434,13 @@ Step 3 is the heart of every induction proof. The case $$k + 1$$ is usually the 
 more piece, and the trick is to spot the case $$k$$ inside it.
 
 ### A first example, slowly
+
+Before proving the formula, here is one reason to expect it. To add $$1$$ to $$100$$, pair the
+numbers from the two ends: $$1 + 100$$, $$2 + 99$$, $$3 + 98$$ and so on. Every pair adds to
+$$101$$, and there are $$50$$ pairs, so the total is $$50 \cdot 101 = 5050$$. The formula says the
+same thing for any $$n$$: the numbers make half of $$n$$ pairs, each adding to $$n + 1$$. When $$n$$
+is odd the middle number has no partner, which makes the pairing argument fiddly. Induction gives a
+proof that doesn't have to worry about this.
 
 :::example[Adding up 1 to n]
 

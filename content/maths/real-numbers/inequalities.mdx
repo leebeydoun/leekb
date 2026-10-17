@@ -12,6 +12,12 @@ when solving an inequality, and then deals with products, quotients, squares and
 
 ## Intervals
 
+The solutions of an inequality usually fill an unbroken stretch of the number line, or a few of
+them: all the numbers between $$1$$ and $$5$$, say, or all the numbers bigger than $$3$$. Intervals
+are short names for these stretches. The only subtle point is the ends. A stretch may or may not
+include its endpoints, since $$x < 5$$ leaves out $$5$$ but $$x \le 5$$ lets it in, so the notation
+has to record that.
+
 :::definition[Intervals]{#interval}
 
 For real numbers $$a < b$$, the **intervals** with endpoints $$a$$ and $$b$$ are
@@ -45,7 +51,13 @@ greater than $$2$$.
 ## Safe steps for inequalities
 
 As with equations, an inequality is solved by replacing it with simpler and simpler ones that have
-exactly the same solutions. These steps are safe.
+exactly the same solutions. A safe step must neither lose a solution nor add one.
+
+The rules for inequalities (:ref{#inequality-rules}) say which moves keep the order of two numbers.
+Sliding both sides by the same amount keeps it, and so does stretching both by the same positive
+amount. Multiplying by a negative number flips the order, so the inequality sign has to be turned
+round to match. Each of these moves can also be undone by another move of the same kind, which is
+why nothing is gained or lost. These steps are safe.
 
 :::proposition[Safe steps for inequalities]{#inequality-steps}
 
@@ -81,6 +93,12 @@ negative number reverses the inequality.
 
 ## Linear inequalities
 
+An inequality where the unknown is only multiplied by numbers and added to things is solved just
+like a linear equation: get the unknown on its own. The one difference is that dividing by a
+negative number turns the inequality round. For example, $$-x < 2$$ means $$x > -2$$. To see that
+this is right, try $$x = -1$$: then $$-x$$ is $$1$$, which is less than $$2$$, and $$-1$$ is indeed
+bigger than $$-2$$.
+
 :::example[A first inequality]
 
 Solve $$4x - 7 > 5$$.
@@ -114,7 +132,9 @@ $$-2 \le x < 2$$, the interval $$[-2, 2)$$:
 ## Products and sign tables
 
 To solve an inequality like $$(x - 2)(x + 3) < 0$$, it is enough to know when each factor is
-positive or negative, because of the sign rules.
+positive or negative, because of the sign rules. A product of two numbers is negative exactly when
+their signs differ: $$2 \cdot (-3)$$ is negative, but $$(-2) \cdot (-3)$$ is positive. So the sizes
+of the factors don't matter, only their signs.
 
 :::proposition[Signs of products]{#product-sign}
 
@@ -164,8 +184,10 @@ endpoints, since $$0 \ge 0$$: the solutions are $$(-\infty, -3] \cup [2, \infty)
 ## Quotients
 
 An inequality with $$x$$ on the bottom of a fraction needs care. Multiplying both sides by the
-bottom is only safe if its sign is known, and it changes with $$x$$. The safest route is to get
-$$0$$ on one side, combine into a single fraction, and use a sign table.
+bottom is only safe if its sign is known, and it changes with $$x$$. With $$x + 2$$ on the bottom,
+say, multiplying by it keeps the inequality when $$x$$ is above $$-2$$, but reverses it when $$x$$
+is below $$-2$$. The safest route is to get $$0$$ on one side, combine into a single fraction, and
+use a sign table.
 
 :::example[x on the bottom]
 
@@ -196,6 +218,11 @@ $$x \ge 5$$, which misses every solution below $$-2$$. Splitting into the cases 
 $$x + 2 < 0$$ also works, but the sign table keeps track of everything at once.
 
 ## Squares
+
+Squaring ignores the sign of a number, and the further a number is from $$0$$, the bigger its
+square. Both $$3$$ and $$-3$$ square to $$9$$. So $$x^2 < 9$$ says that $$x$$ is less than $$3$$
+away from $$0$$, on either side, which means $$x$$ lies between $$-3$$ and $$3$$. And $$x^2 > 9$$
+says that $$x$$ is more than $$3$$ away from $$0$$, so it is either below $$-3$$ or above $$3$$.
 
 :::proposition[Comparing a square with a number]{#square-inequality}
 
@@ -234,7 +261,9 @@ whose square is $$100$$.
 ## Absolute values
 
 The inequality $$|x - a| < r$$ says that the distance from $$x$$ to $$a$$ is less than $$r$$, so
-$$x$$ lies within $$r$$ of $$a$$ on either side.
+$$x$$ lies within $$r$$ of $$a$$ on either side. That is a single stretch centred on $$a$$. In the
+same way, $$|x - a| > r$$ says that $$x$$ is further than $$r$$ from $$a$$, so it lies outside that
+stretch, off one end or the other.
 
 :::proposition[Absolute value inequalities]{#abs-inequality}
 

@@ -12,6 +12,12 @@ where squaring both sides can add false solutions.
 
 ## Conjugates
 
+A sum like $$3 + \sqrt{2}$$ is awkward, because the root is stuck to the $$3$$. Squaring doesn't get
+rid of it: $$\left(3 + \sqrt{2}\right)^2 = 11 + 6\sqrt{2}$$. The trick is to multiply by the same
+sum with the sign in the middle flipped. The two cross terms, $$+3\sqrt{2}$$ and $$-3\sqrt{2}$$,
+then cancel, and all that is left is $$3^2$$ minus $$\left(\sqrt{2}\right)^2$$, which is $$9 - 2$$,
+with no root in sight.
+
 The numbers $$p + \sqrt{q}$$ and $$p - \sqrt{q}$$ are called **conjugates** of each other. Their
 product has no square root left in it, by the difference of two squares
 (:ref{#numbers/square-formulas}):
@@ -24,6 +30,11 @@ For example, $$\left(3 + \sqrt{2}\right)\left(3 - \sqrt{2}\right) = 9 - 2 = 7$$.
 two roots: $$\left(\sqrt{a} + \sqrt{b}\right)\left(\sqrt{a} - \sqrt{b}\right) = a - b$$.
 
 ## Rationalising the denominator
+
+Dividing by a number like $$\sqrt{3}$$, which is about $$1.732$$, is awkward. Dividing by $$3$$ is
+easy. A fraction keeps its value when its top and bottom are multiplied by the same number, so we
+can pick a multiplier that turns the bottom into a rational number and moves the root up to the top,
+where it does no harm.
 
 A fraction with a square root on the bottom can be rewritten with a rational number on the bottom
 instead, by multiplying the top and the bottom by the same thing. This is called **rationalising the
@@ -78,7 +89,10 @@ compare or estimate, but a root on the bottom is not an error.
 ## Rationalising the numerator
 
 The same trick can move a root from the top to the bottom, which is called **rationalising the
-numerator**. That is useful when the top is a difference of two nearly equal roots.
+numerator**. That is useful when the top is a difference of two nearly equal roots. Such a
+difference is hard to judge, because both roots are close to the same number and almost all of each
+cancels. After the trick the roots are added on the bottom instead, and a sum of positive numbers is
+easy to estimate.
 
 :::example[How far apart are √101 and √100?]
 
@@ -104,6 +118,16 @@ $$n \ge 0$$, which shows that the gaps between the square roots of consecutive w
 as the numbers grow.
 
 ## Numbers of the form a + b√2
+
+Think of $$\sqrt{2}$$ as one new ingredient added to the rational numbers. A number like
+$$3 + 2\sqrt{2}$$ has a rational part, $$3$$, and a rational amount of $$\sqrt{2}$$, here $$2$$.
+Adding or subtracting two such numbers just combines the matching parts. Multiplying works too,
+because $$\sqrt{2}$$ times $$\sqrt{2}$$ is $$2$$, which falls back into the rational part. Dividing
+is less obvious, and conjugates are what make it work.
+
+The two parts can also be read off without any doubt. Since $$\sqrt{2}$$ is irrational, no non-zero
+rational amount of it is a rational number, so the rational part and the amount of $$\sqrt{2}$$
+can't be traded for each other.
 
 Adding, subtracting and multiplying numbers like $$3 + 2\sqrt{2}$$ gives numbers of the same kind:
 
@@ -174,10 +198,11 @@ proved the same way.
 ## Equations with square roots
 
 To solve an equation with the unknown under a square root, the usual move is to get the root on its
-own and square both sides. But squaring is not a safe step: as the
-[Linear equations](../linear-equations/equations.mdx) guide pointed out, it can let in false
-solutions, because $$A$$ and $$-A$$ have the same square. Here is exactly what squaring does and
-doesn't do.
+own and square both sides. But squaring forgets signs: $$3$$ and $$-3$$ both square to $$9$$. After
+squaring, the equation can no longer tell a number apart from its opposite. So squaring is not a
+safe step: as the [Linear equations](../linear-equations/equations.mdx) guide pointed out, it can
+let in false solutions, because $$A$$ and $$-A$$ have the same square. Here is exactly what squaring
+does and doesn't do.
 
 :::proposition[Squaring both sides]{#squaring-sides}
 

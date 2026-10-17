@@ -12,6 +12,11 @@ that $$\sqrt{x^2}$$ is not always $$x$$.
 
 ## Definition
 
+The absolute value should give the size of a number, whatever its sign. For a number like $$5$$ that
+is just the number itself. For a negative number like $$-5$$ it is the same number with the sign
+flipped, $$5$$. Flipping the sign is the same as taking the opposite, so the rule is: leave a number
+alone if it is $$0$$ or more, and replace it by its opposite if it is negative.
+
 :::definition[Absolute value]{#absolute-value}
 
 The **absolute value** of a real number $$x$$, written $$|x|$$, is
@@ -85,6 +90,12 @@ $$|3 + (-5)| = 2$$, but $$|3| + |-5| = 8$$.
 
 ## Distance
 
+The distance between two numbers is how far apart they are on the line, without caring about
+direction. The difference $$7 - 3 = 4$$ already measures the step from $$3$$ to $$7$$. But
+subtracting the other way round gives $$3 - 7 = -4$$, because the step from $$7$$ back to $$3$$ goes
+to the left. Taking the absolute value throws away the direction and keeps the length, $$4$$, either
+way.
+
 :::definition[Distance]{#distance}
 
 The **distance** between two real numbers $$a$$ and $$b$$ is $$|a - b|$$.
@@ -102,8 +113,14 @@ from zero.
 
 ## The triangle inequality
 
-The absolute value of a sum is at most the sum of the absolute values. The name comes from geometry,
-where it says that one side of a triangle is never longer than the other two together.
+When two numbers with the same sign are added, their sizes add up: $$3 + 5 = 8$$. When the signs are
+opposite, part of one cancels part of the other, so the result is smaller: $$3 + (-5) = -2$$, which
+has size $$2$$, not $$8$$. So the size of a sum is never more than the sizes added together, and it
+is less exactly when some cancelling happens.
+
+This is called the **triangle inequality**: the absolute value of a sum is at most the sum of the
+absolute values. The name comes from geometry, where it says that one side of a triangle is never
+longer than the other two together.
 
 :::theorem[Triangle inequality]{#triangle-inequality}
 
@@ -155,6 +172,11 @@ gives $$|a - c| \le |a - b| + |b - c|$$.
 :::
 
 ## Equations with absolute values
+
+The equation $$|x| = 3$$ asks which numbers are at distance $$3$$ from $$0$$. There are two, $$3$$
+and $$-3$$, one on each side of $$0$$. In the same way, an equation saying that some expression has
+absolute value $$3$$ means the expression is either $$3$$ or $$-3$$. And since a size can never be
+negative, an equation like $$|x| = -2$$ has no solution at all.
 
 :::proposition[Solving |A| = c]{#abs-equation}
 
