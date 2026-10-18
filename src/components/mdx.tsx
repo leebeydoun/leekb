@@ -18,6 +18,8 @@ import { RowsOfDots } from "./interactive/dots";
 import { TwoLines } from "./interactive/two-lines";
 import { SlopeExplorer } from "./interactive/slope";
 import { FractionBars } from "./interactive/fraction-bars";
+import { CompletingSquare } from "./interactive/completing-square";
+import { ParabolaCrossings, ParabolaVertex } from "./interactive/parabola";
 import { Quiz } from "./quiz";
 import {
   Conjecture,
@@ -74,4 +76,7 @@ export const mdxComponents = {
   TwoLines,
   SlopeExplorer,
   FractionBars,
+  CompletingSquare,
+  ParabolaCrossings,
+  ParabolaVertex,
 };

@@ -1,0 +1,191 @@
+---
+title: Solving by factoring
+description:
+  Splitting a quadratic into two factors, so that one hard equation becomes two easy ones.
+---
+
+Some quadratics come apart into two simpler pieces multiplied together. For example,
+$$x^2 - x - 12$$ is $$(x + 3)(x - 4)$$. When that happens the equation is nearly solved, because a
+product can only be $$0$$ if one of its factors is. So one quadratic equation becomes two linear
+ones. This page shows why that works, how to find the factors, and when it is quicker to use another
+method.
+
+## Products equal to zero
+
+Two numbers that aren't $$0$$ can never multiply to give $$0$$. So if a product is $$0$$, at least
+one of the numbers in it must be $$0$$. Now suppose $$(x - 2)(x + 5) = 0$$. The two brackets are
+just two numbers, so one of them is $$0$$: either $$x - 2 = 0$$ or $$x + 5 = 0$$. That gives
+$$x = 2$$ or $$x = -5$$, and both really work, since each one makes a bracket $$0$$ and anything
+times $$0$$ is $$0$$.
+
+The rule that a zero product needs a zero factor was proved for fractions in the Numbers guide
+(:ref{#numbers/zero-product}). The proof only used inverses of non-zero numbers, so it holds for all
+real numbers too.
+
+:::proposition[Solving by factors]{#solve-by-factors}
+
+Let $$p$$, $$q$$, $$r$$ and $$t$$ be real numbers with $$p \neq 0$$ and $$r \neq 0$$. Then
+
+```math
+(px + q)(rx + t) = 0
+```
+
+exactly when $$x = -\frac{q}{p}$$ or $$x = -\frac{t}{r}$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Zero-product_property#Application_to_finding_roots_of_polynomials"}
+
+Suppose $$(px + q)(rx + t) = 0$$. By :ref{#numbers/zero-product}, one of the factors is $$0$$. If
+$$px + q = 0$$, then $$px = -q$$, and since $$p \neq 0$$ the linear equation has the single solution
+$$x = -\frac{q}{p}$$ (:ref{#linear-equations/one-unknown}). In the same way, if $$rx + t = 0$$ then
+$$x = -\frac{t}{r}$$.
+
+Conversely, if $$x = -\frac{q}{p}$$, then $$px + q = -q + q = 0$$, so the product is $$0$$ times
+$$rx + t$$, which is $$0$$ (:ref{#numbers/zero-times}). The same goes for $$x = -\frac{t}{r}$$,
+which makes the second factor $$0$$.
+
+:::
+
+The two answers may be the same number. Then the equation has only one solution: $$(x - 3)(x - 3)$$
+is $$0$$ only for $$x = 3$$.
+
+The rule needs $$0$$ on one side. From $$(x - 1)(x - 2) = 6$$ you can't conclude that $$x - 1 = 6$$
+or $$x - 2 = 6$$, since many pairs of numbers multiply to $$6$$. Expand, move the $$6$$ across, and
+factor again: $$x^2 - 3x - 4 = 0$$, which is $$(x + 1)(x - 4) = 0$$, so $$x = -1$$ or $$x = 4$$.
+
+## Finding the factors
+
+To factor $$x^2 + bx + c$$, it helps to see what multiplying two brackets does. Picture
+$$(x + 2)(x + 3)$$ as the area of a rectangle with sides $$x + 2$$ and $$x + 3$$. It splits into an
+$$x$$ by $$x$$ square, two strips of areas $$3x$$ and $$2x$$, and a $$2$$ by $$3$$ corner.
+
+:::area-model{row-sizes="4 2" col-sizes="4 3"}
+
+|     | x   | 3   |
+| --- | --- | --- |
+| x   | x²  | 3x  |
+| 2   | 2x  | 6   |
+
+:::
+
+So $$(x + 2)(x + 3) = x^2 + 5x + 6$$. The two strips add up to $$5x$$, the **sum** of $$2$$ and
+$$3$$ times $$x$$, and the corner is $$6$$, their **product**. The same happens for any two numbers
+$$m$$ and $$n$$:
+
+```math
+(x + m)(x + n) = x^2 + (m + n)x + mn
+```
+
+Factoring runs this backwards: find two numbers whose sum is $$b$$ and whose product is $$c$$.
+
+:::remark[Factoring x² + bx + c]{#factoring-method}
+
+If $$m + n = b$$ and $$mn = c$$, then
+
+```math
+x^2 + bx + c = (x + m)(x + n)
+```
+
+and the solutions of $$x^2 + bx + c = 0$$ are $$x = -m$$ and $$x = -n$$.
+
+::see-also{src="https://en.wikipedia.org/wiki/Quadratic_equation#Factoring_by_inspection"}
+
+:::
+
+The product is the easier clue to start from, since a whole number has only a few factor pairs. The
+signs help too. If $$c$$ is positive, $$m$$ and $$n$$ have the same sign, which is the sign of
+$$b$$. If $$c$$ is negative, they have opposite signs.
+
+:::example[Two numbers with a given sum and product]
+
+Solve $$x^2 - x - 12 = 0$$.
+
+We need a product of $$-12$$, so the two numbers have opposite signs, and a sum of $$-1$$. The pairs
+with product $$-12$$ are $$1, -12$$, then $$2, -6$$, then $$3, -4$$, and those with the signs the
+other way round. Only $$3$$ and $$-4$$ add up to $$-1$$. So
+
+```math
+x^2 - x - 12 = (x + 3)(x - 4) = 0
+```
+
+and $$x = -3$$ or $$x = 4$$. Check: $$9 + 3 - 12 = 0$$ and $$16 - 4 - 12 = 0$$.
+
+Solve $$x^2 - 7x + 10 = 0$$.
+
+The product $$10$$ is positive and the sum $$-7$$ is negative, so both numbers are negative. The
+pair $$-2, -5$$ works, so $$(x - 2)(x - 5) = 0$$ and $$x = 2$$ or $$x = 5$$.
+
+:::
+
+When $$a$$ isn't $$1$$, first see whether every coefficient shares a factor. In
+$$3x^2 - 6x - 9 = 0$$ they all do, and dividing by $$3$$ leaves $$x^2 - 2x - 3 = 0$$, which is
+$$(x + 1)(x - 3) = 0$$. Otherwise, try brackets like $$(px + q)(rx + t)$$ where $$pr = a$$ and
+$$qt = c$$, and expand each guess to see whether the middle term comes out right.
+
+:::example[A leading coefficient other than 1]
+
+Solve $$2x^2 + 7x + 3 = 0$$.
+
+The $$2x^2$$ has to come from $$2x$$ times $$x$$, so try $$(2x + q)(x + t)$$ with $$qt = 3$$. The
+guess $$(2x + 3)(x + 1)$$ expands to $$2x^2 + 5x + 3$$, which is wrong. The guess
+$$(2x + 1)(x + 3)$$ expands to $$2x^2 + 7x + 3$$, which is right. So by :ref{#solve-by-factors},
+$$x = -\frac{1}{2}$$ or $$x = -3$$.
+
+:::
+
+## Two special shapes
+
+Two shapes are worth spotting on sight, because they factor in one step.
+
+With no $$x$$ term, $$x^2 - k^2$$ is a **difference of two squares**, and it factors as
+$$(x - k)(x + k)$$ (:ref{#numbers/square-formulas}). So $$x^2 - 49 = 0$$ becomes
+$$(x - 7)(x + 7) = 0$$, giving $$x = 7$$ or $$x = -7$$. A sum of two squares like $$x^2 + 49$$ can't
+be factored like this, and indeed $$x^2 + 49 = 0$$ has no solution, since $$x^2 + 49$$ is always at
+least $$49$$.
+
+With no constant term, $$x$$ itself is a common factor. So $$x^2 - 5x = 0$$ becomes
+$$x(x - 5) = 0$$, giving $$x = 0$$ or $$x = 5$$.
+
+It is tempting to solve $$x^2 = 5x$$ by dividing both sides by $$x$$, which gives $$x = 5$$ and
+nothing else. That loses the solution $$x = 0$$. Dividing by a number is a safe step only when the
+number is not $$0$$ (:ref{#linear-equations/safe-steps}), and whether $$x$$ is $$0$$ is exactly what
+we don't know yet. Moving everything to one side and factoring keeps both solutions.
+
+A **perfect square** like $$x^2 + 6x + 9$$ is $$(x + 3)^2$$, since $$3 + 3 = 6$$ and
+$$3 \cdot 3 = 9$$. Then $$x^2 + 6x + 9 = 0$$ has the single solution $$x = -3$$, as in
+:ref{#shifted-square}.
+
+## When to factor
+
+Factoring is the quickest method when the coefficients are small whole numbers and the factors are
+easy to spot. If a few factor pairs don't work, it is time to switch. Many quadratics have no
+factors with whole numbers at all. For $$x^2 + x - 1$$, the only whole-number pairs with product
+$$-1$$ are $$1, -1$$, and they add up to $$0$$, not $$1$$. Yet $$x^2 + x - 1 = 0$$ does have two
+solutions, which are not fractions. [Completing the square](./completing-the-square.mdx) and
+[the quadratic formula](./quadratic-formula.mdx) find solutions like these, and they work every
+time.
+
+Whatever the method, an answer can always be checked by putting it back into the original equation.
+
+## Common mistakes
+
+- **Factoring without a zero.** $$(x - 1)(x - 2) = 6$$ does not mean $$x - 1 = 6$$ or $$x - 2 = 6$$.
+  Move everything to one side first.
+- **Dividing by $$x$$.** It loses the solution $$x = 0$$. Factor out $$x$$ instead.
+- **Getting the signs of the roots backwards.** $$(x + 3)(x - 4) = 0$$ gives $$x = -3$$ and
+  $$x = 4$$, not $$3$$ and $$-4$$.
+- **Matching only the product.** $$2 \cdot 6 = 12$$, but $$(x + 2)(x + 6)$$ is $$x^2 + 8x + 12$$.
+  The pair must give the right sum as well.
+- **Treating a sum of squares like a difference.** $$x^2 - 49$$ factors, but $$x^2 + 49$$ does not.
+
+## In short
+
+- If a product is $$0$$, one of its factors is $$0$$, so a factored quadratic becomes two linear
+  equations.
+- The rule needs $$0$$ on one side of the equation.
+- $$x^2 + bx + c = (x + m)(x + n)$$ when $$m + n = b$$ and $$mn = c$$, and the solutions are then
+  $$-m$$ and $$-n$$.
+- Spot differences of squares, a common factor of $$x$$, and perfect squares.
+- Never divide by $$x$$; factor it out instead.
+- Many quadratics have no whole-number factors; completing the square and the formula always work.

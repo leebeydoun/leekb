@@ -1,0 +1,244 @@
+---
+title: The discriminant
+description:
+  How the number b² − 4ac tells in advance how many solutions a quadratic has, and how the
+  solutions' sum and product can be read off the equation.
+---
+
+The [quadratic formula](./quadratic-formula.mdx) has one part that does all the deciding: the number
+$$b^2 - 4ac$$ under the square root. Whether an equation has two solutions, one, or none depends
+only on its sign, so a short calculation answers the question before any solving. This page names
+that number, proves the three cases, and then shows a second shortcut: the sum and product of the
+solutions can be read straight off the equation, which gives a quick check on any answer.
+
+## How many solutions
+
+Completing the square turns $$ax^2 + bx + c = 0$$ into a square equal to a number:
+
+```math
+\left(x + \frac{b}{2a}\right)^2 = \frac{b^2 - 4ac}{4a^2}
+```
+
+So the question becomes: which numbers squared give the right side? A positive number has two square
+roots, one on each side of $$0$$. Zero has only itself. A negative number has none, because no
+square is negative. The bottom, $$4a^2$$, is always positive, so only the top, $$b^2 - 4ac$$,
+decides which case we are in.
+
+There is a picture too. The solutions of $$x^2 + bx + c = 0$$ are where the curve
+$$y = x^2 + bx + c$$ meets the $$x$$-axis (see [Parabolas](./parabolas.mdx)). Changing $$c$$ slides
+the curve up or down. Low down, it dips below the axis and crosses it twice. Raised a little, it
+just touches the axis at one point. Raised further, it misses the axis altogether.
+
+Try it: move the curve up and down, and watch $$b^2 - 4ac$$ change sign as the crossings disappear.
+
+<ParabolaCrossings />
+
+:::definition[Discriminant]{#discriminant}
+
+The **discriminant** of the quadratic equation $$ax^2 + bx + c = 0$$, where $$a \neq 0$$, is the
+number
+
+```math
+b^2 - 4ac
+```
+
+It is often written $$\Delta$$, the Greek capital letter delta.
+
+:::
+
+:::theorem[Number of solutions]{#root-count}
+
+Let $$a \neq 0$$, and let $$\Delta = b^2 - 4ac$$ be the discriminant of $$ax^2 + bx + c = 0$$.
+
+1. If $$\Delta > 0$$, the equation has exactly two solutions.
+2. If $$\Delta = 0$$, it has exactly one solution, $$x = -\frac{b}{2a}$$.
+3. If $$\Delta < 0$$, it has no real solution.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Quadratic_equation#Discriminant"}
+
+**Part 3** is part 2 of the quadratic formula (:ref{#quadratic-formula}).
+
+When $$\Delta \ge 0$$, the quadratic formula says the solutions are exactly the two numbers
+
+```math
+\frac{-b + \sqrt{\Delta}}{2a} \qquad \text{and} \qquad \frac{-b - \sqrt{\Delta}}{2a}
+```
+
+Their difference is $$\frac{2\sqrt{\Delta}}{2a} = \frac{\sqrt{\Delta}}{a}$$.
+
+**Part 1.** If $$\Delta > 0$$, then $$\sqrt{\Delta} > 0$$, so the difference
+$$\frac{\sqrt{\Delta}}{a}$$ is not $$0$$. The two numbers are different, so there are exactly two
+solutions.
+
+**Part 2.** If $$\Delta = 0$$, then $$\sqrt{\Delta} = 0$$, and both numbers are
+$$\frac{-b}{2a} = -\frac{b}{2a}$$. So there is exactly one solution.
+
+:::
+
+When $$\Delta = 0$$ the left side is a perfect square. For example, $$9x^2 + 6x + 1$$ has
+$$\Delta = 36 - 36 = 0$$, and it is $$(3x + 1)^2$$, which is $$0$$ only at $$x = -\frac{1}{3}$$. The
+one solution is sometimes called a **double** solution, since it is where the two solutions of the
+other cases have run together.
+
+:::example[Counting without solving]
+
+How many solutions does each equation have?
+
+1. $$x^2 - 3x - 7 = 0$$: $$\Delta = 9 + 28 = 37 > 0$$, so two.
+2. $$4x^2 - 12x + 9 = 0$$: $$\Delta = 144 - 144 = 0$$, so one, $$x = \frac{12}{8} = \frac{3}{2}$$.
+3. $$x^2 + x + 1 = 0$$: $$\Delta = 1 - 4 = -3 < 0$$, so none.
+
+:::
+
+Sometimes the sign of $$\Delta$$ is clear without any arithmetic. If $$a$$ and $$c$$ have opposite
+signs, then $$ac$$ is negative (:ref{#real-numbers/sign-rules}), so $$-4ac$$ is positive. Adding
+$$b^2$$, which is not negative, keeps it positive. So an equation like $$3x^2 + 100x - 1 = 0$$
+certainly has two solutions.
+
+The discriminant also handles equations with an unknown number in them, where the question is for
+which values of that number a case happens.
+
+:::example[Choosing a number to get one solution]
+
+For which numbers $$k$$ does $$x^2 + kx + 4 = 0$$ have exactly one solution?
+
+The discriminant is $$k^2 - 4 \cdot 1 \cdot 4 = k^2 - 16$$. By :ref{#root-count}, there is exactly
+one solution when $$k^2 - 16 = 0$$, that is, $$k^2 = 16$$, so $$k = 4$$ or $$k = -4$$.
+
+**Check:** for $$k = 4$$ the equation is $$x^2 + 4x + 4 = (x + 2)^2 = 0$$, with the one solution
+$$x = -2$$. For $$k = -4$$ it is $$(x - 2)^2 = 0$$, with the one solution $$x = 2$$.
+
+The same calculation gives the other cases: two solutions when $$k^2 > 16$$, so when $$k > 4$$ or
+$$k < -4$$ (:ref{#real-numbers/square-inequality}), and none when $$-4 < k < 4$$.
+
+:::
+
+One more thing can be read from $$\Delta$$. When $$a$$, $$b$$ and $$c$$ are whole numbers and
+$$\Delta$$ is a perfect square, such as $$49$$, then $$\sqrt{\Delta}$$ is a whole number and the
+formula gives fractions. That is the sign that the equation can be factored
+(:ref{#solve-by-factors}) with whole numbers. When $$\Delta$$ is not a perfect square, like $$37$$,
+the solutions involve a square root that won't simplify away.
+
+## The sum and product of the solutions
+
+Suppose a quadratic has the solutions $$2$$ and $$5$$. One equation with those solutions is
+$$(x - 2)(x - 5) = 0$$. Multiplying out gives $$x^2 - 7x + 10 = 0$$, and the numbers $$7$$ and
+$$10$$ in it are no accident: $$7$$ is $$2 + 5$$ and $$10$$ is $$2 \cdot 5$$. The same happens for
+any solutions, so the sum and the product of the solutions can be read off the equation without
+solving it.
+
+:::proposition[Sum and product of the solutions]{#vieta}
+
+Let $$a \neq 0$$ and suppose $$ax^2 + bx + c = 0$$ has $$b^2 - 4ac \ge 0$$. Let $$x_1$$ and $$x_2$$
+be the two numbers given by the quadratic formula (equal when $$b^2 - 4ac = 0$$). Then
+
+```math
+x_1 + x_2 = -\frac{b}{a} \qquad \text{and} \qquad x_1 x_2 = \frac{c}{a}
+```
+
+and for every number $$x$$,
+
+```math
+ax^2 + bx + c = a(x - x_1)(x - x_2)
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Quadratic_equation#Vieta.27s_formulas"}
+
+Write $$\Delta = b^2 - 4ac$$, so that $$x_1 = \frac{-b + \sqrt{\Delta}}{2a}$$ and
+$$x_2 = \frac{-b - \sqrt{\Delta}}{2a}$$ (:ref{#quadratic-formula}).
+
+**Sum.** The square roots cancel:
+
+```math
+x_1 + x_2 = \frac{(-b + \sqrt{\Delta}) + (-b - \sqrt{\Delta})}{2a} = \frac{-2b}{2a} = -\frac{b}{a}
+```
+
+**Product.** The top is a difference of two squares (:ref{#numbers/square-formulas}), and
+$$(\sqrt{\Delta})^2 = \Delta$$:
+
+```math
+x_1 x_2 = \frac{(-b + \sqrt{\Delta})(-b - \sqrt{\Delta})}{4a^2} = \frac{b^2 - \Delta}{4a^2}
+= \frac{b^2 - (b^2 - 4ac)}{4a^2} = \frac{4ac}{4a^2} = \frac{c}{a}
+```
+
+**Factors.** Multiplying out and using the sum and the product,
+
+```math
+a(x - x_1)(x - x_2) = a\bigl(x^2 - (x_1 + x_2)x + x_1 x_2\bigr) = a\left(x^2 + \frac{b}{a}x + \frac{c}{a}\right)
+= ax^2 + bx + c
+```
+
+:::
+
+The factor form is the link with [factoring](./factoring.mdx): any quadratic with a non-negative
+discriminant can be factored, using the solutions found by the formula.
+
+:::example[Checking an answer]
+
+Someone solves $$x^2 - 6x + 7 = 0$$ and gets $$3 + \sqrt{2}$$ and $$3 - \sqrt{2}$$. Check them.
+
+The sum should be $$-\frac{b}{a} = 6$$, and it is, since the square roots cancel. The product should
+be $$\frac{c}{a} = 7$$, and by the difference of two squares it is
+$$(3 + \sqrt{2})(3 - \sqrt{2}) = 9 - 2 = 7$$. Both agree, with no substituting into the equation.
+
+:::
+
+:::example[Finding the other solution]
+
+The number $$3$$ is a solution of $$3x^2 - 10x + 3 = 0$$. Find the other one.
+
+The product of the solutions is $$\frac{c}{a} = \frac{3}{3} = 1$$, so the other solution is
+$$\frac{1}{3}$$. As a check, the sum $$3 + \frac{1}{3} = \frac{10}{3}$$ matches
+$$-\frac{b}{a} = \frac{10}{3}$$.
+
+:::
+
+:::example[An equation with given solutions]
+
+Find a quadratic equation with the solutions $$2$$ and $$-5$$.
+
+Their sum is $$-3$$ and their product is $$-10$$. Taking $$a = 1$$, we need $$-b = -3$$ and
+$$c = -10$$, so $$x^2 + 3x - 10 = 0$$. Indeed $$(x - 2)(x + 5) = x^2 + 3x - 10$$. Multiplying the
+whole equation by any non-zero number gives others with the same solutions.
+
+:::
+
+## When the discriminant is negative
+
+A negative discriminant means the formula asks for the square root of a negative number, and among
+the real numbers there is none, because no real number squares to a negative one
+(:ref{#real-numbers/squares-positive}). So $$x^2 + x + 1 = 0$$ really has no real solution.
+
+This has happened before. The equation $$2x = 3$$ has no solution among the integers, and the
+fractions were brought in to solve it. The equation $$x^2 = 2$$ has no solution among the fractions,
+and the real numbers fill that gap. In the same way, the real numbers can be extended to a larger
+system, the **complex numbers**, which contains a number whose square is $$-1$$. There, every
+quadratic equation has solutions, and they are given by the same formula. That system is the subject
+of a later guide.
+
+## Common mistakes
+
+- **Getting the sign of $$-4ac$$ wrong.** When $$a$$ and $$c$$ have opposite signs, $$-4ac$$ is
+  positive: for $$x^2 - 3x - 7$$, $$\Delta = 9 + 28$$, not $$9 - 28$$.
+- **Reading $$\Delta = 0$$ as "no solution".** Zero means exactly one solution, $$-\frac{b}{2a}$$.
+  Only a negative discriminant means none.
+- **Forgetting to divide by $$a$$.** The sum of the solutions is $$-\frac{b}{a}$$ and the product is
+  $$\frac{c}{a}$$, not $$-b$$ and $$c$$, unless $$a = 1$$.
+- **Losing the minus sign in the sum.** For $$x^2 - 7x + 10$$, the sum is $$+7$$, not $$-7$$.
+- **Using the sum and product when there are no solutions.** With $$\Delta < 0$$ there are no real
+  solutions to add or multiply; the numbers $$-\frac{b}{a}$$ and $$\frac{c}{a}$$ say nothing then.
+
+## In short
+
+- The **discriminant** of $$ax^2 + bx + c = 0$$ is $$\Delta = b^2 - 4ac$$.
+- $$\Delta > 0$$: two solutions. $$\Delta = 0$$: one, $$-\frac{b}{2a}$$. $$\Delta < 0$$: none.
+- On the graph, these are the curve crossing the $$x$$-axis twice, touching it, or missing it.
+- If $$a$$ and $$c$$ have opposite signs, there are always two solutions.
+- The solutions add up to $$-\frac{b}{a}$$ and multiply to $$\frac{c}{a}$$, and
+  $$ax^2 + bx + c = a(x - x_1)(x - x_2)$$: a quick check on any answer.
+- A negative discriminant means no real solution; a larger number system, the complex numbers,
+  supplies them.

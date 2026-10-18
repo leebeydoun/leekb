@@ -1,0 +1,103 @@
+---
+title: Introduction
+description: Solving quadratic equations, and why the methods work.
+---
+
+A linear equation like $$3x - 2 = 0$$ has the unknown only to the first power, and one division
+solves it. The next step up is an equation where the unknown is also **squared**, like
+$$x^2 - 5x + 6 = 0$$. These quadratic equations turn up whenever an area, a product of two unknown
+lengths, or anything thrown through the air is involved, and they need new ideas: there can be two
+solutions, one, or none at all.
+
+This guide shows how to solve every quadratic equation. It starts with the easy cases, where the
+equation is already a square or already split into factors, and then shows how completing the square
+turns any quadratic into one of these. Doing that once with letters gives the quadratic formula, and
+the part of the formula under the square root, the discriminant, says in advance how many solutions
+there are. The graph of a quadratic, a parabola, gives a picture of all of this. Finally, some
+equations that don't look quadratic can be turned into one.
+
+It builds on the [Real numbers](../real-numbers/introduction.mdx) guide, especially square roots,
+and on the [Numbers](../numbers/introduction.mdx) guide's formulas for squares and the rule that a
+product is zero only when a factor is.
+
+## The guide
+
+1. [Quadratic equations](./quadratics.mdx): what a quadratic equation is, and the easy cases
+   $$x^2 = k$$ and $$(x - s)^2 = k$$.
+2. [Solving by factoring](./factoring.mdx): splitting a quadratic into two factors, and why a
+   product is zero only when a factor is.
+3. [Completing the square](./completing-the-square.mdx): turning any quadratic into a square plus a
+   number.
+4. [The quadratic formula](./quadratic-formula.mdx): one formula that solves every quadratic, and
+   where it comes from.
+5. [The discriminant](./discriminant.mdx): telling in advance whether there are two solutions, one
+   or none, and the sum and product of the solutions.
+6. [Parabolas](./parabolas.mdx): the graph of a quadratic, its lowest or highest point, and where it
+   crosses the $$x$$-axis.
+7. [Equations that become quadratic](./equations-that-become-quadratic.mdx): substitutions,
+   fractions and square roots that lead back to a quadratic.
+8. [Exercises](./exercises.mdx): exercises on the whole guide, with worked solutions.
+
+The review below is a multiple choice quiz on the ideas in the guide. Try it now to see what you
+already know, or come back to it after reading. The summary after it collects every definition and
+rule for quick reference.
+
+::quiz{src="quadratics"}
+
+{/* Keep this summary in sync with the pages whenever they change. */}
+
+:::accordion[Summary of definitions and rules]
+
+**Definitions**
+
+| Term                                 | Meaning                                                                      |
+| ------------------------------------ | ---------------------------------------------------------------------------- |
+| :ref[Quadratic equation]{#quadratic} | $$ax^2 + bx + c = 0$$ with $$a \neq 0$$; its solutions are also called roots |
+| :ref[Discriminant]{#discriminant}    | $$\Delta = b^2 - 4ac$$                                                       |
+
+**Quadratic equations**
+
+| Rule                                              | Statement                                                                                         |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| :ref[A square equal to a number]{#shifted-square} | $$(x - s)^2 = k$$: $$x = s \pm \sqrt{k}$$ if $$k > 0$$, $$x = s$$ if $$k = 0$$, none if $$k < 0$$ |
+
+**Solving by factoring**
+
+| Rule                                           | Statement                                                                          |
+| ---------------------------------------------- | ---------------------------------------------------------------------------------- |
+| :ref[Solving by factors]{#solve-by-factors}    | $$(px + q)(rx + t) = 0$$ exactly when $$x = -\frac{q}{p}$$ or $$x = -\frac{t}{r}$$ |
+| :ref[Factoring x² + bx + c]{#factoring-method} | If $$m + n = b$$ and $$mn = c$$, then $$x^2 + bx + c = (x + m)(x + n)$$            |
+
+**Completing the square**
+
+| Rule                                          | Statement                                                     |
+| --------------------------------------------- | ------------------------------------------------------------- |
+| :ref[Completing the square]{#complete-square} | $$x^2 + bx = \left(x + \frac{b}{2}\right)^2 - \frac{b^2}{4}$$ |
+
+**The quadratic formula**
+
+| Rule                                            | Statement                                                                                      |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| :ref[The quadratic formula]{#quadratic-formula} | If $$b^2 - 4ac \ge 0$$: $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$; otherwise no real solution |
+
+**The discriminant**
+
+| Rule                                   | Statement                                                                                                                        |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| :ref[Number of solutions]{#root-count} | $$\Delta > 0$$: two solutions; $$\Delta = 0$$: one, $$-\frac{b}{2a}$$; $$\Delta < 0$$: none                                      |
+| :ref[Sum and product]{#vieta}          | Solutions $$x_1, x_2$$ have $$x_1 + x_2 = -\frac{b}{a}$$, $$x_1 x_2 = \frac{c}{a}$$, and $$ax^2 + bx + c = a(x - x_1)(x - x_2)$$ |
+
+**Parabolas**
+
+| Rule                                     | Statement                                                                                                           |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| :ref[The graph is a parabola]{#parabola} | $$y = ax^2 + bx + c$$ opens up if $$a > 0$$, down if $$a < 0$$; solutions are where it crosses the $$x$$-axis       |
+| :ref[The vertex]{#vertex}                | $$ax^2 + bx + c = a(x - s)^2 + k$$ with $$s = -\frac{b}{2a}$$, $$k = c - \frac{b^2}{4a}$$; the vertex is $$(s, k)$$ |
+
+**Equations that become quadratic**
+
+| Rule                                               | Statement                                                                                           |
+| -------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| :ref[Substituting for x²]{#substitution-quadratic} | $$ax^4 + bx^2 + c = 0$$: solve $$au^2 + bu + c = 0$$, then $$x = \pm\sqrt{u}$$ for each $$u \ge 0$$ |
+
+:::

@@ -1,0 +1,197 @@
+---
+title: Equations that become quadratic
+description:
+  Equations that turn into quadratics after a substitution, clearing fractions, or squaring.
+---
+
+Plenty of equations are not quadratic as written but turn into one after a single step. Some have a
+fourth power, or the unknown on the bottom of a fraction, or under a square root. The plan is always
+the same: make one move that produces a quadratic, solve that with factoring or the
+[formula](./quadratic-formula.mdx), then work back to the original equation. The care goes into that
+last part. Some moves can lose solutions on the way back, and others can let in false ones, so each
+kind of equation needs its own check.
+
+## Substituting for x²
+
+Look at $$x^4 - 10x^2 + 9 = 0$$. It has a fourth power, but $$x$$ only ever appears as $$x^2$$:
+$$x^4$$ is just $$x^2$$ squared. So give $$x^2$$ a name of its own, say $$u$$. The equation becomes
+$$u^2 - 10u + 9 = 0$$, an ordinary quadratic (:ref{#quadratic}) in $$u$$. Solving it tells us which
+values $$x^2$$ can take, and then each of those gives back $$x$$ itself. A positive value of $$x^2$$
+gives two values of $$x$$, zero gives one, and a negative value gives none, since no square is
+negative.
+
+:::proposition[Substituting for x²]{#substitution-quadratic}
+
+Let $$a$$, $$b$$ and $$c$$ be real numbers with $$a \neq 0$$. A real number $$x$$ solves
+
+```math
+ax^4 + bx^2 + c = 0
+```
+
+exactly when $$u = x^2$$ solves $$au^2 + bu + c = 0$$. So the solutions are found by solving the
+quadratic for $$u$$, then, for each solution $$u$$:
+
+- if $$u > 0$$, taking $$x = \sqrt{u}$$ and $$x = -\sqrt{u}$$;
+- if $$u = 0$$, taking $$x = 0$$;
+- if $$u < 0$$, taking nothing.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Quartic_function#Biquadratic_equation"}
+
+Since $$x^4 = (x^2)^2$$, the left side is $$a(x^2)^2 + b(x^2) + c$$ for every $$x$$. So $$x$$ makes
+it $$0$$ exactly when the number $$u = x^2$$ makes $$au^2 + bu + c$$ equal to $$0$$. In other words,
+$$x$$ is a solution exactly when $$x^2$$ is one of the solutions $$u$$ of the quadratic.
+
+It remains to find all $$x$$ with $$x^2 = u$$ for a given $$u$$. By
+:ref{#real-numbers/square-root-count}, there are two, $$\pm\sqrt{u}$$, when $$u > 0$$; one, $$0$$,
+when $$u = 0$$; and none when $$u < 0$$.
+
+:::
+
+:::example[Four solutions]
+
+Solve $$x^4 - 10x^2 + 9 = 0$$.
+
+Put $$u = x^2$$: the equation becomes $$u^2 - 10u + 9 = 0$$, which factors as $$(u - 1)(u - 9) = 0$$
+(:ref{#solve-by-factors}). So $$u = 1$$ or $$u = 9$$.
+
+Now go back to $$x$$. From $$x^2 = 1$$, $$x = \pm 1$$; from $$x^2 = 9$$, $$x = \pm 3$$. So there are
+four solutions: $$-3$$, $$-1$$, $$1$$ and $$3$$.
+
+**Check** $$x = 3$$: $$81 - 90 + 9 = 0$$. And $$x = 1$$: $$1 - 10 + 9 = 0$$. The negative ones give
+the same powers, since $$x^4$$ and $$x^2$$ ignore the sign.
+
+:::
+
+:::example[A value of u that gives nothing]
+
+Solve $$x^4 + 3x^2 - 4 = 0$$.
+
+With $$u = x^2$$: $$u^2 + 3u - 4 = 0$$, so $$(u + 4)(u - 1) = 0$$ and $$u = -4$$ or $$u = 1$$.
+
+The value $$u = -4$$ would need $$x^2 = -4$$, which no real number satisfies. So it gives nothing,
+and only $$x^2 = 1$$ is left: $$x = 1$$ or $$x = -1$$. **Check:** $$1 + 3 - 4 = 0$$.
+
+:::
+
+The same idea works whenever the unknown only appears through one expression, whatever that
+expression is. In $$(x - 1)^2 - 5(x - 1) + 6 = 0$$, put $$u = x - 1$$. Then $$u^2 - 5u + 6 = 0$$, so
+$$u = 2$$ or $$u = 3$$, and $$x = u + 1$$ is $$3$$ or $$4$$. In $$x - 5\sqrt{x} + 6 = 0$$, put
+$$u = \sqrt{x}$$, so that $$x = u^2$$. The same quadratic gives $$u = 2$$ or $$u = 3$$, and since
+$$u$$ is a square root, both are allowed (neither is negative). So $$x = 4$$ or $$x = 9$$.
+
+## The unknown on the bottom of a fraction
+
+An equation like $$\frac{1}{x} + \frac{1}{x + 2} = \frac{3}{4}$$ is hard to work with as it stands,
+because $$x$$ is stuck in the denominators. The natural move is to multiply both sides by every
+denominator at once, which clears the fractions. Usually a quadratic is left.
+
+But this is not one of the safe steps (:ref{#linear-equations/safe-steps}). Multiplying by an
+expression like $$x(x + 2)$$ is fine for most values of $$x$$, but at $$x = 0$$ or $$x = -2$$ it is
+multiplying by $$0$$, and that turns any equation into the true statement $$0 = 0$$. So clearing the
+fractions never loses a solution, but it can let in the very values where a denominator is $$0$$.
+Those were never allowed in the original equation, since it makes no sense there. So after solving,
+**throw out any answer that makes a denominator zero**.
+
+:::example[Clearing fractions]
+
+Solve $$\frac{1}{x} + \frac{1}{x + 2} = \frac{3}{4}$$.
+
+The denominators are $$x$$, $$x + 2$$ and $$4$$, so $$x$$ can't be $$0$$ or $$-2$$. Multiplying both
+sides by $$4x(x + 2)$$:
+
+```math
+4(x + 2) + 4x = 3x(x + 2), \quad \text{so} \quad 8x + 8 = 3x^2 + 6x.
+```
+
+Collecting everything on one side, $$3x^2 - 2x - 8 = 0$$, which factors as $$(3x + 4)(x - 2) = 0$$.
+So $$x = 2$$ or $$x = -\frac{4}{3}$$. Neither is $$0$$ or $$-2$$, so both are kept.
+
+**Check** $$x = 2$$: $$\frac{1}{2} + \frac{1}{4} = \frac{3}{4}$$. And $$x = -\frac{4}{3}$$: here
+$$x + 2 = \frac{2}{3}$$, so the left side is $$-\frac{3}{4} + \frac{3}{2} = \frac{3}{4}$$.
+
+:::
+
+:::example[An answer that has to go]
+
+Solve $$\frac{1}{x - 3} + \frac{x}{x + 3} = \frac{6}{x^2 - 9}$$.
+
+Since $$x^2 - 9 = (x - 3)(x + 3)$$ (:ref{#numbers/square-formulas}), every denominator divides
+$$(x - 3)(x + 3)$$, and $$x$$ can't be $$3$$ or $$-3$$. Multiplying both sides by it:
+
+```math
+(x + 3) + x(x - 3) = 6, \quad \text{so} \quad x^2 - 2x - 3 = 0.
+```
+
+This factors as $$(x - 3)(x + 1) = 0$$, giving $$x = 3$$ or $$x = -1$$. But $$x = 3$$ makes
+$$x - 3$$ zero, so it is not a solution: it only crept in because we multiplied by $$0$$ there. That
+leaves $$x = -1$$.
+
+**Check:** the left side is $$\frac{1}{-4} + \frac{-1}{2} = -\frac{3}{4}$$, and the right side is
+$$\frac{6}{1 - 9} = -\frac{3}{4}$$.
+
+:::
+
+## The unknown under a square root
+
+When $$x$$ sits under a square root, get the root on its own on one side and square both sides. The
+root disappears and, often, a quadratic is left. Squaring both sides keeps every solution, but as
+:ref{#real-numbers/squaring-sides} showed, it can also add false ones. Squaring can't tell a number
+from its opposite, so a value that makes the two sides opposites, like $$3$$ and $$-3$$, also makes
+their squares equal. So **check every answer in the original equation**.
+
+A quick test catches most false answers before the check: a square root is never negative, so the
+side it equals can't be negative either.
+
+:::example[A false solution from squaring]
+
+Solve $$\sqrt{2x + 3} = x$$.
+
+Squaring both sides, $$2x + 3 = x^2$$, so $$x^2 - 2x - 3 = 0$$ and $$(x - 3)(x + 1) = 0$$. That
+gives $$x = 3$$ or $$x = -1$$.
+
+**Check** $$x = 3$$: $$\sqrt{9} = 3$$, so it is a solution. For $$x = -1$$, the left side is
+$$\sqrt{1} = 1$$, but the right side is $$-1$$. It solves $$-\sqrt{2x + 3} = x$$ instead, which has
+the same square. So the only solution is $$x = 3$$.
+
+:::
+
+:::example[Getting the root on its own first]
+
+Solve $$\sqrt{x + 10} + 2 = x$$.
+
+Squaring straight away would leave a square root in the middle term of $$(\sqrt{x + 10} + 2)^2$$. So
+first move the $$2$$ across: $$\sqrt{x + 10} = x - 2$$. The left side is never negative, so any
+solution has $$x - 2 \ge 0$$, that is $$x \ge 2$$.
+
+Now square: $$x + 10 = x^2 - 4x + 4$$, so $$x^2 - 5x - 6 = 0$$ and $$(x - 6)(x + 1) = 0$$. Of
+$$x = 6$$ and $$x = -1$$, only $$6$$ satisfies $$x \ge 2$$.
+
+**Check:** $$\sqrt{16} + 2 = 4 + 2 = 6$$. So $$x = 6$$.
+
+:::
+
+## Common mistakes
+
+- **Stopping at u.** After substituting $$u = x^2$$, the values of $$u$$ are not the answers. Go
+  back and solve $$x^2 = u$$ for each one.
+- **Forgetting the negative root.** $$x^2 = 9$$ gives $$x = 3$$ **and** $$x = -3$$.
+- **Keeping a negative u.** $$x^2 = -4$$ has no real solution, so that value of $$u$$ gives nothing.
+- **Not checking the denominators.** After clearing fractions, throw out any answer that makes a
+  denominator $$0$$ in the original equation.
+- **Squaring before isolating the root.** Get the square root on its own first, or the square still
+  has a root in its middle term.
+- **Skipping the check after squaring.** Squaring can add false solutions, so test each answer in
+  the original equation.
+
+## In short
+
+- If the unknown only appears through one expression, such as $$x^2$$, $$x - 1$$ or $$\sqrt{x}$$,
+  name that expression $$u$$ and solve the quadratic in $$u$$.
+- For $$ax^4 + bx^2 + c = 0$$, each solution $$u$$ of $$au^2 + bu + c = 0$$ gives
+  $$x = \pm\sqrt{u}$$ if $$u > 0$$, $$x = 0$$ if $$u = 0$$, and nothing if $$u < 0$$.
+- Clearing fractions means multiplying by an expression that can be $$0$$. It never loses solutions,
+  but answers that make a denominator $$0$$ must be thrown out.
+- To remove a square root, get it on its own, then square both sides. This never loses solutions,
+  but it can add false ones, so check every answer in the original equation.

@@ -1,0 +1,218 @@
+---
+title: The quadratic formula
+description:
+  One formula that solves every quadratic equation, where it comes from, and how to use it.
+---
+
+[Completing the square](./completing-the-square.mdx) solves any quadratic, but it is the same few
+steps every time: divide by the number in front of $$x^2$$, add the missing corner, take square
+roots. Steps that never change can be done once and for all, with letters in place of the numbers.
+The result is the quadratic formula, which goes straight from the three numbers in an equation to
+its solutions. This page derives it, shows how to use it safely, and says when another method is
+quicker.
+
+## Doing the steps once with letters
+
+Picture following a recipe so often that you write down the finished dish in terms of its
+ingredients. Every quadratic $$ax^2 + bx + c = 0$$ has the same three ingredients, the numbers
+$$a$$, $$b$$ and $$c$$. Completing the square with these letters, instead of particular numbers,
+does every quadratic at once, and the answer comes out as a formula in $$a$$, $$b$$ and $$c$$.
+
+The formula also has a shape worth seeing. The solutions sit symmetrically about one point,
+$$-\frac{b}{2a}$$: one is a certain distance to its right and the other the same distance to its
+left. The formula gives that centre, plus or minus that distance. When the distance would be the
+square root of a negative number, there are no solutions at all.
+
+:::theorem[The quadratic formula]{#quadratic-formula}
+
+Let $$a$$, $$b$$ and $$c$$ be real numbers with $$a \neq 0$$, and consider the quadratic equation
+$$ax^2 + bx + c = 0$$ (:ref{#quadratic}).
+
+1. If $$b^2 - 4ac \ge 0$$, its solutions are exactly the numbers given by
+
+   ```math
+   x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+   ```
+
+   that is, $$\frac{-b + \sqrt{b^2 - 4ac}}{2a}$$ and $$\frac{-b - \sqrt{b^2 - 4ac}}{2a}$$.
+
+2. If $$b^2 - 4ac < 0$$, it has no real solution.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Quadratic_formula#Derivations"}
+
+Since $$a \neq 0$$, dividing both sides by $$a$$ is a safe step
+(:ref{#linear-equations/safe-steps}), and subtracting $$\frac{c}{a}$$ from both sides is another. So
+the equation is equivalent to
+
+```math
+x^2 + \frac{b}{a}x = -\frac{c}{a}
+```
+
+Now complete the square (:ref{#complete-square}). Half of $$\frac{b}{a}$$ is $$\frac{b}{2a}$$, so
+adding its square $$\frac{b^2}{4a^2}$$ to both sides turns the left side into a square:
+
+```math
+\left(x + \frac{b}{2a}\right)^2 = \frac{b^2}{4a^2} - \frac{c}{a} = \frac{b^2 - 4ac}{4a^2}
+```
+
+where the right side was put over the common denominator $$4a^2$$.
+
+The denominator $$4a^2$$ is positive, since $$a \neq 0$$ (:ref{#real-numbers/squares-positive}). So
+the right side has the same sign as $$b^2 - 4ac$$.
+
+**Part 2.** If $$b^2 - 4ac < 0$$, the right side is negative. The left side is a square, which is
+never negative (:ref{#real-numbers/squares-positive}), so no $$x$$ makes the two sides equal.
+
+**Part 1.** If $$b^2 - 4ac \ge 0$$, the right side is not negative, and solving a shifted square
+(:ref{#shifted-square}) gives
+
+```math
+x + \frac{b}{2a} = \pm\sqrt{\frac{b^2 - 4ac}{4a^2}} = \pm\frac{\sqrt{b^2 - 4ac}}{\sqrt{4a^2}}
+```
+
+by :ref{#real-numbers/root-product}. Here $$\sqrt{4a^2}$$ is $$2a$$ if $$a > 0$$ and $$-2a$$ if
+$$a < 0$$. Either way the $$\pm$$ already covers both signs, so the two values are
+$$\pm\frac{\sqrt{b^2 - 4ac}}{2a}$$. Subtracting $$\frac{b}{2a}$$ from both sides,
+
+```math
+x = -\frac{b}{2a} \pm \frac{\sqrt{b^2 - 4ac}}{2a} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+```
+
+Every step was safe, so these are exactly the solutions of the original equation.
+
+:::
+
+The number $$b^2 - 4ac$$ under the root decides everything about how many solutions there are, and
+the [next page](./discriminant.mdx) gives it a name and a closer look.
+
+## Using the formula
+
+The formula needs the equation in the standard form $$ax^2 + bx + c = 0$$, with everything on one
+side and $$0$$ on the other. Then read off $$a$$, $$b$$ and $$c$$, **signs included**, and work out
+$$b^2 - 4ac$$ first. Its sign says at once whether there are any solutions, and its square root is
+the only awkward part of the calculation.
+
+:::example[Answers without a square root]
+
+Solve $$3x^2 + 5x - 2 = 0$$.
+
+Here $$a = 3$$, $$b = 5$$ and $$c = -2$$. First,
+
+```math
+b^2 - 4ac = 5^2 - 4 \cdot 3 \cdot (-2) = 25 + 24 = 49
+```
+
+which is positive, with $$\sqrt{49} = 7$$. So
+
+```math
+x = \frac{-5 \pm 7}{2 \cdot 3} = \frac{-5 \pm 7}{6}
+```
+
+giving $$x = \frac{2}{6} = \frac{1}{3}$$ and $$x = \frac{-12}{6} = -2$$.
+
+**Check:** $$3 \cdot \frac{1}{9} + 5 \cdot \frac{1}{3} - 2 = \frac{1}{3} + \frac{5}{3} - 2 = 0$$,
+and $$3 \cdot 4 - 10 - 2 = 0$$.
+
+:::
+
+:::example[Answers with a square root]
+
+Solve $$x^2 - 6x + 4 = 0$$.
+
+Here $$a = 1$$, $$b = -6$$ and $$c = 4$$, so $$b^2 - 4ac = 36 - 16 = 20$$. Simplifying the root,
+$$\sqrt{20} = \sqrt{4}\sqrt{5} = 2\sqrt{5}$$ (:ref{#real-numbers/root-product}), and
+
+```math
+x = \frac{6 \pm 2\sqrt{5}}{2} = 3 \pm \sqrt{5}
+```
+
+Both terms on top were divided by $$2$$. The solutions are $$3 + \sqrt{5}$$ and $$3 - \sqrt{5}$$,
+symmetric about $$-\frac{b}{2a} = 3$$.
+
+**Check:** $$(3 + \sqrt{5})^2 = 9 + 6\sqrt{5} + 5 = 14 + 6\sqrt{5}$$, so
+$$(3 + \sqrt{5})^2 - 6(3 + \sqrt{5}) + 4 = 14 + 6\sqrt{5} - 18 - 6\sqrt{5} + 4 = 0$$. The other
+solution works the same way with the signs of $$\sqrt{5}$$ swapped.
+
+:::
+
+:::example[First rearrange]
+
+Solve $$3x^2 = 4x + 1$$.
+
+The formula needs $$0$$ on one side, so subtract $$4x + 1$$ from both sides: $$3x^2 - 4x - 1 = 0$$.
+Now $$a = 3$$, $$b = -4$$, $$c = -1$$, and
+
+```math
+b^2 - 4ac = 16 + 12 = 28, \qquad \sqrt{28} = 2\sqrt{7}
+```
+
+So
+
+```math
+x = \frac{4 \pm 2\sqrt{7}}{6} = \frac{2 \pm \sqrt{7}}{3}
+```
+
+:::
+
+:::example[No real solution]
+
+Solve $$5x^2 + 2x + 1 = 0$$.
+
+Here $$b^2 - 4ac = 4 - 20 = -16$$, which is negative. By part 2 of :ref{#quadratic-formula}, there
+is no real solution, and there is nothing more to calculate.
+
+:::
+
+## Checking an answer
+
+An answer with a square root in it is easy to get slightly wrong, and slow to check by substituting.
+There is a quicker check. For the two solutions of $$ax^2 + bx + c = 0$$, their sum is always
+$$-\frac{b}{a}$$ and their product is always $$\frac{c}{a}$$ (:ref{#vieta}, on the next page).
+
+For $$3x^2 = 4x + 1$$ above, the solutions were $$\frac{2 + \sqrt{7}}{3}$$ and
+$$\frac{2 - \sqrt{7}}{3}$$. Their sum is $$\frac{4}{3}$$, which is $$-\frac{b}{a} = \frac{4}{3}$$.
+Their product is $$\frac{4 - 7}{9} = -\frac{1}{3}$$, using the difference of two squares
+(:ref{#numbers/square-formulas}), and that is $$\frac{c}{a} = -\frac{1}{3}$$. Both agree, so the
+answer is almost certainly right.
+
+## When to use which method
+
+The formula always works, which makes it the safe choice. But it is not always the quickest.
+
+- **Factoring** (:ref{#solve-by-factors}) is quicker when the solutions are whole numbers or simple
+  fractions you can spot. For $$x^2 - 5x + 6 = 0$$, the numbers $$2$$ and $$3$$ have sum $$5$$ and
+  product $$6$$, so it is $$(x - 2)(x - 3) = 0$$, with no square roots at all.
+- **With no $$x$$ term**, as in $$x^2 - 7 = 0$$, solve $$x^2 = 7$$ directly: $$x = \pm\sqrt{7}$$.
+- **With no constant term**, as in $$4x^2 + 3x = 0$$, take out the common factor: $$x(4x + 3) = 0$$,
+  so $$x = 0$$ or $$x = -\frac{3}{4}$$.
+- **Otherwise**, or when factors don't show themselves after a short look, use the formula.
+
+The formula also covers equations whose numbers aren't whole. For $$x^2 + \sqrt{2}\,x - 4 = 0$$,
+$$b^2 - 4ac = 2 + 16 = 18$$ and $$\sqrt{18} = 3\sqrt{2}$$, so
+$$x = \frac{-\sqrt{2} \pm 3\sqrt{2}}{2}$$, which is $$\sqrt{2}$$ or $$-2\sqrt{2}$$.
+
+## Common mistakes
+
+- **Using the formula before rearranging.** In $$3x^2 = 4x + 1$$, the numbers $$3$$, $$4$$ and $$1$$
+  are not $$a$$, $$b$$ and $$c$$. Move everything to one side first.
+- **Losing a minus sign.** With $$b = -6$$, the top starts with $$-b = 6$$, and $$b^2 = 36$$, not
+  $$-36$$. Put negative numbers in brackets when substituting.
+- **Dividing only part of the top by $$2a$$.** The whole of $$-b \pm \sqrt{b^2 - 4ac}$$ is divided
+  by $$2a$$, not just the square root.
+- **Writing $$a$$ instead of $$2a$$ underneath.** The bottom is $$2a$$, from the half taken when
+  completing the square.
+- **Splitting the root.** $$\sqrt{b^2 - 4ac}$$ is not $$b - 2\sqrt{ac}$$; roots don't split over
+  sums or differences.
+
+## In short
+
+- Completing the square on $$ax^2 + bx + c = 0$$ once, with letters, gives the quadratic formula
+  $$x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$.
+- If $$b^2 - 4ac < 0$$ there is no real solution; otherwise the formula gives every solution.
+- The solutions sit symmetrically about $$-\frac{b}{2a}$$.
+- Put the equation in the form $$ax^2 + bx + c = 0$$ first, read off the signs carefully, and work
+  out $$b^2 - 4ac$$ before anything else.
+- Check answers with the sum $$-\frac{b}{a}$$ and product $$\frac{c}{a}$$ of the solutions.
+- Factoring or taking square roots directly can be quicker; the formula always works.

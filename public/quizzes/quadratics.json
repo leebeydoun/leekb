@@ -1,0 +1,519 @@
+{
+  "title": "Review: Quadratic equations",
+  "description": "Questions on the ideas in this guide, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
+  "questions": [
+    {
+      "id": "why-a-nonzero",
+      "stars": 1,
+      "topic": "Quadratic equations",
+      "question": "Why does the definition of a quadratic equation $$ax^2 + bx + c = 0$$ require $$a \\neq 0$$?",
+      "options": [
+        "So that the quadratic formula never divides by zero, which is the only reason",
+        "Because with $$a = 0$$ the $$x^2$$ term disappears and the equation is linear",
+        "Because $$b$$ and $$c$$ must also be non-zero",
+        "Because otherwise the equation would have no solutions"
+      ],
+      "answer": 1,
+      "explanation": "The condition $$a \\neq 0$$ is what makes the equation quadratic (:ref{#quadratic}). With $$a = 0$$ it is $$bx + c = 0$$, a linear equation. The coefficients $$b$$ and $$c$$ may be $$0$$."
+    },
+    {
+      "id": "b-or-c-zero",
+      "stars": 1,
+      "topic": "Quadratic equations",
+      "question": "Is $$x^2 - 5x = 0$$ a quadratic equation?",
+      "options": [
+        "No, because it has no constant term",
+        "No, because it can be factored",
+        "Yes: only $$a$$ must be non-zero, and here $$a = 1$$, $$b = -5$$, $$c = 0$$",
+        "Only if $$x \\neq 0$$"
+      ],
+      "answer": 2,
+      "explanation": "A quadratic only needs $$a \\neq 0$$ (:ref{#quadratic}). Either of the other coefficients may be $$0$$."
+    },
+    {
+      "id": "squares-cancel",
+      "stars": 2,
+      "topic": "Quadratic equations",
+      "question": "What kind of equation is $$x^2 + 3x = x^2 + 6$$?",
+      "options": [
+        "Linear: once in standard form the squares cancel, leaving $$3x = 6$$",
+        "Quadratic, because $$x^2$$ appears in it",
+        "Quadratic with no solution",
+        "Quadratic with two equal solutions"
+      ],
+      "answer": 0,
+      "explanation": "Whether an equation is quadratic is decided in standard form (:ref{#quadratic}). Subtracting $$x^2$$ from both sides is a safe step, and it leaves $$3x = 6$$, a linear equation with the single solution $$2$$."
+    },
+    {
+      "id": "how-many-expected",
+      "stars": 1,
+      "topic": "Quadratic equations",
+      "question": "How many real solutions can a quadratic equation have?",
+      "options": [
+        "Always exactly two",
+        "Any number, depending on the coefficients",
+        "One or two, never none",
+        "Two, one or none, and never more than two"
+      ],
+      "answer": 3,
+      "explanation": "$$x^2 = 9$$ has two, $$x^2 = 0$$ has one and $$x^2 = -1$$ has none, and a quadratic never has more than two (:ref{#root-count})."
+    },
+    {
+      "id": "shifted-square-negative",
+      "stars": 2,
+      "topic": "Quadratic equations",
+      "question": "What are the solutions of $$(x - 5)^2 = -3$$?",
+      "options": [
+        "$$x = 5 \\pm \\sqrt{3}$$",
+        "There are none, because a square is never negative",
+        "$$x = 5 \\pm \\sqrt{-3}$$",
+        "$$x = 5$$ only"
+      ],
+      "answer": 1,
+      "explanation": "By :ref{#shifted-square}, $$(x - s)^2 = k$$ has no solution when $$k < 0$$: no real number squares to a negative number (:ref{#real-numbers/squares-positive})."
+    },
+    {
+      "id": "shifted-square-proof",
+      "stars": 3,
+      "topic": "Quadratic equations",
+      "question": "The proof that $$(x - s)^2 = k$$ has the solutions $$s \\pm \\sqrt{k}$$ when $$k > 0$$ rests on which earlier fact?",
+      "options": [
+        "That $$y^2 = k$$ has exactly two solutions, $$\\pm\\sqrt{k}$$, so $$x - s$$ must be one of them",
+        "That a product is $$0$$ only when a factor is",
+        "The quadratic formula",
+        "That squaring both sides keeps every solution"
+      ],
+      "answer": 0,
+      "explanation": "Writing $$y = x - s$$ turns the equation into $$y^2 = k$$, which is solved by :ref{#real-numbers/square-root-count}; then $$x = y + s$$ (:ref{#shifted-square})."
+    },
+    {
+      "id": "zero-product-why",
+      "stars": 1,
+      "topic": "Solving by factoring",
+      "question": "Why does $$(x - 2)(x + 5) = 0$$ mean that $$x = 2$$ or $$x = -5$$?",
+      "options": [
+        "Because the two brackets must be equal",
+        "Because each bracket must equal $$5$$",
+        "Because a product is $$0$$ only when one of its factors is $$0$$",
+        "Because the sum of the brackets is $$0$$"
+      ],
+      "answer": 2,
+      "explanation": "If a product is $$0$$, one of the factors is $$0$$ (:ref{#numbers/zero-product}), so $$x - 2 = 0$$ or $$x + 5 = 0$$ (:ref{#solve-by-factors})."
+    },
+    {
+      "id": "needs-zero",
+      "stars": 2,
+      "topic": "Solving by factoring",
+      "question": "A student solves $$(x - 1)(x - 2) = 6$$ by setting $$x - 1 = 6$$ or $$x - 2 = 6$$. What is wrong?",
+      "options": [
+        "Nothing: it gives the right answers",
+        "They should set each bracket equal to $$3$$",
+        "They should divide both sides by $$x - 1$$",
+        "The zero product rule needs $$0$$ on one side; many pairs of numbers multiply to $$6$$"
+      ],
+      "answer": 3,
+      "explanation": "Only $$0$$ forces a factor to be $$0$$ (:ref{#solve-by-factors}). Expand, move the $$6$$ across, and factor $$x^2 - 3x - 4 = (x + 1)(x - 4)$$ instead."
+    },
+    {
+      "id": "divide-by-x",
+      "stars": 2,
+      "topic": "Solving by factoring",
+      "question": "Why is dividing both sides of $$x^2 = 5x$$ by $$x$$ a mistake?",
+      "options": [
+        "It loses the solution $$x = 0$$: dividing is safe only by a number known not to be $$0$$",
+        "It gives a wrong value instead of $$5$$",
+        "It adds a false solution",
+        "It is fine, as long as you check the answer"
+      ],
+      "answer": 0,
+      "explanation": "Dividing by a number is a safe step only when that number isn't $$0$$ (:ref{#linear-equations/safe-steps}), and whether $$x$$ is $$0$$ is what we don't know. Factoring $$x(x - 5) = 0$$ keeps both solutions, $$0$$ and $$5$$."
+    },
+    {
+      "id": "sum-and-product-clue",
+      "stars": 2,
+      "topic": "Solving by factoring",
+      "question": "To factor $$x^2 + bx + c$$ as $$(x + m)(x + n)$$, what must $$m$$ and $$n$$ satisfy?",
+      "options": [
+        "$$m + n = c$$ and $$mn = b$$",
+        "$$m + n = b$$ and $$mn = c$$",
+        "$$mn = c$$ only",
+        "$$m - n = b$$ and $$mn = c$$"
+      ],
+      "answer": 1,
+      "explanation": "Multiplying out, $$(x + m)(x + n) = x^2 + (m + n)x + mn$$, so the sum must be $$b$$ and the product $$c$$ (:ref{#factoring-method}). Matching only the product is a common mistake."
+    },
+    {
+      "id": "root-signs",
+      "stars": 1,
+      "topic": "Solving by factoring",
+      "question": "What are the solutions of $$(x + 3)(x - 4) = 0$$?",
+      "options": [
+        "$$3$$ and $$-4$$",
+        "$$3$$ and $$4$$",
+        "$$-3$$ and $$4$$",
+        "$$-12$$"
+      ],
+      "answer": 2,
+      "explanation": "Each factor is $$0$$ at the opposite of its number: $$x + 3 = 0$$ at $$x = -3$$ and $$x - 4 = 0$$ at $$x = 4$$ (:ref{#solve-by-factors})."
+    },
+    {
+      "id": "sum-of-squares",
+      "stars": 3,
+      "topic": "Solving by factoring",
+      "question": "Why can't $$x^2 + 49$$ be factored like $$x^2 - 49 = (x - 7)(x + 7)$$?",
+      "options": [
+        "Because $$49$$ is not a perfect square",
+        "It can: it is $$(x + 7)^2$$",
+        "Because it has no $$x$$ term",
+        "Because a factor $$x - k$$ would give a solution, and $$x^2 + 49 \\ge 49$$ is never $$0$$"
+      ],
+      "answer": 3,
+      "explanation": "If it split into real linear factors, the zero product rule would give a solution (:ref{#solve-by-factors}). But $$x^2 + 49$$ is always at least $$49$$, so it has no zeros; only a difference of squares factors this way (:ref{#numbers/square-formulas})."
+    },
+    {
+      "id": "missing-corner",
+      "stars": 1,
+      "topic": "Completing the square",
+      "question": "In the area picture of $$x^2 + 6x$$, what is missing to make a complete square of side $$x + 3$$?",
+      "options": [
+        "A $$3$$ by $$3$$ corner, of area $$9$$",
+        "A $$6$$ by $$6$$ corner, of area $$36$$",
+        "A strip of area $$6x$$",
+        "Nothing: it is already a square"
+      ],
+      "answer": 0,
+      "explanation": "The $$6x$$ is cut into two strips $$3$$ by $$x$$, which leave a corner of side $$\\frac{6}{2} = 3$$ missing, so $$x^2 + 6x = (x + 3)^2 - 9$$ (:ref{#complete-square})."
+    },
+    {
+      "id": "both-sides",
+      "stars": 2,
+      "topic": "Completing the square",
+      "question": "When completing the square on $$x^2 + bx = d$$, why must $$\\left(\\frac{b}{2}\\right)^2$$ be added to both sides?",
+      "options": [
+        "To make both sides squares",
+        "Because adding the same number to both sides is a safe step, while adding to one side changes the equation",
+        "Because $$\\left(\\frac{b}{2}\\right)^2$$ is always negative",
+        "It only needs adding to the left side"
+      ],
+      "answer": 1,
+      "explanation": "Adding the same number to both sides keeps exactly the same solutions (:ref{#linear-equations/safe-steps}). Adding it to one side alone gives a different equation (:ref{#complete-square})."
+    },
+    {
+      "id": "leading-coefficient",
+      "stars": 2,
+      "topic": "Completing the square",
+      "question": "How do you complete the square on $$2x^2 + 5x - 3 = 0$$?",
+      "options": [
+        "Add $$\\left(\\frac{5}{2}\\right)^2$$ to both sides straight away",
+        "Add $$5^2$$ to both sides",
+        "Divide the whole equation by $$2$$ first, so that $$x^2$$ stands on its own",
+        "It can't be done unless $$a = 1$$"
+      ],
+      "answer": 2,
+      "explanation": "The method needs $$x^2$$ on its own. Dividing by a non-zero number is a safe step, and $$a \\neq 0$$ in a quadratic (:ref{#quadratic}), so divide by $$2$$ and then complete the square (:ref{#complete-square})."
+    },
+    {
+      "id": "always-works",
+      "stars": 3,
+      "topic": "Completing the square",
+      "question": "Why does completing the square solve every quadratic, while factoring does not?",
+      "options": [
+        "Because every quadratic has whole-number solutions",
+        "Because it avoids square roots",
+        "It doesn't: it fails when there is no solution",
+        "Because it turns any quadratic into a square equal to a number, which is always solvable or shown to have no solution"
+      ],
+      "answer": 3,
+      "explanation": "Any $$x^2 + bx + c = 0$$ becomes $$\\left(x + \\frac{b}{2}\\right)^2 = \\frac{b^2}{4} - c$$ (:ref{#complete-square}), and :ref{#shifted-square} handles that in every case, including showing there is no solution."
+    },
+    {
+      "id": "formula-from",
+      "stars": 1,
+      "topic": "The quadratic formula",
+      "question": "Where does the quadratic formula come from?",
+      "options": [
+        "From completing the square on $$ax^2 + bx + c = 0$$ once, with letters instead of numbers",
+        "From factoring every quadratic",
+        "It is assumed as a rule without proof",
+        "From drawing the parabola"
+      ],
+      "answer": 0,
+      "explanation": "The proof divides by $$a$$, completes the square, and takes square roots, all with letters (:ref{#quadratic-formula})."
+    },
+    {
+      "id": "standard-form-first",
+      "stars": 2,
+      "topic": "The quadratic formula",
+      "question": "To solve $$3x^2 = 4x + 1$$ with the formula, what are $$a$$, $$b$$ and $$c$$?",
+      "options": [
+        "$$a = 3$$, $$b = 4$$, $$c = 1$$",
+        "$$a = 3$$, $$b = -4$$, $$c = -1$$, after moving everything to one side",
+        "$$a = 3$$, $$b = 4$$, $$c = -1$$",
+        "$$a = -3$$, $$b = 4$$, $$c = 1$$"
+      ],
+      "answer": 1,
+      "explanation": "The formula needs the standard form $$ax^2 + bx + c = 0$$ (:ref{#quadratic-formula}). Subtracting $$4x + 1$$ gives $$3x^2 - 4x - 1 = 0$$; the signs are part of the coefficients."
+    },
+    {
+      "id": "whole-top",
+      "stars": 2,
+      "topic": "The quadratic formula",
+      "question": "In $$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$, what is divided by $$2a$$?",
+      "options": [
+        "Only the square root",
+        "Only $$-b$$",
+        "The whole of $$-b \\pm \\sqrt{b^2 - 4ac}$$",
+        "Nothing; $$2a$$ is added"
+      ],
+      "answer": 2,
+      "explanation": "The whole top is divided by $$2a$$, which comes from halving $$\\frac{b}{a}$$ when completing the square (:ref{#quadratic-formula})."
+    },
+    {
+      "id": "symmetric-about",
+      "stars": 3,
+      "topic": "The quadratic formula",
+      "question": "What does the formula say about where the two solutions lie?",
+      "options": [
+        "They are always whole numbers",
+        "They always have opposite signs",
+        "One is always $$0$$",
+        "They sit the same distance either side of $$-\\frac{b}{2a}$$"
+      ],
+      "answer": 3,
+      "explanation": "The formula is $$-\\frac{b}{2a} \\pm \\frac{\\sqrt{b^2 - 4ac}}{2a}$$: a centre plus or minus a distance (:ref{#quadratic-formula}). That centre is also where the parabola's vertex is (:ref{#vertex})."
+    },
+    {
+      "id": "discriminant-zero",
+      "stars": 1,
+      "topic": "The discriminant",
+      "question": "What does a discriminant $$b^2 - 4ac = 0$$ tell you?",
+      "options": [
+        "The equation has exactly one solution, $$-\\frac{b}{2a}$$",
+        "The equation has no solution",
+        "The equation has two solutions, one of them $$0$$",
+        "The equation is linear"
+      ],
+      "answer": 0,
+      "explanation": "Zero means exactly one solution (:ref{#root-count}). Only a negative discriminant means none."
+    },
+    {
+      "id": "why-sign-decides",
+      "stars": 2,
+      "topic": "The discriminant",
+      "question": "Why does only the sign of $$b^2 - 4ac$$ decide how many solutions there are?",
+      "options": [
+        "Because $$a$$ is always positive",
+        "Because completing the square gives $$\\left(x + \\frac{b}{2a}\\right)^2 = \\frac{b^2 - 4ac}{4a^2}$$, and $$4a^2$$ is always positive",
+        "Because $$b^2$$ is always bigger than $$4ac$$",
+        "Because the formula divides by $$b^2 - 4ac$$"
+      ],
+      "answer": 1,
+      "explanation": "The right side has the sign of $$b^2 - 4ac$$, since $$4a^2 > 0$$ (:ref{#real-numbers/squares-positive}). A square equals a positive number twice, $$0$$ once, a negative number never (:ref{#root-count})."
+    },
+    {
+      "id": "opposite-signs",
+      "stars": 3,
+      "topic": "The discriminant",
+      "question": "If $$a$$ and $$c$$ have opposite signs, how many solutions does $$ax^2 + bx + c = 0$$ have?",
+      "options": [
+        "It depends on $$b$$",
+        "None",
+        "Always two, because $$-4ac > 0$$ and $$b^2 \\ge 0$$, so the discriminant is positive",
+        "Always one"
+      ],
+      "answer": 2,
+      "explanation": "Then $$ac < 0$$, so $$b^2 - 4ac$$ is a non-negative number plus a positive one, which is positive (:ref{#discriminant}, :ref{#root-count})."
+    },
+    {
+      "id": "vieta-check",
+      "stars": 2,
+      "topic": "The discriminant",
+      "question": "Without solving, what is the sum of the solutions of $$2x^2 - 5x - 3 = 0$$?",
+      "options": ["$$-5$$", "$$5$$", "$$-\\frac{3}{2}$$", "$$\\frac{5}{2}$$"],
+      "answer": 3,
+      "explanation": "The sum is $$-\\frac{b}{a} = \\frac{5}{2}$$ and the product is $$\\frac{c}{a} = -\\frac{3}{2}$$ (:ref{#vieta}). Forgetting to divide by $$a$$, or the minus sign, gives the wrong answers."
+    },
+    {
+      "id": "vieta-no-roots",
+      "stars": 3,
+      "topic": "The discriminant",
+      "question": "For $$x^2 + x + 1 = 0$$, what do the numbers $$-\\frac{b}{a} = -1$$ and $$\\frac{c}{a} = 1$$ tell you?",
+      "options": [
+        "Nothing about real solutions: the discriminant is $$-3$$, so there are none to add or multiply",
+        "The solutions add to $$-1$$ and multiply to $$1$$",
+        "The solutions are $$-1$$ and $$1$$",
+        "The equation has exactly one solution"
+      ],
+      "answer": 0,
+      "explanation": "The sum and product rule assumes $$b^2 - 4ac \\ge 0$$ (:ref{#vieta}). Here it is $$1 - 4 = -3 < 0$$, so there are no real solutions (:ref{#root-count})."
+    },
+    {
+      "id": "negative-discriminant",
+      "stars": 4,
+      "topic": "The discriminant",
+      "question": "What does the guide say about quadratics with a negative discriminant?",
+      "options": [
+        "They have solutions among the fractions",
+        "The formula gives the wrong answer for them",
+        "They have no real solutions, but a larger number system, the complex numbers, gives them solutions",
+        "They can always be factored"
+      ],
+      "answer": 2,
+      "explanation": "No real number squares to a negative one (:ref{#real-numbers/squares-positive}), so there is no real solution (:ref{#root-count}). Just as the fractions and the real numbers filled earlier gaps, the complex numbers fill this one."
+    },
+    {
+      "id": "solutions-crossings",
+      "stars": 1,
+      "topic": "Parabolas",
+      "question": "On the graph of $$y = ax^2 + bx + c$$, where are the solutions of $$ax^2 + bx + c = 0$$?",
+      "options": [
+        "At the vertex",
+        "Where the curve crosses the $$x$$-axis",
+        "Where the curve crosses the $$y$$-axis",
+        "At the axis of symmetry"
+      ],
+      "answer": 1,
+      "explanation": "A point is on the $$x$$-axis exactly when $$y = 0$$, so the crossings are the $$x$$ values with $$ax^2 + bx + c = 0$$ (:ref{#parabola})."
+    },
+    {
+      "id": "opens-down",
+      "stars": 1,
+      "topic": "Parabolas",
+      "question": "What does a negative $$a$$ do to the parabola $$y = ax^2 + bx + c$$?",
+      "options": [
+        "Moves it to the left",
+        "Makes it a straight line",
+        "Moves it below the $$x$$-axis",
+        "Turns it upside down, so it opens downwards and has a highest point"
+      ],
+      "answer": 3,
+      "explanation": "If $$a < 0$$ the curve opens downwards and its vertex is a highest point (:ref{#parabola})."
+    },
+    {
+      "id": "vertex-from",
+      "stars": 2,
+      "topic": "Parabolas",
+      "question": "Writing $$ax^2 + bx + c = a(x - s)^2 + k$$ shows that the vertex is $$(s, k)$$. Why?",
+      "options": [
+        "Because $$(x - s)^2$$ is never negative and is $$0$$ only at $$x = s$$",
+        "Because $$k$$ is always the largest value",
+        "Because $$s$$ is where the curve crosses the $$x$$-axis",
+        "Because the curve is a straight line near $$s$$"
+      ],
+      "answer": 0,
+      "explanation": "The square is never negative (:ref{#real-numbers/squares-positive}) and is $$0$$ only at $$x = s$$, so for $$a > 0$$ the value is at least $$k$$, reached only at $$s$$ (:ref{#vertex})."
+    },
+    {
+      "id": "vertex-sign",
+      "stars": 2,
+      "topic": "Parabolas",
+      "question": "Where is the vertex of $$y = (x + 3)^2$$?",
+      "options": [
+        "At $$x = 3$$",
+        "At $$x = 0$$",
+        "At $$x = -3$$, since $$x + 3 = x - (-3)$$",
+        "There is no vertex"
+      ],
+      "answer": 2,
+      "explanation": "In the form $$(x - s)^2$$, here $$s = -3$$; in general $$s = -\\frac{b}{2a}$$ (:ref{#vertex}). A plus sign inside the bracket moves the curve left."
+    },
+    {
+      "id": "crossings-discriminant",
+      "stars": 4,
+      "topic": "Parabolas",
+      "question": "Why does a positive discriminant mean that an upward-opening parabola crosses the $$x$$-axis twice?",
+      "options": [
+        "Because the parabola is symmetric",
+        "Because the vertex height is $$-\\frac{b^2 - 4ac}{4a}$$, which is negative when $$a > 0$$, so the lowest point is below the axis",
+        "Because $$c$$ is then positive",
+        "Because the vertex is then on the $$y$$-axis"
+      ],
+      "answer": 1,
+      "explanation": "The vertex height $$k = c - \\frac{b^2}{4a}$$ equals $$-\\frac{b^2 - 4ac}{4a}$$ (:ref{#vertex}). With $$a > 0$$ and a positive discriminant it is below the axis, so the U passes through the axis on the way down and again on the way up (:ref{#root-count})."
+    },
+    {
+      "id": "sketch-limits",
+      "stars": 2,
+      "topic": "Parabolas",
+      "question": "What can a sketch of a parabola reliably tell you about its equation?",
+      "options": [
+        "How many real solutions there are, and roughly where, but not their exact values",
+        "The exact solutions",
+        "Nothing useful",
+        "Only the value of $$c$$"
+      ],
+      "answer": 0,
+      "explanation": "A picture is a good check but a poor way of finding exact answers: $$x^2 - 2 = 0$$ crosses at $$\\pm\\sqrt{2}$$, which no drawing shows exactly (:ref{#parabola})."
+    },
+    {
+      "id": "stop-at-u",
+      "stars": 2,
+      "topic": "Equations that become quadratic",
+      "question": "After putting $$u = x^2$$ in $$x^4 - 10x^2 + 9 = 0$$ and finding $$u = 1$$ or $$u = 9$$, what are the solutions?",
+      "options": [
+        "$$1$$ and $$9$$",
+        "$$1$$ and $$3$$",
+        "$$\\pm 1$$ only",
+        "$$-3$$, $$-1$$, $$1$$ and $$3$$"
+      ],
+      "answer": 3,
+      "explanation": "The values of $$u$$ are values of $$x^2$$, not of $$x$$. Each positive $$u$$ gives $$x = \\pm\\sqrt{u}$$ (:ref{#substitution-quadratic})."
+    },
+    {
+      "id": "negative-u",
+      "stars": 2,
+      "topic": "Equations that become quadratic",
+      "question": "Solving $$x^4 + 3x^2 - 4 = 0$$ with $$u = x^2$$ gives $$u = -4$$ or $$u = 1$$. What does $$u = -4$$ contribute?",
+      "options": [
+        "The solutions $$\\pm 2$$",
+        "Nothing, since no real $$x$$ has $$x^2 = -4$$",
+        "The solution $$-4$$",
+        "The solution $$0$$"
+      ],
+      "answer": 1,
+      "explanation": "A negative $$u$$ gives no $$x$$, because no square is negative (:ref{#substitution-quadratic}, :ref{#real-numbers/square-root-count})."
+    },
+    {
+      "id": "clearing-fractions",
+      "stars": 3,
+      "topic": "Equations that become quadratic",
+      "question": "After multiplying both sides of an equation by $$x(x + 2)$$ to clear fractions, why must you check the answers?",
+      "options": [
+        "Because the step can lose solutions",
+        "Because multiplying by an expression always doubles the solutions",
+        "Because at $$x = 0$$ or $$x = -2$$ the step multiplies by $$0$$, which can let in values where a denominator is $$0$$",
+        "There is no need to check"
+      ],
+      "answer": 2,
+      "explanation": "Multiplying by an expression that can be $$0$$ is not a safe step (:ref{#linear-equations/safe-steps}). It never loses solutions, but answers that make a denominator $$0$$ must be thrown out."
+    },
+    {
+      "id": "squaring-false",
+      "stars": 3,
+      "topic": "Equations that become quadratic",
+      "question": "Squaring both sides of $$\\sqrt{2x + 3} = x$$ gives $$x = 3$$ or $$x = -1$$. Why is $$-1$$ not a solution?",
+      "options": [
+        "Squaring can't tell a number from its opposite: at $$x = -1$$ the two sides are $$1$$ and $$-1$$",
+        "Because $$-1$$ makes $$2x + 3$$ negative",
+        "Because quadratics only have positive solutions",
+        "It is a solution"
+      ],
+      "answer": 0,
+      "explanation": "Squaring keeps every solution but can add false ones (:ref{#real-numbers/squaring-sides}). A square root is never negative, so it can't equal $$-1$$; always check answers in the original equation."
+    },
+    {
+      "id": "isolate-root",
+      "stars": 4,
+      "topic": "Equations that become quadratic",
+      "question": "To solve $$\\sqrt{x + 10} + 2 = x$$, why move the $$2$$ across before squaring?",
+      "options": [
+        "Because squaring a sum is not allowed",
+        "So the root is on its own; otherwise $$(\\sqrt{x + 10} + 2)^2$$ still contains a square root",
+        "Because it removes the false solutions",
+        "It makes no difference"
+      ],
+      "answer": 1,
+      "explanation": "With the root isolated, $$\\sqrt{x + 10} = x - 2$$ squares to a quadratic with no roots left. It also shows $$x - 2 \\ge 0$$, which rules out $$-1$$ before the check (:ref{#real-numbers/squaring-sides})."
+    }
+  ]
+}

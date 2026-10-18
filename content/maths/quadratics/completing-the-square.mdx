@@ -1,0 +1,189 @@
+---
+title: Completing the square
+description: Turning any quadratic into a square plus a number, so it can be solved by square roots.
+---
+
+The first page solved $$(x - s)^2 = k$$ by taking square roots, and factoring only works when the
+numbers happen to be kind. This page gives a method that always works: rewrite the equation so that
+$$x$$ appears only once, inside a square, and then take square roots. The trick is called
+**completing the square**, and it has a picture behind it. The next page does it once with letters
+in place of numbers, and the answer is the quadratic formula.
+
+## The missing corner
+
+Think of $$x^2 + 6x$$ as an area. The $$x^2$$ is a square with sides of length $$x$$. The $$6x$$ is
+a rectangle $$6$$ by $$x$$. Cut that rectangle in half lengthwise, into two strips $$3$$ by $$x$$,
+and lay one along the right side of the square and the other along the bottom. Together they make an
+L shape that is almost a bigger square, with sides $$x + 3$$. Only the corner is missing, a small
+square $$3$$ by $$3$$. So the area $$x^2 + 6x$$ is the big square $$(x + 3)^2$$ take away the corner
+$$9$$.
+
+The same works for any number in front of $$x$$: the strips are half of it wide, and the missing
+corner is half of it, squared.
+
+<CompletingSquare />
+
+The picture needs lengths, so it only shows positive $$x$$ and $$b$$. The algebra behind it works
+for every real number.
+
+:::proposition[Completing the square]{#complete-square}
+
+For all real numbers $$x$$ and $$b$$,
+
+```math
+x^2 + bx = \left(x + \frac{b}{2}\right)^2 - \frac{b^2}{4}
+```
+
+So for any real $$c$$, the equation $$x^2 + bx + c = 0$$ has exactly the same solutions as
+
+```math
+\left(x + \frac{b}{2}\right)^2 = \frac{b^2}{4} - c
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Completing_the_square#Formula"}
+
+Expand the square with :ref{#numbers/square-formulas}:
+
+```math
+\left(x + \frac{b}{2}\right)^2 = x^2 + 2 \cdot \frac{b}{2} \cdot x + \frac{b^2}{4} = x^2 + bx + \frac{b^2}{4}
+```
+
+Taking $$\frac{b^2}{4}$$ from both sides gives the first statement.
+
+For the second, replace $$x^2 + bx$$ in $$x^2 + bx + c = 0$$ by the right-hand side of the first
+statement. That changes nothing, since the two are equal for every $$x$$, and gives
+
+```math
+\left(x + \frac{b}{2}\right)^2 - \frac{b^2}{4} + c = 0
+```
+
+Adding $$\frac{b^2}{4} - c$$ to both sides is a safe step (:ref{#linear-equations/safe-steps}), so
+the solutions stay the same.
+
+:::
+
+## Solving by completing the square
+
+Once the equation reads (a square) $$=$$ (a number), the first page already says what to do
+(:ref{#shifted-square}). If the number is positive there are two solutions, one for each square
+root. If it is $$0$$ there is one. If it is negative there are none, since no square is negative. So
+every quadratic with $$x^2$$ on its own comes down to the same few steps:
+
+1. Move the number term to the right-hand side, leaving $$x^2 + bx$$ on the left.
+2. Add $$\left(\frac{b}{2}\right)^2$$ to **both** sides, so the left becomes
+   $$\left(x + \frac{b}{2}\right)^2$$.
+3. Take square roots, remembering both signs, and solve for $$x$$.
+
+:::example[A whole-number answer]
+
+Solve $$x^2 + 6x - 16 = 0$$.
+
+Move the $$16$$ across: $$x^2 + 6x = 16$$. Half of $$6$$ is $$3$$, and $$3^2 = 9$$, so add $$9$$ to
+both sides:
+
+```math
+x^2 + 6x + 9 = 25, \qquad\text{that is}\qquad (x + 3)^2 = 25
+```
+
+So $$x + 3 = 5$$ or $$x + 3 = -5$$, which gives $$x = 2$$ or $$x = -8$$.
+
+Check: $$2^2 + 6 \cdot 2 - 16 = 4 + 12 - 16 = 0$$, and
+$$(-8)^2 + 6 \cdot (-8) - 16 = 64 - 48 - 16 = 0$$.
+
+:::
+
+The numbers don't have to work out so neatly. When the right-hand side isn't a perfect square, the
+answer simply keeps its square root.
+
+:::example[An answer with a square root]
+
+Solve $$x^2 - 4x - 1 = 0$$.
+
+Move the $$1$$ across: $$x^2 - 4x = 1$$. Half of $$-4$$ is $$-2$$, and $$(-2)^2 = 4$$, so
+
+```math
+x^2 - 4x + 4 = 5, \qquad\text{that is}\qquad (x - 2)^2 = 5
+```
+
+So $$x - 2 = \pm\sqrt{5}$$, and $$x = 2 + \sqrt{5}$$ or $$x = 2 - \sqrt{5}$$, about $$4.236$$ and
+$$-0.236$$.
+
+Check the first: $$(2 + \sqrt{5})^2 = 4 + 4\sqrt{5} + 5 = 9 + 4\sqrt{5}$$, and taking
+$$4(2 + \sqrt{5}) + 1 = 9 + 4\sqrt{5}$$ from it leaves $$0$$.
+
+:::
+
+Completing the square also shows at once when there is no solution: the square ends up equal to a
+negative number.
+
+:::example[No solution]
+
+Solve $$x^2 + 4x + 7 = 0$$.
+
+Move the $$7$$ across and add $$\left(\frac{4}{2}\right)^2 = 4$$ to both sides:
+
+```math
+x^2 + 4x + 4 = -3, \qquad\text{that is}\qquad (x + 2)^2 = -3
+```
+
+A square is never negative (:ref{#real-numbers/squares-positive}), so no real number $$x$$ works.
+The equation has no solution.
+
+:::
+
+## When x² has a number in front
+
+The picture needs $$x^2$$ on its own, a single square. If the equation starts with $$2x^2$$ or
+$$-3x^2$$, divide the whole equation by that number first. Dividing both sides by the same non-zero
+number doesn't change the solutions (:ref{#linear-equations/safe-steps}), and $$a$$ is never $$0$$
+in a quadratic (:ref{#quadratic}). Fractions usually appear, but the steps are the same.
+
+:::example[Dividing through first]
+
+Solve $$2x^2 + 5x - 3 = 0$$.
+
+Divide by $$2$$: $$x^2 + \frac{5}{2}x - \frac{3}{2} = 0$$, so $$x^2 + \frac{5}{2}x = \frac{3}{2}$$.
+Half of $$\frac{5}{2}$$ is $$\frac{5}{4}$$, and its square is $$\frac{25}{16}$$. Adding it to both
+sides,
+
+```math
+\left(x + \frac{5}{4}\right)^2 = \frac{3}{2} + \frac{25}{16} = \frac{24}{16} + \frac{25}{16} = \frac{49}{16}
+```
+
+So $$x + \frac{5}{4} = \pm\frac{7}{4}$$, which gives $$x = \frac{2}{4} = \frac{1}{2}$$ or
+$$x = -\frac{12}{4} = -3$$.
+
+Check: $$2 \cdot \frac{1}{4} + \frac{5}{2} - 3 = \frac{1}{2} + \frac{5}{2} - 3 = 0$$, and
+$$2 \cdot 9 - 15 - 3 = 0$$.
+
+:::
+
+Completing the square does more than solve equations. Written as $$(x + \frac{b}{2})^2$$ plus a
+number, a quadratic shows its smallest value and where it happens, which is how the page on
+[parabolas](./parabolas.mdx) finds the lowest point of the graph.
+
+## Common mistakes
+
+- **Adding the corner to one side only.** Adding $$\left(\frac{b}{2}\right)^2$$ on the left changes
+  the equation unless the same number goes on the right.
+- **Adding $$b^2$$ instead of $$\left(\frac{b}{2}\right)^2$$.** The strips are half of $$b$$ wide,
+  so the corner is half of $$b$$, squared. For $$x^2 + 6x$$ it is $$9$$, not $$36$$.
+- **Losing a sign when halving.** Half of $$-4$$ is $$-2$$, giving $$(x - 2)^2$$. The corner,
+  $$(-2)^2 = 4$$, is positive either way.
+- **Taking only the positive root.** $$(x + 3)^2 = 25$$ gives $$x + 3 = 5$$ **or** $$-5$$. Dropping
+  the negative root loses a solution.
+- **Completing the square with a number in front of $$x^2$$.** $$2x^2 + 5x$$ is not
+  $$\left(x + \frac{5}{2}\right)^2$$ minus anything. Divide by $$2$$ first.
+
+## In short
+
+- $$x^2 + bx$$ is a square of side $$x + \frac{b}{2}$$ with a corner of area
+  $$\left(\frac{b}{2}\right)^2$$ missing:
+  $$x^2 + bx = \left(x + \frac{b}{2}\right)^2 - \frac{b^2}{4}$$.
+- To solve $$x^2 + bx + c = 0$$, move $$c$$ across, add $$\left(\frac{b}{2}\right)^2$$ to both
+  sides, and take square roots of $$\left(x + \frac{b}{2}\right)^2 = \frac{b^2}{4} - c$$.
+- A positive right-hand side gives two solutions, $$0$$ gives one, and a negative one gives none.
+- If $$x^2$$ has a number in front, divide the whole equation by it first.
+- The method always works, and doing it once with letters gives the quadratic formula.

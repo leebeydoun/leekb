@@ -1,0 +1,692 @@
+---
+title: Exercises
+description: Exercises on the whole guide, with worked solutions.
+---
+
+These exercises follow the order of the guide, from what a quadratic is to equations that turn into
+one. Some ask for an answer, and some ask why a step works or fails. Try each one before opening its
+solution, and check answers in the original equation, especially after squaring or clearing
+fractions.
+
+## Quadratic equations
+
+::::exercise{#ex-is-it-quadratic}
+
+Move everything to one side and simplify. Which of these are quadratic equations? Solve the ones
+that are not.
+
+1. $$x(2x - 1) = 5$$
+2. $$(x + 1)^2 = x^2 + 4$$
+3. $$x^2 - 1 = 1 - x^2$$
+
+:::solution
+
+1. $$2x^2 - x - 5 = 0$$, with $$a = 2 \neq 0$$, so it is quadratic (:ref{#quadratic}).
+2. Expanding, $$x^2 + 2x + 1 = x^2 + 4$$, and the $$x^2$$ terms cancel, leaving $$2x + 1 = 4$$. That
+   is linear, with the one solution $$x = \frac{3}{2}$$.
+3. $$2x^2 - 2 = 0$$, with $$a = 2$$, so it is quadratic. (Its solutions are $$x = 1$$ and
+   $$x = -1$$.)
+
+The second one looks quadratic but isn't: what matters is the equation after simplifying, not how it
+is first written.
+
+:::
+
+::::
+
+::::exercise{#ex-shifted-squares}
+
+Solve each equation, or explain why it has no solution.
+
+1. $$(x - 4)^2 = 9$$
+2. $$(2x + 1)^2 = 5$$
+3. $$(x + 3)^2 + 6 = 2$$
+4. $$3(x - 1)^2 = 0$$
+
+:::solution
+
+1. $$x - 4 = 3$$ or $$x - 4 = -3$$ (:ref{#shifted-square}), so $$x = 7$$ or $$x = 1$$.
+2. $$2x + 1 = \sqrt{5}$$ or $$2x + 1 = -\sqrt{5}$$, so $$x = \frac{-1 \pm \sqrt{5}}{2}$$.
+3. $$(x + 3)^2 = -4$$. A square is never negative (:ref{#real-numbers/squares-positive}), so there
+   is no solution.
+4. Dividing by $$3$$, $$(x - 1)^2 = 0$$, so $$x - 1 = 0$$ and $$x = 1$$ is the only solution.
+
+:::
+
+::::
+
+::::exercise{#ex-only-positive-root}
+
+To solve $$x^2 = 16$$, someone writes $$x = \sqrt{16} = 4$$. What have they missed, and why?
+
+:::solution
+
+They have missed $$x = -4$$, since $$(-4)^2 = 16$$ too. The symbol $$\sqrt{16}$$ means only the
+square root that isn't negative (:ref{#real-numbers/square-root}), so writing $$x = \sqrt{16}$$
+throws the negative one away. The full answer is $$x = \pm\sqrt{16}$$, that is, $$x = 4$$ or
+$$x = -4$$ (:ref{#real-numbers/square-root-count}).
+
+:::
+
+::::
+
+::::exercise{#ex-choose-k}
+
+For which $$k$$ does $$(x - 2)^2 = k$$ have exactly one solution? Find a $$k$$ for which its
+solutions are $$-1$$ and $$5$$.
+
+:::solution
+
+By :ref{#shifted-square}, there is exactly one solution when $$k = 0$$: the solution $$x = 2$$.
+
+The solutions $$2 \pm \sqrt{k}$$ are $$-1$$ and $$5$$ when $$\sqrt{k} = 3$$, that is, $$k = 9$$.
+Check: $$(5 - 2)^2 = 9$$ and $$(-1 - 2)^2 = 9$$.
+
+:::
+
+::::
+
+## Solving by factoring
+
+::::exercise{#ex-factor-solve}
+
+Solve by factoring.
+
+1. $$x^2 + 9x + 20 = 0$$
+2. $$x^2 - 2x - 15 = 0$$
+3. $$x^2 - 10x + 25 = 0$$
+4. $$9x^2 - 4 = 0$$
+
+:::solution
+
+1. Two numbers with sum $$9$$ and product $$20$$ are $$4$$ and $$5$$ (:ref{#factoring-method}). So
+   $$(x + 4)(x + 5) = 0$$, and $$x = -4$$ or $$x = -5$$ (:ref{#solve-by-factors}).
+2. Sum $$-2$$ and product $$-15$$: $$3$$ and $$-5$$. So $$(x + 3)(x - 5) = 0$$, and $$x = -3$$ or
+   $$x = 5$$.
+3. Sum $$-10$$ and product $$25$$: $$-5$$ and $$-5$$. So $$(x - 5)^2 = 0$$, and $$x = 5$$ is the
+   only solution.
+4. A difference of two squares: $$(3x - 2)(3x + 2) = 0$$, so $$x = \frac{2}{3}$$ or
+   $$x = -\frac{2}{3}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-factor-leading}
+
+Solve $$3x^2 + 7x + 2 = 0$$ and $$2x^2 - 7x + 6 = 0$$ by factoring.
+
+:::solution
+
+$$3x^2 + 7x + 2 = (3x + 1)(x + 2)$$: expanding gives $$3x^2 + 6x + x + 2$$. So $$x = -\frac{1}{3}$$
+or $$x = -2$$.
+
+$$2x^2 - 7x + 6 = (2x - 3)(x - 2)$$: expanding gives $$2x^2 - 4x - 3x + 6$$. So $$x = \frac{3}{2}$$
+or $$x = 2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-lost-solution}
+
+Someone solves $$4x^2 = 12x$$ by dividing both sides by $$4x$$, and gets $$x = 3$$. Which solution
+have they lost, and which step lost it? Solve it properly.
+
+:::solution
+
+They lost $$x = 0$$, which works: $$4 \cdot 0^2 = 0 = 12 \cdot 0$$. Dividing by $$4x$$ is only safe
+when $$4x \neq 0$$ (:ref{#linear-equations/safe-steps}), and $$x = 0$$ is exactly the case where it
+isn't.
+
+Properly: $$4x^2 - 12x = 0$$, so $$4x(x - 3) = 0$$, and $$x = 0$$ or $$x = 3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-product-not-zero}
+
+To solve $$(x - 1)(x - 4) = 4$$, someone writes "$$x - 1 = 4$$ or $$x - 4 = 4$$", so $$x = 5$$ or
+$$x = 8$$. Check both answers, explain the mistake, and solve the equation.
+
+:::solution
+
+At $$x = 5$$: $$4 \cdot 1 = 4$$, which works. At $$x = 8$$: $$7 \cdot 4 = 28$$, which doesn't.
+
+The rule that one factor must be $$0$$ (:ref{#numbers/zero-product}) only works when the product is
+$$0$$. A product can be $$4$$ in many ways ($$1 \cdot 4$$, $$2 \cdot 2$$, $$8 \cdot \frac{1}{2}$$,
+...), so it says nothing about either factor. The answer $$x = 5$$ only worked by luck.
+
+Properly: expand and move everything to one side. $$x^2 - 5x + 4 = 4$$, so $$x^2 - 5x = 0$$, so
+$$x(x - 5) = 0$$, and $$x = 0$$ or $$x = 5$$. Check $$x = 0$$: $$(-1)(-4) = 4$$.
+
+:::
+
+::::
+
+## Completing the square
+
+::::exercise{#ex-complete-forms}
+
+Write each in the form $$(x + p)^2 + q$$.
+
+1. $$x^2 + 10x$$
+2. $$x^2 - 7x$$
+3. $$x^2 + 4x + 11$$
+
+Use the last one to explain why $$x^2 + 4x + 11 = 0$$ has no solution.
+
+:::solution
+
+By :ref{#complete-square}, half the coefficient of $$x$$ goes in the bracket, and its square is
+taken away.
+
+1. $$x^2 + 10x = (x + 5)^2 - 25$$.
+2. $$x^2 - 7x = \left(x - \frac{7}{2}\right)^2 - \frac{49}{4}$$.
+3. $$x^2 + 4x + 11 = (x + 2)^2 - 4 + 11 = (x + 2)^2 + 7$$.
+
+Since $$(x + 2)^2 \ge 0$$, the last expression is always at least $$7$$, so it is never $$0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-missing-corner}
+
+Using the picture of a square and two strips, explain why $$x^2 + 8x$$ is $$16$$ short of being a
+square. What is that square?
+
+:::solution
+
+Picture $$x^2$$ as an $$x$$ by $$x$$ square, and $$8x$$ as two strips, each $$4$$ by $$x$$, along
+two sides of it. Together they nearly make a square with side $$x + 4$$, but the corner where the
+strips meet is missing, and that corner is $$4$$ by $$4$$. So adding $$16$$ completes it:
+$$x^2 + 8x + 16 = (x + 4)^2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-complete-solve}
+
+Solve by completing the square.
+
+1. $$x^2 - 8x + 13 = 0$$
+2. $$x^2 + 5x + 1 = 0$$
+
+:::solution
+
+1. $$x^2 - 8x = -13$$. Adding $$16$$, $$(x - 4)^2 = 3$$, so $$x - 4 = \pm\sqrt{3}$$ and
+   $$x = 4 \pm \sqrt{3}$$.
+2. $$x^2 + 5x = -1$$. Adding $$\left(\frac{5}{2}\right)^2 = \frac{25}{4}$$,
+   $$\left(x + \frac{5}{2}\right)^2 = \frac{21}{4}$$. So
+   $$x + \frac{5}{2} = \pm\frac{\sqrt{21}}{2}$$ and $$x = \frac{-5 \pm \sqrt{21}}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-complete-leading}
+
+Solve $$3x^2 - 12x + 5 = 0$$ by completing the square. Why divide by $$3$$ first?
+
+:::solution
+
+The picture of a square plus strips needs $$x^2$$ on its own, not $$3x^2$$. Dividing both sides by
+$$3$$ is safe, since $$3 \neq 0$$ (:ref{#linear-equations/safe-steps}):
+
+```math
+x^2 - 4x + \frac{5}{3} = 0, \quad \text{so} \quad x^2 - 4x = -\frac{5}{3}.
+```
+
+Adding $$4$$, $$(x - 2)^2 = 4 - \frac{5}{3} = \frac{7}{3}$$. So
+$$x = 2 \pm \sqrt{\frac{7}{3}} = 2 \pm \frac{\sqrt{21}}{3}$$.
+
+:::
+
+::::
+
+## The quadratic formula
+
+::::exercise{#ex-formula-solve}
+
+Solve with the quadratic formula, or show there is no real solution.
+
+1. $$2x^2 + x - 6 = 0$$
+2. $$x^2 + 6x + 4 = 0$$
+3. $$3x^2 - x + 2 = 0$$
+4. $$5x^2 = 2x + 1$$
+
+:::solution
+
+By :ref{#quadratic-formula}:
+
+1. $$a = 2$$, $$b = 1$$, $$c = -6$$, so $$b^2 - 4ac = 1 + 48 = 49$$ and $$x = \frac{-1 \pm 7}{4}$$.
+   So $$x = \frac{3}{2}$$ or $$x = -2$$.
+2. $$b^2 - 4ac = 36 - 16 = 20$$, and $$\sqrt{20} = 2\sqrt{5}$$, so
+   $$x = \frac{-6 \pm 2\sqrt{5}}{2} = -3 \pm \sqrt{5}$$.
+3. $$b^2 - 4ac = 1 - 24 = -23 < 0$$, so there is no real solution.
+4. First rearrange: $$5x^2 - 2x - 1 = 0$$, so $$a = 5$$, $$b = -2$$, $$c = -1$$. Then
+   $$b^2 - 4ac = 4 + 20 = 24$$, $$\sqrt{24} = 2\sqrt{6}$$, and
+   $$x = \frac{2 \pm 2\sqrt{6}}{10} = \frac{1 \pm \sqrt{6}}{5}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-check-root}
+
+Check, by putting it into the equation, that $$x = 1 + \sqrt{2}$$ solves $$x^2 - 2x - 1 = 0$$.
+
+:::solution
+
+$$(1 + \sqrt{2})^2 = 1 + 2\sqrt{2} + 2 = 3 + 2\sqrt{2}$$ (:ref{#numbers/square-formulas}). So
+
+```math
+x^2 - 2x - 1 = (3 + 2\sqrt{2}) - (2 + 2\sqrt{2}) - 1 = 0.
+```
+
+:::
+
+::::
+
+::::exercise{#ex-sign-slip}
+
+Someone solves $$x^2 - 5x + 3 = 0$$ with the formula and gets $$x = \frac{-5 \pm \sqrt{13}}{2}$$.
+Find the slip, and give the right answer.
+
+:::solution
+
+Here $$b = -5$$, not $$5$$, so $$-b = 5$$. The right answer is $$x = \frac{5 \pm \sqrt{13}}{2}$$.
+(The discriminant, $$25 - 12 = 13$$, was right, since squaring hides the sign.)
+
+A quick check catches it: the two solutions should add up to $$-\frac{b}{a} = 5$$ (:ref{#vieta}),
+but $$\frac{-5 + \sqrt{13}}{2} + \frac{-5 - \sqrt{13}}{2} = -5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-choose-method}
+
+Pick the quickest method for each, and solve.
+
+1. $$x^2 - 81 = 0$$
+2. $$x^2 + x - 42 = 0$$
+3. $$x^2 + 2x - 2 = 0$$
+
+:::solution
+
+1. A difference of two squares: $$(x - 9)(x + 9) = 0$$, so $$x = \pm 9$$. (Or $$x^2 = 81$$
+   directly.)
+2. Factoring: $$7 \cdot (-6) = -42$$ and $$7 + (-6) = 1$$, so $$(x + 7)(x - 6) = 0$$, and $$x = -7$$
+   or $$x = 6$$.
+3. No two whole numbers have product $$-2$$ and sum $$2$$, so complete the square (or use the
+   formula): $$(x + 1)^2 = 3$$, so $$x = -1 \pm \sqrt{3}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-garden}
+
+A rectangular garden is $$4$$ m longer than it is wide, and its area is $$60$$ m². How wide is it?
+
+:::solution
+
+With width $$w$$, the length is $$w + 4$$, so $$w(w + 4) = 60$$, that is, $$w^2 + 4w - 60 = 0$$.
+This factors as $$(w + 10)(w - 6) = 0$$, so $$w = -10$$ or $$w = 6$$.
+
+A width can't be negative, so the garden is $$6$$ m wide (and $$10$$ m long). The equation has two
+solutions, but only one of them answers the question.
+
+:::
+
+::::
+
+::::exercise{#ex-thrown-ball}
+
+A ball is thrown upwards, and after $$t$$ seconds its height is $$20t - 5t^2$$ metres. When is it
+$$15$$ m high? Why are there two answers?
+
+:::solution
+
+$$20t - 5t^2 = 15$$ gives $$5t^2 - 20t + 15 = 0$$, and dividing by $$5$$, $$t^2 - 4t + 3 = 0$$. So
+$$(t - 1)(t - 3) = 0$$, and $$t = 1$$ or $$t = 3$$.
+
+The ball passes $$15$$ m twice: once on the way up, after $$1$$ second, and once on the way down,
+after $$3$$ seconds.
+
+:::
+
+::::
+
+## The discriminant
+
+::::exercise{#ex-discriminant-count}
+
+Without solving, say how many solutions each has.
+
+1. $$x^2 - 6x + 9 = 0$$
+2. $$2x^2 + 3x + 5 = 0$$
+3. $$-x^2 + 4x + 1 = 0$$
+4. $$4x^2 - 20x + 25 = 0$$
+
+:::solution
+
+By :ref{#root-count}:
+
+1. $$\Delta = 36 - 36 = 0$$: one solution.
+2. $$\Delta = 9 - 40 = -31$$: none.
+3. $$\Delta = 16 - 4 \cdot (-1) \cdot 1 = 20$$: two.
+4. $$\Delta = 400 - 400 = 0$$: one.
+
+:::
+
+::::
+
+::::exercise{#ex-parameter}
+
+For which numbers $$k$$ does $$x^2 - 6x + k = 0$$ have two solutions? One? None?
+
+:::solution
+
+The discriminant (:ref{#discriminant}) is $$36 - 4k$$. So there are two solutions when
+$$36 - 4k > 0$$, that is, $$k < 9$$; one when $$k = 9$$ (the solution is $$x = 3$$); and none when
+$$k > 9$$ (:ref{#root-count}).
+
+:::
+
+::::
+
+::::exercise{#ex-opposite-signs}
+
+Show that if $$a$$ and $$c$$ have opposite signs, then $$ax^2 + bx + c = 0$$ always has two
+solutions, whatever $$b$$ is.
+
+:::solution
+
+If $$a$$ and $$c$$ have opposite signs, then $$ac < 0$$ (:ref{#real-numbers/sign-rules}), so
+$$-4ac > 0$$. And $$b^2 \ge 0$$. So $$\Delta = b^2 - 4ac$$ is a number that isn't negative plus a
+positive one, which is positive, and there are two solutions (:ref{#root-count}).
+
+:::
+
+::::
+
+::::exercise{#ex-vieta-check}
+
+Someone says the solutions of $$2x^2 - 7x + 3 = 0$$ are $$3$$ and $$-\frac{1}{2}$$. Check this with
+the sum and product of the solutions, without solving. What are the solutions?
+
+:::solution
+
+By :ref{#vieta}, the solutions should add up to $$-\frac{b}{a} = \frac{7}{2}$$ and multiply to
+$$\frac{c}{a} = \frac{3}{2}$$. But $$3 + \left(-\frac{1}{2}\right) = \frac{5}{2}$$, so the claim is
+wrong.
+
+The product $$-\frac{3}{2}$$ is also wrong, but only by a sign, which suggests $$3$$ and
+$$\frac{1}{2}$$. These add to $$\frac{7}{2}$$ and multiply to $$\frac{3}{2}$$, and indeed
+$$2x^2 - 7x + 3 = (2x - 1)(x - 3)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-other-root}
+
+$$x = 4$$ is a solution of $$x^2 + px - 28 = 0$$. Find the other solution and $$p$$.
+
+:::solution
+
+The product of the solutions is $$\frac{c}{a} = -28$$ (:ref{#vieta}), so the other solution is
+$$\frac{-28}{4} = -7$$. Their sum, $$-3$$, is $$-\frac{p}{1}$$, so $$p = 3$$.
+
+Check: $$4^2 + 3 \cdot 4 - 28 = 0$$ and $$(-7)^2 + 3 \cdot (-7) - 28 = 49 - 21 - 28 = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sum-of-squares}
+
+If $$x_1$$ and $$x_2$$ are the solutions of $$x^2 - 3x - 5 = 0$$, find $$x_1^2 + x_2^2$$ without
+finding $$x_1$$ and $$x_2$$.
+
+:::solution
+
+By :ref{#vieta}, $$x_1 + x_2 = 3$$ and $$x_1x_2 = -5$$. Since
+$$(x_1 + x_2)^2 = x_1^2 + 2x_1x_2 + x_2^2$$,
+
+```math
+x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 = 9 + 10 = 19.
+```
+
+:::
+
+::::
+
+## Parabolas
+
+::::exercise{#ex-find-vertex}
+
+Find the vertex of each parabola, and say whether it is a lowest or a highest point.
+
+1. $$y = x^2 + 6x + 5$$
+2. $$y = -2x^2 + 4x + 1$$
+
+:::solution
+
+By :ref{#vertex}, the vertex is at $$s = -\frac{b}{2a}$$, with $$k = c - \frac{b^2}{4a}$$.
+
+1. $$s = -3$$ and $$k = 5 - 9 = -4$$, so the vertex is $$(-3, -4)$$. Since $$a = 1 > 0$$, it opens
+   upwards and this is the lowest point. Indeed $$x^2 + 6x + 5 = (x + 3)^2 - 4$$.
+2. $$s = -\frac{4}{-4} = 1$$ and $$k = 1 - \frac{16}{-8} = 3$$, so the vertex is $$(1, 3)$$. Since
+   $$a = -2 < 0$$, it opens downwards and this is the highest point.
+
+:::
+
+::::
+
+::::exercise{#ex-sketch}
+
+For $$y = x^2 - 2x - 8$$, find where the graph crosses the $$x$$-axis, where it crosses the
+$$y$$-axis, and its vertex. How is the vertex's $$x$$ related to the crossings?
+
+:::solution
+
+It crosses the $$x$$-axis where $$x^2 - 2x - 8 = 0$$, that is, $$(x - 4)(x + 2) = 0$$: at $$x = 4$$
+and $$x = -2$$. It crosses the $$y$$-axis where $$x = 0$$, at $$y = -8$$. The vertex has $$s = 1$$
+and $$k = -8 - 1 = -9$$, so it is $$(1, -9)$$.
+
+The vertex's $$x$$, $$1$$, is exactly halfway between the crossings $$-2$$ and $$4$$.
+
+:::
+
+::::
+
+::::exercise{#ex-halfway}
+
+Explain why, when $$y = ax^2 + bx + c$$ crosses the $$x$$-axis twice, the vertex is always halfway
+between the crossings.
+
+:::solution
+
+The crossings are the solutions $$x_1$$ and $$x_2$$ of $$ax^2 + bx + c = 0$$, and by :ref{#vieta}
+they add up to $$-\frac{b}{a}$$. So the point halfway between them is
+$$\frac{x_1 + x_2}{2} = -\frac{b}{2a}$$, which is exactly the vertex's $$x$$ (:ref{#vertex}). This
+fits the picture: a parabola is symmetric about the vertical line through its vertex
+(:ref{#parabola}), so its two crossings are mirror images in that line.
+
+:::
+
+::::
+
+::::exercise{#ex-quadratic-always-positive}
+
+Show that $$x^2 - 4x + 7$$ is positive for every $$x$$, and find its smallest value.
+
+:::solution
+
+Completing the square, $$x^2 - 4x + 7 = (x - 2)^2 + 3$$. A square is never negative, so this is
+always at least $$3$$, and it equals $$3$$ exactly when $$x = 2$$. So the smallest value is $$3$$,
+and the expression is always positive. On the graph, the parabola's lowest point is $$(2, 3)$$,
+above the $$x$$-axis.
+
+:::
+
+::::
+
+::::exercise{#ex-line-meets-parabola}
+
+Where does the line $$y = 2x + 3$$ meet the parabola $$y = x^2$$? And the line $$y = 2x - 1$$?
+
+:::solution
+
+They meet where both equations hold, so where $$x^2 = 2x + 3$$, that is, $$x^2 - 2x - 3 = 0$$, or
+$$(x - 3)(x + 1) = 0$$. So at $$x = 3$$ and $$x = -1$$, the points $$(3, 9)$$ and $$(-1, 1)$$.
+
+For the second line, $$x^2 = 2x - 1$$ gives $$x^2 - 2x + 1 = 0$$, that is, $$(x - 1)^2 = 0$$. There
+is one solution, $$x = 1$$, so the line just touches the parabola at $$(1, 1)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-biggest-pen}
+
+A rectangular pen is made from $$20$$ m of fence. What is the largest area it can have?
+
+:::solution
+
+If one side is $$x$$, the other is $$10 - x$$, since the two together are half the fence. The area
+is $$y = x(10 - x) = -x^2 + 10x$$. This parabola opens downwards ($$a = -1$$), so its vertex is the
+highest point (:ref{#vertex}): $$s = -\frac{10}{-2} = 5$$, and the area there is $$5 \cdot 5 = 25$$.
+So the largest area is $$25$$ m², when the pen is a $$5$$ by $$5$$ square.
+
+:::
+
+::::
+
+## Equations that become quadratic
+
+::::exercise{#ex-quartic}
+
+Solve $$x^4 - 13x^2 + 36 = 0$$ and $$x^4 - 2x^2 - 8 = 0$$.
+
+:::solution
+
+With $$u = x^2$$ (:ref{#substitution-quadratic}), the first becomes $$u^2 - 13u + 36 = 0$$, that is,
+$$(u - 4)(u - 9) = 0$$. So $$x^2 = 4$$ or $$x^2 = 9$$, and $$x = \pm 2$$ or $$x = \pm 3$$: four
+solutions.
+
+The second becomes $$u^2 - 2u - 8 = 0$$, that is, $$(u - 4)(u + 2) = 0$$. Then $$x^2 = 4$$ gives
+$$x = \pm 2$$, but $$x^2 = -2$$ gives nothing. So there are two solutions, $$\pm 2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-quartic-count}
+
+How many solutions can an equation $$ax^4 + bx^2 + c = 0$$ (with $$a \neq 0$$) have? Find an example
+with exactly three.
+
+:::solution
+
+The quadratic in $$u = x^2$$ has at most two solutions, and each $$u$$ gives two values of $$x$$ if
+$$u > 0$$, one if $$u = 0$$, and none if $$u < 0$$ (:ref{#substitution-quadratic}). So there are at
+most four solutions, and any number from $$0$$ to $$4$$ is possible.
+
+Exactly three needs one $$u$$ to be $$0$$ and the other positive. For example, $$x^4 - x^2 = 0$$
+gives $$u(u - 1) = 0$$, so $$x^2 = 0$$ or $$x^2 = 1$$, and $$x = 0$$, $$1$$ or $$-1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-fractions-to-quadratic}
+
+Solve $$\frac{2}{x} + \frac{3}{x + 1} = 2$$.
+
+:::solution
+
+Neither $$x = 0$$ nor $$x = -1$$ can be a solution, since they make a denominator $$0$$. Multiplying
+both sides by $$x(x + 1)$$:
+
+```math
+2(x + 1) + 3x = 2x(x + 1), \quad \text{so} \quad 2x^2 - 3x - 2 = 0.
+```
+
+This factors as $$(2x + 1)(x - 2) = 0$$, so $$x = 2$$ or $$x = -\frac{1}{2}$$. Neither is $$0$$ or
+$$-1$$, and both check: $$1 + 1 = 2$$, and $$-4 + 6 = 2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-fraction-false}
+
+Solve $$\frac{x^2}{x - 3} = \frac{9}{x - 3}$$. Why does one of the answers have to go?
+
+:::solution
+
+Multiplying both sides by $$x - 3$$ gives $$x^2 = 9$$, so $$x = 3$$ or $$x = -3$$. But at $$x = 3$$
+both sides have $$0$$ on the bottom, so they don't mean anything, and $$3$$ is not a solution.
+Multiplying by $$x - 3$$ was only a safe step when $$x - 3 \neq 0$$. The only solution is
+$$x = -3$$: both sides are $$\frac{9}{-6}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-root-to-quadratic}
+
+Solve $$\sqrt{x + 7} = x - 5$$.
+
+:::solution
+
+Squaring both sides gives $$x + 7 = x^2 - 10x + 25$$, so $$x^2 - 11x + 18 = 0$$, that is,
+$$(x - 2)(x - 9) = 0$$. Squaring can add false solutions (:ref{#real-numbers/squaring-sides}), so
+check both:
+
+- $$x = 9$$: $$\sqrt{16} = 4$$ and $$9 - 5 = 4$$. It works.
+- $$x = 2$$: $$\sqrt{9} = 3$$ but $$2 - 5 = -3$$. It doesn't: it solves $$-\sqrt{x + 7} = x - 5$$
+  instead, which has the same square.
+
+So the only solution is $$x = 9$$.
+
+:::
+
+::::
+
+::::exercise{#ex-root-substitute}
+
+Solve $$2\sqrt{x} = x - 3$$ by substituting $$u = \sqrt{x}$$.
+
+:::solution
+
+Since $$x = u^2$$, the equation becomes $$2u = u^2 - 3$$, that is, $$u^2 - 2u - 3 = 0$$, or
+$$(u - 3)(u + 1) = 0$$. But $$u = \sqrt{x}$$ can't be negative, so only $$u = 3$$ counts, giving
+$$x = 9$$. Check: $$2 \cdot 3 = 6 = 9 - 3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-bracket-substitute}
+
+Solve $$(x + 1)^2 - 5(x + 1) + 6 = 0$$ by substituting $$u = x + 1$$. Check by expanding.
+
+:::solution
+
+With $$u = x + 1$$: $$u^2 - 5u + 6 = 0$$, so $$(u - 2)(u - 3) = 0$$, and $$u = 2$$ or $$u = 3$$. So
+$$x = 1$$ or $$x = 2$$.
+
+Expanding instead: $$x^2 + 2x + 1 - 5x - 5 + 6 = x^2 - 3x + 2 = (x - 1)(x - 2)$$, with the same
+solutions.
+
+:::
+
+::::

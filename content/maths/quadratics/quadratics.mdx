@@ -1,0 +1,158 @@
+---
+title: Quadratic equations
+description:
+  What a quadratic equation is, how many solutions to expect, and the easy case of a square equal to
+  a number.
+---
+
+A rectangle is $$3$$ metres longer than it is wide, and its area is $$40$$ square metres. How wide
+is it? Calling the width $$x$$, the length is $$x + 3$$, so $$x(x + 3) = 40$$. Multiplying out gives
+$$x^2 + 3x = 40$$, and now the unknown is multiplied by itself. None of the methods for linear
+equations can deal with that $$x^2$$. This page says exactly which equations count as quadratic,
+what to expect from their solutions, and solves the easiest kind, a square equal to a number. Every
+other method in the guide works by turning a quadratic into that easy kind.
+
+## What a quadratic equation is
+
+A linear equation only ever multiplies the unknown by numbers. A quadratic equation also allows the
+unknown times itself, $$x^2$$, but nothing higher, like $$x^3$$. Equations like this turn up
+whenever two unknown lengths are multiplied, as in an area, and in many other places where one
+quantity grows with the square of another. However the equation first looks, the terms can be
+gathered on one side, leaving $$0$$ on the other. Then it says that some number of $$x^2$$'s, plus
+some number of $$x$$'s, plus a constant, comes to nothing.
+
+:::definition[Quadratic equation]{#quadratic}
+
+A **quadratic equation** in the unknown $$x$$ is an equation that can be written as
+
+```math
+ax^2 + bx + c = 0
+```
+
+where $$a$$, $$b$$ and $$c$$ are real numbers with $$a \neq 0$$. The numbers $$a$$, $$b$$ and $$c$$
+are its **coefficients**, and this way of writing it is its **standard form**. A solution is also
+called a **root** of the equation.
+
+:::
+
+The condition $$a \neq 0$$ is what makes the equation quadratic. If $$a = 0$$ the $$x^2$$ term
+disappears, leaving $$bx + c = 0$$, which is a linear equation and is solved as one
+(:ref{#linear-equations/one-unknown}). The other two coefficients may be $$0$$: $$x^2 - 9 = 0$$ has
+$$b = 0$$, and $$x^2 - 5x = 0$$ has $$c = 0$$, and both are quadratic.
+
+To put an equation in standard form, use the safe steps (:ref{#linear-equations/safe-steps}): expand
+any brackets, then add or subtract terms on both sides until one side is $$0$$. Safe steps give an
+equivalent equation, one with exactly the same solutions, so nothing is lost.
+
+:::example[Putting equations in standard form]
+
+The rectangle equation $$x(x + 3) = 40$$ expands to $$x^2 + 3x = 40$$. Subtracting $$40$$ from both
+sides gives
+
+```math
+x^2 + 3x - 40 = 0
+```
+
+so $$a = 1$$, $$b = 3$$ and $$c = -40$$.
+
+The equation $$(x + 1)^2 = 2x + 5$$ expands to $$x^2 + 2x + 1 = 2x + 5$$. Subtracting $$2x + 5$$
+from both sides gives $$x^2 - 4 = 0$$, so $$a = 1$$, $$b = 0$$ and $$c = -4$$.
+
+The equation $$x^2 + 3x = x^2 + 6$$ looks quadratic, but subtracting $$x^2$$ from both sides leaves
+$$3x = 6$$. The squares cancel, so it is linear, with the single solution $$x = 2$$.
+
+:::
+
+## How many solutions to expect
+
+A linear equation with $$a \neq 0$$ has exactly one solution. A quadratic can have more, because a
+number and its opposite have the same square. Both $$3$$ and $$-3$$ solve $$x^2 = 9$$. But it can
+also have fewer, because a square is never negative: nothing solves $$x^2 = -1$$. And $$x^2 = 0$$
+sits on the boundary, with $$0$$ as its only solution. These three equations already show every
+possibility. A quadratic equation always has two solutions, one, or none, never more. The
+[page on the discriminant](./discriminant.mdx) proves this (:ref{#root-count}) and shows how to tell
+in advance which case you are in.
+
+So solving a quadratic means finding all of its solutions, not just one. Stopping at the first
+answer found is the most common way to get a quadratic wrong.
+
+## A square equal to a number
+
+The easiest quadratics are a square equal to a number. Take $$(x - 3)^2 = 16$$. Whatever $$x$$ is,
+the number $$x - 3$$ squares to $$16$$, so it must be $$4$$ or $$-4$$. That leaves two linear
+equations, $$x - 3 = 4$$ and $$x - 3 = -4$$, giving $$x = 7$$ and $$x = -1$$. On the number line,
+$$x - 3$$ is how far $$x$$ is from $$3$$, counting left as negative. So the equation says that $$x$$
+is $$4$$ away from $$3$$, on one side or the other.
+
+The sign $$\pm$$, read "plus or minus", writes both solutions at once: $$x = 3 \pm 4$$ means
+$$x = 3 + 4$$ or $$x = 3 - 4$$.
+
+:::proposition[A square equal to a number]{#shifted-square}
+
+Let $$s$$ and $$k$$ be real numbers. The equation $$(x - s)^2 = k$$
+
+1. has exactly two solutions, $$x = s + \sqrt{k}$$ and $$x = s - \sqrt{k}$$, if $$k > 0$$;
+2. has exactly one solution, $$x = s$$, if $$k = 0$$;
+3. has no solution if $$k < 0$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Quadratic_equation#Completing_the_square"}
+
+Write $$y = x - s$$. Each $$x$$ gives exactly one $$y$$, and each $$y$$ gives back exactly one
+$$x$$, namely $$x = y + s$$. So $$x$$ solves $$(x - s)^2 = k$$ exactly when $$y = x - s$$ solves
+$$y^2 = k$$, and the solutions for $$x$$ are the solutions for $$y$$ with $$s$$ added.
+
+The equation $$y^2 = k$$ is solved by :ref{#real-numbers/square-root-count}. If $$k > 0$$, it has
+exactly two solutions, a positive one, which is $$\sqrt{k}$$ (:ref{#real-numbers/square-root}), and
+its opposite $$-\sqrt{k}$$. Adding $$s$$ gives $$x = s + \sqrt{k}$$ and $$x = s - \sqrt{k}$$. If
+$$k = 0$$, the only solution is $$y = 0$$, so $$x = s$$. If $$k < 0$$, there is no $$y$$, so there
+is no $$x$$.
+
+:::
+
+The same works for $$(x + s)^2 = k$$, since $$x + s = x - (-s)$$. The solutions are then
+$$x = -s \pm \sqrt{k}$$.
+
+:::example[Squares equal to numbers]
+
+$$(x + 2)^2 = 5$$. Here $$x + 2 = \pm\sqrt{5}$$, so $$x = -2 + \sqrt{5}$$ or $$x = -2 - \sqrt{5}$$.
+
+$$2(x - 1)^2 = 18$$. Dividing both sides by $$2$$ gives $$(x - 1)^2 = 9$$, so $$x - 1 = \pm 3$$, and
+$$x = 4$$ or $$x = -2$$. Check: $$2 \cdot 3^2 = 18$$ and $$2 \cdot (-3)^2 = 18$$.
+
+$$(x - 5)^2 + 3 = 0$$. Subtracting $$3$$ gives $$(x - 5)^2 = -3$$. A square can't be negative, so
+there is no solution.
+
+$$(4x - 1)^2 = 0$$. The only number that squares to $$0$$ is $$0$$, so $$4x - 1 = 0$$ and
+$$x = \frac{1}{4}$$, the only solution.
+
+:::
+
+This case matters because every quadratic can be brought to it. [Factoring](./factoring.mdx) is a
+shortcut that works when the quadratic splits neatly.
+[Completing the square](./completing-the-square.mdx) rewrites any quadratic as a square equal to a
+number, and [the quadratic formula](./quadratic-formula.mdx) is that rewriting done once, with
+letters, so it never has to be done again.
+
+## Common mistakes
+
+- **Losing the negative root.** From $$x^2 = 9$$, writing only $$x = 3$$. The square root sign gives
+  the positive root, but $$-3$$ solves the equation too.
+- **Expanding a square wrongly.** $$(x - 3)^2$$ is $$x^2 - 6x + 9$$, not $$x^2 - 9$$
+  (:ref{#numbers/square-formulas}).
+- **Calling an equation quadratic too soon.** In $$x^2 + 3x = x^2 + 6$$ the squares cancel, leaving
+  a linear equation. Put it in standard form first, and check that $$a \neq 0$$.
+- **Taking the root of a negative number.** $$(x - 5)^2 = -3$$ has no solution. Don't write
+  $$x = 5 \pm \sqrt{-3}$$ as if it did.
+- **Forgetting to divide first.** In $$2(x - 1)^2 = 18$$, the square equals $$9$$, not $$18$$.
+
+## In short
+
+- A quadratic equation can be written $$ax^2 + bx + c = 0$$ with $$a \neq 0$$; if $$a = 0$$ it is
+  linear.
+- Put an equation in standard form with safe steps: expand, then move everything to one side.
+- A quadratic has two solutions, one, or none, and solving it means finding all of them.
+- $$(x - s)^2 = k$$ has the two solutions $$s \pm \sqrt{k}$$ when $$k > 0$$, the one solution $$s$$
+  when $$k = 0$$, and none when $$k < 0$$.
+- Every method in this guide works by reaching that form, or by skipping straight to its answer.
