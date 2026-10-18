@@ -293,19 +293,3 @@ and with $$a = x$$ and $$b = -1$$, using row $$5$$,
 
 where the signs alternate because odd powers of $$-1$$ are negative. Taking $$a = b = 1$$ shows that
 each row of the triangle adds up to $$(1 + 1)^m = 2^m$$.
-
-## Common mistakes
-
-- **Counting ordered picks instead of selections.** Picking $$2$$ from $$4$$ in order gives $$12$$,
-  but there are only $$6$$ selections, because $$ab$$ and $$ba$$ are the same.
-- **Forgetting $$0! = 1$$.** Without it, $$\binom{m}{0}$$ and $$\binom{m}{m}$$ wouldn't make sense.
-- **Multiplying out factorials before cancelling.** $$\frac{10!}{8!} = 10 \cdot 9$$; there is no
-  need to work out $$10!$$.
-
-## In short
-
-- $$n! = 1 \cdot 2 \cdots n$$ counts the arrangements of $$n$$ things, and $$0! = 1$$.
-- $$\binom{m}{n} = \frac{m!}{n!\,(m - n)!}$$ counts the ways to choose $$n$$ things from $$m$$.
-- $$\binom{m}{n} = \binom{m}{m - n}$$, and Pascal's rule builds each row of the triangle from the
-  one above.
-- The binomial theorem: the coefficients of $$(a + b)^m$$ are row $$m$$ of Pascal's triangle.

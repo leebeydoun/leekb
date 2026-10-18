@@ -5,23 +5,29 @@ description:
   equal and equivalent mean.
 ---
 
-Before anything can be proved, it has to be said clearly. A proof shows that a statement is true, so
-we first need to know what counts as a statement, and how to tell exactly what one claims. Everyday
-language is forgiving: "numbers add up the same either way round" is understood well enough.
-Mathematics is not, because a single missing word can turn a true claim into a false one. This page
-sets out the small amount of language that every later proof relies on.
+This page is about statements: the sentences in mathematics that make a claim you can check. It
+covers what makes a sentence a statement, the words "for every" and "there is", how to state the
+opposite of a claim, and the difference between equal and equivalent.
+
+Think of a statement as a claim you could bet on. "It will rain in Paris tomorrow" is one: nobody
+knows the answer yet, but tomorrow will settle the bet. "Close the window" is not, because there is
+nothing to win or lose. Mathematics deals in claims of the first kind, and a proof settles the bet
+for certain.
+
+A bet only works if both sides agree on what was claimed. In everyday speech, a loose sentence is
+usually fine, because the listener fills in what you meant. In mathematics, one missing word can
+change who wins. "The square of a number is positive" is false, because $$0^2 = 0$$, but "the square
+of a non-zero number is positive" is true.
 
 ## What a statement is
 
-A statement is a sentence that is either true or false, even if we don't yet know which. "$$7$$ is
-bigger than $$4$$" is a true statement, and "$$7$$ is even" is a false one. Both are statements,
-because each one makes a definite claim that could be checked. A question, an instruction, or a
-string of symbols with loose ends is not a statement: it doesn't claim anything yet.
+Mathematical statements work like bets, except that reasoning settles them instead of waiting to
+see. "$$7$$ is bigger than $$4$$" is a true statement, and "$$7$$ is even" is a false one. Each is a
+statement before you check it, because it makes a definite claim.
 
-The loose ends are usually letters. Written on its own, $$x + 3 = 7$$ is neither true nor false,
-because it doesn't say what $$x$$ is. It becomes true when $$x$$ is $$4$$ and false otherwise. An
-equation like this is a statement waiting to be finished: something still has to be said about
-$$x$$.
+Letters are the usual reason a sentence makes no claim yet. You can't bet on $$x + 3 = 7$$ on its
+own, because it doesn't say what $$x$$ is. It is true when $$x$$ is $$4$$ and false otherwise, so
+something still has to be said about $$x$$ before it becomes a statement.
 
 :::definition[Statement]{#statement}
 
@@ -40,19 +46,19 @@ meaning hasn't been fixed, like $$x + 3 = 7$$ on its own, is not yet a statement
 
 :::
 
-## For every, there is, there is no
+## For every, there is and there is no
 
-There are two main ways to finish a sentence with a letter in it. One is to claim it for **every**
-value: "for every number $$x$$, $$x + 0 = x$$". The other is to claim that **some** value works:
-"there is a number $$x$$ with $$x + 3 = 7$$". These are very different claims. The first has to hold
-every single time, so one failure sinks it. The second only needs one success, so a single example
-proves it.
+Three phrases turn a sentence with a letter into a statement: "for every", "there is" and "there is
+no". "For every number $$x$$, $$x + 0 = x$$" claims something about all values of $$x$$. "There is a
+number $$x$$ with $$x + 3 = 7$$" claims that at least one value works.
 
-A third way, "there is no", is just the opposite of "there is": "there is no whole number $$n$$ with
-$$n^2 = 10$$" says that every attempt fails.
+These two claims need different evidence. A "for every" claim must hold in every case, so one
+failure makes it false. A "there is" claim needs only one success, so a single example proves it.
+"There is no" is the opposite of "there is": "there is no whole number $$n$$ with $$n^2 = 10$$" says
+that every whole number fails.
 
-The same sentence can become a true claim or a false one, depending on the words put in front of it.
-Take "$$n$$ is a multiple of $$3$$", about whole numbers $$n$$:
+The phrase in front decides whether the same sentence becomes true or false. Take "$$n$$ is a
+multiple of $$3$$", about whole numbers $$n$$:
 
 - "There is a whole number $$n$$ that is a multiple of $$3$$" is true, since $$6$$ is one.
 - "Every whole number $$n$$ is a multiple of $$3$$" is false, since $$4$$ isn't.
@@ -72,11 +78,14 @@ These phrases are called **quantifiers**, because they say how many values the c
 
 :::
 
-Turning one of these claims into its opposite swaps the kind of quantifier. The opposite of "every
-student passed" is not "every student failed" but "some student failed". In the same way, the
-opposite of "there is a student who passed" is "every student failed". This is the rule behind
-counterexamples (:ref{#counterexample}): to show that a "for every" claim is false, it is enough to
-find one case where it fails.
+## The opposite of a statement
+
+To state the opposite of a "for every" or "there is" claim, you swap the quantifier. The opposite of
+"every student passed" is "some student failed", not "every student failed". The opposite of "there
+is a student who passed" is "every student failed".
+
+This rule is why counterexamples work (:ref{#counterexample}). To show that a "for every" claim is
+false, you only need one case where it fails.
 
 :::remark[The opposite of a quantified statement]{#statement-negation}
 
@@ -88,54 +97,68 @@ find one case where it fails.
 
 :::
 
-The same care is needed with "and". "$$m$$ and $$n$$ are both even" is false as soon as **either**
-one is odd, so its opposite is "at least one of $$m$$ and $$n$$ is odd", not "both are odd". In
-general, the opposite of "$$P$$ and $$Q$$" is "not $$P$$, or not $$Q$$". Proofs that start by
-supposing a statement is false (:ref{#contradiction}) depend on getting these opposites right.
+"And" needs the same care. "$$m$$ and $$n$$ are both even" is false as soon as either one is odd. So
+its opposite is "at least one of $$m$$ and $$n$$ is odd", not "both are odd". In general, the
+opposite of "$$P$$ and $$Q$$" is "not $$P$$, or not $$Q$$".
 
-## Which numbers?
+Proof by contradiction (:ref{#contradiction}) starts by supposing that a statement is false. So it
+only works if you state the opposite correctly.
 
-A claim about "a number $$x$$" also depends on which numbers are allowed. "There is a number $$x$$
-with $$3x = 4$$" is false if only whole numbers count, and true if fractions are allowed, since
-$$x = \frac{4}{3}$$. Likewise, "there is a fraction $$x$$ with $$x^2 = 3$$" is false
-(:ref{#numbers/sqrt-three}), while "there is a real number $$x$$ with $$x^2 = 3$$" is true, namely
-$$\sqrt{3}$$. Nothing about the equation changed; only the kind of number did.
+## Saying which numbers are allowed
 
-So a careful statement says what kind of thing each letter is: "let $$n$$ be a whole number", "for
-every real number $$x$$". Often the surrounding text makes this clear, and then it can be left
-unsaid. When there is any doubt, say it.
+Whether a claim about "a number $$x$$" is true can depend on which numbers are allowed. "There is a
+number $$x$$ with $$3x = 4$$" is false if only whole numbers count. It is true if fractions are
+allowed, since $$x = \frac{4}{3}$$ works.
 
-## Writing in sentences
+The same happens with $$x^2 = 3$$. "There is a fraction $$x$$ with $$x^2 = 3$$" is false
+(:ref{#numbers/sqrt-three}), but "there is a real number $$x$$ with $$x^2 = 3$$" is true, since
+$$\sqrt{3}$$ works. The equation is the same in both claims, and only the kind of number differs.
+
+So a careful statement says what kind of thing each letter is, as in "let $$n$$ be a whole number"
+or "for every real number $$x$$". You can leave this out when the surrounding text makes it clear.
+When there is any doubt, say it.
+
+## Writing maths in full sentences
 
 Because a bare equation isn't a statement, mathematics is written in complete sentences, with the
-symbols as part of them. Compare
+symbols as part of them. Compare these two lines:
 
 ```math
 x^2 = 9 \qquad x = 3
 ```
 
-with "if $$x^2 = 9$$, then $$x = 3$$ or $$x = -3$$". The first is two equations side by side, and a
-reader can't tell whether the second follows from the first, is being assumed, or is just one
-possibility. (In fact "if $$x^2 = 9$$ then $$x = 3$$" is false, because of $$x = -3$$.) The sentence
-says exactly what is claimed, and it is true. Words like "so", "if … then", "for every" and "there
-is" are what turn a list of symbols into an argument.
+The reader can't tell how the second equation relates to the first. It might follow from the first,
+be an assumption, or be one possibility among several. The sentence "if $$x^2 = 9$$, then $$x = 3$$
+or $$x = -3$$" says exactly what is claimed, and it is true.
 
-The same care applies to instructions. "Solve $$x^2 = 9$$" means: find **every** number $$x$$ for
-which $$x^2 = 9$$ is true. Finding $$3$$ is not enough; a full answer is "$$x = 3$$ or $$x = -3$$",
+The two equations alone also hide a mistake. "If $$x^2 = 9$$, then $$x = 3$$" is false, because
+$$x = -3$$ also works. Linking words like "so", "if … then", "for every" and "there is" turn a list
+of symbols into an argument that a reader can check.
+
+Instructions need the same care. "Solve $$x^2 = 9$$" means: find every number $$x$$ for which
+$$x^2 = 9$$ is true. Finding $$3$$ is not enough. A full answer is "$$x = 3$$ or $$x = -3$$",
 together with a reason why there are no others.
 
 ## Equal and equivalent
 
-The sign $$=$$ between two expressions says they are the **same** thing written two ways. When we
-write $$4 \cdot 3 = 20 - 8$$, we don't mean that the two sides are alike, or that they match in some
-respect. We mean that multiplying $$4$$ by $$3$$ gives exactly the same number as taking $$8$$ away
-from $$20$$: both are $$12$$. Two things that are merely similar, like two coins of the same value,
-are not equal in this sense; it is their values that are equal.
+"Equal" and "equivalent" sound alike, but they compare different kinds of thing. Equal compares two
+numbers. Equivalent compares two statements.
 
-Statements have their own kind of sameness. "$$x + 3 = 7$$" and "$$x = 4$$" look different, but
-whatever number $$x$$ is, they are either both true or both false. Saying so is often the whole
-point of solving an equation: each step replaces a statement with a simpler one that is true for
-exactly the same $$x$$.
+### Equal means the same number
+
+The sign $$=$$ says that two expressions name the same number. $$4 \cdot 3 = 20 - 8$$ is true
+because both sides work out to $$12$$. The two sides look nothing alike, and that doesn't matter:
+equality is about the value, not the way it is written. In the same way, $$0.5 = \frac{1}{2}$$.
+
+### Equivalent means true at the same times
+
+A statement isn't a number, so it can't be equal to another statement. The useful question is
+whether two statements are always true or false together. Try "$$x + 3 = 7$$" and "$$x = 4$$" for
+different values of $$x$$. When $$x$$ is $$4$$, both are true, and for every other value, both are
+false.
+
+In the language of bets, equivalent statements always win or lose together. They can say quite
+different things in words, but you can never find a value that makes one true and the other false.
 
 :::definition[Equivalent statements]{#equivalent-statements}
 
@@ -144,6 +167,9 @@ so is the other, and whenever one is false, so is the other. This is the same as
 is true exactly when the second is" (:ref{#exactly-when}).
 
 :::
+
+Solving an equation depends on this idea. Each step replaces the equation with an equivalent one
+that is shorter, so no solution is lost and none is added along the way.
 
 :::example[Equivalent and not equivalent]
 
@@ -156,51 +182,35 @@ For a real number $$x$$:
 
 :::
 
-## Different letters, same value?
+An equation contains an equals sign, which makes the two ideas easy to mix up. Saying that
+"$$x + 3 = 7$$" is equivalent to "$$x = 4$$" doesn't claim that any two numbers are equal. It claims
+that the two equations are true for exactly the same values of $$x$$. The table puts the two side by
+side:
 
-When a statement begins "let $$x$$ and $$y$$ be numbers", it does **not** promise that $$x$$ and
-$$y$$ are different. Different letters are just different names, and two names can belong to the
-same number. A rule proved for "any numbers $$x$$ and $$y$$" therefore also covers the case
-$$x = y$$. For example, $$xy = yx$$ holds for any $$x$$ and $$y$$, and in particular when both are
-$$7$$.
+|          | Equal                                | Equivalent                                   |
+| -------- | ------------------------------------ | -------------------------------------------- |
+| Compares | Two numbers, or expressions for them | Two statements                               |
+| Means    | They have the same value             | They are true for exactly the same values    |
+| Written  | $$=$$                                | "exactly when", or "is equivalent to"        |
+| Example  | $$4 \cdot 3 = 20 - 8$$               | "$$x + 3 = 7$$" is equivalent to "$$x = 4$$" |
 
-To rule that case out, it has to be said: "let $$x$$ and $$y$$ be **distinct** numbers", or "let
-$$x$$ and $$y$$ be numbers with $$x \neq y$$". This matters whenever the argument divides by
-$$x - y$$, for instance, since that is $$0$$ when $$x = y$$.
+## Different letters can name the same number
+
+A statement that begins "let $$x$$ and $$y$$ be numbers" allows $$x$$ and $$y$$ to be equal.
+Different letters are different names, and two names can belong to the same number. So a rule proved
+for any numbers $$x$$ and $$y$$ also covers the case $$x = y$$. For example, $$xy = yx$$ holds for
+any $$x$$ and $$y$$, including when both are $$7$$.
+
+To rule out that case, the statement has to say so: "let $$x$$ and $$y$$ be distinct numbers", or
+"let $$x$$ and $$y$$ be numbers with $$x \neq y$$". This matters whenever an argument divides by
+$$x - y$$, because $$x - y$$ is $$0$$ when $$x = y$$.
 
 :::example[Why "distinct" matters]
 
-The statement "for any numbers $$x$$ and $$y$$, $$\frac{x^2 - y^2}{x - y} = x + y$$" is false,
-because when $$x = y$$ the left side divides by $$0$$ and has no value. The statement "for any
-distinct numbers $$x$$ and $$y$$, $$\frac{x^2 - y^2}{x - y} = x + y$$" is true, because
-$$x^2 - y^2 = (x - y)(x + y)$$ and $$x - y$$ is not $$0$$.
+The statement "for any numbers $$x$$ and $$y$$, $$\frac{x^2 - y^2}{x - y} = x + y$$" is false. When
+$$x = y$$, the left side divides by $$0$$ and has no value.
+
+The statement "for any distinct numbers $$x$$ and $$y$$, $$\frac{x^2 - y^2}{x - y} = x + y$$" is
+true. The top factors as $$x^2 - y^2 = (x - y)(x + y)$$, and $$x - y$$ is not $$0$$, so it cancels.
 
 :::
-
-## Common mistakes
-
-- **Treating an equation as a claim.** $$x + 3 = 7$$ on its own says nothing until $$x$$ is
-  qualified, by "for every", "there is", "if", or a value.
-- **Getting the opposite of "every" wrong.** The opposite of "every number here is even" is "some
-  number here is odd", not "every number here is odd".
-- **Forgetting which numbers are allowed.** Whether "there is an $$x$$ with $$x^2 = 3$$" is true
-  depends on whether $$x$$ must be a fraction or may be any real number.
-- **Stopping at one solution.** "Solve" asks for every solution, and a reason there are no more.
-- **Assuming different letters mean different numbers.** "Let $$x$$, $$y$$ be numbers" allows
-  $$x = y$$; say "distinct" if that case must be left out.
-- **Writing a list of equations instead of sentences.** Without words linking them, a reader can't
-  tell what follows from what.
-
-## In short
-
-- A statement is either true or false; an equation with an unqualified letter is not yet one.
-- "For every" claims something of all values, and one failure makes it false; "there is" claims it
-  of at least one, and one example makes it true.
-- The opposite of "for every $$x$$, $$P(x)$$" is "for some $$x$$, $$P(x)$$ is false"; the opposite
-  of "there is an $$x$$ with $$P(x)$$" is "there is no such $$x$$"; the opposite of "$$P$$ and
-  $$Q$$" is "not $$P$$, or not $$Q$$".
-- The same equation can lead to true or false claims depending on the quantifier and on which
-  numbers are allowed.
-- $$=$$ means "is the same as"; two statements are equivalent when each is true exactly when the
-  other is.
-- Different letters may stand for the same number unless they are said to be distinct.

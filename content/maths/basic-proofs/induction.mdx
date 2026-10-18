@@ -266,26 +266,3 @@ Every induction proof can be laid out the same way:
 In the Numbers guide, induction proves that congruences can be raised to any power: if
 $$a \equiv b$$, then $$a^n \equiv b^n$$ (:ref{#numbers/congruence-powers}). The base case is
 $$n = 1$$, and the step multiplies the case $$k$$ by $$a \equiv b$$ to reach the case $$k + 1$$.
-
-## Common mistakes
-
-- **Forgetting the base case.** The inductive step alone proves nothing: it only says that **if**
-  one case holds, so does the next.
-- **Thinking the step assumes the conclusion.** Assuming $$P(k)$$ in the inductive step is not going
-  round in a circle, because the step only proves "if $$P(k)$$, then $$P(k + 1)$$".
-- **Never using $$P(k)$$.** If the inductive step doesn't use the assumption anywhere, either the
-  statement didn't need induction or something has gone wrong.
-- **Checking cases instead.** Checking the first few, or the first million, values of $$n$$ is not a
-  proof; a statement can hold for many cases and then fail.
-- **Starting too late or too early.** The base case must be the first $$n$$ the statement claims,
-  and the step must work for every $$k$$ from there on.
-
-## In short
-
-- Induction proves a statement $$P(n)$$ for every positive integer $$n$$ with two arguments.
-- **Base case:** show $$P(1)$$ is true.
-- **Inductive step:** show that if $$P(k)$$ is true, then $$P(k + 1)$$ is true.
-- Together they reach every case, like a row of dominoes where the first falls and each knocks over
-  the next.
-- Assuming $$P(k)$$ in the step is allowed: it is the "if" part of what the step proves.
-- Induction can start at any integer $$n_0$$, with the base case $$P(n_0)$$.

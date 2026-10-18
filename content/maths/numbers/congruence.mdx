@@ -419,23 +419,3 @@ So $$4725$$ is divisible by $$9$$, because $$18$$ is: indeed $$4725 = 9 \cdot 52
 $$1{,}000{,}001$$ is not divisible by $$3$$, because its digits add up to $$2$$. The digit sum can
 be taken again if it is still large: $$987654321$$ has digit sum $$45$$, which has digit sum $$9$$,
 so $$987654321$$ is divisible by $$9$$.
-
-## Common mistakes
-
-- **Cancelling a common factor.** $$2 \cdot 3 \equiv 2 \cdot 8 \pmod{10}$$, but $$3 \not\equiv 8$$.
-  Congruences can be added, subtracted and multiplied, but not divided.
-- **Reducing an exponent modulo $$d$$.** The swapping rule is for numbers being added or multiplied,
-  not for exponents: $$2^5 = 32 \equiv 2 \pmod{3}$$, but $$5 \equiv 2 \pmod{3}$$ and
-  $$2^2 = 4 \equiv 1$$.
-- **Negative remainders.** $$-3 \equiv 2 \pmod{5}$$, and the remainder of $$-3$$ is $$2$$, not
-  $$-3$$.
-
-## In short
-
-- $$a \equiv b \pmod{d}$$ means $$d \mid a - b$$, which happens exactly when $$a$$ and $$b$$ leave
-  the same remainder.
-- Congruence is reflexive, symmetric and transitive, like equality.
-- Congruences can be added, subtracted, multiplied and raised to powers, so any number in a sum or
-  product can be swapped for a congruent one.
-- Common factors cannot always be cancelled.
-- A number is congruent to its digit sum modulo $$9$$ and modulo $$3$$.

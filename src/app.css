@@ -8,3 +8,8 @@
   --font-mono: "JetBrains Mono", monospace;
   --default-font-family: "Geist", sans-serif;
 }
+
+/* room below the end of every page, so the last lines can be scrolled up to eye level */
+#nd-page {
+  padding-bottom: 60vh;
+}

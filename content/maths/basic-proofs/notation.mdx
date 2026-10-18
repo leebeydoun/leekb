@@ -164,26 +164,3 @@ it is used. Once introduced, it keeps the same meaning until the end of the stat
 ::see-also{src="https://en.wikipedia.org/wiki/Free_variables_and_bound_variables#In_proofs"}
 
 :::
-
-## Common mistakes
-
-- **Reading a subscript as a multiplication.** $$x_2$$ is the second term, not $$2x$$.
-- **Assuming different subscripts mean different values.** $$x_1$$ and $$x_2$$ may be equal.
-- **Using the index of summation outside the sum.** In $$\sum_{i=1}^{n} x_i$$, the letter $$i$$ only
-  has a meaning inside the sum.
-- **Miscounting the terms.** $$\sum_{i=m}^{n}$$ has $$n - m + 1$$ terms, not $$n - m$$. For example,
-  $$\sum_{i=1}^{6} 5 = 30$$, not $$25$$.
-- **Splitting a sum of products wrongly.** The rules allow sums of terms and constant factors to be
-  split, but $$\sum x_i y_i$$ is **not** $$\left(\sum x_i\right)\left(\sum y_i\right)$$ in general.
-- **Using a letter before saying what it is.** Introduce every letter first.
-
-## In short
-
-- Subscripts name many numbers with one letter: $$x_1, \dots, x_n$$; they may be equal.
-- A finite sequence is a list $$x_1, \dots, x_n$$ in order, often given by a rule for $$x_i$$.
-- $$\sum_{i=m}^{n} x_i$$ means $$x_m + \dots + x_n$$; the index can be renamed freely.
-- Sums split over $$+$$, and constant factors come outside:
-  $$\sum (x_i + y_i) = \sum x_i + \sum y_i$$ and $$\sum c\,x_i = c\sum x_i$$.
-- Usual letters: $$a, b, c, x, y, z$$ for numbers, $$m, n, k, i, j$$ for whole numbers, $$P, Q$$ for
-  points, $$f, g$$ for functions.
-- Introduce every letter before using it.

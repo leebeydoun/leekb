@@ -3,33 +3,39 @@ title: Introduction
 description: How mathematical statements are written and proved, before the numbers begin.
 ---
 
-The other guides don't just state rules; they show why each one has to hold. That needs two things
-this guide sets out first: a careful way of **saying** things, so that every statement is clearly
-true or false, and a handful of ways of **proving** things, so that a statement can be settled for
-every case at once rather than checked on a few examples.
+At the heart of mathematics are statements: precise claims that are either true or false. This guide
+covers two tools for working with them, and every later guide relies on both:
 
-None of it needs more than everyday arithmetic. The examples use whole numbers, even and odd numbers
-and simple equations, and link to the [Numbers](../numbers/introduction.mdx) guide where a fact from
-there is used. You don't have to master every page before moving on: the later guides link back here
-whenever a pattern of proof is used, so this is also a guide to come back to.
+- A precise way to state a mathematical claim
+- The standard ways to prove one
 
-## The guide
+In mathematics, stating a rule is not enough. You also have to show why it must hold. A precise
+statement tells you exactly what is being claimed, so it is either **true** or **false**. A proof
+then settles the statement for every case at once, which no number of examples can do.
 
-1. [Statements](./statements.mdx): what makes a sentence true or false, "for every" and "there is",
-   and what equal and equivalent mean.
-2. [What a proof is](./proofs.mdx): direct proofs, counterexamples, proof by contradiction and
-   splitting into cases.
-3. [If, then and exactly when](./implications.mdx): implications, converses, contrapositives, and
-   statements that go both ways.
-4. [Proof by induction](./induction.mdx): proving a statement for every whole number by climbing one
-   step at a time.
-5. [Sets](./sets.mdx): sets, elements and subsets, and how to prove two sets are equal.
-6. [Notation](./notation.mdx): subscripts, sequences, sums written with $$\Sigma$$, and which letter
-   usually means what.
-7. [Test yourself](./test-yourself.mdx): a multiple choice quiz on the ideas in the guide.
-8. [Exercises](./exercises.mdx): exercises on the whole guide, with worked solutions.
+Each new statement builds on ones already proved, so they form the foundation for everything that
+follows. Reading a statement carefully, and following how it is proved, is the key to understanding
+the material in these guides and in any other mathematics you read.
 
-The summary below collects every definition and rule for quick reference.
+## Pages in this guide
+
+The guide has eight pages:
+
+1. [Statements](./statements.mdx): what makes a sentence true or false, what "for every" and "there
+   is" mean, and the difference between equal and equivalent
+2. [What a proof is](./proofs.mdx): direct proofs, counterexamples, proof by contradiction and proof
+   by cases
+3. [If, then and exactly when](./implications.mdx): converses, contrapositives, and statements that
+   work in both directions
+4. [Proof by induction](./induction.mdx): proving a statement for every whole number, one step at a
+   time
+5. [Sets](./sets.mdx): sets, elements and subsets, and how to prove that two sets are equal
+6. [Notation](./notation.mdx): subscripts, sequences, sums written with $$\Sigma$$, and which
+   letters usually stand for what
+7. [Test yourself](./test-yourself.mdx): a multiple choice quiz on the ideas in the guide
+8. [Exercises](./exercises.mdx): exercises on the whole guide, with worked solutions
+
+The summary below collects every definition and rule from the guide, for reference while you read.
 
 {/* Keep this summary in sync with the pages whenever they change. */}
 
@@ -37,26 +43,26 @@ The summary below collects every definition and rule for quick reference.
 
 **Definitions**
 
-| Term                                                | Meaning                                                                                     |
-| --------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| :ref[Statement]{#statement}                         | A sentence that is either true or false                                                     |
-| :ref[For every, there is]{#quantifiers}             | "For every $$x$$": true whatever $$x$$ is; "there is an $$x$$": true for at least one $$x$$ |
-| :ref[Equivalent statements]{#equivalent-statements} | Each is true exactly when the other is                                                      |
-| :ref[Counterexample]{#counterexample}               | One case where a "for every" statement fails                                                |
-| :ref[Converse]{#contrapositive}                     | Of "if $$P$$ then $$Q$$": "if $$Q$$ then $$P$$"                                             |
-| :ref[Contrapositive]{#contrapositive}               | Of "if $$P$$ then $$Q$$": "if not $$Q$$ then not $$P$$"                                     |
-| :ref[Exactly when]{#exactly-when}                   | Both "if $$P$$ then $$Q$$" and "if $$Q$$ then $$P$$"                                        |
-| :ref[Set]{#set}                                     | A collection of elements; $$x \in S$$ means $$x$$ is in $$S$$                               |
-| :ref[Subset]{#subset}                               | $$A \subseteq B$$ when every element of $$A$$ is in $$B$$                                   |
-| :ref[Empty set]{#empty-set}                         | $$\varnothing$$, the set with no elements                                                   |
-| :ref[Sequence]{#sequence}                           | A list $$x_1, \dots, x_n$$ in order; $$i$$ in $$x_i$$ is the index                          |
-| :ref[Sum notation]{#sum-notation}                   | $$\sum_{i=m}^{n} x_i = x_m + \dots + x_n$$                                                  |
+| Term                                                | Meaning                                                                                          |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| :ref[Statement]{#statement}                         | A sentence that is either true or false                                                          |
+| :ref[For every, there is]{#quantifiers}             | "For every $$x$$" claims something for all $$x$$; "there is an $$x$$" claims it for at least one |
+| :ref[Equivalent statements]{#equivalent-statements} | Each is true exactly when the other is                                                           |
+| :ref[Counterexample]{#counterexample}               | One case where a "for every" statement fails                                                     |
+| :ref[Converse]{#contrapositive}                     | Of "if $$P$$ then $$Q$$": "if $$Q$$ then $$P$$"                                                  |
+| :ref[Contrapositive]{#contrapositive}               | Of "if $$P$$ then $$Q$$": "if not $$Q$$ then not $$P$$"                                          |
+| :ref[Exactly when]{#exactly-when}                   | Both "if $$P$$ then $$Q$$" and "if $$Q$$ then $$P$$"                                             |
+| :ref[Set]{#set}                                     | A collection of elements, where $$x \in S$$ means $$x$$ is in $$S$$                              |
+| :ref[Subset]{#subset}                               | $$A \subseteq B$$ when every element of $$A$$ is in $$B$$                                        |
+| :ref[Empty set]{#empty-set}                         | $$\varnothing$$, the set with no elements                                                        |
+| :ref[Sequence]{#sequence}                           | A list $$x_1, \dots, x_n$$ in order, where $$i$$ in $$x_i$$ is the index                         |
+| :ref[Sum notation]{#sum-notation}                   | $$\sum_{i=m}^{n} x_i = x_m + \dots + x_n$$                                                       |
 
 **Statements**
 
-| Rule                                 | Statement                                                                                                                           |
-| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
-| :ref[Opposites]{#statement-negation} | Not "for every $$x$$, $$P(x)$$" is "for some $$x$$, not $$P(x)$$"; not "there is an $$x$$ with $$P(x)$$" is "no $$x$$ has $$P(x)$$" |
+| Rule                                 | Statement                                                                                                                            |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| :ref[Opposites]{#statement-negation} | The opposite of "every $$x$$ has $$P(x)$$" is "some $$x$$ doesn't", and the opposite of "some $$x$$ has $$P(x)$$" is "no $$x$$ does" |
 
 **What a proof is**
 
@@ -72,9 +78,9 @@ The summary below collects every definition and rule for quick reference.
 
 **Proof by induction**
 
-| Rule                        | Statement                                                          |
-| --------------------------- | ------------------------------------------------------------------ |
-| :ref[Induction]{#induction} | True for $$1$$, and $$k$$ leads to $$k + 1$$: true for every $$n$$ |
+| Rule                        | Statement                                                                                     |
+| --------------------------- | --------------------------------------------------------------------------------------------- |
+| :ref[Induction]{#induction} | If a statement holds for $$1$$, and each case implies the next, then it holds for every $$n$$ |
 
 **Sets**
 
