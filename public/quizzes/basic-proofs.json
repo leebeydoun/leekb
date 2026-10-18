@@ -1,0 +1,575 @@
+{
+  "title": "Review: Basic proofs",
+  "description": "Questions on the ideas in this guide, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
+  "questions": [
+    {
+      "id": "contrapositive",
+      "stars": 4,
+      "topic": "If, then and exactly when",
+      "question": "Which statement says exactly the same as “if $$3 \\mid a^2$$, then $$3 \\mid a$$”?",
+      "options": [
+        "If $$3 \\mid a$$, then $$3 \\mid a^2$$",
+        "If $$3 \\nmid a^2$$, then $$3 \\nmid a$$",
+        "If $$3 \\nmid a$$, then $$3 \\nmid a^2$$",
+        "$$3 \\mid a$$ and $$3 \\mid a^2$$"
+      ],
+      "answer": 2,
+      "explanation": "Swapping the two parts and denying both gives the contrapositive, which says the same as the original (:ref{#contrapositive-equivalent}); this is how :ref{#numbers/squares-three} is proved. The first option is the converse; it happens to be true, but it is a different statement. The second is the contrapositive of the converse, so it says the same as the first option, not as the original."
+    },
+    {
+      "id": "exactly-when",
+      "stars": 2,
+      "topic": "If, then and exactly when",
+      "question": "To prove “$$P$$ exactly when $$Q$$”, what has to be shown?",
+      "options": [
+        "That $$P$$ is true",
+        "That $$P$$ leads to $$Q$$",
+        "That $$Q$$ leads to $$P$$",
+        "That $$P$$ leads to $$Q$$, and $$Q$$ leads to $$P$$"
+      ],
+      "answer": 3,
+      "explanation": "“Exactly when” claims both directions, so both must be proved (:ref{#exactly-when}), as in the proof of :ref{#numbers/cross-multiplying-rational}."
+    },
+    {
+      "id": "contradiction",
+      "stars": 2,
+      "topic": "What a proof is",
+      "question": "What does a proof by contradiction do?",
+      "options": [
+        "Assumes the statement is false and shows this leads to something impossible",
+        "Finds an example where the statement fails",
+        "Proves the statement for small cases first",
+        "Proves the opposite statement"
+      ],
+      "answer": 0,
+      "explanation": "That is the pattern of :ref{#contradiction}. For example, :ref{#numbers/sqrt-two} supposes a rational square root of $$2$$ exists and shows its numerator and denominator would have to be both even, which is impossible for a fraction in lowest form."
+    },
+    {
+      "id": "examples-not-proof",
+      "stars": 3,
+      "topic": "What a proof is",
+      "question": "A rule has been checked for a thousand pairs of integers and always works. What does this establish?",
+      "options": [
+        "That it is true for all integers",
+        "That it is true for all integers up to a thousand",
+        "Only that it holds for those pairs; a proof is needed for every case",
+        "That it is probably an axiom"
+      ],
+      "answer": 2,
+      "explanation": "Checking cases can find a mistake but never covers every integer, and a pattern can hold for many cases and then break. That is why a “for every” claim needs a proof, built from definitions, basic rules and earlier results."
+    },
+    {
+      "id": "counterexample",
+      "stars": 1,
+      "topic": "What a proof is",
+      "question": "How many counterexamples are needed to show that a statement about every integer is false?",
+      "options": [
+        "One",
+        "At least two",
+        "As many as there are integers",
+        "None; such statements can't be disproved"
+      ],
+      "answer": 0,
+      "explanation": "A single case where the statement fails is enough (:ref{#counterexample}). For example, $$a = b = 1$$ shows that $$(a + b)^2 = a^2 + b^2$$ is not true for every $$a$$ and $$b$$."
+    },
+    {
+      "id": "induction-steps",
+      "stars": 2,
+      "topic": "Proof by induction",
+      "question": "A proof by induction that something holds for every positive integer $$n$$ must show which two things?",
+      "options": [
+        "It holds for $$n = 1$$ and for $$n = 2$$",
+        "It holds for $$n = 1$$, and whenever it holds for $$n = k$$ it holds for $$n = k + 1$$",
+        "It holds for a large $$n$$, and whenever it holds for $$n = k + 1$$ it holds for $$n = k$$",
+        "It holds whenever it holds for $$n = k + 1$$"
+      ],
+      "answer": 1,
+      "explanation": "Like a row of dominoes: the first one falls, and each one knocks over the next (:ref{#induction}). Without the first case nothing gets started."
+    },
+    {
+      "id": "st-not-statement",
+      "stars": 1,
+      "topic": "Statements",
+      "question": "Which of these is **not yet** a statement?",
+      "options": [
+        "$$15$$ is a multiple of $$4$$",
+        "Every whole number is even",
+        "$$n$$ is a multiple of $$4$$",
+        "$$12$$ is a multiple of $$4$$"
+      ],
+      "answer": 2,
+      "explanation": "A statement is either true or false (:ref{#statement}). The others are all statements, two of them false. “$$n$$ is a multiple of $$4$$” can't be judged until something is said about $$n$$."
+    },
+    {
+      "id": "st-false-statement",
+      "stars": 1,
+      "topic": "Statements",
+      "question": "Is “$$7$$ is even” a statement?",
+      "options": [
+        "No, because it is false",
+        "Yes: it is a false statement, and false statements are still statements",
+        "No, because it has no letters in it",
+        "Only once it has been proved"
+      ],
+      "answer": 1,
+      "explanation": "A statement only has to be true or false, not true (:ref{#statement}). “$$7$$ is even” makes a definite claim, which happens to be false."
+    },
+    {
+      "id": "st-one-example",
+      "stars": 2,
+      "topic": "Statements",
+      "question": "A single example where it works is enough to prove which kind of claim?",
+      "options": [
+        "“For every $$x$$, $$P(x)$$”",
+        "“There is no $$x$$ with $$P(x)$$”",
+        "None of them; examples never prove anything",
+        "“There is an $$x$$ with $$P(x)$$”"
+      ],
+      "answer": 3,
+      "explanation": "“There is” only claims at least one success, so one example proves it (:ref{#quantifiers}). Examples can't prove a “for every” claim, and one example works against a “there is no” claim."
+    },
+    {
+      "id": "st-opposite-every",
+      "stars": 2,
+      "topic": "Statements",
+      "question": "What is the opposite of “every number on the list is even”?",
+      "options": [
+        "Some number on the list is odd",
+        "Every number on the list is odd",
+        "No number on the list is even",
+        "Some number on the list is even"
+      ],
+      "answer": 0,
+      "explanation": "Denying a “for every” claim gives “there is one for which it fails” (:ref{#statement-negation}). “Every number is odd” is far stronger than needed."
+    },
+    {
+      "id": "st-which-numbers",
+      "stars": 3,
+      "topic": "Statements",
+      "question": "Is “there is a number $$x$$ with $$x^2 = 2$$” true?",
+      "options": [
+        "Yes, always",
+        "It depends on which numbers are allowed: false among fractions, true among real numbers",
+        "No, never",
+        "It is not a statement at all"
+      ],
+      "answer": 1,
+      "explanation": "No fraction squares to $$2$$ (:ref{#numbers/sqrt-two}), but the real number $$\\sqrt{2}$$ does. That is why a careful statement says what kind of number each letter is."
+    },
+    {
+      "id": "st-equivalent",
+      "stars": 3,
+      "topic": "Statements",
+      "question": "For a real number $$x$$, why are “$$x = 5$$” and “$$x^2 = 25$$” **not** equivalent?",
+      "options": [
+        "The second has a square in it, so it can't be equivalent to anything without one",
+        "Neither leads to the other",
+        "The first leads to the second, but $$x = -5$$ makes the second true and the first false",
+        "They are equivalent, since $$5^2 = 25$$"
+      ],
+      "answer": 2,
+      "explanation": "Equivalent statements are true for exactly the same $$x$$ (:ref{#equivalent-statements}). One direction holds, but not the other."
+    },
+    {
+      "id": "st-distinct",
+      "stars": 3,
+      "topic": "Statements",
+      "question": "Why does “for any numbers $$x$$ and $$y$$, $$\\frac{x^2 - y^2}{x - y} = x + y$$” need the word “distinct”?",
+      "options": [
+        "Because different letters must name different numbers",
+        "Because the identity is false for every $$x$$ and $$y$$",
+        "It doesn't; the statement is true as it stands",
+        "“Any numbers $$x$$ and $$y$$” includes $$x = y$$, where the left side divides by $$0$$"
+      ],
+      "answer": 3,
+      "explanation": "Different letters can name the same number, so a statement about “any $$x$$ and $$y$$” covers $$x = y$$. Saying “distinct” rules that case out, and then the identity holds."
+    },
+    {
+      "id": "st-solve",
+      "stars": 1,
+      "topic": "Statements",
+      "question": "What does “solve $$x^2 = 9$$” ask for?",
+      "options": [
+        "Every number $$x$$ with $$x^2 = 9$$, and a reason there are no others",
+        "One number that works, such as $$3$$",
+        "The positive answer only",
+        "A check that $$3^2 = 9$$"
+      ],
+      "answer": 0,
+      "explanation": "Solving means finding every solution: $$x = 3$$ or $$x = -3$$, with a reason there are no more."
+    },
+    {
+      "id": "pf-allowed-steps",
+      "stars": 1,
+      "topic": "What a proof is",
+      "question": "Which of these can justify a step in a proof?",
+      "options": [
+        "It works for every example tried",
+        "It looks true on a diagram",
+        "Most people believe it",
+        "A result proved earlier"
+      ],
+      "answer": 3,
+      "explanation": "Every step must follow from a definition, a basic rule taken as given, or a result proved earlier. Examples, pictures and opinion don't settle every case."
+    },
+    {
+      "id": "pf-different-letters",
+      "stars": 3,
+      "topic": "What a proof is",
+      "question": "To prove that the sum of two even numbers is even, why write them as $$2k$$ and $$2l$$ rather than $$2k$$ and $$2k$$?",
+      "options": [
+        "$$k$$ must always be odd",
+        "Using $$k$$ twice would only cover the case where the two numbers are equal",
+        "It makes no difference to the proof",
+        "Each letter can only be used once on a page"
+      ],
+      "answer": 1,
+      "explanation": "The two even numbers could be anything, so each needs its own letter. Writing both as $$2k$$ quietly assumes they are the same number."
+    },
+    {
+      "id": "pf-cases-miss",
+      "stars": 2,
+      "topic": "What a proof is",
+      "question": "A proof about every integer splits into the cases “positive” and “negative”. What is wrong?",
+      "options": [
+        "The cases miss $$0$$, so the proof doesn't cover every integer",
+        "Nothing; two cases are always enough",
+        "Proofs can't be split into cases",
+        "The negative case is never needed"
+      ],
+      "answer": 0,
+      "explanation": "A proof by cases must cover every possibility. $$0$$ is neither positive nor negative, so it needs its own case or must join one of the others."
+    },
+    {
+      "id": "pf-bad-contradiction",
+      "stars": 3,
+      "topic": "What a proof is",
+      "question": "A proof by contradiction reaches $$1 = 2$$, but one of its steps divided by a number that might be $$0$$. What has it shown?",
+      "options": [
+        "That the statement is true",
+        "That the statement is false",
+        "Nothing: the impossible result may come from the faulty step, not from the supposition",
+        "That $$1 = 2$$"
+      ],
+      "answer": 2,
+      "explanation": "Proof by contradiction (:ref{#contradiction}) blames the supposition only if every other step is valid. A faulty step could be the real cause."
+    },
+    {
+      "id": "pf-there-is-example",
+      "stars": 2,
+      "topic": "What a proof is",
+      "question": "How do you prove “there is an even prime number”?",
+      "options": [
+        "Check every even number",
+        "Show that no odd number is prime",
+        "It can't be proved, only checked",
+        "Give one: $$2$$ is even and prime"
+      ],
+      "answer": 3,
+      "explanation": "A “there is” claim needs only one example (:ref{#quantifiers}). It is “for every” claims that examples can't prove."
+    },
+    {
+      "id": "im-promise",
+      "stars": 2,
+      "topic": "If, then and exactly when",
+      "question": "“If you score over $$90$$, then you get an A.” What does this say about someone who scores $$80$$?",
+      "options": [
+        "Nothing: it only promises an A when the score is over $$90$$",
+        "They don't get an A",
+        "They do get an A",
+        "The statement is false"
+      ],
+      "answer": 0,
+      "explanation": "“If $$P$$, then $$Q$$” promises $$Q$$ whenever $$P$$ holds, and says nothing when $$P$$ fails."
+    },
+    {
+      "id": "im-converse-false",
+      "stars": 2,
+      "topic": "If, then and exactly when",
+      "question": "“If $$x > 2$$, then $$x^2 > 4$$” is true. Which value shows that its converse is false?",
+      "options": [
+        "$$x = 3$$",
+        "$$x = 2$$",
+        "$$x = -3$$",
+        "None; the converse of a true statement is true"
+      ],
+      "answer": 2,
+      "explanation": "The converse is “if $$x^2 > 4$$, then $$x > 2$$” (:ref{#contrapositive}). At $$x = -3$$, $$x^2 = 9 > 4$$ but $$x$$ is not bigger than $$2$$."
+    },
+    {
+      "id": "im-contrapositive-rain",
+      "stars": 2,
+      "topic": "If, then and exactly when",
+      "question": "Which statement says the same as “if it rains, the ground gets wet”?",
+      "options": [
+        "If the ground is wet, it rained",
+        "If the ground is not wet, it didn't rain",
+        "If it doesn't rain, the ground doesn't get wet",
+        "It rains exactly when the ground gets wet"
+      ],
+      "answer": 1,
+      "explanation": "That is the contrapositive, which stands or falls with the original (:ref{#contrapositive-equivalent}). The first is the converse, and the second is the contrapositive of the converse; a hose could wet the ground without rain."
+    },
+    {
+      "id": "im-only-if",
+      "stars": 3,
+      "topic": "If, then and exactly when",
+      "question": "What does “$$n$$ is a multiple of $$4$$ only if $$n$$ is even” mean?",
+      "options": [
+        "If $$n$$ is even, then $$n$$ is a multiple of $$4$$",
+        "$$n$$ is a multiple of $$4$$ exactly when $$n$$ is even",
+        "$$n$$ is never a multiple of $$4$$",
+        "If $$n$$ is a multiple of $$4$$, then $$n$$ is even"
+      ],
+      "answer": 3,
+      "explanation": "“$$P$$ only if $$Q$$” means “if $$P$$, then $$Q$$”: $$P$$ can't happen without $$Q$$. Reading it the other way round gives the converse, which is false here, since $$6$$ is even but not a multiple of $$4$$."
+    },
+    {
+      "id": "im-p-if-q",
+      "stars": 3,
+      "topic": "If, then and exactly when",
+      "question": "Which phrase means “if $$Q$$, then $$P$$”?",
+      "options": [
+        "$$P$$ if $$Q$$",
+        "$$P$$ only if $$Q$$",
+        "If $$P$$, then $$Q$$",
+        "$$P$$ if and only if $$Q$$"
+      ],
+      "answer": 0,
+      "explanation": "In “$$P$$ if $$Q$$”, the condition is $$Q$$. “$$P$$ only if $$Q$$” is the other direction, and “if and only if” is both (:ref{#exactly-when})."
+    },
+    {
+      "id": "in-not-circular",
+      "stars": 3,
+      "topic": "Proof by induction",
+      "question": "Why isn't it circular to assume $$P(k)$$ in the inductive step?",
+      "options": [
+        "Because $$P(k)$$ has already been checked for every $$k$$",
+        "It is circular, but induction allows it",
+        "Because the step only proves “if $$P(k)$$, then $$P(k + 1)$$”, not $$P(k)$$ itself",
+        "Because $$k$$ is always $$1$$"
+      ],
+      "answer": 2,
+      "explanation": "The step proves a link between neighbouring cases (:ref{#induction}). Only the base case and the chain of links together make every case true."
+    },
+    {
+      "id": "in-no-base",
+      "stars": 2,
+      "topic": "Proof by induction",
+      "question": "For $$P(n)$$: “$$n = n + 1$$”, the inductive step works: from $$k = k + 1$$, adding $$1$$ gives $$k + 1 = k + 2$$. What has been proved?",
+      "options": [
+        "That $$n = n + 1$$ for every $$n$$",
+        "Nothing, because the base case $$1 = 2$$ is false",
+        "That $$n = n + 1$$ for large $$n$$",
+        "That induction doesn't work"
+      ],
+      "answer": 1,
+      "explanation": "Without a base case nothing gets started: the step only passes truth along, and here there is none to pass (:ref{#induction})."
+    },
+    {
+      "id": "in-start-late",
+      "stars": 3,
+      "topic": "Proof by induction",
+      "question": "To prove $$2^n > n^2$$ for every $$n \\ge 5$$ by induction, what changes?",
+      "options": [
+        "The base case is $$n = 5$$, and the step may assume $$k \\ge 5$$",
+        "Nothing; the base case is still $$n = 1$$",
+        "The step must also work from $$k = 2$$ to $$k = 3$$",
+        "Induction can't be used, since the claim fails for $$n = 2$$"
+      ],
+      "answer": 0,
+      "explanation": "The chain starts at $$5$$, so the step is only ever used from $$5$$ onwards, and the fact that $$k \\ge 5$$ is available in it."
+    },
+    {
+      "id": "in-unused",
+      "stars": 4,
+      "topic": "Proof by induction",
+      "question": "An inductive step reaches $$P(k + 1)$$ without using $$P(k)$$ anywhere. What does that suggest?",
+      "options": [
+        "The proof is especially strong",
+        "The base case can be skipped",
+        "$$P(k)$$ must be false",
+        "Either the statement didn't need induction, or something has gone wrong"
+      ],
+      "answer": 3,
+      "explanation": "The point of the step is to use $$P(k)$$ to reach $$P(k + 1)$$. If it was never used, check the argument; a correct one could have proved $$P(n)$$ directly."
+    },
+    {
+      "id": "set-repeats",
+      "stars": 1,
+      "topic": "Sets",
+      "question": "Which is true of $$\\{1, 2\\}$$, $$\\{2, 1\\}$$ and $$\\{1, 1, 2\\}$$?",
+      "options": [
+        "They are three different sets",
+        "Only the first two are the same",
+        "They are all the same set",
+        "Only the first and last are the same"
+      ],
+      "answer": 2,
+      "explanation": "A set is decided by its elements (:ref{#set}); order and repeats don't count."
+    },
+    {
+      "id": "set-element-subset",
+      "stars": 2,
+      "topic": "Sets",
+      "question": "Which pair of statements is correct?",
+      "options": [
+        "$$2 \\subseteq \\{1, 2, 3\\}$$ and $$\\{2\\} \\in \\{1, 2, 3\\}$$",
+        "$$2 \\in \\{1, 2, 3\\}$$ and $$\\{2\\} \\subseteq \\{1, 2, 3\\}$$",
+        "$$2 \\subseteq \\{1, 2, 3\\}$$ and $$\\{2\\} \\subseteq \\{1, 2, 3\\}$$",
+        "$$2 \\in \\{1, 2, 3\\}$$ and $$\\{2\\} \\in \\{1, 2, 3\\}$$"
+      ],
+      "answer": 1,
+      "explanation": "A number is an element, written with $$\\in$$; a set is a subset, written with $$\\subseteq$$ (:ref{#subset}). The elements of $$\\{1, 2, 3\\}$$ are numbers, not sets."
+    },
+    {
+      "id": "set-empty-zero",
+      "stars": 2,
+      "topic": "Sets",
+      "question": "How is $$\\varnothing$$ different from $$\\{0\\}$$?",
+      "options": [
+        "$$\\varnothing$$ has no elements, while $$\\{0\\}$$ has one, the number $$0$$",
+        "They are the same set",
+        "$$\\{0\\}$$ has no elements, while $$\\varnothing$$ has one",
+        "$$\\varnothing$$ is a number and $$\\{0\\}$$ is a set"
+      ],
+      "answer": 0,
+      "explanation": "The empty set has nothing in it (:ref{#empty-set}). $$\\{0\\}$$ is a bag holding one thing, which happens to be zero."
+    },
+    {
+      "id": "set-empty-subset-why",
+      "stars": 3,
+      "topic": "Sets",
+      "question": "Why is $$\\varnothing$$ a subset of every set $$A$$?",
+      "options": [
+        "Because $$A$$ always contains $$0$$",
+        "It isn't; only $$\\varnothing \\subseteq \\varnothing$$",
+        "Because every set has $$\\varnothing$$ as an element",
+        "To fail, it would need an element outside $$A$$, and it has no elements at all"
+      ],
+      "answer": 3,
+      "explanation": "$$\\varnothing \\subseteq A$$ says every element of $$\\varnothing$$ is in $$A$$, and there is nothing that could break it (:ref{#set-empty-subset})."
+    },
+    {
+      "id": "set-equality-halves",
+      "stars": 2,
+      "topic": "Sets",
+      "question": "To prove two sets $$A$$ and $$B$$ are equal, what has to be shown?",
+      "options": [
+        "$$A \\subseteq B$$ only",
+        "That they have one element in common",
+        "$$A \\subseteq B$$ and $$B \\subseteq A$$",
+        "That they are described by the same test"
+      ],
+      "answer": 2,
+      "explanation": "Equal sets have exactly the same elements, which is both inclusions together (:ref{#set-equality}). A small set can sit inside a big one without being equal to it."
+    },
+    {
+      "id": "set-which-x",
+      "stars": 3,
+      "topic": "Sets",
+      "question": "What is $$\\{x : 0 < x < 4\\}$$?",
+      "options": [
+        "Always $$\\{1, 2, 3\\}$$",
+        "It depends on where $$x$$ comes from: $$\\{1, 2, 3\\}$$ among the integers, an interval among the real numbers",
+        "Always the interval $$(0, 4)$$",
+        "The empty set"
+      ],
+      "answer": 1,
+      "explanation": "A set given by a test should say what kind of object is allowed in, as in $$\\{x \\in \\mathbb{Z} : 0 < x < 4\\}$$, because that changes the answer."
+    },
+    {
+      "id": "set-solving-halves",
+      "stars": 4,
+      "topic": "Sets",
+      "question": "Solving an equation, the working gives a list of candidates, and then each candidate is checked. In terms of sets, what does each half show?",
+      "options": [
+        "The working shows the solution set is a subset of the list; the check shows the list is a subset of the solution set",
+        "The working shows the list is a subset of the solution set; the check is only for arithmetic slips",
+        "Both halves show the same inclusion",
+        "Neither half is about sets"
+      ],
+      "answer": 0,
+      "explanation": "Together the two inclusions make the list exactly the solution set (:ref{#set-equality}). Steps such as squaring can add candidates, which is why the check matters."
+    },
+    {
+      "id": "no-subscript",
+      "stars": 1,
+      "topic": "Notation",
+      "question": "What does $$x_2$$ mean?",
+      "options": [
+        "$$x$$ times $$2$$",
+        "$$x$$ squared",
+        "The second term of a list $$x_1, x_2, \\dots$$",
+        "$$x$$ plus $$2$$"
+      ],
+      "answer": 2,
+      "explanation": "A subscript is a label saying which number in the list is meant, not an operation."
+    },
+    {
+      "id": "no-equal-terms",
+      "stars": 2,
+      "topic": "Notation",
+      "question": "In “let $$x_1, x_2, x_3$$ be numbers”, can $$x_1$$ and $$x_2$$ be equal?",
+      "options": [
+        "No; different subscripts always mean different numbers",
+        "Only if $$x_3$$ is equal to them too",
+        "Only if they are whole numbers",
+        "Yes; different subscripts are just different names"
+      ],
+      "answer": 3,
+      "explanation": "As with different letters, different subscripts don't promise different values (:ref{#sequence})."
+    },
+    {
+      "id": "no-count-terms",
+      "stars": 2,
+      "topic": "Notation",
+      "question": "How many terms does $$\\sum_{i=3}^{8} x_i$$ add up?",
+      "options": ["$$5$$", "$$6$$", "$$8$$", "$$11$$"],
+      "answer": 1,
+      "explanation": "The index runs through $$3, 4, 5, 6, 7, 8$$ (:ref{#sum-notation}). From $$m$$ to $$n$$ there are $$n - m + 1$$ terms, not $$n - m$$."
+    },
+    {
+      "id": "no-rename",
+      "stars": 2,
+      "topic": "Notation",
+      "question": "Is $$\\sum_{i=1}^{n} x_i$$ the same as $$\\sum_{j=1}^{n} x_j$$?",
+      "options": [
+        "Yes: the index of summation only has a meaning inside the sum, so it can be renamed",
+        "No; $$i$$ and $$j$$ are different numbers",
+        "Only when $$n = 1$$",
+        "Only if $$i = j$$ is stated first"
+      ],
+      "answer": 0,
+      "explanation": "The index is a placeholder that runs through the values (:ref{#sum-notation}); any unused letter does the same job."
+    },
+    {
+      "id": "no-product",
+      "stars": 4,
+      "topic": "Notation",
+      "question": "Is $$\\sum_{i=1}^{n} x_i y_i$$ always equal to $$\\left(\\sum_{i=1}^{n} x_i\\right)\\left(\\sum_{i=1}^{n} y_i\\right)$$?",
+      "options": [
+        "Yes, by the rules for sums",
+        "Yes, because multiplication is commutative",
+        "Only when every $$x_i$$ is $$0$$",
+        "No: with $$n = 2$$ and every term $$1$$, the left side is $$2$$ and the right side is $$4$$"
+      ],
+      "answer": 3,
+      "explanation": "Sums split over $$+$$ and constant factors come out (:ref{#notation-sum-rules}), but a sum of products is not a product of sums; one counterexample (:ref{#counterexample}) settles it."
+    },
+    {
+      "id": "no-introduce",
+      "stars": 1,
+      "topic": "Notation",
+      "question": "Why should every letter be introduced before it is used?",
+      "options": [
+        "Because each letter can only be used once",
+        "So the reader knows what kind of thing it is, and whether the claim is about every value or just some",
+        "So that it can be given a numerical value",
+        "It doesn't matter as long as the answer is right"
+      ],
+      "answer": 1,
+      "explanation": "A letter from nowhere leaves the reader guessing (:ref{#notation-introduce}). Introducing it also fixes the quantifier (:ref{#quantifiers})."
+    }
+  ]
+}

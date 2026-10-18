@@ -1,0 +1,14 @@
+{
+  "title": "Basic proofs",
+  "pages": [
+    "introduction",
+    "statements",
+    "proofs",
+    "implications",
+    "induction",
+    "sets",
+    "notation",
+    "test-yourself",
+    "exercises"
+  ]
+}

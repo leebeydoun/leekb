@@ -1,7 +1,8 @@
 {
-  "title": "Mathematics",
+  "title": "Basic Mathematics",
   "description": "Just notes as I look to improve my maths skills",
   "pages": [
+    "basic-proofs",
     "numbers",
     "linear-equations",
     "real-numbers",

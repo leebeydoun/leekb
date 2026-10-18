@@ -53,7 +53,7 @@ same remainder when divided by $$d$$.
 
 :::proof{source="https://math.libretexts.org/Courses/Mount_Royal_University/Abstract_Algebra_I/Chapter_1:_Integers/1.4:_Integers_modulo_n"}
 
-There are two directions to prove (:ref{#exactly-when}).
+There are two directions to prove (:ref{#basic-proofs/exactly-when}).
 
 **Same remainder gives congruent.** If $$a$$ and $$b$$ leave the same remainder $$r$$, write
 $$a = dq + r$$ and $$b = dq' + r$$. Subtracting, the two $$r$$s cancel:
@@ -275,7 +275,7 @@ The second form uses $$a^k a^1 = a^{k+1}$$ from :ref{#power-rules}, and the same
 
 So whenever the statement holds for one power, it also holds for the next. Starting from $$n = 1$$,
 it therefore holds for $$n = 2$$, then for $$n = 3$$, and so on, reaching every positive integer
-$$n$$. This is a proof by induction (:ref{#induction}).
+$$n$$. This is a proof by induction (:ref{#basic-proofs/induction}).
 
 :::
 
@@ -324,10 +324,10 @@ If $$a$$ is an integer and $$3 \mid a^2$$, then $$3 \mid a$$.
 
 :::proof{source="https://proofwiki.org/wiki/Square_Modulo_3"}
 
-It is easier to prove the contrapositive (:ref{#contrapositive}). Instead of showing "if
-$$3 \mid a^2$$ then $$3 \mid a$$", we show that if $$a$$ is **not** a multiple of $$3$$, then
-$$a^2$$ is **not** a multiple of $$3$$ either. By :ref{#contrapositive-equivalent} the two say the
-same thing.
+It is easier to prove the contrapositive (:ref{#basic-proofs/contrapositive}). Instead of showing
+"if $$3 \mid a^2$$ then $$3 \mid a$$", we show that if $$a$$ is **not** a multiple of $$3$$, then
+$$a^2$$ is **not** a multiple of $$3$$ either. By :ref{#basic-proofs/contrapositive-equivalent} the
+two say the same thing.
 
 Dividing by $$3$$ (:ref{#division-remainder}), every integer has remainder $$0$$, $$1$$ or $$2$$, so
 by :ref{#same-remainder} it is congruent to one of $$0$$, $$1$$ and $$2$$ modulo $$3$$.

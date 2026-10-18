@@ -1,0 +1,262 @@
+---
+title: What a proof is
+description: What counts as a proof, direct proofs, counterexamples, contradiction and cases.
+---
+
+Mathematics doesn't just say that a rule holds; it shows why it has to. The argument that does this
+is called a **proof**. Proofs can look intimidating at first, but almost all of them are built from
+a handful of patterns. Once you can recognise the pattern a proof is using, it becomes much easier
+to follow, and much easier to write one yourself.
+
+This page covers what a proof is, and the patterns used most often: arguing directly, disproving
+with a single example, arguing by contradiction, and splitting into cases. The next two pages cover
+["if, then" statements](./implications.mdx) and [induction](./induction.mdx). The examples use even
+and odd numbers and remainders, which are defined in the [Numbers](../numbers/divisibility.mdx)
+guide, but only in ways that should already feel familiar: an even number is $$2$$ times a whole
+number, and an odd number is one more than an even number.
+
+## What a proof is
+
+Think of a proof as an explanation good enough to convince a careful sceptic. Saying "I tried
+$$2 + 4$$, $$6 + 8$$ and $$10 + 12$$, and they all came out even" won't do, because the sceptic can
+always ask about the next pair. What convinces them is a reason that works for every pair at once. A
+proof is that kind of reason, written so that each step can be checked.
+
+A **proof** is a chain of steps that starts from things we already accept and ends at the statement
+we want. Every step has to be justified by one of three things:
+
+- a **definition**, which says exactly what a word means;
+- a **basic rule** that we have agreed to take as given, such as $$a + b = b + a$$;
+- a **result proved earlier**.
+
+Nothing else is allowed: not "it looks true", not "it works for the examples I tried". In return, a
+proof settles a question **for every case at once**, including the infinitely many cases nobody will
+ever check by hand. That is what makes it so much stronger than checking examples.
+
+In these notes a proof sits under the statement it proves, in a box marked _Proof_, and ends with
+the symbol ∎ to show that the argument is finished.
+
+### Letters stand for every number at once
+
+Statements in mathematics usually talk about letters, as in "for any integers $$a$$ and $$b$$,
+$$a + b = b + a$$". The letter doesn't stand for one particular number that we have forgotten; it
+stands for any integer at all. A proof about $$a$$ and $$b$$ may only use facts that are true of
+**every** integer, and that is exactly why its conclusion holds for every integer.
+
+Whether a letter means every number or just some number is said by the words around it: "for every"
+or "there is" (:ref{#quantifiers}). Definitions often hide a "there is". For example, "$$n$$ is
+even" means $$n = 2k$$ for **some** integer $$k$$ (:ref{#numbers/even-odd}). Spotting these hidden
+phrases is the first step in most proofs.
+
+### Saying the opposite
+
+Several proof methods below start by supposing that a statement is **false**, so they rely on saying
+"not" correctly. The rules are on the Statements page (:ref{#statement-negation}): to deny that all
+swans are white, you only need one swan that isn't; and the opposite of "both are even" is "at least
+one is odd", not "both are odd".
+
+## Direct proofs
+
+The most common pattern simply starts from what we are told and works forward, step by step, to what
+we want. A reliable way to find a direct proof is:
+
+1. **Write down what you are given**, and unpack every definition in it into a formula.
+2. **Write down what you want**, also unpacked into a formula. This is your target.
+3. **Bridge the gap**: rearrange what you have until it matches the target.
+
+Step 2 is the one people skip, and it is often the most useful. Once you can see the exact form the
+answer must take, the algebra usually tells you what to do.
+
+:::example[A sum of even numbers]
+
+**Claim.** If $$a$$ and $$b$$ are even, then $$a + b$$ is even.
+
+**Given.** $$a$$ and $$b$$ are even, so by :ref{#numbers/even-odd} there are integers $$k$$ and
+$$l$$ with $$a = 2k$$ and $$b = 2l$$. (We use two different letters, because $$a$$ and $$b$$ needn't
+be equal.)
+
+**Want.** $$a + b = 2 \times (\text{some integer})$$.
+
+**Bridge.** Substitute and take out the common factor:
+
+```math
+a + b = 2k + 2l = 2(k + l)
+```
+
+Since $$k + l$$ is an integer, $$a + b$$ is $$2$$ times an integer, so it is even.
+
+:::
+
+:::example[Multiples of 6 are multiples of 3]
+
+**Claim.** If $$n$$ is a multiple of $$6$$, then $$n$$ is a multiple of $$3$$.
+
+**Given.** $$n = 6k$$ for some integer $$k$$.
+
+**Want.** $$n = 3 \times (\text{some integer})$$.
+
+**Bridge.** $$n = 6k = 3(2k)$$, and $$2k$$ is an integer.
+
+:::
+
+It is fine, and often wise, to work **backwards** on scrap paper, starting from the target and
+asking "what would I need for this to be true?". But the written proof should run forwards, from
+what is given to what is wanted, so that every step follows from the ones before it.
+
+## Examples can't prove, but one example can disprove
+
+Checking examples is an excellent way to guess what is true. It can never prove a "for every"
+statement, though, because however many cases you check, there are always infinitely many left. On
+the other hand, a single case where a statement fails is enough to show that it is false.
+
+:::definition[Counterexample]{#counterexample}
+
+A **counterexample** to a statement about every number is one particular number for which the
+statement is false.
+
+:::
+
+This is the rule for opposites (:ref{#statement-negation}) at work: "not every number has property
+$$P$$" means "some number fails to have it", and a counterexample is that number.
+
+:::example[Patterns can break]
+
+Is $$n^2 + n + 11$$ never a multiple of $$11$$, for positive integers $$n$$? Checking the first few
+values gives
+
+```math
+13,\ 17,\ 23,\ 31,\ 41,\ 53,\ 67,\ 83,\ 101
+```
+
+for $$n = 1, \dots, 9$$, and none of them is a multiple of $$11$$. But $$n = 10$$ gives
+$$100 + 10 + 11 = 121 = 11 \cdot 11$$. Nine cases in a row looked convincing, and the tenth is a
+counterexample.
+
+:::
+
+Counterexamples are also the quickest way to catch a tempting mistake. Is $$(a + b)^2$$ the same as
+$$a^2 + b^2$$? Taking $$a = b = 1$$ gives $$4$$ on the left and $$2$$ on the right, so no.
+
+When hunting for a counterexample, try the awkward cases first: $$0$$, $$1$$, negative numbers, two
+equal numbers, and small numbers that are easy to check. Statements that are false usually fail
+somewhere simple.
+
+## Proof by contradiction
+
+People argue this way all the time. "If it had rained in the night, the pavement would be wet. The
+pavement is dry, so it didn't rain." You take the idea you want to rule out, follow it to its
+consequences, and find one that can't be right. Then the idea itself has to go.
+
+In a proof, the idea we want to rule out is that the statement is false. So to prove that something
+is true, we can suppose that it is **false**, and show that this leads to something impossible.
+
+:::remark[Proof by contradiction]{#contradiction}
+
+To prove a statement $$S$$:
+
+1. Suppose $$S$$ is false.
+2. Using that supposition, together with definitions, rules and earlier results, reach something
+   impossible: a statement that contradicts itself, or contradicts something already known.
+3. Conclude that the supposition was wrong, so $$S$$ is true.
+
+:::
+
+Why does this work? Correct steps never lead from true statements to a false one. So if correct
+steps have led to something impossible, one of the starting points must have been false, and the
+only starting point we weren't sure of was the supposition that $$S$$ is false.
+
+:::example[There is no largest integer]
+
+**Claim.** There is no largest integer.
+
+**Suppose not:** suppose there is a largest integer, and call it $$N$$. Then $$N + 1$$ is also an
+integer, and $$N + 1 > N$$. So $$N$$ is not the largest after all, which contradicts the way we
+chose it. So there is no largest integer.
+
+:::
+
+:::example[An equation with no solutions]
+
+**Claim.** There are no integers $$m$$ and $$n$$ with $$2m + 4n = 7$$.
+
+**Suppose not:** suppose $$2m + 4n = 7$$ for some integers $$m$$ and $$n$$. The left side is
+$$2(m + 2n)$$, which is even. The right side, $$7 = 2 \cdot 3 + 1$$, is odd. So $$7$$ would be both
+even and odd, which is impossible (:ref{#numbers/even-or-odd}). So there are no such integers.
+
+:::
+
+Proof by contradiction is especially useful for statements that say something **doesn't** exist,
+like these two, because "it does exist" gives us something concrete to work with. The most famous
+example, in the [Numbers](../numbers/irrational-numbers.mdx) guide, shows that no fraction squares
+to $$2$$. It supposes that one does, writes it in lowest form, and shows that its top and bottom
+would then both have to be even, which lowest form rules out.
+
+Proving the contrapositive, which the [next page](./implications.mdx) explains, is closely related:
+supposing "not $$Q$$" and reaching "not $$P$$" is the same as supposing $$P$$ and "not $$Q$$"
+together and reaching a contradiction. When an argument naturally ends in "not $$P$$", the
+contrapositive is the cleaner way to write it.
+
+## Splitting into cases
+
+When every number falls into one of a few kinds, we can prove a statement by checking each kind
+separately. The important thing is that the cases must **cover every possibility**, or the proof has
+a hole.
+
+:::example[Two cases]
+
+**Claim.** For every integer $$n$$, the number $$n^2 + n$$ is even.
+
+Every integer is either even or odd (:ref{#numbers/even-or-odd}), so two cases cover everything.
+
+**Case 1: $$n$$ is even.** Write $$n = 2k$$. Then $$n^2 + n = 4k^2 + 2k = 2(2k^2 + k)$$, which is
+even.
+
+**Case 2: $$n$$ is odd.** Write $$n = 2k + 1$$. Then
+
+```math
+n^2 + n = (4k^2 + 4k + 1) + (2k + 1) = 4k^2 + 6k + 2 = 2(2k^2 + 3k + 1)
+```
+
+which is even too.
+
+:::
+
+There is a neater proof here as well: $$n^2 + n = n(n + 1)$$ is a product of two consecutive
+integers, one of which is even. Looking for a slicker argument after finding one that works is a
+good habit, but a proof by cases that works is a perfectly good proof.
+
+Cases can be split more than two ways. Dividing by $$3$$ leaves remainder $$0$$, $$1$$ or $$2$$
+(:ref{#numbers/division-remainder}), so every integer can be written as $$3k$$, $$3k + 1$$ or
+$$3k + 2$$.
+
+:::example[Three cases]
+
+**Claim.** For every integer $$n$$, the number $$n(n + 1)(2n + 1)$$ is a multiple of $$3$$.
+
+In each case we find one factor that is a multiple of $$3$$, which makes the whole product one.
+
+- **$$n = 3k$$:** the factor $$n$$ is a multiple of $$3$$.
+- **$$n = 3k + 1$$:** the factor $$2n + 1 = 6k + 3 = 3(2k + 1)$$ is a multiple of $$3$$.
+- **$$n = 3k + 2$$:** the factor $$n + 1 = 3k + 3 = 3(k + 1)$$ is a multiple of $$3$$.
+
+:::
+
+## Common mistakes
+
+- **Treating examples as a proof.** However many cases you check, a "for every" claim needs an
+  argument that covers all of them.
+- **Getting the opposite wrong.** Supposing "every number is odd" when the statement to deny is
+  "every number is even" sets up the wrong contradiction; the opposite is "some number is odd".
+- **Cases that miss something.** Splitting into "positive" and "negative" forgets $$0$$.
+- **Using what you want to prove.** A step that quietly assumes the conclusion makes the argument go
+  round in a circle.
+- **A contradiction from a wrong step.** Reaching something impossible only proves the statement if
+  every step on the way was correct. A slip in algebra can "prove" anything.
+
+## In short
+
+- A proof uses only definitions, basic rules and earlier results, and settles every case at once.
+- Direct proof: unpack what you are given and what you want, then bridge the gap.
+- One counterexample shows a "for every" statement is false; examples never prove one.
+- Proof by contradiction supposes the statement is false and reaches something impossible.
+- Proof by cases must cover every possibility.

@@ -507,20 +507,6 @@
       "explanation": "Congruences can be added and multiplied, but a common factor cannot always be cancelled (:ref{#no-cancel}). For example $$2 \\cdot 3 \\equiv 2 \\cdot 8 \\pmod{10}$$, but $$3 \\not\\equiv 8 \\pmod{10}$$."
     },
     {
-      "id": "contrapositive",
-      "stars": 4,
-      "topic": "How proofs work",
-      "question": "Which statement says exactly the same as “if $$3 \\mid a^2$$, then $$3 \\mid a$$”?",
-      "options": [
-        "If $$3 \\mid a$$, then $$3 \\mid a^2$$",
-        "If $$3 \\nmid a^2$$, then $$3 \\nmid a$$",
-        "If $$3 \\nmid a$$, then $$3 \\nmid a^2$$",
-        "$$3 \\mid a$$ and $$3 \\mid a^2$$"
-      ],
-      "answer": 2,
-      "explanation": "Turning a statement round and negating both parts gives an equivalent statement, which is how :ref{#squares-three} is proved. The first option is the converse; it happens to be true, but it is a different statement. The second is the converse turned round, so it is equivalent to the first option, not to the original."
-    },
-    {
       "id": "squares-mod-three",
       "stars": 4,
       "topic": "Congruence",
@@ -911,76 +897,6 @@
       ],
       "answer": 1,
       "explanation": "Cross-multiplying turns the question into one about products, which can be expanded. Only $$x^n$$ and $$-1$$ survive (:ref{#sum-of-powers})."
-    },
-    {
-      "id": "exactly-when",
-      "stars": 2,
-      "topic": "How proofs work",
-      "question": "To prove “$$P$$ exactly when $$Q$$”, what has to be shown?",
-      "options": [
-        "That $$P$$ is true",
-        "That $$P$$ leads to $$Q$$",
-        "That $$Q$$ leads to $$P$$",
-        "That $$P$$ leads to $$Q$$, and $$Q$$ leads to $$P$$"
-      ],
-      "answer": 3,
-      "explanation": "“Exactly when” claims both directions, so both must be proved, as in the proof of :ref{#cross-multiplying-rational}."
-    },
-    {
-      "id": "contradiction",
-      "stars": 2,
-      "topic": "How proofs work",
-      "question": "What does a proof by contradiction do?",
-      "options": [
-        "Assumes the statement is false and shows this leads to something impossible",
-        "Finds an example where the statement fails",
-        "Proves the statement for small cases first",
-        "Proves the opposite statement"
-      ],
-      "answer": 0,
-      "explanation": "For example, :ref{#sqrt-two} supposes a rational square root of $$2$$ exists and shows its numerator and denominator would have to be both even, which is impossible for a fraction in lowest form."
-    },
-    {
-      "id": "examples-not-proof",
-      "stars": 3,
-      "topic": "How proofs work",
-      "question": "A rule has been checked for a thousand pairs of integers and always works. What does this establish?",
-      "options": [
-        "That it is true for all integers",
-        "That it is true for all integers up to a thousand",
-        "Only that it holds for those pairs; a proof is needed for every case",
-        "That it is probably an axiom"
-      ],
-      "answer": 2,
-      "explanation": "Checking cases can find a mistake but never covers every integer. That is why the guide proves each rule from a few basic ones."
-    },
-    {
-      "id": "counterexample",
-      "stars": 1,
-      "topic": "How proofs work",
-      "question": "How many counterexamples are needed to show that a statement about every integer is false?",
-      "options": [
-        "One",
-        "At least two",
-        "As many as there are integers",
-        "None; such statements can't be disproved"
-      ],
-      "answer": 0,
-      "explanation": "A single case where the statement fails is enough (:ref{#counterexample}). For example, $$a = b = 1$$ shows that $$(a + b)^2 = a^2 + b^2$$ is not true for every $$a$$ and $$b$$."
-    },
-    {
-      "id": "induction-steps",
-      "stars": 2,
-      "topic": "How proofs work",
-      "question": "A proof by induction that something holds for every positive integer $$n$$ must show which two things?",
-      "options": [
-        "It holds for $$n = 1$$ and for $$n = 2$$",
-        "It holds for $$n = 1$$, and whenever it holds for $$n = k$$ it holds for $$n = k + 1$$",
-        "It holds for a large $$n$$, and whenever it holds for $$n = k + 1$$ it holds for $$n = k$$",
-        "It holds whenever it holds for $$n = k + 1$$"
-      ],
-      "answer": 1,
-      "explanation": "Like a row of dominoes: the first one falls, and each one knocks over the next (:ref{#induction}). Without the first case nothing gets started."
     },
     {
       "id": "order-definition",

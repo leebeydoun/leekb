@@ -1,0 +1,189 @@
+---
+title: Notation
+description:
+  Subscripts, sequences, the sum sign Σ, and the conventions for which letter usually means what.
+---
+
+Good notation lets a reader see at a glance what each symbol is. A few habits make this possible:
+naming many numbers at once with subscripts, writing long sums compactly with $$\Sigma$$, and
+keeping to the same kinds of letter for the same kinds of thing. None of this is new mathematics,
+but every later guide uses it, so it is worth setting out once.
+
+## Subscripts
+
+The alphabet runs out quickly. A statement about two numbers can call them $$x$$ and $$y$$, and one
+about three can add $$z$$, but a statement about ten numbers, or about "any number of numbers",
+needs another way. The answer is to use one letter with a small label underneath: $$x_1$$, $$x_2$$,
+$$x_3$$, and so on, read "$$x$$ one", "$$x$$ two", "$$x$$ three". The label is called a
+**subscript** or **index**, and it only says which number is meant: $$x_2$$ is the second one, not
+$$x$$ times $$2$$.
+
+With subscripts, "let $$x_1, x_2, \dots, x_n$$ be numbers" names $$n$$ numbers at once, whatever
+whole number $$n$$ is. As with different letters (see [Statements](./statements.mdx)), different
+subscripts don't promise different values: $$x_1$$ and $$x_2$$ may well be equal. A general position
+in the list is written with a letter as the index, $$x_i$$ or $$x_j$$, meaning "the $$i$$-th one".
+
+## Sequences
+
+Numbers labelled $$1, 2, \dots, n$$ in order form a list where position matters: there is a first, a
+second, and so on. Such a list is called a sequence. Often there is a rule giving each term from its
+position, and then the whole sequence can be described in one line.
+
+:::definition[Sequence]{#sequence}
+
+A **finite sequence** $$x_1, x_2, \dots, x_n$$ is a list of numbers in a fixed order, one for each
+whole number from $$1$$ to $$n$$. The number $$x_i$$ is its **$$i$$-th term**, and $$i$$ is the
+term's **index**. Sometimes the indices start at $$0$$ instead of $$1$$.
+
+:::
+
+:::example[Sequences given by a rule]
+
+- If $$x_i = 2i$$ for $$i = 1, 2, \dots, 5$$, the sequence is $$2, 4, 6, 8, 10$$.
+- If $$y_i = i^2 - 1$$ for $$i = 1, 2, 3, 4$$, the sequence is $$0, 3, 8, 15$$.
+- If $$z_i = 7$$ for $$i = 1, 2, 3$$, the sequence is $$7, 7, 7$$. All the terms are equal, which is
+  allowed.
+
+:::
+
+The order matters: $$1, 2, 3$$ and $$3, 2, 1$$ are different sequences, even though they contain the
+same numbers.
+
+## The sum sign
+
+Adding up the terms of a sequence comes up so often that it has its own symbol, the capital Greek
+letter sigma, $$\Sigma$$, for "sum". Instead of writing $$x_1 + x_2 + \dots + x_n$$, we write
+
+```math
+\sum_{i=1}^{n} x_i,
+```
+
+read "the sum of $$x_i$$ for $$i$$ from $$1$$ to $$n$$". The letter $$i$$ runs through the whole
+numbers from the one written below to the one written above, and for each value the expression after
+$$\Sigma$$ is worked out and added on.
+
+:::definition[Sum notation]{#sum-notation}
+
+For whole numbers $$m \le n$$,
+
+```math
+\sum_{i=m}^{n} x_i = x_m + x_{m+1} + \dots + x_n.
+```
+
+The letter $$i$$ is the **index of summation**. It has no meaning outside the sum, so any other
+letter not already in use would do just as well: $$\sum_{j=m}^{n} x_j$$ is the same sum.
+
+:::
+
+:::example[Reading sums]
+
+- $$\sum_{i=1}^{4} i = 1 + 2 + 3 + 4 = 10$$.
+- $$\sum_{i=1}^{3} i^2 = 1 + 4 + 9 = 14$$.
+- $$\sum_{k=2}^{5} (2k - 1) = 3 + 5 + 7 + 9 = 24$$.
+- $$\sum_{i=1}^{6} 5 = 5 + 5 + 5 + 5 + 5 + 5 = 30$$: the expression doesn't involve $$i$$, so the
+  same number is added six times.
+
+:::
+
+The sum notation makes long statements short. The formula for adding up $$1$$ to $$n$$, proved by
+induction on the [Induction](./induction.mdx) page, becomes
+
+```math
+\sum_{i=1}^{n} i = \frac{n(n + 1)}{2}.
+```
+
+## Working with sums
+
+A sum written with $$\Sigma$$ is still just an ordinary sum, so the usual rules of arithmetic apply
+to it. Two of them are used all the time. Adding two sequences term by term and then adding up gives
+the same as adding up each one and then adding the totals. And a number that multiplies every term
+can be taken outside the sum.
+
+:::proposition[Rules for sums]{#notation-sum-rules}
+
+For numbers $$x_1, \dots, x_n$$ and $$y_1, \dots, y_n$$, and any number $$c$$,
+
+```math
+\sum_{i=1}^{n} (x_i + y_i) = \sum_{i=1}^{n} x_i + \sum_{i=1}^{n} y_i
+\qquad\text{and}\qquad
+\sum_{i=1}^{n} c\,x_i = c \sum_{i=1}^{n} x_i.
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Summation#General_identities"}
+
+Written out, the left side of the first rule is
+
+```math
+(x_1 + y_1) + (x_2 + y_2) + \dots + (x_n + y_n).
+```
+
+Addition can be done in any order and grouped in any way (:ref{#numbers/addition-rules}), so this
+equals $$(x_1 + x_2 + \dots + x_n) + (y_1 + y_2 + \dots + y_n)$$, which is the right side.
+
+For the second rule, the left side is $$cx_1 + cx_2 + \dots + cx_n$$. By distributivity
+(:ref{#numbers/multiplication-rules}), applied once for each extra term, this equals
+$$c(x_1 + x_2 + \dots + x_n)$$, which is the right side.
+
+:::
+
+:::example[Using the rules]
+
+Using $$\sum_{i=1}^{n} i = \frac{n(n + 1)}{2}$$,
+
+```math
+\sum_{i=1}^{10} (3i + 2) = 3\sum_{i=1}^{10} i + \sum_{i=1}^{10} 2 = 3 \cdot 55 + 20 = 185.
+```
+
+:::
+
+## Which letter for what
+
+A letter means whatever it is said to mean, so in principle any letter could stand for anything. In
+practice, keeping to a few habits lets a reader guess correctly before being told:
+
+- $$a$$, $$b$$, $$c$$ and $$x$$, $$y$$, $$z$$ usually stand for numbers, with $$x$$, $$y$$, $$z$$
+  most often the unknowns.
+- $$m$$, $$n$$, $$k$$ and $$i$$, $$j$$ usually stand for whole numbers, especially counts and
+  indices.
+- Capital letters like $$P$$ and $$Q$$ usually stand for points, in geometry.
+- $$f$$ and $$g$$ will stand for functions, in later guides.
+
+These are habits, not rules, and they bend when letters run short. What does not bend is that every
+letter must be **introduced before it is used**: "let $$n$$ be a whole number", "for every real
+number $$x$$", "there is an integer $$k$$ with …". A letter that appears from nowhere leaves the
+reader guessing what it is, and whether the claim is about every value or just some
+(:ref{#quantifiers}).
+
+:::remark[Introducing letters]{#notation-introduce}
+
+Every letter in a statement or proof should be introduced, saying what kind of thing it is, before
+it is used. Once introduced, it keeps the same meaning until the end of the statement or proof.
+
+::see-also{src="https://en.wikipedia.org/wiki/Free_variables_and_bound_variables#In_proofs"}
+
+:::
+
+## Common mistakes
+
+- **Reading a subscript as a multiplication.** $$x_2$$ is the second term, not $$2x$$.
+- **Assuming different subscripts mean different values.** $$x_1$$ and $$x_2$$ may be equal.
+- **Using the index of summation outside the sum.** In $$\sum_{i=1}^{n} x_i$$, the letter $$i$$ only
+  has a meaning inside the sum.
+- **Miscounting the terms.** $$\sum_{i=m}^{n}$$ has $$n - m + 1$$ terms, not $$n - m$$. For example,
+  $$\sum_{i=1}^{6} 5 = 30$$, not $$25$$.
+- **Splitting a sum of products wrongly.** The rules allow sums of terms and constant factors to be
+  split, but $$\sum x_i y_i$$ is **not** $$\left(\sum x_i\right)\left(\sum y_i\right)$$ in general.
+- **Using a letter before saying what it is.** Introduce every letter first.
+
+## In short
+
+- Subscripts name many numbers with one letter: $$x_1, \dots, x_n$$; they may be equal.
+- A finite sequence is a list $$x_1, \dots, x_n$$ in order, often given by a rule for $$x_i$$.
+- $$\sum_{i=m}^{n} x_i$$ means $$x_m + \dots + x_n$$; the index can be renamed freely.
+- Sums split over $$+$$, and constant factors come outside:
+  $$\sum (x_i + y_i) = \sum x_i + \sum y_i$$ and $$\sum c\,x_i = c\sum x_i$$.
+- Usual letters: $$a, b, c, x, y, z$$ for numbers, $$m, n, k, i, j$$ for whole numbers, $$P, Q$$ for
+  points, $$f, g$$ for functions.
+- Introduce every letter before using it.

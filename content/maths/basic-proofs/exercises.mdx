@@ -1,0 +1,746 @@
+---
+title: Exercises
+description: Exercises on the whole guide, with worked solutions.
+---
+
+These exercises follow the order of the guide, from statements to notation. Most of them ask for a
+short proof, a counterexample, or a reason why an argument works or fails, rather than a number. Try
+each one before opening its solution: the point is to practise saying exactly what is claimed and
+then backing it up.
+
+## Statements
+
+::::exercise{#ex-statement-or-not}
+
+Which of these are statements? For each one that is, say whether it is true or false.
+
+1. $$9$$ is a multiple of $$3$$.
+2. $$n + 1 > n$$.
+3. Every odd number is prime.
+4. Find a number $$x$$ with $$4x = 2$$.
+5. There is a whole number $$n$$ with $$n^2 = 10$$.
+
+:::solution
+
+1. A statement, and true: $$9 = 3 \cdot 3$$.
+2. Not yet a statement, because $$n$$ hasn't been given a meaning (:ref{#statement}). "For every
+   whole number $$n$$, $$n + 1 > n$$" would be a true statement.
+3. A statement, and false: $$9$$ is odd but $$9 = 3 \cdot 3$$ is not prime. One failure is enough to
+   sink a "for every" claim (:ref{#counterexample}).
+4. An instruction, not a statement: it doesn't claim anything.
+5. A statement, and false: $$3^2 = 9$$ and $$4^2 = 16$$, and the squares of whole numbers jump from
+   $$9$$ straight to $$16$$, so none of them is $$10$$.
+
+:::
+
+::::
+
+::::exercise{#ex-add-quantifier}
+
+Each line below is an equation or inequality about a real number $$x$$. Turn each into a **true**
+statement by putting "for every real number $$x$$", "there is a real number $$x$$ with" or "there is
+no real number $$x$$ with" in front of it.
+
+1. $$x^2 \ge 0$$
+2. $$2x = x$$
+3. $$x + 1 = x$$
+4. $$x^2 = 5$$
+
+Would the answer to the last one change if $$x$$ had to be a whole number?
+
+:::solution
+
+1. "For every real number $$x$$, $$x^2 \ge 0$$": a square is never negative.
+2. "There is a real number $$x$$ with $$2x = x$$": $$x = 0$$ works. It is not true for every $$x$$,
+   since $$x = 1$$ gives $$2 = 1$$.
+3. "There is no real number $$x$$ with $$x + 1 = x$$": taking $$x$$ away from both sides would give
+   $$1 = 0$$.
+4. "There is a real number $$x$$ with $$x^2 = 5$$": $$x = \sqrt{5}$$ works.
+
+For whole numbers the last one changes: $$2^2 = 4$$ and $$3^2 = 9$$, so no whole number squares to
+$$5$$, and the true statement is "there is no whole number $$x$$ with $$x^2 = 5$$". Which numbers
+are allowed is part of the statement (:ref{#quantifiers}).
+
+:::
+
+::::
+
+::::exercise{#ex-negate-statements}
+
+Write down the opposite of each statement, without starting it with "it is not true that". Then say
+which of the two is true.
+
+1. For every integer $$n$$, $$n^2 \ge n$$.
+2. There is an integer $$n$$ with $$3n = 10$$.
+3. Every multiple of $$6$$ is even and a multiple of $$3$$.
+
+:::solution
+
+By :ref{#statement-negation}, "for every" turns into "there is … for which it fails", and "there is"
+turns into "there is no".
+
+1. Opposite: "there is an integer $$n$$ with $$n^2 < n$$". The original is true. If $$n \le 0$$,
+   then $$n^2 \ge 0 \ge n$$. If $$n \ge 1$$, then $$n^2 = n \cdot n \ge n \cdot 1 = n$$.
+2. Opposite: "there is no integer $$n$$ with $$3n = 10$$", that is, "for every integer $$n$$,
+   $$3n \neq 10$$". The opposite is true: $$3 \cdot 3 = 9$$ and $$3 \cdot 4 = 12$$, so $$10$$ is not
+   a multiple of $$3$$.
+3. Opposite: "some multiple of $$6$$ is odd, or is not a multiple of $$3$$". The opposite of "$$P$$
+   and $$Q$$" is "not $$P$$, or not $$Q$$". The original is true: $$6k = 2(3k) = 3(2k)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-equivalent-pairs}
+
+For a real number $$x$$, which of these pairs of statements are equivalent? For any pair that isn't,
+give a value of $$x$$ that makes one true and the other false.
+
+1. "$$2x + 1 = 7$$" and "$$x = 3$$".
+2. "$$x(x - 3) = 0$$" and "$$x = 3$$".
+3. "$$x - 2 > 0$$" and "$$x > 2$$".
+
+:::solution
+
+1. Equivalent (:ref{#equivalent-statements}). Taking away $$1$$ and halving turns the first into the
+   second, and doubling and adding $$1$$ turns the second back into the first.
+2. Not equivalent. If $$x = 3$$ then $$x(x - 3) = 3 \cdot 0 = 0$$, so the second leads to the first.
+   But $$x = 0$$ makes the first true and the second false.
+3. Equivalent: adding $$2$$ to both sides of the first gives the second, and taking $$2$$ away from
+   both sides of the second gives the first.
+
+:::
+
+::::
+
+::::exercise{#ex-letters-may-be-equal}
+
+Someone claims: "if $$x$$ and $$y$$ are numbers with $$x + y = 10$$ and $$xy = 25$$, then $$x$$ and
+$$y$$ are two different numbers." Is this true?
+
+:::solution
+
+No. Take $$x = 5$$ and $$y = 5$$: then $$x + y = 10$$ and $$xy = 25$$, but $$x$$ and $$y$$ are the
+same number. Different letters are just different names, and nothing in "numbers $$x$$ and $$y$$"
+says they are different. In fact $$x = y = 5$$ is the only pair that works: putting $$y = 10 - x$$
+into $$xy = 25$$ gives $$x^2 - 10x + 25 = 0$$, which is $$(x - 5)^2 = 0$$.
+
+:::
+
+::::
+
+## What a proof is
+
+::::exercise{#ex-odd-plus-odd}
+
+Prove that the sum of two odd numbers is even.
+
+:::solution
+
+**Given.** $$a$$ and $$b$$ are odd, so $$a = 2k + 1$$ and $$b = 2l + 1$$ for some integers $$k$$ and
+$$l$$ (:ref{#numbers/even-odd}). Two different letters are needed, since $$a$$ and $$b$$ needn't be
+equal.
+
+**Want.** $$a + b = 2 \times (\text{some integer})$$.
+
+**Bridge.**
+
+```math
+a + b = (2k + 1) + (2l + 1) = 2k + 2l + 2 = 2(k + l + 1)
+```
+
+and $$k + l + 1$$ is an integer, so $$a + b$$ is even.
+
+:::
+
+::::
+
+::::exercise{#ex-odd-times-odd}
+
+Prove that the product of two odd numbers is odd.
+
+:::solution
+
+Write $$a = 2k + 1$$ and $$b = 2l + 1$$ for integers $$k$$ and $$l$$. The target is
+$$ab = 2 \times (\text{some integer}) + 1$$. Multiplying out,
+
+```math
+ab = (2k + 1)(2l + 1) = 4kl + 2k + 2l + 1 = 2(2kl + k + l) + 1
+```
+
+and $$2kl + k + l$$ is an integer, so $$ab$$ is odd.
+
+:::
+
+::::
+
+::::exercise{#ex-find-counterexamples}
+
+Each of these statements is false. Find a counterexample to each.
+
+1. For every integer $$n$$, $$n^2 > n$$.
+2. Every number of the form $$6k + 1$$, with $$k$$ a positive integer, is prime.
+3. For all numbers $$a$$ and $$b$$, $$(a - b)^2 = a^2 - b^2$$.
+
+:::solution
+
+A single case where the statement fails is enough (:ref{#counterexample}).
+
+1. $$n = 1$$: $$1^2 = 1$$, which is not bigger than $$1$$. ($$n = 0$$ works too.)
+2. $$k = 4$$: $$6 \cdot 4 + 1 = 25 = 5 \cdot 5$$, which is not prime. The first three, $$7$$, $$13$$
+   and $$19$$, are prime, which is why the pattern looks convincing.
+3. $$a = 2$$, $$b = 1$$: the left side is $$1^2 = 1$$ and the right side is $$4 - 1 = 3$$.
+
+Each of these was found by trying small, simple numbers first.
+
+:::
+
+::::
+
+::::exercise{#ex-smallest-fraction}
+
+Prove by contradiction that there is no smallest positive fraction.
+
+:::solution
+
+**Suppose not:** suppose there is a smallest positive fraction, and call it $$q$$. Then
+$$\frac{q}{2}$$ is also a fraction, and it is positive. But $$\frac{q}{2} < q$$, since $$q$$ is
+positive. So $$q$$ is not the smallest positive fraction after all, which contradicts the way we
+chose it (:ref{#contradiction}). So there is no smallest positive fraction.
+
+As with "there is no largest integer", the supposition gives us a particular number to work with,
+and that is what makes the contradiction easy to reach.
+
+:::
+
+::::
+
+::::exercise{#ex-squares-mod-three}
+
+Prove that every square of an integer is either a multiple of $$3$$ or one more than a multiple of
+$$3$$. Deduce that no square is of the form $$3k + 2$$.
+
+:::solution
+
+Every integer $$n$$ is $$3k$$, $$3k + 1$$ or $$3k + 2$$ for some integer $$k$$
+(:ref{#numbers/division-remainder}), so three cases cover everything.
+
+- **$$n = 3k$$:** $$n^2 = 9k^2 = 3(3k^2)$$, a multiple of $$3$$.
+- **$$n = 3k + 1$$:** $$n^2 = 9k^2 + 6k + 1 = 3(3k^2 + 2k) + 1$$.
+- **$$n = 3k + 2$$:** $$n^2 = 9k^2 + 12k + 4 = 3(3k^2 + 4k + 1) + 1$$.
+
+In every case $$n^2$$ leaves remainder $$0$$ or $$1$$ when divided by $$3$$. A number of the form
+$$3k + 2$$ leaves remainder $$2$$, and the remainder is unique, so it can't be a square.
+
+:::
+
+::::
+
+::::exercise{#ex-missing-cases}
+
+Here is an argument. "**Claim:** for every integer $$n$$, $$n(n - 1)$$ is positive. **Proof:** if
+$$n > 1$$, both factors $$n$$ and $$n - 1$$ are positive, so the product is positive. If $$n < 0$$,
+both factors are negative, so the product is positive." What is wrong, and is the claim true?
+
+:::solution
+
+The cases don't cover every integer: they miss $$n = 0$$ and $$n = 1$$. A proof by cases needs the
+cases to cover every possibility. Here the missing cases are exactly where the claim fails:
+$$0 \cdot (-1) = 0$$ and $$1 \cdot 0 = 0$$, and $$0$$ is not positive. So the claim is false, and
+$$n = 0$$ is a counterexample. The correct statement is "for every integer $$n$$,
+$$n(n - 1) \ge 0$$".
+
+:::
+
+::::
+
+## If, then and exactly when
+
+::::exercise{#ex-converse-and-contrapositive}
+
+For each statement, write down its converse and its contrapositive, and say which of the three are
+true.
+
+1. For an integer $$n$$: if $$n$$ is a multiple of $$10$$, then the last digit of $$n$$ is $$0$$.
+2. For a real number $$x$$: if $$x > 3$$, then $$x > 1$$.
+
+:::solution
+
+By :ref{#contrapositive}:
+
+1. - Converse: if the last digit of $$n$$ is $$0$$, then $$n$$ is a multiple of $$10$$.
+   - Contrapositive: if the last digit of $$n$$ is not $$0$$, then $$n$$ is not a multiple of
+     $$10$$.
+
+   All three are true. Here the statement and its converse both hold, so in fact "$$n$$ is a
+   multiple of $$10$$ exactly when its last digit is $$0$$".
+
+2. - Converse: if $$x > 1$$, then $$x > 3$$. This is false: $$x = 2$$.
+   - Contrapositive: if $$x \le 1$$, then $$x \le 3$$. This is true, like the original.
+
+The contrapositive always agrees with the original (:ref{#contrapositive-equivalent}); the converse
+can go either way.
+
+:::
+
+::::
+
+::::exercise{#ex-only-if}
+
+Rewrite each sentence in the form "if …, then …", and say whether it is true.
+
+1. An integer $$n$$ is a multiple of $$9$$ only if it is a multiple of $$3$$.
+2. A real number $$x$$ has $$x^2 = 4$$ only if $$x = 2$$.
+3. A real number $$x$$ is equal to $$2$$ if $$x^2 = 4$$.
+
+:::solution
+
+"$$P$$ only if $$Q$$" means "if $$P$$, then $$Q$$", and "$$P$$ if $$Q$$" means "if $$Q$$, then
+$$P$$".
+
+1. If $$n$$ is a multiple of $$9$$, then $$n$$ is a multiple of $$3$$. True: $$9k = 3(3k)$$.
+2. If $$x^2 = 4$$, then $$x = 2$$. False: $$x = -2$$.
+3. If $$x^2 = 4$$, then $$x = 2$$. This is the same statement as the second, and just as false.
+
+The second and third sentences look like opposites, because the "if" is in a different place, but
+they say the same thing.
+
+:::
+
+::::
+
+::::exercise{#ex-square-even-contrapositive}
+
+Prove that if $$n^2$$ is even, then $$n$$ is even. (Hint: a direct proof is awkward. Try the
+contrapositive.)
+
+:::solution
+
+The contrapositive is: if $$n$$ is **not** even, then $$n^2$$ is **not** even, that is, if $$n$$ is
+odd then $$n^2$$ is odd. Write $$n = 2k + 1$$. Then
+
+```math
+n^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1
+```
+
+which is odd. A statement and its contrapositive are both true or both false
+(:ref{#contrapositive-equivalent}), so if $$n^2$$ is even then $$n$$ is even.
+
+Going directly would start from $$n^2 = 2m$$, and there is no easy way from there to $$n$$ itself.
+Starting from $$n$$, as the contrapositive does, gives a formula for $$n^2$$ straight away.
+
+:::
+
+::::
+
+::::exercise{#ex-even-exactly-when}
+
+Prove that an integer $$n$$ is even exactly when $$3n$$ is even.
+
+:::solution
+
+There are two directions (:ref{#exactly-when}).
+
+**If $$n$$ is even, then $$3n$$ is even.** Write $$n = 2k$$. Then $$3n = 6k = 2(3k)$$, which is
+even.
+
+**If $$3n$$ is even, then $$n$$ is even.** Prove the contrapositive: if $$n$$ is odd, then $$3n$$ is
+odd. Write $$n = 2k + 1$$. Then $$3n = 6k + 3 = 2(3k + 1) + 1$$, which is odd.
+
+The first half is direct and the second is by contrapositive: each direction can use whichever
+method suits it.
+
+:::
+
+::::
+
+::::exercise{#ex-one-way-only}
+
+Is it true that a real number $$x$$ has $$x^2 = x$$ exactly when $$x = 1$$? If not, which of the two
+directions fails?
+
+:::solution
+
+It is not true. The direction "if $$x = 1$$, then $$x^2 = x$$" holds, since $$1^2 = 1$$. The
+direction "if $$x^2 = x$$, then $$x = 1$$" fails, with $$x = 0$$ as a counterexample: $$0^2 = 0$$.
+The correct statement is "$$x^2 = x$$ exactly when $$x = 0$$ or $$x = 1$$".
+
+:::
+
+::::
+
+## Proof by induction
+
+::::exercise{#ex-odd-sum-squares}
+
+Prove by induction that for every positive integer $$n$$,
+
+```math
+1 + 3 + 5 + \cdots + (2n - 1) = n^2.
+```
+
+:::solution
+
+Let $$P(n)$$ be the statement $$1 + 3 + \cdots + (2n - 1) = n^2$$.
+
+**Base case.** $$P(1)$$ says $$1 = 1^2$$, which is true.
+
+**Inductive step.** Suppose $$P(k)$$ is true for some positive integer $$k$$.
+
+- **Know:** $$1 + 3 + \cdots + (2k - 1) = k^2$$.
+- **Want:** $$1 + 3 + \cdots + (2k - 1) + (2k + 1) = (k + 1)^2$$. The next odd number after
+  $$2k - 1$$ is $$2k + 1$$.
+
+The sum we want is the sum we know plus one more term:
+
+```math
+1 + 3 + \cdots + (2k - 1) + (2k + 1) = k^2 + 2k + 1 = (k + 1)^2
+```
+
+which is $$P(k + 1)$$.
+
+**Conclusion.** By induction (:ref{#induction}), $$P(n)$$ is true for every positive integer $$n$$.
+
+:::
+
+::::
+
+::::exercise{#ex-six-power}
+
+Prove by induction that $$5$$ divides $$6^n - 1$$ for every positive integer $$n$$.
+
+:::solution
+
+**Base case.** $$6^1 - 1 = 5$$, which $$5$$ divides.
+
+**Inductive step.** Suppose $$6^k - 1 = 5m$$ for some integer $$m$$. To find $$6^k - 1$$ inside
+$$6^{k + 1} - 1$$, write $$6^{k + 1} = 6 \cdot 6^k$$ and rearrange:
+
+```math
+6^{k + 1} - 1 = 6 \cdot 6^k - 6 + 5 = 6(6^k - 1) + 5 = 6 \cdot 5m + 5 = 5(6m + 1)
+```
+
+which is a multiple of $$5$$.
+
+**Conclusion.** By induction, $$5 \mid 6^n - 1$$ for every positive integer $$n$$.
+
+:::
+
+::::
+
+::::exercise{#ex-three-power-bound}
+
+Prove by induction that $$3^n \ge 2n + 1$$ for every positive integer $$n$$.
+
+:::solution
+
+**Base case.** For $$n = 1$$: $$3^1 = 3$$ and $$2 \cdot 1 + 1 = 3$$, and $$3 \ge 3$$.
+
+**Inductive step.** Suppose $$3^k \ge 2k + 1$$. Going from $$3^k$$ to $$3^{k + 1}$$ means
+multiplying by $$3$$, so multiply both sides of what we know by $$3$$:
+
+```math
+3^{k + 1} = 3 \cdot 3^k \ge 3(2k + 1) = 6k + 3
+```
+
+We want $$3^{k + 1} \ge 2(k + 1) + 1 = 2k + 3$$. Since $$k$$ is positive, $$6k + 3 \ge 2k + 3$$, so
+
+```math
+3^{k + 1} \ge 6k + 3 \ge 2k + 3.
+```
+
+**Conclusion.** By induction, $$3^n \ge 2n + 1$$ for every positive integer $$n$$.
+
+:::
+
+::::
+
+::::exercise{#ex-broken-induction}
+
+Here is an argument. "Let $$P(n)$$ say that $$n^2 + n$$ is odd. Suppose $$k^2 + k$$ is odd. Then
+$$(k + 1)^2 + (k + 1) = (k^2 + k) + 2k + 2$$, which is an odd number plus an even number, so it is
+odd. So by induction, $$n^2 + n$$ is odd for every positive integer $$n$$." What is wrong?
+
+:::solution
+
+The inductive step is correct: **if** $$k^2 + k$$ were odd, then $$(k + 1)^2 + (k + 1)$$ would be
+odd too. But there is no base case, and it would fail: $$P(1)$$ says $$1 + 1 = 2$$ is odd, which is
+false. The dominoes are well spaced, but nobody pushes the first one, so nothing follows. In fact
+$$n^2 + n$$ is **even** for every integer $$n$$, as the cases example on
+[What a proof is](./proofs.mdx) shows.
+
+:::
+
+::::
+
+::::exercise{#ex-where-to-start}
+
+For which positive integers $$n$$ is $$3^n > n^3$$? Make a table for $$n = 1$$ to $$6$$, then prove
+by induction that $$3^n > n^3$$ for every $$n \ge 4$$.
+
+:::solution
+
+| $$n$$   | $$1$$ | $$2$$ | $$3$$  | $$4$$  | $$5$$   | $$6$$   |
+| ------- | ----- | ----- | ------ | ------ | ------- | ------- |
+| $$3^n$$ | $$3$$ | $$9$$ | $$27$$ | $$81$$ | $$243$$ | $$729$$ |
+| $$n^3$$ | $$1$$ | $$8$$ | $$27$$ | $$64$$ | $$125$$ | $$216$$ |
+
+It holds for $$n = 1$$ and $$2$$, fails for $$n = 3$$ (where the two are equal), and holds from
+$$n = 4$$ on, which the induction shows.
+
+**Base case.** $$3^4 = 81 > 64 = 4^3$$.
+
+**Inductive step.** Let $$k \ge 4$$ and suppose $$3^k > k^3$$. Then
+$$3^{k + 1} = 3 \cdot 3^k > 3k^3$$, so it is enough to show $$3k^3 \ge (k + 1)^3$$. The difference
+is
+
+```math
+3k^3 - (k + 1)^3 = 2k^3 - 3k^2 - 3k - 1 = k\bigl(k(2k - 3) - 3\bigr) - 1.
+```
+
+Here $$k \ge 4$$ gets used: it makes $$2k - 3 \ge 5$$, so $$k(2k - 3) - 3 \ge 4 \cdot 5 - 3 = 17$$,
+and the difference is at least $$4 \cdot 17 - 1 = 67$$, which is positive. So
+$$3^{k + 1} > 3k^3 > (k + 1)^3$$.
+
+**Conclusion.** By induction, $$3^n > n^3$$ for every $$n \ge 4$$. Together with the table, it holds
+for every positive integer except $$3$$. The base case can't be $$n = 1$$, because the chain would
+have to pass through $$n = 3$$, where the claim is false.
+
+:::
+
+::::
+
+## Sets
+
+::::exercise{#ex-set-membership}
+
+Let $$S = \{n \in \mathbb{Z} : n^2 < 10\}$$.
+
+1. List the elements of $$S$$.
+2. Which of these are true: $$3 \in S$$, $$4 \in S$$, $$\{0\} \in S$$, $$\{0\} \subseteq S$$,
+   $$\varnothing \subseteq S$$?
+
+:::solution
+
+1. $$S = \{-3, -2, -1, 0, 1, 2, 3\}$$: these square to $$9$$, $$4$$, $$1$$ or $$0$$, and every other
+   integer squares to at least $$16$$.
+2. - $$3 \in S$$: true, since $$9 < 10$$.
+   - $$4 \in S$$: false, since $$16$$ is not less than $$10$$.
+   - $$\{0\} \in S$$: false. The elements of $$S$$ are numbers, and $$\{0\}$$ is a set.
+   - $$\{0\} \subseteq S$$: true, since its one element, $$0$$, is in $$S$$ (:ref{#subset}).
+   - $$\varnothing \subseteq S$$: true, as for every set (:ref{#set-empty-subset}).
+
+:::
+
+::::
+
+::::exercise{#ex-multiples-of-six-subset}
+
+Let $$A$$ be the set of integers that are multiples of $$6$$, and $$B$$ the set of even integers.
+Prove that $$A \subseteq B$$, and show that $$B$$ is not a subset of $$A$$.
+
+:::solution
+
+**$$A \subseteq B$$.** Take any $$n \in A$$. Then $$n = 6k$$ for some integer $$k$$, so
+$$n = 2(3k)$$ with $$3k$$ an integer. So $$n$$ is even, that is, $$n \in B$$.
+
+**$$B$$ is not a subset of $$A$$.** The number $$2$$ is even, so $$2 \in B$$, but it is not a
+multiple of $$6$$, so $$2 \notin A$$. One element of $$B$$ outside $$A$$ is enough.
+
+:::
+
+::::
+
+::::exercise{#ex-small-squares-set}
+
+Prove that $$\{n \in \mathbb{Z} : n^2 < 5\} = \{-2, -1, 0, 1, 2\}$$.
+
+:::solution
+
+Call the first set $$A$$ and the second $$B$$. By :ref{#set-equality} we show each is a subset of
+the other.
+
+**$$B \subseteq A$$.** Check each element: $$(-2)^2 = 2^2 = 4$$, $$(-1)^2 = 1^2 = 1$$ and
+$$0^2 = 0$$, all less than $$5$$.
+
+**$$A \subseteq B$$.** Take any $$n \in A$$, so $$n^2 < 5$$. Prove the contrapositive: if $$n$$ is
+not in $$B$$, then $$n^2 \ge 5$$. An integer not in $$B$$ has $$n \ge 3$$ or $$n \le -3$$. If
+$$n \ge 3$$ then $$n^2 \ge 9$$, and if $$n \le -3$$ then $$-n \ge 3$$ and $$n^2 = (-n)^2 \ge 9$$.
+Either way $$n^2 \ge 9 \ge 5$$.
+
+So $$A = B$$.
+
+:::
+
+::::
+
+::::exercise{#ex-which-are-empty}
+
+Which of these sets are empty? For each one that isn't, give an element.
+
+1. $$\{x \in \mathbb{Z} : 3x = 1\}$$
+2. $$\{x \in \mathbb{Q} : 3x = 1\}$$
+3. $$\{x \in \mathbb{R} : x^2 + 1 = 0\}$$
+4. $$\{x \in \mathbb{R} : 2 < x < 3\}$$
+5. $$\{x \in \mathbb{Z} : 2 < x < 3\}$$
+
+:::solution
+
+1. Empty: $$3x$$ is a multiple of $$3$$, and $$1$$ isn't.
+2. Not empty: $$\frac{1}{3}$$ is in it.
+3. Empty: $$x^2 \ge 0$$, so $$x^2 + 1 \ge 1$$ is never $$0$$.
+4. Not empty: $$2.5$$ is in it.
+5. Empty: there is no integer strictly between $$2$$ and $$3$$.
+
+The first two and the last two show the same test giving an empty set or not, depending on which
+numbers are allowed in. The three empty ones are all the same set, $$\varnothing$$
+(:ref{#empty-set}).
+
+:::
+
+::::
+
+::::exercise{#ex-subset-chain}
+
+Prove that if $$A \subseteq B$$ and $$B \subseteq C$$, then $$A \subseteq C$$.
+
+:::solution
+
+Take any $$x \in A$$. Since $$A \subseteq B$$, $$x \in B$$. Since $$B \subseteq C$$, $$x \in C$$. So
+every element of $$A$$ is in $$C$$, which is $$A \subseteq C$$ (:ref{#subset}). This is how
+$$\mathbb{Z} \subseteq \mathbb{Q}$$ and $$\mathbb{Q} \subseteq \mathbb{R}$$ give
+$$\mathbb{Z} \subseteq \mathbb{R}$$.
+
+:::
+
+::::
+
+## Notation
+
+::::exercise{#ex-expand-sums}
+
+Write out each sum in full and work it out.
+
+1. $$\sum_{i=1}^{5} (i + 1)$$
+2. $$\sum_{k=0}^{3} 2^k$$
+3. $$\sum_{j=3}^{6} j^2$$
+4. $$\sum_{i=1}^{4} (-1)^i\, i$$
+
+:::solution
+
+By :ref{#sum-notation}:
+
+1. $$2 + 3 + 4 + 5 + 6 = 20$$.
+2. $$1 + 2 + 4 + 8 = 15$$. The index starts at $$0$$, and $$2^0 = 1$$.
+3. $$9 + 16 + 25 + 36 = 86$$. There are $$6 - 3 + 1 = 4$$ terms.
+4. $$-1 + 2 - 3 + 4 = 2$$. The factor $$(-1)^i$$ makes the signs alternate.
+
+:::
+
+::::
+
+::::exercise{#ex-write-with-sigma}
+
+Write each sum using $$\Sigma$$.
+
+1. $$3 + 6 + 9 + \cdots + 30$$
+2. $$1 + 4 + 9 + \cdots + 100$$
+3. $$\frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{10}$$
+
+:::solution
+
+1. The terms are $$3i$$ for $$i = 1$$ to $$10$$: $$\sum_{i=1}^{10} 3i$$.
+2. The terms are the squares $$i^2$$ for $$i = 1$$ to $$10$$: $$\sum_{i=1}^{10} i^2$$.
+3. The terms are $$\frac{1}{i}$$ for $$i = 2$$ to $$10$$: $$\sum_{i=2}^{10} \frac{1}{i}$$.
+
+Other answers are just as right, for example $$\sum_{j=1}^{9} \frac{1}{j + 1}$$ for the last one:
+what matters is that the same terms are added.
+
+:::
+
+::::
+
+::::exercise{#ex-sum-rules-use}
+
+Use the rules for sums and the formula $$\sum_{i=1}^{n} i = \frac{n(n + 1)}{2}$$ to work out
+$$\sum_{i=1}^{20} (4i - 1)$$.
+
+:::solution
+
+By :ref{#notation-sum-rules}, the sum splits into two, and the $$4$$ comes outside:
+
+```math
+\sum_{i=1}^{20} (4i - 1) = 4\sum_{i=1}^{20} i - \sum_{i=1}^{20} 1 = 4 \cdot \frac{20 \cdot 21}{2} - 20 = 840 - 20 = 820.
+```
+
+The last sum adds $$1$$ twenty times, so it is $$20$$, not $$1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sum-of-products}
+
+Find numbers $$x_1, x_2, y_1, y_2$$ for which
+
+```math
+\sum_{i=1}^{2} x_i y_i \neq \left(\sum_{i=1}^{2} x_i\right)\left(\sum_{i=1}^{2} y_i\right).
+```
+
+:::solution
+
+Take every number to be $$1$$. The left side is $$1 \cdot 1 + 1 \cdot 1 = 2$$, and the right side is
+$$(1 + 1)(1 + 1) = 4$$. So a sum of products can't be split into a product of sums: multiplying out
+$$(x_1 + x_2)(y_1 + y_2)$$ also gives the cross terms $$x_1 y_2 + x_2 y_1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sequence-terms}
+
+1. Write down the sequence $$x_i = i^2 - i$$ for $$i = 1, 2, \dots, 5$$.
+2. How many terms does $$\sum_{i=4}^{11} x_i$$ add up?
+
+:::solution
+
+1. $$0, 2, 6, 12, 20$$ (:ref{#sequence}).
+2. The index runs through $$4, 5, \dots, 11$$, which is $$11 - 4 + 1 = 8$$ terms, not $$7$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sum-of-squares-induction}
+
+Prove by induction that for every positive integer $$n$$,
+
+```math
+\sum_{i=1}^{n} i^2 = \frac{n(n + 1)(2n + 1)}{6}.
+```
+
+:::solution
+
+**Base case.** For $$n = 1$$ the left side is $$1^2 = 1$$ and the right side is
+$$\frac{1 \cdot 2 \cdot 3}{6} = 1$$.
+
+**Inductive step.** Suppose $$\sum_{i=1}^{k} i^2 = \frac{k(k + 1)(2k + 1)}{6}$$. The sum up to
+$$k + 1$$ is the sum up to $$k$$ plus one more term:
+
+```math
+\begin{aligned}
+\sum_{i=1}^{k + 1} i^2 &= \frac{k(k + 1)(2k + 1)}{6} + (k + 1)^2 \\
+&= \frac{(k + 1)\bigl(k(2k + 1) + 6(k + 1)\bigr)}{6} \\
+&= \frac{(k + 1)(2k^2 + 7k + 6)}{6} \\
+&= \frac{(k + 1)(k + 2)(2k + 3)}{6}
+\end{aligned}
+```
+
+since $$(k + 2)(2k + 3) = 2k^2 + 7k + 6$$. That is the formula with $$k + 1$$ in place of $$n$$,
+because $$2(k + 1) + 1 = 2k + 3$$.
+
+**Conclusion.** By induction (:ref{#induction}), the formula holds for every positive integer $$n$$.
+
+:::
+
+::::

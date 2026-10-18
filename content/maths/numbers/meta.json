@@ -2,7 +2,6 @@
   "title": "Numbers",
   "pages": [
     "introduction",
-    "proofs",
     "integers",
     "addition",
     "multiplication",
@@ -13,6 +12,7 @@
     "inverses",
     "irrational-numbers",
     "factorials",
+    "test-yourself",
     "exercises"
   ]
 }

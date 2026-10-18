@@ -166,7 +166,8 @@ If $$0 \le a < b$$, then $$a^n < b^n$$ for every positive integer $$n$$.
 
 :::proof{source="https://proofwiki.org/wiki/Power_Function_is_Strictly_Increasing_over_Positive_Reals/Natural_Exponent"}
 
-By induction on $$n$$ (:ref{#numbers/induction}). For $$n = 1$$ it says $$a < b$$, which is given.
+By induction on $$n$$ (:ref{#basic-proofs/induction}). For $$n = 1$$ it says $$a < b$$, which is
+given.
 
 Suppose $$a^n < b^n$$ for some $$n$$. Since $$a \ge 0$$, $$a^n$$ is a product of numbers that are
 not negative, so $$a^n \ge 0$$. Now part 2 of :ref{#combine-inequalities}, applied to
@@ -214,8 +215,8 @@ Let $$b > 0$$ and $$d > 0$$. Then $$\frac{a}{b} < \frac{c}{d}$$ exactly when $$a
 
 :::proof{source="https://en.wikipedia.org/wiki/Inequality_(mathematics)#Multiplication_and_division"}
 
-There are two directions (:ref{#numbers/exactly-when}). The number $$bd$$ is positive, by rule 1 for
-positivity.
+There are two directions (:ref{#basic-proofs/exactly-when}). The number $$bd$$ is positive, by rule
+1 for positivity.
 
 If $$\frac{a}{b} < \frac{c}{d}$$, multiplying both sides by $$bd$$ (rule 4) gives
 $$\frac{a}{b} \cdot bd < \frac{c}{d} \cdot bd$$. The $$b$$ cancels on the left and the $$d$$ on the
@@ -301,7 +302,7 @@ $$1 - \frac{1}{10^n} + \frac{1}{10^n} = 1$$. So for every $$n$$,
 1 - \frac{1}{10^n} \le x \le 1, \qquad \text{that is,} \qquad 0 \le 1 - x \le \frac{1}{10^n}
 ```
 
-for every $$n$$. We show $$1 - x = 0$$ by contradiction (:ref{#numbers/contradiction}).
+for every $$n$$. We show $$1 - x = 0$$ by contradiction (:ref{#basic-proofs/contradiction}).
 
 Suppose $$d = 1 - x$$ is positive. Then $$\frac{1}{d}$$ is a positive real number, so by part 2 of
 :ref{#no-gaps} it is less than some positive integer $$N$$. If $$N$$ has $$k$$ digits, then
