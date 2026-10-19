@@ -34,7 +34,15 @@ proof settles a question **for every case at once**, including the infinitely ma
 ever check by hand. That is what makes it so much stronger than checking examples.
 
 In these notes a proof sits under the statement it proves, in a box marked _Proof_, and ends with
-the symbol ∎ to show that the argument is finished.
+the symbol ∎ to show that the argument is finished. Other books and lecture notes mark the end of a
+proof in different ways, so you may meet any of these:
+
+- **∎ or □**: a filled or hollow square, called a tombstone or Halmos box after the mathematician
+  who made it popular
+- **Q.E.D.**: short for the Latin _quod erat demonstrandum_, "which was to be shown"
+- **A closing sentence**: words such as "as required" or "this completes the proof"
+
+They all mean the same thing: the argument is complete.
 
 ### Letters stand for every number at once
 
@@ -191,10 +199,17 @@ example, in the [Numbers](../numbers/irrational-numbers.mdx) guide, shows that n
 to $$2$$. It supposes that one does, writes it in lowest form, and shows that its top and bottom
 would then both have to be even, which lowest form rules out.
 
-Proving the contrapositive, which the [next page](./implications.mdx) explains, is closely related:
-supposing "not $$Q$$" and reaching "not $$P$$" is the same as supposing $$P$$ and "not $$Q$$"
-together and reaching a contradiction. When an argument naturally ends in "not $$P$$", the
-contrapositive is the cleaner way to write it.
+A related method, proving the contrapositive, is explained on the [next page](./implications.mdx).
+The two are so close that the same argument can often be written either way. Take the claim "if
+$$n^2$$ is even, then $$n$$ is even".
+
+- **By contradiction**: suppose $$n^2$$ is even but $$n$$ is odd. An odd number squared is odd, so
+  $$n^2$$ is odd. That clashes with $$n^2$$ being even, so $$n$$ must be even.
+- **By the contrapositive**: suppose $$n$$ is odd. An odd number squared is odd, so $$n^2$$ is odd.
+  So whenever $$n^2$$ is even, $$n$$ can't be odd.
+
+The key step, that an odd number squared is odd, is the same in both. The second version is shorter,
+because it doesn't need to set up a clash at the end.
 
 ## Splitting into cases
 

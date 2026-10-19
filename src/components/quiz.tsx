@@ -105,7 +105,7 @@ function saveProgress(key: string, progress: Progress) {
 // the small subset of markdown that quiz text uses: $$maths$$, :ref links, **bold**, _italic_ and
 // [links](#anchor)
 const TOKEN =
-  /\$\$([\s\S]+?)\$\$|:ref(?:\[([^\]]*)\])?\{#([\w-]+)\}|\*\*(.+?)\*\*|(?<!\w)_(.+?)_(?!\w)|\[([^\]]+)\]\((#[\w-]+)\)/g;
+  /\$\$([\s\S]+?)\$\$|:ref(?:\[([^\]]*)\])?\{#([\w/-]+)\}|\*\*(.+?)\*\*|(?<!\w)_(.+?)_(?!\w)|\[([^\]]+)\]\((#[\w-]+)\)/g;
 
 function RichText({
   text,

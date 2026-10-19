@@ -303,15 +303,33 @@ The rules above mean we can make numbers small before doing anything with them. 
 out a huge number and then dividing it, we replace each part by its remainder straight away, and
 keep replacing as we go. The numbers never get large, and the remainder at the end is still right.
 
-**Large powers.** What is left over when $$7^{100}$$ is divided by $$5$$? Since $$7 \equiv 2$$,
-raising both sides to the fourth power with :ref{#congruence-powers} gives
-$$7^4 \equiv 2^4 = 16 \equiv 1 \pmod{5}$$. Then, using a power of a power,
+**Large powers.** What is left over when $$7^{100}$$ is divided by $$5$$? The number $$7^{100}$$ has
+$$85$$ digits, so working it out and then dividing is out of the question. Congruences find the
+remainder while every number stays small.
+
+The first step makes the base smaller. Since $$7 = 5 + 2$$, you have $$7 \equiv 2 \pmod{5}$$. By
+:ref{#congruence-powers} you can raise both sides to the same power, so $$7^{100}$$ leaves the same
+remainder as $$2^{100}$$.
+
+The number $$2^{100}$$ is still far too large, so the next step looks for a power of $$2$$ that is
+congruent to $$1$$. That power is useful because every power of $$1$$ is $$1$$. Here are the first
+few powers of $$2$$, modulo $$5$$:
+
+| Power        | $$2^1$$ | $$2^2$$ | $$2^3$$ | $$2^4$$ |
+| ------------ | ------- | ------- | ------- | ------- |
+| Value        | $$2$$   | $$4$$   | $$8$$   | $$16$$  |
+| Modulo $$5$$ | $$2$$   | $$4$$   | $$3$$   | $$1$$   |
+
+So $$2^4 \equiv 1 \pmod{5}$$. Since $$100 = 4 \cdot 25$$, the rule for a power of a power
+(:ref{#power-rules}) writes $$2^{100}$$ as $$(2^4)^{25}$$. Raising $$2^4 \equiv 1$$ to the power
+$$25$$ then gives the whole chain:
 
 ```math
-7^{100} = (7^4)^{25} \equiv 1^{25} = 1 \pmod{5}
+7^{100} \equiv 2^{100} = (2^4)^{25} \equiv 1^{25} = 1 \pmod{5}
 ```
 
-so the remainder is $$1$$, found without ever writing down the $$85$$-digit number $$7^{100}$$.
+So $$7^{100}$$ leaves remainder $$1$$ when divided by $$5$$. The largest number in the working was
+$$16$$.
 
 **Squares divisible by 3.** The squares rule for even numbers has a version with $$3$$ in place of
 $$2$$.
