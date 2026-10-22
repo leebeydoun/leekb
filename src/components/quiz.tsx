@@ -18,7 +18,7 @@ type Question = {
   explanation: string;
 };
 
-/** statement id -> its label and link, e.g. { label: "Definition 3.1", href: "/maths/...#id" } */
+/** statement id -> its label and link, e.g. { label: "Integers", href: "/maths/...#id" } */
 type Targets = Record<string, { label: string; href: string }>;
 
 type QuizData = { title: string; description?: string; questions: Question[] };

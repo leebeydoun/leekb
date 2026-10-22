@@ -6,7 +6,13 @@
  * the parts of a number line.
  */
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 
 /** colours that read on light and dark backgrounds, in the order diagrams should use them */
 export const COLORS = {
@@ -52,6 +58,29 @@ function useReadableText() {
 }
 
 /**
+ * Keeps a readout from shrinking while somebody drags a control. A sentence that wraps onto one line
+ * fewer would pull up everything below it, including the slider under the pointer. So the box keeps
+ * the tallest height it has needed, and starts again only when its width changes.
+ */
+function useSteadyHeight() {
+  const ref = useRef<HTMLDivElement>(null);
+  const tallest = useRef({ width: 0, height: 0 });
+  // after every render, before it is painted: measure the natural height and hold the largest
+  useLayoutEffect(() => {
+    const box = ref.current;
+    if (!box) return;
+    box.style.minHeight = "";
+    const width = box.clientWidth;
+    const height = box.offsetHeight;
+    const seen = tallest.current;
+    if (width !== seen.width) tallest.current = { width, height };
+    else if (height > seen.height) seen.height = height;
+    box.style.minHeight = `${tallest.current.height}px`;
+  });
+  return ref;
+}
+
+/**
  * A framed interactive figure: the picture, then an optional readout (the sentence saying what the picture currently shows, e.g. "2 < 5 becomes −4 > −10"), then a row of controls and an optional caption.
  */
 export function Interactive({
@@ -66,6 +95,7 @@ export function Interactive({
   caption?: string;
 }) {
   const ref = useReadableText();
+  const steady = useSteadyHeight();
   return (
     <figure className="not-prose my-8 rounded-xl border bg-fd-card px-2 py-6 sm:px-4">
       <div
@@ -76,6 +106,7 @@ export function Interactive({
       </div>
       {readout && (
         <div
+          ref={steady}
           className="mt-3 text-center text-base font-medium tabular-nums"
           aria-live="polite"
         >
@@ -118,7 +149,8 @@ export function Slider({
     <label className="flex min-w-40 flex-col gap-1 text-sm">
       <span className="flex justify-between gap-3 text-fd-muted-foreground">
         <span>{label}</span>
-        <span className="font-medium text-fd-foreground tabular-nums">
+        {/* a minimum width, so the slider beside it does not shift as the value gets longer or shorter */}
+        <span className="min-w-[5ch] text-end font-medium text-fd-foreground tabular-nums">
           {show(value)}
         </span>
       </span>

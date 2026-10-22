@@ -111,7 +111,7 @@ be done in $$4$$ ways. Choices without mushrooms take both toppings from the oth
 be done in $$6$$ ways. So there are $$4 + 6 = 10$$ ways in all. Pascal's rule says the same thing
 for any numbers, and the proof below checks it with the formula.
 
-:::proposition[Choosing what to leave out]{#binomial-symmetry}
+:::proposition[Symmetry of binomial coefficients]{#binomial-symmetry}
 
 For natural numbers $$m$$ and $$n$$ with $$n$$ between $$0$$ and $$m$$,
 
@@ -151,8 +151,8 @@ For natural numbers $$m$$ and $$n$$ with $$1 \le n \le m$$,
 
 :::proof{source="https://en.wikipedia.org/wiki/Pascal%27s_rule#Algebraic_proof"}
 
-This is an exercise in adding fractions. The plan is to write both terms as fractions using
-:ref{#binomial}, give them a common denominator, add, and recognise the answer as
+This is an exercise in adding fractions. The plan is to write both terms as fractions using the
+formula in :ref{#binomial}, give them a common denominator, add, and recognise the answer as
 $$\binom{m + 1}{n}$$.
 
 **Write out both terms.** For the first term, the bottom of the binomial coefficient is $$n - 1$$,
@@ -268,10 +268,10 @@ just $$a^m$$ and $$b^m$$.)
 
 **How many there are.** A term with exactly $$n$$ factors of $$b$$ is decided by which $$n$$ of the
 $$m$$ brackets supply the $$b$$s. So these terms match up with the ways of choosing $$n$$ brackets
-out of $$m$$, and there are $$\binom{m}{n}$$ of them, by the counting meaning of :ref{#binomial}.
-With $$m = 3$$ and $$n = 1$$, the terms with exactly one $$b$$ are $$aab$$, $$aba$$ and $$baa$$:
-there are $$3 = \binom{3}{1}$$ of them, one for each choice of the bracket that supplies the $$b$$.
-Together they make the $$3a^2 b$$ in $$(a + b)^3$$.
+out of $$m$$, and there are $$\binom{m}{n}$$ of them, by the counting meaning of binomial
+coefficients (:ref{#binomial}). With $$m = 3$$ and $$n = 1$$, the terms with exactly one $$b$$ are
+$$aab$$, $$aba$$ and $$baa$$: there are $$3 = \binom{3}{1}$$ of them, one for each choice of the
+bracket that supplies the $$b$$. Together they make the $$3a^2 b$$ in $$(a + b)^3$$.
 
 **Collect.** Adding up these $$\binom{m}{n}$$ equal terms gives $$\binom{m}{n} a^{m-n} b^n$$, for
 each $$n$$ from $$0$$ to $$m$$, which is the formula.

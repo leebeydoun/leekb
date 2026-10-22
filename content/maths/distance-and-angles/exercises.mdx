@@ -1,0 +1,757 @@
+---
+title: Exercises
+description: Exercises on the whole guide, with worked solutions.
+---
+
+These exercises follow the order of the guide, from distance to the angles of a triangle. Some ask
+for a length, an angle or an area, some ask for a proof, and some ask why a step needs care. Try
+each one before opening its solution, and say which rule or result justifies each step, as the pages
+do.
+
+## Distance
+
+::::exercise{#ex-possible-distances}
+
+Points $$A$$, $$B$$ and $$C$$ have $$d(A, B) = 3$$ and $$d(B, C) = 4$$. Show that $$d(A, C)$$ is at
+least $$1$$ and at most $$7$$. If $$d(A, C)$$ is $$7$$, or $$1$$, say where the three points lie.
+
+:::solution
+
+By the triangle inequality (:ref{#distance-rules}), $$d(A, C) \le d(A, B) + d(B, C) = 3 + 4 = 7$$.
+
+For a lower bound, use the triangle inequality with $$A$$ in the middle:
+$$d(B, C) \le d(B, A) + d(A, C)$$. Distance is the same both ways, so $$d(B, A) = 3$$. This gives
+$$4 \le 3 + d(A, C)$$, so $$d(A, C) \ge 1$$.
+
+So $$d(A, C)$$ is at least $$1$$ and at most $$7$$. At the two extremes, the points lie as follows:
+
+- **$$d(A, C) = 7$$**: then $$d(A, C) = d(A, B) + d(B, C)$$, so $$B$$ lies on the segment $$AC$$
+  (:ref{#segment-rules})
+- **$$d(A, C) = 1$$**: then $$d(B, C) = d(B, A) + d(A, C)$$, so $$A$$ lies on the segment $$BC$$
+
+:::
+
+::::
+
+::::exercise{#ex-which-between}
+
+Three different points lie on one line.
+
+1. If $$d(P, Q) = 2$$, $$d(Q, M) = 5$$ and $$d(P, M) = 7$$, which point lies between the other two?
+2. If $$d(P, Q) = 2$$, $$d(Q, M) = 5$$ and $$d(P, M) = 3$$, which point lies between the other two?
+
+:::solution
+
+A point lies between the other two exactly when its two distances add up to the third distance
+(:ref{#segment-rules}, rule 1).
+
+1. $$d(P, Q) + d(Q, M) = 2 + 5 = 7 = d(P, M)$$, so $$Q$$ lies between $$P$$ and $$M$$.
+2. $$d(Q, P) + d(P, M) = 2 + 3 = 5 = d(Q, M)$$, so $$P$$ lies between $$Q$$ and $$M$$.
+
+By rule 3, exactly one of the three points lies between the other two. So in each part, no other
+point lies between the remaining two.
+
+:::
+
+::::
+
+::::exercise{#ex-split-segment}
+
+The segment $$PM$$ has length $$12$$, and $$Q$$ is a point of it with $$d(P, Q) = 2\,d(Q, M)$$. Find
+$$d(P, Q)$$ and $$d(Q, M)$$.
+
+:::solution
+
+$$Q$$ is on the segment, so $$d(P, Q) + d(Q, M) = 12$$ (:ref{#segment-rules}). Writing
+$$d(Q, M) = t$$, this says $$2t + t = 12$$, so $$t = 4$$. So $$d(Q, M) = 4$$ and $$d(P, Q) = 8$$.
+
+:::
+
+::::
+
+::::exercise{#ex-two-circles}
+
+Two circles have the same centre $$P$$ and different radii $$r$$ and $$s$$. Can a point lie on both?
+What does your answer say about the disc of radius $$r$$ and the circle of radius $$s$$ when
+$$s < r$$?
+
+:::solution
+
+No. A point $$Q$$ on both circles would have $$d(P, Q) = r$$ and $$d(P, Q) = s$$ (:ref{#circle}), so
+$$r = s$$, which is ruled out.
+
+When $$s < r$$, every point $$Q$$ of the smaller circle has $$d(P, Q) = s \le r$$, so it lies in the
+disc of radius $$r$$. By the first part, it shares no point with the larger circle. So the smaller
+circle sits inside the larger disc without touching the larger circle.
+
+:::
+
+::::
+
+## Lines and rays
+
+::::exercise{#ex-four-perpendiculars}
+
+Lines $$L_1$$, $$L_2$$, $$L_3$$ and $$L_4$$ satisfy $$L_1 \perp L_2$$, $$L_2 \perp L_3$$ and
+$$L_3 \perp L_4$$. Prove that $$L_1 \perp L_4$$.
+
+:::solution
+
+Since $$L_1 \perp L_2$$ and $$L_2 \perp L_3$$, the lines $$L_1$$ and $$L_3$$ are parallel
+(:ref{#perpendiculars-parallel}).
+
+Now $$L_4 \perp L_3$$, because perpendicular lines are defined by the four equal angles where they
+cross, which doesn't depend on the order of the lines (:ref{#perpendicular}). Together with
+$$L_3 \parallel L_1$$, rule 2 of :ref{#perpendicular-rules} gives $$L_4 \perp L_1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-square-check}
+
+A rectangle $$ABCD$$ has $$d(A, B) = d(B, C)$$. Prove that it is a square.
+
+:::solution
+
+By :ref{#rectangle-sides}, $$d(D, C) = d(A, B)$$ and $$d(A, D) = d(B, C)$$. Together with
+$$d(A, B) = d(B, C)$$, all four sides have the same length, so the rectangle is a square
+(:ref{#rectangle}).
+
+:::
+
+::::
+
+::::exercise{#ex-picture-frame}
+
+A rectangular picture frame is $$8$$ by $$6$$ on the outside. The hole for the picture is a
+rectangle $$6$$ by $$4$$. What is the area of the frame itself?
+
+:::solution
+
+The outer rectangle is cut into two pieces that don't overlap: the hole and the frame. So by
+:ref{#area-rules},
+
+```math
+8 \cdot 6 = (\text{area of the frame}) + 6 \cdot 4
+```
+
+The frame has area $$48 - 24 = 24$$. The rule for adding areas works backwards too: knowing the
+whole and one piece gives the other piece.
+
+:::
+
+::::
+
+## Angles
+
+::::exercise{#ex-naming-three-rays}
+
+Three rays $$PQ$$, $$PR$$ and $$PM$$ start from $$P$$, as in the figure.
+
+```plane
+point P 0 0 s
+point Q 3 0 s
+point R 1.93 2.3 nw
+point M -1.93 2.3 ne
+ray P Q
+ray P R
+ray P M
+angle Q P R label="50°" color=blue
+angle R P M label="80°" color=orange r=0.8
+caption "Three rays from P"
+```
+
+1. Name the three angles at $$P$$, of at most $$180^\circ$$, that have two of these rays as arms.
+2. Which of them contains the third ray inside it?
+
+:::solution
+
+1. By :ref{#angle-name}, they are $$\angle QPR$$, $$\angle RPM$$ and $$\angle QPM$$.
+2. The ray $$PR$$ lies inside $$\angle QPM$$. Neither of the other two angles has a ray inside it.
+
+:::
+
+::::
+
+::::exercise{#ex-straight-naming}
+
+Let $$P$$ lie between $$Q$$ and $$M$$ on a line. The rays $$PQ$$ and $$PM$$ make two angles. Which
+of them is $$\angle QPM$$? Why doesn't the choice matter when you measure it?
+
+:::solution
+
+The rays point in opposite directions, so each of the two angles is a half of the plane, and both
+are straight angles (:ref{#special-angles}). Each lies on one side of the line $$PQ$$, so the naming
+rule (:ref{#angle-name}) doesn't single one out.
+
+The choice doesn't matter for its size. Every straight angle has $$180^\circ$$
+(:ref{#straight-angle}), so $$\angle QPM = 180^\circ$$ whichever half you take.
+
+:::
+
+::::
+
+## Measuring angles
+
+::::exercise{#ex-adding-angles}
+
+In the figure of the exercise on three rays, $$\angle QPR = 50^\circ$$ and
+$$\angle RPM = 80^\circ$$. Find $$\angle QPM$$ and the reflex angle at $$P$$ between the rays $$PQ$$
+and $$PM$$.
+
+:::solution
+
+The ray $$PR$$ lies inside $$\angle QPM$$, so by :ref{#angle-addition},
+
+```math
+\angle QPM = 50^\circ + 80^\circ = 130^\circ
+```
+
+The two angles made by $$PQ$$ and $$PM$$ fill a full turn together, and a full turn is $$360^\circ$$
+(:ref{#degree}). So the reflex angle is $$360^\circ - 130^\circ = 230^\circ$$.
+
+:::
+
+::::
+
+::::exercise{#ex-clock-angles}
+
+Find the angle between the hands of a clock at:
+
+1. 3:00
+2. 4:00
+3. 2:30
+
+:::solution
+
+The twelve hours split a full turn into twelve equal parts, so each hour mark is
+$$\frac{360^\circ}{12} = 30^\circ$$ from the next (:ref{#degree}).
+
+1. The hands point at 12 and 3, three marks apart: $$3 \cdot 30^\circ = 90^\circ$$.
+2. The hands point at 12 and 4: $$4 \cdot 30^\circ = 120^\circ$$.
+3. The minute hand points at 6, which is $$180^\circ$$ from 12. The hour hand has moved halfway from
+   2 to 3, so it is $$2.5 \cdot 30^\circ = 75^\circ$$ from 12. The angle between them is
+   $$180^\circ - 75^\circ = 105^\circ$$.
+
+Part 3 needs care: the hour hand isn't at 2, because it keeps moving during the hour.
+
+:::
+
+::::
+
+::::exercise{#ex-around-a-point}
+
+Three angles fit around a point without overlapping and fill a full turn. Their sizes are in the
+ratio $$3 : 4 : 5$$. Find them.
+
+:::solution
+
+Write the angles as $$3x$$, $$4x$$ and $$5x$$ degrees. Together they make a full turn, which has
+$$360^\circ$$ (:ref{#degree}), and their sizes add by :ref{#angle-addition}. So
+
+```math
+3x + 4x + 5x = 12x = 360
+```
+
+and $$x = 30$$. The angles are $$90^\circ$$, $$120^\circ$$ and $$150^\circ$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sector-areas}
+
+Give each answer as a multiple of $$\pi$$.
+
+1. The area of the sector of $$45^\circ$$ in a disc of radius $$4$$
+2. The area of the sector of $$300^\circ$$ in a disc of radius $$2$$
+3. Two circles share a centre, with radii $$4$$ and $$6$$. An angle of $$120^\circ$$ at the centre
+   cuts a piece from the ring between them. Find its area.
+4. A sector of a disc of radius $$6$$ has area $$6\pi$$. Find its angle.
+
+:::solution
+
+By :ref{#sector-area}, a sector of $$x^\circ$$ in a disc of radius $$r$$ has area
+$$\frac{x}{360}\pi r^2$$.
+
+1. $$\frac{45}{360} \cdot 16\pi = \frac{1}{8} \cdot 16\pi = 2\pi$$
+2. $$\frac{300}{360} \cdot 4\pi = \frac{5}{6} \cdot 4\pi = \frac{10\pi}{3}$$
+3. The piece is the large sector with the small sector taken away:
+   $$\frac{120}{360}(36\pi - 16\pi) = \frac{20\pi}{3}$$
+4. The disc has area $$36\pi$$, so the sector is $$\frac{6\pi}{36\pi} = \frac{1}{6}$$ of it. The
+   angle is $$\frac{1}{6} \cdot 360^\circ = 60^\circ$$.
+
+:::
+
+::::
+
+::::exercise{#ex-any-disc}
+
+The definition of degrees (:ref{#degree}) measures an angle with a disc centred at its vertex, but
+doesn't say which radius. Why does it need rule 2 of :ref{#disc-area}?
+
+:::solution
+
+Without rule 2, one disc might give a sector that is $$\frac{1}{4}$$ of it, and a larger disc might
+give a different fraction. The same angle would then have two different sizes, depending on the disc
+you happened to choose.
+
+Rule 2 says every disc centred at the vertex gives the same fraction. So the number of degrees
+belongs to the angle alone, and the definition makes sense.
+
+:::
+
+::::
+
+## Right triangles
+
+::::exercise{#ex-two-right-angles}
+
+Explain why a triangle can't have two right angles.
+
+:::solution
+
+Suppose a triangle has a right angle. It is then a right triangle, and its other two angles add up
+to $$90^\circ$$ (:ref{#right-triangle-angles}). If one of them were also $$90^\circ$$, the last
+angle would be $$0^\circ$$.
+
+An angle of a triangle is never $$0^\circ$$. Its two sides go to different corners, and the three
+corners don't lie on one line (:ref{#triangle}), so the two sides don't lie along the same ray. So
+no triangle has two right angles.
+
+:::
+
+::::
+
+::::exercise{#ex-acute-ratio}
+
+In a right triangle, one of the two other angles is three times the size of the other. Find both.
+
+:::solution
+
+Call the smaller one $$x$$. The two angles add up to $$90^\circ$$ (:ref{#right-triangle-angles}), so
+$$x + 3x = 90^\circ$$. So $$x = 22.5^\circ$$, and the other is $$67.5^\circ$$.
+
+:::
+
+::::
+
+::::exercise{#ex-right-area}
+
+1. Find the area of a right triangle with legs $$7$$ and $$10$$.
+2. A right triangle has area $$24$$, and one leg has length $$6$$. Find the other leg.
+
+:::solution
+
+By :ref{#right-triangle-area}, the area is half the product of the legs.
+
+1. $$\frac{7 \cdot 10}{2} = 35$$
+2. Call the other leg $$b$$. Then $$\frac{6b}{2} = 24$$, so $$3b = 24$$ and $$b = 8$$.
+
+:::
+
+::::
+
+::::exercise{#ex-equal-legs}
+
+A right triangle $$\triangle PQM$$ has its right angle at $$P$$ and legs of the same length,
+$$d(P, Q) = d(P, M)$$. Prove that its other two angles are each $$45^\circ$$.
+
+:::solution
+
+Compare the triangle with itself, matching the leg $$PQ$$ with the leg $$PM$$. These legs have the
+same length, so rule 2 of :ref{#right-triangle-rule} says the angle facing $$PQ$$ equals the angle
+facing $$PM$$. The angle facing $$PQ$$ is $$\angle PMQ$$, at $$M$$, and the angle facing $$PM$$ is
+$$\angle PQM$$, at $$Q$$. So $$\angle PMQ = \angle PQM$$.
+
+These two angles add up to $$90^\circ$$ (:ref{#right-triangle-angles}). Two equal angles that add up
+to $$90^\circ$$ are each $$45^\circ$$.
+
+:::
+
+::::
+
+## The Pythagoras theorem
+
+::::exercise{#ex-missing-sides}
+
+Find the missing side of each right triangle:
+
+1. Legs $$8$$ and $$15$$
+2. Hypotenuse $$25$$ and one leg $$7$$
+3. Legs $$2$$ and $$3$$
+
+:::solution
+
+By :ref{#pythagoras-sides}:
+
+1. $$c = \sqrt{64 + 225} = \sqrt{289} = 17$$
+2. $$b = \sqrt{625 - 49} = \sqrt{576} = 24$$
+3. $$c = \sqrt{4 + 9} = \sqrt{13}$$: a side length doesn't have to be a whole number
+
+:::
+
+::::
+
+::::exercise{#ex-screen-sides}
+
+A rectangular screen has sides in the ratio $$3 : 4$$ and a diagonal of length $$50$$. Find its
+sides.
+
+:::solution
+
+Write the sides as $$3k$$ and $$4k$$. The diagonal splits the rectangle into two right triangles, so
+by :ref{#pythagoras},
+
+```math
+(3k)^2 + (4k)^2 = 9k^2 + 16k^2 = 25k^2 = 50^2
+```
+
+So $$(5k)^2 = 50^2$$. Both $$5k$$ and $$50$$ are positive, so $$5k = 50$$ and $$k = 10$$. The sides
+are $$30$$ and $$40$$.
+
+:::
+
+::::
+
+::::exercise{#ex-box-diagonals}
+
+Find the diagonal through each box, using the theorem twice as in the box example on the Pythagoras
+page:
+
+1. A box $$2$$ by $$3$$ by $$6$$
+2. A box $$1$$ by $$4$$ by $$8$$
+3. A cube with sides of length $$s$$
+
+:::solution
+
+A box with sides $$x$$, $$y$$ and $$z$$ has floor diagonal $$f$$ with $$f^2 = x^2 + y^2$$, and then
+diagonal $$D$$ with $$D^2 = f^2 + z^2 = x^2 + y^2 + z^2$$ (:ref{#pythagoras}).
+
+1. $$D = \sqrt{4 + 9 + 36} = \sqrt{49} = 7$$
+2. $$D = \sqrt{1 + 16 + 64} = \sqrt{81} = 9$$
+3. $$D = \sqrt{3s^2} = s\sqrt{3}$$, by :ref{#real-numbers/root-product}
+
+:::
+
+::::
+
+::::exercise{#ex-a-plus-b}
+
+Someone reads the theorem as "the hypotenuse is the sum of the legs". Show with an example that this
+is wrong, and explain why $$c < a + b$$ in every right triangle.
+
+:::solution
+
+With legs $$3$$ and $$4$$, the hypotenuse is $$5$$, but $$3 + 4 = 7$$.
+
+In general, $$(a + b)^2 = a^2 + 2ab + b^2 = c^2 + 2ab$$, using :ref{#pythagoras}. Since $$a$$ and
+$$b$$ are positive, $$2ab > 0$$, so $$(a + b)^2 > c^2$$. Both $$a + b$$ and $$c$$ are positive, so
+$$a + b > c$$ (:ref{#real-numbers/power-order-converse}).
+
+The picture agrees: going along the two legs is a detour compared with going straight along the
+hypotenuse.
+
+:::
+
+::::
+
+::::exercise{#ex-is-it-right}
+
+1. A triangle has sides $$6$$, $$8$$ and $$11$$. Show that it is not a right triangle.
+2. Another triangle has sides $$9$$, $$12$$ and $$15$$, and $$9^2 + 12^2 = 15^2$$. Does the
+   Pythagoras theorem, as proved in this guide, show that this triangle is a right triangle?
+
+:::solution
+
+1. If it were a right triangle, the squares of two sides would add up to the square of the third
+   (:ref{#pythagoras}). Checking each side as the hypotenuse: $$6^2 + 8^2 = 100 \ne 121$$,
+   $$6^2 + 11^2 = 157 \ne 64$$ and $$8^2 + 11^2 = 185 \ne 36$$. None works, so it is not a right
+   triangle.
+2. No. The theorem says "if the triangle has a right angle, then $$a^2 + b^2 = c^2$$". This triangle
+   satisfies the conclusion, but that doesn't prove the hypothesis. That would need the converse,
+   "if $$a^2 + b^2 = c^2$$, then there is a right angle" (:ref{#basic-proofs/contrapositive}). The
+   converse is true, but this guide doesn't prove it.
+
+Part 1 uses the theorem the safe way round: a triangle that fails the conclusion can't satisfy the
+hypothesis.
+
+:::
+
+::::
+
+## Perpendicular bisectors
+
+::::exercise{#ex-equilateral-height}
+
+A triangle $$\triangle ABC$$ has all three sides of length $$2$$. Let $$F$$ be the foot of the
+perpendicular from $$C$$ to the line $$AB$$.
+
+1. Prove that $$F$$ is the midpoint of $$AB$$.
+2. Find the height $$d(C, F)$$ and the area of the triangle.
+
+:::solution
+
+1. Since $$d(C, A) = d(C, B)$$, the point $$C$$ lies on the perpendicular bisector of $$AB$$
+   (:ref{#perpendicular-bisector-rule}). That bisector is a line through $$C$$ perpendicular to
+   $$AB$$. Only one such line exists (:ref{#perpendicular-rules}, rule 1), so it is the line $$CF$$.
+   So $$F$$ is where the bisector meets the line $$AB$$. The two lines meet at only one point
+   (:ref{#crossing-lines}), and the bisector passes through the midpoint, so $$F$$ is the midpoint.
+2. $$F$$ is the midpoint, so $$d(A, F) = 1$$. The triangle $$\triangle AFC$$ has a right angle at
+   $$F$$ and hypotenuse $$2$$, so $$d(C, F) = \sqrt{4 - 1} = \sqrt{3}$$ (:ref{#pythagoras-sides}).
+   The area is $$\frac{1}{2} \cdot 2 \cdot \sqrt{3} = \sqrt{3}$$ (:ref{#triangle-area}).
+
+:::
+
+::::
+
+::::exercise{#ex-side-is-not-height}
+
+A triangle has sides $$5$$, $$5$$ and $$6$$. Someone works out its area as
+$$\frac{1}{2} \cdot 6 \cdot 5 = 15$$. What went wrong? Find the correct area.
+
+:::solution
+
+The formula $$\frac{1}{2}bh$$ (:ref{#triangle-area}) needs the height, which is measured along the
+perpendicular from the opposite corner to the base. Here that perpendicular runs to the midpoint of
+the base, not along a side, so the side length $$5$$ is not the height.
+
+Call the corners $$A$$ and $$B$$ at the ends of the side of length $$6$$, and $$C$$ the third. As in
+the previous exercise, $$d(C, A) = d(C, B)$$, so the foot $$F$$ of the perpendicular from $$C$$ is
+the midpoint of $$AB$$, with $$d(A, F) = 3$$. Then
+
+```math
+d(C, F) = \sqrt{5^2 - 3^2} = \sqrt{16} = 4
+```
+
+and the area is $$\frac{1}{2} \cdot 6 \cdot 4 = 12$$. The wrong answer was too large, as it must be:
+the side is the hypotenuse of $$\triangle AFC$$, and so longer than the height
+(:ref{#hypotenuse-longest}).
+
+:::
+
+::::
+
+::::exercise{#ex-points-on-a-line}
+
+A point $$P$$ is at distance $$6$$ from a line $$L$$, and $$F$$ is the foot of the perpendicular
+from $$P$$.
+
+1. Find $$d(P, M)$$ for a point $$M$$ of $$L$$ with $$d(F, M) = 8$$.
+2. How many points of $$L$$ are at distance $$10$$ from $$P$$?
+3. How many points of $$L$$ are at distance $$5$$ from $$P$$?
+
+:::solution
+
+1. The triangle $$\triangle PFM$$ has a right angle at $$F$$, so
+   $$d(P, M) = \sqrt{36 + 64} = \sqrt{100} = 10$$ (:ref{#pythagoras-sides}).
+2. A point $$M \ne F$$ of $$L$$ is at distance $$10$$ exactly when $$d(F, M)^2 = 100 - 36 = 64$$,
+   that is, when $$d(F, M) = 8$$. There are two such points, one on each side of $$F$$. The point
+   $$F$$ itself is at distance $$6$$, not $$10$$.
+3. None. Every point of $$L$$ is at distance at least $$6$$ from $$P$$ (:ref{#shortest-distance}),
+   and $$5 < 6$$.
+
+:::
+
+::::
+
+::::exercise{#ex-three-points-equidistant}
+
+1. Let $$\triangle PQM$$ be a triangle. Prove that exactly one point is the same distance from
+   $$P$$, $$Q$$ and $$M$$.
+2. Now let $$P$$, $$Q$$ and $$M$$ be three different points on one line. Explain why the argument of
+   part 1 breaks down.
+
+:::solution
+
+1. The point $$O$$ where the perpendicular bisectors meet is one such point (:ref{#circumcentre}).
+   To show it is the only one, let $$X$$ be any point with $$d(X, P) = d(X, Q) = d(X, M)$$. Then
+   $$X$$ lies on the perpendicular bisector of $$PQ$$ and on that of $$QM$$
+   (:ref{#perpendicular-bisector-rule}), and so does $$O$$.
+
+   These two bisectors are different lines. If they were the same line, the lines $$PQ$$ and $$QM$$
+   would both be perpendicular to it, and so parallel (:ref{#perpendiculars-parallel}). They share
+   the point $$Q$$, so by rule 2 of :ref{#line-rules} they would be the same line, putting $$P$$,
+   $$Q$$ and $$M$$ on one line. That is impossible for a triangle.
+
+   Two different lines share at most one point (:ref{#crossing-lines}). Both $$X$$ and $$O$$ lie on
+   both bisectors, so $$X = O$$.
+
+2. Part 1 finds the point where two perpendicular bisectors cross. For three points on one line
+   $$L$$, the bisectors of $$PQ$$ and of $$QM$$ are both perpendicular to $$L$$, so they are
+   parallel (:ref{#perpendiculars-parallel}). Two different parallel lines never meet, so there is
+   no crossing point to use, and the argument gives nothing.
+
+Part 2 shows why :ref{#circumcentre} is stated for a triangle, and not for any three points.
+
+:::
+
+::::
+
+## Angles in triangles
+
+::::exercise{#ex-angles-in-ratio}
+
+The angles of a triangle are $$x$$, $$2x$$ and $$3x$$. Find them. What kind of triangle is it?
+
+:::solution
+
+The angles add up to $$180^\circ$$ (:ref{#triangle-angle-sum}), so $$6x = 180^\circ$$ and
+$$x = 30^\circ$$. The angles are $$30^\circ$$, $$60^\circ$$ and $$90^\circ$$. One of them is a right
+angle, so it is a right triangle, and the other two add up to $$90^\circ$$, as they must
+(:ref{#right-triangle-angles}).
+
+:::
+
+::::
+
+::::exercise{#ex-exterior-angle}
+
+In $$\triangle ABC$$, the side $$BC$$ is continued past $$C$$ to a point $$D$$. Prove that
+$$\angle ACD = \angle A + \angle B$$.
+
+```plane
+point A 0 0 sw
+point B 4 0 se
+point C 1.5 2.5 ne
+point D 0 4 ne
+segment A B
+segment A C
+segment B D
+angle B A C color=blue
+angle C B A color=orange
+angle D C A color=green
+caption "The angle ACD, outside the triangle at C"
+```
+
+:::solution
+
+$$C$$ lies between $$B$$ and $$D$$ on a line, and $$A$$ is not on that line. So by
+:ref{#angles-on-line},
+
+```math
+\angle BCA + \angle ACD = 180^\circ
+```
+
+The angles of the triangle also add up to $$180^\circ$$ (:ref{#triangle-angle-sum}):
+$$\angle A + \angle B + \angle BCA = 180^\circ$$. Both sums contain $$\angle BCA$$, so taking it
+away from both leaves $$\angle ACD = \angle A + \angle B$$.
+
+:::
+
+::::
+
+::::exercise{#ex-quadrilateral-sum}
+
+A four-sided figure $$ABCD$$ has its diagonal $$AC$$ inside the angles at $$A$$ and at $$C$$. Prove
+that its four angles add up to $$360^\circ$$. Where does the proof use the condition on the
+diagonal?
+
+:::solution
+
+The diagonal splits the figure into the triangles $$\triangle ABC$$ and $$\triangle ACD$$. Each has
+angles adding up to $$180^\circ$$ (:ref{#triangle-angle-sum}):
+
+```math
+\begin{aligned}
+\angle BAC + \angle ABC + \angle BCA &= 180^\circ \\
+\angle CAD + \angle ACD + \angle CDA &= 180^\circ
+\end{aligned}
+```
+
+The ray $$AC$$ lies inside the angle at $$A$$, so $$\angle BAC + \angle CAD = \angle BAD$$
+(:ref{#angle-addition}). In the same way, $$\angle BCA + \angle ACD = \angle BCD$$. Adding the two
+equations and using these two sums gives
+
+```math
+\angle BAD + \angle ABC + \angle BCD + \angle CDA = 360^\circ
+```
+
+The condition is used in the two angle additions. Without it, the angles from the two triangles
+wouldn't combine into the angles of the figure.
+
+:::
+
+::::
+
+::::exercise{#ex-parallel-proof}
+
+Give a second proof that the angles of $$\triangle ABC$$ add up to $$180^\circ$$, using the line
+through $$C$$ parallel to $$AB$$.
+
+```plane
+point A 0 0 sw
+point B 5 0 se
+point C 1.8 3 n
+point X -0.6 3 n
+point Y 4.6 3 n
+line X Y extend=0.6
+segment A B
+segment A C
+segment B C
+angle B A C color=blue
+angle X C A color=blue
+angle C B A color=orange
+angle B C Y color=orange
+angle A C B color=green r=0.45
+caption "The line XY through C is parallel to AB"
+```
+
+:::solution
+
+Let $$XY$$ be the line through $$C$$ parallel to $$AB$$ (rule 2 of :ref{#line-rules}), with $$X$$ on
+the same side of $$C$$ as $$A$$, as in the figure.
+
+The line $$AC$$ crosses the parallels $$AB$$ and $$XY$$, and $$\angle BAC$$ and $$\angle XCA$$ are
+alternate angles. So they are equal (:ref{#parallel-angles}). In the same way, the line $$BC$$ makes
+the alternate angles $$\angle CBA$$ and $$\angle BCY$$, which are equal.
+
+At $$C$$, the three angles $$\angle XCA$$, $$\angle ACB$$ and $$\angle BCY$$ sit side by side along
+the line $$XY$$, as the figure shows. Together they make the straight angle $$\angle XCY$$, so they
+add up to $$180^\circ$$ (:ref{#angle-addition}, :ref{#straight-angle}). Swapping in the equal angles
+gives $$\angle A + \angle ACB + \angle B = 180^\circ$$.
+
+This proof is shorter, but it relies on :ref{#parallel-angles}. The guide proves that result without
+using the angle sum, so the reasoning doesn't go round in a circle.
+
+:::
+
+::::
+
+::::exercise{#ex-height-outside}
+
+In $$\triangle ABC$$, the base $$AB$$ has length $$4$$. The foot $$F$$ of the perpendicular from
+$$C$$ lies on the line $$AB$$ beyond $$B$$, with $$d(B, F) = 3$$ and $$d(C, F) = 5$$.
+
+```plane
+point A 0 0 sw
+point B 4 0 s
+point F 7 0 se
+point C 7 5 n
+segment A B label="4" side=right
+segment B F label="3" side=right dashed color=muted
+segment C F dashed color=purple
+text 7.4 2.5 "5" color=purple
+segment A C
+segment B C
+right B F C color=purple
+caption "The height falls outside the base"
+```
+
+1. Find the area using $$\frac{1}{2}bh$$.
+2. Check it using the two right triangles $$\triangle AFC$$ and $$\triangle BFC$$.
+
+:::solution
+
+1. The height is $$5$$, measured to the line $$AB$$ (:ref{#height}), so the area is
+   $$\frac{1}{2} \cdot 4 \cdot 5 = 10$$ (:ref{#triangle-area}).
+2. $$\triangle AFC$$ has legs $$d(A, F) = 4 + 3 = 7$$ and $$5$$, so its area is
+   $$\frac{7 \cdot 5}{2} = 17.5$$ (:ref{#right-triangle-area}). $$\triangle BFC$$ has legs $$3$$ and
+   $$5$$, with area $$7.5$$. The triangle $$\triangle ABC$$ is what is left of $$\triangle AFC$$
+   when $$\triangle BFC$$ is taken away, so its area is $$17.5 - 7.5 = 10$$ (:ref{#area-rules}). The
+   two answers agree.
+
+:::
+
+::::

@@ -3,6 +3,17 @@ import { AreaModel } from "./area-model";
 import { DiagonalSquare } from "./diagonal-square";
 import { Graph } from "./graph";
 import { NumberLine } from "./number-line";
+import { PlaneFigure } from "./plane-figure";
+import {
+  BoxDiagonal,
+  CardTriangles,
+  FenceWalk,
+  TornCorners,
+  PaperFold,
+  CarpenterBoard,
+  ClockHands,
+  RailwayTrack,
+} from "./illustrations";
 import { NumberLineWalk } from "./interactive/walk";
 import {
   InequalityScale,
@@ -20,6 +31,15 @@ import { SlopeExplorer } from "./interactive/slope";
 import { FractionBars } from "./interactive/fraction-bars";
 import { CompletingSquare } from "./interactive/completing-square";
 import { ParabolaCrossings, ParabolaVertex } from "./interactive/parabola";
+import { SegmentDistances } from "./interactive/segment-distances";
+import { AngleTurn } from "./interactive/angle-turn";
+import { GlobeTriangle, GreatCircles } from "./interactive/great-circles";
+import { PythagorasSquares } from "./interactive/pythagoras-squares";
+import {
+  BisectorDistances,
+  ShortestDistance,
+} from "./interactive/bisector-distances";
+import { Circumcircle } from "./interactive/circumcircle";
 import { Quiz } from "./quiz";
 import {
   Conjecture,
@@ -48,6 +68,15 @@ export const mdxComponents = {
   DiagonalSquare,
   Graph,
   NumberLine,
+  PlaneFigure,
+  BoxDiagonal,
+  CardTriangles,
+  TornCorners,
+  FenceWalk,
+  PaperFold,
+  CarpenterBoard,
+  ClockHands,
+  RailwayTrack,
   Quiz,
   Conjecture,
   Corollary,
@@ -79,4 +108,12 @@ export const mdxComponents = {
   CompletingSquare,
   ParabolaCrossings,
   ParabolaVertex,
+  SegmentDistances,
+  AngleTurn,
+  GreatCircles,
+  GlobeTriangle,
+  PythagorasSquares,
+  BisectorDistances,
+  ShortestDistance,
+  Circumcircle,
 };

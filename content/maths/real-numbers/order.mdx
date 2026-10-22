@@ -17,7 +17,7 @@ bigger than another exactly when the step from the smaller to the bigger is to t
 when their difference is positive. So comparing two numbers comes down to checking whether a
 difference is positive, which the previous page already has rules for.
 
-:::definition[Order]{#real-order}
+:::definition[Order of real numbers]{#real-order}
 
 For real numbers $$a$$ and $$b$$, $$a$$ is **less than** $$b$$, written $$a < b$$, if $$b - a$$ is
 positive. We also write $$b > a$$ for the same thing. We write $$a \le b$$ when $$a < b$$ or
@@ -306,10 +306,9 @@ for every $$n$$. We show $$1 - x = 0$$ by contradiction (:ref{#basic-proofs/cont
 
 Suppose $$d = 1 - x$$ is positive. Then $$\frac{1}{d}$$ is a positive real number, so by part 2 of
 :ref{#no-gaps} it is less than some positive integer $$N$$. If $$N$$ has $$k$$ digits, then
-$$N < 10^k$$, so $$\frac{1}{d} < 10^k$$. Reciprocals reverse order (:ref{#reciprocal-order}), so
-$$d > \frac{1}{10^k}$$. But the inequality above, with $$n = k$$, says $$d \le \frac{1}{10^k}$$.
-This is a contradiction, so $$d$$ is not positive. Since $$d \ge 0$$, it must be $$0$$, and
-$$x = 1$$.
+$$N < 10^k$$, so $$\frac{1}{d} < 10^k$$. By :ref{#reciprocal-order}, $$d > \frac{1}{10^k}$$. But the
+inequality above, with $$n = k$$, says $$d \le \frac{1}{10^k}$$. This is a contradiction, so $$d$$
+is not positive. Since $$d \ge 0$$, it must be $$0$$, and $$x = 1$$.
 
 :::
 
@@ -325,7 +324,7 @@ while twice their product is $$2 \cdot 15 = 30$$. The difference is $$4$$, which
 the gap $$5 - 3 = 2$$. That always happens, so the difference can never be negative, and it is $$0$$
 only when the two numbers are equal.
 
-:::proposition[Two squares]{#two-squares}
+:::proposition[Sum of two squares]{#two-squares}
 
 For all real numbers $$a$$ and $$b$$,
 

@@ -1,0 +1,664 @@
+{
+  "title": "Review: Distance and angles",
+  "description": "Questions on the ideas in this guide, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
+  "questions": [
+    {
+      "id": "distance-zero",
+      "stars": 1,
+      "topic": "Distance",
+      "question": "What does $$d(P, Q) = 0$$ tell you about the points $$P$$ and $$Q$$?",
+      "options": [
+        "They are the same point",
+        "Nothing, since a distance can be $$0$$ for any two points",
+        "They are on the same line",
+        "They are close together but different"
+      ],
+      "answer": 0,
+      "explanation": "The first rule for distance says $$d(P, Q) \\ge 0$$, with $$d(P, Q) = 0$$ exactly when $$P$$ and $$Q$$ are the same point (:ref{#distance-rules})."
+    },
+    {
+      "id": "triangle-inequality-meaning",
+      "stars": 1,
+      "topic": "Distance",
+      "question": "What does the triangle inequality $$d(P, M) \\le d(P, Q) + d(Q, M)$$ say in words?",
+      "options": [
+        "Going by way of $$Q$$ is always longer than going straight there",
+        "Going from $$P$$ to $$M$$ by way of $$Q$$ is never shorter than going straight there",
+        "The three sides of a triangle are always equal",
+        "$$Q$$ always lies between $$P$$ and $$M$$"
+      ],
+      "answer": 1,
+      "explanation": "A detour through a third point covers at least as much ground as the direct route (:ref{#distance-rules}). It can be equal, when $$Q$$ is on the segment $$PM$$, so \\\"always longer\\\" is too strong."
+    },
+    {
+      "id": "rules-assumed",
+      "stars": 2,
+      "topic": "Distance",
+      "question": "How does the guide know that $$d(P, Q) = d(Q, P)$$ for all points?",
+      "options": [
+        "It follows from the Pythagoras theorem",
+        "It is checked by measuring with a ruler",
+        "It is taken as given, as one of the rules for distance",
+        "It proves it from the triangle inequality"
+      ],
+      "answer": 2,
+      "explanation": "\\\"The same both ways\\\" is one of the three rules for distance that the guide takes as given and doesn't prove (:ref{#distance-rules}). Every other fact about distance rests on these."
+    },
+    {
+      "id": "between-equality",
+      "stars": 2,
+      "topic": "Distance",
+      "question": "For which points $$Q$$ is $$d(P, M) = d(P, Q) + d(Q, M)$$?",
+      "options": [
+        "Only the midpoint of $$PM$$",
+        "Every point in the plane",
+        "Exactly the points on the line $$PM$$",
+        "Exactly the points on the segment $$PM$$"
+      ],
+      "answer": 3,
+      "explanation": "The first rule for segments says the equation holds exactly when $$Q$$ lies on the segment $$PM$$ (:ref{#segment-rules}). A point on the line but beyond $$M$$ makes the route through it longer."
+    },
+    {
+      "id": "between-line-not-segment",
+      "stars": 3,
+      "topic": "Distance",
+      "question": "$$Q$$ lies on the line through $$P$$ and $$M$$, but beyond $$M$$. Which is true?",
+      "options": [
+        "$$d(P, Q) = d(P, M) + d(M, Q)$$",
+        "$$d(Q, M) = d(Q, P) + d(P, M)$$",
+        "$$d(P, M) = d(P, Q) + d(Q, M)$$",
+        "No equation of this kind holds, since $$Q$$ is not between any two of the points"
+      ],
+      "answer": 0,
+      "explanation": "Of three different points on one line, exactly one lies between the other two (:ref{#segment-rules}). Here $$M$$ is between $$P$$ and $$Q$$, so rule 1 for segments gives $$d(P, Q) = d(P, M) + d(M, Q)$$."
+    },
+    {
+      "id": "circle-vs-disc",
+      "stars": 1,
+      "topic": "Distance",
+      "question": "What is the difference between the circle and the disc with centre $$P$$ and radius $$r$$?",
+      "options": [
+        "The circle is the points at distance at most $$r$$; the disc is the points at distance exactly $$r$$",
+        "The circle is the points at distance exactly $$r$$; the disc is the points at distance at most $$r$$",
+        "The disc is the circle with its centre removed",
+        "They are two names for the same set of points"
+      ],
+      "answer": 1,
+      "explanation": "The circle is only the edge, $$d(P, Q) = r$$, and the disc is the edge and everything inside, $$d(P, Q) \\le r$$ (:ref{#circle}). So a circle has a length but no area, and a disc has an area."
+    },
+    {
+      "id": "two-points-line",
+      "stars": 1,
+      "topic": "Lines and rays",
+      "question": "Which of these is a rule about lines that the guide takes as given?",
+      "options": [
+        "Any two lines meet in exactly one point",
+        "Opposite sides of a rectangle are equal",
+        "Two different points lie on exactly one line",
+        "Three points always lie on one line"
+      ],
+      "answer": 2,
+      "explanation": "\\\"Two points, one line\\\" is the first rule for lines (:ref{#line-rules}). Parallel lines never meet, so not every pair of lines meets (:ref{#crossing-lines}), and the rectangle fact is proved (:ref{#rectangle-sides})."
+    },
+    {
+      "id": "one-parallel",
+      "stars": 2,
+      "topic": "Lines and rays",
+      "question": "Which rule for lines fails on the surface of a globe, where any two great circles cross?",
+      "options": [
+        "Every line has at least two points",
+        "A ray has one starting point",
+        "Two points lie on exactly one line",
+        "Exactly one line through a point is parallel to a given line"
+      ],
+      "answer": 3,
+      "explanation": "On a globe there is no parallel through a point, since every pair of great circles crosses. Rule 2, one parallel through a point, is the rule that makes flat geometry flat (:ref{#line-rules})."
+    },
+    {
+      "id": "parallel-assumed",
+      "stars": 2,
+      "topic": "Lines and rays",
+      "question": "Which of these facts about lines does the guide take as given, without proof?",
+      "options": [
+        "Exactly one line through a point is parallel to a given line",
+        "Two lines perpendicular to the same line are parallel",
+        "Two lines parallel to the same line are parallel to each other",
+        "Two lines that are not parallel meet in exactly one point"
+      ],
+      "answer": 0,
+      "explanation": "One parallel through a point is rule 2 for lines (:ref{#line-rules}). The other three are proved from the rules by contradiction: :ref{#crossing-lines}, :ref{#parallel-transitive} and :ref{#perpendiculars-parallel}."
+    },
+    {
+      "id": "ray-order",
+      "stars": 1,
+      "topic": "Lines and rays",
+      "question": "How are the ray $$PQ$$ and the ray $$QP$$ related?",
+      "options": [
+        "They are both the segment $$PQ$$",
+        "They start at different points and run in opposite directions",
+        "The ray $$QP$$ is the ray $$PQ$$ with $$P$$ removed",
+        "They are the same ray"
+      ],
+      "answer": 1,
+      "explanation": "The starting point comes first in the name. The ray $$PQ$$ starts at $$P$$ and runs on through $$Q$$, while the ray $$QP$$ starts at $$Q$$ and runs back through $$P$$ (:ref{#ray})."
+    },
+    {
+      "id": "two-perpendiculars",
+      "stars": 2,
+      "topic": "Lines and rays",
+      "question": "Two lines are both perpendicular to the same line. What follows?",
+      "options": [
+        "They meet at a right angle",
+        "Nothing, without measuring",
+        "They are parallel",
+        "They are perpendicular to each other"
+      ],
+      "answer": 2,
+      "explanation": "If $$L_1 \\perp L_2$$ and $$L_2 \\perp L_3$$, then $$L_1 \\parallel L_3$$ (:ref{#perpendiculars-parallel}). If the two lines met, there would be two different perpendiculars to the same line through one point, which rule 1 for perpendicular lines rules out."
+    },
+    {
+      "id": "rectangle-sides-proved",
+      "stars": 3,
+      "topic": "Lines and rays",
+      "question": "How does the guide show that opposite sides of a rectangle have the same length?",
+      "options": [
+        "It takes it as given in the definition of a rectangle",
+        "It uses the Pythagoras theorem on the diagonal",
+        "It measures the sides in a figure",
+        "Opposite sides are parallel, and the rule that parallel lines are the same distance apart everywhere does the rest"
+      ],
+      "answer": 3,
+      "explanation": "Opposite sides are both perpendicular to a third side, so they are parallel. The rule for the distance between parallel lines then gives equal lengths (:ref{#parallel-distance}, :ref{#rectangle-sides})."
+    },
+    {
+      "id": "areas-add",
+      "stars": 2,
+      "topic": "Lines and rays",
+      "question": "An L shape is cut into rectangles of areas $$10$$ and $$6$$. Why is its area $$16$$, whichever way you cut it?",
+      "options": [
+        "Because the rule that areas add holds for any cut into pieces that don't overlap",
+        "Because every cut gives pieces of areas $$10$$ and $$6$$",
+        "Because the area of a shape is the sum of its side lengths",
+        "Because an L shape is a rectangle"
+      ],
+      "answer": 0,
+      "explanation": "The rules for area say a rectangle has area $$ab$$ and that a region cut into pieces that don't overlap has the sum of their areas as its area (:ref{#area-rules}). So every cut gives the same total."
+    },
+    {
+      "id": "two-angles",
+      "stars": 1,
+      "topic": "Angles",
+      "question": "How many angles do two rays from the same point make?",
+      "options": [
+        "Four",
+        "Two",
+        "It depends on the rays",
+        "One"
+      ],
+      "answer": 1,
+      "explanation": "The two rays split the plane into two regions, and each region with its two edge rays is an angle (:ref{#angle}). That is why a name for an angle needs a rule for which one it means."
+    },
+    {
+      "id": "name-convention",
+      "stars": 2,
+      "topic": "Angles",
+      "question": "In these notes, which of the two angles made by the rays $$PQ$$ and $$PM$$ does $$\\angle QPM$$ mean?",
+      "options": [
+        "The one turning anticlockwise from $$PQ$$ to $$PM$$",
+        "Either, so the name is ambiguous",
+        "The one on one side of the line $$PQ$$, which is never more than a straight angle",
+        "Always the larger one"
+      ],
+      "answer": 2,
+      "explanation": "$$\\angle QPM$$ is the angle that lies on one side of the line $$PQ$$, so it is never larger than a straight angle (:ref{#angle-name}). The other one is the reflex angle, named in words."
+    },
+    {
+      "id": "same-ray-angles",
+      "stars": 2,
+      "topic": "Angles",
+      "question": "The rays $$PQ$$ and $$PM$$ are the same ray. What are the two angles they make?",
+      "options": [
+        "Two zero angles",
+        "A right angle and a reflex angle",
+        "Two straight angles",
+        "A zero angle and a full angle"
+      ],
+      "answer": 3,
+      "explanation": "One angle has nothing between its arms, the zero angle, and the other is the whole plane, the full angle (:ref{#special-angles})."
+    },
+    {
+      "id": "sector-definition",
+      "stars": 1,
+      "topic": "Angles",
+      "question": "What is the sector of a disc cut out by an angle?",
+      "options": [
+        "The part of the disc inside the angle, with the disc centred at the vertex",
+        "The part of the disc's circle inside the angle",
+        "The triangle made by the two arms and the circle",
+        "The part of the disc outside the angle"
+      ],
+      "answer": 0,
+      "explanation": "The sector is the part of a disc centred at the vertex that lies inside the angle (:ref{#sector}). Its curved edge, the part of the circle inside the angle, is the arc."
+    },
+    {
+      "id": "degree-turn",
+      "stars": 1,
+      "topic": "Measuring angles",
+      "question": "In the turn picture, what does it mean for an angle to have $$x$$ degrees?",
+      "options": [
+        "It is $$\\frac{x}{180}$$ of a full turn",
+        "It is $$\\frac{x}{360}$$ of a full turn",
+        "Its arms are $$x$$ units long",
+        "Its sector has area $$x$$"
+      ],
+      "answer": 1,
+      "explanation": "One full turn is split into $$360$$ equal steps, each one degree, so an angle of $$x^\\circ$$ is $$\\frac{x}{360}$$ of a full turn (:ref{#degree})."
+    },
+    {
+      "id": "degree-area",
+      "stars": 2,
+      "topic": "Measuring angles",
+      "question": "How does the definition of degrees make \\\"a fraction of a turn\\\" precise?",
+      "options": [
+        "By counting how many right angles fit inside it",
+        "By the distance between the ends of the arms",
+        "By the share of a disc centred at the vertex that the angle's sector takes up",
+        "By measuring the length of the arms"
+      ],
+      "answer": 2,
+      "explanation": "An angle has $$x^\\circ$$ when its sector is $$\\frac{x}{360}$$ of the area of a disc centred at its vertex (:ref{#degree}). After this, the guide argues with the turn picture."
+    },
+    {
+      "id": "disc-size",
+      "stars": 3,
+      "topic": "Measuring angles",
+      "question": "The definition of degrees doesn't say how big the disc is. Why doesn't that matter?",
+      "options": [
+        "The definition only works for right angles",
+        "Every disc in the guide has radius $$1$$",
+        "A bigger disc gives a sector with the same area",
+        "It is taken as given that the sector is the same fraction of every disc centred at the vertex"
+      ],
+      "answer": 3,
+      "explanation": "A bigger disc gives a bigger sector, but the same fraction of the disc. That is rule 2 of :ref{#disc-area}, taken as given."
+    },
+    {
+      "id": "why-360",
+      "stars": 1,
+      "topic": "Measuring angles",
+      "question": "Why is a full turn split into $$360$$ degrees?",
+      "options": [
+        "Because $$360$$ divides evenly by many small numbers, so common fractions of a turn are whole numbers of degrees",
+        "Because it is the area of a disc",
+        "Because a circle has $$360$$ points",
+        "Because it was proved from the rules for distance"
+      ],
+      "answer": 0,
+      "explanation": "$$360$$ is a multiple of $$2$$, $$3$$, $$4$$, $$5$$, $$6$$, $$8$$, $$9$$, $$10$$ and $$12$$, so halves, thirds, quarters and more are whole numbers of degrees (:ref{#degree})."
+    },
+    {
+      "id": "straight-angle-proof",
+      "stars": 3,
+      "topic": "Measuring angles",
+      "question": "What does the proof that a straight angle is $$180^\\circ$$ use?",
+      "options": [
+        "That the angles of a triangle add up to $$180^\\circ$$",
+        "That a line through the centre of a disc cuts it into two equal halves",
+        "The Pythagoras theorem",
+        "That a right angle is $$90^\\circ$$"
+      ],
+      "answer": 1,
+      "explanation": "The arms of a straight angle form a line through the centre of any disc at the vertex, which halves the disc by rule 3 of :ref{#disc-area}. So $$\\frac{x}{360} = \\frac{1}{2}$$ and $$x = 180$$ (:ref{#straight-angle}). The triangle fact comes much later, so using it here would be circular."
+    },
+    {
+      "id": "angle-addition-proved",
+      "stars": 2,
+      "topic": "Measuring angles",
+      "question": "How does the guide show that two angles side by side, sharing an arm, add up?",
+      "options": [
+        "It uses the Pythagoras theorem",
+        "It takes it as given",
+        "Their sectors make up the sector of the whole angle, and areas add",
+        "It measures the angles with a protractor"
+      ],
+      "answer": 2,
+      "explanation": "Degrees are defined by the share of a disc that an angle's sector takes up (:ref{#degree}). The two smaller sectors make up the bigger one without overlapping, so their areas add, and so do the angles (:ref{#angle-addition})."
+    },
+    {
+      "id": "sector-area-formula",
+      "stars": 2,
+      "topic": "Measuring angles",
+      "question": "Why does a sector of $$x^\\circ$$ in a disc of radius $$r$$ have area $$\\frac{x}{360}\\pi r^2$$?",
+      "options": [
+        "Because the arc has length $$x$$",
+        "It is taken as given",
+        "Because the sector is a triangle with base $$r$$",
+        "The sector is $$\\frac{x}{360}$$ of the disc by the definition of degrees, and the disc has area $$\\pi r^2$$"
+      ],
+      "answer": 3,
+      "explanation": "The definition of degrees says the sector is $$\\frac{x}{360}$$ of the disc's area, and rule 1 for discs gives that area as $$\\pi r^2$$ (:ref{#sector-area})."
+    },
+    {
+      "id": "right-triangle-rule-assumed",
+      "stars": 2,
+      "topic": "Right triangles",
+      "question": "Two right triangles have legs of the same lengths. Which of these does the guide take as given, rather than prove?",
+      "options": [
+        "Their hypotenuses, angles and areas all match",
+        "Their hypotenuses satisfy $$a^2 + b^2 = c^2$$",
+        "Their area is $$\\frac{ab}{2}$$",
+        "Their angles add up to $$180^\\circ$$"
+      ],
+      "answer": 0,
+      "explanation": "The rules for right triangles take the full match as given (:ref{#right-triangle-rule}). The others are proved from it: :ref{#pythagoras}, :ref{#triangle-angle-sum} and :ref{#right-triangle-area}."
+    },
+    {
+      "id": "other-two-angles",
+      "stars": 1,
+      "topic": "Right triangles",
+      "question": "In a right triangle, what do the two angles other than the right angle add up to?",
+      "options": [
+        "$$45^\\circ$$",
+        "$$90^\\circ$$",
+        "$$180^\\circ$$",
+        "It depends on the lengths of the legs"
+      ],
+      "answer": 1,
+      "explanation": "They always add up to $$90^\\circ$$ (:ref{#right-triangle-angles}). So each is less than $$90^\\circ$$, and a right triangle has only one right angle."
+    },
+    {
+      "id": "right-angles-proof",
+      "stars": 3,
+      "topic": "Right triangles",
+      "question": "How does the proof that the two other angles of a right triangle add to $$90^\\circ$$ work?",
+      "options": [
+        "It uses the angle sum of a triangle, $$180^\\circ$$, and takes away $$90^\\circ$$",
+        "It uses the Pythagoras theorem",
+        "It completes a rectangle; the diagonal makes two matching triangles, so the two angles sit side by side in one right-angled corner",
+        "It measures the angles with a protractor"
+      ],
+      "answer": 2,
+      "explanation": "The rectangle's diagonal splits it into two right triangles with the same legs, so a matching angle moves to the other corner, where the two angles fill a right angle (:ref{#right-triangle-angles}). The angle sum is proved later from this result, so using it would be circular."
+    },
+    {
+      "id": "right-area-why",
+      "stars": 2,
+      "topic": "Right triangles",
+      "question": "Why is the area of a right triangle with legs $$a$$ and $$b$$ equal to $$\\frac{ab}{2}$$?",
+      "options": [
+        "Because $$\\frac{ab}{2}$$ is the average of $$a$$ and $$b$$",
+        "Because of the Pythagoras theorem",
+        "It is taken as given",
+        "It is half of a rectangle with sides $$a$$ and $$b$$, split by a diagonal into two triangles of equal area"
+      ],
+      "answer": 3,
+      "explanation": "Two copies make an $$a$$ by $$b$$ rectangle of area $$ab$$. The two halves have the same legs, so the same area by the rules for right triangles, and each is $$\\frac{ab}{2}$$ (:ref{#right-triangle-area})."
+    },
+    {
+      "id": "pythagoras-statement",
+      "stars": 1,
+      "topic": "The Pythagoras theorem",
+      "question": "In a right triangle with legs $$a$$ and $$b$$ and hypotenuse $$c$$, what does the Pythagoras theorem say?",
+      "options": [
+        "$$a^2 + b^2 = c^2$$",
+        "$$a^2 + c^2 = b^2$$",
+        "$$a + b = c$$",
+        "$$(a + b)^2 = c^2$$"
+      ],
+      "answer": 0,
+      "explanation": "The square of the hypotenuse is the sum of the squares of the legs (:ref{#pythagoras}). For legs $$3$$ and $$4$$ the hypotenuse is $$5$$, not $$3 + 4 = 7$$."
+    },
+    {
+      "id": "pythagoras-proof-idea",
+      "stars": 3,
+      "topic": "The Pythagoras theorem",
+      "question": "What is the key idea in the guide's proof of the Pythagoras theorem?",
+      "options": [
+        "Draw the perpendicular bisector of the hypotenuse",
+        "Fit four copies of the triangle in a square of side $$a + b$$, and add up the area of the square in two ways",
+        "Use the angle sum of a triangle",
+        "Measure many right triangles and spot the pattern"
+      ],
+      "answer": 1,
+      "explanation": "The square has area $$(a + b)^2 = a^2 + 2ab + b^2$$, and it is also four triangles of area $$\\frac{ab}{2}$$ plus a middle square of area $$c^2$$. Comparing gives $$a^2 + b^2 = c^2$$ (:ref{#pythagoras}). Checking examples could never prove it."
+    },
+    {
+      "id": "pythagoras-middle-square",
+      "stars": 4,
+      "topic": "The Pythagoras theorem",
+      "question": "In the proof of the Pythagoras theorem, why is each corner of the middle shape a right angle?",
+      "options": [
+        "Because all four of its sides have length $$c$$",
+        "Because it is drawn as a square",
+        "Because at each corner it sits between two triangle angles adding to $$90^\\circ$$, and the three angles together make a straight angle",
+        "Because the big square's corners are right angles"
+      ],
+      "answer": 2,
+      "explanation": "The two triangle angles add up to $$90^\\circ$$ (:ref{#right-triangle-angles}), and with the middle corner they fill a straight angle, $$180^\\circ$$ (:ref{#straight-angle}). So the middle corner is $$90^\\circ$$. Equal sides alone don't make a square."
+    },
+    {
+      "id": "diagonal-irrational",
+      "stars": 3,
+      "topic": "The Pythagoras theorem",
+      "question": "The diagonal of a square with sides of length $$1$$ has length $$\\sqrt{2}$$. What does that tell you?",
+      "options": [
+        "The diagonal is $$1.5$$",
+        "The diagonal can't be drawn exactly",
+        "The diagonal is twice the side",
+        "The diagonal's length can't be written as a fraction"
+      ],
+      "answer": 3,
+      "explanation": "The diagonal is $$\\sqrt{1^2 + 1^2} = \\sqrt{2}$$ (:ref{#pythagoras}), and no fraction squares to $$2$$ (:ref{#numbers/sqrt-two}). So a length you can draw exactly need not be a fraction."
+    },
+    {
+      "id": "box-diagonal",
+      "stars": 3,
+      "topic": "The Pythagoras theorem",
+      "question": "How does the guide find the diagonal through a box?",
+      "options": [
+        "One right triangle on the floor, then a second standing upright on the floor's diagonal",
+        "By measuring",
+        "Three right triangles, one on each face",
+        "By the angle sum of a triangle"
+      ],
+      "answer": 0,
+      "explanation": "The floor's diagonal comes from one right triangle, and the box diagonal is the hypotenuse of a second one with the floor diagonal and an upright edge as legs. That gives $$\\sqrt{x^2 + y^2 + z^2}$$, using :ref{#pythagoras} twice."
+    },
+    {
+      "id": "bisector-def",
+      "stars": 1,
+      "topic": "Perpendicular bisectors",
+      "question": "What is the perpendicular bisector of a segment $$PQ$$?",
+      "options": [
+        "The line through $$P$$ perpendicular to $$PQ$$",
+        "The line through the midpoint of $$PQ$$ that is perpendicular to $$PQ$$",
+        "The line $$PQ$$ itself",
+        "Any line perpendicular to $$PQ$$"
+      ],
+      "answer": 1,
+      "explanation": "It is the line through the midpoint, perpendicular to $$PQ$$, and there is exactly one such line (:ref{#perpendicular-bisector})."
+    },
+    {
+      "id": "bisector-both-directions",
+      "stars": 3,
+      "topic": "Perpendicular bisectors",
+      "question": "The theorem says $$d(P, M) = d(Q, M)$$ exactly when $$M$$ is on the perpendicular bisector of $$PQ$$. What has to be proved?",
+      "options": [
+        "Neither, since it is taken as given",
+        "Only that points the same distance from $$P$$ and $$Q$$ are on the bisector",
+        "Both directions: each statement leads to the other",
+        "Only that points on the bisector are the same distance from $$P$$ and $$Q$$"
+      ],
+      "answer": 2,
+      "explanation": "\\\"Exactly when\\\" claims both directions (:ref{#basic-proofs/exactly-when}). The proof handles both with a chain of statements, each true exactly when the next is (:ref{#perpendicular-bisector-rule})."
+    },
+    {
+      "id": "bisector-proof-tool",
+      "stars": 3,
+      "topic": "Perpendicular bisectors",
+      "question": "Which result does the proof of the perpendicular bisector theorem rely on most?",
+      "options": [
+        "Opposite angles are equal",
+        "The area of a sector",
+        "The angle sum of a triangle",
+        "The Pythagoras theorem, applied to the two right triangles made by the perpendicular from $$M$$"
+      ],
+      "answer": 3,
+      "explanation": "Dropping a perpendicular from $$M$$ to the line $$PQ$$ gives two right triangles sharing a leg. Pythagoras turns equal distances from $$M$$ into equal distances from the foot $$F$$, which makes $$F$$ the midpoint (:ref{#perpendicular-bisector-rule})."
+    },
+    {
+      "id": "equidistant-line",
+      "stars": 2,
+      "topic": "Perpendicular bisectors",
+      "question": "A point $$O$$ on the line $$PQ$$ has $$d(O, P) = d(O, Q)$$. What can you conclude?",
+      "options": [
+        "$$O$$ is the midpoint of $$PQ$$",
+        "$$O$$ is $$P$$",
+        "$$O$$ could be anywhere on the line",
+        "$$O$$ is beyond $$Q$$"
+      ],
+      "answer": 0,
+      "explanation": "If $$O$$ were not between $$P$$ and $$Q$$, one of $$P$$ and $$Q$$ would be between $$O$$ and the other, forcing $$d(P, Q) = 0$$ (:ref{#equidistant-on-line})."
+    },
+    {
+      "id": "hypotenuse-longest-q",
+      "stars": 2,
+      "topic": "Perpendicular bisectors",
+      "question": "Why is the hypotenuse of a right triangle longer than each leg?",
+      "options": [
+        "Because the triangle inequality says $$c > a + b$$",
+        "Because $$c^2 = a^2 + b^2$$ with $$b^2 > 0$$, so $$c^2 > a^2$$",
+        "Because it is opposite the largest angle, which is taken as given",
+        "It isn't always: a leg can be longer"
+      ],
+      "answer": 1,
+      "explanation": "Pythagoras gives $$c^2 = a^2 + b^2 > a^2$$, and for positive numbers a larger square means a larger number (:ref{#hypotenuse-longest})."
+    },
+    {
+      "id": "shortest-distance-q",
+      "stars": 2,
+      "topic": "Perpendicular bisectors",
+      "question": "What is the shortest distance from a point $$P$$ to a line $$L$$ that doesn't pass through it?",
+      "options": [
+        "The distance to any point of $$L$$, since they are all equal",
+        "There is no shortest distance",
+        "The distance to the foot of the perpendicular from $$P$$ to $$L$$",
+        "The distance measured along a line parallel to $$L$$"
+      ],
+      "answer": 2,
+      "explanation": "Any other point $$M$$ of $$L$$ makes a right triangle in which $$PM$$ is the hypotenuse and $$PF$$ is a leg, so $$d(P, M) > d(P, F)$$ (:ref{#shortest-distance}, :ref{#point-line-distance})."
+    },
+    {
+      "id": "circumcentre-q",
+      "stars": 4,
+      "topic": "Perpendicular bisectors",
+      "question": "Why is there a circle through the three corners of every triangle?",
+      "options": [
+        "Every triangle is half of a rectangle",
+        "Any three points lie on a circle with centre at one of them",
+        "The angles add up to $$180^\\circ$$",
+        "The perpendicular bisectors of two sides meet at a point the same distance from all three corners"
+      ],
+      "answer": 3,
+      "explanation": "The two bisectors can't be parallel, or two sides would lie on one line, so they meet at a point $$O$$. Being on both makes $$O$$ the same distance from all three corners, so a circle centred at $$O$$ passes through them (:ref{#circumcentre})."
+    },
+    {
+      "id": "opposite-angles-why",
+      "stars": 2,
+      "topic": "Angles in triangles",
+      "question": "Why are opposite angles equal where two lines cross?",
+      "options": [
+        "Each one plus the angle between them makes $$180^\\circ$$",
+        "It is taken as given",
+        "Because the two lines are perpendicular",
+        "Because of the Pythagoras theorem"
+      ],
+      "answer": 0,
+      "explanation": "With $$\\beta$$ between them, $$\\alpha + \\beta = 180^\\circ$$ and $$\\beta + \\alpha' = 180^\\circ$$ by :ref{#angles-on-line}, so $$\\alpha = \\alpha'$$ (:ref{#opposite-angles})."
+    },
+    {
+      "id": "angle-sum-value",
+      "stars": 1,
+      "topic": "Angles in triangles",
+      "question": "What do the three angles of any triangle add up to?",
+      "options": [
+        "$$90^\\circ$$",
+        "$$180^\\circ$$",
+        "$$360^\\circ$$",
+        "It depends on the triangle"
+      ],
+      "answer": 1,
+      "explanation": "Every triangle's angles add up to $$180^\\circ$$ (:ref{#triangle-angle-sum}). So two angles decide the third."
+    },
+    {
+      "id": "angle-sum-proof",
+      "stars": 3,
+      "topic": "Angles in triangles",
+      "question": "How does the guide prove that a triangle's angles add up to $$180^\\circ$$?",
+      "options": [
+        "By measuring many triangles",
+        "It takes it as given",
+        "By dropping a perpendicular from one corner to the line of the opposite side and using the right triangle angle result",
+        "By cutting out the corners and laying them side by side"
+      ],
+      "answer": 2,
+      "explanation": "The perpendicular makes right triangles, whose other two angles add to $$90^\\circ$$ (:ref{#right-triangle-angles}). Combining them gives $$180^\\circ$$ (:ref{#triangle-angle-sum}). Cutting out corners suggests the fact but doesn't prove it."
+    },
+    {
+      "id": "angle-sum-cases",
+      "stars": 4,
+      "topic": "Angles in triangles",
+      "question": "Why does the angle sum proof need more than one case?",
+      "options": [
+        "Acute and obtuse angles need different definitions",
+        "Triangles with equal sides behave differently",
+        "Right triangles have a different angle sum",
+        "The foot of the perpendicular can be a corner, between the two corners, or outside the side"
+      ],
+      "answer": 3,
+      "explanation": "In the outside case, the triangle is a large right triangle with a small one cut away, so the angles combine by subtraction instead of addition (:ref{#triangle-angle-sum}). Leaving a case out would leave a hole in the proof."
+    },
+    {
+      "id": "two-obtuse",
+      "stars": 2,
+      "topic": "Angles in triangles",
+      "question": "Can a triangle have two obtuse angles?",
+      "options": [
+        "No, two angles of more than $$90^\\circ$$ would already add to more than $$180^\\circ$$",
+        "Yes, in a right triangle",
+        "Yes, if the third angle is small enough",
+        "Yes, any triangle can"
+      ],
+      "answer": 0,
+      "explanation": "The three angles add up to exactly $$180^\\circ$$ (:ref{#triangle-angle-sum}), so at most one angle can be $$90^\\circ$$ or more."
+    },
+    {
+      "id": "parallel-angles-q",
+      "stars": 2,
+      "topic": "Angles in triangles",
+      "question": "A line crosses two parallel lines. Which angles are equal?",
+      "options": [
+        "None, unless the line is perpendicular",
+        "Corresponding angles and alternate angles",
+        "Only angles at the same crossing",
+        "Only the right angles"
+      ],
+      "answer": 1,
+      "explanation": "Alternate angles (the Z shape) are equal, and corresponding angles are equal (:ref{#parallel-angles}). So all eight angles take at most two values."
+    },
+    {
+      "id": "triangle-area-height",
+      "stars": 3,
+      "topic": "Angles in triangles",
+      "question": "The perpendicular from the top corner meets the line of the base outside the base. What is the triangle's area?",
+      "options": [
+        "There is no height, so the formula fails",
+        "$$bh$$",
+        "Still $$\\frac{1}{2}bh$$, with $$h$$ measured to the line of the base",
+        "$$\\frac{1}{2}b$$ times the length of a side"
+      ],
+      "answer": 2,
+      "explanation": "The triangle is a large right triangle with a small one cut away, and the difference still comes to $$\\frac{1}{2}bh$$ (:ref{#triangle-area}). The height is measured to the line containing the base (:ref{#height})."
+    }
+  ]
+}

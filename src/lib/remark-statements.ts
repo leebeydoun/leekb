@@ -5,10 +5,12 @@
  * in that list (an `index` or `introduction` page doesn't count), and statements are numbered
  * "chapter.n" across the page, so the third page reads Definition 3.1, Lemma 3.2, Theorem 3.3. Exercises are counted on
  * their own as Exercise 1, 2, 3, ... A statement with an `id` can be referenced from any page of the
- * guide with `:ref{#...}`, which renders as a link labelled e.g. "Definition 3.1".
+ * guide with `:ref{#...}`, which renders as a link labelled with the statement's name, e.g. "Rules
+ * for distance", so a reader sees what is used without looking up a number. An exercise has no
+ * name, so its link reads e.g. "Exercise 12".
  *
  * A statement in another guide next to this one is referenced by that guide's folder name, as in
- * `:ref{#numbers/cancel-product}`, which renders as e.g. "Proposition 9.6 of Numbers".
+ * `:ref{#numbers/cancel-product}`, which renders as e.g. "Cancelling a product in Numbers".
  *
  * A page outside such a folder is numbered "section.n" instead, where section counts its `##`
  * headings, and its refs can only point within the page or to other guides.
@@ -38,8 +40,11 @@ type Node = {
   children?: Node[];
 };
 
-/** where a statement lives and what it is called, e.g. "Definition 3.1" on /maths/numbers/addition */
-type Target = { label: string; href: string };
+/**
+ * where a statement lives and what it is called: its number, e.g. "Definition 3.1", and the label a
+ * link to it shows, e.g. "Integers", on /maths/numbers/addition
+ */
+type Target = { number: string; label: string; href: string };
 
 const kinds = new Set<string>(STATEMENT_KINDS);
 
@@ -74,7 +79,11 @@ function pagePath(file: string) {
 }
 
 // directive lines that open a statement, e.g. ":::definition[Integers]{#integers}"
-const OPENING = /^:{3,}([a-z]+)(?:\[[^\]]*\])?(?:\{([^}]*)\})?\s*$/;
+const OPENING = /^:{3,}([a-z]+)(?:\[([^\]]*)\])?(?:\{([^}]*)\})?\s*$/;
+
+/** what a link to a statement says: its name, or its number when it has none */
+const linkLabel = (number: string, title: string | undefined) =>
+  title?.trim() || number;
 
 /**
  * The guide a page belongs to: its chapter number, and the label and link of every statement on
@@ -120,12 +129,13 @@ function readFolder(dir: string) {
         kind === "Exercise"
           ? String(++exercises)
           : `${chapter}.${++statements}`;
-      const id = /#([\w-]+)/.exec(match[2] ?? "")?.[1];
+      const id = /#([\w-]+)/.exec(match[3] ?? "")?.[1];
       if (!id) continue;
       if (targets.has(id))
         throw new Error(`Duplicate statement id "${id}" in ${dir}`);
       targets.set(id, {
-        label: `${kind} ${number}`,
+        number: `${kind} ${number}`,
+        label: linkLabel(`${kind} ${number}`, match[2]),
         href: `${pagePath(path)}#${id}`,
       });
     }
@@ -140,7 +150,7 @@ function findInOtherGuide(id: string, file: string): Target | undefined {
   // guides sit side by side, so look next to the folder this page's guide lives in
   const guide = readFolder(join(dirname(dirname(file)), folder));
   const target = guide?.targets.get(id.slice(slash + 1));
-  return target && { ...target, label: `${target.label} of ${guide!.title}` };
+  return target && { ...target, label: `${target.label} in ${guide!.title}` };
 }
 
 export function remarkStatements() {
@@ -168,15 +178,17 @@ export function remarkStatements() {
 
       const id = getAttribute(node, "id");
       if (!id) return;
-      const label = `${node.name} ${number}`;
+      const full = `${node.name} ${number}`;
+      const label = linkLabel(full, getAttribute(node, "title"));
       if (local.has(id))
         throw new Error(`Duplicate statement id "${id}" in ${file.path}`);
-      local.set(id, { label, href: `#${id}` });
-      // the guide's numbers come from a quick scan of each file, so make sure it agrees with the page
+      local.set(id, { number: full, label, href: `#${id}` });
+      // the guide's numbers and names come from a quick scan of each file, so make sure it agrees
+      // with the page
       const scanned = guide?.targets.get(id);
-      if (guide && scanned?.label !== label)
+      if (guide && (scanned?.number !== full || scanned.label !== label))
         throw new Error(
-          `Statement "${id}" is ${label} on the page but ${scanned?.label ?? "missing"} in the guide scan, in ${file.path}`,
+          `Statement "${id}" is ${full} (${label}) on the page but ${scanned ? `${scanned.number} (${scanned.label})` : "missing"} in the guide scan, in ${file.path}`,
         );
     });
 

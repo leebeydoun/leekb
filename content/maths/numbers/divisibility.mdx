@@ -161,9 +161,9 @@ If $$a^2$$ is even, then $$a$$ is even. If $$a^2$$ is odd, then $$a$$ is odd.
 
 :::proof{source="https://en.wikipedia.org/wiki/Mathematical_proof#Proof_by_contraposition"}
 
-This uses the fact that every integer is either even or odd, and never both (:ref{#even-or-odd}).
-That is proved further down the page, using only division with remainder, so it is safe to use here.
-Because $$a$$ has to be one of the two, it is enough to rule out the wrong one.
+This uses :ref{#even-or-odd}, which also says that no integer is both. That fact is proved further
+down the page, using only division with remainder, so it is safe to use here. Because $$a$$ has to
+be one of the two, it is enough to rule out the wrong one.
 
 Suppose $$a^2$$ is even. If $$a$$ were odd, then by :ref{#squares-parity} its square would be odd.
 But $$a^2$$ is even, and no integer is both even and odd, so this can't happen. So $$a$$ must be
@@ -389,7 +389,7 @@ that the remainder is $$0$$.
 
 Dividing by $$2$$ settles the claim from the start of the page.
 
-:::corollary[Even or odd]{#even-or-odd}
+:::corollary[Every integer is even or odd]{#even-or-odd}
 
 Every integer is either even or odd, and not both.
 

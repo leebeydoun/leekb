@@ -1,0 +1,475 @@
+---
+title: Lines and rays
+description: Lines, rays, parallel and perpendicular lines, and rectangles.
+---
+
+Straight lines are the other basic material of plane geometry, next to distance. This page takes a
+few facts about lines as given: how lines pass through points, and how parallel and perpendicular
+lines behave. From these it proves when two lines meet and when two lines are parallel, defines rays
+and rectangles, and proves that opposite sides of a rectangle are equal. It ends with the rules for
+area that later pages use to measure angles and to prove the Pythagoras theorem.
+
+## Lines through points
+
+Hammer two nails into a board and stretch a string tight between them. However you do it, the string
+takes the same path, so two points fix a straight line. Two lines drawn on a page either cross once
+or run side by side forever without meeting.
+
+Two different lines are **parallel** if they never meet. It is convenient to count a line as
+parallel to itself too, so that the rules below have no exceptions. You write $$L_1 \parallel L_2$$
+when lines $$L_1$$ and $$L_2$$ are parallel.
+
+```plane
+point A 0 0 hidden
+point B 3 2 hidden
+point C 0 2 hidden
+point D 3 0 hidden
+point X 1.5 1 s hidden
+line A B extend=0.4
+line C D extend=0.4
+text 3.6 2.75 "L_1"
+text 3.6 -0.75 "L_2"
+point E 5.5 0.2 hidden
+point F 8.5 1.2 hidden
+point G 5.5 1.6 hidden
+point H 8.5 2.6 hidden
+line E F extend=0.4
+line G H extend=0.4
+text 9.3 1.35 "L_2"
+text 9.3 2.75 "L_1"
+text 1.5 -1.2 "cross at one point"
+text 7 -1.2 "parallel: never meet"
+caption "Two different lines either cross at exactly one point or are parallel"
+```
+
+Two facts about lines are taken as given. The first says that two points fix a line. The second says
+that a line has exactly one parallel through each point.
+
+:::remark[Rules for lines]{#line-rules}
+
+1. **Two points, one line**: two different points $$P$$ and $$Q$$ lie on exactly one line, called
+   the line $$PQ$$
+2. **One parallel through a point**: for any line $$L$$ and point $$P$$, exactly one line through
+   $$P$$ is parallel to $$L$$
+
+These are taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Parallel_postulate#Equivalent_properties"}
+
+:::
+
+```plane
+point P 0 0 sw
+point Q 4 1.5 se
+line P Q extend=1
+caption "Rule 1: the points P and Q lie on exactly one line, the line PQ"
+```
+
+In the next figure, $$P$$ is a point off the line $$L$$. Tilt a line through $$P$$ even a little,
+and it crosses $$L$$ somewhere, perhaps far off the page. Exactly one position never meets $$L$$:
+the dashed line, which is the parallel that rule 2 promises.
+
+```plane
+point A 0 0 hidden
+point B 6 0 hidden
+point P 3 2 n
+point C 0 2 hidden
+point D 6 2 hidden
+point X 0.8 0 hidden
+point Y 5.6 0 hidden
+line A B extend=0.6
+line X P extend=0.15 color=muted
+line Y P extend=0.15 color=muted
+line C D extend=0.6 dashed color=blue
+text 7 0.35 "L"
+caption "Rule 2: every line through P crosses L except one, the dashed parallel"
+```
+
+## Lines on a globe
+
+Rule 2 is what makes this geometry flat. The surface of a globe shows what happens without it. On a
+globe, the shortest route between two points runs along a **great circle**: a circle that goes all
+the way round the globe, with its centre at the centre of the globe. The equator is one, and so is
+each line of longitude together with the one opposite it. Long flights follow routes close to great
+circles, so on a globe great circles play the part of straight lines.
+
+Any two great circles cross. A great circle goes all the way round, so with each point it also
+passes through the opposite point of the globe. A great circle that never crossed the equator would
+stay in one half, the northern or the southern. But opposite points always lie in different halves,
+so it can't. Tilt the blue great circle below as close to the equator as you like: it still crosses
+at two opposite points.
+
+<GreatCircles />
+
+So on a globe, no line through a point off the equator is parallel to the equator, and rule 2 fails.
+The circles of latitude never meet the equator, but they are not great circles. Someone walking
+along one has to keep turning towards the nearer pole to stay on it, so it is not straight. Rule 1
+fails too: the north and south poles lie on every line of longitude, so they lie on many lines.
+
+Results built on these rules fail with them. The [Angles in triangles](./triangle-angles.mdx) page
+proves that the angles of a flat triangle add up to $$180^\circ$$. On a globe, the triangle below
+has a right angle at every corner, so its angles add up to $$270^\circ$$.
+
+<GlobeTriangle />
+
+## Crossing and parallel lines
+
+Two facts about lines follow from the rules, and each proof is a short argument by contradiction
+(:ref{#basic-proofs/contradiction}). The first says when two lines meet.
+
+:::proposition[When two lines meet]{#crossing-lines}
+
+Two different lines meet in at most one point. So two lines that are not parallel meet in exactly
+one point.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Two_Lines_Meet_at_Unique_Point"}
+
+Suppose two different lines met at two different points $$P$$ and $$Q$$. Then both lines pass
+through $$P$$ and $$Q$$. By rule 1 of :ref{#line-rules}, only one line does, so the two lines would
+be the same. This contradicts the lines being different, so they meet in at most one point.
+
+Now take two lines that are not parallel. A line counts as parallel to itself, so the two lines are
+different. Different lines that never meet are parallel by definition, so these two must meet
+somewhere. By the first part, they meet in exactly one point.
+
+:::
+
+The second fact says that being parallel passes along a chain of lines. If one line is parallel to a
+second, and the second is parallel to a third, then the first is parallel to the third.
+
+:::proposition[Parallel to a parallel]{#parallel-transitive}
+
+If $$L_1 \parallel L_2$$ and $$L_2 \parallel L_3$$, then $$L_1 \parallel L_3$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Parallelism_is_Transitive_Relation"}
+
+If $$L_1$$ and $$L_3$$ are the same line, they are parallel, since a line counts as parallel to
+itself. Otherwise, suppose they met at a point $$P$$. Then $$L_1$$ and $$L_3$$ would be two
+different lines through $$P$$, both parallel to $$L_2$$. By rule 2 of :ref{#line-rules}, only one
+line through $$P$$ is parallel to $$L_2$$, which is a contradiction. So $$L_1$$ and $$L_3$$ never
+meet, and they are parallel.
+
+:::
+
+## Rays
+
+A torch beam starts at the torch and runs on in one direction without end. That is a ray: half of a
+line, cut off at a starting point. The definition uses the idea of one point lying between two
+others, from the rules for segments on the [Distance](./distance.mdx) page.
+
+:::definition[Ray]{#ray}
+
+Let $$P$$ and $$Q$$ be different points. The **ray** $$PQ$$ is made up of $$P$$ together with every
+point $$X$$ of the line $$PQ$$ for which $$P$$ does not lie between $$X$$ and $$Q$$. The point $$P$$
+is its **starting point**.
+
+:::
+
+In words, the ray $$PQ$$ starts at $$P$$, passes through $$Q$$ and carries on past it. The points of
+the line on the other side of $$P$$ are left out. The starting point always comes first in the name,
+so the ray $$PQ$$ and the ray $$QP$$ are different: they start at different points and run in
+opposite directions.
+
+```plane
+point P 0 0 s
+point Q 2.5 0 s
+point R 4.5 0 s
+ray P Q extend=2.5
+caption "The ray PQ starts at P and runs on through Q, so it is also the ray PR"
+```
+
+A ray is fixed by its starting point and any one other point on it. If $$R$$ is another point of the
+ray $$PQ$$, then the ray $$PR$$ is the same ray.
+
+## Perpendicular lines
+
+Fold a sheet of paper in half, then fold it in half again across the first crease. The two creases
+meet square on, like the corner of the page. Lines that cross this way are perpendicular.
+
+:::definition[Perpendicular lines]{#perpendicular}
+
+Two lines are **perpendicular** if they cross and the four angles they make at the crossing are all
+the same size. Angles are defined precisely on the [Angles](./angles.mdx) page. You write
+$$L_1 \perp L_2$$. Each of these four angles is a **right angle**, which the
+[Measuring angles](./measuring-angles.mdx) page shows is $$90^\circ$$.
+
+:::
+
+Given a line $$L$$ and a point $$P$$, the line through $$P$$ perpendicular to $$L$$ meets $$L$$ at a
+point called the **foot** of the perpendicular. Two facts about perpendicular lines are taken as
+given.
+
+:::remark[Rules for perpendicular lines]{#perpendicular-rules}
+
+1. **One perpendicular through a point**: for any line $$L$$ and point $$P$$, exactly one line
+   through $$P$$ is perpendicular to $$L$$
+2. **Perpendicular to parallels**: if $$L_1 \perp L_2$$ and $$L_2 \parallel L_3$$, then
+   $$L_1 \perp L_3$$
+
+These are taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Perpendicular#In_relationship_to_parallel_lines"}
+
+:::
+
+```plane
+point A -2.5 0 hidden
+point B 2.5 0 hidden
+line A B
+point F 0 0 se
+point P 0 2.5 ne
+point G 0 -1 hidden
+line G P color=blue
+right B F P
+caption "The perpendicular from P meets the line at its foot F"
+```
+
+Perpendicular lines give a practical way to draw parallel lines. A carpenter cutting a board into
+strips needs the cuts to be parallel, or each strip would get narrower towards one end. To mark
+them, the carpenter uses a set square: a flat triangle with one right angle. With one short side
+held flat against the straight edge of the board, the other short side stands at a right angle to
+the edge.
+
+Drawing along that upright side marks a line perpendicular to the edge. The carpenter then slides
+the square along the edge and draws again, which marks a second line, also perpendicular to the
+edge. In the figure, $$L_1$$ is the first line, and the square is drawing $$L_3$$.
+
+<CarpenterBoard caption="Slide the set square along the edge, and each line it draws is perpendicular to the edge" />
+
+Here is why the two lines never meet. Both point straight up from the edge, so neither leans towards
+the other, and they stay the same distance apart all the way up. For two lines standing on the edge
+to meet, one of them has to lean towards the other. Tilt one by any amount, as in the next figure,
+and the two lines cross somewhere above the edge, even if that is far off the board.
+
+```plane
+point A -0.5 0 hidden
+point B 6.5 0 hidden
+point P 1.5 0 hidden
+point P' 1.5 5.4 hidden
+point Q 5 0 hidden
+point M 1.5 5 nw
+line A B extend=0.3
+segment P P' color=blue
+segment Q M color=orange
+right Q P P'
+angle M Q A label="55°" color=orange r=0.7
+text 7.1 0.35 "L_2"
+text 1.05 3 "L_1"
+text 3.75 2.5 "L_3"
+caption "A line that leans towards the other one meets it, here at M"
+```
+
+The carpenter is relying on a fact: two lines perpendicular to the same line never meet. The next
+proposition proves it from rule 1.
+
+:::proposition[Two perpendiculars are parallel]{#perpendiculars-parallel}
+
+If $$L_1 \perp L_2$$ and $$L_2 \perp L_3$$, then $$L_1 \parallel L_3$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Perpendicular#In_relationship_to_parallel_lines"}
+
+If $$L_1$$ and $$L_3$$ are the same line, they are parallel. Otherwise, suppose they met at a point
+$$P$$, as in the figure below. Then $$L_1$$ and $$L_3$$ would be two different lines through $$P$$,
+both perpendicular to $$L_2$$. By rule 1 of :ref{#perpendicular-rules}, only one line through $$P$$
+is perpendicular to $$L_2$$, which is a contradiction. So $$L_1$$ and $$L_3$$ never meet, and they
+are parallel.
+
+```plane
+point A -0.5 0 hidden
+point B 6.5 0 hidden
+point P 3 3 n
+point X 1.6 0 hidden
+point Y 4.4 0 hidden
+line A B extend=0.3
+ray P X extend=0.4 color=blue
+ray P Y extend=0.4 color=blue
+text 7.3 0.35 "L_2"
+text 1.75 1.9 "L_1"
+text 4.25 1.9 "L_3"
+text 1.6 0.55 "90°?"
+text 4.4 0.55 "90°?"
+caption "If the two lines met at P, there would be two perpendiculars to the edge through P, which rule 1 rules out"
+```
+
+:::
+
+## Distance between parallel lines
+
+Look down on a railway track from above. The two steel rails are parallel, and the wooden sleepers
+laid square across them hold the rails a fixed distance apart. Measure the gap between the rails at
+any sleeper and you get the same answer. If the rails crept closer together at some point, the
+wheels of a train, which are a fixed distance apart on their axle, would come off there.
+
+<RailwayTrack caption="Seen from above: the sleepers hold the rails the same distance apart all along the track" />
+
+Parallel lines in the plane behave like the rails, and this is the last fact about lines taken as
+given. To measure the gap, go straight across: start at a point of one line and follow the
+perpendicular until it reaches the other, like walking along a sleeper. A slanted route across would
+be longer, as the [Perpendicular bisectors](./perpendicular-bisectors.mdx) page proves, so the
+perpendicular is the fair way to measure.
+
+:::remark[Distance between parallel lines]{#parallel-distance}
+
+Let $$L$$ and $$L'$$ be parallel lines, and let $$P$$ and $$Q$$ be points of $$L$$. Let the lines
+through $$P$$ and $$Q$$ perpendicular to $$L$$ meet $$L'$$ at $$P'$$ and $$Q'$$. Then
+
+```math
+d(P, P') = d(Q, Q')
+```
+
+This common length is the **distance between the lines**. It is taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Parallel_(geometry)#Euclidean_parallelism"}
+
+:::
+
+```plane
+point A -1 0 hidden
+point B 6 0 hidden
+line A B
+point C -1 2.5 hidden
+point D 6 2.5 hidden
+line C D
+point P 0.5 0 s
+point P' 0.5 2.5 n
+point Q 4.5 0 s
+point Q' 4.5 2.5 n
+segment P P' color=blue
+segment Q Q' color=blue
+right B P P'
+right B Q Q'
+text 7 0.35 "L"
+text 7 2.85 "L'"
+caption "Perpendicular segments between two parallel lines all have the same length"
+```
+
+The rule takes for granted that the perpendicular lines meet $$L'$$, and they do. Each one is
+perpendicular to $$L'$$ as well as to $$L$$, by rule 2 of :ref{#perpendicular-rules}, and
+perpendicular lines cross by definition.
+
+## Rectangles
+
+A rectangle is the shape of a door, a page or a phone screen: four straight sides that meet at four
+square corners. Its opposite sides look the same length, and the rules so far are enough to prove
+it.
+
+:::definition[Rectangle and square]{#rectangle}
+
+Let $$A$$, $$B$$, $$C$$ and $$D$$ be four points. The figure made of the segments $$AB$$, $$BC$$,
+$$CD$$ and $$DA$$ is a **rectangle** if each side is perpendicular to the two sides next to it. A
+**square** is a rectangle whose four sides all have the same length.
+
+:::
+
+```plane
+point A 0 0 sw
+point B 5 0 se
+point C 5 3 ne
+point D 0 3 nw
+segment A B label="a" side=right
+segment B C label="b" side=right
+segment C D
+segment D A
+right B A D
+right C B A
+right D C B
+right A D C
+caption "A rectangle with sides of lengths a and b"
+```
+
+The corners are listed in order around the figure, so $$AB$$ and $$CD$$ are opposite sides, and so
+are $$BC$$ and $$DA$$. Opposite sides are parallel: $$AB$$ and $$CD$$ are both perpendicular to
+$$BC$$, so they are parallel by :ref{#perpendiculars-parallel}. In the same way, $$BC$$ and $$DA$$
+are both perpendicular to $$AB$$.
+
+:::corollary[Opposite sides of a rectangle are equal]{#rectangle-sides}
+
+In a rectangle $$ABCD$$, opposite sides have the same length:
+
+```math
+d(A, B) = d(D, C) \quad \text{and} \quad d(A, D) = d(B, C)
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Rectangle#Properties"}
+
+The lines $$AB$$ and $$DC$$ are parallel, as shown above. The line through $$A$$ perpendicular to
+$$AB$$ is the line $$AD$$, which meets the line $$DC$$ at $$D$$. The line through $$B$$
+perpendicular to $$AB$$ is the line $$BC$$, which meets the line $$DC$$ at $$C$$. So by
+:ref{#parallel-distance}, $$d(A, D) = d(B, C)$$.
+
+The lines $$AD$$ and $$BC$$ are parallel too. The lines through $$A$$ and $$D$$ perpendicular to
+$$AD$$ are the lines $$AB$$ and $$DC$$, which meet the line $$BC$$ at $$B$$ and $$C$$. So
+:ref{#parallel-distance} gives $$d(A, B) = d(D, C)$$.
+
+:::
+
+So a rectangle has two side lengths, usually called $$a$$ and $$b$$, each used twice. A square has
+one side length, used four times.
+
+## Area
+
+Area measures how much flat space a shape covers. With the unit of length fixed, the unit of area is
+a square whose sides have length $$1$$. A rectangle $$3$$ by $$2$$ can be cut into $$3 \cdot 2$$
+such squares, so its area is $$6$$.
+
+When this guide speaks of the area of a rectangle, a triangle or a disc, it means the area of the
+region inside it. A rectangle is four segments, and the segments themselves cover no area. So two
+pieces that share only an edge, like two tiles side by side, don't overlap.
+
+:::remark[Rules for area]{#area-rules}
+
+1. **Rectangles**: a rectangle with sides of lengths $$a$$ and $$b$$ has area $$ab$$, so a square
+   with sides of length $$a$$ has area $$a^2$$
+2. **Areas add**: if a region is cut into pieces that don't overlap, its area is the sum of the
+   areas of the pieces
+
+These are taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Area#Formal_definition"}
+
+:::
+
+```plane
+point A 0 0 hidden
+point B 5 0 hidden
+point C 5 2 hidden
+point D 2 2 hidden
+point E 2 5 hidden
+point F 0 5 hidden
+point G 0 2 hidden
+polygon A B C D E F
+segment A B
+segment B C
+segment C D
+segment D E
+segment E F
+segment F A
+segment G D dashed
+text 2.5 -0.45 "5"
+text 5.4 1 "2"
+text 1 5.45 "2"
+text 2.4 3.5 "3"
+text 2.5 1 "10"
+text 1 3.5 "6"
+caption "An L shape cut into two rectangles, of areas 10 and 6"
+```
+
+:::example[An L-shaped room]
+
+A room is shaped like the figure above. A dashed cut splits it into two rectangles that don't
+overlap: one $$5$$ by $$2$$, and one $$2$$ by $$3$$. By rule 1 their areas are $$10$$ and $$6$$, so
+by rule 2 the room has area $$10 + 6 = 16$$.
+
+Cutting it another way gives the same answer. An upright cut through the inner corner gives a
+rectangle $$2$$ by $$5$$ and a rectangle $$3$$ by $$2$$, with areas $$10$$ and $$6$$ again. Rule 2
+promises that every cut agrees, since each total is the area of the same room.
+
+:::

@@ -1,0 +1,174 @@
+---
+title: Distance
+description: The distance between two points, segments, circles and discs.
+---
+
+Distance is the most basic idea in the geometry of the plane: how far apart two points are. This
+page takes three facts about distance as given, and three more about the straight path between two
+points. Later pages build on these facts, adding a few more about lines, area, discs and right
+triangles, starting on the [next page](./lines.mdx). The page ends with circles and discs, which are
+described entirely by distance.
+
+## Distance between two points
+
+Think of laying a ruler from one point to another and reading off the length. The answer depends on
+the ruler's unit, such as centimetres or inches. So the guide fixes one unit of length at the start
+and keeps it throughout. With the unit fixed, every distance is a number, and you can leave the unit
+out.
+
+The distance between points $$P$$ and $$Q$$ is written $$d(P, Q)$$. Three facts about it match what
+any ruler tells you. They aren't proved here, and every later result about distance rests on them.
+
+:::remark[Rules for distance]{#distance-rules}
+
+For any points $$P$$, $$Q$$ and $$M$$ in the plane:
+
+1. **Never negative**: $$d(P, Q) \ge 0$$, and $$d(P, Q) = 0$$ exactly when $$P$$ and $$Q$$ are the
+   same point
+2. **The same both ways**: $$d(P, Q) = d(Q, P)$$
+3. **The triangle inequality**: $$d(P, M) \le d(P, Q) + d(Q, M)$$
+
+These are taken as given. Every other fact about distance in this guide is proved from them and the
+rules for segments below.
+
+::see-also{src="https://en.wikipedia.org/wiki/Metric_space#Definition"}
+
+:::
+
+The first two rules say that a distance is a size, with no direction. Going from $$P$$ to $$Q$$
+covers the same ground as going back. The same rules hold for distance on the number line
+(:ref{#real-numbers/distance}), where the distance between $$a$$ and $$b$$ is
+$$\lvert a - b \rvert$$.
+
+The triangle inequality says that a detour can't be shorter than the direct route. Getting from
+$$P$$ to $$M$$ by way of a third point $$Q$$ covers at least as much ground as going straight there.
+When $$P$$, $$Q$$ and $$M$$ are the corners of a triangle, it says that one side is never longer
+than the other two put together, which is where the name comes from. The number line has its own
+version, :ref{#real-numbers/triangle-inequality}.
+
+```plane
+point P 0 0 sw
+point M 6 0 se
+point Q 2.2 2.4 n
+segment P Q label="d(P, Q)" color=blue
+segment Q M label="d(Q, M)" color=orange
+segment P M label="d(P, M)" side=right dashed
+caption "The route through Q is longer than the direct route from P to M"
+```
+
+## Segments and points between
+
+The straight path from $$P$$ to $$M$$ is the shortest route between them. A detour through a point
+on that path costs nothing extra, since you never leave the direct route. Lower $$Q$$ onto the
+segment below and watch the two distances through $$Q$$ add up to exactly $$d(P, M)$$.
+
+<SegmentDistances />
+
+:::definition[Segment]{#segment}
+
+Let $$P$$ and $$M$$ be different points. The **segment** $$PM$$ is the straight piece of the line
+through $$P$$ and $$M$$ that runs from $$P$$ to $$M$$, including $$P$$ and $$M$$ themselves. Its
+**length** is $$d(P, M)$$. A point of the segment other than $$P$$ and $$M$$ lies **between** $$P$$
+and $$M$$.
+
+:::
+
+Three facts about segments are taken as given, like the rules for distance. The first is the one the
+diagram shows. The second says that a segment has no gaps, so you can stop at any distance along it.
+The third says that three points on one line always come in an order, with one of them in the
+middle.
+
+:::remark[Rules for segments]{#segment-rules}
+
+Let $$P$$ and $$M$$ be different points.
+
+1. **Points on the segment**: for any point $$Q$$, $$d(P, M) = d(P, Q) + d(Q, M)$$ exactly when
+   $$Q$$ lies on the segment $$PM$$
+2. **Every length is reached**: for every number $$c$$ with $$0 \le c \le d(P, M)$$, exactly one
+   point $$Q$$ of the segment $$PM$$ has $$d(P, Q) = c$$
+3. **One point in the middle**: of three different points on one line, exactly one lies between the
+   other two
+
+These are taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Line_segment"}
+
+:::
+
+```plane
+point P 0 0 s
+point Q 2.4 0 s
+point M 6 0 s
+segment P M
+text 1.2 0.5 "c"
+text 4.2 0.5 "d(P, M) − c"
+caption "The point of the segment at distance c from P"
+```
+
+:::example[The rest of the way]
+
+Let $$Q$$ be the point of the segment $$PM$$ with $$d(P, Q) = c$$, from rule 2. Then $$Q$$ is on the
+segment, so rule 1 gives $$d(P, M) = c + d(Q, M)$$. Taking $$c$$ from both sides,
+
+```math
+d(Q, M) = d(P, M) - c
+```
+
+So the point that is $$c$$ along from $$P$$ is the rest of the way, $$d(P, M) - c$$, from $$M$$. For
+example, on a segment of length $$10$$, the point $$3$$ from one end is $$7$$ from the other.
+
+:::
+
+:::example[A point on a segment is no further from P than M is]
+
+If $$Q$$ is on the segment $$PM$$, then $$d(P, Q) \le d(P, M)$$. Rule 1 gives
+$$d(P, M) = d(P, Q) + d(Q, M)$$, and $$d(Q, M) \ge 0$$ by :ref{#distance-rules}. So $$d(P, M)$$ is
+$$d(P, Q)$$ plus a number that isn't negative, and it can't be smaller than $$d(P, Q)$$.
+
+:::
+
+## Circles and discs
+
+Tie a goat to a post with a rope of length $$r$$. The furthest points the goat can reach form a
+circle around the post, and all the grass it can eat forms a disc. Both are described by distance
+from the post alone.
+
+:::definition[Circle and disc]{#circle}
+
+Let $$P$$ be a point and $$r$$ a positive number.
+
+- The **circle** with centre $$P$$ and radius $$r$$ is the set of all points $$Q$$ with
+  $$d(P, Q) = r$$.
+- The **disc** with centre $$P$$ and radius $$r$$ is the set of all points $$Q$$ with
+  $$d(P, Q) \le r$$.
+
+:::
+
+```plane
+point P 0 0 s
+circle P 1.6 color=blue
+point Q 5 0 s
+circle Q 1.6 fill
+text 0 2.1 "circle"
+text 5 2.1 "disc"
+caption "A circle is only the edge; a disc is the edge and everything inside it"
+```
+
+The circle is the edge of the disc. Everyday speech uses "circle" for both, but they are different
+sets, and this guide keeps the two words apart. A circle is a curve, so it has a length but no area.
+A disc is a region, so it has an area. Later pages use this difference: an angle is measured by the
+part of a disc it covers, and the disc's area is what gets shared out.
+
+:::example[Inside, on or outside]
+
+Take the circle and disc with centre $$P$$ and radius $$5$$, and three points with $$d(P, A) = 3$$,
+$$d(P, B) = 5$$ and $$d(P, C) = 8$$:
+
+- **$$A$$**: $$3 \le 5$$, so $$A$$ is in the disc, but $$3 \ne 5$$, so it isn't on the circle
+- **$$B$$**: $$5 = 5$$, so $$B$$ is on the circle, and so also in the disc
+- **$$C$$**: $$8 > 5$$, so $$C$$ is in neither
+
+Every point of the circle belongs to the disc, but the points inside the disc, like $$A$$, aren't on
+the circle.
+
+:::

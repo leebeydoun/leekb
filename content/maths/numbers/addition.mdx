@@ -129,8 +129,8 @@ For every integer $$a$$, $$-(-a) = a$$.
 :::proof{source="https://math.libretexts.org/Bookshelves/Analysis/Introduction_to_Mathematical_Analysis_I_(Lafferriere_Lafferriere_and_Nguyen)/01%3A_Tools_for_Analysis/1.4%3A_Ordered_Field_Axioms"}
 
 We know $$-a + a = 0$$ (rule 4 the other way round). So $$-a$$ and $$a$$ are two numbers that add to
-$$0$$, and :ref{#opposite-unique}, with $$-a$$ in place of $$a$$ and $$a$$ in place of $$b$$, says
-that the second is the opposite of the first: $$a = -(-a)$$.
+$$0$$. By :ref{#opposite-unique}, with $$-a$$ in place of $$a$$ and $$a$$ in place of $$b$$, the
+second is the opposite of the first: $$a = -(-a)$$.
 
 :::
 
@@ -225,7 +225,7 @@ subtracting on the other.
 
 So the rules let us move numbers from one side of an equation to the other.
 
-:::proposition[Rearranging]{#rearranging}
+:::proposition[Rearranging a sum]{#rearranging}
 
 For integers $$a$$, $$b$$ and $$c$$, if $$a + b = c$$, then $$a = c - b$$ and $$b = c - a$$.
 
@@ -269,7 +269,7 @@ On the number line, $$b$$ is bigger than $$a$$ when it sits further right, that 
 from $$a$$ to $$b$$ means walking right. The walk from $$a$$ to $$b$$ is $$b - a$$ steps, which
 turns the picture into a definition.
 
-:::definition[Order]{#order}
+:::definition[Order of integers]{#order}
 
 For integers $$a$$ and $$b$$, $$a$$ is **less than** $$b$$, written $$a < b$$, if $$b - a$$ is
 positive. We also write $$b > a$$ ("$$b$$ is greater than $$a$$") for the same thing, and
@@ -280,7 +280,7 @@ $$a \le b$$ when $$a < b$$ or $$a = b$$.
 For example, $$-10 < -7$$, because $$-7 - (-10) = 3$$ is positive. And $$a > 0$$ says $$a - 0 = a$$
 is positive, so "$$a > 0$$" and "$$a$$ is positive" mean the same thing.
 
-:::proposition[Rules for order]{#order-rules}
+:::proposition[Rules for less than]{#order-rules}
 
 For integers $$a$$, $$b$$ and $$c$$:
 
@@ -300,7 +300,7 @@ about the sign of $$d$$:
 
 - **$$a < b$$ exactly when $$d$$ is positive.** This is the definition of $$<$$.
 - **$$a = b$$ exactly when $$d = 0$$.** If $$a = b$$, then $$d = a + (-a) = 0$$ by rule 4.
-  Conversely, if $$b + (-a) = 0$$, then :ref{#opposite-unique} gives $$b = -(-a)$$, which is $$a$$
+  Conversely, if $$b + (-a) = 0$$, then $$b = -(-a)$$ by :ref{#opposite-unique}, and this is $$a$$
   by :ref{#double-opposite}.
 - **$$a > b$$ exactly when $$d$$ is negative.** By definition, $$a > b$$ means $$a - b$$ is
   positive, and $$a - b$$ is just $$-d$$: by :ref{#opposite-sum} and :ref{#double-opposite},

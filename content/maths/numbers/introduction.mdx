@@ -63,9 +63,9 @@ The summary below collects every definition and rule for quick reference.
 | :ref[Positive integers]{#integers}                   | $$1, 2, 3, \dots$$                                                                              |
 | :ref[Natural numbers]{#integers}                     | $$0, 1, 2, 3, \dots$$                                                                           |
 | :ref[Negative integers]{#integers}                   | $$-1, -2, -3, \dots$$                                                                           |
-| :ref[Integers]{#integers}                            | All of the above: $$\dots, -2, -1, 0, 1, 2, \dots$$                                             |
+| :ref{#integers}                                      | All of the above: $$\dots, -2, -1, 0, 1, 2, \dots$$                                             |
 | :ref[Opposite of $$a$$]{#opposite}                   | $$-a$$: the same distance from $$0$$, on the other side; also called the additive inverse       |
-| :ref[Subtraction]{#subtraction}                      | $$a - b$$ is shorthand for $$a + (-b)$$                                                         |
+| :ref{#subtraction}                                   | $$a - b$$ is shorthand for $$a + (-b)$$                                                         |
 | :ref[Less than]{#order}                              | $$a < b$$ when $$b - a$$ is positive                                                            |
 | :ref[Power]{#power}                                  | $$a^n = a \cdot a \cdots a$$ ($$n$$ copies); $$a$$ is the base, $$n$$ the exponent, $$a^0 = 1$$ |
 | :ref[Even, odd]{#even-odd}                           | Of the form $$2n$$, or $$2n + 1$$                                                               |
@@ -74,52 +74,52 @@ The summary below collects every definition and rule for quick reference.
 | :ref[Greatest common divisor]{#gcd}                  | The largest integer dividing both of two positive integers                                      |
 | :ref[Congruent]{#congruence}                         | $$a \equiv b \pmod{d}$$ if $$d \mid a - b$$                                                     |
 | :ref[Rational number]{#rational}                     | $$\frac{m}{n}$$ for integers $$m$$, $$n$$ with $$n \neq 0$$; numerator over denominator         |
-| :ref[Equal fractions]{#cross-multiplying}            | $$\frac{m}{n} = \frac{r}{s}$$ exactly when $$ms = rn$$                                          |
+| :ref{#cross-multiplying}                             | $$\frac{m}{n} = \frac{r}{s}$$ exactly when $$ms = rn$$                                          |
 | :ref[Positive rational]{#positive-rational}          | $$\frac{m}{n}$$ with $$m$$, $$n$$ positive integers                                             |
-| :ref[Lowest form]{#lowest-form}                      | $$\frac{r}{s}$$ with $$r$$, $$s$$ positive and greatest common divisor $$1$$                    |
+| :ref{#lowest-form}                                   | $$\frac{r}{s}$$ with $$r$$, $$s$$ positive and greatest common divisor $$1$$                    |
 | :ref[Sum of fractions]{#fraction-addition}           | $$\frac{m}{n} + \frac{r}{s} = \frac{ms + rn}{ns}$$                                              |
 | :ref[Product of fractions]{#fraction-multiplication} | $$\frac{m}{n} \cdot \frac{r}{s} = \frac{mr}{ns}$$                                               |
-| :ref[Multiplicative inverse]{#inverse}               | $$a^{-1}$$ or $$\frac{1}{a}$$: the number with $$aa^{-1} = a^{-1}a = 1$$                        |
+| :ref{#inverse}                                       | $$a^{-1}$$ or $$\frac{1}{a}$$: the number with $$aa^{-1} = a^{-1}a = 1$$                        |
 | :ref[Negative power]{#negative-powers}               | $$a^{-n} = (a^{-1})^n$$ for $$a \neq 0$$                                                        |
-| :ref[Quotient]{#quotient}                            | $$\frac{a}{b} = ab^{-1}$$ for $$b \neq 0$$                                                      |
+| :ref{#quotient}                                      | $$\frac{a}{b} = ab^{-1}$$ for $$b \neq 0$$                                                      |
 | :ref[Irrational]{#irrational}                        | A number that is not rational                                                                   |
-| :ref[Factorial]{#factorial}                          | $$n! = 1 \cdot 2 \cdots n$$, and $$0! = 1$$                                                     |
-| :ref[Binomial coefficient]{#binomial}                | $$\binom{m}{n} = \frac{m!}{n!\,(m - n)!}$$, the ways to choose $$n$$ things from $$m$$          |
+| :ref{#factorial}                                     | $$n! = 1 \cdot 2 \cdots n$$, and $$0! = 1$$                                                     |
+| :ref{#binomial}                                      | $$\binom{m}{n} = \frac{m!}{n!\,(m - n)!}$$, the ways to choose $$n$$ things from $$m$$          |
 
 **Addition** (for any integers $$a$$, $$b$$, $$c$$; the first five are assumed)
 
-| Rule                                         | Statement                                              |
-| -------------------------------------------- | ------------------------------------------------------ |
-| :ref[Commutativity]{#addition-rules}         | $$a + b = b + a$$                                      |
-| :ref[Associativity]{#addition-rules}         | $$(a + b) + c = a + (b + c)$$                          |
-| :ref[Adding zero]{#addition-rules}           | $$a + 0 = 0 + a = a$$                                  |
-| :ref[Adding an opposite]{#addition-rules}    | $$a + (-a) = -a + a = 0$$                              |
-| :ref[Positive sums]{#addition-rules}         | positive + positive is positive                        |
-| :ref[Opposites are unique]{#opposite-unique} | if $$a + b = 0$$, then $$b = -a$$ and $$a = -b$$       |
-| :ref[Double opposite]{#double-opposite}      | $$-(-a) = a$$                                          |
-| :ref[Opposite of a sum]{#opposite-sum}       | $$-(a + b) = -a - b$$, and $$-(a - b) = b - a$$        |
-| :ref[Negative sums]{#negative-sum}           | negative + negative is negative                        |
-| :ref[Rearranging]{#rearranging}              | if $$a + b = c$$, then $$a = c - b$$ and $$b = c - a$$ |
-| :ref[Order]{#order-rules}                    | exactly one of $$a < b$$, $$a = b$$, $$a > b$$         |
-| :ref[Chaining]{#order-rules}                 | if $$a < b$$ and $$b < c$$, then $$a < c$$             |
-| :ref[Adding to an inequality]{#order-rules}  | if $$a < b$$, then $$a + c < b + c$$                   |
+| Rule                                        | Statement                                              |
+| ------------------------------------------- | ------------------------------------------------------ |
+| :ref[Commutativity]{#addition-rules}        | $$a + b = b + a$$                                      |
+| :ref[Associativity]{#addition-rules}        | $$(a + b) + c = a + (b + c)$$                          |
+| :ref[Adding zero]{#addition-rules}          | $$a + 0 = 0 + a = a$$                                  |
+| :ref[Adding an opposite]{#addition-rules}   | $$a + (-a) = -a + a = 0$$                              |
+| :ref[Positive sums]{#addition-rules}        | positive + positive is positive                        |
+| :ref{#opposite-unique}                      | if $$a + b = 0$$, then $$b = -a$$ and $$a = -b$$       |
+| :ref[Double opposite]{#double-opposite}     | $$-(-a) = a$$                                          |
+| :ref[Opposite of a sum]{#opposite-sum}      | $$-(a + b) = -a - b$$, and $$-(a - b) = b - a$$        |
+| :ref[Negative sums]{#negative-sum}          | negative + negative is negative                        |
+| :ref[Rearranging]{#rearranging}             | if $$a + b = c$$, then $$a = c - b$$ and $$b = c - a$$ |
+| :ref[Order]{#order-rules}                   | exactly one of $$a < b$$, $$a = b$$, $$a > b$$         |
+| :ref[Chaining]{#order-rules}                | if $$a < b$$ and $$b < c$$, then $$a < c$$             |
+| :ref[Adding to an inequality]{#order-rules} | if $$a < b$$, then $$a + c < b + c$$                   |
 
 **Multiplication** (for any integers $$a$$, $$b$$, $$c$$; the first five are assumed)
 
-| Rule                                             | Statement                                                          |
-| ------------------------------------------------ | ------------------------------------------------------------------ |
-| :ref[Commutativity]{#multiplication-rules}       | $$ab = ba$$                                                        |
-| :ref[Associativity]{#multiplication-rules}       | $$(ab)c = a(bc)$$                                                  |
-| :ref[Multiplying by one]{#multiplication-rules}  | $$1 \cdot a = a$$                                                  |
-| :ref[Distributivity]{#multiplication-rules}      | $$a(b + c) = ab + ac$$ and $$(b + c)a = ba + ca$$                  |
-| :ref[Positive products]{#multiplication-rules}   | positive × positive is positive                                    |
-| :ref[Multiplying by zero]{#zero-times}           | $$0 \cdot a = 0$$                                                  |
-| :ref[Multiplying by minus one]{#minus-one}       | $$(-1)a = -a$$                                                     |
-| :ref[Moving a minus sign]{#minus-in-product}     | $$-(ab) = (-a)b = a(-b)$$                                          |
-| :ref[Two minus signs]{#two-minus}                | $$(-a)(-b) = ab$$                                                  |
-| Signs of products                                | an even number of minus signs gives a positive product             |
-| :ref[Multiplying an inequality]{#order-multiply} | if $$a < b$$: $$ac < bc$$ for $$c > 0$$, $$ac > bc$$ for $$c < 0$$ |
-| :ref[Powers]{#power-rules}                       | $$a^m a^n = a^{m+n}$$, $$(a^m)^n = a^{mn}$$, $$(ab)^n = a^n b^n$$  |
+| Rule                                            | Statement                                                          |
+| ----------------------------------------------- | ------------------------------------------------------------------ |
+| :ref[Commutativity]{#multiplication-rules}      | $$ab = ba$$                                                        |
+| :ref[Associativity]{#multiplication-rules}      | $$(ab)c = a(bc)$$                                                  |
+| :ref[Multiplying by one]{#multiplication-rules} | $$1 \cdot a = a$$                                                  |
+| :ref[Distributivity]{#multiplication-rules}     | $$a(b + c) = ab + ac$$ and $$(b + c)a = ba + ca$$                  |
+| :ref[Positive products]{#multiplication-rules}  | positive × positive is positive                                    |
+| :ref{#zero-times}                               | $$0 \cdot a = 0$$                                                  |
+| :ref{#minus-one}                                | $$(-1)a = -a$$                                                     |
+| :ref{#minus-in-product}                         | $$-(ab) = (-a)b = a(-b)$$                                          |
+| :ref{#two-minus}                                | $$(-a)(-b) = ab$$                                                  |
+| Signs of products                               | an even number of minus signs gives a positive product             |
+| :ref{#order-multiply}                           | if $$a < b$$: $$ac < bc$$ for $$c > 0$$, $$ac > bc$$ for $$c < 0$$ |
+| :ref[Powers]{#power-rules}                      | $$a^m a^n = a^{m+n}$$, $$(a^m)^n = a^{mn}$$, $$(ab)^n = a^n b^n$$  |
 
 **Algebraic identities**
 
@@ -136,16 +136,16 @@ The summary below collects every definition and rule for quick reference.
 
 **Divisibility**
 
-| Rule                                               | Statement                                                                   |
-| -------------------------------------------------- | --------------------------------------------------------------------------- |
-| :ref[Sums]{#parity-sums}                           | even + even = even, even + odd = odd, odd + odd = even                      |
-| :ref[Products]{#parity-products}                   | even × anything = even, odd × odd = odd                                     |
-| :ref[Squares]{#squares-parity}                     | $$a^2$$ is even exactly when $$a$$ is (:ref{#squares-parity-converse})      |
-| Powers of −1                                       | $$(-1)^n = 1$$ if $$n$$ is even, $$-1$$ if $$n$$ is odd                     |
-| Always divides                                     | $$1 \mid n$$, $$n \mid n$$ and $$d \mid 0$$                                 |
-| :ref[Combining multiples]{#multiples}              | if $$d \mid m$$ and $$d \mid n$$, then $$d \mid m \pm n$$ and $$d \mid mc$$ |
-| :ref[Division with remainder]{#division-remainder} | $$n = dq + r$$ with $$0 \le r < d$$, in exactly one way                     |
-| :ref[Even or odd]{#even-or-odd}                    | every integer is exactly one of the two                                     |
+| Rule                             | Statement                                                                   |
+| -------------------------------- | --------------------------------------------------------------------------- |
+| :ref[Sums]{#parity-sums}         | even + even = even, even + odd = odd, odd + odd = even                      |
+| :ref[Products]{#parity-products} | even × anything = even, odd × odd = odd                                     |
+| :ref[Squares]{#squares-parity}   | $$a^2$$ is even exactly when $$a$$ is (:ref{#squares-parity-converse})      |
+| Powers of −1                     | $$(-1)^n = 1$$ if $$n$$ is even, $$-1$$ if $$n$$ is odd                     |
+| Always divides                   | $$1 \mid n$$, $$n \mid n$$ and $$d \mid 0$$                                 |
+| :ref{#multiples}                 | if $$d \mid m$$ and $$d \mid n$$, then $$d \mid m \pm n$$ and $$d \mid mc$$ |
+| :ref{#division-remainder}        | $$n = dq + r$$ with $$0 \le r < d$$, in exactly one way                     |
+| :ref[Even or odd]{#even-or-odd}  | every integer is exactly one of the two                                     |
 
 **Congruence** (with $$a \equiv b$$ and $$x \equiv y \pmod{d}$$)
 
@@ -181,12 +181,12 @@ The summary below collects every definition and rule for quick reference.
 | Rule                                                 | Statement                                                                              |
 | ---------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | :ref[Inverse of a fraction]{#inverse-exists}         | $$\left(\frac{m}{n}\right)^{-1} = \frac{n}{m}$$ for $$m \neq 0$$; $$0$$ has no inverse |
-| :ref[Inverses are unique]{#inverse-unique}           | if $$ab = 1$$, then $$b = a^{-1}$$                                                     |
+| :ref{#inverse-unique}                                | if $$ab = 1$$, then $$b = a^{-1}$$                                                     |
 | :ref[Zero product]{#zero-product}                    | if $$ab = 0$$, then $$a = 0$$ or $$b = 0$$                                             |
 | Dividing by a fraction                               | $$\frac{a}{c/d} = a \cdot \frac{d}{c}$$                                                |
 | :ref[Cross-multiplying]{#cross-multiplying-rational} | $$\frac{a}{b} = \frac{c}{d}$$ exactly when $$ad = bc$$                                 |
 | :ref[Cancelling]{#cancel-product}                    | if $$ab = ac$$ and $$a \neq 0$$, then $$b = c$$; and $$\frac{ab}{ac} = \frac{b}{c}$$   |
-| :ref[Adding quotients]{#adding-quotients}            | $$\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}$$                                     |
+| :ref{#adding-quotients}                              | $$\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}$$                                     |
 | :ref[Sum of powers]{#sum-of-powers}                  | $$\frac{x^n - 1}{x - 1} = x^{n-1} + \cdots + x + 1$$                                   |
 
 **Irrational numbers**
@@ -202,7 +202,7 @@ The summary below collects every definition and rule for quick reference.
 | ----------------------------------------- | -------------------------------------------------------------------- |
 | Step                                      | $$n! = n \cdot (n - 1)!$$                                            |
 | :ref[Symmetry]{#binomial-symmetry}        | $$\binom{m}{n} = \binom{m}{m - n}$$                                  |
-| :ref[Pascal's rule]{#pascal}              | $$\binom{m}{n - 1} + \binom{m}{n} = \binom{m + 1}{n}$$               |
+| :ref{#pascal}                             | $$\binom{m}{n - 1} + \binom{m}{n} = \binom{m + 1}{n}$$               |
 | :ref[Binomial theorem]{#binomial-theorem} | $$(a + b)^m$$ has coefficients $$\binom{m}{0}, \dots, \binom{m}{m}$$ |
 
 :::

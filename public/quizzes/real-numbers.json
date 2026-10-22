@@ -252,7 +252,7 @@
         "Never"
       ],
       "answer": 0,
-      "explanation": "By :ref{#power-order}, powers keep order for non-negative numbers. Without that, $$-3 < 2$$ but $$9 > 4$$."
+      "explanation": "Powers keep order for non-negative numbers (:ref{#power-order}). Without that, $$-3 < 2$$ but $$9 > 4$$."
     },
     {
       "id": "cross-multiply-condition",
@@ -420,7 +420,7 @@
         "It depends on whether $$a < b$$"
       ],
       "answer": 0,
-      "explanation": "This is the AM–GM inequality (:ref{#am-gm}), from $$\\left(\\sqrt{a} - \\sqrt{b}\\right)^2 \\ge 0$$."
+      "explanation": "This is :ref{#am-gm}, from $$\\left(\\sqrt{a} - \\sqrt{b}\\right)^2 \\ge 0$$."
     },
     {
       "id": "am-gm-use",

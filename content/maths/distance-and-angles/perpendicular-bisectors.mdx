@@ -1,0 +1,306 @@
+---
+title: Perpendicular bisectors
+description: Points the same distance from two points, and the shortest distance to a line.
+---
+
+The Pythagoras theorem turns questions about distance into questions about squares of numbers. This
+page uses it to find the points that are the same distance from two given points, and the point of a
+line that is closest to a given point. The first answer leads to a circle through the three corners
+of any triangle.
+
+## The midpoint and the perpendicular bisector
+
+Fold a sheet of paper so that a point $$P$$ lands exactly on a point $$Q$$. The crease crosses the
+segment $$PQ$$ at its middle, and it meets the segment square on. Every point on the crease is the
+same distance from $$P$$ as from $$Q$$, because folding carries one distance onto the other. This
+section names the crease, and the rest of the page proves what the fold suggests.
+
+<PaperFold caption="Fold P onto Q and open the sheet out: the crease meets PQ square on at its midpoint O, and any point X on it is as far from P as from Q" />
+
+:::definition[Midpoint]{#midpoint}
+
+The **midpoint** of a segment $$PQ$$ is the point $$O$$ on the segment with $$d(P, O) = d(O, Q)$$.
+
+:::
+
+Every segment has exactly one midpoint. Any point $$O$$ of the segment $$PQ$$ splits its length into
+two parts, $$d(P, O) + d(O, Q) = d(P, Q)$$ (:ref{#segment-rules}). So $$O$$ is the midpoint exactly
+when both parts are $$\frac{1}{2} d(P, Q)$$, that is, exactly when
+$$d(P, O) = \frac{1}{2} d(P, Q)$$. By the same rules, exactly one point of the segment is at that
+distance from $$P$$.
+
+:::definition[Perpendicular bisector]{#perpendicular-bisector}
+
+The **perpendicular bisector** of a segment $$PQ$$ is the line through its midpoint that is
+perpendicular to $$PQ$$. There is exactly one such line, by rule 1 of :ref{#perpendicular-rules}.
+
+:::
+
+```plane
+point P -2.5 0 sw
+point Q 2.5 0 se
+point O 0 0 sw
+point T 0 3 hidden
+point B 0 -1 hidden
+segment P Q
+line B T color=purple
+right Q O T color=purple
+ticks P O 1
+ticks O Q 1
+caption "The perpendicular bisector of PQ passes through its midpoint O, square on to PQ"
+```
+
+Before the main theorem comes a fact about the line $$PQ$$ itself. On that line, the only point the
+same distance from $$P$$ and $$Q$$ is the midpoint. A point of the line outside the segment is
+always nearer one end than the other.
+
+:::lemma[Equal distances on the line]{#equidistant-on-line}
+
+Let $$P$$ and $$Q$$ be different points, and let $$O$$ be a point on the line $$PQ$$ with
+$$d(O, P) = d(O, Q)$$. Then $$O$$ is the midpoint of $$PQ$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Midpoint"}
+
+First, $$O$$ is not $$P$$. If it were, then $$d(P, Q) = d(O, Q) = d(O, P) = 0$$, so $$P = Q$$ by
+:ref{#distance-rules}, but $$P$$ and $$Q$$ are different. In the same way, $$O$$ is not $$Q$$.
+
+So $$O$$, $$P$$ and $$Q$$ are three different points on one line, and by :ref{#segment-rules}
+exactly one of them lies between the other two. Suppose $$P$$ lies between $$O$$ and $$Q$$. Then
+
+```math
+d(O, Q) = d(O, P) + d(P, Q)
+```
+
+Since $$d(O, Q) = d(O, P)$$, this leaves $$d(P, Q) = 0$$, which is impossible
+(:ref{#basic-proofs/contradiction}). The same argument rules out $$Q$$ lying between $$O$$ and
+$$P$$.
+
+So $$O$$ lies between $$P$$ and $$Q$$, on the segment, with $$d(P, O) = d(O, Q)$$. That makes it the
+midpoint.
+
+:::
+
+## Points the same distance from two points
+
+The folding picture says that the points the same distance from $$P$$ and $$Q$$ are exactly the
+points of the perpendicular bisector. Try it below: slide $$M$$ along its line and compare its two
+distances. They agree at one place only, where $$M$$ crosses the bisector.
+
+<BisectorDistances />
+
+The proof drops a perpendicular from $$M$$ to the line $$PQ$$. Its foot $$F$$ makes two right
+triangles, $$PFM$$ and $$QFM$$, which share the leg $$FM$$. By the Pythagoras theorem, the distances
+from $$M$$ match exactly when the other legs, $$PF$$ and $$QF$$, match too.
+
+```plane
+point P -2.5 0 sw
+point Q 2.5 0 se
+point F 0.8 0 s
+point M 0.8 3 n
+segment P Q
+segment F M color=purple
+segment P M color=blue dashed
+segment Q M color=orange dashed
+right Q F M color=purple
+caption "The foot F of the perpendicular from M splits the picture into two right triangles"
+```
+
+:::theorem[Points on the perpendicular bisector]{#perpendicular-bisector-rule}
+
+Let $$P$$ and $$Q$$ be different points. A point $$M$$ satisfies $$d(P, M) = d(Q, M)$$ exactly when
+$$M$$ lies on the perpendicular bisector of $$PQ$$.
+
+:::
+
+:::proof{source="https://www.cuemath.com/geometry/perpendicular-bisector-theorem/"}
+
+Let $$K$$ be the line through $$M$$ perpendicular to $$PQ$$ (rule 1 of :ref{#perpendicular-rules}),
+and let $$F$$ be the point where $$K$$ meets the line $$PQ$$. If $$M$$ is on the line $$PQ$$, then
+$$K$$ meets it at $$M$$ itself, so $$F = M$$.
+
+**Step 1: the squared distances.** When $$F$$, $$P$$ and $$M$$ are three different points, they form
+a right triangle with its right angle at $$F$$, so by :ref{#pythagoras},
+
+```math
+d(P, M)^2 = d(P, F)^2 + d(F, M)^2
+```
+
+This also holds when two of the points are the same. If $$F = P$$, then $$d(P, F) = 0$$ and both
+sides equal $$d(F, M)^2$$. If $$F = M$$, then $$d(F, M) = 0$$ and both sides equal $$d(P, F)^2$$.
+The same reasoning gives $$d(Q, M)^2 = d(Q, F)^2 + d(F, M)^2$$.
+
+**Step 2: a chain of equivalent statements.** Distances are never negative, so two distances are
+equal exactly when their squares are (:ref{#real-numbers/equal-squares}). Using step 1, and taking
+$$d(F, M)^2$$ from both sides, each line below is true exactly when the next one is
+(:ref{#basic-proofs/exactly-when}):
+
+1. $$d(P, M) = d(Q, M)$$
+2. $$d(P, M)^2 = d(Q, M)^2$$
+3. $$d(P, F)^2 = d(Q, F)^2$$
+4. $$d(P, F) = d(Q, F)$$
+5. $$F$$ is the midpoint of $$PQ$$
+
+Statement 4 leads to 5 by :ref{#equidistant-on-line}, and 5 leads back to 4 by the definition of the
+midpoint.
+
+**Step 3: the foot and the bisector.** It remains to show that $$F$$ is the midpoint exactly when
+$$M$$ is on the perpendicular bisector.
+
+- If $$F$$ is the midpoint, then $$K$$ is perpendicular to $$PQ$$ and passes through the midpoint.
+  So $$K$$ is the perpendicular bisector, and $$M$$ is on it.
+- If $$M$$ is on the perpendicular bisector, then the bisector is a line through $$M$$ perpendicular
+  to $$PQ$$. There is only one such line (rule 1 of :ref{#perpendicular-rules}), so the bisector is
+  $$K$$. The bisector meets the line $$PQ$$ only at the midpoint (:ref{#crossing-lines}), so $$F$$
+  is the midpoint.
+
+:::
+
+:::example[Finding where to meet]
+
+Two friends live at points $$P$$ and $$Q$$, $$8$$ km apart along a straight road. They want a café
+that is the same distance from both homes, and $$5$$ km from each. So the café must be on the
+perpendicular bisector of $$PQ$$ (:ref{#perpendicular-bisector-rule}).
+
+The bisector meets the road at the midpoint $$O$$, $$4$$ km from each home. A café at $$M$$ on the
+bisector makes a right triangle $$POM$$, with its right angle at $$O$$, hypotenuse $$5$$ and one leg
+$$4$$. So $$d(O, M)^2 = 5^2 - 4^2 = 9$$, and the café is $$3$$ km from the road, on either side of
+it.
+
+:::
+
+## The hypotenuse is the longest side
+
+In a right triangle, the side opposite the right angle is the longest. Pythagoras makes this
+precise: $$c^2$$ is $$a^2$$ with the positive number $$b^2$$ added on, so $$c^2$$ is the larger
+square.
+
+:::corollary[The hypotenuse is longest]{#hypotenuse-longest}
+
+In a right triangle with legs $$a$$ and $$b$$ and hypotenuse $$c$$, the hypotenuse is longer than
+each leg: $$c > a$$ and $$c > b$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Hypotenuse"}
+
+The corners of a triangle are different points, so $$a$$ and $$b$$ are positive
+(:ref{#distance-rules}). By :ref{#pythagoras}, $$c^2 = a^2 + b^2$$, and $$b^2 > 0$$, so
+$$c^2 > a^2$$. Both $$a$$ and $$c$$ are positive, so $$c > a$$ by
+:ref{#real-numbers/power-order-converse}. Swapping the roles of $$a$$ and $$b$$ gives $$c > b$$.
+
+:::
+
+## The shortest distance to a line
+
+Stand in a field next to a long straight fence and walk to it by the shortest route. You walk
+straight at it, square on. Any slanted path ends further along the fence, and it is longer. The
+reason is :ref{#hypotenuse-longest}: a slanted path is the hypotenuse of a right triangle, and the
+straight path is one of its legs.
+
+<FenceWalk caption="Seen from above: the path that meets the fence square on is the shortest, and every slanted path is longer" />
+
+<ShortestDistance />
+
+:::theorem[The shortest distance to a line]{#shortest-distance}
+
+Let $$L$$ be a line and $$P$$ a point not on it, and let $$F$$ be the foot of the perpendicular from
+$$P$$ to $$L$$. Then for every point $$M$$ of $$L$$ other than $$F$$,
+
+```math
+d(P, M) > d(P, F)
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Perpendicular_is_Shortest_Straight_Line_from_Point_to_Straight_Line"}
+
+The points $$P$$, $$F$$ and $$M$$ are all different: $$P$$ is not on $$L$$, and $$M \neq F$$. The
+segment $$PF$$ is perpendicular to $$L$$, and $$M$$ is on $$L$$, so $$PFM$$ is a right triangle with
+its right angle at $$F$$. Its hypotenuse is $$PM$$ and $$PF$$ is a leg, so $$d(P, M) > d(P, F)$$ by
+:ref{#hypotenuse-longest}.
+
+:::
+
+```plane
+point P 1 3 n
+point F 1 0 s
+point M 4 0 s
+point A -2 0 hidden
+line A M
+segment P F color=purple
+segment P M color=blue dashed
+right M F P color=purple
+caption "PF is a leg and PM is the hypotenuse, so PM is longer"
+```
+
+The theorem gives a single number for how far a point is from a line.
+
+:::definition[Distance from a point to a line]{#point-line-distance}
+
+The **distance from a point $$P$$ to a line $$L$$** is $$d(P, F)$$, where $$F$$ is the foot of the
+perpendicular from $$P$$ to $$L$$. It is the smallest distance from $$P$$ to any point of $$L$$. If
+$$P$$ is on $$L$$, the distance is $$0$$.
+
+:::
+
+## A circle through three points
+
+A circle is every point at one distance from its centre. So a circle through three points $$P$$,
+$$Q$$ and $$M$$ needs a centre that is the same distance from all three.
+:ref{#perpendicular-bisector-rule} says where to look:
+
+- the points the same distance from $$P$$ as from $$Q$$ make up the perpendicular bisector of $$PQ$$
+- the points the same distance from $$Q$$ as from $$M$$ make up the perpendicular bisector of $$QM$$
+
+A point on both bisectors is the same distance from all three corners, so it is the centre you want.
+Two things need checking. The two bisectors must cross somewhere, since two parallel lines never
+meet. And once they do, the third bisector, that of $$PM$$, should pass through the same point. Move
+the corner $$M$$ below and watch both happen.
+
+<Circumcircle />
+
+:::corollary[The circle through a triangle's corners]{#circumcentre}
+
+Let $$\triangle PQM$$ be a triangle. The perpendicular bisectors of its three sides meet at one
+point $$O$$, and $$d(O, P) = d(O, Q) = d(O, M)$$. So the circle with centre $$O$$ and radius
+$$d(O, P)$$ passes through $$P$$, $$Q$$ and $$M$$.
+
+:::
+
+:::proof{source="https://www.cuemath.com/geometry/circumcenter/"}
+
+Let $$L_1$$ be the perpendicular bisector of $$PQ$$, and $$L_2$$ that of $$QM$$.
+
+**The two bisectors meet.** Suppose $$L_1$$ and $$L_2$$ were parallel. The line $$PQ$$ is
+perpendicular to $$L_1$$, so it is perpendicular to $$L_2$$ as well (rule 2 of
+:ref{#perpendicular-rules}). The line $$QM$$ is also perpendicular to $$L_2$$, so the lines $$PQ$$
+and $$QM$$ would be parallel (:ref{#perpendiculars-parallel}).
+
+But the lines $$PQ$$ and $$QM$$ both pass through $$Q$$. A line counts as parallel to itself, so
+both would be lines through $$Q$$ parallel to $$QM$$, and rule 2 of :ref{#line-rules} allows only
+one. So $$PQ$$ and $$QM$$ would be the same line, and $$P$$, $$Q$$ and $$M$$ would lie on it. A
+triangle's corners never lie on one line, so this is impossible. So $$L_1$$ and $$L_2$$ are not
+parallel, and they meet in exactly one point $$O$$ (:ref{#crossing-lines}).
+
+**The distances.** Since $$O$$ is on $$L_1$$, $$d(O, P) = d(O, Q)$$, and since $$O$$ is on $$L_2$$,
+$$d(O, Q) = d(O, M)$$ (:ref{#perpendicular-bisector-rule}). So all three distances are equal. In
+particular $$d(O, P) = d(O, M)$$, so by the same theorem $$O$$ is on the perpendicular bisector of
+$$PM$$ too.
+
+:::
+
+The point $$O$$ is called the **circumcentre** of the triangle, and the circle is its
+**circumcircle**.
+
+The circumcentre need not lie inside the triangle. Move $$M$$ in the diagram above to see three
+cases:
+
+- when every angle is smaller than a right angle, $$O$$ lies inside the triangle
+- when one angle is a right angle, $$O$$ is the midpoint of the side opposite it
+- when one angle is wider than a right angle, $$O$$ lies outside, beyond the side opposite it
+
+The same idea finds the centre of a round plate from a broken piece of it. Mark three points on the
+rim and draw the perpendicular bisectors of two of the segments between them. The bisectors cross at
+the centre of the plate.

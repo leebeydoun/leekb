@@ -47,54 +47,54 @@ The summary below collects every definition and rule for quick reference.
 
 **Definitions**
 
-| Term                                 | Meaning                                                                      |
-| ------------------------------------ | ---------------------------------------------------------------------------- |
-| :ref[Quadratic equation]{#quadratic} | $$ax^2 + bx + c = 0$$ with $$a \neq 0$$; its solutions are also called roots |
-| :ref[Discriminant]{#discriminant}    | $$\Delta = b^2 - 4ac$$                                                       |
+| Term                | Meaning                                                                      |
+| ------------------- | ---------------------------------------------------------------------------- |
+| :ref{#quadratic}    | $$ax^2 + bx + c = 0$$ with $$a \neq 0$$; its solutions are also called roots |
+| :ref{#discriminant} | $$\Delta = b^2 - 4ac$$                                                       |
 
 **Quadratic equations**
 
-| Rule                                              | Statement                                                                                         |
-| ------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| :ref[A square equal to a number]{#shifted-square} | $$(x - s)^2 = k$$: $$x = s \pm \sqrt{k}$$ if $$k > 0$$, $$x = s$$ if $$k = 0$$, none if $$k < 0$$ |
+| Rule                  | Statement                                                                                         |
+| --------------------- | ------------------------------------------------------------------------------------------------- |
+| :ref{#shifted-square} | $$(x - s)^2 = k$$: $$x = s \pm \sqrt{k}$$ if $$k > 0$$, $$x = s$$ if $$k = 0$$, none if $$k < 0$$ |
 
 **Solving by factoring**
 
-| Rule                                           | Statement                                                                          |
-| ---------------------------------------------- | ---------------------------------------------------------------------------------- |
-| :ref[Solving by factors]{#solve-by-factors}    | $$(px + q)(rx + t) = 0$$ exactly when $$x = -\frac{q}{p}$$ or $$x = -\frac{t}{r}$$ |
-| :ref[Factoring x² + bx + c]{#factoring-method} | If $$m + n = b$$ and $$mn = c$$, then $$x^2 + bx + c = (x + m)(x + n)$$            |
+| Rule                    | Statement                                                                          |
+| ----------------------- | ---------------------------------------------------------------------------------- |
+| :ref{#solve-by-factors} | $$(px + q)(rx + t) = 0$$ exactly when $$x = -\frac{q}{p}$$ or $$x = -\frac{t}{r}$$ |
+| :ref{#factoring-method} | If $$m + n = b$$ and $$mn = c$$, then $$x^2 + bx + c = (x + m)(x + n)$$            |
 
 **Completing the square**
 
-| Rule                                          | Statement                                                     |
-| --------------------------------------------- | ------------------------------------------------------------- |
-| :ref[Completing the square]{#complete-square} | $$x^2 + bx = \left(x + \frac{b}{2}\right)^2 - \frac{b^2}{4}$$ |
+| Rule                   | Statement                                                     |
+| ---------------------- | ------------------------------------------------------------- |
+| :ref{#complete-square} | $$x^2 + bx = \left(x + \frac{b}{2}\right)^2 - \frac{b^2}{4}$$ |
 
 **The quadratic formula**
 
-| Rule                                            | Statement                                                                                      |
-| ----------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| :ref[The quadratic formula]{#quadratic-formula} | If $$b^2 - 4ac \ge 0$$: $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$; otherwise no real solution |
+| Rule                     | Statement                                                                                      |
+| ------------------------ | ---------------------------------------------------------------------------------------------- |
+| :ref{#quadratic-formula} | If $$b^2 - 4ac \ge 0$$: $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$; otherwise no real solution |
 
 **The discriminant**
 
-| Rule                                   | Statement                                                                                                                        |
-| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| :ref[Number of solutions]{#root-count} | $$\Delta > 0$$: two solutions; $$\Delta = 0$$: one, $$-\frac{b}{2a}$$; $$\Delta < 0$$: none                                      |
-| :ref[Sum and product]{#vieta}          | Solutions $$x_1, x_2$$ have $$x_1 + x_2 = -\frac{b}{a}$$, $$x_1 x_2 = \frac{c}{a}$$, and $$ax^2 + bx + c = a(x - x_1)(x - x_2)$$ |
+| Rule              | Statement                                                                                                                        |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| :ref{#root-count} | $$\Delta > 0$$: two solutions; $$\Delta = 0$$: one, $$-\frac{b}{2a}$$; $$\Delta < 0$$: none                                      |
+| :ref{#vieta}      | Solutions $$x_1, x_2$$ have $$x_1 + x_2 = -\frac{b}{a}$$, $$x_1 x_2 = \frac{c}{a}$$, and $$ax^2 + bx + c = a(x - x_1)(x - x_2)$$ |
 
 **Parabolas**
 
-| Rule                                     | Statement                                                                                                           |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| :ref[The graph is a parabola]{#parabola} | $$y = ax^2 + bx + c$$ opens up if $$a > 0$$, down if $$a < 0$$; solutions are where it crosses the $$x$$-axis       |
-| :ref[The vertex]{#vertex}                | $$ax^2 + bx + c = a(x - s)^2 + k$$ with $$s = -\frac{b}{2a}$$, $$k = c - \frac{b^2}{4a}$$; the vertex is $$(s, k)$$ |
+| Rule            | Statement                                                                                                           |
+| --------------- | ------------------------------------------------------------------------------------------------------------------- |
+| :ref{#parabola} | $$y = ax^2 + bx + c$$ opens up if $$a > 0$$, down if $$a < 0$$; solutions are where it crosses the $$x$$-axis       |
+| :ref{#vertex}   | $$ax^2 + bx + c = a(x - s)^2 + k$$ with $$s = -\frac{b}{2a}$$, $$k = c - \frac{b^2}{4a}$$; the vertex is $$(s, k)$$ |
 
 **Equations that become quadratic**
 
-| Rule                                               | Statement                                                                                           |
-| -------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| :ref[Substituting for x²]{#substitution-quadratic} | $$ax^4 + bx^2 + c = 0$$: solve $$au^2 + bu + c = 0$$, then $$x = \pm\sqrt{u}$$ for each $$u \ge 0$$ |
+| Rule                          | Statement                                                                                           |
+| ----------------------------- | --------------------------------------------------------------------------------------------------- |
+| :ref{#substitution-quadratic} | $$ax^4 + bx^2 + c = 0$$: solve $$au^2 + bu + c = 0$$, then $$x = \pm\sqrt{u}$$ for each $$u \ge 0$$ |
 
 :::

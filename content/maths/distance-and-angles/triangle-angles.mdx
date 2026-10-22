@@ -1,0 +1,327 @@
+---
+title: Angles in triangles
+description: The angles of any triangle, angles at parallel lines, and the area of a triangle.
+---
+
+Right triangles have been the main tool so far, and this page shows how far that tool reaches. Any
+triangle can be cut into two right triangles by one perpendicular line. That cut proves that the
+angles of every triangle add up to $$180^\circ$$, and it gives the area of every triangle. Along the
+way it proves two facts about the angles where lines cross, which the exercises and later geometry
+rely on.
+
+## Opposite angles
+
+Cross two sticks and look at the four angles around the crossing. The angles facing each other look
+the same size, and they are. Both of them sit beside the same neighbouring angle on a straight line,
+so each one is $$180^\circ$$ minus that neighbour.
+
+```plane
+point O 0 0 s
+point X 3 1 n
+point Y -2.5 2 ne
+point X' -3 -1 s
+point Y' 2.5 -2 sw
+line X' X
+line Y' Y
+angle X O Y label="α" color=blue
+angle X' O Y' label="α′" color=blue
+angle Y O X' label="β" color=orange
+caption "Where two lines cross, the opposite angles α and α′ are equal"
+```
+
+:::proposition[Opposite angles are equal]{#opposite-angles}
+
+When two lines cross, the two angles opposite each other at the crossing are equal.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Vertical_angles"}
+
+Label the angles as in the figure, with $$\alpha$$ and $$\alpha'$$ opposite each other and $$\beta$$
+between them. The angles $$\alpha$$ and $$\beta$$ sit side by side on the line $$X'X$$, and
+$$\beta$$ and $$\alpha'$$ sit side by side on the line $$Y'Y$$. By :ref{#angles-on-line},
+
+```math
+\alpha + \beta = 180^\circ \qquad \text{and} \qquad \beta + \alpha' = 180^\circ
+```
+
+Taking $$\beta$$ from both sides of each gives $$\alpha = 180^\circ - \beta = \alpha'$$.
+
+:::
+
+## The angles of a triangle
+
+Draw any triangle, cut off its three corners and lay them side by side. They always fit together to
+make a straight line. The proof below explains why, by dropping a perpendicular from one corner and
+using what you already know about right triangles.
+
+<TornCorners caption="Tear the three corners off a paper triangle and put their points together: they always fill a straight line" />
+
+For a triangle $$\triangle ABC$$, write $$\angle A$$ for its angle at the corner $$A$$, and the same
+for $$B$$ and $$C$$.
+
+:::theorem[Angle sum of a triangle]{#triangle-angle-sum}
+
+In every triangle $$\triangle ABC$$,
+
+```math
+\angle A + \angle B + \angle C = 180^\circ
+```
+
+:::
+
+The perpendicular from $$C$$ to the line $$AB$$ meets it at a point $$F$$. There are three ways this
+can fall: on one of the corners $$A$$ or $$B$$, between them, or outside the side $$AB$$. The two
+main cases look like this:
+
+```plane
+point A 0 0 sw
+point B 5 0 se
+point C 1.8 3 n
+point F 1.8 0 s
+segment A B
+segment B C
+segment C A
+segment C F color=purple dashed
+right B F C color=purple
+caption "Case 1: the foot F lies between A and B"
+```
+
+```plane
+point A 0 0 sw
+point B 3 0 s
+point C 4.5 2.6 n
+point F 4.5 0 se
+segment A B
+segment B C
+segment C A
+segment B F color=muted dashed
+segment C F color=purple dashed
+right C F A color=purple
+caption "Case 2: the foot F lies outside the side AB, beyond B"
+```
+
+:::proof{source="https://en.wikipedia.org/wiki/Sum_of_angles_of_a_triangle"}
+
+Let $$F$$ be the point where the line through $$C$$ perpendicular to the line $$AB$$ meets it
+(:ref{#perpendicular-rules}).
+
+**Case 0: $$F$$ is a corner.** If $$F = A$$, the line $$CA$$ is perpendicular to $$AB$$, so the
+triangle has a right angle at $$A$$. By :ref{#right-triangle-angles},
+$$\angle B + \angle C = 90^\circ$$, so all three add to $$90^\circ + 90^\circ = 180^\circ$$. The
+case $$F = B$$ is the same.
+
+Otherwise $$A$$, $$B$$ and $$F$$ are three different points on one line, and by :ref{#segment-rules}
+exactly one lies between the other two.
+
+**Case 1: $$F$$ lies between $$A$$ and $$B$$.** The segment $$CF$$ cuts the triangle into two right
+triangles, $$\triangle AFC$$ and $$\triangle BFC$$, each with its right angle at $$F$$. By
+:ref{#right-triangle-angles},
+
+```math
+\angle A + \angle ACF = 90^\circ \qquad \text{and} \qquad \angle B + \angle BCF = 90^\circ
+```
+
+As the figure shows, the ray $$CF$$ splits $$\angle C$$ into $$\angle ACF$$ and $$\angle BCF$$, so
+$$\angle C = \angle ACF + \angle BCF$$ (:ref{#angle-addition}). Adding the two equations gives
+$$\angle A + \angle B + \angle C = 180^\circ$$.
+
+**Case 2: $$F$$ lies outside the side $$AB$$.** Then $$A$$ or $$B$$ lies between the other corner
+and $$F$$. Name the corners so that $$B$$ lies between $$A$$ and $$F$$. There are two right
+triangles with the right angle at $$F$$: the large one $$\triangle AFC$$ and the small one
+$$\triangle BFC$$. By :ref{#right-triangle-angles},
+
+```math
+\angle A + \angle ACF = 90^\circ \qquad \text{and} \qquad \angle CBF + \angle BCF = 90^\circ
+```
+
+Next, write the triangle's angles at $$B$$ and $$C$$ in terms of these:
+
+- As the figure shows, the ray $$CB$$ splits $$\angle ACF$$ into $$\angle C$$ and $$\angle BCF$$, so
+  $$\angle C = \angle ACF - \angle BCF$$ (:ref{#angle-addition})
+- The angles $$\angle B$$ and $$\angle CBF$$ sit side by side on the line $$AF$$, so
+  $$\angle B = 180^\circ - \angle CBF$$ (:ref{#angles-on-line})
+
+So the sum is
+
+```math
+\begin{aligned}
+\angle A + \angle B + \angle C &= \angle A + (180^\circ - \angle CBF) + (\angle ACF - \angle BCF) \\
+&= (\angle A + \angle ACF) + 180^\circ - (\angle CBF + \angle BCF) \\
+&= 90^\circ + 180^\circ - 90^\circ = 180^\circ
+\end{aligned}
+```
+
+:::
+
+:::example[A missing angle]
+
+A triangle has angles of $$47^\circ$$ and $$68^\circ$$. Its third angle is
+$$180^\circ - 47^\circ - 68^\circ = 65^\circ$$. You never need to measure the last angle of a
+triangle: the other two decide it.
+
+:::
+
+The theorem also limits what a triangle can look like. Two angles of $$90^\circ$$ or more would
+already add up to $$180^\circ$$ or more, leaving nothing for the third. So a triangle has at most
+one right angle or obtuse angle.
+
+## Angles at parallel lines
+
+A line crossing two parallel lines meets them at the same slant. So the angles it makes at the first
+line repeat at the second. The two kinds of matching pairs have names:
+
+- **Corresponding angles**: in the same position at each crossing, for example both above their
+  parallel line and to the right of the crossing line
+- **Alternate angles**: on opposite sides of the crossing line and between the two parallels,
+  forming a Z shape
+
+```plane
+point P' 0 0 s
+point P 2 2.5 n
+point F 2 0 s
+point R 4.5 0 hidden
+point L -2.5 2.5 hidden
+point K 2.8 3.5 hidden
+point E 4.5 2.5 hidden
+point W -2.5 0 hidden
+line W R
+line L E
+line P' K
+segment P F color=purple dashed
+right R F P color=purple
+angle F P' P label="B" color=blue
+angle L P P' label="B′" color=orange
+caption "The alternate angles B and B′, with the perpendicular PF used in the proof"
+```
+
+:::theorem[Angles where a line crosses parallels]{#parallel-angles}
+
+Let a line $$K$$ cross two parallel lines $$L_1$$ and $$L_2$$. Then its alternate angles are equal,
+and its corresponding angles are equal.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Transversal_(geometry)"}
+
+Let $$K$$ meet $$L_1$$ at $$P$$ and $$L_2$$ at $$P'$$.
+
+**If $$K$$ is perpendicular to the parallels.** A line perpendicular to one of two parallel lines is
+perpendicular to the other (rule 2 of :ref{#perpendicular-rules}). So every angle at both crossings
+is a right angle, and all of them are equal.
+
+**Otherwise,** let $$F$$ be the foot of the perpendicular from $$P$$ to $$L_2$$, as in the figure.
+The line $$PF$$ is perpendicular to $$L_2$$, so it is also perpendicular to $$L_1$$ (rule 2 of
+:ref{#perpendicular-rules}). Let $$B$$ be the angle at $$P'$$ between $$P'F$$ and $$P'P$$. Let
+$$B'$$ be the alternate angle at $$P$$: the angle between $$PP'$$ and $$L_1$$ on the other side of
+$$K$$ from $$B$$.
+
+The triangle $$\triangle PFP'$$ has a right angle at $$F$$, so by :ref{#right-triangle-angles},
+
+```math
+B + \angle FPP' = 90^\circ
+```
+
+At $$P$$, the line $$PF$$ meets $$L_1$$ at a right angle, and the figure shows the ray $$PP'$$
+splitting that right angle into $$\angle FPP'$$ and $$B'$$. So $$B' + \angle FPP' = 90^\circ$$
+(:ref{#angle-addition}). Comparing the two equations gives $$B = B'$$. The other pair of alternate
+angles are the angles beside these on a straight line, $$180^\circ - B$$ and $$180^\circ - B'$$
+(:ref{#angles-on-line}), so they are equal too.
+
+**Corresponding angles.** Each corresponding angle at $$P$$ is opposite one of the alternate angles
+at $$P$$, so it equals that angle (:ref{#opposite-angles}). That alternate angle equals its partner
+at $$P'$$, which is the corresponding angle there.
+
+:::
+
+:::example[Filling in angles]
+
+A road crosses two parallel railway lines, making an angle of $$70^\circ$$ with the first. By
+:ref{#parallel-angles}, the matching angle at the second line is also $$70^\circ$$. The angle beside
+it on the line is $$180^\circ - 70^\circ = 110^\circ$$ (:ref{#angles-on-line}), and the angle
+opposite each of these is the same size (:ref{#opposite-angles}). So the eight angles at the two
+crossings take only two values: $$70^\circ$$ and $$110^\circ$$.
+
+:::
+
+## The area of a triangle
+
+A right triangle is half a rectangle, so its area is half the product of its legs. Any other
+triangle is two right triangles put together, or one right triangle with another cut away. Either
+way, adding or subtracting the two right triangles gives the same rule: half the base times the
+height.
+
+:::definition[Base and height]{#height}
+
+Choose one side of a triangle as its **base**. The **height** is the distance from the opposite
+corner to the line containing the base (:ref{#point-line-distance}). It is measured along the
+perpendicular from that corner, which may meet the line outside the base.
+
+:::
+
+:::theorem[Area of a triangle]{#triangle-area}
+
+A triangle with base $$b$$ and height $$h$$ has area $$\frac{1}{2}bh$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Area_of_Triangle_in_Terms_of_Side_and_Altitude"}
+
+Let the triangle be $$\triangle ABC$$ with base $$AB$$, so $$b = d(A, B)$$. Let $$F$$ be the foot of
+the perpendicular from $$C$$ to the line $$AB$$, so $$h = d(C, F)$$. The cases are the same as for
+:ref{#triangle-angle-sum}.
+
+**Case 0: $$F$$ is a corner.** If $$F = B$$, the triangle is a right triangle with legs $$b$$ and
+$$h$$, and its area is $$\frac{1}{2}bh$$ by :ref{#right-triangle-area}. The case $$F = A$$ is the
+same.
+
+**Case 1: $$F$$ lies between $$A$$ and $$B$$.** The segment $$CF$$ cuts the triangle into the right
+triangles $$\triangle AFC$$ and $$\triangle BFC$$, which don't overlap. By rule 2 of
+:ref{#area-rules}, the area of the triangle is the sum of their areas, so by
+:ref{#right-triangle-area},
+
+```math
+\text{area} = \tfrac{1}{2} d(A, F)\,h + \tfrac{1}{2} d(F, B)\,h = \tfrac{1}{2}\big(d(A, F) + d(F, B)\big)h
+```
+
+Since $$F$$ is between $$A$$ and $$B$$, $$d(A, F) + d(F, B) = b$$ (:ref{#segment-rules}). So the
+area is $$\frac{1}{2}bh$$.
+
+**Case 2: $$F$$ lies outside the side $$AB$$.** As before, name the corners so that $$B$$ lies
+between $$A$$ and $$F$$. The large right triangle $$\triangle AFC$$ is cut by $$CB$$ into
+$$\triangle ABC$$ and the small right triangle $$\triangle BFC$$, which don't overlap. By rule 2 of
+:ref{#area-rules}, the area of $$\triangle AFC$$ is the sum of the other two areas. So, taking away
+the area of $$\triangle BFC$$ and using :ref{#right-triangle-area},
+
+```math
+\text{area of } \triangle ABC = \tfrac{1}{2} d(A, F)\,h - \tfrac{1}{2} d(B, F)\,h = \tfrac{1}{2}\big(d(A, F) - d(B, F)\big)h
+```
+
+Since $$B$$ is between $$A$$ and $$F$$, $$d(A, F) = d(A, B) + d(B, F)$$ (:ref{#segment-rules}), so
+$$d(A, F) - d(B, F) = b$$. Again the area is $$\frac{1}{2}bh$$.
+
+:::
+
+```plane
+point A 0 0 sw
+point B 3 0 s
+point C 4.5 2.6 n
+point F 4.5 0 se
+polygon A B C color=blue
+segment A B label="b" side=right
+segment B C
+segment C A
+segment B F color=muted dashed
+segment C F color=purple dashed label="h" side=right
+right C F A color=purple
+caption "When the foot F falls outside the base, the height is still measured to the line AB"
+```
+
+:::example[Any side can be the base]
+
+A triangle has corners $$A$$, $$B$$ and $$C$$, with $$d(A, B) = 6$$ and the height from $$C$$ equal
+to $$4$$. Its area is $$\frac{1}{2} \cdot 6 \cdot 4 = 12$$. If $$d(B, C) = 5$$, the height from
+$$A$$ to the line $$BC$$ must satisfy $$\frac{1}{2} \cdot 5 \cdot h = 12$$, so $$h = 4.8$$. The area
+is the same whichever side you choose as the base, so one height tells you the others.
+
+:::

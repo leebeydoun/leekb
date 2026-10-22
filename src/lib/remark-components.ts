@@ -12,6 +12,7 @@
  *             ::quiz{src="numbers"}     (questions from public/quizzes/numbers.json, checked here)
  *             ::see-also{src="https://en.wikipedia.org/wiki/..."}     (a source for an unproved
  *             statement, placed inside it)
+ * Fence:      ```plane ... ``` draws a static geometry figure, see src/lib/plane.ts
  * Inline:     :ref{#id} or :ref[custom text]{#id}, or :ref{#numbers/id} for another guide
  *
  * A block must have blank lines after its opening line and before its closing `:::`, otherwise
@@ -36,6 +37,7 @@ import katex from "katex";
 import { toString } from "mdast-util-to-string";
 import { valueToEstree } from "estree-util-value-to-estree";
 import { STATEMENT_KINDS } from "./remark-statements";
+import { parsePlane } from "./plane";
 
 type File = { path?: string; value?: unknown };
 type Directive = ContainerDirective | LeafDirective | TextDirective;
@@ -553,6 +555,18 @@ export function remarkComponents() {
     const walk = (parent: Parent) => {
       parent.children = parent.children.map((child) => {
         if ("children" in child) walk(child as Parent);
+        if (child.type === "code" && child.lang === "plane") {
+          try {
+            return element(
+              "mdxJsxFlowElement",
+              "PlaneFigure",
+              { ...parsePlane(child.value) },
+              [],
+            );
+          } catch (error) {
+            fail(file, child, (error as Error).message);
+          }
+        }
         return isDirective(child) ? convert(child, file) : child;
       }) as Parent["children"];
     };

@@ -1,0 +1,299 @@
+---
+title: The Pythagoras theorem
+description: How the sides of a right triangle are related, and how to use it.
+---
+
+Knowing two sides of a right triangle fixes the third. The Pythagoras theorem says exactly how: the
+square of the hypotenuse is the sum of the squares of the legs. This page proves the theorem by
+fitting four copies of the triangle inside a square, and then uses it to find missing lengths, from
+the diagonal of a square to the diagonal of a box.
+
+## The theorem
+
+Draw a square on each side of a right triangle. The theorem says that the two squares on the legs
+have the same total area as the square on the hypotenuse. For legs $$3$$ and $$4$$ the hypotenuse is
+$$5$$, and indeed $$9 + 16 = 25$$.
+
+```plane
+point P 0 0 sw
+point Q 4 0 se
+point M 0 3 nw
+point Q1 4 -4 hidden
+point P1 0 -4 hidden
+point M1 -3 3 hidden
+point P2 -3 0 hidden
+point M2 3 7 hidden
+point Q2 7 4 hidden
+polygon P Q Q1 P1 color=orange
+polygon P M M1 P2 color=green
+polygon M Q Q2 M2 color=blue
+segment Q Q1 color=orange
+segment Q1 P1 color=orange
+segment P1 P color=orange
+segment M M1 color=green
+segment M1 P2 color=green
+segment P2 P color=green
+segment Q Q2 color=blue
+segment Q2 M2 color=blue
+segment M2 M color=blue
+segment P Q
+segment P M
+segment Q M
+right Q P M
+text 2 -2 "b² = 16" color=orange
+text -1.5 1.5 "a² = 9" color=green
+text 3.5 3.5 "c² = 25" color=blue
+caption "Legs 3 and 4, hypotenuse 5: the two smaller squares add up to the largest"
+```
+
+:::theorem[Pythagoras theorem]{#pythagoras}
+
+In a right triangle with legs of lengths $$a$$ and $$b$$ and hypotenuse of length $$c$$,
+
+```math
+a^2 + b^2 = c^2
+```
+
+:::
+
+The proof compares areas. Take a square with sides of length $$a + b$$, and fit four copies of the
+triangle into its corners. They leave a tilted square uncovered in the middle, with sides of length
+$$c$$. The big square's area can then be added up two ways: once as $$(a + b)^2$$, and once as four
+triangles plus the square in the middle.
+
+<PythagorasSquares />
+
+The same four triangles can also be slid, without turning, so that they leave a square of side $$a$$
+and a square of side $$b$$ uncovered instead. Move the slider to watch this. The big square and the
+four triangles stay the same, so once the triangles fit together again they leave the same area
+uncovered: $$c^2$$ in the first layout equals $$a^2 + b^2$$ in the second. The written proof below
+uses only the first layout.
+
+:::proof{source="https://en.wikipedia.org/wiki/Pythagorean_theorem#Rearrangement_proofs"}
+
+**Build the square.** Draw a square with sides of length $$a + b$$. On each side, mark the point
+that splits it into a piece of length $$a$$ and a piece of length $$b$$ (:ref{#segment-rules}). Go
+round the square in one direction, so that each side starts with its $$a$$ piece. Call the marked
+points $$K$$, $$L$$, $$S$$ and $$T$$.
+
+```plane
+point W 0 0 hidden
+point X 5 0 hidden
+point Y 5 5 hidden
+point Z 0 5 hidden
+point K 2 0 s
+point L 5 2 e
+point S 3 5 n
+point T 0 3 w
+polygon K L S T color=blue
+segment W K label="a" side=right
+segment K X label="b" side=right
+segment X L label="a" side=right
+segment L Y label="b" side=right
+segment Y S label="a" side=right
+segment S Z label="b" side=right
+segment Z T label="a" side=right
+segment T W label="b" side=right
+segment K L label="c"
+segment L S
+segment S T
+segment T K
+right X W Z
+right Y X W
+right Z Y X
+right W Z Y
+angle T K W color=orange
+angle X K L color=green
+text 2.5 2.6 "c²" color=blue
+caption "Four copies of the triangle in a square of side a + b"
+```
+
+**The four corner triangles.** Each corner of the big square is a right angle, with an $$a$$ piece
+along one side and a $$b$$ piece along the other. So each corner, with the two marked points next to
+it, makes a right triangle with legs $$a$$ and $$b$$. By the rules for right triangles
+(:ref{#right-triangle-rule}), each one has a hypotenuse of length $$c$$, the same angles as the
+original triangle, and the same area, $$\frac{ab}{2}$$ (:ref{#right-triangle-area}).
+
+**The middle is a square.** Its four sides $$KL$$, $$LS$$, $$ST$$ and $$TK$$ are hypotenuses of the
+corner triangles, so each has length $$c$$. Look at its corner $$K$$, on the bottom side. As the
+figure shows, three angles sit side by side there and together fill the straight angle along the
+bottom side:
+
+- **Orange**: the angle at $$K$$ of the bottom left triangle, which faces its leg of length $$b$$
+- **Middle**: the corner $$\angle LKT$$ of the middle square
+- **Green**: the angle at $$K$$ of the bottom right triangle, which faces its leg of length $$a$$
+
+The orange angle faces a leg of length $$b$$ and the green angle faces a leg of length $$a$$. So
+they match the two angles of the original triangle other than its right angle
+(:ref{#right-triangle-rule}), and they add up to $$90^\circ$$ (:ref{#right-triangle-angles}). The
+three angles together make a straight angle, $$180^\circ$$ (:ref{#angle-addition},
+:ref{#straight-angle}). So
+
+```math
+\angle LKT = 180^\circ - 90^\circ = 90^\circ
+```
+
+The same argument works at $$L$$, $$S$$ and $$T$$. So each side of the middle shape meets the next
+at a right angle. The other angles where their lines cross are then
+$$180^\circ - 90^\circ = 90^\circ$$ too (:ref{#angles-on-line}), so all four are equal and the two
+sides are perpendicular (:ref{#perpendicular}). A shape whose sides are each perpendicular to the
+two next to it is a rectangle, and with four sides of length $$c$$ it is a square of side $$c$$
+(:ref{#rectangle}). Its area is $$c^2$$ (:ref{#area-rules}).
+
+**Add up the areas.** The big square has area $$(a + b)^2 = a^2 + 2ab + b^2$$, by :ref{#area-rules}
+and :ref{#numbers/square-formulas}. It is cut into the middle square and the four triangles, which
+don't overlap, so its area is also
+
+```math
+c^2 + 4 \cdot \frac{ab}{2} = c^2 + 2ab
+```
+
+Setting the two equal gives $$a^2 + 2ab + b^2 = c^2 + 2ab$$. Taking $$2ab$$ from both sides leaves
+$$a^2 + b^2 = c^2$$.
+
+:::
+
+## Finding a missing side
+
+The theorem links three lengths, so any two of them give the third. Lengths are never negative, so
+each one is the square root of its square (:ref{#real-numbers/square-root}).
+
+:::corollary[Finding the third side]{#pythagoras-sides}
+
+In a right triangle with legs $$a$$ and $$b$$ and hypotenuse $$c$$,
+
+```math
+c = \sqrt{a^2 + b^2}, \qquad a = \sqrt{c^2 - b^2}, \qquad b = \sqrt{c^2 - a^2}
+```
+
+:::
+
+:::proof{source="https://www.mathsisfun.com/pythagoras.html"}
+
+By :ref{#pythagoras}, $$c^2 = a^2 + b^2$$. The length $$c$$ is a number $$c \ge 0$$ whose square is
+$$a^2 + b^2$$, and the square root is the only such number (:ref{#real-numbers/square-root}). So
+$$c = \sqrt{a^2 + b^2}$$.
+
+Taking $$b^2$$ from both sides of the theorem gives $$a^2 = c^2 - b^2$$. Since $$a \ge 0$$, the same
+reasoning gives $$a = \sqrt{c^2 - b^2}$$. The formula for $$b$$ follows in the same way.
+
+:::
+
+:::example[A leaning ladder]
+
+A ladder $$5$$ m long leans against a wall, with its foot $$1.4$$ m from the wall. The wall meets
+the ground at a right angle, so the ladder is the hypotenuse of a right triangle with one leg
+$$1.4$$. The height $$h$$ the ladder reaches up the wall is the other leg:
+
+```math
+h = \sqrt{5^2 - 1.4^2} = \sqrt{25 - 1.96} = \sqrt{23.04} = 4.8
+```
+
+So the ladder reaches $$4.8$$ m up the wall. Check: $$1.4^2 + 4.8^2 = 1.96 + 23.04 = 25 = 5^2$$.
+
+:::
+
+:::example[Whole number sides]
+
+A right triangle with legs $$5$$ and $$12$$ has hypotenuse $$\sqrt{25 + 144} = \sqrt{169} = 13$$.
+Going the other way, a right triangle with hypotenuse $$13$$ and one leg $$12$$ has other leg
+$$\sqrt{169 - 144} = \sqrt{25} = 5$$. Sets of whole numbers like $$3, 4, 5$$ and $$5, 12, 13$$,
+which fit the theorem exactly, are called **Pythagorean triples**.
+
+:::
+
+## The diagonal of a square
+
+A diagonal cuts a square into two right triangles, with the diagonal as the hypotenuse of each. So
+the theorem gives the length of the diagonal from the length of the side.
+
+```plane
+point P 0 0 sw
+point Q 3 0 se
+point R 3 3 ne
+point S 0 3 nw
+segment P Q label="1" side=right
+segment Q R label="1" side=right
+segment R S
+segment S P
+segment P R label="d" color=blue
+right Q P S
+right R Q P
+caption "The diagonal d of a square with sides of length 1"
+```
+
+:::example[A diagonal of length √2]
+
+The diagonal $$PR$$ of a square with sides of length $$1$$ is the hypotenuse of the right triangle
+$$\triangle PQR$$, with legs $$1$$ and $$1$$. So its length is
+
+```math
+d = \sqrt{1^2 + 1^2} = \sqrt{2}
+```
+
+No fraction squares to $$2$$ (:ref{#numbers/sqrt-two}), so this length can't be written as a
+fraction. A square with sides of length $$s$$ has diagonal $$\sqrt{s^2 + s^2} = s\sqrt{2}$$, by
+:ref{#real-numbers/root-product}.
+
+:::
+
+## Using the theorem twice
+
+Picture a box $$6$$ cm long, $$3$$ cm wide and $$2$$ cm high, and a pencil that has to fit inside
+it. Laid flat on the floor of the box, the longest pencil runs along the floor's diagonal. Tilted up
+from a bottom corner to the opposite top corner, a longer one fits. That line from corner to corner
+is the diagonal through the box.
+
+<BoxDiagonal
+  step="pencil"
+  caption="The longest pencil runs from a bottom corner to the opposite top corner"
+/>
+
+The diagonal through the box doesn't lie in any one face, so it isn't a side of any triangle drawn
+on the outside of the box. Instead, two right triangles inside the box reach it, one after the
+other. The first lies on the floor and finds the floor's diagonal. The second stands upright on that
+diagonal, like a card stood on its edge, and finds the diagonal through the box.
+
+:::example[The diagonal of a box]
+
+The box is $$6$$ long, $$3$$ wide and $$2$$ high. The first right triangle lies on the floor. Its
+legs are the length $$6$$ and the width $$3$$, which meet at a corner of the floor at a right angle,
+and its hypotenuse is the floor diagonal $$f$$:
+
+```math
+f = \sqrt{6^2 + 3^2} = \sqrt{45}
+```
+
+<BoxDiagonal
+  step="floor"
+  caption="The first triangle lies on the floor, with legs 6 and 3 and hypotenuse f"
+/>
+
+The second right triangle stands upright inside the box. Its legs are the floor diagonal $$f$$ and
+the upright edge of height $$2$$ at the far corner, and its hypotenuse is the diagonal $$D$$ through
+the box.
+
+Its right angle is where the upright edge meets the floor. The edge points straight up, so it is
+square to every line on the floor through its foot, whichever way that line runs. A flagpole is the
+same: it is square to the ground whichever direction you walk away from it. This is a fact about
+space rather than the plane, and it is taken here from the picture of a box rather than proved. So
+the second triangle has a right angle between $$f$$ and the edge, and:
+
+```math
+D = \sqrt{f^2 + 2^2} = \sqrt{45 + 4} = \sqrt{49} = 7
+```
+
+<BoxDiagonal
+  step="upright"
+  caption="The second triangle stands on the floor diagonal, with legs f and 2 and hypotenuse D"
+/>
+
+So a pencil $$7$$ cm long fits from corner to corner, while flat on the floor the longest that fits
+is $$\sqrt{45}$$, about $$6.7$$ cm. There was no need to work out $$\sqrt{45}$$ for $$D$$, since the
+second triangle only used $$f^2 = 45$$.
+
+The same two steps work for any box. With sides $$x$$, $$y$$ and $$z$$, the floor gives
+$$f^2 = x^2 + y^2$$, and the second triangle adds $$z^2$$, so the diagonal through the box is
+$$\sqrt{x^2 + y^2 + z^2}$$.
+
+:::

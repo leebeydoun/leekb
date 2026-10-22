@@ -67,10 +67,17 @@ Try it: slide the curve and watch the lowest point follow.
 
 <ParabolaVertex />
 
-Completing the square (:ref{#complete-square}) turns any quadratic into this form, a number times a
-square plus a number. So it finds the vertex of any parabola.
+:ref{#complete-square} turns any quadratic into this form: a number times a square, plus a number.
+The rule covers $$x^2 + bx$$, with nothing in front of $$x^2$$. So for $$ax^2 + bx + c$$ it takes
+three steps:
 
-:::proposition[The vertex]{#vertex}
+1. **Take out $$a$$**: write the first two terms as $$a$$ times a bracket that starts with $$x^2$$
+2. **Complete the square**: rewrite the bracket as a square minus a number
+3. **Multiply back by $$a$$**: multiply each term in the bracket by $$a$$
+
+The proof below takes these steps for any quadratic, and the example after it takes them for one.
+
+:::proposition[The vertex of a parabola]{#vertex}
 
 Let $$a \neq 0$$, and let $$s = -\frac{b}{2a}$$ and $$k = c - \frac{b^2}{4a}$$. Then
 
@@ -88,15 +95,37 @@ on both sides of the line $$x = s$$:
 
 :::proof{source="https://en.wikipedia.org/wiki/Completing_the_square#Relation_to_the_graph"}
 
-Since $$x - s = x + \frac{b}{2a}$$, multiplying out the square (:ref{#numbers/square-formulas})
-gives
+**Step 1: take out $$a$$.** Since $$a \neq 0$$, you can write $$bx$$ as $$a \cdot \frac{b}{a}x$$. So
 
 ```math
-\begin{aligned}
-a(x - s)^2 + k &= a\left(x^2 + \frac{b}{a}x + \frac{b^2}{4a^2}\right) + c - \frac{b^2}{4a} \\
-&= ax^2 + bx + \frac{b^2}{4a} + c - \frac{b^2}{4a} = ax^2 + bx + c.
-\end{aligned}
+ax^2 + bx + c = a\left(x^2 + \frac{b}{a}x\right) + c
 ```
+
+**Step 2: complete the square.** The bracket is $$x^2$$ plus a number times $$x$$, with
+$$\frac{b}{a}$$ in place of $$b$$. Half of $$\frac{b}{a}$$ is $$\frac{b}{2a}$$. Squaring a fraction
+squares its top and its bottom, so the square of $$\frac{b}{2a}$$ is $$\frac{b^2}{4a^2}$$. So by
+:ref{#complete-square},
+
+```math
+x^2 + \frac{b}{a}x = \left(x + \frac{b}{2a}\right)^2 - \frac{b^2}{4a^2}
+```
+
+**Step 3: multiply back by $$a$$.** Put this into the bracket from step 1, and multiply each of its
+two terms by $$a$$:
+
+```math
+ax^2 + bx + c = a\left(x + \frac{b}{2a}\right)^2 - a \cdot \frac{b^2}{4a^2} + c
+```
+
+The middle term is where the $$a^2$$ goes. It has one $$a$$ on top and two on the bottom, since
+$$4a^2 = 4a \cdot a$$. One $$a$$ on top cancels one on the bottom:
+
+```math
+a \cdot \frac{b^2}{4a \cdot a} = \frac{b^2}{4a}
+```
+
+So $$ax^2 + bx + c = a\left(x + \frac{b}{2a}\right)^2 + c - \frac{b^2}{4a}$$. Since
+$$x + \frac{b}{2a} = x - s$$, this is $$a(x - s)^2 + k$$.
 
 The square $$(x - s)^2$$ is never negative (:ref{#real-numbers/squares-positive}), and it is $$0$$
 only when $$x - s = 0$$ (:ref{#numbers/zero-product}), that is, when $$x = s$$.
@@ -114,18 +143,30 @@ $$t$$ either side of the line $$x = s$$.
 
 :::
 
+On the [quadratic formula](./quadratic-formula.mdx) page, the equation $$ax^2 + bx + c = 0$$ is
+divided by $$a$$ before the square is completed. That leaves $$\frac{b^2}{4a^2}$$ with no $$a$$ in
+front to cancel. Dividing is allowed there, because $$0$$ divided by $$a$$ is still $$0$$, so the
+solutions don't change. A curve is different: dividing $$y = ax^2 + bx + c$$ by $$a$$ divides every
+height by $$a$$, which moves the vertex. That is why the proof takes $$a$$ out and multiplies it
+back in instead.
+
 :::example[Finding a vertex]
 
 Find the lowest point of $$y = 2x^2 - 8x + 5$$.
 
-Here $$a = 2$$, $$b = -8$$ and $$c = 5$$, so $$s = -\frac{-8}{4} = 2$$ and
-$$k = 5 - \frac{64}{8} = -3$$. Check by multiplying out:
+Take out $$2$$, complete the square, and multiply back by $$2$$:
 
 ```math
-2(x - 2)^2 - 3 = 2(x^2 - 4x + 4) - 3 = 2x^2 - 8x + 5.
+\begin{aligned}
+2x^2 - 8x + 5 &= 2(x^2 - 4x) + 5 \\
+&= 2\big((x - 2)^2 - 4\big) + 5 \\
+&= 2(x - 2)^2 - 8 + 5 = 2(x - 2)^2 - 3
+\end{aligned}
 ```
 
-Since $$a = 2 > 0$$, the parabola opens upwards, and its lowest point is $$(2, -3)$$.
+So $$s = 2$$ and $$k = -3$$. The formulas give the same: with $$a = 2$$, $$b = -8$$ and $$c = 5$$,
+$$s = -\frac{-8}{4} = 2$$ and $$k = 5 - \frac{64}{8} = -3$$. Since $$a = 2 > 0$$, the parabola opens
+upwards, and its lowest point is $$(2, -3)$$.
 
 :::
 

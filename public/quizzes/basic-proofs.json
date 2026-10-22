@@ -252,7 +252,7 @@
         "That $$1 = 2$$"
       ],
       "answer": 2,
-      "explanation": "Proof by contradiction (:ref{#contradiction}) blames the supposition only if every other step is valid. A faulty step could be the real cause."
+      "explanation": ":ref{#contradiction} blames the supposition, so every other step has to be valid. A faulty step could be the real cause."
     },
     {
       "id": "pf-there-is-example",

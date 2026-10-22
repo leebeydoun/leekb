@@ -1,0 +1,253 @@
+---
+title: Right triangles
+description: Triangles, right triangles, their angles and their area.
+---
+
+A right triangle has one square corner, like a sheet of paper cut along its diagonal. These
+triangles hold up the rest of the guide: the Pythagoras theorem is about them, and the angles and
+areas of every other triangle come from splitting it into right triangles. This page says what a
+triangle is, takes one fact about right triangles as given, and proves from it that the two other
+angles add up to $$90^\circ$$ and that the area is half the product of the legs.
+
+## Triangles
+
+Pick three points that don't lie on one line, and join each pair with a straight segment. The three
+segments close up into a triangle. If the three points were on one line, the segments would lie on
+top of each other and enclose nothing, which is why that case is ruled out.
+
+:::definition[Triangle]{#triangle}
+
+Let $$P$$, $$Q$$ and $$M$$ be three points that don't all lie on one line. The **triangle**
+$$\triangle PQM$$ is made of the three segments $$PQ$$, $$QM$$ and $$MP$$ (:ref{#segment}):
+
+- **Vertices**: the points $$P$$, $$Q$$ and $$M$$, also called its corners
+- **Sides**: the three segments
+- **Angles**: at each vertex, the angle between the two sides that meet there, such as
+  $$\angle QPM$$ at $$P$$
+
+:::
+
+```plane
+point P 0 0 sw
+point Q 5 0 se
+point M 1.5 3 n
+segment P Q
+segment Q M
+segment M P
+angle Q P M color=blue
+angle M Q P color=orange
+angle P M Q color=green
+caption "The triangle PQM, with its three angles marked"
+```
+
+A triangle is its three sides, the way a circle is its outline (:ref{#circle}). The region inside
+has no separate short name, so "the area of a triangle" means the area of the region its sides
+enclose.
+
+## Right triangles
+
+A right triangle is a triangle with a square corner. The two sides that make that corner are its
+legs, and the side facing it is the hypotenuse. The hypotenuse is always the longest side, as the
+[Perpendicular bisectors](./perpendicular-bisectors.mdx) page proves.
+
+:::definition[Right triangle]{#right-triangle}
+
+A **right triangle** is a triangle with a right angle (:ref{#right-angle}), so two of its sides are
+perpendicular (:ref{#perpendicular}).
+
+- **Legs**: the two sides that meet at the right angle
+- **Hypotenuse**: the third side, opposite the right angle
+
+In these notes the legs usually have lengths $$a$$ and $$b$$, and the hypotenuse has length $$c$$.
+
+:::
+
+```plane
+point P 0 0 sw
+point Q 4 0 se
+point M 0 3 nw
+segment P Q label="b" side=right
+segment P M label="a"
+segment Q M label="c" side=right
+right Q P M
+caption "A right triangle with its right angle at P: legs a and b, hypotenuse c"
+```
+
+Each of the two other angles sits at the far end of one leg, facing the other leg. In the figure,
+the angle at $$Q$$ faces the leg $$PM$$ of length $$a$$, and the angle at $$M$$ faces the leg $$PQ$$
+of length $$b$$.
+
+## Right triangles with the same legs
+
+Cut a right triangle with legs of $$3$$ cm and $$4$$ cm out of card. Any other right triangle with
+legs of $$3$$ cm and $$4$$ cm can be laid exactly on top of it, perhaps after turning it over. Once
+the two legs and the square corner between them are fixed, there is nothing left to choose, so the
+hypotenuse, the angles and the area all come out the same.
+
+<CardTriangles caption="Two right triangles with legs of 3 cm and 4 cm: turned over, the second covers the first exactly" />
+
+This fact is taken as the starting point for right triangles. It is a special case of a wider idea,
+**congruence**, which says when two shapes are copies of each other.
+
+:::remark[Rules for right triangles]{#right-triangle-rule}
+
+Suppose two right triangles have legs of the same lengths: a leg of length $$a$$ and a leg of length
+$$b$$ in each. Then they match completely:
+
+1. **Hypotenuse**: their hypotenuses have the same length
+2. **Angles**: the angles facing legs of the same length are equal
+3. **Area**: they have the same area
+
+These are taken as given. The rest of this page is proved from them.
+
+::see-also{src="https://en.wikipedia.org/wiki/Congruence_(geometry)#Determining_congruence"}
+
+:::
+
+```plane
+point P 0 0 sw
+point Q 4 0 se
+point M 0 3 nw
+segment P Q
+segment P M
+segment Q M
+right Q P M
+ticks P Q 1
+ticks P M 2
+angle M Q P color=orange
+point P' 9 3.5 ne
+point Q' 9 -0.5 se
+point M' 6 3.5 nw
+segment P' Q'
+segment P' M'
+segment Q' M'
+right M' P' Q'
+ticks P' Q' 1
+ticks P' M' 2
+angle P' Q' M' color=orange
+caption "Legs with the same marks have the same length, so the marked angles are equal"
+```
+
+The rule matches the angle facing one leg with the angle facing the leg of the same length in the
+other triangle. In the figure, both orange angles face the leg with two marks, so they are equal,
+even though the second triangle is turned round.
+
+## The two other angles add up to 90°
+
+Put two copies of a right triangle together along their hypotenuses, and they make a rectangle. Each
+corner of the rectangle is a right angle. At one of the corners where the hypotenuse ends, the right
+angle is split into two pieces, one from each copy, and those are the two angles of the original
+triangle. So together they make $$90^\circ$$.
+
+:::theorem[Angles of a right triangle]{#right-triangle-angles}
+
+In a right triangle, the two angles other than the right angle add up to $$90^\circ$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Right_triangle#Angles"}
+
+Let the triangle be $$\triangle PQM$$ with its right angle at $$P$$, legs $$d(P, M) = a$$ and
+$$d(P, Q) = b$$. The aim is to show $$\angle PQM + \angle PMQ = 90^\circ$$.
+
+```plane
+point P 0 0 sw
+point Q 4 0 se
+point M 0 3 nw
+point N 4 3 ne
+segment P Q label="b" side=right
+segment P M label="a"
+segment Q N label="a" side=right
+segment M N label="b"
+segment Q M dashed
+right Q P M
+right M N Q
+angle M Q P color=orange
+angle N Q M color=green
+angle P M Q color=green
+caption "Completing the rectangle PQNM: the two green angles are equal"
+```
+
+**Complete the rectangle.** Draw the line through $$Q$$ perpendicular to $$PQ$$
+(:ref{#perpendicular-rules}), and the line through $$M$$ parallel to $$PQ$$ (:ref{#line-rules}). The
+first line is perpendicular to $$PQ$$, and $$PQ$$ is parallel to the second line, so the first line
+is perpendicular to the second as well (rule 2 of :ref{#perpendicular-rules}). Perpendicular lines
+cross, so the two lines meet at one point $$N$$ (:ref{#crossing-lines}).
+
+Each corner of $$PQNM$$ is now a right angle. At $$P$$ the legs are perpendicular, and at $$Q$$ and
+$$N$$ the lines were drawn that way. At $$M$$, the line $$MN$$ is parallel to $$PQ$$, which is
+perpendicular to $$PM$$, so $$MN$$ is perpendicular to $$PM$$ too (rule 2 of
+:ref{#perpendicular-rules}). So each side of $$PQNM$$ is perpendicular to the two sides next to it,
+and it is a rectangle (:ref{#rectangle}). Its opposite sides are equal (:ref{#rectangle-sides}), so
+$$d(Q, N) = a$$ and $$d(M, N) = b$$.
+
+**Compare the two halves.** The diagonal $$QM$$ splits the rectangle into two right triangles:
+$$\triangle PQM$$, with its right angle at $$P$$, and $$\triangle NMQ$$, with its right angle at
+$$N$$. Both have a leg of length $$a$$ and a leg of length $$b$$. In $$\triangle PQM$$, the angle at
+$$M$$ faces the leg $$PQ$$ of length $$b$$. In $$\triangle NMQ$$, the angle at $$Q$$ faces the leg
+$$NM$$ of length $$b$$. So by :ref{#right-triangle-rule},
+
+```math
+\angle MQN = \angle PMQ
+```
+
+**Add up at the corner $$Q$$.** The figure shows the diagonal $$QM$$ running into the rectangle, so
+it splits the right angle $$\angle PQN$$ into the two angles $$\angle PQM$$ and $$\angle MQN$$, side
+by side. Their measures add (:ref{#angle-addition}):
+
+```math
+\angle PQM + \angle MQN = \angle PQN = 90^\circ
+```
+
+Replacing $$\angle MQN$$ by the equal angle $$\angle PMQ$$ gives
+$$\angle PQM + \angle PMQ = 90^\circ$$.
+
+:::
+
+So a right triangle has only one right angle, and its other two angles are acute. Neither of them is
+a zero angle, because the three corners are not on one line. Two angles bigger than $$0^\circ$$ that
+add up to $$90^\circ$$ are each less than $$90^\circ$$.
+
+:::example[Finding the third angle]
+
+A ramp meets the ground at an angle of $$12^\circ$$, and its back edge stands upright, at a right
+angle to the ground. The ramp, the ground and the back edge make a right triangle, so the angle at
+the top of the ramp is $$90^\circ - 12^\circ = 78^\circ$$.
+
+:::
+
+## The area of a right triangle
+
+The same rectangle gives the area. The diagonal cuts the rectangle into two right triangles with the
+same legs, so the two halves have the same area. The rectangle's area is $$ab$$, so each half is
+$$\frac{ab}{2}$$.
+
+:::proposition[Area of a right triangle]{#right-triangle-area}
+
+A right triangle with legs of lengths $$a$$ and $$b$$ has area $$\frac{ab}{2}$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Right_triangle#Area"}
+
+Complete the rectangle $$PQNM$$ as in the proof of :ref{#right-triangle-angles}. Its sides have
+lengths $$a$$ and $$b$$, so its area is $$ab$$ (:ref{#area-rules}).
+
+The diagonal $$QM$$ cuts the rectangle into $$\triangle PQM$$ and $$\triangle NMQ$$, which don't
+overlap. So their areas add up to $$ab$$ (:ref{#area-rules}). Both are right triangles with legs of
+lengths $$a$$ and $$b$$, so they have the same area (:ref{#right-triangle-rule}). Call it $$T$$.
+Then $$T + T = ab$$, so $$T = \frac{ab}{2}$$.
+
+:::
+
+:::example[A corner of a garden]
+
+A flower bed fills the corner of a garden between two walls that meet at a right angle. Its edges
+along the walls are $$6$$ m and $$5$$ m long, and a straight path closes it off. The bed is a right
+triangle with legs $$6$$ and $$5$$, so its area is $$\frac{6 \cdot 5}{2} = 15$$ square metres.
+
+:::
+
+Every triangle can be cut into two right triangles, by a line from one corner that meets the
+opposite side square on. The [Angles in triangles](./triangle-angles.mdx) page uses this to find the
+area of any triangle, and to show that the three angles of any triangle add up to $$180^\circ$$.

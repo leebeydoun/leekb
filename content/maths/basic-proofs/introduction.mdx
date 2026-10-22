@@ -43,57 +43,57 @@ The summary below collects every definition and rule from the guide, for referen
 
 **Definitions**
 
-| Term                                                | Meaning                                                                                          |
-| --------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| :ref[Statement]{#statement}                         | A sentence that is either true or false                                                          |
-| :ref[For every, there is]{#quantifiers}             | "For every $$x$$" claims something for all $$x$$; "there is an $$x$$" claims it for at least one |
-| :ref[Equivalent statements]{#equivalent-statements} | Each is true exactly when the other is                                                           |
-| :ref[Counterexample]{#counterexample}               | One case where a "for every" statement fails                                                     |
-| :ref[Converse]{#contrapositive}                     | Of "if $$P$$ then $$Q$$": "if $$Q$$ then $$P$$"                                                  |
-| :ref[Contrapositive]{#contrapositive}               | Of "if $$P$$ then $$Q$$": "if not $$Q$$ then not $$P$$"                                          |
-| :ref[Exactly when]{#exactly-when}                   | Both "if $$P$$ then $$Q$$" and "if $$Q$$ then $$P$$"                                             |
-| :ref[Set]{#set}                                     | A collection of elements, where $$x \in S$$ means $$x$$ is in $$S$$                              |
-| :ref[Subset]{#subset}                               | $$A \subseteq B$$ when every element of $$A$$ is in $$B$$                                        |
-| :ref[Empty set]{#empty-set}                         | $$\varnothing$$, the set with no elements                                                        |
-| :ref[Sequence]{#sequence}                           | A list $$x_1, \dots, x_n$$ in order, where $$i$$ in $$x_i$$ is the index                         |
-| :ref[Sum notation]{#sum-notation}                   | $$\sum_{i=m}^{n} x_i = x_m + \dots + x_n$$                                                       |
+| Term                                  | Meaning                                                                                          |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| :ref{#statement}                      | A sentence that is either true or false                                                          |
+| :ref{#quantifiers}                    | "For every $$x$$" claims something for all $$x$$; "there is an $$x$$" claims it for at least one |
+| :ref{#equivalent-statements}          | Each is true exactly when the other is                                                           |
+| :ref{#counterexample}                 | One case where a "for every" statement fails                                                     |
+| :ref[Converse]{#contrapositive}       | Of "if $$P$$ then $$Q$$": "if $$Q$$ then $$P$$"                                                  |
+| :ref[Contrapositive]{#contrapositive} | Of "if $$P$$ then $$Q$$": "if not $$Q$$ then not $$P$$"                                          |
+| :ref{#exactly-when}                   | Both "if $$P$$ then $$Q$$" and "if $$Q$$ then $$P$$"                                             |
+| :ref{#set}                            | A collection of elements, where $$x \in S$$ means $$x$$ is in $$S$$                              |
+| :ref{#subset}                         | $$A \subseteq B$$ when every element of $$A$$ is in $$B$$                                        |
+| :ref{#empty-set}                      | $$\varnothing$$, the set with no elements                                                        |
+| :ref{#sequence}                       | A list $$x_1, \dots, x_n$$ in order, where $$i$$ in $$x_i$$ is the index                         |
+| :ref{#sum-notation}                   | $$\sum_{i=m}^{n} x_i = x_m + \dots + x_n$$                                                       |
 
 **Statements**
 
-| Rule                                 | Statement                                                                                                                            |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| :ref[Opposites]{#statement-negation} | The opposite of "every $$x$$ has $$P(x)$$" is "some $$x$$ doesn't", and the opposite of "some $$x$$ has $$P(x)$$" is "no $$x$$ does" |
+| Rule                      | Statement                                                                                                                            |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| :ref{#statement-negation} | The opposite of "every $$x$$ has $$P(x)$$" is "some $$x$$ doesn't", and the opposite of "some $$x$$ has $$P(x)$$" is "no $$x$$ does" |
 
 **What a proof is**
 
-| Rule                                         | Statement                                                     |
-| -------------------------------------------- | ------------------------------------------------------------- |
-| :ref[Proof by contradiction]{#contradiction} | Suppose the statement is false and reach something impossible |
+| Rule                 | Statement                                                     |
+| -------------------- | ------------------------------------------------------------- |
+| :ref{#contradiction} | Suppose the statement is false and reach something impossible |
 
 **If, then and exactly when**
 
-| Rule                                             | Statement                                                      |
-| ------------------------------------------------ | -------------------------------------------------------------- |
-| :ref[Contrapositive]{#contrapositive-equivalent} | A statement and its contrapositive are both true or both false |
+| Rule                             | Statement                                                      |
+| -------------------------------- | -------------------------------------------------------------- |
+| :ref{#contrapositive-equivalent} | A statement and its contrapositive are both true or both false |
 
 **Proof by induction**
 
-| Rule                        | Statement                                                                                     |
-| --------------------------- | --------------------------------------------------------------------------------------------- |
-| :ref[Induction]{#induction} | If a statement holds for $$1$$, and each case implies the next, then it holds for every $$n$$ |
+| Rule             | Statement                                                                                     |
+| ---------------- | --------------------------------------------------------------------------------------------- |
+| :ref{#induction} | If a statement holds for $$1$$, and each case implies the next, then it holds for every $$n$$ |
 
 **Sets**
 
-| Rule                                           | Statement                                                      |
-| ---------------------------------------------- | -------------------------------------------------------------- |
-| :ref[Empty set is a subset]{#set-empty-subset} | $$\varnothing \subseteq A$$ for every set $$A$$                |
-| :ref[Equal sets]{#set-equality}                | $$A = B$$ exactly when $$A \subseteq B$$ and $$B \subseteq A$$ |
+| Rule                    | Statement                                                      |
+| ----------------------- | -------------------------------------------------------------- |
+| :ref{#set-empty-subset} | $$\varnothing \subseteq A$$ for every set $$A$$                |
+| :ref{#set-equality}     | $$A = B$$ exactly when $$A \subseteq B$$ and $$B \subseteq A$$ |
 
 **Notation**
 
-| Rule                                           | Statement                                                                   |
-| ---------------------------------------------- | --------------------------------------------------------------------------- |
-| :ref[Rules for sums]{#notation-sum-rules}      | $$\sum (x_i + y_i) = \sum x_i + \sum y_i$$ and $$\sum c\,x_i = c \sum x_i$$ |
-| :ref[Introducing letters]{#notation-introduce} | Say what every letter is before using it                                    |
+| Rule                      | Statement                                                                   |
+| ------------------------- | --------------------------------------------------------------------------- |
+| :ref{#notation-sum-rules} | $$\sum (x_i + y_i) = \sum x_i + \sum y_i$$ and $$\sum c\,x_i = c \sum x_i$$ |
+| :ref{#notation-introduce} | Say what every letter is before using it                                    |
 
 :::

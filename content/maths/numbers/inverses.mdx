@@ -115,8 +115,8 @@ a^{-n} = \left(a^{-1}\right)^n = \underbrace{a^{-1} \cdot a^{-1} \cdots a^{-1}}_
 
 For example, $$2^{-3} = \left(\frac{1}{2}\right)^3 = \frac{1}{8}$$, and
 $$\left(\frac{2}{3}\right)^{-2} = \left(\frac{3}{2}\right)^2 = \frac{9}{4}$$. With this choice, the
-rules for powers (:ref{#power-rules}) work for **every** whole-number exponent, positive, negative
-or zero. Each $$a^{-1}$$ cancels one $$a$$, since $$a^{-1}a = 1$$, so for example
+rules in :ref{#power-rules} work for **every** whole-number exponent, positive, negative or zero.
+Each $$a^{-1}$$ cancels one $$a$$, since $$a^{-1}a = 1$$, so for example
 
 ```math
 a^5 a^{-2} = (a \cdot a \cdot a \cdot a \cdot a)(a^{-1} \cdot a^{-1}) = a \cdot a \cdot a = a^3
@@ -200,7 +200,7 @@ and a fraction with fractions inside can be simplified the same way:
 Earlier, cross-multiplying was simply the meaning of equality for fractions of integers. Now it can
 be proved, and for quotients of any rational numbers.
 
-:::theorem[Cross-multiplying]{#cross-multiplying-rational}
+:::theorem[Cross-multiplying quotients]{#cross-multiplying-rational}
 
 Let $$a$$, $$b$$, $$c$$, $$d$$ be rational numbers with $$b \neq 0$$ and $$d \neq 0$$. Then
 
@@ -249,8 +249,8 @@ $$\frac{1}{2} \cdot 6 = 3 = 3 \cdot 1$$.
 
 Inverses mean that equations like $$3x = 8$$ now have an answer. Multiplying both sides by
 $$3^{-1} = \frac{1}{3}$$, which is what dividing both sides by $$3$$ means, gives
-$$x = \frac{8}{3}$$. Combined with the rules for rearranging (:ref{#rearranging}), this solves any
-equation in which $$x$$ appears only multiplied by numbers.
+$$x = \frac{8}{3}$$. Combined with :ref{#rearranging}, this solves any equation in which $$x$$
+appears only multiplied by numbers.
 
 :::example
 
@@ -315,8 +315,8 @@ The two left-hand sides are equal, because they come from multiplying equal numb
 $$a^{-1}$$. So $$b = c$$.
 
 **Second part.** First, $$\frac{ab}{ac}$$ makes sense: $$a$$ and $$c$$ are both non-zero, so their
-product $$ac$$ is not $$0$$ by :ref{#zero-product}. Now cross-multiply using
-:ref{#cross-multiplying-rational}. The two quotients are equal exactly when $$(ab)c = (ac)b$$, and
+product $$ac$$ is not $$0$$ by :ref{#zero-product}. Now cross-multiply
+(:ref{#cross-multiplying-rational}). The two quotients are equal exactly when $$(ab)c = (ac)b$$, and
 both sides are the product of $$a$$, $$b$$ and $$c$$ in a different order, so they are equal.
 
 :::
@@ -399,7 +399,7 @@ For instance, with $$x = 3$$ this says $$\frac{1}{3} - \frac{1}{4} = \frac{1}{12
 Cross-multiplying is often the quickest way to prove that two quotients are equal, because it turns
 the question into one about products, which can simply be expanded.
 
-:::proposition[Sum of powers]{#sum-of-powers}
+:::proposition[Sum of consecutive powers]{#sum-of-powers}
 
 For a rational number $$x \neq 1$$ and a positive integer $$n$$,
 
@@ -412,8 +412,8 @@ For a rational number $$x \neq 1$$ and a positive integer $$n$$,
 :::proof{source="https://www.mathsisfun.com/algebra/sequences-sums-geometric.html"}
 
 Since $$x \neq 1$$, the denominator $$x - 1$$ is not $$0$$, so the left side makes sense. The right
-side is the same as $$\frac{x^{n-1} + \cdots + x + 1}{1}$$, so by cross-multiplying
-(:ref{#cross-multiplying-rational}) it is enough to show that
+side is the same as $$\frac{x^{n-1} + \cdots + x + 1}{1}$$, so by :ref{#cross-multiplying-rational}
+it is enough to show that
 
 ```math
 (x - 1)(x^{n - 1} + x^{n - 2} + \cdots + x + 1) = x^n - 1

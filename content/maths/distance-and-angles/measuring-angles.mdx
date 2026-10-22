@@ -1,0 +1,267 @@
+---
+title: Measuring angles
+description: Degrees as a fraction of a full turn, right angles and the area of a sector.
+---
+
+Lengths are measured by comparing them with a fixed unit, and angles are measured the same way. The
+unit is a fraction of one full turn, called a degree. This page defines degrees in two ways, first
+as a fraction of a turn and then more precisely by area, and explains how the two fit together. It
+then proves that angles side by side add up, shows that a straight angle is $$180^\circ$$, defines
+right angles, and finds the area of a sector.
+
+## Degrees as a fraction of a full turn
+
+Stand facing one way and turn on the spot until you face the same way again. That is one **full
+turn**. Split it into $$360$$ equal steps, and each step is one **degree**, written $$1^\circ$$. An
+angle measures how far one arm has to turn to reach the other. A quarter turn is $$90^\circ$$, a
+half turn is $$180^\circ$$, and a third of a turn is $$120^\circ$$.
+
+The number $$360$$ is used because it divides evenly by small numbers. It is a multiple of $$2$$,
+$$3$$, $$4$$, $$5$$, $$6$$, $$8$$, $$9$$, $$10$$ and $$12$$, so halves, thirds, quarters, fifths and
+eighths of a turn are all whole numbers of degrees.
+
+"A third of a turn" is clear enough in a picture, but a definition needs a way to check it, and area
+gives one. Draw a disc with its centre at the vertex. An angle that is a third of a turn cuts out a
+sector that is a third of the disc, and the same holds for any fraction. Turn the arm below and
+watch the two fractions stay equal.
+
+<AngleTurn />
+
+:::definition[Angles in degrees]{#degree}
+
+Let $$A$$ be an angle with vertex $$P$$, and let $$x$$ be a number from $$0$$ to $$360$$. The angle
+$$A$$ has **$$x$$ degrees**, written $$x^\circ$$, when it is $$\frac{x}{360}$$ of a full turn.
+Precisely, this means that for a disc $$D$$ with centre $$P$$, the sector $$S$$ that $$A$$ cuts out
+(:ref{#sector}) satisfies
+
+```math
+\frac{\text{area of } S}{\text{area of } D} = \frac{x}{360}
+```
+
+The size of an angle is written with an equals sign, as in $$\angle QPM = 40^\circ$$.
+
+:::
+
+The zero angle has $$0^\circ$$, since its sector has no area. The full angle has $$360^\circ$$,
+since its sector is the whole disc. An angle $$A$$ is **smaller** than an angle $$B$$ when $$A$$ has
+fewer degrees than $$B$$.
+
+The definition doesn't say how big the disc is, and it doesn't need to. A bigger disc gives a bigger
+sector, but the sector stays the same fraction of the disc. That fact is taken as given, along with
+two more facts about discs:
+
+:::remark[Rules for disc area]{#disc-area}
+
+1. **Area of a disc**: a disc of radius $$r$$ has area $$\pi r^2$$, where $$\pi$$ is a fixed number
+   a little more than $$3.14$$. A later guide proves this.
+2. **Any disc gives the same fraction**: the fraction of a disc that an angle's sector takes up is
+   the same for every disc centred at the angle's vertex.
+3. **A line through the centre halves a disc**: a line through the centre of a disc cuts it into two
+   pieces of equal area.
+
+These are taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Area_of_a_circle"}
+
+:::
+
+From here on, the guide thinks of degrees as a fraction of a full turn. The area version is what
+makes "fraction of a turn" precise, and the proofs on the rest of this page use it: for angles side
+by side, for straight angles and for the area of a sector.
+
+## Angles side by side add up
+
+Turning $$30^\circ$$ and then $$40^\circ$$ more is the same as turning $$70^\circ$$ in one go. In
+the same way, two angles that sit side by side, sharing an arm and not overlapping, make a bigger
+angle whose size is the sum of theirs. School courses usually take this as given. Here it follows
+from the definition of degrees, because the two sectors side by side make up the bigger sector, and
+areas add.
+
+The proof uses the fact that one ray lies inside an angle. The guide has no rules for deciding which
+side of a line a point is on, so facts of that kind are read from the figure, and each proof says
+when it uses one.
+
+:::proposition[Adding angles]{#angle-addition}
+
+Let $$PQ$$, $$PR$$ and $$PM$$ be rays from $$P$$, with the ray $$PR$$ inside the angle
+$$\angle QPM$$. Then
+
+```math
+\angle QPR + \angle RPM = \angle QPM
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Angle#Angle_addition_postulate"}
+
+Write $$\angle QPR = y^\circ$$, $$\angle RPM = z^\circ$$ and $$\angle QPM = x^\circ$$. Take a disc
+$$D$$ with centre $$P$$, and let $$S_1$$, $$S_2$$ and $$S$$ be the sectors of $$D$$ cut out by
+$$\angle QPR$$, $$\angle RPM$$ and $$\angle QPM$$.
+
+The ray $$PR$$ lies inside $$\angle QPM$$, so it cuts $$S$$ into the two pieces $$S_1$$ and $$S_2$$,
+as the figure below shows. The two pieces share only the radius along $$PR$$, and a segment covers
+no area, so they don't overlap. By rule 2 of :ref{#area-rules},
+
+```math
+\text{area of } S = \text{area of } S_1 + \text{area of } S_2
+```
+
+Divide both sides by the area of $$D$$. By :ref{#degree}, each sector's share of the disc is its
+angle's number of degrees divided by $$360$$, so
+
+```math
+\frac{x}{360} = \frac{y}{360} + \frac{z}{360}
+```
+
+Multiplying both sides by $$360$$ gives $$x = y + z$$.
+
+:::
+
+```plane
+point P 0 0 sw
+point Q 2.6 0 se
+point R 2.25 1.3 e
+point M 0.89 2.44 n
+circle P 2.6 color=muted dashed
+angle Q P R r=2.6 fill color=blue
+angle R P M r=2.6 fill color=orange
+segment P Q
+segment P R
+segment P M
+angle Q P R color=blue r=0.8 label="30°"
+angle R P M color=orange r=0.8 label="40°"
+caption "Sectors of 30° and 40° side by side make the sector of 70°, and their areas add"
+```
+
+## Straight angles and right angles
+
+A straight angle is half a turn, so it should be $$180^\circ$$. The precise reason uses the third
+rule for discs: the line that forms a straight angle passes through the centre of any disc at its
+vertex, so it cuts the disc into two equal halves.
+
+:::proposition[A straight angle is 180°]{#straight-angle}
+
+Every straight angle has $$180^\circ$$.
+
+:::
+
+:::proof{source="https://www.mathsisfun.com/geometry/straight-angle.html"}
+
+Let the straight angle have vertex $$P$$, and take a disc $$D$$ with centre $$P$$. The arms of the
+angle lie along one line through $$P$$, and the angle is the half of the plane on one side of that
+line (:ref{#special-angles}). So its sector is one of the two pieces the line cuts $$D$$ into. By
+rule 3 of :ref{#disc-area}, the two pieces have equal area, so the sector is half of $$D$$. By
+:ref{#degree}, the angle has $$x^\circ$$ with $$\frac{x}{360} = \frac{1}{2}$$, so $$x = 180$$.
+
+:::
+
+Half of a straight angle is the angle at the corner of a square or a sheet of paper. It turns up in
+every rectangle and wherever two perpendicular lines meet, so it has its own name.
+
+:::definition[Right angle]{#right-angle}
+
+A **right angle** is an angle of $$90^\circ$$, a quarter of a full turn. The four equal angles where
+two perpendicular lines cross (:ref{#perpendicular}) are right angles in this sense, as the end of
+this section shows. Other angles are named by how they compare with a right angle:
+
+- **Acute angle**: more than $$0^\circ$$ and less than $$90^\circ$$
+- **Obtuse angle**: more than $$90^\circ$$ and less than $$180^\circ$$
+- **Reflex angle**: more than $$180^\circ$$ and less than $$360^\circ$$
+
+:::
+
+In a figure, a right angle is marked with a small square in its corner instead of an arc.
+
+```plane
+point P 0 0 sw
+point Q 2.8 0 s
+point M 0 2.4 e
+ray P Q extend=0.3
+ray P M extend=0.3
+right Q P M
+caption "A right angle, marked with a small square"
+```
+
+When a ray stands on a straight line, it splits the straight angle into two angles side by side.
+Those two always add up to $$180^\circ$$, so knowing one tells you the other.
+
+:::corollary[Angles on a straight line]{#angles-on-line}
+
+Let $$P$$ be a point between $$Q$$ and $$R$$ on a line, and let $$M$$ be a point that is not on the
+line. Then
+
+```math
+\angle QPM + \angle MPR = 180^\circ
+```
+
+:::
+
+:::proof{source="https://www.mathsisfun.com/angle180.html"}
+
+The rays $$PQ$$ and $$PR$$ point in opposite directions, so the angle on the side of the line where
+$$M$$ lies is a straight angle, and the ray $$PM$$ lies inside it. By :ref{#angle-addition}, the two
+angles $$\angle QPM$$ and $$\angle MPR$$ add up to that straight angle, which is $$180^\circ$$ by
+:ref{#straight-angle}.
+
+:::
+
+```plane
+point Q -2.8 0 s
+point P 0 0 s
+point R 2.8 0 s
+point M 1.4 2.4 nw
+line Q R extend=0.3
+ray P M extend=0.3
+angle R P M color=blue r=0.7 label="60°"
+angle M P Q color=orange r=0.7 label="120°"
+caption "The two angles on a straight line add up to 180°"
+```
+
+So if $$\angle QPM = 35^\circ$$, then $$\angle MPR = 180^\circ - 35^\circ = 145^\circ$$. Knowing one
+of the two angles always tells you the other.
+
+The corollary also shows that perpendicular lines meet at right angles. Two neighbouring angles at
+the crossing are equal and add up to $$180^\circ$$, so each is $$90^\circ$$. It works the other way
+round too: when two lines cross and one of the four angles is a right angle, its neighbours are
+$$180^\circ - 90^\circ = 90^\circ$$, and so all four angles are right angles.
+
+## The area of a sector
+
+The definition of degrees links the size of an angle to the share of the disc its sector takes. Once
+you know the area of the whole disc, that share gives the area of the sector.
+
+:::proposition[Area of a sector]{#sector-area}
+
+The sector cut out by an angle of $$x^\circ$$ from a disc of radius $$r$$ centred at its vertex has
+area
+
+```math
+\frac{x}{360} \cdot \pi r^2
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Circular_sector#Area"}
+
+Let $$S$$ be the sector and $$D$$ the disc. By :ref{#degree},
+$$\frac{\text{area of } S}{\text{area of } D} = \frac{x}{360}$$, so the area of $$S$$ is
+$$\frac{x}{360}$$ times the area of $$D$$. The area of $$D$$ is $$\pi r^2$$ by rule 1 of
+:ref{#disc-area}.
+
+:::
+
+:::example[Slices and rings]
+
+- **A slice of pizza**: a pizza of radius $$15$$ cm is cut into six equal slices, so each slice is
+  $$\frac{360}{6} = 60^\circ$$. Its area is
+  $$\frac{60}{360} \cdot \pi \cdot 15^2 = \frac{225\pi}{6} = 37.5\pi$$, about $$118$$ square
+  centimetres.
+- **Part of a ring**: two circles share a centre, with radii $$3$$ and $$5$$. A right angle at the
+  centre cuts a piece from the ring between them. That piece is the sector of the large disc with
+  the sector of the small disc taken away, so its area is
+  $$\frac{90}{360}(25\pi - 9\pi) = \frac{16\pi}{4} = 4\pi$$.
+- **Finding the angle**: a sector of a disc of radius $$3$$ has area $$3\pi$$. The whole disc has
+  area $$9\pi$$, so the sector is $$\frac{3\pi}{9\pi} = \frac{1}{3}$$ of it, and the angle is
+  $$\frac{1}{3} \cdot 360^\circ = 120^\circ$$.
+
+:::

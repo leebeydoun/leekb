@@ -1,0 +1,202 @@
+---
+title: Angles
+description: What an angle is, how angles are named, and sectors.
+---
+
+An angle describes how far apart two directions are. The hands of a clock, the blades of open
+scissors and the two edges of a slice of pizza all make one. This page says exactly what an angle
+is, how to name one, which angles have special names, and how an angle cuts a slice from a disc. The
+[next page](./measuring-angles.mdx) uses that slice to measure angles in degrees.
+
+## Two rays make two angles
+
+Picture two rays starting from the same point, like two hands of a clock fixed at the centre. They
+split the flat plane into two pieces: a narrow wedge between the hands, and everything else. Both
+pieces have the same two rays as their edges, so both count as angles. When you mean one of them,
+you need a way to say which.
+
+:::definition[Angle]{#angle}
+
+Let $$PQ$$ and $$PM$$ be two rays (:ref{#ray}) starting from the same point $$P$$. The two rays
+split the plane into two regions. Each region, together with the two rays along its edge, is an
+**angle** made by the rays. The point $$P$$ is the **vertex** of the angle, and the two rays are its
+**arms**.
+
+:::
+
+In the figure, the blue arc marks the narrow angle between the rays, and the orange arc marks the
+wide angle that goes the other way round. Both have vertex $$P$$ and arms $$PQ$$ and $$PM$$.
+
+```plane
+point P 0 0 sw
+point Q 3.2 0 s
+point M 1.6 2.8 nw
+ray P Q extend=0.6
+ray P M extend=0.4
+angle Q P M color=blue r=0.6
+angle M P Q color=orange r=1
+caption "Two rays from P make two angles"
+```
+
+## Zero, straight and full angles
+
+Two positions of the arms give angles with special names. If the two rays point the same way, they
+lie on top of each other. If they point in opposite directions, together they make a straight line.
+Each case still gives two angles, as the definition sets out.
+
+:::definition[Zero, straight and full angles]{#special-angles}
+
+Let $$PQ$$ and $$PM$$ be rays starting from $$P$$:
+
+- **Same ray**: if the two rays are the same ray, one of the angles has nothing between its arms,
+  and is called the **zero angle**. The other is the whole plane, and is called the **full angle**.
+- **Opposite rays**: if the two rays point in opposite directions along one line, each angle is the
+  half of the plane on one side of that line. Each is called a **straight angle**.
+
+:::
+
+The full angle is one complete turn: an arm that turns all the way round comes back to where it
+started. A straight angle is half of that, since the line splits the plane into two halves.
+
+```plane
+point P 0 0 s
+point Q 2.5 0 s
+point M -2.5 0 s
+line M Q extend=0.3
+angle Q P M color=blue r=0.7 arrow
+caption "A straight angle: the arms PQ and PM point in opposite directions"
+```
+
+## Naming an angle
+
+To talk about an angle you need a name for it. The usual name lists three points: a point on one
+arm, then the vertex, then a point on the other arm. You can read it as a path that starts at $$Q$$,
+turns the corner at $$P$$ and ends at $$M$$. So $$\angle QPM$$ is an angle at $$P$$, and its arms
+are the rays $$PQ$$ and $$PM$$.
+
+```plane
+point P 0 0 sw
+point Q 3.5 0 s
+point M 2 2.6 n
+ray P Q extend=0.6
+ray P M extend=0.6
+angle Q P M color=blue r=0.8
+caption "The angle QPM: from Q to the vertex P, then out to M"
+```
+
+Two rays from $$P$$ make two angles, though, as the first section showed. So the name also needs a
+rule for which of the two it means. Everyday speech already has one. The angle between the hands of
+a clock at two o'clock is the narrow one between them, and nobody means the wide way round.
+
+<ClockHands caption="At two o'clock, the angle between the hands means the narrow one" />
+
+"Narrow" isn't precise yet, because angles are only measured on the next page. A line gives a
+precise version of it. Extend the arm $$PQ$$ backwards past $$P$$, so that it becomes the whole line
+$$PQ$$. The narrow angle fits entirely on one side of that line. The wide angle doesn't: it crosses
+the line and covers the whole of the other side.
+
+```plane
+point A -3 0 hidden
+point B 5.5 0 hidden
+point C 5.5 3.2 hidden
+point D -3 3.2 hidden
+polygon A B C D color=green
+point P 0 0 sw
+point Q 3.5 0 s
+point M 2 2.6 n
+line P Q dashed color=muted extend=2.5
+ray P Q extend=0.6
+ray P M extend=0.6
+angle Q P M color=blue r=1.1 fill
+angle M P Q color=orange r=0.55 label="reflex"
+text -1.4 2.7 "one side of the line PQ"
+caption "The angle QPM lies on one side of the line PQ. The reflex angle crosses to the other side."
+```
+
+:::definition[Naming an angle]{#angle-name}
+
+Let $$PQ$$ and $$PM$$ be rays starting from $$P$$. Of the two angles they make, $$\angle QPM$$ is
+the one that lies on one side of the line $$PQ$$. The other angle is the **reflex angle** at $$P$$,
+and is named in words.
+
+:::
+
+A straight angle is exactly one side of a line, so $$\angle QPM$$ is never larger than a straight
+angle. A reflex angle is always larger.
+
+Using the line $$PM$$ instead of the line $$PQ$$ picks out the same angle. So the order of the outer
+letters doesn't matter, and $$\angle QPM$$ and $$\angle MPQ$$ are the same angle. The middle letter
+does matter, because it names the vertex. In the figure below, $$\angle QPM$$ is the corner at
+$$P$$, while $$\angle PQM$$ is the corner at $$Q$$.
+
+```plane
+point P 0 0 sw
+point Q 4 0 se
+point M 1.5 2.4 n
+segment P Q
+segment P M
+segment Q M
+angle Q P M color=blue r=0.6
+angle M Q P color=orange r=0.6
+text 1.25 0.45 "∠QPM"
+text 2.95 0.4 "∠PQM"
+caption "The middle letter names the vertex: the angle QPM is at P, and the angle PQM is at Q"
+```
+
+The two special positions from the previous section need a note:
+
+- **Opposite rays**: the two angles are the two halves of the plane, one on each side of the line.
+  Both fit the rule, and both are straight angles, so $$\angle QPM$$ can mean either.
+- **The same ray**: $$\angle QPM$$ is the zero angle, and the full angle is named in words.
+
+:::example[Angles in a triangle]
+
+Take three points $$A$$, $$B$$ and $$C$$ that don't lie on one line. Then $$\angle BAC$$ is the
+corner of the triangle at $$A$$, $$\angle ABC$$ is the corner at $$B$$, and $$\angle ACB$$ is the
+corner at $$C$$. Each is the narrow angle between two sides, which is the one the rule picks.
+
+```plane
+point A 0 0 sw
+point B 4.5 0 se
+point C 1.5 2.6 n
+segment A B
+segment B C
+segment A C
+angle B A C color=blue r=0.55
+angle C B A color=orange r=0.55
+angle A C B color=green r=0.45
+caption "The three angles of a triangle: at A in blue, at B in orange and at C in green"
+```
+
+:::
+
+## Sectors
+
+An angle with its vertex at the centre of a round pizza cuts out a slice. The slice is the part of
+the pizza that lies inside the angle. A wider angle cuts a bigger slice, and that link between the
+size of the angle and the size of the slice is what the next page uses to measure angles.
+
+:::definition[Sector]{#sector}
+
+Let $$A$$ be an angle with vertex $$P$$, and let $$D$$ be a disc with centre $$P$$ (:ref{#circle}).
+The part of the disc $$D$$ that lies inside $$A$$ is the **sector** of $$D$$ cut out by $$A$$. The
+curved edge of a sector, the part of the circle inside $$A$$, is called an **arc**.
+
+:::
+
+```plane
+point P 0 0 sw
+point Q 2 0 hidden
+point M 1 1.73 hidden
+circle P 2 color=muted dashed
+angle Q P M r=2 fill color=blue
+segment P Q color=blue
+segment P M color=blue
+caption "The shaded sector is the part of the disc inside the angle"
+```
+
+The special angles give the sectors you would expect:
+
+- **Zero angle**: the sector is a single radius, with no area
+- **Straight angle**: the sector is half of the disc, cut along a line through the centre
+- **Full angle**: the sector is the whole disc

@@ -5,7 +5,7 @@ import { PreviewCard } from "@base-ui/react/preview-card";
 
 type RefProps = {
   id: string;
-  /** filled in at build time by remark-statements, e.g. "Definition 4.1" */
+  /** filled in at build time by remark-statements: the statement's name, e.g. "Rules for distance" */
   label?: string;
   /**
    * filled in at build time: "#id" for a statement on this page, or "/maths/numbers/addition#id"
@@ -43,7 +43,7 @@ function previewHtml(statement: Element | null) {
 }
 
 /**
- * A link to a statement in the guide. Shows "Definition 4.1" unless children are given, and
+ * A link to a statement in the guide. Shows the statement's name unless children are given, and
  * previews the statement in a card on hover, fetching it from its page if it lives elsewhere.
  */
 export function Ref({ id, label, href = `#${id}`, children }: RefProps) {
