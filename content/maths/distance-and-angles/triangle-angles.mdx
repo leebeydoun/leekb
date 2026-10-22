@@ -325,3 +325,135 @@ $$A$$ to the line $$BC$$ must satisfy $$\frac{1}{2} \cdot 5 \cdot h = 12$$, so $
 is the same whichever side you choose as the base, so one height tells you the others.
 
 :::
+
+## Exercises
+
+:::::accordion[Exercises on angles in triangles, with solutions]
+
+::::exercise{#ex-triangle-angles-crossing}
+
+Two lines cross, and one of the four angles at the crossing is $$70^\circ$$. Find the other three.
+
+:::solution
+
+Each angle next to the $$70^\circ$$ angle sits beside it on a straight line, so it is
+$$180^\circ - 70^\circ = 110^\circ$$ (:ref{#angles-on-line}). The angle opposite the $$70^\circ$$
+angle is $$70^\circ$$ (:ref{#opposite-angles}).
+
+So the four angles are $$70^\circ$$, $$110^\circ$$, $$70^\circ$$ and $$110^\circ$$ in turn. Check:
+they add up to $$360^\circ$$, a full turn.
+
+:::
+
+::::
+
+::::exercise{#ex-triangle-angles-missing}
+
+1. In $$\triangle ABC$$, $$\angle A = 48^\circ$$ and $$\angle B$$ is $$20^\circ$$ larger than
+   $$\angle C$$. Find $$\angle B$$ and $$\angle C$$.
+2. In $$\triangle PQM$$, $$\angle P = \angle Q$$ and $$\angle M = 40^\circ$$. Find $$\angle P$$.
+
+:::solution
+
+Both parts use :ref{#triangle-angle-sum}.
+
+1. $$\angle B + \angle C = 180^\circ - 48^\circ = 132^\circ$$. Writing $$\angle C = x^\circ$$ gives
+   $$x + (x + 20) = 132$$, so $$x = 56$$. So $$\angle C = 56^\circ$$ and $$\angle B = 76^\circ$$.
+2. $$\angle P + \angle Q = 180^\circ - 40^\circ = 140^\circ$$, and the two are equal, so each is
+   $$70^\circ$$.
+
+:::
+
+::::
+
+::::exercise{#ex-triangle-angles-impossible}
+
+1. Can a triangle have angles of $$100^\circ$$ and $$85^\circ$$?
+2. Show that a triangle has at most one angle of $$90^\circ$$ or more.
+
+:::solution
+
+Each angle of a triangle is more than $$0^\circ$$, since its corners don't lie on one line.
+
+1. No. The third angle would be $$180^\circ - 100^\circ - 85^\circ = -5^\circ$$
+   (:ref{#triangle-angle-sum}), and no angle is negative.
+2. If two angles were each $$90^\circ$$ or more, they would add up to at least $$180^\circ$$. The
+   third angle would then be $$0^\circ$$ or less, which is impossible.
+
+:::
+
+::::
+
+::::exercise{#ex-triangle-angles-zigzag}
+
+The lines $$L_1$$ and $$L_2$$ are parallel. The point $$A$$ is on $$L_1$$, the point $$B$$ is on
+$$L_2$$, and $$C$$ lies between the two lines, as in the figure. The angle at $$A$$ between $$L_1$$
+and $$AC$$ is $$30^\circ$$, and the angle at $$B$$ between $$L_2$$ and $$BC$$ is $$45^\circ$$. Find
+$$\angle ACB$$.
+
+```plane
+point U -6 2 hidden
+point V 2 2 hidden
+point S -6 -2 hidden
+point T 2 -2 hidden
+point A -3.46 2 n
+point B -2 -2 s
+point C 0 0 e
+point X 0 2 hidden
+point Y 0 -2 hidden
+line U V
+line S T
+segment A C
+segment C B
+angle C A X label="30°" color=blue
+angle Y B C label="45°" color=orange
+angle A C B label="?" color=green
+text 1.8 2.4 "L_1"
+text 1.8 -1.6 "L_2"
+caption "A zigzag between two parallel lines"
+```
+
+:::solution
+
+Draw the line $$K$$ through $$C$$ parallel to $$L_1$$ (:ref{#line-rules}). Since
+$$L_2 \parallel L_1$$, the line $$K$$ is parallel to $$L_2$$ as well (:ref{#parallel-transitive}).
+Let $$W$$ be a point of $$K$$ on the same side of $$C$$ as $$A$$ and $$B$$.
+
+- The line $$AC$$ crosses the parallels $$L_1$$ and $$K$$. The $$30^\circ$$ angle at $$A$$ and the
+  angle $$\angle ACW$$ are alternate angles, forming a Z, so $$\angle ACW = 30^\circ$$
+  (:ref{#parallel-angles}).
+- In the same way, the line $$BC$$ crosses the parallels $$L_2$$ and $$K$$, and
+  $$\angle WCB = 45^\circ$$.
+
+The figure shows the ray $$CW$$ inside the angle $$\angle ACB$$, so by :ref{#angle-addition},
+$$\angle ACB = 30^\circ + 45^\circ = 75^\circ$$.
+
+:::
+
+::::
+
+::::exercise{#ex-triangle-angles-same-area}
+
+The points $$A$$ and $$B$$ are different, and $$L$$ is a line parallel to the line $$AB$$ but
+different from it. Prove that for any two points $$C$$ and $$D$$ of $$L$$, the triangles
+$$\triangle ABC$$ and $$\triangle ABD$$ have the same area.
+
+:::solution
+
+The line $$L$$ is different from the line $$AB$$ and parallel to it, so they never meet. So $$C$$
+and $$D$$ are not on the line $$AB$$, and both triangles exist. Take $$AB$$ as the base of each, so
+both have base $$d(A, B)$$ (:ref{#height}).
+
+The line through $$C$$ perpendicular to $$L$$ is perpendicular to the line $$AB$$ too (rule 2 of
+:ref{#perpendicular-rules}). So it meets the line $$AB$$ at the foot $$F$$ of the perpendicular from
+$$C$$, and the height from $$C$$ is $$d(C, F)$$. This is the distance between the two parallel lines
+(:ref{#parallel-distance}). The same holds for $$D$$, so both triangles have the same height $$h$$.
+
+By :ref{#triangle-area}, both have area $$\frac{1}{2}\,d(A, B)\,h$$. Sliding the top corner along a
+line parallel to the base never changes the area.
+
+:::
+
+::::
+
+:::::

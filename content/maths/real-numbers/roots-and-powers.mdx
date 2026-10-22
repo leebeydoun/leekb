@@ -291,3 +291,128 @@ are all defined, because each exponent is a fraction such as $$\frac{1414}{1000}
 down to a single real number, about $$2.665$$. That number is $$2^{\sqrt{2}}$$. Making this precise,
 and checking that the rules for powers still hold, belongs to a later guide. Until then, we take it
 that $$a^x$$ makes sense for every $$a > 0$$ and every real $$x$$, and obeys the same three rules.
+
+## Exercises
+
+:::::accordion[Exercises on roots and fractional powers, with solutions]
+
+::::exercise{#ex-roots-powers-evaluate}
+
+Work out $$\sqrt[3]{125}$$, $$\sqrt[4]{\frac{1}{81}}$$, $$\sqrt[3]{-\frac{27}{8}}$$ and
+$$\sqrt[5]{-1}$$.
+
+:::solution
+
+- $$\sqrt[3]{125} = 5$$, since $$5^3 = 125$$.
+- $$\sqrt[4]{\frac{1}{81}} = \frac{1}{3}$$, since $$\frac{1}{3} \ge 0$$ and
+  $$\left(\frac{1}{3}\right)^4 = \frac{1}{81}$$.
+- $$\sqrt[3]{-\frac{27}{8}} = -\frac{3}{2}$$, since $$\left(-\frac{3}{2}\right)^3 = -\frac{27}{8}$$.
+  Odd roots of negative numbers exist (:ref{#power-equation}).
+- $$\sqrt[5]{-1} = -1$$, since $$(-1)^5 = -1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-roots-powers-simplify-roots}
+
+Simplify $$\sqrt[3]{16}$$, $$\sqrt[4]{48}$$ and $$\sqrt[3]{16} + \sqrt[3]{54}$$.
+
+:::solution
+
+Pull out factors that are perfect powers (:ref{#nth-root-product}):
+
+- $$\sqrt[3]{16} = \sqrt[3]{8 \cdot 2} = 2\sqrt[3]{2}$$.
+- $$\sqrt[4]{48} = \sqrt[4]{16 \cdot 3} = 2\sqrt[4]{3}$$.
+- $$\sqrt[3]{54} = \sqrt[3]{27 \cdot 2} = 3\sqrt[3]{2}$$, so the sum is
+  $$2\sqrt[3]{2} + 3\sqrt[3]{2} = 5\sqrt[3]{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-roots-powers-solve}
+
+Solve $$x^5 = -32$$, $$x^4 = 81$$, $$(x + 2)^3 = 27$$ and $$x^4 = -16$$.
+
+:::solution
+
+By :ref{#power-equation}:
+
+- Odd power: the one solution is $$x = -\sqrt[5]{32} = -2$$.
+- Even power of a positive number: $$x = \pm\sqrt[4]{81} = \pm 3$$.
+- Odd power: $$x + 2 = 3$$, so $$x = 1$$.
+- An even power is never negative, so there is no solution.
+
+:::
+
+::::
+
+::::exercise{#ex-roots-powers-fractional}
+
+Work out $$81^{3/4}$$, $$9^{-1/2}$$, $$\left(\frac{8}{27}\right)^{2/3}$$ and $$1000^{-2/3}$$.
+
+:::solution
+
+Taking the root first (:ref{#rational-power}):
+
+- $$81^{3/4} = \left(\sqrt[4]{81}\right)^3 = 3^3 = 27$$.
+- $$9^{-1/2} = \left(\sqrt{9}\right)^{-1} = \frac{1}{3}$$.
+- $$\left(\frac{8}{27}\right)^{2/3} = \left(\frac{2}{3}\right)^2 = \frac{4}{9}$$.
+- $$1000^{-2/3} = 10^{-2} = \frac{1}{100}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-roots-powers-rules}
+
+For $$x > 0$$, simplify $$\left(x^{3/2}\right)^2 x^{-2}$$, $$\left(8x^3\right)^{2/3}$$ and
+$$\frac{\sqrt{x^3}}{\sqrt[3]{x}}$$.
+
+:::solution
+
+By :ref{#rational-power-laws}:
+
+- $$\left(x^{3/2}\right)^2 = x^3$$, so the whole is $$x^3 x^{-2} = x$$.
+- $$\left(8x^3\right)^{2/3} = 8^{2/3}\left(x^3\right)^{2/3} = 4x^2$$.
+- $$\sqrt{x^3} = x^{3/2}$$ and $$\sqrt[3]{x} = x^{1/3}$$, so the quotient is
+  $$x^{3/2 - 1/3} = x^{7/6}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-roots-powers-negative-base}
+
+Someone writes $$\left((-3)^2\right)^{1/2} = (-3)^{2 \cdot 1/2} = (-3)^1 = -3$$. Work out the left
+side directly, and say which step is wrong.
+
+:::solution
+
+Directly, $$(-3)^2 = 9$$ and $$9^{1/2} = \sqrt{9} = 3$$. So the left side is $$3$$, not $$-3$$.
+
+The wrong step is the first one, which uses rule 2 of :ref{#rational-power-laws},
+$$\left(a^p\right)^q = a^{pq}$$. That rule is only proved for a positive base $$a$$, and here
+$$a = -3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-roots-powers-above-one}
+
+Prove that if $$a > 1$$ and $$n$$ is a positive integer, then $$\sqrt[n]{a} > 1$$.
+
+:::solution
+
+By contradiction (:ref{#basic-proofs/contradiction}). Let $$r = \sqrt[n]{a}$$, so $$r > 0$$ and
+$$r^n = a$$. Suppose $$r \le 1$$. If $$r < 1$$, then $$r^n < 1^n = 1$$ by :ref{#power-order}, and if
+$$r = 1$$, then $$r^n = 1$$. Either way $$a = r^n \le 1$$, which contradicts $$a > 1$$. So
+$$r > 1$$.
+
+:::
+
+::::
+
+:::::

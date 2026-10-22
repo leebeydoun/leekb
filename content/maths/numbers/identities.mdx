@@ -204,3 +204,181 @@ Then multiply that result by the last bracket, and collect terms with the same p
 
 A quick way to check an expansion is to try a value. With $$x = 2$$, the original is
 $$5 \cdot 1 \cdot 5 = 25$$, and the expansion gives $$16 + 20 - 8 - 3 = 25$$.
+
+## Exercises
+
+:::::accordion[Exercises on algebraic identities, with solutions]
+
+::::exercise{#ex-identities-expand}
+
+Expand $$(3 - 4t)^2$$ and $$(x^2 + 1)(x^2 - 1)$$.
+
+:::solution
+
+The first is the square of a difference (:ref{#square-formulas}), with $$a = 3$$ and $$b = 4t$$:
+
+```math
+(3 - 4t)^2 = 3^2 - 2 \cdot 3 \cdot 4t + (4t)^2 = 9 - 24t + 16t^2
+```
+
+The second is a difference of squares, with $$a = x^2$$ and $$b = 1$$:
+
+```math
+(x^2 + 1)(x^2 - 1) = (x^2)^2 - 1^2 = x^4 - 1
+```
+
+:::
+
+::::
+
+::::exercise{#ex-identities-factorise}
+
+Factorise each one by reading a formula for squares backwards:
+
+1. $$x^2 - 49$$
+2. $$a^2 + 10a + 25$$
+3. $$9y^2 - 12y + 4$$
+
+:::solution
+
+1. This is a difference of squares, $$x^2 - 7^2$$, so it is $$(x - 7)(x + 7)$$.
+2. The first and last terms are $$a^2$$ and $$5^2$$, and the middle term is $$2 \cdot a \cdot 5$$.
+   So it is the square of a sum: $$(a + 5)^2$$.
+3. The first and last terms are $$(3y)^2$$ and $$2^2$$, and the middle term is
+   $$-2 \cdot 3y \cdot 2 = -12y$$. So it is the square of a difference: $$(3y - 2)^2$$.
+
+Expanding each answer gives back the starting expression, which is a good check.
+
+:::
+
+::::
+
+::::exercise{#ex-identities-mental}
+
+Use the formulas for squares to work out $$45^2$$ and $$103 \cdot 97$$ in your head.
+
+:::solution
+
+For $$45^2$$, use the square of a sum with $$45 = 40 + 5$$:
+
+```math
+45^2 = 40^2 + 2 \cdot 40 \cdot 5 + 5^2 = 1600 + 400 + 25 = 2025
+```
+
+For $$103 \cdot 97$$, both numbers are $$3$$ away from $$100$$, so use the difference of squares:
+
+```math
+103 \cdot 97 = (100 + 3)(100 - 3) = 100^2 - 3^2 = 10000 - 9 = 9991
+```
+
+:::
+
+::::
+
+::::exercise{#ex-identities-cubes}
+
+Expand $$(x - 3)^3$$, and factorise $$y^3 + 64$$ and $$8a^3 - 1$$.
+
+:::solution
+
+By the cube of a difference (:ref{#cube-formulas}) with $$b = 3$$:
+
+```math
+(x - 3)^3 = x^3 - 3 \cdot 3x^2 + 3 \cdot 9x - 27 = x^3 - 9x^2 + 27x - 27
+```
+
+Since $$64 = 4^3$$, the sum of cubes gives $$y^3 + 64 = (y + 4)(y^2 - 4y + 16)$$.
+
+Since $$8a^3 = (2a)^3$$ and $$1 = 1^3$$, the difference of cubes gives
+
+```math
+8a^3 - 1 = (2a - 1)(4a^2 + 2a + 1)
+```
+
+:::
+
+::::
+
+::::exercise{#ex-identities-three-terms}
+
+Expand $$(a + b - c)^2$$, and check your answer with $$a = 1$$, $$b = 2$$ and $$c = 3$$.
+
+:::solution
+
+Use the square of a sum of three terms, with $$-c$$ as the third term. Each term is squared, and
+each pair of different terms appears twice:
+
+```math
+(a + b - c)^2 = a^2 + b^2 + c^2 + 2ab - 2bc - 2ca
+```
+
+The terms with $$c$$ in them once change sign, because $$b(-c) = -bc$$ and $$(-c)a = -ca$$, while
+$$(-c)^2 = c^2$$.
+
+Check: the left side is $$(1 + 2 - 3)^2 = 0$$, and the right side is $$1 + 4 + 9 + 4 - 12 - 6 = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-identities-sum-of-squares-trap}
+
+Find integers $$a$$ and $$b$$ with $$(a + b)^2 \neq a^2 + b^2$$. Then show that the two are equal
+exactly when $$a = 0$$ or $$b = 0$$. (This uses :ref{#zero-product} from the
+[Inverses](./inverses.mdx) page.)
+
+:::solution
+
+For $$a = b = 1$$, $$(1 + 1)^2 = 4$$ but $$1^2 + 1^2 = 2$$.
+
+By :ref{#square-formulas}, $$(a + b)^2 = a^2 + 2ab + b^2$$. So the two are equal exactly when the
+extra term is zero, that is, when $$2ab = 0$$. A product is zero exactly when one of its factors is
+(:ref{#zero-product}), and $$2$$ isn't zero, so this happens exactly when $$a = 0$$ or $$b = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-identities-odd-differences}
+
+Show that every odd number $$2k + 1$$ is the difference of two consecutive squares. Write $$15$$ and
+$$39$$ this way.
+
+:::solution
+
+By the square of a sum, $$(k + 1)^2 = k^2 + 2k + 1$$. Subtracting $$k^2$$ leaves
+
+```math
+(k + 1)^2 - k^2 = 2k + 1
+```
+
+For $$15 = 2 \cdot 7 + 1$$, take $$k = 7$$: $$8^2 - 7^2 = 64 - 49 = 15$$. For
+$$39 = 2 \cdot 19 + 1$$, take $$k = 19$$: $$20^2 - 19^2 = 400 - 361 = 39$$.
+
+:::
+
+::::
+
+::::exercise{#ex-identities-check-by-value}
+
+Expand $$(x - 1)(x + 2)(x - 3)$$, and check your answer by putting $$x = 2$$ into both sides.
+
+:::solution
+
+Multiply out the first two brackets, then multiply the result by the last one:
+
+```math
+\begin{aligned}
+(x - 1)(x + 2) &= x^2 + 2x - x - 2 = x^2 + x - 2 \\
+(x^2 + x - 2)(x - 3) &= x^3 - 3x^2 + x^2 - 3x - 2x + 6 = x^3 - 2x^2 - 5x + 6
+\end{aligned}
+```
+
+Check with $$x = 2$$: the product is $$1 \cdot 4 \cdot (-1) = -4$$, and the expansion gives
+$$8 - 8 - 10 + 6 = -4$$.
+
+:::
+
+::::
+
+:::::

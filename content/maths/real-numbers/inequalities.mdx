@@ -313,3 +313,145 @@ $$2x + 1 \ge 5$$. The first gives $$x \le -3$$ and the second $$x \ge 2$$. So th
 $$(-\infty, -3] \cup [2, \infty)$$.
 
 :::
+
+## Exercises
+
+:::::accordion[Exercises on solving inequalities, with solutions]
+
+::::exercise{#ex-inequalities-intervals}
+
+Write each set as an interval or a union of intervals: the $$x$$ with $$-1 \le x < 4$$, the $$x$$
+with $$x > 2$$, and the $$x$$ with $$x \le 0$$ or $$x > 3$$. Is $$4$$ in the first one?
+
+:::solution
+
+By :ref{#interval}: $$[-1, 4)$$, $$(2, \infty)$$ and $$(-\infty, 0] \cup (3, \infty)$$.
+
+The number $$4$$ is not in $$[-1, 4)$$: the round bracket at $$4$$ leaves it out, matching the
+strict inequality $$x < 4$$.
+
+:::
+
+::::
+
+::::exercise{#ex-inequalities-linear}
+
+Solve $$3 - 4x < 15$$, $$2(x - 1) \ge 5x + 7$$ and $$1 \le 3 - 2x < 9$$, writing each answer as an
+interval.
+
+:::solution
+
+Using :ref{#inequality-steps}:
+
+- Subtracting $$3$$, $$-4x < 12$$. Dividing by $$-4$$ reverses it: $$x > -3$$, the interval
+  $$(-3, \infty)$$.
+- Expanding, $$2x - 2 \ge 5x + 7$$. Subtracting $$2x$$ and $$7$$, $$-9 \ge 3x$$, so $$x \le -3$$:
+  $$(-\infty, -3]$$.
+- Subtracting $$3$$ from all three parts, $$-2 \le -2x < 6$$. Dividing by $$-2$$ reverses both
+  inequalities: $$1 \ge x > -3$$, that is, $$-3 < x \le 1$$: $$(-3, 1]$$.
+
+:::
+
+::::
+
+::::exercise{#ex-inequalities-lost-half}
+
+To solve $$x(x + 5) \ge 0$$, someone argues: "both factors must be at least $$0$$, so $$x \ge 0$$."
+Which solutions does this miss? Solve the inequality properly.
+
+:::solution
+
+A product can also be positive when both factors are negative (:ref{#product-sign}). The argument
+misses those $$x$$.
+
+The factors are zero at $$x = 0$$ and $$x = -5$$:
+
+|              | $$x < -5$$ | $$-5 < x < 0$$ | $$x > 0$$ |
+| ------------ | ---------- | -------------- | --------- |
+| $$x$$        | $$-$$      | $$-$$          | $$+$$     |
+| $$x + 5$$    | $$-$$      | $$+$$          | $$+$$     |
+| $$x(x + 5)$$ | $$+$$      | $$-$$          | $$+$$     |
+
+The product is positive on the outer pieces and $$0$$ at $$-5$$ and $$0$$. So the solutions are
+$$(-\infty, -5] \cup [0, \infty)$$. The argument missed $$(-\infty, -5]$$; for example $$x = -6$$
+gives $$(-6)(-1) = 6 \ge 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-inequalities-quotients}
+
+Solve $$\frac{x - 4}{x + 1} \le 0$$ and $$\frac{3}{x - 2} > 1$$.
+
+:::solution
+
+- The top is zero at $$4$$ and the bottom at $$-1$$. The quotient is negative when they have
+  opposite signs (:ref{#product-sign}), which happens for $$-1 < x < 4$$. It is $$0$$ at $$x = 4$$
+  and undefined at $$x = -1$$. So the solutions are $$(-1, 4]$$.
+- Subtracting $$1$$ and combining, $$\frac{3 - (x - 2)}{x - 2} = \frac{5 - x}{x - 2} > 0$$. The top
+  is positive for $$x < 5$$ and the bottom for $$x > 2$$. They have the same sign exactly when
+  $$2 < x < 5$$, and for $$x < 2$$ or $$x > 5$$ the signs differ. So the solutions are $$(2, 5)$$.
+
+**Check** the second with $$x = 3$$: $$\frac{3}{1} = 3 > 1$$, true. With $$x = 6$$:
+$$\frac{3}{4} > 1$$, false.
+
+:::
+
+::::
+
+::::exercise{#ex-inequalities-squares}
+
+Solve $$4x^2 \le 25$$ and $$(x + 3)^2 > 1$$.
+
+:::solution
+
+- Dividing by $$4$$, $$x^2 \le \frac{25}{4}$$. By :ref{#square-inequality}, with the endpoints now
+  included, $$-\frac{5}{2} \le x \le \frac{5}{2}$$: the interval
+  $$\left[-\frac{5}{2}, \frac{5}{2}\right]$$.
+- By :ref{#square-inequality} with $$x + 3$$ in place of $$x$$: $$x + 3 < -1$$ or $$x + 3 > 1$$. So
+  $$x < -4$$ or $$x > -2$$: $$(-\infty, -4) \cup (-2, \infty)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-inequalities-abs}
+
+Solve $$|x - 4| \le 0.5$$, $$|x + 1| > 3$$ and $$|x| < -1$$.
+
+:::solution
+
+By :ref{#abs-inequality}:
+
+- The numbers within $$0.5$$ of $$4$$, endpoints included: $$[3.5, 4.5]$$.
+- The numbers further than $$3$$ from $$-1$$: $$x < -4$$ or $$x > 2$$, that is,
+  $$(-\infty, -4) \cup (2, \infty)$$.
+- An absolute value is never negative, so it is never less than $$-1$$. There is no solution.
+
+:::
+
+::::
+
+::::exercise{#ex-inequalities-near-two}
+
+Prove that if $$|x - 2| < 1$$, then $$\left|x^2 - 4\right| < 5$$.
+
+:::solution
+
+By :ref{#abs-inequality}, $$|x - 2| < 1$$ means $$1 < x < 3$$. Adding $$2$$, $$3 < x + 2 < 5$$, so
+$$x + 2$$ is positive and $$|x + 2| < 5$$.
+
+Now factor: $$x^2 - 4 = (x - 2)(x + 2)$$, so $$\left|x^2 - 4\right| = |x - 2|\,|x + 2|$$
+(:ref{#abs-product}). Both absolute values are at least $$0$$, with $$|x - 2| < 1$$ and
+$$|x + 2| < 5$$. Multiplying these (part 2 of :ref{#combine-inequalities}),
+
+```math
+\left|x^2 - 4\right| < 1 \cdot 5 = 5
+```
+
+:::
+
+::::
+
+:::::

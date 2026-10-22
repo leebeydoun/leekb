@@ -163,3 +163,146 @@ $$2 \cdot 9 - 15 - 3 = 0$$.
 Completing the square does more than solve equations. Written as $$(x + \frac{b}{2})^2$$ plus a
 number, a quadratic shows its smallest value and where it happens, which is how the page on
 [parabolas](./parabolas.mdx) finds the lowest point of the graph.
+
+## Exercises
+
+:::::accordion[Exercises on completing the square, with solutions]
+
+::::exercise{#ex-completing-corner}
+
+What number must be added to each expression to make it a perfect square? Write the square.
+
+1. $$x^2 + 14x$$
+2. $$x^2 - 3x$$
+3. $$x^2 + \frac{1}{2}x$$
+
+:::solution
+
+The missing corner is half the number in front of $$x$$, squared (:ref{#complete-square}).
+
+1. Half of $$14$$ is $$7$$, so add $$49$$: $$x^2 + 14x + 49 = (x + 7)^2$$.
+2. Half of $$-3$$ is $$-\frac{3}{2}$$, so add $$\frac{9}{4}$$:
+   $$x^2 - 3x + \frac{9}{4} = \left(x - \frac{3}{2}\right)^2$$.
+3. Half of $$\frac{1}{2}$$ is $$\frac{1}{4}$$, so add $$\frac{1}{16}$$:
+   $$x^2 + \frac{1}{2}x + \frac{1}{16} = \left(x + \frac{1}{4}\right)^2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-completing-forgot}
+
+Someone solving $$x^2 + 8x = 9$$ writes $$(x + 4)^2 = 9$$, and gets $$x = -1$$ or $$x = -7$$. Check
+one of these answers, find the mistake, and solve the equation correctly.
+
+:::solution
+
+**Check** $$x = -1$$: $$(-1)^2 + 8 \cdot (-1) = 1 - 8 = -7$$, not $$9$$. So the answer is wrong.
+
+The square $$(x + 4)^2$$ is $$x^2 + 8x + 16$$, so turning the left side into it means adding $$16$$.
+They added $$16$$ to the left side only. Adding it to **both** sides keeps the solutions the same
+(:ref{#linear-equations/safe-steps}):
+
+```math
+x^2 + 8x + 16 = 25, \qquad\text{that is}\qquad (x + 4)^2 = 25
+```
+
+So $$x + 4 = \pm 5$$, and $$x = 1$$ or $$x = -9$$ (:ref{#shifted-square}). Check: $$1 + 8 = 9$$, and
+$$81 - 72 = 9$$.
+
+:::
+
+::::
+
+::::exercise{#ex-completing-solve}
+
+Solve by completing the square.
+
+1. $$x^2 + 10x + 16 = 0$$
+2. $$x^2 - 2x - 4 = 0$$
+3. $$x^2 - 6x + 11 = 0$$
+
+:::solution
+
+1. Move the $$16$$ across: $$x^2 + 10x = -16$$. Add $$\left(\frac{10}{2}\right)^2 = 25$$ to both
+   sides: $$(x + 5)^2 = 9$$. So $$x + 5 = \pm 3$$, and $$x = -2$$ or $$x = -8$$.
+2. $$x^2 - 2x = 4$$. Add $$1$$ to both sides: $$(x - 1)^2 = 5$$. So $$x - 1 = \pm\sqrt{5}$$, and
+   $$x = 1 + \sqrt{5}$$ or $$x = 1 - \sqrt{5}$$.
+3. $$x^2 - 6x = -11$$. Add $$9$$ to both sides: $$(x - 3)^2 = -2$$. A square is never negative
+   (:ref{#real-numbers/squares-positive}), so there is no solution.
+
+Each step uses :ref{#complete-square}, and the last step uses :ref{#shifted-square}.
+
+:::
+
+::::
+
+::::exercise{#ex-completing-negative}
+
+Solve $$-x^2 - 2x + 5 = 0$$ by completing the square. Why is it worth dividing by $$-1$$ first?
+
+:::solution
+
+The picture behind completing the square needs $$x^2$$ on its own, and :ref{#complete-square} is
+about $$x^2 + bx$$. Here the $$x^2$$ has $$-1$$ in front. Dividing both sides by $$-1$$ is a safe
+step, since $$-1 \neq 0$$ (:ref{#linear-equations/safe-steps}), and it gives
+
+```math
+x^2 + 2x - 5 = 0
+```
+
+Now $$x^2 + 2x = 5$$, and adding $$1$$ to both sides gives $$(x + 1)^2 = 6$$. So
+$$x + 1 = \pm\sqrt{6}$$, and $$x = -1 + \sqrt{6}$$ or $$x = -1 - \sqrt{6}$$.
+
+Without dividing first, you would have to complete the square on $$-(x^2 + 2x)$$ and keep track of
+the minus sign through every step, which is where slips happen.
+
+:::
+
+::::
+
+::::exercise{#ex-completing-fractions}
+
+Solve $$2x^2 + 3x - 2 = 0$$ by completing the square.
+
+:::solution
+
+Divide by $$2$$: $$x^2 + \frac{3}{2}x - 1 = 0$$, so $$x^2 + \frac{3}{2}x = 1$$. Half of
+$$\frac{3}{2}$$ is $$\frac{3}{4}$$, and its square is $$\frac{9}{16}$$. Adding it to both sides,
+
+```math
+\left(x + \frac{3}{4}\right)^2 = 1 + \frac{9}{16} = \frac{25}{16}
+```
+
+So $$x + \frac{3}{4} = \pm\frac{5}{4}$$, which gives $$x = \frac{2}{4} = \frac{1}{2}$$ or
+$$x = -\frac{8}{4} = -2$$.
+
+Check: $$2 \cdot \frac{1}{4} + \frac{3}{2} - 2 = 0$$, and $$2 \cdot 4 - 6 - 2 = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-completing-no-solution}
+
+Show that if $$c > \frac{b^2}{4}$$, the equation $$x^2 + bx + c = 0$$ has no solution.
+
+:::solution
+
+By :ref{#complete-square}, the equation has exactly the same solutions as
+
+```math
+\left(x + \frac{b}{2}\right)^2 = \frac{b^2}{4} - c
+```
+
+If $$c > \frac{b^2}{4}$$, the right side is negative. The left side is a square, which is never
+negative (:ref{#real-numbers/squares-positive}). So no $$x$$ makes the two sides equal, and the
+equation has no solution.
+
+For example, $$x^2 + 2x + 5 = 0$$ has $$c = 5 > \frac{4}{4} = 1$$, so it has no solution.
+
+:::
+
+::::
+
+:::::

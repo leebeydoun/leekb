@@ -255,3 +255,152 @@ In each case we find one factor that is a multiple of $$3$$, which makes the who
 - **$$n = 3k + 2$$:** the factor $$n + 1 = 3k + 3 = 3(k + 1)$$ is a multiple of $$3$$.
 
 :::
+
+## Exercises
+
+:::::accordion[Exercises on proofs, with solutions]
+
+::::exercise{#ex-proofs-even-times-any}
+
+Prove that if $$a$$ is an even integer and $$b$$ is any integer, then $$ab$$ is even.
+
+:::solution
+
+**Given.** $$a$$ is even, so $$a = 2k$$ for some integer $$k$$ (:ref{#numbers/even-odd}). Nothing is
+known about $$b$$ except that it is an integer.
+
+**Want.** $$ab = 2 \times (\text{some integer})$$.
+
+**Bridge.** $$ab = 2k \cdot b = 2(kb)$$, and $$kb$$ is an integer, so $$ab$$ is even.
+
+:::
+
+::::
+
+::::exercise{#ex-proofs-three-consecutive}
+
+Prove that the sum of any three consecutive integers is a multiple of $$3$$.
+
+:::solution
+
+Three consecutive integers can be written $$n$$, $$n + 1$$ and $$n + 2$$, where $$n$$ is the
+smallest. Their sum is
+
+```math
+n + (n + 1) + (n + 2) = 3n + 3 = 3(n + 1),
+```
+
+and $$n + 1$$ is an integer, so the sum is a multiple of $$3$$.
+
+Choosing one letter for all three numbers is the key step. Writing them as $$a$$, $$b$$ and $$c$$
+would lose the fact that they are consecutive.
+
+:::
+
+::::
+
+::::exercise{#ex-proofs-not-a-proof}
+
+Here is an argument. "**Claim:** for every positive integer $$n$$, the number $$n^2 - n + 41$$ is
+prime. **Proof:** for $$n = 1, 2, 3$$ it gives $$41$$, $$43$$ and $$47$$, which are all prime." Why
+is this not a proof, and is the claim true?
+
+:::solution
+
+Checking cases can't prove a "for every" statement, however many cases you check, because infinitely
+many are left. The claim is in fact false. Take $$n = 41$$:
+
+```math
+41^2 - 41 + 41 = 41^2 = 1681,
+```
+
+which is $$41 \cdot 41$$ and so not prime. This is a counterexample (:ref{#counterexample}). The
+formula gives a prime for every $$n$$ from $$1$$ to $$40$$, which is why the pattern is so
+convincing.
+
+:::
+
+::::
+
+::::exercise{#ex-proofs-counterexample-hunt}
+
+Each statement is false. Find a counterexample to each.
+
+1. For all positive numbers $$a$$ and $$b$$, $$\frac{1}{a + b} = \frac{1}{a} + \frac{1}{b}$$.
+2. For every positive integer $$n$$, $$n^2 + 1$$ is odd.
+3. For every integer $$n$$, $$2n > n$$.
+4. Every positive integer whose last digit is $$3$$ is prime.
+
+:::solution
+
+One case where the statement fails is enough (:ref{#counterexample}).
+
+1. $$a = b = 1$$: the left side is $$\frac{1}{2}$$ and the right side is $$2$$.
+2. $$n = 1$$: $$1^2 + 1 = 2$$, which is even. (Every odd $$n$$ is a counterexample.)
+3. $$n = 0$$: $$0$$ is not bigger than $$0$$. (Every negative $$n$$ fails too.)
+4. $$33 = 3 \cdot 11$$, which is not prime.
+
+Each was found by trying the awkward cases first: equal numbers, $$1$$, $$0$$ and negative numbers.
+
+:::
+
+::::
+
+::::exercise{#ex-proofs-no-solution}
+
+Prove by contradiction that there are no integers $$m$$ and $$n$$ with $$6m + 9n = 100$$.
+
+:::solution
+
+**Suppose not:** suppose $$6m + 9n = 100$$ for some integers $$m$$ and $$n$$. The left side is
+$$3(2m + 3n)$$, a multiple of $$3$$, so it leaves remainder $$0$$ when divided by $$3$$. But
+$$100 = 3 \cdot 33 + 1$$ leaves remainder $$1$$. A number leaves only one remainder
+(:ref{#numbers/division-remainder}), so this is impossible (:ref{#contradiction}). So there are no
+such integers.
+
+:::
+
+::::
+
+::::exercise{#ex-proofs-odd-square-eight}
+
+Prove that the square of every odd integer is one more than a multiple of $$8$$. You may use the
+fact, proved in the cases section above, that $$k^2 + k$$ is even for every integer $$k$$.
+
+:::solution
+
+Let $$n$$ be odd, so $$n = 2k + 1$$ for some integer $$k$$. Then
+
+```math
+n^2 = 4k^2 + 4k + 1 = 4(k^2 + k) + 1.
+```
+
+Now $$k^2 + k$$ is even, so $$k^2 + k = 2m$$ for some integer $$m$$. So
+$$n^2 = 4 \cdot 2m + 1 = 8m + 1$$, which is one more than a multiple of $$8$$.
+
+For example, $$3^2 = 9 = 8 + 1$$, $$5^2 = 25 = 24 + 1$$ and $$7^2 = 49 = 48 + 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-proofs-missing-case-true}
+
+Here is an argument. "**Claim:** for every integer $$n$$, $$n(n + 1) \ge 0$$. **Proof:** if
+$$n \ge 0$$, both factors are at least $$0$$, so the product is at least $$0$$. If $$n \le -2$$,
+both factors are negative, so the product is positive." Is the proof complete? Is the claim true?
+
+:::solution
+
+The proof is not complete: the cases miss $$n = -1$$, and a proof by cases has to cover every
+possibility. Here the claim happens to hold in the missing case, since $$(-1) \cdot 0 = 0 \ge 0$$.
+Adding that third case finishes the proof, and the claim is true.
+
+A missing case doesn't always hide a false claim, but you can't know until you check it. Until then
+the argument is not a proof.
+
+:::
+
+::::
+
+:::::

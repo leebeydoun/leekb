@@ -319,3 +319,121 @@ If $$ad - bc = 0$$, the system has a solution, $$(0, 0)$$, so by :ref{#determina
 infinitely many.
 
 :::
+
+## Exercises
+
+:::::accordion[Exercises on no solution or infinitely many, with solutions]
+
+::::exercise{#ex-special-cases-two-systems}
+
+For each system, find the determinant, say how many solutions there are, and find them if there are
+any.
+
+1. $$4x - 6y = 2$$ and $$-2x + 3y = 1$$
+2. $$5x + 2y = 1$$ and $$3x + y = 4$$
+
+:::solution
+
+1. The determinant is $$4 \cdot 3 - (-6) \cdot (-2) = 12 - 12 = 0$$, so there is no solution or
+   infinitely many (:ref{#determinant-zero}). Multiplying the second equation by $$-2$$ gives
+   $$4x - 6y = -2$$, while the first says $$4x - 6y = 2$$. The same quantity can't be both, so there
+   is **no solution**.
+2. The determinant is $$5 \cdot 1 - 2 \cdot 3 = -1$$, which is not zero, so there is **exactly one**
+   solution (:ref{#determinant-test}). The formula gives
+   $$x = \frac{1 \cdot 1 - 2 \cdot 4}{-1} = 7$$ and $$y = \frac{5 \cdot 4 - 3 \cdot 1}{-1} = -17$$.
+   **Check:** $$35 - 34 = 1$$ and $$21 - 17 = 4$$.
+
+:::
+
+::::
+
+::::exercise{#ex-special-cases-two-descriptions}
+
+Find all solutions of $$2x - 4y = 6$$ and $$-x + 2y = -3$$. Describe them once with a free letter
+for $$y$$, and once with a free letter for $$x$$. Explain why both descriptions give the same pairs.
+
+:::solution
+
+Multiplying the second equation by $$-2$$ gives the first, so the system has the same solutions as
+$$x - 2y = 3$$ alone.
+
+- **With $$y = t$$ free:** $$x = 3 + 2t$$, so the solutions are $$(3 + 2t,\ t)$$ for every number
+  $$t$$.
+- **With $$x = s$$ free:** $$2y = s - 3$$, so the solutions are $$(s,\ \frac{s - 3}{2})$$ for every
+  number $$s$$.
+
+Both descriptions list exactly the pairs that solve $$x - 2y = 3$$. Given $$t$$, the pair from the
+first description is the pair from the second with $$s = 3 + 2t$$, since then
+$$\frac{s - 3}{2} = t$$. So the two lists are the same, counted differently.
+
+:::
+
+::::
+
+::::exercise{#ex-special-cases-two-zero-cases}
+
+For which numbers $$a$$ does the system $$x + ay = 2$$, $$ax + 9y = 6$$ have exactly one solution?
+For each other value of $$a$$, say whether there is no solution or infinitely many.
+
+:::solution
+
+The determinant is $$1 \cdot 9 - a \cdot a = 9 - a^2$$. It is zero exactly when $$a^2 = 9$$, that
+is, when $$a = 3$$ or $$a = -3$$. For every other $$a$$ there is exactly one solution
+(:ref{#determinant-test}).
+
+- **$$a = 3$$:** the equations are $$x + 3y = 2$$ and $$3x + 9y = 6$$. The second is $$3$$ times the
+  first, so there are **infinitely many** solutions.
+- **$$a = -3$$:** the equations are $$x - 3y = 2$$ and $$-3x + 9y = 6$$. Multiplying the first by
+  $$-3$$ gives $$-3x + 9y = -6$$, which contradicts the second, so there is **no solution**.
+
+:::
+
+::::
+
+::::exercise{#ex-special-cases-empty-left-side}
+
+Find the determinant and all solutions of each system.
+
+1. $$0x + 0y = 0$$ and $$x + y = 2$$
+2. $$0x + 0y = 1$$ and $$x + y = 2$$
+
+:::solution
+
+In both, $$a = b = 0$$, so the determinant is $$0 \cdot 1 - 0 \cdot 1 = 0$$.
+
+1. The first equation is true for every pair, so the solutions are those of $$x + y = 2$$:
+   **infinitely many**, the pairs $$(2 - t,\ t)$$ for every number $$t$$.
+2. The first equation is false for every pair, since $$0 \neq 1$$, so there is **no solution**.
+
+These are the two cases :ref{#determinant-zero} allows. Its proof has a separate step for
+$$a = b = 0$$, and the first system is an example of it.
+
+:::
+
+::::
+
+::::exercise{#ex-special-cases-two-solutions}
+
+Suppose a system $$ax + by = u$$, $$cx + dy = v$$ has two different solutions $$(x_1, y_1)$$ and
+$$(x_2, y_2)$$. Show that $$ad - bc = 0$$, using :ref{#zero-right-side}.
+
+:::solution
+
+Subtract the equations for the two solutions. From $$ax_1 + by_1 = u$$ and $$ax_2 + by_2 = u$$,
+
+```math
+a(x_1 - x_2) + b(y_1 - y_2) = 0
+```
+
+and in the same way $$c(x_1 - x_2) + d(y_1 - y_2) = 0$$. So the pair $$(x_1 - x_2,\ y_1 - y_2)$$
+solves the system with both right-hand sides $$0$$. It isn't $$(0, 0)$$, because the two solutions
+are different.
+
+If $$ad - bc$$ were not zero, :ref{#zero-right-side} would say $$(0, 0)$$ is the only solution of
+that system. So $$ad - bc = 0$$.
+
+:::
+
+::::
+
+:::::

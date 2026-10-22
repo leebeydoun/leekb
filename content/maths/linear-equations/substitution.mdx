@@ -142,3 +142,131 @@ by what the equations look like:
 Substitution has one more advantage: it works when the second equation isn't linear. Solving
 $$y = x + 1$$ together with $$xy = 6$$ by substitution gives $$x(x + 1) = 6$$, an equation in $$x$$
 alone, while elimination has nothing to cancel.
+
+## Exercises
+
+:::::accordion[Exercises on substitution, with solutions]
+
+::::exercise{#ex-substitution-x-ready}
+
+Solve $$x = 3 - 2y$$ and $$4x + 5y = 6$$.
+
+:::solution
+
+The first equation already gives $$x$$. Substituting it into the second, in brackets:
+
+```math
+4(3 - 2y) + 5y = 6, \qquad\text{so}\qquad 12 - 3y = 6
+```
+
+So $$3y = 6$$ and $$y = 2$$, and then $$x = 3 - 4 = -1$$.
+
+**Check:** $$-1 = 3 - 4$$ and $$-4 + 10 = 6$$. The solution is $$(-1, 2)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-substitution-rearrange-first}
+
+Solve $$3x - y = 7$$ and $$5x + 2y = 8$$ by substitution.
+
+:::solution
+
+In the first equation $$y$$ has coefficient $$-1$$, so rearrange it: $$y = 3x - 7$$. Substituting
+into the second:
+
+```math
+5x + 2(3x - 7) = 8, \qquad\text{so}\qquad 11x - 14 = 8
+```
+
+So $$11x = 22$$ and $$x = 2$$, and then $$y = 6 - 7 = -1$$.
+
+**Check:** $$6 + 1 = 7$$ and $$10 - 2 = 8$$. The solution is $$(2, -1)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-substitution-missing-brackets}
+
+To solve $$y = 2x + 1$$ and $$3x - 2y = 4$$, a student writes $$3x - 2 \cdot 2x + 1 = 4$$ and gets
+$$x = -3$$. Find the mistake, show that the student's answer fails a check, and solve the system
+correctly.
+
+:::solution
+
+The expression $$2x + 1$$ replaces $$y$$, so it must go in brackets: the $$-2$$ multiplies the whole
+of it. The student multiplied only the $$2x$$.
+
+With $$x = -3$$, the first equation gives $$y = -5$$, and then $$3x - 2y = -9 + 10 = 1$$, not $$4$$.
+So the student's pair fails the check.
+
+Correctly, $$3x - 2(2x + 1) = 4$$, so $$-x - 2 = 4$$ and $$x = -6$$. Then $$y = -12 + 1 = -11$$.
+**Check:** $$-18 + 22 = 4$$. The solution is $$(-6, -11)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-substitution-curve}
+
+Solve the system $$y = 2x - 1$$ and $$x^2 + y = 2$$.
+
+:::solution
+
+Substituting $$2x - 1$$ for $$y$$ in the second equation gives $$x^2 + 2x - 1 = 2$$, so
+$$x^2 + 2x - 3 = 0$$. This factors as $$(x + 3)(x - 1) = 0$$, so $$x = -3$$ or $$x = 1$$
+(:ref{#numbers/zero-product}).
+
+Each value gives its own $$y$$ from the first equation: $$x = 1$$ gives $$y = 1$$, and $$x = -3$$
+gives $$y = -7$$. So the solutions are $$(1, 1)$$ and $$(-3, -7)$$.
+
+**Check:** $$1 + 1 = 2$$ and $$9 - 7 = 2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-substitution-keep-link}
+
+In :ref{#substitution-works}, the new system keeps the equation $$y = E$$. Take the system $$y = x$$
+and $$x + y = 2$$. Show that the substituted equation on its own, thought of as an equation in $$x$$
+and $$y$$, has more solutions than the system.
+
+:::solution
+
+Substituting $$x$$ for $$y$$ in $$x + y = 2$$ gives $$2x = 2$$. As an equation in $$x$$ and $$y$$,
+it says nothing about $$y$$, so every pair $$(1, y)$$ solves it: $$(1, 0)$$, $$(1, 5)$$ and so on.
+
+The system has only the solution $$(1, 1)$$. Keeping $$y = x$$ is what ties $$y$$ back to $$x$$, and
+it rules out pairs like $$(1, 0)$$. So the new system must contain both equations to be equivalent
+to the old one.
+
+:::
+
+::::
+
+::::exercise{#ex-substitution-chain}
+
+Solve $$y = 2x$$, $$z = x + y$$ and $$x + y + z = 12$$ by substitution. (This has three unknowns,
+like the [Three equations in three unknowns](./three-unknowns.mdx) page, but substitution handles it
+directly.)
+
+:::solution
+
+The first equation gives $$y$$ in terms of $$x$$. Putting it into the second gives
+$$z = x + 2x = 3x$$. Now the third equation has only $$x$$ left:
+
+```math
+x + 2x + 3x = 12, \qquad\text{so}\qquad 6x = 12
+```
+
+So $$x = 2$$, $$y = 4$$ and $$z = 6$$. **Check:** $$4 = 2 \cdot 2$$, $$6 = 2 + 4$$ and
+$$2 + 4 + 6 = 12$$.
+
+:::
+
+::::
+
+:::::

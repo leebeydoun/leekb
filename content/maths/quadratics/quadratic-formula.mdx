@@ -192,3 +192,175 @@ The formula always works, which makes it the safe choice. But it is not always t
 The formula also covers equations whose numbers aren't whole. For $$x^2 + \sqrt{2}\,x - 4 = 0$$,
 $$b^2 - 4ac = 2 + 16 = 18$$ and $$\sqrt{18} = 3\sqrt{2}$$, so
 $$x = \frac{-\sqrt{2} \pm 3\sqrt{2}}{2}$$, which is $$\sqrt{2}$$ or $$-2\sqrt{2}$$.
+
+## Exercises
+
+:::::accordion[Exercises on the quadratic formula, with solutions]
+
+::::exercise{#ex-formula-three}
+
+Solve with the quadratic formula, or show there is no real solution.
+
+1. $$2x^2 - 3x - 2 = 0$$
+2. $$x^2 + 4x + 1 = 0$$
+3. $$3x^2 + 2x + 1 = 0$$
+
+:::solution
+
+Work out $$b^2 - 4ac$$ first, then use :ref{#quadratic-formula}.
+
+1. $$a = 2$$, $$b = -3$$, $$c = -2$$, so $$b^2 - 4ac = 9 + 16 = 25$$ and $$\sqrt{25} = 5$$. So
+   $$x = \frac{3 \pm 5}{4}$$, which is $$2$$ or $$-\frac{1}{2}$$.
+2. $$b^2 - 4ac = 16 - 4 = 12$$, and $$\sqrt{12} = 2\sqrt{3}$$. So
+   $$x = \frac{-4 \pm 2\sqrt{3}}{2} = -2 \pm \sqrt{3}$$.
+3. $$b^2 - 4ac = 4 - 12 = -8$$, which is negative. By part 2 of :ref{#quadratic-formula}, there is
+   no real solution.
+
+:::
+
+::::
+
+::::exercise{#ex-formula-signs}
+
+Solve $$7 - 4x - 2x^2 = 0$$. Take care reading off $$a$$, $$b$$ and $$c$$.
+
+:::solution
+
+The terms are written in the opposite order to standard form. Rearranged, the equation is
+$$-2x^2 - 4x + 7 = 0$$, so $$a = -2$$, $$b = -4$$ and $$c = 7$$. Then
+
+```math
+b^2 - 4ac = 16 - 4 \cdot (-2) \cdot 7 = 16 + 56 = 72, \qquad \sqrt{72} = 6\sqrt{2}
+```
+
+By :ref{#quadratic-formula},
+
+```math
+x = \frac{4 \pm 6\sqrt{2}}{-4} = -1 \mp \frac{3\sqrt{2}}{2}
+```
+
+So the solutions are $$-1 + \frac{3\sqrt{2}}{2}$$ and $$-1 - \frac{3\sqrt{2}}{2}$$, about $$1.121$$
+and $$-3.121$$. Reading $$a = 7$$ from the first term, as if the equation were already in standard
+form, would give wrong answers.
+
+:::
+
+::::
+
+::::exercise{#ex-formula-rearrange}
+
+Solve $$x(x + 2) = 1$$.
+
+:::solution
+
+The formula needs the standard form, so expand and move the $$1$$ across: $$x^2 + 2x - 1 = 0$$. Then
+$$b^2 - 4ac = 4 + 4 = 8$$ and $$\sqrt{8} = 2\sqrt{2}$$, so
+
+```math
+x = \frac{-2 \pm 2\sqrt{2}}{2} = -1 \pm \sqrt{2}
+```
+
+by :ref{#quadratic-formula}. A tempting mistake is "$$x = 1$$ or $$x + 2 = 1$$", but a product equal
+to $$1$$ says nothing about either factor on its own.
+
+:::
+
+::::
+
+::::exercise{#ex-formula-centre}
+
+Without solving, find the number the solutions of $$4x^2 - 12x + 1 = 0$$ are centred on. Then solve
+the equation and check that the solutions sit evenly on either side of it.
+
+:::solution
+
+The formula gives $$-\frac{b}{2a}$$ plus or minus a distance, so the centre is
+$$s = -\frac{-12}{2 \cdot 4} = \frac{3}{2}$$.
+
+Now $$b^2 - 4ac = 144 - 16 = 128$$, and $$\sqrt{128} = \sqrt{64}\sqrt{2} = 8\sqrt{2}$$
+(:ref{#real-numbers/root-product}). So
+
+```math
+x = \frac{12 \pm 8\sqrt{2}}{8} = \frac{3}{2} \pm \sqrt{2}
+```
+
+The solutions are $$\frac{3}{2} + \sqrt{2}$$ and $$\frac{3}{2} - \sqrt{2}$$, each $$\sqrt{2}$$ away
+from $$\frac{3}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-formula-negative-a}
+
+Solve $$-x^2 + x + 2 = 0$$ with the formula, and check both answers. In the proof of
+:ref{#quadratic-formula}, $$\sqrt{4a^2}$$ is $$-2a$$ when $$a$$ is negative. Why do the answers
+still come out right?
+
+:::solution
+
+Here $$a = -1$$, $$b = 1$$, $$c = 2$$, so $$b^2 - 4ac = 1 + 8 = 9$$, and
+
+```math
+x = \frac{-1 \pm 3}{-2}
+```
+
+which is $$\frac{2}{-2} = -1$$ or $$\frac{-4}{-2} = 2$$. **Check:** $$-1 - 1 + 2 = 0$$ and
+$$-4 + 2 + 2 = 0$$.
+
+When $$a < 0$$, dividing by $$2a$$ instead of $$-2a$$ swaps which value comes from $$+$$ and which
+from $$-$$. Here the $$+$$ gave $$-1$$ and the $$-$$ gave $$2$$. The formula always lists both
+values, so swapping them changes nothing: the pair of solutions is the same.
+
+:::
+
+::::
+
+::::exercise{#ex-formula-root-coefficient}
+
+Solve $$x^2 - 2\sqrt{3}\,x + 2 = 0$$.
+
+:::solution
+
+Here $$a = 1$$, $$b = -2\sqrt{3}$$ and $$c = 2$$. Since $$(2\sqrt{3})^2 = 4 \cdot 3 = 12$$,
+
+```math
+b^2 - 4ac = 12 - 8 = 4
+```
+
+so by :ref{#quadratic-formula},
+
+```math
+x = \frac{2\sqrt{3} \pm 2}{2} = \sqrt{3} \pm 1
+```
+
+The solutions are $$\sqrt{3} + 1$$ and $$\sqrt{3} - 1$$. **Check** the first:
+$$(\sqrt{3} + 1)^2 = 4 + 2\sqrt{3}$$, and taking $$2\sqrt{3}(\sqrt{3} + 1) = 6 + 2\sqrt{3}$$ from it
+and adding $$2$$ leaves $$0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-formula-word}
+
+A number times the number $$3$$ larger than it comes to $$7$$. What can the number be?
+
+:::solution
+
+Call the number $$x$$. Then $$x(x + 3) = 7$$, so $$x^2 + 3x - 7 = 0$$. Here
+$$b^2 - 4ac = 9 + 28 = 37$$, which is positive but not a perfect square, so factoring with whole
+numbers won't work. By :ref{#quadratic-formula},
+
+```math
+x = \frac{-3 \pm \sqrt{37}}{2}
+```
+
+about $$1.541$$ or $$-4.541$$. Both are allowed, since nothing in the question rules out a negative
+number. Check the first: $$1.541 \times 4.541 \approx 7.00$$.
+
+:::
+
+::::
+
+:::::

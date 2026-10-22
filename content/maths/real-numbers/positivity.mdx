@@ -193,3 +193,118 @@ differ. If $$a = 0$$, the product is $$0$$.
 
 For example, $$\frac{-3}{-4}$$ is positive and $$\frac{5}{-2}$$ is negative, without working out
 either one.
+
+## Exercises
+
+:::::accordion[Exercises on positive and negative numbers, with solutions]
+
+::::exercise{#ex-positivity-zero}
+
+Use :ref{#positivity} to show that $$0$$ is neither positive nor negative.
+
+:::solution
+
+Rule 2 with $$a = 0$$ says that exactly one of these is true: $$0$$ is positive, $$0 = 0$$, or
+$$-0$$ is positive. The middle one is true, so the other two are false. In particular $$0$$ is not
+positive.
+
+By :ref{#negative}, $$0$$ would be negative if $$-0$$ were positive. But $$-0 = 0$$, which is not
+positive, so $$0$$ is not negative either.
+
+:::
+
+::::
+
+::::exercise{#ex-positivity-minus-sign}
+
+Someone says: "$$-a$$ is always negative, because it has a minus sign." Give a counterexample, and
+say exactly when $$-a$$ is negative.
+
+:::solution
+
+Take $$a = -3$$. Then $$-a = 3$$, which is positive.
+
+By :ref{#negative}, $$-a$$ is negative when $$-(-a)$$ is positive. Since $$-(-a) = a$$
+(:ref{#numbers/double-opposite}), $$-a$$ is negative exactly when $$a$$ is positive. The minus sign
+says "the opposite of", not "negative".
+
+:::
+
+::::
+
+::::exercise{#ex-positivity-signs}
+
+Suppose $$a < 0 < b$$. Without choosing numbers, decide whether each of these is positive or
+negative: $$ab^2$$, $$a^3$$, $$\frac{b}{a}$$ and $$\frac{-a}{-b}$$.
+
+:::solution
+
+- $$ab^2$$: since $$b \neq 0$$, $$b^2$$ is positive (:ref{#squares-positive}). A negative times a
+  positive is negative (:ref{#sign-rules}), so $$ab^2$$ is negative.
+- $$a^3 = a \cdot a^2$$: here $$a^2$$ is positive and $$a$$ negative, so $$a^3$$ is negative.
+- $$\frac{b}{a}$$: the top and bottom have opposite signs, so it is negative (:ref{#quotient-sign}).
+- $$\frac{-a}{-b}$$: the top $$-a$$ is positive and the bottom $$-b$$ is negative, so it is
+  negative.
+
+:::
+
+::::
+
+::::exercise{#ex-positivity-negative-sum}
+
+Prove that the sum of two negative numbers is negative.
+
+:::solution
+
+Let $$a$$ and $$b$$ be negative, so $$-a$$ and $$-b$$ are positive. The opposite of a sum is the sum
+of the opposites (:ref{#numbers/opposite-sum}), so
+
+```math
+-(a + b) = (-a) + (-b)
+```
+
+This is a sum of two positive numbers, so it is positive by rule 1 of :ref{#positivity}. So
+$$a + b$$ is negative.
+
+:::
+
+::::
+
+::::exercise{#ex-positivity-cube}
+
+Prove that if $$a \neq 0$$, then $$a$$ and $$a^3$$ have the same sign.
+
+:::solution
+
+Write $$a^3 = a \cdot a^2$$. Since $$a \neq 0$$, $$a^2$$ is positive (:ref{#squares-positive}).
+
+- If $$a$$ is positive, $$a \cdot a^2$$ is a product of positive numbers, so it is positive by rule
+  1 of :ref{#positivity}.
+- If $$a$$ is negative, $$a \cdot a^2$$ is a negative number times a positive one, so it is negative
+  by :ref{#sign-rules}.
+
+Either way $$a^3$$ has the same sign as $$a$$.
+
+:::
+
+::::
+
+::::exercise{#ex-positivity-fractions}
+
+Show that $$\frac{1}{2}$$ is positive and that $$-\frac{1}{3}$$ is negative, using only the results
+on this page.
+
+:::solution
+
+By :ref{#one-positive}, $$1$$ is positive, so $$2 = 1 + 1$$ and $$3 = 2 + 1$$ are positive by rule 1
+of :ref{#positivity}. Their inverses $$\frac{1}{2}$$ and $$\frac{1}{3}$$ are positive by
+:ref{#inverse-sign}.
+
+The number $$-\frac{1}{3}$$ is negative because its opposite, $$\frac{1}{3}$$, is positive
+(:ref{#negative}).
+
+:::
+
+::::
+
+:::::

@@ -214,3 +214,172 @@ Subtracting $$2x$$ and adding $$4$$ to both sides gives $$x = 16$$.
 $$\frac{16}{6} + 1 = \frac{8}{3} + 1 = \frac{11}{3}$$.
 
 :::
+
+## Exercises
+
+:::::accordion[Exercises on equations and solutions, with solutions]
+
+::::exercise{#ex-equations-check-values}
+
+Which of $$x = -1$$, $$x = 2$$ and $$x = 3$$ are solutions of $$x^2 - x = 2$$? Does checking these
+three values solve the equation?
+
+:::solution
+
+Put each value into the left side:
+
+- $$x = -1$$: $$(-1)^2 - (-1) = 1 + 1 = 2$$, so it is a solution
+- $$x = 2$$: $$4 - 2 = 2$$, so it is a solution
+- $$x = 3$$: $$9 - 3 = 6$$, which is not $$2$$, so it is not a solution
+
+This doesn't solve the equation. Solving means finding **all** the solutions (:ref{#solution}), and
+checking a few values says nothing about the numbers that weren't tried. Some other argument is
+needed to show that $$-1$$ and $$2$$ are the only ones.
+
+:::
+
+::::
+
+::::exercise{#ex-equations-equivalent-pairs}
+
+For each pair, say whether the two equations are equivalent. If they aren't, give a number that
+solves one but not the other.
+
+1. $$2x - 3 = 7$$ and $$x = 5$$
+2. $$x = 4$$ and $$x^2 = 16$$
+3. $$\frac{x}{2} = 3$$ and $$x = 6$$
+4. $$x(x - 1) = 0$$ and $$x - 1 = 0$$
+
+:::solution
+
+1. Equivalent. Adding $$3$$ to both sides and then multiplying by $$\frac{1}{2}$$ are safe steps
+   (:ref{#safe-steps}), and they turn the first equation into the second.
+2. Not equivalent. The number $$-4$$ solves $$x^2 = 16$$, since $$(-4)^2 = 16$$, but it doesn't
+   solve $$x = 4$$.
+3. Equivalent. Multiplying both sides by $$2$$ is a safe step, since $$2 \neq 0$$.
+4. Not equivalent. The number $$0$$ solves $$x(x - 1) = 0$$, since $$0 \cdot (-1) = 0$$, but
+   $$0 - 1 = -1$$, so it doesn't solve $$x - 1 = 0$$. Dividing by $$x$$ would lose this solution.
+
+:::
+
+::::
+
+::::exercise{#ex-equations-brackets}
+
+Solve $$5(x - 2) - 3(2x + 1) = 4 - 2x$$, and check your answer.
+
+:::solution
+
+Expanding the left side, $$5x - 10 - 6x - 3 = -x - 13$$, so the equation is $$-x - 13 = 4 - 2x$$.
+Adding $$2x$$ and $$13$$ to both sides gives $$x = 17$$.
+
+**Check:** the left side is $$5 \cdot 15 - 3 \cdot 35 = 75 - 105 = -30$$, and the right side is
+$$4 - 34 = -30$$.
+
+:::
+
+::::
+
+::::exercise{#ex-equations-three-fractions}
+
+Solve $$\frac{x - 1}{6} + \frac{x + 2}{4} = 2 - \frac{x}{3}$$.
+
+:::solution
+
+The denominators $$6$$, $$4$$ and $$3$$ all divide $$12$$. Multiplying both sides by $$12$$ is a
+safe step, and keeping the brackets gives
+
+```math
+2(x - 1) + 3(x + 2) = 24 - 4x
+```
+
+Expanding, $$5x + 4 = 24 - 4x$$, so $$9x = 20$$ and $$x = \frac{20}{9}$$.
+
+**Check:** the left side is
+$$\frac{11}{54} + \frac{38}{36} = \frac{22}{108} + \frac{114}{108} = \frac{34}{27}$$, and the right
+side is $$2 - \frac{20}{27} = \frac{34}{27}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-equations-divide-by-x}
+
+To solve $$3x = 5x$$, a student divides both sides by $$x$$, gets $$3 = 5$$, and concludes that
+there is no solution. What went wrong? Solve the equation correctly.
+
+:::solution
+
+Dividing by $$x$$ is multiplying by $$\frac{1}{x}$$, which only makes sense when $$x \neq 0$$. So
+the student's step is not one of the safe steps (:ref{#safe-steps}), and it threw away the case
+$$x = 0$$.
+
+Correctly: subtracting $$3x$$ from both sides gives $$0 = 2x$$, so $$x = 0$$ by :ref{#one-unknown}.
+**Check:** $$3 \cdot 0 = 0 = 5 \cdot 0$$. So the equation has exactly one solution, $$x = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-equations-squaring}
+
+Squaring both sides of $$2x + 1 = x - 3$$ gives $$(2x + 1)^2 = (x - 3)^2$$.
+
+1. Show that $$x = \frac{2}{3}$$ solves the squared equation but not the original one.
+2. Solve the original equation.
+
+:::solution
+
+1. At $$x = \frac{2}{3}$$, the two sides of the original equation are
+   $$\frac{4}{3} + 1 = \frac{7}{3}$$ and $$\frac{2}{3} - 3 = -\frac{7}{3}$$. These are different, so
+   $$\frac{2}{3}$$ doesn't solve the original. But they are opposites, so their squares are equal,
+   both $$\frac{49}{9}$$: it does solve the squared equation.
+2. Subtracting $$x$$ and $$1$$ from both sides gives $$x = -4$$. **Check:** $$-8 + 1 = -7$$ and
+   $$-4 - 3 = -7$$.
+
+Squaring can't be undone, because a number and its opposite have the same square. That is how the
+false solution $$\frac{2}{3}$$ got in.
+
+:::
+
+::::
+
+::::exercise{#ex-equations-same-answer}
+
+Let $$a$$ be a number. Show that if $$a \neq 3$$, the equation $$a(x + 2) = 3x + 6$$ has exactly one
+solution, and that it is $$x = -2$$ whatever $$a$$ is. What happens when $$a = 3$$?
+
+:::solution
+
+Expanding and rearranging, $$ax + 2a = 3x + 6$$ becomes $$(a - 3)x = 6 - 2a = -2(a - 3)$$.
+
+If $$a \neq 3$$, then $$a - 3 \neq 0$$, so by :ref{#one-unknown} there is exactly one solution,
+$$x = \frac{-2(a - 3)}{a - 3} = -2$$. This makes sense: the right side is $$3(x + 2)$$, so at
+$$x = -2$$ both sides are $$0$$ whatever $$a$$ is.
+
+If $$a = 3$$, the equation is $$0 \cdot x = 0$$, so every number is a solution. Both sides are then
+$$3x + 6$$.
+
+:::
+
+::::
+
+::::exercise{#ex-equations-one-answer-proof}
+
+Without using :ref{#one-unknown}, show that if $$a \neq 0$$, the equation $$ax = c$$ can't have two
+different solutions.
+
+:::solution
+
+Suppose $$x_1$$ and $$x_2$$ are both solutions, so $$ax_1 = c$$ and $$ax_2 = c$$. Subtracting,
+$$ax_1 - ax_2 = 0$$, that is, $$a(x_1 - x_2) = 0$$.
+
+A product is zero exactly when one of its factors is zero (:ref{#numbers/zero-product}). Since
+$$a \neq 0$$, this forces $$x_1 - x_2 = 0$$, so $$x_1 = x_2$$. So any two solutions are the same
+number.
+
+:::
+
+::::
+
+:::::

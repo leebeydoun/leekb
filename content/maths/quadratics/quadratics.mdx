@@ -134,3 +134,161 @@ shortcut that works when the quadratic splits neatly.
 [Completing the square](./completing-the-square.mdx) rewrites any quadratic as a square equal to a
 number, and [the quadratic formula](./quadratic-formula.mdx) is that rewriting done once, with
 letters, so it never has to be done again.
+
+## Exercises
+
+:::::accordion[Exercises on quadratic equations, with solutions]
+
+::::exercise{#ex-quadratics-standard-form}
+
+Put each equation in standard form and read off $$a$$, $$b$$ and $$c$$. Say which ones are not
+quadratic, and solve those.
+
+1. $$(2x - 1)(x + 3) = 5$$
+2. $$x(x - 4) = 3x^2 - 2$$
+3. $$(x + 2)^2 = (x - 2)^2$$
+
+:::solution
+
+Expand, then move every term to one side with safe steps (:ref{#linear-equations/safe-steps}).
+
+1. $$(2x - 1)(x + 3) = 2x^2 + 5x - 3$$, so the equation is $$2x^2 + 5x - 3 = 5$$. Subtracting $$5$$
+   gives $$2x^2 + 5x - 8 = 0$$, with $$a = 2$$, $$b = 5$$ and $$c = -8$$.
+2. The left side is $$x^2 - 4x$$. Subtracting it from both sides gives $$0 = 2x^2 + 4x - 2$$, that
+   is $$2x^2 + 4x - 2 = 0$$, with $$a = 2$$, $$b = 4$$ and $$c = -2$$. Subtracting the right side
+   instead gives $$-2x^2 - 4x + 2 = 0$$, which is the same equation multiplied by $$-1$$, and either
+   form is fine.
+3. Expanding, $$x^2 + 4x + 4 = x^2 - 4x + 4$$. Subtracting the right side leaves $$8x = 0$$. The
+   squares cancel, so this is not quadratic. It is linear, with the single solution $$x = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-quadratics-which-m}
+
+For which numbers $$m$$ is $$(m - 1)x^2 + 3x - 2 = 0$$ a quadratic equation in $$x$$? For the other
+values of $$m$$, solve the equation.
+
+:::solution
+
+The number in front of $$x^2$$ is $$m - 1$$, and the equation is quadratic exactly when it is not
+$$0$$ (:ref{#quadratic}). So it is quadratic for every $$m$$ except $$m = 1$$.
+
+When $$m = 1$$ the $$x^2$$ term disappears, leaving $$3x - 2 = 0$$. This is linear, with the single
+solution $$x = \frac{2}{3}$$ (:ref{#linear-equations/one-unknown}).
+
+:::
+
+::::
+
+::::exercise{#ex-quadratics-squares}
+
+Solve each equation, or explain why it has no solution.
+
+1. $$(x + 1)^2 = 49$$
+2. $$3(x - 2)^2 = 12$$
+3. $$(2x + 3)^2 = 0$$
+4. $$(x - 1)^2 + 8 = 4$$
+
+:::solution
+
+Each one is brought to a square equal to a number, and then :ref{#shifted-square} applies.
+
+1. $$x + 1 = 7$$ or $$x + 1 = -7$$, so $$x = 6$$ or $$x = -8$$.
+2. Dividing by $$3$$ gives $$(x - 2)^2 = 4$$, so $$x - 2 = \pm 2$$, and $$x = 4$$ or $$x = 0$$.
+3. Only $$0$$ squares to $$0$$, so $$2x + 3 = 0$$ and $$x = -\frac{3}{2}$$ is the only solution.
+4. Subtracting $$8$$ gives $$(x - 1)^2 = -4$$. A square is never negative
+   (:ref{#real-numbers/squares-positive}), so there is no solution.
+
+:::
+
+::::
+
+::::exercise{#ex-quadratics-distance}
+
+Which numbers are exactly $$2.5$$ away from $$-1$$ on the number line? Write the question as a
+square equal to a number, and solve it.
+
+:::solution
+
+The distance from $$x$$ to $$-1$$, counting left as negative, is $$x - (-1) = x + 1$$. Being $$2.5$$
+away on either side means $$x + 1 = 2.5$$ or $$x + 1 = -2.5$$, and both are captured by squaring:
+
+```math
+(x + 1)^2 = 6.25
+```
+
+By :ref{#shifted-square}, $$x + 1 = \pm 2.5$$, so $$x = 1.5$$ or $$x = -3.5$$. Indeed $$1.5$$ is
+$$2.5$$ to the right of $$-1$$, and $$-3.5$$ is $$2.5$$ to the left.
+
+:::
+
+::::
+
+::::exercise{#ex-quadratics-path}
+
+A square lawn has a path $$1$$ m wide all the way round it. The lawn and the path together cover
+$$49$$ m². How long is a side of the lawn? The equation has two solutions: why is only one of them
+an answer?
+
+:::solution
+
+Call the side of the lawn $$x$$ metres. The path adds $$1$$ m on each side, so the lawn and path
+make a square of side $$x + 2$$, and
+
+```math
+(x + 2)^2 = 49
+```
+
+By :ref{#shifted-square}, $$x + 2 = 7$$ or $$x + 2 = -7$$, so $$x = 5$$ or $$x = -9$$. A length
+can't be negative, so the lawn is $$5$$ m wide. Check: $$5 + 2 = 7$$ and $$7^2 = 49$$.
+
+The equation knows nothing about lengths. It only says that $$x + 2$$ squares to $$49$$, and $$-7$$
+does that as well as $$7$$. The second solution is a real solution of the equation, but it doesn't
+fit the question.
+
+:::
+
+::::
+
+::::exercise{#ex-quadratics-find-s-k}
+
+Find numbers $$s$$ and $$k$$ so that $$(x - s)^2 = k$$ has the solutions $$2$$ and $$10$$. Are they
+the only possible choice?
+
+:::solution
+
+When $$k > 0$$, the solutions are $$s + \sqrt{k}$$ and $$s - \sqrt{k}$$ (:ref{#shifted-square}).
+They lie the same distance $$\sqrt{k}$$ either side of $$s$$, so $$s$$ is halfway between them:
+$$s = \frac{2 + 10}{2} = 6$$. Then $$\sqrt{k} = 10 - 6 = 4$$, so $$k = 16$$.
+
+Check: $$(x - 6)^2 = 16$$ gives $$x - 6 = \pm 4$$, so $$x = 10$$ or $$x = 2$$.
+
+The choice is the only one. Any $$s$$ and $$k$$ that work must have $$k > 0$$, since there are two
+solutions, and then the argument above forces $$s = 6$$ and $$k = 16$$.
+
+:::
+
+::::
+
+::::exercise{#ex-quadratics-average}
+
+Let $$k > 0$$. Show that the average of the two solutions of $$(x - s)^2 = k$$ is $$s$$.
+
+:::solution
+
+By :ref{#shifted-square}, the two solutions are $$s + \sqrt{k}$$ and $$s - \sqrt{k}$$. Their sum is
+
+```math
+(s + \sqrt{k}) + (s - \sqrt{k}) = 2s
+```
+
+since the square roots cancel. So their average is $$\frac{2s}{2} = s$$. On the number line, the two
+solutions sit the same distance $$\sqrt{k}$$ on either side of $$s$$.
+
+:::
+
+::::
+
+:::::

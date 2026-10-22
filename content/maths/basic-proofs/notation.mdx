@@ -164,3 +164,156 @@ it is used. Once introduced, it keeps the same meaning until the end of the stat
 ::see-also{src="https://en.wikipedia.org/wiki/Free_variables_and_bound_variables#In_proofs"}
 
 :::
+
+## Exercises
+
+:::::accordion[Exercises on notation, with solutions]
+
+::::exercise{#ex-notation-subscripts}
+
+Let $$x_1 = 3$$, $$x_2 = -1$$ and $$x_3 = 4$$.
+
+1. Work out $$x_2 + x_3$$ and $$x_1 x_3$$.
+2. Is $$x_2$$ the same as $$2x$$?
+3. Could a list $$y_1, y_2, y_3$$ have $$y_1 = y_3$$?
+
+:::solution
+
+1. $$x_2 + x_3 = -1 + 4 = 3$$ and $$x_1 x_3 = 3 \cdot 4 = 12$$.
+2. No. The subscript only says which number in the list is meant, so $$x_2$$ is the second one, here
+   $$-1$$. There is no number called $$x$$ to double.
+3. Yes. Different subscripts are different names, and nothing stops two names belonging to the same
+   number (:ref{#sequence}).
+
+:::
+
+::::
+
+::::exercise{#ex-notation-find-rule}
+
+Find a rule $$x_i$$ for each sequence, and say which values $$i$$ runs through.
+
+1. $$5, 8, 11, 14, 17$$
+2. $$1, -1, 1, -1, 1, -1$$
+3. $$2, 6, 12, 20$$
+
+:::solution
+
+1. Each term is $$3$$ more than the one before, starting from $$5$$, so $$x_i = 3i + 2$$ for
+   $$i = 1, \dots, 5$$. Check: $$x_1 = 5$$ and $$x_5 = 17$$.
+2. $$x_i = (-1)^{i + 1}$$ for $$i = 1, \dots, 6$$: an odd power of $$-1$$ is $$-1$$ and an even one
+   is $$1$$.
+3. $$2 = 1 \cdot 2$$, $$6 = 2 \cdot 3$$, $$12 = 3 \cdot 4$$ and $$20 = 4 \cdot 5$$, so
+   $$x_i = i(i + 1)$$ for $$i = 1, \dots, 4$$.
+
+Other rules can give the same terms, for example $$x_j = 3j + 5$$ for $$j = 0, \dots, 4$$ in the
+first part. What matters is that the rule produces the right list (:ref{#sequence}).
+
+:::
+
+::::
+
+::::exercise{#ex-notation-same-sum}
+
+Show that $$\sum_{i=1}^{5} (i + 2)$$ and $$\sum_{j=3}^{7} j$$ are the same sum, and work it out.
+
+:::solution
+
+Writing each out with :ref{#sum-notation}:
+
+```math
+\sum_{i=1}^{5} (i + 2) = 3 + 4 + 5 + 6 + 7 \qquad\text{and}\qquad \sum_{j=3}^{7} j = 3 + 4 + 5 + 6 + 7.
+```
+
+They add the same terms, so they are equal, and the total is $$25$$. Shifting the index by $$2$$ and
+adding $$2$$ inside the sum cancel out.
+
+:::
+
+::::
+
+::::exercise{#ex-notation-brackets}
+
+Someone works out $$\sum_{i=1}^{4} (i + 1)$$ as $$\sum_{i=1}^{4} i + 1 = 10 + 1 = 11$$. What is the
+mistake, and what is the right answer?
+
+:::solution
+
+The brackets say that $$1$$ is added to **every** term, not once at the end. By
+:ref{#notation-sum-rules},
+
+```math
+\sum_{i=1}^{4} (i + 1) = \sum_{i=1}^{4} i + \sum_{i=1}^{4} 1 = 10 + 4 = 14,
+```
+
+which agrees with writing it out: $$2 + 3 + 4 + 5 = 14$$. The sum $$\sum_{i=1}^{4} 1$$ adds $$1$$
+four times.
+
+:::
+
+::::
+
+::::exercise{#ex-notation-negative-total}
+
+Use the rules for sums and $$\sum_{i=1}^{n} i = \frac{n(n + 1)}{2}$$ to work out
+$$\sum_{i=1}^{12} (5 - 2i)$$.
+
+:::solution
+
+By :ref{#notation-sum-rules},
+
+```math
+\sum_{i=1}^{12} (5 - 2i) = \sum_{i=1}^{12} 5 - 2\sum_{i=1}^{12} i = 12 \cdot 5 - 2 \cdot \frac{12 \cdot 13}{2} = 60 - 156 = -96.
+```
+
+The first term is $$3$$ and the last is $$-19$$, so a negative total is no surprise.
+
+:::
+
+::::
+
+::::exercise{#ex-notation-reused-letter}
+
+What is wrong with this argument? "Let $$n$$ and $$m$$ be even. Then $$n = 2k$$ and $$m = 2k$$, so
+$$n = m$$."
+
+:::solution
+
+The letter $$k$$ is used twice. Once introduced by $$n = 2k$$, it keeps its meaning to the end of
+the argument (:ref{#notation-introduce}), so writing $$m = 2k$$ quietly assumes that $$m$$ is the
+same as $$n$$. The conclusion is false: $$2$$ and $$4$$ are both even and not equal.
+
+The fix is a new letter: $$n = 2k$$ and $$m = 2l$$ for some integers $$k$$ and $$l$$.
+
+:::
+
+::::
+
+::::exercise{#ex-notation-telescoping}
+
+1. Write out $$\sum_{i=1}^{n} \bigl((i + 1)^2 - i^2\bigr)$$ and show it equals $$(n + 1)^2 - 1$$.
+2. Expand $$(i + 1)^2 - i^2$$, and use the rules for sums to deduce
+   $$\sum_{i=1}^{n} i = \frac{n(n + 1)}{2}$$.
+
+:::solution
+
+1. Written out, the sum is
+
+   ```math
+   (2^2 - 1^2) + (3^2 - 2^2) + \cdots + \bigl((n + 1)^2 - n^2\bigr).
+   ```
+
+   Each square after $$1^2$$ appears once added and once taken away, so everything cancels except
+   $$(n + 1)^2 - 1^2 = n^2 + 2n$$.
+
+2. $$(i + 1)^2 - i^2 = 2i + 1$$, so by :ref{#notation-sum-rules} the sum is
+   $$2\sum_{i=1}^{n} i + \sum_{i=1}^{n} 1 = 2\sum_{i=1}^{n} i + n$$. Setting this equal to
+   $$n^2 + 2n$$ gives $$2\sum_{i=1}^{n} i = n^2 + n$$, so $$\sum_{i=1}^{n} i = \frac{n(n + 1)}{2}$$.
+
+This is a second proof of the formula proved by induction on the [Induction](./induction.mdx) page.
+
+:::
+
+::::
+
+:::::

@@ -252,3 +252,155 @@ This makes sense on the number line: $$|x - 1| = |x - (-5)|$$ says $$x$$ is the 
 $$1$$ as from $$-5$$, so it is halfway between them, at $$\frac{1 + (-5)}{2} = -2$$.
 
 :::
+
+## Exercises
+
+:::::accordion[Exercises on absolute value, with solutions]
+
+::::exercise{#ex-absolute-value-evaluate}
+
+Write without absolute value signs: $$|-8| - |8|$$, $$\left|3 - \sqrt{10}\right|$$, and $$|-2x|$$
+when $$x = -5$$.
+
+:::solution
+
+- $$|-8| - |8| = 8 - 8 = 0$$.
+- Since $$10 > 9$$, $$\sqrt{10} > 3$$ (:ref{#root-order}), so $$3 - \sqrt{10}$$ is negative. Its
+  absolute value is its opposite, $$\sqrt{10} - 3$$.
+- When $$x = -5$$, $$-2x = 10$$, so $$|-2x| = 10$$. You can also use :ref{#abs-product}:
+  $$|-2x| = 2|x| = 2 \cdot 5 = 10$$.
+
+:::
+
+::::
+
+::::exercise{#ex-absolute-value-distances}
+
+Find the distance between $$-4.5$$ and $$1.5$$, and between $$-\sqrt{2}$$ and $$\sqrt{2}$$. Then
+find the numbers at distance $$2.5$$ from $$-1$$.
+
+:::solution
+
+By :ref{#distance}:
+
+- $$|-4.5 - 1.5| = |-6| = 6$$.
+- $$\left|-\sqrt{2} - \sqrt{2}\right| = \left|-2\sqrt{2}\right| = 2\sqrt{2}$$.
+
+The numbers at distance $$2.5$$ from $$-1$$ solve $$|x + 1| = 2.5$$. By :ref{#abs-equation},
+$$x + 1 = 2.5$$ or $$x + 1 = -2.5$$, so $$x = 1.5$$ or $$x = -3.5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-absolute-value-true-false}
+
+Which of these are true for every real number $$x$$? Give a counterexample for each one that isn't.
+
+1. $$|x| = x$$
+2. $$|-x| = x$$
+3. $$\left|x^2\right| = x^2$$
+4. $$|x|^3 = \left|x^3\right|$$
+
+:::solution
+
+1. False: $$|-1| = 1$$, not $$-1$$.
+2. False: for $$x = -1$$, $$|-x| = |1| = 1$$, not $$-1$$. In fact $$|-x| = |x|$$
+   (:ref{#abs-basics}).
+3. True: $$x^2$$ is never negative (:ref{#squares-positive}), so it is its own absolute value.
+4. True: by :ref{#abs-product} used twice, $$\left|x^3\right| = |x|\,|x|\,|x| = |x|^3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-absolute-value-equations}
+
+Solve $$|5 - 2x| = 7$$, $$|4x + 1| = 0$$ and $$|x - 2| + 3 = 1$$.
+
+:::solution
+
+By :ref{#abs-equation}:
+
+- $$5 - 2x = 7$$ gives $$x = -1$$, and $$5 - 2x = -7$$ gives $$x = 6$$.
+- $$4x + 1 = 0$$, so $$x = -\frac{1}{4}$$.
+- The equation says $$|x - 2| = -2$$. An absolute value is never negative, so there is no solution.
+
+:::
+
+::::
+
+::::exercise{#ex-absolute-value-both-sides}
+
+Solve $$|x + 2| = 3x$$.
+
+:::solution
+
+The two cases are $$x + 2 = 3x$$, giving $$x = 1$$, and $$x + 2 = -3x$$, giving
+$$x = -\frac{1}{2}$$. The right side $$3x$$ involves $$x$$, so each answer must make it not
+negative.
+
+- $$x = 1$$: the right side is $$3$$, and $$|1 + 2| = 3$$. A solution.
+- $$x = -\frac{1}{2}$$: the right side is $$-\frac{3}{2}$$, which is negative, so this is not a
+  solution. Indeed $$\left|\frac{3}{2}\right| = \frac{3}{2}$$, not $$-\frac{3}{2}$$.
+
+So the only solution is $$x = 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-absolute-value-bounds}
+
+Suppose $$|a| \le 2$$ and $$|b| \le 5$$. Show that $$|a - b| \le 7$$ and $$|3a + b| \le 11$$.
+
+:::solution
+
+By :ref{#triangle-inequality} applied to $$a$$ and $$-b$$, and $$|-b| = |b|$$:
+
+```math
+|a - b| \le |a| + |-b| = |a| + |b| \le 2 + 5 = 7
+```
+
+In the same way, using :ref{#abs-product} for $$|3a| = 3|a|$$:
+
+```math
+|3a + b| \le |3a| + |b| = 3|a| + |b| \le 6 + 5 = 11
+```
+
+:::
+
+::::
+
+::::exercise{#ex-absolute-value-zero-distance}
+
+Prove that the distance between $$a$$ and $$b$$ is $$0$$ exactly when $$a = b$$.
+
+:::solution
+
+The distance is $$|a - b|$$ (:ref{#distance}). By part 1 of :ref{#abs-basics}, $$|a - b| = 0$$
+exactly when $$a - b = 0$$, that is, when $$a = b$$.
+
+:::
+
+::::
+
+::::exercise{#ex-absolute-value-two-steps}
+
+Numbers $$a$$, $$b$$ and $$c$$ have $$|a - b| = 3$$ and $$|b - c| = 5$$. What can $$|a - c|$$ be?
+
+:::solution
+
+Write $$a - c = (a - b) + (b - c)$$. By :ref{#abs-equation}, $$a - b$$ is $$3$$ or $$-3$$, and
+$$b - c$$ is $$5$$ or $$-5$$. So $$a - c$$ is one of $$8$$, $$-2$$, $$2$$ and $$-8$$, and
+$$|a - c|$$ is $$8$$ or $$2$$.
+
+Both happen. With $$a = 0$$, $$b = 3$$ and $$c = 8$$, the distance is $$8$$: the two steps go the
+same way, and :ref{#distance-triangle} holds with equality. With $$a = 0$$, $$b = 3$$ and
+$$c = -2$$, the steps go opposite ways and the distance is $$2$$.
+
+:::
+
+::::
+
+:::::

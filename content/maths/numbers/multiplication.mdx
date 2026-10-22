@@ -354,3 +354,139 @@ hours
 ```math
 3^4 \cdot 500 = 81 \cdot 500 = 40{,}500 \text{ bacteria}
 ```
+
+## Exercises
+
+:::::accordion[Exercises on multiplication, with solutions]
+
+::::exercise{#ex-multiplication-mental}
+
+Use distributivity to work these out in your head:
+
+1. $$7 \cdot 98$$
+2. $$12 \cdot 15 + 12 \cdot 85$$
+
+:::solution
+
+1. Write $$98$$ as $$100 - 2$$. Then $$7 \cdot 98 = 7 \cdot 100 - 7 \cdot 2 = 700 - 14 = 686$$.
+2. Read distributivity backwards to take out the common factor $$12$$:
+   $$12 \cdot 15 + 12 \cdot 85 = 12(15 + 85) = 12 \cdot 100 = 1200$$.
+
+:::
+
+::::
+
+::::exercise{#ex-multiplication-find-mistake}
+
+Someone writes $$-2(x - 5) = -2x - 10$$. Find the mistake and correct it.
+
+:::solution
+
+The second term is $$(-2)(-5)$$, which is $$+10$$ by :ref{#two-minus}, not $$-10$$. So
+
+```math
+-2(x - 5) = -2x + 10
+```
+
+A check with a value catches the mistake: for $$x = 0$$ the left side is $$-2 \cdot (-5) = 10$$, but
+$$-2x - 10$$ gives $$-10$$.
+
+:::
+
+::::
+
+::::exercise{#ex-multiplication-distribute-difference}
+
+Prove that $$a(b - c) = ab - ac$$ for all integers $$a$$, $$b$$ and $$c$$.
+
+:::solution
+
+By :ref{#subtraction}, $$b - c$$ means $$b + (-c)$$. Distributivity (:ref{#multiplication-rules})
+then gives
+
+```math
+a(b - c) = a(b + (-c)) = ab + a(-c)
+```
+
+By :ref{#minus-in-product}, $$a(-c) = -(ac)$$, so this is $$ab + (-(ac)) = ab - ac$$.
+
+:::
+
+::::
+
+::::exercise{#ex-multiplication-minus-power}
+
+Work out $$(-3)^4$$ and $$-3^4$$. Why are they different?
+
+:::solution
+
+$$(-3)^4$$ is four copies of $$-3$$ multiplied together. There are four minus signs, which cancel in
+pairs, so $$(-3)^4 = 3^4 = 81$$.
+
+$$-3^4$$ means the opposite of $$3^4$$: the power is worked out first, and the minus sign applies to
+the result. So $$-3^4 = -81$$.
+
+The brackets decide whether the minus sign is part of the base.
+
+:::
+
+::::
+
+::::exercise{#ex-multiplication-inequality-practice}
+
+Start from $$-3 < 2$$.
+
+1. Multiply both sides by $$5$$, and then by $$-4$$. Which way round is each inequality?
+2. If $$x < 6$$, what can you say about $$-2x$$?
+
+:::solution
+
+1. Multiplying by the positive number $$5$$ keeps the order (:ref{#order-multiply}): $$-15 < 10$$.
+   Multiplying by the negative number $$-4$$ reverses it: $$(-4)(-3) = 12$$ and
+   $$(-4) \cdot 2 = -8$$, and $$12 > -8$$.
+2. Multiplying $$x < 6$$ by $$-2$$ reverses the inequality, so $$-2x > -12$$.
+
+:::
+
+::::
+
+::::exercise{#ex-multiplication-power-of-two}
+
+Write $$8^2 \cdot 4^3$$ as a single power of $$2$$, and work it out.
+
+:::solution
+
+Write each base as a power of $$2$$, then use :ref{#power-rules}. Since $$8 = 2^3$$ and $$4 = 2^2$$,
+
+```math
+8^2 \cdot 4^3 = (2^3)^2 \cdot (2^2)^3 = 2^6 \cdot 2^6 = 2^{12}
+```
+
+using rule 2 twice and then rule 1. So $$8^2 \cdot 4^3 = 2^{12} = 4096$$. As a check,
+$$64 \cdot 64 = 4096$$.
+
+:::
+
+::::
+
+::::exercise{#ex-multiplication-squares-not-negative}
+
+Prove that $$a^2$$ is never negative for any integer $$a$$.
+
+:::solution
+
+By :ref{#integers}, $$a$$ is positive, zero or negative, so check each case:
+
+- If $$a$$ is positive, then $$a^2 = aa$$ is a product of two positive integers, so it is positive
+  by rule 5 of :ref{#multiplication-rules}.
+- If $$a = 0$$, then $$a^2 = 0 \cdot 0 = 0$$ (:ref{#zero-times}).
+- If $$a$$ is negative, write $$a = -p$$ with $$p$$ positive. By :ref{#two-minus},
+  $$a^2 = (-p)(-p) = pp$$, which is positive.
+
+In every case $$a^2$$ is positive or zero, so it is never negative.
+
+:::
+
+::::
+
+:::::

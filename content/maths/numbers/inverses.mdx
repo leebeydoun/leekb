@@ -498,3 +498,187 @@ $$\frac{5}{4}$$, the inverse of $$\frac{4}{5}$$, gives $$x = \frac{15}{4}$$. So
 $$\frac{15}{4} = 3.75$$ litres should be replaced.
 
 :::
+
+## Exercises
+
+:::::accordion[Exercises on inverses and division, with solutions]
+
+::::exercise{#ex-inverses-negative-powers}
+
+Work out $$3^{-2}$$, $$\left(\frac{4}{5}\right)^{-1}$$, $$\left(-\frac{1}{2}\right)^{-3}$$ and
+$$2^{-3} \cdot 2^5$$.
+
+:::solution
+
+Each uses :ref{#negative-powers}, $$a^{-n} = \left(a^{-1}\right)^n$$, and the inverse of a fraction
+is its flip (:ref{#inverse-exists}):
+
+- $$3^{-2} = \left(\frac{1}{3}\right)^2 = \frac{1}{9}$$
+- $$\left(\frac{4}{5}\right)^{-1} = \frac{5}{4}$$
+- $$\left(-\frac{1}{2}\right)^{-3} = (-2)^3 = -8$$
+- $$2^{-3} \cdot 2^5 = 2^{-3 + 5} = 2^2 = 4$$, since each $$2^{-1}$$ cancels one $$2$$. Check:
+  $$\frac{1}{8} \cdot 32 = 4$$.
+
+:::
+
+::::
+
+::::exercise{#ex-inverses-divide}
+
+Work out $$\dfrac{3/4}{9/10}$$ and $$\dfrac{-2}{5/3}$$.
+
+:::solution
+
+By :ref{#quotient}, dividing by a number means multiplying by its inverse, and the inverse of a
+fraction is its flip:
+
+```math
+\frac{3/4}{9/10} = \frac{3}{4} \cdot \frac{10}{9} = \frac{30}{36} = \frac{5}{6},
+\qquad
+\frac{-2}{5/3} = -2 \cdot \frac{3}{5} = -\frac{6}{5}
+```
+
+In the first, $$\frac{30}{36}$$ becomes $$\frac{5}{6}$$ by cancelling the common factor $$6$$.
+
+:::
+
+::::
+
+::::exercise{#ex-inverses-solve}
+
+Solve these equations, and check each answer:
+
+1. $$\frac{x}{4} - \frac{x}{6} = 2$$
+2. $$\frac{3}{x + 2} = \frac{5}{x}$$
+
+:::solution
+
+1. Multiply both sides by the common denominator $$12$$: $$3x - 2x = 24$$, so $$x = 24$$. Check:
+   $$\frac{24}{4} - \frac{24}{6} = 6 - 4 = 2$$.
+2. The denominators must not be $$0$$, so $$x \neq -2$$ and $$x \neq 0$$. Cross-multiplying
+   (:ref{#cross-multiplying-rational}) gives $$3x = 5(x + 2) = 5x + 10$$, so $$-10 = 2x$$ and
+   $$x = -5$$. This is allowed, and the check works: $$\frac{3}{-3} = -1$$ and
+   $$\frac{5}{-5} = -1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-inverses-lost-solution}
+
+To solve $$(x - 1)(x + 4) = 2(x - 1)$$, a student cancels $$x - 1$$ from both sides and gets
+$$x + 4 = 2$$, so $$x = -2$$. Find the solution they lost, say which step was not allowed, and solve
+the equation correctly.
+
+:::solution
+
+**The lost solution.** Try $$x = 1$$: the left side is $$0 \cdot 5 = 0$$ and the right side is
+$$2 \cdot 0 = 0$$. So $$x = 1$$ is a solution, but the student's method never finds it.
+
+**The step.** :ref{#cancel-product} cancels a factor $$a$$ from $$ab = ac$$ only when $$a \neq 0$$.
+Here $$a = x - 1$$, which is $$0$$ exactly when $$x = 1$$. So the cancelling quietly assumed
+$$x \neq 1$$, and threw that case away.
+
+**Correctly.** Move everything to one side and take out the common factor:
+
+```math
+(x - 1)(x + 4) - 2(x - 1) = (x - 1)(x + 4 - 2) = (x - 1)(x + 2) = 0
+```
+
+By :ref{#zero-product}, $$x - 1 = 0$$ or $$x + 2 = 0$$. So $$x = 1$$ or $$x = -2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-inverses-no-solution}
+
+Solve $$\dfrac{x^2 - 1}{x - 1} = 2$$.
+
+:::solution
+
+The left side only makes sense when $$x \neq 1$$, so any solution must satisfy this hidden
+condition. Cross-multiplying (:ref{#cross-multiplying-rational}) with $$2 = \frac{2}{1}$$ gives
+
+```math
+x^2 - 1 = 2(x - 1) = 2x - 2, \qquad \text{so} \qquad x^2 - 2x + 1 = 0
+```
+
+The left side is $$(x - 1)^2 = (x - 1)(x - 1)$$, so by :ref{#zero-product}, $$x - 1 = 0$$ and
+$$x = 1$$. But $$x = 1$$ is ruled out, since it makes the denominator $$0$$. So the equation has no
+solution. Forgetting the hidden condition would have given the wrong answer $$x = 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-inverses-product-inverse}
+
+Let $$a$$ and $$b$$ be non-zero rational numbers. Prove that $$(ab)^{-1} = a^{-1} b^{-1}$$.
+
+:::solution
+
+First, $$ab \neq 0$$ by :ref{#zero-product}, so $$ab$$ has an inverse. By :ref{#inverse-unique}, it
+is enough to show that $$ab$$ times $$a^{-1} b^{-1}$$ is $$1$$. Since the order and grouping of a
+product don't matter,
+
+```math
+(ab)(a^{-1} b^{-1}) = (a a^{-1})(b b^{-1}) = 1 \cdot 1 = 1
+```
+
+So $$a^{-1} b^{-1}$$ is the inverse of $$ab$$. For example, $$(2 \cdot 3)^{-1} = \frac{1}{6}$$ and
+$$\frac{1}{2} \cdot \frac{1}{3} = \frac{1}{6}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-inverses-geometric-sums}
+
+Use :ref{#sum-of-powers} to work out these sums without adding term by term:
+
+1. $$1 + 3 + 9 + 27 + 81$$
+2. $$1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \frac{1}{32} + \frac{1}{64}$$
+
+:::solution
+
+1. The terms are $$1, 3, 3^2, 3^3, 3^4$$, so take $$x = 3$$ and $$n = 5$$:
+   $$\frac{3^5 - 1}{3 - 1} = \frac{243 - 1}{2} = 121$$.
+2. The terms are the powers of $$\frac{1}{2}$$ from $$\left(\frac{1}{2}\right)^0$$ to
+   $$\left(\frac{1}{2}\right)^6$$, so take $$x = \frac{1}{2}$$ and $$n = 7$$. This is allowed, since
+   $$x \neq 1$$:
+
+```math
+\frac{\left(\frac{1}{2}\right)^7 - 1}{\frac{1}{2} - 1} = \frac{\frac{1}{128} - 1}{-\frac{1}{2}}
+= \frac{-\frac{127}{128}}{-\frac{1}{2}} = \frac{127}{128} \cdot 2 = \frac{127}{64}
+```
+
+:::
+
+::::
+
+::::exercise{#ex-inverses-average-speed}
+
+A cyclist rides $$60$$ km out at $$40$$ km per hour and the same $$60$$ km back at $$60$$ km per
+hour. Their friend says the average speed is $$50$$ km per hour, halfway between. Find the true
+average speed, the total distance divided by the total time, and explain why it is lower.
+
+:::solution
+
+Time is distance divided by speed, $$t = \frac{d}{s}$$. The way out takes
+$$\frac{60}{40} = \frac{3}{2}$$ hours and the way back takes $$\frac{60}{60} = 1$$ hour, so the
+total time is $$\frac{5}{2}$$ hours for $$120$$ km. The average speed is
+
+```math
+\frac{120}{5/2} = 120 \cdot \frac{2}{5} = 48 \text{ km per hour}
+```
+
+It is lower than $$50$$ because the cyclist spends longer at the slower speed: $$\frac{3}{2}$$ hours
+at $$40$$ against $$1$$ hour at $$60$$. Averaging the two speeds would treat both parts as taking
+the same time.
+
+:::
+
+::::
+
+:::::

@@ -156,3 +156,152 @@ The same method shows that $$\sqrt{5}$$, $$\sqrt{6}$$, $$\sqrt{7}$$ and many mor
 (:ref{#ex-sqrt-six} does $$\sqrt{6}$$). In fact the square root of a positive integer is rational
 only when the integer is a perfect square like $$4$$ or $$9$$, though proving that in general needs
 facts about prime numbers that come later.
+
+## Exercises
+
+:::::accordion[Exercises on irrational numbers, with solutions]
+
+::::exercise{#ex-irrational-numbers-hunt-three}
+
+Hunt for a square root of $$3$$ as the table did for $$2$$. Find two decimals with two decimal
+places, $$0.01$$ apart, such that the square of the first is too small and the square of the second
+is too big.
+
+:::solution
+
+Since $$1^2 = 1$$ and $$2^2 = 4$$, a positive square root of $$3$$ lies between $$1$$ and $$2$$. One
+decimal place at a time:
+
+| Try      | Square     |           |
+| -------- | ---------- | --------- |
+| $$1.7$$  | $$2.89$$   | too small |
+| $$1.8$$  | $$3.24$$   | too big   |
+| $$1.73$$ | $$2.9929$$ | too small |
+| $$1.74$$ | $$3.0276$$ | too big   |
+
+So the answer is $$1.73$$ and $$1.74$$. By :ref{#sqrt-three}, no fraction squares to exactly $$3$$,
+so this search, like the one for $$2$$, never ends.
+
+:::
+
+::::
+
+::::exercise{#ex-irrational-numbers-four}
+
+The number $$4$$ has the rational square root $$2$$, so the proof of :ref{#sqrt-two} must fail if
+you copy it with $$4$$ in place of $$2$$. Try it: suppose $$\frac{m}{n}$$ is in lowest form with
+$$m^2 = 4n^2$$, and find the step that breaks.
+
+:::solution
+
+Copying the proof, the first step would be "$$4$$ divides $$m^2$$, so $$4$$ divides $$m$$". That
+step is false. For example $$m = 2$$: $$4$$ divides $$m^2 = 4$$, but not $$m = 2$$.
+
+In fact $$m = 2$$ and $$n = 1$$ give a fraction in lowest form with $$m^2 = 4 = 4n^2$$, so there is
+nothing to contradict. The proofs for $$2$$ and $$3$$ work because those numbers do have the
+property: if they divide a square, they divide the number being squared
+(:ref{#squares-parity-converse} and :ref{#squares-three}).
+
+:::
+
+::::
+
+::::exercise{#ex-irrational-numbers-sqrt-five}
+
+Take as given that if $$5$$ divides $$m^2$$, then $$5$$ divides $$m$$, for any integer $$m$$. (This
+follows from facts about prime numbers that come later.) Prove that no rational number has square
+$$5$$.
+
+:::solution
+
+Argue by contradiction (:ref{#basic-proofs/contradiction}), following :ref{#sqrt-three}.
+
+**A fraction in lowest form.** Suppose some rational number squares to $$5$$. Its opposite squares
+to $$5$$ too, by :ref{#two-minus}, and $$0^2 = 0$$, so there is a positive one. Write it in lowest
+form as $$\frac{m}{n}$$ with $$m$$ and $$n$$ positive integers (:ref{#lowest-form-exists}). Then
+$$5$$ does not divide both $$m$$ and $$n$$.
+
+**$$5$$ divides $$m$$.** Squaring (:ref{#fraction-powers}) and cross-multiplying
+(:ref{#cross-multiplying}) gives $$m^2 = 5n^2$$. So $$5 \mid m^2$$, and by the given fact,
+$$5 \mid m$$.
+
+**$$5$$ divides $$n$$.** Write $$m = 5k$$. Then $$25k^2 = 5n^2$$, that is
+$$5 \cdot 5k^2 = 5 \cdot n^2$$, and cancelling the $$5$$ (:ref{#cancel-product}) gives
+$$n^2 = 5k^2$$. So $$5 \mid n^2$$, and $$5 \mid n$$.
+
+**The contradiction.** Now $$5$$ divides both $$m$$ and $$n$$, against the lowest form. So no
+rational number has square $$5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-irrational-numbers-reciprocal}
+
+Let $$a$$ be a number with $$a^2 = 2$$. Show that $$\frac{1}{a}$$ is irrational.
+
+:::solution
+
+Argue by contradiction. First, $$a \neq 0$$, since $$0^2 = 0$$, so $$\frac{1}{a}$$ makes sense.
+Suppose $$\frac{1}{a} = r$$ for some rational number $$r$$. Then $$ar = 1$$, so $$r \neq 0$$.
+
+Every non-zero rational number has a rational inverse (:ref{#inverse-exists}), and $$ar = 1$$ says
+that $$a$$ is an inverse of $$r$$. Inverses are unique (:ref{#inverse-unique}), so $$a = r^{-1}$$,
+which is rational. But :ref{#sqrt-two} says no rational number squares to $$2$$. So $$\frac{1}{a}$$
+is irrational.
+
+:::
+
+::::
+
+::::exercise{#ex-irrational-numbers-closed}
+
+True or false? Give a reason or a counterexample (:ref{#basic-proofs/counterexample}).
+
+1. The product of two irrational numbers is always irrational.
+2. The sum of two irrational numbers is always irrational.
+
+:::solution
+
+Let $$a$$ be a number with $$a^2 = 2$$, which is irrational if it exists (:ref{#sqrt-two}).
+
+1. False. The product $$a \cdot a = 2$$ is rational.
+2. False. The number $$-a$$ is irrational too: if $$-a$$ were rational, its opposite $$a$$ would be
+   rational. But $$a + (-a) = 0$$, which is rational.
+
+So the irrational numbers are not closed under adding or multiplying, unlike the rational numbers.
+
+:::
+
+::::
+
+::::exercise{#ex-irrational-numbers-cube-root}
+
+Prove that no rational number has cube $$2$$.
+
+:::solution
+
+Argue by contradiction, as in :ref{#sqrt-two}, with cubes in place of squares.
+
+**A fraction in lowest form.** Suppose $$x^3 = 2$$ for a rational number $$x$$. Then $$x$$ is
+positive: $$0^3 = 0$$, and a negative number cubed is negative, since $$x \cdot x$$ is positive
+(:ref{#two-minus}) and a positive times a negative is negative (:ref{#minus-in-product}). Write
+$$x = \frac{m}{n}$$ in lowest form (:ref{#lowest-form-exists}), so $$m$$ and $$n$$ are not both even
+(:ref{#not-both-even}). Cubing and cross-multiplying gives $$m^3 = 2n^3$$.
+
+**$$m$$ is even.** An odd number times an odd number is odd (:ref{#parity-products}), so if $$m$$
+were odd, $$m^2$$ and then $$m^3 = m^2 \cdot m$$ would be odd. But $$m^3 = 2n^3$$ is even. Every
+integer is even or odd (:ref{#even-or-odd}), so $$m$$ is even.
+
+**$$n$$ is even.** Write $$m = 2k$$. Then $$8k^3 = 2n^3$$, and cancelling $$2$$
+(:ref{#cancel-product}) gives $$n^3 = 4k^3 = 2 \cdot 2k^3$$, which is even. By the same argument,
+$$n$$ is even.
+
+**The contradiction.** Both $$m$$ and $$n$$ are even, against the lowest form. So no rational number
+has cube $$2$$.
+
+:::
+
+::::
+
+:::::

@@ -167,3 +167,158 @@ solutions, which are not fractions. [Completing the square](./completing-the-squ
 time.
 
 Whatever the method, an answer can always be checked by putting it back into the original equation.
+
+## Exercises
+
+:::::accordion[Exercises on solving by factoring, with solutions]
+
+::::exercise{#ex-factoring-sum-product}
+
+Factor each quadratic by finding two numbers with the right sum and product, and solve the equation
+it gives when set equal to $$0$$.
+
+1. $$x^2 + 2x - 15$$
+2. $$x^2 - 11x + 24$$
+3. $$x^2 + 10x + 21$$
+
+:::solution
+
+Use :ref{#factoring-method}: look for $$m$$ and $$n$$ with $$m + n = b$$ and $$mn = c$$.
+
+1. The product $$-15$$ is negative, so the numbers have opposite signs, and they add to $$2$$. The
+   pair $$5, -3$$ works. So $$x^2 + 2x - 15 = (x + 5)(x - 3)$$, and the solutions are $$x = -5$$ and
+   $$x = 3$$.
+2. The product $$24$$ is positive and the sum $$-11$$ is negative, so both numbers are negative. The
+   pair $$-3, -8$$ works. So $$(x - 3)(x - 8) = 0$$, and $$x = 3$$ or $$x = 8$$.
+3. Both numbers are positive, with product $$21$$ and sum $$10$$: the pair $$3, 7$$. So
+   $$(x + 3)(x + 7) = 0$$, and $$x = -3$$ or $$x = -7$$.
+
+:::
+
+::::
+
+::::exercise{#ex-factoring-difference}
+
+Solve each equation, or explain why it has no solution.
+
+1. $$x^2 - 64 = 0$$
+2. $$9x^2 - 25 = 0$$
+3. $$4x^2 + 1 = 0$$
+
+:::solution
+
+1. This is a difference of two squares (:ref{#numbers/square-formulas}): $$(x - 8)(x + 8) = 0$$, so
+   $$x = 8$$ or $$x = -8$$ (:ref{#solve-by-factors}).
+2. Here $$9x^2 = (3x)^2$$ and $$25 = 5^2$$, so $$9x^2 - 25 = (3x - 5)(3x + 5)$$. So
+   $$x = \frac{5}{3}$$ or $$x = -\frac{5}{3}$$.
+3. This is a sum, not a difference. Since $$x^2 \ge 0$$ (:ref{#real-numbers/squares-positive}),
+   $$4x^2 + 1 \ge 1$$ for every $$x$$, so it is never $$0$$ and there is no solution.
+
+:::
+
+::::
+
+::::exercise{#ex-factoring-cancel}
+
+To solve $$x(x - 2) = 3(x - 2)$$, someone divides both sides by $$x - 2$$ and gets $$x = 3$$. Which
+solution have they lost? Solve the equation by factoring instead.
+
+:::solution
+
+Dividing by $$x - 2$$ is a safe step only when $$x - 2$$ is not $$0$$
+(:ref{#linear-equations/safe-steps}). Whether it is $$0$$ is part of what is unknown, so the step
+loses the case $$x - 2 = 0$$, that is, $$x = 2$$. Indeed $$2 \cdot 0 = 3 \cdot 0$$, so $$x = 2$$ is
+a solution.
+
+Instead, subtract $$3(x - 2)$$ from both sides and take out the common factor $$x - 2$$:
+
+```math
+x(x - 2) - 3(x - 2) = (x - 2)(x - 3) = 0
+```
+
+By :ref{#solve-by-factors}, $$x = 2$$ or $$x = 3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-factoring-leading}
+
+Solve $$2x^2 - 5x - 3 = 0$$ and $$6x^2 + x - 2 = 0$$ by factoring.
+
+:::solution
+
+**First equation.** The $$2x^2$$ must come from $$2x \cdot x$$, so try $$(2x + q)(x + t)$$ with
+$$qt = -3$$. The guess $$(2x + 1)(x - 3)$$ expands to $$2x^2 - 6x + x - 3 = 2x^2 - 5x - 3$$, which
+is right. So $$x = -\frac{1}{2}$$ or $$x = 3$$ (:ref{#solve-by-factors}).
+
+**Second equation.** The $$6x^2$$ could be $$6x \cdot x$$ or $$3x \cdot 2x$$, and the constant
+$$-2$$ is $$2 \cdot (-1)$$ or $$(-2) \cdot 1$$. The guess $$(3x + 2)(2x - 1)$$ expands to
+$$6x^2 - 3x + 4x - 2 = 6x^2 + x - 2$$, which is right. So $$x = -\frac{2}{3}$$ or
+$$x = \frac{1}{2}$$.
+
+**Check** $$x = \frac{1}{2}$$ in the second: $$6 \cdot \frac{1}{4} = \frac{3}{2}$$, and
+$$\frac{3}{2} + \frac{1}{2} - 2 = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-factoring-build}
+
+Find an equation $$x^2 + bx + c = 0$$ whose solutions are $$4$$ and $$-7$$.
+
+:::solution
+
+By :ref{#solve-by-factors}, $$(x - 4)(x + 7) = 0$$ has exactly the solutions $$4$$ and $$-7$$.
+Multiplying out,
+
+```math
+(x - 4)(x + 7) = x^2 + 7x - 4x - 28 = x^2 + 3x - 28
+```
+
+so $$x^2 + 3x - 28 = 0$$ works. This matches :ref{#factoring-method}: the numbers $$-4$$ and $$7$$
+have sum $$b = 3$$ and product $$c = -28$$.
+
+:::
+
+::::
+
+::::exercise{#ex-factoring-perfect}
+
+Show that $$x^2 - 18x + 81 = 0$$ has exactly one solution. Then find the number $$c$$ that makes
+$$x^2 + 12x + c$$ a perfect square.
+
+:::solution
+
+The numbers $$-9$$ and $$-9$$ have sum $$-18$$ and product $$81$$, so $$x^2 - 18x + 81 = (x - 9)^2$$
+(:ref{#factoring-method}). By :ref{#solve-by-factors}, both factors give $$x = 9$$, so there is
+exactly one solution.
+
+For $$x^2 + 12x + c$$ to be $$(x + m)^2 = x^2 + 2mx + m^2$$, you need $$2m = 12$$, so $$m = 6$$, and
+then $$c = m^2 = 36$$. Indeed $$(x + 6)^2 = x^2 + 12x + 36$$.
+
+:::
+
+::::
+
+::::exercise{#ex-factoring-no-whole}
+
+Show that $$x^2 + 3x + 1$$ can't be written as $$(x + m)(x + n)$$ with whole numbers $$m$$ and
+$$n$$.
+
+:::solution
+
+Suppose it could. Expanding, $$(x + m)(x + n) = x^2 + (m + n)x + mn$$, so you would need $$mn = 1$$
+and $$m + n = 3$$.
+
+The only whole numbers with product $$1$$ are $$1, 1$$ and $$-1, -1$$, whose sums are $$2$$ and
+$$-2$$. Neither is $$3$$, so no whole numbers work. The equation $$x^2 + 3x + 1 = 0$$ still has two
+solutions, but they are not whole numbers, and they are found on the later pages by completing the
+square or with the formula.
+
+:::
+
+::::
+
+:::::

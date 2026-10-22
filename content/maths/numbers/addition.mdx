@@ -336,3 +336,139 @@ which is positive. So $$a + c < b + c$$.
 Part 2 says that inequalities can be chained, so $$-3 < 0 < 5$$ means $$-3 < 5$$. Part 3 says that
 adding the same number to both sides keeps an inequality true, just as it does for an equation. The
 rules for multiplying an inequality need the rules for multiplication, and appear on the next page.
+
+## Exercises
+
+:::::accordion[Exercises on addition, with solutions]
+
+::::exercise{#ex-addition-which-rule}
+
+Which of the :ref{#addition-rules} does each line use?
+
+1. $$7 + (-7) = 0$$
+2. $$(5 + 2) + 8 = 5 + (2 + 8)$$
+3. $$-3 + 0 = -3$$
+4. $$4 + (-9) = (-9) + 4$$
+
+:::solution
+
+1. Rule 4, adding an opposite, with $$a = 7$$.
+2. Rule 2, grouping doesn't matter.
+3. Rule 3, adding zero, with $$a = -3$$.
+4. Rule 1, order doesn't matter.
+
+:::
+
+::::
+
+::::exercise{#ex-addition-as-sums}
+
+Write each subtraction as a sum, using :ref{#subtraction}, and work it out:
+
+1. $$6 - (-4)$$
+2. $$-2 - 7$$
+3. $$3 - 10 + 7$$
+
+:::solution
+
+1. $$6 - (-4) = 6 + (-(-4))$$, and $$-(-4) = 4$$ by :ref{#double-opposite}. So the answer is
+   $$6 + 4 = 10$$.
+2. $$-2 - 7 = -2 + (-7)$$. This is a sum of two negative integers, and by :ref{#opposite-sum} it is
+   $$-(2 + 7) = -9$$.
+3. $$3 - 10 + 7 = 3 + (-10) + 7$$. Order doesn't matter, so this is $$3 + 7 + (-10) = 10 - 10 = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-addition-cancel}
+
+Prove that for integers $$a$$, $$b$$ and $$c$$, if $$a + c = b + c$$, then $$a = b$$.
+
+:::solution
+
+Write $$s$$ for the common value, so $$a + c = s$$ and $$b + c = s$$. By :ref{#rearranging}, the
+first gives $$a = s - c$$ and the second gives $$b = s - c$$. Both equal $$s - c$$, so $$a = b$$.
+
+In words: the same number added to both sides can be taken away from both sides again.
+
+:::
+
+::::
+
+::::exercise{#ex-addition-three-opposites}
+
+Prove that $$-(a + b + c) = -a - b - c$$ for all integers $$a$$, $$b$$ and $$c$$.
+
+:::solution
+
+By :ref{#opposite-unique}, it is enough to check that $$-a - b - c$$ adds to $$a + b + c$$ to give
+$$0$$. Order and grouping don't matter (:ref{#addition-rules}), so you can pair each number with its
+opposite:
+
+```math
+(a + b + c) + (-a + (-b) + (-c)) = (a + (-a)) + (b + (-b)) + (c + (-c)) = 0 + 0 + 0 = 0
+```
+
+So $$-a - b - c$$ is the opposite of $$a + b + c$$.
+
+:::
+
+::::
+
+::::exercise{#ex-addition-mixed-signs}
+
+The sum of two negative integers is negative. Is the sum of a negative integer and a positive
+integer always negative? Give a reason or a counterexample, and then work out $$-17 + (-28)$$.
+
+:::solution
+
+No. For example, $$-3 + 10 = 7$$ is positive, and $$-3 + 3 = 0$$ is neither. With mixed signs the
+result depends on which number is further from $$0$$.
+
+For $$-17 + (-28)$$, both numbers are negative, so the sum is negative by :ref{#negative-sum}. Using
+:ref{#opposite-sum}, it is $$-(17 + 28) = -45$$.
+
+:::
+
+::::
+
+::::exercise{#ex-addition-flip-order}
+
+Prove that if $$a < b$$, then $$-b < -a$$. What does this say about $$-5$$ and $$-2$$?
+
+:::solution
+
+By :ref{#order}, $$a < b$$ means $$b - a$$ is positive, and $$-b < -a$$ means $$(-a) - (-b)$$ is
+positive. Using :ref{#subtraction} and :ref{#double-opposite},
+
+```math
+(-a) - (-b) = -a + b = b - a
+```
+
+which is positive. So $$-b < -a$$.
+
+Since $$2 < 5$$, this gives $$-5 < -2$$: taking opposites reverses the order.
+
+:::
+
+::::
+
+::::exercise{#ex-addition-add-inequalities}
+
+Prove that if $$a < b$$ and $$c < d$$, then $$a + c < b + d$$.
+
+:::solution
+
+Use part 3 of :ref{#order-rules} twice, then chain the results with part 2.
+
+Adding $$c$$ to both sides of $$a < b$$ gives $$a + c < b + c$$. Adding $$b$$ to both sides of
+$$c < d$$ gives $$c + b < d + b$$, which is $$b + c < b + d$$ since order doesn't matter in a sum.
+
+So $$a + c < b + c$$ and $$b + c < b + d$$, and by part 2, $$a + c < b + d$$.
+
+:::
+
+::::
+
+:::::

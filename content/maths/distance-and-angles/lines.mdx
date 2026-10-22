@@ -473,3 +473,155 @@ rectangle $$2$$ by $$5$$ and a rectangle $$3$$ by $$2$$, with areas $$10$$ and $
 promises that every cut agrees, since each total is the area of the same room.
 
 :::
+
+## Exercises
+
+:::::accordion[Exercises on lines and rays, with solutions]
+
+::::exercise{#ex-lines-same-ray}
+
+Four different points $$A$$, $$B$$, $$C$$ and $$D$$ lie on one line in that order: $$B$$ lies
+between $$A$$ and $$C$$, and $$C$$ lies between $$B$$ and $$D$$. Which of the rays $$BC$$, $$BD$$,
+$$CB$$ and $$BA$$ are the same ray?
+
+:::solution
+
+Only the rays $$BC$$ and $$BD$$ are the same. The reasons use :ref{#ray} and rule 3 of
+:ref{#segment-rules}, which says that of three points on a line, exactly one lies between the other
+two:
+
+- **$$BD$$ and $$BC$$**: of $$B$$, $$C$$ and $$D$$, the point between the others is $$C$$, so $$B$$
+  does not lie between $$D$$ and $$C$$. So $$D$$ is a point of the ray $$BC$$, and a ray is fixed by
+  its starting point and any other of its points. So the ray $$BD$$ is the ray $$BC$$.
+- **$$BA$$**: $$B$$ lies between $$A$$ and $$C$$, so $$A$$ is not on the ray $$BC$$. But $$A$$ is on
+  the ray $$BA$$. So these rays are different.
+- **$$CB$$**: of $$A$$, $$B$$ and $$C$$, the point between the others is $$B$$, so $$C$$ does not
+  lie between $$A$$ and $$B$$. So $$A$$ is on the ray $$CB$$ but not on the ray $$BC$$, and these
+  rays are different too. The ray $$CB$$ also differs from $$BA$$, since it contains $$C$$ and the
+  ray $$BA$$ does not.
+
+:::
+
+::::
+
+::::exercise{#ex-lines-third-line}
+
+The lines $$L_1$$ and $$L_2$$ are different and parallel. A third line $$L_3$$ crosses $$L_1$$ at a
+point $$P$$. Prove that $$L_3$$ meets $$L_2$$ in exactly one point.
+
+:::solution
+
+The line $$L_3$$ crosses $$L_1$$, so the two are different lines that meet. That means they are not
+parallel.
+
+Suppose $$L_3$$ were parallel to $$L_2$$ (:ref{#basic-proofs/contradiction}). Since
+$$L_2 \parallel L_1$$, :ref{#parallel-transitive} gives $$L_3 \parallel L_1$$. This contradicts the
+first paragraph, so $$L_3$$ is not parallel to $$L_2$$.
+
+Two lines that are not parallel meet in exactly one point (:ref{#crossing-lines}). So $$L_3$$ meets
+$$L_2$$ in exactly one point.
+
+:::
+
+::::
+
+::::exercise{#ex-lines-segments-dont-meet}
+
+Two segments drawn on a page don't meet. Must the lines through them be parallel?
+
+:::solution
+
+No. A segment is only a piece of its line, and the lines can cross at a point that neither piece
+reaches. In the figure, the two segments don't meet, but their lines, drawn dashed, cross at $$X$$.
+
+```plane
+point X 0 0 sw
+point A 1.5 0 s
+point B 4 0 s
+point C 1.2 1.2 nw
+point D 2.6 2.6 nw
+segment A B
+segment C D
+segment X A dashed
+segment X C dashed
+caption "The segments AB and CD don't meet, but the lines through them cross at X"
+```
+
+So parallel lines are a fact about whole lines, which run on without end. Checking a short stretch
+of each never settles it, which is why the carpenter relies on :ref{#perpendiculars-parallel} rather
+than on how the marks look.
+
+:::
+
+::::
+
+::::exercise{#ex-lines-rectangle-sides}
+
+A rectangle $$ABCD$$ has $$d(A, B) = 7$$ and $$d(B, C) = 3$$. Find $$d(C, D)$$ and $$d(D, A)$$, the
+total length of the four sides, and the area of the rectangle.
+
+:::solution
+
+Opposite sides of a rectangle have the same length (:ref{#rectangle-sides}). So
+$$d(D, C) = d(A, B) = 7$$ and $$d(A, D) = d(B, C) = 3$$.
+
+The four sides add up to $$7 + 3 + 7 + 3 = 20$$. By rule 1 of :ref{#area-rules}, the area is
+$$7 \cdot 3 = 21$$.
+
+:::
+
+::::
+
+::::exercise{#ex-lines-strip}
+
+The lines $$L$$ and $$L'$$ are parallel, and the distance between them is $$4$$
+(:ref{#parallel-distance}). The points $$P$$ and $$Q$$ of $$L$$ have $$d(P, Q) = 3$$. The lines
+through $$P$$ and $$Q$$ perpendicular to $$L$$ meet $$L'$$ at $$P'$$ and $$Q'$$.
+
+1. Show that $$PQQ'P'$$ is a rectangle.
+2. Find $$d(P', Q')$$ and the area of the rectangle.
+
+:::solution
+
+1. The lines $$PP'$$ and $$QQ'$$ are perpendicular to $$L$$. Since $$L \parallel L'$$, they are
+   perpendicular to $$L'$$ too (rule 2 of :ref{#perpendicular-rules}). Now check each corner:
+
+   - at $$P$$, the side $$PQ$$ lies on $$L$$, which is perpendicular to $$PP'$$
+   - at $$Q$$, the side $$QP$$ lies on $$L$$, which is perpendicular to $$QQ'$$
+   - at $$Q'$$ and $$P'$$, the side $$P'Q'$$ lies on $$L'$$, which is perpendicular to $$QQ'$$ and
+     to $$PP'$$
+
+   So each side is perpendicular to the two sides next to it, and $$PQQ'P'$$ is a rectangle
+   (:ref{#rectangle}).
+
+2. Opposite sides are equal (:ref{#rectangle-sides}), so $$d(P', Q') = d(P, Q) = 3$$. The sides
+   $$PP'$$ and $$QQ'$$ both have the length $$4$$, the distance between the lines. So the area is
+   $$3 \cdot 4 = 12$$ (:ref{#area-rules}).
+
+:::
+
+::::
+
+::::exercise{#ex-lines-notched-square}
+
+A square of side $$10$$ has a square of side $$4$$ cut out of one corner. Find the area of what is
+left in two different ways.
+
+:::solution
+
+**Taking away.** The big square is made of two pieces that don't overlap: the small square and what
+is left. By :ref{#area-rules}, $$100 = 16 + (\text{area left})$$, so the area left is $$84$$.
+
+**Cutting up.** Say the small square was cut from the top right corner. Cut what is left along the
+line where the notch begins: this gives a strip $$10$$ wide and $$6$$ high along the bottom, and a
+rectangle $$6$$ wide and $$4$$ high above its left part. These don't overlap, so the area is
+$$60 + 24 = 84$$.
+
+Both ways give $$84$$, as rule 2 promises: every way of cutting up the same region gives the same
+total.
+
+:::
+
+::::
+
+:::::

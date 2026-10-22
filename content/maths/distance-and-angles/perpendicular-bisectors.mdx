@@ -304,3 +304,128 @@ cases:
 The same idea finds the centre of a round plate from a broken piece of it. Mark three points on the
 rim and draw the perpendicular bisectors of two of the segments between them. The bisectors cross at
 the centre of the plate.
+
+## Exercises
+
+:::::accordion[Exercises on perpendicular bisectors, with solutions]
+
+::::exercise{#ex-perpendicular-bisectors-which-point}
+
+The points $$P$$ and $$Q$$ have $$d(P, Q) = 6$$, and $$O$$ is the midpoint of $$PQ$$. A point $$M$$
+has $$d(P, M) = d(Q, M) = 5$$, and a point $$N$$ has $$d(P, N) = 4$$ and $$d(Q, N) = 5$$.
+
+1. Which of $$M$$ and $$N$$ lies on the perpendicular bisector of $$PQ$$?
+2. Find $$d(O, M)$$.
+
+:::solution
+
+1. By :ref{#perpendicular-bisector-rule}, a point lies on the bisector exactly when it is the same
+   distance from $$P$$ and $$Q$$. So $$M$$ is on it, and $$N$$ is not.
+2. $$M$$ is not $$O$$, since $$d(P, O) = 3$$ and $$d(P, M) = 5$$. So $$\triangle POM$$ is a right
+   triangle with its right angle at $$O$$, legs $$d(P, O) = 3$$ and $$d(O, M)$$, and hypotenuse
+   $$5$$. By :ref{#pythagoras-sides}, $$d(O, M) = \sqrt{25 - 9} = 4$$.
+
+:::
+
+::::
+
+::::exercise{#ex-perpendicular-bisectors-far-point}
+
+The segment $$PQ$$ has length $$14$$, with midpoint $$O$$. A point $$M$$ on the perpendicular
+bisector has $$d(P, M) = 25$$. Find $$d(Q, M)$$ and $$d(O, M)$$.
+
+:::solution
+
+$$M$$ is on the bisector, so $$d(Q, M) = d(P, M) = 25$$ (:ref{#perpendicular-bisector-rule}).
+
+The triangle $$\triangle POM$$ has a right angle at $$O$$, with $$d(P, O) = 7$$ and hypotenuse
+$$25$$. So by :ref{#pythagoras-sides},
+
+```math
+d(O, M) = \sqrt{25^2 - 7^2} = \sqrt{625 - 49} = \sqrt{576} = 24
+```
+
+:::
+
+::::
+
+::::exercise{#ex-perpendicular-bisectors-circle-centre}
+
+The points $$P$$ and $$Q$$ have $$d(P, Q) = 10$$. A circle of radius $$13$$ passes through both.
+Where can its centre be?
+
+:::solution
+
+Let the centre be $$X$$. The circle passes through $$P$$ and $$Q$$, so $$d(X, P) = d(X, Q) = 13$$
+(:ref{#circle}). By :ref{#perpendicular-bisector-rule}, $$X$$ lies on the perpendicular bisector of
+$$PQ$$.
+
+Let $$O$$ be the midpoint, so $$d(P, O) = 5$$. The triangle $$\triangle POX$$ has a right angle at
+$$O$$ and hypotenuse $$13$$, so $$d(O, X) = \sqrt{169 - 25} = \sqrt{144} = 12$$
+(:ref{#pythagoras-sides}). So the centre is one of the two points of the bisector at distance $$12$$
+from $$O$$, one on each side of $$PQ$$. Both work, so two different circles of radius $$13$$ pass
+through $$P$$ and $$Q$$.
+
+:::
+
+::::
+
+::::exercise{#ex-perpendicular-bisectors-two-points}
+
+Let $$P$$ and $$Q$$ be different points. Two different points $$M$$ and $$N$$ are each the same
+distance from $$P$$ as from $$Q$$. Prove that the line $$MN$$ is the perpendicular bisector of
+$$PQ$$.
+
+:::solution
+
+By :ref{#perpendicular-bisector-rule}, both $$M$$ and $$N$$ lie on the perpendicular bisector of
+$$PQ$$. So the bisector is a line through the two different points $$M$$ and $$N$$. By rule 1 of
+:ref{#line-rules}, only one line passes through them, the line $$MN$$. So the bisector is the line
+$$MN$$.
+
+This is how the bisector is drawn with compasses: two arcs of the same radius around $$P$$ and $$Q$$
+cross at two points, and the line through them is the bisector.
+
+:::
+
+::::
+
+::::exercise{#ex-perpendicular-bisectors-equal-squares}
+
+Step 2 of the proof of :ref{#perpendicular-bisector-rule} goes from $$d(P, F)^2 = d(Q, F)^2$$ to
+$$d(P, F) = d(Q, F)$$. Give two numbers with equal squares that are not equal. Why is the step safe
+here?
+
+:::solution
+
+For example, $$(-3)^2 = 9 = 3^2$$, but $$-3 \ne 3$$. Equal squares only say that two numbers have
+the same size, and one may be the negative of the other.
+
+The step is safe because distances are never negative (:ref{#distance-rules}). Two numbers that are
+not negative and have equal squares are equal (:ref{#real-numbers/equal-squares}).
+
+:::
+
+::::
+
+::::exercise{#ex-perpendicular-bisectors-parallel-lines}
+
+The lines $$L$$ and $$L'$$ are different and parallel, and the distance between them is $$4$$
+(:ref{#parallel-distance}). Let $$P$$ be a point of $$L$$. Show that the distance from $$P$$ to the
+line $$L'$$ is $$4$$, and that every point of $$L'$$ is at least $$4$$ from $$P$$.
+
+:::solution
+
+Different parallel lines never meet, so $$P$$ is not on $$L'$$. The line through $$P$$ perpendicular
+to $$L$$ meets $$L'$$ at a point $$P'$$, with $$d(P, P') = 4$$ by :ref{#parallel-distance}. This
+line is perpendicular to $$L'$$ as well (rule 2 of :ref{#perpendicular-rules}), so $$P'$$ is the
+foot of the perpendicular from $$P$$ to $$L'$$.
+
+So the distance from $$P$$ to $$L'$$ is $$d(P, P') = 4$$ (:ref{#point-line-distance}). By
+:ref{#shortest-distance}, every other point $$M$$ of $$L'$$ has $$d(P, M) > 4$$.
+
+:::
+
+::::
+
+:::::

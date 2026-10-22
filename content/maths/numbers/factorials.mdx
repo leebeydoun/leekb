@@ -293,3 +293,191 @@ and with $$a = x$$ and $$b = -1$$, using row $$5$$,
 
 where the signs alternate because odd powers of $$-1$$ are negative. Taking $$a = b = 1$$ shows that
 each row of the triangle adds up to $$(1 + 1)^m = 2^m$$.
+
+## Exercises
+
+:::::accordion[Exercises on factorials and binomial coefficients, with solutions]
+
+::::exercise{#ex-factorials-not-additive}
+
+Is $$(2 + 3)!$$ equal to $$2! + 3!$$? Is $$(2 \cdot 3)!$$ equal to $$2! \cdot 3!$$?
+
+:::solution
+
+Neither is. $$(2 + 3)! = 5! = 120$$, but $$2! + 3! = 2 + 6 = 8$$. And $$(2 \cdot 3)! = 6! = 720$$,
+but $$2! \cdot 3! = 2 \cdot 6 = 12$$.
+
+A factorial is a product of a whole run of numbers (:ref{#factorial}), so it doesn't split over sums
+or products the way powers of a product do.
+
+:::
+
+::::
+
+::::exercise{#ex-factorials-shelf}
+
+How many ways are there to arrange $$6$$ different books in a row on a shelf? How many ways are
+there to choose $$3$$ of them and put those $$3$$ in a row?
+
+:::solution
+
+**All six.** There are $$6$$ choices for the first place, $$5$$ for the second, and so on, so there
+are $$6! = 720$$ arrangements.
+
+**Three in a row.** Now only three places are filled: $$6$$ choices for the first, $$5$$ for the
+second and $$4$$ for the third, giving $$6 \cdot 5 \cdot 4 = 120$$. This is
+$$\frac{6!}{3!} = \frac{720}{6}$$, the ordered picks from the Choosing section.
+
+:::
+
+::::
+
+::::exercise{#ex-factorials-simplify}
+
+Simplify $$\dfrac{(n + 1)!}{(n - 1)!}$$ for a positive integer $$n$$, and check your answer with
+$$n = 4$$.
+
+:::solution
+
+Using $$k! = k \cdot (k - 1)!$$ twice,
+
+```math
+(n + 1)! = (n + 1) \cdot n! = (n + 1) \cdot n \cdot (n - 1)!
+```
+
+so cancelling the common factor $$(n - 1)!$$ (:ref{#fraction-cancel}) leaves
+
+```math
+\frac{(n + 1)!}{(n - 1)!} = n(n + 1)
+```
+
+Check with $$n = 4$$: $$\frac{5!}{3!} = \frac{120}{6} = 20$$, and $$4 \cdot 5 = 20$$.
+
+:::
+
+::::
+
+::::exercise{#ex-factorials-committee}
+
+A club of $$9$$ people chooses a committee of $$3$$.
+
+1. How many committees are possible?
+2. How many of them include one particular member, Sam, and how many leave Sam out? Check that the
+   two counts add up to your first answer, and say which rule this is.
+
+:::solution
+
+1. The order doesn't matter, so the count is (:ref{#binomial})
+
+```math
+\binom{9}{3} = \frac{9!}{3!\,6!} = \frac{9 \cdot 8 \cdot 7}{6} = 84
+```
+
+2. A committee with Sam needs $$2$$ more people from the other $$8$$: $$\binom{8}{2} = 28$$ ways. A
+   committee without Sam takes all $$3$$ from the other $$8$$:
+   $$\binom{8}{3} = \frac{8 \cdot 7 \cdot 6}{6} = 56$$ ways. And $$28 + 56 = 84$$.
+
+This is :ref{#pascal} with $$m = 8$$ and $$n = 3$$: $$\binom{8}{2} + \binom{8}{3} = \binom{9}{3}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-factorials-expand}
+
+Use :ref{#binomial-theorem} to expand $$(2x + 1)^4$$, and check your answer by putting $$x = 1$$.
+
+:::solution
+
+Take $$a = 2x$$ and $$b = 1$$, with row $$4$$ of Pascal's triangle, $$1, 4, 6, 4, 1$$:
+
+```math
+\begin{aligned}
+(2x + 1)^4 &= (2x)^4 + 4(2x)^3 + 6(2x)^2 + 4(2x) + 1 \\
+&= 16x^4 + 32x^3 + 24x^2 + 8x + 1
+\end{aligned}
+```
+
+Check with $$x = 1$$: the left side is $$3^4 = 81$$, and the right side is
+$$16 + 32 + 24 + 8 + 1 = 81$$.
+
+:::
+
+::::
+
+::::exercise{#ex-factorials-coefficient}
+
+Find the number in front of $$x^3$$ when $$(x + 2)^6$$ is multiplied out, without multiplying out
+the whole thing.
+
+:::solution
+
+By :ref{#binomial-theorem} with $$a = x$$, $$b = 2$$ and $$m = 6$$, the term with $$b^n$$ is
+$$\binom{6}{n} x^{6 - n} 2^n$$. For $$x^3$$, $$6 - n = 3$$, so $$n = 3$$, and the term is
+
+```math
+\binom{6}{3} x^3 \cdot 2^3 = 20 \cdot 8 \cdot x^3 = 160x^3
+```
+
+So the number is $$160$$.
+
+:::
+
+::::
+
+::::exercise{#ex-factorials-alternating}
+
+Show that for every positive integer $$m$$,
+
+```math
+\binom{m}{0} - \binom{m}{1} + \binom{m}{2} - \cdots \pm \binom{m}{m} = 0
+```
+
+where the signs alternate. Check it on row $$4$$ of Pascal's triangle.
+
+:::solution
+
+Take $$a = 1$$ and $$b = -1$$ in :ref{#binomial-theorem}. Every power of $$a$$ is $$1$$, and
+$$(-1)^n$$ is $$1$$ for even $$n$$ and $$-1$$ for odd $$n$$, so the right side is exactly the
+alternating sum. The left side is $$(1 + (-1))^m = 0^m = 0$$, since $$m$$ is positive.
+
+Check on row $$4$$: $$1 - 4 + 6 - 4 + 1 = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-factorials-absorb}
+
+Prove that for integers $$m$$ and $$n$$ with $$1 \le n \le m$$,
+
+```math
+n \binom{m}{n} = m \binom{m - 1}{n - 1}
+```
+
+:::solution
+
+Write both sides with :ref{#binomial}, and use $$k! = k \cdot (k - 1)!$$.
+
+**Left side.** Since $$n! = n \cdot (n - 1)!$$, the factor $$n$$ cancels:
+
+```math
+n \binom{m}{n} = \frac{n \cdot m!}{n \cdot (n - 1)!\,(m - n)!} = \frac{m!}{(n - 1)!\,(m - n)!}
+```
+
+**Right side.** The bottom of $$\binom{m - 1}{n - 1}$$ uses $$(m - 1) - (n - 1) = m - n$$, and
+$$m \cdot (m - 1)! = m!$$, so
+
+```math
+m \binom{m - 1}{n - 1} = \frac{m \cdot (m - 1)!}{(n - 1)!\,(m - n)!}
+= \frac{m!}{(n - 1)!\,(m - n)!}
+```
+
+Both sides are the same fraction. For example, with $$m = 5$$ and $$n = 2$$:
+$$2 \cdot 10 = 20 = 5 \cdot 4$$.
+
+:::
+
+::::
+
+:::::

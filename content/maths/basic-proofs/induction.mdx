@@ -266,3 +266,209 @@ Every induction proof can be laid out the same way:
 In the Numbers guide, induction proves that congruences can be raised to any power: if
 $$a \equiv b$$, then $$a^n \equiv b^n$$ (:ref{#numbers/congruence-powers}). The base case is
 $$n = 1$$, and the step multiplies the case $$k$$ by $$a \equiv b$$ to reach the case $$k + 1$$.
+
+## Exercises
+
+:::::accordion[Exercises on induction, with solutions]
+
+::::exercise{#ex-induction-even-sum}
+
+Prove by induction that for every positive integer $$n$$,
+
+```math
+2 + 4 + 6 + \cdots + 2n = n(n + 1).
+```
+
+:::solution
+
+Let $$P(n)$$ be the statement $$2 + 4 + \cdots + 2n = n(n + 1)$$.
+
+**Base case.** $$P(1)$$ says $$2 = 1 \cdot 2$$, which is true.
+
+**Inductive step.** Suppose $$P(k)$$ is true for some positive integer $$k$$.
+
+- **Know:** $$2 + 4 + \cdots + 2k = k(k + 1)$$.
+- **Want:** $$2 + 4 + \cdots + 2k + 2(k + 1) = (k + 1)(k + 2)$$.
+
+The new sum is the known sum plus one more term:
+
+```math
+2 + 4 + \cdots + 2k + 2(k + 1) = k(k + 1) + 2(k + 1) = (k + 1)(k + 2)
+```
+
+which is $$P(k + 1)$$.
+
+**Conclusion.** By induction (:ref{#induction}), $$P(n)$$ is true for every positive integer $$n$$.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-powers-of-two}
+
+Prove by induction that for every positive integer $$n$$,
+
+```math
+1 + 2 + 4 + \cdots + 2^{n - 1} = 2^n - 1.
+```
+
+:::solution
+
+**Base case.** For $$n = 1$$ the left side is $$1$$ and the right side is $$2 - 1 = 1$$.
+
+**Inductive step.** Suppose $$1 + 2 + \cdots + 2^{k - 1} = 2^k - 1$$. The next term is $$2^k$$, so
+
+```math
+1 + 2 + \cdots + 2^{k - 1} + 2^k = (2^k - 1) + 2^k = 2 \cdot 2^k - 1 = 2^{k + 1} - 1,
+```
+
+which is the formula with $$k + 1$$ in place of $$n$$.
+
+**Conclusion.** By induction, the formula holds for every positive integer $$n$$. For example,
+$$1 + 2 + 4 + 8 + 16 = 31 = 2^5 - 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-cube-plus}
+
+Prove by induction that $$3$$ divides $$n^3 + 2n$$ for every positive integer $$n$$.
+
+:::solution
+
+**Base case.** For $$n = 1$$: $$1 + 2 = 3$$, which $$3$$ divides.
+
+**Inductive step.** Suppose $$k^3 + 2k = 3m$$ for some integer $$m$$. Multiply out the next case and
+look for $$k^3 + 2k$$ inside it:
+
+```math
+\begin{aligned}
+(k + 1)^3 + 2(k + 1) &= k^3 + 3k^2 + 3k + 1 + 2k + 2 \\
+&= (k^3 + 2k) + 3k^2 + 3k + 3 \\
+&= 3m + 3(k^2 + k + 1) = 3(m + k^2 + k + 1)
+\end{aligned}
+```
+
+which is a multiple of $$3$$.
+
+**Conclusion.** By induction, $$3 \mid n^3 + 2n$$ for every positive integer $$n$$.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-products-sum}
+
+Let $$P(n)$$ be the statement
+
+```math
+1 \cdot 2 + 2 \cdot 3 + \cdots + n(n + 1) = \frac{n(n + 1)(n + 2)}{3}.
+```
+
+1. Write out $$P(1)$$, $$P(2)$$ and $$P(k + 1)$$, and check the first two.
+2. Prove $$P(n)$$ for every positive integer $$n$$.
+
+:::solution
+
+1. $$P(1)$$ says $$1 \cdot 2 = \frac{1 \cdot 2 \cdot 3}{3}$$, that is, $$2 = 2$$. $$P(2)$$ says
+   $$1 \cdot 2 + 2 \cdot 3 = \frac{2 \cdot 3 \cdot 4}{3}$$, that is, $$8 = 8$$. $$P(k + 1)$$ says
+
+   ```math
+   1 \cdot 2 + \cdots + k(k + 1) + (k + 1)(k + 2) = \frac{(k + 1)(k + 2)(k + 3)}{3}.
+   ```
+
+2. The base case is $$P(1)$$, checked above. For the step, suppose $$P(k)$$ is true. The left side
+   of $$P(k + 1)$$ is the left side of $$P(k)$$ plus one more term, so
+
+   ```math
+   \frac{k(k + 1)(k + 2)}{3} + (k + 1)(k + 2) = \frac{(k + 1)(k + 2)(k + 3)}{3},
+   ```
+
+   taking out the common factor $$(k + 1)(k + 2)$$ and using $$\frac{k}{3} + 1 = \frac{k + 3}{3}$$.
+   That is $$P(k + 1)$$, so by induction $$P(n)$$ holds for every positive integer $$n$$.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-late-start}
+
+For which positive integers $$n$$ is $$2^n > 2n + 1$$? Make a table for $$n = 1$$ to $$5$$, then
+prove the claim by induction from the right starting number.
+
+:::solution
+
+| $$n$$      | $$1$$ | $$2$$ | $$3$$ | $$4$$  | $$5$$  |
+| ---------- | ----- | ----- | ----- | ------ | ------ |
+| $$2^n$$    | $$2$$ | $$4$$ | $$8$$ | $$16$$ | $$32$$ |
+| $$2n + 1$$ | $$3$$ | $$5$$ | $$7$$ | $$9$$  | $$11$$ |
+| True?      | no    | no    | yes   | yes    | yes    |
+
+So the claim to prove is "$$2^n > 2n + 1$$ for every $$n \ge 3$$".
+
+**Base case.** $$2^3 = 8 > 7$$.
+
+**Inductive step.** Let $$k \ge 3$$ and suppose $$2^k > 2k + 1$$. Doubling both sides
+(:ref{#numbers/order-multiply}) gives $$2^{k + 1} > 4k + 2$$. The goal is $$2^{k + 1} > 2k + 3$$,
+and $$4k + 2 \ge 2k + 3$$ because $$2k \ge 1$$. So $$2^{k + 1} > 4k + 2 \ge 2k + 3$$.
+
+**Conclusion.** By induction, $$2^n > 2n + 1$$ for every $$n \ge 3$$, and the table shows it fails
+for $$n = 1$$ and $$2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-step-fails}
+
+The statement "$$n^2 \le 3n$$" is true for $$n = 1$$. Is it true for every positive integer $$n$$?
+Try to write the inductive step, and say where it breaks down.
+
+:::solution
+
+It is false: $$n = 4$$ gives $$16 > 12$$. It holds for $$n = 1$$, $$2$$ and $$3$$ ($$1 \le 3$$,
+$$4 \le 6$$, $$9 \le 9$$).
+
+In the inductive step you would know $$k^2 \le 3k$$ and want $$(k + 1)^2 \le 3(k + 1)$$. Using what
+you know,
+
+```math
+(k + 1)^2 = k^2 + 2k + 1 \le 3k + 2k + 1 = 5k + 1,
+```
+
+and $$5k + 1 \le 3k + 3$$ exactly when $$k \le 1$$. So the step can't be proved for every $$k$$, and
+it fails in fact from $$k = 3$$ to $$k = 4$$. A true base case is not enough: both halves of
+:ref{#induction} are needed.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-bernoulli}
+
+Let $$x \ge 0$$ be a real number. Prove by induction that $$(1 + x)^n \ge 1 + nx$$ for every
+positive integer $$n$$.
+
+:::solution
+
+**Base case.** For $$n = 1$$ both sides are $$1 + x$$.
+
+**Inductive step.** Suppose $$(1 + x)^k \ge 1 + kx$$. The number $$1 + x$$ is positive, so
+multiplying both sides by it keeps the direction (part 4 of :ref{#real-numbers/inequality-rules}):
+
+```math
+(1 + x)^{k + 1} = (1 + x)^k (1 + x) \ge (1 + kx)(1 + x) = 1 + (k + 1)x + kx^2.
+```
+
+Since $$kx^2 \ge 0$$, the right side is at least $$1 + (k + 1)x$$. So
+$$(1 + x)^{k + 1} \ge 1 + (k + 1)x$$.
+
+**Conclusion.** By induction, $$(1 + x)^n \ge 1 + nx$$ for every positive integer $$n$$. Here $$x$$
+is fixed before the induction starts, and the induction runs over $$n$$ alone.
+
+:::
+
+::::
+
+:::::

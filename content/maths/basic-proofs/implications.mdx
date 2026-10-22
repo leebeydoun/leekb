@@ -165,3 +165,161 @@ sides gives $$n = 2k$$, which is even.
 
 Either direction can be proved by any method: one half might be direct and the other by
 contrapositive.
+
+## Exercises
+
+:::::accordion[Exercises on if, then and exactly when, with solutions]
+
+::::exercise{#ex-implications-broken-promise}
+
+Take the statement "if $$n > 5$$, then $$n^2 > 20$$", about integers $$n$$. For each of $$n = 7$$,
+$$n = 3$$ and $$n = -6$$, say whether the hypothesis and the conclusion hold, and whether that value
+breaks the statement. Then decide whether the statement is true.
+
+:::solution
+
+The hypothesis is $$n > 5$$ and the conclusion is $$n^2 > 20$$. Only a value with a true hypothesis
+and a false conclusion breaks the statement.
+
+- **$$n = 7$$:** both hold, since $$49 > 20$$. Not broken.
+- **$$n = 3$$:** neither holds, since $$9 < 20$$. The statement promises nothing when the hypothesis
+  fails, so this is not broken.
+- **$$n = -6$$:** the hypothesis fails but the conclusion holds, since $$36 > 20$$. Again, not
+  broken.
+
+The statement is true. An integer with $$n > 5$$ has $$n \ge 6$$, so $$n^2 \ge 36 > 20$$.
+
+:::
+
+::::
+
+::::exercise{#ex-implications-three-versions}
+
+For each statement, write its converse and its contrapositive, and say which of the three are true.
+
+1. For a real number $$x$$: if $$x = 2$$, then $$x^2 = 2x$$.
+2. For an integer $$n$$: if $$n$$ is odd, then $$n + 4$$ is odd.
+
+:::solution
+
+Using :ref{#contrapositive}:
+
+1. - Converse: if $$x^2 = 2x$$, then $$x = 2$$. False: $$x = 0$$ gives $$0 = 0$$.
+   - Contrapositive: if $$x^2 \neq 2x$$, then $$x \neq 2$$. True, like the original, since
+     $$2^2 = 4 = 2 \cdot 2$$.
+
+2. - Converse: if $$n + 4$$ is odd, then $$n$$ is odd. True: if $$n + 4 = 2k + 1$$, then
+     $$n = 2(k - 2) + 1$$.
+   - Contrapositive: if $$n + 4$$ is even, then $$n$$ is even. True, like the original.
+
+   All three are true here, so "$$n$$ is odd exactly when $$n + 4$$ is odd".
+
+In both parts the contrapositive agrees with the original (:ref{#contrapositive-equivalent}). The
+converse is true in the second part and false in the first.
+
+:::
+
+::::
+
+::::exercise{#ex-implications-odd-sum}
+
+Prove that if $$n^2 + 2n$$ is odd, then $$n$$ is odd. (Hint: a direct proof is awkward.)
+
+:::solution
+
+Prove the contrapositive: if $$n$$ is even, then $$n^2 + 2n$$ is even. Write $$n = 2k$$. Then
+
+```math
+n^2 + 2n = 4k^2 + 4k = 2(2k^2 + 2k),
+```
+
+which is even. A statement and its contrapositive are both true or both false
+(:ref{#contrapositive-equivalent}), so the original is true.
+
+:::
+
+::::
+
+::::exercise{#ex-implications-odd-product}
+
+Prove that if $$ab$$ is odd, then $$a$$ and $$b$$ are both odd, for integers $$a$$ and $$b$$.
+
+:::solution
+
+The opposite of "$$a$$ and $$b$$ are both odd" is "at least one of $$a$$ and $$b$$ is even". So the
+contrapositive is: if at least one of $$a$$ and $$b$$ is even, then $$ab$$ is even.
+
+Suppose $$a$$ is even, say $$a = 2k$$. Then $$ab = 2(kb)$$, which is even. If instead $$b$$ is even,
+say $$b = 2l$$, then $$ab = 2(al)$$, which is even. So the contrapositive is true, and so is the
+original (:ref{#contrapositive-equivalent}).
+
+:::
+
+::::
+
+::::exercise{#ex-implications-only-if-rule}
+
+A sign says "you may enter only if you have a ticket".
+
+1. Write the rule in the form "if …, then …".
+2. Which of these people break the rule: someone with a ticket who stays outside, someone without a
+   ticket who goes in, someone with a ticket who goes in?
+3. For a real number $$x$$, rewrite "$$x > 0$$ if $$x^2 > 0$$" in the form "if …, then …" and say
+   whether it is true.
+
+:::solution
+
+1. "If you enter, then you have a ticket." "$$P$$ only if $$Q$$" means "if $$P$$, then $$Q$$".
+2. Only the person without a ticket who goes in breaks it. The rule promises nothing about people
+   who stay outside, and someone with a ticket who goes in keeps it.
+3. "$$P$$ if $$Q$$" means "if $$Q$$, then $$P$$", so this says "if $$x^2 > 0$$, then $$x > 0$$". It
+   is false: $$x = -1$$ has $$x^2 = 1 > 0$$ but is not positive.
+
+:::
+
+::::
+
+::::exercise{#ex-implications-both-ways}
+
+Prove that for an integer $$n$$, the number $$5n + 3$$ is even exactly when $$n$$ is odd.
+
+:::solution
+
+There are two directions (:ref{#exactly-when}).
+
+**If $$n$$ is odd, then $$5n + 3$$ is even.** Write $$n = 2k + 1$$. Then
+$$5n + 3 = 10k + 8 = 2(5k + 4)$$, which is even.
+
+**If $$5n + 3$$ is even, then $$n$$ is odd.** Prove the contrapositive: if $$n$$ is even, then
+$$5n + 3$$ is odd. Write $$n = 2k$$. Then $$5n + 3 = 10k + 3 = 2(5k + 1) + 1$$, which is odd.
+
+:::
+
+::::
+
+::::exercise{#ex-implications-half-proof}
+
+A student claims "an integer $$n$$ is a multiple of $$4$$ exactly when $$n^2$$ is a multiple of
+$$16$$", and proves it like this: "if $$n = 4k$$, then $$n^2 = 16k^2$$." What is missing? Supply it.
+
+:::solution
+
+The student proved one direction only. An "exactly when" statement also needs the converse: if
+$$n^2$$ is a multiple of $$16$$, then $$n$$ is a multiple of $$4$$ (:ref{#exactly-when}).
+
+Prove it by contrapositive: if $$n$$ is not a multiple of $$4$$, then $$n^2$$ is not a multiple of
+$$16$$. Dividing by $$4$$ (:ref{#numbers/division-remainder}), such an $$n$$ is $$4k + 1$$,
+$$4k + 2$$ or $$4k + 3$$:
+
+- **$$n = 4k + 1$$ or $$4k + 3$$:** $$n$$ is odd, say $$n = 2m + 1$$. Then
+  $$n^2 = 2(2m^2 + 2m) + 1$$ is odd, and an odd number is not a multiple of $$16$$.
+- **$$n = 4k + 2$$:** $$n^2 = 16k^2 + 16k + 4 = 16(k^2 + k) + 4$$, which leaves remainder $$4$$ when
+  divided by $$16$$.
+
+In every case $$n^2$$ is not a multiple of $$16$$, so both directions hold and the claim is true.
+
+:::
+
+::::
+
+:::::

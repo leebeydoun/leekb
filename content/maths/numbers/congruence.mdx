@@ -437,3 +437,173 @@ So $$4725$$ is divisible by $$9$$, because $$18$$ is: indeed $$4725 = 9 \cdot 52
 $$1{,}000{,}001$$ is not divisible by $$3$$, because its digits add up to $$2$$. The digit sum can
 be taken again if it is still large: $$987654321$$ has digit sum $$45$$, which has digit sum $$9$$,
 so $$987654321$$ is divisible by $$9$$.
+
+## Exercises
+
+:::::accordion[Exercises on congruence, with solutions]
+
+::::exercise{#ex-congruence-sort}
+
+Find the remainder of each number on division by $$4$$, and use the remainders to sort the numbers
+into groups that are congruent modulo $$4$$:
+
+```math
+13, \qquad -3, \qquad 22, \qquad 41, \qquad -10
+```
+
+:::solution
+
+Dividing by $$4$$ (:ref{#division-remainder}):
+
+- $$13 = 4 \cdot 3 + 1$$, remainder $$1$$
+- $$-3 = 4 \cdot (-1) + 1$$, remainder $$1$$
+- $$22 = 4 \cdot 5 + 2$$, remainder $$2$$
+- $$41 = 4 \cdot 10 + 1$$, remainder $$1$$
+- $$-10 = 4 \cdot (-3) + 2$$, remainder $$2$$
+
+By :ref{#same-remainder}, numbers are congruent exactly when they leave the same remainder. So the
+groups are $$13, -3, 41$$ and $$22, -10$$. As a check, $$13 - (-3) = 16$$ and $$22 - (-10) = 32$$
+are both multiples of $$4$$.
+
+:::
+
+::::
+
+::::exercise{#ex-congruence-sum-remainder}
+
+Find the remainder when $$2024 + 3175 + 46$$ is divided by $$6$$, without adding the numbers first.
+
+:::solution
+
+Replace each number by its remainder (:ref{#congruence-arithmetic}):
+
+- $$2024 = 6 \cdot 337 + 2$$, so $$2024 \equiv 2 \pmod{6}$$
+- $$3175 = 6 \cdot 529 + 1$$, so $$3175 \equiv 1 \pmod{6}$$
+- $$46 = 6 \cdot 7 + 4$$, so $$46 \equiv 4 \pmod{6}$$
+
+Adding, the sum is congruent to $$2 + 1 + 4 = 7 \equiv 1 \pmod{6}$$. So the remainder is $$1$$.
+Indeed $$2024 + 3175 + 46 = 5245 = 6 \cdot 874 + 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-congruence-minus-one}
+
+Show that $$99 \equiv -1 \pmod{10}$$, and use it to find the last digit of $$99^7$$.
+
+:::solution
+
+$$99 - (-1) = 100 = 10 \cdot 10$$, so $$99 \equiv -1 \pmod{10}$$ (:ref{#congruence}).
+
+By :ref{#congruence-powers}, $$99^7 \equiv (-1)^7 = -1 \pmod{10}$$. The remainder has to be between
+$$0$$ and $$9$$, and $$-1 \equiv 9 \pmod{10}$$, so $$99^7$$ leaves remainder $$9$$ on division by
+$$10$$. Its last digit is $$9$$.
+
+:::
+
+::::
+
+::::exercise{#ex-congruence-many-answers}
+
+Find every $$x$$ among $$0, 1, \dots, 11$$ with $$4x \equiv 8 \pmod{12}$$. Why would cancelling the
+$$4$$ give the wrong answer?
+
+:::solution
+
+You need $$12 \mid 4x - 8$$. Checking each value, $$4x - 8$$ is a multiple of $$12$$ for:
+
+- $$x = 2$$: $$4x - 8 = 0$$
+- $$x = 5$$: $$4x - 8 = 12$$
+- $$x = 8$$: $$4x - 8 = 24$$
+- $$x = 11$$: $$4x - 8 = 36$$
+
+So there are four answers: $$2$$, $$5$$, $$8$$ and $$11$$.
+
+Cancelling the $$4$$ from both sides would give $$x \equiv 2 \pmod{12}$$, which finds only
+$$x = 2$$. Common factors can't always be cancelled in a congruence (:ref{#no-cancel}), and this is
+a case where cancelling loses solutions.
+
+:::
+
+::::
+
+::::exercise{#ex-congruence-square-plus-one}
+
+Prove that $$n^2 + 1$$ is never divisible by $$3$$.
+
+:::solution
+
+Every integer $$n$$ is congruent to $$0$$, $$1$$ or $$2$$ modulo $$3$$ (:ref{#same-remainder}).
+Square each case with :ref{#congruence-powers}, then add $$1$$ with :ref{#congruence-constant}:
+
+| $$n \pmod{3}$$ | $$n^2 \pmod{3}$$ | $$n^2 + 1 \pmod{3}$$ |
+| -------------- | ---------------- | -------------------- |
+| $$0$$          | $$0$$            | $$1$$                |
+| $$1$$          | $$1$$            | $$2$$                |
+| $$2$$          | $$4 \equiv 1$$   | $$2$$                |
+
+So $$n^2 + 1$$ is always congruent to $$1$$ or $$2$$, never to $$0$$. A number divisible by $$3$$ is
+congruent to $$0$$, so $$n^2 + 1$$ never is.
+
+:::
+
+::::
+
+::::exercise{#ex-congruence-weekdays}
+
+Today is a Wednesday. What day of the week will it be in $$100$$ days, and in $$1000$$ days?
+
+:::solution
+
+The days repeat every $$7$$, so only the remainder on division by $$7$$ matters.
+
+$$100 = 7 \cdot 14 + 2$$, so $$100 \equiv 2 \pmod{7}$$. Two days after Wednesday is Friday.
+
+$$1000 = 7 \cdot 142 + 6$$, so $$1000 \equiv 6 \pmod{7}$$. Six days after Wednesday is Tuesday.
+
+:::
+
+::::
+
+::::exercise{#ex-congruence-two-thirty}
+
+Find the remainder when $$2^{30}$$ is divided by $$9$$.
+
+:::solution
+
+Look for a small power of $$2$$ that is congruent to $$1$$ or $$-1$$. Here $$2^3 = 8$$, and
+$$8 - (-1) = 9$$, so $$2^3 \equiv -1 \pmod{9}$$.
+
+Since $$30 = 3 \cdot 10$$, :ref{#power-rules} gives $$2^{30} = (2^3)^{10}$$, and by
+:ref{#congruence-powers}
+
+```math
+2^{30} = (2^3)^{10} \equiv (-1)^{10} = 1 \pmod{9}
+```
+
+So the remainder is $$1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-congruence-digit-test-practice}
+
+Is $$7{,}452{,}183$$ divisible by $$3$$? By $$9$$? Then find the digit $$x$$ that makes the
+four-digit number $$52x4$$ divisible by $$9$$.
+
+:::solution
+
+The digit sum is $$7 + 4 + 5 + 2 + 1 + 8 + 3 = 30$$. By :ref{#digit-sum-test}, the number is
+congruent to $$30$$ modulo $$9$$ and modulo $$3$$. Since $$3 \mid 30$$ but $$9 \nmid 30$$, the
+number is divisible by $$3$$ but not by $$9$$.
+
+The digit sum of $$52x4$$ is $$5 + 2 + x + 4 = 11 + x$$. For $$9$$ to divide it, with $$x$$ between
+$$0$$ and $$9$$, you need $$11 + x = 18$$, so $$x = 7$$. Indeed $$5274 = 9 \cdot 586$$.
+
+:::
+
+::::
+
+:::::

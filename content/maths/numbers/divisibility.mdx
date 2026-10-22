@@ -444,3 +444,171 @@ than $$m$$, because $$m = dk$$ with $$k \ge 1$$, so $$m \ge d$$. That leaves onl
 candidates, and $$1$$ is always one of them. When the greatest common divisor is $$1$$, the two
 numbers share no factor worth cancelling; that is what lowest form means for fractions, on the
 [Rational numbers](./rational-numbers.mdx) page.
+
+## Exercises
+
+:::::accordion[Exercises on divisibility, with solutions]
+
+::::exercise{#ex-divisibility-forms}
+
+Write each number as $$2n$$ or $$2n + 1$$ for an integer $$n$$, and say whether it is even or odd:
+$$46$$, $$-9$$, $$0$$ and $$101$$.
+
+:::solution
+
+Using :ref{#even-odd}:
+
+- $$46 = 2 \cdot 23$$, so it is even.
+- $$-9 = 2 \cdot (-5) + 1$$, so it is odd.
+- $$0 = 2 \cdot 0$$, so it is even.
+- $$101 = 2 \cdot 50 + 1$$, so it is odd.
+
+For $$-9$$, note that $$n = -5$$ rather than $$-4$$: $$2 \cdot (-4) + 1 = -7$$.
+
+:::
+
+::::
+
+::::exercise{#ex-divisibility-true-false}
+
+True or false? Use :ref{#divides} each time.
+
+1. $$7 \mid 91$$
+2. $$6 \mid -54$$
+3. $$8 \mid 100$$
+4. $$5 \mid 0$$
+5. $$0 \mid 5$$
+
+:::solution
+
+1. True: $$91 = 7 \cdot 13$$.
+2. True: $$-54 = 6 \cdot (-9)$$.
+3. False: $$8 \cdot 12 = 96$$ and $$8 \cdot 13 = 104$$, so no integer $$k$$ gives $$8k = 100$$.
+4. True: $$0 = 5 \cdot 0$$.
+5. False: $$0 \cdot k = 0$$ for every integer $$k$$, so $$0 \cdot k$$ is never $$5$$.
+
+Parts 4 and 5 show that the order matters: $$d \mid n$$ and $$n \mid d$$ say different things.
+
+:::
+
+::::
+
+::::exercise{#ex-divisibility-quotients}
+
+Find the quotient and remainder when:
+
+1. $$47$$ is divided by $$6$$
+2. $$-23$$ is divided by $$4$$
+3. $$30$$ is divided by $$10$$
+
+:::solution
+
+In each case find the largest multiple of the divisor that is not bigger than the number
+(:ref{#division-remainder}).
+
+1. $$6 \cdot 7 = 42$$ and $$6 \cdot 8 = 48$$ is too big, so $$47 = 6 \cdot 7 + 5$$: quotient $$7$$,
+   remainder $$5$$.
+2. The multiples of $$4$$ near $$-23$$ are $$-24$$ and $$-20$$, and $$-24$$ is the largest one that
+   is not bigger than $$-23$$. So $$-23 = 4 \cdot (-6) + 1$$: quotient $$-6$$, remainder $$1$$. The
+   remainder can't be $$-3$$, because it has to be between $$0$$ and $$3$$.
+3. $$30 = 10 \cdot 3 + 0$$: quotient $$3$$, remainder $$0$$, since $$10 \mid 30$$.
+
+:::
+
+::::
+
+::::exercise{#ex-divisibility-even-square-four}
+
+Prove that the square of an even integer is divisible by $$4$$.
+
+:::solution
+
+Write the even integer as $$a = 2n$$ (:ref{#even-odd}). By :ref{#power-rules},
+
+```math
+a^2 = (2n)^2 = 2^2 n^2 = 4n^2
+```
+
+and $$n^2$$ is an integer. So $$a^2$$ is $$4$$ times an integer, which means $$4 \mid a^2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-divisibility-take-away}
+
+Prove that if $$d \mid a$$ and $$d \mid a + b$$, then $$d \mid b$$.
+
+:::solution
+
+The number $$b$$ is the difference of the two numbers you know about:
+
+```math
+b = (a + b) - a
+```
+
+Both $$a + b$$ and $$a$$ are multiples of $$d$$, and by :ref{#multiples} the difference of two
+multiples of $$d$$ is a multiple of $$d$$. So $$d \mid b$$.
+
+:::
+
+::::
+
+::::exercise{#ex-divisibility-product-trap}
+
+Is it true that if $$d \mid ab$$, then $$d \mid a$$ or $$d \mid b$$? Give a proof or a
+counterexample.
+
+:::solution
+
+It is false. Take $$d = 6$$, $$a = 2$$ and $$b = 3$$. Then $$ab = 6$$, so $$6 \mid ab$$. But
+$$6 \nmid 2$$ and $$6 \nmid 3$$.
+
+The factors of $$d$$ can be split between $$a$$ and $$b$$: here the $$2$$ in $$6$$ comes from $$a$$
+and the $$3$$ comes from $$b$$.
+
+:::
+
+::::
+
+::::exercise{#ex-divisibility-common-divisors}
+
+Find the greatest common divisor of $$42$$ and $$56$$, and of $$15$$ and $$28$$.
+
+:::solution
+
+List the positive divisors and pick out the common ones (:ref{#gcd}):
+
+- $$42$$: $$1, 2, 3, 6, 7, 14, 21, 42$$
+- $$56$$: $$1, 2, 4, 7, 8, 14, 28, 56$$
+
+The common divisors are $$1, 2, 7, 14$$, so the greatest common divisor of $$42$$ and $$56$$ is
+$$14$$.
+
+The positive divisors of $$15$$ are $$1, 3, 5, 15$$ and those of $$28$$ are $$1, 2, 4, 7, 14, 28$$.
+The only common one is $$1$$, so the greatest common divisor is $$1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-divisibility-always-odd}
+
+Prove that $$n^2 + n + 1$$ is odd for every integer $$n$$.
+
+:::solution
+
+By :ref{#even-or-odd}, $$n$$ is even or odd, so check both cases with the tables for sums and
+products (:ref{#parity-sums}, :ref{#parity-products}).
+
+- If $$n$$ is even, then $$n^2$$ is even, so $$n^2 + n$$ is even plus even, which is even.
+- If $$n$$ is odd, then $$n^2$$ is odd (:ref{#squares-parity}), so $$n^2 + n$$ is odd plus odd,
+  which is even.
+
+Either way $$n^2 + n$$ is even, say $$2k$$. Then $$n^2 + n + 1 = 2k + 1$$, which is odd.
+
+:::
+
+::::
+
+:::::

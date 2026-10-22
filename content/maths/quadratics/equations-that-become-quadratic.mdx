@@ -171,3 +171,143 @@ $$x = 6$$ and $$x = -1$$, only $$6$$ satisfies $$x \ge 2$$.
 **Check:** $$\sqrt{16} + 2 = 4 + 2 = 6$$. So $$x = 6$$.
 
 :::
+
+## Exercises
+
+:::::accordion[Exercises on equations that become quadratic, with solutions]
+
+::::exercise{#ex-become-fourth-powers}
+
+Solve each equation.
+
+1. $$x^4 - 5x^2 + 4 = 0$$
+2. $$x^4 + 5x^2 + 6 = 0$$
+3. $$x^4 = 4x^2 + 12$$
+
+:::solution
+
+Put $$u = x^2$$ and use :ref{#substitution-quadratic}.
+
+1. $$u^2 - 5u + 4 = (u - 1)(u - 4) = 0$$, so $$u = 1$$ or $$u = 4$$. Then $$x = \pm 1$$ or
+   $$x = \pm 2$$: four solutions.
+2. $$u^2 + 5u + 6 = (u + 2)(u + 3) = 0$$, so $$u = -2$$ or $$u = -3$$. Both are negative, and no
+   square is negative, so there is no solution.
+3. First move everything to one side: $$x^4 - 4x^2 - 12 = 0$$. Then
+   $$u^2 - 4u - 12 = (u - 6)(u + 2) = 0$$, so $$u = 6$$ or $$u = -2$$. Only $$u = 6$$ gives
+   anything: $$x = \sqrt{6}$$ or $$x = -\sqrt{6}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-become-bracket}
+
+Solve $$(x^2 - 1)^2 - 2(x^2 - 1) - 3 = 0$$ by substituting for the bracket.
+
+:::solution
+
+The unknown only appears through $$x^2 - 1$$, so put $$u = x^2 - 1$$. The equation becomes
+$$u^2 - 2u - 3 = 0$$, which is $$(u - 3)(u + 1) = 0$$ (:ref{#solve-by-factors}). So $$u = 3$$ or
+$$u = -1$$.
+
+Now go back to $$x$$:
+
+- $$x^2 - 1 = 3$$ gives $$x^2 = 4$$, so $$x = 2$$ or $$x = -2$$
+- $$x^2 - 1 = -1$$ gives $$x^2 = 0$$, so $$x = 0$$
+
+So there are three solutions: $$-2$$, $$0$$ and $$2$$. **Check** $$x = 0$$: $$(-1)^2 + 2 - 3 = 0$$.
+And $$x = 2$$: $$9 - 6 - 3 = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-become-clear-fractions}
+
+Solve $$\frac{3}{x - 1} - \frac{2}{x + 1} = 1$$.
+
+:::solution
+
+The denominators are $$x - 1$$ and $$x + 1$$, so $$x$$ can't be $$1$$ or $$-1$$. Multiplying both
+sides by $$(x - 1)(x + 1) = x^2 - 1$$:
+
+```math
+3(x + 1) - 2(x - 1) = x^2 - 1, \quad\text{so}\quad x + 5 = x^2 - 1
+```
+
+Collecting terms, $$x^2 - x - 6 = 0$$, which is $$(x - 3)(x + 2) = 0$$. So $$x = 3$$ or $$x = -2$$.
+Neither is $$1$$ or $$-1$$, so both are kept.
+
+**Check** $$x = 3$$: $$\frac{3}{2} - \frac{2}{4} = 1$$. And $$x = -2$$:
+$$\frac{3}{-3} - \frac{2}{-1} = -1 + 2 = 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-become-both-go}
+
+Solve $$\frac{2}{x - 2} + \frac{x}{x + 2} = \frac{8}{x^2 - 4}$$.
+
+:::solution
+
+Since $$x^2 - 4 = (x - 2)(x + 2)$$ (:ref{#numbers/square-formulas}), $$x$$ can't be $$2$$ or $$-2$$.
+Multiplying both sides by $$(x - 2)(x + 2)$$:
+
+```math
+2(x + 2) + x(x - 2) = 8, \quad\text{so}\quad x^2 + 4 = 8
+```
+
+So $$x^2 = 4$$, and $$x = 2$$ or $$x = -2$$. But those are exactly the two values that make a
+denominator $$0$$. Both crept in when the equation was multiplied by $$0$$, so both have to go.
+
+The equation has no solution.
+
+:::
+
+::::
+
+::::exercise{#ex-become-root}
+
+Solve $$x = \sqrt{6 - x}$$.
+
+:::solution
+
+The right side is a square root, so it is never negative. So any solution has $$x \ge 0$$.
+
+Squaring both sides gives $$x^2 = 6 - x$$, so $$x^2 + x - 6 = 0$$, which is $$(x + 3)(x - 2) = 0$$.
+That gives $$x = -3$$ or $$x = 2$$. Squaring can add false solutions
+(:ref{#real-numbers/squaring-sides}), and $$x = -3$$ fails $$x \ge 0$$.
+
+**Check** $$x = 2$$: $$\sqrt{6 - 2} = \sqrt{4} = 2$$. So $$x = 2$$ is the only solution. The value
+$$-3$$ solves $$x = -\sqrt{6 - x}$$ instead, which has the same square.
+
+:::
+
+::::
+
+::::exercise{#ex-become-why-check}
+
+Clearing fractions and squaring both sides can each let in false answers. Explain why neither one
+can lose a true answer.
+
+:::solution
+
+**Clearing fractions.** Suppose $$x$$ is a true solution. Then every denominator is non-zero at
+$$x$$, and the two sides are equal numbers. Multiplying two equal numbers by the same number gives
+equal results, so $$x$$ also solves the cleared equation. The only trouble is the other way round:
+multiplying by $$0$$ makes any two numbers equal, which is how false answers get in.
+
+**Squaring.** If $$x$$ makes the two sides equal, then their squares are equal too, since equal
+numbers have equal squares. So $$x$$ also solves the squared equation. Again the trouble is the
+other way round: equal squares only say the two sides are equal or opposite
+(:ref{#real-numbers/squaring-sides}).
+
+So after either move, every true answer is still among those found, and the work is to throw out the
+false ones.
+
+:::
+
+::::
+
+:::::

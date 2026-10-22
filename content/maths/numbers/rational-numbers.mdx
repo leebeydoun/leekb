@@ -554,3 +554,167 @@ So the rational numbers are exactly the decimals that stop or repeat. A decimal 
 into a repeating pattern, like the one for a square root of $$2$$, is not a fraction at all. (The
 shifting trick treats an endless decimal as a number, which the rational numbers alone don't quite
 justify. The [Real numbers](../real-numbers/real-line.mdx) guide makes this precise.)
+
+## Exercises
+
+:::::accordion[Exercises on rational numbers, with solutions]
+
+::::exercise{#ex-rational-numbers-signs}
+
+Write each fraction with a positive denominator, and say whether it is positive or negative:
+$$\frac{-4}{-9}$$, $$\frac{7}{-3}$$ and $$-\frac{-2}{5}$$.
+
+:::solution
+
+Each one uses :ref{#fraction-signs}, which lets a minus sign move between the top, the bottom and
+the front, and makes two minus signs cancel:
+
+- $$\frac{-4}{-9} = \frac{4}{9}$$, which is positive, since $$4$$ and $$9$$ are positive integers
+  (:ref{#positive-rational})
+- $$\frac{7}{-3} = \frac{-7}{3} = -\frac{7}{3}$$, which is negative
+- $$-\frac{-2}{5} = -\left(-\frac{2}{5}\right) = \frac{2}{5}$$, which is positive, since the two
+  minus signs cancel
+
+:::
+
+::::
+
+::::exercise{#ex-rational-numbers-find-unknown}
+
+Find the integer $$x$$ in each equation by cross-multiplying:
+
+1. $$\frac{x}{12} = \frac{5}{6}$$
+2. $$\frac{9}{x} = \frac{6}{4}$$
+
+:::solution
+
+Both use :ref{#cross-multiplying}.
+
+1. The fractions are equal exactly when $$6x = 5 \cdot 12 = 60$$, so $$x = 10$$. Check:
+   $$\frac{10}{12} = \frac{5}{6}$$ after cancelling the common factor $$2$$.
+2. Here $$x$$ is a denominator, so $$x \neq 0$$. The fractions are equal exactly when
+   $$9 \cdot 4 = 6x$$, that is $$6x = 36$$, so $$x = 6$$. Check: $$\frac{9}{6}$$ and $$\frac{6}{4}$$
+   both equal $$\frac{3}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-rational-numbers-bad-cancel}
+
+A student writes
+
+```math
+\frac{2 + 3}{2 + 5} = \frac{3}{5}
+```
+
+"by cancelling the $$2$$s". Show that the answer is wrong, and explain why :ref{#fraction-cancel}
+doesn't allow this step.
+
+:::solution
+
+The left side is $$\frac{5}{7}$$. Cross-multiplying (:ref{#cross-multiplying}),
+$$\frac{5}{7} = \frac{3}{5}$$ would need $$5 \cdot 5 = 3 \cdot 7$$, but $$25 \neq 21$$. So the two
+fractions are not equal.
+
+The rule only cancels a common **factor**: it says $$\frac{am}{an} = \frac{m}{n}$$, where $$a$$
+multiplies the whole top and the whole bottom. In $$\frac{2 + 3}{2 + 5}$$, the $$2$$ is added, not
+multiplied, so there is no common factor to cancel.
+
+:::
+
+::::
+
+::::exercise{#ex-rational-numbers-two-denominators}
+
+Work out $$\frac{5}{12} + \frac{7}{18}$$ twice: once with the common denominator $$36$$, and once
+with the formula in :ref{#fraction-addition}, which uses the product $$12 \cdot 18$$. Check that
+both answers are the same number.
+
+:::solution
+
+**With $$36$$.** Since $$36 = 12 \cdot 3 = 18 \cdot 2$$, multiplying top and bottom by $$3$$ and by
+$$2$$ gives $$\frac{5}{12} = \frac{15}{36}$$ and $$\frac{7}{18} = \frac{14}{36}$$
+(:ref{#fraction-cancel}, read backwards). So the sum is $$\frac{15 + 14}{36} = \frac{29}{36}$$.
+
+**With the formula.**
+
+```math
+\frac{5}{12} + \frac{7}{18} = \frac{5 \cdot 18 + 7 \cdot 12}{12 \cdot 18} = \frac{90 + 84}{216}
+= \frac{174}{216}
+```
+
+**The same number.** Both $$174$$ and $$216$$ are $$6$$ times something: $$174 = 6 \cdot 29$$ and
+$$216 = 6 \cdot 36$$. Cancelling the $$6$$ gives $$\frac{29}{36}$$, so the answers agree. A smaller
+common denominator only saves cancelling at the end.
+
+:::
+
+::::
+
+::::exercise{#ex-rational-numbers-compare-pairs}
+
+Decide which is bigger in each pair, using :ref{#compare-fractions}:
+
+1. $$\frac{7}{9}$$ or $$\frac{11}{14}$$
+2. $$-\frac{3}{5}$$ or $$-\frac{4}{7}$$
+
+:::solution
+
+The rule needs positive denominators, so write each fraction with its minus sign on top.
+
+1. $$7 \cdot 14 = 98$$ and $$11 \cdot 9 = 99$$. Since $$98 < 99$$, $$\frac{7}{9} < \frac{11}{14}$$,
+   so $$\frac{11}{14}$$ is bigger.
+2. Write the numbers as $$\frac{-3}{5}$$ and $$\frac{-4}{7}$$. Cross-multiplying gives
+   $$(-3) \cdot 7 = -21$$ and $$(-4) \cdot 5 = -20$$. Since $$-21 < -20$$,
+   $$-\frac{3}{5} < -\frac{4}{7}$$, so $$-\frac{4}{7}$$ is bigger. This fits the number line:
+   $$\frac{4}{7}$$ is the smaller of the two positive numbers, so $$-\frac{4}{7}$$ sits closer to
+   $$0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-rational-numbers-repeating}
+
+Write $$0.454545\ldots$$ and $$0.1666\ldots$$ as fractions in lowest form, using the shifting idea
+from the Decimals section.
+
+:::solution
+
+**$$0.454545\ldots$$** The block $$45$$ repeats every two places. Call the number $$x$$; then
+$$100x = 45.4545\ldots$$, and subtracting cancels the tails: $$99x = 45$$. So
+$$x = \frac{45}{99} = \frac{9 \cdot 5}{9 \cdot 11} = \frac{5}{11}$$, and $$5$$ and $$11$$ have no
+common divisor other than $$1$$.
+
+**$$0.1666\ldots$$** Here only the $$6$$ repeats, after one other digit. Call the number $$y$$. Then
+$$10y = 1.666\ldots$$ and $$100y = 16.666\ldots$$ have the same tail, so subtracting gives
+$$90y = 15$$. So $$y = \frac{15}{90} = \frac{15 \cdot 1}{15 \cdot 6} = \frac{1}{6}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-rational-numbers-positive-product}
+
+Prove that the product of two positive rational numbers is positive.
+
+:::solution
+
+By :ref{#positive-rational}, write the two numbers as $$\frac{m}{n}$$ and $$\frac{r}{s}$$ with
+$$m$$, $$n$$, $$r$$, $$s$$ all positive integers. By :ref{#fraction-multiplication}, their product
+is
+
+```math
+\frac{m}{n} \cdot \frac{r}{s} = \frac{mr}{ns}
+```
+
+Products of positive integers are positive (rule 5 of :ref{#multiplication-rules}), so $$mr$$ and
+$$ns$$ are positive integers. So the product is a fraction with positive top and bottom, which is
+positive by :ref{#positive-rational}.
+
+:::
+
+::::
+
+:::::
