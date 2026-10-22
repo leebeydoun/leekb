@@ -1,0 +1,435 @@
+---
+title: Around the circle
+description:
+  The distance round a circle is 2πr, and the same π measures both its area and its length.
+---
+
+Wrap a tape measure round a tin, then measure straight across the top. Whatever the size of the tin,
+the distance round comes out a little more than three times the distance across. A bike wheel does
+the same: each turn carries the bike a little more than three wheel-widths down the road. This guide
+explains where that number comes from, and why it turns out to be $$\pi$$, the same number that
+gives the area of a disc in [The area of a disc](./disc-area.mdx).
+
+## Polygons inside a circle
+
+A circle is curved, but a ruler measures straight lengths. So the plan is to replace the circle by a
+shape made of straight sides that hugs it closely. Mark points evenly round the circle, like the
+hours on a clock face, and join each one to the next with a straight cut. With $$12$$ points you get
+a twelve-sided shape that already looks almost round from a distance.
+
+:::definition[Regular polygon in a circle]{#inscribed-polygon}
+
+Let $$n \ge 3$$ be a whole number and take a circle with centre $$O$$ and radius $$r$$. Mark $$n$$
+points on the circle, spaced so that each pair of neighbours makes an angle of $$\frac{360}{n}$$
+degrees at $$O$$. Joining each point to the next by a segment, all the way round, gives the
+**regular** $$n$$**-sided polygon in the circle**.
+
+Its **perimeter** is the total length of its $$n$$ sides.
+
+:::
+
+The segments from $$O$$ to the marked points cut the polygon into $$n$$ thin triangles, one for each
+side, like slices of a pizza with straight crusts. Each triangle has two sides of length $$r$$ (from
+the centre to the circle) and the angle $$\frac{360}{n}$$ degrees between them.
+
+```plane
+point O 0 0 s
+point A 2.5 0 e
+point B 1.7678 1.7678 ne
+point C 0 2.5 n
+point D -1.7678 1.7678 nw
+point E -2.5 0 w
+point F -1.7678 -1.7678 sw
+point G 0 -2.5 s
+point H 1.7678 -1.7678 se
+point M 2.1339 0.8839 hidden
+circle O 2.5 color=muted
+polygon A B C D E F G H color=blue
+segment O A
+segment O B
+segment O M color=orange dashed label="h"
+right O M B color=orange r=0.25
+text 1.0 -0.35 "r"
+caption "Eight points round a circle make a regular eight-sided polygon, cut into eight equal triangles"
+```
+
+:::proposition[Area of a polygon in a circle]{#inscribed-area}
+
+Take the regular $$n$$-sided polygon in a circle with centre $$O$$. Let $$h$$ be the height of one
+of its triangles, measured from $$O$$ to the side opposite it. Then
+
+```math
+\text{area of the polygon} = \frac{1}{2} \cdot \text{perimeter} \cdot h
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Regular_polygon#Area"}
+
+Any two of the triangles have two sides of length $$r$$ with an angle of $$\frac{360}{n}$$ degrees
+between them. So they are congruent by :ref{#isometries/sas}. Congruent shapes have the same side
+lengths and the same area (:ref{#isometries/isometry-area}). So every side of the polygon has the
+same length $$b$$, and every triangle has the same area.
+
+Take $$b$$ as the base of one triangle. Its height is $$h$$, so its area is $$\frac{1}{2} b h$$
+(:ref{#distance-and-angles/triangle-area}). The triangles fill the polygon without overlapping, so
+the areas add (:ref{#distance-and-angles/area-rules}):
+
+```math
+\text{area of the polygon} = n \cdot \frac{1}{2} b h = \frac{1}{2} \cdot (n b) \cdot h
+```
+
+The polygon has $$n$$ sides of length $$b$$, so $$nb$$ is its perimeter.
+
+:::
+
+The formula reads like the one for a single triangle: half of "base times height", where the base is
+now the whole perimeter laid out in a line. That is no accident. Unroll the slices so that their
+crusts sit side by side along a straight line, and they make a row of triangles with total base
+equal to the perimeter, all of height $$h$$.
+
+## The length of a circle
+
+Now let the number of sides grow. With more and more points round the circle, the polygon creeps
+closer to it from inside: its area gets closer to the area of the disc, its perimeter gets closer to
+the length of the circle, and the height of each slice gets closer to the radius. Feeding these into
+the formula above turns a fact about polygons into a fact about the circle.
+
+Try it below. Each readout compares the polygon with the circle, and both creep up towards the same
+number.
+
+<InscribedPolygon />
+
+:::theorem[Circumference of a circle]{#circumference-formula}
+
+A circle of radius $$r$$ has length
+
+```math
+C = 2 \pi r
+```
+
+where $$\pi$$ is the area of a disc of radius $$1$$ (:ref{#pi}). This length is called the
+**circumference** of the circle.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Area_of_a_circle#Using_polygons"}
+
+Write $$A$$, $$P$$ and $$h$$ for the area, perimeter and slice height of the regular $$n$$-sided
+polygon in the circle. By :ref{#inscribed-area}, for every $$n$$:
+
+```math
+A = \frac{1}{2} \cdot P \cdot h
+```
+
+Now let $$n$$ grow, and follow each of the three numbers.
+
+1. **The area $$A$$ approaches $$\pi r^2$$**: the polygon sits inside the disc, and what is left
+   over is a ring of thin slivers next to the circle. The slivers lie in a band round the edge that
+   gets as thin as you like, the same squeeze as in :ref{#edge-band}. So $$A$$ gets as close as you
+   like to the area of the disc, which is $$\pi r^2$$ by :ref{#disc-area-formula}.
+2. **The perimeter $$P$$ approaches $$C$$**: the length of a curve is what the totals of shorter and
+   shorter segments along it approach (:ref{#curve-length-scaling}). The sides of the polygon are
+   exactly such segments.
+3. **The height $$h$$ approaches $$r$$**: in one slice, both ends of the side are $$r$$ from $$O$$,
+   so $$O$$ lies on the side's perpendicular bisector
+   (:ref{#distance-and-angles/perpendicular-bisector-rule}). The height therefore meets the side at
+   its midpoint $$M$$. Going straight from $$O$$ to an end $$A$$ of the side is no longer than going
+   by way of $$M$$, so the triangle inequality (:ref{#distance-and-angles/distance-rules}) gives
+   $$r \le h + \frac{b}{2}$$, so $$h$$ falls short of $$r$$ by at most $$\frac{b}{2}$$. Each side is
+   shorter than its arc of the circle, and the $$n$$ arcs are equal and make up the whole circle, so
+   $$b < \frac{C}{n}$$, which shrinks as $$n$$ grows.
+
+So the left side $$A$$ approaches $$\pi r^2$$. On the right, $$P$$ gets close to $$C$$ and $$h$$
+gets close to $$r$$, so $$\frac{1}{2} P h$$ gets close to $$\frac{1}{2} C r$$. The two sides are
+equal for every $$n$$, so the numbers they approach are equal too:
+
+```math
+\pi r^2 = \frac{1}{2} C r
+```
+
+Multiply both sides by $$2$$ and divide by $$r$$ to get $$C = 2 \pi r$$.
+
+:::
+
+Some steps in this proof come from the picture rather than from earlier rules:
+
+- each side of the polygon is shorter than the arc it cuts off, and the arcs are all the same length
+- the slivers between the polygon and the circle crowd into a band that gets as thin as you like
+- when two numbers each settle down, their product settles down to the product of where they go
+
+Each is what your eyes tell you when the sides get short, and calculus is the part of mathematics
+that makes "approaches" precise. The third step, the height, is proved from earlier rules once the
+first is granted, and the algebra at the end is exact.
+
+:::example[A bike wheel]
+
+A bike wheel with its tyre is about $$70$$ cm across, so its radius is $$35$$ cm. One turn of the
+wheel lays its whole circumference along the road:
+
+```math
+C = 2 \pi \cdot 0.35 = 0.7 \pi \approx 2.20 \text{ metres}
+```
+
+So one kilometre takes about $$\frac{1000}{2.20} \approx 455$$ turns of the wheel. A bike computer
+counts the turns and multiplies by the circumference, which is why you set the wheel size when you
+fit one.
+
+:::
+
+<WheelTrack caption="One turn of a wheel lays its circumference flat on the road, a little more than three wheel-widths" />
+
+## One number, two jobs
+
+The proof shows something that is not obvious at all. The number $$\pi$$ was defined by area: it is
+how many unit squares fit in a disc of radius $$1$$. Yet the same number measures length round a
+circle. Many people first meet $$\pi$$ as "the distance round divided by the distance across", and
+that version follows at once.
+
+:::corollary[Pi from a tape measure]{#pi-ratio}
+
+For every circle, the circumference divided by the diameter is $$\pi$$:
+
+```math
+\frac{C}{2r} = \pi
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Pi#Definition"}
+
+The diameter is twice the radius, $$2r$$. By :ref{#circumference-formula}, $$C = 2\pi r$$, so
+$$\frac{C}{2r} = \frac{2\pi r}{2r} = \pi$$.
+
+:::
+
+The ratio doesn't depend on the size of the circle, which matches what zooming says. A circle of
+radius $$r$$ is the circle of radius $$1$$ zoomed by $$r$$, and a zoom multiplies every length by
+$$r$$ (:ref{#curve-length-scaling}). So its length is $$r$$ times the length $$2\pi$$ of the circle
+of radius $$1$$, which is $$2\pi r$$ again. Two different arguments give the same answer.
+
+A pizza shows the link between area and length another way. Cut it into many slices and lay them
+side by side, points up and points down in turn. The crusts make the two long edges, each half the
+circumference, so about $$\pi r$$ long, and the height is about $$r$$. The more slices, the closer
+the shape gets to a rectangle $$\pi r$$ by $$r$$, with area $$\pi r^2$$.
+
+<PizzaRearranged caption="Slices laid side by side make a shape close to a rectangle: half the circumference long and one radius tall" />
+
+## Pinning down pi
+
+The polygons don't only prove the formula: they also give numbers. A polygon's perimeter is shorter
+than the circle, so its perimeter divided by the diameter is a little less than $$\pi$$. The hexagon
+gives the first clean bound.
+
+:::example[The hexagon shows pi is more than 3]
+
+Take the regular six-sided polygon in a circle of radius $$r$$. Each slice has two sides $$r$$ with
+an angle of $$60^\circ$$ between them. A triangle with all three sides equal to $$r$$ has three
+equal angles (:ref{#isometries/isosceles}, used twice), adding up to $$180^\circ$$
+(:ref{#distance-and-angles/triangle-angle-sum}), so each is $$60^\circ$$. So it also has two sides
+$$r$$ with $$60^\circ$$ between them, and by :ref{#isometries/sas} it is congruent to each slice.
+Each side of the hexagon is therefore $$r$$, and the perimeter is $$6r$$.
+
+The perimeter is shorter than the circle, so $$6r < 2\pi r$$. Dividing by $$2r$$ gives $$\pi > 3$$.
+
+:::
+
+More sides squeeze closer. The table gives the perimeter divided by the diameter for a few values of
+$$n$$, worked out with the trigonometry of a later chapter:
+
+| Sides $$n$$ | Perimeter $$\div$$ diameter |
+| ----------- | --------------------------- |
+| $$6$$       | $$3$$                       |
+| $$12$$      | $$3.1058$$                  |
+| $$24$$      | $$3.1326$$                  |
+| $$48$$      | $$3.1394$$                  |
+| $$96$$      | $$3.1410$$                  |
+
+With $$96$$ sides, together with a matching polygon drawn outside the circle, Archimedes showed more
+than two thousand years ago that $$\pi$$ lies between $$3\frac{10}{71}$$ and $$3\frac{1}{7}$$. In
+decimals, $$\pi = 3.14159\ldots$$, and its digits never settle into a repeating pattern.
+
+## Adding a little to a circle
+
+Because the circumference is $$2\pi$$ times the radius, a change in the radius changes the length by
+$$2\pi$$ times as much, whatever the size of the circle. This gives some answers that surprise
+nearly everyone.
+
+:::example[A rope round the Earth]
+
+A rope fits tightly round the equator, about $$40\,000$$ km long. Add $$1$$ metre to the rope and
+hold it evenly off the ground all the way round. How high is the gap?
+
+Call the radius of the Earth $$R$$ and the new radius $$R + g$$. The rope's length grows by $$1$$
+metre, so
+
+```math
+2\pi (R + g) = 2\pi R + 1, \quad \text{so} \quad 2\pi g = 1, \quad g = \frac{1}{2\pi} \approx 0.16 \text{ metres}
+```
+
+The gap is about $$16$$ cm, high enough for a cat to crawl under. The size of the Earth dropped out:
+the answer is the same for a rope round a football.
+
+:::
+
+The same arithmetic explains the staggered starts on a running track. On a bend, a runner in an
+outer lane runs round a bigger circle than the runner inside. If the lanes are $$1.22$$ metres wide,
+each lane's circle has a radius $$1.22$$ metres bigger than the one inside it. So over a full circle
+it is longer by $$2\pi \cdot 1.22 \approx 7.67$$ metres, and over a half circle by about $$3.83$$
+metres. A $$400$$ metre race has two half-circle bends, so each lane starts roughly $$7.7$$ metres
+ahead of the one inside it. Real tracks measure each lane's line slightly differently, so official
+staggers are a little smaller, but the reason for them is this formula.
+
+## Exercises
+
+:::::accordion[Exercises on the circumference, with solutions]
+
+::::exercise{#ex-circumference-pond}
+
+A round pond has a path round its edge that is $$44$$ metres long. Find the radius of the pond and
+the area of its surface, to the nearest whole number.
+
+:::solution
+
+By :ref{#circumference-formula}, $$2\pi r = 44$$, so
+
+```math
+r = \frac{44}{2\pi} \approx 7.00 \text{ metres}
+```
+
+By :ref{#disc-area-formula}, the area is $$\pi r^2 \approx \pi \cdot 7.003^2 \approx 154$$ square
+metres. Keeping the unrounded radius in the last step matters little here, but it is a good habit.
+
+:::
+
+::::
+
+::::exercise{#ex-circumference-football}
+
+A string fits tightly round a football of radius $$11$$ cm. You add $$1$$ metre to it and hold it
+evenly off the ball all the way round. How big is the gap? Compare the answer with the rope round
+the Earth, and explain why they agree.
+
+:::solution
+
+Let the gap be $$g$$ metres. The new circle has radius $$0.11 + g$$, and its length is $$1$$ metre
+more than the old one:
+
+```math
+2\pi (0.11 + g) = 2\pi \cdot 0.11 + 1, \quad \text{so} \quad g = \frac{1}{2\pi} \approx 0.16 \text{ metres}
+```
+
+It is the same $$16$$ cm as for the Earth. The length $$2\pi r$$ grows by $$2\pi$$ for each unit
+added to the radius, whatever $$r$$ was. So the extra length decides the extra radius on its own,
+and the size of the ball cancels out.
+
+:::
+
+::::
+
+::::exercise{#ex-circumference-wheel}
+
+A child's bike wheel has radius $$20$$ cm. How far does the bike travel when the wheel turns $$100$$
+times? How many turns does it need to cover the same distance as $$100$$ turns of a wheel of radius
+$$35$$ cm?
+
+:::solution
+
+One turn covers the circumference $$2\pi \cdot 0.2 = 0.4\pi \approx 1.257$$ metres
+(:ref{#circumference-formula}). So $$100$$ turns cover $$40\pi \approx 125.7$$ metres.
+
+The larger wheel covers $$2\pi \cdot 0.35 = 0.7\pi$$ metres per turn, so $$100$$ turns cover
+$$70\pi$$ metres. The small wheel needs $$\frac{70\pi}{0.4\pi} = 175$$ turns. The $$\pi$$ cancels:
+the number of turns goes as the ratio of the radii, $$\frac{35}{20} = 1.75$$ times as many.
+
+:::
+
+::::
+
+::::exercise{#ex-circumference-square}
+
+Take the regular four-sided polygon in a circle of radius $$1$$: a square with its corners on the
+circle.
+
+1. Use Pythagoras to find the length of one side.
+2. Find the square's perimeter and area, and check that they fit :ref{#inscribed-area}.
+3. What lower bound for $$\pi$$ does the perimeter give?
+
+:::solution
+
+1. Neighbouring corners make a right angle at the centre, with both legs equal to $$1$$. By
+   :ref{#distance-and-angles/pythagoras}, the side is $$\sqrt{1^2 + 1^2} = \sqrt{2}$$.
+2. The perimeter is $$4\sqrt{2} \approx 5.657$$. Each slice is a right triangle with legs $$1$$ and
+   $$1$$, so it has area $$\frac{1}{2}$$, and the square has area $$4 \cdot \frac{1}{2} = 2$$. For
+   the check, the height $$h$$ of a slice over its side $$\sqrt{2}$$ satisfies
+   $$\frac{1}{2} \sqrt{2}\, h = \frac{1}{2}$$, so $$h = \frac{1}{\sqrt{2}}$$. Then
+   $$\frac{1}{2} \cdot 4\sqrt{2} \cdot \frac{1}{\sqrt{2}} = 2$$, which matches.
+3. The perimeter is shorter than the circle, so $$4\sqrt{2} < 2\pi$$, which gives
+   $$\pi > 2\sqrt{2} \approx 2.83$$. This is weaker than the hexagon's $$\pi > 3$$, because four
+   sides hug the circle less closely than six.
+
+:::
+
+::::
+
+::::exercise{#ex-circumference-track}
+
+In a $$200$$ metre race, the runners go round one bend, which is half a circle, and the lanes are
+$$1.22$$ metres wide. How much further ahead should each lane start than the lane inside it? What
+would the answer be on a track with $$1$$ metre lanes?
+
+:::solution
+
+A half circle of radius $$r$$ has length $$\pi r$$, half of :ref{#circumference-formula}. The next
+lane out has radius $$r + 1.22$$, so its bend is longer by
+
+```math
+\pi (r + 1.22) - \pi r = 1.22\pi \approx 3.83 \text{ metres}
+```
+
+So each lane starts about $$3.83$$ metres ahead of the one inside it. With $$1$$ metre lanes it
+would be $$\pi \approx 3.14$$ metres. The radius of the bend doesn't appear, only the lane width.
+
+:::
+
+::::
+
+::::exercise{#ex-circumference-height}
+
+In the proof of :ref{#circumference-formula}, why is the height $$h$$ of a slice always less than
+the radius $$r$$? Use a result from [Distance and angles](../distance-and-angles/introduction.mdx).
+
+:::solution
+
+Let a slice have corners $$O$$, $$A$$ and $$B$$, and let $$M$$ be the foot of the perpendicular from
+$$O$$ to the side $$AB$$, so $$h = d(O, M)$$. The triangle $$OMA$$ has a right angle at $$M$$, and
+its hypotenuse is $$OA$$, of length $$r$$. The hypotenuse is the longest side of a right triangle
+(:ref{#distance-and-angles/hypotenuse-longest}), so $$h < r$$.
+
+This is why the polygon's area $$\frac{1}{2} P h$$ is less than $$\frac{1}{2} C r$$: both the
+perimeter and the height fall short of the circle's.
+
+:::
+
+::::
+
+::::exercise{#ex-circumference-measure}
+
+You wrap a tape round a tin and read $$25.1$$ cm, and you measure $$8.0$$ cm across the top. What
+value of $$\pi$$ do you get? If the reading across had been $$8.2$$ cm instead, how far off would
+the value be, and what does that say about measuring $$\pi$$ with a ruler?
+
+:::solution
+
+By :ref{#pi-ratio}, $$\pi \approx \frac{25.1}{8.0} \approx 3.14$$. With $$8.2$$ cm across, the value
+would be $$\frac{25.1}{8.2} \approx 3.06$$, off by about $$0.08$$.
+
+A slip of $$2$$ mm, about the width of a pencil line, changes the second decimal place. So a ruler
+and tape give $$\pi$$ to about one decimal place. More digits need a method like the polygons, which
+uses calculation instead of measuring.
+
+:::
+
+::::
+
+:::::

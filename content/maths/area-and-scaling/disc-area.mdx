@@ -1,0 +1,361 @@
+---
+title: The area of a disc
+description:
+  Where the formula pi r squared comes from, how big pi is, and why sectors keep their share.
+---
+
+A garden sprinkler wets a disc of lawn. A goat tied to a stake can graze a disc of grass. A pizza is
+a disc of dough. The [Distance and angles](../distance-and-angles/introduction.mdx) chapter used the
+formula $$\pi r^2$$ for the area of a disc, and took it as given
+(:ref{#distance-and-angles/disc-area}). This guide explains where it comes from.
+
+The whole explanation rests on one observation: every disc is a zoom of the disc of radius $$1$$.
+Once you know the area of that one disc, [Zooming and area](./scaling-areas.mdx) gives the area of
+every other. The number $$\pi$$ is then the name for that one area. The rest of this page works out
+roughly how big it is, and uses it to prove the rules about discs that the earlier chapter assumed.
+
+## One number for every disc
+
+Picture a disc of radius $$1$$ printed on a sheet, and a photocopier set to zoom by $$3$$ about its
+centre. The copy is a disc of radius $$3$$, and its area is $$3^2 = 9$$ times the area of the
+original (:ref{#area-scaling}). The same works for any radius $$r$$: the zoom by $$r$$ turns the
+disc of radius $$1$$ into the disc of radius $$r$$, with $$r^2$$ times the area.
+
+So every disc's area is $$r^2$$ times one fixed number: the area of the disc of radius $$1$$. That
+number turns up so often that it has its own name.
+
+:::definition[The number pi]{#pi}
+
+The number $$\pi$$ (the Greek letter pi) is the area of a disc of radius $$1$$.
+
+:::
+
+The disc of radius $$1$$ is called the **unit disc**. The number $$\pi$$ doesn't depend on which
+unit disc you take. A slide that takes one centre to the other carries one disc of radius $$1$$ onto
+the other, as in the proof of :ref{#isometries/circles-congruent}, and isometries keep area
+(:ref{#isometries/isometry-area}).
+
+You may have met $$\pi$$ as the circumference of a circle divided by its diameter. That is a
+different question, about a length rather than an area, and it is a surprise that the answer is the
+same number. [Around the circle](./circumference.mdx) shows why.
+
+## How big is pi?
+
+The definition says what $$\pi$$ is, but not how big it is. Two squares give a first answer. A
+square of side $$2$$ fits around the unit disc, touching it at four points, and a smaller square
+fits inside it with its corners on the circle. The disc is bigger than the inner square and smaller
+than the outer one.
+
+```plane
+point O 0 0 sw
+point A 2.5 0 hidden
+point B 0 2.5 hidden
+point C -2.5 0 hidden
+point D 0 -2.5 hidden
+point E 2.5 2.5 hidden
+point F -2.5 2.5 hidden
+point G -2.5 -2.5 hidden
+point H 2.5 -2.5 hidden
+polygon E F G H color=muted
+circle O 2.5 fill
+polygon A B C D color=orange
+segment O A label="1"
+caption "The unit disc between two squares: the inner square has area 2 and the outer one area 4"
+```
+
+:::proposition[Pi is between 2 and 4]{#pi-bounds}
+
+The number $$\pi$$ lies between $$2$$ and $$4$$:
+
+```math
+2 < \pi < 4
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Pi#Polygon_approximation_era"}
+
+Let $$O$$ be the centre of the unit disc.
+
+**The outer square.** Take the two lines through $$O$$ that meet at right angles, and the square of
+side $$2$$ centred at $$O$$ with its sides parallel to them. This square is made of the points that
+are within $$1$$ of both lines, as the picture shows. A point $$P$$ of the disc has
+$$d(O, P) \le 1$$. Its distance to each line is at most $$d(O, P)$$, since the shortest distance
+from a point to a line is along the perpendicular (:ref{#distance-and-angles/shortest-distance}). So
+$$P$$ is within $$1$$ of both lines, and lies in the square. The disc is inside a square of area
+$$2 \cdot 2 = 4$$ (:ref{#distance-and-angles/area-rules}).
+
+**The inner square.** Mark the four points where the two lines cross the circle. Joining them gives
+a square made of four right triangles, each with legs of length $$1$$ meeting at $$O$$. Each
+triangle has area $$\frac{1 \cdot 1}{2} = \frac{1}{2}$$
+(:ref{#distance-and-angles/right-triangle-area}), so the square has area
+$$4 \cdot \frac{1}{2} = 2$$. Every point of this square is within $$1$$ of $$O$$, since its farthest
+points from $$O$$ are its corners, as the picture shows. So it lies inside the disc.
+
+A shape inside another has no more area (:ref{#area-compare}), so $$2 \le \pi \le 4$$. Neither is an
+equality: the disc leaves the corners of the outer square empty, and it spills over each side of the
+inner square, and those pieces have area. So $$2 < \pi < 4$$.
+
+:::
+
+A finer grid of squares pins $$\pi$$ down much more closely. Lay a grid of squares of side $$c$$
+over the unit disc, with a corner of the grid at the centre. The inner count adds up the squares
+wholly inside the disc, and the outer count adds up every square that overlaps the disc in some area
+(:ref{#grid-counts}). The area $$\pi$$ lies between them (:ref{#grid-squeeze}). Counting by computer
+gives these results:
+
+| Side of each square | Squares wholly inside | Inner count | Squares overlapping | Outer count | Gap       |
+| ------------------- | --------------------- | ----------- | ------------------- | ----------- | --------- |
+| $$0.1$$             | $$276$$               | $$2.76$$    | $$344$$             | $$3.44$$    | $$0.68$$  |
+| $$0.01$$            | $$31\,016$$           | $$3.1016$$  | $$31\,796$$         | $$3.1796$$  | $$0.078$$ |
+| $$0.001$$           | $$3\,137\,548$$       | $$3.1375$$  | $$3\,145\,520$$     | $$3.1456$$  | $$0.008$$ |
+
+Each count is the number of squares times the area of one square: for example
+$$276 \cdot 0.1^2 = 2.76$$. Each time the squares get ten times smaller, the gap gets about ten
+times smaller too, as the edge band of :ref{#edge-band} predicts. The last row shows that
+$$3.1375 < \pi < 3.1456$$, so $$\pi = 3.14$$ to two decimal places. More careful methods give
+
+```math
+\pi = 3.14159265\ldots
+```
+
+and the digits go on for ever without settling into a repeating pattern.
+
+## The area of a disc
+
+With $$\pi$$ named, the formula for every disc follows from zooming. The slider below changes the
+radius. The orange square has the radius as its side, so its area is $$r^2$$. Four such squares make
+the square around the disc, and the disc always takes up the same share of them: $$\pi$$ of the
+four, a little more than three.
+
+<DiscZoom />
+
+:::theorem[Area of a disc]{#disc-area-formula}
+
+A disc of radius $$r$$ has area $$\pi r^2$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Area_of_a_circle"}
+
+Let $$O$$ be the centre, let $$D_1$$ be the disc of radius $$1$$ centred at $$O$$, and let $$D_r$$
+be the disc of radius $$r$$ centred at $$O$$. The first step is to show that the zoom by $$r$$ about
+$$O$$ sends $$D_1$$ exactly onto $$D_r$$.
+
+Let $$P$$ be a point of $$D_1$$, so $$d(O, P) \le 1$$. The zoom sends it to the point $$rP$$ on the
+ray $$OP$$ with $$d(O, rP) = r \cdot d(O, P) \le r$$ (:ref{#isometries/dilation}), so $$rP$$ is in
+$$D_r$$. In the other direction, let $$Q$$ be a point of $$D_r$$. The zoom by $$\frac{1}{r}$$ sends
+it to a point at distance $$\frac{1}{r} \cdot d(O, Q) \le 1$$ from $$O$$, which is in $$D_1$$, and
+the zoom by $$r$$ sends that point back to $$Q$$ (:ref{#zoom-twice}). So the zoom of $$D_1$$ is the
+whole of $$D_r$$.
+
+By :ref{#area-scaling}, the area of $$D_r$$ is $$r^2$$ times the area of $$D_1$$. The area of
+$$D_1$$ is $$\pi$$ (:ref{#pi}), so the area of $$D_r$$ is $$\pi r^2$$.
+
+:::
+
+This proves rule 1 of :ref{#distance-and-angles/disc-area}, which that chapter took as given. All it
+needed was the definition of $$\pi$$ and the fact that zooming multiplies area by $$r^2$$. The
+section on sectors below proves rule 2.
+
+:::example[A goat on a rope]
+
+A goat is tied to a stake with a rope $$5$$ metres long. It can reach every point within $$5$$
+metres of the stake: a disc of radius $$5$$, with area $$25\pi \approx 78.5$$ square metres.
+
+On a $$10$$ metre rope, it can reach a disc of radius $$10$$, with area $$100\pi \approx 314.2$$
+square metres. Doubling the rope gives the goat four times the grass, since
+$$100\pi = 4 \cdot 25\pi$$.
+
+:::
+
+<GoatTether caption="Drawn to the same scale: twice the rope reaches a disc with twice the radius and four times the area." />
+
+Now the pizza question from [Zooming and area](./scaling-areas.mdx) can be answered in square
+inches. A 12-inch pizza has radius $$6$$ inches and area $$36\pi \approx 113.1$$ square inches. Two
+8-inch pizzas have radius $$4$$ inches each and together cover
+$$2 \cdot 16\pi = 32\pi \approx 100.5$$ square inches. The ratio $$\frac{36\pi}{32\pi} = 1.125$$
+matches the answer found there without $$\pi$$.
+
+## Sectors keep their share
+
+A slice of pizza cut at the centre is a sector (:ref{#distance-and-angles/sector}). Cut a large
+pizza and a small pizza into eighths, and each slice is an eighth of its own pizza, even though the
+large slices are bigger. Zooming explains why: a zoom about the centre moves every point straight
+out along its own ray from the centre, so it turns a slice of the small pizza into a slice of the
+large one with the same angle.
+
+:::proposition[Sectors and zooming]{#sector-scaling}
+
+Take a disc centred at $$O$$ and a sector of it with angle $$x^\circ$$. The zoom by $$r$$ about
+$$O$$ sends the sector onto the sector with the same angle in the zoomed disc. Both the sector and
+the disc have their areas multiplied by $$r^2$$, so the sector takes up the same fraction of each
+disc.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Circular_sector#Area"}
+
+The zoom sends each point $$P \ne O$$ to a point of the ray $$OP$$ (:ref{#isometries/dilation}), so
+it sends each ray from $$O$$ into itself. A point lies inside the angle exactly when its ray from
+$$O$$ does, so points inside the angle go to points inside the angle, and points outside it go to
+points outside it. The proof of :ref{#disc-area-formula} shows that the disc of radius $$s$$ goes
+exactly onto the disc of radius $$rs$$, and the same argument works with $$s$$ in place of $$1$$. So
+the points of the disc that are inside the angle, which make up the sector, go exactly onto the
+points of the zoomed disc that are inside the angle.
+
+By :ref{#area-scaling}, both areas are multiplied by $$r^2$$. Writing $$A$$ for the area of the
+sector and $$D$$ for the area of the disc, the fraction after the zoom is
+
+```math
+\frac{r^2 A}{r^2 D} = \frac{A}{D}
+```
+
+which is the fraction before.
+
+:::
+
+This proves rule 2 of :ref{#distance-and-angles/disc-area}: the fraction of a disc that an angle's
+sector takes up is the same for every disc centred at the angle's vertex. Any two such discs are
+zooms of each other about the vertex, since the zoom by $$\frac{t}{s}$$ turns radius $$s$$ into
+radius $$t$$. So the measure of an angle in degrees, defined by that fraction, depends on the angle
+alone.
+
+Rule 3, that a line through the centre cuts a disc into two halves of equal area, comes from a flip
+rather than a zoom. The flip in that line keeps the centre where it is and keeps distances, so it
+sends the disc onto itself. It swaps the two sides of the line, so it carries one half onto the
+other, and isometries keep area (:ref{#isometries/isometry-area}). So all three rules about discs
+that [Distance and angles](../distance-and-angles/introduction.mdx) took as given are now explained.
+
+:::example[A sprinkler that sweeps an arc]
+
+A garden sprinkler swings back and forth through $$120^\circ$$ and reaches $$6$$ metres. It wets a
+sector of $$120^\circ$$ in a disc of radius $$6$$. That is $$\frac{120}{360} = \frac{1}{3}$$ of the
+disc, so it wets $$\frac{1}{3} \cdot 36\pi = 12\pi \approx 37.7$$ square metres
+(:ref{#distance-and-angles/sector-area}).
+
+:::
+
+## Exercises
+
+:::::accordion[Exercises on the area of a disc, with solutions]
+
+::::exercise{#ex-disc-area-rope}
+
+A goat is tied with a rope $$4$$ metres long.
+
+1. How much grass can it reach?
+2. How long a rope would give it three times as much?
+
+:::solution
+
+1. A disc of radius $$4$$, with area $$16\pi \approx 50.3$$ square metres
+   (:ref{#disc-area-formula}).
+2. Three times the area needs a zoom by the number whose square is $$3$$ (:ref{#area-scaling}), so
+   the rope must be $$4\sqrt{3} \approx 6.93$$ metres. Check: $$\pi(4\sqrt{3})^2 = 48\pi$$, which is
+   $$3 \cdot 16\pi$$.
+
+:::
+
+::::
+
+::::exercise{#ex-disc-area-ring}
+
+A round paddling pool has radius $$3$$ metres and is surrounded by a paved ring $$2$$ metres wide.
+What is the area of the paving?
+
+:::solution
+
+The pool and the paving together make a disc of radius $$3 + 2 = 5$$, with area $$25\pi$$. The pool
+is a disc of radius $$3$$, with area $$9\pi$$ (:ref{#disc-area-formula}). The two pieces don't
+overlap, so the areas add (:ref{#distance-and-angles/area-rules}):
+
+```math
+\text{area of the paving} = 25\pi - 9\pi = 16\pi \approx 50.3 \text{ square metres}
+```
+
+The paving has more area than the pool, even though it is narrower than the pool's radius.
+
+:::
+
+::::
+
+::::exercise{#ex-disc-area-hexagon}
+
+Six points are spaced evenly round the unit circle and joined in order, making a regular hexagon.
+Joining each corner to the centre cuts it into six triangles whose sides all have length $$1$$.
+
+1. Find the height of one triangle and its area.
+2. Use the hexagon to show that $$\pi > 2.5$$.
+
+:::solution
+
+1. Take one triangle with base $$1$$. The opposite corner is the same distance from both ends of the
+   base, so it lies on the perpendicular bisector of the base
+   (:ref{#distance-and-angles/perpendicular-bisector-rule}). So the perpendicular from that corner
+   meets the base at its midpoint, and cuts off a right triangle with hypotenuse $$1$$ and one leg
+   $$\frac{1}{2}$$, and by :ref{#distance-and-angles/pythagoras} the height is
+   $$\sqrt{1 - \frac{1}{4}} = \frac{\sqrt{3}}{2} \approx 0.866$$. The area is
+   $$\frac{1}{2} \cdot 1 \cdot \frac{\sqrt{3}}{2} = \frac{\sqrt{3}}{4} \approx 0.433$$
+   (:ref{#distance-and-angles/triangle-area}).
+2. The hexagon has area $$6 \cdot \frac{\sqrt{3}}{4} \approx 2.598$$ and lies inside the unit disc,
+   so $$\pi \ge 2.598 > 2.5$$ (:ref{#area-compare}). This beats the inner square of
+   :ref{#pi-bounds}, which only gave $$\pi > 2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-disc-area-double}
+
+A circular pond has radius $$10$$ metres. It is to be enlarged to twice the area, keeping it
+circular. What is the new radius?
+
+:::solution
+
+Twice the area needs a zoom by $$\sqrt{2}$$ (:ref{#area-scaling}), so the new radius is
+$$10\sqrt{2} \approx 14.14$$ metres. Check: $$\pi(10\sqrt{2})^2 = 200\pi$$, and the old area was
+$$100\pi$$.
+
+:::
+
+::::
+
+::::exercise{#ex-disc-area-slices}
+
+A 12-inch pizza is cut into $$8$$ equal slices and a 10-inch pizza into $$6$$ equal slices. Which
+slice is bigger, and by how much?
+
+:::solution
+
+The 12-inch pizza has radius $$6$$ and area $$36\pi$$, so each of its slices has area
+$$\frac{36\pi}{8} = 4.5\pi \approx 14.1$$ square inches. The 10-inch pizza has radius $$5$$ and area
+$$25\pi$$, so each of its slices has $$\frac{25\pi}{6} \approx 4.17\pi \approx 13.1$$ square inches
+(:ref{#disc-area-formula}). The slice of the 12-inch pizza is bigger, by about $$1$$ square inch.
+
+:::
+
+::::
+
+::::exercise{#ex-disc-area-darts}
+
+A square dartboard has side $$1$$. A quarter of a disc of radius $$1$$ is painted on it, centred at
+one corner. Darts thrown at random land anywhere on the board with equal chance, so the share that
+land in the painted part is about the share of the area it covers.
+
+1. What share of the board is painted?
+2. Out of $$1000$$ darts, $$786$$ land in the painted part. What estimate of $$\pi$$ does that give?
+
+:::solution
+
+1. The painted part is a sector of $$90^\circ$$ in a disc of radius $$1$$, so its area is
+   $$\frac{90}{360} \cdot \pi = \frac{\pi}{4}$$ (:ref{#distance-and-angles/sector-area}). The board
+   has area $$1$$, so the share is $$\frac{\pi}{4} \approx 0.785$$.
+2. Setting $$\frac{\pi}{4} \approx \frac{786}{1000}$$ gives $$\pi \approx 4 \cdot 0.786 = 3.144$$.
+   More darts give a better estimate, in the same way that a finer grid does.
+
+:::
+
+::::
+
+:::::

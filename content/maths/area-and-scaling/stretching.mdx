@@ -1,0 +1,384 @@
+---
+title: Stretching one way
+description:
+  Pulling a shape in one direction multiplies its area by the stretch, which gives the area of an
+  ellipse.
+---
+
+Roll out a ball of pastry with strokes in one direction only, and a round disc becomes an oval:
+longer one way, the same width the other. Look at a round plate on a table from where you sit, and
+it looks squashed in the same way, because the far side is foreshortened. A zoom changes every
+length by the same factor, but a stretch changes lengths in one direction only. This guide shows
+what that does to area, and uses it to find the area of an oval shape called an ellipse.
+
+## A stretch away from a line
+
+Think of a rubber sheet pinned along a straight line $$L$$. Pull the sheet away from the line on
+both sides, evenly, so that every point ends up twice as far from $$L$$ as it was. Points on the
+line don't move, and every other point moves straight away from the line, square on to it. Nothing
+slides along the line. That is a stretch by $$2$$ away from $$L$$.
+
+:::definition[Stretch away from a line]{#stretch}
+
+Fix a line $$L$$ and a number $$a > 0$$. The **stretch by** $$a$$ **away from** $$L$$ is the map
+that sends each point $$P$$ to a point $$P'$$ as follows:
+
+- **$$P$$ on $$L$$**: $$P' = P$$, so the point stays where it is
+- **$$P$$ not on $$L$$**: let $$F$$ be the foot of the perpendicular from $$P$$ to $$L$$. Then
+  $$P'$$ is the point of the ray $$FP$$ with
+
+```math
+d(F, P') = a \cdot d(F, P)
+```
+
+So $$P'$$ is on the same side of $$L$$ as $$P$$, and $$a$$ times as far from $$L$$.
+
+:::
+
+For $$a > 1$$ the sheet is pulled out, and for $$a < 1$$ it is squashed towards the line. A stretch
+by $$1$$ moves nothing. Each point moves as if it were zoomed by $$a$$ about its own foot $$F$$, so
+a stretch is like a zoom with a different centre for every point, all lined up along $$L$$. When
+coordinates arrive in a later chapter, with $$L$$ as the horizontal axis, a stretch will be the rule
+$$(x, y) \mapsto (x, ay)$$.
+
+```plane
+point A -3.5 0 hidden
+point B 3.5 0 hidden
+point F -1.5 0 s
+point P -1.5 1 w
+point P' -1.5 2 w
+point G 1.5 0 n
+point Q 1.5 -0.75 e
+point Q' 1.5 -1.5 e
+line A B color=purple
+text 3.3 0.35 "L"
+segment F P
+segment P P' color=orange dashed
+segment G Q
+segment Q Q' color=orange dashed
+right B F P
+right A G Q
+caption "A stretch by 2 away from L: each point moves square on to L, ending twice as far from it"
+```
+
+## Stretching a rectangle
+
+Start with the shape whose area you know best. Take a rectangle lying on one side of $$L$$, with two
+of its sides parallel to $$L$$. Stretching pulls its two parallel sides further from $$L$$, and the
+sides square on to $$L$$ get longer. The parallel sides keep their length, because all their points
+move by the same amount in the same direction.
+
+:::proposition[Stretching a rectangle]{#stretch-rectangle}
+
+Let $$S$$ be a rectangle of width $$w$$ and height $$h$$, with its width parallel to $$L$$, lying on
+one side of $$L$$ or touching it. The stretch by $$a$$ away from $$L$$ sends $$S$$ to a rectangle of
+width $$w$$ and height $$a h$$. So it multiplies the area by $$a$$:
+
+```math
+\text{area of the stretched rectangle} = w \cdot a h = a \cdot (w h)
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Squeeze_mapping"}
+
+Say the two sides parallel to $$L$$ are at distances $$s$$ and $$s + h$$ from $$L$$. Every point of
+a line parallel to $$L$$ is the same distance from $$L$$
+(:ref{#distance-and-angles/parallel-distance}), so all the points of the nearer side move straight
+out, square on to $$L$$, to distance $$as$$. They all move by the same amount in the same direction,
+so the side moves without changing its length: it stays a segment of length $$w$$, parallel to
+$$L$$. In the same way, the far side ends up at distance $$a(s + h)$$, still of length $$w$$.
+
+The other two sides lie on lines square on to $$L$$, and the stretch moves points along exactly
+those lines. A side running from distance $$s$$ to distance $$s + h$$ goes to the segment from
+$$as$$ to $$a(s + h)$$ on the same line, of length $$a(s + h) - as = ah$$. So the image has two
+sides of length $$w$$ parallel to $$L$$ and two of length $$ah$$ square on to it, meeting at right
+angles: a rectangle $$w$$ by $$ah$$. By :ref{#distance-and-angles/area-rules}, its area is
+$$w \cdot ah = a \cdot wh$$.
+
+:::
+
+A rectangle that crosses $$L$$ can be cut along $$L$$ into two rectangles, one on each side. Each
+piece has its area multiplied by $$a$$, so the whole does too.
+
+## Stretching any shape
+
+For a curved shape, use the same idea as for zooms: lay a grid over it, with lines parallel and
+square on to $$L$$ and with $$L$$ itself as one of the lines. The stretch turns each little square
+into a tall thin rectangle (or a short wide one, if $$a < 1$$), all with area $$a$$ times the
+square's. So the inner and outer counts are both multiplied by $$a$$, and the area caught between
+them is too. The proof below fills in why the right rectangles are counted on each side.
+
+<StretchDisc />
+
+:::theorem[Stretching multiplies area by the stretch factor]{#stretch-area}
+
+The stretch by $$a$$ away from a line $$L$$ multiplies the area of every shape by $$a$$:
+
+```math
+\text{area of the stretched shape} = a \cdot (\text{area of the shape})
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Cavalieri%27s_principle"}
+
+Lay a grid of squares of side $$c$$ with lines parallel and square on to $$L$$, and $$L$$ one of the
+grid lines. Each square lies on one side of $$L$$, so by :ref{#stretch-rectangle} the stretch sends
+it to a rectangle $$c$$ by $$ac$$, with area $$a c^2$$. These rectangles fit together into a grid of
+their own, with no gaps or overlaps.
+
+The stretch by $$\frac{1}{a}$$ away from $$L$$ undoes the stretch by $$a$$
+(:ref{#ex-stretching-undo}), so a point lies in the stretched shape exactly when it comes from a
+point of the shape. So a square lies wholly inside the shape exactly when its rectangle lies wholly
+inside the stretched shape, and a square overlaps the shape exactly when its rectangle overlaps the
+stretched shape. Count with rectangles in place of squares, in the same way as :ref{#grid-counts}:
+the inner and outer counts of the stretched shape are $$a$$ times those of the shape. The argument
+of :ref{#grid-squeeze} works for rectangles too, since it uses only :ref{#area-compare} and
+:ref{#distance-and-angles/area-rules}, so the area of the stretched shape lies between these two
+counts.
+
+As $$c$$ shrinks, the counts for the shape close in on its area (:ref{#grid-rule}). The rectangles
+also shrink in both directions, and the same band argument as :ref{#edge-band}, with the rectangle's
+diagonal in place of the square's, closes the counts in on the area of the stretched shape. That
+last step is taken from the picture, as for squares. Both areas are pinned down by counts that
+differ by the factor $$a$$, so the area of the stretched shape is $$a$$ times the area of the shape.
+
+:::
+
+As for zooms, the step "the counts close in" comes from the picture and is made precise by calculus.
+The rest is the arithmetic of rectangles.
+
+A zoom fits into this picture too. Take two lines crossing square on at $$O$$. Stretch by $$r$$ away
+from one line, then by $$r$$ away from the other. Every point ends up $$r$$ times as far from both
+lines. The zoom by $$r$$ about $$O$$ also sends each point $$r$$ times as far from both lines, so
+the two stretches together are the zoom. This guide takes that from a drawing, and coordinates will
+prove it in a later chapter. The two stretches multiply the area by $$r$$ and then by $$r$$ again,
+giving the factor $$r^2$$ of :ref{#area-scaling}.
+
+## The ellipse
+
+Stretch a disc in two directions at right angles by different amounts, and you get the oval shape of
+a squashed circle. It turns up wherever a circle is seen at a slant: the top of a mug in a photo, a
+round window drawn in perspective, the shadow of a ball on the ground in the late afternoon.
+
+:::definition[Ellipse]{#ellipse}
+
+Take the disc of radius $$1$$ with centre $$O$$, and two lines crossing square on at $$O$$. Stretch
+it by $$a$$ away from the first line, and then by $$b$$ away from the second. The result is an
+**ellipse** (strictly, the region inside one), with **half-widths** $$a$$ and $$b$$. The first
+stretch moves points square on to the first line, so the ellipse reaches $$a$$ from $$O$$ in that
+direction. In the same way it reaches $$b$$ from $$O$$ square on to the second line.
+
+:::
+
+A disc of radius $$r$$ is the case $$a = b = r$$, since two stretches by $$r$$ make the zoom by
+$$r$$, as the drawing above suggests. Ellipses can also be described by a fixed total distance from
+two points, which is how gardeners draw an oval bed with two pegs and a loop of string. That
+description gives the same shapes, but this guide only needs the stretched circle.
+
+:::theorem[Area of an ellipse]{#ellipse-area}
+
+An ellipse with half-widths $$a$$ and $$b$$ has area
+
+```math
+\pi a b
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Ellipse#Area"}
+
+The disc of radius $$1$$ has area $$\pi$$ (:ref{#pi}). The first stretch multiplies its area by
+$$a$$, and the second by $$b$$ (:ref{#stretch-area}). So the ellipse has area
+$$\pi \cdot a \cdot b$$.
+
+:::
+
+With $$a = b = r$$ this gives $$\pi r^2$$, the area of a disc (:ref{#disc-area-formula}), so the
+formula fits what you already know.
+
+:::example[An oval table]
+
+An oval table in the shape of an ellipse is $$2$$ metres long and $$1.2$$ metres wide, so its
+half-widths are $$1$$ and $$0.6$$ metres. Its area is
+
+```math
+\pi \cdot 1 \cdot 0.6 \approx 1.88 \text{ square metres}
+```
+
+A rectangular table of the same length and width would have $$2 \cdot 1.2 = 2.4$$ square metres. The
+oval fills $$\frac{1.88}{2.4} \approx 0.785$$ of it, which is $$\frac{\pi}{4}$$: the same share that
+a round table fills of the square it fits in.
+
+:::
+
+<SlantedPlate caption="A round plate seen at a slant: the width stays the same, the depth is squashed, and the circle becomes an ellipse" />
+
+## Lengths under a stretch
+
+Area behaves well under a stretch: every shape's area is multiplied by the same factor $$a$$.
+Lengths do not. A segment parallel to $$L$$ keeps its length, a segment square on to $$L$$ is
+multiplied by $$a$$, and a slanted segment is changed by some amount in between, depending on its
+direction.
+
+:::example[A stretched square]
+
+Take a square of side $$1$$ with two sides parallel to $$L$$, and stretch it by $$2$$ away from
+$$L$$. It becomes a rectangle $$1$$ by $$2$$. The sides parallel to $$L$$ stay $$1$$ long, the other
+sides double, and the diagonal goes from $$\sqrt{2} \approx 1.41$$ to
+$$\sqrt{1 + 4} = \sqrt{5} \approx 2.24$$ (:ref{#distance-and-angles/pythagoras}). That is $$1.58$$
+times as long, neither $$1$$ nor $$2$$.
+
+:::
+
+This is why there is no tidy formula for the distance round an ellipse. A circle's length could be
+found from the circle of radius $$1$$ by zooming, which multiplies every length by the same amount
+(:ref{#curve-length-scaling}). A stretch multiplies different parts of the curve by different
+amounts, so that argument breaks down. The distance round an ellipse can be written as an endless
+sum, and good approximations exist, such as one found by Ramanujan. But there is no formula as clean
+as $$\pi a b$$ for the area.
+
+::see-also{src="https://en.wikipedia.org/wiki/Ellipse#Circumference"}
+
+## Exercises
+
+:::::accordion[Exercises on stretching, with solutions]
+
+::::exercise{#ex-stretching-rectangle}
+
+A rectangle is $$3$$ cm wide and $$2$$ cm tall, with its width parallel to a line $$L$$ and its
+bottom side on $$L$$. Describe the image under the stretch by $$4$$ away from $$L$$, and check that
+the area is multiplied by $$4$$. Where does the top side end up?
+
+:::solution
+
+The bottom side lies on $$L$$, so it stays where it is. The top side is $$2$$ cm from $$L$$, so it
+moves out to $$4 \cdot 2 = 8$$ cm, keeping its length $$3$$ cm. The image is a rectangle $$3$$ cm by
+$$8$$ cm (:ref{#stretch-rectangle}).
+
+The area goes from $$3 \cdot 2 = 6$$ to $$3 \cdot 8 = 24$$ square centimetres, and
+$$24 = 4 \cdot 6$$.
+
+:::
+
+::::
+
+::::exercise{#ex-stretching-ellipse}
+
+An ellipse has half-widths $$5$$ cm and $$3$$ cm. Find its area. What is the radius of the disc with
+the same area?
+
+:::solution
+
+By :ref{#ellipse-area}, the area is $$\pi \cdot 5 \cdot 3 = 15\pi \approx 47.1$$ square centimetres.
+A disc of radius $$r$$ has area $$\pi r^2$$ (:ref{#disc-area-formula}), so the same area needs
+$$r^2 = 15$$, that is $$r = \sqrt{15} \approx 3.87$$ cm. That radius lies between the two
+half-widths, as you would expect.
+
+:::
+
+::::
+
+::::exercise{#ex-stretching-share}
+
+Show that every ellipse fills the same share $$\frac{\pi}{4}$$ of the rectangle that fits round it,
+with sides $$2a$$ and $$2b$$. Then explain the same fact using stretches alone, without the area
+formula.
+
+:::solution
+
+The ellipse has area $$\pi a b$$ (:ref{#ellipse-area}) and the rectangle $$2a \cdot 2b = 4ab$$. The
+share is $$\frac{\pi a b}{4 a b} = \frac{\pi}{4}$$.
+
+With stretches: start from the disc of radius $$1$$ inside its $$2$$ by $$2$$ square, with the
+square's sides parallel to the two lines. The disc fills a share $$\frac{\pi}{4}$$ of it. The two
+stretches that make the ellipse turn the square into the rectangle $$2a$$ by $$2b$$ round it
+(:ref{#stretch-rectangle}). Each stretch multiplies both areas by the same factor
+(:ref{#stretch-area}), so the share doesn't change.
+
+:::
+
+::::
+
+::::exercise{#ex-stretching-undo}
+
+1. What single stretch undoes the stretch by $$a$$ away from $$L$$?
+2. Stretch by $$a$$ away from $$L$$, then by $$b$$ away from the same line. What single map is this?
+
+:::solution
+
+1. The stretch by $$\frac{1}{a}$$ away from $$L$$. A point at distance $$s$$ from $$L$$ goes out to
+   $$as$$ and then back to $$\frac{1}{a} \cdot as = s$$, on the same perpendicular and the same
+   side, so it returns to where it started. Points of $$L$$ never move.
+2. The stretch by $$ab$$ away from $$L$$. A point at distance $$s$$ goes to $$as$$ and then to
+   $$b \cdot as = ab\,s$$, always along its own perpendicular to $$L$$ and on its own side. The
+   areas agree: first $$\times a$$, then $$\times b$$, which is $$\times ab$$.
+
+:::
+
+::::
+
+::::exercise{#ex-stretching-diagonal}
+
+A square of side $$2$$ has two sides parallel to $$L$$. It is stretched by $$\frac{1}{2}$$ away from
+$$L$$. Find the lengths of the sides and the diagonal of the image, and the factor each was
+multiplied by.
+
+:::solution
+
+The sides parallel to $$L$$ keep their length $$2$$, a factor of $$1$$. The sides square on to $$L$$
+become $$\frac{1}{2} \cdot 2 = 1$$, a factor of $$\frac{1}{2}$$ (:ref{#stretch-rectangle}).
+
+The diagonal was $$\sqrt{2^2 + 2^2} = \sqrt{8} \approx 2.83$$ and becomes
+$$\sqrt{2^2 + 1^2} = \sqrt{5} \approx 2.24$$ (:ref{#distance-and-angles/pythagoras}). The factor is
+$$\frac{\sqrt{5}}{\sqrt{8}} \approx 0.79$$, between $$\frac{1}{2}$$ and $$1$$. Lengths in different
+directions change by different amounts, while the area changes by exactly $$\frac{1}{2}$$: from
+$$4$$ to $$2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-stretching-plate}
+
+A round plate $$24$$ cm across, seen at a slant in a photo, appears as an ellipse $$24$$ cm wide and
+$$9$$ cm deep (at the photo's scale). By what factor has it been squashed, and what fraction of the
+plate's area does the image show?
+
+:::solution
+
+The width stays $$24$$, so the half-widths are $$12$$ and $$4.5$$. The depth went from $$24$$ to
+$$9$$, a stretch by $$\frac{9}{24} = \frac{3}{8}$$ away from the line across the middle of the
+plate.
+
+The plate has area $$\pi \cdot 12^2 = 144\pi \approx 452$$ and the image
+$$\pi \cdot 12 \cdot 4.5 = 54\pi \approx 170$$ square centimetres (:ref{#ellipse-area}). The share
+is $$\frac{54}{144} = \frac{3}{8}$$, the stretch factor, as :ref{#stretch-area} says.
+
+:::
+
+::::
+
+::::exercise{#ex-stretching-not-zoom}
+
+A shape has area $$10$$. It is stretched by $$3$$ away from a line $$L$$, and then by $$3$$ away
+from a line $$K$$ that crosses $$L$$ square on. What is the area now? Is the result similar to the
+original shape?
+
+:::solution
+
+Each stretch multiplies the area by $$3$$ (:ref{#stretch-area}), so the area is
+$$3 \cdot 3 \cdot 10 = 90$$.
+
+The two stretches together send every point to $$3$$ times as far from both lines, which is the zoom
+by $$3$$ about the crossing point, as the guide's drawing showed. So the result is a zoom of the
+original shape, and similar to it (:ref{#similar}). The area agrees with :ref{#area-scaling}:
+$$3^2 \cdot 10 = 90$$. With two different factors, the shape would be squashed one way, and in
+general no longer similar.
+
+:::
+
+::::
+
+:::::

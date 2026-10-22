@@ -1,0 +1,327 @@
+---
+title: Measuring area with a grid
+description:
+  Measuring curved shapes by counting squares, and why a finer grid closes in on the area.
+---
+
+How much liner does a kidney-shaped garden pond need? How big is a lake on a map, or a leaf you want
+to compare with another? The rules so far measure rectangles, triangles and shapes cut from them,
+all with straight edges. A curved edge needs a new idea, and it is the one you would try with a
+sheet of graph paper: draw the shape on the grid and count the squares. This guide makes that idea
+exact, and shows why a finer grid always gets closer to the true area.
+
+## Counting squares
+
+Lay a grid of equal squares over a shape. Some squares sit wholly inside the shape, and their total
+area is too small: it misses the bits of the shape near the edge. Other squares are only partly
+covered, because the edge runs through them. Adding those in gives a total that is too big, since it
+includes bits outside the shape. The true area lies somewhere in between.
+
+Two facts about area make this work. The first is the plain one that a piece of a shape can't have
+more area than the whole. The second, from the [Isometries](../isometries/isometries.mdx) chapter,
+is that moving a shape doesn't change its area. Together with :ref{#distance-and-angles/area-rules},
+which gives the area of a rectangle and says that areas of pieces add, these are the rules this
+chapter uses.
+
+:::remark[Rules for comparing areas]{#area-compare}
+
+1. **Inside means no more**: if a region $$S$$ lies inside a region $$T$$, then the area of $$S$$ is
+   at most the area of $$T$$
+2. **Moving keeps area**: an isometry sends a region to a region with the same area
+   (:ref{#isometries/isometry-area})
+
+These are taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Area#Formal_definition"}
+
+:::
+
+Now the two counts can be named. In what follows, a grid square **overlaps** a shape when the two
+have some area in common. A square that meets the shape only along part of its edge, or at a single
+corner, doesn't count, since a line or a point covers no area.
+
+:::definition[Inner and outer counts]{#grid-counts}
+
+Lay a grid of squares with sides of length $$c$$ over a region $$S$$. Each square has area $$c^2$$.
+
+- The **inner count** is the total area of the squares that lie wholly inside $$S$$.
+- The **outer count** is the total area of the squares that overlap $$S$$, whether wholly inside it
+  or only partly.
+
+:::
+
+:::proposition[The area lies between the counts]{#grid-squeeze}
+
+For any grid and any region $$S$$,
+
+```math
+\text{inner count} \le \text{area of } S \le \text{outer count}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Jordan_measure"}
+
+**The inner count.** The squares wholly inside $$S$$ meet each other only along edges, which cover
+no area, so they don't overlap. By :ref{#distance-and-angles/area-rules}, the region they make
+together has area equal to the inner count. That region lies inside $$S$$, so by rule 1 of
+:ref{#area-compare} its area is at most the area of $$S$$.
+
+**The outer count.** Every point of $$S$$ lies in one of the squares that $$S$$ overlaps. This is
+taken from the picture: a region has no hairs or spikes so thin that they cover no area. So $$S$$
+lies inside the region made by the overlapping squares. Those squares don't overlap each other, so
+that region has area equal to the outer count, and rule 1 of :ref{#area-compare} gives the second
+inequality.
+
+:::
+
+The best way to trust the method is to try it on a shape whose area you already know. The right
+triangle below has legs $$6$$ and $$4$$, so its area is $$\frac{1}{2} \cdot 6 \cdot 4 = 12$$
+(:ref{#distance-and-angles/triangle-area}). Each picture uses squares half the size of the one
+before. The blue squares are wholly inside, and the orange ones are only partly covered.
+
+<GridTriangle caption="The same triangle, area 12, on three grids. The blue squares give the inner count; blue and orange together give the outer count. The area 12 is always between them." />
+
+:::example[Closing in on 12]
+
+Counting the squares in each picture:
+
+| Side of each square | Inner count | Outer count | Gap   |
+| ------------------- | ----------- | ----------- | ----- |
+| $$1$$               | $$8$$       | $$16$$      | $$8$$ |
+| $$\frac{1}{2}$$     | $$10$$      | $$14$$      | $$4$$ |
+| $$\frac{1}{4}$$     | $$11$$      | $$13$$      | $$2$$ |
+| $$\frac{1}{8}$$     | $$11.5$$    | $$12.5$$    | $$1$$ |
+
+Every row has $$12$$ between the two counts, as :ref{#grid-squeeze} promises. Better still, each
+time the squares get half as wide the gap halves. With squares of side $$\frac{1}{8}$$, the counts
+already pin the area down to within $$1$$, and smaller squares would do even better.
+
+:::
+
+## Why the gap shrinks
+
+The gap between the counts is the total area of the orange squares: the ones the edge passes
+through. So the question is how much area those squares can take up. Every orange square touches the
+edge, and a small square touching the edge can't reach far from it. So all the orange squares crowd
+into a thin band that hugs the edge, and as the squares shrink, so does the band.
+
+Try it below with a lake. Pick smaller squares and watch the orange ring get thinner, and the gap
+between the counts shrink. Then show the band: every orange square sits inside it.
+
+<GridCount />
+
+:::proposition[The edge band]{#edge-band}
+
+Use a grid of squares of side $$c$$. Every square that overlaps a region $$S$$ but is not wholly
+inside it lies within distance $$c\sqrt{2}$$ of the edge of $$S$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Jordan_measure"}
+
+Take such a square. It overlaps $$S$$, so it contains a point $$A$$ inside $$S$$. It is not wholly
+inside $$S$$, so it contains a point $$B$$ outside $$S$$. The segment $$AB$$ lies in the square, and
+on the way from inside $$S$$ to outside it crosses the edge of $$S$$ at some point $$E$$. That
+crossing is taken from the picture.
+
+The longest distance between two points of a square is its diagonal. By
+:ref{#distance-and-angles/pythagoras} the diagonal has length $$\sqrt{c^2 + c^2} = c\sqrt{2}$$. So
+every point of the square is within $$c\sqrt{2}$$ of the point $$E$$, which lies on the edge.
+
+:::
+
+Now picture the band of all points within $$c\sqrt{2}$$ of the edge, on either side. It is like a
+ribbon of width $$2c\sqrt{2}$$ laid along the edge. If the edge has length $$\ell$$ (as
+[Zooming and length](./scaling-lengths.mdx#the-length-of-a-curve) defines it), the ribbon has area
+about $$2c\sqrt{2} \cdot \ell$$, exactly as a long thin rectangle would. That estimate is taken from
+the picture. The orange squares don't overlap each other and all lie in the band, so their total
+area, the gap between the counts, is at most about
+
+```math
+2\sqrt{2} \cdot c \cdot \ell
+```
+
+The edge length $$\ell$$ stays the same, while $$c$$ can be made as small as you like. Halve the
+squares and the bound halves; make them ten times smaller and it is ten times smaller.
+
+:::example[A lake on a map]
+
+A lake has a shoreline $$10$$ km long. On a grid of squares $$100$$ m wide, which is $$0.1$$ km, the
+gap between the counts is at most about
+
+```math
+2\sqrt{2} \cdot 0.1 \cdot 10 \approx 2.83 \text{ km}^2
+```
+
+With squares $$10$$ m wide the bound is ten times smaller, about $$0.28$$ km$$^2$$. The bound is
+often generous: in the triangle example, only the slanted side made orange squares, and the actual
+gaps were well under the bound.
+
+:::
+
+## Grids pin down area
+
+Put the two results together. The area of a region is always caught between the two counts, and for
+a region whose edge has a length, the gap between the counts can be made as small as you like by
+using small enough squares. So the counts close in on one number, and that number is the area.
+
+:::remark[Grids pin down area]{#grid-rule}
+
+Let $$S$$ be a region whose edge is a curve with a length. As the grid squares get smaller, the
+inner and outer counts get as close as you like to each other, and so to the area of $$S$$. In
+particular, two regions whose inner and outer counts agree for every grid have the same area.
+
+This is taken as given. Calculus makes it precise.
+
+::see-also{src="https://en.wikipedia.org/wiki/Jordan_measure"}
+
+:::
+
+The condition on the edge rules out strange regions whose edge wiggles so wildly that it has no
+length, like an idealised coastline that shows new bays and headlands at every scale. Every shape in
+this chapter, from rectangles to discs to ellipses, has an edge with a length, so the rule applies.
+
+This is the tool the rest of the chapter leans on. To see how a zoom changes area
+([Zooming and area](./scaling-areas.mdx)), or how a stretch does
+([Stretching one way](./stretching.mdx)), you only need to see what it does to the little squares.
+And it is how the area of a disc, $$\pi r^2$$, is pinned down in
+[The area of a disc](./disc-area.mdx).
+
+:::example[A leaf on graph paper]
+
+You trace a leaf onto paper ruled in $$1$$ cm squares. It covers $$37$$ squares completely and
+$$18$$ more partly. So its area is between $$37$$ and $$37 + 18 = 55$$ cm$$^2$$.
+
+That range is wide, and a practical rule narrows it: count each partly covered square as half a
+square. The edge cuts through those squares, so on average about half of each is inside. That gives
+$$37 + \frac{18}{2} = 46$$ cm$$^2$$. The rule is an estimate, not a proof, but it is often close.
+For a sure answer, use finer paper.
+
+:::
+
+## Exercises
+
+:::::accordion[Exercises on measuring area with a grid, with solutions]
+
+::::exercise{#ex-grids-rectangle}
+
+A rectangle $$2.5$$ wide and $$1.5$$ tall has one corner at a corner of the grid, with its sides
+along grid lines. Find the inner and outer counts for squares of side $$1$$, and then for squares of
+side $$\frac{1}{2}$$. What do you notice?
+
+:::solution
+
+**Side 1.** Along the width, the squares from $$0$$ to $$1$$ and $$1$$ to $$2$$ fit inside, and the
+one from $$2$$ to $$3$$ sticks out. Up the height, the square from $$0$$ to $$1$$ fits and the one
+from $$1$$ to $$2$$ sticks out. So $$2 \cdot 1 = 2$$ squares lie wholly inside, and
+$$3 \cdot 2 = 6$$ overlap the rectangle. The counts are $$2$$ and $$6$$, and the area
+$$2.5 \cdot 1.5 = 3.75$$ (:ref{#distance-and-angles/area-rules}) lies between them.
+
+**Side ½.** Now $$2.5$$ is $$5$$ half-squares and $$1.5$$ is $$3$$, so $$5 \cdot 3 = 15$$ squares
+fill the rectangle exactly and none sticks out. Both counts are $$15 \cdot \frac{1}{4} = 3.75$$.
+
+When every edge of the shape lies along grid lines, no square is only partly covered, so the counts
+agree and give the area exactly.
+
+:::
+
+::::
+
+::::exercise{#ex-grids-diagonal}
+
+Show that two points of a square of side $$c$$ that are at opposite corners are $$c\sqrt{2}$$ apart.
+How far apart are opposite corners of a square of side $$\frac{1}{2}$$? Of side $$0.1$$?
+
+:::solution
+
+Two neighbouring sides of the square meet at a right angle (:ref{#distance-and-angles/rectangle}),
+so the diagonal is the hypotenuse of a right triangle with legs $$c$$ and $$c$$. By
+:ref{#distance-and-angles/pythagoras}, its length $$d$$ has $$d^2 = c^2 + c^2 = 2c^2$$, so
+$$d = c\sqrt{2}$$.
+
+For side $$\frac{1}{2}$$, $$d = \frac{\sqrt{2}}{2} \approx 0.707$$. For side $$0.1$$,
+$$d = 0.1\sqrt{2} \approx 0.141$$.
+
+:::
+
+::::
+
+::::exercise{#ex-grids-orange-squares}
+
+For the triangle with legs $$6$$ and $$4$$, squares of side $$\frac{1}{8}$$ give an inner count of
+$$11.5$$ and an outer count of $$12.5$$.
+
+1. How many squares are only partly covered?
+2. Only the slanted side passes through squares; the other two sides lie along grid lines. That side
+   has length $$\sqrt{52} \approx 7.21$$. What does the band bound $$2\sqrt{2} \cdot c \cdot \ell$$
+   give, using that side for $$\ell$$? Is the actual gap within it?
+
+:::solution
+
+1. The gap is $$12.5 - 11.5 = 1$$, and each square has area $$\frac{1}{64}$$. So there are
+   $$1 \div \frac{1}{64} = 64$$ partly covered squares.
+2. $$2\sqrt{2} \cdot \frac{1}{8} \cdot 7.21 \approx 2.55$$. The actual gap, $$1$$, is well within
+   the bound, which is only ever an upper limit (:ref{#edge-band}).
+
+:::
+
+::::
+
+::::exercise{#ex-grids-shifted}
+
+Slide the grid under the same triangle by half a square, so that no side of the triangle lies along
+a grid line. With squares of side $$1$$, the counts become $$4$$ and $$23$$, much further apart than
+$$8$$ and $$16$$. Explain why, and check that the gap is within the band bound for the whole
+perimeter.
+
+:::solution
+
+Before, the two legs lay along grid lines, so no square was cut by them: only the slanted side made
+partly covered squares. After the shift, each leg runs through the middle of a row or column of
+squares, so those squares are partly covered too. More of the edge cuts through squares, so the gap
+grows from $$8$$ to $$23 - 4 = 19$$.
+
+The perimeter is $$6 + 4 + \sqrt{52} \approx 17.21$$. The band bound (:ref{#edge-band}) gives
+$$2\sqrt{2} \cdot 1 \cdot 17.21 \approx 48.7$$, and $$19$$ is within it. Moving a region or a grid
+never changes the area itself (:ref{#area-compare}); it only changes how well a coarse grid measures
+it.
+
+:::
+
+::::
+
+::::exercise{#ex-grids-pond}
+
+A pond has a shoreline $$40$$ m long.
+
+1. Using squares $$0.5$$ m wide, about how large could the gap between the counts be?
+2. How small should the squares be to make sure the gap is at most about $$5$$ m$$^2$$?
+
+:::solution
+
+1. The band bound is $$2\sqrt{2} \cdot 0.5 \cdot 40 \approx 56.6$$ m$$^2$$.
+2. You need $$2\sqrt{2} \cdot c \cdot 40 \le 5$$, so $$c \le \frac{5}{80\sqrt{2}} \approx 0.044$$ m.
+   Squares about $$4.4$$ cm wide, or smaller, will do.
+
+:::
+
+::::
+
+::::exercise{#ex-grids-why-inside}
+
+Without using :ref{#grid-squeeze}, explain why the inner count is never bigger than the outer count
+for the same grid.
+
+:::solution
+
+A square wholly inside $$S$$ has all of its area covered by $$S$$, so it overlaps $$S$$
+(:ref{#grid-counts}). So every square counted in the inner count is also counted in the outer count,
+which may count some partly covered squares as well. Adding up the same squares and possibly more
+can't give a smaller total.
+
+:::
+
+::::
+
+:::::

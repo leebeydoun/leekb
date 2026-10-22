@@ -1,0 +1,492 @@
+---
+title: Volume and the square-cube law
+description: How a zoom changes volume and surface, and why size changes how things work.
+---
+
+Films are full of giant ants and people the height of a house, and none of them could stand up. A
+toy elephant scaled up to the size of a real one would snap its own legs, and a real ant shrunk to
+the size of a speck of dust would barely notice falling off a table. The reason is not biology but
+geometry: when a thing grows, its surface and its volume grow at different rates. This page works
+out those rates, from the area rules of the earlier guides, and then uses them to explain bones,
+heat, melting ice, roasting and the price of oranges.
+
+## Measuring space
+
+Area counts how many unit squares it takes to cover a flat shape. Volume does the same job in space:
+it counts how many unit cubes, such as sugar cubes of side $$1$$ cm, it takes to fill a solid. A box
+$$3$$ cubes long, $$2$$ wide and $$4$$ high holds $$3 \cdot 2 = 6$$ cubes in each layer, and there
+are $$4$$ layers, so it holds $$24$$ cubes.
+
+The rules for volume are the rules for area with one more side. As with area, they are taken from
+the picture of filling things with cubes rather than proved.
+
+:::remark[Rules for volume]{#volume-rules}
+
+1. **Boxes**: a box whose edges have lengths $$a$$, $$b$$ and $$c$$ has volume $$abc$$. In
+   particular, a cube of side $$a$$ has volume $$a^3$$.
+2. **Pieces add**: if a solid is cut into pieces that don't overlap, its volume is the total of the
+   volumes of the pieces.
+3. **Inside means no more**: a solid inside another has no more volume than it.
+4. **Moving keeps volume**: sliding, turning or flipping a solid in space doesn't change its volume.
+5. **Zooms in space**: a zoom by $$r$$ about a point in space multiplies every distance by $$r$$,
+   sends flat faces to flat faces and keeps angles, as in the plane (:ref{#zoom-rules}).
+6. **Little cubes pin down volume**: fill space with a grid of little cubes. The cubes lying wholly
+   inside a solid, and the cubes that overlap it at all, have total volumes that get as close as you
+   like to each other as the cubes get smaller, so they pin down its volume. This is the same idea
+   as :ref{#grid-rule}, one side up.
+
+These are taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Volume"}
+
+:::
+
+The **surface area** of a solid is the total area of its outside: the area of the wrapping paper
+that covers it exactly, with no overlap. A cube of side $$a$$ has $$6$$ square faces, each of area
+$$a^2$$, so its surface area is $$6a^2$$. In what follows, "surface" means surface area.
+
+## Zooming a box
+
+Take a cube of side $$1$$ and build a cube of side $$2$$ from copies of it. The bigger cube needs
+$$2$$ cubes along, $$2$$ across and $$2$$ up: $$8$$ in all. A cube of side $$3$$ needs
+$$3 \cdot 3 \cdot 3 = 27$$. So doubling every length gives $$8$$ times the volume, and tripling
+gives $$27$$ times. Meanwhile each face only grows $$4$$ times and then $$9$$ times, since a face is
+a flat square (:ref{#area-scaling}).
+
+<ThreeCubes caption="Cubes of side 1, 2 and 3. The surface grows 4 and then 9 times, but the volume grows 8 and then 27 times." />
+
+:::proposition[Zooming a box]{#box-scaling}
+
+A zoom by $$r$$ sends a box with edges $$a$$, $$b$$ and $$c$$ to a box with edges $$ra$$, $$rb$$ and
+$$rc$$. So it multiplies the volume of a box by $$r^3$$:
+
+```math
+(ra)(rb)(rc) = r^3 \cdot abc
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Similarity_(geometry)#Area_ratio_and_volume_ratio"}
+
+The faces of the box are flat rectangles meeting at right angles. A zoom sends flat faces to flat
+faces and keeps angles (rule 5 of :ref{#volume-rules}), so the image is again a box. Every distance
+is multiplied by $$r$$, so its edges have lengths $$ra$$, $$rb$$ and $$rc$$. By rule 1, its volume
+is $$(ra)(rb)(rc) = r^3 \cdot abc$$, which is $$r^3$$ times the volume $$abc$$ of the box you
+started with.
+
+:::
+
+:::example[A box, three times as big]
+
+A shoebox is $$30$$ cm long, $$20$$ cm wide and $$10$$ cm high, so its volume is
+$$30 \cdot 20 \cdot 10 = 6000$$ cm³. Zoom it by $$3$$ and it is $$90$$ by $$60$$ by $$30$$ cm, with
+volume $$162\,000$$ cm³. That is $$27$$ times as much, and $$27 = 3^3$$.
+
+:::
+
+## Zooming any solid
+
+A ball, a potato or a statue isn't a box. But it can be filled with little cubes, as a flat shape
+can be covered with little squares in :ref{#grid-counts}. Zoom the solid and the grid of little
+cubes together: each little cube becomes a bigger cube, with $$r^3$$ times the volume. The cubes
+that were inside the solid are inside the zoomed solid, and the cubes that overlapped it overlap the
+zoomed solid. So both counts are multiplied by $$r^3$$, and the volume caught between them is too.
+
+:::theorem[Zooming multiplies volume by r cubed]{#volume-scaling}
+
+Let $$S$$ be a solid and $$r > 0$$. The zoom by $$r$$ multiplies its volume by $$r^3$$:
+
+```math
+\text{volume of } rS = r^3 \cdot (\text{volume of } S)
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Similarity_(geometry)#Area_ratio_and_volume_ratio"}
+
+Fill space with a grid of little cubes of side $$c$$. Let $$m$$ be the total volume of the cubes
+lying wholly inside $$S$$, and $$M$$ the total volume of the cubes that overlap $$S$$ at all. The
+cubes inside $$S$$ don't overlap and fill part of $$S$$, so by rules 2 and 3 of :ref{#volume-rules},
+$$m \le \text{volume of } S$$. In the same way, $$S$$ lies inside the cubes that overlap it, so
+$$\text{volume of } S \le M$$.
+
+Now zoom everything by $$r$$. Each little cube becomes a cube of side $$rc$$, with $$r^3$$ times the
+volume (:ref{#box-scaling}), and together they make a grid of cubes of side $$rc$$. A cube lies
+wholly inside $$S$$ exactly when its image lies wholly inside $$rS$$, and a cube overlaps $$S$$
+exactly when its image overlaps $$rS$$, since the zoom can be undone by the zoom by $$\frac{1}{r}$$
+(:ref{#zoom-twice}). So, for the new grid, the two totals are $$r^3 m$$ and $$r^3 M$$, and
+
+```math
+r^3 m \le \text{volume of } rS \le r^3 M
+```
+
+Multiplying $$m \le \text{volume of } S \le M$$ by $$r^3$$ shows that $$r^3$$ times the volume of
+$$S$$ lies between the same two numbers. As $$c$$ gets smaller, $$m$$ and $$M$$ get as close as you
+like to each other (rule 6), and so do $$r^3 m$$ and $$r^3 M$$. Two fixed numbers that are both
+caught between them must be equal.
+
+:::
+
+:::example[Balls]
+
+A ball of radius $$1$$ has volume $$\frac{4}{3}\pi$$, about $$4.19$$. Proving this needs more than
+cubes and zooms, so it is taken from the link below. A ball of radius $$r$$ is the ball of radius
+$$1$$ zoomed by $$r$$ about its centre, so its volume is
+
+```math
+\frac{4}{3}\pi r^3
+```
+
+A football of radius $$11$$ cm holds $$11^3 = 1331$$ times as much air as a ball of radius $$1$$ cm:
+about $$\frac{4}{3} \cdot 3.14 \cdot 1331 \approx 5570$$ cm³, or $$5.6$$ litres.
+
+::see-also{src="https://en.wikipedia.org/wiki/Sphere"}
+
+:::
+
+## Zooming a surface
+
+A surface is made of flat pieces, or can be cut into pieces so small that each is nearly flat, like
+the panels of a football. A zoom stretches each piece the way it stretches any flat shape, so each
+piece gains $$r^2$$ times its area. So surfaces follow the area rule, not the volume rule.
+
+:::proposition[Surface area under a zoom]{#surface-scaling}
+
+A zoom by $$r$$ multiplies the surface area of a solid by $$r^2$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Similarity_(geometry)#Area_ratio_and_volume_ratio"}
+
+Take first a solid with flat faces, such as a box. The zoom sends each face to a flat shape with
+every distance multiplied by $$r$$ (rule 5 of :ref{#volume-rules}). Unless the centre of the zoom
+lies in the face's plane, that image sits in a different, parallel plane. But it is the face zoomed
+by $$r$$ within its own plane and then moved into place, and moving doesn't change area. This step
+is taken from the picture. So each face's area is multiplied by $$r^2$$ (:ref{#area-scaling}), and
+so is their total.
+
+A curved surface is approximated by small flat pieces, and its area is what their total area
+approaches as the pieces get smaller. That is taken from the picture, as for the length of a curve
+in :ref{#curve-length-scaling}. Each piece's area is multiplied by $$r^2$$, so the total is too.
+
+:::
+
+For a ball, the surface area of radius $$1$$ is $$4\pi$$, again taken from the link above. A ball of
+radius $$r$$ is that ball zoomed by $$r$$, so its surface area is $$4\pi r^2$$.
+
+## The square-cube law
+
+Put the two facts side by side. Make a thing $$r$$ times as big in every direction, and its surface
+is multiplied by $$r^2$$, while its volume is multiplied by $$r^3$$. Volume wins. A cube twice as
+wide has $$4$$ times the wrapping but $$8$$ times the inside, so each unit of its inside has only
+half as much wrapping as before.
+
+<SquareCube />
+
+The table shows the same thing for cubes. The last column is the surface for each unit of volume,
+and it falls as the cube grows.
+
+| Side | Surface | Volume | Surface for each unit of volume |
+| ---- | ------- | ------ | ------------------------------- |
+| 1    | 6       | 1      | 6                               |
+| 2    | 24      | 8      | 3                               |
+| 3    | 54      | 27     | 2                               |
+| 10   | 600     | 1000   | 0.6                             |
+
+:::theorem[The square-cube law]{#square-cube}
+
+Let a solid have surface area $$A$$ and volume $$V$$, and zoom it by $$r$$. Then the new solid has
+
+- **surface area** $$r^2 A$$
+- **volume** $$r^3 V$$
+- **surface for each unit of volume** $$\frac{1}{r} \cdot \frac{A}{V}$$
+
+So growing by $$r$$ divides the surface for each unit of volume by $$r$$, and shrinking does the
+opposite.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Square%E2%80%93cube_law"}
+
+The surface area is $$r^2 A$$ by :ref{#surface-scaling}, and the volume is $$r^3 V$$ by
+:ref{#volume-scaling}. Dividing one by the other,
+
+```math
+\frac{r^2 A}{r^3 V} = \frac{1}{r} \cdot \frac{A}{V}
+```
+
+since $$\frac{r^2}{r^3} = \frac{1}{r}$$.
+
+:::
+
+The same reasoning works for any two things you can measure on a shape. Anything that behaves like
+an area, such as the cross-section of a bone or a muscle, grows by $$r^2$$. Anything that behaves
+like a volume, such as weight, the amount of food inside or the heat stored, grows by $$r^3$$. The
+rest of this page is that one idea, applied to the world.
+
+## Why giants can't stand
+
+A bone holds up the weight above it. How much it can hold depends on how thick it is: on the area of
+its cross-section, the flat face you would see if you sawed through it. Double the area of the
+cross-section and the bone can carry about twice the load. So the pressure on a bone is its load
+divided by the area of its cross-section, and a bone breaks when that pressure gets too high.
+
+Now zoom a person by $$10$$, to a giant about $$18$$ metres tall. The giant's weight comes from its
+volume, so it is $$10^3 = 1000$$ times as much. The cross-section of each thigh bone is an area, so
+it is only $$10^2 = 100$$ times as much. Each square centimetre of bone carries
+$$\frac{1000}{100} = 10$$ times the load it carries in you, and the bones would break at the first
+step.
+
+<PillarLoad caption="A load on a pillar, and the same thing zoomed by 3. The load grows 27 times but the top of the pillar only 9 times, so each square centimetre carries 3 times as much." />
+
+That is why large animals are not zoomed copies of small ones. An elephant's legs are thick pillars,
+far thicker for its height than a deer's. To keep the load on each square centimetre the same, a
+creature $$10$$ times as tall needs bones with $$1000$$ times the cross-section, which means bones
+about $$\sqrt{1000} \approx 32$$ times as wide, not $$10$$ times.
+
+## Why small things are strong
+
+Run the zoom the other way. Shrink a person by $$10$$, so $$r = \frac{1}{10}$$. Their weight is
+multiplied by $$\frac{1}{1000}$$, but the cross-section of their muscles, which decides how hard
+they can pull, is multiplied only by $$\frac{1}{100}$$. So for its weight, the small person is
+$$10$$ times as strong.
+
+This is the geometry behind an ant carrying a leaf many times its own weight, or a flea leaping far
+above its own height. Small animals also survive falls that would hurt a large one: the air pushes
+against their surface, which is large for their weight, so they fall slowly, and the weight that
+hits the ground is tiny. None of this needs special muscles: it comes from being small.
+
+## Heat, ice and cooking
+
+Heat comes in and goes out through a surface, and the heat stored is spread through a volume. So the
+square-cube law decides how fast things warm up and cool down. Small things have a lot of surface
+for their volume, so they heat up and cool down fast. Large things have little surface for their
+volume, so they change temperature slowly.
+
+:::example[Crushed ice melts faster]
+
+An ice cube $$4$$ cm on a side has volume $$4^3 = 64$$ cm³ and surface $$6 \cdot 4^2 = 96$$ cm².
+Crush it into $$64$$ cubes of side $$1$$ cm. The volume of ice is the same, $$64$$ cm³, by rule 2 of
+:ref{#volume-rules}. But each small cube has surface $$6$$ cm², so together they have
+$$64 \cdot 6 = 384$$ cm², which is $$4$$ times as much. The drink touches $$4$$ times as much ice,
+so the ice takes in heat about $$4$$ times as fast, and melts sooner.
+
+The factor $$4$$ is the square-cube law: each small cube is the big one zoomed by $$\frac{1}{4}$$,
+so the surface for each unit of volume is multiplied by $$4$$.
+
+:::
+
+<CrushedIce caption="One 4 cm ice cube beside the same ice crushed into 64 cubes of 1 cm. Same volume, four times the surface." />
+
+The same idea runs through warm-blooded animals. An animal makes heat throughout its body and loses
+it through its skin. A mouse has a great deal of skin for its size, so it loses heat fast and must
+eat a large share of its weight in food every day. An elephant has the opposite problem: it makes a
+great deal of heat and has little skin to lose it through, which is one reason for its large, thin
+ears, which add surface without adding much volume.
+
+Cooking works the same way in reverse. A roast twice as wide as another has $$8$$ times the meat but
+only $$4$$ times the outside for heat to come in through, and the middle is twice as far from the
+surface. So a big roast or turkey takes far longer than a small one, and the outside can burn while
+the middle is still cold. Cutting potatoes into small pieces adds surface, so they cook faster.
+
+## Buying by size
+
+Fruit, eggs and pizzas are priced by the item, but what you eat is the volume or the area. A small
+change in width makes a large change in volume, so it pays to think in cubes.
+
+:::example[Oranges]
+
+One orange is $$10\%$$ wider than another, so it is the smaller one zoomed by $$r = 1.1$$. Its
+volume is multiplied by
+
+```math
+1.1^3 = 1.331
+```
+
+so it has about $$33\%$$ more fruit. Its peel, a surface, is multiplied by $$1.1^2 = 1.21$$: only
+$$21\%$$ more. Big oranges give more fruit for each gram of peel.
+
+:::
+
+The same holds for anything you pay for by the item. A melon $$20\%$$ wider has $$1.2^3 = 1.728$$
+times the fruit, nearly three quarters more, for what looks like a small change.
+
+## Exercises
+
+:::::accordion[Exercises on volume and the square-cube law, with solutions]
+
+::::exercise{#ex-volume-box}
+
+A box is $$2$$ cm by $$3$$ cm by $$4$$ cm. Find its volume and its surface area. Then zoom it by
+$$3$$, and find the new volume and surface area in two ways: from the new edge lengths, and from
+:ref{#box-scaling} and :ref{#surface-scaling}.
+
+:::solution
+
+The volume is $$2 \cdot 3 \cdot 4 = 24$$ cm³. The box has two faces of each kind, $$2 \times 3$$,
+$$2 \times 4$$ and $$3 \times 4$$, so its surface area is
+
+```math
+2(6 + 8 + 12) = 52 \text{ cm}^2
+```
+
+After the zoom, the edges are $$6$$, $$9$$ and $$12$$ cm. The volume is $$6 \cdot 9 \cdot 12 = 648$$
+cm³, and the surface area is
+
+```math
+2(54 + 72 + 108) = 468 \text{ cm}^2
+```
+
+From the rules: $$3^3 \cdot 24 = 27 \cdot 24 = 648$$ and $$3^2 \cdot 52 = 9 \cdot 52 = 468$$. Both
+ways agree.
+
+:::
+
+::::
+
+::::exercise{#ex-volume-model-train}
+
+A model railway is built at a scale of $$1 : 76$$, so every length on the model is $$\frac{1}{76}$$
+of the real length. A real locomotive weighs $$120$$ tonnes ($$120\,000$$ kg). If the model were
+solid and made of the same materials, how much would it weigh? The real locomotive needs $$40$$
+litres of paint; how much would the model need?
+
+:::solution
+
+The model is the locomotive zoomed by $$r = \frac{1}{76}$$. Weight goes with volume, which is
+multiplied by $$r^3$$ (:ref{#volume-scaling}). Since $$76^3 = 438\,976$$,
+
+```math
+\frac{120\,000}{438\,976} \approx 0.27 \text{ kg}
+```
+
+so the model would weigh about $$270$$ grams. Paint goes with surface, which is multiplied by
+$$r^2$$ (:ref{#surface-scaling}). Since $$76^2 = 5776$$, the model needs
+$$\frac{40}{5776} \approx 0.0069$$ litres, about $$7$$ millilitres.
+
+:::
+
+::::
+
+::::exercise{#ex-volume-double}
+
+A cube is zoomed so that its volume doubles. About how many times longer is each edge, and how many
+times larger is the surface area?
+
+:::solution
+
+If the zoom is by $$r$$, the volume is multiplied by $$r^3$$ (:ref{#volume-scaling}), so
+$$r^3 = 2$$. Trying values, $$1.26^3 \approx 2.000$$, so each edge is about $$1.26$$ times as long,
+a little over a quarter longer.
+
+The surface is multiplied by $$r^2 \approx 1.26^2 \approx 1.59$$ (:ref{#surface-scaling}). So
+doubling the volume adds only about $$59\%$$ to the surface.
+
+:::
+
+::::
+
+::::exercise{#ex-volume-oranges}
+
+A shop sells oranges $$8$$ cm wide for $$50$$p each and oranges $$10$$ cm wide for $$90$$p each.
+Treat each orange as a ball. Which gives more fruit for your money?
+
+:::solution
+
+The big orange is the small one zoomed by $$r = \frac{10}{8} = 1.25$$, so it has
+
+```math
+1.25^3 \approx 1.95
+```
+
+times the fruit (:ref{#volume-scaling}). It costs $$\frac{90}{50} = 1.8$$ times as much. Since
+$$1.95$$ is more than $$1.8$$, the big oranges give more fruit for each penny, by about
+$$\frac{1.95}{1.8} \approx 1.085$$: around $$8$$ or $$9\%$$ more.
+
+:::
+
+::::
+
+::::exercise{#ex-volume-ice}
+
+An ice cube $$3$$ cm on a side is crushed into cubes of side $$1$$ cm. By how many times does the
+surface grow? What if it is crushed into cubes of side $$\frac{1}{2}$$ cm instead?
+
+:::solution
+
+The big cube has surface $$6 \cdot 3^2 = 54$$ cm² and volume $$27$$ cm³. Cubes of side $$1$$ cm each
+have volume $$1$$, so there are $$27$$ of them (rule 2 of :ref{#volume-rules}), with surface
+$$27 \cdot 6 = 162$$ cm². That is $$3$$ times as much.
+
+Cubes of side $$\frac{1}{2}$$ cm each have volume $$\frac{1}{8}$$, so there are $$27 \cdot 8 = 216$$
+of them. Each has surface $$6 \cdot \frac{1}{4} = \frac{3}{2}$$, so together they have
+$$216 \cdot \frac{3}{2} = 324$$ cm², which is $$6$$ times as much. In each case the factor is the
+big side divided by the small side, as :ref{#square-cube} says.
+
+:::
+
+::::
+
+::::exercise{#ex-volume-giant-bones}
+
+A giant is a person zoomed by $$10$$, except that the giant's thigh bones are made thicker so that
+each square centimetre of bone carries the same load as in an ordinary person. By how much must the
+area of the bone's cross-section grow? By how much must its width grow?
+
+:::solution
+
+The giant's weight is a volume, so it is $$10^3 = 1000$$ times as much (:ref{#volume-scaling}). For
+the load on each square centimetre to stay the same, the cross-section must carry $$1000$$ times the
+load with the same pressure, so its area must be $$1000$$ times as much.
+
+The cross-section is a flat shape. If its width is multiplied by $$w$$, keeping its shape, its area
+is multiplied by $$w^2$$ (:ref{#area-scaling}). So $$w^2 = 1000$$ and
+$$w = \sqrt{1000} \approx 31.6$$. The bone must be about $$32$$ times as wide, though the giant is
+only $$10$$ times as tall: thick, elephant-like legs.
+
+:::
+
+::::
+
+::::exercise{#ex-volume-balloon}
+
+A balloon of radius $$10$$ cm is blown up to radius $$20$$ cm. How many times as much air does it
+hold? How many times as much rubber surface is there? Since the amount of rubber doesn't change,
+what happens to its thickness?
+
+:::solution
+
+The bigger balloon is the smaller one zoomed by $$2$$. Its volume is $$2^3 = 8$$ times as much
+(:ref{#volume-scaling}), so it holds $$8$$ times the air. Its surface area is $$2^2 = 4$$ times as
+much (:ref{#surface-scaling}).
+
+The same rubber is now spread over $$4$$ times the area. The volume of rubber is its area times its
+thickness, roughly, for a thin sheet, so the thickness falls to about $$\frac{1}{4}$$ of what it
+was. That is why a balloon gets more fragile as it grows.
+
+:::
+
+::::
+
+::::exercise{#ex-volume-ratio}
+
+Show that a cube of side $$s$$ has $$\frac{6}{s}$$ units of surface for each unit of volume. Use
+this to check :ref{#square-cube} for a cube zoomed by $$r$$.
+
+:::solution
+
+A cube of side $$s$$ has $$6$$ faces of area $$s^2$$, so surface $$6s^2$$, and volume $$s^3$$
+(:ref{#volume-rules}). The surface for each unit of volume is
+
+```math
+\frac{6s^2}{s^3} = \frac{6}{s}
+```
+
+Zooming by $$r$$ gives a cube of side $$rs$$, with $$\frac{6}{rs} = \frac{1}{r} \cdot \frac{6}{s}$$.
+That is the old amount multiplied by $$\frac{1}{r}$$, as :ref{#square-cube} says.
+
+:::
+
+::::
+
+:::::

@@ -1,0 +1,388 @@
+---
+title: Zooming and area
+description:
+  Why a zoom by r multiplies every area by r squared, from rectangles to any shape at all.
+---
+
+A pizza shop sells a 12-inch pizza and an 8-inch pizza. Is one large pizza more food than two small
+ones? Most people guess not, since two 8s make 16, which is more than 12. But the large pizza wins,
+and the reason is the subject of this page. When a shape is zoomed so that its lengths are
+multiplied by some number, its area is multiplied by that number twice over.
+
+The same fact explains why a photo enlarged to twice the width needs four times the ink, why a map
+drawn at half the scale shows a quarter of the area on each page, and why a lawn twice as long and
+twice as wide needs four times the turf. [Zooming and length](./scaling-lengths.mdx) showed that a
+zoom by $$r$$ multiplies every length by $$r$$ (:ref{#zoom-rules}). This guide shows that it
+multiplies every area by $$r \cdot r = r^2$$, first for rectangles, then for triangles, and then,
+with the grid of the [previous guide](./grids.mdx), for any shape at all.
+
+## Rectangles first
+
+Take a rectangle $$3$$ wide and $$2$$ tall, cut into $$6$$ unit squares. Zoom it by $$2$$ and it
+becomes $$6$$ wide and $$4$$ tall. Each unit square has become a square of side $$2$$, which holds
+$$2 \cdot 2 = 4$$ unit squares. So the area goes from $$6$$ to $$6 \cdot 4 = 24$$: it is multiplied
+by $$4$$, not by $$2$$.
+
+The doubling happens twice because a rectangle has two directions to grow in. Doubling the width
+alone would double the area. Doubling the height as well doubles it again.
+
+```plane
+point O 0 0 sw
+point A 3 0 hidden
+point B 3 2 hidden
+point C 0 2 hidden
+point A2 6 0 hidden
+point B2 6 4 hidden
+point C2 0 4 hidden
+point U1 1 0 hidden
+point U2 1 2 hidden
+point V1 2 0 hidden
+point V2 2 2 hidden
+point W1 0 1 hidden
+point W2 3 1 hidden
+point G1 2 0 hidden
+point G2 2 4 hidden
+point H1 4 0 hidden
+point H2 4 4 hidden
+point K1 0 2 hidden
+point K2 6 2 hidden
+polygon O A2 B2 C2 color=blue
+polygon O A B C color=orange
+segment U1 U2 color=orange
+segment V1 V2 color=orange
+segment W1 W2 color=orange
+segment G1 G2 color=blue dashed
+segment H1 H2 color=blue dashed
+segment K1 K2 color=blue dashed
+text 1.5 -0.45 "3"
+text -0.4 1 "2"
+text 3 4.45 "6"
+text 6.45 2 "4"
+caption "A 3 by 2 rectangle (orange) zoomed by 2 about O: each unit square becomes a 2 by 2 block"
+```
+
+:::proposition[Zooming a rectangle]{#rectangle-scaling}
+
+Let $$S$$ be a rectangle with sides of lengths $$a$$ and $$b$$, and let $$r > 0$$. The zoom of $$S$$
+by $$r$$ is a rectangle with sides of lengths $$ra$$ and $$rb$$. So its area is
+
+```math
+(ra)(rb) = r^2 ab
+```
+
+which is $$r^2$$ times the area of $$S$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Similarity_(geometry)#Area_ratio_and_volume_ratio"}
+
+A rectangle is made of four segments meeting at right angles (:ref{#distance-and-angles/rectangle}).
+By :ref{#zoom-rules}, the zoom sends each segment to a segment $$r$$ times as long, and keeps every
+angle. So the four corners go to four corners that are joined by segments of lengths $$ra$$, $$rb$$,
+$$ra$$ and $$rb$$, meeting at right angles. That is a rectangle with sides $$ra$$ and $$rb$$. By
+rule 1 of :ref{#distance-and-angles/area-rules}, its area is $$(ra)(rb) = r^2 ab$$.
+
+:::
+
+:::example[Enlarging a photo]
+
+A photo is $$10$$ cm by $$15$$ cm, so it has area $$150$$ square centimetres. Enlarged by $$2$$, it
+becomes $$20$$ cm by $$30$$ cm, with area $$600$$ square centimetres. The ink covers four times the
+paper, so the print needs about four times the ink.
+
+Shrinking works the same way. A zoom by $$\frac{1}{2}$$ gives a print $$5$$ cm by $$7.5$$ cm, with
+area $$37.5$$: a quarter of the original, since $$\left(\frac{1}{2}\right)^2 = \frac{1}{4}$$.
+
+:::
+
+The common mistake is to think that doubling the sides doubles the area. Doubling the sides
+quadruples it, and tripling the sides multiplies it by $$9$$. Only the lengths go up by the scale
+factor. The area goes up by the scale factor squared.
+
+## Triangles
+
+A triangle's area is half its base times its height (:ref{#distance-and-angles/triangle-area}). A
+zoom by $$r$$ makes the base $$r$$ times as long. It also makes the height $$r$$ times as long,
+since the height is a length too. So half the base times the height is multiplied by $$r$$ twice,
+which gives $$r^2$$ again.
+
+:::proposition[Zooming a triangle]{#triangle-scaling}
+
+Let $$S$$ be a triangle and let $$r > 0$$. The zoom of $$S$$ by $$r$$ is a triangle whose area is
+$$r^2$$ times the area of $$S$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Similarity_(geometry)#Area_ratio_and_volume_ratio"}
+
+Let $$S$$ be the triangle $$\triangle ABC$$, with base $$AB$$ of length $$b$$. Let $$F$$ be the foot
+of the perpendicular from $$C$$ to the line $$AB$$, so the height is $$h = d(C, F)$$
+(:ref{#distance-and-angles/height}).
+
+By :ref{#zoom-rules}, the zoom sends lines to lines and keeps angles. So $$rA$$, $$rB$$ and $$rC$$
+are the corners of a triangle, the point $$rF$$ lies on the line through $$rA$$ and $$rB$$, and the
+angle at $$rF$$ between that line and the segment to $$rC$$ is still a right angle. So $$rF$$ is the
+foot of the perpendicular from $$rC$$, and the zoomed triangle has base and height
+
+```math
+d(rA, rB) = rb \qquad d(rC, rF) = rh
+```
+
+again by :ref{#zoom-rules}. Its area is $$\frac{1}{2}(rb)(rh) = r^2 \cdot \frac{1}{2}bh$$, which is
+$$r^2$$ times the area of $$S$$.
+
+:::
+
+## Any shape at all
+
+A pizza, a lake or a leaf has no base and height to multiply. The way in is the grid from the
+[previous guide](./grids.mdx). Lay graph paper over the shape and count the squares that lie inside
+it. Now zoom the shape and the graph paper together, as a photocopier would. Every little square
+becomes a bigger square, with sides $$r$$ times as long and so $$r^2$$ times the area. The squares
+that were inside the shape are still inside it, and there are exactly as many of them as before.
+
+So the count of squares stays the same, but each square is worth $$r^2$$ times as much. Move the
+slider below to see this with a shape made of three squares.
+
+<ZoomSquares />
+
+The proof makes the counting argument exact. It uses the inner and outer counts
+(:ref{#grid-counts}): the inner count adds up the squares wholly inside the shape, and the outer
+count adds up the squares that overlap it, meaning they share some area with it. The area always
+lies between them (:ref{#grid-squeeze}), and the rule :ref{#grid-rule} says the gap between them can
+be made as small as you like with a fine enough grid.
+
+:::theorem[Zooming multiplies area by r squared]{#area-scaling}
+
+Let $$S$$ be a shape whose area is pinned down by grids (:ref{#grid-rule}), and let $$r > 0$$. Then
+the zoom $$rS$$ has area
+
+```math
+\text{area of } rS = r^2 \cdot (\text{area of } S)
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Similarity_(geometry)#Area_ratio_and_volume_ratio"}
+
+Take the zoom about a point $$O$$. Lay a grid of squares of side $$c$$ over the plane, with $$O$$ at
+one of its corners, and zoom the grid as well. By :ref{#rectangle-scaling}, each square of side
+$$c$$ goes to a square of side $$rc$$, and these squares form the grid of side $$rc$$ with a corner
+at $$O$$. Every square of the new grid comes from exactly one square of the old grid, since the zoom
+by $$\frac{1}{r}$$ undoes the zoom by $$r$$ (:ref{#zoom-twice}).
+
+**Inside goes to inside.** A square lies wholly inside $$S$$ exactly when its zoom lies wholly
+inside $$rS$$, because the points of $$rS$$ are exactly the zooms of the points of $$S$$, and the
+zoom by $$\frac{1}{r}$$ brings each point back.
+
+**Overlapping goes to overlapping.** Suppose a square $$Q$$ overlaps $$S$$, so the part they have in
+common has some area. Its edge is made of pieces of the edges of $$Q$$ and $$S$$, so it has a
+length. By :ref{#grid-rule}, a fine enough grid has a little square lying wholly inside that common
+part, since otherwise its inner count would stay at $$0$$ and couldn't close in on an area bigger
+than $$0$$. By the previous step, the zoom of that little square lies wholly inside both the zoom of
+$$Q$$ and $$rS$$, and it is a square of side bigger than $$0$$. So the zoom of $$Q$$ shares some
+area with $$rS$$: it overlaps. The zoom by $$\frac{1}{r}$$ gives the reverse.
+
+So the two grids give the same numbers of squares in each count, and each square of the new grid has
+$$r^2$$ times the area of its partner (:ref{#rectangle-scaling}). Writing $$i$$ and $$o$$ for the
+inner and outer counts of $$S$$ with side $$c$$, the counts of $$rS$$ with side $$rc$$ are $$r^2 i$$
+and $$r^2 o$$.
+
+By :ref{#grid-squeeze}, applied to each shape,
+
+```math
+i \le \text{area of } S \le o \qquad r^2 i \le \text{area of } rS \le r^2 o
+```
+
+Multiplying the first line by $$r^2$$ gives $$r^2 i \le r^2 \cdot (\text{area of } S) \le r^2 o$$.
+So the two numbers $$\text{area of } rS$$ and $$r^2 \cdot (\text{area of } S)$$ both lie between
+$$r^2 i$$ and $$r^2 o$$, and they differ by at most $$r^2(o - i)$$.
+
+By :ref{#grid-rule}, a fine enough grid makes $$o - i$$ as small as you like, and so makes
+$$r^2(o - i)$$ as small as you like too. Two fixed numbers that differ by less than every positive
+amount are equal. So the area of $$rS$$ is $$r^2$$ times the area of $$S$$.
+
+:::
+
+In words: **twice as wide means four times the area**, for any shape. Three times as wide means nine
+times the area, and half as wide means a quarter of the area.
+
+## Pizzas, maps and paper
+
+The pizza question from the top of the page needs no formula for the area of a disc. An 8-inch pizza
+zoomed by $$1.5$$ is a 12-inch pizza, since $$1.5 \cdot 8 = 12$$. So the large pizza has
+$$1.5^2 = 2.25$$ times the area of a small one, while two small pizzas have only $$2$$ times. The
+large pizza is $$12.5\%$$ more food, since $$2.25 \div 2 = 1.125$$.
+
+<PizzaCompare caption="Drawn to the same scale: the 12-inch pizza is the 8-inch one zoomed by 1.5, so it holds 2.25 times as much." />
+
+:::example[Areas on a map]
+
+A walking map has scale $$1 : 50\,000$$: every length on the map is the real length zoomed by
+$$\frac{1}{50\,000}$$. So $$1$$ cm on the map stands for $$50\,000$$ cm, which is $$500$$ metres.
+
+Areas shrink by the square of that. A square $$1$$ cm on each side on the map stands for a square
+$$500$$ metres on each side on the ground, with area $$500 \cdot 500 = 250\,000$$ square metres, or
+a quarter of a square kilometre. A wood covering $$8$$ square centimetres of the map covers
+$$8 \cdot 250\,000 = 2\,000\,000$$ square metres, which is $$2$$ square kilometres.
+
+:::
+
+Going backwards needs a square root. To double an area, zoom by the number whose square is $$2$$,
+which is $$\sqrt{2} \approx 1.414$$. Paper sizes are built on this. An A3 sheet, $$297$$ mm by
+$$420$$ mm, is an A4 sheet, $$210$$ mm by $$297$$ mm, zoomed by about $$1.414$$: you can check that
+$$210 \cdot 1.414 \approx 297$$ and $$297 \cdot 1.414 \approx 420$$. So an A3 sheet has twice the
+area of an A4 sheet, and a photocopier set to $$141\%$$ enlarges an A4 page to fill an A3 sheet
+exactly.
+
+:::example[Turf for a bigger lawn]
+
+A rectangular lawn needs $$30$$ square metres of turf. A new lawn of the same shape is to be $$1.5$$
+times as long and $$1.5$$ times as wide. It needs $$1.5^2 \cdot 30 = 2.25 \cdot 30 = 67.5$$ square
+metres of turf, more than twice as much, even though no side has doubled.
+
+:::
+
+## Exercises
+
+:::::accordion[Exercises on zooming and area, with solutions]
+
+::::exercise{#ex-scaling-areas-factors}
+
+A shape has area $$12$$. Find the area after a zoom by each factor:
+
+1. $$3$$
+2. $$\frac{1}{2}$$
+3. $$1.5$$
+4. $$\frac{2}{3}$$
+
+:::solution
+
+By :ref{#area-scaling}, the area is multiplied by the square of the factor:
+
+1. $$3^2 \cdot 12 = 9 \cdot 12 = 108$$
+2. $$\left(\frac{1}{2}\right)^2 \cdot 12 = \frac{12}{4} = 3$$
+3. $$1.5^2 \cdot 12 = 2.25 \cdot 12 = 27$$
+4. $$\left(\frac{2}{3}\right)^2 \cdot 12 = \frac{4}{9} \cdot 12 = \frac{48}{9} = \frac{16}{3}$$
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-areas-backwards}
+
+A shape of area $$20$$ is zoomed, and the result has area $$45$$. What was the scale factor? What
+factor would turn the same shape into one of area $$5$$?
+
+:::solution
+
+By :ref{#area-scaling}, $$r^2 \cdot 20 = 45$$, so $$r^2 = \frac{45}{20} = 2.25$$. The scale factor
+is positive, so $$r = 1.5$$.
+
+For area $$5$$, $$r^2 \cdot 20 = 5$$, so $$r^2 = \frac{1}{4}$$ and $$r = \frac{1}{2}$$. Halving
+every length leaves a quarter of the area.
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-areas-value}
+
+A 10-inch pizza costs $$8$$ pounds and a 14-inch pizza costs $$15$$ pounds. Without working out
+either area, decide which gives more pizza for each pound.
+
+:::solution
+
+The 14-inch pizza is the 10-inch one zoomed by $$\frac{14}{10} = 1.4$$. By :ref{#area-scaling}, it
+has $$1.4^2 = 1.96$$ times the area. Its price is $$\frac{15}{8} = 1.875$$ times as much. You get
+$$1.96$$ times the pizza for $$1.875$$ times the money, so the 14-inch pizza gives more for each
+pound.
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-areas-map}
+
+A map has scale $$1 : 25\,000$$. A lake covers $$12$$ square centimetres of the map. What is its
+real area, in square kilometres?
+
+:::solution
+
+Each length on the map is the real length zoomed by $$\frac{1}{25\,000}$$, so $$1$$ cm on the map is
+$$25\,000$$ cm, which is $$250$$ metres. A map square $$1$$ cm on each side stands for a real square
+$$250$$ metres on each side, with area $$250 \cdot 250 = 62\,500$$ square metres
+(:ref{#area-scaling}).
+
+The lake covers $$12 \cdot 62\,500 = 750\,000$$ square metres. A square kilometre is
+$$1000 \cdot 1000 = 1\,000\,000$$ square metres, so the lake covers $$0.75$$ square kilometres.
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-areas-twice}
+
+A shape of area $$18$$ is zoomed by $$2$$ about a point $$O$$, and the result is then zoomed by
+$$\frac{1}{3}$$ about $$O$$. What is the final area? Do it two ways: one zoom at a time, and as a
+single zoom.
+
+:::solution
+
+**One zoom at a time.** The zoom by $$2$$ gives area $$4 \cdot 18 = 72$$, and the zoom by
+$$\frac{1}{3}$$ then gives $$\frac{1}{9} \cdot 72 = 8$$ (:ref{#area-scaling}).
+
+**As a single zoom.** By :ref{#zoom-twice}, the two zooms together are the zoom by
+$$2 \cdot \frac{1}{3} = \frac{2}{3}$$. That multiplies area by $$\frac{4}{9}$$, and
+$$\frac{4}{9} \cdot 18 = 8$$. The two ways agree, as they must.
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-areas-square}
+
+A square has side $$1$$, so its perimeter is $$4$$ and its area is $$1$$. It is zoomed by $$r$$.
+
+1. Find the perimeter and the area of the zoomed square in terms of $$r$$.
+2. For which $$r$$ are the two numbers equal?
+3. A friend says "a shape whose perimeter equals its area is special". Explain why that depends on
+   the unit of length chosen.
+
+:::solution
+
+1. Each side becomes $$r$$ (:ref{#zoom-rules}), so the perimeter is $$4r$$. The area is
+   $$r^2 \cdot 1 = r^2$$ (:ref{#area-scaling}).
+2. $$4r = r^2$$ with $$r > 0$$ gives $$r = 4$$: a square of side $$4$$ has perimeter $$16$$ and area
+   $$16$$.
+3. Measure the same square in a unit half as long. Its side becomes $$8$$, its perimeter $$32$$ and
+   its area $$64$$. The perimeter doubled but the area went up four times, so they are no longer
+   equal. A length and an area are different kinds of quantity, and comparing their numbers only
+   makes sense once a unit is fixed.
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-areas-paper}
+
+An A4 sheet is $$210$$ mm by $$297$$ mm. An A5 sheet is an A4 sheet folded in half across its long
+side, so it is $$148.5$$ mm by $$210$$ mm.
+
+1. What fraction of the area of A4 is A5?
+2. A5 has the same shape as A4. What zoom takes A4 to A5? Check it against the lengths.
+
+:::solution
+
+1. Folding in half halves the area, so A5 is $$\frac{1}{2}$$ of A4. In numbers,
+   $$210 \cdot 297 = 62\,370$$ and $$148.5 \cdot 210 = 31\,185$$, which is half.
+2. The zoom by $$r$$ multiplies area by $$r^2$$ (:ref{#area-scaling}), so $$r^2 = \frac{1}{2}$$ and
+   $$r = \frac{1}{\sqrt{2}} \approx 0.707$$. Check: $$297 \cdot 0.707 \approx 210$$ and
+   $$210 \cdot 0.707 \approx 148.5$$. The long side of A5 is the short side of A4, and the short
+   side of A5 is half the long side of A4.
+
+:::
+
+::::
+
+:::::

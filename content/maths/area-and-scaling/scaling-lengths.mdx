@@ -1,0 +1,454 @@
+---
+title: Zooming and length
+description: What a zoom does to lengths, and why a zoomed shape keeps its shape.
+---
+
+A model railway carriage, a street map and a photo spread wider with two fingers on a phone are all
+copies of something at a different size. What makes them useful is that the shape survives: a
+carriage built at $$1 : 76$$ is $$76$$ times shorter than the real one, and also $$76$$ times
+narrower and $$76$$ times lower. This guide looks at that rule for lengths. A zoom multiplies every
+length by the same number, and that one fact is what lets you read real distances off a map, or a
+real height off a shadow.
+
+## Zooming, again
+
+The [Isometries](../isometries/maps.mdx) chapter met the zoom, also called a dilation
+(:ref{#isometries/dilation}). Pick a centre $$O$$ and a number $$r > 0$$. Each point $$P$$ slides
+along the ray from $$O$$ through $$P$$ until it is $$r$$ times as far from $$O$$ as it was. The
+centre stays put. With $$r = 2$$ everything spreads out to twice the distance, like a photocopier
+set to $$200\%$$; with $$r = \frac{1}{2}$$ everything is pulled halfway in.
+
+The number $$r$$ is called the **scale factor**. With the centre $$O$$ fixed, this chapter writes
+$$rP$$ for the point where the zoom by $$r$$ sends $$P$$, and $$rS$$ for the zoomed copy of a shape
+$$S$$, made by zooming every one of its points. So $$2P$$ is "the point twice as far from $$O$$ as
+$$P$$, in the same direction", and $$rS$$ is "the shape $$S$$ zoomed by $$r$$".
+
+The definition only talks about distances from the centre. The question for this guide is what
+happens to every other length: the side of a shape, its diagonal, the distance all the way round.
+Try it below. The orange diagonal, the purple roof slope, a wall and the whole perimeter all change
+by the same factor.
+
+<ZoomLengths />
+
+## When both points lie on one ray
+
+Start with the case the definition handles directly. Two points on the same ray from the centre
+slide out along that ray together. Their distances from $$O$$ are both multiplied by $$r$$, so the
+gap between them is multiplied by $$r$$ as well.
+
+:::proposition[Zooming along a ray]{#zoom-ray}
+
+Let $$P$$ and $$Q$$ be points on one ray from the centre $$O$$. Then
+
+```math
+d(rP, rQ) = r \cdot d(P, Q)
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Homothety#Derivation_of_the_properties"}
+
+Write $$p = d(O, P)$$ and $$q = d(O, Q)$$, and suppose $$p \le q$$ (otherwise swap the names). A ray
+has exactly one point at each distance from its start, as the definition of a zoom explains
+(:ref{#isometries/dilation}). The segment $$OQ$$ lies along the ray and has a point at distance
+$$p$$ from $$O$$ (rule 2 of :ref{#distance-and-angles/segment-rules}), so that point is $$P$$. So
+$$P$$ lies on the segment $$OQ$$, and rule 1 of the same rules gives
+
+```math
+q = p + d(P, Q), \qquad \text{so} \qquad d(P, Q) = q - p
+```
+
+The zoom keeps both points on the same ray, at distances $$rp$$ and $$rq$$ from $$O$$, with
+$$rp \le rq$$. The same reasoning gives
+
+```math
+d(rP, rQ) = rq - rp = r(q - p) = r \cdot d(P, Q)
+```
+
+:::
+
+:::example[Two marks on a line]
+
+Zoom by $$3$$ about $$O$$. Take $$P$$ and $$Q$$ on one ray from $$O$$, at distances $$2$$ and $$5$$.
+They are $$5 - 2 = 3$$ apart. After the zoom they sit at distances $$6$$ and $$15$$, so they are
+$$15 - 6 = 9$$ apart, which is $$3 \cdot 3$$.
+
+:::
+
+## A right angle at the centre
+
+Now take two points in different directions from $$O$$, with the angle between their directions a
+right angle. Each slides out along its own ray, so the rays don't change and neither does the angle
+between them. The two legs of the right triangle are each multiplied by $$r$$, and the Pythagoras
+theorem then says what happens to the third side.
+
+```plane
+point O 0 0 sw
+point P 2 0 s
+point Q 0 1.5 w
+point 2P 4 0 s
+point 2Q 0 3 w
+segment O 2P color=muted
+segment O 2Q color=muted
+segment P Q color=blue label="c"
+segment 2P 2Q color=orange label="2c"
+right P O Q
+caption "Zooming by 2 doubles both legs of the right triangle, and so doubles the third side"
+```
+
+:::proposition[Zooming a right angle at the centre]{#zoom-right-angle}
+
+Let $$P$$ and $$Q$$ be points with the angle $$\angle POQ$$ a right angle. Then
+
+```math
+d(rP, rQ) = r \cdot d(P, Q)
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Homothety#Derivation_of_the_properties"}
+
+Write $$a = d(O, P)$$, $$b = d(O, Q)$$ and $$c = d(P, Q)$$. The triangle $$POQ$$ has a right angle
+at $$O$$ with legs $$a$$ and $$b$$, so $$c^2 = a^2 + b^2$$ by :ref{#distance-and-angles/pythagoras}.
+
+The point $$rP$$ lies on the ray $$OP$$, so the ray from $$O$$ through $$rP$$ is the ray $$OP$$
+itself (:ref{#distance-and-angles/ray}). In the same way, the ray through $$rQ$$ is the ray $$OQ$$.
+So the angle at $$O$$ in the triangle $$(rP)O(rQ)$$ is made by the same two rays, and is still a
+right angle. Its legs are $$d(O, rP) = ra$$ and $$d(O, rQ) = rb$$, by the definition of the zoom.
+The Pythagoras theorem gives
+
+```math
+d(rP, rQ)^2 = (ra)^2 + (rb)^2 = r^2(a^2 + b^2) = r^2 c^2
+```
+
+Both $$d(rP, rQ)$$ and $$rc$$ are numbers that are not negative, with the same square, so they are
+equal: $$d(rP, rQ) = rc$$.
+
+:::
+
+:::example[A zoomed 3, 4, 5 triangle]
+
+Let $$d(O, P) = 3$$ and $$d(O, Q) = 4$$, with a right angle at $$O$$. Then $$d(P, Q) = 5$$. Zoom by
+$$2.5$$: the legs become $$7.5$$ and $$10$$, and the third side is
+$$\sqrt{7.5^2 + 10^2} = \sqrt{156.25} = 12.5$$, which is $$2.5 \cdot 5$$.
+
+:::
+
+## The rule for every length
+
+The two propositions cover two special arrangements of points. The same thing happens for any two
+points, wherever they are: every distance is multiplied by $$r$$. The cleanest proof uses
+coordinates, which come in a later chapter, so for now it is taken as given, together with two facts
+that come with it.
+
+:::remark[Rules for zooms]{#zoom-rules}
+
+Let a zoom have scale factor $$r > 0$$. Then:
+
+1. **Distances**: for any points $$P$$ and $$Q$$, $$d(rP, rQ) = r \cdot d(P, Q)$$
+2. **Lines**: the zoom sends each line to a line, and each segment $$PQ$$ to the segment from $$rP$$
+   to $$rQ$$
+3. **Angles**: the zoom sends each angle to an angle of the same size
+
+These are taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Homothety#Properties"}
+
+:::
+
+Rule 1 is the reason a zoomed shape looks the same. The ratio of any two lengths in the shape, such
+as height to width, is unchanged, because both are multiplied by $$r$$ and the $$r$$ cancels. Rule 3
+says the same thing about corners: a square corner stays square.
+
+:::example[Reading a map]
+
+A walking map is drawn at $$1 : 50\,000$$. Think of it as the land zoomed by
+$$r = \frac{1}{50\,000}$$ and then laid on the table, which moves it without changing any distance.
+By rule 1, every distance on the map is $$\frac{1}{50\,000}$$ of the real one, so every real
+distance is $$50\,000$$ times the distance on the map. Two villages $$4$$ cm apart on the map are
+$$4 \cdot 50\,000 = 200\,000$$ cm apart, which is $$2$$ km. The rule works for any pair of points,
+so a single scale bar serves the whole map.
+
+:::
+
+## Same shape, different size
+
+Two photos of the same view, one printed small and one large, are the same shape. So are two maps of
+one country at different scales, or a toy car and the real car it copies. Maths calls such shapes
+similar: you can zoom one to the size of the other and then move it into place.
+
+:::definition[Similar shapes]{#similar}
+
+A shape $$S$$ is **similar** to a shape $$S'$$ if some zoom of $$S$$ is congruent to $$S'$$
+(:ref{#isometries/congruent}). In other words, you can zoom $$S$$ and then slide, turn or flip the
+result so that it lies exactly on $$S'$$.
+
+:::
+
+Congruent shapes are similar, with the zoom by $$1$$. Any two circles are similar too. For example,
+zooming a circle of radius $$2$$ about its centre by $$\frac{3}{2}$$ gives a circle of radius $$3$$,
+and any two circles of radius $$3$$ are congruent (:ref{#isometries/circles-congruent}). In general,
+a circle of radius $$a$$ zoomed by $$\frac{b}{a}$$ has radius $$b$$.
+
+The A sizes of paper are a neat example. An A3 sheet cut in half across the middle makes two A4
+sheets, and an A4 sheet cut in half makes two A5 sheets. The sizes are chosen so that every one of
+them is the same shape.
+
+<PaperSizes caption="An A3 sheet cut across the middle makes two A4 sheets, and an A4 sheet cut the same way makes two A5 sheets. Every size is the same shape." />
+
+:::example[A4 and A3 are similar]
+
+An A4 sheet is $$210$$ mm by $$297$$ mm, and an A3 sheet is $$297$$ mm by $$420$$ mm. Comparing the
+short sides and then the long sides:
+
+```math
+\frac{297}{210} \approx 1.414, \qquad \frac{420}{297} \approx 1.414
+```
+
+Both ratios are the same, about $$\sqrt{2}$$. So a zoom by $$1.414$$ turns an A4 sheet into the
+shape and size of an A3 sheet. That is why a photocopier has a button marked $$141\%$$ for enlarging
+A4 to A3, and one marked $$71\%$$ for the way back: $$\frac{1}{1.414} \approx 0.71$$.
+
+:::
+
+## Zooming twice
+
+Photocopy a picture at $$150\%$$, then photocopy the copy at $$150\%$$ again. The result is not
+$$300\%$$ of the original. Each copy multiplies every length by $$1.5$$, so two copies multiply by
+$$1.5 \cdot 1.5 = 2.25$$: the second picture is $$225\%$$ of the first. Zooms combine by
+multiplying, not adding.
+
+:::proposition[Zooming twice]{#zoom-twice}
+
+About the same centre $$O$$, the zoom by $$r$$ followed by the zoom by $$s$$ is the zoom by $$rs$$.
+In particular, the zoom by $$\frac{1}{r}$$ undoes the zoom by $$r$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Homothety#Composition"}
+
+Both zooms leave $$O$$ where it is, and so does the zoom by $$rs$$. Take any other point $$P$$. The
+first zoom sends it to the point $$rP$$ on the ray $$OP$$, at distance $$r \cdot d(O, P)$$. That
+point lies on the ray $$OP$$ and isn't $$O$$, so its own ray from $$O$$ is the ray $$OP$$
+(:ref{#distance-and-angles/ray}). The second zoom sends it along that same ray to distance
+$$s \cdot r \cdot d(O, P)$$.
+
+So $$P$$ ends up on the ray $$OP$$, at distance $$rs \cdot d(O, P)$$ from $$O$$. That is exactly
+where the zoom by $$rs$$ sends it. For the second part, take $$s = \frac{1}{r}$$: then $$rs = 1$$,
+and the zoom by $$1$$ moves nothing.
+
+:::
+
+## The length of a curve
+
+A road on a map bends and winds, so you can't measure it with a ruler in one go. A common trick is
+to lay a piece of string along it, then straighten the string and measure that. Another is to step
+along it with a pair of compasses set to a small gap, counting the steps. Both measure the curve by
+breaking it into short, nearly straight pieces.
+
+That is also how mathematicians define the length of a curve. Mark points along the curve, join
+neighbouring marks with straight segments, and add up the segments. With more marks, closer
+together, the total gets as close as you like to one number, and that number is the **length** of
+the curve. A careful version of this uses calculus; the picture is enough here.
+
+<WindingRoad caption="Five straight segments with their ends on a winding road: their total is close to the road's length" />
+
+:::theorem[Length of a curve under a zoom]{#curve-length-scaling}
+
+A zoom by $$r$$ multiplies the length of every curve by $$r$$. In particular, it multiplies the
+perimeter of every shape by $$r$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Similarity_(geometry)#In_Euclidean_space"}
+
+Mark points along the curve and join neighbouring marks by segments, as in the definition of length.
+Zoom everything. The zoomed marks lie on the zoomed curve, and by rule 2 of :ref{#zoom-rules} each
+segment goes to the segment joining the zoomed marks. By rule 1, each of those segments is $$r$$
+times as long as before, so their total is $$r$$ times the old total.
+
+This pairs up the markings of the two curves. Every marking of the zoomed curve comes from a marking
+of the original, because the zoom by $$\frac{1}{r}$$ undoes the zoom by $$r$$ (:ref{#zoom-twice}).
+And marks that are close together stay close together, at $$r$$ times the gap.
+
+As the marks get closer together, the old totals get as close as you like to the length of the
+curve, and the new totals get as close as you like to the length of the zoomed curve. Each new total
+is always $$r$$ times the old one, so the two lengths must be in the same ratio: the zoomed curve is
+$$r$$ times as long. For a shape with straight sides, there is no approximating to do: each side is
+multiplied by $$r$$, so their sum is.
+
+:::
+
+:::example[A river on a map]
+
+On a map at $$1 : 25\,000$$, a piece of string laid along a river from its source to a bridge
+measures $$36$$ cm. The map is the land zoomed by $$\frac{1}{25\,000}$$, so the real river is
+$$25\,000$$ times as long: $$36 \cdot 25\,000 = 900\,000$$ cm, which is $$9$$ km.
+
+:::
+
+## Shadows: a zoom you can see
+
+Hold a card between a small lamp and a wall, with the card facing the wall squarely. The light from
+the bulb spreads out in straight lines, so every point of the card's edge throws its shadow onto the
+wall along the line from the bulb. If the wall is $$3$$ times as far from the bulb as the card is,
+each shadow point is $$3$$ times as far from the bulb as the card point that throws it. That last
+step is taken from the picture, and it is what makes the shadow the card zoomed by $$3$$, with the
+bulb as the centre.
+
+<LampShadow caption="The rays from the bulb past the card spread out in straight lines. The wall is 3 times as far from the bulb as the card, so the shadow is 3 times as tall." />
+
+So a card $$20$$ cm tall throws a shadow $$60$$ cm tall, and every other length of the shadow is
+$$3$$ times the matching length of the card. Moving the card to $$1.5$$ m from the bulb, halfway
+between the bulb and the wall, makes the factor $$\frac{3}{1.5} = 2$$, and the shadow shrinks to
+twice the card's size. Shadow puppeteers use this to make a figure loom larger by stepping towards
+the lamp.
+
+## Exercises
+
+:::::accordion[Exercises on zooming and length, with solutions]
+
+::::exercise{#ex-scaling-lengths-map}
+
+A map is drawn at $$1 : 50\,000$$.
+
+1. Two towns are $$7.5$$ cm apart on the map. How far apart are they?
+2. A straight road is $$12$$ km long. How long is it on the map?
+
+:::solution
+
+The map is the land zoomed by $$\frac{1}{50\,000}$$, so by rule 1 of :ref{#zoom-rules} every real
+distance is $$50\,000$$ times the map distance.
+
+1. $$7.5 \cdot 50\,000 = 375\,000$$ cm, which is $$3\,750$$ m or $$3.75$$ km.
+2. $$12$$ km is $$1\,200\,000$$ cm, and $$\frac{1\,200\,000}{50\,000} = 24$$, so the road is $$24$$
+   cm long on the map.
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-lengths-ray}
+
+Zoom by $$4$$ about $$O$$. The points $$P$$ and $$Q$$ lie on one ray from $$O$$, at distances
+$$1.5$$ and $$4$$ from $$O$$. Find $$d(P, Q)$$ and $$d(4P, 4Q)$$ directly from the distances to
+$$O$$, and check that the second is $$4$$ times the first.
+
+:::solution
+
+As in the proof of :ref{#zoom-ray}, $$P$$ lies on the segment $$OQ$$, so
+$$d(P, Q) = 4 - 1.5 = 2.5$$. The zoomed points lie on the same ray at distances $$4 \cdot 1.5 = 6$$
+and $$4 \cdot 4 = 16$$, so $$d(4P, 4Q) = 16 - 6 = 10$$. And $$10 = 4 \cdot 2.5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-lengths-right-angle}
+
+The angle $$\angle POQ$$ is a right angle, with $$d(O, P) = 6$$ and $$d(O, Q) = 8$$. Find
+$$d(P, Q)$$. Then zoom by $$\frac{1}{4}$$ about $$O$$ and find the three side lengths of the new
+triangle without using rule 1 of :ref{#zoom-rules}.
+
+:::solution
+
+By :ref{#distance-and-angles/pythagoras}, $$d(P, Q) = \sqrt{36 + 64} = \sqrt{100} = 10$$.
+
+The zoom by $$\frac{1}{4}$$ sends $$P$$ and $$Q$$ along their own rays, to distances
+$$\frac{6}{4} = 1.5$$ and $$\frac{8}{4} = 2$$ from $$O$$. The angle at $$O$$ is still a right angle,
+as in the proof of :ref{#zoom-right-angle}, so the third side is
+$$\sqrt{1.5^2 + 2^2} = \sqrt{2.25 + 4} = \sqrt{6.25} = 2.5$$. The new sides are $$1.5$$, $$2$$ and
+$$2.5$$, each a quarter of the old ones.
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-lengths-photocopier}
+
+A photocopier enlarges or reduces by a percentage.
+
+1. You copy a drawing at $$125\%$$ and then copy the copy at $$80\%$$. How big is the result?
+2. What single setting turns A5 into A3? Use the $$141\%$$ setting that turns A5 into A4 and A4 into
+   A3.
+3. You copy at $$120\%$$ three times in a row. Is the result bigger or smaller than one copy at
+   $$160\%$$?
+
+:::solution
+
+Each copy is a zoom, and zooms combine by multiplying (:ref{#zoom-twice}).
+
+1. $$1.25 \cdot 0.8 = 1$$, so the result is the same size as the original drawing.
+2. Two steps of $$141\%$$ give $$1.41 \cdot 1.41 \approx 1.99$$, so the setting is $$200\%$$. This
+   makes sense: an A3 sheet holds four A5 sheets, two across and two down, so each length doubles.
+3. $$1.2^3 = 1.2 \cdot 1.2 \cdot 1.2 = 1.728$$, so three copies at $$120\%$$ give $$172.8\%$$, which
+   is bigger than $$160\%$$. Adding up the steps ($$20\% + 20\% + 20\%$$) would wrongly suggest
+   $$160\%$$.
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-lengths-rectangles}
+
+Is every rectangle similar to every other rectangle? Show that a $$1$$ by $$1$$ square and a $$1$$
+by $$2$$ rectangle are not similar.
+
+:::solution
+
+**No.** Suppose a zoom by $$r$$ of the square were congruent to the $$1$$ by $$2$$ rectangle
+(:ref{#similar}). The zoom multiplies every length by $$r$$ (rule 1 of :ref{#zoom-rules}), so the
+zoomed square has all four sides equal to $$r$$. An isometry keeps every length
+(:ref{#isometries/isometry}) and sends segments to segments, so it would lay the four equal sides of
+the zoomed square onto the four sides of the rectangle (that corners go to corners is taken from the
+picture). But the rectangle has sides $$1$$ and $$2$$, which are not equal.
+
+The same reasoning shows that similar shapes have the same ratio of long side to short side: a zoom
+multiplies both by $$r$$, and an isometry changes neither. Two rectangles with ratios $$1$$ and
+$$2$$ can't be similar.
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-lengths-shadow}
+
+A hand is held $$40$$ cm from a small lamp, and the wall is $$2$$ m from the lamp.
+
+1. What is the scale factor of the shadow?
+2. The hand is $$12$$ cm across. How wide is its shadow?
+3. Where should the hand be held so that its shadow is $$36$$ cm across?
+
+:::solution
+
+1. The wall is $$\frac{200}{40} = 5$$ times as far from the bulb as the hand, so the shadow is the
+   hand zoomed by $$5$$ about the bulb.
+2. Every length is multiplied by $$5$$ (rule 1 of :ref{#zoom-rules}), so the shadow is
+   $$5 \cdot 12 = 60$$ cm across.
+3. The scale factor must be $$\frac{36}{12} = 3$$, so the wall must be $$3$$ times as far from the
+   bulb as the hand. The hand goes $$\frac{200}{3} \approx 66.7$$ cm from the lamp.
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-lengths-fence}
+
+A plan of a field is drawn at $$1 : 2\,000$$, and its boundary on the plan measures $$46$$ cm. How
+many metres of fencing go round the real field? If the plan were redrawn at $$1 : 500$$, how long
+would the boundary be on the new plan?
+
+:::solution
+
+The real field is the plan zoomed by $$2\,000$$, so its perimeter is $$2\,000$$ times as long
+(:ref{#curve-length-scaling}): $$46 \cdot 2\,000 = 92\,000$$ cm, which is $$920$$ m of fencing.
+
+The new plan is the field zoomed by $$\frac{1}{500}$$, so the boundary is
+$$\frac{92\,000}{500} = 184$$ cm long on it. Going straight from one plan to the other, the scale
+factor is $$\frac{2\,000}{500} = 4$$ (:ref{#zoom-twice}), and $$4 \cdot 46 = 184$$ as well.
+
+:::
+
+::::
+
+:::::

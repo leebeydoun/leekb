@@ -73,6 +73,31 @@ import { TwoMirrors } from "./interactive/two-mirrors";
 import { PutItBack } from "./interactive/put-it-back";
 import { TriangleFromSides } from "./interactive/triangle-from-sides";
 import { SquareSymmetries } from "./interactive/square-symmetries";
+import {
+  ThreeCubes,
+  PillarLoad,
+  CrushedIce,
+} from "./area-illustrations/volume";
+import { SquareCube } from "./interactive/square-cube";
+import { ZoomSquares } from "./interactive/zoom-squares";
+import { DiscZoom } from "./interactive/disc-zoom";
+import { PizzaCompare } from "./area-illustrations/scaling-areas";
+import { GoatTether } from "./area-illustrations/disc-area";
+import { InscribedPolygon } from "./interactive/inscribed-polygon";
+import { StretchDisc } from "./interactive/stretch-disc";
+import {
+  WheelTrack,
+  PizzaRearranged,
+} from "./area-illustrations/circumference";
+import { SlantedPlate } from "./area-illustrations/stretching";
+import {
+  LampShadow,
+  PaperSizes,
+  WindingRoad,
+} from "./area-illustrations/scaling-lengths";
+import { GridTriangle } from "./area-illustrations/grids";
+import { ZoomLengths } from "./interactive/zoom-lengths";
+import { GridCount } from "./interactive/grid-count";
 import { Quiz } from "./quiz";
 import {
   Conjecture,
@@ -176,4 +201,23 @@ export const mdxComponents = {
   PutItBack,
   TriangleFromSides,
   SquareSymmetries,
+  ThreeCubes,
+  PillarLoad,
+  CrushedIce,
+  SquareCube,
+  ZoomSquares,
+  DiscZoom,
+  PizzaCompare,
+  GoatTether,
+  InscribedPolygon,
+  StretchDisc,
+  WheelTrack,
+  PizzaRearranged,
+  SlantedPlate,
+  LampShadow,
+  WindingRoad,
+  PaperSizes,
+  GridTriangle,
+  ZoomLengths,
+  GridCount,
 };

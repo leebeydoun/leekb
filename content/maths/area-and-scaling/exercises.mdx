@@ -1,0 +1,367 @@
+---
+title: Exercises
+description: Exercises on the whole Area and scaling chapter, with worked solutions.
+---
+
+These exercises draw on the whole chapter, and most of them need ideas from more than one guide.
+Some ask for a number, some ask you to compare two choices, and a few ask you to explain why
+something is true. Try each one before opening its solution, and say which rule or result justifies
+each step, as the guides do.
+
+Many of them turn on one question: is the change a zoom, which multiplies every length by the same
+number, or something else? Once you know the scale factor $$r$$, lengths go up by $$r$$, areas by
+$$r^2$$ and volumes by $$r^3$$.
+
+## Comparing sizes
+
+::::exercise{#ex-area-and-scaling-pizza-deal}
+
+A pizza shop offers three deals:
+
+- one 16-inch pizza for $$18$$ pounds
+- two 10-inch pizzas for $$14$$ pounds
+- one 12-inch pizza for $$10$$ pounds
+
+The sizes are the distances across. All the pizzas are equally thick.
+
+1. Which deal gives the most pizza for each pound?
+2. Someone who loves crust wants the most edge for each square inch of pizza. Which size should they
+   pick?
+
+:::solution
+
+1. A pizza $$d$$ inches across is a disc of radius $$\frac{d}{2}$$, so by :ref{#disc-area-formula}
+   its area is $$\pi \left(\frac{d}{2}\right)^2 = \frac{\pi d^2}{4}$$ square inches. The three deals
+   give:
+
+   - **16-inch**: $$\frac{\pi \cdot 256}{4} = 64\pi \approx 201.1$$ square inches, so about
+     $$201.1 \div 18 \approx 11.17$$ for each pound
+   - **Two 10-inch**: $$2 \cdot \frac{\pi \cdot 100}{4} = 50\pi \approx 157.1$$ square inches, so
+     about $$157.1 \div 14 \approx 11.22$$ for each pound
+   - **12-inch**: $$\frac{\pi \cdot 144}{4} = 36\pi \approx 113.1$$ square inches, so about
+     $$113.1 \div 10 \approx 11.31$$ for each pound
+
+   The single 12-inch pizza is the best value, though only by a little. The three deals are much
+   closer than the prices suggest, because a pizza's area grows with the square of its width.
+
+2. The edge of a pizza $$d$$ inches across has length $$\pi d$$ (:ref{#pi-ratio}). For each square
+   inch, that is
+
+   ```math
+   \frac{\pi d}{\pi d^2 / 4} = \frac{4}{d}
+   ```
+
+   This is biggest when $$d$$ is smallest, so the crust lover should pick the 10-inch pizzas:
+   $$0.4$$ inches of edge for each square inch, against $$0.33$$ for the 12-inch and $$0.25$$ for
+   the 16-inch. A zoom by $$r$$ multiplies the edge by $$r$$ (:ref{#curve-length-scaling}) but the
+   area by $$r^2$$ (:ref{#area-scaling}), so bigger pizzas have less edge for their size.
+
+:::
+
+::::
+
+::::exercise{#ex-area-and-scaling-cake-tin}
+
+A recipe fills a round cake tin $$20$$ cm across to a depth of $$4$$ cm. You want to make twice the
+recipe and bake it to the same depth. Will a round tin $$28$$ cm across do?
+
+:::solution
+
+The batter is a slab of fixed depth, so its volume is the depth times the area of the bottom of the
+tin. Twice the recipe at the same depth needs twice the area.
+
+The $$28$$ cm tin is the $$20$$ cm tin zoomed by $$\frac{28}{20} = 1.4$$. By :ref{#area-scaling},
+its bottom has $$1.4^2 = 1.96$$ times the area. That is close to $$2$$, so the doubled recipe fits,
+slightly deeper than $$4$$ cm: about $$4 \cdot \frac{2}{1.96} \approx 4.08$$ cm.
+
+A tin $$40$$ cm across, twice as wide, would hold four times the batter at the same depth. Doubling
+the area needs a scale factor of $$\sqrt{2} \approx 1.41$$, not $$2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-area-and-scaling-model-shed}
+
+An architect builds a model of a garden shed at a scale of $$1 : 20$$. The real shed needs $$15$$
+litres of paint, and the air inside it fills $$18$$ cubic metres.
+
+1. How much paint does the model need, if the paint goes on equally thick?
+2. How much air does the model hold?
+
+:::solution
+
+The model is the shed zoomed by $$r = \frac{1}{20}$$.
+
+1. The paint covers the surface, and a zoom by $$r$$ multiplies surface area by $$r^2$$
+   (:ref{#surface-scaling}). So the model needs $$15 \cdot \frac{1}{400} = 0.0375$$ litres, which is
+   $$37.5$$ millilitres.
+2. Volume is multiplied by $$r^3$$ (:ref{#volume-scaling}). So the model holds
+   $$18 \cdot \frac{1}{8000} = 0.00225$$ cubic metres, which is $$2.25$$ litres.
+
+The two answers shrink by different amounts: the paint by $$400$$ times and the air by $$8000$$
+times. That gap is the square-cube law (:ref{#square-cube}) at work.
+
+:::
+
+::::
+
+## Measuring with grids
+
+::::exercise{#ex-area-and-scaling-forest-map}
+
+A forest is drawn on a map at a scale of $$1 : 50\,000$$. You lay a grid of $$1$$ cm squares over it
+and find $$14$$ squares wholly inside the forest and $$22$$ that overlap it.
+
+1. What do these counts tell you about the real area of the forest, in square kilometres?
+2. You cut each square into four, making a grid of $$0.5$$ cm squares. Now $$66$$ squares are wholly
+   inside and $$82$$ overlap. What do you know now?
+3. Explain why cutting each square into four can never lower the inner count or raise the outer
+   count.
+
+:::solution
+
+1. On the map, the inner count is $$14$$ square centimetres and the outer count is $$22$$, so by
+   :ref{#grid-squeeze} the forest covers between $$14$$ and $$22$$ square centimetres of the map.
+   The land is the map zoomed by $$50\,000$$, so $$1$$ cm on the map is $$50\,000$$ cm, or $$500$$
+   m, on the ground. A $$1$$ cm square on the map stands for a square of side $$500$$ m, with area
+   $$0.25$$ square kilometres (:ref{#rectangle-scaling}). So the forest covers between
+   $$14 \cdot 0.25 = 3.5$$ and $$22 \cdot 0.25 = 5.5$$ square kilometres.
+2. Each new square has side $$0.5$$ cm on the map, which stands for $$250$$ m, so each one stands
+   for $$0.0625$$ square kilometres. The forest covers between $$66 \cdot 0.0625 = 4.125$$ and
+   $$82 \cdot 0.0625 = 5.125$$ square kilometres. The gap has shrunk from $$2$$ to $$1$$.
+3. **Inner count**: a square wholly inside the forest is cut into four smaller squares, and each of
+   them is inside it too. So every bit of area counted before is still counted, and the inner count
+   can only stay the same or grow.
+
+   **Outer count**: a small square that overlaps the forest lies inside one of the big squares, and
+   that big square overlaps the forest too. So every small square counted now lies inside a big
+   square counted before, and the outer count can only stay the same or shrink.
+
+   Finer grids squeeze the area from both sides, which is why :ref{#grid-rule} can pin it down.
+
+:::
+
+::::
+
+## Circles
+
+::::exercise{#ex-area-and-scaling-goat-wall}
+
+A goat is tied by a $$6$$ metre rope to a ring in the middle of a long straight wall. The goat can
+graze on one side of the wall only.
+
+1. How much grass can the goat reach?
+2. How long a rope would let it reach twice as much grass?
+3. How long is the curved edge of the grazed patch with the $$6$$ metre rope?
+
+:::solution
+
+1. The goat can reach every point within $$6$$ metres of the ring on its side of the wall. That is
+   half a disc of radius $$6$$: the wall runs through the centre, and a line through the centre
+   halves a disc. The whole disc has area $$\pi \cdot 6^2 = 36\pi$$ (:ref{#disc-area-formula}), so
+   the goat reaches $$18\pi \approx 56.5$$ square metres.
+2. The patch for a rope of length $$\ell$$ is the $$6$$ metre patch zoomed by $$\frac{\ell}{6}$$
+   about the ring, so its area is multiplied by $$\left(\frac{\ell}{6}\right)^2$$
+   (:ref{#area-scaling}). For twice the area, $$\left(\frac{\ell}{6}\right)^2 = 2$$, so
+   $$\ell = 6\sqrt{2} \approx 8.49$$ metres. Twice the grass needs only about $$41\%$$ more rope.
+3. The curved edge is half the circle of radius $$6$$. The whole circle has length
+   $$2\pi \cdot 6 = 12\pi$$ (:ref{#circumference-formula}), so the edge is $$6\pi \approx 18.8$$
+   metres long.
+
+:::
+
+::::
+
+::::exercise{#ex-area-and-scaling-bike-computer}
+
+A bike computer counts how many times the front wheel turns and works out the distance from that. It
+has been set up for a wheel $$70$$ cm across, but the bike's wheel is $$66$$ cm across. After a
+ride, it shows $$35$$ km. How far did the bike actually go?
+
+:::solution
+
+Each turn of the wheel lays its edge flat along the road, so the bike moves one circumference for
+each turn. By :ref{#pi-ratio}, a wheel $$70$$ cm across has circumference $$70\pi$$ cm and a wheel
+$$66$$ cm across has circumference $$66\pi$$ cm.
+
+The computer showed $$35$$ km because it counted $$N$$ turns and multiplied by $$70\pi$$ cm. The
+real distance is the same $$N$$ turns times $$66\pi$$ cm. So the real distance is
+
+```math
+35 \cdot \frac{66\pi}{70\pi} = 35 \cdot \frac{66}{70} = 33 \text{ km}
+```
+
+The $$\pi$$ cancels: only the ratio of the two widths matters. That is :ref{#curve-length-scaling}
+again, since the smaller wheel's edge is the larger one's zoomed by $$\frac{66}{70}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-area-and-scaling-fence}
+
+A farmer has $$400$$ metres of fence. Compare the area of a square field and of a round field that
+the fence can surround.
+
+:::solution
+
+**Square**: each side is $$\frac{400}{4} = 100$$ metres, so the area is $$100^2 = 10\,000$$ square
+metres (:ref{#distance-and-angles/area-rules}).
+
+**Round**: the fence is the circumference, so $$2\pi r = 400$$ (:ref{#circumference-formula}), and
+the radius is $$r = \frac{400}{2\pi} \approx 63.66$$ metres. The area is
+
+```math
+\pi r^2 = \pi \left(\frac{400}{2\pi}\right)^2 = \frac{400^2}{4\pi} \approx 12\,732
+```
+
+square metres (:ref{#disc-area-formula}). The same fence encloses about $$27\%$$ more ground when it
+is laid in a circle. In fact no shape with a $$400$$ metre boundary encloses more than the circle
+does, though proving that is beyond this chapter.
+
+:::
+
+::::
+
+::::exercise{#ex-area-and-scaling-one-pi}
+
+A friend says: "The $$\pi$$ in the area $$\pi r^2$$ and the $$\pi$$ in the circumference $$2\pi r$$
+could be two different numbers that happen to be close." Explain, in a few sentences, why they are
+the same number.
+
+:::solution
+
+In this chapter, $$\pi$$ is defined once, as the area of a disc of radius $$1$$ (:ref{#pi}). The
+area formula $$\pi r^2$$ uses that number directly (:ref{#disc-area-formula}). The question is why
+the circumference involves it too.
+
+The link is the regular polygon in a circle. It is made of $$n$$ equal triangles from the centre, so
+its area is half its perimeter times the height of one triangle (:ref{#inscribed-area}). As $$n$$
+grows, the area closes in on the disc's area $$\pi r^2$$, the perimeter closes in on the
+circumference $$C$$, and the height closes in on $$r$$. So $$\pi r^2 = \frac{1}{2} C r$$, which
+gives $$C = 2\pi r$$ (:ref{#circumference-formula}).
+
+So the circumference is pinned to the area by the slices. Cutting a pizza into thin slices and
+laying them head to tail makes a near-rectangle half the circumference long and one radius tall, and
+its area is the pizza's area. There is no room for a second number.
+
+:::
+
+::::
+
+## Stretching and zooming
+
+::::exercise{#ex-area-and-scaling-oval-rug}
+
+An oval rug is an ellipse $$3$$ m long and $$2$$ m wide.
+
+1. Find its area.
+2. A dolls' house has a copy of the rug at a scale of $$1 : 12$$. Find the area of the copy, in
+   square centimetres.
+3. A second rug is the first one stretched by $$1.5$$ along its length only. Find its area, and say
+   whether it is similar to the first rug.
+
+:::solution
+
+1. The half-widths are $$1.5$$ m and $$1$$ m, so by :ref{#ellipse-area} the area is
+   $$\pi \cdot 1.5 \cdot 1 = 1.5\pi \approx 4.71$$ square metres.
+2. The copy is the rug zoomed by $$\frac{1}{12}$$, so its area is multiplied by $$\frac{1}{144}$$
+   (:ref{#area-scaling}). That is about $$\frac{4.712}{144} \approx 0.0327$$ square metres, or about
+   $$327$$ square centimetres, about the size of two postcards.
+3. A stretch by $$1.5$$ multiplies area by $$1.5$$ (:ref{#stretch-area}), so the second rug has area
+   $$1.5 \cdot 1.5\pi = 2.25\pi \approx 7.07$$ square metres. It is $$4.5$$ m long and still $$2$$ m
+   wide. The first rug is $$1.5$$ times as long as it is wide, and the second is $$2.25$$ times as
+   long. A zoom keeps that ratio, since it multiplies both widths by the same number
+   (:ref{#zoom-rules}), and an isometry keeps both widths. So no zoom followed by an isometry turns
+   one rug into the other, and they are not similar (:ref{#similar}).
+
+:::
+
+::::
+
+::::exercise{#ex-area-and-scaling-photo-resize}
+
+A photo is $$1200$$ pixels wide and $$800$$ tall, and it shows a round clock face $$200$$ pixels
+across. You resize the photo in two ways:
+
+- **Stretched**: $$1800$$ wide and still $$800$$ tall
+- **Zoomed**: $$1800$$ wide and $$1200$$ tall
+
+For each, describe the clock face and find how its area changes. Then explain how the two answers
+fit together.
+
+:::solution
+
+**Stretched**: the width is multiplied by $$1.5$$ and the height is unchanged. That is a stretch by
+$$1.5$$ away from an upright line (:ref{#stretch}). The clock becomes an ellipse $$300$$ pixels wide
+and $$200$$ tall (:ref{#ellipse}), and its area is multiplied by $$1.5$$ (:ref{#stretch-area}).
+Round things look fat.
+
+**Zoomed**: both directions are multiplied by $$1.5$$, so this is a zoom by $$1.5$$. The clock stays
+a circle, now $$300$$ pixels across, and its area is multiplied by $$1.5^2 = 2.25$$
+(:ref{#area-scaling}).
+
+**How they fit**: the zoom is the stretch you already did, followed by a second stretch by $$1.5$$
+away from a level line, which takes the height from $$800$$ to $$1200$$. Each stretch multiplies
+area by $$1.5$$, so together they multiply it by $$1.5 \cdot 1.5 = 2.25$$, the same answer as the
+zoom gives.
+
+:::
+
+::::
+
+## The square-cube law
+
+::::exercise{#ex-area-and-scaling-chicken-turkey}
+
+A chicken of $$1.5$$ kg and a turkey of $$12$$ kg have, roughly, the same shape. In an oven, heat
+gets into a bird through its skin.
+
+1. What is the scale factor from the chicken to the turkey?
+2. How many times as much skin does the turkey have?
+3. How much skin does the turkey have for each kilogram, compared with the chicken? What does that
+   suggest about cooking times?
+
+:::solution
+
+1. Meat has the same weight in every cubic centimetre, so weight goes up with volume. The turkey has
+   $$\frac{12}{1.5} = 8$$ times the volume. A zoom by $$r$$ multiplies volume by $$r^3$$
+   (:ref{#volume-scaling}), so $$r^3 = 8$$ and $$r = 2$$. The turkey is the chicken with every
+   length doubled.
+2. Surface is multiplied by $$r^2 = 4$$ (:ref{#surface-scaling}), so the turkey has $$4$$ times the
+   skin.
+3. The turkey has $$4$$ times the skin for $$8$$ times the meat, so each kilogram gets half as much
+   skin to let heat in (:ref{#square-cube}). Heat also has twice as far to travel to reach the
+   middle. So each kilogram of turkey heats more slowly than a kilogram of chicken, and the turkey
+   needs more cooking time for each kilogram, not the same. That is why large roasts are cooked for
+   a long time at a gentle heat.
+
+:::
+
+::::
+
+::::exercise{#ex-area-and-scaling-cat-tiger}
+
+A $$4$$ kg cat and a $$200$$ kg tiger are, roughly, the same shape. Suppose the tiger were the cat
+zoomed exactly. By how many times would the load on each square centimetre of its leg bones go up?
+What does that say about the legs real tigers have?
+
+:::solution
+
+The tiger has $$\frac{200}{4} = 50$$ times the weight, so $$50$$ times the volume. A zoom by $$r$$
+multiplies volume by $$r^3$$ (:ref{#volume-scaling}), so $$r^3 = 50$$ and
+$$r = \sqrt[3]{50} \approx 3.68$$.
+
+A bone's strength depends on the area of its cross-section, which is multiplied by
+$$r^2 \approx 13.6$$ (:ref{#area-scaling}). The weight is multiplied by $$50$$. So each square
+centimetre of bone carries about $$\frac{50}{13.6} \approx 3.68$$ times the load, which is $$r$$
+again (:ref{#square-cube}).
+
+Bone is the same material in both animals, so an exact zoom of a cat would have legs under far more
+strain. Real tigers are not exact zooms of cats: their legs are thicker for their size, which gives
+the extra bone area the square-cube law calls for.
+
+:::
+
+::::

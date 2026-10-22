@@ -1,0 +1,790 @@
+{
+  "title": "Review: Area and scaling",
+  "description": "Questions on the ideas in this chapter, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
+  "questions": [
+    {
+      "id": "scale-factor-meaning",
+      "stars": 1,
+      "topic": "Zooming and length",
+      "question": "A zoom about $$O$$ has scale factor $$r = 3$$. Where does it send a point $$P$$ that is $$2$$ from $$O$$?",
+      "options": [
+        "To the point on the ray $$OP$$ at distance $$6$$ from $$O$$",
+        "To the point $$3$$ further along the ray, at distance $$5$$ from $$P$$",
+        "To the point on the ray $$OP$$ at distance $$5$$ from $$O$$",
+        "To a point at distance $$6$$ from $$O$$, in any direction"
+      ],
+      "answer": 0,
+      "explanation": "A zoom by $$r$$ slides each point out along its own ray from the centre until it is $$r$$ times as far from $$O$$ (:ref{#isometries/dilation}). So $$3P$$ lies on the ray $$OP$$ at distance $$3 \\cdot 2 = 6$$."
+    },
+    {
+      "id": "zoom-rules-given",
+      "stars": 2,
+      "topic": "Zooming and length",
+      "question": "Which part of \"a zoom by $$r$$ multiplies every distance by $$r$$\" does the guide prove, and which does it take as given?",
+      "options": [
+        "It proves the general rule using similar triangles",
+        "It proves the cases of two points on one ray and of a right angle at the centre, and takes the general rule as given until coordinates arrive",
+        "It takes every case as given, since nothing about zooms can be proved yet",
+        "It proves the rule for every pair of points from the definition of a zoom"
+      ],
+      "answer": 1,
+      "explanation": "The two propositions :ref{#zoom-ray} and :ref{#zoom-right-angle} cover two special arrangements. The rule for any two points is part of :ref{#zoom-rules}, taken as given, since its cleanest proof uses coordinates."
+    },
+    {
+      "id": "right-angle-zoom",
+      "stars": 2,
+      "topic": "Zooming and length",
+      "question": "Points $$P$$ and $$Q$$ are $$3$$ and $$4$$ from $$O$$, with a right angle at $$O$$. After a zoom by $$2$$ about $$O$$, how far apart are $$2P$$ and $$2Q$$?",
+      "options": [
+        "$$20$$",
+        "$$14$$",
+        "$$5$$",
+        "$$10$$"
+      ],
+      "answer": 3,
+      "explanation": "The rays from $$O$$ don't change, so the angle at $$O$$ is still a right angle, and the legs become $$6$$ and $$8$$. The Pythagoras theorem gives $$\\sqrt{36 + 64} = 10$$, which is $$2 \\cdot 5$$ (:ref{#zoom-right-angle})."
+    },
+    {
+      "id": "map-distance",
+      "stars": 1,
+      "topic": "Zooming and length",
+      "question": "On a map at $$1 : 25\\,000$$, two farms are $$6$$ cm apart. How far apart are they on the ground?",
+      "options": [
+        "$$15$$ km",
+        "$$6$$ km",
+        "$$1.5$$ km",
+        "$$150$$ m"
+      ],
+      "answer": 2,
+      "explanation": "The map is the land zoomed by $$\\frac{1}{25\\,000}$$, so every real distance is $$25\\,000$$ times the map distance (:ref{#zoom-rules}): $$6 \\cdot 25\\,000 = 150\\,000$$ cm, which is $$1.5$$ km."
+    },
+    {
+      "id": "photocopy-twice",
+      "stars": 2,
+      "topic": "Zooming and length",
+      "question": "You photocopy a drawing at $$150\\%$$, then photocopy the copy at $$150\\%$$ again. How does the final drawing compare with the original?",
+      "options": [
+        "Every length is $$3$$ times as long",
+        "Every length is $$1.5$$ times as long, since both copies used the same setting",
+        "Every length is $$2$$ times as long",
+        "Every length is $$2.25$$ times as long"
+      ],
+      "answer": 3,
+      "explanation": "Zooms about the same centre combine by multiplying their factors (:ref{#zoom-twice}): $$1.5 \\cdot 1.5 = 2.25$$, so the result is $$225\\%$$, not $$300\\%$$."
+    },
+    {
+      "id": "similar-meaning",
+      "stars": 1,
+      "topic": "Zooming and length",
+      "question": "When are two shapes similar?",
+      "options": [
+        "When some zoom of one can be slid, turned or flipped to lie exactly on the other",
+        "When one is inside the other",
+        "When they have the same area",
+        "When they have the same perimeter"
+      ],
+      "answer": 0,
+      "explanation": "A shape is similar to another if a zoom of it is congruent to the other (:ref{#similar}). Similar shapes have the same shape and may differ in size. Any two circles are similar, for example."
+    },
+    {
+      "id": "curve-length",
+      "stars": 2,
+      "topic": "Zooming and length",
+      "question": "How does the guide define the length of a curve, such as a winding road?",
+      "options": [
+        "It can't be defined, only estimated with string",
+        "Count the bends and multiply by the length of a straight piece",
+        "Mark points along it, join neighbours with segments, and take the number the totals approach as the marks get closer together",
+        "Lay a ruler from one end to the other"
+      ],
+      "answer": 2,
+      "explanation": "The length is what the totals of shorter and shorter straight segments approach. A zoom multiplies each segment by $$r$$, so it multiplies the length of every curve by $$r$$ (:ref{#curve-length-scaling})."
+    },
+    {
+      "id": "shadow-zoom",
+      "stars": 3,
+      "topic": "Zooming and length",
+      "question": "A card $$20$$ cm tall stands $$1$$ m from a small bulb, facing a wall $$3$$ m from the bulb. Why is its shadow $$60$$ cm tall?",
+      "options": [
+        "Shadows are always $$3$$ times the object they come from",
+        "The light runs in straight lines from the bulb, so the shadow is the card zoomed by $$3$$ about the bulb",
+        "The shadow is $$40$$ cm further than the card, and $$20 + 40 = 60$$",
+        "Light spreads out to $$3$$ times the card's area"
+      ],
+      "answer": 1,
+      "explanation": "Each shadow point is $$3$$ times as far from the bulb as the card point that throws it, a step the guide takes from the picture. That makes the shadow a zoom by $$3$$ with the bulb as centre, and every length is multiplied by $$3$$ (:ref{#zoom-rules})."
+    },
+    {
+      "id": "grid-counts-meaning",
+      "stars": 1,
+      "topic": "Measuring area with a grid",
+      "question": "You lay a grid over a shape. What is the outer count?",
+      "options": [
+        "The number of squares the edge passes through",
+        "The total area of the squares wholly inside the shape",
+        "The area of the smallest rectangle around the shape",
+        "The total area of the grid squares that overlap the shape, wholly or in part"
+      ],
+      "answer": 3,
+      "explanation": "The inner count adds up the squares wholly inside, and the outer count adds up every square that shares some area with the shape (:ref{#grid-counts}). A square meeting the shape only at a corner or along an edge doesn't count."
+    },
+    {
+      "id": "grid-squeeze-why",
+      "stars": 2,
+      "topic": "Measuring area with a grid",
+      "question": "Why is the true area always between the inner count and the outer count?",
+      "options": [
+        "Because the counts are averaged to give the area",
+        "Because a finer grid always gives a bigger inner count",
+        "The inside squares lie inside the shape, and the shape lies inside the overlapping squares, and a shape inside another has no more area",
+        "Because the edge of a shape has no area"
+      ],
+      "answer": 2,
+      "explanation": "This is :ref{#grid-squeeze}. Both steps use rule 1 of :ref{#area-compare}, \"inside means no more\", together with the fact that squares meeting only along edges add their areas."
+    },
+    {
+      "id": "leaf-count",
+      "stars": 1,
+      "topic": "Measuring area with a grid",
+      "question": "A leaf traced on $$1$$ cm graph paper covers $$40$$ squares completely and another $$20$$ in part. What can you say for sure about its area?",
+      "options": [
+        "It is between $$40$$ and $$60$$ cm²",
+        "It is between $$20$$ and $$40$$ cm²",
+        "It is exactly $$50$$ cm²",
+        "It is exactly $$60$$ cm²"
+      ],
+      "answer": 0,
+      "explanation": "The inner count is $$40$$ and the outer count is $$40 + 20 = 60$$, and the area lies between them (:ref{#grid-squeeze}). Counting each part square as a half gives the estimate $$50$$, but that is a guess, not a sure answer."
+    },
+    {
+      "id": "gap-is-edge",
+      "stars": 2,
+      "topic": "Measuring area with a grid",
+      "question": "The gap between the outer and inner counts is the total area of which squares?",
+      "options": [
+        "The squares wholly inside the shape",
+        "The squares the edge passes through: those that overlap the shape without being wholly inside it",
+        "The squares in the corners of the grid",
+        "The squares wholly outside the shape"
+      ],
+      "answer": 1,
+      "explanation": "The outer count includes the inner squares plus the ones only partly covered, so the gap is the area of the partly covered squares. All of them lie near the edge (:ref{#edge-band})."
+    },
+    {
+      "id": "edge-band-why",
+      "stars": 3,
+      "topic": "Measuring area with a grid",
+      "question": "Why must every partly covered square lie within $$c\\sqrt{2}$$ of the edge, for squares of side $$c$$?",
+      "options": [
+        "Because each square has area $$c^2$$, which is less than $$c\\sqrt{2}$$",
+        "It contains a point inside and a point outside, so the edge crosses it, and no two points of a square are further apart than its diagonal $$c\\sqrt{2}$$",
+        "Because the edge is always a straight line",
+        "Because the band has width $$c$$ on each side"
+      ],
+      "answer": 1,
+      "explanation": "The segment from the inside point to the outside point crosses the edge at a point of the square. The diagonal is the longest distance in the square, $$\\sqrt{c^2 + c^2}$$ by the Pythagoras theorem (:ref{#edge-band})."
+    },
+    {
+      "id": "halve-squares",
+      "stars": 2,
+      "topic": "Measuring area with a grid",
+      "question": "A shape's edge has length $$\\ell$$. You halve the side of the grid squares. What happens to the bound on the gap between the counts?",
+      "options": [
+        "It quarters, since each square has a quarter of the area",
+        "It stays the same, since the shape hasn't changed",
+        "It doubles, since there are more squares along the edge",
+        "It halves, since the bound is about $$2\\sqrt{2} \\cdot c \\cdot \\ell$$"
+      ],
+      "answer": 3,
+      "explanation": "The band round the edge has width about $$2c\\sqrt{2}$$ and length $$\\ell$$, so its area is about $$2\\sqrt{2} \\cdot c \\cdot \\ell$$ (:ref{#edge-band}). Halving $$c$$ halves it. The triangle example in the guide shows the actual gap halving: $$8$$, $$4$$, $$2$$, $$1$$."
+    },
+    {
+      "id": "grid-rule-condition",
+      "stars": 3,
+      "topic": "Measuring area with a grid",
+      "question": "The rule that grids pin down area needs the edge of the region to have a length. Why?",
+      "options": [
+        "The squeeze rests on the band round the edge getting thin, and its area is about its width times the edge length; an edge with no length, like an idealised coastline, gives no such bound",
+        "Because the area of a region is defined as the length of its edge",
+        "Because a region with a curved edge has no area",
+        "Because only polygons have edges with a length"
+      ],
+      "answer": 0,
+      "explanation": "The gap is bounded by roughly $$2\\sqrt{2} \\cdot c \\cdot \\ell$$ (:ref{#edge-band}). With a finite $$\\ell$$, shrinking $$c$$ shrinks the gap. That is why :ref{#grid-rule} asks for an edge with a length."
+    },
+    {
+      "id": "taken-from-picture-grid",
+      "stars": 3,
+      "topic": "Measuring area with a grid",
+      "question": "Which of these steps in the grid argument does the guide take from the picture, rather than prove from earlier rules?",
+      "options": [
+        "That the inner count is at most the area",
+        "That a square of side $$c$$ has diagonal $$c\\sqrt{2}$$",
+        "That the band of width $$2c\\sqrt{2}$$ round an edge of length $$\\ell$$ has area about $$2c\\sqrt{2} \\cdot \\ell$$",
+        "That two squares sharing only an edge have no area in common"
+      ],
+      "answer": 2,
+      "explanation": "The diagonal comes from the Pythagoras theorem, and the inner count bound from :ref{#area-compare}. The band's area is estimated like a long thin rectangle, and the guide says plainly that this is taken from the picture (:ref{#edge-band})."
+    },
+    {
+      "id": "double-sides",
+      "stars": 1,
+      "topic": "Zooming and area",
+      "question": "A rectangle is zoomed by $$2$$. What happens to its area?",
+      "options": [
+        "It is multiplied by $$2$$",
+        "It is multiplied by $$8$$",
+        "It goes up by $$2$$ square units",
+        "It is multiplied by $$4$$"
+      ],
+      "answer": 3,
+      "explanation": "The sides become $$2a$$ and $$2b$$, so the area is $$(2a)(2b) = 4ab$$ (:ref{#rectangle-scaling}). Doubling the sides doubles the area twice over, once for each direction."
+    },
+    {
+      "id": "pizza",
+      "stars": 2,
+      "topic": "Zooming and area",
+      "question": "Which is more food: one 12-inch pizza or two 8-inch pizzas of the same thickness?",
+      "options": [
+        "They are the same, since $$12$$ is $$1.5$$ times $$8$$ and two pizzas is a little more than that",
+        "Two 8-inch pizzas, since $$8 + 8 = 16$$ is more than $$12$$",
+        "One 12-inch pizza, with $$2.25$$ times the area of an 8-inch one",
+        "Two 8-inch pizzas, with $$4$$ times the area of a 12-inch one"
+      ],
+      "answer": 2,
+      "explanation": "A 12-inch pizza is an 8-inch one zoomed by $$1.5$$, so it has $$1.5^2 = 2.25$$ times the area (:ref{#area-scaling}). Two small pizzas give only $$2$$ times."
+    },
+    {
+      "id": "photo-ink",
+      "stars": 1,
+      "topic": "Zooming and area",
+      "question": "A photo is printed at twice the width and twice the height. Roughly how much more ink does it need?",
+      "options": [
+        "$$4$$ times as much",
+        "$$2$$ times as much",
+        "$$8$$ times as much",
+        "The same amount, spread thinner"
+      ],
+      "answer": 0,
+      "explanation": "Ink covers area, and the area is multiplied by $$2^2 = 4$$ (:ref{#rectangle-scaling})."
+    },
+    {
+      "id": "map-area",
+      "stars": 2,
+      "topic": "Zooming and area",
+      "question": "On a map at $$1 : 50\\,000$$, a park covers $$4$$ cm². How big is it on the ground?",
+      "options": [
+        "$$4$$ km²",
+        "$$1$$ km²",
+        "$$200\\,000$$ cm², or $$20$$ m²",
+        "$$2$$ km²"
+      ],
+      "answer": 1,
+      "explanation": "Each centimetre stands for $$500$$ m, so each square centimetre stands for $$500 \\cdot 500 = 250\\,000$$ m². Then $$4 \\cdot 250\\,000 = 1\\,000\\,000$$ m², which is $$1$$ km². Areas scale by the square of the map scale (:ref{#area-scaling})."
+    },
+    {
+      "id": "double-area",
+      "stars": 2,
+      "topic": "Zooming and area",
+      "question": "You want a copy with exactly twice the area of the original, the same shape. What should the scale factor be?",
+      "options": [
+        "$$4$$",
+        "$$2$$",
+        "$$\\sqrt{2} \\approx 1.414$$",
+        "$$0.5$$"
+      ],
+      "answer": 2,
+      "explanation": "Area is multiplied by $$r^2$$, so you need $$r^2 = 2$$ (:ref{#area-scaling}). That is why a photocopier has a $$141\\%$$ button for enlarging A4 to A3, which has twice the area."
+    },
+    {
+      "id": "triangle-height",
+      "stars": 2,
+      "topic": "Zooming and area",
+      "question": "Why does a zoom multiply a triangle's area by $$r^2$$, and not by $$r$$?",
+      "options": [
+        "A triangle is half a rectangle, and rectangles scale by $$r^2$$ only when they are squares",
+        "The height stays the same, but there are $$r$$ times as many triangles",
+        "Only the base changes, but the formula has a $$\\frac{1}{2}$$ in it",
+        "Both the base and the height are lengths, and each is multiplied by $$r$$"
+      ],
+      "answer": 3,
+      "explanation": "The area is $$\\frac{1}{2}bh$$, and the zoom sends the base to $$rb$$ and the height to $$rh$$, since it keeps right angles and multiplies lengths (:ref{#triangle-scaling})."
+    },
+    {
+      "id": "any-shape-idea",
+      "stars": 3,
+      "topic": "Zooming and area",
+      "question": "How does the guide prove that a zoom multiplies the area of any shape, even a curved one, by $$r^2$$?",
+      "options": [
+        "Zoom the grid with the shape: squares inside stay inside, squares overlapping stay overlapping, each is worth $$r^2$$ times as much, so both counts and the area between them are multiplied by $$r^2$$",
+        "It cuts every shape into triangles and uses the triangle result",
+        "It assumes the result for curved shapes and proves it only for rectangles",
+        "It measures the shape's perimeter and squares it"
+      ],
+      "answer": 0,
+      "explanation": "Both counts are multiplied by $$r^2$$, the area of $$rS$$ is caught between them, and a fine grid makes the gap as small as you like (:ref{#area-scaling}, using :ref{#grid-squeeze} and :ref{#grid-rule})."
+    },
+    {
+      "id": "lawn-turf",
+      "stars": 3,
+      "topic": "Zooming and area",
+      "question": "A lawn needs $$40$$ m² of turf. A new lawn of the same shape is $$1.5$$ times as long and $$1.5$$ times as wide. How much turf does it need?",
+      "options": [
+        "$$120$$ m²",
+        "$$90$$ m²",
+        "$$60$$ m²",
+        "$$80$$ m²"
+      ],
+      "answer": 1,
+      "explanation": "The area is multiplied by $$1.5^2 = 2.25$$ (:ref{#area-scaling}), so $$2.25 \\cdot 40 = 90$$ m². That is more than double, though no side has doubled."
+    },
+    {
+      "id": "pi-definition",
+      "stars": 1,
+      "topic": "The area of a disc",
+      "question": "How does this chapter define the number $$\\pi$$?",
+      "options": [
+        "As the area of a disc of radius $$1$$",
+        "As the area of a disc of radius $$r$$ divided by $$r$$",
+        "As $$3.14$$",
+        "As the circumference divided by the diameter"
+      ],
+      "answer": 0,
+      "explanation": "The chapter defines $$\\pi$$ by area (:ref{#pi}). That it is also the circumference divided by the diameter is proved later, in :ref{#pi-ratio}."
+    },
+    {
+      "id": "pi-r-squared-why",
+      "stars": 2,
+      "topic": "The area of a disc",
+      "question": "Why does a disc of radius $$r$$ have area $$\\pi r^2$$?",
+      "options": [
+        "It can be cut into $$r^2$$ unit discs",
+        "It is taken as given, as in Distance and angles",
+        "Its circumference is $$2\\pi r$$, and area is circumference times radius",
+        "It is the unit disc zoomed by $$r$$ about the centre, and a zoom by $$r$$ multiplies area by $$r^2$$"
+      ],
+      "answer": 3,
+      "explanation": "The zoom by $$r$$ sends the disc of radius $$1$$ exactly onto the disc of radius $$r$$, and :ref{#area-scaling} multiplies its area $$\\pi$$ by $$r^2$$ (:ref{#disc-area-formula}). This proves the rule Distance and angles took as given."
+    },
+    {
+      "id": "pi-bounds",
+      "stars": 2,
+      "topic": "The area of a disc",
+      "question": "How does the guide show that $$2 < \\pi < 4$$?",
+      "options": [
+        "By counting squares on a grid of side $$0.001$$",
+        "The unit disc lies inside a square of area $$4$$ and contains a square of area $$2$$",
+        "By the hexagon inside the circle",
+        "By measuring a tin with a tape"
+      ],
+      "answer": 1,
+      "explanation": "The square of side $$2$$ round the disc has area $$4$$, and the square with its corners on the circle is four right triangles of area $$\\frac{1}{2}$$. A shape inside another has no more area (:ref{#pi-bounds}, using :ref{#area-compare})."
+    },
+    {
+      "id": "pi-grid",
+      "stars": 3,
+      "topic": "The area of a disc",
+      "question": "A grid of squares of side $$0.001$$ gives an inner count of $$3.1375$$ and an outer count of $$3.1456$$ for the unit disc. What does this tell you?",
+      "options": [
+        "$$\\pi = 3.1456$$, since the outer count is the true area",
+        "$$\\pi$$ is the average, $$3.14155$$, exactly",
+        "$$3.1375 < \\pi < 3.1456$$, so $$\\pi = 3.14$$ to two decimal places",
+        "Nothing yet, since the grid isn't fine enough to say anything"
+      ],
+      "answer": 2,
+      "explanation": "The area $$\\pi$$ is caught between the counts (:ref{#grid-squeeze}). Both counts round to $$3.14$$, so that much is certain."
+    },
+    {
+      "id": "goat-rope",
+      "stars": 1,
+      "topic": "The area of a disc",
+      "question": "A goat tied on a $$5$$ m rope is moved to a $$10$$ m rope. How much more grass can it reach?",
+      "options": [
+        "$$8$$ times as much",
+        "$$2$$ times as much",
+        "$$\\pi$$ times as much",
+        "$$4$$ times as much"
+      ],
+      "answer": 3,
+      "explanation": "The goat reaches a disc. Doubling the radius multiplies the area by $$2^2 = 4$$: $$100\\pi$$ against $$25\\pi$$ (:ref{#disc-area-formula})."
+    },
+    {
+      "id": "sector-share",
+      "stars": 2,
+      "topic": "The area of a disc",
+      "question": "Why is a slice cut at $$45^\\circ$$ an eighth of a large pizza and also an eighth of a small one?",
+      "options": [
+        "A zoom about the centre turns the small slice into the large one; both the slice and the pizza gain $$r^2$$ times the area, so the fraction is unchanged",
+        "Because the crust of each slice has the same length",
+        "Every slice of every pizza has the same area",
+        "Because $$45$$ divides $$360$$"
+      ],
+      "answer": 0,
+      "explanation": "This is :ref{#sector-scaling}. It proves rule 2 of :ref{#distance-and-angles/disc-area}, which is what makes measuring angles in degrees make sense."
+    },
+    {
+      "id": "half-disc",
+      "stars": 3,
+      "topic": "The area of a disc",
+      "question": "How does the guide explain that a line through the centre cuts a disc into two pieces of equal area?",
+      "options": [
+        "The grid counts of the two halves are always equal",
+        "The flip in that line sends the disc onto itself and swaps the two halves, and isometries keep area",
+        "A zoom by $$\\frac{1}{2}$$ turns the disc into one half",
+        "The two halves have the same perimeter"
+      ],
+      "answer": 1,
+      "explanation": "The flip keeps the centre and distances, so it sends the disc onto itself, and it swaps the sides of the line. Since isometries keep area (:ref{#isometries/isometry-area}), the halves have equal area."
+    },
+    {
+      "id": "polygon-area",
+      "stars": 2,
+      "topic": "Around the circle",
+      "question": "Why is the area of a regular polygon in a circle equal to $$\\frac{1}{2} \\cdot \\text{perimeter} \\cdot h$$?",
+      "options": [
+        "Because the polygon is a zoom of a triangle",
+        "The perimeter is $$2\\pi r$$ and the area is $$\\pi r^2$$",
+        "It is $$n$$ congruent triangles from the centre, each with area $$\\frac{1}{2} b h$$, and $$nb$$ is the perimeter",
+        "It is a rectangle with sides the perimeter and $$h$$"
+      ],
+      "answer": 2,
+      "explanation": "The slices are congruent by side, angle, side (:ref{#isometries/sas}), so all sides have the same length $$b$$. Adding $$n$$ areas $$\\frac{1}{2}bh$$ gives $$\\frac{1}{2}(nb)h$$ (:ref{#inscribed-area})."
+    },
+    {
+      "id": "circumference-limit",
+      "stars": 3,
+      "topic": "Around the circle",
+      "question": "In the proof that $$C = 2\\pi r$$, what happens as the polygon gets more sides?",
+      "options": [
+        "Its area and perimeter both approach $$2\\pi r$$",
+        "The slice height approaches $$0$$, so the area vanishes",
+        "Its perimeter becomes exactly $$C$$ once it has $$96$$ sides",
+        "Its area approaches $$\\pi r^2$$, its perimeter approaches $$C$$, and the slice height approaches $$r$$, so $$\\pi r^2 = \\frac{1}{2} C r$$"
+      ],
+      "answer": 3,
+      "explanation": "The formula $$A = \\frac{1}{2} P h$$ holds for every $$n$$, so the numbers its two sides approach are equal. Dividing $$\\pi r^2 = \\frac{1}{2} C r$$ by $$\\frac{r}{2}$$ gives $$C = 2\\pi r$$ (:ref{#circumference-formula})."
+    },
+    {
+      "id": "same-pi",
+      "stars": 2,
+      "topic": "Around the circle",
+      "question": "$$\\pi$$ was defined as an area. Why does the same number appear in the length round a circle?",
+      "options": [
+        "Because a circle of radius $$1$$ has length $$1$$",
+        "The polygons link them: their area is half their perimeter times their height, so in the limit area is half the circumference times the radius",
+        "Because the circumference was defined to be $$2\\pi r$$",
+        "It is a coincidence, checked by measuring"
+      ],
+      "answer": 1,
+      "explanation": "The link is $$A = \\frac{1}{2} P h$$ (:ref{#inscribed-area}), which becomes $$\\pi r^2 = \\frac{1}{2} C r$$ in the limit (:ref{#circumference-formula}). The pizza slices laid in a row show the same link."
+    },
+    {
+      "id": "tape-measure",
+      "stars": 1,
+      "topic": "Around the circle",
+      "question": "You wrap a tape measure round a tin $$10$$ cm across. About how long is it?",
+      "options": [
+        "About $$62.8$$ cm",
+        "About $$78.5$$ cm",
+        "About $$31.4$$ cm",
+        "About $$20$$ cm"
+      ],
+      "answer": 2,
+      "explanation": "The circumference divided by the diameter is $$\\pi$$ for every circle (:ref{#pi-ratio}), so $$C = 10\\pi \\approx 31.4$$ cm."
+    },
+    {
+      "id": "hexagon-pi",
+      "stars": 2,
+      "topic": "Around the circle",
+      "question": "How does the hexagon inside a circle show that $$\\pi > 3$$?",
+      "options": [
+        "Its six sides each equal the radius, so its perimeter is $$6r$$, which is shorter than the circle's $$2\\pi r$$",
+        "Its perimeter is longer than the circle's",
+        "It has $$6$$ sides, and $$6 \\div 2 = 3$$",
+        "Its area is $$3r^2$$, which is more than the disc's"
+      ],
+      "answer": 0,
+      "explanation": "Each slice of the hexagon is congruent to an equilateral triangle with sides $$r$$. The polygon's perimeter is shorter than the circle, so $$6r < 2\\pi r$$, giving $$\\pi > 3$$."
+    },
+    {
+      "id": "rope-earth",
+      "stars": 3,
+      "topic": "Around the circle",
+      "question": "A rope fits tightly round the Earth. You add $$1$$ m and hold it evenly off the ground. Roughly how high is the gap, and what if it were round a football instead?",
+      "options": [
+        "About $$16$$ cm for the Earth, and much more for a football",
+        "About $$1$$ m in both cases",
+        "About $$16$$ cm in both cases",
+        "Far too small to see for the Earth, about $$16$$ cm for a football"
+      ],
+      "answer": 2,
+      "explanation": "From $$2\\pi(R + g) = 2\\pi R + 1$$ you get $$2\\pi g = 1$$, so $$g = \\frac{1}{2\\pi} \\approx 0.16$$ m. The radius $$R$$ cancels, so the size of the ball doesn't matter (:ref{#circumference-formula})."
+    },
+    {
+      "id": "track-stagger",
+      "stars": 3,
+      "topic": "Around the circle",
+      "question": "Running lanes are $$1.22$$ m wide. Over a full circle of bend, how much further does a runner go in one lane out than in the lane inside it?",
+      "options": [
+        "About $$3.83$$ m, which is $$\\pi \\cdot 1.22$$",
+        "About $$7.67$$ m, which is $$2\\pi \\cdot 1.22$$",
+        "It depends on how big the track is",
+        "About $$1.22$$ m"
+      ],
+      "answer": 1,
+      "explanation": "Each lane's circle has a radius $$1.22$$ m bigger, and the circumference grows by $$2\\pi$$ times the change in radius, whatever the size (:ref{#circumference-formula}). The $$3.83$$ m figure is for a half circle."
+    },
+    {
+      "id": "circumference-picture",
+      "stars": 3,
+      "topic": "Around the circle",
+      "question": "Which step of the circumference proof does the guide take from the picture?",
+      "options": [
+        "That $$C = 2\\pi r$$ follows from $$\\pi r^2 = \\frac{1}{2} C r$$",
+        "That the slice height meets its side at the midpoint",
+        "That the slices are congruent",
+        "That each side of the polygon is shorter than the arc it cuts off"
+      ],
+      "answer": 3,
+      "explanation": "The congruence uses side, angle, side, the midpoint uses the perpendicular bisector rule, and the last step is algebra. The guide lists the side-shorter-than-arc step, the thinning band and the product of limits as taken from the picture (:ref{#circumference-formula})."
+    },
+    {
+      "id": "stretch-definition",
+      "stars": 1,
+      "topic": "Stretching one way",
+      "question": "In a stretch by $$a$$ away from a line $$L$$, where does a point $$P$$ not on $$L$$ go?",
+      "options": [
+        "Straight away from $$L$$, square on to it, to $$a$$ times its distance from $$L$$, on the same side",
+        "Out along the ray from a fixed centre, to $$a$$ times its distance",
+        "To its mirror image in $$L$$, then $$a$$ times further",
+        "Along $$L$$, to $$a$$ times its distance from a fixed point"
+      ],
+      "answer": 0,
+      "explanation": "The point moves along the perpendicular from its foot $$F$$ on $$L$$, ending $$a$$ times as far from $$L$$ (:ref{#stretch}). Points on $$L$$ stay put."
+    },
+    {
+      "id": "stretch-lengths",
+      "stars": 2,
+      "topic": "Stretching one way",
+      "question": "A square of side $$1$$ with two sides parallel to $$L$$ is stretched by $$3$$ away from $$L$$. What happens to its sides?",
+      "options": [
+        "All four sides become $$3$$",
+        "The sides parallel to $$L$$ become $$3$$, and the other two stay $$1$$",
+        "All four sides stay $$1$$",
+        "The sides parallel to $$L$$ stay $$1$$, and the other two become $$3$$"
+      ],
+      "answer": 3,
+      "explanation": "Points of a side parallel to $$L$$ all move the same distance the same way, so that side keeps its length. Sides square on to $$L$$ are multiplied by $$3$$ (:ref{#stretch-rectangle})."
+    },
+    {
+      "id": "stretch-area",
+      "stars": 2,
+      "topic": "Stretching one way",
+      "question": "A shape of area $$5$$ is stretched by $$3$$ away from a line. What is its new area?",
+      "options": [
+        "$$8$$",
+        "$$45$$",
+        "$$15$$",
+        "$$5$$"
+      ],
+      "answer": 2,
+      "explanation": "A stretch by $$a$$ multiplies every area by $$a$$, not $$a^2$$, since it pulls in one direction only (:ref{#stretch-area}). So the area is $$3 \\cdot 5 = 15$$."
+    },
+    {
+      "id": "ellipse-area",
+      "stars": 2,
+      "topic": "Stretching one way",
+      "question": "An ellipse has half-widths $$3$$ and $$2$$. What is its area?",
+      "options": [
+        "$$6\\pi \\approx 18.85$$",
+        "$$9\\pi \\approx 28.27$$",
+        "$$5\\pi \\approx 15.71$$",
+        "$$4\\pi \\approx 12.57$$"
+      ],
+      "answer": 0,
+      "explanation": "The unit disc, area $$\\pi$$, stretched by $$3$$ one way and $$2$$ the other, has area $$\\pi \\cdot 3 \\cdot 2$$ (:ref{#ellipse-area})."
+    },
+    {
+      "id": "zoom-two-stretches",
+      "stars": 3,
+      "topic": "Stretching one way",
+      "question": "How does a zoom by $$r$$ fit with stretches?",
+      "options": [
+        "It doesn't: zooms and stretches have nothing in common",
+        "It is a stretch by $$r$$ away from one line followed by a stretch by $$r$$ away from a line square on to it, which multiplies area by $$r \\cdot r$$",
+        "It is a single stretch by $$r^2$$",
+        "It is a stretch by $$r$$ away from a line through the centre"
+      ],
+      "answer": 1,
+      "explanation": "Each point ends up $$r$$ times as far from both lines, which is what the zoom does. The guide takes this from a drawing. The two stretches multiply area by $$r$$ twice, matching :ref{#area-scaling}."
+    },
+    {
+      "id": "ellipse-perimeter",
+      "stars": 3,
+      "topic": "Stretching one way",
+      "question": "Why is there no tidy formula for the distance round an ellipse, when there is one for its area?",
+      "options": [
+        "Because an ellipse has no edge with a length",
+        "A stretch multiplies different parts of a curve by different amounts, so the zoom argument for the circle's length breaks down",
+        "Because the area formula is only an estimate",
+        "Because $$\\pi$$ only works for circles"
+      ],
+      "answer": 1,
+      "explanation": "A zoom multiplies every length by the same factor (:ref{#curve-length-scaling}), but a stretch doesn't: a segment along $$L$$ keeps its length, one across it is multiplied by $$a$$. Area, by contrast, is always multiplied by $$a$$ (:ref{#stretch-area})."
+    },
+    {
+      "id": "oval-table",
+      "stars": 3,
+      "topic": "Stretching one way",
+      "question": "An elliptical table is $$2$$ m long and $$1.2$$ m wide. What share of the rectangle $$2$$ m by $$1.2$$ m does it fill?",
+      "options": [
+        "It depends on the length and width",
+        "$$\\frac{1}{2}$$",
+        "$$\\frac{\\pi}{4} \\approx 0.785$$",
+        "$$\\frac{\\pi}{2} \\approx 1.57$$, so it overflows"
+      ],
+      "answer": 2,
+      "explanation": "Its half-widths are $$1$$ and $$0.6$$, so its area is $$0.6\\pi$$ (:ref{#ellipse-area}). The rectangle has area $$2.4$$, and $$\\frac{0.6\\pi}{2.4} = \\frac{\\pi}{4}$$, the same share a round table fills of its square."
+    },
+    {
+      "id": "volume-zoom",
+      "stars": 1,
+      "topic": "Volume and the square-cube law",
+      "question": "A box is zoomed by $$2$$ in every direction. What happens to its volume?",
+      "options": [
+        "It is multiplied by $$8$$",
+        "It is multiplied by $$4$$",
+        "It is multiplied by $$6$$",
+        "It is multiplied by $$2$$"
+      ],
+      "answer": 0,
+      "explanation": "Each of the three edges is doubled, so the volume is multiplied by $$2 \\cdot 2 \\cdot 2 = 8$$ (:ref{#box-scaling})."
+    },
+    {
+      "id": "square-cube-ratio",
+      "stars": 2,
+      "topic": "Volume and the square-cube law",
+      "question": "A cube is zoomed by $$2$$. What happens to its surface for each unit of volume?",
+      "options": [
+        "It stays the same",
+        "It is multiplied by $$4$$",
+        "It doubles",
+        "It is halved"
+      ],
+      "answer": 3,
+      "explanation": "Surface is multiplied by $$4$$ and volume by $$8$$, so surface per unit of volume is multiplied by $$\\frac{4}{8} = \\frac{1}{2}$$ (:ref{#square-cube})."
+    },
+    {
+      "id": "giant",
+      "stars": 3,
+      "topic": "Volume and the square-cube law",
+      "question": "A giant is a person zoomed by $$10$$. How does the load on each square centimetre of its thigh bone compare with yours?",
+      "options": [
+        "It is $$1000$$ times as much",
+        "It is the same, since everything is in proportion",
+        "It is $$100$$ times as much",
+        "It is $$10$$ times as much"
+      ],
+      "answer": 3,
+      "explanation": "Weight goes with volume, multiplied by $$1000$$. The bone's cross-section is an area, multiplied by $$100$$. So each square centimetre carries $$\\frac{1000}{100} = 10$$ times the load (:ref{#square-cube})."
+    },
+    {
+      "id": "crushed-ice",
+      "stars": 2,
+      "topic": "Volume and the square-cube law",
+      "question": "Why does crushed ice cool a drink faster than one big cube of the same volume?",
+      "options": [
+        "Smaller pieces have more surface for their volume, so the drink touches more ice",
+        "Crushed ice has more volume",
+        "Crushed ice is colder than a cube",
+        "The pieces float higher in the glass"
+      ],
+      "answer": 0,
+      "explanation": "Crushing a $$4$$ cm cube into $$64$$ cubes of $$1$$ cm keeps the volume, $$64$$ cm³, but raises the surface from $$96$$ to $$384$$ cm²: $$4$$ times as much. Each piece is the big cube zoomed by $$\\frac{1}{4}$$ (:ref{#square-cube})."
+    },
+    {
+      "id": "crushed-three",
+      "stars": 3,
+      "topic": "Volume and the square-cube law",
+      "question": "A $$3$$ cm ice cube is cut into $$1$$ cm cubes. By how much is the total surface multiplied?",
+      "options": [
+        "$$9$$",
+        "$$3$$",
+        "$$27$$",
+        "$$6$$"
+      ],
+      "answer": 1,
+      "explanation": "The big cube has surface $$6 \\cdot 9 = 54$$ cm². The $$27$$ small cubes have $$27 \\cdot 6 = 162$$ cm², which is $$3$$ times as much. Each small cube is the big one zoomed by $$\\frac{1}{3}$$, so surface per unit of volume is multiplied by $$3$$ (:ref{#square-cube})."
+    },
+    {
+      "id": "oranges",
+      "stars": 2,
+      "topic": "Volume and the square-cube law",
+      "question": "One orange is $$10\\%$$ wider than another of the same shape. About how much more fruit does it have?",
+      "options": [
+        "About $$10\\%$$ more",
+        "About $$30\\%$$ more, since $$3 \\cdot 10\\% = 30\\%$$",
+        "About $$33\\%$$ more",
+        "About $$21\\%$$ more"
+      ],
+      "answer": 2,
+      "explanation": "It is the smaller orange zoomed by $$1.1$$, so its volume is multiplied by $$1.1^3 = 1.331$$ (:ref{#volume-scaling}). Its peel, a surface, grows only by $$1.1^2 = 1.21$$."
+    },
+    {
+      "id": "mouse-elephant",
+      "stars": 3,
+      "topic": "Volume and the square-cube law",
+      "question": "Why must a mouse eat a large share of its weight each day, while an elephant has large thin ears?",
+      "options": [
+        "Large animals have thicker skin, which traps heat",
+        "Mice are more active than elephants",
+        "Heat is made through a volume and lost through a surface; small animals have much surface for their volume, large ones little",
+        "Elephants need large ears to hear across long distances"
+      ],
+      "answer": 2,
+      "explanation": "By the square-cube law, surface per unit of volume is large for small things and small for large things (:ref{#square-cube}). The mouse loses heat fast; the elephant's ears add surface without much volume."
+    },
+    {
+      "id": "pi-gap-tenfold",
+      "stars": 4,
+      "topic": "The area of a disc",
+      "question": "Counting the unit disc on grids of side $$0.1$$, $$0.01$$ and $$0.001$$ gives gaps between the counts of about $$0.68$$, $$0.078$$ and $$0.008$$. Why does the gap shrink about ten times each step?",
+      "options": [
+        "The partly covered squares lie in a band round the circle whose width, and so whose area, is in proportion to the side of the squares",
+        "Each square has a hundred times less area, so the gap shrinks a hundred times, rounded",
+        "The inner count stays fixed while the outer count falls",
+        "Because $$\\pi$$ has one more correct digit each time"
+      ],
+      "answer": 0,
+      "explanation": "The gap is the area of the partly covered squares, which all lie within $$c\\sqrt{2}$$ of the circle (:ref{#edge-band}). The band has area about $$2\\sqrt{2} \\cdot c \\cdot 2\\pi$$, so making $$c$$ ten times smaller makes the bound ten times smaller, though each square is a hundred times smaller."
+    },
+    {
+      "id": "model-loco",
+      "stars": 4,
+      "topic": "Volume and the square-cube law",
+      "question": "A model locomotive is built at $$1 : 76$$. Compared with the real engine, how much paint (a surface) and how much metal (a volume) does it need?",
+      "options": [
+        "$$\\frac{1}{152}$$ of the paint and $$\\frac{1}{228}$$ of the metal",
+        "$$\\frac{1}{5776}$$ of each",
+        "$$\\frac{1}{76}$$ of each",
+        "$$\\frac{1}{5776}$$ of the paint and $$\\frac{1}{438\\,976}$$ of the metal"
+      ],
+      "answer": 3,
+      "explanation": "The model is the engine zoomed by $$\\frac{1}{76}$$. Surfaces are multiplied by $$\\frac{1}{76^2} = \\frac{1}{5776}$$ (:ref{#surface-scaling}) and volumes by $$\\frac{1}{76^3} = \\frac{1}{438\\,976}$$ (:ref{#volume-scaling})."
+    },
+    {
+      "id": "zoom-then-stretch",
+      "stars": 4,
+      "topic": "Stretching one way",
+      "question": "A shape of area $$10$$ is zoomed by $$2$$, then stretched by $$3$$ away from a line. What is its final area?",
+      "options": [
+        "$$360$$",
+        "$$120$$",
+        "$$50$$",
+        "$$60$$"
+      ],
+      "answer": 1,
+      "explanation": "The zoom multiplies area by $$2^2 = 4$$ (:ref{#area-scaling}), giving $$40$$. The stretch multiplies it by $$3$$ (:ref{#stretch-area}), giving $$120$$."
+    }
+  ]
+}

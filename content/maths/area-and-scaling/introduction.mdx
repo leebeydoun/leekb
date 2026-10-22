@@ -1,0 +1,134 @@
+---
+title: Introduction
+description:
+  What zooming does to lengths, areas and volumes, from pizza sizes to the area of a disc.
+---
+
+Sizes change in ways that catch people out. A 12-inch pizza sounds only a little bigger than an
+8-inch one, but it holds more than two of them. A photo printed twice as wide needs four times the
+ink. And a giant ten times your height, built exactly like you, would snap its own legs, because its
+weight grows far faster than the strength of its bones. This chapter explains all three with one
+idea: what a zoom does to lengths, to areas and to volumes.
+
+The picture to keep in mind is a photocopier set to enlarge. Every length on the page is multiplied
+by the same number, so the shape stays the same. The areas grow by that number twice over, and in
+space the volumes grow by it three times over. Graph paper is the second picture: you measure an
+area by counting the little squares inside a shape, and a zoom turns every little square into a
+bigger one.
+
+As in the earlier chapters, a few facts are taken as given and marked clearly in a box, such as "a
+shape inside another has no more area". Everything else is proved from them, using the distances,
+areas and angles of [Distance and angles](../distance-and-angles/introduction.mdx) and the zooms of
+[Isometries](../isometries/introduction.mdx). Two loose ends from those chapters are tied up here:
+
+- **The area of a disc**: Distance and angles took the formula $$\pi r^2$$ as given. Here it is
+  proved, with $$\pi$$ defined as the area of a disc of radius $$1$$, and the same $$\pi$$ turns out
+  to give the length of every circle.
+- **Zooms and distance**: Isometries left open that a zoom by $$r$$ multiplies every distance by
+  $$r$$. Here the cases you can already prove are proved, and the rest is stated plainly as taken as
+  given until coordinates arrive.
+
+Some arguments need shapes cut into smaller and smaller pieces. The guides describe in words and
+pictures how the error shrinks, and say plainly which steps are taken from the picture. Calculus
+makes these steps precise later.
+
+## Guides in this chapter
+
+The chapter has nine guides:
+
+1. [Zooming and length](./scaling-lengths.mdx): a zoom multiplies every length by the same number,
+   from map scales and paper sizes to shadows and winding roads
+2. [Measuring area with a grid](./grids.mdx): inner and outer counts of squares, and why a finer
+   grid pins the area down
+3. [Zooming and area](./scaling-areas.mdx): twice as wide means four times the area, for rectangles,
+   triangles and every other shape
+4. [The area of a disc](./disc-area.mdx): $$\pi$$ as the area of the unit disc, why it lies between
+   $$2$$ and $$4$$, and the proof of $$\pi r^2$$
+5. [Around the circle](./circumference.mdx): polygons inside a circle, and why the circumference is
+   $$2\pi r$$ with the same $$\pi$$
+6. [Stretching one way](./stretching.mdx): pulling a shape in one direction, and the area of an
+   ellipse
+7. [Volume and the square-cube law](./volume.mdx): volume grows by the cube of the zoom, and what
+   that means for giants, ice and animals
+8. [Test yourself](./test-yourself.mdx): a multiple choice quiz on the ideas in the chapter
+9. [Exercises](./exercises.mdx): exercises on the whole chapter, with worked solutions
+
+The summary below collects every definition and rule from the chapter, for reference while you read.
+
+{/* Keep this summary in sync with the guides whenever they change. */}
+
+:::accordion[Summary of definitions and rules]
+
+**Definitions**
+
+| Term                     | Meaning                                                                                                  |
+| ------------------------ | -------------------------------------------------------------------------------------------------------- |
+| :ref{#similar}           | Some zoom of $$S$$ is congruent to $$S'$$: the same shape, any size                                      |
+| :ref{#grid-counts}       | For squares of side $$c$$: inner count from squares wholly inside, outer count from squares that overlap |
+| :ref{#pi}                | $$\pi$$ is the area of a disc of radius $$1$$                                                            |
+| :ref{#inscribed-polygon} | $$n$$ points equally spaced round a circle, each joined to the next                                      |
+| :ref{#stretch}           | Each point moves square on to $$L$$, ending $$a$$ times as far from $$L$$ on the same side               |
+| :ref{#ellipse}           | The unit disc stretched by $$a$$ away from one line and by $$b$$ away from a line square on to it        |
+
+**Zooming and length**
+
+| Rule                        | Statement                                                                                     |
+| --------------------------- | --------------------------------------------------------------------------------------------- |
+| :ref{#zoom-ray}             | For $$P$$ and $$Q$$ on one ray from the centre, $$d(rP, rQ) = r \cdot d(P, Q)$$               |
+| :ref{#zoom-right-angle}     | If $$\angle POQ$$ is a right angle, $$d(rP, rQ) = r \cdot d(P, Q)$$                           |
+| :ref{#zoom-rules}           | A zoom by $$r$$ multiplies every distance by $$r$$, sends lines to lines and keeps angles     |
+| :ref{#zoom-twice}           | Zooming by $$r$$ and then by $$s$$ is zooming by $$rs$$; zooming by $$\frac{1}{r}$$ undoes it |
+| :ref{#curve-length-scaling} | A zoom by $$r$$ multiplies the length of every curve, and every perimeter, by $$r$$           |
+
+**Measuring area with a grid**
+
+| Rule                | Statement                                                                                      |
+| ------------------- | ---------------------------------------------------------------------------------------------- |
+| :ref{#area-compare} | A region inside another has no more area; an isometry keeps area                               |
+| :ref{#grid-squeeze} | inner count $$\le$$ area $$\le$$ outer count, for any grid                                     |
+| :ref{#edge-band}    | Every square that overlaps $$S$$ but isn't wholly inside lies within $$c\sqrt{2}$$ of the edge |
+| :ref{#grid-rule}    | As the squares shrink, the counts get as close as you like, so they pin down the area          |
+
+**Zooming and area**
+
+| Rule                     | Statement                                                                      |
+| ------------------------ | ------------------------------------------------------------------------------ |
+| :ref{#rectangle-scaling} | A zoom by $$r$$ turns an $$a$$ by $$b$$ rectangle into an $$ra$$ by $$rb$$ one |
+| :ref{#triangle-scaling}  | A zoom by $$r$$ multiplies the area of a triangle by $$r^2$$                   |
+| :ref{#area-scaling}      | A zoom by $$r$$ multiplies the area of every shape by $$r^2$$                  |
+
+**The area of a disc**
+
+| Rule                     | Statement                                                                     |
+| ------------------------ | ----------------------------------------------------------------------------- |
+| :ref{#pi-bounds}         | $$2 < \pi < 4$$                                                               |
+| :ref{#disc-area-formula} | A disc of radius $$r$$ has area $$\pi r^2$$                                   |
+| :ref{#sector-scaling}    | A zoom about the centre keeps the fraction of the disc that a sector takes up |
+
+**Around the circle**
+
+| Rule                         | Statement                                                                          |
+| ---------------------------- | ---------------------------------------------------------------------------------- |
+| :ref{#inscribed-area}        | A regular polygon in a circle has area $$\frac{1}{2} \cdot$$ perimeter $$\cdot h$$ |
+| :ref{#circumference-formula} | A circle of radius $$r$$ has length $$2\pi r$$                                     |
+| :ref{#pi-ratio}              | For every circle, circumference divided by diameter is $$\pi$$                     |
+
+**Stretching one way**
+
+| Rule                     | Statement                                                              |
+| ------------------------ | ---------------------------------------------------------------------- |
+| :ref{#stretch-rectangle} | A $$w$$ by $$h$$ rectangle lined up with $$L$$ becomes $$w$$ by $$ah$$ |
+| :ref{#stretch-area}      | A stretch by $$a$$ multiplies the area of every shape by $$a$$         |
+| :ref{#ellipse-area}      | An ellipse with half-widths $$a$$ and $$b$$ has area $$\pi ab$$        |
+
+**Volume and the square-cube law**
+
+| Rule                   | Statement                                                                                      |
+| ---------------------- | ---------------------------------------------------------------------------------------------- |
+| :ref{#volume-rules}    | A box has volume $$abc$$; pieces add; moving keeps volume; zooms work in space as in the plane |
+| :ref{#box-scaling}     | A zoom by $$r$$ multiplies the volume of a box by $$r^3$$                                      |
+| :ref{#volume-scaling}  | A zoom by $$r$$ multiplies the volume of every solid by $$r^3$$                                |
+| :ref{#surface-scaling} | A zoom by $$r$$ multiplies surface area by $$r^2$$                                             |
+| :ref{#square-cube}     | A zoom by $$r$$ divides the surface for each unit of volume by $$r$$                           |
+
+:::
