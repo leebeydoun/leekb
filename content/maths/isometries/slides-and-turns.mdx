@@ -1,0 +1,378 @@
+---
+title: Slides and turns
+description:
+  Translations, which slide the plane along an arrow, and rotations, which turn it about a point.
+---
+
+A box riding a conveyor belt, a rook moving along a chessboard and a character walking across a
+screen all slide without turning. The hands of a clock, a steering wheel and a door on its hinges
+all turn about one point that stays still. These are two of the three ways to move the sheet of
+tracing paper from [Maps of the plane](./maps.mdx), and this guide makes each one exact: slides are
+called translations, and turns are called rotations. It ends with the half turn, which sends every
+point straight through the centre to the other side.
+
+## Slides
+
+Slide the tracing paper across the page without letting it turn. Every traced point moves, and they
+all move the same distance in the same direction. That is what happens to the boxes on a conveyor
+belt: big or small, near the front or near the back, each one is carried the same way by the same
+amount.
+
+<ConveyorBelt caption="On a conveyor belt every box is carried the same distance in the same direction" />
+
+So a whole slide is described by one arrow: how far, and which way. Any point can play the part of
+the arrow's start, since every point makes the same trip.
+
+:::definition[Translation]{#translation}
+
+Let $$O$$ and $$M$$ be points, and think of the **arrow** from $$O$$ to $$M$$: it has length
+$$d(O, M)$$ and points from $$O$$ towards $$M$$. The **translation** by this arrow is the map $$T$$
+that sends each point $$P$$ to the point $$T(P)$$ reached from $$P$$ by moving the distance
+$$d(O, M)$$ in the direction from $$O$$ to $$M$$. It is also called a **slide**.
+
+:::
+
+"Direction" is used here in its everyday sense, the same way as on a compass. The chapter on
+coordinates later makes it exact with numbers, but nothing in this chapter needs more than the
+picture. Three things follow straight from the definition:
+
+- **The arrow's start goes to its tip**: $$T(O) = M$$, since moving from $$O$$ along the arrow ends
+  at $$M$$
+- **The empty arrow**: the arrow from $$O$$ to $$O$$ has length $$0$$, so it moves nothing. Its
+  translation is the identity $$I$$.
+- **No fixed points**: a translation by an arrow of length more than $$0$$ moves every point that
+  distance, so no point stays where it was (:ref{#fixed-point})
+
+<TranslationSlide />
+
+Two facts about slides are taken as given. The first says that a slide is decided by where it sends
+one point. The second says that two slides in a row make one slide: put the second arrow's start on
+the first arrow's tip, and the slide from the first start to the last tip does both at once.
+
+:::remark[Rules for translations]{#translation-rules}
+
+1. **One slide for each pair**: for any points $$P$$ and $$Q$$, there is exactly one translation
+   that sends $$P$$ to $$Q$$, the translation by the arrow from $$P$$ to $$Q$$
+2. **Slides combine**: a translation followed by another translation is a translation
+
+These are taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Translation_(geometry)"}
+
+:::
+
+:::example[A robot's two slides]
+
+A warehouse robot slides $$6$$ m east, then $$8$$ m north, without turning. By
+:ref{#translation-rules}, the two slides together are one slide, by the arrow from where it started
+to where it ended. East and north are at right angles, so its start, its corner and its finish make
+a right triangle with legs $$6$$ and $$8$$. By :ref{#distance-and-angles/pythagoras}, the single
+slide has length
+
+```math
+\sqrt{6^2 + 8^2} = \sqrt{100} = 10 \text{ m}
+```
+
+Every part of the robot, not only its centre, moves $$10$$ m in that one direction.
+
+:::
+
+## Turns
+
+Now push a pin through the tracing paper at a point $$O$$ and turn the sheet. The pin stays put.
+Every other point travels round a circle centred at $$O$$, keeping its distance from the pin, and
+all of them turn through the same angle. The tip of a clock's minute hand does this, and so does
+every point of a steering wheel.
+
+Angles are measured as on the [Measuring angles](../distance-and-angles/measuring-angles.mdx) page,
+in degrees, as a share of a full turn. By convention a turn goes **anticlockwise**, the opposite way
+to a clock's hands, unless it says otherwise.
+
+:::definition[Rotation]{#rotation}
+
+Fix a point $$O$$, the **centre**, and a number $$x$$ with $$0 \le x < 360$$. The **rotation** by
+$$x^\circ$$ about $$O$$, written $$G_x$$, sends $$O$$ to itself and sends each other point $$P$$ to
+the point $$P' = G_x(P)$$ with:
+
+- **Same distance**: $$d(O, P') = d(O, P)$$
+- **Turned by $$x^\circ$$**: the angle turning anticlockwise from the ray $$OP$$ to the ray $$OP'$$
+  measures $$x^\circ$$ (:ref{#distance-and-angles/degree})
+
+It is also called a **turn**.
+
+:::
+
+```plane
+point O 0 0 sw
+point P 3 0 se
+point P' 1.5 2.6 n
+circle O 3 color=muted dashed
+segment O P
+segment O P'
+angle P O P' color=orange arrow label="x°"
+caption "The turn by x° about O sends P to P', the same distance from O and turned anticlockwise by x°"
+```
+
+The definition covers one trip of less than a full turn, anticlockwise. A turn that goes the other
+way, or goes round more than once, is written with a number outside $$0 \le x < 360$$:
+
+- **Clockwise**: a turn by $$x^\circ$$ **clockwise** is written $$G_{-x}$$, with a negative number.
+  So $$G_{-90}$$ is a quarter turn clockwise.
+- **More than a full turn**: for $$x \ge 360$$, $$G_x$$ keeps turning anticlockwise until it has
+  gone round $$x^\circ$$ in all: some whole turns, and then a part of one. So $$G_{450}$$ is one
+  whole turn and then a quarter turn.
+
+The second rule below says how these fit with the turns in the definition.
+
+The facts below are taken as given. The first says that a turn about $$O$$ can take any point to any
+other point at the same distance from $$O$$, and in only one way. The second says that turning twice
+adds the angles, and the third that a full turn changes nothing.
+
+:::remark[Rules for rotations]{#rotation-rules}
+
+Fix a centre $$O$$.
+
+1. **One turn for each pair**: if $$d(O, P) = d(O, Q)$$ and $$P \ne O$$, there is exactly one turn
+   $$G_x$$ about $$O$$ with $$0 \le x < 360$$ that sends $$P$$ to $$Q$$
+2. **Turns add**: turning by $$x^\circ$$ and then by $$y^\circ$$ has the same effect as turning by
+   $$(x + y)^\circ$$, for any numbers $$x$$ and $$y$$
+3. **A full turn**: $$G_{360}$$ is the identity, and so is $$G_0$$
+
+These are taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Rotation_(mathematics)"}
+
+:::
+
+## Whole turns make no difference
+
+After a minute hand has gone right round, it points where it started. So turning by $$500^\circ$$
+ends where turning by $$140^\circ$$ does: the first $$360^\circ$$ bring every point back home, and
+only the last $$140^\circ$$ show. In the same way, turning $$90^\circ$$ clockwise leaves things
+where turning $$270^\circ$$ anticlockwise does, since the two together make a full turn.
+
+:::proposition[Turns that differ by whole turns]{#rotation-whole-turns}
+
+Let $$x$$ be a number and $$n$$ an integer. Then $$G_{x + 360n} = G_x$$. So every turn equals a turn
+$$G_w$$ with $$0 \le w < 360$$, where $$x = 360n + w$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Turn_(angle)"}
+
+**When $$n$$ is $$0$$ or positive.** By rule 2 of :ref{#rotation-rules}, turning by
+$$(x + 360n)^\circ$$ has the same effect as turning by $$x^\circ$$ and then by $$360^\circ$$, $$n$$
+times over. Each turn by $$360^\circ$$ is the identity (rule 3), so it leaves every point where it
+was. What is left is the turn by $$x^\circ$$, so $$G_{x + 360n} = G_x$$ (:ref{#map-equality}).
+
+**When $$n$$ is negative.** Write $$y = x + 360n$$ and $$m = -n$$, which is positive. Then
+$$x = y + 360m$$, and the first case, applied to $$y$$ and $$m$$, gives
+$$G_x = G_{y + 360m} = G_y$$. That is $$G_x = G_{x + 360n}$$.
+
+**The last part.** Every number $$x$$ can be written as $$x = 360n + w$$ with $$n$$ an integer and
+$$0 \le w < 360$$: take $$n$$ to be the largest integer with $$360n \le x$$. Then $$G_x = G_w$$ by
+what was shown above, with $$w = x - 360n$$.
+
+:::
+
+:::example[Writing turns as whole turns plus a part]
+
+- $$500 = 360 + 140$$, so $$G_{500} = G_{140}$$
+- $$-90 = -360 + 270$$, so $$G_{-90} = G_{270}$$: a quarter turn clockwise is three quarter turns
+  anticlockwise
+- $$-210 = -360 + 150$$, so $$G_{-210} = G_{150}$$
+- $$720 = 2 \cdot 360 + 0$$, so $$G_{720} = G_0 = I$$: two full turns change nothing
+
+:::
+
+<RotationTurn />
+
+## Half turns
+
+Turn a king from a pack of cards upside down and it looks the same. Each point of the design has
+gone round half a circle about the centre of the card, which carries it straight through the centre
+to the point opposite, as far out on the other side.
+
+<HalfTurnCard caption="A half turn about the centre O sends each point P straight through O to the point P' opposite, the same distance from O" />
+
+That description, "straight through the centre to the same distance on the other side", doesn't
+mention turning at all. It is a map in its own right, and the next proposition shows it is the same
+map as the half turn.
+
+:::definition[Reflection through a point]{#point-reflection}
+
+Fix a point $$O$$. The **reflection through** $$O$$ sends $$O$$ to itself and sends each other point
+$$P$$ to the point $$P'$$ on the line $$OP$$, on the other side of $$O$$ from $$P$$, with
+$$d(O, P') = d(O, P)$$. In other words, $$O$$ is the midpoint of $$PP'$$
+(:ref{#distance-and-angles/midpoint}).
+
+:::
+
+:::proposition[A half turn is a reflection through the centre]{#half-turn}
+
+The rotation $$G_{180}$$ about $$O$$ equals the reflection through $$O$$. So does $$G_{-180}$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Point_reflection"}
+
+Both maps send $$O$$ to $$O$$. Let $$P \ne O$$, and let $$P' = G_{180}(P)$$.
+
+By the definition of a turn (:ref{#rotation}), $$d(O, P') = d(O, P)$$, and the angle from the ray
+$$OP$$ to the ray $$OP'$$ measures $$180^\circ$$. An angle of $$180^\circ$$ is a straight angle
+(:ref{#distance-and-angles/straight-angle}), so the rays $$OP$$ and $$OP'$$ point in opposite
+directions along one line (:ref{#distance-and-angles/special-angles}). So $$P'$$ is on the line
+$$OP$$, on the other side of $$O$$ from $$P$$, at the same distance from $$O$$. That is exactly
+where the reflection through $$O$$ sends $$P$$ (:ref{#point-reflection}).
+
+The two maps agree at every point, so they are equal (:ref{#map-equality}). Finally,
+$$-180 = -360 + 180$$, so $$G_{-180} = G_{180}$$ by :ref{#rotation-whole-turns}.
+
+:::
+
+So a half turn doesn't care which way it goes: half a turn clockwise and half a turn anticlockwise
+end in the same place. Its only fixed point is the centre $$O$$, since every other point lands on
+the far side of $$O$$.
+
+## Exercises
+
+:::::accordion[Exercises on slides and turns, with solutions]
+
+::::exercise{#ex-slides-turns-reduce}
+
+Write each turn as $$G_w$$ with $$0 \le w < 360$$:
+
+1. $$G_{750}$$
+2. $$G_{-45}$$
+3. $$G_{-400}$$
+4. $$G_{1080}$$
+
+:::solution
+
+Each time, write the angle as $$360n + w$$ with $$0 \le w < 360$$, and use
+:ref{#rotation-whole-turns}:
+
+1. $$750 = 2 \cdot 360 + 30$$, so $$G_{750} = G_{30}$$
+2. $$-45 = -360 + 315$$, so $$G_{-45} = G_{315}$$
+3. $$-400 = -2 \cdot 360 + 320$$, so $$G_{-400} = G_{320}$$
+4. $$1080 = 3 \cdot 360 + 0$$, so $$G_{1080} = G_0$$, the identity
+
+:::
+
+::::
+
+::::exercise{#ex-slides-turns-clock}
+
+In $$25$$ minutes, how far does a clock's minute hand turn, and in which direction? Write this turn
+as $$G_w$$ with $$0 \le w < 360$$.
+
+:::solution
+
+The minute hand goes once round, $$360^\circ$$, in $$60$$ minutes, so in $$25$$ minutes it turns
+$$\frac{25}{60} \cdot 360 = 150$$ degrees. Clock hands go clockwise, so this is $$G_{-150}$$
+(:ref{#rotation}). Since $$-150 = -360 + 210$$, it equals $$G_{210}$$ (:ref{#rotation-whole-turns}):
+a turn by $$210^\circ$$ anticlockwise.
+
+:::
+
+::::
+
+::::exercise{#ex-slides-turns-undo}
+
+Which turn about $$O$$ undoes $$G_{70}$$, so that doing $$G_{70}$$ and then it leaves every point
+where it was? Give the answer as $$G_w$$ with $$0 \le w < 360$$.
+
+:::solution
+
+Turning by $$70^\circ$$ and then by $$-70^\circ$$ has the same effect as turning by $$0^\circ$$
+(rule 2 of :ref{#rotation-rules}), which is the identity (rule 3). So $$G_{-70}$$ undoes $$G_{70}$$.
+Since $$-70 = -360 + 290$$, this is $$G_{290}$$ (:ref{#rotation-whole-turns}).
+
+:::
+
+::::
+
+::::exercise{#ex-slides-turns-quarter-distance}
+
+A point $$P$$ is $$5$$ from $$O$$, and $$P' = G_{90}(P)$$ for the turn about $$O$$. Find
+$$d(P, P')$$. What would it be for $$G_{180}$$?
+
+:::solution
+
+**For $$G_{90}$$.** By the definition of a turn (:ref{#rotation}), $$d(O, P') = 5$$ and the angle
+$$\angle POP'$$ measures $$90^\circ$$, a right angle. So $$POP'$$ is a right triangle with legs
+$$5$$ and $$5$$, and by :ref{#distance-and-angles/pythagoras},
+
+```math
+d(P, P') = \sqrt{5^2 + 5^2} = \sqrt{50} = 5\sqrt{2} \approx 7.07
+```
+
+**For $$G_{180}$$.** A half turn is the reflection through $$O$$ (:ref{#half-turn}), so $$O$$ is the
+midpoint of $$PP'$$. Then $$d(P, P') = 5 + 5 = 10$$ (:ref{#distance-and-angles/segment-rules}).
+
+:::
+
+::::
+
+::::exercise{#ex-slides-turns-fixed}
+
+Find every fixed point (:ref{#fixed-point}) of each map:
+
+1. A translation by an arrow of length $$3$$
+2. The turn $$G_{90}$$ about $$O$$
+3. The turn $$G_{360}$$ about $$O$$
+4. The reflection through $$O$$
+
+:::solution
+
+1. **None.** Every point moves a distance $$3$$ (:ref{#translation}), so none stays put.
+2. **Only $$O$$.** The centre is fixed by definition. A point $$P \ne O$$ is sent to a point $$P'$$
+   with the angle from the ray $$OP$$ to the ray $$OP'$$ equal to $$90^\circ$$. If $$P'$$ were
+   $$P$$, the two rays would be the same, making a zero angle, not $$90^\circ$$.
+3. **Every point.** $$G_{360}$$ is the identity (:ref{#rotation-rules}, rule 3).
+4. **Only $$O$$.** Any other point $$P$$ lands on the other side of $$O$$ (:ref{#point-reflection}),
+   so it has moved.
+
+:::
+
+::::
+
+::::exercise{#ex-slides-turns-half-twice}
+
+Show that doing the reflection through $$O$$ twice leaves every point where it was. Then explain the
+same fact without using turns at all.
+
+:::solution
+
+**With turns.** The reflection through $$O$$ is $$G_{180}$$ (:ref{#half-turn}). Doing it twice is
+turning by $$180^\circ$$ and then $$180^\circ$$, which is turning by $$360^\circ$$ (rule 2 of
+:ref{#rotation-rules}), and that is the identity (rule 3).
+
+**Without turns.** Let $$P \ne O$$ and $$P'$$ its reflection through $$O$$, so $$O$$ is the midpoint
+of $$PP'$$ (:ref{#point-reflection}). Reflecting $$P'$$ through $$O$$ gives the point on the line
+$$OP'$$, on the other side of $$O$$ from $$P'$$, at distance $$d(O, P') = d(O, P)$$. The point $$P$$
+is such a point, and there is only one, since a ray has one point at each distance from its start
+(:ref{#distance-and-angles/segment-rules}). So $$P$$ comes back to $$P$$, and $$O$$ stays put
+throughout.
+
+:::
+
+::::
+
+::::exercise{#ex-slides-turns-two-slides}
+
+A slide sends $$P$$ to $$Q$$, and a second slide sends $$Q$$ to $$M$$. Explain why doing the first
+and then the second is the slide by the arrow from $$P$$ to $$M$$.
+
+:::solution
+
+By rule 2 of :ref{#translation-rules}, the first slide followed by the second is some translation.
+It sends $$P$$ to $$Q$$ and then $$Q$$ to $$M$$, so it sends $$P$$ to $$M$$. By rule 1, exactly one
+translation sends $$P$$ to $$M$$: the translation by the arrow from $$P$$ to $$M$$. So the two
+slides together are that one.
+
+:::
+
+::::
+
+:::::

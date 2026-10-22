@@ -1,0 +1,829 @@
+{
+  "title": "Review: Isometries",
+  "description": "Questions on the ideas in this chapter, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
+  "questions": [
+    {
+      "id": "map-rule",
+      "stars": 1,
+      "topic": "Maps of the plane",
+      "question": "Which of these is **not** allowed for a map of the plane?",
+      "options": [
+        "Sending every point of the plane to one point $$O$$",
+        "Sending two different points to the same place",
+        "Leaving every point where it is",
+        "Sending one point to two different places at once"
+      ],
+      "answer": 3,
+      "explanation": "A map sends each point to exactly one point (:ref{#map}). Points may share a destination, so the constant map to $$O$$ and the identity are both maps. What a map can't do is send one point to two places."
+    },
+    {
+      "id": "fixed-point-meaning",
+      "stars": 1,
+      "topic": "Maps of the plane",
+      "question": "What does it mean for $$P$$ to be a fixed point of a map $$F$$?",
+      "options": [
+        "$$F$$ sends every point to $$P$$",
+        "$$F(P) = P$$",
+        "$$F(P)$$ is as far from $$P$$ as possible",
+        "$$P$$ is the centre of a turn"
+      ],
+      "answer": 1,
+      "explanation": "A fixed point is one the map leaves where it was: $$F(P) = P$$ (:ref{#fixed-point}). The pin through a turning sheet is an example, but the definition doesn't mention turns."
+    },
+    {
+      "id": "equal-maps",
+      "stars": 2,
+      "topic": "Maps of the plane",
+      "question": "Turning the tracing paper a quarter turn to the left and turning it three quarter turns to the right are described in different words. Are they equal maps?",
+      "options": [
+        "Yes, because they send every point to the same place",
+        "No, because one goes left and the other right",
+        "Yes, because both leave the pin where it is, and that is all equality needs",
+        "No, because the descriptions are different"
+      ],
+      "answer": 0,
+      "explanation": "Two maps are equal when $$F(P) = G(P)$$ for every point $$P$$ (:ref{#map-equality}). Only where each point ends up counts, not the words or the route. Agreeing at one point, such as the pin, is not enough."
+    },
+    {
+      "id": "zoom-fixed",
+      "stars": 2,
+      "topic": "Maps of the plane",
+      "question": "A photocopier zooms by $$2$$ about a point $$O$$. Which points are fixed?",
+      "options": [
+        "No point at all",
+        "The points at distance $$1$$ from $$O$$",
+        "$$O$$ and no other point",
+        "Every point"
+      ],
+      "answer": 2,
+      "explanation": "The zoom sends $$O$$ to itself. Any other point $$P$$ ends up at distance $$2 \\cdot d(O, P)$$ from $$O$$, which is not $$d(O, P)$$, so it has moved (:ref{#dilation})."
+    },
+    {
+      "id": "image-constant",
+      "stars": 2,
+      "topic": "Maps of the plane",
+      "question": "Let $$F$$ send every point of the plane to the point $$O$$. What is the image of a circle?",
+      "options": [
+        "The single point $$O$$",
+        "There is none, since $$F$$ is not a map",
+        "A smaller circle centred at $$O$$",
+        "The circle itself"
+      ],
+      "answer": 0,
+      "explanation": "The image of a shape is the set of images of its points (:ref{#image}). Every point of the circle goes to $$O$$, so the image is the single point $$O$$. A constant map is still a map: each point goes to exactly one place."
+    },
+    {
+      "id": "slide-arrow",
+      "stars": 1,
+      "topic": "Slides and turns",
+      "question": "What describes a whole slide (translation) of the plane?",
+      "options": [
+        "An arrow for each point, since points move differently",
+        "A mirror line",
+        "One arrow: how far, and which way",
+        "A centre and an angle"
+      ],
+      "answer": 2,
+      "explanation": "In a slide every point moves the same distance in the same direction, so one arrow says it all (:ref{#translation}). Any point can play the part of the arrow's start."
+    },
+    {
+      "id": "turn-500",
+      "stars": 1,
+      "topic": "Slides and turns",
+      "question": "Which turn about $$O$$ is the same map as $$G_{500}$$?",
+      "options": ["$$G_{50}$$", "$$G_{-140}$$", "$$G_{220}$$", "$$G_{140}$$"],
+      "answer": 3,
+      "explanation": "$$500 = 360 + 140$$, and a whole turn changes nothing, so $$G_{500} = G_{140}$$ (:ref{#rotation-whole-turns})."
+    },
+    {
+      "id": "robot-slides",
+      "stars": 2,
+      "topic": "Slides and turns",
+      "question": "A warehouse robot slides $$6$$ m east, then $$8$$ m north, without turning. Which single move has the same effect?",
+      "options": [
+        "A quarter turn followed by a slide",
+        "A slide of $$10$$ m, along the arrow from its start to its finish",
+        "No single move, since it changed direction",
+        "A slide of $$14$$ m"
+      ],
+      "answer": 1,
+      "explanation": "A slide followed by a slide is a slide (:ref{#translation-rules}). The start, corner and finish make a right triangle with legs $$6$$ and $$8$$, so the arrow has length $$\\sqrt{6^2 + 8^2} = 10$$."
+    },
+    {
+      "id": "turn-rule-condition",
+      "stars": 2,
+      "topic": "Slides and turns",
+      "question": "The rules for rotations say exactly one turn $$G_x$$ about $$O$$, with $$0 \\le x < 360$$, sends $$P$$ to $$Q$$. What must be true of $$P$$ and $$Q$$?",
+      "options": [
+        "$$P$$ and $$Q$$ lie on one line through $$O$$",
+        "$$d(O, P) = d(O, Q)$$, with $$P \\ne O$$",
+        "Nothing: some turn takes any point to any other",
+        "$$d(P, Q) = d(O, P)$$"
+      ],
+      "answer": 1,
+      "explanation": "A turn keeps every point at its distance from the centre, so it can only take $$P$$ to a point $$Q$$ on the circle about $$O$$ through $$P$$ (:ref{#rotation-rules}, rule 1)."
+    },
+    {
+      "id": "half-turn-direction",
+      "stars": 2,
+      "topic": "Slides and turns",
+      "question": "Why does a half turn about $$O$$ not depend on which way it turns?",
+      "options": [
+        "A half turn is a flip in a line through $$O$$",
+        "A half turn doesn't move any point",
+        "Both $$G_{180}$$ and $$G_{-180}$$ equal the reflection through $$O$$",
+        "Clockwise turns are not allowed"
+      ],
+      "answer": 2,
+      "explanation": "Turning $$180^\\circ$$ either way sends each point straight through $$O$$ to the same distance on the other side, which is the reflection through $$O$$ (:ref{#half-turn}). A half turn is not a flip in a line: it fixes only $$O$$."
+    },
+    {
+      "id": "mirror-image-place",
+      "stars": 1,
+      "topic": "Reflections",
+      "question": "You stand $$2$$ m in front of a flat mirror. Where is your image?",
+      "options": [
+        "$$4$$ m behind the glass",
+        "On the surface of the glass",
+        "$$2$$ m behind the glass, off to one side",
+        "$$2$$ m behind the glass, straight across from you"
+      ],
+      "answer": 3,
+      "explanation": "The mirror line is the perpendicular bisector of the segment from a point to its image (:ref{#reflection}). So the image is straight across, as far behind as you are in front."
+    },
+    {
+      "id": "mirror-fixed",
+      "stars": 1,
+      "topic": "Reflections",
+      "question": "Which points does the reflection in a line $$L$$ leave where they are?",
+      "options": [
+        "Every point of $$L$$, and no others",
+        "One point of $$L$$, where it meets the segment $$PP'$$",
+        "Every point of the plane",
+        "No points at all"
+      ],
+      "answer": 0,
+      "explanation": "Points on the mirror stay put, like the crease of a fold, and every other point goes straight across to the other side (:ref{#reflection})."
+    },
+    {
+      "id": "reflect-twice-why",
+      "stars": 2,
+      "topic": "Reflections",
+      "question": "Why does flipping twice in the same mirror put every point back, $$R \\circ R = I$$?",
+      "options": [
+        "A reflection has no fixed points",
+        "Two flips always make a slide",
+        "$$R$$ is the turn by $$180^\\circ$$",
+        "$$L$$ is the perpendicular bisector of $$PP'$$, which is the same segment as $$P'P$$, so $$R$$ sends $$P'$$ back to $$P$$"
+      ],
+      "answer": 3,
+      "explanation": "The image of $$P'$$ is the one point $$Y$$ for which $$L$$ is the perpendicular bisector of $$P'Y$$, and $$P$$ is such a point (:ref{#reflection-twice})."
+    },
+    {
+      "id": "river-stop",
+      "stars": 2,
+      "topic": "Reflections",
+      "question": "You walk from a cottage $$P$$ to a straight river bank $$L$$ and on to a garden $$Q$$ on the same side. Where should you stop to make the walk shortest?",
+      "options": [
+        "Where the straight line from the cottage's mirror image $$P'$$ to $$Q$$ crosses the bank",
+        "Straight below the cottage",
+        "Where the line $$PQ$$ meets the bank",
+        "Halfway between the points of the bank nearest $$P$$ and $$Q$$"
+      ],
+      "answer": 0,
+      "explanation": "From any point of the bank, the walk to $$P$$ is as long as the walk to $$P'$$ (:ref{#mirror-distances}). So the route is as long as one from $$P'$$ to $$Q$$ via the bank, and the shortest such route is straight (:ref{#shortest-route})."
+    },
+    {
+      "id": "river-why",
+      "stars": 3,
+      "topic": "Reflections",
+      "question": "Why is every route from $$P$$ to a point $$X$$ of the line $$L$$ and on to $$Q$$ at least $$d(P', Q)$$ long?",
+      "options": [
+        "Because $$X$$ always lies between $$P$$ and $$Q$$",
+        "Because the route makes equal angles with the mirror",
+        "$$d(P, X) = d(P', X)$$ since $$X$$ is on the mirror, and the triangle inequality gives $$d(P', X) + d(X, Q) \\ge d(P', Q)$$",
+        "By the Pythagoras theorem, since the mirror meets $$PP'$$ square on"
+      ],
+      "answer": 2,
+      "explanation": "The proof swaps the first leg for one of the same length ending at $$P'$$ (:ref{#mirror-distances}), then uses the triangle inequality (:ref{#distance-and-angles/distance-rules}). Equality needs $$X$$ on the segment $$P'Q$$ (:ref{#shortest-route})."
+    },
+    {
+      "id": "billiard-aim",
+      "stars": 2,
+      "topic": "Reflections",
+      "question": "A billiard player wants the white ball to bounce off a straight cushion and hit the red ball. Where should they aim?",
+      "options": [
+        "At the white ball's mirror image beyond the cushion",
+        "At the red ball's mirror image beyond the cushion",
+        "Straight at the red ball",
+        "At the point of the cushion halfway between the balls"
+      ],
+      "answer": 1,
+      "explanation": "The ball rolls straight towards the image until it meets the cushion, and the bounce sends it along the mirror image of the rest of that line, which ends at the red ball. This is :ref{#shortest-route} in action."
+    },
+    {
+      "id": "river-numbers",
+      "stars": 3,
+      "topic": "Reflections",
+      "question": "The cottage is $$2.5$$ from the bank, the garden $$1.5$$ from it on the same side, and their nearest points on the bank are $$5$$ apart. How long is the shortest route via the bank?",
+      "options": [
+        "$$\\sqrt{26} \\approx 5.10$$",
+        "$$2.5 + \\sqrt{27.25} \\approx 7.72$$",
+        "$$9$$",
+        "$$\\sqrt{41} \\approx 6.40$$"
+      ],
+      "answer": 3,
+      "explanation": "The image $$P'$$ is $$2.5 + 1.5 = 4$$ from the garden measured square to the bank and $$5$$ along it, so $$d(P', Q) = \\sqrt{5^2 + 4^2} = \\sqrt{41}$$ (:ref{#shortest-route}). $$\\sqrt{26}$$ is the straight line from $$P$$ to $$Q$$, which misses the river, and $$7.72$$ is the route that stops straight below the cottage."
+    },
+    {
+      "id": "isometry-def",
+      "stars": 1,
+      "topic": "What an isometry keeps",
+      "question": "When is a map $$F$$ an isometry?",
+      "options": [
+        "When $$F(P) = P$$ for every point $$P$$",
+        "When it keeps the shape of every figure, though it may change sizes",
+        "When $$d(F(P), F(Q)) = d(P, Q)$$ for every two points $$P$$ and $$Q$$",
+        "When it has at least one fixed point"
+      ],
+      "answer": 2,
+      "explanation": "An isometry keeps every distance (:ref{#isometry}). Keeping shape while changing size is what a zoom does, and a zoom is not an isometry."
+    },
+    {
+      "id": "zoom-not-isometry",
+      "stars": 1,
+      "topic": "What an isometry keeps",
+      "question": "Why is the zoom by $$2$$ about $$O$$ not an isometry?",
+      "options": [
+        "Two points $$3$$ apart end up $$6$$ apart",
+        "It changes the size of angles",
+        "It leaves $$O$$ where it is",
+        "It sends two points to the same place"
+      ],
+      "answer": 0,
+      "explanation": "One pair of points whose distance changes is enough to rule a map out (:ref{#isometry}). A zoom keeps angles and never sends two points to one place, but it doubles distances."
+    },
+    {
+      "id": "distinct-why",
+      "stars": 2,
+      "topic": "What an isometry keeps",
+      "question": "Why can an isometry never send two different points to the same place?",
+      "options": [
+        "Because every isometry is a slide",
+        "Their images must be as far apart as they were, and that distance isn't $$0$$",
+        "Because an isometry has no fixed points",
+        "It can, when the points are close together"
+      ],
+      "answer": 1,
+      "explanation": "Different points are a positive distance apart, the isometry keeps that distance, and points a positive distance apart are different (:ref{#isometry-distinct})."
+    },
+    {
+      "id": "segments-why",
+      "stars": 3,
+      "topic": "What an isometry keeps",
+      "question": "How does the guide prove that an isometry sends a segment to a segment, using only distances?",
+      "options": [
+        "It uses the fact that angles are kept",
+        "A straight stick still looks straight after it is moved",
+        "$$X$$ is on $$PM$$ exactly when $$d(P, X) + d(X, M) = d(P, M)$$, and the isometry keeps all three distances",
+        "It is one of the rules taken as given"
+      ],
+      "answer": 2,
+      "explanation": "Being on a segment can be said with distances (:ref{#distance-and-angles/segment-rules}, rule 1). The isometry keeps that equation, so it keeps the point on the segment (:ref{#isometry-segments})."
+    },
+    {
+      "id": "right-angles-why",
+      "stars": 3,
+      "topic": "What an isometry keeps",
+      "question": "How does the guide prove that an isometry keeps right angles?",
+      "options": [
+        "It sees the two lines as a segment and its perpendicular bisector, and being as far from $$A$$ as from $$B$$ is kept",
+        "It uses the fact that angles of any size are kept",
+        "It measures the angle before and after",
+        "It assumes it, like the rules for distance"
+      ],
+      "answer": 0,
+      "explanation": "A point is on the perpendicular bisector of $$AB$$ exactly when it is as far from $$A$$ as from $$B$$ (:ref{#distance-and-angles/perpendicular-bisector-rule}), and an isometry keeps both distances (:ref{#isometry-perpendicular}). Angles in general come later, using area."
+    },
+    {
+      "id": "angles-circular",
+      "stars": 4,
+      "topic": "What an isometry keeps",
+      "question": "The proof that angles are kept uses the fact that every isometry can be undone, which is only proved in a later guide. Why is that not circular?",
+      "options": [
+        "Because angles are kept by the definition of an isometry",
+        "The later proof never uses angles",
+        "Because circular arguments are allowed when the result is true",
+        "Because that fact is taken as given"
+      ],
+      "answer": 1,
+      "explanation": "An argument goes round in a circle when two results each rely on the other. The chain of proofs leading to :ref{#isometry-inverse} uses fixed points, slides and turns, but never angles, so :ref{#isometry-angles} can safely rely on it."
+    },
+    {
+      "id": "pins",
+      "stars": 2,
+      "topic": "What an isometry keeps",
+      "question": "How many fixed points, not all on one line, force an isometry to be the identity?",
+      "options": ["Two", "Four", "One", "Three"],
+      "answer": 3,
+      "explanation": "Two fixed points still allow the flip in the line through them. Three fixed points not on one line leave nothing free (:ref{#three-fixed-points}). Each fixed point lies on the perpendicular bisector of $$XX'$$ for any moved point $$X$$, and three points off a line can't all lie on one line."
+    },
+    {
+      "id": "flip-direction",
+      "stars": 2,
+      "topic": "What an isometry keeps",
+      "question": "A flip in a line keeps the size of every angle. What does it change?",
+      "options": [
+        "The lengths of segments",
+        "The direction of turning: anticlockwise becomes clockwise",
+        "The area of shapes",
+        "The size of right angles"
+      ],
+      "answer": 1,
+      "explanation": "A flip keeps lengths, angles and area (:ref{#isometry-angles}, :ref{#isometry-area}), but it sends each point to the other side of the mirror, so a turn one way becomes a turn the other way, like a right hand in a mirror."
+    },
+    {
+      "id": "composite-order",
+      "stars": 1,
+      "topic": "Combining moves",
+      "question": "What does $$G \\circ F$$ mean?",
+      "options": [
+        "First $$G$$, then $$F$$",
+        "$$F$$ multiplied by $$G$$ as numbers",
+        "First $$F$$, then $$G$$",
+        "$$F$$ and $$G$$ at the same time"
+      ],
+      "answer": 2,
+      "explanation": "$$(G \\circ F)(P) = G(F(P))$$, so $$F$$ acts first, and the composite is read \"$$G$$ after $$F$$\" (:ref{#composite}). Reading right to left, from the point, gives the order of the moves."
+    },
+    {
+      "id": "order-matters",
+      "stars": 2,
+      "topic": "Combining moves",
+      "question": "Let $$R$$ be the flip in the horizontal line through $$O$$ and $$G_{90}$$ the quarter turn about $$O$$. Is $$R \\circ G_{90} = G_{90} \\circ R$$?",
+      "options": [
+        "No: a point of the mirror ends up below $$O$$ one way and above $$O$$ the other",
+        "Yes, because grouping doesn't matter",
+        "Yes, because both fix $$O$$",
+        "Yes, because both are isometries"
+      ],
+      "answer": 0,
+      "explanation": "Take $$P$$ on the mirror, $$2$$ to the right of $$O$$. Turn then flip sends it $$2$$ below $$O$$; flip then turn sends it $$2$$ above (:ref{#order-matters}). Grouping is about brackets, not order (:ref{#composite-associative})."
+    },
+    {
+      "id": "parallel-mirrors-3",
+      "stars": 2,
+      "topic": "Combining moves",
+      "question": "Two parallel mirrors $$L$$ and $$K$$ are $$3$$ apart. What is first the flip in $$L$$, then the flip in $$K$$?",
+      "options": [
+        "The half turn about a point between them",
+        "The slide by $$3$$, from $$L$$ towards $$K$$",
+        "The flip in the line halfway between them",
+        "The slide by $$6$$, square to the mirrors, from $$L$$ towards $$K$$"
+      ],
+      "answer": 3,
+      "explanation": "Two flips in parallel mirrors $$d$$ apart make a slide by $$2d$$ (:ref{#parallel-mirrors}), so here every point moves $$6$$ towards $$K$$'s side, wherever it starts."
+    },
+    {
+      "id": "crossing-35",
+      "stars": 2,
+      "topic": "Combining moves",
+      "question": "Two mirrors cross at $$O$$, and the angle from the first to the second is $$35^\\circ$$ anticlockwise. What is the flip in the first, then the flip in the second?",
+      "options": [
+        "The flip in a line at $$70^\\circ$$",
+        "The turn about $$O$$ by $$70^\\circ$$",
+        "The turn about $$O$$ by $$35^\\circ$$",
+        "A slide"
+      ],
+      "answer": 1,
+      "explanation": "Flips in mirrors crossing at angle $$\\theta$$ make a turn about the crossing point by $$2\\theta$$ (:ref{#crossing-mirrors})."
+    },
+    {
+      "id": "kaleidoscope",
+      "stars": 3,
+      "topic": "Combining moves",
+      "question": "A kaleidoscope has two mirrors meeting at $$60^\\circ$$. Why do you see six copies of the beads?",
+      "options": [
+        "Each mirror makes three copies",
+        "Light is bent by the glass into six beams",
+        "$$360 \\div 60 = 6$$ mirrors are hidden in the tube",
+        "The two flips make a turn by $$120^\\circ$$, giving three turned copies, and each can also be flipped"
+      ],
+      "answer": 3,
+      "explanation": "Two mirrors at $$60^\\circ$$ make a turn by $$120^\\circ$$ (:ref{#crossing-mirrors}). So you see the beads turned by $$0^\\circ$$, $$120^\\circ$$ and $$240^\\circ$$, and flipped in three mirror lines: six copies."
+    },
+    {
+      "id": "footprints",
+      "stars": 1,
+      "topic": "Combining moves",
+      "question": "Each footprint in a line of footprints is the one before it, flipped across the line of the walk and slid along it. What is this move called?",
+      "options": ["A slide", "A turn", "A glide reflection", "A flip"],
+      "answer": 2,
+      "explanation": "First a flip in $$L$$, then a slide along $$L$$, is a glide reflection (:ref{#glide-reflection}). It has no fixed points, unlike a flip or a turn."
+    },
+    {
+      "id": "corner-mirror",
+      "stars": 3,
+      "topic": "Combining moves",
+      "question": "Why does a corner mirror, two mirrors meeting square on, show your face the way other people see it?",
+      "options": [
+        "Two flips at $$90^\\circ$$ make a half turn, which doesn't swap left and right",
+        "Two flips make a slide, which keeps everything",
+        "It is curved, which cancels the flip",
+        "It uses one mirror, which swaps left and right twice"
+      ],
+      "answer": 0,
+      "explanation": "Mirrors at $$90^\\circ$$ make a turn by $$180^\\circ$$ (:ref{#corner-mirrors}). One flip turns a right hand into a left hand; a turn never does."
+    },
+    {
+      "id": "flip-power",
+      "stars": 2,
+      "topic": "Combining moves",
+      "question": "Let $$R$$ be a flip. What is $$R^7$$?",
+      "options": [
+        "The turn by $$7 \\cdot 180^\\circ$$",
+        "$$I$$",
+        "$$R$$",
+        "The slide by $$7$$ times the gap"
+      ],
+      "answer": 2,
+      "explanation": "$$R^2 = I$$, so even powers of $$R$$ are $$I$$ and odd powers are $$R$$, as with powers of $$-1$$ (:ref{#map-powers-example})."
+    },
+    {
+      "id": "undo-flip",
+      "stars": 1,
+      "topic": "Undoing moves",
+      "question": "What is the inverse of the flip $$R$$ in a line $$L$$?",
+      "options": [
+        "The half turn about a point of $$L$$",
+        "The flip in the line perpendicular to $$L$$",
+        "There is none",
+        "$$R$$ itself"
+      ],
+      "answer": 3,
+      "explanation": "$$R \\circ R = I$$ (:ref{#reflection-twice}), which covers both orders in :ref{#inverse-map}. So $$R^{-1} = R$$."
+    },
+    {
+      "id": "socks-shoes",
+      "stars": 1,
+      "topic": "Undoing moves",
+      "question": "What is the inverse of $$G \\circ F$$, first $$F$$, then $$G$$?",
+      "options": [
+        "$$F^{-1} \\circ G^{-1}$$: undo $$G$$ first, then $$F$$",
+        "$$F \\circ G$$",
+        "$$G^{-1} \\circ F^{-1}$$: undo $$F$$ first, then $$G$$",
+        "$$G \\circ F$$ again"
+      ],
+      "answer": 0,
+      "explanation": "You take off the shoe before the sock: the last step is undone first (:ref{#inverse-composite})."
+    },
+    {
+      "id": "no-undo",
+      "stars": 2,
+      "topic": "Undoing moves",
+      "question": "Which of these maps can't be undone?",
+      "options": [
+        "A slide",
+        "The map sending every point to one point $$O$$",
+        "The zoom by $$2$$ about $$O$$",
+        "A turn by $$90^\\circ$$"
+      ],
+      "answer": 1,
+      "explanation": "Once every point is at $$O$$, nothing says which one should go where (:ref{#inverse-map}). A zoom by $$2$$ is undone by a zoom by $$\\frac{1}{2}$$, even though it isn't an isometry."
+    },
+    {
+      "id": "fifth-turn",
+      "stars": 2,
+      "topic": "Undoing moves",
+      "question": "Let $$G$$ be the turn about $$O$$ by $$72^\\circ$$, so $$G^5 = I$$. What is $$G^{-1}$$?",
+      "options": [
+        "$$G$$ itself",
+        "$$G^5$$, a whole turn",
+        "$$G^2$$, the turn by $$144^\\circ$$",
+        "$$G^4$$, the turn by $$288^\\circ$$"
+      ],
+      "answer": 3,
+      "explanation": "If $$F^n = I$$, then $$F^{-1} = F^{n-1}$$ (:ref{#inverse-by-repeating}). This matches undoing directly: $$G_{-72} = G_{288}$$."
+    },
+    {
+      "id": "wrong-undo",
+      "stars": 3,
+      "topic": "Undoing moves",
+      "question": "First a quarter turn about $$O$$, then a slide $$4$$ to the right. Which undoes it?",
+      "options": [
+        "Slide $$4$$ to the left, since the turn fixed $$O$$",
+        "Either order, since each step is undone",
+        "Slide $$4$$ to the left, then turn a quarter turn clockwise about $$O$$",
+        "Turn a quarter turn clockwise about $$O$$, then slide $$4$$ to the left"
+      ],
+      "answer": 2,
+      "explanation": "Undo the last step first (:ref{#inverse-composite}). Turning back first sends the moved point $$O'$$, $$4$$ to the right of $$O$$, to a point $$4$$ below $$O$$, and the slide back then misses home. Sliding back alone fixes $$O$$ but leaves other points turned."
+    },
+    {
+      "id": "three-points-decide",
+      "stars": 3,
+      "topic": "Undoing moves",
+      "question": "Two isometries $$F$$ and $$G$$ send the three corners of a triangle to the same places. What follows?",
+      "options": [
+        "They agree on the triangle, and nothing more can be said",
+        "$$F = G$$: they agree at every point of the plane",
+        "$$F$$ is the identity",
+        "They agree on the three lines through the corners, and nowhere else"
+      ],
+      "answer": 1,
+      "explanation": "An isometry is decided by where it sends three points not on one line (:ref{#three-points-decide}). The corners of a triangle are such points."
+    },
+    {
+      "id": "three-points-proof",
+      "stars": 4,
+      "topic": "Undoing moves",
+      "question": "What is the key step in the proof that isometries agreeing at three points not on one line are equal?",
+      "options": [
+        "$$F^{-1} \\circ G$$ is an isometry that fixes the three points, so it is $$I$$",
+        "The triangle on the three points is moved onto itself, so every point is",
+        "$$F$$ and $$G$$ are both slides, decided by one point",
+        "$$F \\circ G$$ fixes the three points, so it is $$I$$"
+      ],
+      "answer": 0,
+      "explanation": "First $$G$$, then $$F^{-1}$$, sends each of the three points back to itself, and three fixed points not on one line force the identity (:ref{#three-fixed-points}). Doing $$F$$ after $$F^{-1} \\circ G = I$$ gives $$G = F$$ (:ref{#three-points-decide})."
+    },
+    {
+      "id": "putting-back",
+      "stars": 1,
+      "topic": "Every isometry is a slide, turn or flip",
+      "question": "Someone moves your tracing paper with any number of slides, turns and flips. What is always enough to put it back?",
+      "options": [
+        "One slide",
+        "Two flips",
+        "A zoom and a turn",
+        "One slide, one turn and at most one flip"
+      ],
+      "answer": 3,
+      "explanation": "Every isometry is $$T \\circ G$$ or $$T \\circ G \\circ R$$ (:ref{#classification}), so undoing it takes a slide back, a turn back and possibly a flip."
+    },
+    {
+      "id": "fix-two",
+      "stars": 2,
+      "topic": "Every isometry is a slide, turn or flip",
+      "question": "An isometry fixes two different points $$P$$ and $$Q$$. What can it be?",
+      "options": [
+        "A slide along the line $$PQ$$",
+        "The identity, or the flip in the line $$PQ$$",
+        "The identity and nothing else",
+        "Any turn about $$P$$"
+      ],
+      "answer": 1,
+      "explanation": "A turn about $$P$$ would move $$Q$$, and a slide would move both. Watching a third point shows the move is either nothing or the flip in the line through the pins (:ref{#fix-two-points})."
+    },
+    {
+      "id": "glide-test",
+      "stars": 2,
+      "topic": "Every isometry is a slide, turn or flip",
+      "question": "A rigid move fixes no point and turns shapes over, a left shoe into a right shoe. What kind of isometry is it?",
+      "options": ["A turn", "A flip", "A glide reflection", "A slide"],
+      "answer": 2,
+      "explanation": "Slides and glides fix no point, but only the glide turns the sheet face down (:ref{#four-kinds}). A flip turns shapes over but fixes its whole mirror."
+    },
+    {
+      "id": "one-fixed",
+      "stars": 2,
+      "topic": "Every isometry is a slide, turn or flip",
+      "question": "An isometry fixes exactly one point. What kind is it?",
+      "options": ["A turn", "A slide", "A glide reflection", "A flip"],
+      "answer": 0,
+      "explanation": "In the table of :ref{#four-kinds}, a turn fixes exactly its centre, a flip fixes a whole line, and slides and glides fix nothing."
+    },
+    {
+      "id": "flip-then-turn",
+      "stars": 3,
+      "topic": "Every isometry is a slide, turn or flip",
+      "question": "Flip in the horizontal line through $$O$$, then turn a quarter turn about $$O$$. What single move is this?",
+      "options": [
+        "The turn by $$90^\\circ$$ about $$O$$",
+        "The flip in the line through $$O$$ at $$45^\\circ$$",
+        "The half turn about $$O$$",
+        "A glide reflection"
+      ],
+      "answer": 1,
+      "explanation": "Choose $$K$$ through $$O$$ at $$45^\\circ$$, so $$R_K \\circ R_L = G_{90}$$ (:ref{#crossing-mirrors}). Then $$G_{90} \\circ R_L = R_K \\circ R_L \\circ R_L = R_K$$, since $$R_L \\circ R_L = I$$."
+    },
+    {
+      "id": "proof-order",
+      "stars": 3,
+      "topic": "Every isometry is a slide, turn or flip",
+      "question": "In which order does the guide prove that every isometry is a slide, a turn and at most a flip?",
+      "options": [
+        "Slides first, then turns, then flips, each on its own",
+        "Any isometry first, then the special cases",
+        "Two fixed points first, then one fixed point, then any isometry",
+        "It assumes the result and checks examples"
+      ],
+      "answer": 2,
+      "explanation": "Each step uses the one before. Two pins leave stay or flip (:ref{#fix-two-points}); one pin is turned home to make two (:ref{#fix-one-point}); any isometry is slid home to make one (:ref{#classification})."
+    },
+    {
+      "id": "congruent-def",
+      "stars": 1,
+      "topic": "Congruence",
+      "question": "When is a shape $$S$$ congruent to a shape $$S'$$?",
+      "options": [
+        "When they have the same perimeter",
+        "When a slide carries $$S$$ to somewhere inside $$S'$$",
+        "When they have the same area",
+        "When some isometry carries $$S$$ exactly onto $$S'$$"
+      ],
+      "answer": 3,
+      "explanation": "$$S \\cong S'$$ means $$F(S) = S'$$ for some isometry $$F$$ (:ref{#congruent}). The image must cover $$S'$$ exactly, not sit inside it. Equal areas don't make shapes congruent: a $$1$$ by $$4$$ rectangle and a $$2$$ by $$2$$ square both have area $$4$$."
+    },
+    {
+      "id": "mirror-congruent",
+      "stars": 1,
+      "topic": "Congruence",
+      "question": "Is a shape congruent to its mirror image?",
+      "options": [
+        "Yes, since a flip is an isometry",
+        "No, since a flip turns it over",
+        "Exactly when the shape has a line of symmetry",
+        "Exactly when the shape is a triangle"
+      ],
+      "answer": 0,
+      "explanation": "Flips are isometries (:ref{#basic-isometries}), so a flip carrying a shape onto its mirror image shows they are congruent (:ref{#congruent}), like the two halves of a butterfly."
+    },
+    {
+      "id": "brace",
+      "stars": 2,
+      "topic": "Congruence",
+      "question": "Why does a diagonal brace stop a square frame of four bars from folding over?",
+      "options": [
+        "It makes all four sides the same length",
+        "It splits the frame into two triangles, and three sides fix a triangle",
+        "It makes the frame heavier",
+        "It adds a fifth right angle"
+      ],
+      "answer": 1,
+      "explanation": "Two triangles whose sides match are congruent (:ref{#sss}), so a triangle of fixed bars can't change shape. A square of four bars has no such test, and it folds."
+    },
+    {
+      "id": "ssa",
+      "stars": 2,
+      "topic": "Congruence",
+      "question": "Two triangles have two sides of matching lengths and a matching angle that is **not** between those sides. Are they congruent?",
+      "options": [
+        "No, never",
+        "Yes, by side, side, side",
+        "Not necessarily",
+        "Yes, by side, angle, side"
+      ],
+      "answer": 2,
+      "explanation": "Side, angle, side needs the angle between the two given sides (:ref{#sas}). With the angle elsewhere, the third side can swing like a gate between two positions, giving two different triangles."
+    },
+    {
+      "id": "sss-flip",
+      "stars": 3,
+      "topic": "Congruence",
+      "question": "In the proof of side, side, side, a slide and a turn put $$P$$ on $$P'$$ and $$Q$$ on $$Q'$$, but the third corner lands at $$X \\ne M'$$. What finishes the proof?",
+      "options": [
+        "A second slide from $$X$$ to $$M'$$",
+        "Nothing: the triangles aren't congruent in this case",
+        "A turn about $$P'$$ from $$X$$ to $$M'$$",
+        "The flip in the line $$P'Q'$$, which is the perpendicular bisector of $$XM'$$"
+      ],
+      "answer": 3,
+      "explanation": "Both $$P'$$ and $$Q'$$ are as far from $$X$$ as from $$M'$$, so the line through them is the perpendicular bisector of $$XM'$$, and its flip sends $$X$$ to $$M'$$ while fixing $$P'$$ and $$Q'$$ (:ref{#sss}). A slide or turn would move $$P'$$ or $$Q'$$."
+    },
+    {
+      "id": "isosceles-why",
+      "stars": 3,
+      "topic": "Congruence",
+      "question": "How does the guide prove that the base angles of an isosceles triangle are equal?",
+      "options": [
+        "The flip in the perpendicular bisector of the base swaps the base corners, fixes the apex and keeps angles",
+        "It measures both angles",
+        "It uses the fact that the angles add up to $$180^\\circ$$",
+        "It notes that every angle of the triangle is $$60^\\circ$$"
+      ],
+      "answer": 0,
+      "explanation": "The apex is as far from both base corners, so it lies on the perpendicular bisector of the base. The flip in that line swaps the base corners, fixes the apex, and carries one base angle onto the other without changing its size (:ref{#isosceles})."
+    },
+    {
+      "id": "isosceles-40",
+      "stars": 2,
+      "topic": "Congruence",
+      "question": "An isosceles triangle has an angle of $$40^\\circ$$ at its apex. What is each base angle?",
+      "options": [
+        "$$50^\\circ$$",
+        "$$40^\\circ$$",
+        "$$70^\\circ$$",
+        "$$140^\\circ$$"
+      ],
+      "answer": 2,
+      "explanation": "The base angles are equal (:ref{#isosceles}) and the three angles add up to $$180^\\circ$$, so $$40 + 2x = 180$$ and $$x = 70$$."
+    },
+    {
+      "id": "right-triangles",
+      "stars": 3,
+      "topic": "Congruence",
+      "question": "Two right triangles have legs of matching lengths. Which result shows they are congruent?",
+      "options": [
+        "None: it stays taken as given",
+        "Side, angle, side, with the right angle between the legs",
+        "The base angles of an isosceles triangle",
+        "Side, side, side, since the legs match"
+      ],
+      "answer": 1,
+      "explanation": "The right angles are equal and lie between the matching legs, so :ref{#sas} applies (:ref{#right-triangles-congruent}). This proves the fact the Distance and angles chapter had to take as given."
+    },
+    {
+      "id": "symmetry-def",
+      "stars": 1,
+      "topic": "Symmetry",
+      "question": "What is a symmetry of a shape $$S$$?",
+      "options": [
+        "Any map that sends $$S$$ into itself",
+        "A line that cuts $$S$$ into two equal areas",
+        "An isometry that fixes every point of $$S$$",
+        "An isometry $$F$$ with $$F(S) = S$$"
+      ],
+      "answer": 3,
+      "explanation": "A symmetry is an isometry that puts the shape back exactly where it was (:ref{#symmetry}). It needn't fix the points of $$S$$: a half turn of a rectangle moves every corner."
+    },
+    {
+      "id": "letter-n",
+      "stars": 1,
+      "topic": "Symmetry",
+      "question": "Which of these letters has a half turn symmetry but no mirror line?",
+      "options": ["N", "F", "H", "A"],
+      "answer": 0,
+      "explanation": "A has one upright mirror line, H has two mirror lines and a half turn, and F has no symmetry except the identity. N has no mirror line, but a half turn puts it back (:ref{#symmetry})."
+    },
+    {
+      "id": "mattress-combine",
+      "stars": 2,
+      "topic": "Symmetry",
+      "question": "You give a mattress a half turn (end to end, same side up), then a long flip (rolled over sideways). Which single move has the same effect?",
+      "options": ["The half turn", "The short flip", "Stay", "The long flip"],
+      "answer": 1,
+      "explanation": "Follow a tag in one corner: the half turn sends it to the opposite corner, and the long flip moves it across the long middle line, where a short flip alone would have put it. Symmetries combine into symmetries (:ref{#symmetry-combine})."
+    },
+    {
+      "id": "mattress-plan",
+      "stars": 3,
+      "topic": "Symmetry",
+      "question": "Every few months you alternate between a half turn and a long flip. How many of the four positions does the mattress visit?",
+      "options": ["One", "Three", "Two", "All four"],
+      "answer": 3,
+      "explanation": "Starting from stay, it goes to half turn, then short flip, then long flip, then back to stay. Doing the half turn every time would only use two positions (:ref{#symmetry-combine})."
+    },
+    {
+      "id": "square-count",
+      "stars": 2,
+      "topic": "Symmetry",
+      "question": "How many symmetries does a square have?",
+      "options": ["$$8$$", "$$4$$", "Infinitely many", "$$6$$"],
+      "answer": 0,
+      "explanation": "Four turns, counting the identity, and four flips: two through the middles of opposite sides and two along the diagonals (:ref{#regular-turns})."
+    },
+    {
+      "id": "mirrors-force-turn",
+      "stars": 3,
+      "topic": "Symmetry",
+      "question": "A shape has two mirror lines that cross at $$60^\\circ$$. What other symmetry must it have?",
+      "options": [
+        "A slide",
+        "None necessarily",
+        "A turn by $$120^\\circ$$ about the crossing point",
+        "A turn by $$60^\\circ$$ about the crossing point"
+      ],
+      "answer": 2,
+      "explanation": "The two flips are symmetries, so doing one then the other is too (:ref{#symmetry-combine}), and two crossing mirrors make a turn by twice their angle (:ref{#crossing-mirrors})."
+    },
+    {
+      "id": "fan",
+      "stars": 3,
+      "topic": "Symmetry",
+      "question": "Why can a fan with curved blades have turn symmetry but no mirror line?",
+      "options": [
+        "Mirror lines need an even number of blades",
+        "A turn keeps the direction the blades curve round, while a flip reverses it",
+        "Turns keep lengths but flips don't",
+        "A fan is not a closed shape"
+      ],
+      "answer": 1,
+      "explanation": "A flip reverses the direction of turning (:ref{#isometry-angles}), so it would make the blades curve the other way. A hubcap with straight spokes has the same turns and mirror lines too."
+    },
+    {
+      "id": "square-at-most-8",
+      "stars": 4,
+      "topic": "Symmetry",
+      "question": "Taking as given that a symmetry of a square sends corners to corners, why does a square have at most $$8$$ symmetries?",
+      "options": [
+        "There are $$4$$ corners and $$4$$ sides",
+        "Every symmetry is a turn by a multiple of $$45^\\circ$$",
+        "Each of the $$4$$ mirror lines gives $$2$$ symmetries",
+        "A corner $$A$$ has $$4$$ places to go, its neighbour then has $$2$$, the third corner is then forced, and three points decide an isometry"
+      ],
+      "answer": 3,
+      "explanation": "Distances are kept, so the neighbour of $$A$$ must land one side length from where $$A$$ went. Once three corners not on one line are placed, the whole isometry is decided (:ref{#three-points-decide}), so there are at most $$4 \\cdot 2 = 8$$."
+    }
+  ]
+}

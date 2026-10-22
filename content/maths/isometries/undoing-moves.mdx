@@ -1,0 +1,484 @@
+---
+title: Undoing moves
+description:
+  How to undo a move, why steps come off in reverse order, and three points that decide an isometry.
+---
+
+Every editing program has an undo button, and it is useful because nothing is lost: whatever you
+did, one press puts it back. A move of the plane can work the same way. Slide a sheet of tracing
+paper $$3$$ cm to the right and you can slide it $$3$$ cm back; turn it a quarter turn and you can
+turn it back. This page says what undoing a move means, finds the undo for slides, turns and flips,
+and shows why undoing two moves has to happen in the reverse order. It ends with a payoff: knowing
+where an isometry sends three points tells you where it sends every point.
+
+## What undoing means
+
+Think of the sheet of tracing paper again. A move $$F$$ shifts every point of the sheet somewhere.
+Undoing it means finding a second move $$G$$ that carries every point back to where it started. That
+has to work both ways round: doing $$F$$ and then $$G$$ must leave every point where it was, and so
+must doing $$G$$ first and then $$F$$. A move with an undo like this is called invertible.
+
+:::definition[Inverse of a map]{#inverse-map}
+
+Let $$F$$ be a map of the plane (:ref{#map}). A map $$G$$ is an **inverse** of $$F$$ if
+
+```math
+G \circ F = I \qquad \text{and} \qquad F \circ G = I
+```
+
+In words: first $$F$$, then $$G$$ moves nothing, and first $$G$$, then $$F$$ moves nothing
+(:ref{#composite}). The inverse of $$F$$ is written $$F^{-1}$$, read "$$F$$ inverse".
+
+:::
+
+An inverse is a way of going backwards. If $$F$$ sends a point $$Q$$ to $$P$$, then $$F^{-1}$$ sends
+$$P$$ back to $$Q$$, since $$F^{-1}(P) = F^{-1}(F(Q)) = Q$$. And if $$F^{-1}$$ sends $$P$$ to $$Q$$,
+then $$F$$ sends $$Q$$ to $$P$$ in the same way. So $$P = F(Q)$$ exactly when $$Q = F^{-1}(P)$$.
+
+Not every map can be undone. The constant map that squashes every point onto one point $$O$$ loses
+everything: once all the points are at $$O$$, nothing says which one should go where. A dilation, on
+the other hand, can be undone. Zooming by $$2$$ about $$O$$ is undone by zooming by $$\frac{1}{2}$$
+about $$O$$ (:ref{#dilation}).
+
+The word "the" in "the inverse" needs a reason: could a move have two different undos? It can't, and
+the proof is the same argument used for numbers.
+
+:::proposition[Only one inverse]{#inverse-map-unique}
+
+A map $$F$$ has at most one inverse: if $$G$$ and $$H$$ are both inverses of $$F$$, then $$G = H$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Inverse_element#Inverses"}
+
+Since $$G$$ is an inverse of $$F$$, first $$G$$, then $$F$$ moves nothing: $$F \circ G = I$$. Since
+$$H$$ is an inverse, $$H \circ F = I$$. Doing $$I$$ before or after a map changes nothing, so
+
+```math
+H = H \circ I = H \circ (F \circ G) = (H \circ F) \circ G = I \circ G = G
+```
+
+The middle step regroups the three maps, which is allowed by :ref{#composite-associative}.
+
+:::
+
+## Undoing slides, turns and flips
+
+Each of the three basic moves has an undo you can picture. A flip is undone by flipping again in the
+same mirror. A turn is undone by turning the same amount the other way. A slide is undone by sliding
+back along the reverse arrow. The examples below check each one against the definition.
+
+:::example[Undoing a flip]
+
+Let $$R$$ be the reflection in a line $$L$$ (:ref{#reflection}). Flipping twice in the same mirror
+moves nothing, $$R \circ R = I$$ (:ref{#reflection-twice}). That one equation covers both orders in
+the definition, so $$R$$ is its own inverse:
+
+```math
+R^{-1} = R
+```
+
+:::
+
+:::example[Undoing a turn]
+
+Let $$G_x$$ be the turn about $$O$$ by $$x^\circ$$ (:ref{#rotation}). Turning by $$x^\circ$$ and
+then by $$-x^\circ$$ is turning by $$x + (-x) = 0$$ degrees (:ref{#rotation-rules}), and the other
+order gives $$0$$ degrees too. A turn by $$0^\circ$$ moves nothing. So
+
+```math
+G_x^{-1} = G_{-x}
+```
+
+For example, a quarter turn anticlockwise, $$G_{90}$$, is undone by a quarter turn clockwise,
+$$G_{-90}$$, which is the same turn as $$G_{270}$$ (:ref{#rotation-whole-turns}).
+
+:::
+
+:::example[Undoing a slide]
+
+Let $$T_{OM}$$ be the slide by the arrow from $$O$$ to $$M$$ (:ref{#translation}), and $$T_{MO}$$
+the slide by the reverse arrow. First $$T_{OM}$$, then $$T_{MO}$$ is again a slide
+(:ref{#translation-rules}), and it takes $$O$$ to $$M$$ and back to $$O$$. Only one slide takes
+$$O$$ to $$O$$, and the identity $$I$$ is one, the slide by the arrow from $$O$$ to itself, so the
+combination is $$I$$. The other order works the same way, starting from $$M$$. So
+
+```math
+T_{OM}^{-1} = T_{MO}
+```
+
+:::
+
+All three undos are themselves slides, turns or flips, so they keep distances too. That is true of
+every isometry that can be undone, and the reason is short.
+
+:::proposition[The inverse of an isometry is an isometry]{#inverse-isometry}
+
+Let $$F$$ be an isometry (:ref{#isometry}) that has an inverse $$F^{-1}$$. Then $$F^{-1}$$ is an
+isometry too.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_plane_isometry#Group_structure"}
+
+Take two points $$X$$ and $$Y$$, and let $$A = F^{-1}(X)$$ and $$B = F^{-1}(Y)$$. Then $$F(A) = X$$
+and $$F(B) = Y$$, since $$F$$ undoes $$F^{-1}$$. As $$F$$ keeps distances,
+
+```math
+d(A, B) = d(F(A), F(B)) = d(X, Y)
+```
+
+So $$F^{-1}$$ moves any two points to points the same distance apart.
+
+:::
+
+## Undoing two moves: socks and shoes
+
+In the morning you put on a sock and then a shoe. In the evening you can't take the sock off first:
+the shoe is in the way. You undo the last step first, and then the one before it. The same is true
+of any two steps done one after the other, from getting dressed to driving directions: to retrace a
+route, you take the last turning first.
+
+<SocksAndShoes caption="Putting on: first the sock, then the shoe. Taking off undoes the steps in the reverse order: first the shoe, then the sock." />
+
+:::proposition[Undoing in reverse order]{#inverse-composite}
+
+Let $$F$$ and $$G$$ be maps with inverses $$F^{-1}$$ and $$G^{-1}$$. Then first $$F$$, then $$G$$
+has an inverse, which is first $$G^{-1}$$, then $$F^{-1}$$:
+
+```math
+(G \circ F)^{-1} = F^{-1} \circ G^{-1}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Inverse_function#Properties"}
+
+By :ref{#inverse-map}, two things need checking. Grouping doesn't matter
+(:ref{#composite-associative}), so the brackets can be moved freely.
+
+**Undo after the move.** First $$F$$, then $$G$$, then $$G^{-1}$$, then $$F^{-1}$$:
+
+```math
+(F^{-1} \circ G^{-1}) \circ (G \circ F) = F^{-1} \circ (G^{-1} \circ G) \circ F = F^{-1} \circ I \circ F = F^{-1} \circ F = I
+```
+
+**Move after the undo.** First $$G^{-1}$$, then $$F^{-1}$$, then $$F$$, then $$G$$:
+
+```math
+(G \circ F) \circ (F^{-1} \circ G^{-1}) = G \circ (F \circ F^{-1}) \circ G^{-1} = G \circ I \circ G^{-1} = G \circ G^{-1} = I
+```
+
+Both come out as $$I$$, so $$F^{-1} \circ G^{-1}$$ is the inverse of $$G \circ F$$.
+
+:::
+
+The order matters. Take a point $$O$$, let $$G$$ be the quarter turn anticlockwise about $$O$$, and
+let $$T$$ be the slide $$4$$ units to the right. First turn, then slide sends $$O$$ to the point
+$$O'$$, $$4$$ to the right of $$O$$, since the turn leaves its own centre where it is.
+
+- **The right undo**: slide back first, then turn back. The slide back takes $$O'$$ to $$O$$, and
+  turning about $$O$$ leaves it there. Home.
+- **The wrong undo**: turn back first, then slide back. Turning a quarter turn clockwise about $$O$$
+  takes $$O'$$ to the point $$4$$ below $$O$$, and sliding $$4$$ to the left takes that to a point
+  $$4$$ below and $$4$$ to the left of $$O$$. Not home.
+
+```plane
+point O 0 0 nw
+point O' 4 0 ne
+point X 0 -4 e
+point Y -4 -4 sw
+segment O O' color=blue
+segment O X color=orange dashed
+segment X Y color=orange dashed
+angle X O O' color=orange r=1.2
+caption "Undoing in the wrong order: turning back first sends O' to X, and sliding back then misses O"
+```
+
+## Undoing by repeating
+
+Some moves come back to the start if you repeat them. Four quarter turns make a whole turn, and a
+whole turn moves nothing. So a quarter turn can also be undone by doing three more quarter turns:
+three quarters plus the one already done make four. Repeating a move is written with powers, as on
+the [Combining moves](./combining-moves.mdx) page: $$F^2 = F \circ F$$, $$F^3 = F \circ F \circ F$$,
+and $$F^0 = I$$ (:ref{#map-powers}).
+
+:::proposition[Undoing by repeating]{#inverse-by-repeating}
+
+Let $$F$$ be a map and $$n$$ a positive integer with $$F^n = I$$. Then $$F$$ has an inverse, and
+
+```math
+F^{-1} = F^{n - 1}
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Inverse_Element_is_Power_of_Order_Less_1"}
+
+Doing $$F$$ once and then $$n - 1$$ more times is doing it $$n$$ times, in either order, since the
+grouping doesn't matter (:ref{#composite-associative}):
+
+```math
+F^{n - 1} \circ F = F^n = I \qquad \text{and} \qquad F \circ F^{n - 1} = F^n = I
+```
+
+So $$F^{n - 1}$$ undoes $$F$$ from both sides, which is what :ref{#inverse-map} asks.
+
+:::
+
+:::example[A fifth of a turn]
+
+Let $$G$$ be the turn about $$O$$ by $$72^\circ$$. Five of them make $$5 \cdot 72 = 360$$ degrees, a
+whole turn, so $$G^5 = I$$. By :ref{#inverse-by-repeating}, $$G^{-1} = G^4$$, the turn by
+$$4 \cdot 72 = 288$$ degrees. This agrees with undoing a turn directly: $$G^{-1} = G_{-72}$$, and
+$$-72 + 360 = 288$$, so $$G_{-72} = G_{288}$$ (:ref{#rotation-whole-turns}).
+
+A flip fits the same pattern with $$n = 2$$: $$R^2 = I$$, so $$R^{-1} = R^1 = R$$, as found above.
+
+:::
+
+Undoing can be repeated too. Undoing $$F$$ twice is written $$F^{-2} = F^{-1} \circ F^{-1}$$, and in
+general $$F^{-k}$$ means doing $$F^{-1}$$ a total of $$k$$ times. A slide $$5$$ cm to the right,
+undone three times, is a slide $$15$$ cm to the left.
+
+## Cancelling
+
+With numbers, you can cancel a non-zero factor from both sides of an equation
+(:ref{#numbers/cancel-product}), because it can be undone by multiplying by its inverse. Moves that
+can be undone cancel in the same way. If doing $$F$$ after $$G$$ gives the same result as doing
+$$F$$ after $$H$$, then $$G$$ and $$H$$ were the same move all along, because $$F$$ can be taken off
+again.
+
+:::proposition[Cancelling a map]{#cancel-map}
+
+Let $$F$$ be a map with an inverse, and let $$G$$ and $$H$$ be maps.
+
+1. If $$F \circ G = F \circ H$$, then $$G = H$$.
+2. If $$G \circ F = H \circ F$$, then $$G = H$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Cancellation_Laws"}
+
+1. Do $$F^{-1}$$ after both sides. Regrouping (:ref{#composite-associative}),
+
+   ```math
+   G = I \circ G = (F^{-1} \circ F) \circ G = F^{-1} \circ (F \circ G) = F^{-1} \circ (F \circ H) = (F^{-1} \circ F) \circ H = H
+   ```
+
+2. This time do $$F^{-1}$$ before both sides:
+
+   ```math
+   G = G \circ (F \circ F^{-1}) = (G \circ F) \circ F^{-1} = (H \circ F) \circ F^{-1} = H \circ (F \circ F^{-1}) = H
+   ```
+
+:::
+
+## Three points decide an isometry
+
+On the [What an isometry keeps](./isometries.mdx) page, pinning a sheet at three points that don't
+lie on one line held it completely still (:ref{#three-fixed-points}). Here is the same idea from the
+other side. Suppose you only know where an isometry sends three corners of a triangle: a photo app
+tells you where three corners of a picture ended up, say. That is already enough to know where every
+other point went. Two isometries that agree on three such points agree everywhere.
+
+:::corollary[Three points decide an isometry]{#three-points-decide}
+
+Let $$P$$, $$Q$$ and $$M$$ be three points not on one line, and let $$F$$ and $$G$$ be isometries
+with
+
+```math
+F(P) = G(P), \qquad F(Q) = G(Q), \qquad F(M) = G(M)
+```
+
+If $$F$$ has an inverse, then $$F = G$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_plane_isometry#Three_mirrors_suffice"}
+
+**Step 1: undo $$F$$ after $$G$$.** Consider first $$G$$, then $$F^{-1}$$, the map
+$$F^{-1} \circ G$$. It is an isometry, since $$F^{-1}$$ is one (:ref{#inverse-isometry}) and a
+composite of isometries is one (:ref{#composite-isometry}).
+
+**Step 2: it fixes the three points.** $$G$$ sends $$P$$ to $$G(P) = F(P)$$, and $$F^{-1}$$ sends
+$$F(P)$$ back to $$P$$. So $$F^{-1} \circ G$$ leaves $$P$$ where it is, and in the same way it
+leaves $$Q$$ and $$M$$ where they are.
+
+**Step 3: so it is the identity.** An isometry that fixes three points not on one line moves nothing
+(:ref{#three-fixed-points}), so $$F^{-1} \circ G = I$$. Doing $$F$$ after both sides,
+
+```math
+G = I \circ G = (F \circ F^{-1}) \circ G = F \circ (F^{-1} \circ G) = F \circ I = F
+```
+
+:::
+
+:::example[Recognising a half turn]
+
+Let $$PQMN$$ be a square with centre $$O$$, the corners in order around it, and let $$G$$ be the
+half turn about $$O$$. It swaps opposite corners: $$G(P) = M$$, $$G(Q) = N$$ and $$G(M) = P$$.
+
+Now suppose an isometry $$F$$ also sends $$P$$ to $$M$$, $$Q$$ to $$N$$ and $$M$$ to $$P$$. The
+points $$P$$, $$Q$$ and $$M$$ are three corners of a square, so they don't lie on one line. The half
+turn has an inverse, itself, since two half turns make a whole turn. So by
+:ref{#three-points-decide}, with the half turn in the role of the map that has an inverse, $$F$$ is
+the half turn. Without looking at any other point, you know $$F$$ sends $$N$$ to $$Q$$ and leaves
+$$O$$ fixed.
+
+:::
+
+On the [Every isometry is a slide, turn or flip](./classification.mdx) page it turns out that every
+isometry has an inverse, so the condition "if $$F$$ has an inverse" can then be dropped.
+
+## Exercises
+
+:::::accordion[Exercises on undoing moves, with solutions]
+
+::::exercise{#ex-undoing-moves-name-inverse}
+
+Describe the inverse of each move, and say whether it is a slide, a turn or a flip:
+
+1. the turn about $$O$$ by $$30^\circ$$
+2. the slide $$5$$ cm to the north
+3. the reflection in a line $$L$$
+4. the half turn about $$O$$
+5. the identity $$I$$
+
+:::solution
+
+1. The turn about $$O$$ by $$-30^\circ$$, that is $$30^\circ$$ clockwise, which is the same as
+   $$330^\circ$$ anticlockwise. It is a turn (:ref{#rotation}).
+2. The slide $$5$$ cm to the south, by the reverse arrow. It is a slide.
+3. The reflection in $$L$$ itself, since flipping twice moves nothing (:ref{#reflection-twice}). It
+   is a flip.
+4. The half turn about $$O$$ itself: $$G_{-180} = G_{-180 + 360} = G_{180}$$
+   (:ref{#rotation-whole-turns}). It is a turn.
+5. The identity itself, since $$I \circ I = I$$. It counts as a slide by the zero arrow, and as a
+   turn by $$0^\circ$$.
+
+:::
+
+::::
+
+::::exercise{#ex-undoing-moves-powers}
+
+1. A move $$F$$ satisfies $$F^6 = I$$. Write $$F^{-1}$$ as a power of $$F$$.
+2. If $$F$$ is the turn about $$O$$ by $$60^\circ$$, check that $$F^6 = I$$, and say which turn your
+   answer to part 1 is.
+3. Another move $$H$$ satisfies $$H^4 = I$$ and $$H^6 = I$$. Show that $$H^2 = I$$.
+
+:::solution
+
+1. By :ref{#inverse-by-repeating} with $$n = 6$$, $$F^{-1} = F^5$$.
+2. Six turns of $$60^\circ$$ make $$6 \cdot 60 = 360$$ degrees, a whole turn, which moves nothing
+   (:ref{#rotation-rules}). So $$F^6 = I$$. The inverse $$F^5$$ is the turn by $$5 \cdot 60 = 300$$
+   degrees, which is $$60^\circ$$ clockwise, since $$-60 + 360 = 300$$.
+3. Doing $$H$$ six times is doing it twice and then four more times: $$H^6 = H^4 \circ H^2$$
+   (:ref{#composite-associative}). So $$I = H^6 = H^4 \circ H^2 = I \circ H^2 = H^2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-undoing-moves-glide}
+
+A glide reflection $$F$$ is "first flip in a line $$L$$, then slide $$3$$ units along $$L$$"
+(:ref{#glide-reflection}). Footprints in sand are an example.
+
+1. Write $$F$$ with symbols, using $$R$$ for the flip and $$T$$ for the slide.
+2. Describe $$F^{-1}$$ in words, in the right order.
+
+:::solution
+
+1. First $$R$$, then $$T$$, so $$F = T \circ R$$ (:ref{#composite}).
+2. By :ref{#inverse-composite}, $$F^{-1} = R^{-1} \circ T^{-1}$$: first undo the slide, by sliding
+   $$3$$ units back along $$L$$ ($$T^{-1}$$), then undo the flip, by flipping in $$L$$ again
+   ($$R^{-1} = R$$). In words: slide $$3$$ units back along $$L$$, then flip in $$L$$. Walking the
+   footprints backwards does exactly this.
+
+:::
+
+::::
+
+::::exercise{#ex-undoing-moves-inverse-of-inverse}
+
+Let $$F$$ be a map with an inverse $$F^{-1}$$. Prove that $$F^{-1}$$ has an inverse, and that it is
+$$F$$.
+
+:::solution
+
+By :ref{#inverse-map}, $$F$$ is an inverse of $$F^{-1}$$ exactly when $$F \circ F^{-1} = I$$ and
+$$F^{-1} \circ F = I$$. These are the same two equations that say $$F^{-1}$$ is an inverse of $$F$$,
+listed the other way round, so they hold. By :ref{#inverse-map-unique}, $$F^{-1}$$ has only one
+inverse, so
+
+```math
+(F^{-1})^{-1} = F
+```
+
+In words: undoing the undo is doing the move again.
+
+:::
+
+::::
+
+::::exercise{#ex-undoing-moves-three-steps}
+
+Let $$F$$, $$G$$ and $$H$$ be maps with inverses. Show that first $$F$$, then $$G$$, then $$H$$ has
+an inverse, and find it.
+
+:::solution
+
+First $$F$$, then $$G$$, then $$H$$ is $$H \circ (G \circ F)$$. Apply :ref{#inverse-composite}
+twice. First, $$G \circ F$$ has inverse $$F^{-1} \circ G^{-1}$$. Then $$H$$ after $$G \circ F$$ has
+inverse
+
+```math
+(H \circ (G \circ F))^{-1} = (G \circ F)^{-1} \circ H^{-1} = F^{-1} \circ G^{-1} \circ H^{-1}
+```
+
+So you undo $$H$$ first, then $$G$$, then $$F$$: the last step comes off first, as with socks and
+shoes.
+
+:::
+
+::::
+
+::::exercise{#ex-undoing-moves-cancel}
+
+Let $$F$$ be a map with an inverse, and let $$G$$ be a map with $$F \circ G = F$$. Show that
+$$G = I$$.
+
+:::solution
+
+Doing nothing before $$F$$ changes nothing, so $$F = F \circ I$$. Then the given equation says
+$$F \circ G = F \circ I$$. Cancelling $$F$$ from the left (:ref{#cancel-map}, part 1) gives
+$$G = I$$.
+
+:::
+
+::::
+
+::::exercise{#ex-undoing-moves-constant}
+
+Let $$C$$ be the constant map that sends every point to one point $$O$$. Prove that $$C$$ has no
+inverse.
+
+:::solution
+
+Suppose $$C$$ had an inverse $$G$$ (:ref{#basic-proofs/contradiction}). Take two different points
+$$P$$ and $$Q$$. Then $$C(P) = O = C(Q)$$, so
+
+```math
+P = G(C(P)) = G(O) = G(C(Q)) = Q
+```
+
+using $$G \circ C = I$$ twice. This contradicts $$P \ne Q$$, so $$C$$ has no inverse. The picture
+behind it: once two points have landed in the same place, no undo can know which one goes where.
+
+:::
+
+::::
+
+:::::

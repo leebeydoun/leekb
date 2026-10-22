@@ -40,6 +40,39 @@ import {
   ShortestDistance,
 } from "./interactive/bisector-distances";
 import { Circumcircle } from "./interactive/circumcircle";
+import { FrameBracing, TrussBridge } from "./isometry-illustrations/congruence";
+import {
+  GlideFootprints,
+  Kaleidoscope,
+} from "./isometry-illustrations/combining-moves";
+import { TracingPaper } from "./isometry-illustrations/maps";
+import { HingedDoor, PinnedSheet } from "./isometry-illustrations/isometries";
+import {
+  ConveyorBelt,
+  HalfTurnCard,
+} from "./isometry-illustrations/slides-and-turns";
+import {
+  RiverWalk,
+  BilliardBank,
+  MirrorLight,
+} from "./isometry-illustrations/reflections";
+import { SocksAndShoes } from "./isometry-illustrations/undoing-moves";
+import {
+  MattressPositions,
+  Snowflake,
+  FanAndHubcap,
+} from "./isometry-illustrations/symmetry";
+import { DilationZoom } from "./interactive/dilation-zoom";
+import { TranslationSlide } from "./interactive/translation-slide";
+import { RotationTurn } from "./interactive/rotation-turn";
+import { MirrorLine } from "./interactive/mirror-line";
+import { RiverRoute } from "./interactive/river-route";
+import { RigidOrNot } from "./interactive/rigid-or-not";
+import { OrderMatters } from "./interactive/order-matters";
+import { TwoMirrors } from "./interactive/two-mirrors";
+import { PutItBack } from "./interactive/put-it-back";
+import { TriangleFromSides } from "./interactive/triangle-from-sides";
+import { SquareSymmetries } from "./interactive/square-symmetries";
 import { Quiz } from "./quiz";
 import {
   Conjecture,
@@ -116,4 +149,31 @@ export const mdxComponents = {
   BisectorDistances,
   ShortestDistance,
   Circumcircle,
+  FrameBracing,
+  TrussBridge,
+  GlideFootprints,
+  Kaleidoscope,
+  TracingPaper,
+  HingedDoor,
+  PinnedSheet,
+  ConveyorBelt,
+  HalfTurnCard,
+  RiverWalk,
+  BilliardBank,
+  MirrorLight,
+  SocksAndShoes,
+  MattressPositions,
+  Snowflake,
+  FanAndHubcap,
+  DilationZoom,
+  TranslationSlide,
+  RotationTurn,
+  MirrorLine,
+  RiverRoute,
+  RigidOrNot,
+  OrderMatters,
+  TwoMirrors,
+  PutItBack,
+  TriangleFromSides,
+  SquareSymmetries,
 };

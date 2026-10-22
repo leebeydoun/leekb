@@ -9,15 +9,15 @@ import { Figure } from "./figure";
  * do.
  */
 
-const WOOD = "#d4a373";
-const WOOD_DARK = "#8b5e34";
-const STEEL = "#6b7280";
-const STEEL_LIGHT = "#d1d5db";
-const BLUE = "#3b82f6";
-const PURPLE = "#a855f7";
-const PENCIL = "#1f2937";
+export const WOOD = "#d4a373";
+export const WOOD_DARK = "#8b5e34";
+export const STEEL = "#6b7280";
+export const STEEL_LIGHT = "#d1d5db";
+export const BLUE = "#3b82f6";
+export const PURPLE = "#a855f7";
+export const PENCIL = "#1f2937";
 
-function Words({
+export function Words({
   x,
   y,
   children,
@@ -50,7 +50,7 @@ function Words({
 }
 
 /** a line's name, such as L₁, with the letter in italics */
-const LineName = ({ sub }: { sub?: string }) => (
+export const LineName = ({ sub }: { sub?: string }) => (
   <>
     <tspan fontStyle="italic">L</tspan>
     {sub && (
@@ -62,7 +62,7 @@ const LineName = ({ sub }: { sub?: string }) => (
 );
 
 /** a measuring line with an arrow head at each end, from (x, y1) down to (x, y2) */
-function Measure({
+export function Measure({
   x,
   y1,
   y2,
@@ -103,7 +103,7 @@ function Measure({
   );
 }
 
-function Svg({
+export function Svg({
   width,
   height,
   label,
@@ -369,7 +369,7 @@ export function CarpenterBoard({ caption }: { caption?: string }) {
   );
 }
 
-const ORANGE = "#f97316";
+export const ORANGE = "#f97316";
 
 /**
  * A clock at two o'clock. The narrow angle between its hands is shaded, and an arc marks the other
@@ -495,15 +495,15 @@ export function ClockHands({ caption }: { caption?: string }) {
   );
 }
 
-const CARD = "#fcd34d";
-const CARD_EDGE = "#b45309";
-const CARD_TWO = "#6ee7b7";
-const CARD_TWO_EDGE = "#047857";
+export const CARD = "#fcd34d";
+export const CARD_EDGE = "#b45309";
+export const CARD_TWO = "#6ee7b7";
+export const CARD_TWO_EDGE = "#047857";
 
-type Pt = readonly [number, number];
+export type Pt = readonly [number, number];
 
 /** a triangle cut from card, with a small shadow so it reads as an object lying on the page */
-function CardTriangle({
+export function CardTriangle({
   corners,
   fill,
   edge,
@@ -531,7 +531,7 @@ function CardTriangle({
 }
 
 /** the small square that marks a right angle at `at`, with its arms along `u` and `v` */
-function Corner({ at, u, v }: { at: Pt; u: Pt; v: Pt }) {
+export function Corner({ at, u, v }: { at: Pt; u: Pt; v: Pt }) {
   const s = 12;
   const p = (a: number, b: number) =>
     `${at[0] + u[0] * a + v[0] * b},${at[1] + u[1] * a + v[1] * b}`;
@@ -645,12 +645,12 @@ export function CardTriangles({ caption }: { caption?: string }) {
   );
 }
 
-const CARDBOARD = "#e9c99a";
-const CARDBOARD_EDGE = "#b7804a";
-const PENCIL_YELLOW = "#facc15";
-const PENCIL_STRIPE = "#eab308";
-const ERASER = "#f472b6";
-const FERRULE = "#cbd5e1";
+export const CARDBOARD = "#e9c99a";
+export const CARDBOARD_EDGE = "#b7804a";
+export const PENCIL_YELLOW = "#facc15";
+export const PENCIL_STRIPE = "#eab308";
+export const ERASER = "#f472b6";
+export const FERRULE = "#cbd5e1";
 
 type Pt3 = readonly [number, number, number];
 
@@ -998,13 +998,13 @@ function FlatTriangle({
   );
 }
 
-const PAPER = "#fbfaf7";
-const PAPER_BACK = "#ece6d8";
-const PAPER_EDGE = "#c9c3b8";
-const CREASE = "#a8a29e";
+export const PAPER = "#fbfaf7";
+export const PAPER_BACK = "#ece6d8";
+export const PAPER_EDGE = "#c9c3b8";
+export const CREASE = "#a8a29e";
 
 /** a name written on the paper itself: dark ink, since the sheet is light in either theme */
-function Ink({
+export function Ink({
   x,
   y,
   children,
@@ -1226,13 +1226,13 @@ export function PaperFold({ caption }: { caption?: string }) {
   );
 }
 
-const GRASS = "#8cc46f";
-const GRASS_DARK = "#4d7c3a";
-const SHIRT = "#2563eb";
-const HAIR = "#5b3a29";
+export const GRASS = "#8cc46f";
+export const GRASS_DARK = "#4d7c3a";
+export const SHIRT = "#2563eb";
+export const HAIR = "#5b3a29";
 
 /** a word written over the grass: dark, with a pale halo, the same in either theme */
-function FieldWords({
+export function FieldWords({
   x,
   y,
   anchor = "middle",

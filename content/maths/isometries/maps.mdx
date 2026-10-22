@@ -1,0 +1,350 @@
+---
+title: Maps of the plane
+description:
+  Moving every point of the plane at once, the image of a point and of a shape, and fixed points.
+---
+
+When a game slides a character across the screen, turns a car on a track or zooms out to show the
+whole map, it does the same thing to every point of the picture at once. Each point is sent to a new
+place by one rule. This guide gives that idea a name, a map of the plane, and sets up the few words
+the rest of the chapter needs: the image of a point and of a shape, when two maps count as the same,
+and fixed points. It ends with the zoom, a map that changes sizes, which is exactly what the
+following guides rule out.
+
+## Moving a sheet of tracing paper
+
+Draw a letter F on a page, lay a sheet of tracing paper over it and trace the F. Now move the sheet.
+You can slide it across the page, push a pin through it and turn it, or lift it and put it back the
+other way up. Each time, every point of the page has a new position: the place where its traced copy
+has ended up.
+
+<TracingPaper caption="The three ways to move a sheet of tracing paper: slide it, turn it about a pin, or flip it over. The blue F shows where each point of the page has gone." />
+
+This is the picture to keep in mind for the whole chapter. A move of the sheet doesn't treat one
+point differently from another: it sends every point somewhere, all at once. The rule that says
+where each point goes is called a map.
+
+## Maps
+
+A map is a rule with one job: for each point of the plane, it names one point where that point ends
+up. It doesn't have to come from tracing paper. "Send every point to the point $$2$$ cm to its
+right" is a map, and so is "send every point to the corner of the page".
+
+:::definition[Map of the plane]{#map}
+
+A **map** $$F$$ of the plane is a rule that sends each point $$P$$ of the plane to exactly one
+point, written $$F(P)$$ and read "$$F$$ of $$P$$". The point $$F(P)$$ is the **image** of $$P$$, and
+you also say that $$F$$ **sends** $$P$$ to $$F(P)$$. A map is also called a **mapping**.
+
+:::
+
+Two things are required of a map, and one thing is not:
+
+- **Every point goes somewhere**: the rule can't leave any point out
+- **Each point goes to one place**: a point can't be sent to two places at once
+- **Points may share a destination**: two different points are allowed to land on the same point
+
+The image is often written with a prime, $$P' = F(P)$$, when it's clear which map is meant. So
+$$P'$$ means "where $$P$$ ends up".
+
+:::example[Two maps that hardly move anything]
+
+**The identity.** The map that leaves every point where it is sends each point $$P$$ to $$P$$
+itself. It is called the **identity** and written $$I$$, so $$I(P) = P$$ for every point $$P$$. On
+the tracing paper, it is putting the sheet straight back where it was.
+
+**A constant map.** Fix a point $$O$$, and send every point of the plane to $$O$$. This is a map:
+every point goes to exactly one place, which happens to be the same place for all of them. It
+squashes the whole plane down to a single dot, which no sheet of paper can do.
+
+:::
+
+## The image of a shape
+
+A shape, such as a triangle, a circle or a letter F, is made of points. Moving the sheet moves every
+point of the traced shape, and together the moved points make a new shape. That new shape is the
+image of the old one.
+
+:::definition[Image of a shape]{#image}
+
+Let $$F$$ be a map and $$S$$ a set of points (:ref{#basic-proofs/set}). The **image** of $$S$$,
+written $$F(S)$$, is the set of all the images $$F(P)$$ for $$P$$ in $$S$$.
+
+:::
+
+```plane
+point P 0 0 sw
+point Q 3 0 se
+point M 0.5 2 nw
+point P' 4 1 sw
+point Q' 7 1 se
+point M' 4.5 3 nw
+polygon P Q M color=blue
+segment P Q
+segment Q M
+segment M P
+polygon P' Q' M' color=orange
+segment P' Q' color=orange
+segment Q' M' color=orange
+segment M' P' color=orange
+segment P P' color=muted dashed
+segment Q Q' color=muted dashed
+segment M M' color=muted dashed
+caption "A map that moves every point 4 to the right and 1 up sends the triangle PQM to the triangle P'Q'M'"
+```
+
+:::example[Images of shapes]
+
+- **The identity**: $$I(S) = S$$ for every shape $$S$$, since no point moves
+- **A constant map**: if $$F$$ sends every point to $$O$$, the image of any shape is the single
+  point $$O$$. A whole circle and a single dot have the same image.
+- **The map in the figure**: it sends every point $$4$$ to the right and $$1$$ up. The image of the
+  triangle $$PQM$$ is the triangle $$P'Q'M'$$, the same shape in a new place.
+
+:::
+
+## When two maps are the same
+
+Two different instructions can have the same result. "Turn the sheet a quarter turn to the left" and
+"turn it three quarter turns to the right" leave it in the same position. For a map, only the result
+matters: where each point ends up, not the words used to describe it.
+
+:::definition[Equal maps]{#map-equality}
+
+Two maps $$F$$ and $$G$$ are **equal**, written $$F = G$$, when $$F(P) = G(P)$$ for every point
+$$P$$ of the plane.
+
+:::
+
+So to show that two maps are equal, you check every point. To show that they are different, one
+point is enough: a point $$P$$ with $$F(P) \ne G(P)$$ is a counterexample
+(:ref{#basic-proofs/counterexample}).
+
+:::example[Same result, different descriptions]
+
+Fix two different points $$O$$ and $$Q$$. Let $$F$$ send every point to $$O$$, and let $$G$$ send
+every point to $$Q$$. Then $$F \ne G$$: at any point $$P$$ at all, $$F(P) = O$$ but $$G(P) = Q$$,
+and these are different points.
+
+On the other hand, turning the sheet a full turn about a pin and not moving it at all are two
+descriptions of one map, the identity. The [Slides and turns](./slides-and-turns.mdx) guide makes
+this exact.
+
+:::
+
+## Fixed points
+
+Push a pin through the tracing paper and turn the sheet. The point under the pin doesn't move, while
+every other point does. A point that a map leaves where it was is called a fixed point, and the
+fixed points of a map say a lot about what kind of map it is.
+
+:::definition[Fixed point]{#fixed-point}
+
+A point $$P$$ is a **fixed point** of a map $$F$$ when $$F(P) = P$$.
+
+:::
+
+:::example[Fixed points of the maps so far]
+
+- **The identity**: every point is fixed, since $$I(P) = P$$ for all $$P$$
+- **A constant map to $$O$$**: $$O$$ is fixed, since $$F(O) = O$$. No other point is: for
+  $$P \ne O$$, $$F(P) = O \ne P$$.
+- **The map in the figure above**: no point is fixed, since every point moves $$4$$ to the right
+
+:::
+
+The next guide meets the other moves of the sheet. A turn about a pin, by anything other than a
+whole number of full turns, fixes exactly the pin. A slide by any distance other than zero fixes no
+point at all.
+
+## Zooming: a map that changes sizes
+
+A photocopier set to $$200\%$$, a map drawn to scale and two fingers spreading a photo on a phone
+all do the same thing. Everything spreads out from a centre, and every length doubles, but the shape
+stays the same. The centre itself stays put, and every other point slides straight out along the
+line from the centre.
+
+:::definition[Dilation]{#dilation}
+
+Fix a point $$O$$ and a number $$r > 0$$. The **dilation** by $$r$$ about $$O$$ is the map that
+sends $$O$$ to itself and sends each other point $$P$$ to the point $$P'$$ on the ray $$OP$$
+(:ref{#distance-and-angles/ray}) with
+
+```math
+d(O, P') = r \cdot d(O, P)
+```
+
+It is also called a **zoom** or a **stretch** by $$r$$.
+
+:::
+
+There is exactly one such point $$P'$$. A ray starts at $$O$$ and runs on without end, and it has
+exactly one point at each distance from $$O$$. For distances up to $$d(O, P)$$, this is rule 2 of
+:ref{#distance-and-angles/segment-rules}, applied to the segment $$OP$$. For longer distances, it is
+taken from the picture of a ray that never stops.
+
+:::example[Zooming by 2 and by a half]
+
+Let $$P$$ be a point at distance $$3$$ from $$O$$.
+
+- **By 2**: the dilation by $$2$$ about $$O$$ sends $$P$$ to the point $$P'$$ on the ray $$OP$$ at
+  distance $$2 \cdot 3 = 6$$ from $$O$$. The point $$P$$ is the midpoint of $$OP'$$.
+- **By a half**: the dilation by $$\frac{1}{2}$$ sends $$P$$ to the point on the ray at distance
+  $$\frac{3}{2}$$, the midpoint of $$OP$$
+- **By 1**: the dilation by $$1$$ sends every point to the point on its own ray at its own distance,
+  which is the point itself. So it is the identity.
+
+For $$r \ne 1$$, the only fixed point is $$O$$: any other point $$P$$ ends up at distance
+$$r \cdot d(O, P) \ne d(O, P)$$ from $$O$$, so it has moved.
+
+:::
+
+<DilationZoom />
+
+The diagram shows something more: the distance between any two points of the flag is multiplied by
+$$r$$ too, not only distances from $$O$$. Proving that needs similar triangles, which come in a
+later chapter. For this chapter, what matters is that a zoom by anything other than $$1$$ changes
+distances. The maps that keep every distance are the moves of the tracing paper, and they are the
+subject of the rest of this chapter: [Slides and turns](./slides-and-turns.mdx),
+[Reflections](./reflections.mdx) and [What an isometry keeps](./isometries.mdx).
+
+## Exercises
+
+:::::accordion[Exercises on maps of the plane, with solutions]
+
+::::exercise{#ex-maps-fixed-points}
+
+Find every fixed point of each map:
+
+1. The dilation by $$3$$ about a point $$O$$
+2. The dilation by $$1$$ about $$O$$
+3. The map that sends every point to a fixed point $$Q$$
+4. The map that sends every point $$5$$ to the left
+
+:::solution
+
+1. **Only $$O$$.** The dilation fixes $$O$$ by definition (:ref{#dilation}). A point $$P \ne O$$
+   lands at distance $$3 \cdot d(O, P)$$ from $$O$$, which is not $$d(O, P)$$ since $$d(O, P) > 0$$,
+   so $$P$$ moves.
+2. **Every point.** The dilation by $$1$$ is the identity, so every point is fixed
+   (:ref{#fixed-point}).
+3. **Only $$Q$$.** The point $$Q$$ is sent to $$Q$$. Any other point $$P$$ is sent to $$Q \ne P$$.
+4. **No point.** Every point ends up $$5$$ away from where it was, so none stays put.
+
+:::
+
+::::
+
+::::exercise{#ex-maps-zoom-back}
+
+A point $$P$$ is at distance $$4$$ from $$O$$. First zoom by $$2$$ about $$O$$, then zoom the result
+by $$\frac{1}{2}$$ about $$O$$. Where does $$P$$ end up? What happens to every other point?
+
+:::solution
+
+The zoom by $$2$$ sends $$P$$ to the point $$P'$$ on the ray $$OP$$ at distance $$8$$ from $$O$$
+(:ref{#dilation}). The ray $$OP'$$ is the same ray as $$OP$$, so the zoom by $$\frac{1}{2}$$ sends
+$$P'$$ to the point of that ray at distance $$\frac{1}{2} \cdot 8 = 4$$. That point is $$P$$, since
+a ray has only one point at each distance from its start (:ref{#distance-and-angles/segment-rules}).
+So $$P$$ ends up back where it started.
+
+The same happens to every point $$X \ne O$$: its distance becomes $$2 \cdot d(O, X)$$ and then
+$$\frac{1}{2} \cdot 2 \cdot d(O, X) = d(O, X)$$, on the same ray. And $$O$$ never moves. So the two
+zooms together leave every point where it was: they undo each other.
+
+:::
+
+::::
+
+::::exercise{#ex-maps-two-constants}
+
+Let $$F$$ send every point to $$O$$, and let $$G$$ send every point to $$Q$$. For which points $$O$$
+and $$Q$$ is $$F = G$$?
+
+:::solution
+
+Exactly when $$O = Q$$. If $$O = Q$$, then $$F(P) = O = Q = G(P)$$ for every point $$P$$, so
+$$F = G$$ (:ref{#map-equality}). If $$O \ne Q$$, then at any point $$P$$, $$F(P) = O$$ and
+$$G(P) = Q$$ are different, so $$F \ne G$$.
+
+:::
+
+::::
+
+::::exercise{#ex-maps-zoom-equal}
+
+Show that the dilation by $$r$$ about $$O$$ and the dilation by $$s$$ about $$O$$ are equal maps
+exactly when $$r = s$$.
+
+:::solution
+
+If $$r = s$$, the two definitions are word for word the same, so the maps agree at every point.
+
+Now suppose $$r \ne s$$. Take any point $$P \ne O$$. The first dilation sends it to a point at
+distance $$r \cdot d(O, P)$$ from $$O$$, and the second to a point at distance $$s \cdot d(O, P)$$.
+Since $$d(O, P) > 0$$, these distances are different, so the two images are different points. One
+point where the maps disagree is enough to show they are not equal (:ref{#map-equality}).
+
+:::
+
+::::
+
+::::exercise{#ex-maps-midpoint-map}
+
+A map $$F$$ sends $$O$$ to itself and sends every other point $$P$$ to the midpoint of the segment
+$$OP$$. Which map from this guide is $$F$$?
+
+:::solution
+
+The dilation by $$\frac{1}{2}$$ about $$O$$. The midpoint $$M$$ of $$OP$$ lies on the segment
+$$OP$$, so on the ray $$OP$$, and $$d(O, M) = d(M, P)$$ (:ref{#distance-and-angles/midpoint}). These
+two distances add up to $$d(O, P)$$ (:ref{#distance-and-angles/segment-rules}), so
+$$d(O, M) = \frac{1}{2} d(O, P)$$. That is exactly where the dilation by $$\frac{1}{2}$$ sends $$P$$
+(:ref{#dilation}), and both maps fix $$O$$. So they agree at every point, and are equal
+(:ref{#map-equality}).
+
+:::
+
+::::
+
+::::exercise{#ex-maps-circle-image}
+
+Let $$C$$ be the circle with centre $$O$$ and radius $$2$$, and let $$F$$ be the dilation by $$3$$
+about $$O$$. Show that $$F(C)$$ is the circle with centre $$O$$ and radius $$6$$.
+
+:::solution
+
+The image $$F(C)$$ is the set of images of the points of $$C$$ (:ref{#image}). Two sets are equal
+when each is a subset of the other (:ref{#basic-proofs/set-equality}), so there are two things to
+show.
+
+**Every image is on the bigger circle.** A point $$P$$ of $$C$$ has $$d(O, P) = 2$$, so $$F(P)$$ is
+at distance $$3 \cdot 2 = 6$$ from $$O$$ (:ref{#dilation}).
+
+**Every point of the bigger circle is an image.** Let $$Q$$ be at distance $$6$$ from $$O$$. The ray
+$$OQ$$ has a point $$P$$ at distance $$2$$ from $$O$$ (:ref{#distance-and-angles/segment-rules}),
+and $$P$$ is on $$C$$. Then $$F(P)$$ is the point of the ray $$OP$$, which is the ray $$OQ$$, at
+distance $$6$$ from $$O$$. That point is $$Q$$, so $$Q = F(P)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-maps-identity}
+
+A map $$F$$ fixes every point of the plane. Show that $$F$$ is the identity. Then give a map, other
+than the identity, whose only fixed point is a given point $$O$$.
+
+:::solution
+
+Every point is fixed, so $$F(P) = P = I(P)$$ for every point $$P$$. So $$F = I$$
+(:ref{#map-equality}).
+
+For the second part, the dilation by $$2$$ about $$O$$ works: it fixes $$O$$, and every other point
+moves to twice its distance from $$O$$. The constant map to $$O$$ works too.
+
+:::
+
+::::
+
+:::::

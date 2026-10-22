@@ -1,0 +1,671 @@
+---
+title: What an isometry keeps
+description: Moves that keep every distance, what else they keep, and how few pins hold one still.
+---
+
+A robot arm in a factory picks up a part, swings it round and sets it down in a new place. Nobody
+needs the part to be in the same place, but everyone needs it to be the same part: the holes the
+same distance apart, the edges still straight, the corners still square. The slides, turns and flips
+of the earlier guides all behave like this, while a zoom does not. This guide picks out the one
+property they share, keeping every distance, and names the moves that have it **isometries**. It
+then shows how much follows from that one property: straight lines stay straight, square corners
+stay square, and angles and areas don't change. It ends with a fact that may be unexpected: pin down
+three points and the whole plane is held still.
+
+## Moves that keep distances
+
+Lay a sheet of tracing paper over the page and mark two dots on it. Slide the sheet, turn it about a
+pin, or lift it and flip it over, and then measure between the dots again. The distance is the same,
+because the paper doesn't stretch. A photocopier set to zoom works differently: it moves every point
+too, but the dots end up further apart. The difference is the whole point of this guide, so try the
+four moves below and compare the side lengths.
+
+<RigidOrNot />
+
+:::definition[Isometry]{#isometry}
+
+A map $$F$$ of the plane (:ref{#map}) is an **isometry** if it keeps every distance: for every two
+points $$P$$ and $$Q$$,
+
+```math
+d\big(F(P), F(Q)\big) = d(P, Q)
+```
+
+In words: wherever $$F$$ sends $$P$$ and $$Q$$, their images are exactly as far apart as $$P$$ and
+$$Q$$ were. The name comes from Greek: "iso" means equal and "metry" means measure.
+
+:::
+
+The moves of the earlier guides are the main examples. That they keep distances matches the picture
+of tracing paper, and it is taken as given here.
+
+:::remark[Slides, turns and flips keep distances]{#basic-isometries}
+
+These maps are isometries:
+
+1. **Slides**: every translation (:ref{#translation})
+2. **Turns**: every rotation (:ref{#rotation})
+3. **Flips**: every reflection in a line (:ref{#reflection}) and every reflection through a point
+   (:ref{#point-reflection})
+
+These are taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Euclidean_plane_isometry#Informal_discussion"}
+
+:::
+
+:::example[Two maps that are not isometries]
+
+**A zoom.** Take the dilation by $$2$$ about a point $$O$$ (:ref{#dilation}), and two points $$P$$
+and $$Q$$ that are $$3$$ apart. Their images are $$6$$ apart, since the zoom doubles every distance.
+So the zoom is not an isometry. In fact a single pair of points is enough to rule a map out.
+
+**Squashing to a point.** Take the map that sends every point to one point $$O$$. Two points $$3$$
+apart both land on $$O$$, and their images are $$0$$ apart. So this map is not an isometry either.
+
+:::
+
+The squash fails in a telling way: it sends two different points to the same place. An isometry
+never does that, since the two images must be as far apart as the points were.
+
+:::proposition[Different points stay different]{#isometry-distinct}
+
+Let $$F$$ be an isometry. If $$P \neq Q$$, then $$F(P) \neq F(Q)$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Isometry#Definition"}
+
+Since $$P \neq Q$$, the distance $$d(P, Q)$$ is not $$0$$
+(:ref{#distance-and-angles/distance-rules}, rule 1). The isometry keeps it, so
+$$d\big(F(P), F(Q)\big) = d(P, Q)$$ is not $$0$$ either. By the same rule, $$F(P)$$ and $$F(Q)$$ are
+different points.
+
+:::
+
+## Segments and lines
+
+A straight stick drawn on tracing paper is still straight after you slide, turn or flip the sheet.
+The aim now is to see why from distances alone, since that is all an isometry promises. The key is
+that "being on a segment" can be said with distances. A point $$X$$ lies on the segment $$PM$$
+exactly when the trip from $$P$$ to $$M$$ through $$X$$ is no longer than the direct trip: the two
+short distances add up to the long one. An isometry keeps all three distances, so it keeps that
+equation, and so it keeps $$X$$ on the segment.
+
+```plane
+point P 0 0 sw
+point X 2 0.8 s
+point M 5 2 se
+point P' 7 3 w
+point X' 7.86 1.08 w
+point M' 9.15 -1.6 se
+segment P M
+segment P' M' color=blue
+text 2.5 2.4 "d(P, X) + d(X, M) = d(P, M)"
+caption "X lies on PM because its two distances add up to d(P, M); the images satisfy the same equation"
+```
+
+:::theorem[Segments go to segments]{#isometry-segments}
+
+Let $$F$$ be an isometry and $$PM$$ a segment, with images $$P' = F(P)$$ and $$M' = F(M)$$. Then
+$$F$$ sends the segment $$PM$$ onto the segment $$P'M'$$:
+
+1. **Nothing leaves**: every point of $$PM$$ lands on $$P'M'$$
+2. **Nothing is missed**: every point of $$P'M'$$ is the image of a point of $$PM$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Triangle_inequality#Euclidean_geometry"}
+
+If $$P = M$$, both segments are single points and there is nothing to show, so take $$P \neq M$$.
+Then $$P' \neq M'$$ by :ref{#isometry-distinct}.
+
+**Nothing leaves.** Let $$X$$ be a point of the segment $$PM$$, and write $$X' = F(X)$$. By rule 1
+of :ref{#distance-and-angles/segment-rules},
+
+```math
+d(P, X) + d(X, M) = d(P, M)
+```
+
+The isometry keeps each of these three distances, so the same equation holds for the images:
+
+```math
+d(P', X') + d(X', M') = d(P', M')
+```
+
+By the same rule, read the other way, $$X'$$ lies on the segment $$P'M'$$.
+
+**Nothing is missed.** Let $$Y$$ be a point of the segment $$P'M'$$, and let $$c = d(P', Y)$$. Since
+$$d(P', M') = d(P, M)$$, the number $$c$$ is between $$0$$ and $$d(P, M)$$. By rule 2 of
+:ref{#distance-and-angles/segment-rules}, the segment $$PM$$ has a point $$X$$ with $$d(P, X) = c$$.
+Its image $$X'$$ lies on $$P'M'$$ by the first part, and $$d(P', X') = d(P, X) = c$$. Rule 2 again
+says that only one point of $$P'M'$$ is at distance $$c$$ from $$P'$$, and $$Y$$ is such a point, so
+$$X' = Y$$.
+
+:::
+
+Lines need one more fact. A segment stops at its two ends, but a line runs on without end in both
+directions: however far you go along it from a point, there are points of the line that far away on
+either side. The earlier rules don't state this, and the proof below takes it from the picture of a
+line. With it, the result for segments carries over to whole lines.
+
+:::corollary[Lines go to lines]{#isometry-lines}
+
+Let $$F$$ be an isometry and $$P \neq M$$. Then $$F$$ sends the line $$PM$$ onto the line $$P'M'$$
+through the images: every point of the line $$PM$$ lands on the line $$P'M'$$, and every point of
+the line $$P'M'$$ is the image of a point of the line $$PM$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Triangle_inequality#Euclidean_geometry"}
+
+**Nothing leaves.** Let $$X$$ be a point of the line $$PM$$ other than $$P$$ and $$M$$. Of three
+different points on one line, one lies between the other two (rule 3 of
+:ref{#distance-and-angles/segment-rules}). Whichever it is, its two distances to the others add up
+to the third distance, and the isometry keeps that equation. So among $$X'$$, $$P'$$ and $$M'$$, the
+same point lies on the segment joining the other two. In every case the three images lie on one
+line, and the only line through $$P'$$ and $$M'$$ is the line $$P'M'$$
+(:ref{#distance-and-angles/line-rules}, rule 1). So $$X'$$ is on it.
+
+**Nothing is missed.** Let $$Y$$ be a point of the line $$P'M'$$, and pick a number $$D$$ bigger
+than $$d(P', Y)$$. The line $$PM$$ runs on without end, so it has points $$A$$ and $$B$$ on either
+side of $$P$$ with $$d(A, P) = d(P, B) = D$$. Then $$P$$ is on the segment $$AB$$, so
+$$d(A, B) = 2D$$ by rule 1 of :ref{#distance-and-angles/segment-rules}. Their images $$A'$$ and
+$$B'$$ lie on the line $$P'M'$$, with $$d(A', B') = 2D$$ and $$P'$$ on the segment $$A'B'$$.
+
+Suppose $$Y$$ were not on the segment $$A'B'$$. Then one of $$A'$$ and $$B'$$, say $$A'$$, lies
+between $$Y$$ and the other, so $$d(Y, B') = d(Y, A') + d(A', B') \ge 2D$$. But by the triangle
+inequality, $$d(Y, B') \le d(Y, P') + d(P', B') < D + D = 2D$$. This is impossible
+(:ref{#basic-proofs/contradiction}), so $$Y$$ lies on the segment $$A'B'$$. By
+:ref{#isometry-segments}, $$Y$$ is the image of a point of the segment $$AB$$, which is part of the
+line $$PM$$.
+
+:::
+
+## Right angles and parallel lines
+
+A carpenter's square corner, the corner of a tile, the corner of a page: move any of them without
+bending it and the corner is still square. To prove this from distances, describe a square corner
+with distances. The previous chapter already did: a point is on the perpendicular bisector of $$AB$$
+exactly when it is as far from $$A$$ as from $$B$$
+(:ref{#distance-and-angles/perpendicular-bisector-rule}). So two lines that cross square on can be
+seen as a segment and its perpendicular bisector, and an isometry keeps "as far from $$A$$ as from
+$$B$$".
+
+```plane
+point A -3 0 s
+point O 0 0 sw
+point B 3 0 s
+point X 0 2.5 e
+line A B color=muted extend=0.6
+line O X color=purple extend=0.6
+segment X A color=blue dashed
+segment X B color=blue dashed
+right B O X color=purple
+ticks A O 1
+ticks O B 1
+text 3.9 0.4 "L"
+text 0.4 3.5 "K"
+caption "K crosses L square on at O, so K is the perpendicular bisector of AB, and every point X of K is as far from A as from B"
+```
+
+:::proposition[Right angles are kept]{#isometry-perpendicular}
+
+Let $$F$$ be an isometry, and let $$K$$ and $$L$$ be perpendicular lines. Then their images $$F(K)$$
+and $$F(L)$$ are perpendicular lines.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Bisection#Perpendicular_line_segment_bisector"}
+
+The images are lines by :ref{#isometry-lines}. It remains to show that they cross square on.
+
+**Describe the corner with distances.** Let $$O$$ be the point where $$K$$ and $$L$$ cross. Pick two
+points $$A$$ and $$B$$ of $$L$$ on either side of $$O$$, each at distance $$1$$ from it. Then $$O$$
+is the midpoint of $$AB$$, and $$K$$ is the line through $$O$$ perpendicular to $$AB$$: it is the
+perpendicular bisector of $$AB$$ (:ref{#distance-and-angles/perpendicular-bisector}).
+
+**Move it.** The image $$F(L)$$ is the line $$A'B'$$. The image $$O'$$ lies on the segment $$A'B'$$
+(:ref{#isometry-segments}) at distance $$1$$ from both ends, so $$O'$$ is the midpoint of $$A'B'$$.
+Now take any point $$X$$ of $$K$$. It is as far from $$A$$ as from $$B$$
+(:ref{#distance-and-angles/perpendicular-bisector-rule}), and the isometry keeps both distances:
+
+```math
+d(X', A') = d(X, A) = d(X, B) = d(X', B')
+```
+
+So $$X'$$ lies on the perpendicular bisector of $$A'B'$$, by the same theorem.
+
+**Compare the lines.** Every point of the line $$F(K)$$ is the image of a point of $$K$$, so the
+whole line $$F(K)$$ lies on the perpendicular bisector of $$A'B'$$. Two lines that share two
+different points are the same line (:ref{#distance-and-angles/line-rules}, rule 1), so $$F(K)$$ is
+the perpendicular bisector of $$A'B'$$. It crosses the line $$A'B'$$, which is $$F(L)$$, square on.
+
+:::
+
+Parallel lines follow at once, because two lines are parallel when both are square to the same third
+line.
+
+:::corollary[Parallel lines stay parallel]{#isometry-parallel}
+
+Let $$F$$ be an isometry, and let $$K$$ and $$L$$ be parallel lines. Then $$F(K)$$ and $$F(L)$$ are
+parallel.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Perpendicular#In_relationship_to_parallel_lines"}
+
+Pick a point of $$K$$ and draw the line $$N$$ through it perpendicular to $$K$$
+(:ref{#distance-and-angles/perpendicular-rules}, rule 1). Since $$L$$ is parallel to $$K$$, the line
+$$N$$ is perpendicular to $$L$$ as well (rule 2 of the same rules). By
+:ref{#isometry-perpendicular}, the line $$F(N)$$ is perpendicular to both $$F(K)$$ and $$F(L)$$. Two
+lines perpendicular to the same line are parallel
+(:ref{#distance-and-angles/perpendiculars-parallel}), so $$F(K)$$ and $$F(L)$$ are parallel.
+
+:::
+
+:::example[A rectangle stays a rectangle]
+
+Let $$ABCD$$ be a rectangle with $$d(A, B) = 5$$ and $$d(B, C) = 3$$
+(:ref{#distance-and-angles/rectangle}), and let $$F$$ be any isometry. Each side lands on a segment
+of the same length (:ref{#isometry-segments}), so the image has sides $$5$$, $$3$$, $$5$$ and $$3$$.
+Each side was perpendicular to the two sides next to it, and right angles are kept
+(:ref{#isometry-perpendicular}). So $$A'B'C'D'$$ is again a rectangle, with the same side lengths
+and so the same area, $$5 \cdot 3 = 15$$.
+
+:::
+
+## Area and angles
+
+Slide a rug across a room, turn it, or flip it over, and it covers exactly as much floor as before.
+That is the picture behind the next fact, which is taken as given. It is what you would expect: an
+isometry carries every small square of a shape to a small square of the same size.
+
+:::remark[Isometries keep area]{#isometry-area}
+
+Let $$F$$ be an isometry and $$S$$ a region of the plane with area $$a$$. Then the image $$F(S)$$ is
+a region with the same area $$a$$.
+
+This is taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Area#Formal_definition"}
+
+:::
+
+Angles follow, because the previous chapter measures an angle by area: an angle of $$x^\circ$$ cuts
+out $$\frac{x}{360}$$ of any disc centred at its corner (:ref{#distance-and-angles/degree}). An
+isometry carries the disc to a disc of the same size and the slice to a slice of the same area, so
+the fraction can't change.
+
+```plane
+point P 0 0 sw
+point Q 3 0 s
+point M 1.5 2.6 n
+point P' 6 0.5 s
+point Q' 8.6 2 e
+point M' 6 3.5 n
+circle P 2 color=muted dashed
+circle P' 2 color=muted dashed
+angle Q P M color=blue fill r=2
+angle Q' P' M' color=blue fill r=2
+ray P Q
+ray P M
+ray P' Q'
+ray P' M'
+caption "The slice of the disc inside the angle moves to a slice of the same area, so the angle keeps its size"
+```
+
+:::proposition[Angles are kept]{#isometry-angles}
+
+Let $$F$$ be an isometry, and let $$A$$ be an angle of $$x^\circ$$ at the vertex $$P$$, between the
+rays $$PQ$$ and $$PM$$. Then $$F$$ sends $$A$$ to the angle at $$P'$$ between the rays $$P'Q'$$ and
+$$P'M'$$, and that angle is also $$x^\circ$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Congruence_(geometry)"}
+
+This proof uses a fact proved later in the chapter: every isometry can be undone
+(:ref{#isometry-inverse}), and the undo $$F^{-1}$$ is an isometry too (:ref{#inverse-isometry}).
+Those proofs never use angles, so nothing here goes round in a circle.
+
+**The sides.** The ray $$PQ$$ is made of the points $$X$$ of the line $$PQ$$ that are not on the far
+side of $$P$$ from $$Q$$: either $$X$$ is on the segment $$PQ$$, or $$Q$$ is on the segment $$PX$$.
+Both are statements about one point lying on a segment, which the isometry keeps
+(:ref{#isometry-segments}), so the ray $$PQ$$ lands on the ray $$P'Q'$$. In the same way the ray
+$$PM$$ lands on the ray $$P'M'$$.
+
+**The region.** Take the angle up to a straight angle, as in :ref{#distance-and-angles/angle-name}.
+The region inside it is filled by the segments that join a point of one ray to a point of the other,
+as the picture of an angle shows; this description is taken from the picture. Each such segment
+$$XY$$ lands on the segment $$X'Y'$$, which joins a point of the ray $$P'Q'$$ to a point of the ray
+$$P'M'$$ (:ref{#isometry-segments}). So the angle $$A$$ lands inside the angle $$A'$$ at $$P'$$
+between those rays.
+
+**The disc.** Let $$D$$ be the disc with centre $$P$$ and radius $$1$$. A point within $$1$$ of
+$$P$$ lands within $$1$$ of $$P'$$, so $$F(D)$$ lies inside the disc $$D'$$ with centre $$P'$$ and
+radius $$1$$. The undo $$F^{-1}$$ also keeps distances and sends $$P'$$ back to $$P$$, so it brings
+each point of $$D'$$ back to a point of $$D$$. So every point of $$D'$$ is the image of a point of
+$$D$$, and $$F(D)$$ is the whole of $$D'$$.
+
+**The slice.** In the same way, $$F^{-1}$$ sends the rays $$P'Q'$$ and $$P'M'$$ back to $$PQ$$ and
+$$PM$$, so it brings each point of $$A'$$ back to a point of $$A$$, and $$F(A)$$ is the whole of
+$$A'$$. An isometry never sends two points to one place (:ref{#isometry-distinct}). So the sector
+$$S$$, the part of $$D$$ inside $$A$$ (:ref{#distance-and-angles/sector}), lands exactly on the
+sector $$S'$$, the part of $$D'$$ inside $$A'$$. Areas are kept (:ref{#isometry-area}), so
+
+```math
+\frac{\text{area of } S'}{\text{area of } D'} = \frac{\text{area of } S}{\text{area of } D} = \frac{x}{360}
+```
+
+So $$A'$$ is also an angle of $$x^\circ$$ (:ref{#distance-and-angles/degree}). A reflex angle is
+what is left of the full turn, $$360 - x$$ degrees, so it is kept too.
+
+:::
+
+One thing does change under a flip: the direction of turning. Take a ray from a point $$O$$ of the
+mirror, running along the mirror, and a second ray $$OP$$ reached from it by turning $$a^\circ$$
+anticlockwise. The flip leaves the first ray where it is, and keeps the size of the angle,
+$$a^\circ$$. But it sends $$P$$ to the other side of the mirror (:ref{#reflection}), so the ray
+$$OP'$$ is reached by turning $$a^\circ$$ clockwise instead. The size is the same and the direction
+is reversed, the way a right hand looks like a left hand in a mirror.
+
+This settles a fact the [Reflections](./reflections.mdx) guide pointed ahead to: light bouncing off
+a mirror, or a ball bouncing off a cushion, leaves at the same angle it arrived at. Take the
+shortest route from $$P$$ to $$X$$ on the mirror and on to $$Q$$ (:ref{#shortest-route}), where
+$$X$$ lies on the straight line from $$P'$$ to $$Q$$. The flip fixes $$X$$ and the mirror, and sends
+$$P$$ to $$P'$$, so the angle between $$XP$$ and the mirror equals the angle between $$XP'$$ and the
+mirror. Since $$P'$$, $$X$$ and $$Q$$ lie on one line, that angle is opposite the angle between
+$$XQ$$ and the mirror, and opposite angles are equal (:ref{#distance-and-angles/opposite-angles}).
+So the path arrives and leaves at the same angle.
+
+## How few pins hold the sheet still
+
+Push one drawing pin through the tracing paper and the sheet can still turn about it. Push in a
+second pin and the sheet can no longer slide or turn, but it isn't quite stuck. You can still lift
+it and flip it over the line through the two pins, and the points of that line never move. A door
+works the same way: it can swing, but the line through its two hinges stays where it is. Push in a
+third pin, off that line, and nothing can move at all.
+
+<HingedDoor caption="However the door swings, the line through its two hinges stays put" />
+
+<PinnedSheet caption="Two pins hold the line through them, but the sheet can still flip over it; three pins not on one line hold the sheet still" />
+
+A point that a map leaves where it is, like a pinned point, is a fixed point (:ref{#fixed-point}).
+One fact does all the work in this section. If an isometry moves a point $$X$$ to a different point
+$$X'$$, then each fixed point is as far from $$X$$ as from $$X'$$, so it lies on the perpendicular
+bisector of $$XX'$$.
+
+```plane
+point X -2 0 w
+point X' 2 0 e
+point O' 0 0 hidden
+point P 0 2.4 e
+point Q 0 -1.6 e
+line P Q color=purple extend=0.6
+segment X X' color=muted dashed
+right X' O' P color=purple
+segment P X color=blue
+segment P X' color=blue
+ticks P X 1
+ticks P X' 1
+caption "A fixed point P is as far from X as from its image X', so P is on the perpendicular bisector of XX'"
+```
+
+:::lemma[Fixed points lie on a bisector]{#fixed-points-bisector}
+
+Let $$F$$ be an isometry and $$X$$ a point with $$X' = F(X)$$ different from $$X$$. Then every fixed
+point of $$F$$ lies on the perpendicular bisector of $$XX'$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Bisection#Perpendicular_line_segment_bisector"}
+
+Let $$P$$ be a fixed point, so $$F(P) = P$$. The isometry keeps the distance from $$P$$ to $$X$$:
+
+```math
+d(P, X) = d\big(F(P), F(X)\big) = d(P, X')
+```
+
+By :ref{#distance-and-angles/perpendicular-bisector-rule}, $$P$$ lies on the perpendicular bisector
+of $$XX'$$.
+
+:::
+
+:::theorem[Two fixed points fix their line]{#two-fixed-points}
+
+Let $$F$$ be an isometry with two different fixed points $$P$$ and $$Q$$. Then every point of the
+line $$PQ$$ is a fixed point of $$F$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_plane_isometry"}
+
+Suppose some point $$X$$ of the line $$PQ$$ were moved, to $$X' \neq X$$
+(:ref{#basic-proofs/contradiction}).
+
+**The line is the bisector.** By :ref{#fixed-points-bisector}, both $$P$$ and $$Q$$ lie on the
+perpendicular bisector of $$XX'$$. Only one line passes through $$P$$ and $$Q$$
+(:ref{#distance-and-angles/line-rules}, rule 1), so the line $$PQ$$ is that bisector.
+
+**So $$X$$ is on the bisector.** The point $$X$$ is on the line $$PQ$$, so it is on the
+perpendicular bisector of $$XX'$$. Then it is as far from $$X$$ as from $$X'$$
+(:ref{#distance-and-angles/perpendicular-bisector-rule}):
+
+```math
+0 = d(X, X) = d(X, X')
+```
+
+So $$X = X'$$ (:ref{#distance-and-angles/distance-rules}, rule 1), which contradicts $$X' \neq X$$.
+So no point of the line $$PQ$$ moves.
+
+:::
+
+Two fixed points are not enough to stop everything. The flip in the line $$PQ$$ keeps both $$P$$ and
+$$Q$$ where they are, yet moves every point off the line. That is the sheet flipped over the line
+through its two pins. The [classification](./classification.mdx) guide shows that this flip and the
+identity are the only isometries that fix two points (:ref{#fix-two-points}).
+
+:::theorem[Three fixed points fix everything]{#three-fixed-points}
+
+Let $$F$$ be an isometry with three fixed points $$P$$, $$Q$$ and $$M$$ that don't lie on one line.
+Then $$F$$ is the identity: every point is a fixed point.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_plane_isometry"}
+
+Suppose some point $$X$$ were moved, to $$X' \neq X$$ (:ref{#basic-proofs/contradiction}). By
+:ref{#fixed-points-bisector}, all three fixed points $$P$$, $$Q$$ and $$M$$ lie on the perpendicular
+bisector of $$XX'$$. That bisector is one line, so the three points lie on one line. This
+contradicts the choice of $$P$$, $$Q$$ and $$M$$, so no point moves.
+
+:::
+
+:::example[Counting fixed points]
+
+The theorems match the moves you already know:
+
+- **A turn** about $$O$$ by $$90^\circ$$ fixes $$O$$ and nothing else. It has one fixed point, which
+  is not enough to force anything.
+- **A flip** in a line $$L$$ fixes every point of $$L$$ and nothing else. Its fixed points all lie
+  on one line, so :ref{#three-fixed-points} doesn't apply, and indeed the flip is not the identity.
+- **A slide** by a nonzero arrow fixes no point at all.
+
+So an isometry that is not the identity has all its fixed points on one line, if it has any. Three
+fixed points off a line can only belong to the identity.
+
+:::
+
+The [Undoing moves](./undoing-moves.mdx) guide turns this into a practical test: two isometries that
+agree at three points not on one line are the same isometry (:ref{#three-points-decide}). To know an
+isometry completely, it is enough to know where it sends the three corners of one triangle.
+
+## Exercises
+
+:::::accordion[Exercises on what an isometry keeps, with solutions]
+
+::::exercise{#ex-isometries-which}
+
+Decide whether each map is an isometry, and give a reason:
+
+1. The dilation by $$1$$ about a point $$O$$
+2. The dilation by $$\frac{1}{2}$$ about a point $$O$$
+3. A flip in a line $$L$$, followed by a slide of $$3$$ along $$L$$
+4. The map that sends every point to the point $$O$$
+
+:::solution
+
+1. **Yes.** A dilation by $$1$$ keeps each point at the same distance from $$O$$ on the same ray, so
+   it leaves every point where it is (:ref{#dilation}). It is the identity, which keeps every
+   distance.
+2. **No.** Take $$P$$ and $$Q$$ on one ray from $$O$$ with $$d(O, P) = 2$$ and $$d(O, Q) = 4$$, so
+   $$d(P, Q) = 2$$. Their images are at distances $$1$$ and $$2$$ from $$O$$ on the same ray, so
+   they are $$1$$ apart. A single pair of points with a changed distance is enough.
+3. **Yes.** The flip keeps every distance and the slide keeps every distance
+   (:ref{#basic-isometries}). So for any $$P$$ and $$Q$$, the distance is unchanged after the flip,
+   and unchanged again after the slide.
+4. **No.** Two different points both land on $$O$$, so their images are $$0$$ apart. This breaks
+   :ref{#isometry-distinct}.
+
+:::
+
+::::
+
+::::exercise{#ex-isometries-right-triangle}
+
+The triangle $$PQM$$ has a right angle at $$Q$$, with $$d(P, Q) = 5$$ and $$d(Q, M) = 12$$. An
+isometry sends it to the triangle $$P'Q'M'$$. Find the three side lengths of the image, show that it
+also has a right angle at $$Q'$$, and find its area.
+
+:::solution
+
+**Sides.** By :ref{#distance-and-angles/pythagoras},
+$$d(P, M) = \sqrt{25 + 144} = \sqrt{169} = 13$$. The isometry keeps all three distances, so the
+image has sides $$d(P', Q') = 5$$, $$d(Q', M') = 12$$ and $$d(P', M') = 13$$.
+
+**Right angle.** The lines $$PQ$$ and $$QM$$ are perpendicular. Their images are the lines $$P'Q'$$
+and $$Q'M'$$ (:ref{#isometry-lines}), and these are perpendicular by :ref{#isometry-perpendicular}.
+So the image has a right angle at $$Q'$$.
+
+**Area.** The image is a right triangle with legs $$5$$ and $$12$$, so its area is
+$$\frac{1}{2} \cdot 5 \cdot 12 = 30$$ (:ref{#distance-and-angles/right-triangle-area}). This agrees
+with :ref{#isometry-area}, since the original triangle has the same area.
+
+:::
+
+::::
+
+::::exercise{#ex-isometries-midpoint}
+
+Let $$F$$ be an isometry and $$O$$ the midpoint of a segment $$PQ$$. Prove that $$F(O)$$ is the
+midpoint of the segment $$P'Q'$$.
+
+:::solution
+
+The midpoint $$O$$ lies on $$PQ$$ with $$d(P, O) = d(O, Q)$$ (:ref{#distance-and-angles/midpoint}).
+By :ref{#isometry-segments}, $$O' = F(O)$$ lies on the segment $$P'Q'$$. The isometry keeps both
+distances:
+
+```math
+d(P', O') = d(P, O) = d(O, Q) = d(O', Q')
+```
+
+So $$O'$$ is the point of $$P'Q'$$ equally far from both ends, which is the midpoint of $$P'Q'$$.
+
+:::
+
+::::
+
+::::exercise{#ex-isometries-circle}
+
+Let $$F$$ be an isometry, and let $$C$$ be the circle with centre $$O$$ and radius $$r$$. Show that
+every point of $$C$$ lands on the circle with centre $$O' = F(O)$$ and radius $$r$$. If a point
+$$X$$ is inside the circle, with $$d(O, X) = 2$$ and $$r = 5$$, where does $$X'$$ land?
+
+:::solution
+
+A point $$X$$ of $$C$$ has $$d(O, X) = r$$ (:ref{#distance-and-angles/circle}). The isometry keeps
+this distance, so $$d(O', X') = d(O, X) = r$$, and $$X'$$ lies on the circle with centre $$O'$$ and
+radius $$r$$.
+
+For the point with $$d(O, X) = 2$$, the same reasoning gives $$d(O', X') = 2$$. So $$X'$$ is inside
+the image circle, at distance $$2$$ from its centre. Points inside stay inside, and points on the
+circle stay on it.
+
+:::
+
+::::
+
+::::exercise{#ex-isometries-two-pins}
+
+An isometry $$F$$ fixes two points $$P$$ and $$Q$$, but moves a point $$X$$ to a different point
+$$X'$$.
+
+1. Explain why $$X$$ can't lie on the line $$PQ$$.
+2. Explain why the line $$PQ$$ is the perpendicular bisector of $$XX'$$.
+3. If $$d(X, P) = 3$$ and $$d(X, Q) = 4$$, find $$d(X', P)$$ and $$d(X', Q)$$.
+
+:::solution
+
+1. Every point of the line $$PQ$$ is fixed (:ref{#two-fixed-points}). The point $$X$$ is moved, so
+   it is not on that line.
+2. By :ref{#fixed-points-bisector}, both $$P$$ and $$Q$$ lie on the perpendicular bisector of
+   $$XX'$$. Only one line passes through two different points
+   (:ref{#distance-and-angles/line-rules}, rule 1), so that bisector is the line $$PQ$$.
+3. The isometry keeps distances and fixes $$P$$ and $$Q$$, so
+   $$d(X', P) = d(F(X), F(P)) = d(X, P) = 3$$ and in the same way $$d(X', Q) = 4$$.
+
+This is the sheet with two pins, flipped over the line through them: $$X'$$ is the mirror image of
+$$X$$ in the line $$PQ$$.
+
+:::
+
+::::
+
+::::exercise{#ex-isometries-four-pins}
+
+Three points $$A$$, $$B$$ and $$C$$ lie on one line $$L$$, and a fourth point $$D$$ is not on $$L$$.
+An isometry fixes all four points. Prove that it is the identity. Would it be enough to know that it
+fixes $$A$$, $$B$$ and $$C$$?
+
+:::solution
+
+The points $$A$$, $$B$$ and $$D$$ are three fixed points. They don't lie on one line: the only line
+through $$A$$ and $$B$$ is $$L$$ (:ref{#distance-and-angles/line-rules}, rule 1), and $$D$$ is not
+on $$L$$. So by :ref{#three-fixed-points}, the isometry is the identity. The point $$C$$ was not
+needed.
+
+Fixing $$A$$, $$B$$ and $$C$$ alone is not enough. All three lie on $$L$$, and the flip in $$L$$
+fixes every point of $$L$$ while moving every other point. So an isometry fixing three points on one
+line need not be the identity.
+
+:::
+
+::::
+
+::::exercise{#ex-isometries-rectangle-diagonal}
+
+A rectangle $$ABCD$$ has $$d(A, B) = 8$$ and $$d(B, C) = 6$$. An isometry sends it to $$A'B'C'D'$$.
+Find the length of the diagonal $$A'C'$$ in two ways: by moving first and measuring after, and by
+measuring first and moving after.
+
+:::solution
+
+**Measure first.** In the original, the triangle $$ABC$$ has a right angle at $$B$$, so by
+:ref{#distance-and-angles/pythagoras} the diagonal is
+$$d(A, C) = \sqrt{64 + 36} = \sqrt{100} = 10$$. The isometry keeps this distance, so
+$$d(A', C') = 10$$.
+
+**Move first.** The image is a rectangle with sides $$8$$ and $$6$$ (as in the example "A rectangle
+stays a rectangle"), so it has a right angle at $$B'$$. By the Pythagoras theorem again,
+$$d(A', C') = \sqrt{8^2 + 6^2} = 10$$.
+
+Both ways give $$10$$, as they must: an isometry never changes a length, so it doesn't matter
+whether you measure before or after the move.
+
+:::
+
+::::
+
+:::::

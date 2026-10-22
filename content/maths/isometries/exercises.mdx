@@ -1,0 +1,417 @@
+---
+title: Exercises
+description: Exercises on the whole Isometries chapter, with worked solutions.
+---
+
+These exercises draw on the whole chapter, and most of them need ideas from more than one guide.
+Some ask for a route, a move or a count, and some ask for a short proof. Try each one before opening
+its solution, and say which rule or result justifies each step, as the guides do.
+
+In several exercises, a position is given as "$$a$$ east and $$b$$ north" of a starting point. Two
+points that differ by $$a$$ east and $$b$$ north are the corners of a right triangle with legs $$a$$
+and $$b$$, so they are $$\sqrt{a^2 + b^2}$$ apart (:ref{#distance-and-angles/pythagoras}).
+
+## Routes and mirrors
+
+::::exercise{#ex-isometries-pump-station}
+
+Two villages, $$P$$ and $$Q$$, lie on the same side of a straight canal $$L$$. Village $$P$$ is
+$$3$$ km from the canal and village $$Q$$ is $$5$$ km from it, and their nearest points on the canal
+are $$6$$ km apart. A pumping station $$M$$ goes on the canal bank, with one pipe to each village.
+
+1. How short can the two pipes be in total?
+2. Show that the best place for the station is $$2.25$$ km along the canal from the point nearest
+   $$P$$.
+3. How much longer are the pipes if the station sits at the point of the canal nearest $$P$$?
+
+:::solution
+
+1. Let $$P'$$ be the reflection of $$P$$ in the canal. By :ref{#shortest-route}, the total is
+   smallest where the segment $$P'Q$$ crosses the canal, and the smallest total is $$d(P', Q)$$. The
+   image $$P'$$ is $$3$$ km on the far side, so $$P'$$ and $$Q$$ are $$3 + 5 = 8$$ km apart measured
+   square to the canal, and $$6$$ km apart along it. So the smallest total is
+   $$\sqrt{6^2 + 8^2} = \sqrt{100} = 10$$ km.
+2. Put $$M$$ on the canal $$2.25$$ km along from the point nearest $$P$$. Then $$M$$ is
+   $$6 - 2.25 = 3.75$$ km along from the point nearest $$Q$$, and the two pipes have lengths
+
+   ```math
+   d(P, M) = \sqrt{2.25^2 + 3^2} = \sqrt{14.0625} = 3.75, \qquad d(M, Q) = \sqrt{3.75^2 + 5^2} = \sqrt{39.0625} = 6.25
+   ```
+
+   These add up to $$10$$ km, the smallest total from part 1. Since $$d(P', M) = d(P, M)$$
+   (:ref{#mirror-distances}), this says $$d(P', M) + d(M, Q) = d(P', Q)$$, so $$M$$ lies on the
+   segment $$P'Q$$ (:ref{#distance-and-angles/segment-rules}, rule 1). So $$M$$ is the crossing
+   point of the theorem.
+
+   The number $$2.25$$ comes from the picture: the segment from $$P'$$ to $$Q$$ climbs $$8$$ km
+   square to the canal while it moves $$6$$ km along. It reaches the canal after climbing $$3$$ of
+   those $$8$$ km, so after $$\frac{3}{8} \cdot 6 = 2.25$$ km along. The check above is what proves
+   it.
+
+3. The first pipe is $$3$$ km, and the second is $$\sqrt{6^2 + 5^2} = \sqrt{61} \approx 7.81$$ km.
+   The total is about $$10.81$$ km, so about $$0.81$$ km longer than the best.
+
+:::
+
+::::
+
+::::exercise{#ex-isometries-two-walls}
+
+Two straight walls meet at a corner $$O$$ at right angles: wall $$L$$ runs east from $$O$$, and wall
+$$K$$ runs north. A dog at $$P$$, $$4$$ east and $$2$$ north of $$O$$, must touch wall $$L$$, then
+wall $$K$$, then run to its owner at $$Q$$, $$1$$ east and $$3$$ north of $$O$$.
+
+1. Let $$P'$$ be the flip of $$P$$ in $$L$$, and $$Q'$$ the flip of $$Q$$ in $$K$$. Show that every
+   route of this kind is at least $$d(P', Q')$$ long.
+2. Find $$d(P', Q')$$, and find a route that long.
+3. How long is the route that touches both walls at the corner $$O$$?
+
+:::solution
+
+1. Let the dog touch $$L$$ at $$X$$ and $$K$$ at $$Y$$. Since $$X$$ is on the mirror $$L$$,
+   $$d(P, X) = d(P', X)$$, and since $$Y$$ is on $$K$$, $$d(Y, Q) = d(Y, Q')$$
+   (:ref{#mirror-distances}). Using the triangle inequality
+   (:ref{#distance-and-angles/distance-rules}) twice,
+
+   ```math
+   d(P, X) + d(X, Y) + d(Y, Q) = d(P', X) + d(X, Y) + d(Y, Q') \ge d(P', Y) + d(Y, Q') \ge d(P', Q')
+   ```
+
+2. The flip in $$L$$ keeps how far east a point is and swaps north for south, so $$P'$$ is $$4$$
+   east and $$2$$ south of $$O$$. The flip in $$K$$ swaps east for west, so $$Q'$$ is $$1$$ west and
+   $$3$$ north. They differ by $$5$$ west and $$5$$ north, so
+   $$d(P', Q') = \sqrt{50} = 5\sqrt{2} \approx 7.07$$.
+
+   Try $$X$$ at $$2$$ east of $$O$$ and $$Y$$ at $$2$$ north of $$O$$. The route has legs
+
+   ```math
+   d(P, X) = \sqrt{2^2 + 2^2} = 2\sqrt{2}, \qquad d(X, Y) = \sqrt{2^2 + 2^2} = 2\sqrt{2}, \qquad d(Y, Q) = \sqrt{1^2 + 1^2} = \sqrt{2}
+   ```
+
+   which add up to $$5\sqrt{2}$$. So this route is as short as any route can be.
+
+3. The legs are $$d(P, O) = \sqrt{4^2 + 2^2} = \sqrt{20} \approx 4.47$$ and
+   $$d(O, Q) = \sqrt{1^2 + 3^2} = \sqrt{10} \approx 3.16$$, about $$7.64$$ in total. That is about
+   $$0.57$$ longer than the best route.
+
+:::
+
+::::
+
+::::exercise{#ex-isometries-three-mirrors}
+
+Three parallel mirrors $$L$$, $$K$$ and $$M$$ stand in a hall of mirrors. Measured along a line
+square to them, $$L$$ is at $$0$$, $$K$$ at $$3$$ and $$M$$ at $$10$$. Show that "first flip in
+$$L$$, then in $$K$$, then in $$M$$" is a single flip, and find its mirror.
+
+:::solution
+
+By :ref{#parallel-mirrors}, $$R_K \circ R_L$$ is the slide by $$2 \cdot 3 = 6$$, square to the
+mirrors, in the direction from $$L$$ towards $$K$$.
+
+Now let $$N$$ be the mirror parallel to the others at $$7$$, so $$N$$ is $$3$$ before $$M$$. By the
+same theorem, $$R_M \circ R_N$$ is also the slide by $$6$$ in that direction. Two slides that move
+every point the same distance in the same direction send every point to the same place, so they are
+equal maps (:ref{#map-equality}): $$R_K \circ R_L = R_M \circ R_N$$. Then, using
+:ref{#composite-associative} and :ref{#reflection-twice},
+
+```math
+R_M \circ (R_K \circ R_L) = R_M \circ (R_M \circ R_N) = (R_M \circ R_M) \circ R_N = R_N
+```
+
+So the three flips together are the flip in the mirror at $$7$$. Check a point at $$0$$: the flip in
+$$L$$ leaves it at $$0$$, the flip in $$K$$ sends it to $$6$$, and the flip in $$M$$ sends it to
+$$14$$. The flip in the mirror at $$7$$ also sends $$0$$ to $$14$$.
+
+:::
+
+::::
+
+## Combining, undoing and recognising moves
+
+::::exercise{#ex-isometries-what-kind}
+
+Say which single move each composite is, and check your answer against :ref{#four-kinds}.
+
+1. First the flip in a line $$L$$, then the flip in a line $$K$$, where the lines cross at $$O$$ and
+   the angle turning anticlockwise from $$L$$ to $$K$$ is $$25^\circ$$.
+2. First the turn by $$90^\circ$$ about $$O$$, then the turn by $$270^\circ$$ about $$O$$.
+3. First the flip in a level line $$L$$, then the slide $$4$$ units straight up.
+4. First the half turn about a point $$O$$ of a line $$L$$, then the flip in $$L$$.
+
+:::solution
+
+1. By :ref{#crossing-mirrors}, it is the turn about $$O$$ by $$2 \cdot 25 = 50$$ degrees
+   anticlockwise. It fixes exactly one point, $$O$$, and two flips leave the sheet face up, as the
+   table says for a turn.
+2. Turns add (:ref{#rotation-rules}), so it is the turn by $$360^\circ$$, which is the identity
+   $$I$$. Every point is fixed, so it is none of the four kinds: the table covers every isometry
+   other than the identity.
+3. Let $$K$$ be the level line $$2$$ units above $$L$$. By :ref{#parallel-mirrors},
+   $$R_K \circ R_L$$ is the slide by $$2 \cdot 2 = 4$$ units straight up, so it is the given slide
+   $$T$$. Then
+
+   ```math
+   T \circ R_L = (R_K \circ R_L) \circ R_L = R_K \circ (R_L \circ R_L) = R_K
+   ```
+
+   by :ref{#composite-associative} and :ref{#reflection-twice}. It is the flip in $$K$$. Check: a
+   point of $$L$$ stays put under $$R_L$$ and then rises $$4$$, and $$R_K$$ also sends it from $$2$$
+   below $$K$$ to $$2$$ above.
+
+4. Let $$K$$ be the line through $$O$$ perpendicular to $$L$$. The angle turning from $$K$$ to $$L$$
+   is $$90^\circ$$ or $$270^\circ$$, depending on the direction you measure, and twice either one is
+   a half turn, since $$540^\circ$$ is a whole turn plus $$180^\circ$$
+   (:ref{#rotation-whole-turns}). So $$R_L \circ R_K$$ is the half turn $$G_{180}$$ about $$O$$
+   (:ref{#crossing-mirrors}), and
+
+   ```math
+   R_L \circ G_{180} = R_L \circ (R_L \circ R_K) = (R_L \circ R_L) \circ R_K = R_K
+   ```
+
+   It is the flip in the line through $$O$$ perpendicular to $$L$$. A flip fixes a whole line and
+   turns the sheet face down; here the half turn keeps it face up and the flip in $$L$$ turns it
+   over.
+
+:::
+
+::::
+
+::::exercise{#ex-isometries-turned-mirror}
+
+A drawing program has three buttons for a picture on the screen: turn a quarter turn anticlockwise
+about the centre $$O$$, turn a quarter turn clockwise about $$O$$, and flip in the level line $$L$$
+through $$O$$. There is no button to flip in the upright line $$V$$ through $$O$$. Show that
+pressing "clockwise", then "flip", then "anticlockwise" does exactly that flip.
+
+:::solution
+
+Write $$G$$ for the quarter turn anticlockwise, so the clockwise button is $$G^{-1} = G_{-90}$$. The
+three presses make the map $$F = G \circ R_L \circ G^{-1}$$. It is an isometry, since each step is
+(:ref{#basic-isometries}) and so are composites (:ref{#composite-isometry}).
+
+Follow three points that don't lie on one line:
+
+- **$$O$$**: every step leaves $$O$$ where it is, so $$F(O) = O$$, and $$R_V(O) = O$$ too.
+- **$$P$$, $$1$$ right of $$O$$**: the clockwise turn sends it to $$1$$ below $$O$$, the flip sends
+  that to $$1$$ above $$O$$, and the anticlockwise turn sends that to $$1$$ left of $$O$$. The flip
+  in $$V$$ also sends $$P$$ to $$1$$ left of $$O$$.
+- **$$Q$$, $$1$$ above $$O$$**: the clockwise turn sends it to $$1$$ right of $$O$$, which is on
+  $$L$$, so the flip leaves it there, and the anticlockwise turn sends it back to $$1$$ above $$O$$.
+  The point $$Q$$ is on $$V$$, so $$R_V(Q) = Q$$ too.
+
+So $$F$$ and $$R_V$$ are isometries that agree at three points not on one line. Every isometry has
+an inverse (:ref{#isometry-inverse}), so by :ref{#three-points-decide}, $$F = R_V$$.
+
+The idea behind it: turn the picture so that the mirror you want lies along the mirror you have,
+flip, then turn the picture back.
+
+:::
+
+::::
+
+::::exercise{#ex-isometries-swap-two-points}
+
+An isometry $$F$$ swaps two different points: $$F(P) = Q$$ and $$F(Q) = P$$. Let $$O$$ be the
+midpoint of $$PQ$$. Show that $$F$$ is either the half turn about $$O$$ or the flip in the
+perpendicular bisector of $$PQ$$, and that both of these do swap $$P$$ and $$Q$$.
+
+:::solution
+
+**$$F$$ fixes $$O$$.** Let $$D = d(P, Q)$$ and $$O' = F(O)$$. Distances are kept, so
+
+```math
+d(Q, O') = d(P, O) = \tfrac{D}{2}, \qquad d(O', P) = d(O, Q) = \tfrac{D}{2}
+```
+
+These add up to $$D = d(Q, P)$$, so $$O'$$ lies on the segment $$QP$$
+(:ref{#distance-and-angles/segment-rules}, rule 1). It is equally far from $$P$$ and $$Q$$, so it is
+the midpoint (:ref{#distance-and-angles/equidistant-on-line}). So $$O' = O$$.
+
+**Two possibilities.** By :ref{#fix-one-point}, $$F$$ is a turn $$G_x$$ about $$O$$, or
+$$F = G_x \circ R_N$$ for a flip $$R_N$$ in a line $$N$$ through $$O$$. In the second case, if
+$$x = 0$$ then $$F = R_N$$. Otherwise let $$K$$ be the line through $$O$$ at $$\frac{x}{2}$$ degrees
+anticlockwise from $$N$$. Then $$G_x = R_K \circ R_N$$ (:ref{#crossing-mirrors}), so
+$$F = R_K \circ R_N \circ R_N = R_K$$ (:ref{#reflection-twice}). Either way, $$F$$ is a turn about
+$$O$$ or a flip in a line through $$O$$.
+
+**If $$F$$ is a turn.** The point $$Q$$ is on the line $$OP$$, on the other side of $$O$$ from
+$$P$$, at the same distance, so the reflection through $$O$$ sends $$P$$ to $$Q$$
+(:ref{#point-reflection}). That is the half turn $$G_{180}$$ (:ref{#half-turn}). By
+:ref{#rotation-rules}, rule 1, only one turn by an angle from $$0^\circ$$ up to $$360^\circ$$ sends
+$$P$$ to $$Q$$, so $$F = G_{180}$$.
+
+**If $$F$$ is a flip** in a line $$K$$. Since $$F(P) = Q \ne P$$, the point $$P$$ is not on $$K$$,
+so $$K$$ is the perpendicular bisector of $$PQ$$ (:ref{#reflection}).
+
+**Both swap.** The half turn sends $$P$$ to $$Q$$, and sends $$Q$$ to $$G_{180}(G_{180}(P))$$, which
+is $$G_{360}(P) = P$$. The flip in the bisector sends $$P$$ to $$Q$$ by its definition, and sends
+$$Q$$ to $$R(R(P)) = P$$ by :ref{#reflection-twice}.
+
+:::
+
+::::
+
+::::exercise{#ex-isometries-own-inverse}
+
+Some moves are their own undo button: doing them twice puts everything back. Find every isometry
+$$F$$ with $$F \circ F = I$$.
+
+:::solution
+
+The answer: the identity, every flip in a line, and every half turn. Go through the kinds in
+:ref{#four-kinds}:
+
+- **The identity**: $$I \circ I = I$$.
+- **A flip**: $$R \circ R = I$$ by :ref{#reflection-twice}.
+- **A slide** $$T$$ by a non-zero distance $$s$$: doing it twice moves every point $$2s$$ in the
+  same direction, so some point moves and $$T \circ T \ne I$$.
+- **A turn** $$G_x$$ about $$O$$ with $$0 < x < 360$$: by :ref{#rotation-rules},
+  $$G_x \circ G_x = G_{2x}$$, and $$0 < 2x < 720$$. If $$2x < 360$$, or $$2x > 360$$ so that
+  $$G_{2x} = G_{2x - 360}$$ with $$0 < 2x - 360 < 360$$ (:ref{#rotation-whole-turns}), this is a
+  turn by something other than a whole number of full turns, which moves every point other than
+  $$O$$. So $$G_x \circ G_x = I$$ exactly when $$2x = 360$$, that is, for the half turn.
+- **A glide** $$T \circ R$$, with $$R$$ the flip in $$L$$ and $$T$$ a non-zero slide by $$s$$ along
+  $$L$$: describe a point as "$$a$$ along $$L$$ and $$b$$ above it". Both $$T \circ R$$ and
+  $$R \circ T$$ send it to $$a + s$$ along and $$b$$ below, so $$T \circ R = R \circ T$$
+  (:ref{#map-equality}). Then
+
+  ```math
+  (T \circ R) \circ (T \circ R) = T \circ (R \circ T) \circ R = T \circ (T \circ R) \circ R = (T \circ T) \circ (R \circ R) = T \circ T
+  ```
+
+  using :ref{#composite-associative} to regroup. That is a slide by $$2s$$, not the identity.
+
+:::
+
+::::
+
+## Congruence and symmetry
+
+::::exercise{#ex-isometries-across-the-pond}
+
+A surveyor needs the distance between two posts $$P$$ and $$M$$ on opposite sides of a pond. The
+surveyor stands at a point $$Q$$ on dry land and walks in a straight line from $$P$$ through $$Q$$,
+stopping at $$P'$$ with $$d(Q, P') = d(Q, P)$$. The surveyor does the same from $$M$$ through $$Q$$
+to $$M'$$. Then the surveyor measures $$d(P', M') = 85$$ m. Explain, using one isometry, why the
+pond is $$85$$ m across from $$P$$ to $$M$$.
+
+:::solution
+
+The point $$P'$$ is on the line $$PQ$$, on the other side of $$Q$$ from $$P$$, at the same distance.
+So the reflection through $$Q$$ sends $$P$$ to $$P'$$ (:ref{#point-reflection}), and in the same way
+it sends $$M$$ to $$M'$$. That reflection is the half turn about $$Q$$ (:ref{#half-turn}), and turns
+keep distances (:ref{#basic-isometries}). So
+
+```math
+d(P, M) = d(P', M') = 85 \text{ m}
+```
+
+The half turn carries the whole triangle $$PQM$$ across the pond onto the triangle $$P'QM'$$ on dry
+land, which is why the measurement can be made there.
+
+:::
+
+::::
+
+::::exercise{#ex-isometries-isosceles-mirror}
+
+The triangle $$\triangle PQM$$ has $$d(Q, P) = d(Q, M)$$, like the end of a roof with equal slopes.
+Let $$K$$ be the perpendicular bisector of $$PM$$
+(:ref{#distance-and-angles/perpendicular-bisector}).
+
+1. Show that the flip in $$K$$ is a symmetry of the triangle, meaning its three sides.
+2. Use part 1 to show again that the angles at $$P$$ and $$M$$ are equal (:ref{#isosceles}).
+
+:::solution
+
+1. Let $$R$$ be the flip in $$K$$. The point $$Q$$ is as far from $$P$$ as from $$M$$, so it lies on
+   $$K$$ (:ref{#distance-and-angles/perpendicular-bisector-rule}), and $$R(Q) = Q$$. The line $$K$$
+   is the perpendicular bisector of $$PM$$, so $$R(P) = M$$ (:ref{#reflection}), and
+   $$R(M) = R(R(P)) = P$$ (:ref{#reflection-twice}). Segments go onto segments
+   (:ref{#isometry-segments}), so $$R$$ sends the side $$QP$$ onto $$QM$$, the side $$QM$$ onto
+   $$QP$$, and the side $$PM$$ onto $$MP$$. The image of the three sides is the three sides again
+   (:ref{#image}), so $$R$$ is a symmetry (:ref{#symmetry}).
+2. The angle at $$P$$ is between the rays $$PQ$$ and $$PM$$. The flip sends $$P$$ to $$M$$, $$Q$$ to
+   $$Q$$ and $$M$$ to $$P$$, so it sends this angle to the angle at $$M$$ between the rays $$MQ$$
+   and $$MP$$. Angles are kept (:ref{#isometry-angles}), so $$\angle QPM = \angle QMP$$.
+
+:::
+
+::::
+
+::::exercise{#ex-isometries-hexagon}
+
+The head of a bolt is a regular hexagon with centre $$O$$ and corners $$A$$, $$B$$, $$C$$, $$D$$,
+$$E$$, $$F$$ in order anticlockwise. Let $$L$$ be the mirror line through $$A$$ and $$D$$, and $$K$$
+the mirror line through the midpoints of the sides $$AB$$ and $$DE$$.
+
+1. Name the six turn symmetries of the hexagon.
+2. The angle turning anticlockwise from $$L$$ to $$K$$ is $$30^\circ$$. What is first the flip in
+   $$L$$, then the flip in $$K$$?
+3. Which order of the same two flips turns the hexagon the other way?
+
+:::solution
+
+1. Here $$n = 6$$, so the turn $$G$$ by $$\frac{360}{6} = 60$$ degrees about $$O$$ is a symmetry
+   (:ref{#regular-turns}). Symmetries combine into symmetries (:ref{#symmetry-combine}), so its
+   powers are too: the turns by $$0^\circ$$, $$60^\circ$$, $$120^\circ$$, $$180^\circ$$,
+   $$240^\circ$$ and $$300^\circ$$. The next power, $$G^6$$, is the turn by $$360^\circ$$, which is
+   $$G^0 = I$$ again.
+2. By :ref{#crossing-mirrors}, $$R_K \circ R_L$$ is the turn about $$O$$ by $$2 \cdot 30 = 60$$
+   degrees anticlockwise, the turn $$G$$ that moves each corner on to the next: $$A$$ to $$B$$,
+   $$B$$ to $$C$$, and so on.
+3. The other order, $$R_L \circ R_K$$, undoes it: by :ref{#inverse-composite} and since each flip is
+   its own inverse,
+
+   ```math
+   (R_K \circ R_L)^{-1} = R_L^{-1} \circ R_K^{-1} = R_L \circ R_K
+   ```
+
+   So first flipping in $$K$$, then in $$L$$, is $$G^{-1}$$, the turn by $$60^\circ$$ clockwise,
+   which is also $$G^5$$ (:ref{#inverse-by-repeating}).
+
+:::
+
+::::
+
+::::exercise{#ex-isometries-two-centres}
+
+A tiled border runs along a wall without end. It looks the same after a half turn about a point
+$$O$$ on its middle line, and also after a half turn about a second point $$Q$$ on that line, $$20$$
+cm further along. Show that the border also looks the same after a slide, and find how far.
+
+:::solution
+
+Write $$H_O$$ and $$H_Q$$ for the two half turns, and $$N$$ for the middle line through $$O$$ and
+$$Q$$. Symmetries combine into symmetries (:ref{#symmetry-combine}), so $$H_Q \circ H_O$$ is a
+symmetry of the border.
+
+Let $$A$$ and $$B$$ be the lines perpendicular to $$N$$ through $$O$$ and through $$Q$$. Each
+crosses $$N$$ at $$90^\circ$$, and two flips in lines crossing at $$90^\circ$$ make a half turn
+about the crossing point (:ref{#crossing-mirrors}; whichever way you measure, twice the angle is
+$$180^\circ$$ or $$540^\circ$$, the same turn). So
+
+```math
+H_O = R_N \circ R_A, \qquad H_Q = R_B \circ R_N
+```
+
+Then, using :ref{#composite-associative} and :ref{#reflection-twice},
+
+```math
+H_Q \circ H_O = R_B \circ (R_N \circ R_N) \circ R_A = R_B \circ R_A
+```
+
+The lines $$A$$ and $$B$$ are both perpendicular to $$N$$, so they are parallel
+(:ref{#distance-and-angles/perpendiculars-parallel}), and the segment $$OQ$$ meets both square on,
+so they are $$20$$ cm apart (:ref{#distance-and-angles/parallel-distance}). By
+:ref{#parallel-mirrors}, $$R_B \circ R_A$$ is the slide by $$2 \cdot 20 = 40$$ cm along the border,
+from $$O$$ towards $$Q$$.
+
+Check with the point $$O$$: the half turn about $$O$$ leaves it in place, and the half turn about
+$$Q$$ sends it to the point on the other side of $$Q$$, $$20$$ cm beyond. That is $$40$$ cm from
+where $$O$$ started.
+
+:::
+
+::::

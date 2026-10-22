@@ -1,0 +1,431 @@
+---
+title: Reflections
+description:
+  Reflection in a line, why reflecting twice undoes it, and the shortest route via a mirror.
+---
+
+Look in a mirror and your image stands as far behind the glass as you stand in front of it, straight
+across. Fold a sheet of paper with wet ink on one half, and the blot prints its partner on the other
+half the same way. With the tracing paper, this is the third kind of move: lift the sheet, turn it
+face down, and lay it back along a fold line. This page makes the idea exact, and then uses it to
+answer a practical question: what is the shortest route that has to touch a line on the way, such as
+a walk that stops at a river, a billiard shot off a cushion, or light bouncing off a mirror?
+
+## Reflection in a line
+
+Stand $$2$$ metres in front of a mirror and your image appears $$2$$ metres behind it. The image is
+not off to one side: it is straight across, on the line through you that meets the mirror square on.
+So the mirror line sits exactly halfway between a point and its image, and crosses the segment
+between them at a right angle. The [Distance and angles](../distance-and-angles/introduction.mdx)
+chapter has a name for such a line: it is the perpendicular bisector of the segment
+(:ref{#distance-and-angles/perpendicular-bisector}).
+
+Points on the mirror line itself stay where they are: each one is its own image, like the points
+along the crease of a fold. Tilt the mirror below and watch the dashed segments: each joins a point
+of the flag to its image, and the mirror always crosses it at its midpoint, square on.
+
+<MirrorLine />
+
+:::definition[Reflection in a line]{#reflection}
+
+Let $$L$$ be a line. The **reflection in** $$L$$ is the map $$R_L$$ (:ref{#map}) that sends each
+point $$P$$ to the point $$P' = R_L(P)$$ given as follows:
+
+- **$$P$$ on $$L$$**: $$P' = P$$, so the point stays where it is
+- **$$P$$ not on $$L$$**: $$P'$$ is the point for which $$L$$ is the perpendicular bisector of the
+  segment $$PP'$$
+
+The line $$L$$ is called the **mirror**. When only one mirror is in play, $$R_L$$ is written $$R$$.
+
+:::
+
+There is always exactly one such point $$P'$$. The line through $$P$$ perpendicular to $$L$$ is the
+only one of its kind (:ref{#distance-and-angles/perpendicular-rules}), and it meets $$L$$ at a point
+$$F$$. Then $$P'$$ is the point of that line on the other side of $$F$$ from $$P$$, at the same
+distance: $$d(F, P') = d(F, P)$$.
+
+```plane
+point A -3.5 0 hidden
+point B 3.5 0 hidden
+point P 0 2 n
+point F 0 0 sw
+point P' 0 -2 s
+line A B color=purple
+text 3.3 0.35 "L"
+segment P P' dashed
+right B F P
+ticks P F 1
+ticks F P' 1
+caption "The mirror L crosses PP' at its midpoint F, square on"
+```
+
+:::example[Finding an image]
+
+Take a straight shoreline $$L$$ and a buoy $$P$$ that is $$30$$ metres out from it. The image $$P'$$
+is $$30$$ metres inland, straight behind the point $$F$$ of the shore nearest the buoy. So the buoy
+and its image are $$30 + 30 = 60$$ metres apart. A post $$Q$$ standing on the shoreline is its own
+image: $$R(Q) = Q$$.
+
+:::
+
+A reflection turns things round. A flag pointing right becomes a flag pointing left, and writing
+comes out backwards, as in a mirror. A slide or a turn of the tracing paper never does that, since
+the sheet stays face up. This difference between flips and the other moves comes up again when maps
+are combined and classified later in the chapter.
+
+A reflection in a line is not the same as the reflection through a point (:ref{#point-reflection}).
+Reflecting through a point $$O$$ sends each point straight through $$O$$ to the far side, and only
+$$O$$ stays put. Reflecting in a line $$L$$ sends each point straight across $$L$$, and every point
+of $$L$$ stays put.
+
+## Reflecting twice
+
+Fold a sheet of paper along a crease, then unfold it: every point is back where it started. A mirror
+image of a mirror image is the original, as you see with two mirrors facing each other. In tracing
+paper terms, flipping the sheet over the same fold twice leaves it face up and exactly where it
+began.
+
+:::proposition[Reflecting twice]{#reflection-twice}
+
+Let $$R$$ be the reflection in a line $$L$$. Reflecting twice in $$L$$ puts every point back where
+it started:
+
+```math
+R(R(P)) = P \quad \text{for every point } P
+```
+
+So first $$R$$, then $$R$$ again, is the identity map: $$R \circ R = I$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Involution_(mathematics)#Euclidean_geometry"}
+
+If $$P$$ is on $$L$$, then $$R(P) = P$$, and so $$R(R(P)) = R(P) = P$$.
+
+Suppose $$P$$ is not on $$L$$, and write $$P' = R(P)$$. By the definition (:ref{#reflection}), $$L$$
+is the perpendicular bisector of the segment $$PP'$$. Now $$P'$$ is not on $$L$$ either, since it
+lies on the other side of $$L$$ from $$P$$. So $$R(P')$$ is the one point $$Y$$ for which $$L$$ is
+the perpendicular bisector of $$P'Y$$. The point $$P$$ is such a point, because the segment $$P'P$$
+is the same segment as $$PP'$$. So $$R(P') = P$$, that is, $$R(R(P)) = P$$.
+
+:::
+
+## Points on the mirror
+
+Stand anywhere on the mirror line and look at a point and its image. They are the same distance from
+you, because the mirror sits exactly halfway between them. This small fact is what makes reflections
+useful for measuring routes: a distance to a point can be swapped for the distance to its image,
+without changing its length.
+
+:::proposition[Points on the mirror]{#mirror-distances}
+
+Let $$R$$ be the reflection in a line $$L$$, and let $$P' = R(P)$$. Then every point $$X$$ of $$L$$
+is as far from $$P$$ as from $$P'$$:
+
+```math
+d(X, P) = d(X, P')
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Bisection#Perpendicular_bisectors"}
+
+If $$P$$ is on $$L$$, then $$P' = P$$ and there is nothing to prove. Otherwise, $$L$$ is the
+perpendicular bisector of $$PP'$$ (:ref{#reflection}). Every point of the perpendicular bisector is
+the same distance from both ends of the segment
+(:ref{#distance-and-angles/perpendicular-bisector-rule}), so $$d(X, P) = d(X, P')$$.
+
+:::
+
+```plane
+point A -3.5 0 hidden
+point B 3.5 0 hidden
+point P -0.5 2 n
+point P' -0.5 -2 s
+point X 2.2 0 se
+line A B color=purple
+text 3.3 0.35 "L"
+segment P P' dashed color=muted
+segment X P color=blue
+segment X P' color=blue
+ticks X P 2
+ticks X P' 2
+caption "Any point X of the mirror is the same distance from P as from its image P'"
+```
+
+## The shortest route via a line
+
+You live in a cottage near a river, and every morning you walk down to the river to fill a bucket,
+then carry it to your vegetable garden. Where along the bank should you stop, to make the walk as
+short as possible? Stopping straight below the cottage makes the first leg short but the second
+long; stopping straight below the garden does the opposite. The best place is somewhere in between,
+and a reflection finds it exactly.
+
+The trick is to picture the cottage's mirror image across the river. From any point of the bank, the
+walk back up to the cottage is as long as the walk to its mirror image (:ref{#mirror-distances}). So
+your whole route, cottage to bank to garden, is as long as a route from the mirror image to the bank
+to the garden. That second route crosses the river, and the shortest way across is a straight line.
+So stop where the straight line from the mirror image to the garden meets the bank.
+
+<RiverWalk caption="Seen from above: stop where the straight line from the cottage's mirror image to the garden crosses the bank" />
+
+:::theorem[The shortest route via a line]{#shortest-route}
+
+Let $$L$$ be a line, and let $$P$$ and $$Q$$ be points on the same side of $$L$$, not on it. Let
+$$P' = R(P)$$ be the reflection of $$P$$ in $$L$$, and let $$M$$ be the point where the segment
+$$P'Q$$ crosses $$L$$. Then for every point $$X$$ of $$L$$,
+
+```math
+d(P, X) + d(X, Q) \ge d(P, M) + d(M, Q) = d(P', Q)
+```
+
+and the two sides are equal exactly when $$X = M$$. So the shortest route from $$P$$ to a point of
+$$L$$ and on to $$Q$$ goes through $$M$$, and its length is $$d(P', Q)$$.
+
+:::
+
+The point $$M$$ exists because $$P'$$ lies on the other side of $$L$$ from $$Q$$, so the segment
+between them crosses $$L$$. This is taken from the picture, like the sides of a line in the
+[Angles](../distance-and-angles/angles.mdx) guide.
+
+:::proof{source="https://www.cut-the-knot.org/Curriculum/Geometry/HeronsProblem.shtml"}
+
+**Any route is at least $$d(P', Q)$$.** Let $$X$$ be a point of $$L$$. Since $$X$$ is on the mirror,
+$$d(P, X) = d(P', X)$$ (:ref{#mirror-distances}). The triangle inequality
+(:ref{#distance-and-angles/distance-rules}) then gives
+
+```math
+d(P, X) + d(X, Q) = d(P', X) + d(X, Q) \ge d(P', Q)
+```
+
+**The route through $$M$$ has length exactly $$d(P', Q)$$.** The point $$M$$ lies on the segment
+$$P'Q$$, so $$d(P', M) + d(M, Q) = d(P', Q)$$ (:ref{#distance-and-angles/segment-rules}, rule 1).
+Since $$M$$ is on $$L$$, $$d(P, M) = d(P', M)$$, and so $$d(P, M) + d(M, Q) = d(P', Q)$$.
+
+**No other point does as well.** Suppose $$d(P, X) + d(X, Q) = d(P', Q)$$ for a point $$X$$ of
+$$L$$. As in the first step, this says $$d(P', X) + d(X, Q) = d(P', Q)$$, so $$X$$ lies on the
+segment $$P'Q$$ (:ref{#distance-and-angles/segment-rules}, rule 1). The line through $$P'$$ and
+$$Q$$ is not $$L$$, since $$Q$$ is not on $$L$$, and two different lines meet at most once
+(:ref{#distance-and-angles/crossing-lines}). Both $$X$$ and $$M$$ are on both lines, so $$X = M$$.
+
+:::
+
+```plane
+point A -0.5 0 hidden
+point B 7.5 0 hidden
+point P 1 2.5 n
+point Q 6 1.5 n
+point P' 1 -2.5 s
+point M 4.125 0 s
+line A B color=purple
+text 7.3 0.35 "L"
+segment P M color=orange
+segment M Q color=orange
+segment P' M dashed color=purple
+segment P P' dashed color=muted
+caption "The route P to M to Q is as long as the straight line from P' to Q"
+```
+
+Try it below. Move the stopping point $$X$$ and watch the total length: it is smallest exactly when
+$$X$$ sits on the straight dashed line from $$P'$$ to $$Q$$.
+
+<RiverRoute />
+
+:::example[How much the right stop saves]
+
+Put the bank along a straight line $$L$$, with the cottage $$P$$ standing $$2.5$$ units from it and
+the garden $$Q$$ standing $$1.5$$ units from it, on the same side. Their nearest points on the bank
+are $$5$$ units apart.
+
+**The best route.** The image $$P'$$ is $$2.5$$ units on the far side of the bank, so it is
+$$2.5 + 1.5 = 4$$ units from the garden measured square to the bank, and $$5$$ units along it. These
+are the legs of a right triangle with hypotenuse $$P'Q$$, so by the
+:ref{#distance-and-angles/pythagoras},
+
+```math
+d(P', Q) = \sqrt{5^2 + 4^2} = \sqrt{41} \approx 6.40
+```
+
+**Stopping straight below the cottage.** The first leg is $$2.5$$. The second leg is the hypotenuse
+of a right triangle with legs $$5$$ and $$1.5$$, so the route is
+
+```math
+2.5 + \sqrt{5^2 + 1.5^2} = 2.5 + \sqrt{27.25} \approx 2.5 + 5.22 = 7.72
+```
+
+So stopping at the right place saves about $$1.3$$ units on every trip.
+
+:::
+
+## Bank shots and mirrors
+
+The same trick works whenever something bounces off a straight edge. A billiard player who wants to
+hit the red ball off a cushion aims the white ball at the red ball's mirror image beyond the
+cushion. The white ball rolls straight towards that image until it meets the cushion. The bounce
+then sends it along the mirror image of the rest of that straight line, and since the line ended at
+the red ball's image, its mirror image ends at the red ball itself.
+
+<BilliardBank caption="Seen from above: aim the white ball at the red ball's mirror image beyond the cushion" />
+
+Light does the same. When you see a lamp in a wall mirror, the light has travelled from the lamp to
+the mirror and then to your eye, and your eye traces it back in a straight line to a lamp behind the
+glass. Light takes the shortest route from the lamp to your eye that touches the mirror, so it
+bounces at the point $$M$$ of :ref{#shortest-route}.
+
+At that point the light meets the mirror at the same angle on the way in as on the way out. Here is
+why. The reflection sends the incoming path $$PM$$ to the dashed path $$P'M$$, and reflections keep
+angles (:ref{#isometry-angles}, proved on the [What an isometry keeps](./isometries.mdx) page), so
+the incoming path and $$P'M$$ make equal angles with the mirror. The dashed path and the outgoing
+path $$MQ$$ lie on one straight line through $$M$$, so they make opposite angles with the mirror,
+and opposite angles are equal (:ref{#distance-and-angles/opposite-angles}).
+
+<MirrorLight caption="Light from the lamp bounces off the mirror at equal angles, as if it came in a straight line from the lamp's image behind the glass" />
+
+## Exercises
+
+:::::accordion[Exercises on reflections, with solutions]
+
+::::exercise{#ex-reflections-find-image}
+
+A line $$L$$ is drawn on a page. A point $$P$$ is $$4$$ cm from $$L$$, and $$F$$ is the point of
+$$L$$ nearest to $$P$$. A point $$Q$$ of $$L$$ is $$3$$ cm from $$F$$. Let $$P'$$ be the reflection
+of $$P$$ in $$L$$. Find $$d(P, P')$$, $$d(Q, P)$$ and $$d(Q, P')$$.
+
+:::solution
+
+The image $$P'$$ is on the line through $$P$$ and $$F$$, on the other side of $$F$$, with
+$$d(F, P') = d(F, P) = 4$$ (:ref{#reflection}). Since $$F$$ lies between $$P$$ and $$P'$$,
+
+```math
+d(P, P') = d(P, F) + d(F, P') = 4 + 4 = 8 \text{ cm}
+```
+
+The triangle $$PFQ$$ has a right angle at $$F$$, with legs $$4$$ and $$3$$, so by the
+:ref{#distance-and-angles/pythagoras}, $$d(Q, P) = \sqrt{4^2 + 3^2} = \sqrt{25} = 5$$ cm. Since
+$$Q$$ is on the mirror, $$d(Q, P') = d(Q, P) = 5$$ cm (:ref{#mirror-distances}).
+
+:::
+
+::::
+
+::::exercise{#ex-reflections-fixed}
+
+Show that the fixed points (:ref{#fixed-point}) of the reflection in a line $$L$$ are exactly the
+points of $$L$$.
+
+:::solution
+
+Every point of $$L$$ is fixed, by the definition (:ref{#reflection}).
+
+Now let $$P$$ be a point not on $$L$$, and let $$F$$ be the point where the perpendicular from $$P$$
+meets $$L$$. The image $$P'$$ is on the other side of $$F$$ at the same distance, so $$F$$ is the
+midpoint of $$PP'$$ and
+
+```math
+d(P, P') = 2\,d(P, F)
+```
+
+Since $$P$$ is not on $$L$$, $$P \neq F$$, so $$d(P, F) > 0$$
+(:ref{#distance-and-angles/distance-rules}). So $$d(P, P') > 0$$, and $$P' \neq P$$. No point off
+$$L$$ is fixed.
+
+:::
+
+::::
+
+::::exercise{#ex-reflections-swap}
+
+The reflection in a line $$L$$ sends a point $$A$$ to a point $$B$$. Where does it send $$B$$?
+Explain using :ref{#reflection-twice}.
+
+:::solution
+
+It sends $$B$$ to $$A$$. Here $$R(A) = B$$, so
+
+```math
+R(B) = R(R(A)) = A
+```
+
+by :ref{#reflection-twice}. So a reflection swaps each point with its image. This is why a mirror
+image of your left hand is a right hand, and the mirror image of that is a left hand again.
+
+:::
+
+::::
+
+::::exercise{#ex-reflections-route-numbers}
+
+A path runs along a straight hedge $$L$$. Ana's tent $$P$$ is $$3$$ m from the hedge and the car
+$$Q$$ is $$5$$ m from it, on the same side, and their nearest points on the hedge are $$6$$ m apart.
+She wants to walk from the tent to the hedge to pick berries, then to the car.
+
+1. How long is the shortest such walk?
+2. How long is the walk if she goes to the hedge straight from the tent, then on to the car?
+
+:::solution
+
+1. Reflect the tent in the hedge. The image $$P'$$ is $$3$$ m behind the hedge, so measured square
+   to the hedge it is $$3 + 5 = 8$$ m from the car, and $$6$$ m along it. By :ref{#shortest-route}
+   and the :ref{#distance-and-angles/pythagoras}, the shortest walk is
+
+   ```math
+   d(P', Q) = \sqrt{6^2 + 8^2} = \sqrt{100} = 10 \text{ m}
+   ```
+
+2. The first leg is $$3$$ m. The second is the hypotenuse of a right triangle with legs $$6$$ and
+   $$5$$, so the walk is $$3 + \sqrt{36 + 25} = 3 + \sqrt{61} \approx 3 + 7.81 = 10.81$$ m. That is
+   about $$0.81$$ m longer than the best walk.
+
+:::
+
+::::
+
+::::exercise{#ex-reflections-opposite-sides}
+
+Let $$P$$ and $$Q$$ be on opposite sides of a line $$L$$, so that the segment $$PQ$$ crosses $$L$$
+at a point $$M$$. What is the shortest route from $$P$$ to a point of $$L$$ and on to $$Q$$? Why is
+no reflection needed?
+
+:::solution
+
+The route through $$M$$ is the shortest, with length $$d(P, Q)$$. For any point $$X$$ of $$L$$, the
+triangle inequality gives $$d(P, X) + d(X, Q) \ge d(P, Q)$$
+(:ref{#distance-and-angles/distance-rules}). The route through $$M$$ reaches this bound, because
+$$M$$ is on the segment $$PQ$$, so $$d(P, M) + d(M, Q) = d(P, Q)$$
+(:ref{#distance-and-angles/segment-rules}, rule 1).
+
+No reflection is needed because the straight segment from $$P$$ to $$Q$$ already touches $$L$$ on
+the way. The reflection in :ref{#shortest-route} is a way to make the line lie between the two
+points, so that a straight path has to cross it.
+
+:::
+
+::::
+
+::::exercise{#ex-reflections-other-image}
+
+In the river problem, a friend reflects the garden $$Q$$ instead of the cottage $$P$$, and stops
+where the segment from $$P$$ to $$Q' = R(Q)$$ crosses the bank. Show that the friend finds the same
+stopping point and the same shortest length.
+
+:::solution
+
+For every point $$X$$ of the bank, $$d(X, Q) = d(X, Q')$$ (:ref{#mirror-distances}), so
+
+```math
+d(P, X) + d(X, Q) = d(P, X) + d(X, Q') \ge d(P, Q')
+```
+
+by the triangle inequality. Let $$N$$ be the point where the segment $$PQ'$$ crosses the bank. As in
+the proof of :ref{#shortest-route}, the route through $$N$$ has length exactly $$d(P, Q')$$, and no
+other point of the bank does as well. So $$N$$ gives the shortest route, of length $$d(P, Q')$$.
+
+But :ref{#shortest-route} also says the shortest route goes through $$M$$ and through no other point
+of the bank, with length $$d(P', Q)$$. Both points give the shortest route, so $$N = M$$, and the
+two lengths agree: $$d(P, Q') = d(P', Q)$$.
+
+:::
+
+::::
+
+:::::

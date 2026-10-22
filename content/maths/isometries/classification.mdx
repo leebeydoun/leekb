@@ -1,0 +1,405 @@
+---
+title: Every isometry is a slide, turn or flip
+description:
+  Why every rigid move of the plane is built from a slide, a turn and at most one flip, and why it
+  can always be undone.
+---
+
+Suppose someone moves your sheet of tracing paper while you aren't looking. They can slide it, turn
+it, flip it over, and repeat any of these as often as they like. However complicated their moves
+were, you can always put the sheet back with at most three of your own: one slide, one turn and
+possibly one flip.
+
+This page proves that. It means slides, turns and flips are all the rigid moves there are: no
+isometry of the plane does anything stranger. It also means every isometry can be undone.
+
+## The idea: putting the sheet back
+
+Here is how you would put the sheet back by hand. Pick a point on it and **slide** the sheet until
+that point is home. Then hold that point down with a pin and **turn** the sheet about it until a
+second point is home too. Now two points are home, and the sheet can only be either exactly right or
+the mirror image of right. If a third point is on the wrong side, lift the sheet and **flip** it
+over the line through the two pinned points.
+
+A result from an earlier page explains why three points are enough. An isometry that leaves three
+points not on one line where they are moves nothing at all (:ref{#three-fixed-points}). So once
+three such points are home, the whole sheet is home. Try it below with different kinds of move.
+
+<PutItBack />
+
+The rest of the page turns this story into proofs. It runs backwards, from the most pins to the
+fewest: first an isometry that fixes two points, then one that fixes one point, then any isometry.
+Each step uses the one before it.
+
+## Two pins: stay or flip
+
+Pin a sheet at two points $$P$$ and $$Q$$. It can't slide, since $$P$$ is held, and it can't turn,
+since turning about $$P$$ would move $$Q$$. The only thing left is to lift it and lay it back face
+down, flipped over the line through the two pins. So a sheet pinned at two points is either back
+exactly as it was, or flipped in the line through the pins.
+
+:::theorem[Isometries that fix two points]{#fix-two-points}
+
+Let $$F$$ be an isometry (:ref{#isometry}) and $$P$$, $$Q$$ two different points with $$F(P) = P$$
+and $$F(Q) = Q$$. Let $$L$$ be the line through $$P$$ and $$Q$$. Then either $$F$$ is the identity
+$$I$$, or $$F$$ is the reflection in $$L$$.
+
+:::
+
+```plane
+point P -2 0 sw
+point Q 2 0 se
+point M 0.6 2 n
+point M' 0.6 -2 s
+line P Q label="L"
+segment P M color=blue dashed
+segment Q M color=orange dashed
+segment P M' color=blue dashed
+segment Q M' color=orange dashed
+caption "M' is as far from P as M is, and as far from Q as M is, so L is the perpendicular bisector of MM'"
+```
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_plane_isometry#Three_mirrors_suffice"}
+
+**Step 1: watch a third point.** Pick a point $$M$$ that is not on $$L$$, and let $$M' = F(M)$$.
+Since $$F$$ keeps distances and leaves $$P$$ and $$Q$$ where they are,
+
+```math
+d(P, M') = d(P, M) \qquad \text{and} \qquad d(Q, M') = d(Q, M)
+```
+
+**Step 2: if $$M$$ stays put, nothing moves.** If $$M' = M$$, then $$F$$ fixes $$P$$, $$Q$$ and
+$$M$$, three points not on one line. By :ref{#three-fixed-points}, $$F = I$$.
+
+**Step 3: otherwise $$M'$$ is the mirror image of $$M$$.** Suppose $$M' \ne M$$. Step 1 says $$P$$
+is the same distance from $$M$$ as from $$M'$$, since both equal $$d(P, M)$$, so $$P$$ lies on the
+perpendicular bisector of $$MM'$$ (:ref{#distance-and-angles/perpendicular-bisector-rule}). The same
+goes for $$Q$$. The perpendicular bisector is a line through the two different points $$P$$ and
+$$Q$$, and only one line does that (:ref{#distance-and-angles/line-rules}), so the perpendicular
+bisector of $$MM'$$ is $$L$$. That is exactly what it means for $$M'$$ to be the reflection of $$M$$
+in $$L$$ (:ref{#reflection}). Write $$R$$ for the reflection in $$L$$, so $$R(M) = M'$$ and
+$$R(M') = M$$.
+
+**Step 4: flip back and compare.** Consider first $$F$$, then $$R$$, the map $$R \circ F$$. It is an
+isometry (:ref{#composite-isometry}). It fixes $$P$$ and $$Q$$, since $$F$$ leaves them where they
+are and they lie on the mirror. It also fixes $$M$$: $$F$$ sends $$M$$ to $$M'$$, and $$R$$ sends
+$$M'$$ back to $$M$$. So by :ref{#three-fixed-points}, $$R \circ F = I$$.
+
+**Step 5: so $$F$$ is the flip.** Flipping twice in $$L$$ moves nothing (:ref{#reflection-twice}),
+so
+
+```math
+F = I \circ F = (R \circ R) \circ F = R \circ (R \circ F) = R \circ I = R
+```
+
+The regrouping in the middle is allowed by :ref{#composite-associative}.
+
+:::
+
+## One pin: a turn, perhaps after a flip
+
+Now pin the sheet at one point $$O$$. It can turn about the pin, and it can be flipped over a line
+through the pin, but it can't slide. To put it back, turn it until a second point is home, and then
+you have two pins, which the previous section has already handled.
+
+:::theorem[Isometries that fix one point]{#fix-one-point}
+
+Let $$F$$ be an isometry with $$F(O) = O$$. Then either $$F$$ is a turn about $$O$$, or $$F$$ is
+"first a flip in a line through $$O$$, then a turn about $$O$$".
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_plane_isometry#Three_mirrors_suffice"}
+
+**Step 1: pick a second point.** Take any point $$P \ne O$$ and let $$P' = F(P)$$. Since $$F$$ keeps
+distances and fixes $$O$$, $$d(O, P') = d(O, P)$$: the point $$P'$$ is on the circle about $$O$$
+through $$P$$.
+
+**Step 2: turn it home.** By :ref{#rotation-rules}, there is a turn $$G$$ about $$O$$ with
+$$G(P) = P'$$. (If $$P' = P$$, this is the turn by $$0^\circ$$, which moves nothing.) Its inverse
+$$G^{-1}$$ is the turn back by the same angle (:ref{#inverse-map}), and it sends $$P'$$ to $$P$$.
+
+**Step 3: now two points are home.** Consider first $$F$$, then turn back: the map
+$$H = G^{-1} \circ F$$. It is an isometry, since turns keep distances (:ref{#basic-isometries}) and
+so do composites (:ref{#composite-isometry}). It fixes $$O$$, since both $$F$$ and the turn leave
+$$O$$ where it is. It fixes $$P$$, since $$F$$ sends $$P$$ to $$P'$$ and $$G^{-1}$$ sends $$P'$$
+back to $$P$$. By :ref{#fix-two-points}, $$H = I$$ or $$H = R$$, the reflection in the line $$OP$$.
+
+**Step 4: put the turn back on.** Doing $$G$$ after $$H$$ gives back $$F$$:
+
+```math
+G \circ H = G \circ (G^{-1} \circ F) = (G \circ G^{-1}) \circ F = I \circ F = F
+```
+
+So if $$H = I$$, then $$F = G \circ I = G$$, a turn. If $$H = R$$, then $$F = G \circ R$$: first the
+flip in the line $$OP$$, which passes through $$O$$, then the turn $$G$$ about $$O$$.
+
+:::
+
+The second case can be said more neatly. On the [Combining moves](./combining-moves.mdx) page, two
+mirrors crossing at $$O$$ make a turn about $$O$$ by twice the angle between them
+(:ref{#crossing-mirrors}). Running that backwards turns "a flip, then a turn" into a single flip.
+
+:::example[A flip then a turn is a flip]
+
+Let $$L$$ be a line through $$O$$, let $$R_L$$ be the flip in $$L$$, and let $$G_x$$ be the turn
+about $$O$$ by $$x^\circ$$. Let $$K$$ be the line through $$O$$ that makes an angle of
+$$\frac{x}{2}$$ degrees with $$L$$, measured anticlockwise from $$L$$. By :ref{#crossing-mirrors},
+first flipping in $$L$$, then in $$K$$ is the turn by $$2 \cdot \frac{x}{2} = x$$ degrees:
+
+```math
+R_K \circ R_L = G_x
+```
+
+Now flip in $$L$$, then turn:
+
+```math
+G_x \circ R_L = (R_K \circ R_L) \circ R_L = R_K \circ (R_L \circ R_L) = R_K \circ I = R_K
+```
+
+So "first flip in $$L$$, then turn by $$x^\circ$$" is a single flip, in the line $$K$$. For
+instance, a flip in a horizontal line through $$O$$ followed by a quarter turn about $$O$$ is the
+flip in the line through $$O$$ at $$45^\circ$$. With :ref{#fix-one-point}, this says: an isometry
+that fixes a point is a turn about it or a flip in a line through it.
+
+:::
+
+## No pins: slide first
+
+Finally, take any isometry at all. Nothing need stay where it is, so begin as you would by hand:
+slide the sheet until one chosen point is home. That leaves an isometry with one fixed point, which
+the previous section has handled.
+
+:::theorem[Every isometry is built from slides, turns and flips]{#classification}
+
+Let $$F$$ be an isometry and $$O$$ any point. Then there are a slide $$T$$, a turn $$G$$ about $$O$$
+and a flip $$R$$ in a line through $$O$$ such that either
+
+```math
+F = T \circ G \qquad \text{or} \qquad F = T \circ G \circ R
+```
+
+In words: $$F$$ is a turn about $$O$$ and then a slide, or a flip, then a turn about $$O$$, then a
+slide.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_plane_isometry#Three_mirrors_suffice"}
+
+**Step 1: slide one point home.** Let $$O' = F(O)$$. By :ref{#translation-rules}, there is a slide
+$$T$$ with $$T(O) = O'$$. Its inverse $$T^{-1}$$ is the slide by the reverse arrow
+(:ref{#inverse-map}), which sends $$O'$$ back to $$O$$.
+
+**Step 2: now one point is home.** Consider first $$F$$, then slide back: the map
+$$H = T^{-1} \circ F$$. It is an isometry, since slides keep distances (:ref{#basic-isometries}) and
+so do composites (:ref{#composite-isometry}). It fixes $$O$$, since $$F$$ sends $$O$$ to $$O'$$ and
+$$T^{-1}$$ sends $$O'$$ back to $$O$$.
+
+**Step 3: use the one-pin result.** By :ref{#fix-one-point}, $$H = G$$ for a turn $$G$$ about $$O$$,
+or $$H = G \circ R$$ for such a turn and a flip $$R$$ in a line through $$O$$.
+
+**Step 4: put the slide back on.** Doing $$T$$ after $$H$$ gives back $$F$$:
+
+```math
+T \circ H = T \circ (T^{-1} \circ F) = (T \circ T^{-1}) \circ F = I \circ F = F
+```
+
+So $$F = T \circ G$$ or $$F = T \circ G \circ R$$.
+
+:::
+
+:::example[Footprints]
+
+A line of footprints in sand repeats one move: a left foot, flipped in the line down the middle of
+the path and slid forward half a stride, gives the next right foot. That move is a glide reflection
+(:ref{#glide-reflection}): first flip in $$L$$, then slide along $$L$$. In the form of
+:ref{#classification}, with $$O$$ on $$L$$, it is $$T \circ G \circ R$$ where $$R$$ is the flip in
+$$L$$, $$G$$ is the turn by $$0^\circ$$, and $$T$$ is the slide along $$L$$.
+
+:::
+
+Putting the sheet back by hand undid the move in the reverse order: slide back, turn back, flip
+back. Since every isometry is built from pieces that can each be undone, every isometry can be
+undone.
+
+:::corollary[Every isometry can be undone]{#isometry-inverse}
+
+Every isometry $$F$$ has an inverse $$F^{-1}$$, and $$F^{-1}$$ is an isometry.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_plane_isometry#Group_structure"}
+
+By :ref{#classification}, $$F = T \circ G$$ or $$F = T \circ G \circ R$$, with $$T$$ a slide, $$G$$
+a turn and $$R$$ a flip. Each piece has an inverse: the reverse slide, the turn back, and the flip
+itself (:ref{#inverse-map}). By :ref{#inverse-composite}, undoing in reverse order,
+
+```math
+(T \circ G)^{-1} = G^{-1} \circ T^{-1} \qquad \text{and} \qquad (T \circ G \circ R)^{-1} = R \circ G^{-1} \circ T^{-1}
+```
+
+In words: slide back, then turn back, then flip back if there was a flip. This inverse is made of
+slides, turns and flips, which keep distances (:ref{#basic-isometries}), so it is an isometry
+(:ref{#composite-isometry}).
+
+:::
+
+Now the condition "if $$F$$ has an inverse" in :ref{#three-points-decide} always holds, so it can be
+dropped: two isometries that agree on three points not on one line are the same isometry.
+
+## The four kinds of isometry
+
+The theorem says how to build any isometry, but different recipes can give the same move. A cleaner
+way to sort isometries is by what they do. Each one either keeps the sheet face up or turns it face
+down, and each one either fixes some points or fixes none. That gives four kinds, which the table
+sorts by these two questions.
+
+:::remark[The four kinds of isometry]{#four-kinds}
+
+Every isometry other than the identity is exactly one of these:
+
+| Kind                              | Fixed points | Sheet turned face down? |
+| --------------------------------- | ------------ | ----------------------- |
+| a slide (:ref{#translation})      | none         | no                      |
+| a turn (:ref{#rotation})          | exactly one  | no                      |
+| a flip (:ref{#reflection})        | a whole line | yes                     |
+| a glide (:ref{#glide-reflection}) | none         | yes                     |
+
+The identity fixes every point and leaves the sheet face up. This is taken as given here; the proof
+combines the results on this page with the mirror results on the
+[Combining moves](./combining-moves.mdx) page.
+
+::see-also{src="https://en.wikipedia.org/wiki/Euclidean_plane_isometry#Classification"}
+
+:::
+
+The table gives a practical test. To recognise a rigid move, ask whether it fixes any point and
+whether it turns shapes over (a left shoe into a right shoe). For instance, a move that fixes
+nothing and turns shapes over can only be a glide, like the step from one footprint to the next.
+
+## Exercises
+
+:::::accordion[Exercises on the classification of isometries, with solutions]
+
+::::exercise{#ex-classification-two-pins}
+
+An isometry $$F$$ fixes two different points $$P$$ and $$Q$$.
+
+1. Suppose $$F$$ also fixes a point $$M$$ that is not on the line $$PQ$$. What is $$F$$?
+2. Suppose instead that $$F$$ moves some point. What is $$F$$, and where does it send a point $$X$$
+   of the line $$PQ$$?
+
+:::solution
+
+1. $$F$$ fixes three points not on one line, so $$F = I$$ (:ref{#three-fixed-points}).
+2. By :ref{#fix-two-points}, $$F$$ is $$I$$ or the reflection in the line $$PQ$$. It moves a point,
+   so it isn't $$I$$; it is the reflection in $$PQ$$. A point $$X$$ of the mirror stays where it is
+   (:ref{#reflection}), so $$F(X) = X$$.
+
+:::
+
+::::
+
+::::exercise{#ex-classification-kind}
+
+For each description, say which of the four kinds of isometry it could be (:ref{#four-kinds}).
+
+1. It fixes exactly one point.
+2. It fixes no point and keeps the sheet face up.
+3. It fixes every point of a line, and moves some other point.
+4. It fixes no point and turns the sheet face down.
+
+:::solution
+
+1. A turn, not by a whole number of full turns.
+2. A slide, not by the zero arrow.
+3. A flip in that line. A turn fixes only its centre, and slides and glides fix nothing, so none of
+   those fixes a whole line.
+4. A glide reflection, with a slide that isn't zero.
+
+:::
+
+::::
+
+::::exercise{#ex-classification-undo-recipe}
+
+An isometry is $$F = T \circ G \circ R$$, where $$R$$ is the flip in a line $$L$$ through $$O$$,
+$$G$$ is the turn about $$O$$ by $$40^\circ$$, and $$T$$ is the slide $$6$$ cm to the east. Write
+$$F^{-1}$$ as a composite of a slide, a turn and a flip, and describe it in words.
+
+:::solution
+
+By :ref{#inverse-composite}, $$F^{-1} = R^{-1} \circ G^{-1} \circ T^{-1}$$. Each piece has a known
+inverse (:ref{#inverse-map}): $$T^{-1}$$ is the slide $$6$$ cm to the west, $$G^{-1}$$ is the turn
+about $$O$$ by $$-40^\circ$$, and $$R^{-1} = R$$. So
+
+```math
+F^{-1} = R \circ G_{-40} \circ T^{-1}
+```
+
+In words: first slide $$6$$ cm west, then turn $$40^\circ$$ clockwise about $$O$$, then flip in
+$$L$$. This is the original recipe run backwards.
+
+:::
+
+::::
+
+::::exercise{#ex-classification-quarter-flip}
+
+Let $$L$$ be a horizontal line through $$O$$, $$R_L$$ the flip in $$L$$, and $$G$$ the quarter turn
+anticlockwise about $$O$$. Using :ref{#crossing-mirrors}, show that first $$R_L$$, then $$G$$ is a
+single flip, and name its mirror.
+
+:::solution
+
+Let $$K$$ be the line through $$O$$ at $$45^\circ$$ anticlockwise from $$L$$. The mirrors $$L$$ and
+$$K$$ cross at $$O$$ at an angle of $$45^\circ$$, so first flipping in $$L$$, then in $$K$$ is the
+turn about $$O$$ by $$2 \cdot 45 = 90$$ degrees (:ref{#crossing-mirrors}): $$R_K \circ R_L = G$$.
+Then, using :ref{#reflection-twice} and :ref{#composite-associative},
+
+```math
+G \circ R_L = (R_K \circ R_L) \circ R_L = R_K \circ (R_L \circ R_L) = R_K
+```
+
+So first $$R_L$$, then $$G$$ is the flip in $$K$$, the line through $$O$$ rising at $$45^\circ$$.
+
+:::
+
+::::
+
+::::exercise{#ex-classification-perpendicular-flips}
+
+Let $$L$$ and $$K$$ be perpendicular lines crossing at $$O$$. What is first the flip in $$L$$, then
+the flip in $$K$$? Check your answer against :ref{#four-kinds} by counting fixed points.
+
+:::solution
+
+The mirrors cross at $$O$$ at $$90^\circ$$, so by :ref{#crossing-mirrors} the composite is the turn
+about $$O$$ by $$2 \cdot 90 = 180$$ degrees: the half turn about $$O$$.
+
+Check: $$O$$ is on both mirrors, so it stays where it is. Any other point $$P$$ ends up on the other
+side of $$O$$, at the same distance, so it moves. Exactly one fixed point and the sheet ends up face
+up (two flips turn it over twice), so it is a turn, as the table says.
+
+:::
+
+::::
+
+::::exercise{#ex-classification-one-pin-fixed}
+
+An isometry $$F$$ fixes a point $$O$$ and also a second point $$P \ne O$$. A student says: "by
+:ref{#fix-one-point}, $$F$$ is a turn about $$O$$". Explain what is missing, and what $$F$$ can
+actually be.
+
+:::solution
+
+:ref{#fix-one-point} says $$F$$ is a turn about $$O$$, or a flip in a line through $$O$$ followed by
+a turn. The student forgot the second case. Since $$F$$ fixes two points, :ref{#fix-two-points} says
+more: $$F$$ is the identity, which is the turn by $$0^\circ$$, or the flip in the line $$OP$$. A
+turn by any other angle moves $$P$$, so these are the only two possibilities.
+
+:::
+
+::::
+
+:::::

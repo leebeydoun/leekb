@@ -1,0 +1,610 @@
+---
+title: Congruence
+description:
+  When two shapes are the same shape and size, and the tests that decide it for triangles.
+---
+
+A spare key cut from the same pattern opens the same lock, and any bolt from a box fits the same
+nut. Factories depend on this: two parts made to the same measurements are interchangeable, because
+one could be laid exactly on top of the other. This page makes "the same shape and size" precise
+using the moves of the earlier guides. It then gives tests that decide it for triangles without
+moving anything, and explains why a frame made of triangles is rigid while a square frame folds
+over.
+
+## Same shape and size
+
+Trace a shape onto tracing paper. If you can slide, turn or flip the sheet so that the tracing lands
+exactly on a second shape, covering all of it and nothing more, the two shapes are the same shape
+and size. Flipping is allowed, since lifting the sheet and turning it over is one of the moves. So a
+shape and its mirror image count as the same, like the two halves of a butterfly.
+
+Every move of the sheet keeps distances, and :ref{#classification} shows that every isometry is such
+a move. So the precise version says "an isometry carries one shape exactly onto the other".
+
+:::definition[Congruent]{#congruent}
+
+A shape $$S$$ is **congruent** to a shape $$S'$$ if there is an isometry $$F$$ (:ref{#isometry})
+whose image of $$S$$ is exactly $$S'$$ (:ref{#image}):
+
+```math
+F(S) = S'
+```
+
+You write $$S \cong S'$$.
+
+:::
+
+The word "exactly" matters: every point of $$S$$ must land somewhere in $$S'$$, and every point of
+$$S'$$ must be landed on. A short segment slid onto part of a longer one lands inside it, but it
+doesn't cover it, so that slide doesn't show they are congruent.
+
+```plane
+point P 0 0 sw
+point Q 3 0 se
+point M 1 2 n
+point P' 7 0 se
+point Q' 7 3 ne
+point M' 5 1 w
+polygon P Q M color=blue
+polygon P' Q' M' color=orange
+segment P Q
+segment Q M
+segment M P
+segment P' Q'
+segment Q' M'
+segment M' P'
+caption "Turned a quarter turn and slid across, the blue triangle lands exactly on the orange one"
+```
+
+Congruence behaves like "equals" does for numbers. Every shape is congruent to itself, you can say
+it in either direction, and two congruences in a row make a third.
+
+:::proposition[Congruence behaves like equality]{#congruence-relation}
+
+For any shapes $$S$$, $$S'$$ and $$S''$$:
+
+1. **Itself**: $$S \cong S$$
+2. **Either way round**: if $$S \cong S'$$, then $$S' \cong S$$
+3. **In a chain**: if $$S \cong S'$$ and $$S' \cong S''$$, then $$S \cong S''$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Congruence_(geometry)"}
+
+**Part 1.** The identity $$I$$ moves nothing, so it keeps every distance and $$I(S) = S$$.
+
+**Part 2.** Suppose $$F$$ is an isometry with $$F(S) = S'$$. By :ref{#isometry-inverse}, $$F$$ has
+an inverse $$F^{-1}$$ (:ref{#inverse-map}), and the inverse is an isometry too. Every point of
+$$S'$$ is $$F(X)$$ for some $$X$$ in $$S$$, and $$F^{-1}$$ sends it back to $$X$$. So $$F^{-1}$$
+sends every point of $$S'$$ into $$S$$, and every point $$X$$ of $$S$$ is reached, from $$F(X)$$.
+That says $$F^{-1}(S') = S$$, so $$S' \cong S$$.
+
+**Part 3.** Suppose $$F(S) = S'$$ and $$G(S') = S''$$ for isometries $$F$$ and $$G$$. First $$F$$,
+then $$G$$, is an isometry (:ref{#composite-isometry}). It carries $$S$$ onto $$S'$$ and then $$S'$$
+onto $$S''$$, so $$(G \circ F)(S) = S''$$.
+
+:::
+
+## Circles and segments
+
+Two coins of the same size are congruent: slide one until its centre sits on the other's centre, and
+the rims match all the way round. Two sticks of the same length are congruent too: slide one end
+onto the other stick's end, then turn until the sticks line up. Both proofs below are these two
+pictures, written out.
+
+:::theorem[Circles of the same radius are congruent]{#circles-congruent}
+
+Two circles with the same radius $$r$$ are congruent.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Congruence_(geometry)#Congruent_conic_sections"}
+
+Let the circles have centres $$O$$ and $$O'$$ (:ref{#distance-and-angles/circle}). Let $$T$$ be the
+slide that takes $$O$$ to $$O'$$ (:ref{#translation-rules}). A slide keeps distances
+(:ref{#basic-isometries}). Two sets are equal when each is inside the other
+(:ref{#basic-proofs/set-equality}), so there are two things to show.
+
+**Every point of the first circle lands on the second.** If $$d(O, P) = r$$, then
+$$d(O', T(P)) = d(T(O), T(P)) = d(O, P) = r$$.
+
+**Every point of the second circle is landed on.** Let $$d(O', Q) = r$$. The slide back, $$T^{-1}$$,
+takes $$O'$$ to $$O$$, so $$P = T^{-1}(Q)$$ satisfies $$d(O, P) = d(O', Q) = r$$. So $$P$$ is on the
+first circle, and $$T(P) = Q$$.
+
+So $$T$$ carries the first circle exactly onto the second.
+
+:::
+
+:::theorem[Segments of the same length are congruent]{#segments-congruent}
+
+Let $$PQ$$ and $$MN$$ be segments with $$d(P, Q) = d(M, N)$$. Then there is an isometry $$F$$ with
+$$F(M) = P$$ and $$F(N) = Q$$, and it carries the segment $$MN$$ exactly onto $$PQ$$. So the two
+segments are congruent.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_plane_isometry"}
+
+**Slide.** Let $$T$$ be the slide that takes $$M$$ to $$P$$ (:ref{#translation-rules}), and write
+$$N' = T(N)$$. Slides keep distances, so $$d(P, N') = d(M, N) = d(P, Q)$$.
+
+**Turn.** So $$N'$$ and $$Q$$ are the same distance from $$P$$, and by :ref{#rotation-rules} there
+is a turn $$G$$ about $$P$$ that takes $$N'$$ to $$Q$$. It leaves its centre $$P$$ where it is.
+
+**Together.** First $$T$$, then $$G$$, is an isometry $$F = G \circ T$$ (:ref{#composite-isometry}),
+with $$F(M) = G(P) = P$$ and $$F(N) = G(N') = Q$$. By :ref{#isometry-segments} it carries the
+segment $$MN$$ exactly onto the segment between $$F(M)$$ and $$F(N)$$, which is $$PQ$$.
+
+:::
+
+## Three sides fix a triangle
+
+Bolt four wooden bars into a square and push its top corner: the frame folds over into a leaning
+shape, although every bar keeps its length. Bolt one more bar across a diagonal and the frame stays
+square, however hard you push. The brace splits the square into two triangles, and a triangle can't
+change shape while its three sides keep their lengths.
+
+<FrameBracing caption="A square of four bars can fold over; a diagonal brace makes two triangles, and the frame holds its shape" />
+
+The interactive shows why. Two sides joined by a hinge can make a triangle at every opening, and the
+gap between their free ends changes as the hinge opens. Once a third bar of fixed length closes the
+gap, only one opening fits.
+
+<TriangleFromSides />
+
+This is why bridges, cranes, roof trusses and bicycle frames are built from triangles. Each
+triangle's shape is fixed by its three sides, so the whole frame is.
+
+<TrussBridge caption="A truss bridge: every panel is a triangle, so no panel can change shape under a load" />
+
+In terms of moves, "a triangle is fixed by its sides" says this: two triangles whose sides match are
+congruent. The proof moves one triangle onto the other in three steps, like laying a cut-out on a
+drawing. Slide a corner home, turn so that a side lies along its partner, and flip the cut-out over
+if the third corner has come out on the wrong side.
+
+:::theorem[Side, side, side]{#sss}
+
+Let $$\triangle PQM$$ and $$\triangle P'Q'M'$$ be triangles whose matching sides have the same
+lengths:
+
+```math
+d(P, Q) = d(P', Q'), \qquad d(Q, M) = d(Q', M'), \qquad d(M, P) = d(M', P')
+```
+
+Then there is an isometry $$F$$ with $$F(P) = P'$$, $$F(Q) = Q'$$ and $$F(M) = M'$$. It carries each
+side onto the matching side, so the two triangles are congruent.
+
+:::
+
+:::proof{source="https://www.cut-the-knot.org/pythagoras/SSS.shtml"}
+
+**Slide and turn.** The sides $$PQ$$ and $$P'Q'$$ have the same length, so by
+:ref{#segments-congruent} there is an isometry $$F_1$$, a slide followed by a turn, with
+$$F_1(P) = P'$$ and $$F_1(Q) = Q'$$. Write $$X = F_1(M)$$ for where the third corner lands.
+Isometries keep distances, so
+
+```math
+d(P', X) = d(P, M) = d(P', M'), \qquad d(Q', X) = d(Q, M) = d(Q', M')
+```
+
+**Check the third corner.** If $$X = M'$$, then $$F = F_1$$ does the job. Otherwise $$X$$ has come
+out as in the figure below, the same distance from $$P'$$ as $$M'$$ and the same distance from
+$$Q'$$.
+
+**Flip.** The point $$P'$$ is the same distance from $$X$$ as from $$M'$$, so it lies on the
+perpendicular bisector of $$XM'$$ (:ref{#distance-and-angles/perpendicular-bisector-rule}). So does
+$$Q'$$. Only one line passes through $$P'$$ and $$Q'$$ (:ref{#distance-and-angles/line-rules}), so
+the line $$P'Q'$$ _is_ the perpendicular bisector of $$XM'$$. By :ref{#reflection}, the flip $$R$$
+in the line $$P'Q'$$ takes $$X$$ to $$M'$$, and it leaves $$P'$$ and $$Q'$$, which lie on the
+mirror, where they are. So first $$F_1$$, then $$R$$, is an isometry $$F = R \circ F_1$$ with
+
+```math
+F(P) = P', \qquad F(Q) = Q', \qquad F(M) = R(X) = M'
+```
+
+**The sides.** By :ref{#isometry-segments}, $$F$$ carries each side of $$\triangle PQM$$ exactly
+onto the segment between the images of its ends, which is the matching side of $$\triangle P'Q'M'$$.
+So $$F$$ carries the triangle onto the triangle.
+
+:::
+
+```plane
+point P' 0 0 w
+point Q' 4 0 e
+point M' 1.5 2 n
+point X 1.5 -2 s
+line P' Q' color=muted extend=0.8
+segment P' Q'
+segment Q' M'
+segment M' P'
+segment P' X color=orange dashed
+segment Q' X color=orange dashed
+segment X M' color=purple dashed
+ticks P' M' 1
+ticks P' X 1 color=orange
+ticks Q' M' 2
+ticks Q' X 2 color=orange
+caption "If the third corner lands at X instead of M', the line P'Q' is the mirror that swaps them"
+```
+
+Once two triangles are congruent, everything you can measure on them matches, since the isometry
+keeps distances (:ref{#isometry}), angles (:ref{#isometry-angles}) and area (:ref{#isometry-area}).
+So matching sides force matching angles, which is the surprising half of the test: you only measured
+lengths.
+
+:::example[Matching the corners]
+
+A triangle has sides of $$5$$, $$6$$ and $$7$$ cm, and so does a second triangle drawn somewhere
+else. By :ref{#sss} they are congruent. The corners match up through the sides: the corner between
+the $$5$$ and $$6$$ cm sides in one goes to the corner between the $$5$$ and $$6$$ cm sides in the
+other. So those two corners have the same angle, and so do the other two pairs, without measuring a
+single angle.
+
+:::
+
+## Two sides and the angle between them
+
+Go back to the hinge. Two sides of fixed lengths, with the hinge opened to a fixed angle, also leave
+no freedom: the free ends are pinned, and so is the third side. This gives a second test, which only
+needs one angle.
+
+:::theorem[Side, angle, side]{#sas}
+
+Let $$\triangle PQM$$ and $$\triangle P'Q'M'$$ be triangles with
+
+```math
+d(Q, P) = d(Q', P'), \qquad d(Q, M) = d(Q', M'), \qquad \angle PQM = \angle P'Q'M'
+```
+
+Then there is an isometry $$F$$ with $$F(P) = P'$$, $$F(Q) = Q'$$ and $$F(M) = M'$$, so the
+triangles are congruent.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Triangle_Side-Angle-Side_Congruence"}
+
+Write $$b = d(Q, M)$$ and $$\theta$$ for the angle at $$Q$$, which is less than a straight angle
+since the corners aren't on one line.
+
+**Slide and turn.** By :ref{#segments-congruent} there is an isometry $$F_1$$ with $$F_1(Q) = Q'$$
+and $$F_1(P) = P'$$. Write $$X = F_1(M)$$. Then $$d(Q', X) = b$$, and since isometries keep angles
+(:ref{#isometry-angles}), $$\angle P'Q'X = \theta$$.
+
+**Only two places.** Picture the hinge at $$Q'$$: one arm lies along the ray $$Q'P'$$, and the other
+arm, of length $$b$$, opens to the angle $$\theta$$. It can open to that angle on either side of the
+ray, so its free end has two possible places.
+
+To see that there are no others, let $$Z$$ be the point of the ray $$Q'P'$$ at distance $$b$$ from
+$$Q'$$, and let $$Y$$ be any point at distance $$b$$ from $$Q'$$ with $$\angle P'Q'Y = \theta$$. By
+:ref{#rotation-rules} exactly one turn about $$Q'$$, by some $$x^\circ$$ with $$0 \le x < 360$$,
+takes $$Z$$ to $$Y$$, and by :ref{#rotation} the angle turning anticlockwise from the ray $$Q'Z$$ to
+the ray $$Q'Y$$ is $$x^\circ$$. The two angles between these rays add up to a full turn, and
+$$\angle P'Q'Y$$ is the one that is at most a straight angle
+(:ref{#distance-and-angles/angle-name}). So $$x = \theta$$ or $$x = 360 - \theta$$: the point $$Y$$
+is $$Z$$ turned by $$\theta$$ anticlockwise or by $$\theta$$ clockwise. Both $$X$$ and $$M'$$ are
+such points.
+
+**Flip if needed.** If $$X = M'$$, take $$F = F_1$$. Otherwise let $$R$$ be the flip in the line
+$$Q'P'$$. It leaves $$Q'$$ and $$P'$$ where they are, so $$R(X)$$ is still at distance $$b$$ from
+$$Q'$$, and by :ref{#isometry-angles} the angle between the rays $$Q'P'$$ and $$Q'R(X)$$ is still
+$$\theta$$. So $$R(X)$$ is one of the two places. It isn't $$X$$ itself: a flip only leaves the
+points of its mirror in place, and $$X$$ is not on the line $$Q'P'$$, since $$\theta$$ is neither
+zero nor a straight angle. So $$X$$ and $$R(X)$$ are the two places. The point $$M'$$ is one of them
+and isn't $$X$$, so $$R(X) = M'$$, and $$F = R \circ F_1$$ does the job.
+
+:::
+
+The angle has to be the one **between** the two given sides. Two sides and an angle somewhere else
+don't fix a triangle. In the figure, the side $$QM$$ swings like a gate between two positions where
+it meets the base line, giving two different triangles with the same two sides and the same angle at
+$$P$$.
+
+```plane
+point P 0 0 sw
+point Q 3.46 2 n
+point M 1.96 0 s
+point N 4.96 0 s
+circle Q 2.5 color=muted dashed
+ray P N color=muted extend=1
+segment P Q
+segment Q M color=blue
+segment Q N color=orange
+angle N P Q color=green r=0.9
+caption "Two sides and an angle not between them: QM and QN have the same length, so both triangles fit"
+```
+
+## Right triangles, revisited
+
+In [Right triangles](../distance-and-angles/right-triangles.mdx) one fact was taken on trust: two
+right triangles with the same legs match completely, in their hypotenuse, their angles and their
+area. It was pictured as cutting two triangles from card and laying one on the other. That picture
+is exactly a congruence, and now it follows from the tests.
+
+:::corollary[Right triangles with the same legs are congruent]{#right-triangles-congruent}
+
+Let $$\triangle PQM$$ and $$\triangle P'Q'M'$$ be right triangles with their right angles at $$Q$$
+and $$Q'$$, and legs of matching lengths: $$d(Q, P) = d(Q', P')$$ and $$d(Q, M) = d(Q', M')$$. Then
+the triangles are congruent, and:
+
+1. **Hypotenuse**: $$d(P, M) = d(P', M')$$
+2. **Angles**: $$\angle QPM = \angle Q'P'M'$$ and $$\angle QMP = \angle Q'M'P'$$
+3. **Area**: they have the same area
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Congruence_(geometry)#Determining_congruence"}
+
+Both angles at $$Q$$ and $$Q'$$ are right angles, so they are equal, and they lie between the
+matching legs. By :ref{#sas} there is an isometry $$F$$ with $$F(P) = P'$$, $$F(Q) = Q'$$ and
+$$F(M) = M'$$, carrying one triangle onto the other.
+
+1. $$F$$ keeps distances, so $$d(P', M') = d(F(P), F(M)) = d(P, M)$$.
+2. $$F$$ keeps angles (:ref{#isometry-angles}), and it carries the angle at $$P$$ onto the angle at
+   $$P'$$, and the angle at $$M$$ onto the angle at $$M'$$.
+3. $$F$$ keeps area (:ref{#isometry-area}).
+
+:::
+
+So the three parts of :ref{#distance-and-angles/right-triangle-rule} are no longer separate facts
+about triangles. They are what happens when one triangle is moved onto another, and moves keep
+lengths, angles and area. The earlier guides still lean on the rule, so it stays on the list of
+things taken as given there, but it is now explained by a single picture: laying one triangle on top
+of the other.
+
+## Isosceles triangles
+
+Cut a triangle with two equal sides out of paper, and fold it along the line from the corner where
+those sides meet to the middle of the opposite side. The two halves fall exactly on top of each
+other. So the two angles at the ends of the base, which land on each other, must be equal.
+
+A triangle with two sides of equal length is called **isosceles**. The corner where the equal sides
+meet is its apex, and the side opposite it is its base.
+
+:::proposition[Base angles of an isosceles triangle]{#isosceles}
+
+Let $$\triangle PQM$$ be a triangle with $$d(Q, P) = d(Q, M)$$. Then the angles at the ends of the
+base are equal:
+
+```math
+\angle QPM = \angle QMP
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Pons_asinorum"}
+
+Let $$L$$ be the perpendicular bisector of the base $$PM$$
+(:ref{#distance-and-angles/perpendicular-bisector}). The apex $$Q$$ is the same distance from $$P$$
+as from $$M$$, so it lies on $$L$$ (:ref{#distance-and-angles/perpendicular-bisector-rule}).
+
+Let $$R$$ be the flip in $$L$$, which is the fold. Since $$L$$ is the perpendicular bisector of
+$$PM$$, the flip swaps $$P$$ and $$M$$ (:ref{#reflection}), and it leaves $$Q$$, on the mirror,
+where it is.
+
+The angle $$\angle QPM$$ has its corner at $$P$$ and its sides along the rays $$PQ$$ and $$PM$$. By
+:ref{#isometry-angles}, the flip sends it to the angle at $$R(P) = M$$ between the rays
+$$R(P)R(Q) = MQ$$ and $$R(P)R(M) = MP$$, which is $$\angle QMP$$, and the size doesn't change. So
+$$\angle QPM = \angle QMP$$.
+
+:::
+
+```plane
+point P 0 0 sw
+point M 4 0 se
+point Q 2 3.2 n
+point O 2 0 s
+line Q O color=purple dashed extend=0.6
+segment P M
+segment P Q
+segment M Q
+ticks P Q 1
+ticks M Q 1
+angle M P Q color=blue
+angle Q M P color=blue
+caption "Folding along the dashed line swaps P and M and keeps Q, so the two base angles match"
+```
+
+:::example[Finding the base angles]
+
+An isosceles triangle has an angle of $$40^\circ$$ at its apex. Its two base angles are equal, say
+$$x^\circ$$ each, and the three angles add up to $$180^\circ$$
+(:ref{#distance-and-angles/triangle-angle-sum}). So $$40 + 2x = 180$$, and each base angle is
+$$70^\circ$$.
+
+:::
+
+## Exercises
+
+:::::accordion[Exercises on congruence, with solutions]
+
+::::exercise{#ex-congruence-match-corners}
+
+Triangle $$\triangle ABC$$ has $$d(A, B) = 5$$, $$d(B, C) = 6$$ and $$d(C, A) = 7$$. Triangle
+$$\triangle XYZ$$ has $$d(X, Y) = 7$$, $$d(Y, Z) = 5$$ and $$d(Z, X) = 6$$. Show that they are
+congruent, say which corner of $$\triangle XYZ$$ matches each of $$A$$, $$B$$ and $$C$$, and say
+which angle of $$\triangle XYZ$$ equals $$\angle ABC$$.
+
+:::solution
+
+A corner is where two sides meet, so it matches the corner where the sides of the same lengths meet:
+
+- $$B$$ is where the sides of lengths $$5$$ and $$6$$ meet; in $$\triangle XYZ$$ those are $$YZ$$
+  and $$ZX$$, which meet at $$Z$$
+- $$A$$ is where the sides of lengths $$5$$ and $$7$$ meet; those are $$YZ$$ and $$XY$$, which meet
+  at $$Y$$
+- $$C$$ is where the sides of lengths $$6$$ and $$7$$ meet; those are $$ZX$$ and $$XY$$, which meet
+  at $$X$$
+
+With $$A, B, C$$ matched to $$Y, Z, X$$, the sides agree: $$d(A, B) = d(Y, Z) = 5$$,
+$$d(B, C) = d(Z, X) = 6$$ and $$d(C, A) = d(X, Y) = 7$$. By :ref{#sss} there is an isometry taking
+$$A$$, $$B$$, $$C$$ to $$Y$$, $$Z$$, $$X$$, so the triangles are congruent. It keeps angles
+(:ref{#isometry-angles}), so $$\angle ABC = \angle YZX$$.
+
+:::
+
+::::
+
+::::exercise{#ex-congruence-discs}
+
+Prove that two discs (:ref{#distance-and-angles/circle}) with the same radius are congruent.
+
+:::solution
+
+Follow the proof of :ref{#circles-congruent}, with "at most $$r$$" in place of "exactly $$r$$". Let
+the discs have centres $$O$$ and $$O'$$ and radius $$r$$, and let $$T$$ be the slide taking $$O$$ to
+$$O'$$ (:ref{#translation-rules}).
+
+If $$d(O, P) \le r$$, then $$d(O', T(P)) = d(T(O), T(P)) = d(O, P) \le r$$, so $$T(P)$$ is in the
+second disc. If $$d(O', Q) \le r$$, then $$P = T^{-1}(Q)$$ has $$d(O, P) = d(O', Q) \le r$$, so it
+is in the first disc and $$T(P) = Q$$. So $$T$$ carries the first disc exactly onto the second.
+
+:::
+
+::::
+
+::::exercise{#ex-congruence-lines}
+
+Prove that any two lines are congruent.
+
+:::solution
+
+Let the lines be $$L$$ and $$K$$. Pick points $$P$$ and $$Q$$ on $$L$$ with $$d(P, Q) = 1$$, and
+points $$P'$$ and $$Q'$$ on $$K$$ with $$d(P', Q') = 1$$. By :ref{#segments-congruent} there is an
+isometry $$F$$ with $$F(P) = P'$$ and $$F(Q) = Q'$$.
+
+By :ref{#isometry-lines}, $$F$$ carries the line through $$P$$ and $$Q$$, which is $$L$$, exactly
+onto the line through $$P'$$ and $$Q'$$, which is $$K$$. So $$L \cong K$$.
+
+:::
+
+::::
+
+::::exercise{#ex-congruence-isosceles-angles}
+
+1. An isosceles triangle has an apex angle of $$100^\circ$$. Find its base angles.
+2. An isosceles triangle has base angles of $$35^\circ$$ each. Find its apex angle.
+3. Can an isosceles triangle have base angles of $$95^\circ$$?
+
+:::solution
+
+The base angles are equal (:ref{#isosceles}), and the three angles add up to $$180^\circ$$
+(:ref{#distance-and-angles/triangle-angle-sum}).
+
+1. $$100 + 2x = 180$$, so each base angle is $$40^\circ$$.
+2. The apex angle is $$180 - 2 \cdot 35 = 110$$ degrees.
+3. No. Two angles of $$95^\circ$$ already add up to $$190^\circ$$, more than the $$180^\circ$$ the
+   whole triangle has.
+
+:::
+
+::::
+
+::::exercise{#ex-congruence-equilateral}
+
+A triangle whose three sides all have the same length is called equilateral. Prove that each of its
+angles is $$60^\circ$$.
+
+:::solution
+
+Let $$\triangle PQM$$ have $$d(P, Q) = d(Q, M) = d(M, P)$$. Since $$d(Q, P) = d(Q, M)$$, the
+triangle is isosceles with apex $$Q$$, so $$\angle QPM = \angle QMP$$ (:ref{#isosceles}). Since
+$$d(P, Q) = d(P, M)$$, it is also isosceles with apex $$P$$, so $$\angle PQM = \angle PMQ$$.
+
+So all three angles are equal, say $$x^\circ$$ each. They add up to $$180^\circ$$
+(:ref{#distance-and-angles/triangle-angle-sum}), so $$3x = 180$$ and $$x = 60$$.
+
+:::
+
+::::
+
+::::exercise{#ex-congruence-kite}
+
+A kite $$PQRM$$ has $$d(P, Q) = d(P, M)$$ and $$d(R, Q) = d(R, M)$$, as in the figure. Prove that
+the diagonal $$PR$$ splits the angle at $$P$$ into two equal halves: $$\angle QPR = \angle RPM$$.
+
+```plane
+point P 0 0 w
+point Q 2 1.5 n
+point R 5 0 e
+point M 2 -1.5 s
+segment P Q
+segment Q R
+segment R M
+segment M P
+segment P R color=purple dashed
+ticks P Q 1
+ticks P M 1
+ticks Q R 2
+ticks M R 2
+caption "A kite: two pairs of equal sides next to each other"
+```
+
+:::solution
+
+Compare $$\triangle PQR$$ with $$\triangle PMR$$, matching $$P$$, $$Q$$, $$R$$ with $$P$$, $$M$$,
+$$R$$. The sides match: $$d(P, Q) = d(P, M)$$ and $$d(Q, R) = d(M, R)$$ are given, and the side
+$$PR$$ is shared. By :ref{#sss} there is an isometry $$F$$ with $$F(P) = P$$, $$F(Q) = M$$ and
+$$F(R) = R$$.
+
+It carries the angle $$\angle QPR$$, between the rays $$PQ$$ and $$PR$$, onto the angle between the
+rays $$PM$$ and $$PR$$. Isometries keep angles (:ref{#isometry-angles}), so
+$$\angle QPR = \angle RPM$$.
+
+:::
+
+::::
+
+::::exercise{#ex-congruence-side-side-angle}
+
+A base line runs from a point $$P$$. A point $$Q$$ is $$4$$ from $$P$$, with an angle of
+$$30^\circ$$ between $$PQ$$ and the base line. The foot $$H$$ of the perpendicular from $$Q$$ to the
+base line has $$d(Q, H) = 2$$ and $$d(P, H) = 2\sqrt{3}$$. Find the two points $$M$$ on the base
+line with $$d(Q, M) = 2.5$$, and explain why this shows that two sides and an angle that is not
+between them don't fix a triangle.
+
+:::solution
+
+A point $$M$$ on the base line at distance $$t$$ from $$H$$ has $$d(Q, M)^2 = 2^2 + t^2$$ by
+:ref{#distance-and-angles/pythagoras}. Setting this equal to $$2.5^2 = 6.25$$ gives $$t^2 = 2.25$$,
+so $$t = 1.5$$.
+
+So $$M$$ is $$1.5$$ either side of $$H$$, at a distance $$2\sqrt{3} - 1.5 \approx 1.96$$ or
+$$2\sqrt{3} + 1.5 \approx 4.96$$ from $$P$$. Both triangles $$\triangle PQM$$ have $$d(P, Q) = 4$$,
+$$d(Q, M) = 2.5$$ and an angle of $$30^\circ$$ at $$P$$. But their third sides, about $$1.96$$ and
+$$4.96$$, are different, and isometries keep distances, so the triangles are not congruent. The
+$$30^\circ$$ angle is at $$P$$, not between the two given sides, which meet at $$Q$$.
+
+:::
+
+::::
+
+::::exercise{#ex-congruence-four-bars}
+
+A square frame $$ABCD$$ has four bars of length $$1$$. Pushed over, it becomes a shape $$ABCD$$
+whose four bars still have length $$1$$, but whose angle at $$A$$ is now $$60^\circ$$. Show that the
+diagonal $$BD$$ of the pushed shape can't have the same length as the square's diagonal. Explain why
+this means that four bars don't fix the shape, while a brace along $$BD$$ would.
+
+:::solution
+
+**The square.** Its diagonal $$BD$$ is the hypotenuse of a right triangle with legs $$1$$ and $$1$$,
+so by :ref{#distance-and-angles/pythagoras} it has length $$\sqrt{2}$$.
+
+**The pushed shape.** Suppose its diagonal $$BD$$ also had length $$\sqrt{2}$$. Then its triangle
+$$\triangle ABD$$ would have sides $$1$$, $$1$$ and $$\sqrt{2}$$, the same as the square's triangle
+$$\triangle ABD$$. By :ref{#sss} the two triangles would be congruent, by an isometry taking the
+square's corners $$A$$, $$B$$, $$D$$ to the pushed shape's corners $$A$$, $$B$$, $$D$$. Isometries
+keep angles (:ref{#isometry-angles}), so the angle at $$A$$ would be $$90^\circ$$ in both. But it is
+$$60^\circ$$ in the pushed shape, so the diagonals differ (:ref{#basic-proofs/contradiction}).
+
+So the same four bars make shapes with different diagonals, and four side lengths don't fix the
+shape: the frame can fold. A brace along $$BD$$ fixes the third side of both triangles
+$$\triangle ABD$$ and $$\triangle CBD$$, and by :ref{#sss} three sides fix a triangle, so the braced
+frame can't change shape.
+
+:::
+
+::::
+
+:::::

@@ -1,0 +1,161 @@
+---
+title: Introduction
+description:
+  Slides, turns and flips of the plane, what they keep, and how they explain congruence and
+  symmetry.
+---
+
+Shapes get moved all the time without changing. A character in a video game slides across the
+screen, turns to face a new direction, and flips to walk the other way, and it stays the same
+character. A spare bolt fits any nut made to the same plan, because one copy can be moved exactly
+onto another. A mirror shows your face the wrong way round but the right size. This chapter makes
+these everyday moves precise, and shows how much follows from one idea: a move that keeps every
+distance.
+
+The picture to keep in mind is a sheet of tracing paper laid over the page. Draw a shape on the
+sheet, then move it: slide it, turn it about a pin, or lift it and flip it over. Whatever you do,
+the drawing on the sheet keeps its shape and size, because the paper doesn't stretch or tear. Moves
+of this kind are called **isometries**, and the guides that follow show that slides, turns and flips
+are the only ones there are.
+
+As in the earlier chapters, a few facts are taken as given and marked clearly in a box, such as "a
+slide keeps every distance". Everything else is proved from them, using the distances, lines and
+angles of the [Distance and angles](../distance-and-angles/introduction.mdx) chapter and the methods
+of [Basic proofs](../basic-proofs/introduction.mdx). Along the way the chapter proves a fact about
+right triangles that the Distance and angles chapter had to take as given.
+
+## Guides in this chapter
+
+The chapter has eleven guides:
+
+1. [Maps of the plane](./maps.mdx): rules that send every point somewhere, images of shapes, fixed
+   points, and zooms that change sizes
+2. [Slides and turns](./slides-and-turns.mdx): translations, rotations, turns of any angle, and the
+   half turn
+3. [Reflections](./reflections.mdx): flips in a mirror line, and the shortest route that touches a
+   line, from a river walk to a billiard shot
+4. [What an isometry keeps](./isometries.mdx): moves that keep every distance also keep segments,
+   lines, right angles, parallels, angles and area, and three pins hold one still
+5. [Combining moves](./combining-moves.mdx): one move after another, why the order matters, and what
+   two mirrors make
+6. [Undoing moves](./undoing-moves.mdx): inverses, undoing steps in reverse order, and how three
+   points decide an isometry
+7. [Every isometry is a slide, turn or flip](./classification.mdx): any isometry is put back by a
+   slide, a turn and at most one flip
+8. [Congruence](./congruence.mdx): same shape and size made exact, the side and angle tests for
+   triangles, and why braced frames are rigid
+9. [Symmetry](./symmetry.mdx): moves that put a shape back onto itself, how they combine, and how to
+   count them
+10. [Test yourself](./test-yourself.mdx): a multiple choice quiz on the ideas in the chapter
+11. [Exercises](./exercises.mdx): exercises on the whole chapter, with worked solutions
+
+The summary below collects every definition and rule from the chapter, for reference while you read.
+
+{/* Keep this summary in sync with the guides whenever they change. */}
+
+:::accordion[Summary of definitions and rules]
+
+**Definitions**
+
+| Term                    | Meaning                                                                                                  |
+| ----------------------- | -------------------------------------------------------------------------------------------------------- |
+| :ref{#map}              | A rule sending each point $$P$$ to exactly one point $$F(P)$$, its image                                 |
+| :ref{#image}            | $$F(S)$$ is the set of all images $$F(P)$$ for $$P$$ in the shape $$S$$                                  |
+| :ref{#map-equality}     | $$F = G$$ when $$F(P) = G(P)$$ for every point $$P$$                                                     |
+| :ref{#fixed-point}      | A point with $$F(P) = P$$                                                                                |
+| :ref{#dilation}         | Zoom by $$r$$ about $$O$$: $$P'$$ on the ray $$OP$$ with $$d(O, P') = r \cdot d(O, P)$$                  |
+| :ref{#translation}      | A slide: every point moves the same distance in the same direction, given by an arrow                    |
+| :ref{#rotation}         | A turn $$G_x$$ about $$O$$: same distance from $$O$$, turned anticlockwise by $$x^\circ$$                |
+| :ref{#point-reflection} | $$P'$$ with $$O$$ the midpoint of $$PP'$$                                                                |
+| :ref{#reflection}       | A flip in $$L$$: points of $$L$$ stay put, and $$L$$ is the perpendicular bisector of each other $$PP'$$ |
+| :ref{#isometry}         | A map with $$d(F(P), F(Q)) = d(P, Q)$$ for every two points                                              |
+| :ref{#composite}        | First $$F$$, then $$G$$: $$(G \circ F)(P) = G(F(P))$$, read "$$G$$ after $$F$$"                          |
+| :ref{#map-powers}       | $$F^n$$ is $$F$$ done $$n$$ times in a row, and $$F^0 = I$$                                              |
+| :ref{#glide-reflection} | First a flip in $$L$$, then a slide along $$L$$                                                          |
+| :ref{#inverse-map}      | $$F^{-1}$$ with $$F^{-1} \circ F = I$$ and $$F \circ F^{-1} = I$$                                        |
+| :ref{#congruent}        | $$S \cong S'$$ when some isometry has $$F(S) = S'$$                                                      |
+| :ref{#symmetry}         | An isometry with $$F(S) = S$$; a line of symmetry is a mirror whose flip is one                          |
+
+**Slides and turns**
+
+| Rule                        | Statement                                                                                                         |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| :ref{#translation-rules}    | Exactly one slide sends $$P$$ to $$Q$$; a slide followed by a slide is a slide                                    |
+| :ref{#rotation-rules}       | Exactly one turn by $$0 \le x < 360$$ sends $$P$$ to $$Q$$ when $$d(O, P) = d(O, Q)$$; turns add; $$G_{360} = I$$ |
+| :ref{#rotation-whole-turns} | $$G_{x + 360n} = G_x$$, so every turn equals one by an angle from $$0^\circ$$ up to $$360^\circ$$                 |
+| :ref{#half-turn}            | The turn by $$180^\circ$$ about $$O$$ is the reflection through $$O$$                                             |
+
+**Reflections**
+
+| Rule                    | Statement                                                                                        |
+| ----------------------- | ------------------------------------------------------------------------------------------------ |
+| :ref{#reflection-twice} | Flipping twice in the same mirror puts every point back: $$R \circ R = I$$                       |
+| :ref{#mirror-distances} | Every point $$X$$ of the mirror has $$d(X, P) = d(X, P')$$                                       |
+| :ref{#shortest-route}   | The shortest route from $$P$$ to the line $$L$$ and on to $$Q$$ crosses $$L$$ where $$P'Q$$ does |
+
+**What an isometry keeps**
+
+| Rule                          | Statement                                                                          |
+| ----------------------------- | ---------------------------------------------------------------------------------- |
+| :ref{#basic-isometries}       | Slides, turns, flips in a line and reflections through a point are isometries      |
+| :ref{#isometry-area}          | An isometry sends a region to a region with the same area                          |
+| :ref{#isometry-distinct}      | Different points have different images                                             |
+| :ref{#isometry-segments}      | The segment $$PM$$ goes onto the segment $$P'M'$$                                  |
+| :ref{#isometry-lines}         | The line $$PM$$ goes onto the line $$P'M'$$                                        |
+| :ref{#isometry-perpendicular} | Perpendicular lines go to perpendicular lines                                      |
+| :ref{#isometry-parallel}      | Parallel lines go to parallel lines                                                |
+| :ref{#isometry-angles}        | An angle of $$x^\circ$$ goes to an angle of $$x^\circ$$                            |
+| :ref{#fixed-points-bisector}  | If $$F(X) \ne X$$, every fixed point lies on the perpendicular bisector of $$XX'$$ |
+| :ref{#two-fixed-points}       | Two fixed points fix every point of the line through them                          |
+| :ref{#three-fixed-points}     | Three fixed points not on one line make the isometry the identity                  |
+
+**Combining moves**
+
+| Rule                         | Statement                                                                                       |
+| ---------------------------- | ----------------------------------------------------------------------------------------------- |
+| :ref{#composite-isometry}    | One isometry after another is an isometry                                                       |
+| :ref{#composite-associative} | $$H \circ (G \circ F) = (H \circ G) \circ F$$                                                   |
+| :ref{#parallel-mirrors}      | Flips in parallel mirrors $$d$$ apart make a slide by $$2d$$, square to the mirrors             |
+| :ref{#crossing-mirrors}      | Flips in mirrors crossing at angle $$\theta$$ make a turn by $$2\theta$$ about where they cross |
+
+**Undoing moves**
+
+| Rule                        | Statement                                                                                       |
+| --------------------------- | ----------------------------------------------------------------------------------------------- |
+| :ref{#inverse-map-unique}   | A map has at most one inverse                                                                   |
+| :ref{#inverse-isometry}     | The inverse of an isometry is an isometry                                                       |
+| :ref{#inverse-composite}    | $$(G \circ F)^{-1} = F^{-1} \circ G^{-1}$$: undo the steps in reverse order                     |
+| :ref{#inverse-by-repeating} | If $$F^n = I$$, then $$F^{-1} = F^{n - 1}$$                                                     |
+| :ref{#cancel-map}           | If $$F$$ has an inverse, $$F \circ G = F \circ H$$ or $$G \circ F = H \circ F$$ gives $$G = H$$ |
+| :ref{#three-points-decide}  | Isometries that agree at three points not on one line are equal                                 |
+
+**Every isometry is a slide, turn or flip**
+
+| Rule                    | Statement                                                                                     |
+| ----------------------- | --------------------------------------------------------------------------------------------- |
+| :ref{#fix-two-points}   | An isometry fixing two points is the identity or the flip in the line through them            |
+| :ref{#fix-one-point}    | An isometry fixing $$O$$ is a turn about $$O$$, or a flip in a line through $$O$$ then a turn |
+| :ref{#classification}   | Every isometry is $$T \circ G$$ or $$T \circ G \circ R$$: a slide, a turn and maybe a flip    |
+| :ref{#isometry-inverse} | Every isometry has an inverse, which is an isometry                                           |
+| :ref{#four-kinds}       | Every isometry other than the identity is a slide, a turn, a flip or a glide                  |
+
+**Congruence**
+
+| Rule                             | Statement                                                                                  |
+| -------------------------------- | ------------------------------------------------------------------------------------------ |
+| :ref{#congruence-relation}       | $$S \cong S$$; $$S \cong S'$$ gives $$S' \cong S$$; congruence passes along a chain        |
+| :ref{#circles-congruent}         | Circles with the same radius are congruent                                                 |
+| :ref{#segments-congruent}        | Segments with the same length are congruent                                                |
+| :ref{#sss}                       | Triangles with matching sides of the same lengths are congruent                            |
+| :ref{#sas}                       | Two sides and the angle between them decide a triangle up to congruence                    |
+| :ref{#right-triangles-congruent} | Right triangles with matching legs are congruent, with equal hypotenuses, angles and areas |
+| :ref{#isosceles}                 | If $$d(Q, P) = d(Q, M)$$, then $$\angle QPM = \angle QMP$$                                 |
+
+**Symmetry**
+
+| Rule                    | Statement                                                                                                                             |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| :ref{#symmetry-combine} | Symmetries combine and undo into symmetries, and the identity is one                                                                  |
+| :ref{#regular-turns}    | For a regular shape with $$n$$ corners, the turn $$G$$ by $$\frac{360}{n}^\circ$$ is a symmetry, $$G^n = I$$ and $$G^{-1} = G^{n-1}$$ |
+
+:::
