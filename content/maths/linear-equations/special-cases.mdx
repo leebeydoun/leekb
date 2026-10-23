@@ -3,11 +3,12 @@ title: No solution, or infinitely many
 description: When a system has no solution or infinitely many, and the test that tells in advance.
 ---
 
-So far every system has had exactly one solution. That is the usual case, but not the only one. Two
-equations can contradict each other, so that nothing satisfies both, or one can just repeat the
-other, so that there are infinitely many solutions. This page shows how each case shows up when
-solving, and gives a single number, worked out from the coefficients, that says in advance which
-case you are in.
+Suppose a shop tells you that two pens and a notebook cost £5, and then that four pens and two
+notebooks cost £9. Both can't be true, because buying the first lot twice should cost £10. Two
+equations can clash like this, so that no numbers satisfy both, or one can repeat the other in
+disguise, so that infinitely many do. In this guide we'll see how each case shows up while solving,
+and find a single number, worked out from the coefficients, that tells you in advance whether there
+is exactly one solution.
 
 ## When the equations contradict each other
 
@@ -37,8 +38,8 @@ Subtracting (1) from (2) eliminates $$x$$, but $$y$$ disappears too:
 
 The last line is false whatever $$x$$ and $$y$$ are. Since every step gave an equivalent system
 (:ref{#combining}), the original system has the same solutions as one containing the equation
-$$0 = 2$$, which is none at all. Looking back, this is obvious: the same quantity $$x + 2y$$ can't
-be both $$3$$ and $$5$$.
+$$0 = 2$$, which is none at all. Looking back, the clash was there from the start: the same quantity
+$$x + 2y$$ can't be both $$3$$ and $$5$$.
 
 :::definition[Consistent and inconsistent systems]{#consistent}
 
@@ -62,7 +63,7 @@ is $$-3$$ times the first one's, but its right side isn't $$-3 \cdot 4$$.
 
 The opposite can happen too: the second equation can be the first in disguise. If a coffee and two
 teas cost £3, then three coffees and six teas must cost £9, so being told the second fact adds
-nothing. Then there is really only one equation in two unknowns, and that leaves infinitely many
+nothing. Then there is in effect only one equation in two unknowns, and that leaves infinitely many
 possibilities.
 
 :::example[Infinitely many solutions]
@@ -85,8 +86,8 @@ Subtracting $$3$$ times (1) from (2) gives
 :::
 
 This time the last line is true whatever $$x$$ and $$y$$ are, so it puts no condition on them at
-all. Equation (2) is just (1) multiplied by $$3$$, so it says nothing new, and the system has the
-same solutions as (1) alone. There are infinitely many: choose any number $$t$$ for $$y$$, and then
+all. Equation (2) is (1) multiplied by $$3$$, so it says nothing new, and the system has the same
+solutions as (1) alone. There are infinitely many: choose any number $$t$$ for $$y$$, and then
 $$x = 3 - 2t$$. So the solutions are
 
 ```math
@@ -99,12 +100,15 @@ exactly.
 
 ## A test that tells in advance
 
-In both examples above, the left side of one equation is a multiple of the other's, so removing one
-unknown removes the other as well. Then the right-hand sides decide between no solution and
-infinitely many. If the left sides are not linked in this way, elimination always leaves a value for
-each unknown, whatever the right-hand sides are. So whether there is exactly one solution depends
-only on the coefficients, and all three cases come down to one number. Write a general system with
-letters for the coefficients:
+Whether a system has exactly one solution depends only on its coefficients, not on its right-hand
+sides. In both examples so far, the left side of one equation is a multiple of the other's, so
+removing one unknown removes the other as well. Then the right-hand sides decide between no solution
+and infinitely many.
+
+If the left sides are not linked in this way, elimination always leaves a value for each unknown,
+whatever the right-hand sides are. So one number, worked out from the coefficients, can tell in
+advance whether there is exactly one solution. To find it, write a general system with letters for
+the coefficients:
 
 ```math
 \begin{aligned}
@@ -147,7 +151,7 @@ x = \frac{du - bv}{ad - bc}, \qquad y = \frac{av - cu}{ad - bc}
 
 :::proof{source="https://en.wikipedia.org/wiki/Cramer%27s_rule#Explicit_formulas_for_small_systems"}
 
-There are two things to show: that a solution can only be this pair, and that this pair really is a
+There are two things to show: that a solution can only be this pair, and that this pair is a
 solution.
 
 **Only this pair can work.** Suppose $$(x, y)$$ is a solution. Eliminate $$y$$ by multiplying (1) by
@@ -199,10 +203,10 @@ So the pair solves both equations.
 
 :::
 
-The first half of the proof is just elimination, done once and for all with letters. Why is the
-second half needed? The first half multiplied the equations by $$d$$, $$b$$, $$c$$ and $$a$$, and
-some of these might be $$0$$. Multiplying by $$0$$ isn't a safe step, so the first half only shows
-that a solution would have to be this pair. Checking the pair directly shows that it really is one.
+The first half of the proof is elimination, done once and for all with letters. It doesn't finish
+the job on its own, because it multiplied the equations by $$d$$, $$b$$, $$c$$ and $$a$$, and some
+of these might be $$0$$. Multiplying by $$0$$ isn't a safe step, so the first half only shows that a
+solution would have to be this pair. Checking the pair directly shows that it is one.
 
 :::example[Using the formula]
 
@@ -220,17 +224,18 @@ which matches the answer found by elimination on the
 
 :::
 
-The formula is worth knowing, but for particular numbers elimination is usually quicker and less
-error-prone. Its real value is the test: a non-zero determinant guarantees exactly one solution.
+The formula is worth knowing, but for particular numbers elimination usually takes fewer steps and
+invites fewer slips. The formula's main value is the test: a non-zero determinant guarantees exactly
+one solution.
 
 ## When the determinant is zero
 
 A zero determinant means the two left-hand sides are tied together, one a multiple of the other.
-Then the two equations are really making claims about the same quantity. Either the claims agree,
-and the second equation adds nothing, or they disagree, and nothing works. There is no room for
-exactly one answer. The proof makes the "infinitely many" case concrete: starting from one solution,
-you can keep moving in a direction that leaves both left-hand sides unchanged, and every pair you
-reach is a solution too.
+Then the two equations make claims about the same quantity. Either the claims agree, and the second
+equation adds nothing, or they disagree, and nothing works. There is no room for exactly one answer.
+The proof makes the "infinitely many" case concrete: starting from one solution, you can keep moving
+in a direction that leaves both left-hand sides unchanged, and every pair you reach is a solution
+too.
 
 :::theorem[Zero determinant means none or infinitely many]{#determinant-zero}
 
@@ -241,10 +246,10 @@ If $$ad - bc = 0$$, the system has either no solution or infinitely many. It nev
 :::proof{source="https://en.wikipedia.org/wiki/Cramer%27s_rule#Inconsistent_and_indeterminate_cases"}
 
 If the system has no solution, there is nothing to prove. So suppose it has a solution
-$$(x_0, y_0)$$. We find infinitely many more by moving away from it in a direction that changes
-neither left-hand side.
+$$(x_0, y_0)$$. The proof finds infinitely many more by moving away from it in a direction that
+changes neither left-hand side.
 
-**Finding a direction.** We want a pair $$(p, q)$$, not both zero, with
+**Finding a direction.** The aim is a pair $$(p, q)$$, not both zero, with
 
 ```math
 ap + bq = 0 \qquad\text{and}\qquad cp + dq = 0

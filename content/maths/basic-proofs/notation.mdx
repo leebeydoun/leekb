@@ -4,10 +4,16 @@ description:
   Subscripts, sequences, the sum sign Σ, and the conventions for which letter usually means what.
 ---
 
-Good notation lets a reader see at a glance what each symbol is. A few habits make this possible:
-naming many numbers at once with subscripts, writing long sums compactly with $$\Sigma$$, and
-keeping to the same kinds of letter for the same kinds of thing. None of this is new mathematics,
-but every later guide uses it, so it is worth setting out once.
+Imagine writing down the scores of $$30$$ players in a game. Giving each one its own letter runs out
+after $$26$$, and long before then you'd forget which letter was whose. Mathematicians get round
+this with a few habits:
+
+- naming many numbers at once with subscripts
+- writing long sums compactly with $$\Sigma$$
+- keeping to the same kinds of letter for the same kinds of thing
+
+None of this is new mathematics, but every later chapter uses it, so in this guide we'll set it out
+once.
 
 ## Subscripts
 
@@ -52,7 +58,7 @@ same numbers.
 ## The sum sign
 
 Adding up the terms of a sequence comes up so often that it has its own symbol, the capital Greek
-letter sigma, $$\Sigma$$, for "sum". Instead of writing $$x_1 + x_2 + \dots + x_n$$, we write
+letter sigma, $$\Sigma$$, for "sum". Instead of writing $$x_1 + x_2 + \dots + x_n$$, you can write
 
 ```math
 \sum_{i=1}^{n} x_i,
@@ -71,7 +77,7 @@ For whole numbers $$m \le n$$,
 ```
 
 The letter $$i$$ is the **index of summation**. It has no meaning outside the sum, so any other
-letter not already in use would do just as well: $$\sum_{j=m}^{n} x_j$$ is the same sum.
+letter not already in use would do equally well: $$\sum_{j=m}^{n} x_j$$ is the same sum.
 
 :::
 
@@ -94,10 +100,12 @@ induction on the [Induction](./induction.mdx) page, becomes
 
 ## Working with sums
 
-A sum written with $$\Sigma$$ is still just an ordinary sum, so the usual rules of arithmetic apply
-to it. Two of them are used all the time. Adding two sequences term by term and then adding up gives
-the same as adding up each one and then adding the totals. And a number that multiplies every term
-can be taken outside the sum.
+A sum written with $$\Sigma$$ is still an ordinary sum, so the usual rules of arithmetic apply to
+it. Two of them come up in almost every calculation with sums:
+
+- Adding two sequences term by term and then adding up gives the same as adding up each one and then
+  adding the totals.
+- A number that multiplies every term can be taken outside the sum.
 
 :::proposition[Rules for sums]{#notation-sum-rules}
 
@@ -147,13 +155,14 @@ practice, keeping to a few habits lets a reader guess correctly before being tol
   most often the unknowns.
 - $$m$$, $$n$$, $$k$$ and $$i$$, $$j$$ usually stand for whole numbers, especially counts and
   indices.
-- Capital letters like $$P$$ and $$Q$$ usually stand for points, in geometry.
-- $$f$$ and $$g$$ will stand for functions, in later guides.
+- Capital letters like $$P$$ and $$Q$$ stand for points in geometry, and for statements in this
+  guide.
+- $$f$$ and $$g$$ will stand for functions, in later chapters.
 
 These are habits, not rules, and they bend when letters run short. What does not bend is that every
 letter must be **introduced before it is used**: "let $$n$$ be a whole number", "for every real
 number $$x$$", "there is an integer $$k$$ with …". A letter that appears from nowhere leaves the
-reader guessing what it is, and whether the claim is about every value or just some
+reader guessing what it is, and whether the claim is about every value or only some
 (:ref{#quantifiers}).
 
 :::remark[Introducing letters]{#notation-introduce}

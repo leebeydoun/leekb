@@ -3,10 +3,9 @@ title: Two equations in two unknowns
 description: Systems of two linear equations, and solving them by elimination.
 ---
 
-Many questions have two unknown quantities tied together by two facts. A café sells coffees and
-teas: four coffees and two teas cost £14, and one coffee and three teas cost £8.50. What does each
-drink cost? Neither fact on its own is enough, but together they pin both prices down. This page
-shows how to find them.
+Picture a café where four coffees and two teas cost £14, and one coffee and three teas cost £8.50.
+Neither fact on its own tells you the price of a coffee, but together they fix both prices. Each
+fact is an equation in two unknowns, and in this guide we'll see how to solve a pair of them.
 
 ## One equation, two unknowns
 
@@ -25,7 +24,7 @@ ax + by = c
 
 by safe steps (:ref{#safe-steps}), where $$a$$, $$b$$ and $$c$$ are numbers and $$a$$ and $$b$$ are
 not both zero. A **solution** is a pair of numbers, one for $$x$$ and one for $$y$$, that makes it
-true. We write the pair as $$(x, y)$$, with $$x$$ first.
+true. The pair is written $$(x, y)$$, with $$x$$ first.
 
 :::
 
@@ -60,10 +59,10 @@ x - y &= 1 &\quad (2)
 
 ## The idea of elimination
 
-We already know how to solve an equation with one unknown. So the plan is to combine the two
-equations in a way that makes one unknown disappear. This is allowed because the equations are facts
-about the same two numbers, and equal amounts added to equal amounts give equal totals. So adding
-the two equations, side by side, gives a new equation that is also true.
+You already know how to solve an equation with one unknown (:ref{#one-unknown}). So the plan is to
+combine the two equations in a way that makes one unknown disappear. This is allowed because the
+equations are facts about the same two numbers, and equal amounts added to equal amounts give equal
+totals. So adding the two equations, side by side, gives a new equation that is also true.
 
 Adding equations (1) and (2), left side to left side and right side to right side, gives
 
@@ -79,7 +78,7 @@ Two questions need answering before this can be trusted.
 1. **Is it allowed to add two equations?** Yes: if $$(x, y)$$ makes both equations true, then the
    two left sides are the numbers $$5$$ and $$1$$, so their sum is $$6$$.
 2. **Could the system have other solutions that this misses, or could $$(3, 2)$$ be a false one?**
-   The next proposition shows that neither can happen, as long as each step is reversible.
+   The next proposition shows that neither can happen, as long as each step can be undone.
 
 :::proposition[Combining equations]{#combining}
 
@@ -105,7 +104,7 @@ non-zero number, or swapping the order of the equations.
 
 :::proof{source="https://en.wikipedia.org/wiki/Gaussian_elimination#Row_operations"}
 
-We show the two systems have the same solutions, one direction at a time.
+The two systems have the same solutions. The proof checks this one direction at a time.
 
 **Old solutions solve the new system.** Suppose some values of the unknowns make (1) and (2) true.
 Then $$L_1$$ and $$R_1$$ are the same number, so $$kL_1$$ and $$kR_1$$ are equal too. Adding these
@@ -136,10 +135,10 @@ catches arithmetic slips.
 
 ## The elimination method
 
-Scaling an equation by a number other than 0 doesn't change what it says. If one coffee and three
-teas cost £8.50, then four coffees and twelve teas cost £34: it is the same fact, just for four
-times the order. Usually neither unknown cancels straight away. The trick is to multiply the
-equations first so that one unknown has matching coefficients.
+Usually neither unknown cancels straight away. The fix is to multiply the equations first, so that
+one unknown has matching coefficients. Multiplying an equation by a number other than 0 doesn't
+change what it says. If one coffee and three teas cost £8.50, then four coffees and twelve teas cost
+£34: it is the same fact, for an order four times the size.
 
 :::remark[Solving by elimination]{#elimination}
 
@@ -198,7 +197,7 @@ doesn't depend on the choice.
 :::example[Eliminating y instead]
 
 In the same system, the coefficients of $$y$$ are $$2$$ and $$-3$$. Multiplying (1) by $$3$$ and (2)
-by $$2$$ makes them $$6$$ and $$-6$$, which are opposite, so this time we **add**:
+by $$2$$ makes them $$6$$ and $$-6$$, which are opposite, so this time **add** the equations:
 
 ```math
 \begin{aligned}

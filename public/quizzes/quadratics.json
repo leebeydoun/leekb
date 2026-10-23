@@ -1,6 +1,6 @@
 {
   "title": "Review: Quadratic equations",
-  "description": "Questions on the ideas in this guide, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
+  "description": "Questions on the ideas in this chapter, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
   "questions": [
     {
       "id": "why-a-nonzero",
@@ -25,7 +25,7 @@
         "No, because it has no constant term",
         "No, because it can be factored",
         "Yes: only $$a$$ must be non-zero, and here $$a = 1$$, $$b = -5$$, $$c = 0$$",
-        "Only if $$x \\neq 0$$"
+        "Only when $$x \\neq 0$$"
       ],
       "answer": 2,
       "explanation": "A quadratic only needs $$a \\neq 0$$ (:ref{#quadratic}). Either of the other coefficients may be $$0$$."
@@ -126,7 +126,7 @@
         "It is fine, as long as you check the answer"
       ],
       "answer": 0,
-      "explanation": "Dividing by a number is a safe step only when that number isn't $$0$$ (:ref{#linear-equations/safe-steps}), and whether $$x$$ is $$0$$ is what we don't know. Factoring $$x(x - 5) = 0$$ keeps both solutions, $$0$$ and $$5$$."
+      "explanation": "Dividing by a number is a safe step only when that number isn't $$0$$ (:ref{#linear-equations/safe-steps}), and whether $$x$$ is $$0$$ is what you don't know. Factoring $$x(x - 5) = 0$$ keeps both solutions, $$0$$ and $$5$$."
     },
     {
       "id": "sum-and-product-clue",
@@ -168,7 +168,7 @@
         "Because a factor $$x - k$$ would give a solution, and $$x^2 + 49 \\ge 49$$ is never $$0$$"
       ],
       "answer": 3,
-      "explanation": "If it split into real linear factors, the zero product rule would give a solution (:ref{#solve-by-factors}). But $$x^2 + 49$$ is always at least $$49$$, so it has no zeros; only a difference of squares factors this way (:ref{#numbers/square-formulas})."
+      "explanation": "If it split into real linear factors, the zero product rule would give a solution (:ref{#solve-by-factors}). But $$x^2 + 49$$ is always at least $$49$$, so it is never $$0$$; only a difference of squares factors this way (:ref{#numbers/square-formulas})."
     },
     {
       "id": "missing-corner",
@@ -351,7 +351,7 @@
       "id": "negative-discriminant",
       "stars": 4,
       "topic": "The discriminant",
-      "question": "What does the guide say about quadratics with a negative discriminant?",
+      "question": "What does the chapter say about quadratics with a negative discriminant?",
       "options": [
         "They have solutions among the fractions",
         "The formula gives the wrong answer for them",
@@ -359,7 +359,7 @@
         "They can always be factored"
       ],
       "answer": 2,
-      "explanation": "No real number squares to a negative one (:ref{#real-numbers/squares-positive}), so there is no real solution (:ref{#root-count}). Just as the fractions and the real numbers filled earlier gaps, the complex numbers fill this one."
+      "explanation": "No real number squares to a negative one (:ref{#real-numbers/squares-positive}), so there is no real solution (:ref{#root-count}). As the fractions and the real numbers filled earlier gaps, the complex numbers fill this one."
     },
     {
       "id": "solutions-crossings",
@@ -513,7 +513,7 @@
         "It makes no difference"
       ],
       "answer": 1,
-      "explanation": "With the root isolated, $$\\sqrt{x + 10} = x - 2$$ squares to a quadratic with no roots left. It also shows $$x - 2 \\ge 0$$, which rules out $$-1$$ before the check (:ref{#real-numbers/squaring-sides})."
+      "explanation": "With the root isolated, $$\\sqrt{x + 10} = x - 2$$ squares to a quadratic with no square roots left. It also shows $$x - 2 \\ge 0$$, which rules out $$-1$$ before the check (:ref{#real-numbers/squaring-sides})."
     }
   ]
 }

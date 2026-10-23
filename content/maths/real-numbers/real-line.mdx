@@ -4,16 +4,18 @@ description:
   What real numbers are, why the fractions leave gaps, and the rules of arithmetic they obey.
 ---
 
-The rational numbers are packed tightly along the number line: between any two of them there is
-always another. Even so, they leave gaps. The [Numbers](../numbers/irrational-numbers.mdx) guide
-showed that no fraction squares to $$2$$ (:ref{#numbers/sqrt-two}), yet a length whose square is
-$$2$$ is easy to draw. The **real numbers** fill every gap, so that every point of the line has a
-number. This page says what they are, and which rules of arithmetic they share with the fractions.
+Draw a square with sides of length $$1$$, and then its diagonal. The diagonal has a length whose
+square is $$2$$, but no fraction squares to $$2$$ (:ref{#numbers/sqrt-two}, from
+[Irrational numbers](../numbers/irrational-numbers.mdx)). So the fractions leave a gap on the number
+line, even though they're packed so tightly that between any two there's always another.
+
+The **real numbers** fill every gap, so that every point of the line has a number. In this guide
+we'll see what they are, and which rules of arithmetic they share with the fractions.
 
 ## A length that isn't a fraction
 
 It is tempting to think that any length can be measured exactly by a fraction, as long as the unit
-is cut into small enough pieces. A simple drawing shows that this is wrong.
+is cut into small enough pieces. One drawing shows that this is wrong.
 
 Draw a $$2$$ by $$2$$ square, split into four $$1$$ by $$1$$ squares. In each small square, draw the
 diagonal that doesn't touch the centre of the big square. The four diagonals join up into a tilted
@@ -36,8 +38,8 @@ $$1$$ square, needs a number that the fractions don't have.
 ## Real numbers
 
 Picture the number line as a solid ruler with no holes in it. The fractions mark a great many of its
-points, but not all of them: the end of the diagonal above, laid along the ruler from $$0$$, lands
-on a point with no fraction. The idea of the real numbers is simply to give every point a number.
+points, but not all of them. Lay the diagonal of length $$d$$ along the ruler from $$0$$: its end
+lands on a point with no fraction. The idea of the real numbers is to give every point a number.
 Decimals are the natural way to name them, since each extra digit says more precisely where the
 point is.
 
@@ -50,12 +52,12 @@ written as a decimal, which may go on forever, like $$1.41421356\ldots$$.
 :::
 
 The rational numbers are real numbers: they are exactly the decimals that stop or repeat, as the
-Numbers guide explained. The rest, whose decimals go on forever without repeating, are the
+Numbers chapter explained. The rest, whose decimals go on forever without repeating, are the
 **irrational** numbers (:ref{#numbers/irrational}). So every real number is either rational or
 irrational, and not both.
 
 Building the real numbers carefully from the fractions takes a good deal of work, which belongs to a
-later course. Here we take two facts about them as given.
+later course. This chapter takes two facts about them as given.
 
 :::remark[No gaps in the real line]{#no-gaps}
 
@@ -88,16 +90,16 @@ $$1.414^2 = 1.999396$$, which is close to $$2$$ but not equal to it.
 
 ## Is 0.999… equal to 1?
 
-Endless decimals have one surprise. The [Numbers](../numbers/rational-numbers.mdx#decimals) guide
-turned repeating decimals into fractions by shifting them. The same trick, applied to
-$$x = 0.999\ldots$$, gives
+Some real numbers have two different decimals. The
+[Numbers](../numbers/rational-numbers.mdx#decimals) chapter turned repeating decimals into fractions
+by shifting them. The same trick, applied to $$x = 0.999\ldots$$, gives
 
 ```math
 10x = 9.999\ldots \qquad \text{so} \qquad 10x - x = 9 \qquad \text{and} \qquad x = 1
 ```
 
 So $$0.999\ldots$$ and $$1$$ are two decimals for the **same** real number. That can feel wrong:
-surely $$0.999\ldots$$ stops just short of $$1$$? But then there would be a positive gap between
+surely $$0.999\ldots$$ stops a little short of $$1$$? But then there would be a positive gap between
 them, and that gap would have to be smaller than $$1 - 0.9 = 0.1$$, smaller than
 $$1 - 0.99 = 0.01$$, smaller than $$0.001$$, and so on forever. No positive number is that small.
 The careful proof needs the rules for inequalities, so it comes on the
@@ -111,7 +113,7 @@ only way a real number can have two different decimals.
 Real numbers can be added and multiplied, and the results are again real numbers. The rules they
 follow are the same ones the fractions follow. They are the habits of everyday arithmetic, such as
 $$3 + 5 = 5 + 3$$, or working out $$4 \cdot 7 + 4 \cdot 3$$ as $$4 \cdot 10$$. Writing them down
-matters because they are exactly what algebra relies on. Once we know the real numbers obey them,
+matters because they are exactly what algebra relies on. Once you know the real numbers obey them,
 the familiar steps for rearranging and simplifying expressions still work.
 
 :::remark[Rules for real numbers]{#real-rules}
@@ -132,10 +134,10 @@ These are taken as given. Rules for positive and negative numbers come on the ne
 
 :::
 
-These are the rules of arithmetic from the Numbers guide, plus rule 5: every non-zero number has an
-inverse. (The Numbers guide also had rules about positive numbers; their real-number versions come
-on the next page.) So any result the Numbers guide proved from these rules alone holds for real
-numbers too, with the same proof. For example:
+These are the rules of arithmetic from the Numbers chapter, plus rule 5: every non-zero number has
+an inverse. (The Numbers chapter also had rules about positive numbers; their real-number versions
+come on the next page.) So any result the Numbers chapter proved from these rules alone holds for
+real numbers too, with the same proof. For example:
 
 - $$0 \cdot a = 0$$ (:ref{#numbers/zero-times}) and $$(-a)(-b) = ab$$ (:ref{#numbers/two-minus}).
 - If $$ab = 0$$, then $$a = 0$$ or $$b = 0$$ (:ref{#numbers/zero-product}).
@@ -146,15 +148,14 @@ numbers too, with the same proof. For example:
   (:ref{#numbers/square-formulas}).
 - :ref{#numbers/power-rules}, including negative powers (:ref{#numbers/negative-powers}).
 
-Likewise, everything in the [Linear equations](../linear-equations/introduction.mdx) guide holds for
-real numbers: a system like $$\sqrt{2}x + y = 1$$, $$x - y = 3$$ is solved exactly as before.
+Likewise, everything in the [Linear equations](../linear-equations/introduction.mdx) chapter holds
+for real numbers: a system like $$\sqrt{2}x + y = 1$$, $$x - y = 3$$ is solved exactly as before.
 
 ## Other systems obey the same rules
 
-The box above lists six rules of arithmetic for real numbers. Do those rules on their own describe
-the real numbers? In other words, if some collection of numbers can be added and multiplied and
-obeys all six rules, must it be the real numbers? The answer is no, and a collection of just five
-numbers shows why.
+The six rules in :ref{#real-rules} don't on their own pin down the real numbers. Other collections
+of numbers can be added and multiplied and obey all six rules too. A collection of five numbers
+shows this.
 
 ### Arithmetic with five numbers
 
@@ -166,7 +167,7 @@ $$5$$. For example:
 - $$3 \cdot 4 = 12$$, which leaves remainder $$2$$, so here $$3 \cdot 4$$ is $$2$$.
 - $$2 \cdot 3 = 6$$, which leaves remainder $$1$$, so here $$2 \cdot 3$$ is $$1$$.
 
-This is the arithmetic of congruences on division by $$5$$ from the Numbers guide's
+This is the arithmetic of congruences on division by $$5$$ from the Numbers chapter's
 [Congruence](../numbers/congruence.mdx) page, where $$7 \equiv 2 \pmod 5$$, for example.
 
 Now check the six rules one by one.

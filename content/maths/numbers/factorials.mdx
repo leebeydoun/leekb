@@ -4,11 +4,12 @@ description:
   Counting choices, and where the numbers in the formulas for squares and cubes come from.
 ---
 
-How many ways are there to choose $$3$$ toppings from $$5$$? Why are the numbers in front of
-$$(a + b)^3 = a^3 + 3a^2 b + 3ab^2 + b^3$$ exactly $$1, 3, 3, 1$$? Both questions have the same
-answer, and this page builds it from two ideas: factorials and binomial coefficients. Working with
-them is mostly a matter of cancelling fractions, which is why they fit here. They come back in much
-more detail in a later guide on counting.
+Suppose a pizza place lets you choose $$3$$ toppings from $$5$$. There are $$10$$ ways to do it. Now
+multiply out $$(a + b)^3 = a^3 + 3a^2 b + 3ab^2 + b^3$$ and look at the numbers in front:
+$$1, 3, 3, 1$$. The two look unrelated, but both kinds of number come from the same idea.
+
+In this guide we'll meet that idea through factorials and binomial coefficients. Working with them
+is mostly a matter of cancelling fractions, which is why they belong in this chapter.
 
 ## Factorials
 
@@ -26,7 +27,7 @@ positive integers:
 n! = 1 \cdot 2 \cdot 3 \cdots n
 ```
 
-We also define $$0! = 1$$.
+Also, $$0! = 1$$ by definition.
 
 :::
 
@@ -45,8 +46,9 @@ time:
 | $$7$$ | $$7 \cdot 720 = 5040$$   |
 | $$8$$ | $$8 \cdot 5040 = 40320$$ |
 
-Factorials grow very quickly. The same rule explains the choice $$0! = 1$$: taking $$n = 1$$ in
-$$n! = n \cdot (n - 1)!$$ gives $$1! = 1 \cdot 0!$$, which only works if $$0! = 1$$.
+Factorials grow fast: $$8!$$ is already over $$40000$$. The same rule explains the choice
+$$0! = 1$$. Taking $$n = 1$$ in $$n! = n \cdot (n - 1)!$$ gives $$1! = 1 \cdot 0!$$, which holds
+exactly when $$0! = 1$$.
 
 ## Choosing
 
@@ -55,7 +57,7 @@ for the first place, then $$n - 1$$ left for the second, and so on down to $$1$$
 there are $$n \cdot (n - 1) \cdots 1 = n!$$ ways. For example, the letters $$a$$, $$b$$, $$c$$ can
 be arranged in $$3! = 6$$ ways: $$abc$$, $$acb$$, $$bac$$, $$bca$$, $$cab$$, $$cba$$.
 
-Now suppose we want to **choose** $$n$$ things out of $$m$$, where only the selection matters, not
+Now suppose you want to **choose** $$n$$ things out of $$m$$, where only the selection matters, not
 the order. Picking them one at a time in order gives $$m$$ choices for the first, $$m - 1$$ for the
 second, and so on, $$n$$ times:
 
@@ -79,10 +81,11 @@ For natural numbers $$m$$ and $$n$$ with $$n$$ between $$0$$ and $$m$$, the **bi
 
 :::
 
-By the argument above, it counts the number of ways to choose $$n$$ things out of $$m$$, when the
-order doesn't matter. For example, choosing $$2$$ toppings from $$4$$ (say $$a$$, $$b$$, $$c$$,
-$$d$$) gives $$4 \cdot 3 = 12$$ ordered picks, and each pair is counted twice ($$ab$$ and $$ba$$),
-so there are $$6$$ ways: $$ab$$, $$ac$$, $$ad$$, $$bc$$, $$bd$$, $$cd$$. The formula agrees:
+By the counting argument before the definition, it counts the number of ways to choose $$n$$ things
+out of $$m$$, when the order doesn't matter. For example, choosing $$2$$ toppings from $$4$$ (say
+$$a$$, $$b$$, $$c$$, $$d$$) gives $$4 \cdot 3 = 12$$ ordered picks, and each pair is counted twice
+($$ab$$ and $$ba$$), so there are $$6$$ ways: $$ab$$, $$ac$$, $$ad$$, $$bc$$, $$bd$$, $$cd$$. The
+formula agrees:
 
 ```math
 \binom{4}{2} = \frac{4!}{2!\,2!} = \frac{24}{2 \cdot 2} = 6
@@ -96,7 +99,7 @@ Writing the factorials out lets most of the product cancel before multiplying. F
 ```
 
 and in the same way $$\binom{5}{2} = \frac{5 \cdot 4}{2} = 10$$. At the ends, $$\binom{m}{0} = 1$$
-and $$\binom{m}{m} = 1$$, since there is just one way to choose nothing, and one way to choose
+and $$\binom{m}{m} = 1$$, since there is one way to choose nothing, and one way to choose
 everything.
 
 ## Two rules for binomial coefficients
@@ -187,7 +190,7 @@ $$n!\,(m - n + 1)!$$, without changing their values (:ref{#fraction-cancel}).
 \end{aligned}
 ```
 
-In the second line we added the numerators, took out the common factor $$m!$$, and noticed that
+The second line adds the numerators, takes out the common factor $$m!$$, and uses the fact that
 $$n$$ and $$-n$$ cancel.
 
 **Recognise the answer.** Finally, $$m! \cdot (m + 1) = (m + 1)!$$ and $$m - n + 1 = (m + 1) - n$$,
@@ -206,8 +209,8 @@ which is $$\binom{5}{2}$$.
 
 Pascal's rule means the binomial coefficients can be built without any factorials at all. Write them
 in rows, $$\binom{m}{0}, \binom{m}{1}, \dots, \binom{m}{m}$$ for $$m = 0, 1, 2, \dots$$. Each row
-starts and ends with $$1$$, and every other entry is the sum of the two entries just above it. This
-is **Pascal's triangle**:
+starts and ends with $$1$$, and every other entry is the sum of the two entries directly above it.
+This is **Pascal's triangle**:
 
 ```math
 \begin{array}{c}
@@ -220,8 +223,8 @@ is **Pascal's triangle**:
 \end{array}
 ```
 
-The row for $$m = 4$$ is $$1, 4, 6, 4, 1$$, and its middle entry is $$\binom{4}{2} = 6$$, the
-toppings count from before.
+The row for $$m = 4$$ is $$1, 4, 6, 4, 1$$, and its middle entry is $$\binom{4}{2} = 6$$, the number
+of ways to choose $$2$$ toppings from $$4$$ in [Choosing](#choosing).
 
 ## The binomial theorem
 
@@ -264,7 +267,7 @@ aaa + aab + aba + abb + baa + bab + bba + bbb
 
 Since the order of a product doesn't matter, a term with $$n$$ factors of $$b$$ has $$m - n$$
 factors of $$a$$, so it equals $$a^{m-n} b^n$$. (At the ends, $$n = 0$$ and $$n = m$$, the terms are
-just $$a^m$$ and $$b^m$$.)
+$$a^m$$ and $$b^m$$.)
 
 **How many there are.** A term with exactly $$n$$ factors of $$b$$ is decided by which $$n$$ of the
 $$m$$ brackets supply the $$b$$s. So these terms match up with the ways of choosing $$n$$ brackets
@@ -278,7 +281,7 @@ each $$n$$ from $$0$$ to $$m$$, which is the formula.
 
 :::
 
-So expanding any power of a sum just needs a row of Pascal's triangle. Row $$4$$ is
+So expanding any power of a sum needs only a row of Pascal's triangle. Row $$4$$ is
 $$1, 4, 6, 4, 1$$, so
 
 ```math

@@ -4,11 +4,10 @@ description:
   Measuring curved shapes by counting squares, and why a finer grid closes in on the area.
 ---
 
-How much liner does a kidney-shaped garden pond need? How big is a lake on a map, or a leaf you want
-to compare with another? The rules so far measure rectangles, triangles and shapes cut from them,
-all with straight edges. A curved edge needs a new idea, and it is the one you would try with a
-sheet of graph paper: draw the shape on the grid and count the squares. This guide makes that idea
-exact, and shows why a finer grid always gets closer to the true area.
+Suppose you're buying a liner for a kidney-shaped garden pond. Its edge is curved, so the area rules
+for rectangles and triangles don't apply. What you'd probably do is draw the pond on graph paper and
+count the squares. In this guide we'll turn that counting into an exact method, and see why a finer
+grid always gets closer to the true area.
 
 ## Counting squares
 
@@ -106,8 +105,9 @@ through. So the question is how much area those squares can take up. Every orang
 edge, and a small square touching the edge can't reach far from it. So all the orange squares crowd
 into a thin band that hugs the edge, and as the squares shrink, so does the band.
 
-Try it below with a lake. Pick smaller squares and watch the orange ring get thinner, and the gap
-between the counts shrink. Then show the band: every orange square sits inside it.
+Try it in the diagram below, with a lake. Pick smaller squares and watch the orange ring get
+thinner, and the gap between the counts shrink. Then show the band: every orange square sits inside
+it.
 
 <GridCount />
 
@@ -154,9 +154,9 @@ gap between the counts is at most about
 2\sqrt{2} \cdot 0.1 \cdot 10 \approx 2.83 \text{ km}^2
 ```
 
-With squares $$10$$ m wide the bound is ten times smaller, about $$0.28$$ km$$^2$$. The bound is
-often generous: in the triangle example, only the slanted side made orange squares, and the actual
-gaps were well under the bound.
+With squares $$10$$ m wide the bound is ten times smaller, about $$0.28$$ km$$^2$$. The bound can be
+generous. In the triangle example, only the slanted side made orange squares, and the actual gaps
+were well under the bound.
 
 :::
 
@@ -182,7 +182,7 @@ The condition on the edge rules out strange regions whose edge wiggles so wildly
 length, like an idealised coastline that shows new bays and headlands at every scale. Every shape in
 this chapter, from rectangles to discs to ellipses, has an edge with a length, so the rule applies.
 
-This is the tool the rest of the chapter leans on. To see how a zoom changes area
+The grid rule is the tool the rest of the chapter uses. To see how a zoom changes area
 ([Zooming and area](./scaling-areas.mdx)), or how a stretch does
 ([Stretching one way](./stretching.mdx)), you only need to see what it does to the little squares.
 And it is how the area of a disc, $$\pi r^2$$, is pinned down in
@@ -195,8 +195,9 @@ $$18$$ more partly. So its area is between $$37$$ and $$37 + 18 = 55$$ cm$$^2$$.
 
 That range is wide, and a practical rule narrows it: count each partly covered square as half a
 square. The edge cuts through those squares, so on average about half of each is inside. That gives
-$$37 + \frac{18}{2} = 46$$ cm$$^2$$. The rule is an estimate, not a proof, but it is often close.
-For a sure answer, use finer paper.
+$$37 + \frac{18}{2} = 46$$ cm$$^2$$. The rule is an estimate, not a proof. On the triangle with
+squares of side $$1$$, it gives $$8 + \frac{8}{2} = 12$$, the exact area. For a sure answer, use
+finer paper.
 
 :::
 

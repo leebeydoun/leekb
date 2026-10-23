@@ -1,12 +1,12 @@
 {
   "title": "Review: Real numbers",
-  "description": "Questions on the ideas in this guide, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
+  "description": "Questions on the ideas in this chapter, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
   "questions": [
     {
       "id": "why-reals",
       "stars": 1,
       "topic": "The real line",
-      "question": "Why do we need numbers beyond the rational numbers?",
+      "question": "Why are numbers beyond the rational numbers needed?",
       "options": [
         "Fractions can't be added together",
         "Some lengths, like the diagonal of a $$1$$ by $$1$$ square, are not fractions",
@@ -48,7 +48,7 @@
       "id": "decimal-meaning",
       "stars": 3,
       "topic": "The real line",
-      "question": "According to the guide, which numbers does the decimal $$3.14159\\ldots$$ lie between?",
+      "question": "According to the chapter, which numbers does the decimal $$3.14159\\ldots$$ lie between?",
       "options": [
         "$$3.14159$$ and $$3.14160$$, and no other pair",
         "Only $$3$$ and $$4$$",
@@ -76,7 +76,7 @@
       "id": "numbers-carry-over",
       "stars": 2,
       "topic": "The real line",
-      "question": "Why do results from the Numbers guide, like $$(-a)(-b) = ab$$, hold for real numbers?",
+      "question": "Why do results from the Numbers chapter, like $$(-a)(-b) = ab$$, hold for real numbers?",
       "options": [
         "Their proofs used only rules of arithmetic that real numbers also obey",
         "Every real number is a fraction",
@@ -105,12 +105,7 @@
       "stars": 1,
       "topic": "Positive and negative",
       "question": "Is $$0$$ positive, negative, or neither?",
-      "options": [
-        "Positive",
-        "Both",
-        "Neither",
-        "Negative"
-      ],
+      "options": ["Positive", "Both", "Neither", "Negative"],
       "answer": 2,
       "explanation": "Rule 2 of :ref{#positivity} says exactly one of: $$a$$ positive, $$a = 0$$, $$-a$$ positive. For $$0$$ it is the middle one, so $$0$$ is neither positive nor negative."
     },
@@ -118,7 +113,7 @@
       "id": "one-positive-proof",
       "stars": 3,
       "topic": "Positive and negative",
-      "question": "How does the guide prove that $$1$$ is positive?",
+      "question": "How does the chapter prove that $$1$$ is positive?",
       "options": [
         "It is one of the rules taken as given",
         "If $$-1$$ were positive, then $$(-1)(-1) = 1$$ would be positive too, so both would be, which is impossible",
@@ -224,7 +219,7 @@
         "$$\\frac{a}{c} < \\frac{b}{d}$$"
       ],
       "answer": 2,
-      "explanation": "Inequalities the same way round can be added (:ref{#combine-inequalities}). Subtracting fails, for example $$1 < 5$$ and $$0 < 10$$ but $$1 - 0 > 5 - 10$$, and multiplying needs everything non-negative."
+      "explanation": "Inequalities the same way round can be added (:ref{#combine-inequalities}). Subtracting fails: $$1 < 5$$ and $$0 < 10$$, but $$1 - 0 > 5 - 10$$. Multiplying needs everything non-negative."
     },
     {
       "id": "reciprocals",
@@ -245,12 +240,7 @@
       "stars": 2,
       "topic": "Order and inequalities",
       "question": "When does $$a < b$$ guarantee $$a^2 < b^2$$?",
-      "options": [
-        "When $$a \\ge 0$$",
-        "Always",
-        "When $$b \\ge 0$$",
-        "Never"
-      ],
+      "options": ["When $$a \\ge 0$$", "Always", "When $$b \\ge 0$$", "Never"],
       "answer": 0,
       "explanation": "Powers keep order for non-negative numbers (:ref{#power-order}). Without that, $$-3 < 2$$ but $$9 > 4$$."
     },
@@ -286,7 +276,7 @@
       "id": "two-squares",
       "stars": 3,
       "topic": "Order and inequalities",
-      "question": "What does the guide use to prove $$a^2 + b^2 \\ge 2ab$$?",
+      "question": "What does the chapter use to prove $$a^2 + b^2 \\ge 2ab$$?",
       "options": [
         "Induction on $$a$$",
         "$$(a - b)^2 \\ge 0$$, expanded",
@@ -315,12 +305,7 @@
       "stars": 1,
       "topic": "Square roots",
       "question": "What is $$\\sqrt{25}$$?",
-      "options": [
-        "$$12.5$$",
-        "$$-5$$",
-        "$$5$$ and $$-5$$",
-        "$$5$$"
-      ],
+      "options": ["$$12.5$$", "$$-5$$", "$$5$$ and $$-5$$", "$$5$$"],
       "answer": 3,
       "explanation": "$$\\sqrt{a}$$ means the non-negative number whose square is $$a$$ (:ref{#square-root}). The **equation** $$x^2 = 25$$ has two solutions, $$\\pm 5$$."
     },
@@ -329,12 +314,7 @@
       "stars": 1,
       "topic": "Square roots",
       "question": "How many real solutions does $$x^2 = 7$$ have?",
-      "options": [
-        "None",
-        "One",
-        "Two",
-        "Infinitely many"
-      ],
+      "options": ["None", "One", "Two", "Infinitely many"],
       "answer": 2,
       "explanation": "A positive number has exactly two square roots, opposites of each other: here $$\\pm\\sqrt{7}$$ (:ref{#square-root-count})."
     },
@@ -343,12 +323,7 @@
       "stars": 1,
       "topic": "Square roots",
       "question": "How many real solutions does $$x^2 = -9$$ have?",
-      "options": [
-        "Two",
-        "None",
-        "One",
-        "Infinitely many"
-      ],
+      "options": ["Two", "None", "One", "Infinitely many"],
       "answer": 1,
       "explanation": "A square is never negative (:ref{#squares-positive}), so no real number squares to $$-9$$."
     },
@@ -356,7 +331,7 @@
       "id": "root-assumed",
       "stars": 2,
       "topic": "Square roots",
-      "question": "Which fact about square roots does the guide take as given rather than prove?",
+      "question": "Which fact about square roots does the chapter take as given rather than prove?",
       "options": [
         "That every positive number has at least one square root",
         "That a positive number has exactly two square roots",
@@ -448,7 +423,7 @@
         "$$4 - \\sqrt{3}$$, with product $$13$$"
       ],
       "answer": 2,
-      "explanation": "$$(4 - \\sqrt{3})(4 + \\sqrt{3}) = 16 - 3 = 13$$, by the difference of two squares."
+      "explanation": "$$(4 - \\sqrt{3})(4 + \\sqrt{3}) = 16 - 3 = 13$$, by the difference of two squares (:ref{#numbers/square-formulas})."
     },
     {
       "id": "rationalise-why",
@@ -497,12 +472,7 @@
       "stars": 3,
       "topic": "Working with square roots",
       "question": "Squaring $$\\sqrt{x + 7} = x + 1$$ gives $$x = 2$$ or $$x = -3$$. Which are solutions of the original equation?",
-      "options": [
-        "Both",
-        "Only $$x = -3$$",
-        "Only $$x = 2$$",
-        "Neither"
-      ],
+      "options": ["Both", "Only $$x = -3$$", "Only $$x = 2$$", "Neither"],
       "answer": 2,
       "explanation": "At $$x = -3$$ the left side is $$\\sqrt{4} = 2$$ but the right side is $$-2$$. Every answer found by squaring must be checked (:ref{#squaring-sides})."
     },
@@ -511,12 +481,7 @@
       "stars": 1,
       "topic": "Absolute value",
       "question": "What is $$|x|$$ when $$x < 0$$?",
-      "options": [
-        "$$x$$",
-        "$$-x$$",
-        "$$0$$",
-        "It isn't defined"
-      ],
+      "options": ["$$x$$", "$$-x$$", "$$0$$", "It isn't defined"],
       "answer": 1,
       "explanation": "For negative $$x$$, $$|x| = -x$$, which is positive (:ref{#absolute-value})."
     },
@@ -525,12 +490,7 @@
       "stars": 2,
       "topic": "Absolute value",
       "question": "Which is equal to $$\\sqrt{x^2}$$ for every real $$x$$?",
-      "options": [
-        "$$|x|$$",
-        "$$x$$",
-        "$$-x$$",
-        "$$\\pm x$$"
-      ],
+      "options": ["$$|x|$$", "$$x$$", "$$-x$$", "$$\\pm x$$"],
       "answer": 0,
       "explanation": "$$\\sqrt{x^2}$$ is the non-negative number whose square is $$x^2$$, which is $$|x|$$ (:ref{#abs-basics}). For $$x = -3$$ it is $$3$$."
     },
@@ -539,12 +499,7 @@
       "stars": 1,
       "topic": "Absolute value",
       "question": "What is the distance between $$-4$$ and $$2$$?",
-      "options": [
-        "$$-2$$",
-        "$$-6$$",
-        "$$2$$",
-        "$$6$$"
-      ],
+      "options": ["$$-2$$", "$$-6$$", "$$2$$", "$$6$$"],
       "answer": 3,
       "explanation": "The distance is $$|-4 - 2| = |-6| = 6$$ (:ref{#distance})."
     },
@@ -595,12 +550,7 @@
       "stars": 1,
       "topic": "Roots and fractional powers",
       "question": "How many real solutions does $$x^3 = -8$$ have?",
-      "options": [
-        "Three",
-        "Two, $$x = \\pm 2$$",
-        "None",
-        "One, $$x = -2$$"
-      ],
+      "options": ["Three", "Two, $$x = \\pm 2$$", "None", "One, $$x = -2$$"],
       "answer": 3,
       "explanation": "For odd $$n$$, $$x^n = a$$ has exactly one real solution for every $$a$$ (:ref{#power-equation})."
     },
@@ -609,12 +559,7 @@
       "stars": 2,
       "topic": "Roots and fractional powers",
       "question": "How many real solutions does $$x^4 = 81$$ have?",
-      "options": [
-        "Four",
-        "One, $$x = 3$$",
-        "Two, $$x = \\pm 3$$",
-        "None"
-      ],
+      "options": ["Four", "One, $$x = 3$$", "Two, $$x = \\pm 3$$", "None"],
       "answer": 2,
       "explanation": "For even $$n$$ and $$a > 0$$, $$x^n = a$$ has two solutions $$\\pm\\sqrt[n]{a}$$ (:ref{#power-equation})."
     },
@@ -650,7 +595,7 @@
       "id": "well-defined",
       "stars": 3,
       "topic": "Roots and fractional powers",
-      "question": "Why must the guide check that $$a^{2/3}$$ and $$a^{4/6}$$ agree?",
+      "question": "Why must the chapter check that $$a^{2/3}$$ and $$a^{4/6}$$ agree?",
       "options": [
         "It doesn't need checking",
         "Because $$2/3$$ is irrational",
@@ -672,19 +617,14 @@
         "So that $$0^{1/2}$$ is defined"
       ],
       "answer": 2,
-      "explanation": "$$\\sqrt[3]{-8} = -2$$, but $$\\frac{1}{3} = \\frac{2}{6}$$ and $$\\sqrt[6]{(-8)^2} = 2$$. See the guide's discussion after :ref{#rational-power-laws}."
+      "explanation": "For example, $$\\sqrt[3]{-8} = -2$$, but $$\\frac{1}{3} = \\frac{2}{6}$$ and $$\\sqrt[6]{(-8)^2} = 2$$, so $$(-8)^{1/3}$$ would have two values. That is why :ref{#rational-power} needs a positive base."
     },
     {
       "id": "power-laws",
       "stars": 2,
       "topic": "Roots and fractional powers",
       "question": "Which is $$x^{1/2} \\cdot x^{1/3}$$, for $$x > 0$$?",
-      "options": [
-        "$$x^{1/6}$$",
-        "$$x^{5/6}$$",
-        "$$x^{1/5}$$",
-        "$$x^{2/5}$$"
-      ],
+      "options": ["$$x^{1/6}$$", "$$x^{5/6}$$", "$$x^{1/5}$$", "$$x^{2/5}$$"],
       "answer": 1,
       "explanation": "Exponents add: $$\\frac{1}{2} + \\frac{1}{3} = \\frac{5}{6}$$ (:ref{#rational-power-laws})."
     },

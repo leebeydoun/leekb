@@ -579,7 +579,7 @@
       "id": "glide-test",
       "stars": 2,
       "topic": "Every isometry is a slide, turn or flip",
-      "question": "A rigid move fixes no point and turns shapes over, a left shoe into a right shoe. What kind of isometry is it?",
+      "question": "An isometry fixes no point and turns shapes over, a left shoe into a right shoe. What kind of isometry is it?",
       "options": ["A turn", "A flip", "A glide reflection", "A slide"],
       "answer": 2,
       "explanation": "Slides and glides fix no point, but only the glide turns the sheet face down (:ref{#four-kinds}). A flip turns shapes over but fixes its whole mirror."
@@ -675,7 +675,7 @@
         "Yes, by side, angle, side"
       ],
       "answer": 2,
-      "explanation": "Side, angle, side needs the angle between the two given sides (:ref{#sas}). With the angle elsewhere, the third side can swing like a gate between two positions, giving two different triangles."
+      "explanation": "Side, angle, side needs the angle between the two given sides (:ref{#sas}). With the angle elsewhere, a side of the given length can reach the base line at two different points, giving two different triangles."
     },
     {
       "id": "sss-flip",
@@ -703,7 +703,7 @@
         "It notes that every angle of the triangle is $$60^\\circ$$"
       ],
       "answer": 0,
-      "explanation": "The apex is as far from both base corners, so it lies on the perpendicular bisector of the base. The flip in that line swaps the base corners, fixes the apex, and carries one base angle onto the other without changing its size (:ref{#isosceles})."
+      "explanation": "The apex is equally far from both base corners, so it lies on the perpendicular bisector of the base. The flip in that line swaps the base corners, fixes the apex, and carries one base angle onto the other without changing its size (:ref{#isosceles})."
     },
     {
       "id": "isosceles-40",

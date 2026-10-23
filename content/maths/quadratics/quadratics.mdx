@@ -1,25 +1,27 @@
 ---
 title: Quadratic equations
 description:
-  What a quadratic equation is, how many solutions to expect, and the easy case of a square equal to
-  a number.
+  What a quadratic equation is, how many solutions to expect, and how to solve a square equal to a
+  number.
 ---
 
-A rectangle is $$3$$ metres longer than it is wide, and its area is $$40$$ square metres. How wide
-is it? Calling the width $$x$$, the length is $$x + 3$$, so $$x(x + 3) = 40$$. Multiplying out gives
-$$x^2 + 3x = 40$$, and now the unknown is multiplied by itself. None of the methods for linear
-equations can deal with that $$x^2$$. This page says exactly which equations count as quadratic,
-what to expect from their solutions, and solves the easiest kind, a square equal to a number. Every
-other method in the guide works by turning a quadratic into that easy kind.
+Imagine a rectangle that is $$3$$ metres longer than it is wide, with an area of $$40$$ square
+metres, and suppose you want its width. Calling the width $$x$$ makes the length $$x + 3$$, so
+$$x(x + 3) = 40$$. Multiplying out gives $$x^2 + 3x = 40$$, and now the unknown is multiplied by
+itself. None of the methods for linear equations can deal with that $$x^2$$.
+
+In this guide we'll say exactly which equations count as quadratic, and what their solutions can
+look like. Then we'll solve the most direct kind, a square equal to a number. Every other method in
+the chapter works by turning a quadratic into this kind.
 
 ## What a quadratic equation is
 
 A linear equation only ever multiplies the unknown by numbers. A quadratic equation also allows the
 unknown times itself, $$x^2$$, but nothing higher, like $$x^3$$. Equations like this turn up
-whenever two unknown lengths are multiplied, as in an area, and in many other places where one
-quantity grows with the square of another. However the equation first looks, the terms can be
-gathered on one side, leaving $$0$$ on the other. Then it says that some number of $$x^2$$'s, plus
-some number of $$x$$'s, plus a constant, comes to nothing.
+whenever two unknown lengths are multiplied, as in an area, and whenever one quantity grows with the
+square of another, like the distance a dropped stone falls in a given time. However the equation
+first looks, the terms can be gathered on one side, leaving $$0$$ on the other. Then it says that
+some number of $$x^2$$'s, plus some number of $$x$$'s, plus a constant, comes to nothing.
 
 :::definition[Quadratic equation]{#quadratic}
 
@@ -66,23 +68,24 @@ $$3x = 6$$. The squares cancel, so it is linear, with the single solution $$x = 
 ## How many solutions to expect
 
 A linear equation with $$a \neq 0$$ has exactly one solution. A quadratic can have more, because a
-number and its opposite have the same square. Both $$3$$ and $$-3$$ solve $$x^2 = 9$$. But it can
-also have fewer, because a square is never negative: nothing solves $$x^2 = -1$$. And $$x^2 = 0$$
-sits on the boundary, with $$0$$ as its only solution. These three equations already show every
-possibility. A quadratic equation always has two solutions, one, or none, never more. The
-[page on the discriminant](./discriminant.mdx) proves this (:ref{#root-count}) and shows how to tell
-in advance which case you are in.
+number and its opposite have the same square: both $$3$$ and $$-3$$ solve $$x^2 = 9$$. It can also
+have fewer, because a square is never negative: nothing solves $$x^2 = -1$$. And $$x^2 = 0$$ sits on
+the boundary, with $$0$$ as its only solution.
 
-So solving a quadratic means finding all of its solutions, not just one. Stopping at the first
-answer found is the most common way to get a quadratic wrong.
+These three equations already show every possibility: a quadratic equation always has two solutions,
+one, or none, never more. The [page on the discriminant](./discriminant.mdx) proves this
+(:ref{#root-count}) and shows how to tell in advance which case you are in. So solving a quadratic
+means finding all of its solutions. Stopping at the first answer found is the most common way to get
+a quadratic wrong.
 
 ## A square equal to a number
 
-The easiest quadratics are a square equal to a number. Take $$(x - 3)^2 = 16$$. Whatever $$x$$ is,
-the number $$x - 3$$ squares to $$16$$, so it must be $$4$$ or $$-4$$. That leaves two linear
-equations, $$x - 3 = 4$$ and $$x - 3 = -4$$, giving $$x = 7$$ and $$x = -1$$. On the number line,
-$$x - 3$$ is how far $$x$$ is from $$3$$, counting left as negative. So the equation says that $$x$$
-is $$4$$ away from $$3$$, on one side or the other.
+The quadratics you can solve at once are those where a square equals a number. Take
+$$(x - 3)^2 = 16$$. If $$x$$ solves it, the number $$x - 3$$ squares to $$16$$, so $$x - 3$$ must be
+$$4$$ or $$-4$$. That leaves two linear equations, $$x - 3 = 4$$ and $$x - 3 = -4$$, giving
+$$x = 7$$ and $$x = -1$$. On the number line, $$x - 3$$ is how far $$x$$ is from $$3$$, counting
+left as negative. So the equation says that $$x$$ is $$4$$ away from $$3$$, on one side or the
+other.
 
 The sign $$\pm$$, read "plus or minus", writes both solutions at once: $$x = 3 \pm 4$$ means
 $$x = 3 + 4$$ or $$x = 3 - 4$$.
@@ -129,11 +132,11 @@ $$x = \frac{1}{4}$$, the only solution.
 
 :::
 
-This case matters because every quadratic can be brought to it. [Factoring](./factoring.mdx) is a
-shortcut that works when the quadratic splits neatly.
+This case matters because every quadratic can be brought to it.
 [Completing the square](./completing-the-square.mdx) rewrites any quadratic as a square equal to a
 number, and [the quadratic formula](./quadratic-formula.mdx) is that rewriting done once, with
-letters, so it never has to be done again.
+letters, so it never has to be done again. [Factoring](./factoring.mdx) is a shortcut for the
+quadratics that split neatly into two brackets.
 
 ## Exercises
 
@@ -245,8 +248,7 @@ By :ref{#shifted-square}, $$x + 2 = 7$$ or $$x + 2 = -7$$, so $$x = 5$$ or $$x =
 can't be negative, so the lawn is $$5$$ m wide. Check: $$5 + 2 = 7$$ and $$7^2 = 49$$.
 
 The equation knows nothing about lengths. It only says that $$x + 2$$ squares to $$49$$, and $$-7$$
-does that as well as $$7$$. The second solution is a real solution of the equation, but it doesn't
-fit the question.
+does that as well as $$7$$. So $$x = -9$$ does solve the equation, but it doesn't fit the question.
 
 :::
 

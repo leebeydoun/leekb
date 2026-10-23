@@ -3,10 +3,11 @@ title: Roots and fractional powers
 description: nth roots, how many solutions xⁿ = a has, and powers with fractional exponents.
 ---
 
-Square roots undo squaring. In the same way, cube roots undo cubing, fourth roots undo fourth
-powers, and so on. This page shows how many real solutions an equation like $$x^n = a$$ has, which
-depends on whether $$n$$ is odd or even, and then uses roots to give a meaning to powers like
-$$8^{2/3}$$ and $$16^{-3/4}$$, in a way that keeps all the usual rules for powers working.
+A cube of clay has a volume of $$27$$ cubic centimetres. To find the length of its side you need a
+number that cubes to $$27$$, and that number, $$3$$, is the cube root of $$27$$. Cube roots undo
+cubing in the same way that square roots undo squaring, and fourth and fifth roots work the same
+way. In this guide we'll see how many real solutions an equation like $$x^n = a$$ has. Then we'll
+use roots to give powers like $$8^{2/3}$$ a meaning that keeps the usual rules for powers working.
 
 ## nth roots
 
@@ -16,7 +17,7 @@ positive number whose fourth power is $$81$$, namely $$3$$. For this to be a sou
 a root has to exist, and there has to be only one positive choice, so that the root has a single
 clear value.
 
-As with square roots, we take it as given that positive numbers have roots of every order. This is
+As with square roots, it is taken as given that positive numbers have roots of every order. This is
 another consequence of the real numbers having no gaps.
 
 :::remark[nth roots exist]{#nth-roots-exist}
@@ -54,7 +55,7 @@ For $$n = 2$$ this is the square root, and for $$n = 3$$ it is called the **cube
 example, $$\sqrt[3]{64} = 4$$ because $$4^3 = 64$$, $$\sqrt[4]{81} = 3$$ because $$3^4 = 81$$, and
 $$\sqrt[5]{\frac{1}{32}} = \frac{1}{2}$$ because $$\left(\frac{1}{2}\right)^5 = \frac{1}{32}$$.
 
-Roots split over products, just like square roots, and with the same proof.
+Roots split over products, like square roots, and with the same proof.
 
 :::proposition[nth roots of products]{#nth-root-product}
 
@@ -79,7 +80,7 @@ The only non-negative number whose $$n$$-th power is $$ab$$ is $$\sqrt[n]{ab}$$,
 
 For example, $$\sqrt[3]{54} = \sqrt[3]{27}\,\sqrt[3]{2} = 3\sqrt[3]{2}$$.
 
-## How many solutions does xⁿ = a have?
+## How many solutions xⁿ = a has
 
 For square roots, $$x^2 = a$$ has two solutions when $$a > 0$$ and none when $$a < 0$$. For higher
 powers the answer depends on whether $$n$$ is even or odd, because of how powers treat signs: an
@@ -110,7 +111,7 @@ Two facts about signs do most of the work.
   For odd $$n$$, $$(-1)^n = -1$$, so $$(-x)^n = -x^n$$.
 - **Sizes.** $$|x^n| = |x|^n$$, by :ref{#abs-product} used $$n - 1$$ times.
 
-**Odd $$n$$.** Suppose $$x^n = a$$. We find $$x$$ in two steps: its size, then its sign.
+**Odd $$n$$.** Suppose $$x^n = a$$. Find $$x$$ in two steps: its size, then its sign.
 
 - _Size._ Taking absolute values, $$|x|^n = |a|$$. So $$|x|$$ is the non-negative $$n$$-th root of
   $$|a|$$, that is, $$|x| = \sqrt[n]{|a|}$$, by :ref{#nth-root-unique} (and $$x = 0$$ if $$a = 0$$).
@@ -118,7 +119,7 @@ Two facts about signs do most of the work.
   $$x < 0$$ then $$x^n = -(-x)^n$$ is negative. So $$x$$ has the same sign as $$a$$.
 
 Putting these together: if $$a \ge 0$$, then $$x = |x| = \sqrt[n]{a}$$, and if $$a < 0$$, then
-$$x = -|x| = -\sqrt[n]{-a}$$. So there is at most one solution. It really is a solution:
+$$x = -|x| = -\sqrt[n]{-a}$$. So there is at most one solution, and this value is a solution:
 $$\left(\sqrt[n]{a}\right)^n = a$$, and
 $$\left(-\sqrt[n]{-a}\right)^n = -\left(\sqrt[n]{-a}\right)^n = -(-a) = a$$.
 
@@ -130,8 +131,8 @@ $$\left(-\sqrt[n]{a}\right)^n = \left(\sqrt[n]{a}\right)^n = a$$ for even $$n$$.
 
 :::
 
-So an odd root can be taken of any real number, and we write $$\sqrt[n]{a}$$ for the single solution
-of $$x^n = a$$ even when $$a$$ is negative. For example $$\sqrt[3]{-8} = -2$$, because
+So an odd root can be taken of any real number: for odd $$n$$, $$\sqrt[n]{a}$$ means the single
+solution of $$x^n = a$$, even when $$a$$ is negative. For example $$\sqrt[3]{-8} = -2$$, because
 $$(-2)^3 = -8$$. Even roots of negative numbers don't exist among the real numbers.
 
 | Equation           | Solutions                                      |
@@ -144,16 +145,16 @@ $$(-2)^3 = -8$$. Even roots of negative numbers don't exist among the real numbe
 
 ## Fractional powers
 
-The [Numbers](../numbers/inverses.mdx) guide gave a meaning to $$a^n$$ for every integer $$n$$,
-positive, negative or zero. Roots let us go further, to exponents that are fractions.
+The [Numbers](../numbers/inverses.mdx) chapter gave a meaning to $$a^n$$ for every integer $$n$$,
+positive, negative or zero. Roots extend this to exponents that are fractions.
 
 The idea is to let the rules for powers decide. Three thirds make one, so if the rules are to keep
 working, cubing $$8^{1/3}$$ should give $$8^1 = 8$$. That means $$8^{1/3}$$ has to be a number whose
 cube is $$8$$, which is $$2$$. Then $$8^{2/3}$$, two lots of a third, should be $$2^2 = 4$$. In
-general, we choose the meaning that keeps the rule $$(a^m)^n = a^{mn}$$ working:
+general, the meaning is chosen to keep the rule $$(a^m)^n = a^{mn}$$ working:
 
 - $$\left(a^{1/n}\right)^n$$ should be $$a^{(1/n) \cdot n} = a^1 = a$$. So $$a^{1/n}$$ has to be an
-  $$n$$-th root of $$a$$, and we take the positive one.
+  $$n$$-th root of $$a$$, and the definition takes the positive one.
 - $$a^{m/n} = a^{(1/n) \cdot m}$$ should then be $$\left(a^{1/n}\right)^m$$.
 
 :::definition[Fractional powers]{#rational-power}
@@ -169,8 +170,8 @@ a^{m/n} = \left(\sqrt[n]{a}\right)^m
 For example, $$8^{2/3} = \left(\sqrt[3]{8}\right)^2 = 2^2 = 4$$, and
 $$16^{-3/4} = \left(\sqrt[4]{16}\right)^{-3} = 2^{-3} = \frac{1}{8}$$.
 
-There is a catch to deal with. The same fraction can be written in many ways, such as
-$$\frac{2}{3} = \frac{4}{6}$$, and the definition must give the same answer for each of them.
+The same fraction can be written in many ways, such as $$\frac{2}{3} = \frac{4}{6}$$. So the
+definition must give the same answer for each of them.
 
 :::proposition[Fractional powers are well defined]{#rational-power-well-defined}
 
@@ -185,12 +186,12 @@ Let $$a > 0$$.
 
 :::proof{source="https://en.wikipedia.org/wiki/Exponentiation#Rational_exponents"}
 
-Throughout, we use the rules for powers with integer exponents, from the Numbers guide, and the fact
+The proof uses the rules for powers with integer exponents, from the Numbers chapter, and the fact
 that a positive number has only one positive $$n$$-th root (:ref{#nth-root-unique}). All the numbers
 involved are positive.
 
-**Scaling top and bottom.** First we show that $$\frac{m}{n}$$ and $$\frac{km}{kn}$$ give the same
-value, for any positive integer $$k$$. Let $$s = \sqrt[kn]{a}$$, so $$s^{kn} = a$$. Then
+**Scaling top and bottom.** The first step shows that $$\frac{m}{n}$$ and $$\frac{km}{kn}$$ give the
+same value, for any positive integer $$k$$. Let $$s = \sqrt[kn]{a}$$, so $$s^{kn} = a$$. Then
 $$\left(s^k\right)^n = a$$, so $$s^k$$ is a positive $$n$$-th root of $$a$$, which means
 $$s^k = \sqrt[n]{a}$$. So
 
@@ -259,7 +260,7 @@ $$(ab)^{m/n} = \left(\sqrt[n]{a}\right)^m \left(\sqrt[n]{b}\right)^m = a^p b^p$$
 
 :::
 
-Two special cases are worth noting. Taking $$q = -p$$ in rule 1 gives $$a^p a^{-p} = a^0 = 1$$, so
+Two consequences are worth noting. Taking $$q = -p$$ in rule 1 gives $$a^p a^{-p} = a^0 = 1$$, so
 $$a^{-p} = \frac{1}{a^p}$$: a negative power is the reciprocal of the positive one. And powers of
 roots can now be handled with ordinary arithmetic on the exponents:
 
@@ -273,15 +274,16 @@ roots can now be handled with ordinary arithmetic on the exponents:
 
 ## Why the base must be positive
 
-The definition only allows a positive base, and the reason is the catch from before. For a negative
-base the answer would depend on how the exponent is written. With odd roots of negative numbers,
-$$(-8)^{1/3}$$ could sensibly mean $$\sqrt[3]{-8} = -2$$. But $$\frac{1}{3} = \frac{2}{6}$$, and
-$$\sqrt[6]{(-8)^2} = \sqrt[6]{64} = 2$$. So $$(-8)^{1/3}$$ is better avoided; we write
+The definition only allows a positive base, because for a negative base the answer would depend on
+how the exponent is written. For example, $$(-8)^{1/3}$$ could sensibly mean the odd root
+$$\sqrt[3]{-8} = -2$$. But $$\frac{1}{3} = \frac{2}{6}$$, and
+$$\sqrt[6]{(-8)^2} = \sqrt[6]{64} = 2$$. So it is best to avoid $$(-8)^{1/3}$$, and to write
 $$\sqrt[3]{-8}$$ when that is what's meant.
 
 ## Irrational exponents
 
-What would $$2^{\sqrt{2}}$$ mean? Since $$\sqrt{2} = 1.41421\ldots$$, the powers
+The rules so far don't say what $$2^{\sqrt{2}}$$ means. Since $$\sqrt{2} = 1.41421\ldots$$, the
+powers
 
 ```math
 2^{1.4}, \quad 2^{1.41}, \quad 2^{1.414}, \quad 2^{1.4142}, \quad \ldots
@@ -289,8 +291,9 @@ What would $$2^{\sqrt{2}}$$ mean? Since $$\sqrt{2} = 1.41421\ldots$$, the powers
 
 are all defined, because each exponent is a fraction such as $$\frac{1414}{1000}$$, and they settle
 down to a single real number, about $$2.665$$. That number is $$2^{\sqrt{2}}$$. Making this precise,
-and checking that the rules for powers still hold, belongs to a later guide. Until then, we take it
-that $$a^x$$ makes sense for every $$a > 0$$ and every real $$x$$, and obeys the same three rules.
+and checking that the rules for powers still hold, belongs to a later chapter. Until then, this
+chapter takes it as given that $$a^x$$ makes sense for every $$a > 0$$ and every real $$x$$, and
+obeys the same three rules.
 
 ## Exercises
 

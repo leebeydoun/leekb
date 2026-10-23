@@ -4,12 +4,14 @@ description:
   Translations, which slide the plane along an arrow, and rotations, which turn it about a point.
 ---
 
-A box riding a conveyor belt, a rook moving along a chessboard and a character walking across a
-screen all slide without turning. The hands of a clock, a steering wheel and a door on its hinges
-all turn about one point that stays still. These are two of the three ways to move the sheet of
-tracing paper from [Maps of the plane](./maps.mdx), and this guide makes each one exact: slides are
-called translations, and turns are called rotations. It ends with the half turn, which sends every
-point straight through the centre to the other side.
+Imagine pushing a book across a table without letting it twist. Every corner moves the same way, by
+the same amount. Now imagine opening a door instead: the hinges stay put and the rest of the door
+swings round them. Mathematicians call the first move a translation and the second a rotation. In
+this guide we'll get a feel for both, and then describe them exactly.
+
+Both are ways to move the sheet of tracing paper from [Maps of the plane](./maps.mdx). One turn gets
+special attention: the half turn, which carries every point straight through the centre to the other
+side.
 
 ## Slides
 
@@ -32,9 +34,10 @@ $$d(O, M)$$ in the direction from $$O$$ to $$M$$. It is also called a **slide**.
 
 :::
 
-"Direction" is used here in its everyday sense, the same way as on a compass. The chapter on
-coordinates later makes it exact with numbers, but nothing in this chapter needs more than the
-picture. Three things follow straight from the definition:
+"Direction" is used here in its everyday sense, the same way as on a compass. A later chapter on
+coordinates makes it exact with numbers, but nothing in this chapter needs more than the picture.
+
+Three things follow straight from the definition:
 
 - **The arrow's start goes to its tip**: $$T(O) = M$$, since moving from $$O$$ along the arrow ends
   at $$M$$
@@ -122,11 +125,10 @@ way, or goes round more than once, is written with a number outside $$0 \le x < 
   gone round $$x^\circ$$ in all: some whole turns, and then a part of one. So $$G_{450}$$ is one
   whole turn and then a quarter turn.
 
-The second rule below says how these fit with the turns in the definition.
-
 The facts below are taken as given. The first says that a turn about $$O$$ can take any point to any
 other point at the same distance from $$O$$, and in only one way. The second says that turning twice
-adds the angles, and the third that a full turn changes nothing.
+adds the angles, and it holds for these negative and large angles too. The third says that a full
+turn changes nothing.
 
 :::remark[Rules for rotations]{#rotation-rules}
 
@@ -230,9 +232,9 @@ $$-180 = -360 + 180$$, so $$G_{-180} = G_{180}$$ by :ref{#rotation-whole-turns}.
 
 :::
 
-So a half turn doesn't care which way it goes: half a turn clockwise and half a turn anticlockwise
-end in the same place. Its only fixed point is the centre $$O$$, since every other point lands on
-the far side of $$O$$.
+So the direction of a half turn makes no difference: half a turn clockwise and half a turn
+anticlockwise end in the same place. Its only fixed point is the centre $$O$$, since every other
+point lands on the far side of $$O$$.
 
 ## Exercises
 

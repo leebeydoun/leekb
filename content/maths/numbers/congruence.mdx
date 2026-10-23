@@ -3,10 +3,15 @@ title: Congruence
 description: Arithmetic with remainders.
 ---
 
-What is the last digit of $$3^{20}$$? Is $$4725$$ divisible by $$9$$? What remainder does
-$$7^{100}$$ leave when divided by $$5$$? Questions like these only care about remainders, and this
-page shows how to calculate with remainders directly, without ever working out the huge numbers
-involved. The idea is to treat two numbers as "the same" when they leave the same remainder.
+Suppose today is a Monday and you want to know the day of the week $$100$$ days from now. You don't
+need to count them. $$100$$ days is $$14$$ whole weeks and $$2$$ days more, and whole weeks don't
+change the day, so it'll be a Wednesday.
+
+Only the remainder after dividing by $$7$$ mattered there, and plenty of questions about numbers
+work like this. The last digit of $$3^{20}$$, for example, depends only on its remainder when
+divided by $$10$$. In this guide we'll learn to calculate with remainders directly, treating two
+numbers as "the same" when they leave the same remainder, so the huge numbers never need working
+out.
 
 ## Same remainder, same place on the clock
 
@@ -89,19 +94,22 @@ Two special cases are worth noticing:
 - $$n \equiv 0 \pmod{d}$$ exactly when $$d \mid n$$, since $$n - 0 = n$$. So "divisible by $$d$$"
   and "congruent to $$0$$" say the same thing.
 - Modulo $$2$$, every even integer is $$\equiv 0$$ and every odd integer is $$\equiv 1$$. The rules
-  for adding and multiplying even and odd integers are really rules about congruence modulo $$2$$.
+  for adding and multiplying even and odd integers are rules about congruence modulo $$2$$.
 
 ## Congruence behaves like equality
 
 Congruence is meant to say that two numbers are "the same" as far as remainders go, so it should
 behave like being equal. Thinking of congruent numbers as the same place on a clock, the basic facts
-are easy to believe. Every number is at its own place. If $$15$$ o'clock is where $$3$$ o'clock is,
-then $$3$$ o'clock is where $$15$$ o'clock is. And if $$27$$ is where $$15$$ is, and $$15$$ is where
-$$3$$ is, then $$27$$ is where $$3$$ is.
+are clear. Every number is at its own place. If $$15$$ o'clock is where $$3$$ o'clock is, then $$3$$
+o'clock is where $$15$$ o'clock is. And if $$27$$ is where $$15$$ is, and $$15$$ is where $$3$$ is,
+then $$27$$ is where $$3$$ is.
 
-Congruence modulo a fixed $$d$$ has the three properties that make equality easy to work with. They
-have names: congruence is **reflexive** (every number is congruent to itself), **symmetric** (it can
-be read either way round) and **transitive** (congruences can be chained).
+Congruence modulo a fixed $$d$$ has the three properties that make equality useful in calculations.
+They have names:
+
+- **reflexive**: every number is congruent to itself
+- **symmetric**: a congruence can be read either way round
+- **transitive**: congruences can be chained
 
 :::proposition[Congruence behaves like equality]{#congruence-equality}
 
@@ -116,23 +124,23 @@ Let $$d$$ be a positive integer and $$a$$, $$b$$, $$c$$ integers.
 :::proof{source="https://proofwiki.org/wiki/Congruence_Modulo_Integer_is_Equivalence_Relation"}
 
 Each part is a statement about congruence, and congruence is defined in terms of divisibility. So in
-each case we translate "$$\equiv$$" into a statement about a difference being a multiple of $$d$$,
-and check that.
+each case, translate "$$\equiv$$" into a statement about a difference being a multiple of $$d$$, and
+check that.
 
-1. To show $$a \equiv a$$, we need $$d \mid a - a$$. But $$a - a = 0$$, and $$0 = d \cdot 0$$ is a
+1. To show $$a \equiv a$$, you need $$d \mid a - a$$. But $$a - a = 0$$, and $$0 = d \cdot 0$$ is a
    multiple of $$d$$ (zero is divisible by everything).
-2. We are told $$d \mid a - b$$, so $$a - b = dk$$ for some integer $$k$$. We want $$d \mid b - a$$.
-   The key observation is that $$b - a$$ is just the opposite of $$a - b$$, so
+2. You are told $$d \mid a - b$$, so $$a - b = dk$$ for some integer $$k$$. You want
+   $$d \mid b - a$$. The key observation is that $$b - a$$ is the opposite of $$a - b$$, so
 
    ```math
    b - a = -(a - b) = -(dk) = d(-k)
    ```
 
    Since $$-k$$ is an integer, $$b - a$$ is a multiple of $$d$$. In words: if two numbers differ by
-   a multiple of $$d$$, it doesn't matter which one we subtract from the other.
+   a multiple of $$d$$, it doesn't matter which one you subtract from the other.
 
-3. We are told that $$a - b$$ and $$b - c$$ are both multiples of $$d$$, and we want $$a - c$$ to be
-   one too. The trick is to notice that the two differences we know about add up to the one we want,
+3. You are told that $$a - b$$ and $$b - c$$ are both multiples of $$d$$, and you want $$a - c$$ to
+   be one too. The trick is to notice that the two known differences add up to the one you want,
    because the $$b$$s cancel:
 
    ```math
@@ -151,14 +159,14 @@ $$23 - (-7) = 30$$.
 
 ## Arithmetic with congruences
 
-Congruences can be added, subtracted and multiplied just like equations. On the clock, it makes no
-difference whether you call the time $$15$$ o'clock or $$3$$ o'clock: five hours later you are at
-the same place either way. In the same way, the remainder of a sum or product depends only on the
-remainders of its parts. A familiar case is the last digit, which is the remainder on dividing by
-$$10$$. The product $$13 \cdot 17$$ ends in $$1$$ because $$3 \cdot 7 = 21$$ ends in $$1$$, and
+Congruences can be added, subtracted and multiplied in the same way as equations. On the clock, it
+makes no difference whether you call the time $$15$$ o'clock or $$3$$ o'clock: five hours later you
+are at the same place either way. In the same way, the remainder of a sum or product depends only on
+the remainders of its parts. A familiar case is the last digit, which is the remainder on dividing
+by $$10$$. The product $$13 \cdot 17$$ ends in $$1$$ because $$3 \cdot 7 = 21$$ ends in $$1$$, and
 nothing else about $$13$$ and $$17$$ matters. Indeed $$13 \cdot 17 = 221$$.
 
-So we may swap a number for any other with the same remainder, do the sum with the smaller one, and
+So you can swap a number for any other with the same remainder, do the sum with the smaller one, and
 get the right remainder at the end.
 
 :::theorem[Arithmetic with congruences]{#congruence-arithmetic}
@@ -179,19 +187,19 @@ Then
 
 :::proof{source="https://math.libretexts.org/Bookshelves/Combinatorics_and_Discrete_Mathematics/Elementary_Number_Theory_(Raji)/03%3A_Congruences/3.01%3A_Introduction_to_Congruences"}
 
-Throughout, we use the definition of congruence to turn what we know into statements about
-divisibility. We are told that
+Throughout, the definition of congruence turns what you know into statements about divisibility. You
+are told that
 
 ```math
 d \mid a - b \qquad \text{and} \qquad d \mid x - y
 ```
 
-In each part we want to show that $$d$$ divides the difference of the two sides. The strategy is the
-same every time: rewrite that difference so that it is built out of $$a - b$$ and $$x - y$$ by
-adding, subtracting or multiplying, and then apply :ref{#multiples}, which says that anything built
-from multiples of $$d$$ in this way is again a multiple of $$d$$.
+In each part, the goal is to show that $$d$$ divides the difference of the two sides. The strategy
+is the same every time: rewrite that difference so that it is built out of $$a - b$$ and $$x - y$$
+by adding, subtracting or multiplying, and then apply :ref{#multiples}, which says that anything
+built from multiples of $$d$$ in this way is again a multiple of $$d$$.
 
-1. For $$a + x \equiv b + y$$ we need $$d \mid (a + x) - (b + y)$$. Removing the brackets and
+1. For $$a + x \equiv b + y$$ you need $$d \mid (a + x) - (b + y)$$. Removing the brackets and
    regrouping, which is allowed because the order and grouping of a sum don't matter, pairs up $$a$$
    with $$b$$ and $$x$$ with $$y$$:
 
@@ -209,11 +217,11 @@ from multiples of $$d$$ in this way is again a multiple of $$d$$.
 
    which is a difference of two multiples of $$d$$, so again a multiple of $$d$$.
 
-3. For $$ax \equiv by$$ we need $$d \mid ax - by$$, and here the regrouping is less obvious, because
-   $$ax - by$$ doesn't split directly into $$a - b$$ and $$x - y$$. The idea is to go from $$ax$$ to
-   $$by$$ in two steps, changing one letter at a time: first change $$a$$ to $$b$$, giving $$bx$$,
-   and then change $$x$$ to $$y$$. In symbols, we subtract and add the "halfway" term $$bx$$, which
-   changes nothing because $$-bx + bx = 0$$:
+3. For $$ax \equiv by$$ you need $$d \mid ax - by$$, and here the regrouping is harder to see,
+   because $$ax - by$$ doesn't split directly into $$a - b$$ and $$x - y$$. The idea is to go from
+   $$ax$$ to $$by$$ in two steps, changing one letter at a time: first change $$a$$ to $$b$$, giving
+   $$bx$$, and then change $$x$$ to $$y$$. In symbols, subtract and add the "halfway" term $$bx$$,
+   which changes nothing because $$-bx + bx = 0$$:
 
    ```math
    \begin{aligned}
@@ -240,7 +248,7 @@ a + c \equiv b + c \pmod{d} \qquad \text{and} \qquad ca \equiv cb \pmod{d}
 
 :::proof{source="https://math.libretexts.org/Bookshelves/Combinatorics_and_Discrete_Mathematics/Elementary_Number_Theory_(Raji)/03%3A_Congruences/3.01%3A_Introduction_to_Congruences"}
 
-The idea is that $$c$$ is congruent to itself, so we can use the pair $$c \equiv c$$ as the second
+The idea is that $$c$$ is congruent to itself, so you can use the pair $$c \equiv c$$ as the second
 congruence in :ref{#congruence-arithmetic}. By :ref{#congruence-equality}, $$c \equiv c \pmod{d}$$.
 Taking $$x = y = c$$ in the theorem, the adding part gives $$a + c \equiv b + c$$, and the
 multiplying part gives $$ac \equiv bc$$, which is the same as $$ca \equiv cb$$ because the order of
@@ -256,12 +264,12 @@ If $$a \equiv b \pmod{d}$$, then $$a^n \equiv b^n \pmod{d}$$ for every positive 
 
 :::proof{source="https://proofwiki.org/wiki/Congruence_of_Powers"}
 
-A power is a repeated product, and :ref{#congruence-arithmetic} already tells us that we can
-multiply congruences. So we build up the powers one at a time.
+A power is a repeated product, and :ref{#congruence-arithmetic} already says that congruences can be
+multiplied. So the proof builds up the powers one at a time.
 
 For $$n = 1$$ there is nothing to prove: $$a^1 = a$$ and $$b^1 = b$$.
 
-Now suppose we already know $$a^k \equiv b^k \pmod{d}$$ for some power $$k$$. Multiplying this
+Now suppose you already know $$a^k \equiv b^k \pmod{d}$$ for some power $$k$$. Multiplying this
 congruence by $$a \equiv b$$, using part 3 of the theorem with $$a^k, b^k$$ in place of $$a, b$$ and
 $$a, b$$ in place of $$x, y$$, gives
 
@@ -299,12 +307,12 @@ $$3 \not\equiv 8 \pmod{10}$$.
 
 ## Using congruences
 
-The rules above mean we can make numbers small before doing anything with them. Instead of working
-out a huge number and then dividing it, we replace each part by its remainder straight away, and
-keep replacing as we go. The numbers never get large, and the remainder at the end is still right.
+The rules above mean you can make numbers small before doing anything with them. Instead of working
+out a huge number and then dividing it, replace each part by its remainder straight away, and keep
+replacing as you go. The numbers never get large, and the remainder at the end is still right.
 
-**Large powers.** What is left over when $$7^{100}$$ is divided by $$5$$? The number $$7^{100}$$ has
-$$85$$ digits, so working it out and then dividing is out of the question. Congruences find the
+**Large powers.** Take the remainder when $$7^{100}$$ is divided by $$5$$. The number $$7^{100}$$
+has $$85$$ digits, so working it out and then dividing is out of the question. Congruences find the
 remainder while every number stays small.
 
 The first step makes the base smaller. Since $$7 = 5 + 2$$, you have $$7 \equiv 2 \pmod{5}$$. By
@@ -331,8 +339,8 @@ $$25$$ then gives the whole chain:
 So $$7^{100}$$ leaves remainder $$1$$ when divided by $$5$$. The largest number in the working was
 $$16$$.
 
-**Squares divisible by 3.** The squares rule for even numbers has a version with $$3$$ in place of
-$$2$$.
+**Squares divisible by 3.** The rule :ref{#squares-parity-converse} says that if $$a^2$$ is even,
+then so is $$a$$. It has a version with $$3$$ in place of $$2$$.
 
 :::proposition[Squares divisible by 3]{#squares-three}
 
@@ -342,8 +350,8 @@ If $$a$$ is an integer and $$3 \mid a^2$$, then $$3 \mid a$$.
 
 :::proof{source="https://proofwiki.org/wiki/Square_Modulo_3"}
 
-It is easier to prove the contrapositive (:ref{#basic-proofs/contrapositive}). Instead of showing
-"if $$3 \mid a^2$$ then $$3 \mid a$$", we show that if $$a$$ is **not** a multiple of $$3$$, then
+The proof goes through the contrapositive (:ref{#basic-proofs/contrapositive}). Instead of showing
+"if $$3 \mid a^2$$ then $$3 \mid a$$", it shows that if $$a$$ is **not** a multiple of $$3$$, then
 $$a^2$$ is **not** a multiple of $$3$$ either. By :ref{#basic-proofs/contrapositive-equivalent} the
 two say the same thing.
 
@@ -351,7 +359,7 @@ Dividing by $$3$$ (:ref{#division-remainder}), every integer has remainder $$0$$
 by :ref{#same-remainder} it is congruent to one of $$0$$, $$1$$ and $$2$$ modulo $$3$$.
 
 If $$a$$ is not a multiple of $$3$$, it is in one of the last two cases. Rather than squaring
-$$3k + 1$$ or $$3k + 2$$ directly, :ref{#congruence-powers} lets us square the small number it is
+$$3k + 1$$ or $$3k + 2$$ directly, :ref{#congruence-powers} lets you square the small number it is
 congruent to instead:
 
 | $$a \pmod{3}$$ | $$a^2 \pmod{3}$$     |
@@ -389,8 +397,8 @@ is. Congruence explains why it works, and why the same goes for $$3$$.
 The key is that $$10$$ is one more than $$9$$. So $$10$$ is a nine with $$1$$ left over, $$100$$ is
 $$99$$ with $$1$$ left over, and $$1000$$ is $$999$$ with $$1$$ left over. In $$4725$$, the four
 thousands leave $$4$$ over once the nines are taken out, the seven hundreds leave $$7$$, the two
-tens leave $$2$$, and the $$5$$ units are just $$5$$. So $$4725$$ leaves the same remainder on
-division by $$9$$ as $$4 + 7 + 2 + 5$$, its digit sum.
+tens leave $$2$$, and the $$5$$ units are $$5$$. So $$4725$$ leaves the same remainder on division
+by $$9$$ as $$4 + 7 + 2 + 5$$, its digit sum.
 
 :::proposition[Digit sum test for 3 and 9]{#digit-sum-test}
 
@@ -404,7 +412,7 @@ it is divisible by $$9$$ exactly when its digit sum is, and the same for $$3$$.
 The plan is to write the number using its digits and powers of $$10$$, and then swap every power of
 $$10$$ for $$1$$.
 
-**Step 1: every power of $$10$$ is congruent to $$1$$.** We have $$10 \equiv 1 \pmod{9}$$, since
+**Step 1: every power of $$10$$ is congruent to $$1$$.** First, $$10 \equiv 1 \pmod{9}$$, since
 $$10 - 1 = 9$$. By :ref{#congruence-powers}, $$10^k \equiv 1^k = 1 \pmod{9}$$ for every positive
 integer $$k$$.
 
@@ -423,10 +431,10 @@ congruences (:ref{#congruence-arithmetic}), together with $$5 \equiv 5$$, gives
 ```
 
 The same steps work for any number, however many digits it has: each digit times its power of $$10$$
-is congruent to just the digit, so the whole number is congruent to its digit sum.
+is congruent to the digit alone, so the whole number is congruent to its digit sum.
 
-**Step 3: modulo $$3$$.** Since $$10 - 1 = 9 = 3 \cdot 3$$, we also have $$10 \equiv 1 \pmod{3}$$,
-and Steps 1 and 2 work in exactly the same way modulo $$3$$.
+**Step 3: modulo $$3$$.** Since $$10 - 1 = 9 = 3 \cdot 3$$, also $$10 \equiv 1 \pmod{3}$$, and Steps
+1 and 2 work in exactly the same way modulo $$3$$.
 
 **Step 4: divisibility.** By :ref{#same-remainder}, a number and its digit sum leave the same
 remainder. So one leaves remainder $$0$$, that is, is divisible, exactly when the other does.

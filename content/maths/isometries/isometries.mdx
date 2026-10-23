@@ -3,22 +3,22 @@ title: What an isometry keeps
 description: Moves that keep every distance, what else they keep, and how few pins hold one still.
 ---
 
-A robot arm in a factory picks up a part, swings it round and sets it down in a new place. Nobody
-needs the part to be in the same place, but everyone needs it to be the same part: the holes the
-same distance apart, the edges still straight, the corners still square. The slides, turns and flips
-of the earlier guides all behave like this, while a zoom does not. This guide picks out the one
-property they share, keeping every distance, and names the moves that have it **isometries**. It
-then shows how much follows from that one property: straight lines stay straight, square corners
-stay square, and angles and areas don't change. It ends with a fact that may be unexpected: pin down
-three points and the whole plane is held still.
+Watch a robot arm in a factory pick up a part, swing it round and set it down somewhere else. The
+part is in a new place, but its holes are still the same distance apart and its corners are still
+square. Slides, turns and flips all move things this way, keeping every distance the same, and a
+move like that is called an **isometry**.
+
+In this guide we'll see how much follows from that one property. Straight lines stay straight,
+angles and areas keep their size, and an isometry that fixes three points not on one line moves
+nothing at all.
 
 ## Moves that keep distances
 
 Lay a sheet of tracing paper over the page and mark two dots on it. Slide the sheet, turn it about a
 pin, or lift it and flip it over, and then measure between the dots again. The distance is the same,
 because the paper doesn't stretch. A photocopier set to zoom works differently: it moves every point
-too, but the dots end up further apart. The difference is the whole point of this guide, so try the
-four moves below and compare the side lengths.
+too, but the dots end up further apart. Try the four moves below and compare the side lengths before
+and after each one.
 
 <RigidOrNot />
 
@@ -36,8 +36,8 @@ $$Q$$ were. The name comes from Greek: "iso" means equal and "metry" means measu
 
 :::
 
-The moves of the earlier guides are the main examples. That they keep distances matches the picture
-of tracing paper, and it is taken as given here.
+The moves of the earlier guides are the main examples. The tracing paper shows that they keep
+distances, and this guide takes that as given.
 
 :::remark[Slides, turns and flips keep distances]{#basic-isometries}
 
@@ -58,7 +58,8 @@ These are taken as given.
 
 **A zoom.** Take the dilation by $$2$$ about a point $$O$$ (:ref{#dilation}), and two points $$P$$
 and $$Q$$ that are $$3$$ apart. Their images are $$6$$ apart, since the zoom doubles every distance.
-So the zoom is not an isometry. In fact a single pair of points is enough to rule a map out.
+So the zoom is not an isometry. One pair of points whose distance changes is enough to rule a map
+out.
 
 **Squashing to a point.** Take the map that sends every point to one point $$O$$. Two points $$3$$
 apart both land on $$O$$, and their images are $$0$$ apart. So this map is not an isometry either.

@@ -1,6 +1,6 @@
 {
   "title": "Review: Numbers",
-  "description": "Questions on the ideas in this guide, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
+  "description": "Questions on the ideas in this chapter, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
   "questions": [
     {
       "id": "zero-kind",
@@ -70,7 +70,7 @@
         "$$(-a) + b$$"
       ],
       "answer": 0,
-      "explanation": "Subtraction is not a new operation, just adding an opposite (:ref{#subtraction}). That is why the rules for addition carry over to subtraction."
+      "explanation": "Subtraction is not a new operation, only a way of adding an opposite (:ref{#subtraction}). That is why the rules for addition carry over to subtraction."
     },
     {
       "id": "subtraction-order",
@@ -84,13 +84,13 @@
         "No: they are never equal"
       ],
       "answer": 2,
-      "explanation": "Commutativity lets us swap $$a$$ and $$-b$$ in $$a + (-b)$$, giving $$-b + a$$, not $$b - a$$. In fact $$b - a = -(a - b)$$, and a number equals its opposite only when it is $$0$$, that is when $$a = b$$."
+      "explanation": "Commutativity lets you swap $$a$$ and $$-b$$ in $$a + (-b)$$, giving $$-b + a$$, not $$b - a$$. In fact $$b - a = -(a - b)$$, and a number equals its opposite only when it is $$0$$, that is when $$a = b$$."
     },
     {
       "id": "double-opposite",
       "stars": 2,
       "topic": "Addition",
-      "question": "Which fact does the guide use to explain why $$-(-a) = a$$?",
+      "question": "Which fact does the chapter use to explain why $$-(-a) = a$$?",
       "options": [
         "Two minus signs always cancel, which is taken as given",
         "Since $$-a + a = 0$$, and an opposite is the only number that adds to give $$0$$, $$a$$ must be the opposite of $$-a$$",
@@ -146,7 +146,7 @@
       "id": "zero-times",
       "stars": 3,
       "topic": "Multiplication",
-      "question": "The guide shows that $$0 \\cdot a = 0$$ does not need to be assumed. Which argument does it use?",
+      "question": "The chapter shows that $$0 \\cdot a = 0$$ does not need to be assumed. Which argument does it use?",
       "options": [
         "$$0$$ copies of $$a$$ is nothing",
         "$$0 \\cdot a + a = (0 + 1)a = a$$, then subtract $$a$$ from both sides",
@@ -154,7 +154,7 @@
         "$$0 \\cdot a = a \\cdot 0$$ by commutativity"
       ],
       "answer": 1,
-      "explanation": "Distributivity together with $$1 \\cdot a = a$$ gives $$0 \\cdot a + a = a$$, and subtracting $$a$$ leaves $$0 \\cdot a = 0$$. The third option needs $$(-a)a = -(a^2)$$, which the guide proves using $$0 \\cdot a = 0$$, so it goes round in a circle. The fourth just swaps the order."
+      "explanation": "Distributivity together with $$1 \\cdot a = a$$ gives $$0 \\cdot a + a = a$$, and subtracting $$a$$ leaves $$0 \\cdot a = 0$$. The third option needs $$(-a)a = -(a^2)$$, which the chapter proves using $$0 \\cdot a = 0$$, so it goes round in a circle. The fourth only swaps the order."
     },
     {
       "id": "minus-one",
@@ -370,7 +370,7 @@
       "id": "even-square-converse",
       "stars": 3,
       "topic": "Divisibility",
-      "question": "How does the guide prove that if $$a^2$$ is even, then $$a$$ is even?",
+      "question": "How does the chapter prove that if $$a^2$$ is even, then $$a$$ is even?",
       "options": [
         "Write $$a^2 = 2k$$ and take square roots",
         "It is the same statement as “the square of an even integer is even”",
@@ -441,12 +441,7 @@
       "stars": 1,
       "topic": "Congruence",
       "question": "Which statement says the same as $$n \\equiv 0 \\pmod{d}$$?",
-      "options": [
-        "$$n = 0$$",
-        "$$n = d$$",
-        "$$d \\mid n$$",
-        "$$n \\mid d$$"
-      ],
+      "options": ["$$n = 0$$", "$$n = d$$", "$$d \\mid n$$", "$$n \\mid d$$"],
       "answer": 2,
       "explanation": "$$n \\equiv 0$$ means $$d \\mid n - 0$$, which is $$d \\mid n$$. So “divisible by $$d$$” and “congruent to $$0$$ modulo $$d$$” are the same thing."
     },
@@ -462,7 +457,7 @@
         "Subtracting the two congruences"
       ],
       "answer": 0,
-      "explanation": "The two known differences add up to the one we want, because the $$b$$s cancel. Then :ref{#multiples} shows the sum is a multiple of $$d$$ (:ref{#congruence-equality})."
+      "explanation": "The two known differences add up to the one you want, because the $$b$$s cancel. Then :ref{#multiples} shows the sum is a multiple of $$d$$ (:ref{#congruence-equality})."
     },
     {
       "id": "product-congruence",
@@ -518,19 +513,14 @@
         "Because $$3$$ is odd"
       ],
       "answer": 0,
-      "explanation": "By :ref{#congruence-powers} we only need to square $$0$$, $$1$$ and $$2$$. None of the results is $$\\equiv 2$$. This is the heart of the proof of :ref{#squares-three}."
+      "explanation": "By :ref{#congruence-powers} you only need to square $$0$$, $$1$$ and $$2$$. None of the results is $$\\equiv 2$$. This is the heart of the proof of :ref{#squares-three}."
     },
     {
       "id": "not-rational",
       "stars": 1,
       "topic": "Rational numbers",
       "question": "Which of these is **not** a rational number?",
-      "options": [
-        "$$\\frac{-5}{2}$$",
-        "$$7$$",
-        "$$0.03$$",
-        "$$\\frac{5}{0}$$"
-      ],
+      "options": ["$$\\frac{-5}{2}$$", "$$7$$", "$$0.03$$", "$$\\frac{5}{0}$$"],
       "answer": 3,
       "explanation": "A rational number is $$\\frac{m}{n}$$ with $$m$$, $$n$$ integers and $$n \\neq 0$$ (:ref{#rational}). $$7 = \\frac{7}{1}$$ and $$0.03 = \\frac{3}{100}$$ are rational, but $$\\frac{5}{0}$$ has no meaning: no number multiplied by $$0$$ gives $$5$$."
     },
@@ -580,7 +570,7 @@
       "id": "lowest-form-proof",
       "stars": 3,
       "topic": "Rational numbers",
-      "question": "How does the guide prove that every positive rational number has a lowest form?",
+      "question": "How does the chapter prove that every positive rational number has a lowest form?",
       "options": [
         "Keep cancelling factors of $$2$$ until the numerator is odd",
         "Cancel the greatest common divisor $$d$$; if anything bigger than $$1$$ still divided both, $$d$$ would not have been the greatest",
@@ -658,7 +648,7 @@
         "It is a square root"
       ],
       "answer": 2,
-      "explanation": "Irrational simply means not rational (:ref{#irrational}). A decimal that goes on forever can still be rational, like $$\\frac{1}{3} = 0.333\\ldots$$, and $$\\sqrt{4} = 2$$ is rational."
+      "explanation": "Irrational means not rational (:ref{#irrational}). A decimal that goes on forever can still be rational, like $$\\frac{1}{3} = 0.333\\ldots$$, and $$\\sqrt{4} = 2$$ is rational."
     },
     {
       "id": "sqrt-two-contradiction",
@@ -714,7 +704,7 @@
         "It is an arbitrary choice"
       ],
       "answer": 1,
-      "explanation": "Taking $$n = 1$$ in $$n! = n \\cdot (n - 1)!$$ gives $$1! = 1 \\cdot 0!$$, which only works if $$0! = 1$$ (:ref{#factorial})."
+      "explanation": "Taking $$n = 1$$ in $$n! = n \\cdot (n - 1)!$$ gives $$1! = 1 \\cdot 0!$$, which holds exactly when $$0! = 1$$ (:ref{#factorial})."
     },
     {
       "id": "binomial-meaning",
@@ -742,7 +732,7 @@
         "Because of Pascal's rule"
       ],
       "answer": 0,
-      "explanation": "The counting reason is backed up by the formula: the two factorials in the denominator just swap places (:ref{#binomial-symmetry})."
+      "explanation": "The counting reason is backed up by the formula: the two factorials in the denominator swap places (:ref{#binomial-symmetry})."
     },
     {
       "id": "pascal",
@@ -756,7 +746,7 @@
         "$$\\binom{m}{n} = \\binom{m}{m - n}$$"
       ],
       "answer": 1,
-      "explanation": "In Pascal's triangle, each entry is the sum of the two entries just above it (:ref{#pascal}). The last option is the symmetry rule, not Pascal's rule."
+      "explanation": "In Pascal's triangle, each entry is the sum of the two entries directly above it (:ref{#pascal}). The last option is the symmetry rule, not Pascal's rule."
     },
     {
       "id": "inverse-definition",
@@ -770,7 +760,7 @@
         "A number $$b$$ with $$ab = ba = 1$$"
       ],
       "answer": 3,
-      "explanation": "An inverse undoes multiplying, just as an opposite undoes adding (:ref{#inverse}). The first and third options describe the opposite."
+      "explanation": "An inverse undoes multiplying, as an opposite undoes adding (:ref{#inverse}). The first and third options describe the opposite."
     },
     {
       "id": "zero-no-inverse",
@@ -784,7 +774,7 @@
         "Because it was left out of the definition"
       ],
       "answer": 1,
-      "explanation": "An inverse $$b$$ would need $$0 \\cdot b = 1$$, which never happens. That is the real reason we can't divide by zero."
+      "explanation": "An inverse $$b$$ would need $$0 \\cdot b = 1$$, which never happens. That is the reason you can't divide by zero."
     },
     {
       "id": "inverse-unique",
@@ -846,7 +836,7 @@
       "id": "cross-multiplying-twice",
       "stars": 4,
       "topic": "Inverses and division",
-      "question": "Cross-multiplying appears twice in the guide. What is the difference between the two?",
+      "question": "Cross-multiplying appears twice in the chapter. What is the difference between the two?",
       "options": [
         "There is none; it is stated twice for emphasis",
         "The first is for positive fractions only",
@@ -875,12 +865,7 @@
       "stars": 1,
       "topic": "Inverses and division",
       "question": "What is assumed about $$x$$ whenever $$\\frac{1}{x - 2}$$ appears?",
-      "options": [
-        "$$x \\neq 2$$",
-        "$$x \\neq 0$$",
-        "$$x > 2$$",
-        "Nothing"
-      ],
+      "options": ["$$x \\neq 2$$", "$$x \\neq 0$$", "$$x > 2$$", "Nothing"],
       "answer": 0,
       "explanation": "A denominator can never be $$0$$, so letters in denominators only take values that keep every denominator non-zero."
     },
@@ -945,12 +930,7 @@
       "stars": 2,
       "topic": "Divisibility",
       "question": "What is the remainder when $$-17$$ is divided by $$5$$?",
-      "options": [
-        "$$-2$$",
-        "$$2$$",
-        "$$3$$",
-        "$$-3$$"
-      ],
+      "options": ["$$-2$$", "$$2$$", "$$3$$", "$$-3$$"],
       "answer": 2,
       "explanation": "The remainder must satisfy $$0 \\le r < 5$$ (:ref{#division-remainder}), and $$-17 = 5 \\cdot (-4) + 3$$. Writing $$-17 = 5 \\cdot (-3) - 2$$ doesn't count, because $$-2$$ is not between $$0$$ and $$4$$."
     },
@@ -966,7 +946,7 @@
         "It can; the remainder depends on how the division is done"
       ],
       "answer": 1,
-      "explanation": "From $$n = dq + r$$ with $$0 \\le r < d$$ we get $$dq \\le n < dq + d$$: $$n$$ sits in the stretch starting at the multiple $$dq$$. It sits in only one stretch, so $$q$$ is fixed, and so is $$r = n - dq$$ (:ref{#division-remainder})."
+      "explanation": "From $$n = dq + r$$ with $$0 \\le r < d$$, it follows that $$dq \\le n < dq + d$$: $$n$$ sits in the stretch starting at the multiple $$dq$$. It sits in only one stretch, so $$q$$ is fixed, and so is $$r = n - dq$$ (:ref{#division-remainder})."
     },
     {
       "id": "gcd-meaning",
@@ -994,7 +974,7 @@
         "$$a$$ and $$b$$ differ by exactly $$d$$"
       ],
       "answer": 0,
-      "explanation": "Congruent numbers are the ones with the same remainder (:ref{#same-remainder}). They can differ by any multiple of $$d$$, not just $$d$$ itself: $$2 \\equiv 12 \\pmod{5}$$."
+      "explanation": "Congruent numbers are the ones with the same remainder (:ref{#same-remainder}). They can differ by any multiple of $$d$$, not only $$d$$ itself: $$2 \\equiv 12 \\pmod{5}$$."
     },
     {
       "id": "digit-sum-reason",
@@ -1071,14 +1051,9 @@
       "stars": 1,
       "topic": "Inverses and division",
       "question": "What is $$2^{-3}$$?",
-      "options": [
-        "$$-8$$",
-        "$$-6$$",
-        "$$\\frac{1}{8}$$",
-        "$$\\frac{1}{6}$$"
-      ],
+      "options": ["$$-8$$", "$$-6$$", "$$\\frac{1}{8}$$", "$$\\frac{1}{6}$$"],
       "answer": 2,
-      "explanation": "A negative power means a power of the inverse: $$2^{-3} = \\left(\\frac{1}{2}\\right)^3 = \\frac{1}{8}$$ (:ref{#negative-powers}). It is never negative just because the exponent is."
+      "explanation": "A negative power means a power of the inverse: $$2^{-3} = \\left(\\frac{1}{2}\\right)^3 = \\frac{1}{8}$$ (:ref{#negative-powers}). A negative exponent doesn't make the answer negative."
     },
     {
       "id": "choosing-divide",

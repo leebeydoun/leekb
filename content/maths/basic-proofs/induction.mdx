@@ -3,16 +3,18 @@ title: Proof by induction
 description: Proving a statement for every whole number by climbing one step at a time.
 ---
 
-Some statements are really an endless list of statements, one for each positive integer. For
-example, "for every positive integer $$n$$, $$1 + 2 + \cdots + n = \frac{n(n + 1)}{2}$$" says
+Add up the numbers from $$1$$ to $$10$$ and you get $$55$$, which is $$\frac{10 \cdot 11}{2}$$. Go
+up to $$100$$ instead and you get $$5050$$, which is $$\frac{100 \cdot 101}{2}$$. The pattern
+suggests a rule: for every positive integer $$n$$, $$1 + 2 + \cdots + n = \frac{n(n + 1)}{2}$$. That
+rule stands for an endless list of statements:
 
 ```math
 1 = \frac{1 \cdot 2}{2}, \qquad 1 + 2 = \frac{2 \cdot 3}{2}, \qquad 1 + 2 + 3 = \frac{3 \cdot 4}{2},
 \qquad \dots
 ```
 
-and so on forever. We can check any one of these by hand, but never all of them. Induction is a way
-to prove the whole endless list with just two arguments.
+You can check any one of these by hand, but never all of them. In this guide we'll see how induction
+proves the whole list with two arguments.
 
 ## The idea
 
@@ -32,31 +34,33 @@ Induction is exactly this, with statements in place of dominoes.
 
 :::remark[Principle of induction]{#induction}
 
-Suppose that for each positive integer $$n$$ there is a statement, which we call $$P(n)$$. To prove
-that $$P(n)$$ is true for every positive integer $$n$$, it is enough to show two things:
+Suppose that for each positive integer $$n$$ there is a statement, called $$P(n)$$. To prove that
+$$P(n)$$ is true for every positive integer $$n$$, it is enough to show two things:
 
 1. **The base case:** $$P(1)$$ is true.
 2. **The inductive step:** for every positive integer $$k$$, **if** $$P(k)$$ is true, **then**
    $$P(k + 1)$$ is true.
 
-We take this as a basic fact about the positive integers: starting from $$1$$ and adding $$1$$ over
+This is taken as a basic fact about the positive integers: starting from $$1$$ and adding $$1$$ over
 and over reaches every one of them, so nothing gets missed.
+
+::see-also{src="https://en.wikipedia.org/wiki/Mathematical_induction"}
 
 :::
 
 ## The confusing part: assuming $$P(k)$$
 
-The inductive step says "suppose $$P(k)$$ is true; show that $$P(k + 1)$$ is true". This often feels
-like cheating. Aren't we assuming exactly what we are trying to prove?
+The inductive step says "suppose $$P(k)$$ is true; show that $$P(k + 1)$$ is true". This can feel
+like cheating, as if you were assuming exactly what you are trying to prove.
 
-We aren't. The inductive step doesn't claim that $$P(k)$$ **is** true. It proves an "if, then"
+You aren't. The inductive step doesn't claim that $$P(k)$$ **is** true. It proves an "if, then"
 statement: **if** $$P(k)$$ happens to be true, **then** so is $$P(k + 1)$$. That is the domino
 spacing: it says nothing about whether domino $$k$$ actually falls, only what happens to domino
 $$k + 1$$ if it does. Whether it falls is settled by the chain reaction from the base case.
 
-So in the inductive step, $$k$$ is any positive integer, and $$P(k)$$ is something we are allowed to
-use, called the **inductive hypothesis**. The job is to get from $$P(k)$$ to $$P(k + 1)$$. In
-practice that means:
+So in the inductive step, $$k$$ is any positive integer, and $$P(k)$$ is something you may use,
+called the **inductive hypothesis**. The job is to get from $$P(k)$$ to $$P(k + 1)$$. In practice
+that means:
 
 1. Write out exactly what $$P(k)$$ says. This is what you know.
 2. Write out exactly what $$P(k + 1)$$ says. This is what you want.
@@ -101,8 +105,8 @@ Here $$P(n)$$ is the statement "$$1 + 2 + \cdots + n = \frac{n(n + 1)}{2}$$".
 - **Want:** $$1 + 2 + \cdots + k + (k + 1) = \frac{(k + 1)(k + 2)}{2}$$, which is $$P(k + 1)$$: the
   same statement with $$k + 1$$ in place of $$n$$.
 
-The sum we want is the sum we know, plus one more number. So we replace the first $$k$$ terms using
-what we know, then simplify:
+The sum you want is the sum you know, plus one more number. So replace the first $$k$$ terms using
+what you know, then simplify:
 
 ```math
 \begin{aligned}
@@ -123,8 +127,8 @@ without adding a single one of them.
 
 ## A second example: divisibility
 
-The same shape works for statements about divisibility. The trick of finding $$P(k)$$ inside
-$$P(k + 1)$$ just looks different.
+The same shape works for statements about divisibility. Only the way of finding $$P(k)$$ inside
+$$P(k + 1)$$ looks different.
 
 :::example[Powers of 4]
 
@@ -144,7 +148,8 @@ rearrange so that $$4^k - 1$$ appears:
 4^{k + 1} - 1 = 4 \cdot 4^k - 1 = 4(4^k - 1) + 4 - 1 = 4(4^k - 1) + 3
 ```
 
-Now use what we know: $$4(4^k - 1) + 3 = 4 \cdot 3m + 3 = 3(4m + 1)$$, which is a multiple of $$3$$.
+Now use what you know: $$4(4^k - 1) + 3 = 4 \cdot 3m + 3 = 3(4m + 1)$$, which is a multiple of
+$$3$$.
 
 **Conclusion.** By induction, $$3 \mid 4^n - 1$$ for every positive integer $$n$$.
 
@@ -166,21 +171,20 @@ example, "$$2^n > n^2$$" fails for $$n = 2, 3, 4$$ but holds for every $$n$$ fro
 | True?   | yes   | no    | no    | no     | yes    | yes    | yes     |
 
 So the claim to prove is "$$2^n > n^2$$ for every $$n \ge 5$$". Induction still works; the chain
-reaction just starts further along.
+reaction starts further along.
 
 Think of the dominoes again, but this time push domino number $$5$$ instead of domino number $$1$$.
 Domino $$5$$ knocks over $$6$$, which knocks over $$7$$, and so on forever. Dominoes $$1$$ to $$4$$
-stay standing, but that's fine: we never claimed anything about them.
+stay standing, but that's fine: the claim says nothing about them.
 
-This changes the two parts of the proof in two small ways.
+This changes the two parts of the proof in two small ways:
 
-1. **The base case is the starting number.** Here we check $$P(5)$$ instead of $$P(1)$$.
+1. **The base case is the starting number.** Here you check $$P(5)$$ instead of $$P(1)$$.
 2. **The inductive step only has to work from the starting number on.** The chain reaction only ever
    uses the step to go from $$5$$ to $$6$$, from $$6$$ to $$7$$, and so on. It never goes from $$2$$
-   to $$3$$. So in the step we may assume $$k \ge 5$$, and use that fact if it helps.
+   to $$3$$. So in the step you may assume $$k \ge 5$$, and use that fact if it helps.
 
-The second point is easy to miss, and it is often exactly what makes the step work, as the example
-shows.
+The second point is often missed, and in the next example it is exactly what makes the step work.
 
 :::example[An inequality that starts late]
 
@@ -193,23 +197,23 @@ shows.
 - **Know:** $$2^k > k^2$$.
 - **Want:** $$2^{k + 1} > (k + 1)^2$$.
 
-Going from $$2^k$$ to $$2^{k + 1}$$ means doubling, so double both sides of what we know
+Going from $$2^k$$ to $$2^{k + 1}$$ means doubling, so double both sides of what you know
 (:ref{#numbers/order-multiply}):
 
 ```math
 2^{k + 1} = 2 \cdot 2^k > 2k^2
 ```
 
-So $$2^{k + 1}$$ is bigger than $$2k^2$$. If $$2k^2$$ is in turn at least $$(k + 1)^2$$, we are
-done, because then $$2^{k + 1} > 2k^2 \ge (k + 1)^2$$. That leaves one question: is doubling $$k^2$$
-enough to get past $$(k + 1)^2$$? Not always:
+So $$2^{k + 1}$$ is bigger than $$2k^2$$. If $$2k^2$$ is in turn at least $$(k + 1)^2$$, the step is
+finished, because then $$2^{k + 1} > 2k^2 \ge (k + 1)^2$$. That leaves one question: whether
+doubling $$k^2$$ is enough to get past $$(k + 1)^2$$. The table shows that it isn't always:
 
 | $$k$$         | $$1$$ | $$2$$ | $$3$$  | $$4$$  | $$5$$  |
 | ------------- | ----- | ----- | ------ | ------ | ------ |
 | $$2k^2$$      | $$2$$ | $$8$$ | $$18$$ | $$32$$ | $$50$$ |
 | $$(k + 1)^2$$ | $$4$$ | $$9$$ | $$16$$ | $$25$$ | $$36$$ |
 
-It fails for small $$k$$ but works once $$k$$ is a bit bigger. To show it works for every
+It fails for $$k = 1$$ and $$k = 2$$, and works from $$k = 3$$ on. To show it works for every
 $$k \ge 5$$, look at the difference:
 
 ```math
@@ -230,7 +234,7 @@ which is $$P(k + 1)$$.
 
 :::
 
-Why start at $$5$$ and not somewhere earlier? Two things have to hold at the starting number:
+The proof starts at $$5$$ because two things have to hold at the starting number:
 
 - **The base case must be true.** $$P(3)$$ and $$P(4)$$ are false ($$8 < 9$$ and $$16 = 16$$), so
   they can't be the base case.
@@ -238,12 +242,12 @@ Why start at $$5$$ and not somewhere earlier? Two things have to hold at the sta
   since $$2 \cdot 2^2 = 8$$ is not bigger than $$3^2 = 9$$.
 
 The first starting number where both hold is $$5$$. A good habit with any "for every $$n \ge n_0$$"
-claim is to check a table like the one above first. It tells you where the claim starts being true,
-and so where to put the base case.
+claim is to check a table like the one for $$2^n$$ and $$n^2$$ first. It tells you where the claim
+starts being true, and so where to put the base case.
 
 ## Why both steps matter
 
-Each half of an induction proof can be done without the other, and the result is nonsense.
+Either half of an induction proof on its own can seem to prove something false.
 
 - **A step without a base case.** Let $$P(n)$$ say "$$n = n + 1$$". If $$k = k + 1$$, then adding
   $$1$$ to both sides gives $$k + 1 = k + 2$$, so the inductive step works perfectly. But $$P(1)$$,
@@ -263,7 +267,7 @@ Every induction proof can be laid out the same way:
    you want. Find $$P(k)$$ inside $$P(k + 1)$$, use it, and reach $$P(k + 1)$$.
 4. **Conclude:** "By induction, $$P(n)$$ is true for every $$n$$."
 
-In the Numbers guide, induction proves that congruences can be raised to any power: if
+In the Numbers chapter, induction proves that congruences can be raised to any power: if
 $$a \equiv b$$, then $$a^n \equiv b^n$$ (:ref{#numbers/congruence-powers}). The base case is
 $$n = 1$$, and the step multiplies the case $$k$$ by $$a \equiv b$$ to reach the case $$k + 1$$.
 

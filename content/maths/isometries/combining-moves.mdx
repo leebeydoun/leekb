@@ -3,11 +3,10 @@ title: Combining moves
 description: Doing one move after another, why the order matters, and what two mirrors make.
 ---
 
-Instructions are often a list of moves done one after another. A dance is a sequence of steps, a
-photo editor lets you turn a picture and then flip it, and driving directions say "turn left, then
-go straight on for a mile". Doing the same steps in a different order can leave you somewhere else
-entirely. This page sets up the language for one move after another, shows why the order matters,
-and then finds something unexpected: two flips in mirrors always combine into a slide or a turn.
+Follow a set of driving directions: turn left, then go straight on for a mile. Swap the two steps
+and you end up somewhere else. Moves of the tracing paper behave the same way, so the order you do
+them in matters. In this guide we'll learn to write one move after another, and find that two flips
+in mirrors always combine into a slide or a turn.
 
 ## One move after another
 
@@ -108,8 +107,9 @@ $$H$$", however you group it.
 ## Order matters
 
 With numbers, $$2 \cdot 3 = 3 \cdot 2$$, so it is tempting to expect $$G \circ F = F \circ G$$ for
-moves as well. It is often false. Think of directions in a city: "turn left, then walk a block" and
-"walk a block, then turn left" leave you facing the same way, but on different streets.
+moves as well. But for moves, the order can change the result. Think of directions in a city: "turn
+left, then walk a block" and "walk a block, then turn left" leave you facing the same way, but on
+different streets.
 
 :::example[A turn and a flip in both orders]{#order-matters}
 
@@ -146,13 +146,13 @@ two orders don't only move the flag to different places; they leave it pointing 
 <OrderMatters />
 
 Some pairs of moves do give the same result in either order. Two turns about the same centre are one
-of them: by :ref{#rotation-rules}, turning by $$x^\circ$$ then $$y^\circ$$ is turning by
+such pair: by :ref{#rotation-rules}, turning by $$x^\circ$$ then $$y^\circ$$ is turning by
 $$(x + y)^\circ$$, and $$x + y = y + x$$. But it has to be checked each time, never assumed.
 
 ## Repeating a move
 
-Doing the same move several times in a row comes up often: a wheel turning notch by notch, a pattern
-of tiles slid along a wall, a mirror image of a mirror image. Writing it out as
+Some patterns come from doing the same move several times in a row: a wheel turning notch by notch,
+a row of tiles slid along a wall, a mirror image of a mirror image. Writing it out as
 $$F \circ F \circ F$$ gets long, so it gets a shorter name, written like a power of a number.
 
 :::definition[Powers of a map]{#map-powers}
@@ -374,7 +374,7 @@ all.
 Walk along a beach and look back at your footprints. A left print and a right print are mirror
 images of each other, and each one is also a step further along. So each print is the one before it
 flipped across the line of the walk and then slid along that line. This combination is the fourth
-kind of rigid move, after slides, turns and flips.
+kind of isometry, after slides, turns and flips.
 
 <GlideFootprints caption="Each footprint is the one before it, flipped across the line of the walk and slid along it" />
 

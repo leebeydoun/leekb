@@ -3,9 +3,8 @@ title: Exercises
 description: Exercises on the whole Isometries chapter, with worked solutions.
 ---
 
-These exercises draw on the whole chapter, and most of them need ideas from more than one guide.
-Some ask for a route, a move or a count, and some ask for a short proof. Try each one before opening
-its solution, and say which rule or result justifies each step, as the guides do.
+These exercises use the whole chapter, and most need ideas from more than one guide. Try each one
+before you open its solution, and name the rule or result behind each step, as the guides do.
 
 In several exercises, a position is given as "$$a$$ east and $$b$$ north" of a starting point. Two
 points that differ by $$a$$ east and $$b$$ north are the corners of a right triangle with legs $$a$$
@@ -91,8 +90,8 @@ wall $$K$$, then run to its owner at $$Q$$, $$1$$ east and $$3$$ north of $$O$$.
    which add up to $$5\sqrt{2}$$. So this route is as short as any route can be.
 
 3. The legs are $$d(P, O) = \sqrt{4^2 + 2^2} = \sqrt{20} \approx 4.47$$ and
-   $$d(O, Q) = \sqrt{1^2 + 3^2} = \sqrt{10} \approx 3.16$$, about $$7.64$$ in total. That is about
-   $$0.57$$ longer than the best route.
+   $$d(O, Q) = \sqrt{1^2 + 3^2} = \sqrt{10} \approx 3.16$$, about $$7.63$$ in total. That is about
+   $$0.56$$ longer than the best route.
 
 :::
 
@@ -267,10 +266,10 @@ The answer: the identity, every flip in a line, and every half turn. Go through 
 - **A slide** $$T$$ by a non-zero distance $$s$$: doing it twice moves every point $$2s$$ in the
   same direction, so some point moves and $$T \circ T \ne I$$.
 - **A turn** $$G_x$$ about $$O$$ with $$0 < x < 360$$: by :ref{#rotation-rules},
-  $$G_x \circ G_x = G_{2x}$$, and $$0 < 2x < 720$$. If $$2x < 360$$, or $$2x > 360$$ so that
-  $$G_{2x} = G_{2x - 360}$$ with $$0 < 2x - 360 < 360$$ (:ref{#rotation-whole-turns}), this is a
-  turn by something other than a whole number of full turns, which moves every point other than
-  $$O$$. So $$G_x \circ G_x = I$$ exactly when $$2x = 360$$, that is, for the half turn.
+  $$G_x \circ G_x = G_{2x}$$, and $$0 < 2x < 720$$. If $$2x > 360$$, then $$G_{2x} = G_{2x - 360}$$
+  with $$0 < 2x - 360 < 360$$ (:ref{#rotation-whole-turns}). So unless $$2x = 360$$, the result is a
+  turn by an angle between $$0^\circ$$ and $$360^\circ$$, which moves every point other than $$O$$.
+  So $$G_x \circ G_x = I$$ exactly when $$2x = 360$$, that is, for the half turn.
 - **A glide** $$T \circ R$$, with $$R$$ the flip in $$L$$ and $$T$$ a non-zero slide by $$s$$ along
   $$L$$: describe a point as "$$a$$ along $$L$$ and $$b$$ above it". Both $$T \circ R$$ and
   $$R \circ T$$ send it to $$a + s$$ along and $$b$$ below, so $$T \circ R = R \circ T$$

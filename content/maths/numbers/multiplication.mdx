@@ -3,21 +3,25 @@ title: Multiplication
 description: The rules for multiplying integers, why minus times minus is plus, and powers.
 ---
 
-Multiplication has its own short list of basic rules, plus one rule that ties it to addition. From
-these, everything else follows, including the sign rules that are usually just memorised. In
-particular, this page answers the question everybody asks at some point: why is a negative times a
-negative positive?
+Suppose your savings drop by £$$3$$ every day. Then $$3$$ days ago you had £$$9$$ more than you have
+now. Counting days back as negative, that's a change of $$-3$$ a day for $$-3$$ days, which gives
+$$+9$$, the idea behind $$(-3) \cdot (-3) = 9$$. A story like this makes the rule believable, but it
+doesn't prove it.
 
-A product can be written with a dot, $$4 \cdot 9 = 36$$, or, when letters are involved, just by
-writing them side by side: $$ab$$ means $$a \cdot b$$.
+Multiplication has its own short list of basic rules, plus one rule that ties it to addition. In
+this guide we'll show that everything else follows from these, including why a negative times a
+negative is positive.
 
-## The rules we assume
+A product can be written with a dot, $$4 \cdot 9 = 36$$, or, for letters, by writing them side by
+side: $$ab$$ means $$a \cdot b$$.
+
+## The rules taken as given
 
 For counting numbers, multiplying is counting a grid of dots. Three rows of four is $$12$$ dots, and
 turning the grid on its side shows four rows of three, also $$12$$. A box of dots that is $$2$$ by
 $$3$$ by $$4$$ can be counted layer by layer in any direction and always gives $$24$$. Facts like
-these are what the rules below record. We take them as given for all integers, negative ones
-included, and then see what they force negative numbers to do.
+these are what the rules below record. This page takes them as given for all integers, negative ones
+included, and then works out what they force negative numbers to do.
 
 :::remark[Rules for multiplication]{#multiplication-rules}
 
@@ -34,7 +38,7 @@ this page is proved from them.
 
 :::
 
-Rules 1 and 2 work just as they do for addition. For example, both groupings of
+Rules 1 and 2 work the same way as for addition. For example, both groupings of
 $$2 \cdot 5 \cdot (-3)$$ give the same answer:
 
 ```math
@@ -68,8 +72,9 @@ $$ab$$ and $$ac$$:
 
 :::
 
-This is what makes mental arithmetic like $$6 \cdot 13$$ easy: split $$13$$ into $$10 + 3$$, so
-$$6 \cdot 13 = 6 \cdot 10 + 6 \cdot 3 = 60 + 18 = 78$$. It is also how brackets are expanded:
+Distributivity lets you work out products like $$6 \cdot 13$$ in your head: split $$13$$ into
+$$10 + 3$$, so $$6 \cdot 13 = 6 \cdot 10 + 6 \cdot 3 = 60 + 18 = 78$$. It is also how brackets are
+expanded:
 
 ```math
 \begin{aligned}
@@ -85,9 +90,8 @@ $$(b + c)a = a(b + c) = ab + ac = ba + ca$$.
 ## Multiplying by zero
 
 Multiplying by $$0$$ means taking no copies of something, and no copies of anything is nothing. So
-$$0 \cdot 7 = 0$$ and $$0 \cdot (-7) = 0$$ should both hold. It may be surprising that
-$$0 \cdot a = 0$$ isn't on the list of rules. It doesn't need to be, because it follows from the
-others.
+$$0 \cdot 7 = 0$$ and $$0 \cdot (-7) = 0$$ should both hold. Yet $$0 \cdot a = 0$$ isn't on the list
+of rules. It doesn't need to be, because it follows from the others.
 
 :::proposition[Multiplying by zero]{#zero-times}
 
@@ -99,8 +103,8 @@ For every integer $$a$$, $$0 \cdot a = 0$$.
 
 The plan is to show that adding $$a$$ to $$0 \cdot a$$ gives back $$a$$, and then subtract $$a$$.
 
-Using rule 3, then distributivity with the sum on the left (explained above), then $$0 + 1 = 1$$,
-then rule 3 again:
+Using rule 3, then distributivity with the sum on the left (from the
+[Distributivity](#distributivity) section), then $$0 + 1 = 1$$, then rule 3 again:
 
 ```math
 0 \cdot a + a = 0 \cdot a + 1 \cdot a = (0 + 1)a = 1 \cdot a = a
@@ -119,8 +123,8 @@ a minus sign on one factor seems to flip the answer to its opposite, as if multi
 mirrors a number across $$0$$. The results below show that this is not a coincidence.
 
 Distributivity also decides what minus signs do in a product. The trick each time is the same as on
-the previous page: to show that something is the opposite of $$x$$, check that it adds to $$x$$ to
-give $$0$$, and use :ref{#opposite-unique}.
+the [Addition](./addition.mdx) page: to show that something is the opposite of $$x$$, check that it
+adds to $$x$$ to give $$0$$, and use :ref{#opposite-unique}.
 
 :::proposition[Multiplying by minus one]{#minus-one}
 
@@ -175,9 +179,11 @@ since $$a \cdot 0 = 0 \cdot a = 0$$. So $$a(-b)$$ is the opposite of $$ab$$ too.
 
 :::
 
-For example, $$-(4x) = (-4)x = 4(-x)$$. Now for the famous one. Before proving it, here is why it
-**has** to be true. Watch what happens to multiples of $$-2$$ as the first factor goes down by one
-each time:
+For example, $$-(4x) = (-4)x = 4(-x)$$.
+
+The next result is the famous one: a negative times a negative is positive. Before proving it, here
+is why it **has** to be true. Watch what happens to multiples of $$-2$$ as the first factor goes
+down by one each time:
 
 | Product | $$3 \cdot (-2)$$ | $$2 \cdot (-2)$$ | $$1 \cdot (-2)$$ | $$0 \cdot (-2)$$ | $$(-1) \cdot (-2)$$ |
 | ------- | ---------------- | ---------------- | ---------------- | ---------------- | ------------------- |
@@ -257,8 +263,8 @@ Let $$a$$, $$b$$ and $$c$$ be integers with $$a < b$$.
 
 :::proof{source="https://proofwiki.org/wiki/Real_Number_Ordering_is_Compatible_with_Multiplication"}
 
-By :ref{#order}, $$a < b$$ means $$b - a$$ is positive. In each part, we write the difference we
-want to be positive as a product of $$b - a$$ and a positive number, then use rule 5.
+By :ref{#order}, $$a < b$$ means $$b - a$$ is positive. In each part, the plan is to write the
+difference that should be positive as a product of $$b - a$$ and a positive number, then use rule 5.
 
 1. Expanding with distributivity and moving the minus sign with :ref{#minus-in-product},
 
@@ -293,8 +299,8 @@ which turns left into right.
 Multiplication is a shorthand for adding the same number again and again: $$5 \cdot 3$$ saves
 writing $$3 + 3 + 3 + 3 + 3$$. Powers do the same job one level up. Repeated multiplication turns up
 whenever something doubles, triples or grows by the same factor over and over, and writing
-$$2 \cdot 2 \cdot 2 \cdot 2 \cdot 2$$ in full quickly gets tiresome. So multiplying a number by
-itself several times is written with a small raised number.
+$$2 \cdot 2 \cdot 2 \cdot 2 \cdot 2$$ in full soon gets tiresome. So multiplying a number by itself
+several times is written with a small raised number.
 
 :::definition[Powers of integers]{#power}
 
@@ -305,8 +311,8 @@ a^n = \underbrace{a \cdot a \cdots a}_{n \text{ times}}
 ```
 
 read "$$a$$ to the power $$n$$". The number $$a$$ is the **base** and $$n$$ is the **exponent**. A
-single copy is just the number itself, $$a^1 = a$$. We also set $$a^0 = 1$$ when $$a \neq 0$$, for a
-reason explained below.
+single copy is the number itself, $$a^1 = a$$. Also, $$a^0 = 1$$ when $$a \neq 0$$, for a reason
+given after the rules for powers.
 
 :::
 

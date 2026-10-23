@@ -3,14 +3,15 @@ title: Inverses and division
 description: Multiplicative inverses, dividing by rational numbers, and solving equations.
 ---
 
-Every integer has an opposite, which undoes adding it: $$a + (-a) = 0$$. Fractions give us the same
-thing for multiplication. This is the one big way rational numbers improve on the integers. For
-example, no integer multiplied by $$2$$ gives $$1$$, but $$\frac{1}{2} \cdot 2 = 1$$.
+Say you want a number that gives $$1$$ when you multiply it by $$2$$. No integer does the job, but
+the fraction $$\frac{1}{2}$$ does, because $$\frac{1}{2} \cdot 2 = 1$$. Every fraction except $$0$$
+has a partner like this, which undoes multiplying by it, in the same way that $$-a$$ undoes adding
+$$a$$. That's the one big way the rational numbers improve on the integers.
 
-This page uses that idea to make division precise. It explains why every number except $$0$$ can be
-divided by, why dividing by a fraction means multiplying by its flip, and how to solve equations
-that need dividing. Along the way, the rule for equal fractions, which was a definition on the
-previous page, turns out to be something we can prove.
+In this guide we'll use these partners to make division precise. We'll see why every number except
+$$0$$ can be divided by, and why dividing by a fraction means multiplying by its flip. Along the
+way, the rule for equal fractions, which was a definition in the previous guide, turns out to be a
+fact we can prove.
 
 ## Inverses
 
@@ -40,8 +41,8 @@ Let $$m$$ and $$n$$ be non-zero integers. Then $$\frac{n}{m}$$ is an inverse of 
 
 :::proof{source="https://en.wikipedia.org/wiki/Fraction#Reciprocals_and_the_invisible_denominator"}
 
-First, $$\frac{n}{m}$$ is a genuine fraction, because its denominator $$m$$ is not $$0$$. Now we
-just multiply and check that we get $$1$$. By :ref{#fraction-multiplication},
+First, $$\frac{n}{m}$$ is a genuine fraction, because its denominator $$m$$ is not $$0$$. Now
+multiply and check that the product is $$1$$. By :ref{#fraction-multiplication},
 
 ```math
 \frac{m}{n} \cdot \frac{n}{m} = \frac{mn}{nm} = \frac{mn}{mn} = \frac{mn \cdot 1}{mn \cdot 1}
@@ -57,13 +58,13 @@ For example, $$\frac{3}{7} \cdot \frac{7}{3} = \frac{21}{21} = 1$$.
 
 :::
 
-So every non-zero rational number has an inverse, and the next result shows it has only one. We
-write it $$a^{-1}$$ or $$\frac{1}{a}$$. To invert a fraction, flip it upside down. The inverse of
-$$\frac{3}{7}$$ is $$\frac{7}{3}$$, the inverse of $$5 = \frac{5}{1}$$ is $$\frac{1}{5}$$, and the
-inverse of $$-\frac{2}{9}$$ is $$-\frac{9}{2}$$.
+So every non-zero rational number has an inverse, and :ref{#inverse-unique} below shows it has only
+one. It is written $$a^{-1}$$ or $$\frac{1}{a}$$. To invert a fraction, flip it upside down. The
+inverse of $$\frac{3}{7}$$ is $$\frac{7}{3}$$, the inverse of $$5 = \frac{5}{1}$$ is
+$$\frac{1}{5}$$, and the inverse of $$-\frac{2}{9}$$ is $$-\frac{9}{2}$$.
 
 The condition $$m \neq 0$$ matters: $$0$$ has **no** inverse, because $$0 \cdot b = 0$$ for every
-$$b$$, so it is never $$1$$. That is the real reason we can't divide by zero.
+$$b$$, so it is never $$1$$. That is the reason you can't divide by zero.
 
 :::proposition[Inverses are unique]{#inverse-unique}
 
@@ -75,9 +76,9 @@ Let $$a$$ and $$b$$ be rational numbers with $$a \neq 0$$. If $$ab = 1$$, then $
 
 This mirrors the fact that an opposite is the only way back to zero (:ref{#opposite-unique}).
 
-First, $$a$$ really does have an inverse to compare $$b$$ with. Write $$a = \frac{m}{n}$$. The
-numerator $$m$$ is not $$0$$, because $$\frac{0}{n} = 0$$ and $$a \neq 0$$. So by
-:ref{#inverse-exists}, $$\frac{n}{m}$$ is an inverse of $$a$$; call it $$a^{-1}$$.
+First, $$a$$ does have an inverse to compare $$b$$ with. Write $$a = \frac{m}{n}$$. The numerator
+$$m$$ is not $$0$$, because $$\frac{0}{n} = 0$$ and $$a \neq 0$$. So by :ref{#inverse-exists},
+$$\frac{n}{m}$$ is an inverse of $$a$$; call it $$a^{-1}$$.
 
 The idea is now to start from $$b$$ and slip in a factor $$a^{-1}a = 1$$, so that the given
 $$ab = 1$$ can be used:
@@ -86,14 +87,20 @@ $$ab = 1$$ can be used:
 b = 1 \cdot b = (a^{-1}a)b = a^{-1}(ab) = a^{-1} \cdot 1 = a^{-1}
 ```
 
-Step by step: multiplying by $$1$$ changes nothing; $$a^{-1}a = 1$$ because $$a^{-1}$$ is an inverse
-of $$a$$; the grouping of a product doesn't matter; $$ab = 1$$ is what we were told; and multiplying
-by $$1$$ changes nothing again. So $$b = a^{-1}$$: any number that multiplies with $$a$$ to give
-$$1$$ is the same as the inverse we already had, so there is only one.
+Step by step:
+
+- multiplying by $$1$$ changes nothing
+- $$a^{-1}a = 1$$, because $$a^{-1}$$ is an inverse of $$a$$
+- the grouping of a product doesn't matter
+- $$ab = 1$$ is given
+- multiplying by $$1$$ changes nothing again
+
+So $$b = a^{-1}$$: any number that multiplies with $$a$$ to give $$1$$ is the same as $$a^{-1}$$, so
+there is only one.
 
 :::
 
-This gives a quick way to check that something is an inverse: just check that the product is $$1$$.
+This gives a direct test for an inverse: check that the product is $$1$$.
 
 ## Negative powers
 
@@ -128,15 +135,15 @@ and $$a^n a^{-n} = a^0 = 1$$, which is where the choice $$a^0 = 1$$ from the
 
 ## Products equal to zero
 
-Two numbers that are not zero never multiply to give zero. For whole numbers this is no surprise,
-but with fractions you might wonder whether two very small numbers could multiply to exactly $$0$$.
-They can't: $$\frac{1}{1000} \cdot \frac{1}{1000} = \frac{1}{1000000}$$ is smaller still, but not
-zero. The reason is that multiplying by a non-zero number can always be undone, by multiplying by
-its inverse. If multiplying $$b$$ by a non-zero number gave $$0$$, undoing it would turn $$0$$ back
-into $$b$$. But undoing it means multiplying $$0$$ by the inverse, and anything times $$0$$ is
-$$0$$. So $$b$$ must have been $$0$$ all along.
+Two numbers that are not zero never multiply to give zero. For whole numbers this is clear, but with
+fractions you might wonder whether two tiny numbers could multiply to exactly $$0$$. They can't:
+$$\frac{1}{1000} \cdot \frac{1}{1000} = \frac{1}{1000000}$$ is smaller still, but not zero. The
+reason is that multiplying by a non-zero number can always be undone, by multiplying by its inverse.
+If multiplying $$b$$ by a non-zero number gave $$0$$, undoing it would turn $$0$$ back into $$b$$.
+But undoing it means multiplying $$0$$ by the inverse, and anything times $$0$$ is $$0$$. So $$b$$
+must have been $$0$$ all along.
 
-Inverses also give us the most useful fact about products that equal zero.
+Inverses also give the most useful fact about products that equal zero.
 
 :::theorem[Products equal to zero]{#zero-product}
 
@@ -146,10 +153,10 @@ Let $$a$$ and $$b$$ be rational numbers. If $$ab = 0$$, then $$a = 0$$ or $$b = 
 
 :::proof{source="https://proofwiki.org/wiki/Field_has_no_Proper_Zero_Divisors#Proof_2"}
 
-There are two cases. Either $$a = 0$$, in which case we are done, or $$a \neq 0$$. In the second
-case we show that $$b$$ must be $$0$$.
+There are two cases. Either $$a = 0$$, and there is nothing more to prove, or $$a \neq 0$$. In the
+second case, the proof shows that $$b$$ must be $$0$$.
 
-Since $$a \neq 0$$, it has an inverse $$a^{-1}$$, as in the previous proof (:ref{#inverse-exists}).
+Since $$a \neq 0$$, it has an inverse $$a^{-1}$$, as in the proof of :ref{#inverse-unique}.
 Multiplying both sides of $$ab = 0$$ by it gives
 
 ```math
@@ -157,8 +164,8 @@ a^{-1}(ab) = a^{-1} \cdot 0 = 0
 ```
 
 where the right-hand side is $$0$$ because anything times $$0$$ is $$0$$ (:ref{#zero-times}). On the
-left, regrouping gives $$a^{-1}(ab) = (a^{-1}a)b = 1 \cdot b = b$$, just as in the previous proof.
-So $$b = 0$$.
+left, regrouping gives $$a^{-1}(ab) = (a^{-1}a)b = 1 \cdot b = b$$, as in the proof of
+:ref{#inverse-unique}. So $$b = 0$$.
 
 :::
 
@@ -168,10 +175,10 @@ $$x = -\frac{1}{2}$$.
 
 ## Dividing by a rational number
 
-Dividing asks how many times one number fits into another. How many halves fit into $$3$$? Each
-whole holds $$2$$ halves, so $$3$$ holds $$3 \cdot 2 = 6$$ of them. Dividing by $$\frac{1}{2}$$ gave
-the same answer as multiplying by $$2$$, its flip. That is no accident. Dividing by $$b$$ should
-undo multiplying by $$b$$, and that is exactly what multiplying by $$b^{-1}$$ does.
+Dividing asks how many times one number fits into another. For example, count the halves in $$3$$.
+Each whole holds $$2$$ halves, so $$3$$ holds $$3 \cdot 2 = 6$$ of them. Dividing by $$\frac{1}{2}$$
+gave the same answer as multiplying by $$2$$, its flip. That is no accident. Dividing by $$b$$
+should undo multiplying by $$b$$, and that is exactly what multiplying by $$b^{-1}$$ does.
 
 :::definition[Quotient]{#quotient}
 
@@ -183,9 +190,9 @@ For rational numbers $$a$$ and $$b$$ with $$b \neq 0$$, the quotient $$a$$ divid
 
 :::
 
-This agrees with the fractions we already have: for integers $$m$$ and $$n$$,
-$$m n^{-1} = \frac{m}{1} \cdot \frac{1}{n} = \frac{m}{n}$$. It also explains the rule "to divide by
-a fraction, multiply by its flip". For example,
+This agrees with the fractions on the [Rational numbers](./rational-numbers.mdx) page: for integers
+$$m$$ and $$n$$, $$m n^{-1} = \frac{m}{1} \cdot \frac{1}{n} = \frac{m}{n}$$. It also explains the
+rule "to divide by a fraction, multiply by its flip". For example,
 
 ```math
 \frac{2/3}{4/5} = \frac{2}{3} \cdot \frac{5}{4} = \frac{10}{12} = \frac{5}{6}
@@ -197,8 +204,8 @@ and a fraction with fractions inside can be simplified the same way:
 \frac{1 + \frac{1}{2}}{1 - \frac{1}{4}} = \frac{3/2}{3/4} = \frac{3}{2} \cdot \frac{4}{3} = 2
 ```
 
-Earlier, cross-multiplying was simply the meaning of equality for fractions of integers. Now it can
-be proved, and for quotients of any rational numbers.
+On the [Rational numbers](./rational-numbers.mdx) page, cross-multiplying was the definition of
+equality for fractions of integers. Now it can be proved, and for quotients of any rational numbers.
 
 :::theorem[Cross-multiplying quotients]{#cross-multiplying-rational}
 
@@ -229,8 +236,8 @@ cd^{-1} \cdot bd = c \cdot (d^{-1}d) \cdot b = cb
 
 using that the order and grouping of a product don't matter. So $$ad = bc$$.
 
-Now suppose $$ad = bc$$. This time we multiply both sides by $$b^{-1}d^{-1}$$ to remove the $$b$$
-and the $$d$$:
+Now suppose $$ad = bc$$. This time, multiply both sides by $$b^{-1}d^{-1}$$ to remove the $$b$$ and
+the $$d$$:
 
 ```math
 ad \cdot b^{-1}d^{-1} = a b^{-1} \cdot (d d^{-1}) = ab^{-1},
@@ -261,10 +268,9 @@ sides gives $$3x = 8$$, and dividing by $$3$$ gives $$x = \frac{8}{3}$$.
 
 :::example
 
-Solve $$\frac{x}{3} + 1 = \frac{x}{2}$$. Fractions in an equation are easiest to clear first, by
-multiplying both sides by a common denominator. Multiplying by $$6$$ gives $$2x + 6 = 3x$$, and
-subtracting $$2x$$ from both sides gives $$x = 6$$. Check: $$\frac{6}{3} + 1 = 3$$ and
-$$\frac{6}{2} = 3$$.
+Solve $$\frac{x}{3} + 1 = \frac{x}{2}$$. It helps to clear the fractions first, by multiplying both
+sides by a common denominator. Multiplying by $$6$$ gives $$2x + 6 = 3x$$, and subtracting $$2x$$
+from both sides gives $$x = 6$$. Check: $$\frac{6}{3} + 1 = 3$$ and $$\frac{6}{2} = 3$$.
 
 :::
 
@@ -287,7 +293,7 @@ multiplying by $$3$$ can be undone by multiplying by $$\frac{1}{3}$$. The same g
 factor. Zero is the exception: multiplying by $$0$$ turns every number into $$0$$, so it wipes out
 any difference and can't be undone.
 
-Inverses also let us cancel a common factor from both sides of an equation.
+Inverses also let you cancel a common factor from both sides of an equation.
 
 :::proposition[Cancelling a non-zero factor]{#cancel-product}
 
@@ -348,7 +354,7 @@ Let $$a$$, $$b$$, $$c$$, $$d$$ be rational numbers with $$b \neq 0$$ and $$d \ne
 :::proof{source="https://en.wikipedia.org/wiki/Fraction#Adding_unlike_quantities"}
 
 **Same denominator.** By :ref{#quotient}, both quotients contain the factor $$b^{-1}$$, so
-distributivity lets us take it out:
+distributivity lets you take it out:
 
 ```math
 \frac{a}{b} + \frac{c}{b} = ab^{-1} + cb^{-1} = (a + c)b^{-1} = \frac{a + c}{b}
@@ -377,8 +383,8 @@ These rules work for expressions with letters in them too, as long as the denomi
 :::remark[Hidden conditions]
 
 An expression like $$\frac{1}{x - 2}$$ only makes sense when $$x \neq 2$$. From here on, whenever a
-letter appears in a denominator, we assume without saying so that it takes only values that keep
-every denominator non-zero.
+letter appears in a denominator, it is assumed, without saying so, that it takes only values that
+keep every denominator non-zero.
 
 :::
 
@@ -396,8 +402,8 @@ For instance, with $$x = 3$$ this says $$\frac{1}{3} - \frac{1}{4} = \frac{1}{12
 
 :::
 
-Cross-multiplying is often the quickest way to prove that two quotients are equal, because it turns
-the question into one about products, which can simply be expanded.
+Cross-multiplying is often the shortest way to prove that two quotients are equal, because it turns
+the question into one about products, which you can expand.
 
 :::proposition[Sum of consecutive powers]{#sum-of-powers}
 
@@ -445,8 +451,8 @@ says $$1 + 2 + 4 + 8 = \frac{2^4 - 1}{2 - 1} = 15$$.
 
 ## Using quotients in problems
 
-Many formulas in science relate three quantities by a product, and quotients let us solve for any of
-them. For something moving at a steady speed $$s$$, the distance $$d$$ covered in time $$t$$ is
+Many formulas in science relate three quantities by a product, and quotients let you solve for any
+of them. For something moving at a steady speed $$s$$, the distance $$d$$ covered in time $$t$$ is
 
 ```math
 d = st, \qquad \text{so} \qquad s = \frac{d}{t} \quad \text{and} \quad t = \frac{d}{s}

@@ -1,24 +1,26 @@
 ---
 title: Solving by factoring
 description:
-  Splitting a quadratic into two factors, so that one hard equation becomes two easy ones.
+  Splitting a quadratic into two factors, so that one quadratic equation becomes two linear ones.
 ---
 
-Some quadratics come apart into two simpler pieces multiplied together. For example,
-$$x^2 - x - 12$$ is $$(x + 3)(x - 4)$$. When that happens the equation is nearly solved, because a
-product can only be $$0$$ if one of its factors is. So one quadratic equation becomes two linear
-ones. This page shows why that works, how to find the factors, and when it is quicker to use another
-method.
+Multiply out $$(x + 3)(x - 4)$$ and you get $$x^2 - x - 12$$. Factoring runs this the other way: it
+starts from the quadratic and finds the two brackets. That's worth doing, because a quadratic
+equation written as a product equal to $$0$$ is nearly solved. It splits into two linear equations,
+one for each bracket.
+
+In this guide we'll see why that split works, how to find the brackets, and when another method is
+the better choice.
 
 ## Products equal to zero
 
 Two numbers that aren't $$0$$ can never multiply to give $$0$$. So if a product is $$0$$, at least
-one of the numbers in it must be $$0$$. Now suppose $$(x - 2)(x + 5) = 0$$. The two brackets are
-just two numbers, so one of them is $$0$$: either $$x - 2 = 0$$ or $$x + 5 = 0$$. That gives
-$$x = 2$$ or $$x = -5$$, and both really work, since each one makes a bracket $$0$$ and anything
-times $$0$$ is $$0$$.
+one of the numbers in it must be $$0$$. Now suppose $$(x - 2)(x + 5) = 0$$. For each $$x$$, the two
+brackets are two numbers, so one of them is $$0$$: either $$x - 2 = 0$$ or $$x + 5 = 0$$. That gives
+$$x = 2$$ or $$x = -5$$, and both work, since each one makes a bracket $$0$$ and anything times
+$$0$$ is $$0$$.
 
-The rule that a zero product needs a zero factor was proved for fractions in the Numbers guide
+The rule that a zero product needs a zero factor was proved for fractions in the Numbers chapter
 (:ref{#numbers/zero-product}). The proof only used inverses of non-zero numbers, so it holds for all
 real numbers too.
 
@@ -69,9 +71,9 @@ $$x$$ by $$x$$ square, two strips of areas $$3x$$ and $$2x$$, and a $$2$$ by $$3
 
 :::
 
-So $$(x + 2)(x + 3) = x^2 + 5x + 6$$. The two strips add up to $$5x$$, the **sum** of $$2$$ and
-$$3$$ times $$x$$, and the corner is $$6$$, their **product**. The same happens for any two numbers
-$$m$$ and $$n$$:
+So $$(x + 2)(x + 3) = x^2 + 5x + 6$$. The two strips add up to $$5x$$, which is $$x$$ times the
+**sum** of $$2$$ and $$3$$. The corner is $$6$$, their **product**. The same happens for any two
+numbers $$m$$ and $$n$$:
 
 ```math
 (x + m)(x + n) = x^2 + (m + n)x + mn
@@ -93,17 +95,17 @@ and the solutions of $$x^2 + bx + c = 0$$ are $$x = -m$$ and $$x = -n$$.
 
 :::
 
-The product is the easier clue to start from, since a whole number has only a few factor pairs. The
-signs help too. If $$c$$ is positive, $$m$$ and $$n$$ have the same sign, which is the sign of
-$$b$$. If $$c$$ is negative, they have opposite signs.
+Start from the product, since a whole number has only a few factor pairs. The signs narrow the
+search too. If $$c$$ is positive, $$m$$ and $$n$$ have the same sign, which is the sign of $$b$$. If
+$$c$$ is negative, they have opposite signs.
 
 :::example[Two numbers with a given sum and product]
 
 Solve $$x^2 - x - 12 = 0$$.
 
-We need a product of $$-12$$, so the two numbers have opposite signs, and a sum of $$-1$$. The pairs
-with product $$-12$$ are $$1, -12$$, then $$2, -6$$, then $$3, -4$$, and those with the signs the
-other way round. Only $$3$$ and $$-4$$ add up to $$-1$$. So
+You need a product of $$-12$$, so the two numbers have opposite signs. You also need a sum of
+$$-1$$. The pairs with product $$-12$$ are $$1, -12$$, then $$2, -6$$, then $$3, -4$$, and those
+with the signs the other way round. Only $$3$$ and $$-4$$ add up to $$-1$$. So
 
 ```math
 x^2 - x - 12 = (x + 3)(x - 4) = 0
@@ -134,9 +136,9 @@ $$x = -\frac{1}{2}$$ or $$x = -3$$.
 
 :::
 
-## Two special shapes
+## Three special shapes
 
-Two shapes are worth spotting on sight, because they factor in one step.
+Three shapes are worth spotting on sight, because they factor in one step.
 
 With no $$x$$ term, $$x^2 - k^2$$ is a **difference of two squares**, and it factors as
 $$(x - k)(x + k)$$ (:ref{#numbers/square-formulas}). So $$x^2 - 49 = 0$$ becomes
@@ -147,20 +149,21 @@ least $$49$$.
 With no constant term, $$x$$ itself is a common factor. So $$x^2 - 5x = 0$$ becomes
 $$x(x - 5) = 0$$, giving $$x = 0$$ or $$x = 5$$.
 
-It is tempting to solve $$x^2 = 5x$$ by dividing both sides by $$x$$, which gives $$x = 5$$ and
-nothing else. That loses the solution $$x = 0$$. Dividing by a number is a safe step only when the
-number is not $$0$$ (:ref{#linear-equations/safe-steps}), and whether $$x$$ is $$0$$ is exactly what
-we don't know yet. Moving everything to one side and factoring keeps both solutions.
-
 A **perfect square** like $$x^2 + 6x + 9$$ is $$(x + 3)^2$$, since $$3 + 3 = 6$$ and
 $$3 \cdot 3 = 9$$. Then $$x^2 + 6x + 9 = 0$$ has the single solution $$x = -3$$, as in
 :ref{#shifted-square}.
 
+The common factor $$x$$ needs care. It is tempting to solve $$x^2 = 5x$$ by dividing both sides by
+$$x$$, which gives $$x = 5$$ and nothing else. That loses the solution $$x = 0$$. Dividing by a
+number is a safe step only when the number is not $$0$$ (:ref{#linear-equations/safe-steps}), and
+whether $$x$$ is $$0$$ is exactly what you don't know yet. Moving everything to one side and
+factoring keeps both solutions.
+
 ## When to factor
 
-Factoring is the quickest method when the coefficients are small whole numbers and the factors are
-easy to spot. If a few factor pairs don't work, it is time to switch. Many quadratics have no
-factors with whole numbers at all. For $$x^2 + x - 1$$, the only whole-number pairs with product
+Factoring suits quadratics whose coefficients are small whole numbers, where the right pair shows up
+after a few tries. If a few factor pairs don't work, switch to another method. Some quadratics have
+no factors with whole numbers at all. For $$x^2 + x - 1$$, the only whole-number pairs with product
 $$-1$$ are $$1, -1$$, and they add up to $$0$$, not $$1$$. Yet $$x^2 + x - 1 = 0$$ does have two
 solutions, which are not fractions. [Completing the square](./completing-the-square.mdx) and
 [the quadratic formula](./quadratic-formula.mdx) find solutions like these, and they work every
@@ -209,8 +212,8 @@ Solve each equation, or explain why it has no solution.
 
 1. This is a difference of two squares (:ref{#numbers/square-formulas}): $$(x - 8)(x + 8) = 0$$, so
    $$x = 8$$ or $$x = -8$$ (:ref{#solve-by-factors}).
-2. Here $$9x^2 = (3x)^2$$ and $$25 = 5^2$$, so $$9x^2 - 25 = (3x - 5)(3x + 5)$$. So
-   $$x = \frac{5}{3}$$ or $$x = -\frac{5}{3}$$.
+2. Here $$9x^2 = (3x)^2$$ and $$25 = 5^2$$, so $$9x^2 - 25 = (3x - 5)(3x + 5)$$. The solutions are
+   $$x = \frac{5}{3}$$ and $$x = -\frac{5}{3}$$.
 3. This is a sum, not a difference. Since $$x^2 \ge 0$$ (:ref{#real-numbers/squares-positive}),
    $$4x^2 + 1 \ge 1$$ for every $$x$$, so it is never $$0$$ and there is no solution.
 
@@ -314,8 +317,8 @@ and $$m + n = 3$$.
 
 The only whole numbers with product $$1$$ are $$1, 1$$ and $$-1, -1$$, whose sums are $$2$$ and
 $$-2$$. Neither is $$3$$, so no whole numbers work. The equation $$x^2 + 3x + 1 = 0$$ still has two
-solutions, but they are not whole numbers, and they are found on the later pages by completing the
-square or with the formula.
+solutions, but they are not whole numbers. [Completing the square](./completing-the-square.mdx) and
+the [quadratic formula](./quadratic-formula.mdx) find them.
 
 :::
 

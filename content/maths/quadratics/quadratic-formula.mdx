@@ -4,19 +4,21 @@ description:
   One formula that solves every quadratic equation, where it comes from, and how to use it.
 ---
 
-[Completing the square](./completing-the-square.mdx) solves any quadratic, but it is the same few
-steps every time: divide by the number in front of $$x^2$$, add the missing corner, take square
-roots. Steps that never change can be done once and for all, with letters in place of the numbers.
-The result is the quadratic formula, which goes straight from the three numbers in an equation to
-its solutions. This page derives it, shows how to use it safely, and says when another method is
-quicker.
+If you've [completed the square](./completing-the-square.mdx) a few times, you'll notice the steps
+never change. You divide by the number in front of $$x^2$$, add the missing corner, then take square
+roots, and only the numbers are different. So you can do the steps once, with letters in place of
+the numbers, and never do them again. The result is the quadratic formula, which goes straight from
+the three numbers in an equation to its solutions.
+
+In this guide we'll derive the formula and learn to use it safely. We'll also see when another
+method needs less work.
 
 ## Doing the steps once with letters
 
-Picture following a recipe so often that you write down the finished dish in terms of its
-ingredients. Every quadratic $$ax^2 + bx + c = 0$$ has the same three ingredients, the numbers
-$$a$$, $$b$$ and $$c$$. Completing the square with these letters, instead of particular numbers,
-does every quadratic at once, and the answer comes out as a formula in $$a$$, $$b$$ and $$c$$.
+Every quadratic $$ax^2 + bx + c = 0$$ is fixed by its three numbers $$a$$, $$b$$ and $$c$$.
+Completing the square with these letters, instead of particular numbers, solves every quadratic at
+once. The answer comes out as a formula in $$a$$, $$b$$ and $$c$$: put in the numbers from any
+equation, and out come its solutions.
 
 The formula also has a shape worth seeing. The solutions sit symmetrically about one point,
 $$-\frac{b}{2a}$$: one is a certain distance to its right and the other the same distance to its
@@ -167,9 +169,10 @@ is no real solution, and there is nothing more to calculate.
 
 ## Checking an answer
 
-An answer with a square root in it is easy to get slightly wrong, and slow to check by substituting.
-There is a quicker check. For the two solutions of $$ax^2 + bx + c = 0$$, their sum is always
-$$-\frac{b}{a}$$ and their product is always $$\frac{c}{a}$$ (:ref{#vieta}, on the next page).
+An answer with a square root in it takes a lot of work to check by substituting. A shorter check
+uses the sum and product of the solutions. For the two solutions of $$ax^2 + bx + c = 0$$, the sum
+is always $$-\frac{b}{a}$$ and the product is always $$\frac{c}{a}$$. The next page proves this
+(:ref{#vieta}).
 
 For $$3x^2 = 4x + 1$$ above, the solutions were $$\frac{2 + \sqrt{7}}{3}$$ and
 $$\frac{2 - \sqrt{7}}{3}$$. Their sum is $$\frac{4}{3}$$, which is $$-\frac{b}{a} = \frac{4}{3}$$.
@@ -179,11 +182,12 @@ answer is almost certainly right.
 
 ## When to use which method
 
-The formula always works, which makes it the safe choice. But it is not always the quickest.
+The formula always works, which makes it the safe choice. For some equations, though, another method
+needs less work:
 
-- **Factoring** (:ref{#solve-by-factors}) is quicker when the solutions are whole numbers or simple
-  fractions you can spot. For $$x^2 - 5x + 6 = 0$$, the numbers $$2$$ and $$3$$ have sum $$5$$ and
-  product $$6$$, so it is $$(x - 2)(x - 3) = 0$$, with no square roots at all.
+- **Factoring** (:ref{#solve-by-factors}) needs less work when the solutions are whole numbers or
+  neat fractions you can spot. For $$x^2 - 5x + 6 = 0$$, the numbers $$2$$ and $$3$$ have sum $$5$$
+  and product $$6$$, so it is $$(x - 2)(x - 3) = 0$$, with no square roots at all.
 - **With no $$x$$ term**, as in $$x^2 - 7 = 0$$, solve $$x^2 = 7$$ directly: $$x = \pm\sqrt{7}$$.
 - **With no constant term**, as in $$4x^2 + 3x = 0$$, take out the common factor: $$x(4x + 3) = 0$$,
   so $$x = 0$$ or $$x = -\frac{3}{4}$$.

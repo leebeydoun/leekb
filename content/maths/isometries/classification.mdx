@@ -1,8 +1,8 @@
 ---
 title: Every isometry is a slide, turn or flip
 description:
-  Why every rigid move of the plane is built from a slide, a turn and at most one flip, and why it
-  can always be undone.
+  Why every isometry of the plane is built from a slide, a turn and at most one flip, and why it can
+  always be undone.
 ---
 
 Suppose someone moves your sheet of tracing paper while you aren't looking. They can slide it, turn
@@ -10,8 +10,8 @@ it, flip it over, and repeat any of these as often as they like. However complic
 were, you can always put the sheet back with at most three of your own: one slide, one turn and
 possibly one flip.
 
-This page proves that. It means slides, turns and flips are all the rigid moves there are: no
-isometry of the plane does anything stranger. It also means every isometry can be undone.
+In this guide we'll prove that this always works. It means slides, turns and flips, and the moves
+built from them, are the only isometries of the plane. It also means every isometry can be undone.
 
 ## The idea: putting the sheet back
 
@@ -21,9 +21,10 @@ second point is home too. Now two points are home, and the sheet can only be eit
 the mirror image of right. If a third point is on the wrong side, lift the sheet and **flip** it
 over the line through the two pinned points.
 
-A result from an earlier page explains why three points are enough. An isometry that leaves three
-points not on one line where they are moves nothing at all (:ref{#three-fixed-points}). So once
-three such points are home, the whole sheet is home. Try it below with different kinds of move.
+The [What an isometry keeps](./isometries.mdx) guide explains why three points are enough. An
+isometry that leaves three points not on one line where they are moves nothing at all
+(:ref{#three-fixed-points}). So once three such points are home, the whole sheet is home. Try it
+below with different kinds of move.
 
 <PutItBack />
 
@@ -273,7 +274,7 @@ combines the results on this page with the mirror results on the
 
 :::
 
-The table gives a practical test. To recognise a rigid move, ask whether it fixes any point and
+The table gives a practical test. To recognise an isometry, ask whether it fixes any point and
 whether it turns shapes over (a left shoe into a right shoe). For instance, a move that fixes
 nothing and turns shapes over can only be a glide, like the step from one footprint to the next.
 

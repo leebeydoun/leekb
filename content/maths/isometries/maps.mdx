@@ -4,12 +4,20 @@ description:
   Moving every point of the plane at once, the image of a point and of a shape, and fixed points.
 ---
 
-When a game slides a character across the screen, turns a car on a track or zooms out to show the
-whole map, it does the same thing to every point of the picture at once. Each point is sent to a new
-place by one rule. This guide gives that idea a name, a map of the plane, and sets up the few words
-the rest of the chapter needs: the image of a point and of a shape, when two maps count as the same,
-and fixed points. It ends with the zoom, a map that changes sizes, which is exactly what the
-following guides rule out.
+Picture a video game sliding a character across the screen. Every dot of the picture moves at once,
+and one rule says where each dot goes. A rule like that, which sends every point of the plane
+somewhere, is called a **map of the plane**.
+
+The **plane** here is the one from [Distance and angles](../distance-and-angles/introduction.mdx): a
+flat surface, like a sheet of paper with no edges, that runs on without end in every direction. In
+this guide we'll build the words the rest of the chapter needs:
+
+- **The image**: where a map sends a point, or a whole shape
+- **Equal maps**: when two maps count as the same
+- **Fixed points**: points that a map leaves where they are
+
+We'll also meet the zoom, which changes sizes. The rest of the chapter is about the moves that
+don't.
 
 ## Moving a sheet of tracing paper
 
@@ -134,9 +142,11 @@ this exact.
 
 ## Fixed points
 
-Push a pin through the tracing paper and turn the sheet. The point under the pin doesn't move, while
-every other point does. A point that a map leaves where it was is called a fixed point, and the
-fixed points of a map say a lot about what kind of map it is.
+Push a pin through the tracing paper and turn the sheet. Every point moves except one: the point
+under the pin stays where it was. A point that a map doesn't move is called a **fixed point**.
+
+Fixed points help tell maps apart. A turn has one fixed point, the pin. A slide moves everything, so
+it has none.
 
 :::definition[Fixed point]{#fixed-point}
 
@@ -149,13 +159,14 @@ A point $$P$$ is a **fixed point** of a map $$F$$ when $$F(P) = P$$.
 - **The identity**: every point is fixed, since $$I(P) = P$$ for all $$P$$
 - **A constant map to $$O$$**: $$O$$ is fixed, since $$F(O) = O$$. No other point is: for
   $$P \ne O$$, $$F(P) = O \ne P$$.
-- **The map in the figure above**: no point is fixed, since every point moves $$4$$ to the right
+- **Moving every point $$4$$ to the right and $$1$$ up**, the map in the triangle figure under
+  [The image of a shape](#the-image-of-a-shape): no point is fixed, since every point moves
 
 :::
 
-The next guide meets the other moves of the sheet. A turn about a pin, by anything other than a
-whole number of full turns, fixes exactly the pin. A slide by any distance other than zero fixes no
-point at all.
+The next guide looks at turns and slides in detail. There is one exception to "a turn fixes only the
+pin": a whole number of full turns puts every point back where it started, so every point is fixed.
+Likewise, a slide by a distance of zero moves nothing.
 
 ## Zooming: a map that changes sizes
 
@@ -201,12 +212,14 @@ $$r \cdot d(O, P) \ne d(O, P)$$ from $$O$$, so it has moved.
 
 <DilationZoom />
 
-The diagram shows something more: the distance between any two points of the flag is multiplied by
-$$r$$ too, not only distances from $$O$$. Proving that needs similar triangles, which come in a
-later chapter. For this chapter, what matters is that a zoom by anything other than $$1$$ changes
-distances. The maps that keep every distance are the moves of the tracing paper, and they are the
-subject of the rest of this chapter: [Slides and turns](./slides-and-turns.mdx),
-[Reflections](./reflections.mdx) and [What an isometry keeps](./isometries.mdx).
+In the diagram, the zoom multiplies every distance on the flag by $$r$$, not only the distances from
+$$O$$. So a zoom by $$2$$ doubles every distance, and a zoom by $$\frac{1}{2}$$ halves every
+distance. The [Zooming and length](../area-and-scaling/scaling-lengths.mdx) guide, in the Area and
+scaling chapter, looks at why this holds.
+
+Moving the tracing paper is different: it never changes a distance. Maps like this are called
+**isometries**, and they are the subject of the rest of this chapter. The next guide,
+[Slides and turns](./slides-and-turns.mdx), starts with two of them.
 
 ## Exercises
 

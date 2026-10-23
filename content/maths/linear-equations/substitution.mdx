@@ -3,23 +3,25 @@ title: Substitution
 description: Solving a system by rearranging one equation and putting it into the other.
 ---
 
-Elimination always works, but it isn't always the quickest route. When one equation already says
-what one unknown is, as in $$y = 2x - 3$$, it is simpler to put that straight into the other
-equation. This is called **substitution**, and it is the second standard way of solving a system.
+Sometimes one fact already tells you what an unknown is. Say a pen costs $$3$$p less than twice the
+price of a pencil. Writing $$x$$ and $$y$$ for the prices of a pencil and a pen in pence, that fact
+is $$y = 2x - 3$$, so you can write $$2x - 3$$ in place of $$y$$ in any other equation about them.
+This method is called **substitution**, and in this guide we'll see when it saves work over
+elimination.
 
 ## The method
 
 If you are told a tea costs £1 less than a coffee, then in any bill you can write each tea as "a
 coffee minus £1", and the bill only talks about coffee. Substitution does the same thing. When one
 equation says what $$y$$ is in terms of $$x$$, write that in place of $$y$$ in the other equation.
-What is left has only one unknown, and we know how to solve that.
+What is left has only one unknown, and you already know how to solve that.
 
 :::remark[Solving by substitution]{#substitution}
 
 To solve two linear equations in $$x$$ and $$y$$:
 
 1. **Rearrange** one equation to say what one unknown equals, say $$y = \ldots$$, with only $$x$$
-   and numbers on the right. Pick the equation and the unknown that make this easiest.
+   and numbers on the right. Pick the equation and the unknown that give the fewest fractions.
 2. **Substitute:** replace that unknown in the **other** equation by the expression, in brackets.
    The result is an equation in $$x$$ alone.
 3. **Solve** it for $$x$$, using :ref{#one-unknown}.
@@ -62,9 +64,8 @@ by $$3$$, and the answer would come out wrong.
 ## Why it works
 
 Substitution looks different from elimination, but it rests on the same idea: each step replaces the
-system by an equivalent one. The reason is simple. Once $$y = 2x - 3$$ holds, $$y$$ and $$2x - 3$$
-are just two names for the same number, and swapping one name for the other can't change whether a
-statement is true.
+system by an equivalent one. Once $$y = 2x - 3$$ holds, $$y$$ and $$2x - 3$$ are two names for the
+same number. Swapping one name for the other can't change whether a statement is true.
 
 :::proposition[Substitution gives an equivalent system]{#substitution-works}
 
@@ -76,15 +77,17 @@ Replacing $$y$$ by $$E$$ in the other equation, and keeping $$y = E$$, gives an 
 :::proof{source="https://en.wikipedia.org/wiki/System_of_linear_equations#Elimination_of_variables"}
 
 Call the other equation $$L = R$$, and write $$L'$$ and $$R'$$ for its two sides with $$E$$ put in
-place of $$y$$. We compare the systems "$$y = E$$ and $$L = R$$" and "$$y = E$$ and $$L' = R'$$".
+place of $$y$$. The task is to compare the systems "$$y = E$$ and $$L = R$$" and "$$y = E$$ and
+$$L' = R'$$".
 
 Take any values of $$x$$ and $$y$$ for which $$y = E$$ is true. For these values, $$y$$ and $$E$$
 are the same number, so putting one in place of the other doesn't change the value of either side:
 $$L$$ has the same value as $$L'$$, and $$R$$ the same value as $$R'$$. So $$L = R$$ is true for
 these values exactly when $$L' = R'$$ is.
 
-Both systems include $$y = E$$, so a pair that solves either system makes $$y = E$$ true, and then
-by the last paragraph it solves the other system too. So the two systems have the same solutions.
+Both systems include $$y = E$$, so a pair that solves either system makes $$y = E$$ true. For that
+pair, $$L = R$$ and $$L' = R'$$ are both true or both false, so it solves the other system too. So
+the two systems have the same solutions.
 
 :::
 

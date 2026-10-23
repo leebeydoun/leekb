@@ -3,11 +3,14 @@ title: Lines and rays
 description: Lines, rays, parallel and perpendicular lines, and rectangles.
 ---
 
-Straight lines are the other basic material of plane geometry, next to distance. This page takes a
-few facts about lines as given: how lines pass through points, and how parallel and perpendicular
-lines behave. From these it proves when two lines meet and when two lines are parallel, defines rays
-and rectangles, and proves that opposite sides of a rectangle are equal. It ends with the rules for
-area that later pages use to measure angles and to prove the Pythagoras theorem.
+Look at a tiled floor. The lines between the tiles run dead straight, and some of them run side by
+side without ever meeting, while others cross them square on. Straight lines are the other basic
+material of plane geometry, next to distance.
+
+In this guide we'll take a few facts about lines as given: how lines pass through points, and how
+parallel and perpendicular lines behave. From them we'll prove when two lines meet, define rays and
+rectangles, and show that opposite sides of a rectangle are equal. We'll also set out the rules for
+area that later guides use to measure angles and prove the Pythagoras theorem.
 
 ## Lines through points
 
@@ -264,7 +267,7 @@ caption "A line that leans towards the other one meets it, here at M"
 ```
 
 The carpenter is relying on a fact: two lines perpendicular to the same line never meet. The next
-proposition proves it from rule 1.
+proposition proves it from rule 1 of :ref{#perpendicular-rules}.
 
 :::proposition[Two perpendiculars are parallel]{#perpendiculars-parallel}
 
@@ -310,9 +313,9 @@ wheels of a train, which are a fixed distance apart on their axle, would come of
 
 Parallel lines in the plane behave like the rails, and this is the last fact about lines taken as
 given. To measure the gap, go straight across: start at a point of one line and follow the
-perpendicular until it reaches the other, like walking along a sleeper. A slanted route across would
-be longer, as the [Perpendicular bisectors](./perpendicular-bisectors.mdx) page proves, so the
-perpendicular is the fair way to measure.
+perpendicular until it reaches the other, like walking along a sleeper. A slanted route across is
+longer, so the perpendicular is the fair way to measure. The
+[Perpendicular bisectors](./perpendicular-bisectors.mdx) guide proves this.
 
 :::remark[Distance between parallel lines]{#parallel-distance}
 
@@ -400,10 +403,10 @@ d(A, B) = d(D, C) \quad \text{and} \quad d(A, D) = d(B, C)
 
 :::proof{source="https://en.wikipedia.org/wiki/Rectangle#Properties"}
 
-The lines $$AB$$ and $$DC$$ are parallel, as shown above. The line through $$A$$ perpendicular to
-$$AB$$ is the line $$AD$$, which meets the line $$DC$$ at $$D$$. The line through $$B$$
-perpendicular to $$AB$$ is the line $$BC$$, which meets the line $$DC$$ at $$C$$. So by
-:ref{#parallel-distance}, $$d(A, D) = d(B, C)$$.
+The lines $$AB$$ and $$DC$$ are parallel, since both are perpendicular to $$BC$$. The line through
+$$A$$ perpendicular to $$AB$$ is the line $$AD$$, which meets the line $$DC$$ at $$D$$. The line
+through $$B$$ perpendicular to $$AB$$ is the line $$BC$$, which meets the line $$DC$$ at $$C$$. So
+by :ref{#parallel-distance}, $$d(A, D) = d(B, C)$$.
 
 The lines $$AD$$ and $$BC$$ are parallel too. The lines through $$A$$ and $$D$$ perpendicular to
 $$AD$$ are the lines $$AB$$ and $$DC$$, which meet the line $$BC$$ at $$B$$ and $$C$$. So
@@ -420,7 +423,7 @@ Area measures how much flat space a shape covers. With the unit of length fixed,
 a square whose sides have length $$1$$. A rectangle $$3$$ by $$2$$ can be cut into $$3 \cdot 2$$
 such squares, so its area is $$6$$.
 
-When this guide speaks of the area of a rectangle, a triangle or a disc, it means the area of the
+When this chapter speaks of the area of a rectangle, a triangle or a disc, it means the area of the
 region inside it. A rectangle is four segments, and the segments themselves cover no area. So two
 pieces that share only an edge, like two tiles side by side, don't overlap.
 
@@ -464,7 +467,7 @@ caption "An L shape cut into two rectangles, of areas 10 and 6"
 
 :::example[An L-shaped room]
 
-A room is shaped like the figure above. A dashed cut splits it into two rectangles that don't
+A room has the L shape in the last figure. A dashed cut splits it into two rectangles that don't
 overlap: one $$5$$ by $$2$$, and one $$2$$ by $$3$$. By rule 1 their areas are $$10$$ and $$6$$, so
 by rule 2 the room has area $$10 + 6 = 16$$.
 

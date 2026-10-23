@@ -3,17 +3,19 @@ title: Distance
 description: The distance between two points, segments, circles and discs.
 ---
 
-Distance is the most basic idea in the geometry of the plane: how far apart two points are. This
-page takes three facts about distance as given, and three more about the straight path between two
-points. Later pages build on these facts, adding a few more about lines, area, discs and right
-triangles, starting on the [next page](./lines.mdx). The page ends with circles and discs, which are
-described entirely by distance.
+Stick two pins in a map and stretch a thread tight between them. The length of the thread is the
+distance between the pins, and no path between them is shorter. Distance is the most basic idea in
+the geometry of the plane, and the rest of the chapter builds on it.
+
+In this guide we'll take three facts about distance as given, and three more about the straight path
+between two points. Then we'll use distance alone to describe circles and discs. Later guides add a
+few more facts, starting with lines in the [next guide](./lines.mdx).
 
 ## Distance between two points
 
 Think of laying a ruler from one point to another and reading off the length. The answer depends on
-the ruler's unit, such as centimetres or inches. So the guide fixes one unit of length at the start
-and keeps it throughout. With the unit fixed, every distance is a number, and you can leave the unit
+the ruler's unit, such as centimetres or inches. So these notes fix one unit of length at the start
+and keep it throughout. With the unit fixed, every distance is a number, and you can leave the unit
 out.
 
 The distance between points $$P$$ and $$Q$$ is written $$d(P, Q)$$. Three facts about it match what
@@ -28,8 +30,8 @@ For any points $$P$$, $$Q$$ and $$M$$ in the plane:
 2. **The same both ways**: $$d(P, Q) = d(Q, P)$$
 3. **The triangle inequality**: $$d(P, M) \le d(P, Q) + d(Q, M)$$
 
-These are taken as given. Every other fact about distance in this guide is proved from them and the
-rules for segments below.
+These are taken as given. Every other fact about distance in this chapter is proved from them and
+the rules for segments below.
 
 ::see-also{src="https://en.wikipedia.org/wiki/Metric_space#Definition"}
 
@@ -73,10 +75,10 @@ and $$M$$.
 
 :::
 
-Three facts about segments are taken as given, like the rules for distance. The first is the one the
-diagram shows. The second says that a segment has no gaps, so you can stop at any distance along it.
-The third says that three points on one line always come in an order, with one of them in the
-middle.
+Three facts about segments are taken as given, like the rules for distance. The first is what the
+diagram of $$Q$$ and the segment shows: a stop on the segment adds no distance. The second says that
+a segment has no gaps, so you can stop at any distance along it. The third says that three points on
+one line always come in an order, with one of them in the middle.
 
 :::remark[Rules for segments]{#segment-rules}
 
@@ -155,9 +157,9 @@ caption "A circle is only the edge; a disc is the edge and everything inside it"
 ```
 
 The circle is the edge of the disc. Everyday speech uses "circle" for both, but they are different
-sets, and this guide keeps the two words apart. A circle is a curve, so it has a length but no area.
-A disc is a region, so it has an area. Later pages use this difference: an angle is measured by the
-part of a disc it covers, and the disc's area is what gets shared out.
+sets, and this chapter keeps the two words apart. A circle is a curve, so it has a length but no
+area. A disc is a region, so it has an area. Later pages use this difference: an angle is measured
+by the part of a disc it covers, and the disc's area is what gets shared out.
 
 :::example[Inside, on or outside]
 
@@ -321,8 +323,8 @@ Let $$X$$ be a point of the disc with centre $$Q$$ and radius $$1$$, so $$d(Q, X
 d(P, X) \le d(P, Q) + d(Q, X) \le 1 + 1 = 2
 ```
 
-So $$X$$ is in the disc with centre $$P$$ and radius $$2$$. The small disc sits inside the large
-one, touching its edge at most at one side.
+So $$X$$ is in the disc with centre $$P$$ and radius $$2$$, and the small disc sits inside the large
+one.
 
 :::
 

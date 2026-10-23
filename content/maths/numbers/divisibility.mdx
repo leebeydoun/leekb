@@ -3,11 +3,20 @@ title: Divisibility
 description: Even and odd integers, divisibility, remainders and common divisors.
 ---
 
-Some questions about whole numbers can be answered without working anything out. Is
-$$37 \cdot 41 + 12$$ even or odd? Can a square ever be one less than a multiple of $$4$$? Questions
-like these are about how numbers split into equal parts, and this page builds the language for them:
-even and odd, divisibility, remainders and common divisors. The next page,
-[Congruence](./congruence.mdx), turns that language into a way of calculating.
+Imagine sharing a bag of sweets equally between two friends. Whether that works with none left over
+depends on one thing about the number of sweets: whether it's even. Plenty of questions about whole
+numbers come down to a fact like this. You can tell that $$37 \cdot 41 + 12$$ is odd, for example,
+without multiplying anything, because an odd number times an odd number is odd and adding $$12$$
+keeps it odd.
+
+In this guide we'll build the language for questions like these:
+
+- even and odd
+- divisibility
+- remainders
+- common divisors
+
+The next guide, [Congruence](./congruence.mdx), turns that language into a way of calculating.
 
 ## Even and odd
 
@@ -34,13 +43,13 @@ be written as $$2n + 1$$ for some integer $$n$$.
 
 For example, $$14 = 2 \cdot 7$$ and $$30 = 2 \cdot 15$$ are even, while $$1 = 2 \cdot 0 + 1$$,
 $$15 = 2 \cdot 7 + 1$$ and $$31 = 2 \cdot 15 + 1$$ are odd. Odd integers can equally be written as
-one _less_ than an even integer, $$2n - 1$$, so $$15 = 2 \cdot 8 - 1$$. Which form to use is just a
-matter of convenience.
+one _less_ than an even integer, $$2n - 1$$, so $$15 = 2 \cdot 8 - 1$$. Use whichever form is more
+convenient.
 
 The same definitions work for zero and the negative integers: $$0 = 2 \cdot 0$$ is even,
 $$-6 = 2 \cdot (-3)$$ is even, and $$-5 = 2 \cdot (-3) + 1$$ is odd. Every integer is either even or
-odd, and never both. The number line makes this look obvious, and it is proved
-[below](#division-with-remainder) as part of a more general fact.
+odd, and never both. The number line makes this look clear. The proof comes later, as
+:ref{#even-or-odd}, which follows from [division with remainder](#division-with-remainder).
 
 ## Sums and products of even and odd integers
 
@@ -117,8 +126,8 @@ which is odd.
 
 :::
 
-So a product is odd only when **every** factor is odd. For example, $$3 \cdot 5 \cdot 7 = 105$$ is
-odd, but $$3 \cdot 5 \cdot 7 \cdot 2 = 210$$ is even.
+So a product is odd exactly when **every** factor is odd. For example, $$3 \cdot 5 \cdot 7 = 105$$
+is odd, but $$3 \cdot 5 \cdot 7 \cdot 2 = 210$$ is even.
 
 ## Squares
 
@@ -135,7 +144,7 @@ The square of an even integer is even, and the square of an odd integer is odd.
 
 :::proof{source="https://proofwiki.org/wiki/Parity_of_Integer_equals_Parity_of_its_Square"}
 
-We use the forms from :ref{#even-odd} and check that the square has the same form.
+Write $$a$$ in one of the forms from :ref{#even-odd}, and check that the square has the same form.
 
 If $$a$$ is even, write $$a = 2n$$. Then $$a^2 = (2n)^2 = 4n^2 = 2(2n^2)$$ (:ref{#power-rules}),
 which is $$2$$ times an integer, so it is even.
@@ -146,7 +155,7 @@ If $$a$$ is odd, write $$a = 2n + 1$$. Expanding with the square of a sum (:ref{
 a^2 = (2n + 1)^2 = 4n^2 + 4n + 1 = 2(2n^2 + 2n) + 1
 ```
 
-The first two terms both contain a factor of $$2$$, so we can pull it out, leaving $$1$$ over. That
+The first two terms both contain a factor of $$2$$, so you can pull it out, leaving $$1$$ over. That
 is the form of an odd integer.
 
 :::
@@ -173,7 +182,7 @@ even. The same reasoning with "even" and "odd" swapped proves the second stateme
 
 This is an example of proving the contrapositive (:ref{#basic-proofs/contrapositive}): "if $$a$$ is
 odd then $$a^2$$ is odd" says the same as "if $$a^2$$ is not odd then $$a$$ is not odd". So, for
-example, if $$a^2 = 144$$ then without working out $$a$$ we already know it is even.
+example, if $$a^2 = 144$$ then without working out $$a$$ you already know it is even.
 
 The same splitting into even and odd settles powers of $$-1$$. If $$n = 2k$$ is even, then
 $$(-1)^n = ((-1)^2)^k = 1^k = 1$$. If $$n = 2k + 1$$ is odd, then
@@ -185,8 +194,8 @@ $$n$$ is odd.
 Being even means being a multiple of $$2$$. The same idea works with any number in place of $$2$$.
 Saying that $$4$$ divides $$28$$ means $$28$$ objects can be put into rows of $$4$$ with none left
 over. Here there are $$7$$ rows. On the number line, it means you can get from $$0$$ to $$28$$ in
-equal steps of $$4$$. The definition just says this with a multiplication: $$28$$ is $$4$$ times a
-whole number.
+equal steps of $$4$$. The definition says this with a multiplication: $$28$$ is $$4$$ times a whole
+number.
 
 <RowsOfDots n={28} d={4} />
 
@@ -246,15 +255,15 @@ $$d \mid m - n$$, and $$d \mid mc$$ for any integer $$c$$.
 :::proof{source="https://math.libretexts.org/Bookshelves/Combinatorics_and_Discrete_Mathematics/Elementary_Number_Theory_(Raji)/01%3A_Introduction/1.03%3A_Divisibility_and_the_Division_Algorithm"}
 
 The statement is about multiples of $$d$$, so the natural first step is to unpack the definition of
-divisibility and write each number we know about as $$d$$ times something. Since $$d \mid m$$ and
+divisibility and write each number you know about as $$d$$ times something. Since $$d \mid m$$ and
 $$d \mid n$$, there are integers $$k$$ and $$l$$ with
 
 ```math
 m = dk \qquad \text{and} \qquad n = dl
 ```
 
-To show that a number is divisible by $$d$$, we need to write it as $$d$$ times an integer. So in
-each case we substitute and then pull out the common factor $$d$$ using distributivity:
+To show that a number is divisible by $$d$$, write it as $$d$$ times an integer. So in each case,
+substitute and then pull out the common factor $$d$$ using distributivity:
 
 ```math
 \begin{aligned}
@@ -272,7 +281,8 @@ dividing it means.
 :::
 
 For example, $$7 \mid 21$$ and $$7 \mid 35$$, so $$7$$ also divides $$21 + 35 = 56$$,
-$$21 - 35 = -14$$ and $$21 \cdot 4 = 84$$. This lemma is used again and again on the next page.
+$$21 - 35 = -14$$ and $$21 \cdot 4 = 84$$. This lemma is used again and again on the
+[Congruence](./congruence.mdx) page.
 
 ## Division with remainder
 
@@ -300,9 +310,10 @@ and there is only one such pair. The number $$q$$ is called the **quotient** and
 :::proof{source="https://en.wikipedia.org/wiki/Euclidean_division#Proof"}
 
 The theorem makes two claims: that a quotient and remainder **exist**, and that there is **only
-one** possible pair. We prove them separately.
+one** possible pair. The proof handles them separately.
 
-**Part 1: there is such a pair.** The idea is the picture above, for any $$n$$ and $$d$$.
+**Part 1: there is such a pair.** The idea is the number line picture of $$17$$ between the
+multiples of $$5$$, now for any $$n$$ and $$d$$.
 
 The multiples of $$d$$,
 
@@ -311,9 +322,9 @@ The multiples of $$d$$,
 ```
 
 are spaced $$d$$ apart and go on forever in both directions. Between them, they cut the whole number
-line into stretches of length $$d$$, each starting at a multiple and stopping just before the next
-one. Every integer $$n$$ lands in one of these stretches. This is clear from the picture, and we
-take it as a basic fact about the integers rather than proving it, just as we take induction
+line into stretches of length $$d$$, each starting at a multiple and stopping before the next one.
+Every integer $$n$$ lands in one of these stretches. This is clear from the picture. It is taken as
+a basic fact about the integers rather than proved, in the same way as induction
 (:ref{#basic-proofs/induction}). (Part 2 shows that $$n$$ can't land in two stretches.)
 
 Call the multiple at the start of $$n$$'s stretch $$dq$$. In other words, $$dq$$ is the largest
@@ -324,13 +335,13 @@ dq \le n < dq + d
 ```
 
 Now let $$r = n - dq$$, which is how many steps $$n$$ is past the start of its stretch. Subtracting
-$$dq$$ from each part of the line above (:ref{#order-rules}) gives
+$$dq$$ from each part of $$dq \le n < dq + d$$ (:ref{#order-rules}) gives
 
 ```math
 0 \le r < d
 ```
 
-and $$r = n - dq$$ rearranges to $$n = dq + r$$. So $$q$$ and $$r$$ are the pair we wanted.
+and $$r = n - dq$$ rearranges to $$n = dq + r$$. So $$q$$ and $$r$$ are the pair needed.
 
 For example, with $$n = 17$$ and $$d = 5$$, the stretch containing $$17$$ runs from $$15$$ up to
 (but not including) $$20$$. So $$dq = 15$$, $$q = 3$$, and $$r = 17 - 15 = 2$$.
@@ -387,7 +398,8 @@ For a negative number the remainder is still between $$0$$ and $$d - 1$$:
 $$-17 = 5 \cdot (-4) + 3$$, so the remainder is $$3$$, not $$-2$$. And $$d \mid n$$ says exactly
 that the remainder is $$0$$.
 
-Dividing by $$2$$ settles the claim from the start of the page.
+Dividing by $$2$$ settles the claim from [Even and odd](#even-and-odd) that every integer is one or
+the other.
 
 :::corollary[Every integer is even or odd]{#even-or-odd}
 
@@ -422,11 +434,11 @@ and splitting into these cases is a common way to prove things about multiples o
 
 ## Common divisors
 
-Two numbers often have divisors in common. For example, $$36$$ and $$60$$ are both multiples of
-$$12$$: one is $$3$$ twelves and the other is $$5$$ twelves. A common divisor is a step size that
-reaches both numbers exactly from $$0$$. The greatest one is the biggest step size that does this.
-It is the largest factor that can be taken out of both at once, which is what is needed to simplify
-a fraction like $$\tfrac{36}{60}$$ all the way down to $$\tfrac{3}{5}$$ in one go.
+Two numbers can share divisors. For example, $$36$$ and $$60$$ are both multiples of $$12$$: one is
+$$3$$ twelves and the other is $$5$$ twelves. A common divisor is a step size that reaches both
+numbers exactly from $$0$$. The greatest one is the biggest step size that does this. It is the
+largest factor that can be taken out of both at once, which is what is needed to simplify a fraction
+like $$\tfrac{36}{60}$$ all the way down to $$\tfrac{3}{5}$$ in one go.
 
 :::definition[Common divisors]{#gcd}
 

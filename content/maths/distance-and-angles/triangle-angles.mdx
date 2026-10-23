@@ -3,11 +3,13 @@ title: Angles in triangles
 description: The angles of any triangle, angles at parallel lines, and the area of a triangle.
 ---
 
-Right triangles have been the main tool so far, and this page shows how far that tool reaches. Any
-triangle can be cut into two right triangles by one perpendicular line. That cut proves that the
-angles of every triangle add up to $$180^\circ$$, and it gives the area of every triangle. Along the
-way it proves two facts about the angles where lines cross, which the exercises and later geometry
-rely on.
+Draw any triangle, then draw a line from the corner opposite its longest side, square on to that
+side. The triangle splits into two right triangles, and everything you know about right triangles
+now applies to each piece. That one cut gives the angles and the area of every triangle.
+
+In this guide we'll prove that the angles of any triangle add up to $$180^\circ$$, and that its area
+is half the base times the height. Along the way we'll prove two facts about the angles where lines
+cross, which the exercises and the [Isometries](../isometries/introduction.mdx) chapter rely on.
 
 ## Opposite angles
 
@@ -228,9 +230,10 @@ splitting that right angle into $$\angle FPP'$$ and $$B'$$. So $$B' + \angle FPP
 angles are the angles beside these on a straight line, $$180^\circ - B$$ and $$180^\circ - B'$$
 (:ref{#angles-on-line}), so they are equal too.
 
-**Corresponding angles.** Each corresponding angle at $$P$$ is opposite one of the alternate angles
-at $$P$$, so it equals that angle (:ref{#opposite-angles}). That alternate angle equals its partner
-at $$P'$$, which is the corresponding angle there.
+**Corresponding angles.** In each pair of corresponding angles, one lies between the parallels and
+the other lies outside them. The one outside is opposite an alternate angle at its own crossing, so
+it equals that angle (:ref{#opposite-angles}). That alternate angle equals its partner at the other
+crossing, which is the other angle of the corresponding pair.
 
 :::
 
@@ -287,11 +290,11 @@ triangles $$\triangle AFC$$ and $$\triangle BFC$$, which don't overlap. By rule 
 Since $$F$$ is between $$A$$ and $$B$$, $$d(A, F) + d(F, B) = b$$ (:ref{#segment-rules}). So the
 area is $$\frac{1}{2}bh$$.
 
-**Case 2: $$F$$ lies outside the side $$AB$$.** As before, name the corners so that $$B$$ lies
-between $$A$$ and $$F$$. The large right triangle $$\triangle AFC$$ is cut by $$CB$$ into
-$$\triangle ABC$$ and the small right triangle $$\triangle BFC$$, which don't overlap. By rule 2 of
-:ref{#area-rules}, the area of $$\triangle AFC$$ is the sum of the other two areas. So, taking away
-the area of $$\triangle BFC$$ and using :ref{#right-triangle-area},
+**Case 2: $$F$$ lies outside the side $$AB$$.** As in the proof of :ref{#triangle-angle-sum}, name
+the corners so that $$B$$ lies between $$A$$ and $$F$$. The large right triangle $$\triangle AFC$$
+is cut by $$CB$$ into $$\triangle ABC$$ and the small right triangle $$\triangle BFC$$, which don't
+overlap. By rule 2 of :ref{#area-rules}, the area of $$\triangle AFC$$ is the sum of the other two
+areas. So, taking away the area of $$\triangle BFC$$ and using :ref{#right-triangle-area},
 
 ```math
 \text{area of } \triangle ABC = \tfrac{1}{2} d(A, F)\,h - \tfrac{1}{2} d(B, F)\,h = \tfrac{1}{2}\big(d(A, F) - d(B, F)\big)h

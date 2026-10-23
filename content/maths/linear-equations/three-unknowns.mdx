@@ -3,17 +3,17 @@ title: Three equations in three unknowns
 description: Reducing three equations in three unknowns to two, and what can go wrong.
 ---
 
-With three unknown quantities, three facts are needed to pin them down. The good news is that no new
-idea is needed: eliminating one unknown turns three equations in three unknowns into two equations
-in two unknowns, which the earlier pages already solve. This page shows how to organise the work so
-it stays manageable.
+Suppose a bakery sells bread, cakes and pies, and you know the totals for three different orders.
+With three unknown prices you need three facts, and the three orders give you exactly that. Finding
+the prices needs no new idea: eliminating one unknown turns three equations into two, which you
+already know how to solve. In this guide we'll see how to organise the work so it stays manageable.
 
 ## Linear equations in three unknowns
 
 Nothing changes except the number of unknowns. If a café also sells cake, a fact like "two coffees,
 a tea and a cake cost £9" is a linear equation in three unknowns: each price is multiplied by a
-fixed number, and the results are added. One such fact leaves a lot of freedom, and it takes three
-of them to pin down three prices, when they can be pinned down at all.
+fixed number, and the results are added. One such fact leaves infinitely many possible prices, and
+it takes three of them to pin down three prices, when they can be pinned down at all.
 
 :::definition[Linear equation in three unknowns]{#linear-three}
 
@@ -37,14 +37,13 @@ an equation by a non-zero number, or reordering the equations always gives an eq
 ## The method
 
 The plan is to peel off one unknown at a time. Getting rid of one unknown turns the problem into two
-equations in two unknowns, which we already know how to solve. For that we need two new equations,
-both free of the same unknown. Each should be built from a different pair of the original equations,
-so that together with one original kept aside, they still carry everything the three originals said.
+equations in two unknowns, which you already know how to solve. That takes two new equations, both
+free of the same unknown. Each should be built from a different pair of the original equations, so
+that together with one original kept aside, they still carry everything the three originals said.
 
 :::remark[Solving three equations in three unknowns]{#three-method}
 
-1. **Choose** an unknown to eliminate first, ideally one with simple coefficients, such as $$1$$ or
-   $$-1$$.
+1. **Choose** an unknown to eliminate first, ideally one whose coefficients are $$1$$ or $$-1$$.
 2. **Eliminate it twice:** combine two of the equations to remove it, then combine a **different**
    pair (one of them can be reused) to remove it again. This gives two equations in the other two
    unknowns.
@@ -67,7 +66,8 @@ x + 2y - z &= 2 &\quad (3)
 \end{aligned}
 ```
 
-**Choose.** The coefficients of $$z$$ are $$1$$, $$1$$ and $$-1$$, so $$z$$ is easiest to remove.
+**Choose.** The coefficients of $$z$$ are $$1$$, $$1$$ and $$-1$$, so $$z$$ takes the least work to
+remove.
 
 **Eliminate twice.** Adding (1) and (3) removes $$z$$, and so does adding (2) and (3):
 
@@ -88,11 +88,11 @@ $$(1, 2, 3)$$.
 
 :::
 
-Why is it fine to set two of the original equations aside? Take the first example. The new equations
+Setting two of the original equations aside loses nothing. Take the first example. The new equations
 are (4), which is (1) plus (3), and (5), which is (2) plus (3), and (1) is kept for
-back-substitution. Nothing is lost, because the originals can be got back: (3) is (4) minus (1), and
-then (2) is (5) minus (3). So by :ref{#combining}, the system (1), (4), (5) has exactly the same
-solutions as (1), (2), (3).
+back-substitution. The originals can be got back from these: (3) is (4) minus (1), and then (2) is
+(5) minus (3). So by :ref{#combining}, the system (1), (4), (5) has exactly the same solutions as
+(1), (2), (3).
 
 The same works in general. Each new equation is made from a pair with non-zero multipliers, so
 together with one equation of its pair it gives back the other. As long as the two pairs are
@@ -176,9 +176,9 @@ $$\frac{1}{2} + 1 - 1 = \frac{1}{2}$$. The solution is $$(2, 3, 6)$$.
 
 ## No solution, or infinitely many
 
-Just as with two unknowns, a system of three can have no solution or infinitely many, and
-elimination shows it the same way: a line like $$0 = 3$$ means none, and a line like $$0 = 0$$ means
-one equation was saying nothing new.
+As with two unknowns, a system of three can have no solution or infinitely many, and elimination
+shows it the same way: a line like $$0 = 3$$ means none, and a line like $$0 = 0$$ means one
+equation was saying nothing new.
 
 :::example[No solution]
 
@@ -199,10 +199,10 @@ solution: (1) and (2) together force $$2x + 2z$$ to be $$2$$, but (3) says it is
 
 :::example[Infinitely many solutions]
 
-Change the last equation to $$2x + 2z = 2$$. Now subtracting gives $$0 = 0$$: equation (3) is just
-(1) plus (2), and says nothing new. The system has the same solutions as (1) and (2) alone.
-Subtracting (2) from (1) gives $$2y = 2$$, so $$y = 1$$, and then $$x + z = 1$$. Choosing any number
-$$t$$ for $$z$$, the solutions are
+Change the last equation to $$2x + 2z = 2$$. Now subtracting gives $$0 = 0$$: equation (3) is (1)
+plus (2), and says nothing new. The system has the same solutions as (1) and (2) alone. Subtracting
+(2) from (1) gives $$2y = 2$$, so $$y = 1$$, and then $$x + z = 1$$. Choosing any number $$t$$ for
+$$z$$, the solutions are
 
 ```math
 (1 - t,\ 1,\ t) \qquad\text{for every number } t
@@ -211,7 +211,7 @@ $$t$$ for $$z$$, the solutions are
 :::
 
 There is a determinant for three equations too, which decides in advance whether there is exactly
-one solution. It is a longer formula, and it belongs to a later guide on matrices.
+one solution. It is a longer formula, and it belongs to a later chapter on matrices.
 
 ## Exercises
 

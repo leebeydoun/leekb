@@ -5,10 +5,11 @@ description:
   absolute values.
 ---
 
-An equation usually has a few solutions; an inequality like $$2x + 1 < 7$$ usually has infinitely
-many, filling a whole stretch of the number line. Solving it means describing that stretch exactly.
-This page introduces the notation for such stretches, the **intervals**, shows which steps are safe
-when solving an inequality, and then deals with products, quotients, squares and absolute values.
+A fairground ride lets you on if you're at least $$120$$ cm tall. The heights that pass aren't a
+single number but a whole stretch of the number line, from $$120$$ upwards. The solutions of an
+inequality like $$2x + 1 < 7$$ also fill a stretch, called an **interval**, and solving the
+inequality means describing that stretch exactly. In this guide we'll see which steps are safe, and
+then handle inequalities with products, quotients, squares and absolute values.
 
 ## Intervals
 
@@ -41,7 +42,7 @@ $$[5, \infty)$$:
 
 ::number-line{from=-4 to=8 intervals="(-2, 3]; [5, oo)"}
 
-The symbol $$\infty$$, read "infinity", is not a number. In $$[5, \infty)$$ it just says that the
+The symbol $$\infty$$, read "infinity", is not a number. In $$[5, \infty)$$ it says that the
 interval goes on forever to the right, which is why that end always has a round bracket.
 
 A solution can be made of several intervals. The word **or** joins them, or the symbol $$\cup$$,
@@ -74,8 +75,8 @@ Changing an inequality in any of these ways gives one with exactly the same solu
 
 :::proof{source="https://www.mathsisfun.com/algebra/inequality-solving.html"}
 
-As for equations, we check that each step keeps every solution and can be undone. For particular
-values of the unknowns, both sides are numbers, so :ref{#inequality-rules} apply.
+As for equations, the proof checks that each step keeps every solution and can be undone. For
+particular values of the unknowns, both sides are numbers, so :ref{#inequality-rules} apply.
 
 1. Adding $$c$$ keeps the inequality, by rule 3. Adding $$-c$$ undoes it.
 2. Multiplying by $$c > 0$$ keeps the inequality, by rule 4. Multiplying by $$\frac{1}{c}$$, which
@@ -94,8 +95,8 @@ negative number reverses the inequality.
 
 ## Linear inequalities
 
-An inequality where the unknown is only multiplied by numbers and added to things is solved just
-like a linear equation: get the unknown on its own. The one difference is that dividing by a
+An inequality where the unknown is only multiplied by numbers and added to numbers is solved in the
+same way as a linear equation: get the unknown on its own. The one difference is that dividing by a
 negative number turns the inequality round. For example, $$-x < 2$$ means $$x > -2$$. To see that
 this is right, try $$x = -1$$: then $$-x$$ is $$1$$, which is less than $$2$$, and $$-1$$ is indeed
 bigger than $$-2$$.
@@ -250,10 +251,10 @@ x^2 - c = (x - s)(x + s)
 ```
 
 Since $$-s < s$$, the factor $$x + s$$ is negative for $$x < -s$$ and positive for $$x > -s$$, and
-$$x - s$$ is negative for $$x < s$$ and positive for $$x > s$$. So the sign table is the same as in
-the example above: the product is negative exactly when $$-s < x < s$$, and positive exactly when
-$$x < -s$$ or $$x > s$$. By :ref{#product-sign}, these are the solutions of $$x^2 - c < 0$$ and
-$$x^2 - c > 0$$.
+$$x - s$$ is negative for $$x < s$$ and positive for $$x > s$$. So the sign table has the same
+pattern as the one for $$(x - 2)(x + 3)$$ in [Products and sign tables](#products-and-sign-tables):
+the product is negative exactly when $$-s < x < s$$, and positive exactly when $$x < -s$$ or
+$$x > s$$. By :ref{#product-sign}, these are the solutions of $$x^2 - c < 0$$ and $$x^2 - c > 0$$.
 
 :::
 

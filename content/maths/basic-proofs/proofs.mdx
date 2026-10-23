@@ -3,17 +3,26 @@ title: What a proof is
 description: What counts as a proof, direct proofs, counterexamples, contradiction and cases.
 ---
 
-Mathematics doesn't just say that a rule holds; it shows why it has to. The argument that does this
-is called a **proof**. Proofs can look intimidating at first, but almost all of them are built from
-a handful of patterns. Once you can recognise the pattern a proof is using, it becomes much easier
-to follow, and much easier to write one yourself.
+Pick a whole number, square it, then add the number you started with. Starting from $$3$$ gives
+$$12$$, from $$4$$ gives $$20$$ and from $$7$$ gives $$56$$, and all three are even. You could keep
+checking for an hour and still only know about the numbers you tried. A **proof** settles it for
+every number at once, by showing why the answer has to be even.
 
-This page covers what a proof is, and the patterns used most often: arguing directly, disproving
-with a single example, arguing by contradiction, and splitting into cases. The next two pages cover
-["if, then" statements](./implications.mdx) and [induction](./induction.mdx). The examples use even
-and odd numbers and remainders, which are defined in the [Numbers](../numbers/divisibility.mdx)
-guide, but only in ways that should already feel familiar: an even number is $$2$$ times a whole
-number, and an odd number is one more than an even number.
+Proofs can look intimidating at first, but almost all of them follow a handful of patterns. Once you
+can spot the pattern, you know what each step is aiming for. In this guide we'll meet the four
+patterns used most often:
+
+- arguing directly
+- disproving with a single example
+- arguing by contradiction
+- splitting into cases
+
+The next two guides cover ["if, then" statements](./implications.mdx) and
+[induction](./induction.mdx).
+
+The examples use even and odd numbers and remainders. These are defined in the
+[Numbers](../numbers/divisibility.mdx) chapter, but you only need the familiar meanings: an even
+number is $$2$$ times a whole number, and an odd number is one more than an even number.
 
 ## What a proof is
 
@@ -22,12 +31,12 @@ $$2 + 4$$, $$6 + 8$$ and $$10 + 12$$, and they all came out even" won't do, beca
 always ask about the next pair. What convinces them is a reason that works for every pair at once. A
 proof is that kind of reason, written so that each step can be checked.
 
-A **proof** is a chain of steps that starts from things we already accept and ends at the statement
-we want. Every step has to be justified by one of three things:
+A **proof** is a chain of steps that starts from things you already accept and ends at the statement
+you want. Every step has to be justified by one of three things:
 
-- a **definition**, which says exactly what a word means;
-- a **basic rule** that we have agreed to take as given, such as $$a + b = b + a$$;
-- a **result proved earlier**.
+- a **definition**, which says exactly what a word means
+- a **basic rule** taken as given, such as $$a + b = b + a$$
+- a **result proved earlier**
 
 Nothing else is allowed: not "it looks true", not "it works for the examples I tried". In return, a
 proof settles a question **for every case at once**, including the infinitely many cases nobody will
@@ -47,14 +56,14 @@ They all mean the same thing: the argument is complete.
 ### Letters stand for every number at once
 
 Statements in mathematics usually talk about letters, as in "for any integers $$a$$ and $$b$$,
-$$a + b = b + a$$". The letter doesn't stand for one particular number that we have forgotten; it
+$$a + b = b + a$$". The letter doesn't stand for one particular number that has been forgotten: it
 stands for any integer at all. A proof about $$a$$ and $$b$$ may only use facts that are true of
 **every** integer, and that is exactly why its conclusion holds for every integer.
 
-Whether a letter means every number or just some number is said by the words around it: "for every"
-or "there is" (:ref{#quantifiers}). Definitions often hide a "there is". For example, "$$n$$ is
-even" means $$n = 2k$$ for **some** integer $$k$$ (:ref{#numbers/even-odd}). Spotting these hidden
-phrases is the first step in most proofs.
+The words around a letter say whether it means every number or only some: "for every" or "there is"
+(:ref{#quantifiers}). Definitions often hide a "there is". For example, "$$n$$ is even" means
+$$n = 2k$$ for **some** integer $$k$$ (:ref{#numbers/even-odd}). Spotting these hidden phrases is
+the first step in most proofs.
 
 ### Saying the opposite
 
@@ -65,8 +74,8 @@ one is odd", not "both are odd".
 
 ## Direct proofs
 
-The most common pattern simply starts from what we are told and works forward, step by step, to what
-we want. A reliable way to find a direct proof is:
+The most common pattern starts from what you are told and works forward, step by step, to what you
+want. A reliable way to find a direct proof is:
 
 1. **Write down what you are given**, and unpack every definition in it into a formula.
 2. **Write down what you want**, also unpacked into a formula. This is your target.
@@ -80,8 +89,8 @@ answer must take, the algebra usually tells you what to do.
 **Claim.** If $$a$$ and $$b$$ are even, then $$a + b$$ is even.
 
 **Given.** $$a$$ and $$b$$ are even, so by :ref{#numbers/even-odd} there are integers $$k$$ and
-$$l$$ with $$a = 2k$$ and $$b = 2l$$. (We use two different letters, because $$a$$ and $$b$$ needn't
-be equal.)
+$$l$$ with $$a = 2k$$ and $$b = 2l$$. (The proof uses two different letters, because $$a$$ and $$b$$
+needn't be equal.)
 
 **Want.** $$a + b = 2 \times (\text{some integer})$$.
 
@@ -129,8 +138,8 @@ $$P$$" means "some number fails to have it", and a counterexample is that number
 
 :::example[Patterns can break]
 
-Is $$n^2 + n + 11$$ never a multiple of $$11$$, for positive integers $$n$$? Checking the first few
-values gives
+Take the claim that $$n^2 + n + 11$$ is never a multiple of $$11$$, for positive integers $$n$$.
+Checking the first few values gives
 
 ```math
 13,\ 17,\ 23,\ 31,\ 41,\ 53,\ 67,\ 83,\ 101
@@ -142,12 +151,12 @@ counterexample.
 
 :::
 
-Counterexamples are also the quickest way to catch a tempting mistake. Is $$(a + b)^2$$ the same as
-$$a^2 + b^2$$? Taking $$a = b = 1$$ gives $$4$$ on the left and $$2$$ on the right, so no.
+Counterexamples also catch tempting mistakes. Is $$(a + b)^2$$ the same as $$a^2 + b^2$$? Taking
+$$a = b = 1$$ gives $$4$$ for the first and $$2$$ for the second, so no.
 
 When hunting for a counterexample, try the awkward cases first: $$0$$, $$1$$, negative numbers, two
-equal numbers, and small numbers that are easy to check. Statements that are false usually fail
-somewhere simple.
+equal numbers, and small numbers you can work out in your head. A false statement usually fails at
+one of these.
 
 ## Proof by contradiction
 
@@ -155,8 +164,8 @@ People argue this way all the time. "If it had rained in the night, the pavement
 pavement is dry, so it didn't rain." You take the idea you want to rule out, follow it to its
 consequences, and find one that can't be right. Then the idea itself has to go.
 
-In a proof, the idea we want to rule out is that the statement is false. So to prove that something
-is true, we can suppose that it is **false**, and show that this leads to something impossible.
+In a proof, the idea you want to rule out is that the statement is false. So to prove that something
+is true, you suppose that it is **false**, and show that this leads to something impossible.
 
 :::remark[Proof by contradiction]{#contradiction}
 
@@ -169,17 +178,17 @@ To prove a statement $$S$$:
 
 :::
 
-Why does this work? Correct steps never lead from true statements to a false one. So if correct
-steps have led to something impossible, one of the starting points must have been false, and the
-only starting point we weren't sure of was the supposition that $$S$$ is false.
+This works because correct steps never lead from true statements to a false one. So if correct steps
+have led to something impossible, one of the starting points must have been false. The only starting
+point in doubt was the supposition that $$S$$ is false.
 
 :::example[There is no largest integer]
 
 **Claim.** There is no largest integer.
 
 **Suppose not:** suppose there is a largest integer, and call it $$N$$. Then $$N + 1$$ is also an
-integer, and $$N + 1 > N$$. So $$N$$ is not the largest after all, which contradicts the way we
-chose it. So there is no largest integer.
+integer, and $$N + 1 > N$$. So $$N$$ is not the largest after all, which contradicts the choice of
+$$N$$. So there is no largest integer.
 
 :::
 
@@ -194,8 +203,8 @@ even and odd, which is impossible (:ref{#numbers/even-or-odd}). So there are no 
 :::
 
 Proof by contradiction is especially useful for statements that say something **doesn't** exist,
-like these two, because "it does exist" gives us something concrete to work with. The most famous
-example, in the [Numbers](../numbers/irrational-numbers.mdx) guide, shows that no fraction squares
+like these two, because "it does exist" gives you something concrete to work with. The most famous
+example, in the [Numbers](../numbers/irrational-numbers.mdx) chapter, shows that no fraction squares
 to $$2$$. It supposes that one does, writes it in lowest form, and shows that its top and bottom
 would then both have to be even, which lowest form rules out.
 
@@ -213,7 +222,7 @@ because it doesn't need to set up a clash at the end.
 
 ## Splitting into cases
 
-When every number falls into one of a few kinds, we can prove a statement by checking each kind
+When every number falls into one of a few kinds, you can prove a statement by checking each kind
 separately. The important thing is that the cases must **cover every possibility**, or the proof has
 a hole.
 
@@ -248,7 +257,8 @@ $$3k + 2$$.
 
 **Claim.** For every integer $$n$$, the number $$n(n + 1)(2n + 1)$$ is a multiple of $$3$$.
 
-In each case we find one factor that is a multiple of $$3$$, which makes the whole product one.
+Each case finds one factor that is a multiple of $$3$$, and that makes the whole product a multiple
+of $$3$$.
 
 - **$$n = 3k$$:** the factor $$n$$ is a multiple of $$3$$.
 - **$$n = 3k + 1$$:** the factor $$2n + 1 = 6k + 3 = 3(2k + 1)$$ is a multiple of $$3$$.
@@ -365,7 +375,8 @@ such integers.
 ::::exercise{#ex-proofs-odd-square-eight}
 
 Prove that the square of every odd integer is one more than a multiple of $$8$$. You may use the
-fact, proved in the cases section above, that $$k^2 + k$$ is even for every integer $$k$$.
+fact, proved in the "Two cases" example under [Splitting into cases](#splitting-into-cases), that
+$$k^2 + k$$ is even for every integer $$k$$.
 
 :::solution
 

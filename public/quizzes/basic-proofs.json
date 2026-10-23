@@ -1,6 +1,6 @@
 {
   "title": "Review: Basic proofs",
-  "description": "Questions on the ideas in this guide, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
+  "description": "Questions on the ideas in this chapter, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
   "questions": [
     {
       "id": "contrapositive",
@@ -308,7 +308,7 @@
         "It rains exactly when the ground gets wet"
       ],
       "answer": 1,
-      "explanation": "That is the contrapositive, which stands or falls with the original (:ref{#contrapositive-equivalent}). The first is the converse, and the second is the contrapositive of the converse; a hose could wet the ground without rain."
+      "explanation": "That is the contrapositive, which stands or falls with the original (:ref{#contrapositive-equivalent}). The first option is the converse, and the third is the contrapositive of the converse. Neither follows from the original: a hose could wet the ground without rain."
     },
     {
       "id": "im-only-if",
@@ -513,9 +513,9 @@
       "question": "In “let $$x_1, x_2, x_3$$ be numbers”, can $$x_1$$ and $$x_2$$ be equal?",
       "options": [
         "No; different subscripts always mean different numbers",
-        "Only if $$x_3$$ is equal to them too",
-        "Only if they are whole numbers",
-        "Yes; different subscripts are just different names"
+        "Only when $$x_3$$ is equal to them too",
+        "Only when they are whole numbers",
+        "Yes; different subscripts are different names"
       ],
       "answer": 3,
       "explanation": "As with different letters, different subscripts don't promise different values (:ref{#sequence})."
@@ -538,7 +538,7 @@
         "Yes: the index of summation only has a meaning inside the sum, so it can be renamed",
         "No; $$i$$ and $$j$$ are different numbers",
         "Only when $$n = 1$$",
-        "Only if $$i = j$$ is stated first"
+        "Only when $$i = j$$ is stated first"
       ],
       "answer": 0,
       "explanation": "The index is a placeholder that runs through the values (:ref{#sum-notation}); any unused letter does the same job."
@@ -564,7 +564,7 @@
       "question": "Why should every letter be introduced before it is used?",
       "options": [
         "Because each letter can only be used once",
-        "So the reader knows what kind of thing it is, and whether the claim is about every value or just some",
+        "So the reader knows what kind of thing it is, and whether the claim is about every value or only some",
         "So that it can be given a numerical value",
         "It doesn't matter as long as the answer is right"
       ],

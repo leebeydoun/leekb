@@ -3,21 +3,22 @@ title: Positive and negative
 description: The two rules for positive numbers, and the sign rules that follow from them.
 ---
 
-On the number line, the positive numbers lie to the right of $$0$$ and the negative ones to the
-left. Everything we know about signs, from "minus times minus is plus" to "a square is never
-negative", follows from just two rules about positive numbers. This page states them and proves the
-rest, which also sets up the rules for inequalities on the next page.
+Picture the number line, with the positive numbers to the right of $$0$$ and the negative ones to
+the left. You've long known rules like "minus times minus is plus" and "a square is never negative".
+All of them follow from two rules about positive numbers. In this guide we'll state those two rules
+and prove the rest, which also sets up the rules for inequalities in
+[Order and inequalities](./order.mdx).
 
 ## Two rules for positive numbers
 
 Think of the positive numbers as amounts you can actually have: a length, a weight, money in the
 bank. Put two of them together and you have a positive amount again. A rectangle with positive sides
 has a positive area, so the product of two positive numbers is positive too. And every number is
-either one of these amounts, or nothing at all, or the opposite of one, like a debt. Those two
-observations are all we need.
+either one of these amounts, or nothing at all, or the opposite of one, like a debt. These
+observations become the two rules below.
 
-We don't define "positive" from anything simpler. Instead, some real numbers are called
-**positive**, written $$a > 0$$, and we take two rules about them as given. Everything else about
+The word "positive" isn't defined from anything more basic. Instead, some real numbers are called
+**positive**, written $$a > 0$$, and two rules about them are taken as given. Everything else about
 signs is proved from these.
 
 :::remark[Rules for positivity]{#positivity}
@@ -45,8 +46,8 @@ zero and negative. The positive numbers are the ones shaded here:
 
 ## One is positive
 
-It may seem obvious that $$1$$ is positive, but nothing so far says so. The two rules never mention
-any particular number, so this has to be worked out. The key is that $$1$$ is a square: it is
+You might expect $$1$$ to be positive, but nothing so far says so. The two rules never mention any
+particular number, so this has to be worked out. The key is that $$1$$ is a square: it is
 $$(-1)(-1)$$ as well as $$1 \cdot 1$$. So whichever of $$1$$ and $$-1$$ is positive, multiplying it
 by itself gives $$1$$, and rule 1 makes that positive.
 
@@ -58,8 +59,8 @@ The number $$1$$ is positive.
 
 :::proof{source="https://en.wikipedia.org/wiki/Ordered_field#Properties_of_ordered_fields"}
 
-Since $$1 \neq 0$$, rule 2 says that exactly one of $$1$$ and $$-1$$ is positive. We show that it
-can't be $$-1$$, by contradiction (:ref{#basic-proofs/contradiction}).
+Since $$1 \neq 0$$, rule 2 says that exactly one of $$1$$ and $$-1$$ is positive. The proof shows
+that it can't be $$-1$$, by contradiction (:ref{#basic-proofs/contradiction}).
 
 Suppose $$-1$$ were positive. Then by rule 1 the product $$(-1)(-1)$$ would be positive too. But
 $$(-1)(-1) = 1$$, because two minus signs cancel (:ref{#numbers/two-minus}). So $$1$$ and $$-1$$
@@ -114,8 +115,8 @@ A square is a number multiplied by itself, so its two factors always have the sa
 previous section, a product of two numbers with the same sign is positive. So squaring any number
 other than $$0$$ gives a positive answer: $$3^2 = 9$$ and $$(-3)^2 = 9$$ alike.
 
-The second part says something about adding squares. Two amounts that are never negative can only
-add up to nothing if each of them is nothing.
+Part 2 of the corollary below is about sums of squares. Two amounts that are never negative add up
+to $$0$$ only when each of them is $$0$$.
 
 :::corollary[Squares are never negative]{#squares-positive}
 
@@ -133,11 +134,11 @@ For every real number $$a$$:
 $$a^2$$ is a product of two negative numbers, which is positive by :ref{#sign-rules}. If $$a = 0$$,
 then $$a^2 = 0$$.
 
-**Part 2.** We prove the contrapositive (:ref{#basic-proofs/contrapositive}): if $$a$$ and $$b$$ are
-not both $$0$$, then $$a^2 + b^2 \neq 0$$. Say $$a \neq 0$$; the case $$b \neq 0$$ is the same. Then
-$$a^2$$ is positive. If $$b = 0$$, the sum is just $$a^2$$, which is positive. Otherwise $$b^2$$ is
-positive too, and the sum of two positive numbers is positive. Either way the sum is positive, so it
-isn't $$0$$.
+**Part 2.** This part proves the contrapositive (:ref{#basic-proofs/contrapositive}): if $$a$$ and
+$$b$$ are not both $$0$$, then $$a^2 + b^2 \neq 0$$. Say $$a \neq 0$$; the case $$b \neq 0$$ is the
+same. Then $$a^2$$ is positive. If $$b = 0$$, the sum is $$a^2$$, which is positive. Otherwise
+$$b^2$$ is positive too, and the sum of two positive numbers is positive. Either way the sum is
+positive, so it isn't $$0$$.
 
 :::
 
@@ -159,8 +160,9 @@ If $$a$$ is positive, so is $$\frac{1}{a}$$. If $$a$$ is negative, so is $$\frac
 
 :::proof{source="https://en.wikipedia.org/wiki/Inequality_(mathematics)#Multiplicative_inverse"}
 
-We know $$a \cdot \frac{1}{a} = 1$$, which is positive by :ref{#one-positive}. First,
-$$\frac{1}{a} \neq 0$$, since otherwise the product would be $$0$$ (:ref{#numbers/zero-times}).
+By the definition of an inverse, $$a \cdot \frac{1}{a} = 1$$, which is positive by
+:ref{#one-positive}. First, $$\frac{1}{a} \neq 0$$, since otherwise the product would be $$0$$
+(:ref{#numbers/zero-times}).
 
 Suppose $$a$$ is positive. If $$\frac{1}{a}$$ were negative, the product $$a \cdot \frac{1}{a}$$
 would be negative by :ref{#sign-rules}, so $$1$$ would be both positive and negative, which rule 2

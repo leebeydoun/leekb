@@ -4,18 +4,22 @@ description:
   Equations that turn into quadratics after a substitution, clearing fractions, or squaring.
 ---
 
-Plenty of equations are not quadratic as written but turn into one after a single step. Some have a
-fourth power, or the unknown on the bottom of a fraction, or under a square root. The plan is always
-the same: make one move that produces a quadratic, solve that with factoring or the
-[formula](./quadratic-formula.mdx), then work back to the original equation. The care goes into that
-last part. Some moves can lose solutions on the way back, and others can let in false ones, so each
-kind of equation needs its own check.
+Take the equation $$\sqrt{x + 2} = x$$. Square both sides and you get $$x + 2 = x^2$$, a quadratic
+with the solutions $$2$$ and $$-1$$. But only $$2$$ works in the original equation. For $$x = -1$$
+the left side is $$\sqrt{1} = 1$$, not $$-1$$.
+
+Equations like this aren't quadratic as written, but one move turns them into one. The unknown might
+sit in a fourth power, on the bottom of a fraction, or under a square root, as here. Some of these
+moves lose solutions on the way back, and others let in false ones, like the $$-1$$ above. In this
+guide we'll take each kind in turn: make the move, solve the quadratic with factoring or the
+[quadratic formula](./quadratic-formula.mdx), and then check the answers against the original
+equation.
 
 ## Substituting for x²
 
 Look at $$x^4 - 10x^2 + 9 = 0$$. It has a fourth power, but $$x$$ only ever appears as $$x^2$$:
-$$x^4$$ is just $$x^2$$ squared. So give $$x^2$$ a name of its own, say $$u$$. The equation becomes
-$$u^2 - 10u + 9 = 0$$, an ordinary quadratic (:ref{#quadratic}) in $$u$$. Solving it tells us which
+$$x^4$$ is $$x^2$$ squared. So give $$x^2$$ a name of its own, say $$u$$. The equation becomes
+$$u^2 - 10u + 9 = 0$$, an ordinary quadratic (:ref{#quadratic}) in $$u$$. Solving it tells you which
 values $$x^2$$ can take, and then each of those gives back $$x$$ itself. A positive value of $$x^2$$
 gives two values of $$x$$, zero gives one, and a negative value gives none, since no square is
 negative.
@@ -88,11 +92,12 @@ because $$x$$ is stuck in the denominators. The natural move is to multiply both
 denominator at once, which clears the fractions. Usually a quadratic is left.
 
 But this is not one of the safe steps (:ref{#linear-equations/safe-steps}). Multiplying by an
-expression like $$x(x + 2)$$ is fine for most values of $$x$$, but at $$x = 0$$ or $$x = -2$$ it is
-multiplying by $$0$$, and that turns any equation into the true statement $$0 = 0$$. So clearing the
-fractions never loses a solution, but it can let in the very values where a denominator is $$0$$.
-Those were never allowed in the original equation, since it makes no sense there. So after solving,
-**throw out any answer that makes a denominator zero**.
+expression like $$x(x + 2)$$ is fine for most values of $$x$$. At $$x = 0$$ or $$x = -2$$, though,
+it multiplies by $$0$$, and that turns any equation into the true statement $$0 = 0$$.
+
+So clearing the fractions never loses a solution, but it can let in the values where a denominator
+is $$0$$. Those values were never allowed in the original equation, since its fractions make no
+sense there. So after solving, **throw out any answer that makes a denominator zero**.
 
 :::example[Clearing fractions]
 
@@ -125,8 +130,8 @@ $$(x - 3)(x + 3)$$, and $$x$$ can't be $$3$$ or $$-3$$. Multiplying both sides b
 ```
 
 This factors as $$(x - 3)(x + 1) = 0$$, giving $$x = 3$$ or $$x = -1$$. But $$x = 3$$ makes
-$$x - 3$$ zero, so it is not a solution: it only crept in because we multiplied by $$0$$ there. That
-leaves $$x = -1$$.
+$$x - 3$$ zero, so it is not a solution: it only crept in because both sides were multiplied by
+$$0$$ there. That leaves $$x = -1$$.
 
 **Check:** the left side is $$\frac{1}{-4} + \frac{-1}{2} = -\frac{3}{4}$$, and the right side is
 $$\frac{6}{1 - 9} = -\frac{3}{4}$$.
@@ -141,8 +146,8 @@ root disappears and, often, a quadratic is left. Squaring both sides keeps every
 from its opposite, so a value that makes the two sides opposites, like $$3$$ and $$-3$$, also makes
 their squares equal. So **check every answer in the original equation**.
 
-A quick test catches most false answers before the check: a square root is never negative, so the
-side it equals can't be negative either.
+A first test, before the full check, rules out some false answers: a square root is never negative,
+so the side it equals can't be negative either.
 
 :::example[A false solution from squaring]
 

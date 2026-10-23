@@ -3,16 +3,17 @@ title: Equations and solutions
 description: What it means to solve an equation, which steps are safe, and equations in one unknown.
 ---
 
-Solving equations is mostly a matter of rewriting them, one step at a time, until the answer can be
-read off. That only works if each step is honest: it mustn't lose an answer, and it mustn't sneak in
-a false one. This page makes that precise, and then settles the simplest case completely, an
-equation with a single unknown.
+Picture a balance with a closed bag of marbles and three loose marbles on one side, and ten loose
+marbles on the other. Take three loose marbles off each side and it still balances, so the bag must
+hold seven. Solving an equation works the same way: you change both sides in the same way, one step
+at a time, until the answer is plain to see. In this guide we'll find out which steps are safe, so
+that no answer gets lost and no false one appears, and then solve every equation in one unknown.
 
-Throughout this guide, "number" means a rational number, as in the
-[Numbers](../numbers/rational-numbers.mdx) guide. The rules proved there for integers, such as
-rearranging and multiplying by zero, carry over to rational numbers, and we use them freely.
-Everything here works in the same way for the [real numbers](../real-numbers/introduction.mdx),
-which have the same rules of arithmetic.
+Throughout this chapter, "number" means a rational number, as in
+[Rational numbers](../numbers/rational-numbers.mdx). The rules proved there for integers, such as
+rearranging and multiplying by zero, carry over to rational numbers, and this chapter uses them
+freely. Everything here works in the same way for the
+[real numbers](../real-numbers/introduction.mdx), which have the same rules of arithmetic.
 
 ## Equations and their solutions
 
@@ -40,16 +41,16 @@ several, some have none, and some are true for every number.
 | $$x + 1 = x + 2$$     | none: no number is one more than itself plus one |
 | $$2(x + 1) = 2x + 2$$ | every number                                     |
 
-Checking a proposed solution is always easy: put it in and see whether both sides come out equal.
-That is worth doing every time, because it catches arithmetic slips.
+Checking a proposed solution always works the same way: put it in and see whether both sides come
+out equal. That is worth doing every time, because it catches arithmetic slips.
 
 ## Equivalent equations
 
 Think of an equation as a pair of scales that balance. Putting the same weight on both pans, or
 doubling what is on both pans, keeps them balanced. Solving an equation means making moves like
-these, replacing it by simpler and simpler equations until the answer is obvious. For that to be
-honest, each new equation must have exactly the same solutions as the one before: no answer lost,
-and no false one gained.
+these, replacing it by shorter equations until the answer can be read off. For that to be honest,
+each new equation must have exactly the same solutions as the one before: no answer lost, and no
+false one gained.
 
 :::definition[Equivalent equations]{#equivalent}
 
@@ -65,8 +66,8 @@ The chain
 3x + 5 = 11 \quad\longrightarrow\quad 3x = 6 \quad\longrightarrow\quad x = 2
 ```
 
-is a solution written out in full: since each equation has the same solutions as the next, the first
-has exactly the solutions of the last, which is just $$x = 2$$.
+is a solution written out in full. Each equation has the same solutions as the next, so the first
+has exactly the solutions of the last, and the only solution of $$x = 2$$ is $$2$$.
 
 The next proposition lists the steps that are always safe.
 
@@ -84,10 +85,10 @@ Changing an equation in any of these ways gives an equivalent equation:
 
 :::proof{source="https://en.wikipedia.org/wiki/Equation#Properties"}
 
-For each step we show two things: any solution of the old equation solves the new one, and any
-solution of the new equation solves the old one. The second part works because each step can be
-undone. We work with particular values of the unknowns: once they are chosen, both sides, and
-anything added to them, are just numbers, so it is enough to reason about numbers.
+For each step there are two things to show: any solution of the old equation solves the new one, and
+any solution of the new equation solves the old one. The second part works because each step can be
+undone. The proof fixes particular values of the unknowns. Once they are chosen, both sides, and
+anything added to them, are numbers, so it is enough to reason about numbers.
 
 **Step 1.** Write the equation as $$L = R$$, where $$L$$ and $$R$$ are the two sides, and add $$c$$
 to both sides to get $$L + c = R + c$$. Here $$c$$ may be a number or an expression.
@@ -102,7 +103,7 @@ So the two equations have the same solutions.
 **Step 2.** Multiply both sides by a number $$c \neq 0$$, to get $$cL = cR$$.
 
 - If $$L = R$$, then $$cL = cR$$, because equal numbers multiplied by $$c$$ give equal results.
-- Going back, if $$cL = cR$$, then since $$c \neq 0$$ we may cancel it by
+- Going back, if $$cL = cR$$, then since $$c \neq 0$$ it can be cancelled by
   :ref{#numbers/cancel-product}, giving $$L = R$$.
 
 So again the two equations have the same solutions.
@@ -137,7 +138,7 @@ These moves are sometimes useful, but after using them every answer must be chec
 
 ## Linear equations in one unknown
 
-The simplest equations are the ones where the unknown is only multiplied by numbers and added to
+The most basic equations are the ones where the unknown is only multiplied by numbers and added to
 numbers: no $$x^2$$, no $$x$$ in a denominator, no $$x$$ times $$x$$. They say things like "three
 times a number, plus five, is eleven". However such an equation starts out, it can be tidied up into
 the form "some number times $$x$$ is some other number".
@@ -201,7 +202,7 @@ means no solution; a true one means every number is a solution.
 
 Solve $$\frac{x}{4} - \frac{1}{3} = \frac{x}{6} + 1$$.
 
-Fractions are easiest to get rid of first. The denominators $$4$$, $$3$$ and $$6$$ all divide
+Clearing the fractions first saves work later. The denominators $$4$$, $$3$$ and $$6$$ all divide
 $$12$$, so multiply both sides by $$12$$, a safe step since $$12 \neq 0$$:
 
 ```math

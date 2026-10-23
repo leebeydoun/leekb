@@ -4,15 +4,16 @@ description:
   Where the formula pi r squared comes from, how big pi is, and why sectors keep their share.
 ---
 
-A garden sprinkler wets a disc of lawn. A goat tied to a stake can graze a disc of grass. A pizza is
-a disc of dough. The [Distance and angles](../distance-and-angles/introduction.mdx) chapter used the
-formula $$\pi r^2$$ for the area of a disc, and took it as given
-(:ref{#distance-and-angles/disc-area}). This guide explains where it comes from.
+Tie a goat to a stake with a rope, and it can graze every patch of grass within a rope's length of
+the stake. That patch is a disc, so how much grass the goat gets is the area of a disc. The
+[Distance and angles](../distance-and-angles/introduction.mdx) chapter gave that area as
+$$\pi r^2$$, but took it as given (:ref{#distance-and-angles/disc-area}). In this guide we'll see
+where the formula comes from.
 
 The whole explanation rests on one observation: every disc is a zoom of the disc of radius $$1$$.
 Once you know the area of that one disc, [Zooming and area](./scaling-areas.mdx) gives the area of
-every other. The number $$\pi$$ is then the name for that one area. The rest of this page works out
-roughly how big it is, and uses it to prove the rules about discs that the earlier chapter assumed.
+every other, and $$\pi$$ is the name for that one area. We'll then work out roughly how big $$\pi$$
+is, and use it to prove the rules about discs that Distance and angles assumed.
 
 ## One number for every disc
 
@@ -36,8 +37,8 @@ the other, as in the proof of :ref{#isometries/circles-congruent}, and isometrie
 (:ref{#isometries/isometry-area}).
 
 You may have met $$\pi$$ as the circumference of a circle divided by its diameter. That is a
-different question, about a length rather than an area, and it is a surprise that the answer is the
-same number. [Around the circle](./circumference.mdx) shows why.
+different question, about a length rather than an area. Yet the answer is the same number, and
+[Around the circle](./circumference.mdx) shows why.
 
 ## How big is pi?
 
@@ -154,9 +155,9 @@ $$D_1$$ is $$\pi$$ (:ref{#pi}), so the area of $$D_r$$ is $$\pi r^2$$.
 
 :::
 
-This proves rule 1 of :ref{#distance-and-angles/disc-area}, which that chapter took as given. All it
-needed was the definition of $$\pi$$ and the fact that zooming multiplies area by $$r^2$$. The
-section on sectors below proves rule 2.
+:ref{#disc-area-formula} proves rule 1 of :ref{#distance-and-angles/disc-area}, which that chapter
+took as given. All it needed was the definition of $$\pi$$ and the fact that zooming multiplies area
+by $$r^2$$. The section on sectors below proves rule 2.
 
 :::example[A goat on a rope]
 
@@ -199,10 +200,11 @@ disc.
 The zoom sends each point $$P \ne O$$ to a point of the ray $$OP$$ (:ref{#isometries/dilation}), so
 it sends each ray from $$O$$ into itself. A point lies inside the angle exactly when its ray from
 $$O$$ does, so points inside the angle go to points inside the angle, and points outside it go to
-points outside it. The proof of :ref{#disc-area-formula} shows that the disc of radius $$s$$ goes
-exactly onto the disc of radius $$rs$$, and the same argument works with $$s$$ in place of $$1$$. So
-the points of the disc that are inside the angle, which make up the sector, go exactly onto the
-points of the zoomed disc that are inside the angle.
+points outside it. The proof of :ref{#disc-area-formula} shows that the zoom sends the disc of
+radius $$1$$ exactly onto the disc of radius $$r$$. The same argument, with $$s$$ in place of $$1$$,
+shows that it sends the disc of radius $$s$$ exactly onto the disc of radius $$rs$$. So the points
+of the disc that are inside the angle, which make up the sector, go exactly onto the points of the
+zoomed disc that are inside the angle.
 
 By :ref{#area-scaling}, both areas are multiplied by $$r^2$$. Writing $$A$$ for the area of the
 sector and $$D$$ for the area of the disc, the fraction after the zoom is
@@ -215,11 +217,11 @@ which is the fraction before.
 
 :::
 
-This proves rule 2 of :ref{#distance-and-angles/disc-area}: the fraction of a disc that an angle's
-sector takes up is the same for every disc centred at the angle's vertex. Any two such discs are
-zooms of each other about the vertex, since the zoom by $$\frac{t}{s}$$ turns radius $$s$$ into
-radius $$t$$. So the measure of an angle in degrees, defined by that fraction, depends on the angle
-alone.
+So :ref{#sector-scaling} proves rule 2 of :ref{#distance-and-angles/disc-area}: the fraction of a
+disc that an angle's sector takes up is the same for every disc centred at the angle's vertex. Any
+two such discs are zooms of each other about the vertex, since the zoom by $$\frac{t}{s}$$ turns
+radius $$s$$ into radius $$t$$. So the measure of an angle in degrees, defined by that fraction,
+depends on the angle alone.
 
 Rule 3, that a line through the centre cuts a disc into two halves of equal area, comes from a flip
 rather than a zoom. The flip in that line keeps the centre where it is and keeps distances, so it

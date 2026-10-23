@@ -4,17 +4,14 @@ description:
   Why a zoom by r multiplies every area by r squared, from rectangles to any shape at all.
 ---
 
-A pizza shop sells a 12-inch pizza and an 8-inch pizza. Is one large pizza more food than two small
-ones? Most people guess not, since two 8s make 16, which is more than 12. But the large pizza wins,
-and the reason is the subject of this page. When a shape is zoomed so that its lengths are
-multiplied by some number, its area is multiplied by that number twice over.
+A pizza shop sells a 12-inch pizza and an 8-inch pizza. Most people guess that two small pizzas are
+more food than one large one, since two 8s make 16, which is more than 12. But the large pizza wins.
+When a shape is zoomed, its area is multiplied by the zoom factor twice over.
 
-The same fact explains why a photo enlarged to twice the width needs four times the ink, why a map
-drawn at half the scale shows a quarter of the area on each page, and why a lawn twice as long and
-twice as wide needs four times the turf. [Zooming and length](./scaling-lengths.mdx) showed that a
-zoom by $$r$$ multiplies every length by $$r$$ (:ref{#zoom-rules}). This guide shows that it
-multiplies every area by $$r \cdot r = r^2$$, first for rectangles, then for triangles, and then,
-with the grid of the [previous guide](./grids.mdx), for any shape at all.
+[Zooming and length](./scaling-lengths.mdx) showed that a zoom by $$r$$ multiplies every length by
+$$r$$ (:ref{#zoom-rules}). In this guide we'll see that it multiplies every area by
+$$r \cdot r = r^2$$: first for rectangles, then for triangles, and then, with the grid from
+[Measuring area with a grid](./grids.mdx), for any shape at all.
 
 ## Rectangles first
 
@@ -176,12 +173,12 @@ inside $$rS$$, because the points of $$rS$$ are exactly the zooms of the points 
 zoom by $$\frac{1}{r}$$ brings each point back.
 
 **Overlapping goes to overlapping.** Suppose a square $$Q$$ overlaps $$S$$, so the part they have in
-common has some area. Its edge is made of pieces of the edges of $$Q$$ and $$S$$, so it has a
-length. By :ref{#grid-rule}, a fine enough grid has a little square lying wholly inside that common
-part, since otherwise its inner count would stay at $$0$$ and couldn't close in on an area bigger
-than $$0$$. By the previous step, the zoom of that little square lies wholly inside both the zoom of
-$$Q$$ and $$rS$$, and it is a square of side bigger than $$0$$. So the zoom of $$Q$$ shares some
-area with $$rS$$: it overlaps. The zoom by $$\frac{1}{r}$$ gives the reverse.
+common has some area. The edge of that common part is made of pieces of the edges of $$Q$$ and
+$$S$$, so it has a length. By :ref{#grid-rule}, a fine enough grid has a little square lying wholly
+inside that common part, since otherwise its inner count would stay at $$0$$ and couldn't close in
+on an area bigger than $$0$$. Inside goes to inside, so the zoom of that little square lies wholly
+inside both the zoom of $$Q$$ and $$rS$$, and it is a square of side bigger than $$0$$. So the zoom
+of $$Q$$ shares some area with $$rS$$: it overlaps. The zoom by $$\frac{1}{r}$$ gives the reverse.
 
 So the two grids give the same numbers of squares in each count, and each square of the new grid has
 $$r^2$$ times the area of its partner (:ref{#rectangle-scaling}). Writing $$i$$ and $$o$$ for the

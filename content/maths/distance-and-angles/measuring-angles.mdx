@@ -3,11 +3,14 @@ title: Measuring angles
 description: Degrees as a fraction of a full turn, right angles and the area of a sector.
 ---
 
-Lengths are measured by comparing them with a fixed unit, and angles are measured the same way. The
-unit is a fraction of one full turn, called a degree. This page defines degrees in two ways, first
-as a fraction of a turn and then more precisely by area, and explains how the two fit together. It
-then proves that angles side by side add up, shows that a straight angle is $$180^\circ$$, defines
-right angles, and finds the area of a sector.
+Cut a round cake into four equal slices and each slice has a square corner at the centre. Cut it
+into eight instead and each corner is half as wide. The size of the corner goes with the share of
+the cake. That's how angles are measured: by what share of a full turn they are, the way lengths are
+measured against a fixed unit.
+
+The unit for angles is the degree. In this guide we'll define degrees twice, first as a fraction of
+a turn and then more precisely by area, and see how the two fit together. Then we'll prove that
+angles side by side add up, and use that to find a straight angle and the area of a sector.
 
 ## Degrees as a fraction of a full turn
 
@@ -53,19 +56,20 @@ two more facts about discs:
 :::remark[Rules for disc area]{#disc-area}
 
 1. **Area of a disc**: a disc of radius $$r$$ has area $$\pi r^2$$, where $$\pi$$ is a fixed number
-   a little more than $$3.14$$. A later guide proves this.
+   a little more than $$3.14$$
 2. **Any disc gives the same fraction**: the fraction of a disc that an angle's sector takes up is
-   the same for every disc centred at the angle's vertex.
+   the same for every disc centred at the angle's vertex
 3. **A line through the centre halves a disc**: a line through the centre of a disc cuts it into two
-   pieces of equal area.
+   pieces of equal area
 
-These are taken as given.
+These are taken as given. The [Area of a disc](../area-and-scaling/disc-area.mdx) guide, in the Area
+and scaling chapter, proves all three.
 
 ::see-also{src="https://en.wikipedia.org/wiki/Area_of_a_circle"}
 
 :::
 
-From here on, the guide thinks of degrees as a fraction of a full turn. The area version is what
+From here on, the chapter thinks of degrees as a fraction of a full turn. The area version is what
 makes "fraction of a turn" precise, and the proofs on the rest of this page use it: for angles side
 by side, for straight angles and for the area of a sector.
 
@@ -73,13 +77,12 @@ by side, for straight angles and for the area of a sector.
 
 Turning $$30^\circ$$ and then $$40^\circ$$ more is the same as turning $$70^\circ$$ in one go. In
 the same way, two angles that sit side by side, sharing an arm and not overlapping, make a bigger
-angle whose size is the sum of theirs. School courses usually take this as given. Here it follows
-from the definition of degrees, because the two sectors side by side make up the bigger sector, and
-areas add.
+angle whose size is the sum of theirs. Here this is proved from the definition of degrees, not taken
+as given: the two sectors side by side make up the bigger sector, and areas add.
 
-The proof uses the fact that one ray lies inside an angle. The guide has no rules for deciding which
-side of a line a point is on, so facts of that kind are read from the figure, and each proof says
-when it uses one.
+The proof uses the fact that one ray lies inside an angle. The chapter has no rules for deciding
+which side of a line a point is on, so facts of that kind are read from the figure, and each proof
+says when it uses one.
 
 :::proposition[Adding angles]{#angle-addition}
 
@@ -135,8 +138,8 @@ caption "Sectors of 30° and 40° side by side make the sector of 70°, and thei
 
 ## Straight angles and right angles
 
-A straight angle is half a turn, so it should be $$180^\circ$$. The precise reason uses the third
-rule for discs: the line that forms a straight angle passes through the centre of any disc at its
+A straight angle is half a turn, so it should be $$180^\circ$$. The precise reason uses rule 3 of
+:ref{#disc-area}: the line that forms a straight angle passes through the centre of any disc at its
 vertex, so it cuts the disc into two equal halves.
 
 :::proposition[A straight angle is 180°]{#straight-angle}
@@ -161,8 +164,9 @@ every rectangle and wherever two perpendicular lines meet, so it has its own nam
 :::definition[Right angle]{#right-angle}
 
 A **right angle** is an angle of $$90^\circ$$, a quarter of a full turn. The four equal angles where
-two perpendicular lines cross (:ref{#perpendicular}) are right angles in this sense, as the end of
-this section shows. Other angles are named by how they compare with a right angle:
+two perpendicular lines cross (:ref{#perpendicular}) are right angles in this sense, as the
+paragraph after :ref{#angles-on-line} shows. Other angles are named by how they compare with a right
+angle:
 
 - **Acute angle**: more than $$0^\circ$$ and less than $$90^\circ$$
 - **Obtuse angle**: more than $$90^\circ$$ and less than $$180^\circ$$
@@ -220,10 +224,10 @@ caption "The two angles on a straight line add up to 180°"
 So if $$\angle QPM = 35^\circ$$, then $$\angle MPR = 180^\circ - 35^\circ = 145^\circ$$. Knowing one
 of the two angles always tells you the other.
 
-The corollary also shows that perpendicular lines meet at right angles. Two neighbouring angles at
-the crossing are equal and add up to $$180^\circ$$, so each is $$90^\circ$$. It works the other way
-round too: when two lines cross and one of the four angles is a right angle, its neighbours are
-$$180^\circ - 90^\circ = 90^\circ$$, and so all four angles are right angles.
+:ref{#angles-on-line} also shows that perpendicular lines meet at right angles. Two neighbouring
+angles at the crossing are equal and add up to $$180^\circ$$, so each is $$90^\circ$$. It works the
+other way round too: when two lines cross and one of the four angles is a right angle, its
+neighbours are $$180^\circ - 90^\circ = 90^\circ$$, and so all four angles are right angles.
 
 ## The area of a sector
 

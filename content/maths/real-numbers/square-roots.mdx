@@ -4,10 +4,11 @@ description:
   Why every positive number has exactly two square roots, the rules for √, and the AM–GM inequality.
 ---
 
-Among the fractions, most numbers have no square root: nothing squares to $$2$$, $$3$$ or $$5$$.
-Among the real numbers every positive number has one, and this is the first real payoff of having no
-gaps. This page shows that a positive number has exactly two square roots, fixes which one the sign
-$$\sqrt{\ }$$ means, and works out the rules for calculating with it.
+A square garden has an area of $$10$$ square metres, so its side is a number that squares to $$10$$.
+No fraction does, but among the real numbers every positive number has a square root. This is the
+first thing the real numbers give you that the fractions can't. In this guide we'll show that a
+positive number has exactly two square roots and settle which one $$\sqrt{\ }$$ means, and then work
+out the rules for calculating with it.
 
 ## Every positive number has a square root
 
@@ -19,7 +20,7 @@ gaps, so nothing is skipped.
 <GrowingSquare />
 
 The first page found the number whose square is $$2$$ one decimal digit at a time, and the same
-digit-by-digit search works for any positive number. We take the result as given.
+digit-by-digit search works for any positive number. The result is taken as given.
 
 :::remark[Square roots exist]{#square-roots-exist}
 
@@ -29,10 +30,9 @@ For every positive real number $$a$$, there is a real number $$b$$ with $$b^2 = 
 
 :::
 
-How many such numbers are there? A number and its opposite have the same square: $$3^2$$ and
-$$(-3)^2$$ are both $$9$$. So square roots come in pairs, and the theorem says there are no others.
-A positive number has exactly two, $$0$$ has only itself, and a negative number has none, since no
-square is negative.
+Square roots come in pairs, because a number and its opposite have the same square: $$3^2$$ and
+$$(-3)^2$$ are both $$9$$. The theorem below says there are no others. A positive number has exactly
+two, $$0$$ has only itself, and a negative number has none, since no square is negative.
 
 :::theorem[Solving x² = a]{#square-root-count}
 
@@ -95,7 +95,7 @@ often written together as $$x = \pm\sqrt{a}$$, read "plus or minus root $$a$$". 
 $$x^2 = 7$$ has the solutions $$\pm\sqrt{7}$$, and $$(x - 1)^2 = 16$$ gives $$x - 1 = \pm 4$$, so
 $$x = 5$$ or $$x = -3$$.
 
-The same factoring gives a rule that is used constantly.
+The same factoring gives a rule that this chapter uses again and again.
 
 :::corollary[Equal squares]{#equal-squares}
 
@@ -113,8 +113,8 @@ then $$y = 0$$ too. So $$x = y$$ in either case.
 
 :::
 
-The second part gives a quick test for a square root: to show that $$c = \sqrt{a}$$, it is enough to
-check that $$c \ge 0$$ and $$c^2 = a$$. The proofs below use this test again and again.
+The second part gives a test for a square root: to show that $$c = \sqrt{a}$$, it is enough to check
+that $$c \ge 0$$ and $$c^2 = a$$. The proofs below use this test again and again.
 
 ## Rules for square roots
 
@@ -161,9 +161,9 @@ This is how square roots are **simplified**: pull out any square factor.
 \sqrt{\tfrac{5}{9}} = \frac{\sqrt{5}}{3}
 ```
 
-Once simplified, multiples of the same root can be collected, just as $$2x + 3x = 5x$$. For example,
-$$\sqrt{8} + \sqrt{18} = 2\sqrt{2} + 3\sqrt{2} = 5\sqrt{2}$$. But $$\sqrt{2} + \sqrt{3}$$ can't be
-collected into a single root.
+Once simplified, multiples of the same root can be collected, in the same way as $$2x + 3x = 5x$$.
+For example, $$\sqrt{8} + \sqrt{18} = 2\sqrt{2} + 3\sqrt{2} = 5\sqrt{2}$$. But
+$$\sqrt{2} + \sqrt{3}$$ can't be collected into a single root.
 
 Square roots don't split over sums, though: $$\sqrt{9 + 16} = \sqrt{25} = 5$$, while
 $$\sqrt{9} + \sqrt{16} = 3 + 4 = 7$$. In fact, for positive $$a$$ and $$b$$, $$\sqrt{a} + \sqrt{b}$$
@@ -188,8 +188,9 @@ So, for example, $$\sqrt{10}$$ lies between $$\sqrt{9} = 3$$ and $$\sqrt{16} = 4
 
 ## Rational and irrational
 
-The Numbers guide proved that $$\sqrt{2}$$ and $$\sqrt{3}$$ are irrational (:ref{#numbers/sqrt-two},
-:ref{#numbers/sqrt-three}). Many more irrational numbers can be built from them.
+The Numbers chapter proved that $$\sqrt{2}$$ and $$\sqrt{3}$$ are irrational
+(:ref{#numbers/sqrt-two}, :ref{#numbers/sqrt-three}). Infinitely many more irrational numbers can be
+built from them.
 
 The idea is that adding a fraction, or multiplying by a fraction other than $$0$$, can always be
 undone with another fraction. If adding $$1$$ to some number gave a fraction, then taking $$1$$ away

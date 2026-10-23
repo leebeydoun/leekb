@@ -3,10 +3,12 @@ title: Equations as lines
 description: Picturing a linear equation as a straight line, and a system as lines that cross.
 ---
 
-There is a picture behind everything in this guide. Each linear equation in $$x$$ and $$y$$ draws a
-straight line, and solving a system means finding where the lines cross. The three cases from the
-[previous page](./special-cases.mdx), one solution, none, or infinitely many, become three ways two
-lines can sit: crossing once, parallel, or on top of each other.
+Mark every point $$(x, y)$$ with $$x + y = 4$$: $$(0, 4)$$, $$(1, 3)$$, $$(4, 0)$$ and all the
+points in between. They fall on one straight line. Every linear equation in $$x$$ and $$y$$ does the
+same, so a system of two equations is a pair of lines, and its solution is the point where they
+cross. In this guide we'll use that picture to see the three cases from
+[No solution, or infinitely many](./special-cases.mdx): two lines can cross once, run parallel, or
+lie on top of each other.
 
 ## Points and coordinates
 
@@ -16,12 +18,12 @@ if $$x$$ is negative) and then $$y$$ steps up (down if $$y$$ is negative). The n
 $$y$$ are the point's **coordinates**, and the point where the axes cross, $$(0, 0)$$, is the
 **origin**.
 
-A later guide on coordinate geometry builds this up properly. Here we only need the picture.
+A later chapter on coordinate geometry builds this up properly. This chapter needs only the picture.
 
 ## The graph of an equation
 
 An equation in two unknowns usually has a whole collection of solutions, each one a pair of numbers.
-Since every pair names a point, we can mark all the solutions at once and look at the shape they
+Since every pair names a point, you can mark all the solutions at once and look at the shape they
 make. That shape is the graph.
 
 :::definition[Graph of an equation]{#graph}
@@ -41,14 +43,14 @@ $$(3, -2)$$:
 
 The graph of a linear equation $$ax + by = c$$ (with $$a$$ and $$b$$ not both zero) is always a
 straight line, and every straight line is the graph of such an equation. This is where the name
-**linear** comes from. We take it from the picture for now; the guide on coordinate geometry proves
-it.
+**linear** comes from. This is taken as given here, from the picture. A later chapter on coordinate
+geometry proves it.
 
 ::see-also{src="https://en.wikipedia.org/wiki/Linear_equation#Geometric_interpretation"}
 
 :::
 
-Since two points fix a line, the quickest way to draw one is to find two solutions, usually by
+Since two points fix a line, the shortest way to draw one is to find two solutions, usually by
 putting $$x = 0$$ and then $$y = 0$$. For $$2x + y = 4$$ these give $$(0, 4)$$ and $$(2, 0)$$, where
 the line crosses the axes.
 
@@ -63,9 +65,11 @@ Solving by elimination finds the crossing point exactly, even when it is somewhe
 $$(\frac{31}{38}, -\frac{8}{19})$$ that no drawing could read off. The picture explains what is
 going on; the algebra gets the answer.
 
-Two lines can sit in three ways, matching the three cases on the previous page.
+Two lines can sit in three ways, matching the three cases on the
+[No solution, or infinitely many](./special-cases.mdx) page.
 
-**Crossing once: exactly one solution.** This is the usual case, as above.
+**Crossing once: exactly one solution.** This is the usual case, as with $$x + y = 5$$ and
+$$x - y = 1$$, which cross at $$(3, 2)$$.
 
 **Parallel: no solution.** The lines $$x + 2y = 3$$ and $$x + 2y = 5$$ never meet, because no point
 can have $$x + 2y$$ equal to both $$3$$ and $$5$$.
@@ -101,9 +105,9 @@ $$m$$. The number $$k$$ is where the line crosses the $$y$$-axis, since $$x = 0$
 :::
 
 For $$2x + y = 4$$, rearranging gives $$y = -2x + 4$$: the slope is $$-2$$, so the line drops by
-$$2$$ for each step right, and it crosses the $$y$$-axis at $$4$$, as in the first picture. When
-$$b = 0$$ the equation is $$ax = c$$, which says $$x = \frac{c}{a}$$: a vertical line, which has no
-slope.
+$$2$$ for each step right, and it crosses the $$y$$-axis at $$4$$, as in the graph under
+[The graph of an equation](#the-graph-of-an-equation). When $$b = 0$$ the equation is $$ax = c$$,
+which says $$x = \frac{c}{a}$$: a vertical line, which has no slope.
 
 Two different lines are parallel exactly when they have the same slope (or are both vertical), and
 this is what the determinant detects.

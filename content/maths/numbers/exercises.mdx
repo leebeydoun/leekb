@@ -1,11 +1,11 @@
 ---
 title: Exercises
-description: Sixty exercises on the whole guide, with worked solutions.
+description: Sixty exercises on the whole chapter, with worked solutions.
 ---
 
-These exercises go back over the whole guide, in no particular order, so you have to work out which
-ideas each one needs. Most ask you to use an idea rather than repeat a calculation, and many ask for
-a short proof. Try each one before opening its solution.
+These exercises go back over the whole chapter in no particular order, so part of each one is
+working out which idea it needs. Most ask you to use an idea rather than repeat a calculation, and
+many ask for a short proof. Have a go at each one before opening its solution.
 
 ::::exercise{#ex-bath-taps}
 
@@ -117,7 +117,7 @@ Work out $$47 + (-18) + 53 + 18$$ in your head, by first rearranging the terms.
 
 :::solution
 
-Since the order and grouping of a sum don't matter, pair up terms that are easy to add:
+Since the order and grouping of a sum don't matter, pair up terms that add to round numbers:
 
 ```math
 (47 + 53) + \big((-18) + 18\big) = 100 + 0 = 100
@@ -327,7 +327,7 @@ $$7^n \equiv 1^n = 1 \pmod{6}$$. That says exactly that $$6 \mid 7^n - 1$$.
 
 which is $$6$$ times an integer.
 
-The two proofs are really the same idea: $$x - 1$$ always divides $$x^n - 1$$.
+The two proofs rest on the same idea: $$x - 1$$ always divides $$x^n - 1$$.
 
 :::
 
@@ -339,8 +339,8 @@ What is the last digit of $$3^{20}$$?
 
 :::solution
 
-The last digit of a number is its remainder when divided by $$10$$, so we work modulo $$10$$. Powers
-of $$3$$ go $$3, 9, 27, 81$$, and $$81 \equiv 1 \pmod{10}$$. So
+The last digit of a number is its remainder when divided by $$10$$, so work modulo $$10$$. Powers of
+$$3$$ go $$3, 9, 27, 81$$, and $$81 \equiv 1 \pmod{10}$$. So
 
 ```math
 3^{20} = (3^4)^5 = 81^5 \equiv 1^5 = 1 \pmod{10}
@@ -679,8 +679,8 @@ Prove that $$\frac{n + 1}{n}$$ is in lowest form for every positive integer $$n$
 
 :::solution
 
-We need to show that the only positive common divisor of $$n + 1$$ and $$n$$ is $$1$$. Suppose $$d$$
-divides both. By :ref{#multiples}, $$d$$ also divides their difference,
+You need to show that the only positive common divisor of $$n + 1$$ and $$n$$ is $$1$$. Suppose
+$$d$$ divides both. By :ref{#multiples}, $$d$$ also divides their difference,
 
 ```math
 (n + 1) - n = 1
@@ -717,7 +717,7 @@ Suppose $$a$$ is a number with $$a^2 = 2$$. Show that $$1 + a$$ is not rational,
 
 :::solution
 
-Both work the same way: if they were rational, we could undo the operation and make $$a$$ rational,
+Both work the same way: if they were rational, you could undo the operation and make $$a$$ rational,
 which :ref{#sqrt-two} rules out.
 
 - If $$1 + a = q$$ with $$q$$ rational, then $$a = q - 1$$. A difference of two rational numbers is
@@ -973,8 +973,8 @@ $$10$$ that make up a number are alternately congruent to $$1$$ and $$-1$$, star
 The same works for any number, so a number is congruent to its alternating digit sum. Here
 $$-11 \equiv 0 \pmod{11}$$, so $$9295$$ is divisible by $$11$$. Indeed $$9295 = 11 \cdot 845$$.
 
-This works just like the test for $$9$$ on the [Congruence](./congruence.mdx) page, with $$-1$$ in
-place of $$1$$.
+This works in the same way as the test for $$9$$ on the [Congruence](./congruence.mdx) page, with
+$$-1$$ in place of $$1$$.
 
 :::
 
@@ -986,8 +986,8 @@ Put $$\frac{2}{3}$$, $$\frac{5}{8}$$ and $$\frac{3}{5}$$ in order from smallest 
 
 :::solution
 
-Fractions with the same denominator are easy to compare, so rewrite all three over $$120$$, which
-$$3$$, $$8$$ and $$5$$ all divide:
+Fractions with the same denominator can be compared by their numerators, so rewrite all three over
+$$120$$, which $$3$$, $$8$$ and $$5$$ all divide:
 
 ```math
 \frac{2}{3} = \frac{80}{120}, \qquad \frac{5}{8} = \frac{75}{120},

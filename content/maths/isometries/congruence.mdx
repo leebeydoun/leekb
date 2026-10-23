@@ -4,12 +4,13 @@ description:
   When two shapes are the same shape and size, and the tests that decide it for triangles.
 ---
 
-A spare key cut from the same pattern opens the same lock, and any bolt from a box fits the same
-nut. Factories depend on this: two parts made to the same measurements are interchangeable, because
-one could be laid exactly on top of the other. This page makes "the same shape and size" precise
-using the moves of the earlier guides. It then gives tests that decide it for triangles without
-moving anything, and explains why a frame made of triangles is rigid while a square frame folds
-over.
+Lay a spare key on top of your own, cut from the same pattern. Every notch lines up, which is why it
+opens the same lock. Two shapes like this, where one can be moved exactly onto the other, are called
+congruent.
+
+In this guide we'll describe that idea with slides, turns and flips, and find tests that tell you
+two triangles are congruent without moving anything. The same tests explain why a frame made of
+triangles stays rigid, while a square frame folds over.
 
 ## Same shape and size
 
@@ -147,9 +148,9 @@ change shape while its three sides keep their lengths.
 
 <FrameBracing caption="A square of four bars can fold over; a diagonal brace makes two triangles, and the frame holds its shape" />
 
-The interactive shows why. Two sides joined by a hinge can make a triangle at every opening, and the
-gap between their free ends changes as the hinge opens. Once a third bar of fixed length closes the
-gap, only one opening fits.
+The hinge diagram below shows why. Two sides joined by a hinge can make a triangle at every opening,
+and the gap between their free ends changes as the hinge opens. Once a third bar of fixed length
+closes the gap, only one opening fits.
 
 <TriangleFromSides />
 
@@ -189,8 +190,8 @@ d(P', X) = d(P, M) = d(P', M'), \qquad d(Q', X) = d(Q, M) = d(Q', M')
 ```
 
 **Check the third corner.** If $$X = M'$$, then $$F = F_1$$ does the job. Otherwise $$X$$ has come
-out as in the figure below, the same distance from $$P'$$ as $$M'$$ and the same distance from
-$$Q'$$.
+out as in the figure after this proof, the same distance from $$P'$$ as $$M'$$ and the same distance
+from $$Q'$$.
 
 **Flip.** The point $$P'$$ is the same distance from $$X$$ as from $$M'$$, so it lies on the
 perpendicular bisector of $$XM'$$ (:ref{#distance-and-angles/perpendicular-bisector-rule}). So does
@@ -230,8 +231,7 @@ caption "If the third corner lands at X instead of M', the line P'Q' is the mirr
 
 Once two triangles are congruent, everything you can measure on them matches, since the isometry
 keeps distances (:ref{#isometry}), angles (:ref{#isometry-angles}) and area (:ref{#isometry-area}).
-So matching sides force matching angles, which is the surprising half of the test: you only measured
-lengths.
+So matching sides force matching angles, even though you only measured lengths.
 
 :::example[Matching the corners]
 
@@ -296,9 +296,9 @@ and isn't $$X$$, so $$R(X) = M'$$, and $$F = R \circ F_1$$ does the job.
 :::
 
 The angle has to be the one **between** the two given sides. Two sides and an angle somewhere else
-don't fix a triangle. In the figure, the side $$QM$$ swings like a gate between two positions where
-it meets the base line, giving two different triangles with the same two sides and the same angle at
-$$P$$.
+don't fix a triangle. In the figure, a side of length $$2.5$$ hangs from $$Q$$ and reaches the base
+line at two points, $$M$$ and $$N$$. That gives two different triangles, $$PQM$$ and $$PQN$$, with
+the same two sides and the same angle at $$P$$.
 
 ```plane
 point P 0 0 sw
@@ -348,9 +348,8 @@ $$F(M) = M'$$, carrying one triangle onto the other.
 
 So the three parts of :ref{#distance-and-angles/right-triangle-rule} are no longer separate facts
 about triangles. They are what happens when one triangle is moved onto another, and moves keep
-lengths, angles and area. The earlier guides still lean on the rule, so it stays on the list of
-things taken as given there, but it is now explained by a single picture: laying one triangle on top
-of the other.
+lengths, angles and area. The earlier guides still lean on the rule, so it stays on their list of
+facts taken as given. But now a single picture explains it: laying one triangle on top of the other.
 
 ## Isosceles triangles
 

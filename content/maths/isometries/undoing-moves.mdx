@@ -4,12 +4,13 @@ description:
   How to undo a move, why steps come off in reverse order, and three points that decide an isometry.
 ---
 
-Every editing program has an undo button, and it is useful because nothing is lost: whatever you
-did, one press puts it back. A move of the plane can work the same way. Slide a sheet of tracing
-paper $$3$$ cm to the right and you can slide it $$3$$ cm back; turn it a quarter turn and you can
-turn it back. This page says what undoing a move means, finds the undo for slides, turns and flips,
-and shows why undoing two moves has to happen in the reverse order. It ends with a payoff: knowing
-where an isometry sends three points tells you where it sends every point.
+Turn a photo in an editing app, then press undo, and the photo is back exactly as it was. A move of
+the tracing paper can be undone in the same way. Slide the sheet $$3$$ cm to the right and you can
+slide it $$3$$ cm back, and a quarter turn is undone by a quarter turn the other way.
+
+In this guide we'll find the undo for every slide, turn and flip, and see why two moves have to be
+undone in the reverse order. It also turns out that knowing where an isometry sends three points not
+on one line tells you where it sends every point.
 
 ## What undoing means
 
@@ -40,8 +41,8 @@ everything: once all the points are at $$O$$, nothing says which one should go w
 the other hand, can be undone. Zooming by $$2$$ about $$O$$ is undone by zooming by $$\frac{1}{2}$$
 about $$O$$ (:ref{#dilation}).
 
-The word "the" in "the inverse" needs a reason: could a move have two different undos? It can't, and
-the proof is the same argument used for numbers.
+Calling it "the" inverse assumes that a move can't have two different undos. It can't, and the proof
+is the same argument used for numbers.
 
 :::proposition[Only one inverse]{#inverse-map-unique}
 
@@ -233,7 +234,8 @@ whole turn, so $$G^5 = I$$. By :ref{#inverse-by-repeating}, $$G^{-1} = G^4$$, th
 $$4 \cdot 72 = 288$$ degrees. This agrees with undoing a turn directly: $$G^{-1} = G_{-72}$$, and
 $$-72 + 360 = 288$$, so $$G_{-72} = G_{288}$$ (:ref{#rotation-whole-turns}).
 
-A flip fits the same pattern with $$n = 2$$: $$R^2 = I$$, so $$R^{-1} = R^1 = R$$, as found above.
+A flip fits the same pattern with $$n = 2$$: $$R^2 = I$$, so $$R^{-1} = R^1 = R$$, as in the example
+"Undoing a flip".
 
 :::
 
@@ -278,9 +280,9 @@ Let $$F$$ be a map with an inverse, and let $$G$$ and $$H$$ be maps.
 
 On the [What an isometry keeps](./isometries.mdx) page, pinning a sheet at three points that don't
 lie on one line held it completely still (:ref{#three-fixed-points}). Here is the same idea from the
-other side. Suppose you only know where an isometry sends three corners of a triangle: a photo app
-tells you where three corners of a picture ended up, say. That is already enough to know where every
-other point went. Two isometries that agree on three such points agree everywhere.
+other side. Suppose a photo app tells you only where three corners of a picture ended up after a
+move. That is enough to know where every other point went: two isometries that agree on three points
+not on one line agree everywhere.
 
 :::corollary[Three points decide an isometry]{#three-points-decide}
 

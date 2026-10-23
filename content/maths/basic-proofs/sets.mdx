@@ -3,11 +3,13 @@ title: Sets
 description: Sets, elements and subsets, and how to prove two sets are equal.
 ---
 
-Mathematics keeps talking about collections: all the integers, all the solutions of an equation, all
-the numbers between $$1$$ and $$5$$. A **set** is simply a name for such a collection. With a few
-symbols for "is in" and "fits inside", statements about collections become short and exact, and the
-question "are these two descriptions really the same collection?" gets a standard way of being
-answered.
+Think of the guest list for a party. One person might write it as "everyone in my class" and another
+as a list of names, and both could mean exactly the same people. Mathematics talks about collections
+like this all the time, such as all the integers or all the solutions of an equation. A **set** is a
+name for such a collection.
+
+In this guide we'll learn a few symbols that make statements about sets short and exact, and a
+standard way to check whether two descriptions give the same set.
 
 ## Sets and elements
 
@@ -17,9 +19,9 @@ one question to ask, with a yes or no answer: is it in the bag?
 
 :::definition[Sets and elements]{#set}
 
-A **set** is a collection of objects, called its **elements**. We write $$x \in S$$ for "$$x$$ is an
-element of $$S$$" (or "$$x$$ is in $$S$$"), and $$x \notin S$$ for "$$x$$ is not an element of
-$$S$$".
+A **set** is a collection of objects, called its **elements**. The symbol $$x \in S$$ means "$$x$$
+is an element of $$S$$", read "$$x$$ is in $$S$$". The symbol $$x \notin S$$ means "$$x$$ is not an
+element of $$S$$".
 
 Two sets are **equal** when they have exactly the same elements.
 
@@ -39,8 +41,8 @@ elements, and neither order nor repeats count.
 A small set can be written out in full, between curly brackets: $$\{1, 2, 3\}$$. When there is a
 clear pattern, dots continue it, as in $$\{2, 4, 6, 8, \dots\}$$ for the positive even numbers.
 
-Most sets in mathematics are too big to list, or have no clear pattern, so instead we give a
-**test** that decides membership. The set
+Most sets in mathematics are too big to list, or have no clear pattern. So instead the set is given
+by a **test** that decides membership. The set
 
 ```math
 \{x : x^2 = 9\}
@@ -60,14 +62,14 @@ Writing $$\mathbb{Z}$$ for the integers and $$\mathbb{R}$$ for the real numbers,
 while $$\{x \in \mathbb{R} : 0 < x < 4\}$$ holds every real number strictly between $$0$$ and $$4$$,
 the interval $$(0, 4)$$ (:ref{#real-numbers/interval}).
 
-This is also the clearest way to say what solving means. The **solution set** of an equation or
+A test like this also says clearly what solving means. The **solution set** of an equation or
 inequality is the set of numbers that make it true, and solving is the job of describing that set
 plainly. For example, $$\{x \in \mathbb{R} : x^2 - 5x + 6 = 0\} = \{2, 3\}$$, and
 $$\{x \in \mathbb{R} : 2x - 1 > 5\}$$ is the interval $$(3, \infty)$$.
 
 ## The number systems as sets
 
-The kinds of number built in the later guides each form a set, with a standard name:
+The kinds of number built in the later chapters each form a set, with a standard name:
 
 | Set            | Elements                                                                               |
 | -------------- | -------------------------------------------------------------------------------------- |
@@ -116,7 +118,7 @@ since $$3$$ is not bigger than $$5$$.
 :::
 
 Keep "element of" and "subset of" apart. The number $$2$$ is an **element** of $$\{1, 2, 3\}$$,
-while the set $$\{2\}$$, a bag holding just $$2$$, is a **subset** of it. So $$2 \in \{1, 2, 3\}$$
+while the set $$\{2\}$$, a bag holding only $$2$$, is a **subset** of it. So $$2 \in \{1, 2, 3\}$$
 and $$\{2\} \subseteq \{1, 2, 3\}$$, but $$2$$ is not a subset of anything, since it is a number,
 not a set.
 
@@ -124,8 +126,8 @@ not a set.
 
 Sometimes a test is one that nothing passes: no real number squares to $$-1$$, and no whole number
 lies strictly between $$3$$ and $$4$$. The collection of things passing such a test is still a
-perfectly good set. It just has nothing in it, like an empty bag. This is useful, because it lets
-"this equation has no solutions" be said as "its solution set is empty".
+perfectly good set. It has nothing in it, like an empty bag. This is useful, because it lets "this
+equation has no solutions" be said as "its solution set is empty".
 
 :::definition[The empty set]{#empty-set}
 
@@ -140,13 +142,14 @@ For example,
 ```
 
 These are the same set, even though the tests look nothing alike. Two sets with no elements have
-exactly the same elements, namely none, so they are equal. That is why we can say **the** empty set.
+exactly the same elements, namely none, so they are equal. That is why you can say **the** empty
+set.
 
 The empty set is not the same as $$\{0\}$$. The set $$\{0\}$$ has one element, the number $$0$$; the
 empty set has none.
 
-Is the empty set a subset of $$\{1, 2, 3\}$$? To fail, it would need an element that is not in
-$$\{1, 2, 3\}$$, and it has no elements at all. So there is nothing that could go wrong.
+The empty set is a subset of $$\{1, 2, 3\}$$. To fail to be one, it would need an element that is
+not in $$\{1, 2, 3\}$$, and it has no elements at all. So there is nothing that could go wrong.
 
 :::proposition[The empty set is a subset of every set]{#set-empty-subset}
 
@@ -192,7 +195,7 @@ when it is in $$B$$: the two sets have the same elements, and so they are equal.
 
 :::example[A set described two ways]
 
-Let $$A = \{n \in \mathbb{Z} : n^2 = n\}$$ and $$B = \{0, 1\}$$. We show $$A = B$$.
+Let $$A = \{n \in \mathbb{Z} : n^2 = n\}$$ and $$B = \{0, 1\}$$. Here is a proof that $$A = B$$.
 
 **$$A \subseteq B$$.** Take any $$n \in A$$, so $$n^2 = n$$. Then $$n^2 - n = 0$$, that is,
 $$n(n - 1) = 0$$. If a product is $$0$$, one of its factors is (:ref{#numbers/zero-product}), so
@@ -204,12 +207,12 @@ So $$A = B$$ by :ref{#set-equality}.
 
 :::
 
-This example shows what the two halves of solving an equation really are. Working from the equation
-to a list of candidates, as in the first half, shows that every solution is on the list: the
-solution set is a **subset** of the list. Checking each candidate in the equation, as in the second
-half, shows that every candidate really is a solution. Only both together show that the list is
-exactly the solution set. Later guides meet steps, like squaring both sides, that can add candidates
-which fail the check, and this is why the check matters.
+This example shows the two halves of solving an equation. Working from the equation to a list of
+candidates, as in the first half, shows that every solution is on the list: the solution set is a
+**subset** of the list. Checking each candidate in the equation, as in the second half, shows that
+every candidate is a solution. Only both together show that the list is exactly the solution set.
+The check matters because some steps, like squaring both sides, can add candidates that are not
+solutions.
 
 ## Exercises
 

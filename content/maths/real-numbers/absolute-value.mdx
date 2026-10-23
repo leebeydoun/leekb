@@ -4,18 +4,18 @@ description:
   The size of a number without its sign, distance on the line, and the triangle inequality.
 ---
 
-Often only the size of a number matters, not its sign: a temperature that changes by $$-5$$ degrees
-has changed by $$5$$ degrees, and a point $$3$$ steps to the left of $$0$$ is just as far away as
-one $$3$$ steps to the right. The **absolute value** captures this. It is also how distance on the
-number line is measured, and it settles the puzzle from the [Square roots](./square-roots.mdx) page
-that $$\sqrt{x^2}$$ is not always $$x$$.
+Say the temperature drops by $$5$$ degrees overnight. The change is $$-5$$, but if someone asks how
+much it changed, you'd say $$5$$ degrees. Here only the size of the number matters, not its sign,
+and that size is called the **absolute value**. In this guide we'll see that it also measures
+distance on the number line, and that it settles the puzzle from [Square roots](./square-roots.mdx)
+that $$\sqrt{x^2}$$ isn't always $$x$$.
 
-## Definition
+## Size without the sign
 
 The absolute value should give the size of a number, whatever its sign. For a number like $$5$$ that
-is just the number itself. For a negative number like $$-5$$ it is the same number with the sign
-flipped, $$5$$. Flipping the sign is the same as taking the opposite, so the rule is: leave a number
-alone if it is $$0$$ or more, and replace it by its opposite if it is negative.
+is the number itself. For a negative number like $$-5$$ it is the same number with the sign flipped,
+$$5$$. Flipping the sign is the same as taking the opposite, so the rule is: leave a number alone if
+it is $$0$$ or more, and replace it by its opposite if it is negative.
 
 :::definition[Absolute value]{#absolute-value}
 
@@ -28,8 +28,8 @@ The **absolute value** of a real number $$x$$, written $$|x|$$, is
 :::
 
 So $$|5| = 5$$, $$|-5| = 5$$ and $$|0| = 0$$. For a negative number $$x$$, the opposite $$-x$$ is
-positive, so for a number like $$-5$$ the absolute value just drops the minus sign. For an
-expression, work out its sign first: $$\sqrt{2} > 1$$, so $$1 - \sqrt{2}$$ is negative, and
+positive, so for a number like $$-5$$ the absolute value drops the minus sign. For an expression,
+work out its sign first: $$\sqrt{2} > 1$$, so $$1 - \sqrt{2}$$ is negative, and
 $$\left|1 - \sqrt{2}\right| = -\left(1 - \sqrt{2}\right) = \sqrt{2} - 1$$.
 
 :::proposition[Basic properties of absolute value]{#abs-basics}
@@ -159,8 +159,8 @@ $$ab \ge 0$$.
 
 :::
 
-For distances, it says that going from $$a$$ to $$c$$ by way of $$b$$ is never shorter than going
-straight there.
+For distances, the triangle inequality says that going from $$a$$ to $$c$$ by way of $$b$$ is never
+shorter than going straight there.
 
 :::corollary[Triangle inequality for distances]{#distance-triangle}
 

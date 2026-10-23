@@ -3,12 +3,14 @@ title: Algebraic identities
 description: Formulas for squares and cubes, and expanding products.
 ---
 
-Distributivity says how to multiply out a bracket. A handful of products come up so often that it is
-worth knowing their expansions by heart: they save work, they make mental arithmetic easier, and
-read backwards they let us **factorise**, turning a sum into a product. Every one of them is proved
-by multiplying out, so nothing here is new; it is a toolkit built from the rules on the
-[Multiplication](./multiplication.mdx) page. They hold for any integers, and later for any rational
-numbers too.
+Try working out $$41 \cdot 39$$ in your head. It looks awkward until you write it as
+$$(40 + 1)(40 - 1)$$, which multiplies out to $$1600 - 1 = 1599$$. A handful of products like this
+come up so often that it's worth knowing their expansions by heart. Read backwards, they also let
+you **factorise**, turning a sum into a product.
+
+Each one is proved by multiplying out, using only the rules from the
+[Multiplication](./multiplication.mdx) guide. So they hold for any integers, and later for any
+rational numbers too. In this guide we'll prove them and put them to work.
 
 ## Squares
 
@@ -55,7 +57,7 @@ cancel.
 
 The first one can be seen as a square of side $$a + b$$ cut into four pieces: one $$a^2$$, one
 $$b^2$$, and **two** rectangles of area $$ab$$. That is where the $$2ab$$ comes from, and why
-$$(a + b)^2$$ is not just $$a^2 + b^2$$.
+$$(a + b)^2$$ has more terms than $$a^2 + b^2$$.
 
 :::area-model{row-sizes="3 2" col-sizes="3 2"}
 
@@ -90,9 +92,9 @@ For example, $$(x + y + 1)^2 = x^2 + y^2 + 1 + 2xy + 2y + 2x$$.
 
 ## Cubes
 
-A cube is just one more multiplication. Multiplying the square of a sum by the sum once more makes
-the middle terms pile up in the same way, so the cube of a sum has four terms instead of three, with
-the numbers in front growing to $$3$$. For example, $$(2 + 1)^3 = 27$$, which splits as
+A cube is one more multiplication. Multiplying the square of a sum by the sum once more makes the
+middle terms pile up in the same way, so the cube of a sum has four terms instead of three, with the
+numbers in front growing to $$3$$. For example, $$(2 + 1)^3 = 27$$, which splits as
 $$8 + 12 + 6 + 1$$.
 
 The difference and sum of cubes work like the difference of squares, read backwards. They say a cube
@@ -128,8 +130,8 @@ $$a + b$$:
 \end{aligned}
 ```
 
-The cube of a difference needs no new work. The cube of a sum holds for **any** $$b$$, so we may use
-it with $$-b$$ in place of $$b$$, since $$a + (-b)$$ is just $$a - b$$. Since $$(-b)^2 = b^2$$ but
+The cube of a difference needs no new work. The cube of a sum holds for **any** $$b$$, so you can
+use it with $$-b$$ in place of $$b$$, since $$a + (-b)$$ is $$a - b$$. Since $$(-b)^2 = b^2$$ but
 $$(-b)^3 = -b^3$$, the terms with an odd power of $$b$$ change sign and the others stay the same:
 
 ```math
@@ -155,7 +157,7 @@ $$a^3 - (-b)^3 = a^3 + b^3$$, and the right side becomes $$(a + b)(a^2 - ab + b^
 
 A few things help to remember these:
 
-- In the cube of a sum the numbers in front are $$1, 3, 3, 1$$, just as they are $$1, 2, 1$$ in the
+- In the cube of a sum the numbers in front are $$1, 3, 3, 1$$, as they are $$1, 2, 1$$ in the
   square of a sum. Each term has total power $$3$$: $$a^3$$, then $$a^2 b$$, then $$ab^2$$, then
   $$b^3$$. These numbers are rows of Pascal's triangle, and the [Factorials](./factorials.mdx) page
   explains why and gives the pattern for every power.
@@ -202,8 +204,8 @@ Then multiply that result by the last bracket, and collect terms with the same p
 \end{aligned}
 ```
 
-A quick way to check an expansion is to try a value. With $$x = 2$$, the original is
-$$5 \cdot 1 \cdot 5 = 25$$, and the expansion gives $$16 + 20 - 8 - 3 = 25$$.
+To check an expansion, try a value. With $$x = 2$$, the original is $$5 \cdot 1 \cdot 5 = 25$$, and
+the expansion gives $$16 + 20 - 8 - 3 = 25$$.
 
 ## Exercises
 

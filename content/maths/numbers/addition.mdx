@@ -3,18 +3,20 @@ title: Addition
 description: The rules for adding integers, and everything that follows from them.
 ---
 
-Adding integers is something everyone can do. The aim of this page is to see that **all** of it
-follows from five simple rules. Once those are agreed, facts like $$-(-a) = a$$ or "two negatives
-add to a negative" no longer need to be memorised: they can be worked out, and they will carry over
-unchanged to fractions later on.
+You've added integers for years, and you know that $$-(-5)$$ is $$5$$ and that two negatives add to
+a negative. You probably learned these as facts to remember. In fact they all follow from five basic
+rules of addition, so once you accept those, the rest can be worked out.
 
-## The rules we assume
+In this guide we'll set out the five rules and build the familiar facts from them. The same
+reasoning carries over unchanged to fractions later on.
 
-Every argument has to start somewhere. Rather than taking all the facts about adding on trust, we
-pick out a few that are so basic nobody would doubt them, and agree to accept just those. Each one
-is easy to see on the number line: $$3 + 5$$ and $$5 + 3$$ both land on $$8$$, taking no steps
-leaves you where you were, and walking some steps one way then the same number back undoes the walk.
-The rest of the page then works out everything else from this short list.
+## The rules taken as given
+
+Every argument has to start somewhere. Rather than taking every fact about adding on trust, this
+page picks out a few that are so basic nobody would doubt them, and accepts only those. You can see
+each one on the number line: $$3 + 5$$ and $$5 + 3$$ both land on $$8$$, taking no steps leaves you
+where you were, and walking some steps one way then the same number back undoes the walk. The rest
+of the page then works out everything else from this short list.
 
 :::remark[Rules for addition]{#addition-rules}
 
@@ -50,9 +52,9 @@ example, with $$4$$, $$-6$$ and $$10$$:
 \end{aligned}
 ```
 
-Since the grouping never changes the result, the brackets are usually left out and we simply write
+Since the grouping never changes the result, the brackets are usually left out, and you write
 $$4 + (-6) + 10$$. Using both rules over and over, you can add any list of integers **in any order
-and in any grouping**. This is handy for spotting easy pairs:
+and in any grouping**. This lets you pair up numbers that cancel or make a round number:
 
 ```math
 17 + (-8) + 3 + 8 = (17 + 3) + ((-8) + 8) = 20 + 0 = 20
@@ -64,9 +66,8 @@ $$-a + a = 0$$.
 ## Subtraction
 
 Taking away $$5$$ means walking $$5$$ steps to the left. That is exactly what adding $$-5$$ does, so
-$$9 - 5$$ and $$9 + (-5)$$ both land on $$4$$. There is no need for a separate set of rules for
-taking away: we can treat it as adding the opposite. Rather than writing $$a + (-b)$$ every time, we
-write it more briefly.
+$$9 - 5$$ and $$9 + (-5)$$ both land on $$4$$. So taking away needs no separate set of rules: you
+can treat it as adding the opposite. The definition below gives a shorter way to write $$a + (-b)$$.
 
 <NumberLineWalk start={3} amount={5} op="-" />
 
@@ -76,8 +77,8 @@ For integers $$a$$ and $$b$$, $$a - b$$ means $$a + (-b)$$.
 
 :::
 
-So subtraction is not a new operation, just adding an opposite. That means the rules for addition
-apply to subtraction too, as long as each minus sign stays attached to the number after it:
+So subtraction is not a new operation, only a way of adding an opposite. That means the rules for
+addition apply to subtraction too, as long as each minus sign stays attached to the number after it:
 
 ```math
 a - b + c = a + c - b
@@ -90,7 +91,7 @@ For example, $$9 - 12 + 5 = 9 + 5 - 12 = 14 - 12 = 2$$.
 On the number line, there is only one walk that takes you from $$4$$ back to $$0$$: four steps to
 the left. So only one number, $$-4$$, adds to $$4$$ to give $$0$$. The first result says that the
 opposite of a number is the **only** number that adds to it to give $$0$$. It is used constantly,
-because it gives a simple way to recognise an opposite: just check that the two add to $$0$$.
+because it gives a direct test for an opposite: check that the two numbers add to $$0$$.
 
 :::proposition[Opposites are unique]{#opposite-unique}
 
@@ -128,14 +129,14 @@ For every integer $$a$$, $$-(-a) = a$$.
 
 :::proof{source="https://math.libretexts.org/Bookshelves/Analysis/Introduction_to_Mathematical_Analysis_I_(Lafferriere_Lafferriere_and_Nguyen)/01%3A_Tools_for_Analysis/1.4%3A_Ordered_Field_Axioms"}
 
-We know $$-a + a = 0$$ (rule 4 the other way round). So $$-a$$ and $$a$$ are two numbers that add to
+By rule 4 the other way round, $$-a + a = 0$$. So $$-a$$ and $$a$$ are two numbers that add to
 $$0$$. By :ref{#opposite-unique}, with $$-a$$ in place of $$a$$ and $$a$$ in place of $$b$$, the
 second is the opposite of the first: $$a = -(-a)$$.
 
 :::
 
-Stacking up more minus signs just keeps flipping between $$a$$ and $$-a$$. An even number of minus
-signs gives back $$a$$, and an odd number gives $$-a$$:
+Each extra minus sign flips the result between $$a$$ and $$-a$$. An even number of minus signs gives
+back $$a$$, and an odd number gives $$-a$$:
 
 ```math
 -(-(-(-6))) = 6, \qquad -(-(-6)) = -6
@@ -156,8 +157,8 @@ For integers $$a$$ and $$b$$,
 By :ref{#opposite-unique}, anything that adds to $$a + b$$ to give $$0$$ must be $$-(a + b)$$. So it
 is enough to check that $$-a - b$$, which means $$-a + (-b)$$, adds to $$a + b$$ to give $$0$$.
 
-Because order and grouping don't matter, we can rearrange the four numbers to pair each one with its
-opposite, then use rule 4 twice:
+Because order and grouping don't matter, you can rearrange the four numbers to pair each one with
+its opposite, then use rule 4 twice:
 
 ```math
 (a + b) + (-a + (-b)) = (a + (-a)) + (b + (-b)) = 0 + 0 = 0
@@ -185,7 +186,7 @@ a subtraction gives the opposite answer.
 
 Adding a negative number is a walk to the left. Start at $$0$$, walk left once, then walk left
 again, and you must end up somewhere to the left of $$0$$. So two negatives should add to a
-negative, just as two positives add to a positive.
+negative, as two positives add to a positive.
 
 Rule 5 says that two positive integers add to a positive integer. The matching fact for negative
 integers doesn't need to be assumed.
@@ -200,7 +201,7 @@ If $$a$$ and $$b$$ are negative integers, then $$a + b$$ is negative.
 
 The plan is to rewrite $$a + b$$ as the opposite of a sum of two positive integers.
 
-By :ref{#integers}, each negative integer is the opposite of a positive one, so we can write
+By :ref{#integers}, each negative integer is the opposite of a positive one, so you can write
 $$a = -m$$ and $$b = -n$$ with $$m$$ and $$n$$ positive. Then, reading :ref{#opposite-sum} from
 right to left,
 
@@ -223,7 +224,7 @@ steps back from $$3$$ and you reach $$-5$$. An equation is a statement that two 
 number, so doing the same thing to both sides keeps it true. Undoing an addition on one side means
 subtracting on the other.
 
-So the rules let us move numbers from one side of an equation to the other.
+So the rules let you move numbers from one side of an equation to the other.
 
 :::proposition[Rearranging a sum]{#rearranging}
 
@@ -252,8 +253,8 @@ and the right side becomes $$c + (-a) = c - a$$. So $$b = c - a$$.
 
 :::
 
-In short, a number added on one side can be **subtracted from the other side**. This is how simple
-equations with an unknown are solved:
+So a number added on one side can be **subtracted from the other side**. This is how you solve
+equations with one unknown:
 
 - $$x + 8 = 3$$: subtract $$8$$ from both sides, so $$x = 3 - 8 = -5$$.
 - $$6 - y = 10$$: add $$y$$ to both sides to get $$6 = 10 + y$$, then subtract $$10$$ from both
@@ -261,7 +262,7 @@ equations with an unknown are solved:
 - $$-3 - z = -1$$: add $$z$$ to both sides to get $$-3 = -1 + z$$, then add $$1$$ to both sides, so
   $$z = -2$$.
 
-Checking is easy: put the answer back in. For the last one, $$-3 - (-2) = -3 + 2 = -1$$.
+To check an answer, put it back into the equation. For the last one, $$-3 - (-2) = -3 + 2 = -1$$.
 
 ## Order and inequalities
 
@@ -272,8 +273,8 @@ turns the picture into a definition.
 :::definition[Order of integers]{#order}
 
 For integers $$a$$ and $$b$$, $$a$$ is **less than** $$b$$, written $$a < b$$, if $$b - a$$ is
-positive. We also write $$b > a$$ ("$$b$$ is greater than $$a$$") for the same thing, and
-$$a \le b$$ when $$a < b$$ or $$a = b$$.
+positive. The same fact is also written $$b > a$$ ("$$b$$ is greater than $$a$$") for the same
+thing, and $$a \le b$$ when $$a < b$$ or $$a = b$$.
 
 :::
 
@@ -295,26 +296,26 @@ For integers $$a$$, $$b$$ and $$c$$:
 All three parts work the same way: turn each inequality into a statement that some difference is
 positive, using :ref{#order}, and then work with the differences.
 
-**Part 1.** Write $$d = b - a$$. The idea is that each of the three statements is really a statement
-about the sign of $$d$$:
+**Part 1.** Write $$d = b - a$$. The idea is that each of the three statements is a statement about
+the sign of $$d$$:
 
 - **$$a < b$$ exactly when $$d$$ is positive.** This is the definition of $$<$$.
 - **$$a = b$$ exactly when $$d = 0$$.** If $$a = b$$, then $$d = a + (-a) = 0$$ by rule 4.
   Conversely, if $$b + (-a) = 0$$, then $$b = -(-a)$$ by :ref{#opposite-unique}, and this is $$a$$
   by :ref{#double-opposite}.
 - **$$a > b$$ exactly when $$d$$ is negative.** By definition, $$a > b$$ means $$a - b$$ is
-  positive, and $$a - b$$ is just $$-d$$: by :ref{#opposite-sum} and :ref{#double-opposite},
-  $$-d = -(b + (-a)) = -b + a = a - b$$. So we need: $$-d$$ is positive exactly when $$d$$ is
-  negative. If $$d$$ is negative, it is $$-p$$ for some positive $$p$$ (:ref{#integers}), so
-  $$-d = -(-p) = p$$ is positive. If $$-d$$ is positive, then $$d = -(-d)$$ is the opposite of a
+  positive, and $$a - b$$ equals $$-d$$: by :ref{#opposite-sum} and :ref{#double-opposite},
+  $$-d = -(b + (-a)) = -b + a = a - b$$. So it remains to show that $$-d$$ is positive exactly when
+  $$d$$ is negative. If $$d$$ is negative, it is $$-p$$ for some positive $$p$$ (:ref{#integers}),
+  so $$-d = -(-p) = p$$ is positive. If $$-d$$ is positive, then $$d = -(-d)$$ is the opposite of a
   positive integer, so it is negative.
 
 By :ref{#integers}, the integer $$d$$ is exactly one of positive, zero and negative. So exactly one
 of the three statements is true. For example, with $$a = 3$$ and $$b = 7$$, $$d = 4$$ is positive,
 so $$3 < 7$$, and $$3 = 7$$ and $$3 > 7$$ are both false.
 
-**Part 2.** We know $$b - a$$ and $$c - b$$ are positive, and want $$c - a$$ to be positive. The two
-known differences add up to the one we want, because the $$b$$s cancel:
+**Part 2.** You know $$b - a$$ and $$c - b$$ are positive, and want $$c - a$$ to be positive. The
+two known differences add up to the one you want, because the $$b$$s cancel:
 
 ```math
 (c - b) + (b - a) = c + (-b + b) + (-a) = c + 0 + (-a) = c - a
@@ -322,7 +323,7 @@ known differences add up to the one we want, because the $$b$$s cancel:
 
 A sum of two positive integers is positive by rule 5, so $$c - a$$ is positive, that is, $$a < c$$.
 
-**Part 3.** We know $$b - a$$ is positive, and want $$(b + c) - (a + c)$$ to be positive. Using
+**Part 3.** You know $$b - a$$ is positive, and want $$(b + c) - (a + c)$$ to be positive. Using
 :ref{#opposite-sum} to take the opposite of $$a + c$$, then letting $$c$$ and $$-c$$ cancel,
 
 ```math
@@ -334,8 +335,8 @@ which is positive. So $$a + c < b + c$$.
 :::
 
 Part 2 says that inequalities can be chained, so $$-3 < 0 < 5$$ means $$-3 < 5$$. Part 3 says that
-adding the same number to both sides keeps an inequality true, just as it does for an equation. The
-rules for multiplying an inequality need the rules for multiplication, and appear on the next page.
+adding the same number to both sides keeps an inequality true, as it does for an equation. The rules
+for multiplying an inequality need the rules for multiplication, and appear on the next page.
 
 ## Exercises
 

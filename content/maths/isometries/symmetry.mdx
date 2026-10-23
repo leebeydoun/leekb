@@ -3,11 +3,13 @@ title: Symmetry
 description: Moves that put a shape back onto itself, how they combine, and how to count them.
 ---
 
-A butterfly, the letter A, a give way sign and a snowflake all look balanced, and the word for that
-balance is symmetry. This page makes the idea exact: a symmetry of a shape is a move of the plane
-that puts the shape back exactly where it was. With that one definition, the moves from the earlier
-pages explain everyday facts. A mattress has exactly four ways to lie on its bed, a square has eight
-symmetries, and a fan with curved blades can be turned onto itself but never mirrored.
+Fold a paper butterfly down the middle and the two wings land exactly on each other. That balance is
+called symmetry. With the tracing paper we can say exactly what it means: a symmetry of a shape is a
+move of the plane that puts the shape back where it was.
+
+In this guide we'll use that one idea to count the symmetries of a square, and to see why a mattress
+has exactly four ways to lie on its bed. It also explains why a fan with curved blades can be turned
+onto itself but never mirrored.
 
 ## What a symmetry is
 
@@ -44,7 +46,8 @@ isometry anyway. A symmetry has to cover the shape exactly, the way the tracing 
 
 :::example[A rectangle]
 
-Take a rectangle $$6$$ wide and $$4$$ high, with its centre at $$O$$. It has four symmetries:
+Take a rectangle $$ABCD$$, $$6$$ wide and $$4$$ high, with its centre at $$O$$ and its corners
+labelled anticlockwise from the bottom left. It has four symmetries:
 
 1. **The identity**: nothing moves.
 2. **The half turn about $$O$$**: each corner goes to the opposite corner, so the rectangle lands on
@@ -53,10 +56,12 @@ Take a rectangle $$6$$ wide and $$4$$ high, with its centre at $$O$$. It has fou
 4. **The flip in the upright line through $$O$$**: the left edge and the right edge swap places.
 
 A quarter turn is not a symmetry. It would put a long side where a short side was, and an isometry
-keeps lengths, so the long side can't fit there. The flips in the diagonals fail too. The flip in
-the diagonal $$AC$$ keeps $$A$$ and $$C$$ where they are, so it sends $$B$$ to a point still $$6$$
-from $$A$$ and $$4$$ from $$C$$. The corner $$D$$ is the wrong way round, $$4$$ from $$A$$ and $$6$$
-from $$C$$, and a careful drawing shows the image of $$B$$ lands above the top edge, outside the
+keeps lengths, so the long side can't fit there.
+
+The flips in the diagonals fail too. The flip in the diagonal $$AC$$ keeps $$A$$ and $$C$$ where
+they are, so it sends $$B$$ to a point still $$6$$ from $$A$$ and $$4$$ from $$C$$. The corner $$D$$
+has these distances the wrong way round, $$4$$ from $$A$$ and $$6$$ from $$C$$, so $$B$$ can't land
+on $$D$$. A careful drawing shows that the image of $$B$$ lands above the top edge, outside the
 rectangle.
 
 :::
@@ -92,10 +97,11 @@ Capital letters make good practice, because you can check each one by eye:
 - **F**, **G**, **J**, **L**, **P**, **Q** and **R** have no symmetry except the identity
 
 These depend a little on the lettering: in many fonts the two halves of a B or a K differ in size,
-which breaks the mirror. Road signs are designed with symmetry so that they read the same from
-either side of the road. A triangular warning sign has three mirror lines and two turns, by
-$$120^\circ$$ and $$240^\circ$$. Many logos, like the three chasing arrows of the recycling symbol,
-have turns but no mirror lines, because the arrows all point the same way round.
+which breaks the mirror.
+
+Signs and logos have symmetries too. The triangle that outlines a warning sign has three mirror
+lines and two turns, by $$120^\circ$$ and $$240^\circ$$. The three chasing arrows of the recycling
+symbol have the same two turns but no mirror lines, because the arrows all point the same way round.
 
 ## Combining and undoing symmetries
 
@@ -168,9 +174,11 @@ says which. Find the first move on the left and the second move along the top:
 
 Every entry can be checked by following the tag. For example, after a half turn the tag is in the
 opposite corner; a long flip then moves it across the long middle line, which leaves it where a
-short flip on its own would have put it. Two crossing mirrors make a turn by twice the angle between
-them (:ref{#crossing-mirrors}), and that explains the last two rows: the two middle lines cross at
-$$90^\circ$$, so the two flips together make a turn by $$180^\circ$$.
+short flip on its own would have put it.
+
+The mirror results explain why a long flip and a short flip together make a half turn. Two crossing
+mirrors make a turn by twice the angle between them (:ref{#crossing-mirrors}). The two middle lines
+cross at $$90^\circ$$, so the two flips together make a turn by $$180^\circ$$.
 
 The table answers a practical question. If every few months you swap between a half turn and a long
 flip, the mattress goes through stay, half turn, short flip, long flip and back to stay. So it

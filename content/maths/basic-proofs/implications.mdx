@@ -3,11 +3,13 @@ title: If, then and exactly when
 description: Implications, converses, contrapositives, and statements that go both ways.
 ---
 
-A great many statements in mathematics have the shape "if this, then that". If a number is a
-multiple of $$4$$, then it is even. If $$x > 2$$, then $$x^2 > 4$$. Reading such a statement
-correctly, and not mixing it up with the statement that runs the other way, is half the work of
-proving it. This page shows the three statements that can be built from one "if, then", which of
-them say the same thing, and how to handle statements that work in both directions.
+Suppose a friend tells you, "If it rains, the match is off." Later you hear that the match was
+called off. It might have rained, but the referee could have been ill instead, because your friend
+only said what happens when it rains.
+
+Statements of the form "if this, then that" run all through mathematics, and mixing one up with the
+statement that runs the other way is a common slip. In this guide we'll see which versions of an
+"if, then" say the same thing, and how to handle statements that work in both directions.
 
 ## If, then, and turning statements around
 
@@ -17,21 +19,21 @@ get an A, or they might not, and the promise isn't broken either way. The only w
 score over $$90$$ without an A.
 
 Many statements have the form "**if** $$P$$, **then** $$Q$$". Here $$P$$ is called the
-**hypothesis** (what we assume) and $$Q$$ the **conclusion** (what we then get). Such a statement
-promises only one thing: whenever $$P$$ is true, $$Q$$ is true too. It says nothing about what
-happens when $$P$$ is false.
+**hypothesis** (what you assume) and $$Q$$ the **conclusion** (what follows from it). Such a
+statement promises only one thing: whenever $$P$$ is true, $$Q$$ is true too. It says nothing about
+what happens when $$P$$ is false.
 
 Two other statements are built from the same parts, and it is important to keep them apart. The
 converse swaps the two parts round. The contrapositive swaps them and also denies both: if the
 promise is "score over $$90$$ means an A", the contrapositive is "no A means you didn't score over
-$$90$$", which is just the same promise looked at from the other end.
+$$90$$", which is the same promise looked at from the other end.
 
 :::definition[Converse and contrapositive]{#contrapositive}
 
 For a statement "if $$P$$, then $$Q$$":
 
-- its **converse** is "if $$Q$$, then $$P$$";
-- its **contrapositive** is "if not $$Q$$, then not $$P$$".
+- its **converse** is "if $$Q$$, then $$P$$"
+- its **contrapositive** is "if not $$Q$$, then not $$P$$"
 
 :::
 
@@ -68,14 +70,14 @@ There are two things to show: if the original is true then so is the contraposit
 way round.
 
 **If the original is true, so is the contrapositive.** Suppose "if $$P$$, then $$Q$$" is true, and
-suppose $$Q$$ fails. Could $$P$$ hold? If it did, the original statement would make $$Q$$ hold too,
-but $$Q$$ fails. So $$P$$ doesn't hold. We started from "not $$Q$$" and reached "not $$P$$", which
+suppose $$Q$$ fails. If $$P$$ held, the original statement would make $$Q$$ hold too, but $$Q$$
+fails. So $$P$$ doesn't hold. The argument started from "not $$Q$$" and reached "not $$P$$", which
 is exactly what the contrapositive says.
 
 **If the contrapositive is true, so is the original.** Take the contrapositive of the
 contrapositive. The contrapositive of "if not $$Q$$, then not $$P$$" is "if not not $$P$$, then not
-not $$Q$$", and since saying "not" twice cancels out, that is just "if $$P$$, then $$Q$$": the
-original. Now apply the first half, with the contrapositive playing the part of the original: if the
+not $$Q$$", and since saying "not" twice cancels out, that is "if $$P$$, then $$Q$$": the original.
+Now apply the first half, with the contrapositive playing the part of the original: if the
 contrapositive is true, so is its own contrapositive, which is the original statement.
 
 :::
@@ -87,8 +89,8 @@ worth doing whenever "not $$Q$$" is easier to start from than $$P$$.
 
 **Claim.** If $$3n + 2$$ is odd, then $$n$$ is odd.
 
-Trying this directly is awkward: knowing $$3n + 2 = 2k + 1$$ tells us $$3n = 2k - 1$$, and it is not
-obvious how to get from there to $$n$$. The contrapositive is much easier.
+Trying this directly is awkward: knowing $$3n + 2 = 2k + 1$$ gives $$3n = 2k - 1$$, and there is no
+clear route from there to $$n$$. The contrapositive takes one line.
 
 **Contrapositive.** If $$n$$ is **not** odd, then $$3n + 2$$ is **not** odd. In other words: if
 $$n$$ is even, then $$3n + 2$$ is even.
@@ -103,16 +105,16 @@ which is even. By :ref{#contrapositive-equivalent}, the original claim is true t
 
 :::
 
-The Numbers guide uses this method to show that if $$3$$ divides $$a^2$$ then $$3$$ divides $$a$$
+The Numbers chapter uses this method to show that if $$3$$ divides $$a^2$$ then $$3$$ divides $$a$$
 (:ref{#numbers/squares-three}): it is much easier to start from a number that is **not** a multiple
 of $$3$$ and look at its square.
 
 ## "Only if"
 
-There is one more way of writing "if $$P$$, then $$Q$$", and it is the easiest to misread: "$$P$$
-**only if** $$Q$$". It says that $$P$$ can't happen without $$Q$$. "You can vote only if you are
-registered" means that anyone voting is registered, that is, "if you vote, then you are registered".
-It does **not** say that everyone registered votes.
+There is one more way of writing "if $$P$$, then $$Q$$", and it is the one most often misread:
+"$$P$$ **only if** $$Q$$". It says that $$P$$ can't happen without $$Q$$. "You can vote only if you
+are registered" means that anyone voting is registered, that is, "if you vote, then you are
+registered". It does **not** say that everyone registered votes.
 
 The trouble is that the word "if" sits next to $$Q$$, so it is tempting to read "$$P$$ only if
 $$Q$$" as "if $$Q$$, then $$P$$", which is the converse, a different claim. Take a number $$n$$:
@@ -137,7 +139,7 @@ $$4$$, $$6$$ or $$8$$, and a number whose last digit is one of those is even. Ea
 the other, so the two descriptions pick out exactly the same numbers. That is a much stronger link
 than a one-way "if, then".
 
-So sometimes a statement and its converse are both true, and we want to say so in one go.
+When a statement and its converse are both true, one phrase says both at once.
 
 :::definition[Exactly when]{#exactly-when}
 

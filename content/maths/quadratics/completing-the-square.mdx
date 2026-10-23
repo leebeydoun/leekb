@@ -3,11 +3,16 @@ title: Completing the square
 description: Turning any quadratic into a square plus a number, so it can be solved by square roots.
 ---
 
-The first page solved $$(x - s)^2 = k$$ by taking square roots, and factoring only works when the
-numbers happen to be kind. This page gives a method that always works: rewrite the equation so that
-$$x$$ appears only once, inside a square, and then take square roots. The trick is called
-**completing the square**, and it has a picture behind it. The next page does it once with letters
-in place of numbers, and the answer is the quadratic formula.
+Some quadratics come ready to solve. The equation $$(x + 3)^2 = 10$$ is a square equal to a number,
+and taking square roots finishes it in one line. Now write the same equation multiplied out, as
+$$x^2 + 6x = 1$$. The $$x$$ appears in two places, and factoring doesn't help either, because the
+brackets don't come out with whole numbers or neat fractions.
+
+**Completing the square** turns the second form back into the first. It rewrites the equation so
+that $$x$$ appears only once, inside a square, and it works for every quadratic. There's a picture
+behind it, a square with one corner missing. In this guide we'll fill in that corner, and the
+[next guide](./quadratic-formula.mdx) does the same steps once with letters to get the quadratic
+formula.
 
 ## The missing corner
 
@@ -23,8 +28,8 @@ corner is half of it, squared.
 
 <CompletingSquare />
 
-The picture needs lengths, so it only shows positive $$x$$ and $$b$$. The algebra behind it works
-for every real number.
+The area picture needs lengths, so it only shows positive $$x$$ and $$b$$. The algebra behind it
+works for every real number.
 
 :::proposition[Completing the square]{#complete-square}
 
@@ -69,7 +74,7 @@ the solutions stay the same.
 Once the equation reads (a square) $$=$$ (a number), the first page already says what to do
 (:ref{#shifted-square}). If the number is positive there are two solutions, one for each square
 root. If it is $$0$$ there is one. If it is negative there are none, since no square is negative. So
-every quadratic with $$x^2$$ on its own comes down to the same few steps:
+every quadratic with $$x^2$$ on its own comes down to the same three steps:
 
 1. Move the number term to the right-hand side, leaving $$x^2 + bx$$ on the left.
 2. Add $$\left(\frac{b}{2}\right)^2$$ to **both** sides, so the left becomes
@@ -95,7 +100,7 @@ $$(-8)^2 + 6 \cdot (-8) - 16 = 64 - 48 - 16 = 0$$.
 :::
 
 The numbers don't have to work out so neatly. When the right-hand side isn't a perfect square, the
-answer simply keeps its square root.
+answer keeps its square root.
 
 :::example[An answer with a square root]
 
@@ -231,7 +236,8 @@ Solve by completing the square.
 3. $$x^2 - 6x = -11$$. Add $$9$$ to both sides: $$(x - 3)^2 = -2$$. A square is never negative
    (:ref{#real-numbers/squares-positive}), so there is no solution.
 
-Each step uses :ref{#complete-square}, and the last step uses :ref{#shifted-square}.
+Each part completes the square with :ref{#complete-square}, then finishes with
+:ref{#shifted-square}.
 
 :::
 

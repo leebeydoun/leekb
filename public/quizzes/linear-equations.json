@@ -70,7 +70,7 @@
         "It can't; squaring always gives an equivalent equation"
       ],
       "answer": 1,
-      "explanation": "Squaring $$x = 3$$ gives $$x^2 = 9$$, which $$x = -3$$ also solves. Since $$3$$ and $$-3$$ square to the same thing, the step can't be reversed, so answers must be checked in the original equation."
+      "explanation": "Squaring $$x = 3$$ gives $$x^2 = 9$$, which $$x = -3$$ also solves. Since $$3$$ and $$-3$$ square to the same thing, the step can't be undone, so answers must be checked in the original equation (:ref{#safe-steps})."
     },
     {
       "id": "ax-equals-c-cases",
@@ -119,12 +119,7 @@
       "stars": 1,
       "topic": "Two equations in two unknowns",
       "question": "How many solutions does a single equation like $$x + y = 5$$ have?",
-      "options": [
-        "None",
-        "Infinitely many",
-        "Exactly two",
-        "Exactly one"
-      ],
+      "options": ["None", "Infinitely many", "Exactly two", "Exactly one"],
       "answer": 1,
       "explanation": "Any $$x$$ can be chosen, and then $$y = 5 - x$$ is forced, so there are infinitely many pairs (:ref{#linear-two})."
     },
@@ -148,7 +143,7 @@
       "topic": "Two equations in two unknowns",
       "question": "Why may you add two equations of a system together?",
       "options": [
-        "Because adding equations always gives a simpler equation",
+        "Because adding equations always gives a shorter equation",
         "You may only subtract equations, not add them",
         "Because addition is commutative",
         "Because if both are true for some values, the two left sides are equal to the two right sides, so their sums are equal too"
@@ -182,7 +177,7 @@
         "It doesn't; there could be other solutions"
       ],
       "answer": 1,
-      "explanation": "Each step of elimination replaces the system by an equivalent one (:ref{#combining}), so the original system has exactly the solutions of the final one, which is just $$(3, 2)$$."
+      "explanation": "Each step of elimination replaces the system by an equivalent one (:ref{#combining}), so the original system has exactly the solutions of the final one, whose only solution is $$(3, 2)$$."
     },
     {
       "id": "add-or-subtract",
@@ -205,8 +200,8 @@
       "question": "Does the solution depend on which unknown you eliminate first?",
       "options": [
         "Yes, eliminating $$x$$ first gives a different answer from eliminating $$y$$",
-        "Only if the system has no solution",
-        "Only if the coefficients are fractions",
+        "Only when the system has no solution",
+        "Only when the coefficients are fractions",
         "No: both routes give equivalent systems, so they reach the same solution"
       ],
       "answer": 3,
@@ -294,18 +289,18 @@
         "Neither"
       ],
       "answer": 1,
-      "explanation": "Substitution gives $$x(x + 1) = 6$$, an equation in $$x$$ alone. Elimination relies on matching coefficients of linear terms, and $$xy$$ has nothing to cancel against."
+      "explanation": "Substitution gives $$x(x + 1) = 6$$, an equation in $$x$$ alone. Elimination relies on matching coefficients of linear terms, and $$xy$$ has nothing to cancel against (:ref{#substitution})."
     },
     {
       "id": "when-substitution",
       "stars": 1,
       "topic": "Substitution",
-      "question": "When is substitution usually the quicker method?",
+      "question": "When is substitution usually the shorter method?",
       "options": [
         "When an unknown is already on its own, or has coefficient $$1$$ or $$-1$$",
         "When all the coefficients are large",
         "When the system has three equations",
-        "Never; elimination is always quicker"
+        "Never; elimination is always shorter"
       ],
       "answer": 0,
       "explanation": "If one equation already says $$y = \\ldots$$, or rearranges without fractions, substitution is direct (:ref{#substitution}). With awkward coefficients elimination is usually tidier."
@@ -336,7 +331,7 @@
         "The system has exactly one solution"
       ],
       "answer": 2,
-      "explanation": "$$0 = 0$$ is true for all values, so it puts no condition on the unknowns. One equation was a multiple of the other, and the solutions are those of a single equation, of which there are infinitely many."
+      "explanation": "$$0 = 0$$ is true for all values, so it puts no condition on the unknowns. One equation was a multiple of the other, and the solutions are those of a single equation, of which there are infinitely many (:ref{#determinant-zero})."
     },
     {
       "id": "inconsistent-def",
@@ -357,12 +352,7 @@
       "stars": 1,
       "topic": "No solution, or infinitely many",
       "question": "What is the determinant of the system $$ax + by = u$$, $$cx + dy = v$$?",
-      "options": [
-        "$$ad - bc$$",
-        "$$ab - cd$$",
-        "$$ac - bd$$",
-        "$$uv - ad$$"
-      ],
+      "options": ["$$ad - bc$$", "$$ab - cd$$", "$$ac - bd$$", "$$uv - ad$$"],
       "answer": 0,
       "explanation": "It is the product down one diagonal of the coefficients minus the product down the other: $$ad - bc$$ (:ref{#determinant})."
     },
@@ -406,7 +396,7 @@
         "It is enough; the check is optional"
       ],
       "answer": 1,
-      "explanation": "Deriving it showed that any solution must be that pair. Since some multipliers could be zero, the steps might not be reversible, so the proof checks directly that the pair really works (:ref{#determinant-test})."
+      "explanation": "Deriving it showed that any solution must be that pair. Since some multipliers could be zero, the steps might not be reversible, so the proof checks directly that the pair is a solution (:ref{#determinant-test})."
     },
     {
       "id": "never-two",
@@ -417,7 +407,7 @@
         "No: it has exactly one, none or infinitely many",
         "Yes, if the right-hand sides are equal",
         "Yes, if the determinant is zero",
-        "Only if the equations are the same"
+        "Only when the equations are the same"
       ],
       "answer": 0,
       "explanation": "A non-zero determinant gives exactly one (:ref{#determinant-test}); a zero one gives none or infinitely many (:ref{#determinant-zero}). Indeed, two solutions would give a whole line of them."
@@ -490,7 +480,7 @@
         "The point where the lines cross"
       ],
       "answer": 3,
-      "explanation": "A solution lies on both lines, so it is a point where they cross."
+      "explanation": "A solution lies on both lines, so it is a point where they cross (:ref{#graph})."
     },
     {
       "id": "parallel-means",
@@ -511,26 +501,16 @@
       "stars": 2,
       "topic": "Equations as lines",
       "question": "Two equations draw the same line. How many solutions does the system have?",
-      "options": [
-        "None",
-        "Infinitely many",
-        "Exactly two",
-        "Exactly one"
-      ],
+      "options": ["None", "Infinitely many", "Exactly two", "Exactly one"],
       "answer": 1,
-      "explanation": "Every point on the line lies on both graphs, so every one is a solution."
+      "explanation": "Every point on the line lies on both graphs, so every one is a solution (:ref{#graph})."
     },
     {
       "id": "slope-sign",
       "stars": 2,
       "topic": "Equations as lines",
       "question": "What is the slope of $$3x + 2y = 6$$?",
-      "options": [
-        "$$-\\frac{3}{2}$$",
-        "$$3$$",
-        "$$\\frac{2}{3}$$",
-        "$$6$$"
-      ],
+      "options": ["$$-\\frac{3}{2}$$", "$$3$$", "$$\\frac{2}{3}$$", "$$6$$"],
       "answer": 0,
       "explanation": "Rearranging gives $$y = -\\frac{3}{2}x + 3$$, so the slope is $$-\\frac{a}{b} = -\\frac{3}{2}$$ (:ref{#slope})."
     },
@@ -570,7 +550,7 @@
       "options": [
         "Drawings always give the wrong answer",
         "Drawings are only approximate, while elimination gives the exact point",
-        "Algebra is quicker to draw",
+        "Algebra is faster to draw",
         "Lines can't be drawn accurately for whole numbers"
       ],
       "answer": 1,
@@ -609,14 +589,9 @@
       "stars": 1,
       "topic": "Three equations in three unknowns",
       "question": "How many equations are usually needed to pin down three unknowns?",
-      "options": [
-        "One",
-        "Two",
-        "Three",
-        "Six"
-      ],
+      "options": ["One", "Two", "Three", "Six"],
       "answer": 2,
-      "explanation": "Each independent fact removes one degree of freedom, so three unknowns usually need three equations (:ref{#linear-three})."
+      "explanation": "One equation leaves two of the unknowns free to choose. Each further equation that says something new pins down one more, so three unknowns usually need three equations (:ref{#linear-three})."
     },
     {
       "id": "three-zero-zero",
@@ -630,7 +605,7 @@
         "You must start again with a different unknown"
       ],
       "answer": 1,
-      "explanation": "An always-true line means one equation followed from the others. The system then has the solutions of the remaining two, and may have infinitely many."
+      "explanation": "An always-true line means one equation followed from the others. The system then has the solutions of the remaining two, and may have infinitely many (:ref{#combining})."
     },
     {
       "id": "three-check-original",
@@ -644,7 +619,7 @@
         "Checking isn't needed"
       ],
       "answer": 0,
-      "explanation": "A slip while clearing fractions wouldn't show up in the cleared equations, so the check belongs in the original ones."
+      "explanation": "A slip while clearing fractions wouldn't show up in the cleared equations, so the check belongs in the original ones (:ref{#three-method})."
     }
   ]
 }

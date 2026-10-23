@@ -1,6 +1,6 @@
 {
   "title": "Review: Distance and angles",
-  "description": "Questions on the ideas in this guide, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
+  "description": "Questions on the ideas in this chapter, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
   "questions": [
     {
       "id": "distance-zero",
@@ -189,12 +189,7 @@
       "stars": 1,
       "topic": "Angles",
       "question": "How many angles do two rays from the same point make?",
-      "options": [
-        "Four",
-        "Two",
-        "It depends on the rays",
-        "One"
-      ],
+      "options": ["Four", "Two", "It depends on the rays", "One"],
       "answer": 1,
       "explanation": "The two rays split the plane into two regions, and each region with its two edge rays is an angle (:ref{#angle}). That is why a name for an angle needs a rule for which one it means."
     },
@@ -280,7 +275,7 @@
         "It is taken as given that the sector is the same fraction of every disc centred at the vertex"
       ],
       "answer": 3,
-      "explanation": "A bigger disc gives a bigger sector, but the same fraction of the disc. That is rule 2 of :ref{#disc-area}, taken as given."
+      "explanation": "A bigger disc gives a bigger sector, but the same fraction of the disc. That is rule 2 of :ref{#disc-area}, taken as given in this chapter. The Area and scaling chapter proves it (:ref{#area-and-scaling/sector-scaling})."
     },
     {
       "id": "why-360",
@@ -350,7 +345,7 @@
         "Their angles add up to $$180^\\circ$$"
       ],
       "answer": 0,
-      "explanation": "The rules for right triangles take the full match as given (:ref{#right-triangle-rule}). The others are proved from it: :ref{#pythagoras}, :ref{#triangle-angle-sum} and :ref{#right-triangle-area}."
+      "explanation": "The rules for right triangles take the full match as given (:ref{#right-triangle-rule}). The others are proved from it: :ref{#pythagoras}, :ref{#triangle-angle-sum} and :ref{#right-triangle-area}. The Isometries chapter later proves that the hypotenuses and angles match (:ref{#isometries/right-triangles-congruent})."
     },
     {
       "id": "other-two-angles",

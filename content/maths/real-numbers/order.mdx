@@ -3,15 +3,15 @@ title: Order and inequalities
 description: Comparing real numbers, the rules for inequalities, and some useful inequalities.
 ---
 
-Saying that one number is bigger than another is a statement about a difference: $$7$$ is bigger
-than $$4$$ because $$7 - 4$$ is positive. So the rules for positive numbers from the
-[previous page](./positivity.mdx) turn straight into rules for inequalities. This page proves them,
-and then uses them for some inequalities that come up again and again.
+You know that $$7$$ is bigger than $$4$$, and the reason is that $$7 - 4$$ is positive. Every
+comparison works like this: $$a > b$$ says that $$a - b$$ is positive. So the rules for positive
+numbers from [Positive and negative](./positivity.mdx) turn straight into rules for inequalities. In
+this guide we'll prove them, and then use them for some inequalities that come up again and again.
 
 ## Comparing numbers
 
 On the number line, one number is less than another when it sits further to the left. To turn that
-picture into something we can calculate with, look at the step from one number to the other. To get
+picture into something you can calculate with, look at the step from one number to the other. To get
 from $$4$$ to $$7$$ you move $$3$$ to the right, so $$7$$ is the bigger one. In general, a number is
 bigger than another exactly when the step from the smaller to the bigger is to the right, that is,
 when their difference is positive. So comparing two numbers comes down to checking whether a
@@ -20,8 +20,8 @@ difference is positive, which the previous page already has rules for.
 :::definition[Order of real numbers]{#real-order}
 
 For real numbers $$a$$ and $$b$$, $$a$$ is **less than** $$b$$, written $$a < b$$, if $$b - a$$ is
-positive. We also write $$b > a$$ for the same thing. We write $$a \le b$$ when $$a < b$$ or
-$$a = b$$, and $$b \ge a$$ for the same thing.
+positive. This is also written $$b > a$$. The notation $$a \le b$$ means $$a < b$$ or $$a = b$$, and
+$$b \ge a$$ means the same.
 
 :::
 
@@ -39,9 +39,9 @@ rules say which moves keep that order. Sliding both points the same distance kee
 which is why you can add the same number to both sides. Stretching the line out from $$0$$ by a
 positive amount keeps the order too, which is why you can multiply both sides by a positive number.
 But multiplying by a negative number flips the line over at $$0$$, so left and right swap, and the
-inequality turns around. The other two rules are just as natural: of two different points, one must
-be to the left of the other, and if one point is left of a second, which is left of a third, then
-the first is left of the third.
+inequality turns around. The other two rules are as natural: of two different points, one must be to
+the left of the other, and if one point is left of a second, which is left of a third, then the
+first is left of the third.
 
 Try it: add the same number to both points, and watch them slide together.
 
@@ -114,7 +114,7 @@ too.
 **Part 1.** Adding $$c$$ to both sides of $$a < b$$ gives $$a + c < b + c$$, and adding $$b$$ to
 both sides of $$c < d$$ gives $$b + c < b + d$$. Chaining the two, $$a + c < b + d$$.
 
-**Part 2.** We go from $$ac$$ to $$bd$$ in two steps, changing one factor at a time. First,
+**Part 2.** The proof goes from $$ac$$ to $$bd$$ in two steps, changing one factor at a time. First,
 $$ac \le bc$$: if $$c = 0$$ both sides are $$0$$, and if $$c > 0$$ this is rule 4. Second, $$b$$ is
 positive, since $$b > a \ge 0$$, so multiplying $$c < d$$ by $$b$$ gives $$bc < bd$$. Chaining,
 $$ac < bd$$.
@@ -231,8 +231,9 @@ For example, $$\frac{5}{8} < \frac{2}{3}$$ because $$5 \cdot 3 = 15$$ is less th
 $$8 \cdot 2 = 16$$. The denominators must be positive: with a negative one, multiplying through
 reverses the inequality.
 
-A curious fact follows. Adding the tops and adding the bottoms of two fractions is **not** how to
-add them, but it does give a number between them.
+Adding the tops and adding the bottoms of two fractions is **not** how to add them, but it does give
+a number between them. For $$\frac{a}{b}$$ and $$\frac{c}{d}$$, the fraction $$\frac{a + c}{b + d}$$
+is called their **mediant**.
 
 :::proposition[The mediant lies between]{#mediant}
 
@@ -247,11 +248,11 @@ Let $$b > 0$$ and $$d > 0$$, and suppose $$\frac{a}{b} < \frac{c}{d}$$. Then
 :::proof{source="https://en.wikipedia.org/wiki/Mediant_(mathematics)#Properties"}
 
 By :ref{#cross-multiplying-inequality}, the assumption says $$ad < bc$$. All the denominators are
-positive, so each inequality we want can also be checked by cross-multiplying.
+positive, so each inequality to be proved can also be checked by cross-multiplying.
 
-- **Left inequality.** We need $$a(b + d) < (a + c)b$$, that is, $$ab + ad < ab + bc$$. Subtracting
+- **Left inequality.** It says $$a(b + d) < (a + c)b$$, that is, $$ab + ad < ab + bc$$. Subtracting
   $$ab$$ from both sides, this is $$ad < bc$$, which is true.
-- **Right inequality.** We need $$(a + c)d < c(b + d)$$, that is, $$ad + cd < bc + cd$$. Subtracting
+- **Right inequality.** It says $$(a + c)d < c(b + d)$$, that is, $$ad + cd < bc + cd$$. Subtracting
   $$cd$$, this is again $$ad < bc$$.
 
 :::
@@ -283,8 +284,8 @@ positive by :ref{#inverse-sign}, gives $$a < \frac{a + b}{2} < b$$.
 
 So no real number has a "next" one: between any two there is always another, and so infinitely many.
 
-The same idea, with the decimals from the [real line](./real-line.mdx), settles the question about
-$$0.999\ldots$$.
+The rules on this page, with the decimals from the [real line](./real-line.mdx), settle the question
+about $$0.999\ldots$$.
 
 :::proposition[0.999… is 1]{#point-nine}
 
@@ -296,19 +297,20 @@ The decimal $$0.999\ldots$$, with $$9$$s forever, stands for the number $$1$$.
 
 Let $$x$$ be the number that $$0.999\ldots$$ stands for. Cut off after $$n$$ places, the decimal is
 $$0.99\ldots9 = 1 - \frac{1}{10^n}$$, so by :ref{#no-gaps}, $$x$$ lies between that and
-$$1 - \frac{1}{10^n} + \frac{1}{10^n} = 1$$. So for every $$n$$,
+$$1 - \frac{1}{10^n} + \frac{1}{10^n} = 1$$. So
 
 ```math
 1 - \frac{1}{10^n} \le x \le 1, \qquad \text{that is,} \qquad 0 \le 1 - x \le \frac{1}{10^n}
 ```
 
-for every $$n$$. We show $$1 - x = 0$$ by contradiction (:ref{#basic-proofs/contradiction}).
+for every $$n$$. The rest of the proof shows $$1 - x = 0$$, by contradiction
+(:ref{#basic-proofs/contradiction}).
 
 Suppose $$d = 1 - x$$ is positive. Then $$\frac{1}{d}$$ is a positive real number, so by part 2 of
 :ref{#no-gaps} it is less than some positive integer $$N$$. If $$N$$ has $$k$$ digits, then
-$$N < 10^k$$, so $$\frac{1}{d} < 10^k$$. By :ref{#reciprocal-order}, $$d > \frac{1}{10^k}$$. But the
-inequality above, with $$n = k$$, says $$d \le \frac{1}{10^k}$$. This is a contradiction, so $$d$$
-is not positive. Since $$d \ge 0$$, it must be $$0$$, and $$x = 1$$.
+$$N < 10^k$$, so $$\frac{1}{d} < 10^k$$. By :ref{#reciprocal-order}, $$d > \frac{1}{10^k}$$. But
+$$0 \le 1 - x \le \frac{1}{10^n}$$ with $$n = k$$ says $$d \le \frac{1}{10^k}$$. This is a
+contradiction, so $$d$$ is not positive. Since $$d \ge 0$$, it must be $$0$$, and $$x = 1$$.
 
 :::
 
@@ -318,11 +320,11 @@ bigger than every integer.
 
 ## Sums of squares
 
-A square is never negative (:ref{#squares-positive}). Applying that to $$a - b$$ gives a
-surprisingly useful inequality. Try $$3$$ and $$5$$: the sum of their squares is $$9 + 25 = 34$$,
-while twice their product is $$2 \cdot 15 = 30$$. The difference is $$4$$, which is the square of
-the gap $$5 - 3 = 2$$. That always happens, so the difference can never be negative, and it is $$0$$
-only when the two numbers are equal.
+A square is never negative (:ref{#squares-positive}). Applying that to $$a - b$$ gives a useful
+inequality. Try $$3$$ and $$5$$: the sum of their squares is $$9 + 25 = 34$$, while twice their
+product is $$2 \cdot 15 = 30$$. The difference is $$4$$, which is the square of the gap
+$$5 - 3 = 2$$. That always happens, so the difference can never be negative, and it is $$0$$ only
+when the two numbers are equal.
 
 :::proposition[Sum of two squares]{#two-squares}
 

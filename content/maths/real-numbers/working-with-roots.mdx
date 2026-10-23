@@ -4,11 +4,12 @@ description:
   Conjugates, rationalising, numbers of the form a + b√2, and equations with square roots.
 ---
 
-Expressions with square roots in them can usually be rewritten in a more convenient form, and one
-identity does almost all the work: $$(x + y)(x - y) = x^2 - y^2$$. This page uses it to move square
-roots out of the bottom (or the top) of a fraction, to show that numbers like $$3 + 2\sqrt{2}$$ can
-be divided as well as multiplied, and then turns to equations with an unknown under a square root,
-where squaring both sides can add false solutions.
+Work out $$\frac{1}{\sqrt{2}}$$ by hand and you'll be dividing $$1$$ by $$1.41421\ldots$$, which is
+slow and fiddly. Write it as $$\frac{\sqrt{2}}{2}$$ instead and it's half of $$1.41421\ldots$$,
+which you can do in your head. One identity does almost all the work in rewrites like this:
+$$(x + y)(x - y) = x^2 - y^2$$. In this guide we'll use it to move square roots out of fractions and
+to divide numbers like $$3 + 2\sqrt{2}$$. Then we'll turn to equations with an unknown under a
+square root, where squaring both sides can add false solutions.
 
 ## Conjugates
 
@@ -31,15 +32,13 @@ two roots: $$\left(\sqrt{a} + \sqrt{b}\right)\left(\sqrt{a} - \sqrt{b}\right) = 
 
 ## Rationalising the denominator
 
-Dividing by a number like $$\sqrt{3}$$, which is about $$1.732$$, is awkward. Dividing by $$3$$ is
-easy. A fraction keeps its value when its top and bottom are multiplied by the same number, so we
-can pick a multiplier that turns the bottom into a rational number and moves the root up to the top,
-where it does no harm.
+Dividing by a number like $$\sqrt{3}$$, which is about $$1.732$$, is awkward, while dividing by
+$$3$$ is not. A fraction keeps its value when its top and bottom are multiplied by the same non-zero
+number (:ref{#numbers/cancel-product}). So you can pick a multiplier that turns the bottom into a
+rational number and moves the root up to the top, where it does no harm.
 
-A fraction with a square root on the bottom can be rewritten with a rational number on the bottom
-instead, by multiplying the top and the bottom by the same thing. This is called **rationalising the
-denominator**. It doesn't change the value: multiplying top and bottom by the same non-zero number
-gives an equal fraction (:ref{#numbers/cancel-product}).
+Rewriting a fraction in this way, so that its bottom is a rational number, is called **rationalising
+the denominator**.
 
 When the bottom is a single root, multiply by that root:
 
@@ -64,8 +63,8 @@ Multiply the top and the bottom by the conjugate $$3 + \sqrt{2}$$:
 = 3 + \sqrt{2}
 ```
 
-**Check:** $$\left(3 + \sqrt{2}\right)\left(3 - \sqrt{2}\right) = 7$$, so $$3 + \sqrt{2}$$ really is
-$$7$$ divided by $$3 - \sqrt{2}$$.
+**Check:** $$\left(3 + \sqrt{2}\right)\left(3 - \sqrt{2}\right) = 7$$, so $$3 + \sqrt{2}$$ is $$7$$
+divided by $$3 - \sqrt{2}$$.
 
 :::
 
@@ -92,7 +91,7 @@ The same trick can move a root from the top to the bottom, which is called **rat
 numerator**. That is useful when the top is a difference of two nearly equal roots. Such a
 difference is hard to judge, because both roots are close to the same number and almost all of each
 cancels. After the trick the roots are added on the bottom instead, and a sum of positive numbers is
-easy to estimate.
+at least as big as each of its parts, which gives a clear bound.
 
 :::example[How far apart are √101 and √100?]
 
@@ -121,13 +120,13 @@ as the numbers grow.
 
 Think of $$\sqrt{2}$$ as one new ingredient added to the rational numbers. A number like
 $$3 + 2\sqrt{2}$$ has a rational part, $$3$$, and a rational amount of $$\sqrt{2}$$, here $$2$$.
-Adding or subtracting two such numbers just combines the matching parts. Multiplying works too,
-because $$\sqrt{2}$$ times $$\sqrt{2}$$ is $$2$$, which falls back into the rational part. Dividing
-is less obvious, and conjugates are what make it work.
+Adding or subtracting two such numbers combines the matching parts. Multiplying works too, because
+$$\sqrt{2}$$ times $$\sqrt{2}$$ is $$2$$, which falls back into the rational part. Dividing is
+harder, and conjugates are what make it work.
 
-The two parts can also be read off without any doubt. Since $$\sqrt{2}$$ is irrational, no non-zero
-rational amount of it is a rational number, so the rational part and the amount of $$\sqrt{2}$$
-can't be traded for each other.
+The two parts of such a number are fixed. Since $$\sqrt{2}$$ is irrational, no non-zero rational
+amount of it is a rational number, so the rational part and the amount of $$\sqrt{2}$$ can't be
+traded for each other.
 
 Adding, subtracting and multiplying numbers like $$3 + 2\sqrt{2}$$ gives numbers of the same kind:
 
@@ -198,11 +197,10 @@ proved the same way.
 ## Equations with square roots
 
 To solve an equation with the unknown under a square root, the usual move is to get the root on its
-own and square both sides. But squaring forgets signs: $$3$$ and $$-3$$ both square to $$9$$. After
-squaring, the equation can no longer tell a number apart from its opposite. So squaring is not a
-safe step: as the [Linear equations](../linear-equations/equations.mdx) guide pointed out, it can
-let in false solutions, because $$A$$ and $$-A$$ have the same square. Here is exactly what squaring
-does and doesn't do.
+own and square both sides. But squaring forgets signs: $$3$$ and $$-3$$ both square to $$9$$. So
+squaring can let in false solutions, values that make the two sides opposites rather than equal. The
+[Linear equations](../linear-equations/equations.mdx) chapter made the same point. The proposition
+below says exactly what squaring does and doesn't do.
 
 :::proposition[Squaring both sides]{#squaring-sides}
 

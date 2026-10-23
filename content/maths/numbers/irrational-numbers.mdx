@@ -3,16 +3,20 @@ title: Irrational numbers
 description: Why no fraction squares to 2.
 ---
 
-The rational numbers are packed densely along the number line: between any two of them there is
-another. It would be natural to think they fill it completely. This page shows that they don't. A
-square with sides of length $$1$$ has a diagonal whose length squared is $$2$$ (by Pythagoras'
-theorem), yet no fraction squares to $$2$$. So there are lengths that no fraction can describe.
+Draw a square with sides $$1$$ cm long and measure its diagonal. You'll get a little over $$1.4$$
+cm. The [Pythagoras theorem](../distance-and-angles/pythagoras.mdx), proved in a later chapter, says
+the diagonal squared is exactly $$1^2 + 1^2 = 2$$.
+
+Fractions are packed densely along the number line, with another between any two, so it's natural to
+expect one of them to be this length. But no fraction squares to exactly $$2$$, and in this guide
+we'll prove it. So there are lengths that no fraction can describe.
 
 ## Hunting for a square root of 2
 
-Is there a rational number whose square is $$2$$? Such a number would be a **square root** of $$2$$,
-written $$\sqrt{2}$$. Since $$1^2 = 1$$ is too small and $$2^2 = 4$$ is too big, a positive square
-root would lie between $$1$$ and $$2$$. We can hunt for it one decimal place at a time:
+The question is whether some rational number has square $$2$$. Such a number would be a **square
+root** of $$2$$, written $$\sqrt{2}$$. Since $$1^2 = 1$$ is too small and $$2^2 = 4$$ is too big, a
+positive square root would lie between $$1$$ and $$2$$. You can hunt for it one decimal place at a
+time:
 
 | Try       | Square       |           |
 | --------- | ------------ | --------- |
@@ -31,10 +35,10 @@ searching ever will.
 
 The idea is that a fraction squaring to $$2$$ could be simplified forever. Suppose some fraction did
 square to $$2$$. The argument below shows that its top and bottom would both have to be even. Then
-we could cancel a $$2$$ from each, giving a fraction with smaller top and bottom that still squares
-to $$2$$. Its top and bottom would again both be even, so we could cancel again, and so on without
+you could cancel a $$2$$ from each, giving a fraction with smaller top and bottom that still squares
+to $$2$$. Its top and bottom would again both be even, so you could cancel again, and so on without
 end. But positive whole numbers can't be halved forever, so no such fraction can exist. The proof
-packages this neatly by starting with a fraction that has already been simplified as far as it can
+below shortens this by starting with a fraction that has already been simplified as far as it can
 go.
 
 :::theorem[No rational square root of 2]{#sqrt-two}
@@ -45,8 +49,8 @@ There is no rational number whose square is $$2$$.
 
 :::proof{source="https://en.wikipedia.org/wiki/Square_root_of_2#Proof_by_infinite_descent"}
 
-We argue by contradiction (:ref{#basic-proofs/contradiction}): we suppose such a number exists and
-show that this leads to something impossible. The plan is:
+The argument is by contradiction (:ref{#basic-proofs/contradiction}): suppose such a number exists,
+and show that this leads to something impossible. The plan is:
 
 1. write the number as a fraction $$\frac{m}{n}$$ in lowest form, so $$m$$ and $$n$$ are not both
    even;
@@ -58,9 +62,9 @@ $$0$$, because $$0^2 = 0$$. If it is negative, then $$-x$$ is positive, and
 $$(-x)^2 = (-x)(-x) = x \cdot x = 2$$ by :ref{#two-minus}. So either way there is a **positive**
 rational number whose square is $$2$$.
 
-By :ref{#lowest-form-exists}, we can write this positive number in lowest form as $$\frac{m}{n}$$,
+By :ref{#lowest-form-exists}, you can write this positive number in lowest form as $$\frac{m}{n}$$,
 with $$m$$ and $$n$$ positive integers. So $$m$$ and $$n$$ are **not both even**
-(:ref{#not-both-even}). This is the fact we will contradict.
+(:ref{#not-both-even}). This is the fact the proof will contradict.
 
 **Step 2: $$m$$ is even.** Squaring with :ref{#fraction-powers},
 
@@ -77,7 +81,7 @@ m^2 = 2n^2
 The right-hand side is $$2$$ times an integer, so $$m^2$$ is even. By
 :ref{#squares-parity-converse}, an integer with an even square is itself even, so $$m$$ is even.
 
-**Step 3: $$n$$ is even.** Since $$m$$ is even, we can write $$m = 2k$$ for some integer $$k$$.
+**Step 3: $$n$$ is even.** Since $$m$$ is even, you can write $$m = 2k$$ for some integer $$k$$.
 Substituting this into $$m^2 = 2n^2$$,
 
 ```math
@@ -89,7 +93,7 @@ Writing the left side as $$2 \cdot 2k^2$$ and cancelling the factor $$2$$ from b
 :ref{#squares-parity-converse} again, $$n$$ is even.
 
 **The contradiction.** Steps 2 and 3 show that $$m$$ and $$n$$ are both even, but step 1 says they
-are not both even. So our supposition was false, and no rational number has square $$2$$.
+are not both even. So the supposition was false, and no rational number has square $$2$$.
 
 :::
 
@@ -109,15 +113,15 @@ So if there is a number whose square is $$2$$, it must be irrational. The diagon
 square says there should be one, and its decimal starts $$1.41421356\ldots$$ without ever stopping
 or repeating. Making sense of numbers like this, and of their endless decimals, needs the **real
 numbers**, which fill in all the gaps between the fractions. They are the subject of the
-[Real numbers](../real-numbers/introduction.mdx) guide.
+[Real numbers](../real-numbers/introduction.mdx) chapter.
 
 ## Other square roots
 
 What made the proof work was one fact about $$2$$: if $$2$$ divides a square, it divides the number
 being squared. The number $$3$$ has the same property, so exactly the same argument works for it.
-For $$3$$, the proof uses :ref{#squares-three} in place of the rule for even squares. The argument
-must break down somewhere for $$4$$, since $$\sqrt{4} = 2$$ is rational, and it breaks at exactly
-this fact: $$4$$ divides $$2^2 = 4$$ but does not divide $$2$$.
+For $$3$$, the proof uses :ref{#squares-three} in place of :ref{#squares-parity-converse}. The
+argument must break down somewhere for $$4$$, since $$\sqrt{4} = 2$$ is rational, and it breaks at
+exactly this fact: $$4$$ divides $$2^2 = 4$$ but does not divide $$2$$.
 
 :::proposition[No rational square root of 3]{#sqrt-three}
 
@@ -129,12 +133,13 @@ There is no rational number whose square is $$3$$.
 
 The plan is the same as for :ref{#sqrt-two}, with "is a multiple of $$3$$" in place of "is even".
 
-**A fraction in lowest form.** Suppose some rational number squares to $$3$$. Exactly as before, we
-may take it to be positive and write it in lowest form as $$\frac{m}{n}$$ with $$m$$ and $$n$$
-positive integers (:ref{#lowest-form-exists}). In lowest form the only positive common divisor of
-$$m$$ and $$n$$ is $$1$$, so $$3$$ does **not** divide both of them.
+**A fraction in lowest form.** Suppose some rational number squares to $$3$$. As in the proof of
+:ref{#sqrt-two}, you can take it to be positive and write it in lowest form as $$\frac{m}{n}$$ with
+$$m$$ and $$n$$ positive integers (:ref{#lowest-form-exists}). In lowest form the only positive
+common divisor of $$m$$ and $$n$$ is $$1$$, so $$3$$ does **not** divide both of them.
 
-**$$m$$ is a multiple of $$3$$.** Squaring and cross-multiplying as before gives
+**$$m$$ is a multiple of $$3$$.** Squaring and cross-multiplying as in the proof of :ref{#sqrt-two}
+gives
 
 ```math
 m^2 = 3n^2
@@ -152,10 +157,10 @@ in lowest form. So no rational number has square $$3$$.
 
 :::
 
-The same method shows that $$\sqrt{5}$$, $$\sqrt{6}$$, $$\sqrt{7}$$ and many more are irrational
+The same method shows that $$\sqrt{5}$$, $$\sqrt{6}$$ and $$\sqrt{7}$$ are irrational
 (:ref{#ex-sqrt-six} does $$\sqrt{6}$$). In fact the square root of a positive integer is rational
-only when the integer is a perfect square like $$4$$ or $$9$$, though proving that in general needs
-facts about prime numbers that come later.
+exactly when the integer is a perfect square like $$4$$ or $$9$$. Proving that in general needs
+facts about prime numbers that these guides don't cover.
 
 ## Exercises
 
@@ -209,8 +214,8 @@ property: if they divide a square, they divide the number being squared
 ::::exercise{#ex-irrational-numbers-sqrt-five}
 
 Take as given that if $$5$$ divides $$m^2$$, then $$5$$ divides $$m$$, for any integer $$m$$. (This
-follows from facts about prime numbers that come later.) Prove that no rational number has square
-$$5$$.
+follows from facts about prime numbers that these guides don't cover.) Prove that no rational number
+has square $$5$$.
 
 :::solution
 
@@ -269,7 +274,8 @@ Let $$a$$ be a number with $$a^2 = 2$$, which is irrational if it exists (:ref{#
 2. False. The number $$-a$$ is irrational too: if $$-a$$ were rational, its opposite $$a$$ would be
    rational. But $$a + (-a) = 0$$, which is rational.
 
-So the irrational numbers are not closed under adding or multiplying, unlike the rational numbers.
+So adding or multiplying two irrational numbers can give a rational number. Two rational numbers
+always give a rational number.
 
 :::
 
