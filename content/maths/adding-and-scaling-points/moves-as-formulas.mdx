@@ -1,0 +1,651 @@
+---
+title: Moves as formulas
+description:
+  Slides, half turns, zooms, flips and the quarter turn written as formulas, and what each does to
+  distances and fixed points.
+---
+
+Imagine a character walking across the screen of an old video game. The program never drags the
+character anywhere. Each frame it adds the same pair of numbers to the position of every pixel, so
+the whole character steps along without bending or turning. When the character turns round to walk
+back, the program changes the sign of one coordinate of every pixel, measured from the character's
+middle, and the picture faces the other way.
+
+So each move is a calculation on pairs of numbers. A rule that takes the coordinates of a point and
+gives the coordinates of where it goes is a **formula** for the move. In this guide we'll write the
+slides, turns, zooms and flips of the Isometries chapter as formulas, and use them to prove what
+each move does.
+
+<SpriteFrames caption="Each frame the game adds the step (3, 1) to every pixel of the character, so the same corner moves by (3, 1) each time" />
+
+## Maps given by formulas
+
+A map of the plane (:ref{#isometries/map}) sends each point to exactly one point. In coordinates, a
+point is a pair of numbers, so a map is a rule that turns each pair into a pair. For example, the
+rule $$(x, y) \mapsto (x + 2, y - 1)$$, read "$$(x, y)$$ goes to $$(x + 2, y - 1)$$", is a map: it
+moves every point $$2$$ to the right and $$1$$ down.
+
+With adding and scaling points, each move of this guide fits in one line:
+
+- **Slides**: $$T_A(P) = P + A$$
+- **Half turns**: $$H_Q(P) = 2Q - P$$, about a point $$Q$$
+- **Zooms**: $$Z_{r,Q}(P) = Q + r(P - Q)$$, by $$r$$ about a point $$Q$$
+- **Flips in the axes**: $$R_1(x, y) = (x, -y)$$ and $$R_2(x, y) = (-x, y)$$
+- **The flip in the diagonal**: $$S(x, y) = (y, x)$$, a flip in the line $$y = x$$
+- **The quarter turn**: $$G_{90}(x, y) = (-y, x)$$, about the origin
+
+Try each one on the flag below before we look at them one at a time. Watch where the marked corner
+$$P = (3, 1)$$ lands, and which moves turn the flag to face the other way.
+
+<MoveExplorer />
+
+## Slides
+
+Every pixel of the game character takes the same step each frame. Adding a point does exactly that:
+adding $$A = (2, 1)$$ to any point moves it $$2$$ across and $$1$$ up, wherever it starts. So a
+slide is adding one fixed point to every point.
+
+:::definition[Slide by a point]{#slide-formula}
+
+Let $$A$$ be a point. The **slide by** $$A$$ is the map $$T_A$$ that sends each point $$P$$ to
+
+```math
+T_A(P) = P + A
+```
+
+read "$$T_A$$ of $$P$$". Here $$P + A$$ is the sum of points (:ref{#point-sum}).
+
+:::
+
+Written out in coordinates, with $$A = (a_1, a_2)$$, the slide sends $$(x, y)$$ to
+$$(x + a_1, y + a_2)$$. That is the slide of :ref{#coordinates/slide-distance}, with $$h = a_1$$ and
+$$k = a_2$$, so it keeps every distance. It also moves every point the same distance, the length of
+$$A$$: by :ref{#distance-norm},
+
+```math
+d\big(P, T_A(P)\big) = \big|(P + A) - P\big| = |A|
+```
+
+:::example[A slide by (2, 1)]
+
+Take $$A = (2, 1)$$. The slide sends $$P = (3, -2)$$ to $$(5, -1)$$ and $$M = (-1, 4)$$ to
+$$(1, 5)$$. The step from $$P$$ to $$M$$ is $$M - P = (-4, 6)$$, and the step between the two images
+is $$(1, 5) - (5, -1) = (-4, 6)$$, the same. So both pairs are $$\sqrt{16 + 36} = \sqrt{52}$$ apart,
+and each point has moved $$|A| = \sqrt{5}$$.
+
+:::
+
+In the picture, $$T_A$$ is the slide by the arrow from $$O$$ to $$A$$
+(:ref{#isometries/translation}). That every point also moves in the direction of that arrow is a
+fact about directions, and it needs lines in coordinates. Lines get formulas in the next chapter, so
+for now we use the two facts about distance that the formula gives.
+
+## Half turns about any point
+
+A half turn about a point $$Q$$ sends each point $$P$$ straight through $$Q$$ to the same distance
+on the other side. In steps: the step from $$P$$ to $$Q$$ is $$Q - P$$, and taking that same step
+again from $$Q$$ lands at $$Q + (Q - P) = 2Q - P$$. For example, $$(3, 1)$$ is $$2$$ to the right of
+$$(1, 1)$$, so the half turn about $$(1, 1)$$ sends it to the point $$2$$ to the left, $$(-1, 1)$$.
+The formula agrees: $$2(1, 1) - (3, 1) = (-1, 1)$$.
+
+:::proposition[A half turn about any point]{#half-turn-formula}
+
+Let $$Q$$ be a point. The half turn about $$Q$$, which is the reflection through $$Q$$, sends each
+point $$P$$ to
+
+```math
+H_Q(P) = 2Q - P
+```
+
+About the origin this is $$H_O(P) = -P$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Point_reflection#Formula"}
+
+If $$P = Q$$, then $$2Q - Q = Q$$, and the half turn about $$Q$$ leaves its centre where it is.
+
+Now let $$P \ne Q$$, and write $$P' = 2Q - P$$. Then $$P' \ne P$$, since $$2Q - P = P$$ would give
+$$2Q = 2P$$, and halving both sides, $$Q = P$$. By the rules for adding and scaling
+(:ref{#sum-rules}, :ref{#scale-sum-rules}, :ref{#scale-twice}),
+
+```math
+\tfrac{1}{2}(P + P') = \tfrac{1}{2}\big(P + 2Q - P\big) = \tfrac{1}{2}(2Q) = Q
+```
+
+So $$Q$$ is the midpoint of the segment $$PP'$$, by :ref{#midpoint-formula}. That says $$P'$$ is
+where the reflection through $$Q$$ sends $$P$$ (:ref{#isometries/point-reflection}), and by
+:ref{#isometries/half-turn} the reflection through $$Q$$ is the half turn about $$Q$$.
+
+For $$Q = O$$, $$2O - P = O - P = -P$$.
+
+:::
+
+The formula $$H_O(P) = -P$$ agrees with :ref{#negative-half-turn}, which found that $$P \mapsto -P$$
+is the half turn about the origin.
+
+```plane
+point P 5 3 ne
+point Q 2 -1 se
+point P' -1 -5 sw
+segment P P' color=blue
+ticks P Q 1
+ticks Q P' 1
+caption "The half turn about Q = (2, −1) sends P = (5, 3) to P' = 2Q − P = (−1, −5), with Q the midpoint of PP'"
+```
+
+:::example[A half turn about (2, −1)]
+
+Take $$Q = (2, -1)$$ and $$P = (5, 3)$$. Then
+
+```math
+H_Q(P) = 2(2, -1) - (5, 3) = (4, -2) - (5, 3) = (-1, -5)
+```
+
+As a check, the midpoint of $$(5, 3)$$ and $$(-1, -5)$$ is $$\frac{1}{2}(4, -2) = (2, -1)$$, which
+is $$Q$$.
+
+:::
+
+## Zooms about any point
+
+Pinch a photo on a phone screen and spread your fingers. The spot between your fingers, call it
+$$Q$$, stays still, and every other spot moves straight away from it. To find where a point $$P$$
+goes, take the step from $$Q$$ to $$P$$, stretch it by the zoom factor, and take the stretched step
+from $$Q$$. With $$Q = (1, 0)$$ and a zoom by $$2$$, the point $$P = (3, 1)$$ is a step of
+$$(2, 1)$$ from $$Q$$. Doubled, that step is $$(4, 2)$$, which lands at $$(5, 2)$$.
+
+:::definition[A zoom about any point]{#zoom-formula}
+
+Let $$Q$$ be a point and $$r > 0$$ a number. The **zoom by** $$r$$ **about** $$Q$$ is the map that
+sends each point $$P$$ to
+
+```math
+Z_{r,Q}(P) = Q + r(P - Q)
+```
+
+About the origin it is $$Z_r(P) = rP$$, the zoom of :ref{#coordinates/origin-zoom}.
+
+:::
+
+A zoom by $$r$$ should multiply every distance by $$r$$, and should move each point to $$r$$ times
+its old distance from the centre. The formula does both.
+
+:::proposition[A zoom multiplies distances]{#zoom-formula-distances}
+
+Let $$Q$$ be a point and $$r > 0$$. For all points $$P$$ and $$M$$,
+
+```math
+d\big(Z_{r,Q}(P), Z_{r,Q}(M)\big) = r\,d(P, M) \qquad d\big(Q, Z_{r,Q}(P)\big) = r\,d(Q, P)
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Homothety#Derivation_of_the_properties"}
+
+Write $$Z$$ for $$Z_{r,Q}$$. By the rules for adding and scaling (:ref{#sum-rules},
+:ref{#scale-sum-rules}, :ref{#scale-twice}), the two copies of $$Q$$ cancel and the factor $$r$$
+comes out:
+
+```math
+Z(P) - Z(M) = \big(Q + r(P - Q)\big) - \big(Q + r(M - Q)\big) = r(P - Q) - r(M - Q) = r(P - M)
+```
+
+So by :ref{#distance-norm} and :ref{#norm-scale}, and since $$|r| = r$$ for $$r > 0$$,
+
+```math
+d\big(Z(P), Z(M)\big) = |r(P - M)| = r\,|P - M| = r\,d(P, M)
+```
+
+For the second part, $$Z(Q) = Q + r(Q - Q) = Q + rO = Q$$, so the centre stays where it is. Taking
+$$M = Q$$ in the first part gives $$d\big(Z(P), Q\big) = r\,d(P, Q)$$.
+
+:::
+
+For example, take $$Q = (1, 0)$$ and $$r = 2$$ again. The points $$P = (3, 1)$$ and $$M = (2, 2)$$
+are $$\sqrt{1 + 1} = \sqrt{2}$$ apart. Their images are $$(5, 2)$$ and
+$$(1, 0) + 2(1, 2) = (3, 4)$$, which are $$\sqrt{4 + 4} = 2\sqrt{2}$$ apart.
+
+$$Z_{r,Q}$$ is the dilation by $$r$$ about $$Q$$ from :ref{#isometries/dilation}. That definition
+asks for two things: the image is $$r$$ times as far from $$Q$$, and it lies on the ray from $$Q$$
+through $$P$$. The proposition proves the first. The second is a fact about rays, and the next
+chapter, where rays get formulas, proves it.
+
+## Flips in the axes
+
+Fold a sheet of squared paper along the $$x$$-axis. The point $$(3, 2)$$ lands on $$(3, -2)$$: it
+stays the same distance across and its height changes sign. Every point does the same, and points on
+the fold stay put. The "flip horizontal" button of a photo editor does this with the sign of the
+first coordinate instead, measured from the middle of the photo.
+
+:::proposition[Reflections in the axes]{#axis-reflections}
+
+The map $$R_1(x, y) = (x, -y)$$ is the reflection (:ref{#isometries/reflection}) in the $$x$$-axis.
+The map $$R_2(x, y) = (-x, y)$$ is the reflection in the $$y$$-axis.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Reflection_(mathematics)#Reflection_across_a_line_in_the_plane"}
+
+Let $$P = (x, y)$$ and $$P' = R_1(P) = (x, -y)$$. The $$x$$-axis is made of the points with second
+coordinate $$0$$.
+
+**If $$y = 0$$**, then $$P$$ is on the $$x$$-axis and $$P' = (x, 0) = P$$. The reflection leaves
+points of the mirror where they are, so the two maps agree at $$P$$.
+
+**If $$y \ne 0$$**, then $$-y \ne y$$, so $$P' \ne P$$. By :ref{#midpoint-formula}, the midpoint of
+$$PP'$$ is
+
+```math
+\tfrac{1}{2}(P + P') = \tfrac{1}{2}(2x, 0) = (x, 0)
+```
+
+which is on the $$x$$-axis. Both $$P$$ and $$P'$$ have first coordinate $$x$$, so both lie on the
+vertical line of points with that first coordinate. By rule 1 of
+:ref{#distance-and-angles/line-rules}, that vertical line is the line $$PP'$$. By rule 3 of
+:ref{#coordinates/coordinate-rules}, every vertical line is perpendicular to every horizontal line,
+and the $$x$$-axis is the horizontal line $$y = 0$$. So the $$x$$-axis passes through the midpoint
+of $$PP'$$ and is perpendicular to it: it is the perpendicular bisector of $$PP'$$
+(:ref{#distance-and-angles/perpendicular-bisector}). By :ref{#isometries/reflection}, the reflection
+in the $$x$$-axis sends $$P$$ to $$P'$$.
+
+The two maps agree at every point, so they are equal (:ref{#isometries/map-equality}). The proof for
+$$R_2$$ is the same with the two coordinates trading places: the midpoint of $$(x, y)$$ and
+$$(-x, y)$$ is $$(0, y)$$ on the $$y$$-axis, and the two points lie on the horizontal line of points
+with second coordinate $$y$$, which is perpendicular to the $$y$$-axis.
+
+:::
+
+## The flip in the diagonal
+
+The order of a pair matters, since the $$x$$-coordinate always comes first
+(:ref{#coordinates/coordinates}). So $$(1, 4)$$ is $$1$$ across and $$4$$ up, while $$(4, 1)$$ is
+$$4$$ across and $$1$$ up. Plot both, and they are mirror images of each other in the diagonal line
+$$y = x$$, which runs through $$(0, 0)$$, $$(1, 1)$$ and $$(2, 2)$$. So swapping the two coordinates
+is a flip.
+
+```plane
+point A -0.5 -0.5 hidden
+point B 5 5 hidden
+point P 1 4 nw
+point P' 4 1 se
+point M 2.5 2.5 nw
+line A B color=purple
+text 3.4 4.4 "y = x" color=purple
+segment P P' dashed
+right B M P'
+ticks P M 1
+ticks M P' 1
+caption "Swapping the coordinates sends P = (1, 4) to P' = (4, 1). The line y = x crosses PP' at its midpoint M, square on."
+```
+
+The line $$y = x$$ is the graph (:ref{#linear-equations/graph}) of the equation $$x - y = 0$$, so it
+is a line, by :ref{#linear-equations/line}. Its points are the points $$(t, t)$$, one for each
+number $$t$$.
+
+:::proposition[Reflection in the diagonal]{#diagonal-reflection}
+
+The map $$S(x, y) = (y, x)$$ is the reflection in the line $$y = x$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Reflection_(mathematics)#Reflection_across_a_line_in_the_plane"}
+
+Write $$L$$ for the line $$y = x$$. Let $$P = (x, y)$$ and $$P' = S(P) = (y, x)$$.
+
+**If $$x = y$$**, then $$P$$ is on $$L$$ and $$P' = P$$. The reflection in $$L$$ leaves $$P$$ where
+it is too.
+
+**If $$x \ne y$$**, then $$P' \ne P$$. Take any point $$X = (t, t)$$ of $$L$$. By the distance
+formula (:ref{#coordinates/coordinate-plane}),
+
+```math
+d(X, P)^2 = (x - t)^2 + (y - t)^2 \qquad d(X, P')^2 = (y - t)^2 + (x - t)^2
+```
+
+These are the same two squares added in the other order, so $$d(X, P) = d(X, P')$$. By
+:ref{#distance-and-angles/perpendicular-bisector-rule}, every point of $$L$$ lies on the
+perpendicular bisector $$K$$ of $$PP'$$. In particular the two different points $$(0, 0)$$ and
+$$(1, 1)$$ lie on both $$L$$ and $$K$$. By rule 1 of :ref{#distance-and-angles/line-rules} only one
+line passes through them, so $$K = L$$. So $$L$$ is the perpendicular bisector of $$PP'$$, and the
+reflection in $$L$$ sends $$P$$ to $$P'$$ (:ref{#isometries/reflection}).
+
+The two maps agree at every point, so they are equal (:ref{#isometries/map-equality}).
+
+:::
+
+## The quarter turn
+
+Turn a sheet of squared paper a quarter turn anticlockwise about the origin. The positive $$x$$-axis
+swings up onto the positive $$y$$-axis, so $$E_1 = (1, 0)$$ goes to $$E_2 = (0, 1)$$. The positive
+$$y$$-axis swings round to the left, so $$E_2$$ goes to $$-E_1 = (-1, 0)$$. A point $$(x, y)$$ is
+$$x$$ steps of $$E_1$$ and $$y$$ steps of $$E_2$$ (:ref{#unit-combination}), so after the turn it is
+$$x$$ steps of $$E_2$$ and $$y$$ steps of $$-E_1$$. That is the point $$(-y, x)$$.
+
+:::proposition[The quarter turn]{#quarter-turn}
+
+Let $$G_{90}(x, y) = (-y, x)$$. For every point $$P \ne O$$:
+
+1. **Same distance**: $$d\big(O, G_{90}(P)\big) = d(O, P)$$
+2. **A right angle**: the angle at $$O$$ between the segments $$OP$$ and $$OG_{90}(P)$$ is a right
+   angle
+
+Also $$G_{90}(E_1) = E_2$$ and $$G_{90}(E_2) = -E_1$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Rotation_matrix#Common_2D_rotations"}
+
+Let $$P = (x, y) \ne O$$ and $$P' = G_{90}(P) = (-y, x)$$. Write $$a = d(O, P)$$, which is more than
+$$0$$ (:ref{#coordinates/distance-zero}).
+
+**Same distance.** By the distance formula (:ref{#coordinates/coordinate-plane}) and
+:ref{#numbers/two-minus},
+
+```math
+d(O, P') = \sqrt{(-y)^2 + x^2} = \sqrt{x^2 + y^2} = d(O, P) = a
+```
+
+**A right angle.** The step from $$P$$ to $$P'$$ is $$(-y - x, x - y)$$, so
+
+```math
+d(P, P')^2 = (x + y)^2 + (x - y)^2 = 2x^2 + 2y^2 = a^2 + a^2
+```
+
+The three points form a triangle. They are different, since $$d(O, P) = d(O, P') = a > 0$$ and
+$$d(P, P') = \sqrt{2}\,a > 0$$. And they are not on one line: otherwise one of them would lie
+between the other two (rule 3 of :ref{#distance-and-angles/segment-rules}), and by rule 1 its
+distances to the other two would add up to the distance between them. But $$a + a = 2a$$ is not
+$$\sqrt{2}\,a$$, and $$a + \sqrt{2}\,a$$ is not $$a$$. So in the triangle $$POP'$$ the sides at
+$$O$$ have lengths $$a$$ and $$a$$, the third side has length $$c = \sqrt{2}\,a$$, and
+$$a^2 + a^2 = c^2$$. By :ref{#coordinates/pythagoras-converse}, the angle at $$O$$ is a right angle.
+
+**The unit points.** $$G_{90}(1, 0) = (0, 1)$$ and $$G_{90}(0, 1) = (-1, 0)$$.
+
+:::
+
+```plane
+point X1 -2.5 0 hidden
+point X2 4 0 hidden
+point Y1 0 -1 hidden
+point Y2 0 4 hidden
+point O 0 0 sw
+point P 3 1 e
+point P' -1 3 nw
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+segment O P color=blue
+segment O P' color=orange
+right P O P'
+caption "G₉₀ sends P = (3, 1) to P' = (−1, 3), the same distance √10 from O and at a right angle to OP"
+```
+
+The proposition proves that $$G_{90}$$ turns each point through a right angle about $$O$$, keeping
+its distance. A quarter turn clockwise does that too, so the proof alone doesn't say which way the
+turn goes. The unit points settle it for $$E_1$$: the positive $$x$$-axis goes onto the positive
+$$y$$-axis, which is anticlockwise. The flag in [Maps given by formulas](#maps-given-by-formulas)
+turns the same way. To show that every point turns anticlockwise, we'll write $$G_{90}$$ as two
+flips, one after the other, in :ref{#combining-moves-flips}, and then
+:ref{#isometries/crossing-mirrors} settles it.
+
+Turns by other angles, such as $$30^\circ$$, have formulas too. They need trigonometry, which comes
+in a later chapter.
+
+## Which moves keep distances
+
+In each formula, the step between two points changes in a way that keeps its length. A slide leaves
+the step alone, a half turn reverses it, and the flips and the quarter turn change the signs or the
+order of its two numbers. None of these changes the sum of the two squares in the distance formula.
+A zoom is the exception: it stretches every step by $$r$$.
+
+:::proposition[Which moves keep distances]{#formula-isometries}
+
+The maps $$T_A$$, $$H_Q$$, $$R_1$$, $$R_2$$, $$S$$ and $$G_{90}$$ are isometries
+(:ref{#isometries/isometry}). The zoom $$Z_{r,Q}$$ multiplies every distance by $$r$$, so it is an
+isometry exactly when $$r = 1$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_plane_isometry#Classification"}
+
+Take any points $$P = (x_1, y_1)$$ and $$M = (x_2, y_2)$$.
+
+**Slides and half turns.** The steps between the images are $$(M + A) - (P + A) = M - P$$ and
+$$(2Q - M) - (2Q - P) = P - M$$, by :ref{#sum-rules}. Both have length $$|M - P|$$
+(:ref{#distance-norm}), so both distances equal $$d(P, M)$$.
+
+**Flips and the quarter turn.** The two differences of coordinates between $$P$$ and $$M$$ are
+$$u = x_2 - x_1$$ and $$v = y_2 - y_1$$. Between the images they become:
+
+- **$$R_1$$**: $$u$$ and $$-v$$
+- **$$R_2$$**: $$-u$$ and $$v$$
+- **$$S$$**: $$v$$ and $$u$$
+- **$$G_{90}$$**: $$-v$$ and $$u$$, since $$-y_2 - (-y_1) = -v$$
+
+A number and its negative have the same square (:ref{#numbers/two-minus}), so in every case the sum
+of the two squares is still $$u^2 + v^2$$. By the distance formula
+(:ref{#coordinates/coordinate-plane}), the distance between the images is $$d(P, M)$$.
+
+**Zooms.** By :ref{#zoom-formula-distances}, $$Z_{r,Q}$$ multiplies every distance by $$r$$. If
+$$r = 1$$, then $$Z_{1,Q}(P) = Q + (P - Q) = P$$, so it is the identity and keeps every distance. If
+$$r \ne 1$$, take any point $$P \ne Q$$. Then $$d(Q, P) > 0$$ and
+$$d\big(Z_{r,Q}(Q), Z_{r,Q}(P)\big) = r\,d(Q, P) \ne d(Q, P)$$, so the zoom is not an isometry.
+
+:::
+
+The Isometries chapter took from the tracing paper that slides, turns and flips keep distances
+(:ref{#isometries/basic-isometries}). For these six moves, the formulas prove it with a line of
+algebra each.
+
+## Fixed points
+
+A fixed point of a map is a point it leaves where it is (:ref{#isometries/fixed-point}). With a
+formula, finding the fixed points means solving an equation: the point $$P$$ is fixed exactly when
+$$F(P) = P$$. For the flip $$R_1$$, that says $$(x, -y) = (x, y)$$, so $$-y = y$$, which happens
+exactly when $$y = 0$$.
+
+:::proposition[Fixed points of the moves]{#formula-fixed-points}
+
+1. **Slides**: if $$A \ne O$$, then $$T_A$$ has no fixed points. ($$T_O$$ is the identity, which
+   fixes every point.)
+2. **Half turns**: $$H_Q$$ fixes $$Q$$ and no other point
+3. **Zooms**: if $$r \ne 1$$, then $$Z_{r,Q}$$ fixes $$Q$$ and no other point
+4. **Flips in the axes**: $$R_1$$ fixes exactly the points of the $$x$$-axis, and $$R_2$$ exactly
+   the points of the $$y$$-axis
+5. **The flip in the diagonal**: $$S$$ fixes exactly the points of the line $$y = x$$
+6. **The quarter turn**: $$G_{90}$$ fixes $$O$$ and no other point
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_plane_isometry#Classification"}
+
+In each case, solve $$F(P) = P$$.
+
+1. $$P + A = P$$ says that $$A$$ is a step from $$P$$ to $$P$$. By :ref{#difference-step}, the only
+   such step is $$P - P = O$$. So if $$A \ne O$$, no point is fixed.
+2. $$2Q - P = P$$ exactly when $$2Q = 2P$$, adding $$P$$ to both sides. Halving both sides
+   (:ref{#scale-twice}), that happens exactly when $$P = Q$$.
+3. Subtracting $$Q$$ from both sides, $$Q + r(P - Q) = P$$ exactly when $$r(P - Q) = P - Q$$, that
+   is, when $$(r - 1)(P - Q) = O$$ (:ref{#scale-sum-rules}). Since $$r - 1 \ne 0$$, by
+   :ref{#scale-cancel} this happens exactly when $$P - Q = O$$, that is, when $$P = Q$$.
+4. $$(x, -y) = (x, y)$$ exactly when $$-y = y$$, that is, when $$y = 0$$: the points of the
+   $$x$$-axis. In the same way $$(-x, y) = (x, y)$$ exactly when $$x = 0$$: the points of the
+   $$y$$-axis.
+5. $$(y, x) = (x, y)$$ exactly when $$x = y$$: the points of the line $$y = x$$.
+6. $$(-y, x) = (x, y)$$ exactly when $$-y = x$$ and $$x = y$$. Then $$y = -y$$, so $$y = 0$$, and
+   then $$x = 0$$. So $$O$$ is the only fixed point, and it is fixed, since $$(-0, 0) = (0, 0)$$.
+
+:::
+
+These answers match the Isometries chapter: a slide moves every point, a turn or a zoom keeps only
+its centre, and a flip keeps its whole mirror. The table collects what this guide found.
+
+| Move                     | Formula                       | Distances           | Fixed points       |
+| ------------------------ | ----------------------------- | ------------------- | ------------------ |
+| Slide by $$A \ne O$$     | $$T_A(P) = P + A$$            | kept                | none               |
+| Half turn about $$Q$$    | $$H_Q(P) = 2Q - P$$           | kept                | $$Q$$              |
+| Zoom by $$r \ne 1$$      | $$Z_{r,Q}(P) = Q + r(P - Q)$$ | multiplied by $$r$$ | $$Q$$              |
+| Flip in the $$x$$-axis   | $$R_1(x, y) = (x, -y)$$       | kept                | the $$x$$-axis     |
+| Flip in the $$y$$-axis   | $$R_2(x, y) = (-x, y)$$       | kept                | the $$y$$-axis     |
+| Flip in $$y = x$$        | $$S(x, y) = (y, x)$$          | kept                | the line $$y = x$$ |
+| Quarter turn about $$O$$ | $$G_{90}(x, y) = (-y, x)$$    | kept                | $$O$$              |
+
+## Exercises
+
+:::::accordion[Exercises on moves as formulas, with solutions]
+
+::::exercise{#ex-moves-as-formulas-images}
+
+Let $$P = (4, -1)$$ and $$Q = (1, 2)$$. Find each image of $$P$$:
+
+1. $$T_A(P)$$ for $$A = (-2, 3)$$
+2. $$H_Q(P)$$
+3. $$Z_{3,Q}(P)$$
+4. $$R_1(P)$$, $$R_2(P)$$, $$S(P)$$ and $$G_{90}(P)$$
+
+:::solution
+
+1. $$T_A(P) = (4, -1) + (-2, 3) = (2, 2)$$ (:ref{#slide-formula})
+2. $$H_Q(P) = 2(1, 2) - (4, -1) = (2, 4) - (4, -1) = (-2, 5)$$ (:ref{#half-turn-formula})
+3. The step from $$Q$$ to $$P$$ is $$P - Q = (3, -3)$$. Tripled, it is $$(9, -9)$$, so
+   $$Z_{3,Q}(P) = (1, 2) + (9, -9) = (10, -7)$$ (:ref{#zoom-formula}).
+4. $$R_1(P) = (4, 1)$$, $$R_2(P) = (-4, -1)$$, $$S(P) = (-1, 4)$$ and
+   $$G_{90}(P) = (-(-1), 4) = (1, 4)$$
+
+:::
+
+::::
+
+::::exercise{#ex-moves-as-formulas-centre}
+
+A half turn sends $$(5, 1)$$ to $$(-1, 7)$$. Find its centre, and find where it sends the origin.
+
+:::solution
+
+The centre $$Q$$ is the midpoint of a point and its image (:ref{#half-turn-formula}), so by
+:ref{#midpoint-formula}
+
+```math
+Q = \tfrac{1}{2}\big((5, 1) + (-1, 7)\big) = \tfrac{1}{2}(4, 8) = (2, 4)
+```
+
+Check: $$2(2, 4) - (5, 1) = (4, 8) - (5, 1) = (-1, 7)$$. The origin goes to
+$$H_Q(O) = 2Q - O = (4, 8)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-moves-as-formulas-slide}
+
+Find the slide $$T_A$$ that sends $$(2, 5)$$ to $$(-1, 1)$$, and say how far it moves every point.
+Where does it send $$(0, 0)$$?
+
+:::solution
+
+We need $$(2, 5) + A = (-1, 1)$$. By :ref{#difference-step}, the only such $$A$$ is
+
+```math
+A = (-1, 1) - (2, 5) = (-3, -4)
+```
+
+Every point moves $$|A| = \sqrt{9 + 16} = 5$$ (:ref{#slide-formula}). The origin goes to
+$$O + A = (-3, -4)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-moves-as-formulas-zoom-centre}
+
+A zoom by $$3$$ sends $$(1, 1)$$ to $$(7, -5)$$. Find its centre $$Q$$.
+
+:::solution
+
+By :ref{#zoom-formula}, $$Q + 3\big((1, 1) - Q\big) = (7, -5)$$. Multiplying out with
+:ref{#scale-sum-rules}, the left side is $$Q + (3, 3) - 3Q = (3, 3) - 2Q$$. So
+
+```math
+(3, 3) - 2Q = (7, -5) \quad\text{so}\quad 2Q = (3, 3) - (7, -5) = (-4, 8) \quad\text{and}\quad Q = (-2, 4)
+```
+
+Check: the step from $$Q$$ to $$(1, 1)$$ is $$(3, -3)$$, tripled it is $$(9, -9)$$, and
+$$(-2, 4) + (9, -9) = (7, -5)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-moves-as-formulas-other-diagonal}
+
+Let $$F(x, y) = (-y, -x)$$.
+
+1. Show that $$F$$ is an isometry.
+2. Find its fixed points.
+3. Show that $$F$$ is the reflection in the line $$y = -x$$, following the proof of
+   :ref{#diagonal-reflection}.
+
+:::solution
+
+1. For $$P = (x_1, y_1)$$ and $$M = (x_2, y_2)$$, write $$u = x_2 - x_1$$ and $$v = y_2 - y_1$$.
+   Between $$F(P)$$ and $$F(M)$$ the differences are $$-v$$ and $$-u$$. Their squares add up to
+   $$v^2 + u^2$$ (:ref{#numbers/two-minus}), so the distance is unchanged.
+2. $$(-y, -x) = (x, y)$$ exactly when $$x = -y$$ (the second equation, $$y = -x$$, says the same).
+   So the fixed points are the points $$(t, -t)$$: the line $$y = -x$$.
+3. Write $$L$$ for the line $$y = -x$$, the graph of $$x + y = 0$$ (:ref{#linear-equations/line}).
+   Points of $$L$$ are fixed, by part 2. Now let $$P = (x, y)$$ be off $$L$$, so
+   $$P' = F(P) \ne P$$. For a point $$X = (t, -t)$$ of $$L$$,
+
+   ```math
+   d(X, P)^2 = (x - t)^2 + (y + t)^2 \qquad d(X, P')^2 = (-y - t)^2 + (-x + t)^2
+   ```
+
+   and since $$(-y - t)^2 = (y + t)^2$$ and $$(-x + t)^2 = (x - t)^2$$, these are equal. So every
+   point of $$L$$ is on the perpendicular bisector of $$PP'$$
+   (:ref{#distance-and-angles/perpendicular-bisector-rule}). The bisector and $$L$$ share the two
+   points $$(0, 0)$$ and $$(1, -1)$$, so they are the same line
+   (:ref{#distance-and-angles/line-rules}). By :ref{#isometries/reflection}, the reflection in $$L$$
+   sends $$P$$ to $$P'$$.
+
+:::
+
+::::
+
+::::exercise{#ex-moves-as-formulas-shear}
+
+Let $$F(x, y) = (x + y, y)$$.
+
+1. Find its fixed points.
+2. Show that $$F$$ is not an isometry.
+3. Explain why parts 1 and 2 together show that a map can fix every point of a line without being a
+   reflection.
+
+:::solution
+
+1. $$(x + y, y) = (x, y)$$ exactly when $$x + y = x$$, that is, when $$y = 0$$. So $$F$$ fixes
+   exactly the points of the $$x$$-axis.
+2. $$F$$ sends $$(0, 0)$$ to $$(0, 0)$$ and $$(0, 1)$$ to $$(1, 1)$$. The first two points are $$1$$
+   apart, and their images are $$\sqrt{1 + 1} = \sqrt{2}$$ apart.
+3. Every reflection is an isometry (:ref{#isometries/basic-isometries}), and $$F$$ is not. So $$F$$
+   is not a reflection, even though it fixes the whole $$x$$-axis as $$R_1$$ does.
+
+:::
+
+::::
+
+::::exercise{#ex-moves-as-formulas-half-turn-slide}
+
+Use :ref{#formula-fixed-points} to show that no half turn $$H_Q$$ is equal to a slide $$T_A$$.
+
+:::solution
+
+$$H_Q$$ fixes exactly one point, $$Q$$. If $$A \ne O$$, then $$T_A$$ fixes no point, so it doesn't
+fix $$Q$$. If $$A = O$$, then $$T_O$$ is the identity, which fixes every point, including points
+other than $$Q$$. Either way, some point is fixed by one map and not the other, so at that point the
+two maps disagree. So $$H_Q \ne T_A$$ (:ref{#isometries/map-equality}).
+
+:::
+
+::::
+
+:::::

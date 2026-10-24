@@ -1,0 +1,501 @@
+---
+title: Points in space
+description:
+  Adding, scaling and measuring triples, every sphere as a slid copy of one about the origin, and
+  why the negative is not a turn in space.
+---
+
+Imagine sending a parcel by drone to a rooftop down the road. The flight plan is a list of steps in
+metres: climb $$50$$ straight up, fly $$120$$ east and $$40$$ north, then drop $$20$$ onto the roof.
+Each step has three numbers, one for east, one for north and one for up. You'd want to know where
+the drone ends up, and how far that is from the start in a straight line.
+
+Adding the three steps answers the first question, and the length of their sum answers the second.
+Adding and scaling work in space as they do in the plane, with one more coordinate. In this guide
+we'll carry the plane's rules over to triples, and then look at the one place where space behaves
+differently.
+
+## Steps in space
+
+A step in space says how far to go east, north and up, so it is a triple of numbers. Taking one step
+after another adds the matching numbers, and taking the same step twice doubles each of them. The
+coordinates never mix: what happens to the heights has nothing to do with what happens east or
+north.
+
+So the definitions from [Scaling points](./scaling-points.mdx) and
+[Adding points](./adding-points.mdx) carry over with one more coordinate. Points of space live in
+$$\mathbb{R}^3$$ (:ref{#coordinates/coordinate-space}), and the origin is $$O = (0, 0, 0)$$.
+
+:::definition[Adding and scaling in space]{#space-operations}
+
+Let $$A = (a_1, a_2, a_3)$$ and $$B = (b_1, b_2, b_3)$$ be points of $$\mathbb{R}^3$$, and $$c$$ a
+number. Then:
+
+- the **sum** is $$A + B = (a_1 + b_1, a_2 + b_2, a_3 + b_3)$$
+- the **multiple** is $$cA = (ca_1, ca_2, ca_3)$$
+- the **negative** is $$-A = (-1)A = (-a_1, -a_2, -a_3)$$
+- the **difference** is $$A - B = A + (-B) = (a_1 - b_1, a_2 - b_2, a_3 - b_3)$$
+
+:::
+
+:::example[Where the drone lands]
+
+The three steps of the flight plan are $$(0, 0, 50)$$, $$(120, 40, 0)$$ and $$(0, 0, -20)$$. Adding
+them, coordinate by coordinate,
+
+```math
+(0, 0, 50) + (120, 40, 0) + (0, 0, -20) = (0 + 120 + 0,\ 0 + 40 + 0,\ 50 + 0 - 20) = (120, 40, 30)
+```
+
+So the drone lands $$120$$ m east, $$40$$ m north and $$30$$ m up from where it took off. The drop
+is a step with a negative height, and the sum takes care of it like any other number.
+
+:::
+
+<DroneSteps caption="The flight plan as three steps: up 50, across (120, 40, 0), down 20. The straight arrow from O to the rooftop at (120, 40, 30) runs through the box with those sides, and it is 130 m long." />
+
+The rules for adding and scaling points in the plane came from the rules for numbers, one coordinate
+at a time. A third coordinate is one more number obeying the same rules, so every one of them holds
+in space too.
+
+:::proposition[The rules carry over]{#space-rules}
+
+For all points $$A$$, $$B$$ and $$C$$ of $$\mathbb{R}^3$$ and all numbers $$b$$ and $$c$$:
+
+1. **Order doesn't matter**: $$A + B = B + A$$
+2. **Grouping doesn't matter**: $$(A + B) + C = A + (B + C)$$
+3. **Adding the origin**: $$A + O = A$$
+4. **Adding the negative**: $$A + (-A) = O$$
+5. **Scaling twice**: $$b(cA) = (bc)A$$
+6. **Scaling a sum**: $$c(A + B) = cA + cB$$
+7. **Adding multiples**: $$(b + c)A = bA + cA$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_vector#Addition_and_subtraction"}
+
+Each rule says that two triples are equal, and two triples are equal exactly when their three
+coordinates are (:ref{#coordinates/coordinate-space}). So it is enough to check one coordinate, say
+the first, since the other two work the same way. In the first coordinate each rule is a rule for
+real numbers (:ref{#real-numbers/real-rules}):
+
+1. $$a_1 + b_1 = b_1 + a_1$$, since order doesn't matter in a sum
+2. $$(a_1 + b_1) + c_1 = a_1 + (b_1 + c_1)$$, since grouping doesn't matter in a sum
+3. $$a_1 + 0 = a_1$$, by the rule for zero
+4. $$a_1 + (-a_1) = 0$$, by the rule for opposites
+5. $$b(ca_1) = (bc)a_1$$, since grouping doesn't matter in a product
+6. $$c(a_1 + b_1) = ca_1 + cb_1$$, by distributivity
+7. $$(b + c)a_1 = ba_1 + ca_1$$, by distributivity and order not mattering in a product
+
+These are the lines from the proofs of :ref{#sum-rules}, :ref{#scale-twice} and
+:ref{#scale-sum-rules}. Space only adds a third coordinate, which works the same way.
+
+:::
+
+Anything the plane guides proved from these rules alone holds in space as well. For example,
+:ref{#difference-step} carries over: $$A - B$$ is the step that takes you from $$B$$ to $$A$$, since
+$$B + (A - B) = A$$. And you can rearrange sums and multiples of triples as freely as sums and
+products of numbers.
+
+A 3D game or animation uses these rules many times a second. A character in the game is stored as a
+list of corners, each a triple, often thousands of them, joined up into a surface. To move the
+character $$2$$ units east and lift it $$1$$ unit, the program adds $$(2, 0, 1)$$ to every corner.
+The steps between the corners don't change, so the character keeps its shape and lands in its new
+place in one piece.
+
+## Length in space
+
+The length of a step is how far it carries you in a straight line. For a step in space that is the
+distance from $$O$$ to the point the step reaches, which :ref{#coordinates/space-distance} already
+gives: square the three coordinates, add, and take the square root.
+
+:::definition[Length in space]{#space-norm}
+
+The **length** of a point $$A = (a_1, a_2, a_3)$$ of $$\mathbb{R}^3$$ is
+
+```math
+|A| = \sqrt{a_1^2 + a_2^2 + a_3^2} = d(O, A)
+```
+
+As in the plane (:ref{#norm}), it is also called the **norm** of $$A$$.
+
+:::
+
+For the drone, the straight line from the take-off point to the rooftop has length
+
+```math
+|(120, 40, 30)| = \sqrt{14\,400 + 1600 + 900} = \sqrt{16\,900} = 130
+```
+
+metres. The flight itself is $$50 + \sqrt{120^2 + 40^2} + 20 = 70 + \sqrt{16\,000}$$, about
+$$196.5$$ metres, because the climb and the drop are a detour. The three facts about length from
+[Length and direction](./length.mdx) carry over too.
+
+:::proposition[Length in space works as in the plane]{#space-norm-rules}
+
+For all points $$A$$ and $$B$$ of $$\mathbb{R}^3$$ and every number $$c$$:
+
+1. **Distance as a length**: $$d(A, B) = |A - B|$$
+2. **Length of a multiple**: $$|cA| = |c|\,|A|$$
+3. **The triangle inequality**: $$|A + B| \le |A| + |B|$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Norm_(mathematics)#Euclidean_norm"}
+
+Write $$A = (a_1, a_2, a_3)$$ and $$B = (b_1, b_2, b_3)$$.
+
+**Part 1.** The coordinates of $$A - B$$ are $$a_1 - b_1$$, $$a_2 - b_2$$ and $$a_3 - b_3$$.
+Squaring them and adding gives the sum under the square root in :ref{#coordinates/space-distance},
+so $$|A - B| = d(B, A) = d(A, B)$$, using rule 2 of :ref{#coordinates/space-distance-rules}.
+
+**Part 2.** The coordinates of $$cA$$ are $$ca_1$$, $$ca_2$$ and $$ca_3$$, so
+
+```math
+|cA| = \sqrt{c^2a_1^2 + c^2a_2^2 + c^2a_3^2} = \sqrt{c^2}\,\sqrt{a_1^2 + a_2^2 + a_3^2} = |c|\,|A|
+```
+
+by :ref{#real-numbers/root-product} and $$\sqrt{c^2} = |c|$$ (:ref{#real-numbers/abs-basics}).
+
+**Part 3.** By the triangle inequality in space (rule 3 of :ref{#coordinates/space-distance-rules})
+for the points $$O$$, $$A$$ and $$A + B$$,
+
+```math
+d(O, A + B) \le d(O, A) + d(A, A + B)
+```
+
+The left side is $$|A + B|$$ and the first term on the right is $$|A|$$. The last term is
+$$d(A + B, A)$$ (rule 2), which by part 1 is $$|(A + B) - A| = |B|$$, since $$(A + B) - A = B$$ by
+:ref{#space-rules}.
+
+:::
+
+Part 1 explains why the game character in [Steps in space](#steps-in-space) keeps its shape. Adding
+the same triple $$C$$ to two corners $$P$$ and $$Q$$ leaves the step between them alone, since
+$$(Q + C) - (P + C) = Q - P$$, so their distance $$|Q - P|$$ doesn't change. Part 2 says the same
+for scaling: $$d(cA, cB) = |cA - cB| = |c(A - B)| = |c|\,d(A, B)$$. For $$c > 0$$ that is
+:ref{#coordinates/space-zoom}, and now it holds for negative $$c$$ as well.
+
+## Unit points and midpoints
+
+Every step in space is so far east, so far north and so far up. Each of those three moves is a
+multiple of a step of length $$1$$ along an axis, and together they make the whole step.
+
+:::proposition[Every point from three unit points]{#space-unit-combination}
+
+Let $$E_1 = (1, 0, 0)$$, $$E_2 = (0, 1, 0)$$ and $$E_3 = (0, 0, 1)$$, the **unit points** of space
+(:ref{#unit-points}). Every point $$A = (a_1, a_2, a_3)$$ of $$\mathbb{R}^3$$ is
+
+```math
+A = a_1E_1 + a_2E_2 + a_3E_3
+```
+
+and these are the only three numbers that work.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Standard_basis"}
+
+For any numbers $$s$$, $$t$$ and $$u$$, :ref{#space-operations} gives
+
+```math
+sE_1 + tE_2 + uE_3 = (s, 0, 0) + (0, t, 0) + (0, 0, u) = (s, t, u)
+```
+
+This equals $$A$$ exactly when $$s = a_1$$, $$t = a_2$$ and $$u = a_3$$
+(:ref{#coordinates/coordinate-space}). So $$a_1$$, $$a_2$$ and $$a_3$$ work, and no other numbers
+do.
+
+:::
+
+This is :ref{#unit-combination} with a third direction. The drone's rooftop is
+$$(120, 40, 30) = 120E_1 + 40E_2 + 30E_3$$, and the box in the figure under
+[Steps in space](#steps-in-space) has those three steps as its sides.
+
+Halfway between two points is still their average. In the plane, :ref{#midpoint-formula} rested on
+rule 1 of :ref{#distance-and-angles/segment-rules}: a point $$Q$$ lies on the segment $$PM$$ exactly
+when $$d(P, M) = d(P, Q) + d(Q, M)$$. We take that rule from the picture in space too, as the plane
+did, and then the same proof works.
+
+:::proposition[The midpoint in space]{#space-midpoint}
+
+For different points $$A$$ and $$B$$ of $$\mathbb{R}^3$$, the midpoint
+(:ref{#distance-and-angles/midpoint}) of the segment $$AB$$ is $$\frac{1}{2}(A + B)$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Midpoint#Formula"}
+
+Let $$M = \frac{1}{2}(A + B)$$. Rearranging with :ref{#space-rules}, $$M - A = \frac{1}{2}(B - A)$$
+and $$B - M = \frac{1}{2}(B - A)$$. So by :ref{#space-norm-rules},
+
+```math
+d(A, M) = |M - A| = \tfrac{1}{2}\,|B - A| = \tfrac{1}{2}\,d(A, B)
+\qquad\text{and}\qquad
+d(M, B) = |B - M| = \tfrac{1}{2}\,d(A, B)
+```
+
+These add up to $$d(A, B)$$, so $$M$$ lies on the segment $$AB$$, by rule 1 of the segment rules. It
+is the same distance from both ends, so it is the midpoint.
+
+:::
+
+Halfway along the straight line from the take-off point to the rooftop is
+$$\frac{1}{2}(120, 40, 30) = (60, 20, 15)$$, $$65$$ metres from each end.
+
+## Spheres are slid copies
+
+Imagine blowing up a balloon to a fixed size and then carrying it across a room without squeezing
+it. The balloon has moved, but its shape hasn't changed. A sphere anywhere in space is the same as a
+sphere about the origin, carried across by one step.
+
+:::proposition[Spheres are slid copies]{#sphere-slide}
+
+Let $$A$$ be a point of $$\mathbb{R}^3$$ and $$r > 0$$. The sphere with centre $$A$$ and radius
+$$r$$ (:ref{#coordinates/sphere}) is the set of points $$X$$ with $$|X - A| = r$$. It is the image
+of the sphere with centre $$O$$ and radius $$r$$ under the slide $$P \mapsto P + A$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Sphere#Equations"}
+
+By :ref{#space-norm-rules}, $$d(A, X) = |X - A|$$, which gives the first sentence. For the second,
+there are two things to show.
+
+**Every slid point is on the sphere.** If $$|P| = r$$, then $$(P + A) - A = P$$ by
+:ref{#space-rules}, so $$|(P + A) - A| = r$$.
+
+**Every point of the sphere is a slid point.** If $$|X - A| = r$$, let $$P = X - A$$. Then
+$$|P| = r$$, so $$P$$ is on the sphere with centre $$O$$, and $$P + A = X$$ by :ref{#space-rules}.
+
+:::
+
+:::example[Sliding a point of a sphere]
+
+The point $$P = (1, 2, 2)$$ has $$|P| = \sqrt{1 + 4 + 4} = 3$$, so it is on the sphere with centre
+$$O$$ and radius $$3$$. Sliding by $$A = (2, -1, 3)$$ takes it to $$P + A = (3, 1, 5)$$. The step
+from $$A$$ to that point is $$(3, 1, 5) - (2, -1, 3) = (1, 2, 2)$$, of length $$3$$, so
+$$(3, 1, 5)$$ is on the sphere with centre $$A$$ and radius $$3$$.
+
+:::
+
+This is :ref{#circle-slide} with one more coordinate, and the same holds for balls, with $$\le$$ in
+place of $$=$$. Scaling works as it did for circles in :ref{#circle-scale}: by part 2 of
+:ref{#space-norm-rules}, $$P \mapsto cP$$ with $$c \ne 0$$ sends the sphere with centre $$O$$ and
+radius $$1$$ onto the one with radius $$|c|$$. So every sphere is the sphere of radius $$1$$ about
+$$O$$, scaled and then slid.
+
+## The negative in space
+
+In the plane, sending each point $$A$$ to $$-A$$ is a half turn about $$O$$
+(:ref{#negative-half-turn}). In space, $$A \mapsto -A$$ still sends every point straight through
+$$O$$ to the far side, the same distance away. But in space it is not a turn.
+
+Hold up a right-hand glove with its fingers pointing to the ceiling, put $$O$$ in the middle of the
+palm, and send each point of the glove to its negative. The fingers now point to the floor, and the
+glove has become a left-hand glove. No amount of turning makes a right glove fit a left hand, so
+this move is not a turn.
+
+:::remark[The negative in space]{#space-negative}
+
+In $$\mathbb{R}^3$$, the map $$A \mapsto -A$$ keeps every distance, since
+$$|(-A) - (-B)| = |A - B|$$. The origin $$O$$ is the midpoint of $$A$$ and $$-A$$, because
+$$\frac{1}{2}(A + (-A)) = O$$ (:ref{#space-midpoint}). So $$A \mapsto -A$$ is the reflection through
+$$O$$, as in :ref{#isometries/point-reflection}.
+
+But it is not a turn about any line. A turn about a line keeps every point of that line where it is,
+and $$A \mapsto -A$$ moves every point except $$O$$. It swaps left-handed shapes for right-handed
+ones, like a mirror. In fact it is a half turn about the $$z$$-axis,
+$$(x, y, z) \mapsto (-x, -y, z)$$, followed by the mirror in the floor,
+$$(x, y, z) \mapsto (x, y, -z)$$.
+
+::see-also{src="https://en.wikipedia.org/wiki/Point_reflection#Properties"}
+
+:::
+
+So in the plane the half turn and the reflection through a point are one map, and in space they come
+apart. A half turn about an axis changes the signs of two coordinates, while the reflection through
+$$O$$ changes all three, and the third sign change is a mirror.
+
+## Exercises
+
+:::::accordion[Exercises on points in space, with solutions]
+
+::::exercise{#ex-space-operations}
+
+Let $$A = (2, -1, 3)$$ and $$B = (-1, 4, 2)$$. Find $$A + B$$, $$3A$$, $$A - B$$ and $$2A - 3B$$.
+Then check that $$B + (A - B) = A$$.
+
+:::solution
+
+Working coordinate by coordinate (:ref{#space-operations}):
+
+- $$A + B = (2 - 1, -1 + 4, 3 + 2) = (1, 3, 5)$$
+- $$3A = (6, -3, 9)$$
+- $$A - B = (2 + 1, -1 - 4, 3 - 2) = (3, -5, 1)$$
+- $$2A - 3B = (4, -2, 6) - (-3, 12, 6) = (7, -14, 0)$$
+
+Finally, $$B + (A - B) = (-1 + 3, 4 - 5, 2 + 1) = (2, -1, 3)$$, which is $$A$$.
+
+:::
+
+::::
+
+::::exercise{#ex-space-direction}
+
+Let $$A = (2, -3, 6)$$. Find $$|A|$$ and $$|-2A|$$. Then find the point of length $$1$$ that is a
+positive multiple of $$A$$, and check its length.
+
+:::solution
+
+By :ref{#space-norm}, $$|A| = \sqrt{4 + 9 + 36} = \sqrt{49} = 7$$. By part 2 of
+:ref{#space-norm-rules}, $$|-2A| = |-2|\,|A| = 14$$.
+
+For a positive multiple $$cA$$ to have length $$1$$ we need $$c\,|A| = 1$$, so $$c = \frac{1}{7}$$,
+as in :ref{#direction}. The point is
+
+```math
+\tfrac{1}{7}A = \left(\tfrac{2}{7}, -\tfrac{3}{7}, \tfrac{6}{7}\right),
+\qquad
+\left|\tfrac{1}{7}A\right|^2 = \frac{4 + 9 + 36}{49} = 1
+```
+
+:::
+
+::::
+
+::::exercise{#ex-space-midpoints}
+
+Find the midpoint of $$(1, 5, -2)$$ and $$(7, -1, 4)$$. Then, given $$A = (3, 0, -1)$$, find the
+point $$B$$ for which $$(1, 2, 2)$$ is the midpoint of $$A$$ and $$B$$.
+
+:::solution
+
+By :ref{#space-midpoint}, the midpoint is $$\frac{1}{2}(8, 4, 2) = (4, 2, 1)$$.
+
+For the second part, $$\frac{1}{2}(A + B) = M$$ with $$M = (1, 2, 2)$$. Multiplying by $$2$$ and
+taking $$A$$ from both sides (:ref{#space-rules}) gives
+
+```math
+B = 2M - A = (2, 4, 4) - (3, 0, -1) = (-1, 4, 5)
+```
+
+Check: $$\frac{1}{2}\big((3, 0, -1) + (-1, 4, 5)\big) = \frac{1}{2}(2, 4, 4) = (1, 2, 2)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-space-flight}
+
+A drone flies three steps, in metres east, north and up: $$(30, 0, 20)$$, then $$(0, 40, 0)$$, then
+$$(60, 80, -20)$$. Where does it end up, and how far is that from the start in a straight line? How
+long is the flight itself?
+
+:::solution
+
+Adding the steps,
+
+```math
+(30 + 0 + 60,\ 0 + 40 + 80,\ 20 + 0 - 20) = (90, 120, 0)
+```
+
+so it ends at the height it started from. The straight line has length
+$$\sqrt{8100 + 14\,400 + 0} = \sqrt{22\,500} = 150$$ metres (:ref{#space-norm}).
+
+The three steps have lengths $$\sqrt{900 + 400} = \sqrt{1300} \approx 36.06$$, $$40$$ and
+$$\sqrt{3600 + 6400 + 400} = \sqrt{10\,400} \approx 101.98$$. The flight is about $$178.0$$ metres,
+longer than $$150$$, as the triangle inequality in :ref{#space-norm-rules} says it must be.
+
+:::
+
+::::
+
+::::exercise{#ex-space-reverse-triangle}
+
+Show that $$|A| - |B| \le |A - B|$$ for all points $$A$$ and $$B$$ of $$\mathbb{R}^3$$.
+
+:::solution
+
+By :ref{#space-rules}, $$A = (A - B) + B$$. The triangle inequality in :ref{#space-norm-rules} gives
+
+```math
+|A| = |(A - B) + B| \le |A - B| + |B|
+```
+
+Taking $$|B|$$ from both sides gives $$|A| - |B| \le |A - B|$$. In words, two points at distances
+$$|A|$$ and $$|B|$$ from $$O$$ are at least $$|A| - |B|$$ apart, as :ref{#norm-difference} says in
+the plane.
+
+:::
+
+::::
+
+::::exercise{#ex-space-sphere-through-origin}
+
+Let $$A = (1, -2, 2)$$. Show that the sphere with centre $$A$$ and radius $$3$$ passes through
+$$O$$. Find the point of this sphere on the far side of $$A$$ from $$O$$, so that $$A$$ is the
+midpoint of $$O$$ and that point. Then find the point of the sphere with centre $$O$$ and radius
+$$3$$ that the slide $$P \mapsto P + A$$ sends to $$O$$.
+
+:::solution
+
+The step from $$A$$ to $$O$$ is $$O - A = (-1, 2, -2)$$, of length $$\sqrt{1 + 4 + 4} = 3$$, so
+$$O$$ is on the sphere (:ref{#sphere-slide}).
+
+If $$A$$ is the midpoint of $$O$$ and $$X$$, then $$\frac{1}{2}(O + X) = A$$
+(:ref{#space-midpoint}), so $$X = 2A = (2, -4, 4)$$. It is on the sphere, since $$X - A = A$$ has
+length $$3$$. Its distance from $$O$$ is $$|2A| = 6$$, the diameter.
+
+The slide sends $$P$$ to $$O$$ exactly when $$P + A = O$$, that is, $$P = -A = (-1, 2, -2)$$. Its
+length is $$3$$, so it is on the sphere with centre $$O$$, as :ref{#sphere-slide} promises.
+
+:::
+
+::::
+
+::::exercise{#ex-space-two-directions}
+
+Find numbers $$b$$ and $$c$$ with $$b(1, 1, 0) + c(0, 1, 1) = (2, 5, 3)$$. Then show that no numbers
+$$b$$ and $$c$$ give $$(1, 0, 1)$$.
+
+:::solution
+
+The left side is $$(b, b + c, c)$$. For $$(2, 5, 3)$$ the first and last coordinates give $$b = 2$$
+and $$c = 3$$, and the middle one checks: $$2 + 3 = 5$$.
+
+For $$(1, 0, 1)$$ the first and last coordinates force $$b = 1$$ and $$c = 1$$. But then the middle
+coordinate is $$2$$, not $$0$$. So no numbers work. Two steps can't reach every point of space this
+way, which is why :ref{#space-unit-combination} needs three.
+
+:::
+
+::::
+
+::::exercise{#ex-space-negative-split}
+
+Let $$K(x, y, z) = (-x, -y, z)$$, the half turn about the $$z$$-axis, and
+$$F(x, y, z) = (x, y, -z)$$, the mirror in the floor. Show that $$F(K(P)) = -P$$ and
+$$K(F(P)) = -P$$ for every point $$P$$. Which points does $$P \mapsto -P$$ leave where they are?
+
+:::solution
+
+Write $$P = (x, y, z)$$. Then
+
+```math
+F(K(P)) = F(-x, -y, z) = (-x, -y, -z) = -P,
+\qquad
+K(F(P)) = K(x, y, -z) = (-x, -y, -z) = -P
+```
+
+So the two moves give $$-P$$ in either order, as :ref{#space-negative} says.
+
+A point stays put exactly when $$-P = P$$, that is, when $$-x = x$$, $$-y = y$$ and $$-z = z$$. Each
+of these says the coordinate is $$0$$, so the only such point is $$O$$. A turn about a line would
+leave the whole line where it is, so $$P \mapsto -P$$ is not one.
+
+:::
+
+::::
+
+:::::

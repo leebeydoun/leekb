@@ -1,0 +1,540 @@
+---
+title: Adding points
+description:
+  Adding two points coordinate by coordinate, read as one step after another, with the step between
+  two points, the midpoint formula and the parallelogram of a sum.
+---
+
+Imagine rowing a boat straight across a river while the current carries you downstream. Each second
+your rowing moves you $$3$$ m across, and the current moves you $$1$$ m along the river. Measure
+across in the first coordinate and downstream in the second, starting from where you set off. Then
+after one second you are at $$(3, 1)$$, and it makes no difference whether you picture the rowing
+happening first or the current.
+
+Putting two steps together like this is called **adding** them. In this guide we'll add points, and
+use the sum to find the step between two points, the point halfway between them and the corner that
+completes a parallelogram.
+
+<RiverCrossing caption="In one second the rowing moves the boat 3 m across (orange) and the current moves it 1 m along the river (blue). Together they take it to (3, 1) (purple), and the other order, drawn dashed, ends at the same place." />
+
+## Points as steps
+
+So far a point has been a place. A point can also be read as a step from the origin $$O$$: the point
+$$(3, 1)$$ is the step "$$3$$ to the right and $$1$$ up", and $$(-2, 4)$$ is "$$2$$ to the left and
+$$4$$ up". The same step can be taken from anywhere, not only from $$O$$. From $$(5, 5)$$ the step
+$$(3, 1)$$ takes you to $$(8, 6)$$.
+
+When a pair is read as a step like this, it's usually called a **vector**. We'll keep calling them
+points, since they are the same pairs, and say "step" when the step reading helps.
+
+Taking one step and then another is the same as taking a single step. Its across part is the two
+across parts added, and its up part is the two up parts added. So the boat's rowing step $$(3, 0)$$
+and the current's step $$(0, 1)$$ add up to $$(3, 1)$$. Adding points is defined to do exactly this.
+
+:::definition[Adding points]{#point-sum}
+
+The **sum** of the points $$A = (a_1, a_2)$$ and $$B = (b_1, b_2)$$ is the point
+
+```math
+A + B = (a_1 + b_1, a_2 + b_2)
+```
+
+:::
+
+In words, add the first coordinates, and add the second coordinates. For example, with
+$$A = (3, 1)$$ and $$B = (1, 2)$$,
+
+```math
+A + B = (3 + 1, 1 + 2) = (4, 3)
+```
+
+Read as steps, $$A$$ takes you from $$O$$ to $$(3, 1)$$, and then $$B$$ takes you on to $$(4, 3)$$.
+Taking $$B$$ first gets you to $$(1, 2)$$, and then $$A$$ takes you on to the same corner
+$$(4, 3)$$. Negative coordinates add in the same way: $$(2, -5) + (-4, 3) = (-2, -2)$$.
+
+```plane
+point O 0 0 sw
+point A 3 1 se
+point B 1 2 nw
+point A+B 4 3 ne
+point X1 -0.6 0 hidden
+point X2 5.4 0 hidden
+point Y1 0 -0.6 hidden
+point Y2 0 3.8 hidden
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+segment O A color=blue label="A" side=right
+segment A A+B color=orange label="B" side=right
+segment O B color=orange dashed
+segment B A+B color=blue dashed
+segment O A+B color=purple
+caption "A = (3, 1) then B = (1, 2) (solid), or B then A (dashed): both routes end at A + B = (4, 3)"
+```
+
+Choose $$A$$ and $$B$$ below. The solid arrows take the step $$A$$ and then the step $$B$$, and the
+dashed arrows take them in the other order. The two routes always meet at $$A + B$$, and between
+them they outline a four-sided shape. Switch to $$A - B$$ to see the subtraction from
+[The step from one point to another](#the-step-from-one-point-to-another).
+
+<StepAdder />
+
+## Adding points works like adding numbers
+
+Each coordinate of a sum is an ordinary sum of numbers, so every rule for adding numbers carries
+over to points. For steps, this means the same steps taken in any order end at the same place. The
+step $$O = (0, 0)$$ goes nowhere, and the step $$-A$$, the negative of $$A$$
+(:ref{#negative-point}), walks $$A$$ backwards, so $$A$$ followed by $$-A$$ brings you back to where
+you started.
+
+:::proposition[Adding points works like adding numbers]{#sum-rules}
+
+For all points $$A$$, $$B$$ and $$C$$:
+
+1. **Order doesn't matter**: $$A + B = B + A$$.
+2. **Grouping doesn't matter**: $$(A + B) + C = A + (B + C)$$.
+3. **Adding the origin**: $$A + O = A$$.
+4. **Adding a negative**: $$A + (-A) = O$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Real_Vector_Space_is_Vector_Space"}
+
+Write $$A = (a_1, a_2)$$, $$B = (b_1, b_2)$$ and $$C = (c_1, c_2)$$. Each rule is checked one
+coordinate at a time with :ref{#real-numbers/real-rules}, and two points are equal when their
+coordinates are (:ref{#coordinates/coordinate-plane}).
+
+1. $$A + B = (a_1 + b_1, a_2 + b_2)$$ and $$B + A = (b_1 + a_1, b_2 + a_2)$$. These agree, since
+   $$a_1 + b_1 = b_1 + a_1$$ and $$a_2 + b_2 = b_2 + a_2$$ by rule 1 of
+   :ref{#real-numbers/real-rules}.
+2. The first coordinates of the two sides are $$(a_1 + b_1) + c_1$$ and $$a_1 + (b_1 + c_1)$$, which
+   are equal by rule 2 of :ref{#real-numbers/real-rules}. The second coordinates are equal in the
+   same way.
+3. $$A + O = (a_1 + 0, a_2 + 0) = (a_1, a_2) = A$$, by rule 3 of :ref{#real-numbers/real-rules}.
+4. By :ref{#negative-point}, $$-A = (-1)A = (-a_1, -a_2)$$, since $$(-1)a = -a$$ for every number
+   $$a$$ (:ref{#numbers/minus-one}). So $$A + (-A) = (a_1 + (-a_1), a_2 + (-a_2)) = (0, 0) = O$$, by
+   rule 4 of :ref{#real-numbers/real-rules}.
+
+:::
+
+As with numbers, rule 2 means the brackets can be left out, and $$A + B + C$$ means either grouping.
+With rule 1 as well, a list of points can be added in any order. Rules 3 and 4 also hold the other
+way round, $$O + A = A$$ and $$(-A) + A = O$$, because the order doesn't matter.
+
+## The step from one point to another
+
+Suppose you stand at $$B = (2, 3)$$ and a friend stands at $$A = (5, 1)$$. To reach your friend you
+go $$5 - 2 = 3$$ to the right and $$1 - 3 = -2$$ up, that is, $$2$$ down. So the step from $$B$$ to
+$$A$$ is $$(3, -2)$$, found by subtracting the coordinates of $$B$$ from those of $$A$$. Subtracting
+points is defined to give this step.
+
+:::definition[Subtracting points]{#point-difference}
+
+The **difference** of the points $$A = (a_1, a_2)$$ and $$B = (b_1, b_2)$$ is
+
+```math
+A - B = A + (-B) = (a_1 - b_1, a_2 - b_2)
+```
+
+:::
+
+The two forms agree because $$-B = (-b_1, -b_2)$$, and $$a_1 + (-b_1)$$ is $$a_1 - b_1$$
+(:ref{#numbers/subtraction}). The order matters here, as it does for numbers: $$B - A = (-3, 2)$$ is
+the step back from your friend to you, which is $$-(A - B)$$.
+
+:::proposition[The step from one point to another]{#difference-step}
+
+For all points $$A$$ and $$B$$, $$B + (A - B) = A$$. Also, $$A - B$$ is the only point $$X$$ with
+$$B + X = A$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_vector#Addition_and_subtraction"}
+
+**The step reaches $$A$$.** By the rules in :ref{#sum-rules},
+
+```math
+B + (A - B) = B + \big(A + (-B)\big) = A + \big(B + (-B)\big) = A + O = A
+```
+
+The middle step regroups and reorders the three points, using rules 1 and 2, and then rules 4 and 3
+finish it.
+
+**No other step does.** Suppose $$B + X = A$$. Add $$-B$$ to both sides. On the left,
+$$(-B) + (B + X) = \big((-B) + B\big) + X = O + X = X$$, by rules 2, 4 and 3. On the right,
+$$(-B) + A = A + (-B) = A - B$$. So $$X = A - B$$.
+
+:::
+
+In words, $$A - B$$ is the step that takes you from $$B$$ to $$A$$. With you at $$B = (2, 3)$$ and
+your friend at $$A = (5, 1)$$, the check is $$(2, 3) + (3, -2) = (5, 1)$$. The step $$A - B$$ is
+also how far apart the two points are in each direction, which is why the differences $$a_1 - b_1$$
+and $$a_2 - b_2$$ are the ones that appear in the distance formula
+(:ref{#coordinates/coordinate-plane}).
+
+## Adding and scaling together
+
+Three steps of $$(1, 2)$$ followed by two more is five steps of $$(1, 2)$$. In symbols,
+$$3(1, 2) + 2(1, 2) = (3, 6) + (2, 4) = (5, 10)$$, which is $$5(1, 2)$$. And doubling a route made
+of two steps is the same as doubling each step: $$2\big((3, 1) + (1, 2)\big) = 2(4, 3) = (8, 6)$$,
+and $$2(3, 1) + 2(1, 2) = (6, 2) + (2, 4) = (8, 6)$$. Multiplying a point by a number, as in
+:ref{#scalar-multiple}, fits together with adding in the way these examples show.
+
+:::proposition[Scaling and adding together]{#scale-sum-rules}
+
+For all points $$A$$ and $$B$$ and all numbers $$b$$ and $$c$$:
+
+1. $$c(A + B) = cA + cB$$
+2. $$(b + c)A = bA + cA$$
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Real_Vector_Space_is_Vector_Space"}
+
+Write $$A = (a_1, a_2)$$ and $$B = (b_1, b_2)$$, and check each coordinate with the distributive
+rule, rule 6 of :ref{#real-numbers/real-rules}.
+
+1. The first coordinate of $$c(A + B)$$ is $$c(a_1 + b_1)$$, and the first coordinate of $$cA + cB$$
+   is $$ca_1 + cb_1$$. These are equal by the distributive rule. The second coordinates are equal in
+   the same way.
+2. The first coordinate of $$(b + c)A$$ is $$(b + c)a_1$$, and the first coordinate of $$bA + cA$$
+   is $$ba_1 + ca_1$$. Swapping the order of each product (rule 1 of :ref{#real-numbers/real-rules})
+   turns these into $$a_1(b + c)$$ and $$a_1b + a_1c$$, which are equal by the distributive rule.
+   The second coordinates are equal in the same way.
+
+:::
+
+Together with :ref{#scale-twice}, which says $$b(cA) = (bc)A$$, and the rules in :ref{#sum-rules},
+these rules let you rearrange sums and multiples of points as you would with numbers. For example,
+
+```math
+2(A + B) - (A - 3B) = 2A + 2B - A + 3B = A + 5B
+```
+
+With $$A = (3, 1)$$ and $$B = (1, 2)$$, both sides come to $$(8, 11)$$.
+
+## Every point from two unit steps
+
+On a map, any trip can be described as so many steps east and so many steps north, with a negative
+count meaning west or south. A step of $$1$$ east is the point $$(1, 0)$$ and a step of $$1$$ north
+is $$(0, 1)$$. So every point should be built from these two by scaling and adding.
+
+:::definition[Unit points]{#unit-points}
+
+The **unit points** of the plane are $$E_1 = (1, 0)$$ and $$E_2 = (0, 1)$$.
+
+:::
+
+:::proposition[Every point from the unit points]{#unit-combination}
+
+Every point $$A = (a_1, a_2)$$ can be written as
+
+```math
+A = a_1 E_1 + a_2 E_2
+```
+
+and $$a_1$$ and $$a_2$$ are the only numbers that work: if $$sE_1 + tE_2 = A$$, then $$s = a_1$$ and
+$$t = a_2$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Standard_basis"}
+
+For any numbers $$s$$ and $$t$$, :ref{#scalar-multiple} and :ref{#point-sum} give
+
+```math
+sE_1 + tE_2 = (s, 0) + (0, t) = (s, t)
+```
+
+since $$s \cdot 1 = s$$ and $$s \cdot 0 = 0$$ (:ref{#numbers/zero-times}), and the same for $$t$$.
+Taking $$s = a_1$$ and $$t = a_2$$ gives $$a_1E_1 + a_2E_2 = A$$. And if $$sE_1 + tE_2 = A$$, then
+$$(s, t) = (a_1, a_2)$$, so $$s = a_1$$ and $$t = a_2$$ (:ref{#coordinates/coordinate-plane}).
+
+:::
+
+For example, $$(4, -3) = 4E_1 - 3E_2$$: four steps east and three steps south. The coordinates of a
+point are exactly the counts of unit steps it takes to get there from $$O$$.
+
+## The midpoint formula
+
+Two friends who agree to meet halfway might guess the meeting place by averaging their positions:
+add the two points and halve the result. For friends at $$(1, 5)$$ and $$(7, -1)$$, measured in
+kilometres, that gives $$\frac{1}{2}(8, 4) = (4, 2)$$. The midpoint formula below says the guess is
+right, for the midpoint of :ref{#distance-and-angles/midpoint}: the point of a segment that is the
+same distance from both ends.
+
+:::proposition[The midpoint formula]{#midpoint-formula}
+
+Let $$A$$ and $$B$$ be different points. The midpoint of the segment $$AB$$ is
+$$\frac{1}{2}(A + B)$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Midpoint#Formula"}
+
+Write $$A = (a_1, a_2)$$ and $$B = (b_1, b_2)$$, and let $$M = \frac{1}{2}(A + B)$$, so
+$$M = \big(\frac{1}{2}(a_1 + b_1), \frac{1}{2}(a_2 + b_2)\big)$$. The step from $$A$$ to $$M$$ is
+
+```math
+M - A = \big(\tfrac{1}{2}(b_1 - a_1), \tfrac{1}{2}(b_2 - a_2)\big)
+```
+
+since $$\frac{1}{2}(a_1 + b_1) - a_1 = \frac{1}{2}b_1 - \frac{1}{2}a_1$$. The step from $$M$$ to
+$$B$$ comes out the same, $$B - M = \big(\frac{1}{2}(b_1 - a_1), \frac{1}{2}(b_2 - a_2)\big)$$.
+
+Write $$D = (b_1 - a_1)^2 + (b_2 - a_2)^2$$, so that $$d(A, B) = \sqrt{D}$$. Each squared difference
+for $$M$$ is $$\frac{1}{4}$$ of the one for $$A$$ and $$B$$, so by the distance formula
+(:ref{#coordinates/coordinate-plane}) and :ref{#real-numbers/root-product},
+
+```math
+d(A, M) = \sqrt{\tfrac{1}{4} D} = \sqrt{\tfrac{1}{4}}\,\sqrt{D} = \tfrac{1}{2}\,d(A, B)
+```
+
+since $$\sqrt{\frac{1}{4}} = \frac{1}{2}$$ (:ref{#real-numbers/square-root}). The same working gives
+$$d(M, B) = \frac{1}{2}\,d(A, B)$$.
+
+So $$d(A, M) + d(M, B) = d(A, B)$$, and rule 1 of :ref{#distance-and-angles/segment-rules} says
+$$M$$ lies on the segment $$AB$$. It is the same distance from both ends, so it is the midpoint
+(:ref{#distance-and-angles/midpoint}).
+
+:::
+
+For the two friends, $$A = (1, 5)$$, $$B = (7, -1)$$ and $$M = (4, 2)$$. Each of the steps $$M - A$$
+and $$B - M$$ is $$(3, -3)$$, so each friend walks $$\sqrt{18} = 3\sqrt{2}$$ km, about $$4.24$$ km.
+That is half of $$d(A, B) = \sqrt{72} = 6\sqrt{2}$$ km.
+
+```plane
+point A 1 5 ne
+point M 4 2 ne
+point B 7 -1 ne
+segment A M color=blue
+segment M B color=blue
+ticks A M 1
+ticks M B 1
+caption "The midpoint of A = (1, 5) and B = (7, −1) is M = ½(A + B) = (4, 2), the same distance from both"
+```
+
+## The parallelogram of a sum
+
+In the step adder under [Points as steps](#points-as-steps), the two routes to $$A + B$$ always
+outline a four-sided shape with corners $$O$$, $$A$$, $$A + B$$ and $$B$$. Its opposite sides are
+the same step taken from different places: the side from $$O$$ to $$A$$ and the side from $$B$$ to
+$$A + B$$ are both the step $$A$$. So they should have the same length, and the shape should be a
+parallelogram.
+
+:::theorem[The parallelogram of a sum]{#parallelogram-law}
+
+Let $$A$$ and $$B$$ be points.
+
+1. The opposite sides of $$O$$, $$A$$, $$A + B$$, $$B$$ have equal lengths:
+
+   ```math
+   d(O, A) = d(B, A + B) \qquad d(O, B) = d(A, A + B)
+   ```
+
+2. If $$A \ne B$$ and $$A + B \ne O$$, the diagonals from $$O$$ to $$A + B$$ and from $$A$$ to $$B$$
+   have the same midpoint, $$\frac{1}{2}(A + B)$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Parallelogram#Characterizations"}
+
+**Part 1.** Write $$B = (b_1, b_2)$$. The slide $$(x, y) \mapsto (x + b_1, y + b_2)$$ adds $$B$$ to
+every point, so it sends $$O$$ to $$B$$ and $$A$$ to $$A + B$$. Slides keep distances
+(:ref{#coordinates/slide-distance}), so $$d(O, A) = d(B, A + B)$$. In the same way, the slide that
+adds $$A$$ sends $$O$$ to $$A$$ and $$B$$ to $$B + A$$, which is $$A + B$$ by :ref{#sum-rules}. So
+$$d(O, B) = d(A, A + B)$$.
+
+**Part 2.** By :ref{#midpoint-formula}, the midpoint of the diagonal from $$O$$ to $$A + B$$ is
+$$\frac{1}{2}\big(O + (A + B)\big) = \frac{1}{2}(A + B)$$, using rule 3 of :ref{#sum-rules}. The
+midpoint of the diagonal from $$A$$ to $$B$$ is $$\frac{1}{2}(A + B)$$ too.
+
+:::
+
+With $$A = (3, 1)$$ and $$B = (1, 2)$$, the sides from $$O$$ to $$A$$ and from $$B$$ to
+$$A + B = (4, 3)$$ both have length $$\sqrt{10}$$, and the other two sides both have length
+$$\sqrt{5}$$. Both diagonals have midpoint $$(2, 1.5)$$.
+
+The opposite sides are also parallel, which is what the name parallelogram promises. That is a fact
+about lines, and it waits for the next chapter, where lines get formulas. When $$O$$, $$A$$ and
+$$B$$ lie on one line, the four corners lie on that line too, and the parallelogram flattens. Both
+parts of the theorem still hold then.
+
+## Flying in a wind
+
+A pilot plans each hour of a flight as a step. The plane's own step $$H$$ is where its engines and
+heading would take it in still air. The wind adds its own step $$W$$, so over the ground the plane
+moves by $$H + W$$. Here we measure in kilometres, east first and then north.
+
+Say the pilot wants to cover $$300$$ km east and $$300$$ km north each hour, the step
+$$(300, 300)$$. The wind blows $$60$$ km east and $$20$$ km south each hour, so $$W = (60, -20)$$.
+The plane's own step must satisfy $$W + H = (300, 300)$$, and by :ref{#difference-step} the only
+such step is
+
+```math
+H = (300, 300) - (60, -20) = (240, 320)
+```
+
+So the pilot points the plane a little further north than the destination, to make up for the wind
+pushing it south. In still air that step would cover $$\sqrt{240^2 + 320^2} = 400$$ km in the hour,
+while over the ground the plane covers $$\sqrt{300^2 + 300^2} \approx 424$$ km, helped along by the
+wind.
+
+## Exercises
+
+:::::accordion[Exercises on adding points, with solutions]
+
+::::exercise{#ex-adding-points-practice}
+
+Let $$A = (2, -3)$$, $$B = (-1, 4)$$ and $$C = (5, 0)$$. Work out:
+
+1. $$A + B$$
+2. $$B - A$$
+3. $$2A - 3B$$
+4. $$A + B + C$$
+5. $$\frac{1}{2}(A + C)$$
+
+:::solution
+
+By :ref{#point-sum}, :ref{#point-difference} and :ref{#scalar-multiple}:
+
+1. $$A + B = (2 - 1, -3 + 4) = (1, 1)$$
+2. $$B - A = (-1 - 2, 4 - (-3)) = (-3, 7)$$
+3. $$2A - 3B = (4, -6) - (-3, 12) = (4 + 3, -6 - 12) = (7, -18)$$
+4. $$A + B + C = (1, 1) + (5, 0) = (6, 1)$$
+5. $$\frac{1}{2}(A + C) = \frac{1}{2}(7, -3) = (3.5, -1.5)$$, the midpoint of $$AC$$ by
+   :ref{#midpoint-formula}
+
+:::
+
+::::
+
+::::exercise{#ex-adding-points-solve}
+
+Find the point $$X$$ in each case.
+
+1. $$(3, -2) + X = (-1, 5)$$
+2. $$2X + (1, 3) = (7, -5)$$
+
+:::solution
+
+1. By :ref{#difference-step}, the only such $$X$$ is $$(-1, 5) - (3, -2) = (-4, 7)$$. Check:
+   $$(3, -2) + (-4, 7) = (-1, 5)$$.
+2. By :ref{#difference-step}, $$2X = (7, -5) - (1, 3) = (6, -8)$$. Multiplying both sides by
+   $$\frac{1}{2}$$ and using :ref{#scale-twice}, $$X = \frac{1}{2}(6, -8) = (3, -4)$$. Check:
+   $$2(3, -4) + (1, 3) = (6, -8) + (1, 3) = (7, -5)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-adding-points-other-end}
+
+The midpoint of a segment $$AB$$ is $$M = (2, 1)$$, and $$A = (-1, 4)$$. Find $$B$$.
+
+:::solution
+
+By :ref{#midpoint-formula}, $$M = \frac{1}{2}(A + B)$$. Doubling both sides gives $$A + B = 2M$$, so
+by :ref{#difference-step}
+
+```math
+B = 2M - A = (4, 2) - (-1, 4) = (5, -2)
+```
+
+Check: $$\frac{1}{2}\big((-1, 4) + (5, -2)\big) = \frac{1}{2}(4, 2) = (2, 1)$$. Read as steps, the
+step from $$A$$ to $$M$$ is $$(3, -3)$$, and taking it once more from $$M$$ lands on $$B$$.
+
+:::
+
+::::
+
+::::exercise{#ex-adding-points-fourth-corner}
+
+Three corners of a parallelogram $$PQRS$$, in order round the shape, are $$P = (1, 1)$$,
+$$Q = (5, 2)$$ and $$R = (6, 5)$$. The diagonals $$PR$$ and $$QS$$ of a parallelogram share their
+midpoint.
+
+1. Use this to find $$S$$.
+2. Check that the opposite sides $$PQ$$ and $$SR$$ have equal lengths, and so do $$QR$$ and $$PS$$.
+
+:::solution
+
+1. By :ref{#midpoint-formula}, $$\frac{1}{2}(P + R) = \frac{1}{2}(Q + S)$$. Doubling both sides
+   gives $$P + R = Q + S$$, so $$S = P + R - Q = (1 + 6 - 5, 1 + 5 - 2) = (2, 4)$$. Both diagonals
+   have midpoint $$(3.5, 3)$$.
+2. By the distance formula (:ref{#coordinates/coordinate-plane}):
+   - $$d(P, Q) = \sqrt{4^2 + 1^2} = \sqrt{17}$$ and $$d(S, R) = \sqrt{4^2 + 1^2} = \sqrt{17}$$
+   - $$d(Q, R) = \sqrt{1^2 + 3^2} = \sqrt{10}$$ and $$d(P, S) = \sqrt{1^2 + 3^2} = \sqrt{10}$$
+
+   The steps match too: $$Q - P = R - S = (4, 1)$$ and $$R - Q = S - P = (1, 3)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-adding-points-chain}
+
+Prove these two rules for all points $$A$$, $$B$$ and $$C$$, and say what each means for steps.
+
+1. $$(A - B) + (B - C) = A - C$$
+2. $$-(A + B) = (-A) + (-B)$$
+
+:::solution
+
+1. By :ref{#point-difference} and the rules in :ref{#sum-rules},
+
+   ```math
+   (A - B) + (B - C) = A + \big((-B) + B\big) + (-C) = A + O + (-C) = A - C
+   ```
+
+   In steps: going from $$C$$ to $$B$$ and then from $$B$$ to $$A$$ is the same as going from $$C$$
+   to $$A$$ in one step.
+
+2. By :ref{#difference-step} with $$B$$ replaced by $$A + B$$ and $$A$$ replaced by $$O$$, the only
+   point $$X$$ with $$(A + B) + X = O$$ is $$O - (A + B)$$, which is $$-(A + B)$$ by rule 3 of
+   :ref{#sum-rules}. Now
+   $$(A + B) + \big((-A) + (-B)\big) = \big(A + (-A)\big) + \big(B + (-B)\big) = O$$, by
+   :ref{#sum-rules}. So $$(-A) + (-B)$$ is that point, and it equals $$-(A + B)$$. In steps: to undo
+   "$$A$$ then $$B$$", walk both steps backwards.
+
+:::
+
+::::
+
+::::exercise{#ex-adding-points-two-steps}
+
+The unit points are not the only pair of steps that can build every point.
+
+1. Write $$(-2, 5)$$ in terms of $$E_1$$ and $$E_2$$.
+2. Find numbers $$s$$ and $$t$$ with $$s(1, 1) + t(1, -1) = (5, 1)$$.
+
+:::solution
+
+1. By :ref{#unit-combination}, $$(-2, 5) = -2E_1 + 5E_2$$: two steps west and five steps north.
+2. The left side is $$(s + t, s - t)$$, so the two coordinates give $$s + t = 5$$ and $$s - t = 1$$.
+   Adding these gives $$2s = 6$$, so $$s = 3$$, and then $$t = 2$$. Check:
+   $$3(1, 1) + 2(1, -1) = (3, 3) + (2, -2) = (5, 1)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-adding-points-game}
+
+In a computer game, a character starts at $$(10, 4)$$ and moves by the step $$(3, -1)$$ every frame.
+
+1. Where is it after $$5$$ frames?
+2. After how many frames is its first coordinate $$40$$, and where is it then?
+
+:::solution
+
+1. After $$n$$ frames it has taken the step $$(3, -1)$$ $$n$$ times, which is the single step
+   $$n(3, -1)$$ by :ref{#scale-sum-rules}. After $$5$$ frames it is at
+   $$(10, 4) + 5(3, -1) = (10, 4) + (15, -5) = (25, -1)$$.
+2. The first coordinate after $$n$$ frames is $$10 + 3n$$, which is $$40$$ when $$n = 10$$. Then the
+   character is at $$(10, 4) + (30, -10) = (40, -6)$$.
+
+:::
+
+::::
+
+:::::

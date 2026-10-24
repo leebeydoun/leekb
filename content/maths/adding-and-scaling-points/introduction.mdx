@@ -1,0 +1,148 @@
+---
+title: Introduction
+description: Reading a point as a step, so that points can be added and scaled like numbers.
+---
+
+Imagine finding directions on the back of an old map: from the oak tree, walk $$10$$ paces east and
+$$4$$ north, then $$3$$ east and $$6$$ north. You don't need to walk it to know where you'll end up.
+Add the paces east and the paces north, and the spot is $$13$$ east and $$10$$ north of the tree.
+Each pair of numbers here is a **step**, and putting two steps together means adding their numbers.
+In this chapter we'll add and scale points like numbers, and use that to write slides, half turns,
+zooms and flips as formulas.
+
+The picture to keep in mind is an arrow from the origin to a point. Adding two points puts one arrow
+on the end of the other, and multiplying a point by $$3$$ makes its arrow three times as long. With
+a minus sign the arrow points the other way. These two operations turn a lot of geometry into short
+calculations, the way a computer moves a picture on a screen.
+
+Nothing new is taken as given in this chapter. Everything is proved from the coordinates, distances
+and circles of [Coordinates](../coordinates/introduction.mdx), the midpoints and segments of
+[Distance and angles](../distance-and-angles/introduction.mdx) and the moves of
+[Isometries](../isometries/introduction.mdx). Along the way the chapter settles several things those
+chapters showed from the picture:
+
+- **Half turns and quarter turns**: the half turn about any point is $$P \mapsto 2Q - P$$, and the
+  quarter turn about the origin is $$(x, y) \mapsto (-y, x)$$, both proved from the definitions
+- **Flips**: flipping in either axis, or in the line $$y = x$$, is a change of sign or a swap of the
+  coordinates
+- **Combining moves**: two half turns make a slide, slides combine by adding, and a zoom about any
+  point is a slide, a zoom about the origin and a slide back
+- **Midpoints**: the midpoint of two points is half their sum, and the diagonals of the
+  parallelogram built from two steps cut each other in half
+
+Some things wait for the next chapter, which writes segments, rays and lines with the same
+operations, as points $$P + t(Q - P)$$. That is where we'll show that the zoom about $$Q$$ keeps
+each point on its ray from $$Q$$, and that the opposite sides of the parallelogram are parallel.
+Turns by angles other than right angles need trigonometry, which comes later still.
+
+## Guides in this chapter
+
+The chapter has eight guides:
+
+1. [Scaling points](./scaling-points.mdx): multiplying a point by a number, the negative as a half
+   turn, and what scaling does to distances
+2. [Adding points](./adding-points.mdx): points as steps, the rules for adding, the step between two
+   points, the midpoint formula and the parallelogram of a sum
+3. [Length and direction](./length.mdx): the length of a point, the triangle inequality for steps,
+   unit points, and every circle as a scaled and slid unit circle
+4. [Moves as formulas](./moves-as-formulas.mdx): slides, half turns, zooms, flips and the quarter
+   turn as formulas, with what each does to distances and which points it fixes
+5. [Combining and undoing moves](./combining-moves.mdx): doing one move after another by
+   calculation, undoing moves, and why two half turns make a slide
+6. [Points in space](./space.mdx): adding, scaling and measuring triples, spheres as slid copies,
+   and why the negative is not a turn in space
+7. [Test yourself](./test-yourself.mdx): a multiple choice quiz on the ideas in the chapter
+8. [Exercises](./exercises.mdx): exercises on the whole chapter, with worked solutions
+
+The summary below collects every definition and rule from the chapter, for reference while you read.
+
+{/* Keep this summary in sync with the guides whenever they change. */}
+
+:::accordion[Summary of definitions and rules]
+
+**Definitions**
+
+| Term                    | Meaning                                                                            |
+| ----------------------- | ---------------------------------------------------------------------------------- |
+| :ref{#scalar-multiple}  | $$cA = (ca_1, ca_2)$$                                                              |
+| :ref{#negative-point}   | $$-A = (-1)A = (-a_1, -a_2)$$                                                      |
+| :ref{#point-sum}        | $$A + B = (a_1 + b_1, a_2 + b_2)$$                                                 |
+| :ref{#point-difference} | $$A - B = A + (-B) = (a_1 - b_1, a_2 - b_2)$$                                      |
+| :ref{#unit-points}      | $$E_1 = (1, 0)$$ and $$E_2 = (0, 1)$$                                              |
+| :ref{#norm}             | $$\lvert A \rvert = \sqrt{a_1^2 + a_2^2} = d(O, A)$$                               |
+| :ref{#unit-point}       | A point $$U$$ with $$\lvert U \rvert = 1$$                                         |
+| :ref{#slide-formula}    | $$T_A(P) = P + A$$                                                                 |
+| :ref{#zoom-formula}     | $$Z_{r,Q}(P) = Q + r(P - Q)$$ for $$r > 0$$, and $$Z_r(P) = rP$$                   |
+| :ref{#space-operations} | Sums, multiples, negatives and differences of triples, coordinate by coordinate    |
+| :ref{#space-norm}       | $$\lvert A \rvert = \sqrt{a_1^2 + a_2^2 + a_3^2}$$ for a point of $$\mathbb{R}^3$$ |
+
+**Scaling points**
+
+| Rule                      | Statement                                                                                      |
+| ------------------------- | ---------------------------------------------------------------------------------------------- |
+| :ref{#negative-half-turn} | $$P \mapsto -P$$ is the half turn about $$O$$, the reflection through $$O$$                    |
+| :ref{#negative-multiple}  | For $$c < 0$$, $$cA = -(\lvert c \rvert A) = \lvert c \rvert(-A)$$                             |
+| :ref{#scale-distance}     | $$d(cA, cB) = \lvert c \rvert\, d(A, B)$$                                                      |
+| :ref{#scale-twice}        | $$b(cA) = (bc)A$$                                                                              |
+| :ref{#scale-cancel}       | $$cA = O$$ exactly when $$c = 0$$ or $$A = O$$; if $$bA = cA$$ and $$A \ne O$$, then $$b = c$$ |
+
+**Adding points**
+
+| Rule                     | Statement                                                                                      |
+| ------------------------ | ---------------------------------------------------------------------------------------------- |
+| :ref{#sum-rules}         | $$A + B = B + A$$, $$(A + B) + C = A + (B + C)$$, $$A + O = A$$, $$A + (-A) = O$$              |
+| :ref{#difference-step}   | $$B + (A - B) = A$$, and $$A - B$$ is the only point $$X$$ with $$B + X = A$$                  |
+| :ref{#scale-sum-rules}   | $$c(A + B) = cA + cB$$ and $$(b + c)A = bA + cA$$                                              |
+| :ref{#unit-combination}  | $$A = a_1E_1 + a_2E_2$$, and no other numbers work                                             |
+| :ref{#midpoint-formula}  | The midpoint of $$AB$$ is $$\frac{1}{2}(A + B)$$                                               |
+| :ref{#parallelogram-law} | $$O$$, $$A$$, $$A + B$$, $$B$$ have equal opposite sides, and diagonals with the same midpoint |
+
+**Length and direction**
+
+| Rule                   | Statement                                                                                                                  |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| :ref{#distance-norm}   | $$d(A, B) = \lvert A - B \rvert = \lvert B - A \rvert$$                                                                    |
+| :ref{#norm-scale}      | $$\lvert cA \rvert = \lvert c \rvert\,\lvert A \rvert$$                                                                    |
+| :ref{#norm-triangle}   | $$\lvert A + B \rvert \le \lvert A \rvert + \lvert B \rvert$$                                                              |
+| :ref{#norm-difference} | $$\big\lvert \lvert A \rvert - \lvert B \rvert \big\rvert \le \lvert A - B \rvert$$                                        |
+| :ref{#direction}       | For $$A \ne O$$, $$U = \frac{1}{\lvert A \rvert}A$$ is a unit point and $$A = \lvert A \rvert\,U$$                         |
+| :ref{#circle-slide}    | The circle with centre $$A$$ and radius $$r$$ is $$\lvert X - A \rvert = r$$, the slide by $$A$$ of the circle about $$O$$ |
+| :ref{#circle-scale}    | $$P \mapsto cP$$ sends the circle about $$O$$ of radius $$r$$ to the one of radius $$\lvert c \rvert r$$                   |
+
+**Moves as formulas**
+
+| Rule                          | Statement                                                                                                             |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| :ref{#half-turn-formula}      | The half turn about $$Q$$ is $$H_Q(P) = 2Q - P$$                                                                      |
+| :ref{#zoom-formula-distances} | $$Z_{r,Q}$$ multiplies every distance by $$r$$, and distances from $$Q$$ too                                          |
+| :ref{#axis-reflections}       | $$R_1(x, y) = (x, -y)$$ flips in the $$x$$-axis, $$R_2(x, y) = (-x, y)$$ in the $$y$$-axis                            |
+| :ref{#diagonal-reflection}    | $$S(x, y) = (y, x)$$ flips in the line $$y = x$$                                                                      |
+| :ref{#quarter-turn}           | $$G_{90}(x, y) = (-y, x)$$ keeps the distance from $$O$$ and turns through a right angle                              |
+| :ref{#formula-isometries}     | Slides, half turns, the three flips and $$G_{90}$$ keep distances; $$Z_{r,Q}$$ exactly when $$r = 1$$                 |
+| :ref{#formula-fixed-points}   | $$T_A$$ ($$A \ne O$$) fixes nothing; $$H_Q$$ and $$Z_{r,Q}$$ ($$r \ne 1$$) fix only $$Q$$; each flip fixes its mirror |
+
+**Combining and undoing moves**
+
+| Rule                         | Statement                                                                          |
+| ---------------------------- | ---------------------------------------------------------------------------------- |
+| :ref{#slide-compose}         | $$T_B \circ T_A = T_{A + B}$$                                                      |
+| :ref{#slide-inverse}         | $$T_A^{-1} = T_{-A}$$                                                              |
+| :ref{#zoom-compose}          | $$Z_s \circ Z_r = Z_{rs}$$ and $$Z_r^{-1} = Z_{1/r}$$                              |
+| :ref{#two-half-turns}        | $$H_M \circ H_Q = T_{2(M - Q)}$$                                                   |
+| :ref{#half-turn-composite}   | $$H_Q = T_{2Q} \circ H_O$$                                                         |
+| :ref{#zoom-composite}        | $$Z_{r,Q} = T_Q \circ Z_r \circ T_{-Q}$$ and $$H_Q = T_Q \circ H_O \circ T_{-Q}$$  |
+| :ref{#conjugate-slide}       | $$Z_r \circ T_A \circ Z_r^{-1} = T_{rA}$$ and $$H_O \circ T_A \circ H_O = T_{-A}$$ |
+| :ref{#combining-moves-flips} | $$R_2 \circ R_1 = H_O$$, $$G_{90} \circ G_{90} = H_O$$, $$S \circ R_1 = G_{90}$$   |
+
+**Points in space**
+
+| Rule                          | Statement                                                                                                                                                 |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :ref{#space-rules}            | The rules for adding and scaling hold for triples                                                                                                         |
+| :ref{#space-norm-rules}       | $$d(A, B) = \lvert A - B \rvert$$, $$\lvert cA \rvert = \lvert c \rvert\,\lvert A \rvert$$, $$\lvert A + B \rvert \le \lvert A \rvert + \lvert B \rvert$$ |
+| :ref{#space-unit-combination} | $$A = a_1E_1 + a_2E_2 + a_3E_3$$                                                                                                                          |
+| :ref{#space-midpoint}         | The midpoint of $$AB$$ is $$\frac{1}{2}(A + B)$$                                                                                                          |
+| :ref{#sphere-slide}           | The sphere with centre $$A$$ is the slide by $$A$$ of the sphere about $$O$$                                                                              |
+| :ref{#space-negative}         | $$A \mapsto -A$$ keeps distances but is not a turn about any line                                                                                         |
+
+:::

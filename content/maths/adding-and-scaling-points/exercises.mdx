@@ -1,0 +1,329 @@
+---
+title: Exercises
+description: Exercises on the whole Adding and scaling points chapter, with worked solutions.
+---
+
+These exercises use the whole chapter, and most need ideas from more than one guide. Try each one
+before you open its solution, and name the rule or result behind each step, as the guides do.
+
+Most of them come down to one habit: write the points as letters for as long as you can, rearrange
+with the rules for adding and scaling, and put in coordinates only at the end. The letters show why
+an answer comes out the way it does, and the coordinates check it.
+
+## Steps and midpoints
+
+::::exercise{#ex-points-solve}
+
+Let $$A = (2, -1)$$ and $$B = (-3, 4)$$.
+
+1. Find $$3A - 2B$$.
+2. Find the point $$X$$ with $$2X + A = B$$.
+3. Find $$d(A, B)$$.
+
+:::solution
+
+1. By :ref{#scalar-multiple}, $$3A = (6, -3)$$ and $$2B = (-6, 8)$$, so by :ref{#point-difference}
+   $$3A - 2B = (6 - (-6), -3 - 8) = (12, -11)$$.
+2. Subtract $$A$$ from both sides, which :ref{#difference-step} allows, to get $$2X = B - A$$. Then
+   multiply both sides by $$\frac{1}{2}$$, using :ref{#scale-twice}:
+
+   ```math
+   X = \tfrac{1}{2}(B - A) = \tfrac{1}{2}(-5, 5) = \left(-\tfrac{5}{2}, \tfrac{5}{2}\right)
+   ```
+
+   Check: $$2X + A = (-5, 5) + (2, -1) = (-3, 4) = B$$.
+
+3. By :ref{#distance-norm},
+   $$d(A, B) = |B - A| = |(-5, 5)| = \sqrt{25 + 25} = \sqrt{50} = 5\sqrt{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-points-fourth-corner}
+
+Three corners of a parallelogram, in order round it, are $$A = (1, 1)$$, $$B = (4, 2)$$ and
+$$C = (5, 5)$$. Find the fourth corner $$D$$, and check that the two diagonals have the same
+midpoint.
+
+:::solution
+
+Going round the parallelogram, the step from $$A$$ to $$D$$ should be the same as the step from
+$$B$$ to $$C$$. So $$D = A + (C - B) = (1, 1) + (1, 3) = (2, 4)$$.
+
+The diagonals are $$AC$$ and $$BD$$. By :ref{#midpoint-formula} their midpoints are
+
+```math
+\tfrac{1}{2}(A + C) = \tfrac{1}{2}(6, 6) = (3, 3) \qquad \tfrac{1}{2}(B + D) = \tfrac{1}{2}(6, 6) = (3, 3)
+```
+
+They agree, as :ref{#parallelogram-law} says they should. In fact $$D = A + C - B$$ was bound to
+work for any three corners, since then $$B + D = A + C$$, so the two midpoints are always equal.
+
+:::
+
+::::
+
+::::exercise{#ex-points-third}
+
+Let $$A = (1, 2)$$ and $$B = (7, -1)$$, and let $$P = A + \frac{1}{3}(B - A)$$.
+
+1. Find $$P$$.
+2. Show that $$P$$ lies on the segment $$AB$$, a third of the way from $$A$$ to $$B$$.
+
+:::solution
+
+1. $$B - A = (6, -3)$$, so $$P = (1, 2) + (2, -1) = (3, 1)$$.
+2. By :ref{#distance-norm} and :ref{#norm-scale},
+
+   ```math
+   d(A, P) = \left|\tfrac{1}{3}(B - A)\right| = \tfrac{1}{3}\,d(A, B)
+   ```
+
+   Also $$B - P = (B - A) - \frac{1}{3}(B - A) = \frac{2}{3}(B - A)$$ by :ref{#scale-sum-rules}, so
+   $$d(P, B) = \frac{2}{3}\,d(A, B)$$. The two distances add up to $$d(A, B)$$, so $$P$$ lies on the
+   segment $$AB$$ by rule 1 of :ref{#distance-and-angles/segment-rules}, a third of the way along.
+
+   With the numbers, $$d(A, P) = \sqrt{5}$$, $$d(P, B) = \sqrt{20} = 2\sqrt{5}$$ and
+   $$d(A, B) = \sqrt{45} = 3\sqrt{5}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-points-centroid}
+
+Let $$A$$, $$B$$ and $$C$$ be the corners of a triangle, let $$M = \frac{1}{2}(A + B)$$ be the
+midpoint of $$AB$$, and let
+
+```math
+G = \tfrac{1}{3}(A + B + C)
+```
+
+1. Show that $$G - M = \frac{1}{3}(C - M)$$ and $$C - G = \frac{2}{3}(C - M)$$.
+2. Deduce that $$G$$ lies on the segment $$CM$$, two thirds of the way from $$C$$ to $$M$$.
+3. The segment from a corner to the midpoint of the opposite side is called a **median**. Explain
+   why all three medians of a triangle pass through $$G$$.
+4. Check with $$A = (0, 0)$$, $$B = (6, 0)$$ and $$C = (3, 9)$$.
+
+:::solution
+
+1. Since $$A + B = 2M$$, we have $$G = \frac{1}{3}(2M + C)$$. Rearranging with :ref{#sum-rules} and
+   :ref{#scale-sum-rules},
+
+   ```math
+   G - M = \tfrac{2}{3}M + \tfrac{1}{3}C - M = \tfrac{1}{3}(C - M) \qquad
+   C - G = C - \tfrac{2}{3}M - \tfrac{1}{3}C = \tfrac{2}{3}(C - M)
+   ```
+
+2. By :ref{#distance-norm} and :ref{#norm-scale}, $$d(C, G) = \frac{2}{3}\,d(C, M)$$ and
+   $$d(G, M) = \frac{1}{3}\,d(C, M)$$. These add up to $$d(C, M)$$, so $$G$$ lies on the segment
+   $$CM$$ by rule 1 of :ref{#distance-and-angles/segment-rules}, two thirds of the way from $$C$$.
+3. The formula for $$G$$ treats $$A$$, $$B$$ and $$C$$ the same way, since the order of a sum
+   doesn't matter (:ref{#sum-rules}). So the same argument with the corners relabelled shows that
+   $$G$$ is on the median from $$A$$ and on the median from $$B$$ too. The point $$G$$ is called the
+   **centroid** of the triangle, and it is the average of the three corners.
+4. $$G = \frac{1}{3}(9, 9) = (3, 3)$$ and $$M = (3, 0)$$. Then $$d(C, G) = 6$$, $$d(G, M) = 3$$ and
+   $$d(C, M) = 9$$, so $$G$$ is two thirds of the way down the median from $$C$$.
+
+:::
+
+::::
+
+## Length and direction
+
+::::exercise{#ex-points-unit}
+
+Let $$A = (5, -12)$$.
+
+1. Find $$|A|$$ and the unit point $$U$$ that is a positive multiple of $$A$$.
+2. Find the point at distance $$26$$ from $$O$$ in the same direction as $$A$$.
+
+:::solution
+
+1. $$|A| = \sqrt{25 + 144} = \sqrt{169} = 13$$, so by :ref{#direction}
+
+   ```math
+   U = \tfrac{1}{13}A = \left(\tfrac{5}{13}, -\tfrac{12}{13}\right)
+   ```
+
+2. The point $$26U$$ has length $$26$$ by :ref{#norm-scale}, and it is a positive multiple of $$A$$.
+   It is $$26U = 2A = (10, -24)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-points-length-range}
+
+Let $$A$$ and $$B$$ be points, in the plane or in space, with $$|A| = 3$$ and $$|B| = 6$$.
+
+1. Show that $$3 \le |A + B| \le 9$$.
+2. With $$A = (1, 2, 2)$$ in space, find a point $$B$$ with $$|B| = 6$$ for each end of the range.
+
+:::solution
+
+1. The triangle inequality for lengths holds in the plane (:ref{#norm-triangle}) and in space
+   (:ref{#space-norm-rules}). It gives the upper end at once: $$|A + B| \le 3 + 6 = 9$$. For the
+   lower end, write $$B$$ as the two steps $$A + B$$ and $$-A$$, one after the other:
+
+   ```math
+   6 = |B| = |(A + B) + (-A)| \le |A + B| + |-A| = |A + B| + 3
+   ```
+
+   So $$|A + B| \ge 3$$.
+
+2. $$|A| = \sqrt{1 + 4 + 4} = 3$$, so this $$A$$ fits. Taking $$B = 2A = (2, 4, 4)$$ gives
+   $$|B| = 6$$ and $$|A + B| = |3A| = 9$$. Taking $$B = -2A = (-2, -4, -4)$$ gives $$|B| = 6$$ and
+   $$|A + B| = |-A| = 3$$. These use :ref{#space-norm-rules}. The longest sum comes from two steps
+   the same way, and the shortest from two steps in opposite directions.
+
+:::
+
+::::
+
+::::exercise{#ex-points-square}
+
+Let $$A = (3, 1)$$, let $$B = G_{90}(A)$$ be its quarter turn about $$O$$ (:ref{#quarter-turn}), and
+let $$C = A + B$$.
+
+1. Find $$B$$ and $$C$$.
+2. Show that the four sides of $$O$$, $$A$$, $$C$$, $$B$$ all have the same length, and that the two
+   diagonals have the same length and the same midpoint.
+
+:::solution
+
+1. $$B = G_{90}(3, 1) = (-1, 3)$$ and $$C = (3, 1) + (-1, 3) = (2, 4)$$.
+2. The squared sides are
+
+   - $$d(O, A)^2 = 9 + 1 = 10$$
+   - $$d(A, C)^2 = 1 + 9 = 10$$
+   - $$d(C, B)^2 = 9 + 1 = 10$$
+   - $$d(B, O)^2 = 1 + 9 = 10$$
+
+   The diagonals have $$d(O, C)^2 = 4 + 16 = 20$$ and $$d(A, B)^2 = 16 + 4 = 20$$, and both
+   midpoints are $$\frac{1}{2}(2, 4) = (1, 2)$$ by :ref{#midpoint-formula}. The angle at $$O$$ is a
+   right angle by :ref{#quarter-turn}, so the shape is a square with side $$\sqrt{10}$$. The quarter
+   turn builds a square on any step from the origin in the same way.
+
+:::
+
+::::
+
+## Moves as formulas
+
+::::exercise{#ex-points-circle-turn}
+
+The circle $$C$$ has centre $$(4, -1)$$ and radius $$3$$. Find the equation of its image under the
+half turn about $$Q = (1, 2)$$.
+
+:::solution
+
+The half turn is $$H_Q(P) = 2Q - P$$ (:ref{#half-turn-formula}), and it keeps every distance
+(:ref{#formula-isometries}). A point is on $$C$$ exactly when it is $$3$$ from the centre, so its
+image is $$3$$ from the image of the centre, which is
+
+```math
+2Q - (4, -1) = (2, 4) - (4, -1) = (-2, 5)
+```
+
+Every point at distance $$3$$ from $$(-2, 5)$$ is the image of a point of $$C$$, since $$H_Q$$
+undoes itself. So the image is the circle with centre $$(-2, 5)$$ and radius $$3$$, whose equation
+is $$(x + 2)^2 + (y - 5)^2 = 9$$ by :ref{#coordinates/circle-equation}.
+
+:::
+
+::::
+
+::::exercise{#ex-points-find-zoom}
+
+A zoom $$Z_{r,Q}$$ sends $$(1, 1)$$ to $$(5, -1)$$ and sends $$(0, 4)$$ to $$(2, 8)$$. Find $$r$$
+and $$Q$$.
+
+:::solution
+
+The zoom multiplies distances by $$r$$ (:ref{#zoom-formula-distances}). The two points are
+$$\sqrt{1 + 9} = \sqrt{10}$$ apart, and their images are $$\sqrt{9 + 81} = \sqrt{90} = 3\sqrt{10}$$
+apart, so $$r = 3$$.
+
+Now $$Z_{3,Q}(1, 1) = Q + 3\big((1, 1) - Q\big) = (3, 3) - 2Q$$. Setting this equal to $$(5, -1)$$
+gives $$2Q = (3, 3) - (5, -1) = (-2, 4)$$, so $$Q = (-1, 2)$$. Check the other point:
+$$(-1, 2) + 3(1, 2) = (2, 8)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-points-glide}
+
+Let $$F(x, y) = (x + 1, 2 - y)$$.
+
+1. Write $$F$$ as a flip in an axis followed by a slide, and explain why $$F$$ is an isometry.
+2. Show that $$F$$ has no fixed points.
+3. Show that $$F \circ F$$ is a slide, and find it.
+
+:::solution
+
+1. $$R_1(x, y) = (x, -y)$$, and sliding that by $$(1, 2)$$ gives $$(x + 1, 2 - y)$$. So
+   $$F = T_{(1, 2)} \circ R_1$$. Both keep distances (:ref{#formula-isometries}), so $$F$$ does too
+   (:ref{#isometries/composite-isometry}).
+2. A fixed point would need $$x + 1 = x$$, which no number satisfies.
+3. $$F(F(x, y)) = F(x + 1, 2 - y) = (x + 2, 2 - (2 - y)) = (x + 2, y)$$. So $$F \circ F$$ is the
+   slide by $$(2, 0)$$. A move that flips, then slides along its mirror, is a glide reflection
+   (:ref{#isometries/glide-reflection}). Here the mirror is the line $$y = 1$$ and the slide is
+   $$1$$ to the right, which is why doing it twice slides by $$2$$.
+
+:::
+
+::::
+
+## Combining moves
+
+::::exercise{#ex-points-zoom-then-turn}
+
+Let $$Q = (3, 1)$$, and let $$F = H_Q \circ Z_2$$: zoom by $$2$$ about the origin, then half turn
+about $$Q$$.
+
+1. Show that $$F(P) = (6, 2) - 2P$$.
+2. Find the one fixed point $$C$$ of $$F$$.
+3. Show that $$F(P) = C - 2(P - C)$$. In words, $$F$$ is a zoom by $$2$$ about $$C$$ followed by a
+   half turn about $$C$$.
+
+:::solution
+
+1. $$F(P) = H_Q(2P) = 2Q - 2P = (6, 2) - 2P$$, by :ref{#half-turn-formula}.
+2. $$C = (6, 2) - 2C$$ gives $$3C = (6, 2)$$, so $$C = \left(2, \frac{2}{3}\right)$$.
+3. $$C - 2(P - C) = 3C - 2P = (6, 2) - 2P = F(P)$$. So $$F$$ sends the step $$P - C$$ to
+   $$-2(P - C)$$, measured from $$C$$, which is a zoom by $$2$$ and a half turn
+   (:ref{#negative-multiple}) about $$C$$. Combining a zoom about one point with a half turn about
+   another gave a move of the same kind about a third point.
+
+:::
+
+::::
+
+::::exercise{#ex-points-flip-slide}
+
+1. Show that $$R_1(P + A) = R_1(P) + R_1(A)$$ for all points $$P$$ and $$A$$.
+2. Deduce that $$R_1 \circ T_A \circ R_1 = T_{R_1(A)}$$.
+3. What slide is $$R_1 \circ T_{(2, 3)} \circ R_1$$? Explain the answer in words.
+
+:::solution
+
+1. With $$P = (x, y)$$ and $$A = (a_1, a_2)$$, both sides are $$(x + a_1, -y - a_2)$$.
+2. For any point $$P$$, using part 1 and the fact that $$R_1 \circ R_1$$ moves nothing
+   (:ref{#isometries/reflection-twice}),
+
+   ```math
+   R_1\big(T_A(R_1(P))\big) = R_1\big(R_1(P) + A\big) = R_1(R_1(P)) + R_1(A) = P + R_1(A)
+   ```
+
+   which is $$T_{R_1(A)}(P)$$.
+
+3. It is the slide by $$R_1(2, 3) = (2, -3)$$. Seen in a mirror held along the $$x$$-axis, a slide
+   up and to the right looks like a slide down and to the right, as :ref{#conjugate-slide} found for
+   zooms and half turns.
+
+:::
+
+::::

@@ -1,0 +1,567 @@
+---
+title: Combining and undoing moves
+description:
+  Doing one move after another by calculating with points, undoing moves, and why two half turns
+  make a slide.
+---
+
+Put a square coaster on a table and hold one corner down with a finger. Spin the coaster half a turn
+about that corner. Now move your finger to the corner diagonally across from it, and spin half a
+turn again. The coaster ends up with its picture the right way up, facing exactly the way it
+started, but it has moved along the table by twice the distance between the two corners you held.
+
+Two half turns have made a slide. Doing one move after another is called combining, or composing,
+the moves (:ref{#isometries/composite}). In this guide we'll combine and undo the moves from
+[Moves as formulas](./moves-as-formulas.mdx) by calculating with points.
+
+## Slides combine by adding
+
+Slide a coaster $$3$$ cm to the right, then $$2$$ cm up. Every point of it has moved $$3$$ right and
+$$2$$ up, and doing the two slides in the other order would have the same effect. With slides
+written as formulas, this is adding steps. The slide by $$A$$ is $$T_A(P) = P + A$$
+(:ref{#slide-formula}), so sliding by $$A$$ and then by $$B$$ adds $$A$$ and then $$B$$.
+
+For example, take $$A = (3, 0)$$, $$B = (0, 2)$$ and $$P = (1, 1)$$. The first slide sends $$P$$ to
+$$(4, 1)$$, and the second sends that to $$(4, 3)$$. That is $$P + (3, 2)$$, and $$(3, 2) = A + B$$.
+
+:::proposition[Slides combine by adding]{#slide-compose}
+
+For any points $$A$$ and $$B$$, first sliding by $$A$$ and then by $$B$$ is sliding by $$A + B$$:
+
+```math
+T_B \circ T_A = T_{A + B}
+```
+
+In particular $$T_B \circ T_A = T_A \circ T_B$$, so the order of two slides doesn't matter.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Translation_(geometry)#Matrix_representation"}
+
+Take any point $$P$$. By the definition of a composite (:ref{#isometries/composite}) and of a slide
+(:ref{#slide-formula}),
+
+```math
+(T_B \circ T_A)(P) = T_B(P + A) = (P + A) + B = P + (A + B) = T_{A + B}(P)
+```
+
+The regrouping in the middle is rule 2 of :ref{#sum-rules}. The two maps agree at every point, so
+they are equal (:ref{#isometries/map-equality}).
+
+For the order, the same calculation gives $$T_A \circ T_B = T_{B + A}$$. Since $$B + A = A + B$$, by
+rule 1 of :ref{#sum-rules}, this is $$T_{A + B}$$ again.
+
+:::
+
+The Isometries chapter took as given that two slides make a slide: rule 2 of
+:ref{#isometries/translation-rules}. For slides written in coordinates, that rule is now proved. The
+proof also says which slide you get, the one by the sum of the two steps.
+
+### Undoing a slide
+
+A slide by $$A$$ is undone by taking the same step backwards, which is the slide by $$-A$$. In
+numbers, the slide by $$(3, -5)$$ is undone by the slide by $$(-3, 5)$$, since the two steps add up
+to $$(0, 0)$$.
+
+:::proposition[Undoing a slide]{#slide-inverse}
+
+For any point $$A$$, the slide $$T_A$$ has an inverse (:ref{#isometries/inverse-map}), the slide by
+$$-A$$:
+
+```math
+T_A^{-1} = T_{-A}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Translation_(geometry)#Matrix_representation"}
+
+By :ref{#slide-compose}, and rules 1 and 4 of :ref{#sum-rules},
+
+```math
+T_{-A} \circ T_A = T_{A + (-A)} = T_O \qquad T_A \circ T_{-A} = T_{-A + A} = T_O
+```
+
+The slide by $$O$$ moves nothing, since $$T_O(P) = P + O = P$$ by rule 3 of :ref{#sum-rules}. So
+$$T_O$$ is the identity $$I$$ (:ref{#isometries/map}), and both composites are $$I$$. That is what
+:ref{#isometries/inverse-map} asks of an inverse.
+
+:::
+
+## Zooms about the origin combine by multiplying
+
+Enlarge a photo to twice its size, then enlarge the copy to three times its size. The result is six
+times the size of the original, because each length was doubled and then tripled. Zooms about the
+origin behave the same way, with the factors multiplied.
+
+Write $$Z_r$$ for the zoom by $$r > 0$$ about the origin, $$Z_r(P) = rP$$. This is the zoom of
+:ref{#zoom-formula} with centre $$O$$, since $$O + r(P - O) = rP$$. For example, $$Z_2$$ sends
+$$(1, -2)$$ to $$(2, -4)$$, and $$Z_3$$ sends that to $$(6, -12)$$, which is $$6 \cdot (1, -2)$$.
+
+:::proposition[Zooms about the origin]{#zoom-compose}
+
+For any numbers $$r > 0$$ and $$s > 0$$,
+
+```math
+Z_s \circ Z_r = Z_{rs} \qquad \text{and} \qquad Z_r^{-1} = Z_{1/r}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Homothety#Composition_of_two_homotheties_with_the_same_center"}
+
+Take any point $$P$$. By :ref{#scale-twice} and rule 1 of :ref{#real-numbers/real-rules},
+
+```math
+(Z_s \circ Z_r)(P) = s(rP) = (sr)P = (rs)P = Z_{rs}(P)
+```
+
+so $$Z_s \circ Z_r = Z_{rs}$$ (:ref{#isometries/map-equality}).
+
+For the inverse, the number $$\frac{1}{r}$$ is positive, and $$r \cdot \frac{1}{r} = 1$$. So
+$$Z_{1/r} \circ Z_r$$ and $$Z_r \circ Z_{1/r}$$ are both $$Z_1$$. The zoom by $$1$$ moves nothing,
+since $$1P = P$$ (:ref{#scalar-multiple}), so both composites are the identity $$I$$.
+
+:::
+
+## Two half turns make a slide
+
+Go back to the coaster. Each half turn leaves its picture upside down, so the second half turn puts
+it the right way up again. The coaster has moved, but it hasn't turned, and that is how a slide
+looks. The formula for a half turn about $$Q$$, $$H_Q(P) = 2Q - P$$ (:ref{#half-turn-formula}),
+tells us exactly which slide it is.
+
+Try it with numbers. Take the centres $$Q = (1, 1)$$ and $$M = (3, 2)$$, and the point
+$$P = (0, 4)$$. The half turn about $$Q$$ sends $$P$$ to $$P' = (2, 2) - (0, 4) = (2, -2)$$. The
+half turn about $$M$$ sends that to $$P'' = (6, 4) - (2, -2) = (4, 6)$$. So $$P$$ has moved by
+$$(4, 2)$$, which is twice the step $$M - Q = (2, 1)$$ from $$Q$$ to $$M$$.
+
+```plane
+point Q 1 1 e
+point M 3 2 e
+point P 0 4 nw
+point P' 2 -2 se
+point P'' 4 6 ne
+segment P P' color=orange dashed
+segment P' P'' color=blue dashed
+segment P P'' color=green
+caption "P = (0, 4) turns half a turn about Q to P′, then about M to P″ = (4, 6), a slide by (4, 2)"
+```
+
+:::theorem[Two half turns make a slide]{#two-half-turns}
+
+For any points $$Q$$ and $$M$$, the half turn about $$Q$$ followed by the half turn about $$M$$ is
+the slide by twice the step from $$Q$$ to $$M$$:
+
+```math
+H_M \circ H_Q = T_{2(M - Q)}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Point_reflection#Point_reflection_group"}
+
+Take any point $$P$$. By :ref{#half-turn-formula},
+
+```math
+(H_M \circ H_Q)(P) = H_M(2Q - P) = 2M - (2Q - P)
+```
+
+Sums and multiples of points can be rearranged as with numbers (:ref{#sum-rules} and
+:ref{#scale-sum-rules}), so
+
+```math
+2M - (2Q - P) = P + 2M - 2Q = P + 2(M - Q) = T_{2(M - Q)}(P)
+```
+
+The two maps agree at every point, so they are equal (:ref{#isometries/map-equality}).
+
+:::
+
+Swapping the order swaps the roles of $$Q$$ and $$M$$, so $$H_Q \circ H_M = T_{2(Q - M)}$$, the
+slide by the same distance in the opposite direction. When the two centres are the same point, the
+step from $$Q$$ to $$M$$ is $$O$$, and
+
+```math
+H_Q \circ H_Q = T_O = I
+```
+
+So a half turn undoes itself: $$H_Q^{-1} = H_Q$$. This fits the picture of a reflection through
+$$Q$$ (:ref{#isometries/point-reflection}): reflecting through the same point twice puts every point
+back.
+
+The Isometries chapter found a slide from two parallel mirrors (:ref{#isometries/parallel-mirrors}),
+and that result agrees with this one. Suppose $$Q \ne M$$, and let $$N$$ be the line through them. A
+half turn about $$Q$$ is a flip in the mirror square to $$N$$ at $$Q$$ followed by a flip in $$N$$
+(:ref{#isometries/corner-mirrors}). In the same way, a half turn about $$M$$ is a flip in $$N$$
+followed by a flip in the mirror square to $$N$$ at $$M$$. The two flips in $$N$$ meet in the middle
+and cancel (:ref{#isometries/reflection-twice}), which leaves two parallel mirrors a distance
+$$d(Q, M)$$ apart. They make a slide by $$2\,d(Q, M)$$ from $$Q$$ towards $$M$$, which is the slide
+by $$2(M - Q)$$.
+
+In the diagram below, choose the two centres and watch the flag. The faded flag is upside down, and
+the final flag is the right way up, slid by $$2(M - Q)$$.
+
+<HalfTurnPair />
+
+### A half turn from moves about the origin
+
+The half turn about the origin is the one with the shortest formula, $$H_O(P) = -P$$
+(:ref{#negative-half-turn}). Every other half turn is that one followed by a slide. To turn $$P$$
+half a turn about $$Q$$, first send it to $$-P$$, then slide by $$2Q$$.
+
+:::proposition[A half turn from moves about the origin]{#half-turn-composite}
+
+For any point $$Q$$, the half turn about $$Q$$ is the half turn about $$O$$ followed by the slide by
+$$2Q$$:
+
+```math
+H_Q = T_{2Q} \circ H_O
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Homothety#Composition_of_a_homothety_and_a_translation"}
+
+For any point $$P$$, $$(T_{2Q} \circ H_O)(P) = T_{2Q}(-P) = -P + 2Q = 2Q - P$$, using rule 1 of
+:ref{#sum-rules}. That is $$H_Q(P)$$ by :ref{#half-turn-formula}.
+
+:::
+
+The same fact also follows from :ref{#two-half-turns}. Taking $$M = Q$$ and the first centre to be
+$$O$$ there gives $$H_Q \circ H_O = T_{2Q}$$. Doing $$H_O$$ first on both sides, and using
+$$H_O \circ H_O = I$$ and :ref{#isometries/composite-associative}, turns this into
+$$H_Q = T_{2Q} \circ H_O$$.
+
+## Doing a move about another point
+
+A zoom about the origin is one multiplication, but a zoom about another point $$Q$$ has a longer
+formula. There is a way to build it from moves we already have: slide everything so that $$Q$$ lands
+on the origin, zoom about the origin, and then slide everything back. The centre $$Q$$ goes to
+$$O$$, stays there during the zoom, and comes back to $$Q$$, so it doesn't move at all.
+
+Try it with the zoom by $$2$$ about $$Q = (1, 3)$$ and the point $$P = (2, 5)$$. Sliding by $$-Q$$
+sends $$P$$ to $$(1, 2)$$. Zooming by $$2$$ sends that to $$(2, 4)$$, and sliding back by $$Q$$
+gives $$(3, 7)$$. The formula of :ref{#zoom-formula} gives the same point:
+$$Q + 2(P - Q) = (1, 3) + 2(1, 2) = (3, 7)$$.
+
+:::proposition[A zoom about any point]{#zoom-composite}
+
+Let $$Q$$ be a point and $$r > 0$$. Then
+
+```math
+Z_{r,Q} = T_Q \circ Z_r \circ T_{-Q} \qquad \text{and} \qquad H_Q = T_Q \circ H_O \circ T_{-Q}
+```
+
+The zoom about $$Q$$ is undone by the zoom about $$Q$$ by $$\frac{1}{r}$$:
+$$Z_{r,Q}^{-1} = Z_{1/r,Q}$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Homothety#Composition_of_a_homothety_and_a_translation"}
+
+**The zoom.** Follow any point $$P$$ through the three moves, starting with the one on the right:
+
+```math
+P \;\mapsto\; P - Q \;\mapsto\; r(P - Q) \;\mapsto\; Q + r(P - Q)
+```
+
+The last point is $$Z_{r,Q}(P)$$ (:ref{#zoom-formula}), so the two maps are equal
+(:ref{#isometries/map-equality}).
+
+**The half turn.** In the same way, $$P$$ goes to $$P - Q$$, then to $$-(P - Q) = Q - P$$, then to
+$$Q + (Q - P) = 2Q - P$$, which is $$H_Q(P)$$ (:ref{#half-turn-formula}).
+
+**The inverse.** Undoing three moves means undoing them in reverse order, by
+:ref{#isometries/inverse-composite} used twice. Each move here has an inverse: $$T_Q^{-1} = T_{-Q}$$
+and $$T_{-Q}^{-1} = T_Q$$ by :ref{#slide-inverse}, and $$Z_r^{-1} = Z_{1/r}$$ by
+:ref{#zoom-compose}. So
+
+```math
+Z_{r,Q}^{-1} = T_{-Q}^{-1} \circ Z_r^{-1} \circ T_Q^{-1} = T_Q \circ Z_{1/r} \circ T_{-Q} = Z_{1/r,Q}
+```
+
+where the last step is the first part of this proposition with $$\frac{1}{r}$$ in place of $$r$$.
+
+:::
+
+So a move about $$Q$$ is the same move about the origin, with $$Q$$ carried to the origin first and
+back afterwards. The same trick works for a turn about $$Q$$, so a formula for a turn about the
+origin is enough to describe the same turn about any point.
+
+## A slide seen through another move
+
+Picture a walk of $$1$$ km east on a map printed at twice its size. On the enlarged map the walk
+shows up as a step twice as long, still pointing east. Now turn the map half a turn on the table:
+the walk still shows up as a step of the same length, but it points west. A slide seen through a
+zoom is a longer slide, and seen through a half turn it is a slide the other way.
+
+In symbols, seeing $$T_A$$ through a move $$F$$ means undoing $$F$$, sliding by $$A$$, and then
+doing $$F$$ again, which is the composite $$F \circ T_A \circ F^{-1}$$.
+
+:::proposition[A slide seen through another move]{#conjugate-slide}
+
+For any point $$A$$ and any $$r > 0$$,
+
+```math
+Z_r \circ T_A \circ Z_r^{-1} = T_{rA} \qquad \text{and} \qquad H_O \circ T_A \circ H_O = T_{-A}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_group#Subgroup_structure,_matrix_and_vector_representation"}
+
+**The zoom.** By :ref{#zoom-compose}, $$Z_r^{-1} = Z_{1/r}$$. For any point $$P$$, using
+:ref{#scale-sum-rules} and :ref{#scale-twice},
+
+```math
+(Z_r \circ T_A \circ Z_{1/r})(P) = r\Big(\frac{1}{r}P + A\Big) = \Big(r \cdot \frac{1}{r}\Big)P + rA = P + rA
+```
+
+which is $$T_{rA}(P)$$.
+
+**The half turn.** The half turn about $$O$$ undoes itself (:ref{#two-half-turns}), so here
+$$H_O = H_O^{-1}$$. For any point $$P$$, $$P$$ goes to $$-P$$, then to $$-P + A$$, then to
+$$-(-P + A) = P - A$$, which is $$T_{-A}(P)$$.
+
+:::
+
+For example, with $$r = 2$$ and $$A = (1, 0)$$, the composite $$Z_2 \circ T_A \circ Z_{1/2}$$ sends
+$$(5, 7)$$ to $$(\frac{5}{2}, \frac{7}{2})$$, then to $$(\frac{7}{2}, \frac{7}{2})$$, then to
+$$(7, 7)$$. That is a slide by $$(2, 0) = 2A$$.
+
+The half turn part also explains why the two formulas for $$H_Q$$ agree. With $$-Q$$ in place of
+$$A$$, it says $$H_O \circ T_{-Q} \circ H_O = T_Q$$. Doing $$H_O$$ first on both sides, and using
+$$H_O \circ H_O = I$$, gives $$H_O \circ T_{-Q} = T_Q \circ H_O$$, so
+
+```math
+T_Q \circ H_O \circ T_{-Q} = T_Q \circ T_Q \circ H_O = T_{2Q} \circ H_O
+```
+
+by :ref{#slide-compose}. The left side is $$H_Q$$ by :ref{#zoom-composite}, and the right side is
+$$H_Q$$ by :ref{#half-turn-composite}.
+
+## Checking the mirror results
+
+The Isometries chapter found what two mirrors make by looking at pictures. Two mirrors that meet
+square on make a half turn, and two mirrors at $$45^\circ$$ make a quarter turn. With the flips and
+turns written as formulas, each of these is a line of algebra, and we can check them.
+
+The formulas are the reflections in the axes, $$R_1(x, y) = (x, -y)$$ and $$R_2(x, y) = (-x, y)$$
+(:ref{#axis-reflections}), the reflection in the line $$y = x$$, $$S(x, y) = (y, x)$$
+(:ref{#diagonal-reflection}), and the quarter turn $$G_{90}(x, y) = (-y, x)$$ (:ref{#quarter-turn}).
+
+:::proposition[Flips and quarter turns combined]{#combining-moves-flips}
+
+1. $$R_2 \circ R_1 = H_O$$
+2. $$G_{90} \circ G_{90} = H_O$$, and $$G_{90}^4 = I$$
+3. $$S \circ R_1 = G_{90}$$, but $$R_1 \circ S = G_{90}^{-1}$$, where
+   $$G_{90}^{-1}(x, y) = (y, -x)$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_plane_isometry#Mirror_combinations"}
+
+Follow a point $$(x, y)$$ through each composite, starting with the move on the right.
+
+1. $$R_1$$ sends it to $$(x, -y)$$, and $$R_2$$ sends that to $$(-x, -y)$$, which is $$H_O(x, y)$$.
+2. $$G_{90}$$ sends it to $$(-y, x)$$, and $$G_{90}$$ again sends that to $$(-x, -y)$$. So
+   $$G_{90}^2 = H_O$$, and $$G_{90}^4 = H_O \circ H_O = I$$ by :ref{#two-half-turns}.
+3. $$R_1$$ sends it to $$(x, -y)$$, and $$S$$ swaps the coordinates to give $$(-y, x)$$, which is
+   $$G_{90}(x, y)$$. In the other order, $$S$$ gives $$(y, x)$$ and $$R_1$$ gives $$(y, -x)$$. The
+   map $$(x, y) \mapsto (y, -x)$$ undoes $$G_{90}$$: it sends $$(-y, x)$$ back to $$(x, y)$$, and
+   $$G_{90}$$ sends $$(y, -x)$$ to $$(x, y)$$. So it is $$G_{90}^{-1}$$
+   (:ref{#isometries/inverse-map}).
+
+:::
+
+Each part matches the Isometries chapter:
+
+- **Part 1**: the $$x$$-axis and the $$y$$-axis meet square on at $$O$$, so flipping in one and then
+  the other is the half turn about the corner (:ref{#isometries/corner-mirrors})
+- **Part 2**: two quarter turns make a half turn, and four make a whole turn, which moves nothing
+  (:ref{#isometries/map-powers})
+- **Part 3**: turning anticlockwise from the $$x$$-axis to the line $$y = x$$ takes $$45^\circ$$, so
+  :ref{#isometries/crossing-mirrors} says $$S \circ R_1$$ is a turn by $$90^\circ$$ anticlockwise.
+  In the other order, turning anticlockwise from $$y = x$$ to the $$x$$-axis takes $$135^\circ$$, so
+  $$R_1 \circ S$$ turns by $$270^\circ$$ anticlockwise, which is a quarter turn clockwise.
+
+Part 3 also shows that the order of two flips matters, as in :ref{#isometries/order-matters}. And it
+fills a gap in :ref{#quarter-turn}, which checked the direction of $$G_{90}$$ at $$E_1$$ alone. By
+:ref{#isometries/crossing-mirrors}, $$S \circ R_1$$ turns every point a quarter turn anticlockwise,
+and part 3 says that this map is $$G_{90}$$. That theorem's proof measures angles in the picture, so
+this step leans on the picture too.
+
+## Exercises
+
+:::::accordion[Exercises on combining and undoing moves, with solutions]
+
+::::exercise{#ex-combining-moves-slides}
+
+Let $$A = (3, 2)$$ and $$B = (-1, 4)$$.
+
+1. Which single slide is $$T_B \circ T_A$$? Where does it send the origin?
+2. Which slide undoes $$T_B \circ T_A$$?
+
+:::solution
+
+1. By :ref{#slide-compose}, $$T_B \circ T_A = T_{A + B}$$, and $$A + B = (3 - 1, 2 + 4) = (2, 6)$$.
+   It sends $$O$$ to $$O + (2, 6) = (2, 6)$$.
+2. By :ref{#slide-inverse}, the slide by $$(2, 6)$$ is undone by the slide by $$(-2, -6)$$. Undoing
+   the two slides one at a time in reverse order gives the same answer:
+   $$T_{-A} \circ T_{-B} = T_{-B - A} = T_{(-2, -6)}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-combining-moves-half-turns}
+
+Let $$Q = (1, 2)$$ and $$M = (4, -1)$$.
+
+1. Follow the origin $$O$$ through $$H_Q$$ and then $$H_M$$.
+2. Check your answer against :ref{#two-half-turns}.
+3. Which slide is $$H_Q \circ H_M$$?
+
+:::solution
+
+1. $$H_Q(O) = 2Q - O = (2, 4)$$, and $$H_M(2, 4) = 2M - (2, 4) = (8, -2) - (2, 4) = (6, -6)$$.
+2. The step from $$Q$$ to $$M$$ is $$M - Q = (3, -3)$$, and twice that is $$(6, -6)$$. The slide by
+   $$(6, -6)$$ sends $$O$$ to $$(6, -6)$$, as in part 1.
+3. With the roles swapped, $$H_Q \circ H_M = T_{2(Q - M)} = T_{(-6, 6)}$$, the slide the other way.
+
+:::
+
+::::
+
+::::exercise{#ex-combining-moves-three-half-turns}
+
+Let $$A$$, $$B$$ and $$C$$ be points.
+
+1. Show that $$H_C \circ H_B \circ H_A = H_D$$, where $$D = A - B + C$$. So three half turns make a
+   half turn.
+2. Take $$A = (0, 0)$$, $$B = (1, 0)$$ and $$C = (1, 1)$$. Find $$D$$, and check part 1 at the point
+   $$(2, 3)$$.
+
+:::solution
+
+1. For any point $$P$$, by :ref{#half-turn-formula},
+
+   ```math
+   (H_C \circ H_B \circ H_A)(P) = 2C - \big(2B - (2A - P)\big) = 2A - 2B + 2C - P = 2(A - B + C) - P
+   ```
+
+   rearranging with :ref{#sum-rules} and :ref{#scale-sum-rules}. That is $$H_D(P)$$. When $$A$$,
+   $$B$$ and $$C$$ are not on one line, $$D$$ is the fourth corner of the parallelogram $$ABCD$$,
+   opposite $$B$$.
+
+2. $$D = (0, 0) - (1, 0) + (1, 1) = (0, 1)$$. Following $$(2, 3)$$: $$H_A$$ gives $$(-2, -3)$$,
+   $$H_B$$ gives $$(2, 0) - (-2, -3) = (4, 3)$$, and $$H_C$$ gives $$(2, 2) - (4, 3) = (-2, -1)$$.
+   Directly, $$H_D(2, 3) = (0, 2) - (2, 3) = (-2, -1)$$. They agree.
+
+:::
+
+::::
+
+::::exercise{#ex-combining-moves-zoom-about}
+
+Let $$Q = (1, 3)$$.
+
+1. Use :ref{#zoom-composite} to write $$Z_{2,Q}(x, y)$$ as a formula, and check that it leaves $$Q$$
+   where it is.
+2. Write $$Z_{1/2,Q}(x, y)$$ as a formula, and check that it sends $$(3, 7)$$ back to $$(2, 5)$$.
+
+:::solution
+
+1. Slide by $$-Q$$, zoom by $$2$$, slide by $$Q$$: $$(x, y)$$ goes to $$(x - 1, y - 3)$$, then to
+   $$(2x - 2, 2y - 6)$$, then to $$(2x - 1, 2y - 3)$$. So $$Z_{2,Q}(x, y) = (2x - 1, 2y - 3)$$. At
+   $$Q$$ this gives $$(2 - 1, 6 - 3) = (1, 3) = Q$$.
+2. In the same way, $$(x, y)$$ goes to $$(x - 1, y - 3)$$, then to
+   $$(\frac{1}{2}(x - 1), \frac{1}{2}(y - 3))$$, then to
+   $$(\frac{1}{2}(x + 1), \frac{1}{2}(y + 3))$$. At $$(3, 7)$$ this gives
+   $$(\frac{4}{2}, \frac{10}{2}) = (2, 5)$$. That fits the worked example under
+   [Doing a move about another point](#doing-a-move-about-another-point), where $$Z_{2,Q}$$ sent
+   $$(2, 5)$$ to $$(3, 7)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-combining-moves-flips}
+
+Work out $$R_2 \circ S$$ and $$S \circ R_2$$ as formulas, and name each one. Then check your answers
+against :ref{#isometries/crossing-mirrors}.
+
+:::solution
+
+$$S$$ sends $$(x, y)$$ to $$(y, x)$$, and $$R_2$$ sends that to $$(-y, x)$$. So
+$$R_2 \circ S = G_{90}$$, the quarter turn anticlockwise.
+
+In the other order, $$R_2$$ gives $$(-x, y)$$ and $$S$$ gives $$(y, -x)$$. So
+$$S \circ R_2 = G_{90}^{-1}$$, the quarter turn clockwise (:ref{#combining-moves-flips}).
+
+For $$R_2 \circ S$$, the first mirror is $$y = x$$ and the second is the $$y$$-axis. Turning
+anticlockwise from the first to the second takes $$45^\circ$$, so the composite turns by
+$$90^\circ$$ anticlockwise. For $$S \circ R_2$$, turning anticlockwise from the $$y$$-axis to
+$$y = x$$ takes $$135^\circ$$, so the composite turns by $$270^\circ$$ anticlockwise, which is a
+quarter turn clockwise.
+
+:::
+
+::::
+
+::::exercise{#ex-combining-moves-undo-order}
+
+Let $$A = (2, 0)$$ and $$F = G_{90} \circ T_A$$: first slide by $$A$$, then make a quarter turn
+about $$O$$.
+
+1. Write $$F(x, y)$$ as a formula.
+2. By :ref{#isometries/inverse-composite}, $$F^{-1} = T_{-A} \circ G_{90}^{-1}$$. Write it as a
+   formula, and check that it undoes $$F$$ at the point $$(1, 1)$$.
+3. Show that undoing in the wrong order, $$G_{90}^{-1} \circ T_{-A}$$, doesn't send $$F(O)$$ back to
+   $$O$$.
+
+:::solution
+
+1. $$T_A$$ gives $$(x + 2, y)$$, and $$G_{90}$$ gives $$(-y, x + 2)$$. So $$F(x, y) = (-y, x + 2)$$.
+2. $$G_{90}^{-1}$$ gives $$(y, -x)$$, and $$T_{-A}$$ gives $$(y - 2, -x)$$. So
+   $$F^{-1}(x, y) = (y - 2, -x)$$. Now $$F(1, 1) = (-1, 3)$$, and
+   $$F^{-1}(-1, 3) = (3 - 2, 1) = (1, 1)$$.
+3. $$F(O) = (0, 2)$$. The wrong order slides first, to $$(-2, 2)$$, and then turns to $$(2, 2)$$,
+   which is not $$O$$. The right order gives $$F^{-1}(0, 2) = (0, 0)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-combining-moves-quarter-conjugate}
+
+1. Show that $$G_{90}(P + A) = G_{90}(P) + G_{90}(A)$$ for any points $$P$$ and $$A$$.
+2. Use part 1 to show that $$G_{90} \circ T_A \circ G_{90}^{-1} = T_{G_{90}(A)}$$: a slide seen
+   through a quarter turn is the slide by the turned step.
+3. Which slide is it when $$A = (3, 1)$$?
+
+:::solution
+
+1. Write $$P = (x, y)$$ and $$A = (a_1, a_2)$$. Then
+
+   ```math
+   G_{90}(P + A) = \big(-(y + a_2), x + a_1\big) = (-y, x) + (-a_2, a_1) = G_{90}(P) + G_{90}(A)
+   ```
+
+2. Take any point $$P$$ and write $$X = G_{90}^{-1}(P)$$, so that $$G_{90}(X) = P$$. By part 1,
+
+   ```math
+   (G_{90} \circ T_A \circ G_{90}^{-1})(P) = G_{90}(X + A) = G_{90}(X) + G_{90}(A) = P + G_{90}(A)
+   ```
+
+   which is $$T_{G_{90}(A)}(P)$$.
+
+3. $$G_{90}(3, 1) = (-1, 3)$$, so the composite is the slide by $$(-1, 3)$$. A step of $$3$$ right
+   and $$1$$ up, turned a quarter turn, becomes $$1$$ left and $$3$$ up.
+
+:::
+
+::::
+
+:::::

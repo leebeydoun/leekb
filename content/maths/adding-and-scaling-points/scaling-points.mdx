@@ -1,0 +1,471 @@
+---
+title: Scaling points
+description: Multiplying a point by a number, and seeing the result as a zoom, a half turn or both.
+---
+
+Imagine looking at a street map on your phone and spreading two fingers apart on the screen. The
+spot between your fingers stays where it is, and everything else moves straight away from it. Spread
+until the map is twice the size, and a café that was $$2$$ cm from that spot ends up $$4$$ cm away,
+in the same direction as before.
+
+Now put the origin at the spot between your fingers. Doubling the map then doubles both coordinates
+of every point, so a café at $$(1.2, 1.6)$$ moves to $$(2.4, 3.2)$$. Multiplying both coordinates of
+a point by one number is called **scaling** the point. In this guide we'll see what scaling does to
+the plane, for negative numbers as well as positive ones, and prove what it does to distances.
+
+## Multiplying a point by a number
+
+Scaling a point by $$3$$ takes it three times as far along and three times as far up. So the point
+$$(2, 1)$$, which is $$2$$ along and $$1$$ up from the origin, goes to $$(6, 3)$$. Scaling by
+$$\frac{1}{2}$$ goes half as far instead, to $$(1, \frac{1}{2})$$.
+
+:::definition[Multiplying a point by a number]{#scalar-multiple}
+
+Let $$A = (a_1, a_2)$$ be a point and $$c$$ a real number. The **multiple** $$cA$$ is the point
+
+```math
+cA = (ca_1, ca_2)
+```
+
+In words, multiply both coordinates by $$c$$. The number $$c$$ is often called a **scalar**, since
+it scales the point.
+
+:::
+
+Two multiples need no working. Multiplying by $$1$$ changes no coordinate, so $$1A = A$$
+(:ref{#real-numbers/real-rules}). Multiplying by $$0$$ turns both coordinates into $$0$$, so
+$$0A = (0, 0)$$, the origin $$O$$, whatever $$A$$ is (:ref{#numbers/zero-times}).
+
+Here are four multiples of $$A = (2, 1)$$ plotted together. The multiples $$3A = (6, 3)$$ and
+$$\frac{1}{2}A = (1, \frac{1}{2})$$ sit on the same side of $$O$$ as $$A$$. Multiplying by a
+negative number changes the sign of both coordinates as well, so $$-A = (-2, -1)$$ and
+$$-2A = (-4, -2)$$ sit on the other side of $$O$$.
+
+```plane
+point O 0 0 se
+point A 2 1 se
+point 3A 6 3 se
+point ½A 1 0.5 se
+point −A -2 -1 nw
+point −2A -4 -2 nw
+point X1 -5 0 hidden
+point X2 7 0 hidden
+point Y1 0 -3 hidden
+point Y2 0 4 hidden
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+line −2A 3A color=muted dashed extend=0.8
+caption "The multiples 3A, ½A, −A and −2A of A = (2, 1), all on one line through O and A"
+```
+
+All six points plotted lie on one line through $$O$$ and $$A$$. Proving that every multiple of $$A$$
+lies on this line needs lines written with coordinates, which come in the next chapter.
+
+For a positive scalar, you've met the map $$P \mapsto cP$$ before. It is the zoom by $$c$$ about the
+origin, and :ref{#coordinates/origin-zoom} showed that it multiplies every distance by $$c$$. So
+$$3A$$ is where a zoom by $$3$$ about $$O$$ sends $$A$$, and $$\frac{1}{2}A$$ is where a zoom by
+$$\frac{1}{2}$$ sends it.
+
+## Negatives and half turns
+
+Multiplying by $$-1$$ keeps the size of each coordinate and changes its sign. The point $$(2, 1)$$
+goes to $$(-2, -1)$$: the same distance from $$O$$, but on the opposite side. That is where a half
+turn about $$O$$ sends it, so multiplying by $$-1$$ should be the half turn.
+
+:::definition[The negative of a point]{#negative-point}
+
+The **negative** of a point $$A = (a_1, a_2)$$ is
+
+```math
+-A = (-1)A = (-a_1, -a_2)
+```
+
+:::
+
+The coordinates of $$(-1)A$$ are $$(-1)a_1 = -a_1$$ and $$(-1)a_2 = -a_2$$, by
+:ref{#numbers/minus-one}. For $$A = (2, 1)$$, the distance formula gives $$d(O, A) = \sqrt{5}$$ and
+$$d(O, -A) = \sqrt{5}$$, while $$d(A, -A) = \sqrt{4^2 + 2^2} = \sqrt{20} = 2\sqrt{5}$$. The two
+short distances add up to the long one, which puts $$O$$ on the segment from $$A$$ to $$-A$$,
+halfway along. The proof below does the same for every point.
+
+:::proposition[The negative is a half turn]{#negative-half-turn}
+
+For every point $$A$$, the point $$-A$$ is the reflection of $$A$$ through $$O$$
+(:ref{#isometries/point-reflection}). So the map $$P \mapsto -P$$ is the half turn about $$O$$
+(:ref{#isometries/half-turn}).
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Point_reflection#Formula"}
+
+**The origin.** If $$A = O$$, then $$-A = (-0, -0) = O$$, and the reflection through $$O$$ sends
+$$O$$ to itself.
+
+**Any other point.** Let $$A = (a_1, a_2) \ne O$$. A number and its negative have the same square
+(:ref{#numbers/two-minus}), so the distance formula (:ref{#coordinates/coordinate-plane}) gives
+
+```math
+d(O, -A) = \sqrt{(-a_1)^2 + (-a_2)^2} = \sqrt{a_1^2 + a_2^2} = d(O, A)
+```
+
+The differences from $$A$$ to $$-A$$ are $$-a_1 - a_1 = -2a_1$$ and $$-2a_2$$, whose squares are
+$$4a_1^2$$ and $$4a_2^2$$. So, using :ref{#real-numbers/root-product} and $$\sqrt{4} = 2$$,
+
+```math
+d(A, -A) = \sqrt{4a_1^2 + 4a_2^2} = \sqrt{4}\,\sqrt{a_1^2 + a_2^2} = 2\,d(O, A)
+```
+
+Since $$A \ne O$$, $$d(O, A) > 0$$ (:ref{#coordinates/distance-zero}), so $$d(A, -A) > 0$$ and $$A$$
+and $$-A$$ are different points. Using :ref{#coordinates/distance-symmetric},
+
+```math
+d(A, O) + d(O, -A) = d(O, A) + d(O, A) = d(A, -A)
+```
+
+So $$O$$ lies on the segment from $$A$$ to $$-A$$, by rule 1 of
+:ref{#distance-and-angles/segment-rules}. Its distances from the two ends are equal, so $$O$$ is the
+midpoint of that segment (:ref{#distance-and-angles/midpoint}). That is exactly where the reflection
+through $$O$$ sends $$A$$ (:ref{#isometries/point-reflection}).
+
+So $$P \mapsto -P$$ agrees with the reflection through $$O$$ at every point, and the two maps are
+equal (:ref{#isometries/map-equality}). The reflection through $$O$$ is the half turn about $$O$$,
+by :ref{#isometries/half-turn}.
+
+:::
+
+A negative scalar other than $$-1$$ does two things at once. For example, $$-2A$$ is twice as far
+from $$O$$ as $$A$$, and on the other side. You can get there by doubling first, from $$(2, 1)$$ to
+$$(4, 2)$$, and then turning half way round to $$(-4, -2)$$. Or you can turn first, to $$(-2, -1)$$,
+and then double, which also gives $$(-4, -2)$$.
+
+:::proposition[Negative multiples]{#negative-multiple}
+
+Let $$c < 0$$. For every point $$A$$,
+
+```math
+cA = -(|c|A) = |c|(-A)
+```
+
+So multiplying by $$c$$ is the zoom by $$|c|$$ about $$O$$ followed by the half turn about $$O$$, or
+the half turn followed by the zoom. The order makes no difference.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_vector#Scalar_multiplication"}
+
+Write $$A = (a_1, a_2)$$. Since $$c < 0$$, $$|c| = -c$$ (:ref{#real-numbers/absolute-value}), so
+$$|c|A = \big((-c)a_1, (-c)a_2\big)$$. Two minus signs cancel in a product
+(:ref{#numbers/two-minus}), and grouping doesn't matter (:ref{#real-numbers/real-rules}), so
+
+```math
+(-1)\big((-c)a_1\big) = \big((-1)(-c)\big)a_1 = ca_1
+```
+
+and in the same way for $$a_2$$. So $$-(|c|A) = (ca_1, ca_2) = cA$$.
+
+For the other form, $$-A = (-a_1, -a_2)$$, and $$(-c)(-a_1) = ca_1$$ and $$(-c)(-a_2) = ca_2$$ by
+:ref{#numbers/two-minus}. So $$|c|(-A) = (ca_1, ca_2) = cA$$ too.
+
+:::
+
+Move the slider below to change $$c$$, and watch the flag with its corner at $$A = (2, 1)$$. Above
+$$1$$ the flag zooms out from $$O$$, and between $$0$$ and $$1$$ it shrinks towards $$O$$. At $$0$$
+it collapses onto $$O$$, and below $$0$$ it reappears on the far side, turned half way round.
+
+<ScalingSlider />
+
+## What scaling does to distances
+
+A zoom by $$3$$ makes every distance three times as long. A half turn moves a shape without changing
+its size, so multiplying by $$-3$$, which is a zoom by $$3$$ and a half turn, should also make every
+distance three times as long. The sign of the scalar decides which side of $$O$$ things end up on,
+and its size decides how much distances grow.
+
+For example, take $$A = (1, -1)$$ and $$B = (4, 3)$$, which are $$\sqrt{3^2 + 4^2} = 5$$ apart.
+Multiplying by $$-2$$ gives $$-2A = (-2, 2)$$ and $$-2B = (-8, -6)$$. The differences between these
+are $$-6$$ and $$-8$$, so they are $$\sqrt{36 + 64} = 10$$ apart, which is $$2 \cdot 5$$.
+
+:::theorem[Scaling multiplies distances]{#scale-distance}
+
+For every real number $$c$$ and all points $$A$$ and $$B$$,
+
+```math
+d(cA, cB) = |c|\, d(A, B)
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Homothety#Derivation_of_the_properties"}
+
+Write $$A = (a_1, a_2)$$ and $$B = (b_1, b_2)$$. Each difference of coordinates of $$cA$$ and $$cB$$
+is $$c$$ times the old one, for example $$cb_1 - ca_1 = c(b_1 - a_1)$$ by distributivity
+(:ref{#real-numbers/real-rules}). Its square is $$c^2(b_1 - a_1)^2$$ (:ref{#numbers/power-rules}).
+Squares are never negative (:ref{#real-numbers/squares-positive}), so
+:ref{#real-numbers/root-product} applies, and
+
+```math
+d(cA, cB) = \sqrt{c^2\big((b_1 - a_1)^2 + (b_2 - a_2)^2\big)} = \sqrt{c^2}\,\sqrt{(b_1 - a_1)^2 + (b_2 - a_2)^2}
+```
+
+The second square root is $$d(A, B)$$, and $$\sqrt{c^2} = |c|$$ by part 4 of
+:ref{#real-numbers/abs-basics}. So $$d(cA, cB) = |c|\,d(A, B)$$.
+
+:::
+
+Three values of $$c$$ are worth reading off the theorem:
+
+- **When $$c > 0$$**: $$|c| = c$$, and the theorem is :ref{#coordinates/origin-zoom} again
+- **When $$c = -1$$**: $$|c| = 1$$, so $$d(-A, -B) = d(A, B)$$. The half turn keeps every distance,
+  as an isometry should (:ref{#isometries/isometry})
+- **When $$c = 0$$**: every distance becomes $$0$$, since every point lands on $$O$$
+
+## Scaling twice, and undoing a scale
+
+Doubling a point and then tripling the result is the same as multiplying by $$6$$. With
+$$A = (2, 1)$$, doubling gives $$(4, 2)$$, and tripling that gives $$(12, 6)$$, which is $$6A$$. A
+half turn done twice works the same way: $$(-1)(-1) = 1$$, so two half turns put every point back
+where it started.
+
+:::proposition[Scaling twice]{#scale-twice}
+
+For all real numbers $$b$$ and $$c$$ and every point $$A$$,
+
+```math
+b(cA) = (bc)A
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Real_Vector_Space_is_Vector_Space"}
+
+Write $$A = (a_1, a_2)$$. Then $$cA = (ca_1, ca_2)$$, so
+
+```math
+b(cA) = \big(b(ca_1), b(ca_2)\big) = \big((bc)a_1, (bc)a_2\big) = (bc)A
+```
+
+since grouping doesn't matter in a product (:ref{#real-numbers/real-rules}).
+
+:::
+
+So a scale by a number that isn't $$0$$ can be undone. Scaling by $$c$$ and then by $$\frac{1}{c}$$
+multiplies by $$\frac{1}{c} \cdot c = 1$$, which leaves every point where it was. Scaling by $$0$$
+can't be undone, because it sends every point to $$O$$, so different points end up in the same
+place.
+
+:::proposition[Cancelling a scale]{#scale-cancel}
+
+1. $$cA = O$$ exactly when $$c = 0$$ or $$A = O$$.
+2. If $$bA = cA$$ and $$A \ne O$$, then $$b = c$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Zero_Vector_Space_Product_iff_Factor_is_Zero"}
+
+Write $$A = (a_1, a_2)$$.
+
+**Part 1.** If $$c = 0$$, then $$cA = O$$, as we saw after :ref{#scalar-multiple}. If $$A = O$$,
+then $$cA = (c \cdot 0, c \cdot 0) = O$$ (:ref{#numbers/zero-times}). Now suppose $$cA = O$$, so
+$$ca_1 = 0$$ and $$ca_2 = 0$$. If $$c \ne 0$$, then :ref{#numbers/zero-product} gives $$a_1 = 0$$
+and $$a_2 = 0$$, so $$A = O$$. So either $$c = 0$$ or $$A = O$$.
+
+**Part 2.** If $$bA = cA$$, then $$ba_1 = ca_1$$ and $$ba_2 = ca_2$$. Since $$A \ne O$$, at least
+one coordinate is not $$0$$; say $$a_1 \ne 0$$. Then :ref{#numbers/cancel-product} cancels it from
+$$a_1b = a_1c$$, giving $$b = c$$. If instead $$a_2 \ne 0$$, cancel $$a_2$$ in the same way.
+
+:::
+
+Together, :ref{#scale-twice} and :ref{#scale-cancel} let you solve an equation of points the way you
+solve one of numbers. For example, if $$3X = (6, -9)$$, scale both sides by $$\frac{1}{3}$$. On the
+left, $$\frac{1}{3}(3X) = (\frac{1}{3} \cdot 3)X = 1X = X$$, and on the right
+$$\frac{1}{3}(6, -9) = (2, -3)$$. So $$X = (2, -3)$$.
+
+## Scale models and maps
+
+An architect's model of a house is a scaled copy of the house. A model at $$1{:}50$$ puts each
+corner at $$\frac{1}{50}$$ times the position of the real corner, measured from a fixed point such
+as one corner of the foundations. By :ref{#scale-distance}, every length shrinks by the same factor,
+so a $$12$$ m wall becomes $$1200 \div 50 = 24$$ cm long, and the model has the shape of the house.
+
+A map is a scaled copy of the ground in the same way. On a map at $$1{:}25\,000$$, every distance on
+the ground is $$\frac{1}{25\,000}$$ times as long on paper. So $$4$$ cm on the map stands for
+$$4 \cdot 25\,000 = 100\,000$$ cm, which is $$1$$ km. A photo enlarged to twice its size uses the
+multiple $$2$$ instead, and every length in the picture doubles.
+
+## Exercises
+
+:::::accordion[Exercises on scaling points, with solutions]
+
+::::exercise{#ex-scaling-points-practice}
+
+Let $$A = (3, -2)$$. Find $$2A$$, $$-A$$, $$\frac{1}{2}A$$, $$-3A$$ and $$0A$$. Sketch them, and say
+which lie on the same side of $$O$$ as $$A$$.
+
+:::solution
+
+By :ref{#scalar-multiple}, multiply both coordinates:
+
+- $$2A = (6, -4)$$
+- $$-A = (-3, 2)$$
+- $$\frac{1}{2}A = (\frac{3}{2}, -1)$$
+- $$-3A = (-9, 6)$$
+- $$0A = (0, 0) = O$$
+
+In a sketch, $$2A$$ and $$\frac{1}{2}A$$ sit on the same side of $$O$$ as $$A$$, the side to the
+right and below. The negative multiples $$-A$$ and $$-3A$$ sit on the other side, and $$0A$$ is
+$$O$$ itself.
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-points-multiple}
+
+For each pair, decide whether the first point is a multiple of the second. If it is, find the
+scalar.
+
+1. $$(-6, 4)$$ and $$(3, -2)$$
+2. $$(6, 5)$$ and $$(2, 1)$$
+3. $$(-1, \frac{1}{2})$$ and $$(2, -1)$$
+
+:::solution
+
+A point is $$c(a_1, a_2)$$ exactly when both of its coordinates are $$c$$ times the matching
+coordinates, with the same $$c$$ for both.
+
+1. Yes. The first coordinates need $$3c = -6$$, so $$c = -2$$, and then $$-2 \cdot (-2) = 4$$
+   matches the second. So $$(-6, 4) = -2(3, -2)$$.
+2. No. The first coordinates need $$2c = 6$$, so $$c = 3$$. But then the second coordinate would be
+   $$3 \cdot 1 = 3$$, not $$5$$.
+3. Yes. The first coordinates need $$2c = -1$$, so $$c = -\frac{1}{2}$$, and then
+   $$-\frac{1}{2} \cdot (-1) = \frac{1}{2}$$ matches. So
+   $$(-1, \frac{1}{2}) = -\frac{1}{2}(2, -1)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-points-distance}
+
+Let $$A = (1, 3)$$ and $$B = (4, -1)$$.
+
+1. Find $$d(A, B)$$.
+2. Use :ref{#scale-distance} to find $$d(-3A, -3B)$$ without working out $$-3A$$ and $$-3B$$.
+3. Check your answer by working them out.
+
+:::solution
+
+1. The differences are $$3$$ and $$-4$$, so $$d(A, B) = \sqrt{9 + 16} = 5$$.
+2. Here $$|c| = |-3| = 3$$, so $$d(-3A, -3B) = 3 \cdot 5 = 15$$.
+3. $$-3A = (-3, -9)$$ and $$-3B = (-12, 3)$$. The differences are $$-9$$ and $$12$$, so the distance
+   is $$\sqrt{81 + 144} = \sqrt{225} = 15$$, as predicted.
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-points-solve}
+
+Find the point $$X$$ in each equation, and check your answer.
+
+1. $$4X = (2, -6)$$
+2. $$-2X = (5, 4)$$
+
+:::solution
+
+As in the example after :ref{#scale-cancel}, scale both sides by the inverse of the scalar, and use
+:ref{#scale-twice}.
+
+1. Scaling by $$\frac{1}{4}$$ gives $$X = \frac{1}{4}(2, -6) = (\frac{1}{2}, -\frac{3}{2})$$. Check:
+   $$4(\frac{1}{2}, -\frac{3}{2}) = (2, -6)$$.
+2. Scaling by $$-\frac{1}{2}$$ gives $$X = -\frac{1}{2}(5, 4) = (-\frac{5}{2}, -2)$$. Check:
+   $$-2(-\frac{5}{2}, -2) = (5, 4)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-points-twice}
+
+Each line describes scalings done one after another. Find the single scaling that does the same, and
+say in words what it does.
+
+1. Scale by $$-2$$, then by $$-\frac{1}{2}$$.
+2. Scale by $$3$$, then by $$-\frac{1}{3}$$.
+3. Scale by $$\frac{1}{2}$$ three times.
+
+:::solution
+
+By :ref{#scale-twice}, scaling by $$c$$ and then by $$b$$ is scaling by $$bc$$.
+
+1. $$(-\frac{1}{2})(-2) = 1$$, so nothing moves. The second scaling undoes the first.
+2. $$(-\frac{1}{3}) \cdot 3 = -1$$, so the result is the half turn about $$O$$
+   (:ref{#negative-half-turn}). The zoom by $$3$$ is undone, but the half turn stays.
+3. $$\frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{8}$$, so the result is a shrink
+   towards $$O$$ that makes every distance $$\frac{1}{8}$$ as long.
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-points-fixed}
+
+Let $$c$$ be a real number. Show that the map $$P \mapsto cP$$ fixes every point when $$c = 1$$, and
+fixes only $$O$$ otherwise (:ref{#isometries/fixed-point}).
+
+:::solution
+
+If $$c = 1$$, then $$1P = P$$ for every $$P$$, so every point is fixed.
+
+Now let $$c \ne 1$$ and $$P = (x, y)$$. The point $$P$$ is fixed when $$cx = x$$ and $$cy = y$$. The
+first equation says $$cx - x = 0$$, that is, $$(c - 1)x = 0$$ by distributivity
+(:ref{#real-numbers/real-rules}). Since $$c - 1 \ne 0$$, :ref{#numbers/zero-product} gives
+$$x = 0$$. In the same way $$y = 0$$, so $$P = O$$. And $$O$$ is fixed, since $$cO = O$$
+(:ref{#scale-cancel}).
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-points-isometry}
+
+Show that the map $$P \mapsto cP$$ is an isometry (:ref{#isometries/isometry}) exactly when
+$$c = 1$$ or $$c = -1$$.
+
+:::solution
+
+By :ref{#scale-distance}, the map sends two points $$A$$ and $$B$$ to points $$|c|\,d(A, B)$$ apart.
+
+If $$c = 1$$ or $$c = -1$$, then $$|c| = 1$$, so every distance stays the same and the map is an
+isometry.
+
+Now suppose the map is an isometry. Take two different points, such as $$O$$ and $$(1, 0)$$, which
+are $$1$$ apart. Their images are $$|c| \cdot 1 = |c|$$ apart, and an isometry keeps that distance
+at $$1$$, so $$|c| = 1$$. That means $$c = 1$$ or $$c = -1$$ (:ref{#real-numbers/absolute-value}).
+
+:::
+
+::::
+
+::::exercise{#ex-scaling-points-model}
+
+A rectangular room is $$8$$ m by $$6$$ m. With one corner at the origin and lengths in metres, its
+corners are $$(0, 0)$$, $$(8, 0)$$, $$(8, 6)$$ and $$(0, 6)$$. A model of the room is built at
+$$1{:}50$$.
+
+1. Find the corners of the model, in metres.
+2. Find the length of the room's diagonal, and the length of the model's diagonal in centimetres.
+
+:::solution
+
+1. Multiply each corner by $$\frac{1}{50}$$: $$(0, 0)$$, $$(0.16, 0)$$, $$(0.16, 0.12)$$ and
+   $$(0, 0.12)$$. So the model is $$16$$ cm by $$12$$ cm.
+2. The room's diagonal runs from $$(0, 0)$$ to $$(8, 6)$$, so it is $$\sqrt{64 + 36} = 10$$ m long.
+   By :ref{#scale-distance}, the model's diagonal is $$\frac{1}{50} \cdot 10 = 0.2$$ m, which is
+   $$20$$ cm. Check from the model's corners: $$\sqrt{0.16^2 + 0.12^2} = \sqrt{0.04} = 0.2$$.
+
+:::
+
+::::
+
+:::::

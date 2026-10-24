@@ -105,6 +105,14 @@ import { GridReference } from "./coordinate-illustrations/coordinates";
 import { DroneAndTaxi } from "./coordinate-illustrations/distance";
 import { BuilderRope } from "./coordinate-illustrations/pythagorean-triples";
 import { SpaceAxes, RoomDiagonal } from "./coordinate-illustrations/space";
+import { ScalingSlider } from "./interactive/scaling-slider";
+import { LengthDirection } from "./interactive/length-direction";
+import { DroneSteps } from "./points-illustrations/space";
+import { StepAdder } from "./interactive/step-adder";
+import { RiverCrossing } from "./points-illustrations/adding-points";
+import { HalfTurnPair } from "./interactive/half-turn-pair";
+import { MoveExplorer } from "./interactive/move-explorer";
+import { SpriteFrames } from "./points-illustrations/moves-as-formulas";
 import { GridCount } from "./interactive/grid-count";
 import { Quiz } from "./quiz";
 import {
@@ -234,6 +242,14 @@ export const mdxComponents = {
   GridReference,
   DroneAndTaxi,
   BuilderRope,
+  ScalingSlider,
+  LengthDirection,
+  DroneSteps,
+  StepAdder,
+  RiverCrossing,
+  HalfTurnPair,
+  MoveExplorer,
+  SpriteFrames,
   SpaceAxes,
   RoomDiagonal,
   GridCount,

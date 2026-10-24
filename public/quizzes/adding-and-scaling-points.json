@@ -1,0 +1,680 @@
+{
+  "title": "Adding and scaling points",
+  "description": "Questions on scaling and adding points, lengths, moves as formulas and combining moves.",
+  "questions": [
+    {
+      "id": "multiple-coords",
+      "stars": 1,
+      "topic": "Scaling points",
+      "question": "What is $$3A$$ when $$A = (2, -1)$$?",
+      "options": ["$$(6, -1)$$", "$$(6, -3)$$", "$$(5, 2)$$", "$$(2, -3)$$"],
+      "answer": 1,
+      "explanation": "Multiplying a point by $$3$$ multiplies both coordinates by $$3$$ (:ref{#scalar-multiple}), so $$3A = (6, -3)$$. Multiplying only the first coordinate gives $$(6, -1)$$, and adding $$3$$ gives $$(5, 2)$$."
+    },
+    {
+      "id": "multiple-meaning",
+      "stars": 1,
+      "topic": "Scaling points",
+      "question": "For a number $$c > 1$$, what does $$P \\mapsto cP$$ do to the plane?",
+      "options": [
+        "It zooms out from the origin, moving every point $$c$$ times as far from $$O$$",
+        "It slides every point by $$c$$",
+        "It turns the plane about the origin",
+        "It moves every point $$c$$ units further from the origin"
+      ],
+      "answer": 0,
+      "explanation": "For a positive $$c$$, multiplying by $$c$$ is the zoom by $$c$$ about the origin (:ref{#coordinates/origin-zoom}). Distances from $$O$$ are multiplied by $$c$$, not increased by $$c$$, so a point that starts far away moves further than one close in."
+    },
+    {
+      "id": "zero-multiple",
+      "stars": 1,
+      "topic": "Scaling points",
+      "question": "What is $$0A$$, for any point $$A$$?",
+      "options": ["$$A$$", "It isn't defined", "$$-A$$", "The origin $$O$$"],
+      "answer": 3,
+      "explanation": "Both coordinates get multiplied by $$0$$, so $$0A = (0, 0) = O$$ (:ref{#scalar-multiple}). Scaling by $$0$$ squashes the whole plane onto the origin."
+    },
+    {
+      "id": "negative-meaning",
+      "stars": 2,
+      "topic": "Scaling points",
+      "question": "What does the map $$P \\mapsto -P$$ do?",
+      "options": [
+        "It flips the plane in the $$x$$-axis",
+        "It flips the plane in the $$y$$-axis",
+        "It turns the plane half a turn about the origin",
+        "It moves every point to the origin"
+      ],
+      "answer": 2,
+      "explanation": "$$-P$$ is on the far side of $$O$$ from $$P$$, at the same distance, so $$O$$ is the midpoint of $$P$$ and $$-P$$. That makes $$P \\mapsto -P$$ the reflection through $$O$$, which is the half turn about $$O$$ (:ref{#negative-half-turn}). Each flip in an axis changes only one sign."
+    },
+    {
+      "id": "negative-multiple",
+      "stars": 2,
+      "topic": "Scaling points",
+      "question": "What does $$P \\mapsto -2P$$ do?",
+      "options": [
+        "Zooms by $$\\frac{1}{2}$$ about the origin",
+        "Zooms by $$2$$ about the origin and then half turns about it",
+        "Moves every point $$2$$ units towards the origin",
+        "Flips in the $$x$$-axis and doubles"
+      ],
+      "answer": 1,
+      "explanation": "For $$c < 0$$, $$cP = |c|(-P)$$, so multiplying by $$-2$$ is the zoom by $$2$$ together with the half turn about $$O$$, in either order (:ref{#negative-multiple})."
+    },
+    {
+      "id": "scale-distance",
+      "stars": 2,
+      "topic": "Scaling points",
+      "question": "Two points are $$5$$ apart. How far apart are their multiples by $$-3$$?",
+      "options": ["$$15$$", "$$-15$$", "$$5$$", "$$2$$"],
+      "answer": 0,
+      "explanation": "Scaling by $$c$$ multiplies every distance by $$|c|$$ (:ref{#scale-distance}), so the answer is $$3 \\times 5 = 15$$. A distance is never negative, so $$-15$$ can't be right."
+    },
+    {
+      "id": "scale-twice",
+      "stars": 2,
+      "topic": "Scaling points",
+      "question": "What is $$-\\frac{1}{2}(4A)$$ the same as?",
+      "options": ["$$2A$$", "$$\\frac{7}{2}A$$", "$$-8A$$", "$$-2A$$"],
+      "answer": 3,
+      "explanation": "Scaling twice multiplies the numbers: $$b(cA) = (bc)A$$ (:ref{#scale-twice}). Here $$-\\frac{1}{2} \\times 4 = -2$$."
+    },
+    {
+      "id": "scale-cancel",
+      "stars": 3,
+      "topic": "Scaling points",
+      "question": "If $$bA = cA$$, which of these must be true?",
+      "options": [
+        "$$b = c$$",
+        "$$A = O$$",
+        "$$b = c$$ or $$A = O$$",
+        "$$b = c = 0$$"
+      ],
+      "answer": 2,
+      "explanation": "If $$A \\ne O$$, then $$b = c$$ (:ref{#scale-cancel}). But if $$A = O$$, every multiple of $$A$$ is $$O$$, so $$bA = cA$$ holds for any $$b$$ and $$c$$. That's why the answer has to allow $$A = O$$."
+    },
+    {
+      "id": "half-of-point",
+      "stars": 1,
+      "topic": "Scaling points",
+      "question": "What is $$\\frac{1}{2}(4, -6)$$?",
+      "options": ["$$(2, -6)$$", "$$(2, -3)$$", "$$(8, -12)$$", "$$(4, -3)$$"],
+      "answer": 1,
+      "explanation": "Halve both coordinates (:ref{#scalar-multiple}): $$(2, -3)$$. It is the point halfway from $$O$$ to $$(4, -6)$$."
+    },
+    {
+      "id": "sum-coords",
+      "stars": 1,
+      "topic": "Adding points",
+      "question": "What is $$(2, 5) + (-3, 1)$$?",
+      "options": ["$$(-1, 6)$$", "$$(5, 4)$$", "$$(-6, 5)$$", "$$(-1, 4)$$"],
+      "answer": 0,
+      "explanation": "Add the first coordinates and the second coordinates (:ref{#point-sum}): $$(2 - 3, 5 + 1) = (-1, 6)$$."
+    },
+    {
+      "id": "sum-meaning",
+      "stars": 1,
+      "topic": "Adding points",
+      "question": "Reading points as steps from the origin, what does $$A + B$$ mean?",
+      "options": [
+        "Go to $$A$$ and then come back by $$B$$",
+        "The point halfway between $$A$$ and $$B$$",
+        "The longer of the two steps",
+        "Take the step $$A$$, then the step $$B$$ from where you end up"
+      ],
+      "answer": 3,
+      "explanation": "Adding is one step after another: from the origin go to $$A$$, then take the step $$B$$ from there. Since $$A + B = B + A$$ (:ref{#sum-rules}), taking $$B$$ first lands in the same place."
+    },
+    {
+      "id": "difference-step",
+      "stars": 2,
+      "topic": "Adding points",
+      "question": "What step takes you from $$B = (3, 5)$$ to $$A = (7, 2)$$?",
+      "options": ["$$(-4, 3)$$", "$$(10, 7)$$", "$$(4, -3)$$", "$$(4, 3)$$"],
+      "answer": 2,
+      "explanation": "The step from $$B$$ to $$A$$ is $$A - B$$ (:ref{#difference-step}): $$(7 - 3, 2 - 5) = (4, -3)$$. The answer $$(-4, 3)$$ is $$B - A$$, the step back the other way."
+    },
+    {
+      "id": "difference-order",
+      "stars": 2,
+      "topic": "Adding points",
+      "question": "How are $$A - B$$ and $$B - A$$ related?",
+      "options": [
+        "They are equal",
+        "$$B - A = -(A - B)$$, the same step reversed",
+        "$$B - A$$ is always longer",
+        "They have nothing to do with each other"
+      ],
+      "answer": 1,
+      "explanation": "$$A - B$$ takes you from $$B$$ to $$A$$, and $$B - A$$ from $$A$$ back to $$B$$. Each coordinate changes sign, so $$B - A = -(A - B)$$ (:ref{#point-difference}). They have the same length."
+    },
+    {
+      "id": "solve-for-x",
+      "stars": 2,
+      "topic": "Adding points",
+      "question": "Which point $$X$$ satisfies $$X + (1, 4) = (3, 1)$$?",
+      "options": ["$$(2, -3)$$", "$$(4, 5)$$", "$$(-2, 3)$$", "$$(3, 4)$$"],
+      "answer": 0,
+      "explanation": "The only such point is $$(3, 1) - (1, 4) = (2, -3)$$ (:ref{#difference-step}). Check: $$(2, -3) + (1, 4) = (3, 1)$$."
+    },
+    {
+      "id": "sum-rules-which",
+      "stars": 2,
+      "topic": "Adding points",
+      "question": "Which rule do points NOT obey, unlike numbers?",
+      "options": [
+        "$$A + B = B + A$$",
+        "$$(A + B) + C = A + (B + C)$$",
+        "$$A + O = A$$",
+        "None of these: points obey all three"
+      ],
+      "answer": 3,
+      "explanation": "Adding points works coordinate by coordinate, so each rule follows from the same rule for numbers (:ref{#sum-rules}). All three hold."
+    },
+    {
+      "id": "scale-sum",
+      "stars": 2,
+      "topic": "Adding points",
+      "question": "What is $$3(A + B) - 2A$$?",
+      "options": ["$$A + B$$", "$$3A + B$$", "$$A + 3B$$", "$$5A + 3B$$"],
+      "answer": 2,
+      "explanation": "$$3(A + B) = 3A + 3B$$ (:ref{#scale-sum-rules}), and $$3A - 2A = A$$, so the answer is $$A + 3B$$. Scaling and adding rearrange like numbers."
+    },
+    {
+      "id": "unit-combination",
+      "stars": 1,
+      "topic": "Adding points",
+      "question": "How is $$(-2, 5)$$ written with the unit points $$E_1$$ and $$E_2$$?",
+      "options": [
+        "$$5E_1 - 2E_2$$",
+        "$$-2E_1 + 5E_2$$",
+        "$$-2E_1 - 5E_2$$",
+        "$$3E_1$$"
+      ],
+      "answer": 1,
+      "explanation": "Every point is $$a_1E_1 + a_2E_2$$ with its own coordinates (:ref{#unit-combination}): $$2$$ steps back along the $$x$$-axis and $$5$$ up."
+    },
+    {
+      "id": "midpoint",
+      "stars": 1,
+      "topic": "Adding points",
+      "question": "What is the midpoint of $$(-1, 4)$$ and $$(5, -2)$$?",
+      "options": ["$$(2, 1)$$", "$$(3, -3)$$", "$$(4, 2)$$", "$$(6, -6)$$"],
+      "answer": 0,
+      "explanation": "The midpoint is half the sum (:ref{#midpoint-formula}): $$\\frac{1}{2}(4, 2) = (2, 1)$$. The answer $$(4, 2)$$ forgets to halve, and $$(3, -3)$$ is half the difference."
+    },
+    {
+      "id": "midpoint-why",
+      "stars": 3,
+      "topic": "Adding points",
+      "question": "To prove $$M = \\frac{1}{2}(A + B)$$ is the midpoint of $$AB$$, what must be shown besides $$d(A, M) = d(M, B)$$?",
+      "options": [
+        "Nothing else",
+        "That $$M$$ lies on the segment $$AB$$, which follows from $$d(A, M) + d(M, B) = d(A, B)$$",
+        "That $$M$$ is the origin",
+        "That $$A$$ and $$B$$ are on the $$x$$-axis"
+      ],
+      "answer": 1,
+      "explanation": "Many points are the same distance from $$A$$ and $$B$$: the whole perpendicular bisector. The midpoint is the one on the segment, and rule 1 of :ref{#distance-and-angles/segment-rules} puts $$M$$ there because the two halves add up to $$d(A, B)$$ (:ref{#midpoint-formula})."
+    },
+    {
+      "id": "parallelogram-corner",
+      "stars": 2,
+      "topic": "Adding points",
+      "question": "The points $$O$$, $$A = (1, 6)$$, $$C$$, $$B = (4, 3)$$ go round a parallelogram in that order. What is $$C$$?",
+      "options": [
+        "$$(3, -3)$$",
+        "$$(\\frac{5}{2}, \\frac{9}{2})$$",
+        "$$(5, 9)$$",
+        "$$(-3, 3)$$"
+      ],
+      "answer": 2,
+      "explanation": "The far corner of the parallelogram on $$A$$ and $$B$$ is $$A + B = (5, 9)$$ (:ref{#parallelogram-law}). Half of that is where the diagonals cross, not a corner."
+    },
+    {
+      "id": "parallelogram-proved",
+      "stars": 3,
+      "topic": "Adding points",
+      "question": "What does this chapter prove about the four points $$O$$, $$A$$, $$A + B$$, $$B$$?",
+      "options": [
+        "Opposite sides are equal and parallel",
+        "Opposite sides are equal, and the diagonals have the same midpoint",
+        "All four sides are equal",
+        "The angles are all right angles"
+      ],
+      "answer": 1,
+      "explanation": "Both facts in :ref{#parallelogram-law} come from lengths and midpoints. That the opposite sides are also parallel needs lines in coordinates, which come in the next chapter."
+    },
+    {
+      "id": "norm",
+      "stars": 1,
+      "topic": "Length and direction",
+      "question": "What is the length $$|(-6, 8)|$$?",
+      "options": ["$$10$$", "$$2$$", "$$14$$", "$$100$$"],
+      "answer": 0,
+      "explanation": "$$|A| = \\sqrt{a_1^2 + a_2^2}$$ (:ref{#norm}), so $$\\sqrt{36 + 64} = \\sqrt{100} = 10$$. The answer $$100$$ forgets the square root, and $$14$$ adds the sizes of the coordinates."
+    },
+    {
+      "id": "norm-scale",
+      "stars": 2,
+      "topic": "Length and direction",
+      "question": "If $$|A| = 5$$, what is $$|-3A|$$?",
+      "options": ["$$-15$$", "$$2$$", "$$45$$", "$$15$$"],
+      "answer": 3,
+      "explanation": "$$|cA| = |c|\\,|A|$$ (:ref{#norm-scale}), so $$|-3A| = 3 \\times 5 = 15$$. A length is never negative."
+    },
+    {
+      "id": "distance-norm",
+      "stars": 2,
+      "topic": "Length and direction",
+      "question": "Which of these equals $$d(A, B)$$?",
+      "options": [
+        "$$|A| - |B|$$",
+        "$$|A + B|$$",
+        "$$|A - B|$$",
+        "$$|A| + |B|$$"
+      ],
+      "answer": 2,
+      "explanation": "The distance between two points is the length of the step between them: $$d(A, B) = |A - B| = |B - A|$$ (:ref{#distance-norm}). The lengths of $$A$$ and $$B$$ alone don't decide it."
+    },
+    {
+      "id": "norm-triangle",
+      "stars": 2,
+      "topic": "Length and direction",
+      "question": "If $$|A| = 3$$ and $$|B| = 4$$, which value of $$|A + B|$$ is impossible?",
+      "options": ["$$1$$", "$$8$$", "$$5$$", "$$7$$"],
+      "answer": 1,
+      "explanation": "By :ref{#norm-triangle}, $$|A + B| \\le 3 + 4 = 7$$, so $$8$$ is impossible. By :ref{#norm-difference} it is at least $$1$$. Every value from $$1$$ to $$7$$ happens for some angle between the steps; $$5$$ is when they are at right angles."
+    },
+    {
+      "id": "norm-difference",
+      "stars": 3,
+      "topic": "Length and direction",
+      "question": "Two phones are $$9$$ km and $$4$$ km from the same mast. What can you say for sure about the distance between them?",
+      "options": [
+        "It is exactly $$5$$ km",
+        "It is at least $$5$$ km and at most $$13$$ km",
+        "It is exactly $$13$$ km",
+        "Nothing at all"
+      ],
+      "answer": 1,
+      "explanation": "Put the mast at $$O$$ and the phones at $$A$$ and $$B$$. Then $$|A - B| \\le 9 + 4$$ by :ref{#norm-triangle}, and $$|A - B| \\ge 9 - 4$$ by :ref{#norm-difference}. Which value in between depends on where the phones are."
+    },
+    {
+      "id": "unit-point",
+      "stars": 2,
+      "topic": "Length and direction",
+      "question": "Which is the unit point in the direction of $$(-7, 24)$$?",
+      "options": [
+        "$$\\left(-\\frac{7}{17}, \\frac{24}{17}\\right)$$",
+        "$$(-1, 1)$$",
+        "$$\\left(\\frac{7}{25}, -\\frac{24}{25}\\right)$$",
+        "$$\\left(-\\frac{7}{25}, \\frac{24}{25}\\right)$$"
+      ],
+      "answer": 3,
+      "explanation": "$$|(-7, 24)| = \\sqrt{49 + 576} = 25$$, and dividing by the length gives the unit point (:ref{#direction}). Dividing by $$17 = 24 - 7$$ doesn't give length $$1$$, and the last option points the opposite way."
+    },
+    {
+      "id": "unit-length",
+      "stars": 1,
+      "topic": "Length and direction",
+      "question": "Which of these is a unit point?",
+      "options": [
+        "$$(1, 1)$$",
+        "$$\\left(\\frac{1}{2}, \\frac{1}{2}\\right)$$",
+        "$$\\left(\\frac{3}{5}, -\\frac{4}{5}\\right)$$",
+        "$$(0, 0)$$"
+      ],
+      "answer": 2,
+      "explanation": "A unit point has length $$1$$ (:ref{#unit-point}). $$\\frac{9}{25} + \\frac{16}{25} = 1$$, so $$\\left(\\frac{3}{5}, -\\frac{4}{5}\\right)$$ is one. $$(1, 1)$$ has length $$\\sqrt{2}$$ and $$\\left(\\frac{1}{2}, \\frac{1}{2}\\right)$$ has length $$\\frac{\\sqrt{2}}{2}$$."
+    },
+    {
+      "id": "direction-origin",
+      "stars": 3,
+      "topic": "Length and direction",
+      "question": "Why does $$O$$ have no direction?",
+      "options": [
+        "Because its length is $$1$$",
+        "Because $$\\frac{1}{|O|}O$$ would divide by $$0$$, and no unit point is a positive multiple of $$O$$",
+        "Because it isn't a point",
+        "It does: its direction is $$E_1$$"
+      ],
+      "answer": 1,
+      "explanation": "Every multiple of $$O$$ is $$O$$, which has length $$0$$, so no multiple of it is a unit point. That's why :ref{#direction} needs $$A \\ne O$$."
+    },
+    {
+      "id": "circle-slide",
+      "stars": 2,
+      "topic": "Length and direction",
+      "question": "Which set is the circle with centre $$A$$ and radius $$r$$?",
+      "options": [
+        "All $$X$$ with $$|X - A| = r$$",
+        "All $$X$$ with $$|X| - |A| = r$$",
+        "All $$X$$ with $$|X + A| = r$$",
+        "All $$X$$ with $$|X| = r$$"
+      ],
+      "answer": 0,
+      "explanation": "$$X$$ is on the circle when $$d(A, X) = r$$, which is $$|X - A| = r$$ (:ref{#circle-slide}). $$|X + A| = r$$ is the circle with centre $$-A$$, and $$|X| = r$$ has centre $$O$$."
+    },
+    {
+      "id": "circle-scale",
+      "stars": 3,
+      "topic": "Length and direction",
+      "question": "Under $$P \\mapsto -2P$$, where does the circle with centre $$O$$ and radius $$3$$ go?",
+      "options": [
+        "To the circle with centre $$O$$ and radius $$-6$$",
+        "To the circle with centre $$(-2, -2)$$ and radius $$3$$",
+        "To a single point",
+        "To the circle with centre $$O$$ and radius $$6$$"
+      ],
+      "answer": 3,
+      "explanation": "Scaling by $$c \\ne 0$$ sends this circle to the one with radius $$|c| \\cdot 3 = 6$$ and the same centre (:ref{#circle-scale}). The half turn part spins the circle round, which leaves it where it was."
+    },
+    {
+      "id": "slide-formula",
+      "stars": 1,
+      "topic": "Moves as formulas",
+      "question": "Where does the slide $$T_{(4, 3)}$$ send $$(1, 6)$$?",
+      "options": ["$$(-3, 3)$$", "$$(4, 18)$$", "$$(5, 9)$$", "$$(3, -3)$$"],
+      "answer": 2,
+      "explanation": "$$T_A(P) = P + A$$ (:ref{#slide-formula}), so $$(1, 6) + (4, 3) = (5, 9)$$."
+    },
+    {
+      "id": "half-turn-formula",
+      "stars": 2,
+      "topic": "Moves as formulas",
+      "question": "Where does the half turn about $$Q = (2, -1)$$ send $$P = (5, 3)$$?",
+      "options": ["$$(-5, -3)$$", "$$(-1, -5)$$", "$$(3, 4)$$", "$$(7, 2)$$"],
+      "answer": 1,
+      "explanation": "$$H_Q(P) = 2Q - P$$ (:ref{#half-turn-formula}): $$(4, -2) - (5, 3) = (-1, -5)$$. Check: the midpoint of $$(5, 3)$$ and $$(-1, -5)$$ is $$(2, -1) = Q$$. The answer $$(-5, -3)$$ is the half turn about $$O$$ instead."
+    },
+    {
+      "id": "half-turn-why",
+      "stars": 3,
+      "topic": "Moves as formulas",
+      "question": "Why is $$2Q - P$$ the half turn of $$P$$ about $$Q$$?",
+      "options": [
+        "Because $$Q$$ is the midpoint of $$P$$ and $$2Q - P$$",
+        "Because it is twice as far from $$O$$ as $$Q$$",
+        "Because it has the same length as $$P$$",
+        "Because $$2Q - P$$ is on the $$x$$-axis"
+      ],
+      "answer": 0,
+      "explanation": "$$\\frac{1}{2}(P + (2Q - P)) = Q$$, so $$Q$$ is the midpoint by :ref{#midpoint-formula}. A point and its reflection through $$Q$$ are exactly the pairs with midpoint $$Q$$ (:ref{#isometries/point-reflection})."
+    },
+    {
+      "id": "zoom-formula",
+      "stars": 2,
+      "topic": "Moves as formulas",
+      "question": "Where does the zoom by $$3$$ about $$Q = (1, 2)$$ send $$P = (2, 4)$$?",
+      "options": ["$$(6, 12)$$", "$$(3, 6)$$", "$$(5, 10)$$", "$$(4, 8)$$"],
+      "answer": 3,
+      "explanation": "$$Z_{r,Q}(P) = Q + r(P - Q)$$ (:ref{#zoom-formula}). The step from $$Q$$ to $$P$$ is $$(1, 2)$$, three times that is $$(3, 6)$$, and $$(1, 2) + (3, 6) = (4, 8)$$. The answer $$(6, 12)$$ zooms about the origin instead."
+    },
+    {
+      "id": "zoom-shrink",
+      "stars": 2,
+      "topic": "Moves as formulas",
+      "question": "Where does the zoom by $$\\frac{1}{2}$$ about $$(4, 0)$$ send $$(0, 6)$$?",
+      "options": ["$$(0, 3)$$", "$$(4, 3)$$", "$$(2, 3)$$", "$$(-2, 3)$$"],
+      "answer": 2,
+      "explanation": "The step from $$(4, 0)$$ to $$(0, 6)$$ is $$(-4, 6)$$. Half of it is $$(-2, 3)$$, and taking that from $$(4, 0)$$ lands at $$(2, 3)$$ (:ref{#zoom-formula}), the midpoint of the two points."
+    },
+    {
+      "id": "axis-flip",
+      "stars": 1,
+      "topic": "Moves as formulas",
+      "question": "Which formula flips the plane in the $$x$$-axis?",
+      "options": [
+        "$$(x, y) \\mapsto (-x, y)$$",
+        "$$(x, y) \\mapsto (x, -y)$$",
+        "$$(x, y) \\mapsto (y, x)$$",
+        "$$(x, y) \\mapsto (-x, -y)$$"
+      ],
+      "answer": 1,
+      "explanation": "Points on the $$x$$-axis stay put and points above it go the same distance below, so only $$y$$ changes sign (:ref{#axis-reflections}). $$(-x, y)$$ flips in the $$y$$-axis, and $$(-x, -y)$$ is the half turn."
+    },
+    {
+      "id": "diagonal-flip",
+      "stars": 2,
+      "topic": "Moves as formulas",
+      "question": "Where does the flip in the line $$y = x$$ send $$(4, -3)$$?",
+      "options": ["$$(-3, 4)$$", "$$(-4, 3)$$", "$$(4, 3)$$", "$$(3, -4)$$"],
+      "answer": 0,
+      "explanation": "The flip in $$y = x$$ swaps the coordinates (:ref{#diagonal-reflection}), giving $$(-3, 4)$$."
+    },
+    {
+      "id": "quarter-turn",
+      "stars": 2,
+      "topic": "Moves as formulas",
+      "question": "Where does the quarter turn $$G_{90}$$ about the origin send $$(4, -3)$$?",
+      "options": ["$$(-3, 4)$$", "$$(-4, 3)$$", "$$(-3, -4)$$", "$$(3, 4)$$"],
+      "answer": 3,
+      "explanation": "$$G_{90}(x, y) = (-y, x)$$ (:ref{#quarter-turn}), so $$(4, -3) \\mapsto (3, 4)$$. As a check, $$E_1 = (1, 0)$$ goes to $$E_2 = (0, 1)$$, which is anticlockwise."
+    },
+    {
+      "id": "which-isometry",
+      "stars": 2,
+      "topic": "Moves as formulas",
+      "question": "Which of these maps is NOT an isometry?",
+      "options": [
+        "$$P \\mapsto P + (3, -1)$$",
+        "$$P \\mapsto (2, 2) - P$$",
+        "$$P \\mapsto 2P$$",
+        "$$(x, y) \\mapsto (y, x)$$"
+      ],
+      "answer": 2,
+      "explanation": "$$P \\mapsto 2P$$ doubles every distance (:ref{#scale-distance}). The others are a slide, a half turn about $$(1, 1)$$ and a flip, which all keep distances (:ref{#formula-isometries})."
+    },
+    {
+      "id": "fixed-points",
+      "stars": 3,
+      "topic": "Moves as formulas",
+      "question": "Which move has a whole line of fixed points?",
+      "options": [
+        "A slide by $$A \\ne O$$",
+        "The flip in the line $$y = x$$",
+        "A half turn about $$Q$$",
+        "The quarter turn about $$O$$"
+      ],
+      "answer": 1,
+      "explanation": "A flip leaves every point of its mirror where it is, so $$S$$ fixes the line $$y = x$$. A slide by $$A \\ne O$$ fixes nothing, and a half turn or the quarter turn fixes only its centre (:ref{#formula-fixed-points})."
+    },
+    {
+      "id": "zoom-fixed",
+      "stars": 3,
+      "topic": "Moves as formulas",
+      "question": "Which points does $$P \\mapsto 3P - (4, 2)$$ fix?",
+      "options": ["None", "Only $$(2, 1)$$", "Only $$O$$", "Every point"],
+      "answer": 1,
+      "explanation": "Solve $$P = 3P - (4, 2)$$: then $$2P = (4, 2)$$ and $$P = (2, 1)$$. In fact the map is $$(2, 1) + 3(P - (2, 1))$$, the zoom by $$3$$ about $$(2, 1)$$, whose only fixed point is its centre (:ref{#formula-fixed-points})."
+    },
+    {
+      "id": "slide-compose",
+      "stars": 1,
+      "topic": "Combining and undoing moves",
+      "question": "What is the slide by $$(2, 1)$$ followed by the slide by $$(-5, 3)$$?",
+      "options": [
+        "The slide by $$(7, -2)$$",
+        "The slide by $$(-10, 3)$$",
+        "A half turn",
+        "The slide by $$(-3, 4)$$"
+      ],
+      "answer": 3,
+      "explanation": "Slides combine by adding their steps (:ref{#slide-compose}): $$(2, 1) + (-5, 3) = (-3, 4)$$. The order doesn't matter."
+    },
+    {
+      "id": "slide-inverse",
+      "stars": 1,
+      "topic": "Combining and undoing moves",
+      "question": "What undoes the slide $$T_{(3, -2)}$$?",
+      "options": [
+        "$$T_{(3, -2)}$$",
+        "$$T_{(2, -3)}$$",
+        "$$T_{(-3, 2)}$$",
+        "$$T_{(\\frac{1}{3}, -\\frac{1}{2})}$$"
+      ],
+      "answer": 2,
+      "explanation": "$$T_A^{-1} = T_{-A}$$ (:ref{#slide-inverse}): slide back by the opposite step."
+    },
+    {
+      "id": "zoom-inverse",
+      "stars": 2,
+      "topic": "Combining and undoing moves",
+      "question": "What undoes the zoom $$Z_4$$ about the origin?",
+      "options": [
+        "$$Z_{-4}$$",
+        "$$Z_{1/4}$$",
+        "$$Z_4$$",
+        "The slide by $$-4$$"
+      ],
+      "answer": 1,
+      "explanation": "Zooms about the origin combine by multiplying, so $$Z_{1/4} \\circ Z_4 = Z_1$$, which moves nothing (:ref{#zoom-compose})."
+    },
+    {
+      "id": "two-half-turns",
+      "stars": 2,
+      "topic": "Combining and undoing moves",
+      "question": "What is the half turn about $$Q = (1, 0)$$ followed by the half turn about $$M = (3, 2)$$?",
+      "options": [
+        "The slide by $$(4, 4)$$",
+        "The slide by $$(2, 2)$$",
+        "The half turn about $$(2, 1)$$",
+        "The quarter turn about $$(2, 1)$$"
+      ],
+      "answer": 0,
+      "explanation": "$$H_M \\circ H_Q = T_{2(M - Q)}$$ (:ref{#two-half-turns}). Here $$M - Q = (2, 2)$$, so the slide is by $$(4, 4)$$, twice the step between the centres."
+    },
+    {
+      "id": "half-turn-twice",
+      "stars": 1,
+      "topic": "Combining and undoing moves",
+      "question": "What is the half turn about $$Q$$ done twice?",
+      "options": [
+        "The slide by $$2Q$$",
+        "The half turn about $$2Q$$",
+        "The quarter turn about $$Q$$",
+        "The identity, which moves nothing"
+      ],
+      "answer": 3,
+      "explanation": "Set $$M = Q$$ in :ref{#two-half-turns}: the slide by $$2(Q - Q) = O$$, which moves nothing. Two half turns make a full turn."
+    },
+    {
+      "id": "zoom-about-q",
+      "stars": 3,
+      "topic": "Combining and undoing moves",
+      "question": "Which recipe gives the zoom by $$r$$ about the point $$Q$$?",
+      "options": [
+        "Zoom by $$r$$ about $$O$$, then slide by $$Q$$",
+        "Slide by $$Q$$, zoom by $$r$$ about $$O$$, then slide by $$-Q$$",
+        "Slide by $$-Q$$, zoom by $$r$$ about $$O$$, then slide by $$Q$$",
+        "Zoom by $$r$$ about $$O$$ twice"
+      ],
+      "answer": 2,
+      "explanation": "Move $$Q$$ to the origin, do the zoom there, and move back: $$Z_{r,Q} = T_Q \\circ Z_r \\circ T_{-Q}$$ (:ref{#zoom-composite}). The composite is read from right to left, so $$T_{-Q}$$ happens first."
+    },
+    {
+      "id": "conjugate-slide",
+      "stars": 3,
+      "topic": "Combining and undoing moves",
+      "question": "Zoom by $$\\frac{1}{2}$$ about the origin, slide by $$A$$, then zoom by $$2$$ about the origin. What is the result?",
+      "options": [
+        "The slide by $$A$$",
+        "The slide by $$2A$$",
+        "The slide by $$\\frac{1}{2}A$$",
+        "The zoom by $$2$$ about $$A$$"
+      ],
+      "answer": 1,
+      "explanation": "This is $$Z_2 \\circ T_A \\circ Z_2^{-1}$$, which is $$T_{2A}$$ (:ref{#conjugate-slide}). Seen on a map zoomed by $$2$$, a slide looks twice as long."
+    },
+    {
+      "id": "flips-combined",
+      "stars": 2,
+      "topic": "Combining and undoing moves",
+      "question": "What is the flip in the $$x$$-axis followed by the flip in the $$y$$-axis?",
+      "options": [
+        "The half turn about $$O$$",
+        "The identity",
+        "The quarter turn about $$O$$",
+        "The flip in $$y = x$$"
+      ],
+      "answer": 0,
+      "explanation": "$$(x, y) \\mapsto (x, -y) \\mapsto (-x, -y)$$, which is the half turn about $$O$$ (:ref{#combining-moves-flips}). Mirrors at a right angle make a half turn, as the Isometries chapter showed with pictures."
+    },
+    {
+      "id": "flip-order",
+      "stars": 3,
+      "topic": "Combining and undoing moves",
+      "question": "$$S(x, y) = (y, x)$$ and $$R_1(x, y) = (x, -y)$$. Which statement is true?",
+      "options": [
+        "$$S \\circ R_1 = R_1 \\circ S$$",
+        "Both composites are the half turn",
+        "Both composites are flips",
+        "$$S \\circ R_1 = G_{90}$$ and $$R_1 \\circ S = G_{90}^{-1}$$"
+      ],
+      "answer": 3,
+      "explanation": "$$S(R_1(1, 3)) = S(1, -3) = (-3, 1) = G_{90}(1, 3)$$, but $$R_1(S(1, 3)) = R_1(3, 1) = (3, -1)$$, the clockwise quarter turn (:ref{#combining-moves-flips}). So the order of two flips matters."
+    },
+    {
+      "id": "space-sum",
+      "stars": 1,
+      "topic": "Points in space",
+      "question": "What is $$(1, 0, 2) + (3, -1, 4)$$?",
+      "options": [
+        "$$(3, 0, 8)$$",
+        "$$(4, 1, 6)$$",
+        "$$(4, -1, 6)$$",
+        "$$(2, -1, 2)$$"
+      ],
+      "answer": 2,
+      "explanation": "Add each of the three coordinates (:ref{#space-operations})."
+    },
+    {
+      "id": "space-norm",
+      "stars": 1,
+      "topic": "Points in space",
+      "question": "What is $$|(2, 3, 6)|$$?",
+      "options": ["$$11$$", "$$7$$", "$$49$$", "$$\\sqrt{13}$$"],
+      "answer": 1,
+      "explanation": "$$\\sqrt{4 + 9 + 36} = \\sqrt{49} = 7$$ (:ref{#space-norm}). The answer $$\\sqrt{13}$$ forgets the third coordinate."
+    },
+    {
+      "id": "space-midpoint",
+      "stars": 2,
+      "topic": "Points in space",
+      "question": "What is the midpoint of $$(1, 0, 2)$$ and $$(3, -2, 4)$$?",
+      "options": [
+        "$$(2, -1, 3)$$",
+        "$$(1, -1, 1)$$",
+        "$$(4, -2, 6)$$",
+        "$$(2, 1, 3)$$"
+      ],
+      "answer": 0,
+      "explanation": "Half the sum (:ref{#space-midpoint}): $$\\frac{1}{2}(4, -2, 6) = (2, -1, 3)$$."
+    },
+    {
+      "id": "space-distance",
+      "stars": 2,
+      "topic": "Points in space",
+      "question": "How far apart are $$(4, 1, -2)$$ and $$(1, 5, 10)$$?",
+      "options": ["$$169$$", "$$19$$", "$$5$$", "$$13$$"],
+      "answer": 3,
+      "explanation": "The step between them is $$(-3, 4, 12)$$, with length $$\\sqrt{9 + 16 + 144} = \\sqrt{169} = 13$$ (:ref{#space-norm-rules}). The answer $$5$$ uses only the first two coordinates."
+    },
+    {
+      "id": "space-negative",
+      "stars": 3,
+      "topic": "Points in space",
+      "question": "In space, what is true of the map $$A \\mapsto -A$$?",
+      "options": [
+        "It is a half turn about the $$z$$-axis",
+        "It doesn't keep distances",
+        "It keeps distances, but it is not a turn about any line",
+        "It fixes every point of a line"
+      ],
+      "answer": 2,
+      "explanation": "It keeps distances, since $$|(-A) - (-B)| = |A - B|$$, but a turn about a line fixes that line, and $$A \\mapsto -A$$ fixes only $$O$$ (:ref{#space-negative}). It swaps left and right hands, like a mirror. In the plane, the same formula is the half turn."
+    }
+  ]
+}

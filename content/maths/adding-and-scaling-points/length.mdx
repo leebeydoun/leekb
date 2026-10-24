@@ -1,0 +1,610 @@
+---
+title: Length and direction
+description:
+  How long a step is and which way it points, the triangle inequality for steps, and circles built
+  from the unit circle.
+---
+
+Imagine you've wandered away from your car on a hike, and the map on your phone says the car is
+$$3$$ km west and $$4$$ km south of where you stand. That pins the car down, but it isn't the
+information you act on. You want two separate answers: how far away the car is, and which way to
+face before you set off.
+
+The first answer is the **length** of the step from you to the car, and the second is its
+**direction**. In this guide we'll work out both from the coordinates, and see how lengths behave
+when steps are added and scaled.
+
+## The length of a point
+
+Read a point as a step from the origin, as in :ref{#point-sum}. The length of the step is how far it
+takes you, which is the distance from the origin to the point. The distance formula already gives
+that distance from the coordinates.
+
+Put yourself at the origin, with the $$x$$-axis pointing east and the $$y$$-axis pointing north, and
+measure in kilometres. The car is at $$A = (-3, -4)$$, and its distance from you is
+
+```math
+\sqrt{(-3)^2 + (-4)^2} = \sqrt{9 + 16} = \sqrt{25} = 5
+```
+
+so the car is $$5$$ km away in a straight line.
+
+:::definition[Length of a point]{#norm}
+
+The **length** of a point $$A = (a_1, a_2)$$, written $$|A|$$ and read "the length of $$A$$", is
+
+```math
+|A| = \sqrt{a_1^2 + a_2^2}
+```
+
+It is also called the **norm** or the **magnitude** of $$A$$. By the distance formula
+(:ref{#coordinates/distance-formula}), it is the distance from the origin: $$|A| = d(O, A)$$.
+
+:::
+
+Since the length is a distance, it is never negative, and it is $$0$$ exactly when $$A = O$$
+(:ref{#coordinates/distance-zero}). For example, $$|(5, 12)| = \sqrt{25 + 144} = 13$$, and
+$$|(1, 1)| = \sqrt{2}$$.
+
+The bars are the ones used for absolute value, and that is on purpose. A point $$(a, 0)$$ on the
+$$x$$-axis has length $$\sqrt{a^2}$$, which is $$|a|$$ by part 4 of :ref{#real-numbers/abs-basics}.
+So $$|(-7, 0)| = 7 = |-7|$$. On the number line the absolute value of a number is its distance from
+$$0$$ (:ref{#real-numbers/absolute-value}), and the length of a point is the same idea in the plane.
+
+### Distance as a length
+
+The difference $$A - B$$ is the step that takes you from $$B$$ to $$A$$ (:ref{#difference-step}).
+How far that step takes you is how far apart the two points are. So every distance in the plane is
+the length of a difference.
+
+For example, take $$B = (1, 2)$$ and $$A = (4, 6)$$. Then $$A - B = (3, 4)$$, which has length
+$$\sqrt{9 + 16} = 5$$, and $$5$$ is the distance between $$A$$ and $$B$$ that the distance formula
+gives.
+
+:::proposition[Distance as a length]{#distance-norm}
+
+For any points $$A$$ and $$B$$,
+
+```math
+d(A, B) = |A - B| = |B - A|
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Norm_(mathematics)#Euclidean_norm"}
+
+Write $$A = (a_1, a_2)$$ and $$B = (b_1, b_2)$$. By :ref{#point-difference},
+$$A - B = (a_1 - b_1, a_2 - b_2)$$, so by :ref{#norm},
+
+```math
+|A - B| = \sqrt{(a_1 - b_1)^2 + (a_2 - b_2)^2}
+```
+
+This is the distance formula (:ref{#coordinates/distance-formula}) for the distance from $$B$$ to
+$$A$$, so $$|A - B| = d(B, A)$$, which is $$d(A, B)$$ by :ref{#coordinates/distance-symmetric}. In
+the same way, $$|B - A| = \sqrt{(b_1 - a_1)^2 + (b_2 - a_2)^2}$$ is the distance formula for
+$$d(A, B)$$.
+
+:::
+
+## Stretching a step
+
+Take the same step three times and you go three times as far. Turn round and take it backwards, and
+you go the same distance as forwards, only the other way. So multiplying a point by a number
+multiplies its length by the size of the number, with the sign ignored.
+
+For example, $$A = (3, 4)$$ has length $$5$$. Then $$-2A = (-6, -8)$$ has length
+$$\sqrt{36 + 64} = 10$$, which is $$2 \cdot 5$$.
+
+:::proposition[Length of a multiple]{#norm-scale}
+
+For every point $$A$$ and every real number $$c$$,
+
+```math
+|cA| = |c|\,|A|
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_vector#Scalar_multiplication"}
+
+Write $$A = (a_1, a_2)$$, so $$cA = (ca_1, ca_2)$$ by :ref{#scalar-multiple}. Then
+
+```math
+|cA| = \sqrt{c^2 a_1^2 + c^2 a_2^2} = \sqrt{c^2 \left(a_1^2 + a_2^2\right)} = \sqrt{c^2}\,\sqrt{a_1^2 + a_2^2}
+```
+
+by :ref{#real-numbers/root-product}, since $$c^2$$ and $$a_1^2 + a_2^2$$ are not negative. By part 4
+of :ref{#real-numbers/abs-basics}, $$\sqrt{c^2} = |c|$$, so $$|cA| = |c|\,|A|$$.
+
+:::
+
+With $$c = -1$$ this says $$|-A| = |A|$$: a point and its negative are the same distance from the
+origin. The proposition is also :ref{#scale-distance} with $$B = O$$, since $$cO = O$$ and each
+length is a distance from $$O$$.
+
+## Two steps in a row
+
+Walk $$3$$ km along one straight path, then $$4$$ km along another. You end up at most $$7$$ km from
+where you started. You are exactly $$7$$ km away when the second path carries straight on from the
+first, and less when it turns. If it turns all the way back, you finish $$1$$ km from the start.
+
+In symbols, the first step is $$A$$ and the second is $$B$$, so you finish at $$A + B$$. For
+example, $$A = (3, 0)$$ and $$B = (0, 4)$$ have lengths $$3$$ and $$4$$, and $$A + B = (3, 4)$$ has
+length $$5$$, which is less than $$3 + 4$$.
+
+```plane
+point O 0 0 sw
+point A 4 1 se
+point S 5 4 ne
+point X1 -0.6 0 hidden
+point X2 6 0 hidden
+point Y1 0 -0.6 hidden
+point Y2 0 4.8 hidden
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+segment O A color=orange label="|A|" side=right
+segment A S color=green label="|B|" side=right
+segment O S color=blue label="|A + B|"
+caption "The step A = (4, 1) followed by the step B = (1, 3) ends at S = A + B = (5, 4). The straight route from O to S is no longer than the two steps together."
+```
+
+:::theorem[The triangle inequality for lengths]{#norm-triangle}
+
+For any points $$A$$ and $$B$$,
+
+```math
+|A + B| \le |A| + |B|
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Triangle_Inequality_for_Vectors_in_Euclidean_Space"}
+
+Write $$A = (a_1, a_2)$$ and $$B = (b_1, b_2)$$. By :ref{#coordinates/triangle-inequality-plane},
+with the points $$O$$, $$A$$ and $$A + B$$,
+
+```math
+d(O, A + B) \le d(O, A) + d(A, A + B)
+```
+
+By :ref{#norm}, the first two distances are $$|A + B|$$ and $$|A|$$. For the third, the slide
+$$(x, y) \mapsto (x + b_1, y + b_2)$$ sends $$O$$ to $$(b_1, b_2) = B$$, and it sends $$A$$ to
+$$(a_1 + b_1, a_2 + b_2)$$, which is $$A + B$$ (:ref{#point-sum}). A slide keeps distances
+(:ref{#coordinates/slide-distance}), so $$d(A, A + B) = d(O, B) = |B|$$. Putting the three lengths
+into the inequality gives $$|A + B| \le |A| + |B|$$.
+
+:::
+
+In the figure for the triangle inequality, $$|A| = \sqrt{17} \approx 4.12$$ and
+$$|B| = \sqrt{10} \approx 3.16$$, which add to about $$7.29$$. The sum $$A + B = (5, 4)$$ has length
+$$\sqrt{41} \approx 6.40$$, which is shorter, as the theorem says.
+
+### How close two points can be
+
+Now suppose two friends are standing still, one $$5$$ km from you and the other $$3$$ km from you.
+They could be $$8$$ km apart, on opposite sides of you, or anywhere closer. But they can't be less
+than $$2$$ km apart, since walking from you to the nearer friend and on to the other must cover at
+least the $$5$$ km to the further one.
+
+:::corollary[Lengths of a difference]{#norm-difference}
+
+For any points $$A$$ and $$B$$,
+
+```math
+\big||A| - |B|\big| \le |A - B|
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Reverse_Triangle_Inequality"}
+
+The step $$A - B$$ followed by the step $$B$$ ends at $$A$$, since $$(A - B) + B = B + (A - B) = A$$
+by :ref{#sum-rules} and :ref{#difference-step}. So :ref{#norm-triangle} gives
+
+```math
+|A| = |(A - B) + B| \le |A - B| + |B|
+```
+
+and taking $$|B|$$ from both sides gives $$|A| - |B| \le |A - B|$$. Swapping the roles of $$A$$ and
+$$B$$ in the same way gives $$|B| - |A| \le |B - A|$$, and $$|B - A| = |A - B|$$ by
+:ref{#distance-norm}.
+
+So $$|A - B|$$ is at least $$|A| - |B|$$ and at least its negative $$|B| - |A|$$. The absolute value
+$$\big||A| - |B|\big|$$ is one of these two numbers (:ref{#real-numbers/absolute-value}), so it is
+at most $$|A - B|$$.
+
+:::
+
+Put yourself at $$O$$ and the two friends at $$A$$ and $$B$$. Then $$|A| = 5$$ and $$|B| = 3$$, so
+the corollary gives $$|A - B| \ge 2$$. By :ref{#distance-norm}, $$|A - B|$$ is the distance between
+the friends, so they are at least $$2$$ km apart.
+
+## Which way a step points
+
+The step to the car mixes two pieces of information: how far, and which way. To pull them apart,
+shrink the step until it has length $$1$$, without changing which way it points. The shrunk step
+carries the direction alone, and the length says how many times to take it.
+
+:::definition[Unit point]{#unit-point}
+
+A **unit point** is a point $$U$$ with $$|U| = 1$$.
+
+:::
+
+The unit points $$E_1 = (1, 0)$$ and $$E_2 = (0, 1)$$ of :ref{#unit-points} are two examples. So are
+$$(-1, 0)$$ and $$(0.6, 0.8)$$, since $$0.36 + 0.64 = 1$$. A unit point is at distance $$1$$ from
+the origin, so the unit points are exactly the points of the unit circle, the circle with centre
+$$O$$ and radius $$1$$ (:ref{#distance-and-angles/circle}).
+
+To shrink $$A$$ to length $$1$$, multiply it by $$\frac{1}{|A|}$$. A positive multiple keeps the
+step pointing the same way, and by :ref{#norm-scale} it divides the length by $$|A|$$, which leaves
+$$1$$.
+
+:::proposition[Length times direction]{#direction}
+
+Let $$A$$ be a point other than $$O$$, and let
+
+```math
+U = \frac{1}{|A|}A
+```
+
+Then $$U$$ is a unit point and $$A = |A|\,U$$. It is the only unit point that is a positive multiple
+of $$A$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_vector#Unit_vector"}
+
+Since $$A \ne O$$, its length $$|A|$$ is positive (:ref{#coordinates/distance-zero}), so
+$$\frac{1}{|A|}$$ is a positive number. By :ref{#norm-scale},
+
+```math
+|U| = \frac{1}{|A|}\,|A| = 1
+```
+
+so $$U$$ is a unit point. By :ref{#scale-twice}, $$|A|\,U = \left(|A| \cdot \frac{1}{|A|}\right)A$$,
+which is $$1A = A$$ (:ref{#scalar-multiple}).
+
+Now let $$V = cA$$ be a unit point with $$c > 0$$. By :ref{#norm-scale},
+$$1 = |V| = |c|\,|A| = c\,|A|$$, so $$c = \frac{1}{|A|}$$ and $$V = U$$.
+
+:::
+
+So $$A = |A|\,U$$ splits the step in two: $$|A|$$ says how far, and $$U$$ says which way. We'll call
+$$U$$ the **direction** of $$A$$. Here "direction" is used in this everyday sense. Rays, and what it
+means for two steps to point the same way, get formulas in the next chapter.
+
+```plane
+point O 0 0 ne
+point U -0.6 -0.8 nw
+point A -3 -4 sw
+point X1 -4 0 hidden
+point X2 1.6 0 hidden
+point Y1 0 -4.8 hidden
+point Y2 0 1.6 hidden
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+circle O 1 color=muted dashed
+segment U A color=blue label="|A| = 5" side=right
+segment O U color=orange
+caption "You stand at O and the car is at A = (−3, −4). The direction U = (−0.6, −0.8) sits on the unit circle, and the car is 5 copies of U away."
+```
+
+:::example[The way to the car]
+
+The car is at $$A = (-3, -4)$$, and $$|A| = 5$$. Its direction is
+
+```math
+U = \frac{1}{5}(-3, -4) = (-0.6, -0.8)
+```
+
+Read as a step, $$U$$ says that each kilometre you walk towards the car takes you $$0.6$$ km west
+and $$0.8$$ km south. Five of those kilometres get you there, since $$5U = (-3, -4) = A$$.
+
+:::
+
+Move $$A$$ below and watch $$U$$ slide round the unit circle. Doubling $$A$$ moves it further out
+but leaves $$U$$ where it is, and changing the sign of $$A$$ sends $$U$$ to the opposite side of the
+circle.
+
+<LengthDirection a={[-3, -4]} />
+
+Computer games split steps this way to keep a character's speed steady. Holding the right arrow key
+gives the step $$(1, 0)$$ and holding the up key gives $$(0, 1)$$. Holding both gives $$(1, 1)$$, of
+length $$\sqrt{2} \approx 1.41$$, so a game that used that step as it stands would let a character
+run about $$41\%$$ faster diagonally. Instead the game takes the direction
+$$\frac{1}{\sqrt{2}}(1, 1) \approx (0.71, 0.71)$$ and multiplies it by the character's speed, so the
+speed is the same whichever way the character runs.
+
+## Circles from the unit circle
+
+A circle is every point at one distance from its centre. Slide the whole circle somewhere else and
+each point keeps its distance from the centre, which has moved along with it. So every circle with
+radius $$r$$ is a copy of the circle with radius $$r$$ around the origin, slid into place.
+
+<Graph
+  circles={[
+    { a: 0, b: 0, r: 2, label: "|P| = 2" },
+    { a: 4, b: 1, r: 2, label: "|X − A| = 2" },
+  ]}
+  points={[
+    { x: 0, y: 0, label: "O" },
+    { x: 4, y: 1, label: "A" },
+    { x: -1.2, y: 1.6, label: "P" },
+    { x: 2.8, y: 2.6, label: "P + A" },
+  ]}
+  x={[-3, 7]}
+  y={[-3, 4]}
+  caption="The slide by A = (4, 1) moves the circle with centre O and radius 2 onto the circle with centre A and radius 2. The point P = (−1.2, 1.6) lands on P + A = (2.8, 2.6)."
+/>
+
+:::theorem[Circles are slid copies]{#circle-slide}
+
+Let $$A$$ be a point and $$r > 0$$.
+
+1. The circle with centre $$A$$ and radius $$r$$ is the set of points $$X$$ with $$|X - A| = r$$.
+2. It is the image (:ref{#isometries/image}) of the circle with centre $$O$$ and radius $$r$$ under
+   the slide $$P \mapsto P + A$$.
+
+The same holds for discs, with $$\le$$ in place of $$=$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Circle#Equations"}
+
+**Part 1.** By :ref{#distance-and-angles/circle}, $$X$$ is on the circle exactly when
+$$d(A, X) = r$$, and $$d(A, X) = |X - A|$$ by :ref{#distance-norm}.
+
+**Part 2.** Write $$C_O$$ for the circle with centre $$O$$ and radius $$r$$, and $$C_A$$ for the one
+with centre $$A$$. Working coordinate by coordinate, $$(P + A) - A = P$$ for every point $$P$$
+(:ref{#point-sum}, :ref{#point-difference}). By part 1, $$C_O$$ is the set of points $$P$$ with
+$$|P| = r$$. There are two things to show.
+
+- **Every image lies on $$C_A$$.** If $$P$$ is on $$C_O$$, then $$|(P + A) - A| = |P| = r$$, so
+  $$P + A$$ is on $$C_A$$ by part 1.
+- **Every point of $$C_A$$ is an image.** Let $$X$$ be on $$C_A$$, and let $$P = X - A$$. Then
+  $$|P| = |X - A| = r$$, so $$P$$ is on $$C_O$$. Also $$P + A = A + (X - A) = X$$ by
+  :ref{#sum-rules} and :ref{#difference-step}, so $$X$$ is the image of $$P$$.
+
+So the image of $$C_O$$ is exactly $$C_A$$. For discs, the same steps work with $$|P| \le r$$ and
+$$|X - A| \le r$$ in place of the equations.
+
+:::
+
+Squaring part 1 gives back the equation of a circle. With $$X = (x, y)$$ and $$A = (a, b)$$, the
+equation $$|X - A| = r$$ squares to $$(x - a)^2 + (y - b)^2 = r^2$$, which is
+:ref{#coordinates/circle-equation}.
+
+### Scaling a circle
+
+Multiplying every point by $$3$$ stretches each step from the origin to three times its length. So
+the points at distance $$2$$ from the origin move to distance $$6$$, and the circle of radius $$2$$
+becomes the circle of radius $$6$$. Multiplying by $$-3$$ does the same, with a half turn on top
+(:ref{#negative-multiple}), and the half turn moves the circle onto itself.
+
+:::proposition[Scaling a circle]{#circle-scale}
+
+Let $$r > 0$$ and $$c \ne 0$$. The map $$P \mapsto cP$$ sends the circle with centre $$O$$ and
+radius $$r$$ onto the circle with centre $$O$$ and radius $$|c|\,r$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Homothety#Derivation_of_the_properties"}
+
+The radius $$|c|\,r$$ is positive, since $$c \ne 0$$. By part 1 of :ref{#circle-slide}, the first
+circle is the set of points $$P$$ with $$|P| = r$$, and the second is the set of points $$Y$$ with
+$$|Y| = |c|\,r$$.
+
+- **Every image lies on the second circle.** If $$|P| = r$$, then $$|cP| = |c|\,|P| = |c|\,r$$ by
+  :ref{#norm-scale}.
+- **Every point of the second circle is an image.** Let $$|Y| = |c|\,r$$, and let
+  $$P = \frac{1}{c}Y$$. By :ref{#scale-twice}, $$cP = \left(c \cdot \frac{1}{c}\right)Y = 1Y = Y$$.
+  By :ref{#norm-scale} and :ref{#real-numbers/abs-product},
+  $$|P| = \frac{1}{|c|}\,|Y| = \frac{1}{|c|}\,|c|\,r = r$$, so $$P$$ is on the first circle.
+
+:::
+
+Put the two results together, and every circle comes from the unit circle. To get the circle with
+centre $$A$$ and radius $$r$$, multiply the unit circle by $$r$$, which gives the circle with centre
+$$O$$ and radius $$r$$, and then slide it by $$A$$.
+
+:::example[The dog's circle]
+
+The dog on its lead in :ref{#coordinates/circle-equation} traces the circle with centre $$(3, 2)$$
+and radius $$5$$. Start from the point $$(0.6, 0.8)$$ on the unit circle. Multiplying by $$5$$ gives
+$$(3, 4)$$, and sliding by $$(3, 2)$$ gives $$(6, 6)$$, the collar position checked in
+[The equation of a circle](../coordinates/circles.mdx). In the same way, $$E_2 = (0, 1)$$ goes to
+$$(0, 5)$$ and then to $$(3, 7)$$, the top of the dog's circle.
+
+:::
+
+## Exercises
+
+:::::accordion[Exercises on length and direction, with solutions]
+
+::::exercise{#ex-length-compute}
+
+Find the length of each point:
+
+1. $$(-8, 15)$$
+2. $$(1, -3)$$
+3. $$(-2.4, 1.8)$$
+4. $$(0, -6)$$
+
+:::solution
+
+By :ref{#norm}:
+
+1. $$\sqrt{64 + 225} = \sqrt{289} = 17$$
+2. $$\sqrt{1 + 9} = \sqrt{10}$$
+3. $$\sqrt{5.76 + 3.24} = \sqrt{9} = 3$$
+4. $$\sqrt{0 + 36} = 6$$, which is $$|-6|$$, as for any point on an axis
+
+:::
+
+::::
+
+::::exercise{#ex-length-direction}
+
+Find the length and the direction of each point, and check that the direction has length $$1$$.
+
+1. $$A = (12, -5)$$
+2. $$B = (2, 2)$$
+
+:::solution
+
+By :ref{#direction}, the direction is the point times $$\frac{1}{\text{its length}}$$.
+
+1. $$|A| = \sqrt{144 + 25} = 13$$, so the direction is
+   $$\left(\frac{12}{13}, -\frac{5}{13}\right)$$. Its length squared is
+   $$\frac{144 + 25}{169} = 1$$.
+2. $$|B| = \sqrt{8} = 2\sqrt{2}$$, so the direction is
+   $$\left(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}\right) \approx (0.71, 0.71)$$. Its length squared
+   is $$\frac{1}{2} + \frac{1}{2} = 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-length-multiples}
+
+A point $$A$$ has length $$3$$.
+
+1. Find $$|-4A|$$ and $$\left|\frac{1}{2}A\right|$$.
+2. Find every number $$c$$ with $$|cA| = 6$$.
+
+:::solution
+
+1. By :ref{#norm-scale}, $$|-4A| = 4 \cdot 3 = 12$$ and
+   $$\left|\frac{1}{2}A\right| = \frac{1}{2} \cdot 3 = 1.5$$.
+2. By :ref{#norm-scale}, $$|cA| = 3|c|$$, so $$|cA| = 6$$ exactly when $$|c| = 2$$, that is, when
+   $$c = 2$$ or $$c = -2$$ (:ref{#real-numbers/abs-equation}). These are the step twice over,
+   forwards and backwards.
+
+:::
+
+::::
+
+::::exercise{#ex-length-triangle-check}
+
+Let $$A = (3, 1)$$ and $$B = (-1, 2)$$.
+
+1. Work out $$|A + B|$$ and $$|A| + |B|$$, and check :ref{#norm-triangle}.
+2. Work out $$|A - B|$$ and $$\big||A| - |B|\big|$$, and check :ref{#norm-difference}.
+3. Now let $$A = (3, 4)$$ and $$B = (6, 8)$$. Show that $$|A + B| = |A| + |B|$$, and say what is
+   special about the two steps.
+
+:::solution
+
+1. $$A + B = (2, 3)$$, so $$|A + B| = \sqrt{13} \approx 3.61$$. Also
+   $$|A| = \sqrt{10} \approx 3.16$$ and $$|B| = \sqrt{5} \approx 2.24$$, which add to about
+   $$5.40$$. So $$|A + B| \le |A| + |B|$$.
+2. $$A - B = (4, -1)$$, so $$|A - B| = \sqrt{17} \approx 4.12$$. And
+   $$\big||A| - |B|\big| = \sqrt{10} - \sqrt{5} \approx 0.93$$, which is less.
+3. $$A + B = (9, 12)$$, so $$|A + B| = \sqrt{81 + 144} = 15$$, while $$|A| = 5$$ and $$|B| = 10$$.
+   The two sides are equal because $$B = 2A$$: the second step points the same way as the first, so
+   it carries straight on and nothing is lost to turning.
+
+:::
+
+::::
+
+::::exercise{#ex-length-distance-bound}
+
+Show that $$|A - B| \le |A| + |B|$$ for all points $$A$$ and $$B$$. What does it say about the
+distance between two points that are each close to the origin?
+
+:::solution
+
+By :ref{#point-difference}, $$A - B = A + (-B)$$. So :ref{#norm-triangle} gives
+
+```math
+|A - B| = |A + (-B)| \le |A| + |-B| = |A| + |B|
+```
+
+using $$|-B| = |B|$$ from :ref{#norm-scale} with $$c = -1$$.
+
+By :ref{#distance-norm}, the left side is $$d(A, B)$$. So two points within $$1$$ of the origin are
+at most $$2$$ apart. The points $$(1, 0)$$ and $$(-1, 0)$$ show that $$2$$ can be reached.
+
+:::
+
+::::
+
+::::exercise{#ex-length-circles}
+
+1. The point $$P = (0, 3)$$ is on the circle with centre $$O$$ and radius $$3$$. Find its image
+   under the slide $$X \mapsto X + (2, -1)$$, and check that the image is on the circle with centre
+   $$(2, -1)$$ and radius $$3$$.
+2. The circle $$(x - 1)^2 + (y + 4)^2 = 25$$ comes from the unit circle by a scaling and then a
+   slide. Name both, and follow $$E_1 = (1, 0)$$ through them.
+
+:::solution
+
+1. The image is $$(0, 3) + (2, -1) = (2, 2)$$. Its difference from the centre is
+   $$(2, 2) - (2, -1) = (0, 3)$$, of length $$3$$, so it is on the circle (:ref{#circle-slide}).
+2. The centre is $$(1, -4)$$ and the radius is $$5$$ (:ref{#coordinates/circle-equation}). So
+   multiply by $$5$$ (:ref{#circle-scale}) and then slide by $$(1, -4)$$ (:ref{#circle-slide}). The
+   point $$E_1$$ goes to $$5E_1 = (5, 0)$$ and then to $$(6, -4)$$. Check:
+   $$(6 - 1)^2 + (-4 + 4)^2 = 25$$.
+
+:::
+
+::::
+
+::::exercise{#ex-length-game}
+
+In a game, a character at $$(4, 1)$$ runs at $$3$$ units per second. The player holds the left and
+up keys, which give the step $$(-1, 1)$$. Find the character's direction, its step in one second,
+and where it is after $$2$$ seconds.
+
+:::solution
+
+The step $$(-1, 1)$$ has length $$\sqrt{2}$$, so by :ref{#direction} its direction is
+
+```math
+U = \frac{1}{\sqrt{2}}(-1, 1) \approx (-0.71, 0.71)
+```
+
+In one second the character moves $$3U \approx (-2.12, 2.12)$$, a step of length $$3$$
+(:ref{#norm-scale}). In two seconds it moves $$6U \approx (-4.24, 4.24)$$, so it ends near
+$$(4 - 4.24, 1 + 4.24) = (-0.24, 5.24)$$, exactly $$6$$ units from where it started.
+
+:::
+
+::::
+
+::::exercise{#ex-length-parallelogram}
+
+Show that for all points $$A$$ and $$B$$,
+
+```math
+|A + B|^2 + |A - B|^2 = 2|A|^2 + 2|B|^2
+```
+
+and check it with $$A = (2, -1)$$ and $$B = (1, 3)$$.
+
+:::solution
+
+By :ref{#norm}, the square of a length is the sum of the squares of the coordinates. With
+$$A = (a_1, a_2)$$ and $$B = (b_1, b_2)$$, the first coordinates give
+
+```math
+(a_1 + b_1)^2 + (a_1 - b_1)^2 = \left(a_1^2 + 2a_1b_1 + b_1^2\right) + \left(a_1^2 - 2a_1b_1 + b_1^2\right) = 2a_1^2 + 2b_1^2
+```
+
+The second coordinates give $$2a_2^2 + 2b_2^2$$ in the same way. Adding,
+
+```math
+|A + B|^2 + |A - B|^2 = 2\left(a_1^2 + a_2^2\right) + 2\left(b_1^2 + b_2^2\right) = 2|A|^2 + 2|B|^2
+```
+
+For the check, $$A + B = (3, 2)$$ and $$A - B = (1, -4)$$, so the left side is $$13 + 17 = 30$$. On
+the right, $$|A|^2 = 5$$ and $$|B|^2 = 10$$, so it is $$10 + 20 = 30$$.
+
+:::
+
+::::
+
+:::::
