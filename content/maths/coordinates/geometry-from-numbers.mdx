@@ -1,0 +1,556 @@
+---
+title: Geometry from numbers
+description:
+  Taking the plane to be pairs of numbers, and proving the rules for distance with algebra.
+---
+
+Picture a video game in which a character walks across a meadow towards a tree. On the screen you
+see grass and a trunk, but the computer running the game sees neither. It keeps a pair of numbers
+for the character and a pair for the tree, and to decide whether they have bumped into each other it
+puts those numbers into the distance formula. Everything it knows about the meadow, it knows from
+numbers.
+
+Treating the plane this way, with points as pairs of numbers and distance as a formula, is called
+**coordinate geometry**. In this guide we'll start from the numbers, and use algebra to prove the
+rules for distance that earlier chapters read off the picture.
+
+## Starting from the numbers
+
+Until now the picture came first. You drew the plane, put axes on it (:ref{#coordinate-rules}), and
+read each point's coordinates off the drawing. Distance came from the picture too, as the length a
+ruler measures, and the distance formula (:ref{#distance-formula}) was worked out from it with
+Pythagoras.
+
+Now turn that round. Start with the pairs of numbers, and define distance to be the formula. Then a
+fact about distance is no longer something you see. It is something you can calculate, so it can be
+proved line by line with algebra, and a computer can check it. Nothing from the earlier chapters is
+lost, because the formula gives exactly the length a ruler would.
+
+:::definition[The coordinate plane]{#coordinate-plane}
+
+The **coordinate plane** $$\mathbb{R}^2$$, read "R two", is the set of all pairs $$(x, y)$$ of real
+numbers. Its members are called **points**. Two points are equal exactly when their first
+coordinates are equal and their second coordinates are equal.
+
+The **distance** between the points $$P = (x_1, y_1)$$ and $$Q = (x_2, y_2)$$ is defined to be
+
+```math
+d(P, Q) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+```
+
+:::
+
+The $$\mathbb{R}$$ stands for the real numbers, and the $$2$$ for the two numbers in each pair. The
+number under the square root is a sum of two squares, so it is never negative
+(:ref{#real-numbers/squares-positive}), and its square root always exists.
+
+:::example[A distance from the definition]
+
+Take $$P = (-1, 3)$$ and $$Q = (5, -5)$$. The first coordinates differ by $$5 - (-1) = 6$$ and the
+second by $$-5 - 3 = -8$$, so
+
+```math
+d(P, Q) = \sqrt{6^2 + (-8)^2} = \sqrt{36 + 64} = \sqrt{100} = 10
+```
+
+:::
+
+In the picture, three rules for distance were taken as given
+(:ref{#distance-and-angles/distance-rules}): a distance is never negative, it is the same both ways,
+and a detour is never shorter than the direct route. In $$\mathbb{R}^2$$ distance is a formula, so
+each of these rules now needs a proof from the formula.
+
+## Never negative, and the same both ways
+
+A square root is never negative, so no distance is. The only way to get $$0$$ is for both squares
+under the root to be $$0$$, which happens when the two points have the same coordinates. And
+swapping the two points changes the sign of each difference, which makes no difference once it is
+squared.
+
+:::proposition[Distance is never negative]{#distance-zero}
+
+For any points $$P$$ and $$Q$$ of $$\mathbb{R}^2$$, $$d(P, Q) \ge 0$$, and $$d(P, Q) = 0$$ exactly
+when $$P = Q$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Euclidean_Metric_on_Real_Vector_Space_is_Metric"}
+
+Write $$P = (x_1, y_1)$$ and $$Q = (x_2, y_2)$$. A square root is never negative
+(:ref{#real-numbers/square-root}), so $$d(P, Q) \ge 0$$.
+
+Write $$S = (x_2 - x_1)^2 + (y_2 - y_1)^2$$, so that $$d(P, Q) = \sqrt{S}$$. If $$\sqrt{S} = 0$$,
+then $$S = 0^2 = 0$$, and if $$S = 0$$, then $$\sqrt{S} = \sqrt{0} = 0$$. So $$d(P, Q) = 0$$ exactly
+when $$S = 0$$.
+
+By part 2 of :ref{#real-numbers/squares-positive}, a sum of two squares is $$0$$ exactly when both
+numbers being squared are $$0$$. So $$S = 0$$ exactly when $$x_2 - x_1 = 0$$ and $$y_2 - y_1 = 0$$,
+that is, when $$x_1 = x_2$$ and $$y_1 = y_2$$. By :ref{#coordinate-plane}, that says $$P = Q$$.
+
+:::
+
+:::proposition[Distance either way round]{#distance-symmetric}
+
+For any points $$P$$ and $$Q$$ of $$\mathbb{R}^2$$, $$d(P, Q) = d(Q, P)$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Euclidean_Metric_on_Real_Vector_Space_is_Metric"}
+
+Write $$P = (x_1, y_1)$$ and $$Q = (x_2, y_2)$$. Measuring from $$Q$$ to $$P$$ uses the differences
+$$x_1 - x_2$$ and $$y_1 - y_2$$, which are the differences from $$P$$ to $$Q$$ with their signs
+changed. A number and its negative have the same square, since $$(-u)(-u) = u \cdot u$$ by
+:ref{#numbers/two-minus}. So
+
+```math
+d(Q, P) = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = d(P, Q)
+```
+
+:::
+
+## The triangle inequality
+
+Walk from $$P$$ to $$M$$ by way of a third point $$Q$$, and you never cover less ground than walking
+straight there. In the picture this was the third rule for distance, taken as given. In
+$$\mathbb{R}^2$$ it becomes a claim about square roots, and square roots of sums are awkward:
+$$\sqrt{9 + 16}$$ is $$5$$, not $$3 + 4$$. So we'll first set the trip up as steps, then build one
+tool, and then prove the rule.
+
+### Trips as steps
+
+Think of each leg of the trip as a step across and a step up. Going from $$P$$ to $$Q$$ takes some
+step across and some step up, and going from $$Q$$ on to $$M$$ takes another. Going straight from
+$$P$$ to $$M$$ covers both steps across and both steps up, so its steps are the two trips' steps
+added together.
+
+```plane
+point P 0 0 sw
+point A 4 0 hidden
+point Q 4 3 nw
+point B 6 3 hidden
+point M 6 7 ne
+segment P A label="a = 4" color=blue dashed side=right
+segment A Q label="b = 3" color=blue dashed side=right
+segment Q B label="s = 2" color=orange dashed side=right
+segment B M color=orange dashed
+text 6.6 5 "t = 4" color=orange
+segment P Q color=blue
+segment Q M color=orange
+segment P M color=purple dashed
+caption "P = (0, 0), Q = (4, 3) and M = (6, 7): the steps from P to Q (blue) and from Q to M (orange)"
+```
+
+In symbols, write $$P = (x_1, y_1)$$, $$Q = (x_2, y_2)$$ and $$M = (x_3, y_3)$$. The trip from $$P$$
+to $$Q$$ steps $$a = x_2 - x_1$$ across and $$b = y_2 - y_1$$ up. The trip from $$Q$$ to $$M$$ steps
+$$s = x_3 - x_2$$ across and $$t = y_3 - y_2$$ up. The second step uses $$s$$ and $$t$$, rather than
+the next letters $$c$$ and $$d$$, so that $$d$$ stays free for distance. Then
+
+```math
+x_3 - x_1 = (x_3 - x_2) + (x_2 - x_1) = a + s \qquad y_3 - y_1 = b + t
+```
+
+so the three distances are
+
+```math
+d(P, Q) = \sqrt{a^2 + b^2} \qquad d(Q, M) = \sqrt{s^2 + t^2} \qquad d(P, M) = \sqrt{(a + s)^2 + (b + t)^2}
+```
+
+In the figure, $$a = 4$$, $$b = 3$$, $$s = 2$$ and $$t = 4$$. The detour through $$Q$$ has length
+$$\sqrt{25} + \sqrt{20} \approx 5 + 4.47 = 9.47$$, and the direct route has length
+$$\sqrt{6^2 + 7^2} = \sqrt{85} \approx 9.22$$, which is shorter, as it should be.
+
+### A bound for as plus bt
+
+Squaring $$d(P, M)$$ means multiplying out $$(a + s)^2$$ and $$(b + t)^2$$. Their middle terms,
+$$2as$$ and $$2bt$$, add up to twice the number $$as + bt$$, so that number is what the proof has to
+control.
+
+Try it with the steps $$(3, 4)$$ and $$(1, 2)$$: $$as + bt = 3 + 8 = 11$$. Compare that with the
+lengths of the two steps, $$\sqrt{25} = 5$$ and $$\sqrt{5}$$, multiplied together:
+$$5\sqrt{5} \approx 11.18$$. The first number comes out a little smaller. With the steps $$(3, 4)$$
+and $$(6, 8)$$, where the second step is the first one doubled, the two numbers are equal:
+$$as + bt = 18 + 32 = 50$$, and $$\sqrt{25} \cdot \sqrt{100} = 5 \cdot 10 = 50$$.
+
+The lemma below says that $$as + bt$$ never beats the product of the lengths. The reason is that the
+gap between their squares is always itself a square. For the steps $$(3, 4)$$ and $$(1, 2)$$, the
+squares are $$25 \cdot 5 = 125$$ and $$11^2 = 121$$, and the gap $$4$$ is
+$$(3 \cdot 2 - 4 \cdot 1)^2$$.
+
+:::lemma[A bound for as plus bt]{#product-bound}
+
+For all real numbers $$a$$, $$b$$, $$s$$ and $$t$$,
+
+```math
+as + bt \le \sqrt{a^2 + b^2}\,\sqrt{s^2 + t^2}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Lagrange%27s_identity"}
+
+Write $$R = \sqrt{a^2 + b^2}\,\sqrt{s^2 + t^2}$$ for the right-hand side. Each square root is not
+negative, so their product $$R$$ is not negative either.
+
+**If $$as + bt < 0$$**, then $$as + bt < 0 \le R$$, and there is nothing more to do.
+
+**If $$as + bt \ge 0$$**, both sides are not negative, so it is enough to compare their squares
+(:ref{#real-numbers/power-order-converse}). The square of a square root is the number under it
+(:ref{#real-numbers/square-root}), so
+
+```math
+R^2 = (a^2 + b^2)(s^2 + t^2) = a^2 s^2 + a^2 t^2 + b^2 s^2 + b^2 t^2
+```
+
+Expanding the other square with :ref{#numbers/square-formulas},
+
+```math
+(as + bt)^2 = a^2 s^2 + 2abst + b^2 t^2
+```
+
+Take the second line from the first. The terms $$a^2 s^2$$ and $$b^2 t^2$$ cancel, and what is left
+is the square of a difference:
+
+```math
+R^2 - (as + bt)^2 = a^2 t^2 - 2abst + b^2 s^2 = (at - bs)^2
+```
+
+A square is never negative (:ref{#real-numbers/squares-positive}), so $$(as + bt)^2 \le R^2$$. Now
+$$as + bt$$ and $$R$$ are both not negative. If their squares are equal, they are equal, and if one
+square is smaller, so is the number (:ref{#real-numbers/power-order-converse}). Either way,
+$$as + bt \le R$$.
+
+:::
+
+This lemma is the two-coordinate case of the **Cauchy–Schwarz inequality**. The proof also shows
+when the two sides have equal squares: the gap between the squares is $$(at - bs)^2$$, which is
+$$0$$ exactly when $$at = bs$$. For the steps $$(3, 4)$$ and $$(6, 8)$$, $$at = 3 \cdot 8 = 24$$ and
+$$bs = 4 \cdot 6 = 24$$, which is why that example came out equal.
+
+### The detour is never shorter
+
+The plan is the one used for the number line in :ref{#real-numbers/triangle-inequality}. Square both
+sides. Most of the terms match, and what's left over is twice $$as + bt$$ on one side and twice the
+product of the lengths on the other. The lemma compares those two.
+
+:::theorem[The triangle inequality]{#triangle-inequality-plane}
+
+For any points $$P$$, $$Q$$ and $$M$$ of $$\mathbb{R}^2$$,
+
+```math
+d(P, M) \le d(P, Q) + d(Q, M)
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Euclidean_Metric_on_Real_Vector_Space_is_Metric"}
+
+Write the steps as in [Trips as steps](#trips-as-steps), so that
+
+```math
+d(P, Q) = \sqrt{a^2 + b^2} \qquad d(Q, M) = \sqrt{s^2 + t^2} \qquad d(P, M) = \sqrt{(a + s)^2 + (b + t)^2}
+```
+
+Both sides of the inequality are not negative, by :ref{#distance-zero}. So it is enough to show that
+the square of the left side is at most the square of the right side
+(:ref{#real-numbers/power-order-converse}).
+
+**The left side.** The square of a square root is the number under it, so with
+:ref{#numbers/square-formulas},
+
+```math
+d(P, M)^2 = (a + s)^2 + (b + t)^2 = (a^2 + b^2) + 2(as + bt) + (s^2 + t^2)
+```
+
+**The right side.** Expand the square of the sum in the same way:
+
+```math
+\big(d(P, Q) + d(Q, M)\big)^2 = (a^2 + b^2) + 2\sqrt{a^2 + b^2}\,\sqrt{s^2 + t^2} + (s^2 + t^2)
+```
+
+**Comparing them.** The two lines differ only in their middle terms. By :ref{#product-bound},
+$$as + bt \le \sqrt{a^2 + b^2}\,\sqrt{s^2 + t^2}$$, so the middle term on the left is at most the
+middle term on the right. So
+
+```math
+d(P, M)^2 \le \big(d(P, Q) + d(Q, M)\big)^2
+```
+
+Both $$d(P, M)$$ and $$d(P, Q) + d(Q, M)$$ are not negative, so their squares come in the same order
+as the numbers themselves (:ref{#real-numbers/power-order-converse}). That gives
+$$d(P, M) \le d(P, Q) + d(Q, M)$$.
+
+:::
+
+The three results :ref{#distance-zero}, :ref{#distance-symmetric} and
+:ref{#triangle-inequality-plane} are the three rules of :ref{#distance-and-angles/distance-rules}.
+In the picture they were taken as given. In $$\mathbb{R}^2$$ they are proved from the formula. The
+other facts the picture supplied, such as the rules for lines and segments, are about lines, and
+lines in coordinates come in a later chapter.
+
+## Zooms and slides in coordinates
+
+A zoom about the origin by $$2$$ doubles both coordinates of every point, so $$(3, 1)$$ goes to
+$$(6, 2)$$. Every step across and every step up between two points doubles as well, and so the
+distance between them doubles. A slide adds the same numbers to every point, so the steps between
+two points don't change at all, and neither does the distance.
+
+### Zooming about the origin
+
+For a number $$r > 0$$ and a point $$P = (x, y)$$, write $$rP = (rx, ry)$$, multiplying both
+coordinates by $$r$$. This is the zoom by $$r$$ about the origin $$O$$ from
+[Zooming and length](../area-and-scaling/scaling-lengths.mdx). Part of that claim is proved below:
+taking $$Q = O$$ in the proposition shows that $$rP$$ is $$r$$ times as far from $$O$$ as $$P$$ is.
+The other part, that $$rP$$ lies on the ray from $$O$$ through $$P$$, is a fact about lines, and
+waits for lines in coordinates in a later chapter.
+
+:::proposition[Zooming about the origin]{#origin-zoom}
+
+Let $$r > 0$$. For any points $$P$$ and $$Q$$ of $$\mathbb{R}^2$$,
+
+```math
+d(rP, rQ) = r \cdot d(P, Q)
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Homothety#Derivation_of_the_properties"}
+
+Write $$P = (x_1, y_1)$$ and $$Q = (x_2, y_2)$$, so $$rP = (rx_1, ry_1)$$ and $$rQ = (rx_2, ry_2)$$.
+Each difference of coordinates is $$r$$ times the old one, for example
+$$rx_2 - rx_1 = r(x_2 - x_1)$$. So
+
+```math
+d(rP, rQ) = \sqrt{r^2 (x_2 - x_1)^2 + r^2 (y_2 - y_1)^2} = \sqrt{r^2}\,\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+```
+
+by :ref{#real-numbers/root-product}. Since $$r > 0$$ and its square is $$r^2$$, the square root of
+$$r^2$$ is $$r$$ (:ref{#real-numbers/square-root}). So $$d(rP, rQ) = r \cdot d(P, Q)$$.
+
+:::
+
+For example, take $$r = 3$$, $$P = (1, 2)$$ and $$Q = (4, 6)$$. The steps are $$3$$ and $$4$$, so
+$$d(P, Q) = 5$$. The zoomed points are $$(3, 6)$$ and $$(12, 18)$$, with steps $$9$$ and $$12$$, and
+$$\sqrt{81 + 144} = \sqrt{225} = 15$$, which is $$3 \cdot 5$$.
+
+This proves rule 1 of :ref{#area-and-scaling/zoom-rules} for a zoom centred at the origin. A zoom
+about any other point is covered too. Place the axes with their origin at the zoom's centre: that
+changes the coordinates of every point but none of the distances, as
+[Choosing the axes](./coordinates.mdx#choosing-the-axes) explains. Rules 2 and 3 of the same remark
+are about lines and angles, so they also wait for lines in coordinates.
+
+### Sliding
+
+The slide by $$(h, k)$$ moves every point $$h$$ across and $$k$$ up. It sends $$(x, y)$$ to
+$$(x + h, y + k)$$, written $$(x, y) \mapsto (x + h, y + k)$$ and read "$$(x, y)$$ goes to
+$$(x + h, y + k)$$".
+
+:::proposition[Sliding keeps distances]{#slide-distance}
+
+Let $$h$$ and $$k$$ be real numbers. The slide $$(x, y) \mapsto (x + h, y + k)$$ keeps every
+distance: if it sends $$P$$ to $$P'$$ and $$Q$$ to $$Q'$$, then $$d(P', Q') = d(P, Q)$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Translation_Mapping_is_Isometry"}
+
+Write $$P = (x_1, y_1)$$ and $$Q = (x_2, y_2)$$, so $$P' = (x_1 + h, y_1 + k)$$ and
+$$Q' = (x_2 + h, y_2 + k)$$. The differences of coordinates are unchanged:
+
+```math
+(x_2 + h) - (x_1 + h) = x_2 - x_1 \qquad (y_2 + k) - (y_1 + k) = y_2 - y_1
+```
+
+The distance is worked out from these differences alone, so $$d(P', Q') = d(P, Q)$$.
+
+:::
+
+So a slide is an isometry (:ref{#isometries/isometry}). The Isometries chapter took that from the
+tracing paper (:ref{#isometries/basic-isometries}), and in $$\mathbb{R}^2$$ it is two lines of
+algebra. For example, the slide by $$(-2, 5)$$ sends $$(1, 2)$$ to $$(-1, 7)$$ and $$(4, 6)$$ to
+$$(2, 11)$$. The steps between them are still $$3$$ across and $$4$$ up, so the distance is still
+$$5$$.
+
+### Stretching away from the x-axis
+
+The stretch by $$a$$ away from a line (:ref{#area-and-scaling/stretch}) has a formula too, when the
+line is the $$x$$-axis. The vertical line through $$P = (x, y)$$ is perpendicular to the $$x$$-axis
+(part 3 of :ref{#coordinate-rules}), so the foot of the perpendicular from $$P$$ is $$F = (x, 0)$$.
+The distance from $$F$$ to $$P$$ is $$|y|$$, by part 2 of :ref{#line-distance}. The stretch moves
+$$P$$ along that vertical line, on the same side of the axis, to $$a$$ times that distance. The
+point $$(x, ay)$$ does this: $$ay$$ has the same sign as $$y$$, since $$a > 0$$, and
+$$|ay| = a\,|y|$$. So the stretch is $$(x, y) \mapsto (x, ay)$$.
+
+A stretch by $$a \ne 1$$ is not an isometry. With $$a = 2$$, the points $$(0, 0)$$ and $$(0, 1)$$,
+which are $$1$$ apart, go to $$(0, 0)$$ and $$(0, 2)$$, which are $$2$$ apart.
+
+## Exercises
+
+:::::accordion[Exercises on geometry from numbers, with solutions]
+
+::::exercise{#ex-geometry-from-numbers-check}
+
+Let $$P = (-2, 1)$$, $$Q = (1, 5)$$ and $$M = (7, -3)$$. Work out the three distances between them,
+and check :ref{#triangle-inequality-plane} for each of the three detours.
+
+:::solution
+
+By :ref{#coordinate-plane},
+
+```math
+d(P, Q) = \sqrt{3^2 + 4^2} = 5 \qquad d(Q, M) = \sqrt{6^2 + (-8)^2} = 10 \qquad d(P, M) = \sqrt{9^2 + (-4)^2} = \sqrt{97}
+```
+
+and $$\sqrt{97} \approx 9.85$$. Each distance is at most the sum of the other two:
+
+- $$d(P, M) \approx 9.85 \le 5 + 10 = 15$$
+- $$d(Q, M) = 10 \le 5 + 9.85 = 14.85$$
+- $$d(P, Q) = 5 \le 10 + 9.85 = 19.85$$
+
+:::
+
+::::
+
+::::exercise{#ex-geometry-from-numbers-bound}
+
+Take $$a = 2$$, $$b = -1$$, $$s = 3$$ and $$t = 4$$.
+
+1. Work out both sides of :ref{#product-bound}.
+2. Work out $$(a^2 + b^2)(s^2 + t^2) - (as + bt)^2$$ and $$(at - bs)^2$$, and check that they are
+   equal.
+
+:::solution
+
+1. The left side is $$as + bt = 6 - 4 = 2$$. The right side is
+   $$\sqrt{4 + 1}\,\sqrt{9 + 16} = 5\sqrt{5} \approx 11.18$$. So $$2 \le 11.18$$, as the lemma says.
+2. $$(a^2 + b^2)(s^2 + t^2) = 5 \cdot 25 = 125$$ and $$(as + bt)^2 = 4$$, with difference $$121$$.
+   Also $$at - bs = 8 - (-3) = 11$$, and $$11^2 = 121$$. The two agree, as the identity in the proof
+   of :ref{#product-bound} says they must.
+
+:::
+
+::::
+
+::::exercise{#ex-geometry-from-numbers-equal}
+
+Let $$P = (0, 0)$$, $$Q = (1, 2)$$ and $$M = (3, 6)$$.
+
+1. Show that $$d(P, M) = d(P, Q) + d(Q, M)$$.
+2. Write down the steps $$(a, b)$$ and $$(s, t)$$, and explain the equality using the gap
+   $$(at - bs)^2$$ from the proof of :ref{#product-bound}.
+
+:::solution
+
+1. $$d(P, Q) = \sqrt{1 + 4} = \sqrt{5}$$, $$d(Q, M) = \sqrt{4 + 16} = \sqrt{20} = 2\sqrt{5}$$ and
+   $$d(P, M) = \sqrt{9 + 36} = \sqrt{45} = 3\sqrt{5}$$ (:ref{#real-numbers/root-product}). So
+   $$d(P, Q) + d(Q, M) = 3\sqrt{5} = d(P, M)$$.
+2. The steps are $$(a, b) = (1, 2)$$ and $$(s, t) = (2, 4)$$, so $$at - bs = 4 - 4 = 0$$. The gap
+   between the squares in :ref{#product-bound} is $$0$$, and $$as + bt = 10 \ge 0$$, so the lemma
+   holds with equality: $$as + bt = \sqrt{5}\,\sqrt{20} = 10$$. Then the middle terms in the proof
+   of :ref{#triangle-inequality-plane} are equal, so the two squares are equal, and so are the
+   distances. In the picture, the second step is the first one doubled, so $$Q$$ sits on the
+   straight path from $$P$$ to $$M$$.
+
+:::
+
+::::
+
+::::exercise{#ex-geometry-from-numbers-zoom}
+
+Let $$P = (4, -2)$$ and $$Q = (-2, 6)$$. Find $$d(P, Q)$$. Then find the points $$\frac{1}{2}P$$ and
+$$\frac{1}{2}Q$$ and the distance between them, and check the answer against :ref{#origin-zoom}.
+
+:::solution
+
+The steps from $$P$$ to $$Q$$ are $$-6$$ across and $$8$$ up, so $$d(P, Q) = \sqrt{36 + 64} = 10$$.
+
+Halving the coordinates gives $$\frac{1}{2}P = (2, -1)$$ and $$\frac{1}{2}Q = (-1, 3)$$. The steps
+between these are $$-3$$ and $$4$$, so the distance is $$\sqrt{9 + 16} = 5$$. That is
+$$\frac{1}{2} \cdot 10$$, as :ref{#origin-zoom} says.
+
+:::
+
+::::
+
+::::exercise{#ex-geometry-from-numbers-flip}
+
+The map $$(x, y) \mapsto (x, -y)$$ changes the sign of the second coordinate. In the picture it is
+the reflection in the $$x$$-axis. Prove with algebra that it keeps every distance.
+
+:::solution
+
+Let $$P = (x_1, y_1)$$ and $$Q = (x_2, y_2)$$, so they go to $$P' = (x_1, -y_1)$$ and
+$$Q' = (x_2, -y_2)$$. The first coordinates are unchanged. The second difference becomes
+$$-y_2 - (-y_1) = -(y_2 - y_1)$$, which has the same square as $$y_2 - y_1$$ by
+:ref{#numbers/two-minus}. So
+
+```math
+d(P', Q') = \sqrt{(x_2 - x_1)^2 + \big(-(y_2 - y_1)\big)^2} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = d(P, Q)
+```
+
+So the map is an isometry (:ref{#isometries/isometry}).
+
+:::
+
+::::
+
+::::exercise{#ex-geometry-from-numbers-stretch}
+
+The stretch $$(x, y) \mapsto (x, 2y)$$ is not an isometry.
+
+1. Find the distance between $$(0, 0)$$ and $$(3, 4)$$, and between the points the stretch sends
+   them to.
+2. Find two different points whose distance the stretch does not change, and say why it doesn't.
+
+:::solution
+
+1. $$d\big((0, 0), (3, 4)\big) = \sqrt{9 + 16} = 5$$. The stretch sends the points to $$(0, 0)$$ and
+   $$(3, 8)$$, which are $$\sqrt{9 + 64} = \sqrt{73} \approx 8.54$$ apart.
+2. Take $$(1, 0)$$ and $$(5, 0)$$, both on the $$x$$-axis. The stretch doubles $$0$$, so neither
+   point moves, and their distance stays $$4$$. More generally, any two points with the same second
+   coordinate $$y$$ go to two points with the same second coordinate $$2y$$. The difference of the
+   second coordinates is $$0$$ before and after, and the first coordinates don't change, so the
+   distance is unchanged.
+
+:::
+
+::::
+
+::::exercise{#ex-geometry-from-numbers-taxi}
+
+A taxi in a city of square blocks can only drive along the streets, east and west or north and
+south. So the distance it drives from $$P = (x_1, y_1)$$ to $$Q = (x_2, y_2)$$ is
+
+```math
+d_{\text{taxi}}(P, Q) = |x_2 - x_1| + |y_2 - y_1|
+```
+
+Show that $$d_{\text{taxi}}$$ follows the three rules for distance: it is never negative and is
+$$0$$ exactly when $$P = Q$$, it is the same both ways, and it never gets shorter by a detour:
+$$d_{\text{taxi}}(P, M) \le d_{\text{taxi}}(P, Q) + d_{\text{taxi}}(Q, M)$$.
+
+:::solution
+
+**Never negative.** Each absolute value is at least $$0$$, by part 1 of
+:ref{#real-numbers/abs-basics}, so their sum is too. If either one is positive, so is the sum, so
+the sum is $$0$$ exactly when both are $$0$$. By the same part 1, $$|x_2 - x_1| = 0$$ exactly when
+$$x_1 = x_2$$, and the same goes for $$y$$. So $$d_{\text{taxi}}(P, Q) = 0$$ exactly when $$P = Q$$.
+
+**The same both ways.** $$|x_1 - x_2| = |x_2 - x_1|$$, since a number and its negative have the same
+absolute value, by part 2 of :ref{#real-numbers/abs-basics}. The same goes for $$y$$, so
+$$d_{\text{taxi}}(Q, P) = d_{\text{taxi}}(P, Q)$$.
+
+**The triangle inequality.** With the steps $$a, b, s, t$$ as in [Trips as steps](#trips-as-steps),
+the number line's triangle inequality (:ref{#real-numbers/triangle-inequality}) gives
+$$|a + s| \le |a| + |s|$$ and $$|b + t| \le |b| + |t|$$. Adding these,
+
+```math
+d_{\text{taxi}}(P, M) = |a + s| + |b + t| \le \big(|a| + |b|\big) + \big(|s| + |t|\big) = d_{\text{taxi}}(P, Q) + d_{\text{taxi}}(Q, M)
+```
+
+So the taxi distance is a different way to measure distance that still follows all three rules.
+
+:::
+
+::::
+
+:::::

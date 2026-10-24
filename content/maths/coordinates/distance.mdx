@@ -1,0 +1,411 @@
+---
+title: The distance between two points
+description:
+  A formula for the distance between two points from their coordinates, found with Pythagoras.
+---
+
+Imagine a taxi and a delivery drone setting off from the same street corner, in a city laid out in
+square blocks. Both are heading for a café $$3$$ blocks east and $$4$$ blocks north. The taxi has to
+keep to the streets, so it covers $$7$$ blocks however it turns. The drone flies straight over the
+rooftops and covers only $$5$$. The length of the drone's route is the distance between the two
+places, and the coordinates of the two ends are enough to work it out. In this guide we'll find a
+formula for it with the Pythagoras theorem, and get used to using it.
+
+<DroneAndTaxi caption="The taxi follows the streets, 3 blocks east and then 4 north. The drone flies straight to the café and covers 5 blocks." />
+
+## Points level with each other
+
+Two points at the same height sit on one horizontal line, which is a copy of the $$x$$-axis lifted
+up or down. Measuring along it works as on the number line: subtract the $$x$$-coordinates and
+ignore the sign. So $$(1, 3)$$ and $$(6, 3)$$ are $$5$$ apart, and $$(-2, 3)$$ and $$(4, 3)$$ are
+$$6$$ apart, since $$4 - (-2) = 6$$. Points one above the other work the same way with their
+$$y$$-coordinates.
+
+The same distance can also be written as the square root of a square. That looks roundabout, but it
+is the form the distance formula uses.
+
+:::proposition[Distance along a grid line]{#line-distance}
+
+1. For any real numbers $$a$$ and $$b$$,
+
+   ```math
+   \sqrt{(a - b)^2} = |a - b| = \sqrt{(b - a)^2}
+   ```
+
+2. Two points with the same $$y$$-coordinate, $$(x_1, c)$$ and $$(x_2, c)$$, are at distance
+   $$|x_1 - x_2|$$. Two points with the same $$x$$-coordinate, $$(c, y_1)$$ and $$(c, y_2)$$, are at
+   distance $$|y_1 - y_2|$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_distance#One_dimension"}
+
+**Part 1.** By part 4 of :ref{#real-numbers/abs-basics}, $$\sqrt{(a - b)^2} = |a - b|$$, and in the
+same way $$\sqrt{(b - a)^2} = |b - a|$$. Since $$b - a = -(a - b)$$, part 2 of
+:ref{#real-numbers/abs-basics} gives $$|b - a| = |a - b|$$.
+
+**Part 2.** Let $$P = (x_1, c)$$ and $$Q = (x_2, c)$$. If $$x_1 = x_2$$, they are the same point by
+rule 1 of :ref{#coordinate-rules}, and their distance is $$0 = |x_1 - x_2|$$. If $$c = 0$$, both lie
+on the $$x$$-axis, and rule 2 of :ref{#coordinate-rules} gives the distance $$|x_1 - x_2|$$.
+
+Otherwise, take the points $$A = (x_1, 0)$$ and $$B = (x_2, 0)$$ on the $$x$$-axis. Go round $$A$$,
+$$B$$, $$Q$$, $$P$$ in that order. The sides $$AB$$ and $$QP$$ lie on the horizontal lines $$y = 0$$
+and $$y = c$$, and the sides $$BQ$$ and $$PA$$ lie on the vertical lines $$x = x_2$$ and
+$$x = x_1$$. By rule 3 of :ref{#coordinate-rules}, each side is perpendicular to the two next to it,
+so $$ABQP$$ is a rectangle (:ref{#distance-and-angles/rectangle}). Its opposite sides are equal
+(:ref{#distance-and-angles/rectangle-sides}), so by rule 2 of :ref{#coordinate-rules},
+
+```math
+d(P, Q) = d(A, B) = |x_1 - x_2|
+```
+
+Points with the same $$x$$-coordinate are handled the same way, with the $$y$$-axis in place of the
+$$x$$-axis.
+
+:::
+
+```plane
+point A 1 0 s
+point B 5 0 s
+point Q 5 2.5 ne
+point P 1 2.5 nw
+point X1 -0.6 0 hidden
+point X2 6.4 0 hidden
+segment X1 X2
+segment A B color=muted
+segment P A color=muted dashed
+segment Q B color=muted dashed
+segment P Q color=blue label="d(P, Q)"
+right B A P
+right Q B A
+caption "P and Q are level, so P, Q and their feet A and B on the x-axis make a rectangle, and d(P, Q) = d(A, B)"
+```
+
+## The distance formula
+
+Now take two points that are neither level nor one above the other. You can get from one to the
+other in two moves: straight across until you are directly below or above the second point, then
+straight up or down to it. The two moves meet at a square corner, so together with the direct path
+they make a right triangle. The moves are its legs and the direct path is its hypotenuse, so the
+Pythagoras theorem gives the distance.
+
+For example, take $$P = (1, 1)$$ and $$Q = (4, 5)$$. The corner is $$R = (4, 1)$$, level with $$P$$
+and straight below $$Q$$. The across move has length $$4 - 1 = 3$$ and the up move has length
+$$5 - 1 = 4$$, so
+
+```math
+d(P, Q) = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5
+```
+
+```plane
+point P 1 1 sw
+point R 4 1 se
+point Q 4 5 ne
+point O 0 0 sw
+point X1 -0.6 0 hidden
+point X2 5.6 0 hidden
+point Y1 0 -0.6 hidden
+point Y2 0 5.6 hidden
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+segment P R color=orange label="3" side=right
+segment R Q color=green label="4" side=right
+segment P Q color=blue label="5"
+right P R Q
+caption "From P = (1, 1) to Q = (4, 5): across 3 to the corner R = (4, 1), then up 4, so d(P, Q) = 5"
+```
+
+The same steps work for any two points: subtract the $$x$$-coordinates and square, subtract the
+$$y$$-coordinates and square, add the two squares, and take the square root.
+
+:::theorem[The distance formula]{#distance-formula}
+
+The distance between the points $$P = (x_1, y_1)$$ and $$Q = (x_2, y_2)$$ is
+
+```math
+d(P, Q) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_distance#Two_dimensions"}
+
+**Level points, or one above the other.** If $$y_1 = y_2$$, the formula gives
+$$\sqrt{(x_2 - x_1)^2 + 0} = |x_2 - x_1|$$, by part 1 of :ref{#line-distance}. That is $$d(P, Q)$$,
+by part 2. If $$x_1 = x_2$$, the formula gives $$|y_2 - y_1|$$, which is $$d(P, Q)$$ in the same
+way. This case includes $$P = Q$$.
+
+**Any other two points.** Now $$x_1 \ne x_2$$ and $$y_1 \ne y_2$$. Let $$R = (x_2, y_1)$$. The
+points $$P$$ and $$R$$ both lie on the horizontal line $$y = y_1$$, which is the only line through
+them (:ref{#distance-and-angles/line-rules}), and $$Q$$ is not on it since $$y_2 \ne y_1$$. So
+$$P$$, $$R$$ and $$Q$$ are the corners of a triangle (:ref{#distance-and-angles/triangle}). The
+points $$R$$ and $$Q$$ lie on the vertical line $$x = x_2$$. By rule 3 of :ref{#coordinate-rules},
+the vertical line is perpendicular to the horizontal one, so the triangle has a right angle at $$R$$
+(:ref{#distance-and-angles/right-triangle}).
+
+By part 2 of :ref{#line-distance}, the legs have lengths $$d(P, R) = |x_2 - x_1|$$ and
+$$d(R, Q) = |y_2 - y_1|$$. The hypotenuse is $$PQ$$, so :ref{#distance-and-angles/pythagoras-sides}
+gives
+
+```math
+d(P, Q) = \sqrt{|x_2 - x_1|^2 + |y_2 - y_1|^2} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+```
+
+since $$|a|^2 = a^2$$ for every number $$a$$ (:ref{#real-numbers/abs-basics}).
+
+:::
+
+Move $$P$$ and $$Q$$ below. The corner $$R$$ follows them, and the readout works through the formula
+one step at a time. When you put the two points level, the triangle flattens into a single segment,
+but the formula still gives the right answer.
+
+<DistanceTriangle p={[-2, -1]} q={[2, 2]} />
+
+The formula treats the two points alike. Swapping them changes the sign of each difference, so
+$$x_1 - x_2$$ appears in place of $$x_2 - x_1$$, but squaring removes the sign. So
+$$d(Q, P) = d(P, Q)$$, as rule 2 of :ref{#distance-and-angles/distance-rules} says. It also means
+you can call either point $$P$$.
+
+## Working with the formula
+
+The formula is mostly subtraction, and the place to take care is the minus signs. When a negative
+coordinate is subtracted, put it in brackets, so that the two minus signs visibly make a plus. A
+negative difference needs brackets when it is squared too, since its square is positive.
+
+:::example[Points on opposite sides of the origin]
+
+Take $$P = (-2, 3)$$ and $$Q = (4, -5)$$. The differences are
+
+```math
+x_2 - x_1 = 4 - (-2) = 6 \qquad y_2 - y_1 = -5 - 3 = -8
+```
+
+So
+
+```math
+d(P, Q) = \sqrt{6^2 + (-8)^2} = \sqrt{36 + 64} = \sqrt{100} = 10
+```
+
+Leaving out the first pair of brackets would give $$4 - 2 = 2$$, which is wrong. And $$(-8)^2$$ is
+$$64$$, while $$-8^2$$, without brackets, means $$-64$$. Taken the other way round, the differences
+are $$-6$$ and $$8$$, which have the same squares.
+
+:::
+
+The answer is often not a whole number. Then it can be left as a square root, or tidied by taking
+out a square factor with :ref{#real-numbers/root-product}.
+
+:::example[An answer that stays a square root]
+
+Take $$P = (1, -2)$$ and $$Q = (-2, 4)$$. The differences are $$-2 - 1 = -3$$ and $$4 - (-2) = 6$$,
+so
+
+```math
+d(P, Q) = \sqrt{(-3)^2 + 6^2} = \sqrt{9 + 36} = \sqrt{45}
+```
+
+Since $$45 = 9 \cdot 5$$, this is $$\sqrt{9}\,\sqrt{5} = 3\sqrt{5}$$, which is about $$6.71$$. The
+exact form is the answer, and the decimal is useful for a measurement.
+
+:::
+
+The distance of a point from the origin comes out especially tidy. With $$O = (0, 0)$$ and
+$$P = (x, y)$$, the differences are $$x$$ and $$y$$ themselves, so $$d(O, P) = \sqrt{x^2 + y^2}$$.
+For example, $$(5, -12)$$ is $$\sqrt{25 + 144} = \sqrt{169} = 13$$ from the origin.
+
+## As the crow flies
+
+People say "as the crow flies" for the straight-line distance, the one a bird or a drone covers, to
+set it apart from the distance by road. The distance formula gives the crow's distance. On a grid of
+streets the taxi's distance is $$|x_2 - x_1| + |y_2 - y_1|$$ instead: the two legs added, with no
+squaring. It is never shorter than the crow's, since two sides of a triangle together are at least
+as long as the third (:ref{#distance-and-angles/distance-rules}).
+
+Often you need only to compare a distance with a fixed number, and then no square root is needed.
+Both the distance and the number are at least $$0$$, so the distance is at most $$5$$ exactly when
+its square is at most $$25$$ (:ref{#real-numbers/power-order},
+:ref{#real-numbers/power-order-converse}).
+
+:::example[Is the phone in range?]
+
+A phone mast stands at $$(2, 3)$$, with coordinates in kilometres, and reaches phones up to $$5$$ km
+away. A phone at $$(6, 5)$$ has squared distance
+
+```math
+(6 - 2)^2 + (5 - 3)^2 = 16 + 4 = 20
+```
+
+which is less than $$25$$, so it is in range. A phone at $$(-2, 7)$$ has squared distance
+$$(-4)^2 + 4^2 = 32$$, which is more than $$25$$, so it is out of range.
+
+:::
+
+A program checking thousands of phones can use the same shortcut. Comparing squares saves working
+out a square root for each phone.
+
+## Exercises
+
+:::::accordion[Exercises on the distance between two points, with solutions]
+
+::::exercise{#ex-distance-formula-practice}
+
+Find the distance between each pair of points. Leave an answer that isn't a whole number as a square
+root, with any square factor taken out.
+
+1. $$(2, 1)$$ and $$(7, 13)$$
+2. $$(-3, -1)$$ and $$(3, 7)$$
+3. $$(0, -4)$$ and $$(-5, 0)$$
+4. $$(-1.5, 2)$$ and $$(1.5, -2)$$
+5. $$(3, -1)$$ and $$(-1, -3)$$
+
+:::solution
+
+By :ref{#distance-formula}:
+
+1. $$\sqrt{5^2 + 12^2} = \sqrt{25 + 144} = \sqrt{169} = 13$$
+2. $$\sqrt{6^2 + 8^2} = \sqrt{36 + 64} = \sqrt{100} = 10$$
+3. $$\sqrt{(-5)^2 + 4^2} = \sqrt{25 + 16} = \sqrt{41}$$
+4. $$\sqrt{3^2 + (-4)^2} = \sqrt{9 + 16} = \sqrt{25} = 5$$
+5. $$\sqrt{(-4)^2 + (-2)^2} = \sqrt{16 + 4} = \sqrt{20} = 2\sqrt{5}$$, using
+   :ref{#real-numbers/root-product} with $$20 = 4 \cdot 5$$
+
+:::
+
+::::
+
+::::exercise{#ex-distance-formula-mistake}
+
+A student works out the distance between $$(-1, 4)$$ and $$(3, -2)$$ as
+
+```math
+\sqrt{(3 - 1)^2 + (-2 - 4)^2} = \sqrt{4 + 36} = \sqrt{40}
+```
+
+Find the mistake and give the right answer.
+
+:::solution
+
+The first difference should be $$3 - (-1) = 4$$, not $$3 - 1 = 2$$: the minus sign of $$-1$$ was
+lost. The second difference, $$-2 - 4 = -6$$, is right. So the distance is
+
+```math
+\sqrt{4^2 + (-6)^2} = \sqrt{16 + 36} = \sqrt{52} = 2\sqrt{13}
+```
+
+using $$52 = 4 \cdot 13$$ and :ref{#real-numbers/root-product}.
+
+:::
+
+::::
+
+::::exercise{#ex-distance-formula-missing}
+
+The points $$(1, 2)$$ and $$(x, 6)$$ are $$5$$ apart. Find every possible value of $$x$$, and
+explain with a picture why there are two.
+
+:::solution
+
+By :ref{#distance-formula}, $$\sqrt{(x - 1)^2 + 4^2} = 5$$. Both sides are at least $$0$$, so this
+holds exactly when the squares are equal (:ref{#real-numbers/equal-squares}):
+$$(x - 1)^2 + 16 = 25$$, that is, $$(x - 1)^2 = 9$$. So $$x - 1 = 3$$ or $$x - 1 = -3$$
+(:ref{#real-numbers/square-root-count}), which gives $$x = 4$$ or $$x = -2$$.
+
+The point $$(x, 6)$$ lies on the horizontal line $$y = 6$$, which is $$4$$ above $$(1, 2)$$. A right
+triangle with height $$4$$ and hypotenuse $$5$$ has base $$3$$, and the base can stretch $$3$$ to
+the right of $$x = 1$$ or $$3$$ to the left. Check: $$(4 - 1)^2 + 4^2 = 25$$ and
+$$(-2 - 1)^2 + 4^2 = 25$$.
+
+:::
+
+::::
+
+::::exercise{#ex-distance-formula-isosceles}
+
+Show that the triangle with corners $$A = (1, 1)$$, $$B = (5, 3)$$ and $$C = (3, 7)$$ has two sides
+of the same length. Which side is the odd one out?
+
+:::solution
+
+By :ref{#distance-formula}:
+
+- $$d(A, B) = \sqrt{4^2 + 2^2} = \sqrt{20}$$
+- $$d(B, C) = \sqrt{(-2)^2 + 4^2} = \sqrt{20}$$
+- $$d(A, C) = \sqrt{2^2 + 6^2} = \sqrt{40}$$
+
+So $$AB$$ and $$BC$$ both have length $$\sqrt{20} = 2\sqrt{5}$$, and $$AC$$, of length
+$$\sqrt{40} = 2\sqrt{10}$$, is the odd one out.
+
+:::
+
+::::
+
+::::exercise{#ex-distance-formula-range}
+
+A mast at $$(-2, 1)$$ reaches phones up to $$6$$ km away, with coordinates in kilometres. Which of
+the phones at $$(3, 4)$$, $$(2, -3)$$ and $$(-6, 6)$$ are in range? Don't work out any square roots.
+
+:::solution
+
+As in the example under [As the crow flies](#as-the-crow-flies), compare each squared distance with
+$$6^2 = 36$$:
+
+- $$(3, 4)$$: $$5^2 + 3^2 = 25 + 9 = 34$$, which is at most $$36$$, so in range
+- $$(2, -3)$$: $$4^2 + (-4)^2 = 16 + 16 = 32$$, so in range
+- $$(-6, 6)$$: $$(-4)^2 + 5^2 = 16 + 25 = 41$$, which is more than $$36$$, so out of range
+
+:::
+
+::::
+
+::::exercise{#ex-distance-formula-equal}
+
+Find the point on the $$x$$-axis that is the same distance from $$(0, 4)$$ as from $$(6, 2)$$.
+
+:::solution
+
+A point on the $$x$$-axis has the form $$(x, 0)$$. Its squared distances from the two points are
+$$x^2 + 16$$ and $$(x - 6)^2 + 4$$ (:ref{#distance-formula}). The distances are equal exactly when
+their squares are, since both are at least $$0$$ (:ref{#real-numbers/equal-squares}). So
+
+```math
+x^2 + 16 = x^2 - 12x + 36 + 4
+```
+
+Taking $$x^2$$ from both sides leaves $$16 = 40 - 12x$$, so $$12x = 24$$ and $$x = 2$$. The point is
+$$(2, 0)$$. Check: both squared distances are $$4 + 16 = 20$$ and $$16 + 4 = 20$$.
+
+:::
+
+::::
+
+::::exercise{#ex-distance-formula-taxi}
+
+The taxi distance between $$P = (x_1, y_1)$$ and $$Q = (x_2, y_2)$$ is $$|a| + |b|$$, where
+$$a = x_2 - x_1$$ and $$b = y_2 - y_1$$.
+
+1. Show by squaring that $$\sqrt{a^2 + b^2} \le |a| + |b|$$, so the crow's distance is never more
+   than the taxi's.
+2. When are the two distances equal? Describe the points $$P$$ and $$Q$$.
+
+:::solution
+
+1. Both sides are at least $$0$$, so it is enough to compare their squares. Using $$|a|^2 = a^2$$
+   and $$|b|^2 = b^2$$ (:ref{#real-numbers/abs-basics}),
+
+   ```math
+   (|a| + |b|)^2 = a^2 + 2|a|\,|b| + b^2 \ge a^2 + b^2
+   ```
+
+   since $$2|a|\,|b| \ge 0$$. So the square of $$\sqrt{a^2 + b^2}$$, which is $$a^2 + b^2$$, is at
+   most the square of $$|a| + |b|$$, and :ref{#real-numbers/power-order-converse} gives
+   $$\sqrt{a^2 + b^2} \le |a| + |b|$$.
+
+2. The squares are equal exactly when $$2|a|\,|b| = 0$$, that is, when $$a = 0$$ or $$b = 0$$. So
+   the two distances agree exactly when $$P$$ and $$Q$$ lie on one vertical or one horizontal line,
+   where a taxi can drive straight there.
+
+:::
+
+::::
+
+:::::

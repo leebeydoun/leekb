@@ -1,0 +1,559 @@
+---
+title: Whole-number right triangles
+description:
+  Why a rope knotted 3, 4, 5 makes a square corner, and a formula that finds every such triangle.
+---
+
+Picture a builder marking out the corner of a new shed. She takes a loop of rope knotted into $$12$$
+equal lengths and pegs it out as a triangle, with $$3$$ lengths on one side, $$4$$ on the next and
+$$5$$ on the last. Pulled tight, the rope makes a square corner between the $$3$$ and the $$4$$,
+with no set square in sight. Builders and gardeners still lay out corners this way.
+
+The trick works because $$3^2 + 4^2 = 5^2$$. Three whole numbers that fit the Pythagoras theorem
+like this are called a Pythagorean triple. In this guide we'll prove that the rope's corner is
+square, and then find every whole-number right triangle by drawing lines through one point of a
+circle.
+
+## Why the rope makes a square corner
+
+The Pythagoras theorem starts from a square corner and ends with an equation: if the angle is right,
+then $$a^2 + b^2 = c^2$$. The rope runs the other way. It starts from three lengths that fit the
+equation and claims a square corner. A statement read backwards like this is called its
+**converse**, and a converse needs its own proof: every square has four equal sides, but a shape
+with four equal sides can be a leaning diamond.
+
+<BuilderRope caption="A loop of rope with 12 equal lengths, pegged out as 3, 4 and 5 lengths. The corner between the 3 and the 4 is a right angle." />
+
+The proof builds a second triangle that certainly has a right angle: one with legs $$a$$ and $$b$$
+along the two axes. The distance formula shows that its third side is $$c$$. The two triangles then
+have the same three sides, and three sides fix a triangle, so the right angle carries over.
+
+:::proposition[The converse of Pythagoras]{#pythagoras-converse}
+
+Let $$\triangle PQM$$ be a triangle with $$d(Q, P) = a$$, $$d(Q, M) = b$$ and $$d(P, M) = c$$. If
+
+```math
+a^2 + b^2 = c^2
+```
+
+then the angle at $$Q$$, opposite the side $$PM$$, is a right angle.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Pythagorean_theorem#Converse"}
+
+**A right triangle with the same legs.** Let $$O = (0, 0)$$, $$A = (a, 0)$$ and $$B = (0, b)$$. The
+point $$A$$ lies on the $$x$$-axis and $$B$$ on the $$y$$-axis, and the axes are perpendicular
+(:ref{#coordinate-rules}), so the angle $$\angle AOB$$ is a right angle
+(:ref{#distance-and-angles/right-angle}). By :ref{#distance-formula}, $$d(O, A) = \sqrt{a^2} = a$$
+and $$d(O, B) = \sqrt{b^2} = b$$, since $$a$$ and $$b$$ are positive. The third side is
+
+```math
+d(A, B) = \sqrt{(0 - a)^2 + (b - 0)^2} = \sqrt{a^2 + b^2} = \sqrt{c^2} = c
+```
+
+where the last step uses $$c > 0$$ (:ref{#real-numbers/square-root}).
+
+**Match the sides.** Pair $$Q$$, $$P$$, $$M$$ with $$O$$, $$A$$, $$B$$. Then
+$$d(Q, P) = a = d(O, A)$$, $$d(Q, M) = b = d(O, B)$$ and $$d(P, M) = c = d(A, B)$$. By
+:ref{#isometries/sss} there is an isometry $$F$$ with $$F(Q) = O$$, $$F(P) = A$$ and $$F(M) = B$$.
+
+**The angle carries over.** An isometry keeps angles (:ref{#isometries/isometry-angles}), and $$F$$
+sends the angle $$\angle PQM$$ to $$\angle AOB$$. So $$\angle PQM$$ is a right angle too.
+
+:::
+
+```plane
+point Q 0 0 sw
+point P 2.4 -1.8 se
+point M 2.4 3.2 n
+point O 6 -1.5 sw
+point A 9 -1.5 se
+point B 6 2.5 nw
+ray O A color=muted extend=0.6
+ray O B color=muted extend=0.4
+polygon Q P M color=blue
+polygon O A B color=orange
+segment Q P label="a" side=right
+segment Q M label="b"
+segment P M label="c" side=right
+segment O A label="a" side=right
+segment O B label="b"
+segment A B label="c" side=right
+right A O B
+caption "A triangle PQM with a² + b² = c², and the right triangle OAB on the axes with the same sides"
+```
+
+Together with :ref{#distance-and-angles/pythagoras}, this gives an exact test. The angle opposite
+the side $$c$$ is a right angle exactly when $$a^2 + b^2 = c^2$$. You never need to measure the
+angle: three lengths are enough.
+
+:::example[Checking a frame]
+
+A carpenter joins two lengths of wood, $$60$$ cm and $$80$$ cm long, at a corner, and measures the
+distance between their far ends. Since
+
+```math
+60^2 + 80^2 = 3600 + 6400 = 10\,000 = 100^2
+```
+
+a distance of $$100$$ cm means the corner is square, by :ref{#pythagoras-converse}.
+
+If the distance comes out at $$101$$ cm instead, the corner is not square. A square corner would
+make it $$100$$ cm, by :ref{#distance-and-angles/pythagoras-sides}.
+
+:::
+
+## Pythagorean triples
+
+The rope uses $$3$$, $$4$$ and $$5$$, and
+[The Pythagoras theorem](../distance-and-angles/pythagoras.mdx) met $$5$$, $$12$$ and $$13$$.
+Doubling the rope's numbers gives $$6$$, $$8$$ and $$10$$, which fit too: $$36 + 64 = 100$$. But
+that is the same triangle, zoomed by $$2$$. So the real question is which shapes of right triangle
+have whole-number sides.
+
+:::definition[Pythagorean triple]{#pythagorean-triple}
+
+A **Pythagorean triple** is a list of three positive integers $$a$$, $$b$$ and $$c$$ with
+
+```math
+a^2 + b^2 = c^2
+```
+
+:::
+
+Every triple gives a right triangle with whole-number sides: the triangle with corners $$(0, 0)$$,
+$$(a, 0)$$ and $$(0, b)$$ has legs $$a$$ and $$b$$, and its third side is $$c$$, as in the proof of
+:ref{#pythagoras-converse}. In the other direction, every right triangle with whole-number sides
+gives a triple, by :ref{#distance-and-angles/pythagoras}. Multiplying a triple by a positive integer
+$$k$$ always gives another one, since
+
+```math
+(ka)^2 + (kb)^2 = k^2(a^2 + b^2) = k^2 c^2 = (kc)^2
+```
+
+## Triples as points on a circle
+
+Shrink a right triangle with sides $$a$$, $$b$$ and $$c$$ until its hypotenuse is $$1$$, by dividing
+every side by $$c$$. Lay it with its right angle at the origin, one leg along the $$x$$-axis and the
+other straight up. Its top corner is then at $$(\frac{a}{c}, \frac{b}{c})$$, at distance $$1$$ from
+the origin, so it lies on the unit circle, the circle with centre $$O$$ and radius $$1$$.
+
+For $$3$$, $$4$$, $$5$$ the corner is $$(\frac{3}{5}, \frac{4}{5})$$. For $$6$$, $$8$$, $$10$$ it is
+$$(\frac{6}{10}, \frac{8}{10})$$, which is the same point. So zoomed copies of one triangle all land
+on one point, and the point is what tells different shapes apart. These points have fractions for
+both coordinates.
+
+:::definition[Rational point]{#rational-point}
+
+A point $$(x, y)$$ is a **rational point** if both of its coordinates are rational numbers
+(:ref{#numbers/rational}).
+
+:::
+
+The unit circle is the set of points with $$x^2 + y^2 = 1$$, by :ref{#circle-equation} with centre
+$$(0, 0)$$ and radius $$1$$.
+
+:::proposition[Triples and points on the circle]{#triples-points}
+
+1. If $$a$$, $$b$$, $$c$$ is a Pythagorean triple, then $$(\frac{a}{c}, \frac{b}{c})$$ is a rational
+   point on the unit circle, with both coordinates positive.
+2. If $$(x, y)$$ is a rational point on the unit circle with $$x > 0$$ and $$y > 0$$, then there is
+   a Pythagorean triple $$a$$, $$b$$, $$c$$ with $$x = \frac{a}{c}$$ and $$y = \frac{b}{c}$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Pythagorean_triple#Rational_points_on_a_unit_circle"}
+
+**Part 1.** The coordinates $$\frac{a}{c}$$ and $$\frac{b}{c}$$ are fractions of positive integers,
+so they are positive rational numbers. By :ref{#numbers/fraction-powers} and
+:ref{#numbers/fraction-addition},
+
+```math
+\left(\frac{a}{c}\right)^2 + \left(\frac{b}{c}\right)^2 = \frac{a^2 + b^2}{c^2} = \frac{c^2}{c^2} = 1
+```
+
+so the point is on the unit circle.
+
+**Part 2.** Since $$x$$ and $$y$$ are positive, write $$x = \frac{r}{s}$$ and $$y = \frac{u}{v}$$
+with $$r$$, $$s$$, $$u$$ and $$v$$ positive integers (:ref{#numbers/positive-rational}). Put both
+over the common denominator $$sv$$:
+
+```math
+x = \frac{rv}{sv}, \qquad y = \frac{us}{sv}
+```
+
+Let $$a = rv$$, $$b = us$$ and $$c = sv$$, all positive integers. Then $$a = cx$$ and $$b = cy$$, so
+
+```math
+a^2 + b^2 = c^2 x^2 + c^2 y^2 = c^2(x^2 + y^2) = c^2
+```
+
+since $$x^2 + y^2 = 1$$. So $$a$$, $$b$$, $$c$$ is a Pythagorean triple.
+
+:::
+
+So finding triples is the same job as finding rational points on the unit circle, in the part where
+both coordinates are positive.
+
+## Lines through one point of the circle
+
+Rational points on the circle are hard to spot directly, but one is in plain view: $$(-1, 0)$$, at
+the left end of the circle. Draw a line through it with a fraction for its slope. The line cuts
+through the circle and comes out at one more point, and that point turns out to be rational too.
+Turning it round, every rational point joins up with $$(-1, 0)$$ by a line whose slope is a
+fraction.
+
+The reason is algebra. Where the line meets the circle comes down to a quadratic equation, and one
+of its solutions, $$x = -1$$, is already known. The product of the two solutions is a fraction built
+from the slope, so the second solution is a fraction as well.
+
+<RationalPoints caption="Step through slopes t between 0 and 1. The line through (−1, 0) with slope t meets the circle again at a point with fractions for coordinates, and their common denominator gives a Pythagorean triple." />
+
+The line through $$(-1, 0)$$ with slope $$t$$ is the graph of $$y = t(x + 1)$$, which is
+$$y = tx + t$$ and so has slope $$t$$ (:ref{#linear-equations/slope}). Putting $$x = -1$$ gives
+$$y = 0$$, so it does pass through $$(-1, 0)$$.
+
+:::theorem[Rational points on the circle]{#rational-points}
+
+1. For every real number $$t$$, the line $$y = t(x + 1)$$ meets the unit circle at $$(-1, 0)$$ and
+   at exactly one other point,
+
+   ```math
+   \left(\frac{1 - t^2}{1 + t^2}, \frac{2t}{1 + t^2}\right)
+   ```
+
+2. Every point $$(x, y)$$ of the unit circle other than $$(-1, 0)$$ is this second point for exactly
+   one $$t$$, namely $$t = \frac{y}{x + 1}$$.
+3. The second point is a rational point exactly when $$t$$ is rational.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Tangent_half-angle_substitution#Geometry"}
+
+**Part 1.** A point $$(x, y)$$ is on both the line and the circle exactly when $$y = t(x + 1)$$ and
+$$x^2 + y^2 = 1$$. Putting the first into the second gives $$x^2 + t^2(x + 1)^2 = 1$$. Multiplying
+out and collecting terms,
+
+```math
+(1 + t^2)x^2 + 2t^2 x + (t^2 - 1) = 0
+```
+
+The number in front of $$x^2$$ is $$1 + t^2$$, which is at least $$1$$, so this is a quadratic
+equation. It has the solution $$x = -1$$, since $$(1 + t^2) - 2t^2 + (t^2 - 1) = 0$$. So its
+discriminant is not negative (:ref{#quadratics/root-count}), and by :ref{#quadratics/vieta} its
+solutions $$x_1$$ and $$x_2$$ have
+
+```math
+x_1 x_2 = \frac{t^2 - 1}{1 + t^2}
+```
+
+and $$(1 + t^2)x^2 + 2t^2 x + (t^2 - 1) = (1 + t^2)(x - x_1)(x - x_2)$$ for every $$x$$. Putting
+$$x = -1$$ makes the left side $$0$$, and $$1 + t^2$$ is not $$0$$, so $$(-1 - x_1)(-1 - x_2) = 0$$,
+and one of the solutions, say $$x_1$$, is $$-1$$. Then $$-x_2 = \frac{t^2 - 1}{1 + t^2}$$, so
+
+```math
+x_2 = \frac{1 - t^2}{1 + t^2}
+```
+
+This is not $$-1$$, since that would need $$1 - t^2 = -1 - t^2$$, that is, $$1 = -1$$. Each solution
+$$x$$ gives one point of the line, with $$y = t(x + 1)$$. For $$x = -1$$ that is $$(-1, 0)$$, and
+for $$x = x_2$$ it is
+
+```math
+y = t\left(\frac{1 - t^2}{1 + t^2} + 1\right) = t \cdot \frac{(1 - t^2) + (1 + t^2)}{1 + t^2} = \frac{2t}{1 + t^2}
+```
+
+**Part 2.** Let $$(x, y)$$ be on the unit circle. If $$x = -1$$, then $$y^2 = 1 - 1 = 0$$, so
+$$y = 0$$ and the point is $$(-1, 0)$$. So every other point has $$x + 1 \neq 0$$. Let
+$$t = \frac{y}{x + 1}$$. Then $$y = t(x + 1)$$, so the point lies on the line with slope $$t$$. It
+is on the circle and is not $$(-1, 0)$$, so by part 1 it is that line's second point. No other slope
+works: if $$y = s(x + 1)$$ as well, then $$s = \frac{y}{x + 1} = t$$.
+
+**Part 3.** If $$t$$ is rational, so are $$1 - t^2$$, $$1 + t^2$$ and $$2t$$, since sums and
+products of fractions are fractions (:ref{#numbers/fraction-addition},
+:ref{#numbers/fraction-multiplication}). Dividing by the fraction $$1 + t^2$$, which is not $$0$$,
+means multiplying by its inverse (:ref{#numbers/inverse-exists}), so both coordinates of the second
+point are rational. If instead the point $$(x, y)$$ is rational, then $$t = \frac{y}{x + 1}$$ is a
+fraction divided by a non-zero fraction, so it is rational in the same way.
+
+:::
+
+:::example[The slope two thirds]
+
+Take $$t = \frac{2}{3}$$, so $$t^2 = \frac{4}{9}$$. Then
+
+```math
+\frac{1 - t^2}{1 + t^2} = \frac{5/9}{13/9} = \frac{5}{13}, \qquad
+\frac{2t}{1 + t^2} = \frac{4/3}{13/9} = \frac{4}{3} \cdot \frac{9}{13} = \frac{12}{13}
+```
+
+So the line meets the circle again at $$(\frac{5}{13}, \frac{12}{13})$$. Both coordinates are
+positive, so by :ref{#triples-points} the tops and the common bottom give the triple $$5$$, $$12$$,
+$$13$$. Check: $$25 + 144 = 169 = 13^2$$.
+
+:::
+
+The slopes from $$0$$ to $$1$$ give the quarter of the circle where both coordinates are positive.
+At $$t = 0$$ the line is the $$x$$-axis and meets the circle again at $$(1, 0)$$. As $$t$$ grows the
+second point climbs round the circle, and at $$t = 1$$ it reaches $$(0, 1)$$. In between, both
+coordinates are positive.
+
+## A formula for every triple
+
+Fractions are awkward to carry around, so write the slope as $$t = \frac{m}{n}$$ and clear them.
+Multiplying the top and bottom of each coordinate by $$n^2$$ gives the second point as
+
+```math
+\left(\frac{n^2 - m^2}{n^2 + m^2}, \frac{2mn}{n^2 + m^2}\right)
+```
+
+The three whole numbers $$n^2 - m^2$$, $$2mn$$ and $$n^2 + m^2$$ are then a triple, and every triple
+comes from one of these, up to a zoom.
+
+:::corollary[A formula for triples]{#triple-formula}
+
+1. For positive integers $$m < n$$, the numbers
+
+   ```math
+   a = n^2 - m^2, \qquad b = 2mn, \qquad c = n^2 + m^2
+   ```
+
+   are a Pythagorean triple.
+
+2. Every Pythagorean triple $$a$$, $$b$$, $$c$$ is a multiple of one of these: there are positive
+   integers $$m < n$$ and a positive rational number $$k$$ with
+
+   ```math
+   a = k(n^2 - m^2), \qquad b = k \cdot 2mn, \qquad c = k(n^2 + m^2)
+   ```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Pythagorean_triple#Generating_a_triple"}
+
+**Part 1.** The three numbers are integers. They are positive: $$m < n$$ gives $$m^2 < n^2$$
+(:ref{#real-numbers/power-order}), so $$n^2 - m^2 > 0$$. Multiplying out with
+:ref{#numbers/square-formulas},
+
+```math
+(n^2 - m^2)^2 + (2mn)^2 = n^4 - 2m^2n^2 + m^4 + 4m^2n^2 = n^4 + 2m^2n^2 + m^4 = (n^2 + m^2)^2
+```
+
+**Part 2.** By :ref{#triples-points}, $$(\frac{a}{c}, \frac{b}{c})$$ is a rational point on the unit
+circle with positive coordinates, so it is not $$(-1, 0)$$. By :ref{#rational-points} it is the
+second point for the slope
+
+```math
+t = \frac{b/c}{a/c + 1} = \frac{b}{a + c}
+```
+
+which is a positive rational number. It is less than $$1$$: from $$a^2 + b^2 = c^2$$ we get
+$$b^2 < c^2$$, so $$b < c$$ (:ref{#real-numbers/power-order-converse}), and so $$b < a + c$$. Write
+$$t = \frac{m}{n}$$ with $$m$$ and $$n$$ positive integers (:ref{#numbers/positive-rational}). Then
+$$\frac{m}{n} < 1$$ gives $$m < n$$.
+
+By part 1 of :ref{#rational-points}, with the top and bottom multiplied by $$n^2$$,
+
+```math
+\frac{a}{c} = \frac{n^2 - m^2}{n^2 + m^2}, \qquad \frac{b}{c} = \frac{2mn}{n^2 + m^2}
+```
+
+Let $$k = \frac{c}{n^2 + m^2}$$, a positive rational number. Then $$c = k(n^2 + m^2)$$, and
+multiplying the two equations by $$c$$ gives $$a = k(n^2 - m^2)$$ and $$b = k \cdot 2mn$$.
+
+:::
+
+The table lists the triples that the first few slopes give. Each line is a different shape of right
+triangle, and the interactive figure under
+[Lines through one point of the circle](#lines-through-one-point-of-the-circle) shows each one as a
+point on the circle.
+
+| Slope $$t$$     | $$n^2 - m^2$$ | $$2mn$$ | $$n^2 + m^2$$ | Check               |
+| --------------- | ------------- | ------- | ------------- | ------------------- |
+| $$\frac{1}{2}$$ | 3             | 4       | 5             | $$9 + 16 = 25$$     |
+| $$\frac{2}{3}$$ | 5             | 12      | 13            | $$25 + 144 = 169$$  |
+| $$\frac{1}{4}$$ | 15            | 8       | 17            | $$225 + 64 = 289$$  |
+| $$\frac{3}{4}$$ | 7             | 24      | 25            | $$49 + 576 = 625$$  |
+| $$\frac{2}{5}$$ | 21            | 20      | 29            | $$441 + 400 = 841$$ |
+
+The number $$k$$ in part 2 need not be a whole number. The triple $$8$$, $$15$$, $$17$$ has
+$$t = \frac{15}{8 + 17} = \frac{15}{25} = \frac{3}{5}$$, and the formula with $$m = 3$$ and
+$$n = 5$$ gives $$16$$, $$30$$, $$34$$. So here $$k = \frac{1}{2}$$: the triple is half of the one
+the formula gives.
+
+There are infinitely many slopes between $$0$$ and $$1$$, such as $$\frac{1}{2}$$, $$\frac{1}{3}$$,
+$$\frac{1}{4}$$ and so on, and by part 2 of :ref{#rational-points} different slopes give different
+points. A triangle and its zoomed copies give a single point, or two if you also swap which leg is
+$$a$$. So the infinitely many points give infinitely many different shapes of whole-number right
+triangle.
+
+## Exercises
+
+:::::accordion[Exercises on whole-number right triangles, with solutions]
+
+::::exercise{#ex-pythagorean-triples-which-right}
+
+Which of these triangles have a right angle, and where is it?
+
+1. Sides $$9$$, $$40$$ and $$41$$
+2. Sides $$10$$, $$24$$ and $$27$$
+3. Sides $$1.5$$, $$2$$ and $$2.5$$
+
+:::solution
+
+In a right triangle, the square of the hypotenuse is the sum of the other two squares
+(:ref{#distance-and-angles/pythagoras}), so the hypotenuse is the longest side. So only the angle
+opposite the longest side can be right. Compare the sum of the two smaller squares with the largest
+square, and use :ref{#pythagoras-converse}.
+
+1. $$81 + 1600 = 1681 = 41^2$$. There is a right angle, between the sides $$9$$ and $$40$$.
+2. $$100 + 576 = 676$$, but $$27^2 = 729$$. If the angle opposite the side $$27$$ were right,
+   :ref{#distance-and-angles/pythagoras} would make these equal, so it is not right. The other two
+   angles face shorter sides, so none of the angles is right.
+3. $$2.25 + 4 = 6.25 = 2.5^2$$. There is a right angle, between the sides $$1.5$$ and $$2$$. The
+   converse works for any lengths, not only whole numbers.
+
+:::
+
+::::
+
+::::exercise{#ex-pythagorean-triples-picture-frame}
+
+A picture frame is $$21$$ cm wide and $$28$$ cm tall. How long should its diagonal be if its corners
+are square? The diagonal measures $$34.5$$ cm. What does that tell you?
+
+:::solution
+
+If the corner is square, the diagonal is the hypotenuse of a right triangle with legs $$21$$ and
+$$28$$, so by :ref{#distance-and-angles/pythagoras-sides} it is
+
+```math
+\sqrt{21^2 + 28^2} = \sqrt{441 + 784} = \sqrt{1225} = 35
+```
+
+A diagonal of $$34.5$$ cm is not $$35$$ cm, so the corner between those sides is not square: the
+frame has been pushed out of true. Had it measured $$35$$ cm, :ref{#pythagoras-converse} would show
+the corner is square.
+
+:::
+
+::::
+
+::::exercise{#ex-pythagorean-triples-one-third}
+
+Find the second point where the line through $$(-1, 0)$$ with slope $$\frac{1}{3}$$ meets the unit
+circle, and the triple it gives. Compare with the triple from the slope $$\frac{1}{2}$$, and with
+the formula in :ref{#triple-formula} for $$m = 1$$ and $$n = 3$$.
+
+:::solution
+
+With $$t = \frac{1}{3}$$, $$t^2 = \frac{1}{9}$$, so by :ref{#rational-points}
+
+```math
+\frac{1 - t^2}{1 + t^2} = \frac{8/9}{10/9} = \frac{4}{5}, \qquad
+\frac{2t}{1 + t^2} = \frac{2/3}{10/9} = \frac{2}{3} \cdot \frac{9}{10} = \frac{3}{5}
+```
+
+The point is $$(\frac{4}{5}, \frac{3}{5})$$, giving the triple $$4$$, $$3$$, $$5$$
+(:ref{#triples-points}). The slope $$\frac{1}{2}$$ gives $$(\frac{3}{5}, \frac{4}{5})$$ and the
+triple $$3$$, $$4$$, $$5$$. It is the same triangle with its legs swapped: the point has been
+reflected in the line $$y = x$$.
+
+The formula gives $$9 - 1 = 8$$, $$2 \cdot 1 \cdot 3 = 6$$ and $$9 + 1 = 10$$. That is
+$$2 \cdot 4$$, $$2 \cdot 3$$, $$2 \cdot 5$$, so here the formula gives twice the smallest triple,
+and $$k = \frac{1}{2}$$ in part 2 of :ref{#triple-formula}.
+
+:::
+
+::::
+
+::::exercise{#ex-pythagorean-triples-find-slope}
+
+Check that $$20$$, $$21$$, $$29$$ is a Pythagorean triple. Find the slope $$t$$ of the line through
+$$(-1, 0)$$ that gives it, and the triple the formula in :ref{#triple-formula} gives for that slope.
+
+:::solution
+
+$$20^2 + 21^2 = 400 + 441 = 841 = 29^2$$, so it is a triple. Its point is
+$$(\frac{20}{29}, \frac{21}{29})$$ (:ref{#triples-points}), and by part 2 of :ref{#rational-points}
+
+```math
+t = \frac{21/29}{20/29 + 1} = \frac{21/29}{49/29} = \frac{21}{49} = \frac{3}{7}
+```
+
+With $$m = 3$$ and $$n = 7$$ the formula gives $$49 - 9 = 40$$, $$2 \cdot 3 \cdot 7 = 42$$ and
+$$49 + 9 = 58$$. That is twice $$20$$, $$21$$, $$29$$, as part 2 of :ref{#triple-formula} allows,
+with $$k = \frac{1}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-pythagorean-triples-other-slopes}
+
+Find the second points for the slopes $$t = 2$$ and $$t = -\frac{1}{2}$$. How are they related to
+the point $$(\frac{3}{5}, \frac{4}{5})$$ from $$t = \frac{1}{2}$$?
+
+:::solution
+
+For $$t = 2$$, $$t^2 = 4$$, so the point is
+$$(\frac{1 - 4}{5}, \frac{4}{5}) = (-\frac{3}{5}, \frac{4}{5})$$ (:ref{#rational-points}). For
+$$t = -\frac{1}{2}$$, $$t^2 = \frac{1}{4}$$, so the point is
+
+```math
+\left(\frac{3/4}{5/4}, \frac{-1}{5/4}\right) = \left(\frac{3}{5}, -\frac{4}{5}\right)
+```
+
+The first is $$(\frac{3}{5}, \frac{4}{5})$$ with the sign of $$x$$ changed, reflected in the
+$$y$$-axis. The second has the sign of $$y$$ changed, reflected in the $$x$$-axis. Both are still
+rational points, but they are not in the quarter where both coordinates are positive, so they give
+no new triple. That is why the slopes between $$0$$ and $$1$$ are enough.
+
+:::
+
+::::
+
+::::exercise{#ex-pythagorean-triples-missing-point}
+
+No slope $$t$$ gives the point $$(-1, 0)$$ itself as the second point. Explain this in two ways:
+from the formula in :ref{#rational-points}, and from the line through $$(-1, 0)$$ that has no slope.
+
+:::solution
+
+**From the formula.** The second point has $$x = \frac{1 - t^2}{1 + t^2}$$. For this to be $$-1$$
+you would need $$1 - t^2 = -1 - t^2$$, that is, $$1 = -1$$. So $$x$$ is never $$-1$$.
+
+**From the lines.** Every line through $$(-1, 0)$$ except one has a slope, and is $$y = t(x + 1)$$
+for some $$t$$. The one without a slope is the vertical line $$x = -1$$. On it, a point of the
+circle has $$1 + y^2 = 1$$, so $$y = 0$$: the vertical line touches the circle at $$(-1, 0)$$ and
+nowhere else. So it has no second point to give.
+
+:::
+
+::::
+
+::::exercise{#ex-pythagorean-triples-largest}
+
+In the formula of :ref{#triple-formula}, show that $$c$$ is always larger than $$a$$ and than $$b$$.
+Explain why this had to happen.
+
+:::solution
+
+$$c - a = (n^2 + m^2) - (n^2 - m^2) = 2m^2$$, which is positive, so $$c > a$$. And
+
+```math
+c - b = n^2 + m^2 - 2mn = (n - m)^2
+```
+
+by :ref{#numbers/square-formulas}, which is positive since $$m < n$$. So $$c > b$$.
+
+This had to happen because $$c$$ is the hypotenuse. Its square is $$a^2 + b^2$$, which is more than
+$$a^2$$ and more than $$b^2$$, and a larger square means a larger positive number
+(:ref{#real-numbers/power-order-converse}).
+
+:::
+
+::::
+
+:::::

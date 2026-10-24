@@ -1,0 +1,14 @@
+{
+  "title": "Coordinates",
+  "pages": [
+    "introduction",
+    "coordinates",
+    "distance",
+    "geometry-from-numbers",
+    "circles",
+    "pythagorean-triples",
+    "space",
+    "test-yourself",
+    "exercises"
+  ]
+}

@@ -5,10 +5,15 @@ type Line = { a: number; b: number; c: number; label: string };
 
 type Point = { x: number; y: number; label: string };
 
+/** the circle with centre (a, b) and radius r, with its equation as written for the key */
+type Circle = { a: number; b: number; r: number; label: string };
+
 type GraphProps = {
-  lines: Line[];
+  lines?: Line[];
   /** points to mark with a dot and their coordinates, e.g. where two lines cross */
   points?: Point[];
+  /** circles, drawn after the lines and in the colours that follow theirs */
+  circles?: Circle[];
   /** smallest and largest x shown, -5 to 5 unless given */
   x?: [number, number];
   y?: [number, number];
@@ -56,10 +61,11 @@ function sameLine(p: Line, q: Line) {
   );
 }
 
-/** Straight lines drawn on a grid, for picturing equations in x and y. */
+/** Straight lines and circles drawn on a grid, for picturing equations in x and y. */
 export function Graph({
-  lines,
+  lines = [],
   points = [],
+  circles = [],
   x: xRange = [-5, 5],
   y: yRange = [-5, 5],
   caption,
@@ -86,6 +92,12 @@ export function Graph({
   const dashed = lines.map((line, i) =>
     lines.slice(0, i).some((earlier) => sameLine(earlier, line)),
   );
+  // circles take the colours after the lines', so no circle matches a line
+  const circleColor = (i: number) => COLORS[(lines.length + i) % COLORS.length];
+  // a circle may run past the grid, so it is cut off at the edges; the id comes from the ranges,
+  // so two graphs with the same ranges share an identical clip
+  const clipId = `graph-clip-${[x0, x1, y0, y1].join("_").replace(/[^\w]/g, "m")}`;
+  const names = [...lines, ...circles].map((item) => item.label);
 
   return (
     <Figure caption={caption}>
@@ -93,8 +105,20 @@ export function Graph({
         viewBox={`0 0 ${width} ${height}`}
         className="mx-auto block h-auto w-full max-w-md text-fd-foreground"
         role="img"
-        aria-label={`Graph of ${lines.map((line) => line.label).join(" and ")}`}
+        aria-label={`Graph of ${names.join(" and ")}`}
       >
+        {circles.length > 0 && (
+          <defs>
+            <clipPath id={clipId}>
+              <rect
+                x={px(x0)}
+                y={py(y1)}
+                width={(x1 - x0) * unit}
+                height={(y1 - y0) * unit}
+              />
+            </clipPath>
+          </defs>
+        )}
         {/* light grid, one square per unit */}
         <g className="text-fd-border" stroke="currentColor" strokeWidth={1}>
           {xs.map((x) => (
@@ -196,6 +220,22 @@ export function Graph({
           );
         })}
 
+        {circles.length > 0 && (
+          <g clipPath={`url(#${clipId})`}>
+            {circles.map((circle, i) => (
+              <circle
+                key={circle.label}
+                cx={px(circle.a)}
+                cy={py(circle.b)}
+                r={circle.r * unit}
+                fill="none"
+                stroke={circleColor(i)}
+                strokeWidth={2.5}
+              />
+            ))}
+          </g>
+        )}
+
         {points.map((point) => (
           <g key={point.label}>
             <circle
@@ -232,6 +272,15 @@ export function Graph({
               }}
             />
             {line.label.replace(/-/g, "−")}
+          </li>
+        ))}
+        {circles.map((circle, i) => (
+          <li key={circle.label} className="flex items-center gap-2">
+            <span
+              className="inline-block size-3.5 rounded-full border-2"
+              style={{ borderColor: circleColor(i) }}
+            />
+            {circle.label.replace(/-/g, "−")}
           </li>
         ))}
       </ul>

@@ -1,0 +1,132 @@
+---
+title: Introduction
+description: Naming points by numbers, so that distance, circles and right triangles become algebra.
+---
+
+Imagine your cinema ticket says row 7, seat 12, and your friend's says row 10, seat 8. Before either
+of you has found your seat, you already know how far apart you'll be. You are $$3$$ rows apart and
+$$4$$ seats apart, so if the rows are spaced like the seats, the straight line between you is $$5$$
+seats long, by Pythagoras. Numbers that name a place like this are called **coordinates**. In this
+chapter we'll give every point of the plane a pair of numbers, and turn questions about distance,
+circles and right triangles into algebra.
+
+The picture to keep in mind is a sheet of graph paper with two axes drawn on it. Every point has a
+number across and a number up, and the distance between two points comes from their numbers, with
+the Pythagoras theorem. Later we turn the picture round: start from the pairs of numbers, define
+distance by the formula, and prove facts about distance with algebra, the way a computer would check
+them.
+
+As in the earlier chapters, a few facts are taken as given and marked clearly in a box, such as
+"each point has exactly one pair of coordinates". Everything else is proved from them, using the
+distances, circles and the Pythagoras theorem of
+[Distance and angles](../distance-and-angles/introduction.mdx), the slides and congruent triangles
+of [Isometries](../isometries/introduction.mdx), the zooms of
+[Area and scaling](../area-and-scaling/introduction.mdx) and the completed squares of
+[Quadratics](../quadratics/introduction.mdx). This chapter also settles two questions those chapters
+left open:
+
+- **The rules for distance**: Distance and angles took three rules as given: a distance is never
+  negative, it is the same both ways, and a detour is never shorter. Here all three are proved from
+  the distance formula, the detour rule in full, in the plane and in space.
+- **Zooms and distance**: Area and scaling took it as given that a zoom by $$r$$ multiplies every
+  distance by $$r$$, until coordinates arrived. Here that rule is proved, for a zoom about any
+  centre.
+
+Lines in coordinates wait for a later chapter. That chapter finds the equation of the line through
+two points, works out where two lines meet and when they are perpendicular, measures angles from
+coordinates, and adds points together like numbers. Until then, the guides use an equation such as $$y = 2x + 1$$ only
+as in [Linear equations](../linear-equations/introduction.mdx), where its graph is a straight line
+taken from the picture. So the other two rules for zooms, that lines go to lines and angles are
+kept, are still taken as given.
+
+## Guides in this chapter
+
+The chapter has eight guides:
+
+1. [Coordinates](./coordinates.mdx): an origin and two axes, the pair of numbers for each point,
+   quadrants, and what a different choice of axes does to the numbers
+2. [The distance between two points](./distance.mdx): the distance formula from Pythagoras, care
+   with minus signs, and comparing squared distances to save a square root
+3. [Geometry from numbers](./geometry-from-numbers.mdx): the plane as pairs of numbers, the three
+   rules for distance proved with algebra, and zooms and slides in coordinates
+4. [The equation of a circle](./circles.mdx): circles and discs as equations and inequalities,
+   multiplied-out equations, and where a circle meets a horizontal line
+5. [Whole-number right triangles](./pythagorean-triples.mdx): why three lengths can prove a right
+   angle, and every Pythagorean triple from lines through one point of a circle
+6. [Points in space](./space.mdx): three coordinates, distance in space, spheres, and the rules for
+   distance with a third term
+7. [Test yourself](./test-yourself.mdx): a multiple choice quiz on the ideas in the chapter
+8. [Exercises](./exercises.mdx): exercises on the whole chapter, with worked solutions
+
+The summary below collects every definition and rule from the chapter, for reference while you read.
+
+{/* Keep this summary in sync with the guides whenever they change. */}
+
+:::accordion[Summary of definitions and rules]
+
+**Definitions**
+
+| Term                      | Meaning                                                                                                    |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| :ref{#coordinates}        | $$P = (x, y)$$: the numbers at the feet of the perpendiculars from $$P$$ to the $$x$$-axis and $$y$$-axis  |
+| :ref{#quadrants}          | The four regions off the axes, numbered anticlockwise from the first, where $$x > 0$$ and $$y > 0$$        |
+| :ref{#coordinate-plane}   | $$\mathbb{R}^2$$: all pairs $$(x, y)$$ of real numbers, with distance defined by the distance formula      |
+| :ref{#pythagorean-triple} | Positive integers $$a$$, $$b$$, $$c$$ with $$a^2 + b^2 = c^2$$                                             |
+| :ref{#rational-point}     | A point whose two coordinates are both rational numbers                                                    |
+| :ref{#sphere}             | Sphere: points with $$d(C, P) = r$$; ball: points with $$d(C, P) \le r$$                                   |
+| :ref{#coordinate-space}   | $$\mathbb{R}^3$$: all triples $$(x, y, z)$$ of real numbers, with distance defined by the formula in space |
+
+**Coordinates**
+
+| Rule                    | Statement                                                                                                                                                         |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :ref{#coordinate-rules} | One pair for each point and one point for each pair; $$(a, 0)$$ and $$(c, 0)$$ are $$\lvert a - c \rvert$$ apart; $$x = a$$ and $$y = b$$ are perpendicular lines |
+
+**The distance between two points**
+
+| Rule                    | Statement                                                                                                                 |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| :ref{#line-distance}    | $$\sqrt{(a - b)^2} = \lvert a - b \rvert$$; level points $$(x_1, c)$$, $$(x_2, c)$$ are $$\lvert x_1 - x_2 \rvert$$ apart |
+| :ref{#distance-formula} | $$d(P, Q) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$                                                                        |
+
+**Geometry from numbers**
+
+| Rule                             | Statement                                                             |
+| -------------------------------- | --------------------------------------------------------------------- |
+| :ref{#distance-zero}             | $$d(P, Q) \ge 0$$, with $$0$$ exactly when $$P = Q$$                  |
+| :ref{#distance-symmetric}        | $$d(P, Q) = d(Q, P)$$                                                 |
+| :ref{#product-bound}             | $$as + bt \le \sqrt{a^2 + b^2}\,\sqrt{s^2 + t^2}$$                    |
+| :ref{#triangle-inequality-plane} | $$d(P, M) \le d(P, Q) + d(Q, M)$$                                     |
+| :ref{#origin-zoom}               | With $$rP = (rx, ry)$$ and $$r > 0$$, $$d(rP, rQ) = r \cdot d(P, Q)$$ |
+| :ref{#slide-distance}            | The slide $$(x, y) \mapsto (x + h, y + k)$$ keeps every distance      |
+
+**The equation of a circle**
+
+| Rule                          | Statement                                                                                                                      |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| :ref{#circle-equation}        | $$(x, y)$$ is on the circle with centre $$(a, b)$$ and radius $$r$$ exactly when $$(x - a)^2 + (y - b)^2 = r^2$$               |
+| :ref{#disc-inequality}        | In the disc exactly when $$(x - a)^2 + (y - b)^2 \le r^2$$; inside with $$<$$, outside with $$>$$                              |
+| :ref{#expanded-circle}        | $$x^2 + y^2 + Dx + Ey + F = 0$$ is a circle, one point or nothing as $$\frac{D^2 + E^2}{4} - F$$ is positive, zero or negative |
+| :ref{#circle-horizontal-line} | The line $$y = k$$ meets the circle twice, once or never as $$\lvert k - b \rvert$$ is less than, equal to or more than $$r$$  |
+
+**Whole-number right triangles**
+
+| Rule                       | Statement                                                                                                                                                              |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :ref{#pythagoras-converse} | If $$a^2 + b^2 = c^2$$, the angle opposite the side $$c$$ is a right angle                                                                                             |
+| :ref{#triples-points}      | A triple $$a$$, $$b$$, $$c$$ gives the rational point $$(\frac{a}{c}, \frac{b}{c})$$ on the unit circle, and each such point with positive coordinates gives a triple  |
+| :ref{#rational-points}     | The line $$y = t(x + 1)$$ meets the unit circle again at $$\left(\frac{1 - t^2}{1 + t^2}, \frac{2t}{1 + t^2}\right)$$, a rational point exactly when $$t$$ is rational |
+| :ref{#triple-formula}      | $$n^2 - m^2$$, $$2mn$$, $$n^2 + m^2$$ is a triple for $$m < n$$, and every triple is a multiple of one of these                                                        |
+
+**Points in space**
+
+| Rule                          | Statement                                                                                                             |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| :ref{#space-coordinate-rules} | Three perpendicular axes; one triple for each point; each layer $$z = c$$ is a plane with coordinates $$x$$ and $$y$$ |
+| :ref{#space-distance}         | $$d(P, Q) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}$$                                                    |
+| :ref{#sphere-equation}        | On the sphere exactly when $$(x - a)^2 + (y - b)^2 + (z - c)^2 = r^2$$, in the ball with $$\le$$                      |
+| :ref{#product-bound-space}    | $$ap + bq + cs \le \sqrt{a^2 + b^2 + c^2}\,\sqrt{p^2 + q^2 + s^2}$$                                                   |
+| :ref{#space-distance-rules}   | In $$\mathbb{R}^3$$, distance is never negative, the same both ways, and obeys the triangle inequality                |
+| :ref{#space-zoom}             | In $$\mathbb{R}^3$$, $$d(rP, rQ) = r \cdot d(P, Q)$$ for $$r > 0$$                                                    |
+
+:::

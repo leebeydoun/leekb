@@ -1,0 +1,776 @@
+{
+  "title": "Review: Coordinates",
+  "description": "Questions on the ideas in this chapter, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
+  "questions": [
+    {
+      "id": "read-a-point",
+      "stars": 1,
+      "topic": "Coordinates",
+      "question": "A point is $$5$$ to the right of the $$y$$-axis and $$2$$ below the $$x$$-axis. What are its coordinates?",
+      "options": [
+        "$$(-2, 5)$$",
+        "$$(5, 2)$$",
+        "$$(5, -2)$$",
+        "$$(2, -5)$$"
+      ],
+      "answer": 2,
+      "explanation": "The $$x$$-coordinate comes first and says how far across, and below the $$x$$-axis the $$y$$-coordinate is negative (:ref{#coordinates}). So the point is $$(5, -2)$$."
+    },
+    {
+      "id": "which-quadrant",
+      "stars": 1,
+      "topic": "Coordinates",
+      "question": "Which quadrant is the point $$(-6, 1)$$ in?",
+      "options": [
+        "The first",
+        "The second",
+        "The third",
+        "The fourth"
+      ],
+      "answer": 1,
+      "explanation": "Its $$x$$-coordinate is negative and its $$y$$-coordinate is positive, so it sits top left. The quadrants are numbered anticlockwise from the top right, which makes top left the second (:ref{#quadrants}). Numbering them clockwise would wrongly call it the fourth."
+    },
+    {
+      "id": "point-on-axis",
+      "stars": 1,
+      "topic": "Coordinates",
+      "question": "Which quadrant is the point $$(0, -3)$$ in?",
+      "options": [
+        "It is in no quadrant, since it lies on the $$y$$-axis",
+        "The third, since $$-3$$ is negative",
+        "The fourth, since $$0$$ counts as positive",
+        "Both the third and the fourth"
+      ],
+      "answer": 0,
+      "explanation": "An $$x$$-coordinate of $$0$$ puts the point on the $$y$$-axis. The quadrants are made of the points on neither axis, so $$(0, -3)$$ is in none of them (:ref{#quadrants})."
+    },
+    {
+      "id": "swapped-pair",
+      "stars": 2,
+      "topic": "Coordinates",
+      "question": "When do $$(a, b)$$ and $$(b, a)$$ name the same point?",
+      "options": [
+        "Always, since they use the same two numbers",
+        "Never, since the order is different",
+        "Exactly when $$a = -b$$",
+        "Exactly when $$a = b$$"
+      ],
+      "answer": 3,
+      "explanation": "By rule 1 of :ref{#coordinate-rules}, two pairs name the same point exactly when their first coordinates agree and their second coordinates agree. Here that says $$a = b$$. For example, $$(2, 3)$$ and $$(3, 2)$$ are different points."
+    },
+    {
+      "id": "coordinates-given",
+      "stars": 2,
+      "topic": "Coordinates",
+      "question": "Which of these does the Coordinates guide take as given, rather than prove?",
+      "options": [
+        "The distance formula",
+        "That $$(-3, 5)$$ is in the second quadrant",
+        "That each point has exactly one pair of coordinates, and every vertical line is perpendicular to every horizontal line",
+        "That the origin is $$(0, 0)$$"
+      ],
+      "answer": 2,
+      "explanation": "Those facts are rules 1 and 3 of :ref{#coordinate-rules}, which are taken from the picture. The quadrant and the origin follow from the definitions, and the distance formula is proved from the rules in the next guide (:ref{#distance-formula})."
+    },
+    {
+      "id": "move-the-origin",
+      "stars": 2,
+      "topic": "Coordinates",
+      "question": "The origin moves to the point that had coordinates $$(-1, 4)$$, and both axes keep pointing the same ways. What are the new coordinates of the point that was $$(3, 2)$$?",
+      "options": [
+        "$$(4, -2)$$",
+        "$$(2, 6)$$",
+        "$$(-4, 2)$$",
+        "$$(2, -2)$$"
+      ],
+      "answer": 0,
+      "explanation": "Each point's new coordinates are its old ones minus the old coordinates of the new origin, so $$\\big(3 - (-1), 2 - 4\\big) = (4, -2)$$. Dropping the brackets gives $$3 - 1 = 2$$, and adding instead of subtracting gives $$(2, 6)$$. The points themselves don't move, only the axes they are read from (:ref{#coordinates})."
+    },
+    {
+      "id": "turn-the-axes",
+      "stars": 3,
+      "topic": "Coordinates",
+      "question": "Keep the origin, and turn both axes a quarter turn anticlockwise about it. What are the new coordinates of the point that was $$(2, 3)$$?",
+      "options": [
+        "$$(-3, 2)$$",
+        "$$(3, -2)$$",
+        "$$(3, 2)$$",
+        "$$(-2, -3)$$"
+      ],
+      "answer": 1,
+      "explanation": "The new $$x$$-axis points up, so the point's $$3$$ up becomes its new first coordinate. The new $$y$$-axis points left, so being $$2$$ to the right gives a second coordinate of $$-2$$. The answer $$(-3, 2)$$ is where the point would go if you turned the point instead of the axes (:ref{#coordinates})."
+    },
+    {
+      "id": "same-distances",
+      "stars": 2,
+      "topic": "Coordinates",
+      "question": "Two surveyors put axes on the same field, one with the origin at the gate and one at an oak tree. Which of these must they agree on?",
+      "options": [
+        "The distance between any two molehills",
+        "The coordinates of each molehill",
+        "Which quadrant each molehill is in",
+        "The $$x$$-coordinate of each molehill"
+      ],
+      "answer": 0,
+      "explanation": "Coordinates depend on where the axes are put (:ref{#coordinates}), so the numbers and the quadrants can differ. Changing the axes doesn't move any point, so the distances stay the same."
+    },
+    {
+      "id": "anticlockwise-convention",
+      "stars": 3,
+      "topic": "Coordinates",
+      "question": "Why do these notes always put the positive $$y$$ direction a quarter turn anticlockwise from the positive $$x$$ direction?",
+      "options": [
+        "The other choice would make the distance formula give different answers",
+        "Turning clockwise by a quarter turn is not possible in the plane",
+        "So that every figure drawn from coordinates comes out the same way round, not as a mirror image",
+        "Because computer screens use this convention"
+      ],
+      "answer": 2,
+      "explanation": "With the other choice, a figure drawn from the same coordinates comes out flipped, a mirror image. Distances don't change under a flip, so the distance formula is unaffected. Screens use the opposite convention, with $$y$$ growing downwards (:ref{#coordinates})."
+    },
+    {
+      "id": "distance-formula-use",
+      "stars": 1,
+      "topic": "The distance between two points",
+      "question": "What is the distance between $$(-1, 2)$$ and $$(5, 10)$$?",
+      "options": [
+        "$$100$$",
+        "$$10$$",
+        "$$14$$",
+        "$$\\sqrt{80}$$"
+      ],
+      "answer": 1,
+      "explanation": "The differences are $$5 - (-1) = 6$$ and $$10 - 2 = 8$$, so the distance is $$\\sqrt{36 + 64} = 10$$ (:ref{#distance-formula}). The answer $$100$$ forgets the square root, $$14$$ adds the legs as a taxi would, and $$\\sqrt{80}$$ drops the brackets round $$-1$$."
+    },
+    {
+      "id": "level-points",
+      "stars": 2,
+      "topic": "The distance between two points",
+      "question": "What is the distance between $$(-3, 1)$$ and $$(2, 1)$$?",
+      "options": [
+        "$$1$$",
+        "$$-5$$",
+        "$$25$$",
+        "$$5$$"
+      ],
+      "answer": 3,
+      "explanation": "The points are level, so the distance is $$|2 - (-3)| = 5$$ (:ref{#line-distance}). Writing $$2 - 3$$ drops the brackets, a distance is never negative, and $$25$$ is the square of the distance."
+    },
+    {
+      "id": "root-of-square",
+      "stars": 2,
+      "topic": "The distance between two points",
+      "question": "Why is $$\\sqrt{(a - b)^2}$$ equal to $$|a - b|$$, and not always $$a - b$$?",
+      "options": [
+        "A square root is never negative, so it gives the size of $$a - b$$ without its sign",
+        "They are always equal, since the root undoes the square",
+        "It is $$a - b$$ when $$a < b$$, and $$b - a$$ otherwise",
+        "Because $$(a - b)^2 = a^2 - b^2$$"
+      ],
+      "answer": 0,
+      "explanation": "For $$a = 1$$ and $$b = 4$$, $$\\sqrt{(-3)^2} = \\sqrt{9} = 3$$, not $$-3$$. Part 1 of :ref{#line-distance} records this, and it is why the distance formula gives the same answer for level points as the number line."
+    },
+    {
+      "id": "right-angle-at-corner",
+      "stars": 2,
+      "topic": "The distance between two points",
+      "question": "In the proof of :ref{#distance-formula}, why does the triangle $$PRQ$$, with $$R = (x_2, y_1)$$, have a right angle at $$R$$?",
+      "options": [
+        "The angle is measured on the drawing",
+        "$$PR$$ lies on a horizontal line and $$RQ$$ on a vertical line, and every vertical line is perpendicular to every horizontal line",
+        "Because $$PQ$$ is the longest side",
+        "The distance formula says the sides fit the Pythagoras theorem"
+      ],
+      "answer": 1,
+      "explanation": "$$P$$ and $$R$$ share the second coordinate $$y_1$$, and $$R$$ and $$Q$$ share the first coordinate $$x_2$$. Rule 3 of :ref{#coordinate-rules} makes those grid lines perpendicular. Using the distance formula here would be circular, since it is what the proof sets out to show."
+    },
+    {
+      "id": "level-case",
+      "stars": 3,
+      "topic": "The distance between two points",
+      "question": "Why does the proof of the distance formula deal with level points, and points one above the other, separately?",
+      "options": [
+        "The formula gives the wrong answer for them",
+        "Their distance is always zero",
+        "The Pythagoras theorem only holds for whole-number sides",
+        "Then $$P$$, $$R$$ and $$Q$$ don't make a triangle, so the Pythagoras theorem can't be used, and the distance along a grid line gives the answer instead"
+      ],
+      "answer": 3,
+      "explanation": "If $$y_1 = y_2$$, the corner $$R$$ is $$Q$$ itself, and if $$x_1 = x_2$$, it is $$P$$, so there is no triangle. The formula still holds, and part 1 of :ref{#line-distance} shows it matches the distance along a grid line (:ref{#distance-formula})."
+    },
+    {
+      "id": "order-of-subtraction",
+      "stars": 2,
+      "topic": "The distance between two points",
+      "question": "Why can you subtract the coordinates in either order in the distance formula?",
+      "options": [
+        "Subtraction gives the same answer either way round",
+        "You can't: always subtract the smaller coordinate from the larger",
+        "Swapping the order changes the sign of each difference, and squaring removes the sign",
+        "Coordinates are never negative"
+      ],
+      "answer": 2,
+      "explanation": "$$x_1 - x_2 = -(x_2 - x_1)$$, and a number and its negative have the same square. So $$d(Q, P) = d(P, Q)$$, which agrees with rule 2 of :ref{#distance-and-angles/distance-rules}."
+    },
+    {
+      "id": "taxi-versus-crow",
+      "stars": 1,
+      "topic": "The distance between two points",
+      "question": "How does the taxi distance $$|x_2 - x_1| + |y_2 - y_1|$$ compare with the straight-line distance?",
+      "options": [
+        "The taxi distance is never shorter, and the two are equal exactly when the points are level or one above the other",
+        "The taxi distance is shorter whenever the points are far apart",
+        "They are always equal",
+        "The straight-line distance is longer whenever the route is diagonal"
+      ],
+      "answer": 0,
+      "explanation": "The two legs and the straight path make a right triangle, and two sides of a triangle together are at least as long as the third (:ref{#distance-and-angles/distance-rules}). When one leg is $$0$$, there is no triangle and the two distances agree."
+    },
+    {
+      "id": "range-without-roots",
+      "stars": 3,
+      "topic": "The distance between two points",
+      "question": "A router at $$(1, -2)$$ reaches $$6$$ m. Is a laptop at $$(4, 2)$$ in range?",
+      "options": [
+        "Out of range, since the squared distance $$25$$ is more than $$6$$",
+        "In range, since the squared distance $$25$$ is less than $$6^2 = 36$$",
+        "Out of range, since $$3 + 4 = 7$$ is more than $$6$$",
+        "You can't tell without working out a square root"
+      ],
+      "answer": 1,
+      "explanation": "Distances and radii are never negative, so comparing their squares gives the same answer (:ref{#real-numbers/power-order}). The squared distance must be compared with $$r^2$$, not $$r$$, and $$7$$ is the taxi distance. The actual distance is $$\\sqrt{25} = 5$$ (:ref{#distance-formula})."
+    },
+    {
+      "id": "distance-in-r2",
+      "stars": 1,
+      "topic": "Geometry from numbers",
+      "question": "In the coordinate plane $$\\mathbb{R}^2$$, what is the distance between two points?",
+      "options": [
+        "The length a ruler measures on a drawing",
+        "A length taken as given, with no formula",
+        "A number defined to be $$\\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$",
+        "$$|x_2 - x_1| + |y_2 - y_1|$$"
+      ],
+      "answer": 2,
+      "explanation": "In $$\\mathbb{R}^2$$ points are pairs of numbers and the distance is defined to be the formula (:ref{#coordinate-plane}). That is what lets facts about distance be proved with algebra. The last option is the taxi distance."
+    },
+    {
+      "id": "why-prove-rules",
+      "stars": 2,
+      "topic": "Geometry from numbers",
+      "question": "The Distance guide took the three rules for distance as given. Why does Geometry from numbers prove them?",
+      "options": [
+        "The rules turned out to be false in the picture",
+        "The rules don't apply to the plane, only to lines",
+        "The distance formula was proved using these rules, so they had to come first",
+        "Distance is now defined by a formula, so each rule is a claim about the formula that algebra can check"
+      ],
+      "answer": 3,
+      "explanation": "Once distance means the formula (:ref{#coordinate-plane}), a rule like the triangle inequality is a statement about square roots of numbers. It can be proved line by line, which is what :ref{#distance-zero}, :ref{#distance-symmetric} and :ref{#triangle-inequality-plane} do."
+    },
+    {
+      "id": "zero-distance",
+      "stars": 2,
+      "topic": "Geometry from numbers",
+      "question": "Which fact shows that $$d(P, Q) = 0$$ forces $$P = Q$$?",
+      "options": [
+        "A sum of two squares is $$0$$ exactly when both numbers being squared are $$0$$",
+        "A negative number has no square root",
+        "$$\\sqrt{a + b} = \\sqrt{a} + \\sqrt{b}$$",
+        "The triangle inequality"
+      ],
+      "answer": 0,
+      "explanation": "$$d(P, Q) = 0$$ exactly when $$(x_2 - x_1)^2 + (y_2 - y_1)^2 = 0$$, and that happens exactly when both differences are $$0$$ (:ref{#distance-zero}). Then the coordinates match, so $$P = Q$$ by :ref{#coordinate-plane}."
+    },
+    {
+      "id": "root-of-sum",
+      "stars": 1,
+      "topic": "Geometry from numbers",
+      "question": "Is $$\\sqrt{a^2 + b^2} = a + b$$ for positive numbers $$a$$ and $$b$$?",
+      "options": [
+        "Yes, the square root undoes the squares",
+        "Yes, as long as both numbers are whole",
+        "No: the left side is always the larger one",
+        "No: for $$a = 5$$ and $$b = 12$$, the left side is $$13$$ and the right side is $$17$$"
+      ],
+      "answer": 3,
+      "explanation": "A square root of a sum doesn't split into a sum of square roots. That is why the proof of :ref{#triangle-inequality-plane} squares both sides instead of working with the roots directly. The left side is the smaller one, since a detour along the two legs is longer."
+    },
+    {
+      "id": "job-of-the-lemma",
+      "stars": 3,
+      "topic": "Geometry from numbers",
+      "question": "In the proof of :ref{#triangle-inequality-plane}, what job does the lemma :ref{#product-bound} do?",
+      "options": [
+        "It shows that distances are never negative",
+        "After both sides are squared, they differ only in their middle terms, and the lemma says the left one, $$2(as + bt)$$, is at most the right one",
+        "It shows that the steps of two trips add up to the steps of the direct route",
+        "It removes the square root from $$d(P, M)$$"
+      ],
+      "answer": 1,
+      "explanation": "Squaring gives $$(a^2 + b^2) + 2(as + bt) + (s^2 + t^2)$$ on the left and the same with $$2\\sqrt{a^2 + b^2}\\,\\sqrt{s^2 + t^2}$$ in the middle on the right. :ref{#product-bound} compares exactly those middle terms."
+    },
+    {
+      "id": "lemma-negative-case",
+      "stars": 3,
+      "topic": "Geometry from numbers",
+      "question": "Why does the proof of :ref{#product-bound} treat the case $$as + bt < 0$$ on its own?",
+      "options": [
+        "Because the inequality is false in that case",
+        "Because a negative number has no square root",
+        "Comparing squares only tells you the order of numbers that are not negative, and a negative number can have the larger square",
+        "Because $$a$$, $$b$$, $$s$$ and $$t$$ must all be positive"
+      ],
+      "answer": 2,
+      "explanation": "For example, $$-5 < 3$$ but $$25 > 9$$. The step from squares back to numbers uses :ref{#real-numbers/power-order-converse}, which needs both numbers not negative. When $$as + bt < 0$$, the inequality holds anyway, since the right side is not negative."
+    },
+    {
+      "id": "lemma-equality",
+      "stars": 4,
+      "topic": "Geometry from numbers",
+      "question": "For which pair of steps $$(a, b)$$ and $$(s, t)$$ is $$as + bt$$ equal to $$\\sqrt{a^2 + b^2}\\,\\sqrt{s^2 + t^2}$$?",
+      "options": [
+        "$$(2, 5)$$ and $$(4, 10)$$",
+        "$$(2, 5)$$ and $$(5, 2)$$",
+        "$$(2, 5)$$ and $$(-4, -10)$$",
+        "$$(2, 5)$$ and $$(10, 4)$$"
+      ],
+      "answer": 0,
+      "explanation": "The proof of :ref{#product-bound} shows the squares differ by $$(at - bs)^2$$, so they are equal exactly when $$at = bs$$. For $$(4, 10)$$, $$2 \\cdot 10 = 5 \\cdot 4$$, and $$as + bt = 58 = \\sqrt{29}\\,\\sqrt{116}$$. The steps $$(-4, -10)$$ also have $$at = bs$$, but there $$as + bt = -58$$: equal squares, opposite signs."
+    },
+    {
+      "id": "slide-proof",
+      "stars": 2,
+      "topic": "Geometry from numbers",
+      "question": "Why does the slide $$(x, y) \\mapsto (x + h, y + k)$$ keep every distance in $$\\mathbb{R}^2$$?",
+      "options": [
+        "It is taken as given from the tracing paper",
+        "A slide doesn't change the coordinates of any point",
+        "Because $$h$$ and $$k$$ are positive",
+        "The $$h$$ and $$k$$ cancel when you subtract coordinates, so the differences in the distance formula don't change"
+      ],
+      "answer": 3,
+      "explanation": "$$(x_2 + h) - (x_1 + h) = x_2 - x_1$$, and the same for $$k$$. The Isometries chapter took this from the tracing paper, but in $$\\mathbb{R}^2$$ it is proved (:ref{#slide-distance}). The slide does change coordinates, and $$h$$ and $$k$$ can be any numbers."
+    },
+    {
+      "id": "negative-zoom-factor",
+      "stars": 4,
+      "topic": "Geometry from numbers",
+      "question": ":ref{#origin-zoom} assumes $$r > 0$$. What does the same calculation give for the map $$(x, y) \\mapsto (-2x, -2y)$$?",
+      "options": [
+        "Every distance is multiplied by $$-2$$",
+        "Every distance stays the same",
+        "Every distance is multiplied by $$2$$, since $$\\sqrt{(-2)^2} = 2$$",
+        "Nothing, because the proof breaks down completely"
+      ],
+      "answer": 2,
+      "explanation": "Each difference of coordinates is multiplied by $$-2$$, so each square is multiplied by $$4$$, and $$\\sqrt{4} = 2$$ comes out of the root. The proof of :ref{#origin-zoom} uses $$r > 0$$ to say $$\\sqrt{r^2} = r$$. For a negative number the root of its square is its size, $$|r|$$, and a distance can't be negative."
+    },
+    {
+      "id": "zoom-left-for-later",
+      "stars": 3,
+      "topic": "Geometry from numbers",
+      "question": "Which part of \"$$(x, y) \\mapsto (rx, ry)$$ is the zoom by $$r$$ about the origin\" does Geometry from numbers leave for a later chapter?",
+      "options": [
+        "That $$rP$$ is $$r$$ times as far from $$O$$ as $$P$$ is",
+        "That $$rP$$ lies on the ray from $$O$$ through $$P$$",
+        "That the zoom multiplies the distance between any two points by $$r$$",
+        "Nothing: every part is proved"
+      ],
+      "answer": 1,
+      "explanation": "Taking $$Q = O$$ in :ref{#origin-zoom} proves the distance part. Lying on a ray is a fact about lines, and lines in coordinates come later."
+    },
+    {
+      "id": "centre-sign",
+      "stars": 1,
+      "topic": "The equation of a circle",
+      "question": "What is the centre of the circle $$(x + 3)^2 + (y - 2)^2 = 16$$?",
+      "options": [
+        "$$(3, -2)$$",
+        "$$(-3, 2)$$",
+        "$$(3, 2)$$",
+        "$$(-3, -2)$$"
+      ],
+      "answer": 1,
+      "explanation": "The bracket $$(x + 3)$$ is $$\\big(x - (-3)\\big)$$, so $$a = -3$$, and $$(y - 2)$$ gives $$b = 2$$ (:ref{#circle-equation}). Each number in a bracket is the centre's coordinate with its sign changed."
+    },
+    {
+      "id": "radius-not-r-squared",
+      "stars": 1,
+      "topic": "The equation of a circle",
+      "question": "What is the radius of the circle $$(x - 1)^2 + (y + 4)^2 = 10$$?",
+      "options": [
+        "$$\\sqrt{10}$$",
+        "$$10$$",
+        "$$5$$",
+        "$$100$$"
+      ],
+      "answer": 0,
+      "explanation": "The right side of the equation is $$r^2$$ (:ref{#circle-equation}). So $$r^2 = 10$$ and $$r = \\sqrt{10}$$, about $$3.16$$."
+    },
+    {
+      "id": "squaring-back",
+      "stars": 2,
+      "topic": "The equation of a circle",
+      "question": "The proof of :ref{#circle-equation} goes from $$d(C, P)^2 = r^2$$ back to $$d(C, P) = r$$. Why is that step allowed?",
+      "options": [
+        "Two numbers with equal squares are always equal",
+        "Because $$r^2$$ is positive",
+        "Both $$d(C, P)$$ and $$r$$ are not negative, and two numbers that are not negative with equal squares are equal",
+        "It isn't: the equation only shows one direction"
+      ],
+      "answer": 2,
+      "explanation": "In general equal squares don't give equal numbers: $$(-3)^2 = 3^2$$. A distance and a radius are never negative, so :ref{#real-numbers/equal-squares} applies, and the equation works in both directions."
+    },
+    {
+      "id": "inside-or-outside",
+      "stars": 2,
+      "topic": "The equation of a circle",
+      "question": "Is the point $$(4, -1)$$ inside or outside the circle $$(x - 1)^2 + (y - 3)^2 = 20$$?",
+      "options": [
+        "Inside, since its distance from the centre is $$5$$, which is less than $$20$$",
+        "On the circle, since $$4 + 16 = 20$$",
+        "Inside, since $$25$$ is less than $$20^2$$",
+        "Outside, since $$9 + 16 = 25$$ is more than $$20$$"
+      ],
+      "answer": 3,
+      "explanation": "By :ref{#disc-inequality}, compare the left side, $$3^2 + (-4)^2 = 25$$, with the right side $$r^2 = 20$$. The point is $$5$$ from the centre and the radius is $$\\sqrt{20} \\approx 4.47$$, so it is outside. The wrong options treat $$20$$ as the radius."
+    },
+    {
+      "id": "ordered-squares",
+      "stars": 2,
+      "topic": "The equation of a circle",
+      "question": "Why does comparing $$(x - a)^2 + (y - b)^2$$ with $$r^2$$ tell you whether a point is inside the circle?",
+      "options": [
+        "Squaring always keeps the order of two numbers",
+        "Points inside a circle have smaller coordinates",
+        "It doesn't: you have to work out the square root",
+        "That sum is $$d(C, P)^2$$, and for numbers that are not negative, squaring keeps their order"
+      ],
+      "answer": 3,
+      "explanation": "Squaring doesn't keep order in general: $$-4 < 3$$ but $$16 > 9$$. Distances and radii are never negative, so :ref{#real-numbers/power-order} and its converse apply (:ref{#disc-inequality})."
+    },
+    {
+      "id": "expanded-not-always-circle",
+      "stars": 2,
+      "topic": "The equation of a circle",
+      "question": "Does every equation $$x^2 + y^2 + Dx + Ey + F = 0$$ describe a circle?",
+      "options": [
+        "No: after completing the square it may describe a circle, a single point, or no points at all",
+        "Yes, with radius $$\\sqrt{F}$$",
+        "No: it is a circle exactly when $$F < 0$$",
+        "Yes, as long as the numbers in it are whole"
+      ],
+      "answer": 0,
+      "explanation": "Completing the square gives $$\\left(x + \\frac{D}{2}\\right)^2 + \\left(y + \\frac{E}{2}\\right)^2 = c$$, and $$c$$ can be positive, zero or negative (:ref{#expanded-circle}). A negative $$F$$ does make $$c$$ positive, but $$x^2 + y^2 - 6x + 5 = 0$$ has $$F = 5$$ and is still a circle, with $$c = 4$$."
+    },
+    {
+      "id": "expanded-single-point",
+      "stars": 3,
+      "topic": "The equation of a circle",
+      "question": "What does $$x^2 + y^2 + 6x - 4y + 13 = 0$$ describe?",
+      "options": [
+        "The circle with centre $$(-3, 2)$$ and radius $$\\sqrt{13}$$",
+        "The single point $$(-3, 2)$$",
+        "No points at all",
+        "The circle with centre $$(6, -4)$$ and radius $$13$$"
+      ],
+      "answer": 1,
+      "explanation": "Completing the square gives $$(x + 3)^2 + (y - 2)^2 = 9 + 4 - 13 = 0$$. A sum of two squares is $$0$$ exactly when both are $$0$$, so only $$(-3, 2)$$ fits (:ref{#expanded-circle}). The constant $$13$$ is not $$r^2$$ until the squares are completed."
+    },
+    {
+      "id": "expanded-centre-radius",
+      "stars": 3,
+      "topic": "The equation of a circle",
+      "question": "What are the centre and radius of $$x^2 + y^2 - 8x + 2y - 8 = 0$$?",
+      "options": [
+        "Centre $$(-8, 2)$$, radius $$\\sqrt{8}$$",
+        "Centre $$(-4, 1)$$, radius $$5$$",
+        "Centre $$(4, -1)$$, radius $$5$$",
+        "Centre $$(4, -1)$$, radius $$25$$"
+      ],
+      "answer": 2,
+      "explanation": "Completing the square, $$x^2 - 8x = (x - 4)^2 - 16$$ and $$y^2 + 2y = (y + 1)^2 - 1$$. So $$(x - 4)^2 + (y + 1)^2 = 16 + 1 + 8 = 25$$, the circle with centre $$(4, -1)$$ and radius $$5$$ (:ref{#expanded-circle})."
+    },
+    {
+      "id": "line-touches",
+      "stars": 3,
+      "topic": "The equation of a circle",
+      "question": "Where does the line $$y = 1$$ meet the circle with centre $$(1, -2)$$ and radius $$3$$?",
+      "options": [
+        "At two points, since $$1 < 3$$",
+        "At the one point $$(1, 1)$$, since the line is exactly $$3$$ above the centre",
+        "Nowhere, since the centre is below the line",
+        "At the one point $$(1, -2)$$"
+      ],
+      "answer": 1,
+      "explanation": "What matters is how far the line is from the centre, $$|k - b| = |1 - (-2)| = 3$$, not $$k$$ itself. That equals $$r$$, so the line touches the circle at $$(a, k) = (1, 1)$$ (:ref{#circle-horizontal-line})."
+    },
+    {
+      "id": "lines-crossing-twice",
+      "stars": 4,
+      "topic": "The equation of a circle",
+      "question": "For which numbers $$k$$ does the line $$y = k$$ cross the circle $$(x - 1)^2 + (y + 2)^2 = 9$$ at two points?",
+      "options": [
+        "$$-3 < k < 3$$",
+        "$$-1 < k < 5$$",
+        "$$-11 < k < 7$$",
+        "$$-5 < k < 1$$"
+      ],
+      "answer": 3,
+      "explanation": "The centre is $$(1, -2)$$ and the radius is $$3$$, so the line crosses twice exactly when $$|k + 2| < 3$$ (:ref{#circle-horizontal-line}), that is, $$-5 < k < 1$$. The other options forget the centre, read its sign wrongly, or use $$r^2 = 9$$ as the radius."
+    },
+    {
+      "id": "which-is-converse",
+      "stars": 1,
+      "topic": "Whole-number right triangles",
+      "question": "Which statement is the converse of the Pythagoras theorem?",
+      "options": [
+        "If $$a^2 + b^2 = c^2$$, then the angle opposite $$c$$ is a right angle",
+        "If the angle opposite $$c$$ is a right angle, then $$a^2 + b^2 = c^2$$",
+        "$$a^2 + b^2 = c^2$$ for every triangle",
+        "If $$a + b = c$$, then the triangle has a right angle"
+      ],
+      "answer": 0,
+      "explanation": "The Pythagoras theorem goes from a right angle to the equation (:ref{#distance-and-angles/pythagoras}). Its converse runs the other way, from the equation to the right angle (:ref{#pythagoras-converse})."
+    },
+    {
+      "id": "converse-needs-proof",
+      "stars": 2,
+      "topic": "Whole-number right triangles",
+      "question": "Why does the converse of the Pythagoras theorem need its own proof?",
+      "options": [
+        "It doesn't: it is the same statement written differently",
+        "Because the converse is false for some triangles",
+        "A statement read backwards is a different claim, and can be false when the original is true",
+        "Because it is only about whole numbers"
+      ],
+      "answer": 2,
+      "explanation": "Every multiple of $$4$$ is even, but $$6$$ is even and not a multiple of $$4$$. So knowing a statement says nothing about its converse, and :ref{#pythagoras-converse} is proved separately."
+    },
+    {
+      "id": "converse-sss-step",
+      "stars": 3,
+      "topic": "Whole-number right triangles",
+      "question": "In the proof of :ref{#pythagoras-converse}, what does side, side, side (:ref{#isometries/sss}) do?",
+      "options": [
+        "It shows that $$O$$, $$A$$ and $$B$$ have a right angle at $$O$$",
+        "It works out $$d(A, B) = c$$",
+        "It proves $$a^2 + b^2 = c^2$$",
+        "It gives an isometry from the given triangle to the right triangle on the axes, since their three sides match"
+      ],
+      "answer": 3,
+      "explanation": "The right angle at $$O$$ comes from the axes, and $$d(A, B) = c$$ from the distance formula. Then the two triangles have equal sides, so side, side, side gives an isometry between them, and isometries keep angles (:ref{#isometries/isometry-angles})."
+    },
+    {
+      "id": "find-the-right-angle",
+      "stars": 2,
+      "topic": "Whole-number right triangles",
+      "question": "A triangle has sides $$12$$, $$35$$ and $$37$$. Where is its right angle?",
+      "options": [
+        "Between the sides $$12$$ and $$35$$, opposite the side $$37$$",
+        "Between the sides $$35$$ and $$37$$",
+        "It has none, since $$12 + 35 \\ne 37$$",
+        "You can't tell without measuring an angle"
+      ],
+      "answer": 0,
+      "explanation": "$$12^2 + 35^2 = 144 + 1225 = 1369 = 37^2$$, so by :ref{#pythagoras-converse} the angle opposite $$37$$ is a right angle. The test squares the sides, and three lengths are enough without measuring."
+    },
+    {
+      "id": "rational-point-on-circle",
+      "stars": 2,
+      "topic": "Whole-number right triangles",
+      "question": "Which of these is a rational point on the unit circle?",
+      "options": [
+        "$$\\left(\\frac{1}{2}, \\frac{1}{2}\\right)$$",
+        "$$\\left(\\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2}\\right)$$",
+        "$$\\left(\\frac{1}{3}, \\frac{2}{3}\\right)$$",
+        "$$\\left(\\frac{8}{17}, \\frac{15}{17}\\right)$$"
+      ],
+      "answer": 3,
+      "explanation": "A rational point has both coordinates rational (:ref{#rational-point}), and the unit circle needs $$x^2 + y^2 = 1$$. $$\\frac{64 + 225}{289} = 1$$ for the third point. The first and last are rational but not on the circle, and the second is on the circle but not rational."
+    },
+    {
+      "id": "irrational-slope",
+      "stars": 3,
+      "topic": "Whole-number right triangles",
+      "question": "The line through $$(-1, 0)$$ with slope $$t = \\sqrt{2}$$ meets the unit circle again at $$\\left(-\\frac{1}{3}, \\frac{2\\sqrt{2}}{3}\\right)$$. Is that a rational point?",
+      "options": [
+        "Yes, since its first coordinate $$-\\frac{1}{3}$$ is a fraction",
+        "No: its second coordinate is irrational, as part 3 of the theorem predicts for an irrational slope",
+        "Yes, since every line through a rational point meets the circle again at a rational point",
+        "The line doesn't meet the circle again"
+      ],
+      "answer": 1,
+      "explanation": "Part 3 of :ref{#rational-points} says the second point is rational exactly when $$t$$ is rational. A rational point needs both coordinates rational (:ref{#rational-point}), and one rational coordinate is not enough."
+    },
+    {
+      "id": "why-second-point-rational",
+      "stars": 3,
+      "topic": "Whole-number right triangles",
+      "question": "Why is the second point rational when the slope $$t$$ is rational?",
+      "options": [
+        "The quadratic formula never involves square roots",
+        "Every point of the unit circle is a rational point",
+        "The quadratic for $$x$$ already has the solution $$x = -1$$, and the product of its two solutions is $$\\frac{t^2 - 1}{1 + t^2}$$, so the other solution is a fraction built from $$t$$",
+        "Because the line passes through $$(0, 0)$$"
+      ],
+      "answer": 2,
+      "explanation": "Knowing one solution and the product of both pins down the other: $$x_2 = \\frac{1 - t^2}{1 + t^2}$$ (:ref{#rational-points}). Sums, products and quotients of fractions are fractions, so $$x_2$$ and $$y_2 = t(x_2 + 1)$$ are rational. Points like $$\\left(\\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2}\\right)$$ show that not every point is rational."
+    },
+    {
+      "id": "slope-for-a-point",
+      "stars": 4,
+      "topic": "Whole-number right triangles",
+      "question": "Which slope $$t$$ gives the point $$\\left(\\frac{20}{29}, \\frac{21}{29}\\right)$$ as the second point of :ref{#rational-points}?",
+      "options": [
+        "$$\\frac{21}{20}$$",
+        "$$\\frac{3}{7}$$",
+        "$$\\frac{2}{5}$$",
+        "$$\\frac{20}{21}$$"
+      ],
+      "answer": 1,
+      "explanation": "The line goes through $$(-1, 0)$$, not the origin, so $$t = \\frac{y}{x + 1} = \\frac{21/29}{49/29} = \\frac{21}{49} = \\frac{3}{7}$$ (part 2 of :ref{#rational-points}). The slope $$\\frac{21}{20}$$ is the line from the origin, and $$\\frac{2}{5}$$ gives $$\\left(\\frac{21}{29}, \\frac{20}{29}\\right)$$, with the legs swapped."
+    },
+    {
+      "id": "multiplier-k",
+      "stars": 3,
+      "topic": "Whole-number right triangles",
+      "question": "The triple $$12, 5, 13$$ has slope $$t = \\frac{5}{12 + 13} = \\frac{1}{5}$$. With $$m = 1$$ and $$n = 5$$, what does :ref{#triple-formula} say about it?",
+      "options": [
+        "The formula gives $$12, 5, 13$$ itself, so $$k = 1$$",
+        "$$12, 5, 13$$ doesn't come from the formula at all",
+        "The formula gives $$24, 10, 26$$, so $$12, 5, 13$$ is that triple times $$k = \\frac{1}{2}$$",
+        "The formula gives $$24, 10, 26$$, so $$k = 2$$"
+      ],
+      "answer": 2,
+      "explanation": "$$n^2 - m^2 = 24$$, $$2mn = 10$$ and $$n^2 + m^2 = 26$$. Part 2 of :ref{#triple-formula} allows a rational multiplier $$k$$, and here $$k = \\frac{13}{26} = \\frac{1}{2}$$. Since $$2mn$$ is always even, a triple with an odd second leg can't come out of the formula with $$k = 1$$."
+    },
+    {
+      "id": "spot-below",
+      "stars": 1,
+      "topic": "Points in space",
+      "question": "A drone hovers at $$(12, 7, 30)$$, with $$z$$ measured upwards from the ground. Which point on the ground is directly below it?",
+      "options": [
+        "$$(0, 0, 30)$$",
+        "$$(12, 0, 0)$$",
+        "$$(12, 7, -30)$$",
+        "$$(12, 7, 0)$$"
+      ],
+      "answer": 3,
+      "explanation": "The points with the same first two coordinates make an upright line, and the ground is the layer $$z = 0$$ (:ref{#space-coordinate-rules}). So the spot below keeps $$x$$ and $$y$$ and has $$z = 0$$. The point $$(12, 7, -30)$$ is $$30$$ below the ground."
+    },
+    {
+      "id": "space-distance-use",
+      "stars": 1,
+      "topic": "Points in space",
+      "question": "How far is $$(2, 3, 6)$$ from the origin?",
+      "options": [
+        "$$7$$",
+        "$$11$$",
+        "$$\\sqrt{13}$$",
+        "$$49$$"
+      ],
+      "answer": 0,
+      "explanation": "By :ref{#space-distance}, the distance is $$\\sqrt{4 + 9 + 36} = \\sqrt{49} = 7$$. Adding the coordinates gives $$11$$, leaving out the $$z$$ term gives $$\\sqrt{13}$$, and $$49$$ forgets the square root."
+    },
+    {
+      "id": "pythagoras-twice",
+      "stars": 2,
+      "topic": "Points in space",
+      "question": "How does the proof of the distance formula in space use the Pythagoras theorem?",
+      "options": [
+        "Once, in a right triangle with all three differences as its sides",
+        "It doesn't: the formula is taken as given",
+        "Three times, once for each axis",
+        "Twice: once for the diagonal across a flat layer, through the distance formula in the plane, and once in an upright right triangle"
+      ],
+      "answer": 3,
+      "explanation": "The corner $$R = (x_2, y_2, z_1)$$ splits the trip into a step across the layer $$z = z_1$$, measured with :ref{#distance-formula}, and a climb straight up. Those two make a right triangle with $$PQ$$ as its hypotenuse (:ref{#space-distance})."
+    },
+    {
+      "id": "upright-rule",
+      "stars": 2,
+      "topic": "Points in space",
+      "question": "In the proof of :ref{#space-distance}, which fact makes the triangle $$PRQ$$ have a right angle at $$R$$?",
+      "options": [
+        "Each triple names exactly one point",
+        "The distance formula in the plane",
+        "An upright line is perpendicular to every line in a flat layer through the point where it crosses the layer",
+        "The triangle inequality"
+      ],
+      "answer": 2,
+      "explanation": "$$RQ$$ is upright and $$PR$$ lies in the layer $$z = z_1$$, so rule 4 of :ref{#space-coordinate-rules} makes them perpendicular. That rule is the flagpole fact, taken as given."
+    },
+    {
+      "id": "read-a-sphere",
+      "stars": 2,
+      "topic": "Points in space",
+      "question": "What does $$(x - 2)^2 + (y + 1)^2 + z^2 = 49$$ describe?",
+      "options": [
+        "The sphere with centre $$(-2, 1, 0)$$ and radius $$7$$",
+        "The sphere with centre $$(2, -1, 0)$$ and radius $$7$$",
+        "The sphere with centre $$(2, -1, 0)$$ and radius $$49$$",
+        "Nothing, since there is no bracket for $$z$$"
+      ],
+      "answer": 1,
+      "explanation": "$$z^2$$ is $$(z - 0)^2$$, so the centre's third coordinate is $$0$$, and each bracket's number has its sign changed (:ref{#sphere-equation}). The right side is $$r^2$$, so $$r = 7$$."
+    },
+    {
+      "id": "sphere-slice",
+      "stars": 3,
+      "topic": "Points in space",
+      "question": "The sphere with centre $$(0, 0, 5)$$ and radius $$13$$ meets the floor $$z = 0$$. What shape does it make there?",
+      "options": [
+        "The circle with centre $$O$$ and radius $$12$$",
+        "The circle with centre $$O$$ and radius $$13$$",
+        "The circle with centre $$O$$ and radius $$8$$",
+        "Nothing, since the centre is above the floor"
+      ],
+      "answer": 0,
+      "explanation": "Putting $$z = 0$$ into :ref{#sphere-equation} gives $$x^2 + y^2 + 25 = 169$$, so $$x^2 + y^2 = 144$$, the circle of radius $$12$$ (:ref{#circle-equation}). Radii combine through squares, so $$13 - 5 = 8$$ is wrong. The centre is $$5$$ above the floor and the radius is $$13$$, so the sphere reaches below it."
+    },
+    {
+      "id": "drone-range",
+      "stars": 3,
+      "topic": "Points in space",
+      "question": "A controller at the origin reaches $$50$$ m. Is a drone at $$(30, 40, 10)$$ in range?",
+      "options": [
+        "In range, since the spot on the ground below it is exactly $$50$$ m away",
+        "In range, since height doesn't change the distance from the controller",
+        "Out of range, since the squared distance $$900 + 1600 + 100 = 2600$$ is more than $$50^2 = 2500$$",
+        "Out of range, since $$30 + 40 + 10 = 80$$ is more than $$50$$"
+      ],
+      "answer": 2,
+      "explanation": "By :ref{#sphere-equation}, the drone is in range exactly when its squared distance is at most $$2500$$. The height adds $$10^2$$, which pushes it out of range. Adding the coordinates is not the distance, even though it happens to give the right verdict here."
+    },
+    {
+      "id": "shadow-distance",
+      "stars": 3,
+      "topic": "Points in space",
+      "question": "How does the distance between two points in space compare with the distance between the spots directly below them on the floor?",
+      "options": [
+        "It is never shorter, and the two are equal exactly when the points are at the same height",
+        "It can be shorter, when one point is below the floor",
+        "They are always equal",
+        "It is always longer"
+      ],
+      "answer": 0,
+      "explanation": "By :ref{#space-distance}, $$d(P, Q)^2$$ is the squared floor distance plus $$(z_2 - z_1)^2$$, which is never negative. The extra term is $$0$$ exactly when $$z_1 = z_2$$, whatever the signs of the heights."
+    },
+    {
+      "id": "rules-in-space",
+      "stars": 3,
+      "topic": "Points in space",
+      "question": "What changes when the triangle inequality is proved in space instead of the plane?",
+      "options": [
+        "It needs a new idea, because space is not flat",
+        "Each step gets one more term: the lemma has three products, and the gap between the squares is a sum of three squares",
+        "It is taken as given in space",
+        "It fails in space"
+      ],
+      "answer": 1,
+      "explanation": "The proof of :ref{#space-distance-rules} follows :ref{#triangle-inequality-plane} line by line. Its lemma, :ref{#product-bound-space}, has $$ap + bq + cs$$ in place of $$as + bt$$, and the gap is $$(aq - bp)^2 + (as - cp)^2 + (bs - cq)^2$$."
+    }
+  ]
+}

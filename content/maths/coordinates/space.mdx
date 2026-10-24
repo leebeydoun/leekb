@@ -1,0 +1,519 @@
+---
+title: Points in space
+description:
+  Three coordinates for every point in space, the distance between two points, and the equation of a
+  sphere.
+---
+
+Imagine flying a drone over a field and telling a friend where it is. "Forty metres east and thirty
+metres north" isn't enough, since that only finds the spot on the grass below it. You also need its
+height, say $$25$$ metres.
+
+Two numbers pin down a point on a map, and it takes three to pin down a point in space. In this
+guide we'll add a third axis to the plane, and see that distance, circles and the rules for distance
+all carry over to space with one more term.
+
+## Three axes
+
+Stand in a corner of a room and look down at your feet. Three edges meet there: two run along the
+floor, where the walls meet it, and one runs straight up, where the walls meet each other. Each edge
+is square to the other two. Measure along one floor edge, then parallel to the other, then up, and
+any point in the room has three numbers.
+
+Coordinates in space use three lines like these through a point $$O$$. They are called the
+$$x$$-axis, the $$y$$-axis and the $$z$$-axis, and a point is written $$(x, y, z)$$. In the drone
+picture, $$x$$ points east, $$y$$ points north and $$z$$ points up.
+
+<SpaceAxes caption="To reach the drone at (40, 30, 25), go 40 along the x-axis, then 30 parallel to the y-axis, then 25 straight up." />
+
+As with the plane in :ref{#coordinate-rules}, the way the axes fit space is taken from the picture.
+
+:::remark[Rules for coordinates in space]{#space-coordinate-rules}
+
+Choose a point $$O$$, the **origin**, and three lines through it, each perpendicular to the other
+two: the $$x$$-axis, the $$y$$-axis and the $$z$$-axis. Give all three the same unit of length, and
+a positive direction each. Then:
+
+1. **Points and triples**: each point of space has exactly one triple of numbers $$(x, y, z)$$, its
+   coordinates, and each triple names exactly one point
+2. **Flat layers**: for each number $$c$$, the points with $$z = c$$ form a flat plane, and in it
+   $$x$$ and $$y$$ work as coordinates, following :ref{#coordinate-rules}. The layer $$z = 0$$ is
+   the floor, and holds the $$x$$-axis and the $$y$$-axis
+3. **Upright lines**: for each $$x$$ and $$y$$, the points with those first two coordinates form a
+   line parallel to the $$z$$-axis. Along it, the distance between two points is the difference of
+   their heights, $$\lvert z_2 - z_1 \rvert$$
+4. **Upright meets flat square on**: an upright line is perpendicular to every line in a flat layer
+   through the point where it crosses that layer
+
+These are taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Cartesian_coordinate_system#Three_dimensions"}
+
+:::
+
+Rule 4 is the flagpole fact from
+[Using the theorem twice](../distance-and-angles/pythagoras.mdx#using-the-theorem-twice): a pole
+standing straight up is square to the ground in every direction you walk away from it.
+
+:::example[Where the drone is]
+
+With the pilot at $$O$$, the drone in the figure under [Three axes](#three-axes) is at
+$$(40, 30, 25)$$. The spot on the grass straight below it is $$(40, 30, 0)$$, on the floor
+$$z = 0$$. A point with a negative $$z$$, such as $$(40, 30, -6)$$, is below the ground, perhaps at
+the bottom of a well.
+
+:::
+
+A 3D printer works with coordinates like these. It builds an object in thin layers: its nozzle moves
+to a list of points $$(x, y, z)$$, laying down plastic in one flat layer, and then $$z$$ goes up by
+a fraction of a millimetre for the next.
+
+## The distance between two points
+
+Picture a room $$5$$ m long, $$4$$ m wide and $$3$$ m high, and a string stretched from a corner
+$$P$$ on the floor to the far top corner $$Q$$. The string doesn't lie on the floor or on any wall,
+so no triangle drawn on a wall gives its length. Instead, go there in two steps. First cross the
+floor diagonally to the corner $$R$$ directly below $$Q$$, then climb straight up to $$Q$$.
+
+The floor diagonal is the hypotenuse of a right triangle with legs $$5$$ and $$4$$, so its length is
+$$\sqrt{25 + 16} = \sqrt{41}$$. The climb from $$R$$ to $$Q$$ meets the floor square on, so $$P$$,
+$$R$$ and $$Q$$ make a second right triangle, with legs $$\sqrt{41}$$ and $$3$$. Its hypotenuse is
+the string:
+
+```math
+d(P, Q) = \sqrt{41 + 9} = \sqrt{50} \approx 7.07
+```
+
+<RoomDiagonal caption="A room 5 by 4 by 3. The floor diagonal PR is √41 long, and the string PQ through the room is √50 long." />
+
+[Using the theorem twice](../distance-and-angles/pythagoras.mdx#using-the-theorem-twice) did this
+for a box $$6$$ by $$3$$ by $$2$$. With coordinates, the two steps work for any two points: the
+differences in $$x$$ and $$y$$ give the floor diagonal, and the difference in $$z$$ gives the climb.
+
+:::theorem[Distance in space]{#space-distance}
+
+The distance between $$P = (x_1, y_1, z_1)$$ and $$Q = (x_2, y_2, z_2)$$ is
+
+```math
+d(P, Q) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_distance#Higher_dimensions"}
+
+**The corner.** Let $$R = (x_2, y_2, z_1)$$. It is at the same height as $$P$$ and directly below or
+above $$Q$$, like the corner $$R$$ of the room.
+
+**Across the layer.** $$P$$ and $$R$$ both have $$z = z_1$$, so they lie in one flat layer, where
+$$x$$ and $$y$$ are coordinates (rule 2 of :ref{#space-coordinate-rules}). By
+:ref{#distance-formula},
+
+```math
+d(P, R)^2 = (x_2 - x_1)^2 + (y_2 - y_1)^2
+```
+
+**Up or down.** $$R$$ and $$Q$$ have the same $$x$$ and $$y$$, so they lie on one upright line, and
+$$d(R, Q) = \lvert z_2 - z_1 \rvert$$ (rule 3). So $$d(R, Q)^2 = (z_2 - z_1)^2$$.
+
+**Put them together.** If $$R$$ is $$P$$ or $$Q$$, one of the two distances is $$0$$ and the other
+is $$d(P, Q)$$, so $$d(P, Q)^2$$ is the sum of the two squares above. Otherwise, the upright line
+through $$R$$ and $$Q$$ is perpendicular to the line $$PR$$ in the layer (rule 4), so $$PRQ$$ is a
+right triangle with its right angle at $$R$$. By :ref{#distance-and-angles/pythagoras},
+
+```math
+d(P, Q)^2 = d(P, R)^2 + d(R, Q)^2 = (x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2
+```
+
+Either way, $$d(P, Q)$$ is not negative, so it is the square root of the right side
+(:ref{#real-numbers/square-root}).
+
+:::
+
+:::example[Two points with negative coordinates]
+
+Take $$P = (1, -2, 3)$$ and $$Q = (4, 2, -9)$$. The differences are $$4 - 1 = 3$$, $$2 - (-2) = 4$$
+and $$-9 - 3 = -12$$. So
+
+```math
+d(P, Q) = \sqrt{3^2 + 4^2 + (-12)^2} = \sqrt{9 + 16 + 144} = \sqrt{169} = 13
+```
+
+As in the plane, the order of subtraction doesn't matter, because each difference is squared.
+
+:::
+
+:::example[How far away the drone is]
+
+The drone at $$(40, 30, 25)$$ is at a distance
+
+```math
+\sqrt{40^2 + 30^2 + 25^2} = \sqrt{1600 + 900 + 625} = \sqrt{3125} \approx 55.9
+```
+
+metres from its pilot at $$O$$. The spot on the grass below it is only
+$$\sqrt{1600 + 900} = \sqrt{2500} = 50$$ metres away. A controller with a range of $$50$$ metres
+would reach the spot on the ground, but not the drone.
+
+:::
+
+## Spheres
+
+Blow up a balloon until it is round. Every point of its skin is the same distance from the middle.
+That is the circle's description, "every point at distance $$r$$ from a centre", read in space
+instead of the plane. The shape it gives is a sphere, and the solid ball inside it is the points at
+distance at most $$r$$.
+
+:::definition[Sphere and ball]{#sphere}
+
+Let $$C$$ be a point in space and $$r$$ a positive number.
+
+- The **sphere** with centre $$C$$ and radius $$r$$ is the set of all points $$P$$ with
+  $$d(C, P) = r$$.
+- The **ball** with centre $$C$$ and radius $$r$$ is the set of all points $$P$$ with
+  $$d(C, P) \le r$$.
+
+:::
+
+Writing out the distance with :ref{#space-distance} turns each description into an equation or an
+inequality, as :ref{#circle-equation} did for circles.
+
+:::proposition[Equation of a sphere]{#sphere-equation}
+
+Let $$C = (a, b, c)$$ and $$r > 0$$. A point $$(x, y, z)$$ is
+
+1. on the sphere with centre $$C$$ and radius $$r$$ exactly when
+   $$(x - a)^2 + (y - b)^2 + (z - c)^2 = r^2$$
+2. in the ball with centre $$C$$ and radius $$r$$ exactly when
+   $$(x - a)^2 + (y - b)^2 + (z - c)^2 \le r^2$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Sphere#Equations"}
+
+Write $$P = (x, y, z)$$. By :ref{#space-distance}, $$d(C, P)^2$$ is the left side of both parts.
+Both $$d(C, P)$$ and $$r$$ are not negative.
+
+**Part 1.** If $$d(C, P) = r$$, squaring gives $$d(C, P)^2 = r^2$$. If $$d(C, P)^2 = r^2$$, then
+$$d(C, P) = r$$ by :ref{#real-numbers/equal-squares}, since both are not negative.
+
+**Part 2.** For numbers that are not negative, $$d(C, P) \le r$$ exactly when $$d(C, P)^2 \le r^2$$,
+by :ref{#real-numbers/power-order} and :ref{#real-numbers/power-order-converse}.
+
+:::
+
+:::example[Is the point on the sphere]
+
+The sphere with centre $$(1, -2, 0)$$ and radius $$3$$ has the equation
+$$(x - 1)^2 + (y + 2)^2 + z^2 = 9$$. The point $$(3, 0, 1)$$ is on it, since
+
+```math
+(3 - 1)^2 + (0 + 2)^2 + 1^2 = 4 + 4 + 1 = 9
+```
+
+:::
+
+Cut an orange in half and the cut face is a disc. In the same way, a flat layer that cuts a sphere
+meets it in a circle. Take the sphere with centre $$(0, 0, 3)$$ and radius $$5$$, which pokes down
+through the floor. On the floor $$z = 0$$, its equation becomes
+
+```math
+x^2 + y^2 + (0 - 3)^2 = 25, \qquad\text{that is,}\qquad x^2 + y^2 = 16
+```
+
+In the floor, where $$x$$ and $$y$$ are coordinates, this is the circle with centre $$O$$ and radius
+$$4$$, by :ref{#circle-equation}.
+
+Spheres are how GPS finds where you are. Each satellite sends out the time and its own position as a
+triple of numbers, in axes through the centre of the Earth. From how long the signal took to arrive,
+the receiver knows its distance from that satellite, which puts it somewhere on a sphere round the
+satellite. The spheres for several satellites meet at one point, and that point is the receiver's
+position.
+
+## The distance rules in space
+
+[Geometry from numbers](./geometry-from-numbers.mdx) turned the plane into pairs of numbers, defined
+distance by the formula, and then proved the rules for distance with algebra. Space works the same
+way, with three numbers instead of two. Every step of the proofs gets one more term, and nothing
+else changes.
+
+:::definition[Coordinate space]{#coordinate-space}
+
+$$\mathbb{R}^3$$, read "R three", is the set of all triples $$(x, y, z)$$ of real numbers. Two
+triples are equal exactly when their first, second and third coordinates are all equal. The distance
+between two of them is defined by the formula in :ref{#space-distance}.
+
+:::
+
+The proof of the triangle inequality in the plane rested on :ref{#product-bound}. Its version in
+space has three products instead of two.
+
+:::lemma[A bound in space]{#product-bound-space}
+
+For all real numbers $$a$$, $$b$$, $$c$$, $$p$$, $$q$$ and $$s$$,
+
+```math
+ap + bq + cs \le \sqrt{a^2 + b^2 + c^2}\,\sqrt{p^2 + q^2 + s^2}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality"}
+
+The right side is not negative, as a product of two square roots. So if $$ap + bq + cs < 0$$, there
+is nothing more to show.
+
+Otherwise both sides are not negative, and it is enough to compare their squares
+(:ref{#real-numbers/power-order-converse}). The right side squared is
+$$(a^2 + b^2 + c^2)(p^2 + q^2 + s^2)$$, by :ref{#real-numbers/root-product}. Multiplying out, this
+product has nine terms, and $$(ap + bq + cs)^2$$ shares three of them:
+
+```math
+\begin{aligned}
+(a^2 + b^2 + c^2)(p^2 + q^2 + s^2) ={}& a^2p^2 + b^2q^2 + c^2s^2 \\
+&+ a^2q^2 + b^2p^2 + a^2s^2 + c^2p^2 + b^2s^2 + c^2q^2 \\
+(ap + bq + cs)^2 ={}& a^2p^2 + b^2q^2 + c^2s^2 \\
+&+ 2abpq + 2acps + 2bcqs
+\end{aligned}
+```
+
+Taking the second from the first and grouping the six terms left over in pairs,
+
+```math
+(a^2 + b^2 + c^2)(p^2 + q^2 + s^2) - (ap + bq + cs)^2 = (aq - bp)^2 + (as - cp)^2 + (bs - cq)^2
+```
+
+by :ref{#numbers/square-formulas}. A sum of squares is not negative, so the square of the right side
+is at least the square of the left side.
+
+:::
+
+:::theorem[The distance rules in space]{#space-distance-rules}
+
+For any points $$P$$, $$Q$$ and $$M$$ of $$\mathbb{R}^3$$:
+
+1. **Never negative**: $$d(P, Q) \ge 0$$, and $$d(P, Q) = 0$$ exactly when $$P = Q$$
+2. **The same both ways**: $$d(P, Q) = d(Q, P)$$
+3. **The triangle inequality**: $$d(P, M) \le d(P, Q) + d(Q, M)$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_distance#Properties"}
+
+Write $$P = (x_1, y_1, z_1)$$, $$Q = (x_2, y_2, z_2)$$ and $$M = (x_3, y_3, z_3)$$.
+
+**Part 1.** A square root is never negative. The distance is $$0$$ exactly when the sum of the three
+squares is $$0$$. Each square is at least $$0$$ (:ref{#real-numbers/squares-positive}), so if any
+one were positive the sum would be too. So the sum is $$0$$ exactly when each square is $$0$$, that
+is, when $$x_1 = x_2$$, $$y_1 = y_2$$ and $$z_1 = z_2$$. By :ref{#coordinate-space}, that says
+$$P = Q$$.
+
+**Part 2.** Each square is the same either way round, since $$(x_1 - x_2)^2 = (x_2 - x_1)^2$$, and
+the same for $$y$$ and $$z$$.
+
+**Part 3.** Write the steps from $$P$$ to $$Q$$ and from $$Q$$ to $$M$$ as
+
+```math
+a = x_2 - x_1, \quad b = y_2 - y_1, \quad c = z_2 - z_1, \qquad
+p = x_3 - x_2, \quad q = y_3 - y_2, \quad s = z_3 - z_2
+```
+
+Then the step from $$P$$ to $$M$$ is $$a + p$$, $$b + q$$, $$c + s$$, and multiplying out,
+
+```math
+d(P, M)^2 = (a^2 + b^2 + c^2) + 2(ap + bq + cs) + (p^2 + q^2 + s^2)
+```
+
+The first bracket is $$d(P, Q)^2$$ and the last is $$d(Q, M)^2$$. By :ref{#product-bound-space}, the
+middle term is at most $$2\,d(P, Q)\,d(Q, M)$$. So
+
+```math
+d(P, M)^2 \le d(P, Q)^2 + 2\,d(P, Q)\,d(Q, M) + d(Q, M)^2 = \big(d(P, Q) + d(Q, M)\big)^2
+```
+
+Both $$d(P, M)$$ and $$d(P, Q) + d(Q, M)$$ are not negative, so the first is at most the second
+(:ref{#real-numbers/power-order-converse}).
+
+:::
+
+This is the proof of :ref{#triangle-inequality-plane} with a third term added at each step. So the
+rules that [Distance](../distance-and-angles/distance.mdx) took as given in
+:ref{#distance-and-angles/distance-rules} hold in space too, and here they are proved.
+
+A zoom about the origin works the same way. It sends $$P = (x, y, z)$$ to $$rP = (rx, ry, rz)$$, and
+multiplies every distance by $$r$$, as :ref{#origin-zoom} showed in the plane.
+
+:::proposition[Zooming about the origin in space]{#space-zoom}
+
+Let $$r > 0$$. For any points $$P$$ and $$Q$$ of $$\mathbb{R}^3$$,
+
+```math
+d(rP, rQ) = r \cdot d(P, Q)
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Homothety#Properties"}
+
+Each difference of coordinates is multiplied by $$r$$, such as $$rx_2 - rx_1 = r(x_2 - x_1)$$. So
+each square is multiplied by $$r^2$$, and so is their sum. By :ref{#real-numbers/root-product},
+$$\sqrt{r^2} = r$$ comes out of the square root as a factor, since $$r > 0$$.
+
+:::
+
+Rule 5 of :ref{#area-and-scaling/volume-rules} took it as given that a zoom in space multiplies
+every distance by $$r$$. For a zoom centred at the origin, :ref{#space-zoom} proves that part, and
+any centre can be made the origin by placing the axes there. The rest of rule 5, that flat faces go
+to flat faces and angles are kept, is about lines and planes in coordinates, which a later chapter
+takes up.
+
+## Exercises
+
+:::::accordion[Exercises on points in space, with solutions]
+
+::::exercise{#ex-space-distance}
+
+Find the distance between $$(2, -1, 4)$$ and $$(-4, 2, 6)$$.
+
+:::solution
+
+The differences are $$-4 - 2 = -6$$, $$2 - (-1) = 3$$ and $$6 - 4 = 2$$. By :ref{#space-distance},
+
+```math
+\sqrt{(-6)^2 + 3^2 + 2^2} = \sqrt{36 + 9 + 4} = \sqrt{49} = 7
+```
+
+:::
+
+::::
+
+::::exercise{#ex-space-cube}
+
+A cube has side $$s$$, with one corner at $$O$$ and the opposite corner at $$(s, s, s)$$. Find the
+length of the diagonal from $$O$$ to $$(s, s, s)$$. How long is it for a cube of side $$2$$?
+
+:::solution
+
+By :ref{#space-distance}, the diagonal is
+
+```math
+\sqrt{s^2 + s^2 + s^2} = \sqrt{3s^2} = \sqrt{3}\,\sqrt{s^2} = s\sqrt{3}
+```
+
+using :ref{#real-numbers/root-product} and $$\sqrt{s^2} = s$$ for $$s > 0$$. For $$s = 2$$ it is
+$$2\sqrt{3} = \sqrt{12} \approx 3.46$$. Compare a square of side $$s$$, whose diagonal is
+$$s\sqrt{2}$$: each extra direction adds another $$s^2$$ under the root.
+
+:::
+
+::::
+
+::::exercise{#ex-space-sphere-points}
+
+A sphere has the equation $$(x - 2)^2 + y^2 + (z + 1)^2 = 9$$. Find its centre and radius. Then say
+whether each point is on the sphere, inside it or outside it: $$(3, 2, 1)$$, $$(0, 0, 0)$$ and
+$$(4, 2, 1)$$.
+
+:::solution
+
+Matching the equation with :ref{#sphere-equation}: $$x - 2$$ gives $$a = 2$$, $$y$$ is $$y - 0$$, so
+$$b = 0$$, and $$z + 1 = z - (-1)$$ gives $$c = -1$$. The centre is $$(2, 0, -1)$$, and $$r^2 = 9$$
+gives radius $$3$$.
+
+Put each point into the left side and compare with $$9$$:
+
+- $$(3, 2, 1)$$: $$1 + 4 + 4 = 9$$, so it is on the sphere
+- $$(0, 0, 0)$$: $$4 + 0 + 1 = 5 < 9$$, so it is inside, in the ball
+- $$(4, 2, 1)$$: $$4 + 4 + 4 = 12 > 9$$, so it is outside
+
+:::
+
+::::
+
+::::exercise{#ex-space-drone-range}
+
+A drone's controller has a range of $$100$$ metres. The pilot is at $$O$$ and the drone at
+$$(60, 70, 30)$$, in metres. Is the drone in range? Answer without working out a square root.
+
+:::solution
+
+The drone is in range exactly when it is in the ball with centre $$O$$ and radius $$100$$, which by
+:ref{#sphere-equation} means $$x^2 + y^2 + z^2 \le 100^2$$. Here
+
+```math
+60^2 + 70^2 + 30^2 = 3600 + 4900 + 900 = 9400
+```
+
+and $$9400 \le 10\,000$$, so the drone is in range. Its distance is $$\sqrt{9400} \approx 97$$
+metres, but the comparison of squares was enough.
+
+:::
+
+::::
+
+::::exercise{#ex-space-slices}
+
+The sphere $$x^2 + y^2 + z^2 = 25$$ is cut by the flat layer $$z = c$$. For which $$c$$ do they
+meet? What do they meet in when $$c = 3$$, and when $$c = 5$$?
+
+:::solution
+
+On the layer $$z = c$$, the sphere's equation becomes $$x^2 + y^2 = 25 - c^2$$. In the layer, $$x$$
+and $$y$$ are coordinates (:ref{#space-coordinate-rules}), and a sum of two squares is never
+negative (:ref{#real-numbers/squares-positive}). So there are points exactly when
+$$25 - c^2 \ge 0$$, that is, when $$-5 \le c \le 5$$.
+
+For $$c = 3$$, $$x^2 + y^2 = 16$$: a circle with radius $$4$$ about the point $$(0, 0, 3)$$
+(:ref{#circle-equation}). For $$c = 5$$, $$x^2 + y^2 = 0$$, so $$x = y = 0$$: the layer touches the
+sphere at the single point $$(0, 0, 5)$$, its top.
+
+:::
+
+::::
+
+::::exercise{#ex-space-same-distance}
+
+Find the point on the $$z$$-axis that is the same distance from $$(1, 0, 0)$$ as from $$(0, 2, 3)$$.
+
+:::solution
+
+A point on the $$z$$-axis is $$(0, 0, z)$$. Its squared distances to the two points are, by
+:ref{#space-distance},
+
+```math
+1 + 0 + z^2 \qquad\text{and}\qquad 0 + 4 + (z - 3)^2 = z^2 - 6z + 13
+```
+
+Distances that are not negative are equal exactly when their squares are
+(:ref{#real-numbers/equal-squares}). So $$1 + z^2 = z^2 - 6z + 13$$, which gives $$6z = 12$$ and
+$$z = 2$$. Check: from $$(0, 0, 2)$$ the squared distances are $$1 + 4 = 5$$ and $$4 + 1 = 5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-space-detour}
+
+Let $$O = (0, 0, 0)$$ and $$M = (3, 6, 6)$$. Find $$d(O, M)$$, then the length of the route from
+$$O$$ to $$M$$ through $$Q = (1, 2, 2)$$, and through $$Q' = (2, 2, 1)$$. Explain the results using
+:ref{#space-distance-rules}.
+
+:::solution
+
+By :ref{#space-distance}, $$d(O, M) = \sqrt{9 + 36 + 36} = \sqrt{81} = 9$$.
+
+Through $$Q$$: $$d(O, Q) = \sqrt{1 + 4 + 4} = 3$$ and $$d(Q, M) = \sqrt{4 + 16 + 16} = 6$$, so the
+route is $$3 + 6 = 9$$, the same as going straight.
+
+Through $$Q'$$: $$d(O, Q') = \sqrt{4 + 4 + 1} = 3$$ and $$d(Q', M) = \sqrt{1 + 16 + 25}$$, which is
+$$\sqrt{42} \approx 6.48$$, so the route is about $$9.48$$, longer than $$9$$.
+
+Both agree with the triangle inequality: no route is shorter than $$9$$. The route through $$Q$$
+costs nothing extra because $$Q$$ lies on the way, a third of the way from $$O$$ to $$M$$: each
+coordinate of $$M$$ is $$3$$ times the matching coordinate of $$Q$$.
+
+:::
+
+::::
+
+:::::

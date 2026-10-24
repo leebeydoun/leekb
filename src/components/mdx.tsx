@@ -97,6 +97,14 @@ import {
 } from "./area-illustrations/scaling-lengths";
 import { GridTriangle } from "./area-illustrations/grids";
 import { ZoomLengths } from "./interactive/zoom-lengths";
+import { CoordinatePlotter } from "./interactive/coordinate-plotter";
+import { DistanceTriangle } from "./interactive/distance-triangle";
+import { CircleEquation } from "./interactive/circle-equation";
+import { RationalPoints } from "./interactive/rational-points";
+import { GridReference } from "./coordinate-illustrations/coordinates";
+import { DroneAndTaxi } from "./coordinate-illustrations/distance";
+import { BuilderRope } from "./coordinate-illustrations/pythagorean-triples";
+import { SpaceAxes, RoomDiagonal } from "./coordinate-illustrations/space";
 import { GridCount } from "./interactive/grid-count";
 import { Quiz } from "./quiz";
 import {
@@ -219,5 +227,14 @@ export const mdxComponents = {
   PaperSizes,
   GridTriangle,
   ZoomLengths,
+  CoordinatePlotter,
+  DistanceTriangle,
+  CircleEquation,
+  RationalPoints,
+  GridReference,
+  DroneAndTaxi,
+  BuilderRope,
+  SpaceAxes,
+  RoomDiagonal,
   GridCount,
 };

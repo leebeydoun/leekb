@@ -1,0 +1,475 @@
+---
+title: The equation of a circle
+description:
+  Turning a circle into an equation in x and y, and reading its centre and radius back off it.
+---
+
+Imagine a dog on a lead $$5$$ metres long, tied to a post in a field. Mark the field in metres, with
+the post $$3$$ metres east and $$2$$ metres north of the corner, so the post is at $$(3, 2)$$. When
+the dog runs round with the lead pulled tight, its collar traces a circle, and every point on it is
+exactly $$5$$ metres from the post.
+
+That one fact about distance can be written as an equation in $$x$$ and $$y$$, called the **equation
+of the circle**. In this guide we'll find that equation, learn to read a circle back off it, and use
+it to say where a circle meets a line.
+
+## From distance to an equation
+
+A point is on the circle exactly when its distance from the centre is the radius
+(:ref{#distance-and-angles/circle}). The distance formula (:ref{#distance-formula}) turns that
+distance into numbers, but it has a square root in it. Squaring both sides removes the root and
+leaves an equation with no roots at all.
+
+Take the collar at $$(6, 6)$$. It is $$3$$ east and $$4$$ north of the post, so its distance from
+the post is $$\sqrt{3^2 + 4^2} = \sqrt{25} = 5$$, and it is on the circle. In general a point
+$$(x, y)$$ is $$x - 3$$ east and $$y - 2$$ north of the post, and it is on the circle exactly when
+
+```math
+(x - 3)^2 + (y - 2)^2 = 25
+```
+
+<Graph
+  circles={[{ a: 3, b: 2, r: 5, label: "(x − 3)² + (y − 2)² = 25" }]}
+  points={[
+    { x: 3, y: 2, label: "(3, 2)" },
+    { x: 6, y: 6, label: "(6, 6)" },
+  ]}
+  x={[-3, 9]}
+  y={[-4, 8]}
+  caption="The circle the dog's collar traces: centre (3, 2), the post, and radius 5. The point (6, 6) is on it."
+/>
+
+:::theorem[Equation of a circle]{#circle-equation}
+
+Let $$r > 0$$. The point $$(x, y)$$ is on the circle with centre $$(a, b)$$ and radius $$r$$ exactly
+when
+
+```math
+(x - a)^2 + (y - b)^2 = r^2
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Circle#Cartesian_coordinates"}
+
+Write $$C = (a, b)$$ and $$P = (x, y)$$, and $$S = (x - a)^2 + (y - b)^2$$. By the distance formula,
+$$d(C, P) = \sqrt{S}$$, so $$d(C, P)^2 = S$$ (:ref{#real-numbers/square-root}). By
+:ref{#distance-and-angles/circle}, $$P$$ is on the circle exactly when $$d(C, P) = r$$.
+
+If $$d(C, P) = r$$, squaring both sides gives $$S = r^2$$. Conversely, if $$S = r^2$$, then
+$$d(C, P)^2 = r^2$$. Both $$d(C, P)$$ and $$r$$ are not negative, so they are equal
+(:ref{#real-numbers/equal-squares}).
+
+:::
+
+The circle with centre at the origin and radius $$1$$ comes up often enough to have a name, the
+**unit circle**. Its equation is $$x^2 + y^2 = 1$$. The points $$(1, 0)$$ and $$(0, -1)$$ are on it,
+and so is $$(0.6, 0.8)$$, since $$0.36 + 0.64 = 1$$.
+
+## Reading a circle off its equation
+
+The equation works backwards too. Given $$(x - a)^2 + (y - b)^2 = r^2$$, the centre is $$(a, b)$$
+and the radius is the square root of the number on the right. So the equation and the circle carry
+the same information, and you can move between them in either direction.
+
+Two things need care. The first is the sign. The bracket $$(y + 5)$$ is $$\big(y - (-5)\big)$$, so
+it belongs to a centre with $$b = -5$$, not $$5$$. The number in each bracket is the centre's
+coordinate with its sign changed. The second is the right-hand side, which is the radius squared. An
+equation ending in $$= 7$$ has radius $$\sqrt{7}$$, not $$7$$.
+
+:::example[Centres and radii]
+
+- **$$(x - 2)^2 + (y + 5)^2 = 7$$**: the centre is $$(2, -5)$$ and the radius is
+  $$\sqrt{7} \approx 2.65$$
+- **$$x^2 + (y - 1)^2 = 9$$**: the first bracket is $$(x - 0)^2$$, so the centre is $$(0, 1)$$, and
+  the radius is $$3$$
+- **$$(x + 4)^2 + y^2 = 0.25$$**: the centre is $$(-4, 0)$$ and the radius is $$0.5$$
+
+:::
+
+Move the sliders below and watch the equation follow the circle. Each number in a bracket follows
+the centre with its sign changed, and the right-hand side grows as the square of the radius.
+
+<CircleEquation />
+
+## Inside and outside
+
+A point closer to the centre than the radius is inside the circle, and a point further away is
+outside. Squaring keeps that comparison the right way round, because distances and radii are never
+negative. So you can test a point by putting its coordinates into the left side of the equation and
+comparing the answer with $$r^2$$, with no square roots needed.
+
+:::proposition[Discs as inequalities]{#disc-inequality}
+
+Let $$C = (a, b)$$, let $$r > 0$$, and let $$P = (x, y)$$. Write $$S = (x - a)^2 + (y - b)^2$$.
+
+1. $$P$$ is in the disc with centre $$C$$ and radius $$r$$ exactly when $$S \le r^2$$
+2. $$d(C, P) < r$$, so that $$P$$ is inside the circle, exactly when $$S < r^2$$
+3. $$d(C, P) > r$$, so that $$P$$ is outside the circle, exactly when $$S > r^2$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Disk_(mathematics)#Formulas"}
+
+As in the proof of :ref{#circle-equation}, $$d(C, P)^2 = S$$, and both $$d(C, P)$$ and $$r$$ are not
+negative.
+
+**Part 2.** If $$d(C, P) < r$$, then $$d(C, P)^2 < r^2$$ by :ref{#real-numbers/power-order}, that
+is, $$S < r^2$$. If $$S < r^2$$, then $$d(C, P)^2 < r^2$$, so $$d(C, P) < r$$ by
+:ref{#real-numbers/power-order-converse}.
+
+**Part 3** is the same, with the roles of $$d(C, P)$$ and $$r$$ swapped.
+
+**Part 1.** By :ref{#distance-and-angles/circle}, $$P$$ is in the disc exactly when $$d(C, P) < r$$
+or $$d(C, P) = r$$. By part 2 and :ref{#circle-equation}, that happens exactly when $$S < r^2$$ or
+$$S = r^2$$, that is, when $$S \le r^2$$.
+
+:::
+
+:::example[A house and a phone mast]
+
+A phone mast stands at $$(2, 3)$$ on a map marked in kilometres, and it reaches $$5$$ km. A house at
+$$(6, 5)$$ gives
+
+```math
+(6 - 2)^2 + (5 - 3)^2 = 16 + 4 = 20
+```
+
+which is less than $$5^2 = 25$$, so the house is inside the circle and in range. A house at
+$$(-2, -1)$$ gives $$16 + 16 = 32$$, which is more than $$25$$, so it is out of range. A house at
+$$(5, 7)$$ gives $$9 + 16 = 25$$, so it sits exactly on the edge of the range.
+
+:::
+
+## Equations that have been multiplied out
+
+Multiply out the brackets in a circle's equation and it changes shape. For example,
+$$(x - 3)^2 + (y + 1)^2 = 4$$ becomes $$x^2 - 6x + 9 + y^2 + 2y + 1 = 4$$, which tidies up to
+
+```math
+x^2 + y^2 - 6x + 2y + 6 = 0
+```
+
+This is the same circle, but the centre and radius are no longer on show. To get them back, you
+complete the square (:ref{#quadratics/complete-square}) twice: once for the terms in $$x$$ and once
+for the terms in $$y$$.
+
+:::proposition[Expanded equations]{#expanded-circle}
+
+Let $$D$$, $$E$$ and $$F$$ be real numbers. The points $$(x, y)$$ with
+
+```math
+x^2 + y^2 + Dx + Ey + F = 0
+```
+
+are exactly the points with
+
+```math
+\left(x + \frac{D}{2}\right)^2 + \left(y + \frac{E}{2}\right)^2 = c, \qquad \text{where } c = \frac{D^2 + E^2}{4} - F
+```
+
+So the points form:
+
+1. the circle with centre $$\left(-\frac{D}{2}, -\frac{E}{2}\right)$$ and radius $$\sqrt{c}$$, when
+   $$c > 0$$
+2. the single point $$\left(-\frac{D}{2}, -\frac{E}{2}\right)$$, when $$c = 0$$
+3. no points at all, when $$c < 0$$
+
+:::
+
+:::proof{source="https://www.mathsisfun.com/algebra/circle-equations.html"}
+
+By :ref{#quadratics/complete-square}, for every $$x$$ and $$y$$,
+
+```math
+x^2 + Dx = \left(x + \frac{D}{2}\right)^2 - \frac{D^2}{4} \qquad y^2 + Ey = \left(y + \frac{E}{2}\right)^2 - \frac{E^2}{4}
+```
+
+Replacing $$x^2 + Dx$$ and $$y^2 + Ey$$ in the equation by these equal amounts gives
+
+```math
+\left(x + \frac{D}{2}\right)^2 + \left(y + \frac{E}{2}\right)^2 - \frac{D^2}{4} - \frac{E^2}{4} + F = 0
+```
+
+and adding $$\frac{D^2 + E^2}{4} - F$$ to both sides gives the second form. Each step can be undone,
+so the two equations have exactly the same solutions. Now take the three cases.
+
+**Case $$c > 0$$.** Then $$c = \left(\sqrt{c}\right)^2$$, and the second form is the equation of the
+circle with centre $$\left(-\frac{D}{2}, -\frac{E}{2}\right)$$ and radius $$\sqrt{c}$$, by
+:ref{#circle-equation}.
+
+**Case $$c = 0$$.** A sum of two squares is $$0$$ exactly when both numbers being squared are $$0$$
+(:ref{#real-numbers/squares-positive}). So $$x + \frac{D}{2} = 0$$ and $$y + \frac{E}{2} = 0$$, and
+the only solution is $$\left(-\frac{D}{2}, -\frac{E}{2}\right)$$.
+
+**Case $$c < 0$$.** The left side is a sum of two squares, so it is never negative
+(:ref{#real-numbers/squares-positive}). It can't equal a negative number, so there are no solutions.
+
+:::
+
+:::example[A circle, a point, and nothing]
+
+- **$$x^2 + y^2 - 6x + 2y + 6 = 0$$**: here $$D = -6$$, $$E = 2$$ and $$F = 6$$, so
+  $$c = \frac{36 + 4}{4} - 6 = 4$$. This is the circle with centre $$(3, -1)$$ and radius $$2$$, the
+  one we started from.
+- **$$x^2 + y^2 + 4x - 10y + 29 = 0$$**: here $$c = \frac{16 + 100}{4} - 29 = 0$$. The only point is
+  $$(-2, 5)$$.
+- **$$x^2 + y^2 - 2x + 8y + 20 = 0$$**: here $$c = \frac{4 + 64}{4} - 20 = -3$$. No point fits.
+
+:::
+
+You don't need to remember the formula for $$c$$. Completing the square in each example by hand
+gives the same answer, and shows where each number comes from.
+
+## Where a circle meets a horizontal line
+
+Draw a horizontal line across a circle. It can miss the circle, touch it at the top or the bottom,
+or cut straight through it at two points. Putting the line's equation into the circle's equation
+leaves a quadratic in $$x$$, and its discriminant tells the three cases apart.
+
+Take the circle $$(x - 2)^2 + (y - 1)^2 = 25$$, with centre $$(2, 1)$$ and radius $$5$$. On the line
+$$y = 4$$, every point has $$y = 4$$, so the meeting points have $$(x - 2)^2 + 9 = 25$$. That gives
+$$(x - 2)^2 = 16$$, so $$x - 2 = 4$$ or $$x - 2 = -4$$, and the line meets the circle at $$(6, 4)$$
+and $$(-2, 4)$$. The line $$y = 6$$ gives $$(x - 2)^2 + 25 = 25$$, so $$x = 2$$ and it touches the
+circle at $$(2, 6)$$ only. The line $$y = 7$$ gives $$(x - 2)^2 = -11$$, which has no solution, so
+it misses.
+
+<Graph
+  lines={[
+    { a: 0, b: 1, c: 4, label: "y = 4" },
+    { a: 0, b: 1, c: 6, label: "y = 6" },
+    { a: 0, b: 1, c: 7, label: "y = 7" },
+  ]}
+  circles={[{ a: 2, b: 1, r: 5, label: "(x − 2)² + (y − 1)² = 25" }]}
+  points={[
+    { x: -2, y: 4, label: "(−2, 4)" },
+    { x: 6, y: 4, label: "(6, 4)" },
+    { x: 2, y: 6, label: "(2, 6)" },
+  ]}
+  x={[-4, 8]}
+  y={[-5, 8]}
+  caption="Three horizontal lines and one circle: y = 4 crosses it twice, y = 6 touches it once, and y = 7 misses it."
+/>
+
+:::proposition[A circle and a horizontal line]{#circle-horizontal-line}
+
+Let $$r > 0$$. The circle with centre $$(a, b)$$ and radius $$r$$ meets the line $$y = k$$ at the
+points $$(x, k)$$ for which
+
+```math
+x^2 - 2ax + \left(a^2 + (k - b)^2 - r^2\right) = 0
+```
+
+This quadratic has discriminant $$4\left(r^2 - (k - b)^2\right)$$. So the line and the circle meet:
+
+1. at two points, when $$|k - b| < r$$
+2. at the one point $$(a, k)$$, when $$|k - b| = r$$
+3. nowhere, when $$|k - b| > r$$
+
+:::
+
+:::proof{source="https://mathworld.wolfram.com/Circle-LineIntersection.html"}
+
+The points of the line are the points $$(x, k)$$. By :ref{#circle-equation}, such a point is on the
+circle exactly when $$(x - a)^2 + (k - b)^2 = r^2$$. Expanding $$(x - a)^2$$ with
+:ref{#numbers/square-formulas} and taking $$r^2$$ from both sides gives the quadratic in the
+statement.
+
+Its discriminant (:ref{#quadratics/discriminant}) is
+
+```math
+(-2a)^2 - 4\left(a^2 + (k - b)^2 - r^2\right) = 4a^2 - 4a^2 - 4(k - b)^2 + 4r^2 = 4\left(r^2 - (k - b)^2\right)
+```
+
+This has the same sign as $$r^2 - (k - b)^2$$, and $$(k - b)^2 = |k - b|^2$$ by part 4 of
+:ref{#real-numbers/abs-basics}. Both $$|k - b|$$ and $$r$$ are not negative, so $$|k - b|^2$$ and
+$$r^2$$ come in the same order as $$|k - b|$$ and $$r$$ (:ref{#real-numbers/power-order} and
+:ref{#real-numbers/power-order-converse}). So the discriminant is positive, zero or negative exactly
+when $$|k - b|$$ is less than, equal to or more than $$r$$. By :ref{#quadratics/root-count}, that
+gives two solutions, one solution or none.
+
+In the middle case the one solution is $$x = -\frac{-2a}{2} = a$$, so the meeting point is
+$$(a, k)$$.
+
+:::
+
+The number $$|k - b|$$ is how far the line is above or below the centre. So the proposition says
+what the picture suggests: a horizontal line crosses the circle when it passes closer to the centre
+than the radius, touches it when it is exactly the radius away, and misses it when it is further.
+Vertical lines $$x = h$$ work the same way, with the roles of $$x$$ and $$y$$ swapped. Lines that
+slope need the equations of lines, which come in a later chapter.
+
+## Exercises
+
+:::::accordion[Exercises on the equation of a circle, with solutions]
+
+::::exercise{#ex-circles-read}
+
+Give the centre and the radius of each circle:
+
+1. $$(x - 1)^2 + (y + 3)^2 = 16$$
+2. $$(x + 2)^2 + y^2 = 5$$
+3. $$x^2 + y^2 = 0.49$$
+
+:::solution
+
+By :ref{#circle-equation}, each number in a bracket is the centre's coordinate with its sign
+changed, and the radius is the square root of the right-hand side:
+
+1. Centre $$(1, -3)$$, radius $$\sqrt{16} = 4$$
+2. Centre $$(-2, 0)$$, radius $$\sqrt{5}$$
+3. Centre $$(0, 0)$$, radius $$\sqrt{0.49} = 0.7$$
+
+:::
+
+::::
+
+::::exercise{#ex-circles-write}
+
+Write down the equation of the circle with centre $$(-3, 4)$$ and radius $$2$$. Is the point
+$$(-3, 6)$$ on it? Is $$(-1, 5)$$ inside it, on it, or outside it?
+
+:::solution
+
+By :ref{#circle-equation}, the equation is
+
+```math
+(x + 3)^2 + (y - 4)^2 = 4
+```
+
+For $$(-3, 6)$$, the left side is $$0^2 + 2^2 = 4$$, so the point is on the circle. For $$(-1, 5)$$,
+it is $$2^2 + 1^2 = 5$$, which is more than $$4$$, so the point is outside (:ref{#disc-inequality}).
+
+:::
+
+::::
+
+::::exercise{#ex-circles-through}
+
+A circle has centre $$(1, -2)$$ and passes through the point $$(4, 2)$$. Find its equation.
+
+:::solution
+
+The radius is the distance from the centre to $$(4, 2)$$. The steps are $$3$$ across and $$4$$ up,
+so $$r^2 = 3^2 + 4^2 = 25$$. There is no need to take the square root, since the equation uses
+$$r^2$$:
+
+```math
+(x - 1)^2 + (y + 2)^2 = 25
+```
+
+:::
+
+::::
+
+::::exercise{#ex-circles-expanded}
+
+Find the centre and the radius of the circle $$x^2 + y^2 + 8x - 6y = 0$$. Explain why it passes
+through the origin.
+
+:::solution
+
+Complete the square in $$x$$ and in $$y$$ (:ref{#quadratics/complete-square}):
+
+```math
+x^2 + 8x = (x + 4)^2 - 16 \qquad y^2 - 6y = (y - 3)^2 - 9
+```
+
+So the equation becomes $$(x + 4)^2 + (y - 3)^2 - 25 = 0$$, that is, $$(x + 4)^2 + (y - 3)^2 = 25$$.
+The centre is $$(-4, 3)$$ and the radius is $$5$$ (:ref{#expanded-circle}).
+
+Putting $$x = 0$$ and $$y = 0$$ into the original equation gives $$0 = 0$$, so the origin is on the
+circle. That happens because the equation has no number term: $$F = 0$$. Check with distances: the
+origin is $$\sqrt{16 + 9} = 5$$ from the centre.
+
+:::
+
+::::
+
+::::exercise{#ex-circles-scaled}
+
+Find the centre and the radius of the circle $$2x^2 + 2y^2 - 4x + 12y + 2 = 0$$.
+
+:::solution
+
+Divide both sides by $$2$$ first, so that $$x^2$$ and $$y^2$$ each have a $$1$$ in front:
+
+```math
+x^2 + y^2 - 2x + 6y + 1 = 0
+```
+
+Now $$D = -2$$, $$E = 6$$ and $$F = 1$$, so by :ref{#expanded-circle},
+$$c = \frac{4 + 36}{4} - 1 = 9$$. The centre is $$(1, -3)$$ and the radius is $$\sqrt{9} = 3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-circles-which}
+
+For which numbers $$F$$ is $$x^2 + y^2 - 6x + 4y + F = 0$$ the equation of a circle? What happens
+for the other values of $$F$$?
+
+:::solution
+
+Here $$D = -6$$ and $$E = 4$$, so by :ref{#expanded-circle},
+
+```math
+c = \frac{36 + 16}{4} - F = 13 - F
+```
+
+- **$$F < 13$$**: $$c > 0$$, so the equation is a circle with centre $$(3, -2)$$ and radius
+  $$\sqrt{13 - F}$$
+- **$$F = 13$$**: $$c = 0$$, so the only point is $$(3, -2)$$
+- **$$F > 13$$**: $$c < 0$$, so no point fits
+
+As $$F$$ grows towards $$13$$, the circle shrinks onto its centre.
+
+:::
+
+::::
+
+::::exercise{#ex-circles-vertical}
+
+Find where the circle $$x^2 + y^2 = 25$$ meets each vertical line: $$x = 3$$, $$x = 5$$ and
+$$x = -6$$.
+
+:::solution
+
+Every point of the line $$x = h$$ has first coordinate $$h$$, so the meeting points solve
+$$h^2 + y^2 = 25$$ (:ref{#circle-equation}).
+
+- **$$x = 3$$**: $$y^2 = 16$$, so $$y = 4$$ or $$y = -4$$. The points are $$(3, 4)$$ and
+  $$(3, -4)$$.
+- **$$x = 5$$**: $$y^2 = 0$$, so $$y = 0$$. The line touches the circle at $$(5, 0)$$ only.
+- **$$x = -6$$**: $$y^2 = -11$$, which has no solution, so the line misses the circle.
+
+The centre is $$(0, 0)$$ and the radius $$5$$. The three lines are $$3$$, $$5$$ and $$6$$ away from
+the centre, which is less than, equal to and more than the radius.
+
+:::
+
+::::
+
+::::exercise{#ex-circles-masts}
+
+A phone at $$(1, 1)$$, on a map marked in kilometres, can pick up two masts. One stands at
+$$(4, 5)$$ and reaches $$5$$ km. The other stands at $$(-3, -2)$$ and reaches $$4$$ km. Which masts
+is the phone in range of? Use no square roots.
+
+:::solution
+
+By :ref{#disc-inequality}, compare each squared distance with the squared range.
+
+- **First mast**: $$(1 - 4)^2 + (1 - 5)^2 = 9 + 16 = 25$$, and $$5^2 = 25$$. The phone is on the
+  edge of the range, which still counts as in the disc, so it is in range.
+- **Second mast**: $$(1 + 3)^2 + (1 + 2)^2 = 16 + 9 = 25$$, and $$4^2 = 16$$. Since $$25 > 16$$, the
+  phone is out of range.
+
+So the phone is in range of the first mast, right on the edge, and out of range of the second.
+
+:::
+
+::::
+
+:::::

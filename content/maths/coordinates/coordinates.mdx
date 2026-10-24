@@ -1,0 +1,390 @@
+---
+title: Coordinates
+description: Naming every point of the plane by a pair of numbers, read off two perpendicular axes.
+---
+
+Imagine you've pitched a tent on a hillside and want to tell a friend where it is, on a walking map
+you both have. "Near the wood" leaves them searching. But the map is covered by a grid of numbered
+lines, so you can say "4 along the bottom, then 3 up the side", and your friend's finger lands on
+the same spot as yours. Two numbers, read in an agreed order, pin down one place. Mathematicians
+call such numbers coordinates. In this guide we'll set them up on the plane, and see how they change
+when someone draws the grid differently.
+
+<GridReference caption="The tent sits where the grid line 4 along the bottom meets the grid line 3 up the side" />
+
+## Two numbers for every point
+
+A map grid works because everyone using it agrees on three things: where the counting starts, which
+way the numbers grow, and how long one step is. The plane needs the same agreements. So start at a
+point, draw two perpendicular lines through it, and mark each line as a number line. Then any point
+is described by where it sits along one line and where it sits along the other.
+
+The [Equations as lines](../linear-equations/lines.mdx) guide used this picture already, going $$x$$
+steps across and then $$y$$ steps up. Here we set it up with more care, because the next guides
+prove facts about distance from it. The plane, perpendicular lines and the foot of a perpendicular
+are as in the [Lines](../distance-and-angles/lines.mdx) guide.
+
+:::definition[Coordinates]{#coordinates}
+
+Choose a point $$O$$, called the **origin**, and two perpendicular lines through it, called the
+**axes**. Mark each axis as a number line with $$0$$ at $$O$$, using the unit of length fixed for
+distances. One axis, the **$$x$$-axis**, is drawn across the page with its numbers growing to the
+right. The other, the **$$y$$-axis**, is drawn up the page with its numbers growing upwards.
+
+Each point $$P$$ then has two numbers:
+
+- **The $$x$$-coordinate**: the number marked at the foot of the perpendicular from $$P$$ to the
+  $$x$$-axis
+- **The $$y$$-coordinate**: the number marked at the foot of the perpendicular from $$P$$ to the
+  $$y$$-axis
+
+They are written as a pair, $$P = (x, y)$$, with the $$x$$-coordinate first. So the $$x$$-coordinate
+is also called the **first coordinate**, and the $$y$$-coordinate the **second coordinate**.
+
+:::
+
+Take a point $$P$$ whose perpendicular to the $$x$$-axis lands at $$3$$, and whose perpendicular to
+the $$y$$-axis lands at $$2$$. Then $$P = (3, 2)$$: from $$O$$, go $$3$$ to the right and then $$2$$
+up. The origin itself is $$O = (0, 0)$$, since both perpendiculars from $$O$$ land at $$O$$.
+
+```plane
+point X1 -1.5 0 hidden
+point X2 5 0 hidden
+point Y1 0 -1.2 hidden
+point Y2 0 3.4 hidden
+point O 0 0 sw
+point P 3 2 ne
+point A 3 0 hidden
+point B 0 2 hidden
+segment X1 X2
+segment Y1 Y2
+segment P A color=orange dashed
+segment P B color=green dashed
+right X2 A P
+right P B Y2
+text 3 -0.45 "3" color=orange
+text -0.35 2 "2" color=green
+text 5.55 0 "x-axis"
+text 0 3.75 "y-axis"
+caption "The perpendiculars from P land at 3 on the x-axis and at 2 on the y-axis, so P = (3, 2)"
+```
+
+Negative numbers point the other way. A point to the left of the $$y$$-axis has a negative
+$$x$$-coordinate, and a point below the $$x$$-axis has a negative $$y$$-coordinate. So $$(-4, -1)$$
+is the point $$4$$ to the left of $$O$$ and $$1$$ down.
+
+The definition gives every point a pair of numbers. For coordinates to be any use, the pairs and the
+points have to match up one for one, and the grid lines have to behave as they do on a map. These
+facts are taken as given.
+
+:::remark[Rules for coordinates]{#coordinate-rules}
+
+Fix an origin and axes as in :ref{#coordinates}.
+
+1. **One pair, one point**: each point has exactly one pair of coordinates, and each pair of real
+   numbers $$(a, b)$$ is the pair of exactly one point
+2. **Distance along an axis**: the points $$(a, 0)$$ and $$(c, 0)$$ of the $$x$$-axis are at
+   distance $$|a - c|$$, as on the number line (:ref{#real-numbers/distance}). The same goes for
+   $$(0, a)$$ and $$(0, c)$$ on the $$y$$-axis.
+3. **Grid lines**: the points with $$x$$-coordinate $$a$$ make up the line through $$(a, 0)$$
+   perpendicular to the $$x$$-axis, called the **vertical line** $$x = a$$. The points with
+   $$y$$-coordinate $$b$$ make up the line through $$(0, b)$$ perpendicular to the $$y$$-axis,
+   called the **horizontal line** $$y = b$$. Every vertical line is perpendicular to every
+   horizontal line.
+
+These are taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Cartesian_coordinate_system#Two_dimensions"}
+
+:::
+
+Rule 3 is what makes the grid a grid. The vertical line $$x = 3$$ runs straight up and down through
+$$3$$ on the $$x$$-axis, and every point on it has $$x$$-coordinate $$3$$, whatever its height. It
+is the graph of the equation $$x = 3$$ (:ref{#linear-equations/graph}). The axes are grid lines too:
+the $$x$$-axis is the line $$y = 0$$ and the $$y$$-axis is the line $$x = 0$$.
+
+The order of the pair matters. The point $$(2, 3)$$ is $$2$$ across and $$3$$ up, while $$(3, 2)$$
+is $$3$$ across and $$2$$ up, and these are different points. By rule 1, two pairs name the same
+point exactly when their first coordinates are equal and their second coordinates are equal.
+
+## Quadrants
+
+The two axes cross at $$O$$ and cut the rest of the plane into four pieces, like the bars of a
+window dividing it into four panes. Inside each piece the signs of the coordinates never change. In
+the top right piece both coordinates are positive, and in the bottom left piece both are negative.
+So the two signs tell you which piece a point is in, without drawing anything.
+
+:::definition[Quadrants]{#quadrants}
+
+The axes split the points that lie on neither axis into four **quadrants**, numbered anticlockwise
+starting from the top right:
+
+1. **First quadrant**: $$x > 0$$ and $$y > 0$$
+2. **Second quadrant**: $$x < 0$$ and $$y > 0$$
+3. **Third quadrant**: $$x < 0$$ and $$y < 0$$
+4. **Fourth quadrant**: $$x > 0$$ and $$y < 0$$
+
+A point on an axis is in no quadrant.
+
+:::
+
+```plane
+point X1 -4 0 hidden
+point X2 4 0 hidden
+point Y1 0 -3 hidden
+point Y2 0 3 hidden
+point O 0 0 sw
+segment X1 X2
+segment Y1 Y2
+text 2 1.8 "first"
+text 2 1.2 "x > 0, y > 0"
+text -2 1.8 "second"
+text -2 1.2 "x < 0, y > 0"
+text -2 -1.2 "third"
+text -2 -1.8 "x < 0, y < 0"
+text 2 -1.2 "fourth"
+text 2 -1.8 "x > 0, y < 0"
+text 4.5 0 "x"
+text 0 3.35 "y"
+caption "The four quadrants, numbered anticlockwise from the top right, with the signs of x and y in each"
+```
+
+For example, $$(-3, 5)$$ has a negative $$x$$-coordinate and a positive $$y$$-coordinate, so it is
+in the second quadrant. The point $$(2, -7)$$ is in the fourth. The point $$(0, -4)$$ lies on the
+$$y$$-axis, so it is in no quadrant.
+
+Move the sliders below to place a point $$P$$, and watch the dashed perpendiculars carry it to its
+two coordinates. The button swaps the two numbers. Unless they are equal, that moves $$P$$ to a
+different point, often in a different quadrant.
+
+<CoordinatePlotter x={3} y={2} />
+
+## Choosing the axes
+
+Coordinates describe a point only together with the axes they were read from. Picture two people in
+the same field, one measuring from the gate and the other from an oak tree. They give the same
+molehill different numbers, neither of them is wrong, and the molehill hasn't moved. Changing the
+origin or the directions of the axes gives every point new coordinates, but leaves the points, and
+the distances between them, exactly as they were.
+
+:::example[Moving the origin]
+
+Move the origin to the point $$N$$ that had coordinates $$(2, 1)$$, and keep both axes pointing the
+same ways as before. Counting grid squares, the point that was $$(5, 4)$$ is now $$5 - 2 = 3$$
+across and $$4 - 1 = 3$$ up from the new origin. So its new coordinates are $$(3, 3)$$.
+
+Every point changes in the same way: subtract the old coordinates of the new origin. The point that
+was $$(x, y)$$ becomes $$(x - 2, y - 1)$$.
+
+:::
+
+```plane
+point O 0 0 sw
+point N 2 1 sw
+point P 5 4 ne
+point X1 -0.8 0 hidden
+point X2 6 0 hidden
+point Y1 0 -0.8 hidden
+point Y2 0 4.8 hidden
+point U1 1.2 1 hidden
+point U2 6 1 hidden
+point V1 2 0.2 hidden
+point V2 2 4.8 hidden
+point A 5 1 hidden
+point B 2 4 hidden
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+segment U1 U2 color=blue
+segment V1 V2 color=blue
+segment P A color=orange dashed
+segment P B color=green dashed
+text 5 0.6 "3" color=orange
+text 1.6 4 "3" color=green
+text 3.5 0.6 "new x-axis" color=blue
+caption "With the origin moved to N, the old point (5, 4) is 3 across and 3 up from N"
+```
+
+:::example[Turning the axes]
+
+Keep the origin, but turn both axes a quarter turn anticlockwise about it. The new $$x$$-axis now
+points up the page, where the old $$y$$-axis pointed. The new $$y$$-axis points to the left.
+
+The point that was $$(5, 4)$$ lies $$4$$ up the page, which is $$4$$ along the new $$x$$-axis. It
+also lies $$5$$ to the right, which is the new negative $$y$$ direction. So its new coordinates are
+$$(4, -5)$$.
+
+:::
+
+However the axes are placed, one convention is kept: the positive $$y$$ direction is the positive
+$$x$$ direction turned a quarter turn anticlockwise. With the $$x$$-axis pointing right, this puts
+the $$y$$-axis pointing up. The other choice, a quarter turn clockwise, would make every figure
+drawn from its coordinates come out as a mirror image.
+
+This freedom to choose is useful. A problem about a rectangle gets tidier with the origin at one
+corner and the axes along two sides. Then a rectangle with sides $$a$$ and $$b$$ has corners
+$$(0, 0)$$, $$(a, 0)$$, $$(a, b)$$ and $$(0, b)$$.
+
+## Coordinates in the world
+
+Anything laid out on a grid uses coordinates. Each one makes its own choice of origin and
+directions, and the choices aren't always the ones made in these notes.
+
+The grid on British walking maps gives a place by two numbers: how far east it is, then how far
+north. Walkers remember the order with the phrase "along the corridor, then up the stairs". The
+origin sits out at sea, south-west of the country, so that every place in Britain has positive
+coordinates.
+
+A computer screen counts pixels from its top left corner instead. The first coordinate grows to the
+right, as usual, but the second grows downwards. So a screen's $$y$$-axis is its $$x$$-axis turned a
+quarter turn clockwise, the opposite of the convention, and a character in a game moves up the
+screen when its $$y$$-coordinate gets smaller. A spreadsheet counts its rows downwards in the same
+way, and names cell C5 by its column first and then its row.
+
+## Exercises
+
+:::::accordion[Exercises on coordinates, with solutions]
+
+::::exercise{#ex-coordinates-quadrants}
+
+Say which quadrant each point is in, or which axis it lies on:
+
+1. $$(-3, 4)$$
+2. $$(5, -2)$$
+3. $$(0, -7)$$
+4. $$(-1, -1)$$
+5. $$(6, 0)$$
+
+:::solution
+
+Look at the signs, using :ref{#quadrants}:
+
+1. $$x < 0$$ and $$y > 0$$: the second quadrant
+2. $$x > 0$$ and $$y < 0$$: the fourth quadrant
+3. $$x = 0$$: on the $$y$$-axis, so in no quadrant
+4. $$x < 0$$ and $$y < 0$$: the third quadrant
+5. $$y = 0$$: on the $$x$$-axis, so in no quadrant
+
+:::
+
+::::
+
+::::exercise{#ex-coordinates-signs}
+
+The point $$(a, b)$$ is in the second quadrant. Which quadrant is each of these points in?
+
+1. $$(b, a)$$
+2. $$(-a, b)$$
+3. $$(a, -b)$$
+4. $$(-a, -b)$$
+
+:::solution
+
+In the second quadrant $$a < 0$$ and $$b > 0$$ (:ref{#quadrants}). So $$-a > 0$$ and $$-b < 0$$.
+
+1. $$(b, a)$$ has first coordinate $$b > 0$$ and second $$a < 0$$: the fourth quadrant
+2. $$(-a, b)$$ has both coordinates positive: the first quadrant
+3. $$(a, -b)$$ has both coordinates negative: the third quadrant
+4. $$(-a, -b)$$ has first coordinate positive and second negative: the fourth quadrant
+
+:::
+
+::::
+
+::::exercise{#ex-coordinates-swap}
+
+For which points $$(a, b)$$ is $$(b, a)$$ the same point as $$(a, b)$$? Give three examples.
+
+:::solution
+
+By rule 1 of :ref{#coordinate-rules}, $$(b, a)$$ and $$(a, b)$$ are the same point exactly when
+their first coordinates match and their second coordinates match. That says $$b = a$$ and $$a = b$$,
+so it happens exactly when $$a = b$$. Examples: $$(0, 0)$$, $$(2, 2)$$ and $$(-1.5, -1.5)$$. These
+points make up the graph of the equation $$y = x$$ (:ref{#linear-equations/graph}).
+
+:::
+
+::::
+
+::::exercise{#ex-coordinates-rectangle}
+
+The lines $$x = 1$$, $$x = 5$$, $$y = -1$$ and $$y = 2$$ enclose a shape.
+
+1. Find the four points where a vertical one of these lines meets a horizontal one.
+2. Explain why these four points are the corners of a rectangle.
+
+:::solution
+
+1. A point on $$x = 1$$ and $$y = -1$$ has both coordinates fixed, so it is $$(1, -1)$$. In the same
+   way the others are $$(5, -1)$$, $$(5, 2)$$ and $$(1, 2)$$.
+2. Go round in that order. The sides from $$(1, -1)$$ to $$(5, -1)$$ and from $$(5, 2)$$ to
+   $$(1, 2)$$ lie on the horizontal lines $$y = -1$$ and $$y = 2$$. The other two sides lie on the
+   vertical lines $$x = 5$$ and $$x = 1$$. By rule 3 of :ref{#coordinate-rules}, every vertical line
+   is perpendicular to every horizontal line, so each side is perpendicular to the two next to it.
+   That is a rectangle (:ref{#distance-and-angles/rectangle}).
+
+:::
+
+::::
+
+::::exercise{#ex-coordinates-new-origin}
+
+The origin is moved to the point that had coordinates $$(-2, 3)$$, and the axes keep their
+directions.
+
+1. What are the new coordinates of the point that was $$(1, 1)$$?
+2. A point has new coordinates $$(4, 5)$$. What were its old coordinates?
+
+:::solution
+
+As in the example under [Choosing the axes](#choosing-the-axes), subtract the old coordinates of the
+new origin.
+
+1. $$(1 - (-2), 1 - 3) = (3, -2)$$
+2. Going back means adding instead: $$(4 + (-2), 5 + 3) = (2, 8)$$. Check: $$2 - (-2) = 4$$ and
+   $$8 - 3 = 5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-coordinates-turned}
+
+The axes are turned a quarter turn anticlockwise about the origin, as in the example under
+[Choosing the axes](#choosing-the-axes).
+
+1. Explain why the point that was $$(x, y)$$ gets the new coordinates $$(y, -x)$$.
+2. Find the new coordinates of the points that were $$(3, 1)$$ and $$(-2, 5)$$.
+
+:::solution
+
+1. The new $$x$$-axis points up the page, so the new first coordinate measures how far up the point
+   is: that is $$y$$. The new $$y$$-axis points left, so the new second coordinate measures how far
+   left the point is. A point $$x$$ to the right is $$-x$$ to the left, so the new second coordinate
+   is $$-x$$.
+2. $$(3, 1)$$ becomes $$(1, -3)$$, and $$(-2, 5)$$ becomes $$(5, 2)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-coordinates-screen}
+
+A drawing program uses a canvas $$800$$ wide and $$600$$ tall, with its origin at the top left
+corner and its second coordinate growing downwards. A dot sits at $$(200, 150)$$ on the canvas.
+
+1. Is the dot nearer the top or the bottom of the canvas?
+2. Put the origin at the bottom left corner instead, with the axes pointing right and up. What are
+   the dot's coordinates now?
+
+:::solution
+
+1. It is $$150$$ down from the top, and the canvas is $$600$$ tall, so it is in the top quarter:
+   nearer the top.
+2. The first coordinate still counts from the left edge, so it stays $$200$$. The second now counts
+   up from the bottom edge, which is $$600 - 150 = 450$$. The dot is at $$(200, 450)$$.
+
+:::
+
+::::
+
+:::::

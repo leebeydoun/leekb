@@ -39,9 +39,9 @@ So $$P'$$ is on the same side of $$L$$ as $$P$$, and $$a$$ times as far from $$L
 
 For $$a > 1$$ the sheet is pulled out, and for $$a < 1$$ it is squashed towards the line. A stretch
 by $$1$$ moves nothing. Each point moves as if it were zoomed by $$a$$ about its own foot $$F$$, so
-a stretch is like a zoom with a different centre for every point, all lined up along $$L$$. When
-coordinates arrive in a later chapter, with $$L$$ as the horizontal axis, a stretch will be the rule
-$$(x, y) \mapsto (x, ay)$$.
+a stretch is like a zoom with a different centre for every point, all lined up along $$L$$. With
+coordinates and $$L$$ as the horizontal axis, a stretch is the rule $$(x, y) \mapsto (x, ay)$$, as
+the [Geometry from numbers](../coordinates/geometry-from-numbers.mdx) guide shows.
 
 ```plane
 point A -3.5 0 hidden
@@ -153,9 +153,10 @@ times the area of the shape.
 A zoom fits into this picture too. Take two lines crossing square on at $$O$$. Stretch by $$r$$ away
 from one line, then by $$r$$ away from the other. Every point ends up $$r$$ times as far from both
 lines. The zoom by $$r$$ about $$O$$ also sends each point $$r$$ times as far from both lines, so
-the two stretches together are the zoom. That last step is taken from the picture here, and
-coordinates prove it in a later chapter. The two stretches multiply the area by $$r$$ and then by
-$$r$$ again, giving the factor $$r^2$$ of :ref{#area-scaling}.
+the two stretches together are the zoom. That last step is taken from the picture here. In
+coordinates it is a short calculation: the two stretches send $$(x, y)$$ to $$(x, ry)$$ and then to
+$$(rx, ry)$$, which is the zoom (:ref{#coordinates/origin-zoom}). The two stretches multiply the
+area by $$r$$ and then by $$r$$ again, giving the factor $$r^2$$ of :ref{#area-scaling}.
 
 ## The ellipse
 
