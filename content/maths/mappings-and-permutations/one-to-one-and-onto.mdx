@@ -1,0 +1,436 @@
+---
+title: One to one and onto
+description:
+  Mappings that never send two elements to one place, mappings that reach every element, the
+  pigeonhole principle, and why for finite sets of the same size each property gives the other.
+---
+
+Imagine an usher showing ticket holders to their seats in a small theatre. If two people are shown
+to the same seat, there is trouble at once, and someone has to stand. If everyone is seated but some
+seats stay empty, nothing goes wrong, but the house isn't full. On a good night every person has a
+seat of their own and no seat is empty.
+
+<TheatreSeats caption="Three nights at a theatre with three seats. On the first, two people are shown to the same seat. On the second, the two people have a seat each and one seat is empty. On the third, three people fill the three seats, one each." />
+
+The usher's rule is a mapping from the ticket holders to the seats (:ref{#mapping}). The first night
+fails a test called **one to one**, the second fails a test called **onto**, and the third passes
+both. In this guide we'll read both tests off the arrows, use them to prove that some mappings can't
+exist, and see why, for finite sets of the same size, passing one test means passing the other.
+
+## No two arrows arrive together
+
+On the first night two arrows end at the same seat. A mapping is one to one when that never happens:
+two different elements always go to two different places. You met the same idea for functions in
+:ref{#functions/one-to-one}, and it carries over to mappings between any sets.
+
+:::definition[One to one]{#injective}
+
+A mapping $$f: S \to T$$ is **one to one** when it never sends two different elements to the same
+element: for $$x$$ and $$x'$$ in $$S$$, if $$f(x) = f(x')$$, then $$x = x'$$.
+
+:::
+
+In an arrow picture, a mapping is one to one exactly when **at most one arrow arrives** at each
+element of the target. The cloakroom from the guide [Mappings](./mappings.mdx) fails, because three
+arrows arrive at hook A. The number of arrows leaving each element is always one, since $$f$$ is a
+mapping. So this test is about the arrows arriving.
+
+To show a mapping is one to one, start from two elements with the same value and show they are the
+same element. To show it is not, one pair is enough. Here are some mappings from $$\mathbb{R}$$ to
+$$\mathbb{R}$$:
+
+- **$$x \mapsto 2x + 1$$ is one to one.** If $$2x + 1 = 2x' + 1$$, subtracting $$1$$ gives
+  $$2x = 2x'$$, and dividing by $$2$$ gives $$x = x'$$.
+- **$$x \mapsto x^2$$ is not one to one**, because $$(-3)^2 = 9 = 3^2$$ and $$-3 \ne 3$$.
+- **$$x \mapsto 2^x$$ is one to one**, by :ref{#functions/exponential-one-to-one}.
+
+The domain matters. Squaring from the numbers $$x \ge 0$$ to the numbers $$y \ge 0$$ is one to one,
+because two numbers that are not negative and have equal squares are equal
+(:ref{#real-numbers/power-order-converse}). Taking away the negative numbers takes away the second
+arrow into each square.
+
+## Every element is reached
+
+On the second night every person has a seat, but one seat gets no arrow. A mapping is onto when
+every element of the target gets at least one arrow, so nothing in the target is left out.
+
+:::definition[Onto]{#surjective}
+
+A mapping $$f: S \to T$$ is **onto** when every element of $$T$$ is a value of $$f$$: for every
+$$y$$ in $$T$$, there is an $$x$$ in $$S$$ with $$f(x) = y$$. In other words, the image of $$f$$ is
+the whole target, $$f(S) = T$$ (:ref{#image-of-set}).
+
+:::
+
+In an arrow picture, a mapping is onto exactly when **at least one arrow arrives** at each element
+of the target. The cloakroom fails again, since no arrow arrives at hook B. To show a mapping is
+onto, take any $$y$$ in the target and find an $$x$$ that goes to it. Here are the same three
+mappings from $$\mathbb{R}$$ to $$\mathbb{R}$$:
+
+- **$$x \mapsto 2x + 1$$ is onto.** Given $$y$$, the number $$x = \frac{y - 1}{2}$$ has
+  $$2 \cdot \frac{y - 1}{2} + 1 = y$$.
+- **$$x \mapsto x^2$$ is not onto**, because no square is $$-1$$
+  (:ref{#real-numbers/squares-positive}).
+- **$$x \mapsto 2^x$$ is not onto**, because $$2^x > 0$$ for every $$x$$
+  (:ref{#functions/exponential-positive}), so $$0$$ and $$-1$$ get no arrow.
+
+Being onto depends on the target as well as the rule. Squaring from the numbers $$x \ge 0$$ to the
+numbers $$y \ge 0$$ is onto, because each $$y \ge 0$$ is $$(\sqrt{y})^2$$
+(:ref{#real-numbers/square-root}). And $$x \mapsto 2^x$$ from $$\mathbb{R}$$ to the positive numbers
+is onto, because every positive number is a power of $$2$$ (:ref{#functions/log-exists}). The rule
+is the same in each case, and only the target has shrunk to the image. That is why
+:ref{#mappings-equal} counts the target as part of a mapping.
+
+## Exactly one arrow at each element
+
+The third night passes both tests: at most one arrow arrives at each seat, and at least one does. So
+exactly one arrow arrives at each seat.
+
+:::definition[One to one and onto]{#bijective}
+
+A mapping is **one to one and onto** when it is both one to one and onto. Then each element $$y$$ of
+the target is $$f(x)$$ for exactly one $$x$$ in the domain.
+
+:::
+
+The usual names, which you'll see in other books, are **injective** for one to one, **surjective**
+for onto, and **bijective** for one to one and onto. Read off the arrows, the three properties are:
+
+- **One to one**: at most one arrow arrives at each element of the target
+- **Onto**: at least one arrow arrives at each element of the target
+- **One to one and onto**: exactly one arrow arrives at each element of the target
+
+<ArrowTests caption="Four mappings, each drawn as arrows from a column of dots on the left to a column on the right. The first is neither one to one nor onto, the second is one to one but not onto, the third is onto but not one to one, and the fourth is both." />
+
+The table collects the examples so far. Each line is a mapping, with its domain and target, and the
+reason for each answer is in the two sections above.
+
+| Mapping    | From              | To                | One to one | Onto |
+| ---------- | ----------------- | ----------------- | ---------- | ---- |
+| $$2x + 1$$ | $$\mathbb{R}$$    | $$\mathbb{R}$$    | yes        | yes  |
+| $$x^2$$    | $$\mathbb{R}$$    | $$\mathbb{R}$$    | no         | no   |
+| $$x^2$$    | numbers $$\ge 0$$ | numbers $$\ge 0$$ | yes        | yes  |
+| $$2^x$$    | $$\mathbb{R}$$    | $$\mathbb{R}$$    | yes        | no   |
+| $$2^x$$    | $$\mathbb{R}$$    | numbers $$> 0$$   | yes        | yes  |
+
+In the cloakroom below, the readout reports both tests as you draw. Try the presets with fewer hooks
+than things: you'll find you can make the mapping onto, but never one to one. The next section shows
+why.
+
+<ArrowDiagram report="full" />
+
+## The pigeonhole principle
+
+Think of a class of $$13$$ children and the $$12$$ months of the year. Send each child to their
+birth month. Whatever the birthdays are, some month must get two children, because $$12$$ months
+can't take $$13$$ arrows with at most one each. The same holds for any two finite sets where the
+domain is bigger.
+
+To make "bigger" exact, we need to say what the number of elements of a set is. The idea is the one
+you use when counting aloud: point to each element once, saying $$1$$, $$2$$, $$3$$ and so on, and
+the last number you say is the count.
+
+:::definition[Number of elements]{#one-to-one-and-onto-count}
+
+A set $$A$$ has $$n$$ **elements**, for a positive integer $$n$$, when its elements can be listed as
+$$a_1, a_2, \ldots, a_n$$ with every element of $$A$$ appearing in the list exactly once. The empty
+set has $$0$$ elements. A set with $$n$$ elements for some $$n \ge 0$$ is called **finite**.
+
+:::
+
+A list like this is itself a mapping: it sends $$1$$ to $$a_1$$, $$2$$ to $$a_2$$ and so on, and it
+is one to one and onto from $$\{1, \ldots, n\}$$ to $$A$$. A few facts about counting go with the
+definition. They are what anyone counting objects relies on, and proving them carefully belongs to a
+course on the foundations of mathematics, so we take them as given.
+
+:::remark[Rules for counting]{#one-to-one-and-onto-counting-rules}
+
+1. **One count per set**: listing the elements of a finite set in another order, each exactly once,
+   always gives the same number of entries
+2. **Repeats don't add elements**: a list of $$k$$ entries, with repeats allowed, has at most $$k$$
+   different elements
+3. **A part is no bigger than the whole**: if $$A$$ is a subset of a set $$B$$ with $$n$$ elements,
+   then $$A$$ is finite with at most $$n$$ elements, and with fewer than $$n$$ when some element of
+   $$B$$ is not in $$A$$
+
+These are taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Finite_set"}
+
+:::
+
+The pigeonhole principle gets its name from a picture: if more pigeons fly into a wall of
+pigeonholes than there are holes, some hole gets at least two pigeons.
+
+<Pigeonholes caption="Five pigeons and four pigeonholes. However they settle, at least one hole holds two pigeons: here it is the second hole." />
+
+:::theorem[The pigeonhole principle]{#pigeonhole}
+
+Let $$S$$ and $$T$$ be finite sets, with $$S$$ having more elements than $$T$$. Then no mapping
+$$f: S \to T$$ is one to one: there are always two different elements $$x$$ and $$x'$$ of $$S$$ with
+$$f(x) = f(x')$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Pigeonhole_Principle"}
+
+Let $$S$$ have $$m$$ elements and $$T$$ have $$n$$, with $$m > n$$. List the elements of $$S$$ as
+$$x_1, \ldots, x_m$$, each exactly once (:ref{#one-to-one-and-onto-count}). Suppose, to get a
+contradiction, that $$f$$ is one to one.
+
+1. The list $$f(x_1), \ldots, f(x_m)$$ names every element of $$f(S)$$, since each element of
+   $$f(S)$$ is $$f(x_i)$$ for some $$i$$ (:ref{#image-of-set}).
+2. No element appears twice in it. If $$f(x_i) = f(x_j)$$, then $$x_i = x_j$$ because $$f$$ is one
+   to one, and so $$i = j$$, because no element of $$S$$ appears twice in its list.
+3. So $$f(S)$$ has $$m$$ elements, by :ref{#one-to-one-and-onto-count}.
+4. But $$f(S)$$ is a subset of $$T$$, so it has at most $$n$$ elements, by rule 3 of
+   :ref{#one-to-one-and-onto-counting-rules}.
+
+By rule 1, a set has only one count, so steps 3 and 4 give $$m \le n$$, which contradicts $$m > n$$.
+So $$f$$ is not one to one.
+
+:::
+
+The principle says some element is hit twice, but not which one. It proves things exist without
+finding them. Here it is at work:
+
+- **Initials**: among any $$27$$ people, two have first names starting with the same letter. The
+  mapping from the people to the $$26$$ letters can't be one to one.
+- **Socks**: a drawer holds black, grey and white socks, and you take out $$4$$ in the dark. Two of
+  them have the same colour, since the mapping from $$4$$ socks to $$3$$ colours can't be one to
+  one.
+
+The pigeonholes don't have to be given to you. Sometimes the work is in choosing them. Put $$5$$
+points anywhere in a square $$2$$ wide and $$2$$ tall. Then two of the points are at most
+$$\sqrt{2} \approx 1.41$$ apart.
+
+Here is why. Cut the square into four squares $$1$$ wide and $$1$$ tall, and send each point to a
+small square it lies in (a point on a cut line lies in more than one, so pick any of them). Five
+points and four small squares: by :ref{#pigeonhole}, two points $$(x, y)$$ and $$(x', y')$$ land in
+the same small square. Then $$|x - x'| \le 1$$ and $$|y - y'| \le 1$$, so by
+:ref{#coordinates/distance-formula} their distance is
+
+```math
+\sqrt{(x - x')^2 + (y - y')^2} \le \sqrt{1 + 1} = \sqrt{2}
+```
+
+<FivePoints caption="Five points in a 2 by 2 square cut into four 1 by 1 squares. Two of the points share the top right square, and they are about 0.64 apart, less than √2 ≈ 1.41." />
+
+## Finite sets: one test gives the other
+
+Picture a theatre with $$200$$ seats and $$200$$ ticket holders. If no two people share a seat, the
+$$200$$ people fill $$200$$ different seats, so no seat is empty. And if no seat is empty, nobody
+can be sharing, since a shared seat would leave too few people for the rest. So for this mapping,
+one to one and onto stand or fall together.
+
+You can see it with a small example. On $$\{0, 1, 2, 3, 4, 5\}$$, send each $$n$$ to the remainder
+of $$5n$$ on division by $$6$$ (:ref{#numbers/division-remainder}). The values for $$n = 0$$ to
+$$5$$ are $$0, 5, 4, 3, 2, 1$$: all different, and every number from $$0$$ to $$5$$ appears. Now
+send each $$n$$ to the remainder of $$2n$$ instead. The values are $$0, 2, 4, 0, 2, 4$$: two
+repeats, and $$1$$, $$3$$ and $$5$$ never appear. Both tests pass together, or both fail together.
+
+:::theorem[Finite sets: one to one exactly when onto]{#finite-injective-surjective}
+
+Let $$S$$ and $$T$$ be finite sets with the same number of elements $$n \ge 1$$, and let
+$$f: S \to T$$ be a mapping. Then $$f$$ is one to one exactly when $$f$$ is onto. In particular this
+holds for every mapping from a finite set to itself.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Equivalence_of_Mappings_between_Finite_Sets_of_Same_Cardinality"}
+
+List the elements of $$S$$ as $$x_1, \ldots, x_n$$, each exactly once. There are two directions to
+prove.
+
+**If $$f$$ is one to one, then it is onto.** By steps 1 to 3 of the proof of :ref{#pigeonhole},
+$$f(S)$$ has $$n$$ elements. Suppose some element of $$T$$ were not in $$f(S)$$. Then by rule 3 of
+:ref{#one-to-one-and-onto-counting-rules}, the subset $$f(S)$$ of $$T$$ would have fewer than $$n$$
+elements. It already has $$n$$, and by rule 1 a set has only one count, so that can't happen. So
+every element of $$T$$ is in $$f(S)$$, and $$f$$ is onto.
+
+**If $$f$$ is onto, then it is one to one.** Suppose, to get a contradiction, that $$f$$ is onto but
+$$f(x_i) = f(x_j)$$ for some $$i \ne j$$.
+
+1. The list $$f(x_1), \ldots, f(x_n)$$ names every element of $$f(S)$$.
+2. Cross out the entry $$f(x_j)$$. The list still names every element of $$f(S)$$, because the value
+   $$f(x_j)$$ is also the entry $$f(x_i)$$, which stays.
+3. The shorter list has $$n - 1$$ entries, so $$f(S)$$ has at most $$n - 1$$ elements, by rule 2 of
+   :ref{#one-to-one-and-onto-counting-rules}.
+4. But $$f$$ is onto, so $$f(S) = T$$, which has $$n$$ elements. By rule 1, a set can't have both
+   $$n$$ elements and at most $$n - 1$$.
+
+So no two different elements share a value, and $$f$$ is one to one.
+
+:::
+
+So for a mapping from a finite set to itself, you only need to check one test. This is what will
+make permutations, in the guide [Permutations](./permutations.mdx), so convenient: a rearrangement
+that sends no two things to one place leaves no place empty.
+
+The theorem needs the sets to be finite. Imagine a hotel with a room for every positive integer,
+$$1, 2, 3, \ldots$$, and a guest in every room. The manager asks the guest in room $$n$$ to move to
+room $$2n$$. No two guests end up together, since $$2n = 2n'$$ gives $$n = n'$$, so the move is one
+to one. But every odd room is now empty, so it is not onto. With infinitely many rooms, there is
+always space to spread out. This imaginary building is known as Hilbert's hotel, after the
+mathematician David Hilbert, who used it to show how strange infinite sets can be.
+
+<HotelRooms caption="The first ten rooms of the hotel. The arcs show the guests from rooms 1 to 5 moving to rooms 2, 4, 6, 8 and 10. No two guests share a room, but every odd room is left empty." />
+
+## Exercises
+
+:::::accordion[Exercises on one to one and onto, with solutions]
+
+::::exercise{#ex-one-to-one-and-onto-arrows}
+
+For each mapping, say whether it is one to one and whether it is onto.
+
+1. From $$\{1, 2, 3\}$$ to $$\{a, b, c, d\}$$: $$1 \mapsto b$$, $$2 \mapsto d$$, $$3 \mapsto a$$
+2. From $$\{1, 2, 3, 4\}$$ to $$\{a, b\}$$: $$1 \mapsto a$$, $$2 \mapsto b$$, $$3 \mapsto a$$,
+   $$4 \mapsto b$$
+3. From $$\{1, 2, 3\}$$ to $$\{a, b, c\}$$: $$1 \mapsto c$$, $$2 \mapsto a$$, $$3 \mapsto b$$
+
+:::solution
+
+1. One to one, since the three values $$b$$, $$d$$ and $$a$$ are different. Not onto, since no arrow
+   arrives at $$c$$.
+2. Not one to one, since $$1$$ and $$3$$ both go to $$a$$. Onto, since $$a$$ and $$b$$ each get two
+   arrows.
+3. Both. Each of $$a$$, $$b$$ and $$c$$ gets exactly one arrow.
+
+:::
+
+::::
+
+::::exercise{#ex-one-to-one-and-onto-line}
+
+Show that $$f(x) = 5 - 3x$$, from $$\mathbb{R}$$ to $$\mathbb{R}$$, is one to one and onto. Find the
+number that $$f$$ sends to $$-7$$.
+
+:::solution
+
+**One to one.** If $$5 - 3x = 5 - 3x'$$, then $$-3x = -3x'$$, and dividing by $$-3$$ gives
+$$x = x'$$.
+
+**Onto.** Given $$y$$, solve $$5 - 3x = y$$: $$3x = 5 - y$$, so $$x = \frac{5 - y}{3}$$. Then
+$$f\left(\frac{5 - y}{3}\right) = 5 - (5 - y) = y$$.
+
+For $$y = -7$$, $$x = \frac{12}{3} = 4$$. Check: $$f(4) = 5 - 12 = -7$$.
+
+:::
+
+::::
+
+::::exercise{#ex-one-to-one-and-onto-targets}
+
+Let $$g(x) = x^2 + 1$$.
+
+1. As a mapping from $$\mathbb{R}$$ to $$\mathbb{R}$$, show that $$g$$ is neither one to one nor
+   onto.
+2. As a mapping from the numbers $$x \ge 0$$ to the numbers $$y \ge 1$$, show that $$g$$ is one to
+   one and onto.
+
+:::solution
+
+1. $$g(-1) = 2 = g(1)$$, so $$g$$ is not one to one. Every value is $$x^2 + 1 \ge 1$$, since
+   $$x^2 \ge 0$$, so $$0$$ is not a value and $$g$$ is not onto.
+2. First, $$g$$ does land in the numbers $$y \ge 1$$, as part 1 showed. If $$x^2 + 1 = x'^2 + 1$$
+   with $$x, x' \ge 0$$, then $$x^2 = x'^2$$, so $$x = x'$$ by
+   :ref{#real-numbers/power-order-converse}: one to one. Given $$y \ge 1$$, the number
+   $$x = \sqrt{y - 1}$$ is at least $$0$$ and $$g(x) = (y - 1) + 1 = y$$: onto. Check with
+   $$y = 10$$: $$x = 3$$ and $$g(3) = 10$$.
+
+:::
+
+::::
+
+::::exercise{#ex-one-to-one-and-onto-remainders}
+
+Prove that among any $$8$$ integers, there are two whose difference is divisible by $$7$$.
+
+:::solution
+
+Send each of the $$8$$ integers to its remainder on division by $$7$$, which is one of the $$7$$
+numbers $$0, 1, \ldots, 6$$ (:ref{#numbers/division-remainder}). Since $$8 > 7$$, this mapping is
+not one to one, by :ref{#pigeonhole}. So two of the integers, $$a$$ and $$b$$, have the same
+remainder $$r$$: $$a = 7q + r$$ and $$b = 7q' + r$$. Then $$a - b = 7(q - q')$$, which is divisible
+by $$7$$.
+
+For example, among $$3, 10, 25, 41, 50, 64, 79, 100$$ the remainders are $$3, 3, 4, 6, 1, 1, 2, 2$$,
+and $$10 - 3 = 7$$.
+
+:::
+
+::::
+
+::::exercise{#ex-one-to-one-and-onto-eleven}
+
+You choose $$6$$ different numbers from $$1, 2, \ldots, 10$$. Prove that two of the numbers you
+chose add up to $$11$$.
+
+:::solution
+
+Split the numbers $$1$$ to $$10$$ into five pairs that each add to $$11$$:
+
+```math
+\{1, 10\} \qquad \{2, 9\} \qquad \{3, 8\} \qquad \{4, 7\} \qquad \{5, 6\}
+```
+
+Send each chosen number to the pair it belongs to. That is a mapping from $$6$$ chosen numbers to
+$$5$$ pairs, so by :ref{#pigeonhole} two different chosen numbers go to the same pair. A pair has
+only two numbers, so those two chosen numbers are the whole pair, and they add to $$11$$.
+
+With $$5$$ numbers it can fail: $$1, 2, 3, 4, 5$$ has no two adding to $$11$$, since the largest sum
+is $$4 + 5 = 9$$.
+
+:::
+
+::::
+
+::::exercise{#ex-one-to-one-and-onto-clock}
+
+Let $$S = \{0, 1, 2, 3, 4, 5, 6\}$$.
+
+1. Let $$f: S \to S$$ send $$n$$ to the remainder of $$3n$$ on division by $$7$$. Show that $$f$$ is
+   one to one, and explain why it must then be onto.
+2. Let $$g: S \to S$$ send $$n$$ to the remainder of $$n^2$$ on division by $$7$$. Show that $$g$$
+   is not onto, and explain why it can't be one to one either.
+
+:::solution
+
+1. The values for $$n = 0$$ to $$6$$ are $$0, 3, 6, 2, 5, 1, 4$$. For example, $$3 \cdot 5 = 15$$
+   leaves remainder $$1$$. No value appears twice, so $$f$$ is one to one. Since $$S$$ is finite and
+   $$f$$ goes from $$S$$ to itself, $$f$$ is onto by :ref{#finite-injective-surjective}. Indeed all
+   of $$0$$ to $$6$$ appear.
+2. The values are $$0, 1, 4, 2, 2, 4, 1$$. For example, $$5^2 = 25 = 3 \cdot 7 + 4$$. The numbers
+   $$3$$, $$5$$ and $$6$$ never appear, so $$g$$ is not onto. By :ref{#finite-injective-surjective},
+   a one-to-one $$g$$ would be onto, so $$g$$ is not one to one. Indeed $$g(1) = g(6) = 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-one-to-one-and-onto-infinite}
+
+Let $$P = \{1, 2, 3, \ldots\}$$ be the positive integers.
+
+1. Show that $$a(n) = n + 3$$, from $$P$$ to $$P$$, is one to one but not onto.
+2. Let $$b: P \to P$$ send each even $$n$$ to $$\frac{n}{2}$$ and each odd $$n$$ to
+   $$\frac{n + 1}{2}$$. Show that $$b$$ is onto but not one to one.
+3. Explain why neither contradicts :ref{#finite-injective-surjective}.
+
+:::solution
+
+1. If $$n + 3 = n' + 3$$, then $$n = n'$$, so $$a$$ is one to one. Every value is at least $$4$$, so
+   $$1$$, $$2$$ and $$3$$ get no arrow, and $$a$$ is not onto.
+2. The first values are $$b(1) = 1$$, $$b(2) = 1$$, $$b(3) = 2$$, $$b(4) = 2$$, $$b(5) = 3$$. Given
+   any $$k$$ in $$P$$, the even number $$2k$$ has $$b(2k) = k$$, so $$b$$ is onto. But
+   $$b(1) = b(2)$$, so $$b$$ is not one to one.
+3. The theorem is about finite sets, and $$P$$ is not finite. It has no list $$a_1, \ldots, a_n$$
+   that names every positive integer, since $$a_1 + \cdots + a_n + 1$$ is a positive integer bigger
+   than every entry, so it is missing.
+
+:::
+
+::::
+
+:::::

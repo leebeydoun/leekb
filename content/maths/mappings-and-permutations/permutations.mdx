@@ -1,0 +1,439 @@
+---
+title: Permutations
+description:
+  Rearrangements of 1 to n as one-to-one mappings, written in two rows, combined and undone, and
+  counted by n factorial.
+---
+
+Imagine a magician who lays four cards face up in a row and then rearranges them by a rule she has
+practised: the first card goes to the third place, the second to the fourth, the third to the
+second, and the fourth to the first. Give her any four cards and she moves them the same way,
+because the rule is about places, not about the cards. You'd also notice that no card is lost and no
+place is left empty: each place sends its card to one new place, and each new place gets one card.
+
+A rule like hers, which rearranges the places $$1$$ to $$n$$, is called a **permutation**. In this
+guide we'll write permutations down, do one after another, undo them, and count how many there are.
+
+## Shuffles as mappings
+
+Number the places $$1$$, $$2$$, $$3$$, $$4$$ from the left. The magician's rule sends each place to
+the place its card moves to, so it is a mapping $$\sigma$$ from $$\{1, 2, 3, 4\}$$ to itself
+(:ref{#mapping}), with $$\sigma(1) = 3$$, $$\sigma(2) = 4$$, $$\sigma(3) = 2$$ and
+$$\sigma(4) = 1$$. The letter $$\sigma$$ is the Greek "sigma". Each place has one arrow out, as for
+every mapping, and here each place also has exactly one arrow in.
+
+<CardMoves caption="The magician's shuffle σ on the cards A, B, C and D. The card in place 1 goes to place 3, place 2 to place 4, place 3 to place 2 and place 4 to place 1, so the row becomes D, C, A, B." />
+
+Exactly one arrow in at each place means two things. No place gets two cards, so $$\sigma$$ is one
+to one, and no place is left empty, so it is onto. For a mapping of a finite set to itself, the
+first already gives the second.
+
+:::definition[Permutation]{#permutation}
+
+Let $$n \ge 1$$. A **permutation** of $$\{1, \ldots, n\}$$ is a one-to-one mapping
+$$\sigma: \{1, \ldots, n\} \to \{1, \ldots, n\}$$ (:ref{#injective}).
+
+:::
+
+Because $$\{1, \ldots, n\}$$ is finite, a permutation is also onto, by
+:ref{#finite-injective-surjective}. So it is one to one and onto, and it has an inverse, by
+:ref{#inverse-exists-bijective}. Every permutation can be undone.
+
+A permutation is written in two rows: the numbers $$1$$ to $$n$$ on top, and under each one the
+number it goes to. The magician's shuffle is
+
+```math
+\sigma = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 3 & 4 & 2 & 1 \end{pmatrix}
+```
+
+Read each column downwards: "$$1$$ goes to $$3$$", "$$2$$ goes to $$4$$", and so on. Since
+$$\sigma$$ is one to one, the bottom row lists each of $$1$$ to $$n$$ exactly once.
+
+The bottom row can trip you up, so here is the slip to watch for. After $$\sigma$$, the cards
+$$A, B, C, D$$ lie in the order $$D, C, A, B$$, while the bottom row reads $$3, 4, 2, 1$$. The
+bottom row says where each card **goes**: the card in place $$1$$, which is $$A$$, goes to place
+$$3$$. It does not say which card lands in place $$1$$.
+
+Every rearrangement of a row comes from a permutation in this way. Given a new order for the same
+$$n$$ cards, send each place $$i$$ to the place where its card ends up. Reversing $$A, B, C, D$$ to
+$$D, C, B, A$$, for example, comes from the permutation with bottom row $$4, 3, 2, 1$$. Different
+rearrangements come from different permutations, so counting permutations counts rearrangements,
+which [Counting permutations](#counting-permutations) does.
+
+A row with a repeat is not a permutation. The rule with bottom row $$2, 4, 2, 3$$ sends both $$1$$
+and $$3$$ to $$2$$, so two cards land in place $$2$$ and place $$1$$ is left empty. It is a mapping,
+but not one to one.
+
+## One shuffle after another
+
+Suppose the magician has a second shuffle,
+
+```math
+\tau = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 1 & 3 & 4 & 2 \end{pmatrix}
+```
+
+read "tau", which leaves the first card alone and moves the other three. Doing $$\tau$$ first and
+then $$\sigma$$ is the composite $$\sigma \circ \tau$$ (:ref{#mapping-composite}). For permutations
+the circle is usually left out, and $$\sigma\tau$$ means $$\sigma \circ \tau$$.
+
+So in $$\sigma\tau$$ the right-hand permutation, $$\tau$$, acts first, as in $$\sigma(\tau(i))$$. To
+work it out, follow each number through $$\tau$$ and then through $$\sigma$$:
+
+- $$1$$ goes to $$\tau(1) = 1$$, and then to $$\sigma(1) = 3$$
+- $$2$$ goes to $$\tau(2) = 3$$, and then to $$\sigma(3) = 2$$
+- $$3$$ goes to $$\tau(3) = 4$$, and then to $$\sigma(4) = 1$$
+- $$4$$ goes to $$\tau(4) = 2$$, and then to $$\sigma(2) = 4$$
+
+<ComposeColumns caption="Working out στ: arrows for τ from the first column to the second, then arrows for σ from the second to the third. The path from 1, in orange, goes to 1 and then to 3." />
+
+That gives the first line below. The other order, $$\tau\sigma$$, does $$\sigma$$ first: $$1$$ goes
+to $$\sigma(1) = 3$$ and then to $$\tau(3) = 4$$, and the other columns go the same way.
+
+```math
+\sigma\tau = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 3 & 2 & 1 & 4 \end{pmatrix} \qquad \tau\sigma = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 4 & 2 & 3 & 1 \end{pmatrix}
+```
+
+The two are different: $$\sigma\tau$$ sends $$1$$ to $$3$$, and $$\tau\sigma$$ sends it to $$4$$. So
+the order of two shuffles matters, as the order of two moves of the plane did
+(:ref{#isometries/order-matters}). In each order, though, the result is a permutation again.
+
+:::proposition[A composite of permutations is a permutation]{#permutations-composite}
+
+If $$\sigma$$ and $$\tau$$ are permutations of $$\{1, \ldots, n\}$$, then so is $$\sigma\tau$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Composite_of_Permutations_is_Permutation"}
+
+The composite $$\sigma\tau$$ is a mapping from $$\{1, \ldots, n\}$$ to itself. Suppose
+$$\sigma(\tau(i)) = \sigma(\tau(j))$$. Since $$\sigma$$ is one to one, $$\tau(i) = \tau(j)$$. Since
+$$\tau$$ is one to one, $$i = j$$. So $$\sigma\tau$$ is one to one (:ref{#injective}).
+
+:::
+
+Below are two new shuffles of five cards, also called $$\sigma$$ and $$\tau$$, to try on a row of
+cards. The two rows under the cards keep track of the whole shuffle done so far, from the starting
+row. The second view shows $$\sigma\tau$$ and $$\tau\sigma$$ side by side.
+
+<CardShuffle />
+
+## Undoing a shuffle
+
+Doing nothing is a permutation too: the **identity** $$I$$, which sends every number to itself. Its
+two rows are the same, $$1, 2, \ldots, n$$ on top and below. Undoing a shuffle means putting every
+card back, and the permutation that does it is the inverse.
+
+:::definition[Identity and inverse permutations]{#permutation-inverse}
+
+The **identity permutation** $$I$$ of $$\{1, \ldots, n\}$$ sends each number to itself. The
+**inverse** of a permutation $$\sigma$$ is its inverse mapping $$\sigma^{-1}$$
+(:ref{#inverse-mapping}): for each $$j$$, $$\sigma^{-1}(j)$$ is the one number $$i$$ with
+$$\sigma(i) = j$$. So
+
+```math
+\sigma\sigma^{-1} = I = \sigma^{-1}\sigma
+```
+
+:::
+
+The inverse is a permutation too, because it has an inverse of its own, $$\sigma$$, and so it is one
+to one by :ref{#inverse-exists-bijective}. To find it from the two rows:
+
+1. Swap the two rows, so that each column is turned upside down.
+2. Sort the columns so that the new top row reads $$1$$ to $$n$$.
+
+This works because each column of $$\sigma$$ says "$$i$$ goes to $$\sigma(i)$$", and the inverse has
+to send $$\sigma(i)$$ back to $$i$$, which is the same column upside down. Sorting the columns
+doesn't change which number goes where. For the magician's shuffle,
+
+```math
+\begin{pmatrix} 3 & 4 & 2 & 1 \\ 1 & 2 & 3 & 4 \end{pmatrix} \quad \text{sorted is} \quad \sigma^{-1} = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 4 & 3 & 1 & 2 \end{pmatrix}
+```
+
+Check $$\sigma\sigma^{-1} = I$$ one number at a time: $$1$$ goes to $$\sigma^{-1}(1) = 4$$ and then
+to $$\sigma(4) = 1$$, $$2$$ goes to $$3$$ and back to $$2$$, $$3$$ goes to $$1$$ and back to $$3$$,
+and $$4$$ goes to $$2$$ and back to $$4$$. The inverse also explains the row of cards
+$$D, C, A, B$$. Place $$j$$ holds the card that started in place $$\sigma^{-1}(j)$$, and the places
+of $$D, C, A, B$$ at the start were $$4, 3, 1, 2$$, the bottom row of $$\sigma^{-1}$$.
+
+Undoing two shuffles reverses their order, as taking off shoes and socks does:
+$$(\sigma\tau)^{-1} = \tau^{-1}\sigma^{-1}$$, by :ref{#composite-inverse}. Here
+$$\tau^{-1} = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 1 & 4 & 2 & 3 \end{pmatrix}$$, and following each
+number through $$\sigma^{-1}$$ and then $$\tau^{-1}$$ gives
+
+```math
+\tau^{-1}\sigma^{-1} = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 3 & 2 & 1 & 4 \end{pmatrix}
+```
+
+That is $$\sigma\tau$$ itself, and it should be: $$\sigma\tau$$ swaps $$1$$ and $$3$$, and swapping
+them again undoes it. The other order, $$\sigma^{-1}\tau^{-1}$$, sends $$1$$ to $$4$$ instead, so it
+is not the inverse.
+
+## Counting permutations
+
+Take the numbers $$1$$, $$2$$, $$3$$. A permutation can send $$3$$ to any of the three, and then
+$$1$$ and $$2$$ have to go, one each, to the two numbers left, in one of two ways. So there are
+$$3 \cdot 2 = 6$$ permutations, and the tree below lists them by where $$3$$ goes. The same choice
+of where $$n$$ goes, followed by a count of the rest, works for every $$n$$.
+
+<CountingTree caption="The six permutations of 1, 2, 3, written by their bottom rows and sorted by where 3 goes. Each choice of σ(3) leaves two ways to send 1 and 2 to the two numbers left." />
+
+:::theorem[Counting permutations]{#permutation-count}
+
+For every $$n \ge 1$$ there are exactly $$n!$$ permutations of $$\{1, \ldots, n\}$$
+(:ref{#numbers/factorial}).
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Cardinality_of_Set_of_Bijections"}
+
+We count by matching. Two finite sets whose elements can be paired off, each element of one with
+exactly one element of the other, have the same number of elements. That is what counting means:
+pairing the things counted with $$1, 2, \ldots$$. The proof is by induction on $$n$$
+(:ref{#basic-proofs/induction}).
+
+**Base case.** For $$n = 1$$, the only mapping of $$\{1\}$$ to itself sends $$1$$ to $$1$$, and it
+is a permutation. That is $$1 = 1!$$ permutation.
+
+**Inductive step.** Let $$n \ge 2$$, and suppose there are $$(n - 1)!$$ permutations of
+$$\{1, \ldots, n - 1\}$$. Sort the permutations $$\sigma$$ of $$\{1, \ldots, n\}$$ by the number
+$$j = \sigma(n)$$, which can be any of $$1$$ to $$n$$. We show that for each $$j$$ there are exactly
+$$(n - 1)!$$ permutations with $$\sigma(n) = j$$, in two matchings.
+
+_First matching._ Let $$s$$ be the permutation that swaps $$j$$ and $$n$$ and leaves every other
+number where it is (if $$j = n$$, then $$s = I$$). Swapping twice changes nothing, so $$ss = I$$.
+
+- If $$\sigma(n) = j$$, then $$s\sigma$$ sends $$n$$ to $$s(j) = n$$.
+- If $$\rho(n) = n$$, then $$s\rho$$ sends $$n$$ to $$s(n) = j$$.
+- Doing both returns where you started: $$s(s\sigma) = (ss)\sigma = \sigma$$, and in the same way
+  $$s(s\rho) = \rho$$.
+
+Each composite is a permutation by :ref{#permutations-composite}. So $$\sigma \mapsto s\sigma$$
+pairs off the permutations with $$\sigma(n) = j$$ with the permutations $$\rho$$ with
+$$\rho(n) = n$$, each with exactly one.
+
+_Second matching._ Let $$\rho$$ be a permutation of $$\{1, \ldots, n\}$$ with $$\rho(n) = n$$. For
+$$i \le n - 1$$, $$\rho(i) \ne \rho(n) = n$$, because $$\rho$$ is one to one. So $$\rho$$ sends
+$$\{1, \ldots, n - 1\}$$ into itself, still one to one, and leaving out $$n$$ gives a permutation of
+$$\{1, \ldots, n - 1\}$$.
+
+In the other direction, any permutation of $$\{1, \ldots, n - 1\}$$, together with $$n \mapsto n$$,
+is a permutation of $$\{1, \ldots, n\}$$ that fixes $$n$$, that is, sends $$n$$ to itself. The two
+steps undo each other, so this pairs off the permutations fixing $$n$$ with the permutations of
+$$\{1, \ldots, n - 1\}$$.
+
+_Counting._ By the two matchings and the assumption, for each of the $$n$$ values of $$j$$ there are
+$$(n - 1)!$$ permutations with $$\sigma(n) = j$$. Every permutation has exactly one value of
+$$\sigma(n)$$, so writing the $$n$$ lists one after another lists every permutation exactly once.
+That list has $$n \cdot (n - 1)! = n!$$ entries.
+
+:::
+
+The guide [Factorials](../numbers/factorials.mdx) counted rearrangements by choosing what goes
+first, then second, and so on, and :ref{#permutation-count} turns that count into a proof. For three
+runners in a race, a finishing order sends each runner to a place, so there are $$3! = 6$$ possible
+finishes. For four friends taking four seats round a table each week, there are $$4! = 24$$
+seatings, enough for almost half a year without a repeat.
+
+Factorials grow fast. A deck of $$52$$ cards has $$52!$$ orders, a $$68$$-digit number:
+
+```math
+52! \approx 8.07 \times 10^{67}
+```
+
+Suppose every one of the $$8$$ billion people on Earth had shuffled a deck once a second for the
+whole age of the universe, about $$13.8$$ billion years or $$4.4 \times 10^{17}$$ seconds. That is
+about $$3.5 \times 10^{27}$$ shuffles, fewer than one in $$10^{40}$$ of all the orders. So when a
+deck is well shuffled, with every order equally likely, its order has almost certainly never
+occurred before.
+
+## Exercises
+
+:::::accordion[Exercises on permutations, with solutions]
+
+::::exercise{#ex-permutations-read}
+
+Let
+
+```math
+\sigma = \begin{pmatrix} 1 & 2 & 3 & 4 & 5 \\ 3 & 5 & 2 & 1 & 4 \end{pmatrix}
+```
+
+1. Find $$\sigma(2)$$, $$\sigma(\sigma(1))$$, and the number that $$\sigma$$ sends to $$1$$.
+2. Cards $$A, B, C, D, E$$ lie in places $$1$$ to $$5$$. Write the row after $$\sigma$$.
+
+:::solution
+
+1. $$\sigma(2) = 5$$, read from the column under $$2$$. $$\sigma(1) = 3$$, so
+   $$\sigma(\sigma(1)) = \sigma(3) = 2$$. The $$1$$ in the bottom row is under $$4$$, so
+   $$\sigma(4) = 1$$: the number sent to $$1$$ is $$4$$.
+2. $$A$$ goes to place $$3$$, $$B$$ to place $$5$$, $$C$$ to place $$2$$, $$D$$ to place $$1$$ and
+   $$E$$ to place $$4$$. Reading places $$1$$ to $$5$$, the row is $$D, C, A, E, B$$.
+
+:::
+
+::::
+
+::::exercise{#ex-permutations-which}
+
+Each line gives the bottom row of a mapping from $$\{1, 2, 3, 4\}$$ to a set of numbers, with top
+row $$1, 2, 3, 4$$. Say which are permutations of $$\{1, 2, 3, 4\}$$, with a reason.
+
+1. $$2, 3, 3, 1$$
+2. $$4, 1, 2, 3$$
+3. $$1, 2, 3, 5$$
+4. $$2, 1, 4, 3$$
+
+:::solution
+
+1. Not a permutation: $$2$$ and $$3$$ both go to $$3$$, so it is not one to one.
+2. A permutation: the bottom row lists $$1$$, $$2$$, $$3$$, $$4$$ once each, so no two numbers go to
+   the same place.
+3. Not a permutation: $$4$$ goes to $$5$$, which is not in $$\{1, 2, 3, 4\}$$, so this is not a
+   mapping from the set to itself.
+4. A permutation: it swaps $$1$$ with $$2$$ and $$3$$ with $$4$$, and the bottom row lists each
+   number once.
+
+:::
+
+::::
+
+::::exercise{#ex-permutations-compose}
+
+Let
+
+```math
+\alpha = \begin{pmatrix} 1 & 2 & 3 & 4 & 5 \\ 2 & 1 & 4 & 5 & 3 \end{pmatrix} \qquad \beta = \begin{pmatrix} 1 & 2 & 3 & 4 & 5 \\ 1 & 3 & 5 & 2 & 4 \end{pmatrix}
+```
+
+Find $$\alpha\beta$$ and $$\beta\alpha$$.
+
+:::solution
+
+For $$\alpha\beta$$, $$\beta$$ acts first. Following each number: $$1 \to 1 \to 2$$,
+$$2 \to 3 \to 4$$, $$3 \to 5 \to 3$$, $$4 \to 2 \to 1$$, $$5 \to 4 \to 5$$. For $$\beta\alpha$$,
+$$\alpha$$ acts first: $$1 \to 2 \to 3$$, $$2 \to 1 \to 1$$, $$3 \to 4 \to 2$$, $$4 \to 5 \to 4$$,
+$$5 \to 3 \to 5$$. So
+
+```math
+\alpha\beta = \begin{pmatrix} 1 & 2 & 3 & 4 & 5 \\ 2 & 4 & 3 & 1 & 5 \end{pmatrix} \qquad \beta\alpha = \begin{pmatrix} 1 & 2 & 3 & 4 & 5 \\ 3 & 1 & 2 & 4 & 5 \end{pmatrix}
+```
+
+They differ, for example at $$1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-permutations-inverse}
+
+Find the inverse of $$\beta$$ from the last exercise, and check that $$\beta\beta^{-1} = I$$.
+
+:::solution
+
+Swap the rows of $$\beta$$ and sort the columns:
+
+```math
+\begin{pmatrix} 1 & 3 & 5 & 2 & 4 \\ 1 & 2 & 3 & 4 & 5 \end{pmatrix} \quad \text{sorted is} \quad \beta^{-1} = \begin{pmatrix} 1 & 2 & 3 & 4 & 5 \\ 1 & 4 & 2 & 5 & 3 \end{pmatrix}
+```
+
+Check, with $$\beta^{-1}$$ first: $$1 \to 1 \to 1$$, $$2 \to 4 \to 2$$, $$3 \to 2 \to 3$$,
+$$4 \to 5 \to 4$$ and $$5 \to 3 \to 5$$. Every number comes back to itself, so
+$$\beta\beta^{-1} = I$$.
+
+:::
+
+::::
+
+::::exercise{#ex-permutations-count}
+
+1. Count the permutations of $$\{1, \ldots, 5\}$$ that send $$1$$ to $$1$$, and those that send
+   $$1$$ to $$2$$.
+2. Count the permutations of $$\{1, \ldots, 5\}$$ that send $$1$$ to $$1$$ and $$2$$ to $$2$$.
+
+:::solution
+
+1. A permutation that sends $$1$$ to $$1$$ sends $$2, 3, 4, 5$$ one to one onto $$2, 3, 4, 5$$, a
+   rearrangement of four numbers, so there are $$4! = 24$$ of them, by :ref{#permutation-count}.
+   Sending $$1$$ to $$2$$ instead, the swap of $$1$$ and $$2$$ pairs these off with the ones that
+   fix $$1$$, as in the proof of :ref{#permutation-count}, so there are also $$24$$. Check: the five
+   choices of where $$1$$ goes give $$5 \cdot 24 = 120 = 5!$$ in all.
+2. Now $$3, 4, 5$$ are rearranged among themselves, in $$3! = 6$$ ways.
+
+:::
+
+::::
+
+::::exercise{#ex-permutations-deck}
+
+A small deck has $$10$$ cards. Find the number of orders it can be in, and how long it would take to
+lay out every order once, at one order a second.
+
+:::solution
+
+There are $$10! = 3628800$$ orders, by :ref{#permutation-count}. A day has
+$$24 \cdot 60 \cdot 60 = 86400$$ seconds, and $$3628800 \div 86400 = 42$$. So it would take exactly
+$$42$$ days, six weeks without a break.
+
+:::
+
+::::
+
+::::exercise{#ex-permutations-cut}
+
+Cutting a deck of $$6$$ cards moves the top card to the bottom: the card in place $$1$$ goes to
+place $$6$$, and every other card moves up one place.
+
+1. Write the cut $$c$$ in two rows, and find $$c^2$$.
+2. Show that $$c^6 = I$$ but $$c^k \ne I$$ for $$1 \le k \le 5$$, and find $$c^{-1}$$.
+
+:::solution
+
+1. The card in place $$i$$ goes to place $$i - 1$$ for $$i \ge 2$$, and place $$1$$ goes to $$6$$:
+
+   ```math
+   c = \begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 \\ 6 & 1 & 2 & 3 & 4 & 5 \end{pmatrix} \qquad c^2 = \begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 \\ 5 & 6 & 1 & 2 & 3 & 4 \end{pmatrix}
+   ```
+
+   For $$c^2$$, follow each number through $$c$$ twice: $$1 \to 6 \to 5$$, $$2 \to 1 \to 6$$,
+   $$3 \to 2 \to 1$$, and so on.
+
+2. Follow the top card: $$c$$ sends place $$1$$ to $$6$$, then $$5$$, $$4$$, $$3$$, $$2$$, and the
+   sixth cut brings it back to $$1$$. So $$c^k(1) \ne 1$$ for $$1 \le k \le 5$$, and $$c^k \ne I$$.
+   Every card makes the same round of six places, so $$c^6 = I$$. By :ref{#repeating-inverse},
+   $$c^{-1} = c^5$$, which moves the bottom card to the top:
+
+   ```math
+   c^{-1} = \begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 \\ 2 & 3 & 4 & 5 & 6 & 1 \end{pmatrix}
+   ```
+
+:::
+
+::::
+
+::::exercise{#ex-permutations-right-multiply}
+
+Fix a permutation $$\tau$$ of $$\{1, \ldots, n\}$$, and let $$R$$ be the mapping that sends each
+permutation $$\sigma$$ to $$\sigma\tau$$.
+
+1. Prove that $$R$$ is one to one.
+2. Deduce that for every permutation $$\rho$$ there is exactly one $$\sigma$$ with
+   $$\sigma\tau = \rho$$, and find it.
+
+:::solution
+
+1. By :ref{#permutations-composite}, $$R$$ sends permutations to permutations. Suppose
+   $$\sigma\tau = \sigma'\tau$$. Composing both sides with $$\tau^{-1}$$ on the right gives
+   $$(\sigma\tau)\tau^{-1} = (\sigma'\tau)\tau^{-1}$$, and regrouping (:ref{#composite-laws}) gives
+   $$\sigma(\tau\tau^{-1}) = \sigma'(\tau\tau^{-1})$$, that is $$\sigma I = \sigma' I$$, so
+   $$\sigma = \sigma'$$. This is cancelling, as in :ref{#mapping-cancel}.
+2. There are $$n!$$ permutations (:ref{#permutation-count}), a finite set, and $$R$$ maps it to
+   itself one to one. So $$R$$ is onto, by :ref{#finite-injective-surjective}: some $$\sigma$$ has
+   $$\sigma\tau = \rho$$, and part 1 says there is only one. It is $$\sigma = \rho\tau^{-1}$$, since
+   $$(\rho\tau^{-1})\tau = \rho(\tau^{-1}\tau) = \rho I = \rho$$.
+
+:::
+
+::::
+
+:::::

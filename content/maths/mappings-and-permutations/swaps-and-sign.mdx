@@ -1,0 +1,642 @@
+---
+title: Swaps and the sign of a permutation
+description:
+  Building every permutation from swaps of two numbers, why the number of swaps is always even or
+  always odd, the sign of a permutation, and why the 15 puzzle can't swap two tiles.
+---
+
+Imagine pulling a cracker and finding the 15 puzzle inside: fifteen numbered tiles in a 4 by 4
+frame, with one empty square so that a tile next to the gap can slide into it. In your copy the
+tiles are in order except that the 15 and the 14 have changed places. You slide tiles round for an
+hour. You can move the 14 and 15 anywhere you like, but whenever everything else is back in order,
+the 14 and 15 are still the wrong way round.
+
+<FourteenFifteen caption="A 15 puzzle with every tile in order except the 15 and the 14, which have swapped places. The gap is in its home corner, bottom right." />
+
+The puzzle was a craze in America in 1880. The puzzle writer Sam Loyd later claimed to have offered
+a prize of $1,000 to anyone who could put this arrangement right, and two mathematicians, Johnson
+and Story, had already proved in 1879 that nobody can. The reason is that every rearrangement is
+either **even** or **odd**, and sliding tiles with the gap ending at home only ever reaches the even
+ones. In this guide we'll build every permutation out of swaps, prove that the number of swaps
+always has the same evenness, and use that to settle the puzzle.
+
+## Swaps
+
+The smallest change you can make to a row of cards is to swap two of them and leave the rest alone.
+As a permutation that is a cycle of length 2 (:ref{#orbit}), and it gets its own name.
+
+:::definition[Transposition]{#transposition}
+
+For two different numbers $$a$$ and $$b$$ in $$\{1, \dots, n\}$$, the **transposition** $$[a, b]$$
+is the permutation that sends $$a$$ to $$b$$, sends $$b$$ to $$a$$, and leaves every other number
+where it is. Transpositions are also called **swaps**.
+
+:::
+
+Doing the same swap twice puts everything back. In symbols, if $$\tau = [a, b]$$ then
+$$\tau^2 = I$$: the first $$\tau$$ sends $$a$$ to $$b$$ and the second sends it back, the same
+happens to $$b$$, and every other number never moves. So a swap undoes itself, and
+$$\tau^{-1} = \tau$$ by :ref{#inverse-mapping}.
+
+As in [Permutations](./permutations.mdx), a product $$\sigma\tau$$ means $$\sigma \circ \tau$$, with
+$$\tau$$ done first. That matters here, because a chain of swaps is read from the right.
+
+## Every permutation is a chain of swaps
+
+Think of sorting a hand of cards by swapping two at a time. Say four cards lie in the order 2, 4,
+1, 3. Swap the first and third cards to bring the 1 to the front, giving 1, 4, 2, 3. Then swap the
+second and third to bring the 2 into place, giving 1, 2, 4, 3, and last swap the third and fourth.
+Each swap puts at least one more card in its place, so you never need more swaps than cards.
+
+For a single cycle there is a formula. Here it is for $$[1, 5, 3, 4]$$, which should send 1 to 5, 5
+to 3, 3 to 4 and 4 to 1. The claim is that
+
+```math
+[1, 5, 3, 4] = [1, 4][1, 3][1, 5]
+```
+
+and the table follows each number through the three swaps, starting with $$[1, 5]$$ on the right.
+
+| Number | After $$[1, 5]$$ | After $$[1, 3]$$ | After $$[1, 4]$$ | The cycle sends it to |
+| ------ | ---------------- | ---------------- | ---------------- | --------------------- |
+| 1      | 5                | 5                | 5                | 5                     |
+| 5      | 1                | 3                | 3                | 3                     |
+| 3      | 3                | 1                | 4                | 4                     |
+| 4      | 4                | 4                | 1                | 1                     |
+
+The number 2 is in none of the swaps, so it stays put, as it does in the cycle. Every row agrees, so
+the cycle of length 4 is a chain of 3 swaps.
+
+:::lemma[A cycle is a chain of swaps]{#swaps-and-sign-cycle}
+
+For different numbers $$a_1, a_2, \dots, a_k$$ with $$k \ge 2$$,
+
+```math
+[a_1, a_2, \dots, a_k] = [a_1, a_k] \cdots [a_1, a_3][a_1, a_2]
+```
+
+So a cycle of length $$k$$ is a product of $$k - 1$$ transpositions.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/K-Cycle_can_be_Factored_into_Transpositions"}
+
+The swaps act from the right, so the first one is $$[a_1, a_2]$$ and the last one is $$[a_1, a_k]$$.
+Follow each number through them.
+
+- **The number $$a_1$$.** The first swap sends it to $$a_2$$. Every later swap is $$[a_1, a_j]$$
+  with $$j \ge 3$$, which leaves $$a_2$$ alone. So $$a_1$$ ends at $$a_2$$.
+- **A number $$a_j$$ with $$2 \le j \le k - 1$$.** The swaps before $$[a_1, a_j]$$ involve only
+  $$a_1$$ and numbers before $$a_j$$, so they leave it alone. Then $$[a_1, a_j]$$ sends it to
+  $$a_1$$, and the next swap $$[a_1, a_{j+1}]$$ sends that to $$a_{j+1}$$. The swaps after that
+  leave $$a_{j+1}$$ alone. So $$a_j$$ ends at $$a_{j+1}$$.
+- **The number $$a_k$$.** Every swap but the last leaves it alone, and the last, $$[a_1, a_k]$$,
+  sends it to $$a_1$$.
+- **Any other number.** No swap moves it.
+
+That is exactly what the cycle does to each number, so the two sides are equal
+(:ref{#mappings-equal}).
+
+:::
+
+:::theorem[Every permutation is a chain of swaps]{#transpositions-generate}
+
+Every permutation of $$\{1, \dots, n\}$$ is a product of transpositions. In fact, if $$\sigma$$ has
+$$c$$ orbits, it is a product of $$n - c$$ transpositions. The identity, with $$n$$ orbits, is the
+product of no transpositions at all.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Permutation_is_Product_of_Transpositions"}
+
+By :ref{#cycles-product}, $$\sigma$$ is the product of the cycles of its $$c$$ orbits. Say the
+orbits have lengths $$k_1, k_2, \dots, k_c$$. Replace each cycle of length $$k_j \ge 2$$ by its
+$$k_j - 1$$ swaps from :ref{#swaps-and-sign-cycle}, and leave out each cycle of length 1, since it
+is the identity and needs $$0 = 1 - 1$$ swaps.
+
+The result is a chain of swaps equal to $$\sigma$$, and its length is
+
+```math
+(k_1 - 1) + (k_2 - 1) + \cdots + (k_c - 1) = (k_1 + k_2 + \cdots + k_c) - c = n - c
+```
+
+The last step holds because the orbits don't overlap (:ref{#orbits-disjoint}) and every number lies
+in its own orbit, so the lengths add up to $$n$$.
+
+:::
+
+For example, the permutation $$[1, 6, 2][3, 5]$$ of $$\{1, \dots, 7\}$$ from [Cycles](./cycles.mdx)
+has the four orbits $$\{1, 6, 2\}$$, $$\{3, 5\}$$, $$\{4\}$$ and $$\{7\}$$. So it should take
+$$7 - 4 = 3$$ swaps, and it does: $$[1, 6, 2] = [1, 2][1, 6]$$ by the lemma, so
+
+```math
+[1, 6, 2][3, 5] = [1, 2][1, 6][3, 5]
+```
+
+## Different chains, same evenness
+
+A permutation can be written as a chain of swaps in many ways, and the chains don't even have to be
+the same length. Take $$[1, 2, 3]$$, a permutation of $$\{1, 2, 3, 4\}$$. By the lemma it is
+$$[1, 3][1, 2]$$, two swaps. It is also this chain of four swaps:
+
+```math
+[1, 2, 3] = [1, 2][2, 4][2, 3][3, 4]
+```
+
+Check it by following each number, starting with $$[3, 4]$$ on the right:
+
+| Number | After $$[3, 4]$$ | After $$[2, 3]$$ | After $$[2, 4]$$ | After $$[1, 2]$$ |
+| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
+| 1      | 1                | 1                | 1                | 2                |
+| 2      | 2                | 3                | 3                | 3                |
+| 3      | 4                | 4                | 2                | 1                |
+| 4      | 3                | 2                | 4                | 4                |
+
+So 1 goes to 2, 2 to 3, 3 to 1 and 4 stays put, which is $$[1, 2, 3]$$. You can also pad any chain
+by adding the same swap twice in a row, which changes nothing since $$\tau^2 = I$$, and makes the
+chain two longer.
+
+Two swaps and four swaps are both even. Search as long as you like and you'll never write
+$$[1, 2, 3]$$ with an odd number of swaps. The rest of this guide proves that, for every
+permutation, and the key is to watch what one swap does to the loops of the cycle decomposition.
+
+## A swap cuts a loop or joins two
+
+Take $$\sigma = [1, 4, 2, 6][3, 5]$$, a permutation of $$\{1, \dots, 6\}$$ with two orbits, and do
+one more swap after it. If the two numbers swapped lie in the same loop, the loop is cut in two.
+With $$[4, 6]$$, both in the loop $$[1, 4, 2, 6]$$:
+
+```math
+[4, 6]\sigma = [1, 6][2, 4][3, 5]
+```
+
+Check 1: $$\sigma$$ sends it to 4, and $$[4, 6]$$ sends that to 6. Check 2: $$\sigma$$ sends it to
+6, and $$[4, 6]$$ sends that to 4. The numbers 3 and 5 aren't touched by the swap. So the product
+has three orbits, one more than $$\sigma$$.
+
+<LoopCut caption="The loops of σ = [1, 4, 2, 6][3, 5], and under them the loops of [4, 6]σ: swapping 4 and 6, two numbers in the same loop, cuts that loop into [1, 6] and [2, 4]." />
+
+If instead the two numbers lie in different loops, the loops are joined. With $$[2, 3]$$, where 2 is
+in one loop and 3 in the other:
+
+```math
+[2, 3]\sigma = [1, 4, 3, 5, 2, 6]
+```
+
+Check 4: $$\sigma$$ sends it to 2, and $$[2, 3]$$ sends that to 3. Then 3 goes to 5, 5 goes to 3
+under $$\sigma$$ and on to 2 under the swap, and 2 goes to 6. So there is one orbit, one fewer than
+$$\sigma$$.
+
+<LoopsJoin caption="The loops of σ = [1, 4, 2, 6][3, 5], then the loops of [2, 3]σ: swapping 2 and 3, two numbers in different loops, joins the two loops into one loop of six." />
+
+:::lemma[A swap changes the number of orbits by one]{#swap-orbits}
+
+Let $$\sigma$$ be a permutation of $$\{1, \dots, n\}$$, and let $$\tau = [a, b]$$ be a
+transposition.
+
+1. If $$a$$ and $$b$$ lie in the same orbit of $$\sigma$$, then $$\tau\sigma$$ has one more orbit
+   than $$\sigma$$.
+2. If $$a$$ and $$b$$ lie in different orbits of $$\sigma$$, then $$\tau\sigma$$ has one fewer orbit
+   than $$\sigma$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Parity_of_a_permutation#Properties"}
+
+**What changes.** For each number $$x$$, $$\tau\sigma(x) = \tau(\sigma(x))$$. This is $$\sigma(x)$$
+unless $$\sigma(x)$$ is $$a$$ or $$b$$. So only two arrows change: the number that $$\sigma$$ sent
+to $$a$$ is now sent to $$b$$, and the number that $$\sigma$$ sent to $$b$$ is now sent to $$a$$.
+Every orbit of $$\sigma$$ that contains neither $$a$$ nor $$b$$ is untouched, and stays an orbit of
+$$\tau\sigma$$.
+
+**Part 1, the same orbit.** Starting the cycle at $$a$$ (as we may, by :ref{#orbit}), write it as
+
+```math
+[a, x_1, \dots, x_r, b, y_1, \dots, y_s]
+```
+
+where either list of $$x$$'s or $$y$$'s may be empty. So $$\sigma$$ sends the last of
+$$a, x_1, \dots, x_r$$ to $$b$$, and the last of $$b, y_1, \dots, y_s$$ to $$a$$. In $$\tau\sigma$$
+those two arrows change: the first now goes to $$a$$ and the second to $$b$$, while all the other
+arrows in the loop stay as they were. So $$\tau\sigma$$ sends $$a \to x_1 \to \dots \to x_r \to a$$
+and $$b \to y_1 \to \dots \to y_s \to b$$, two cycles
+
+```math
+[a, x_1, \dots, x_r] \quad\text{and}\quad [b, y_1, \dots, y_s]
+```
+
+So the one orbit is replaced by two, and the count goes up by one.
+
+**Part 2, different orbits.** Write the two cycles as $$[a, x_1, \dots, x_r]$$ and
+$$[b, y_1, \dots, y_s]$$. Under $$\sigma$$, the last of $$a, x_1, \dots, x_r$$ goes to $$a$$, and
+the last of $$b, y_1, \dots, y_s$$ goes to $$b$$. In $$\tau\sigma$$ these two arrows change places:
+the first now goes to $$b$$ and the second to $$a$$. So $$\tau\sigma$$ runs round one loop
+
+```math
+[a, x_1, \dots, x_r, b, y_1, \dots, y_s]
+```
+
+So the two orbits are replaced by one, and the count goes down by one.
+
+:::
+
+## Even or odd, never both
+
+Now build a permutation from the identity one swap at a time. The identity has $$n$$ orbits, one for
+each number. Each swap changes the count by one, up or down. So after an even number of swaps the
+count has moved an even distance from $$n$$, and after an odd number it has moved an odd distance.
+The count at the end belongs to the permutation, not to the chain, so the evenness of the chain is
+fixed too.
+
+:::theorem[Swaps come in even or odd numbers]{#parity-theorem}
+
+If a permutation $$\sigma$$ is a product of $$p$$ transpositions and also a product of $$q$$
+transpositions, then $$p$$ and $$q$$ are both even or both odd.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Parity_of_a_permutation#Properties"}
+
+Let $$\sigma$$ be a permutation of $$\{1, \dots, n\}$$ with $$c$$ orbits, and let
+$$\sigma = \tau_1 \tau_2 \cdots \tau_p$$ with each $$\tau_j$$ a transposition.
+
+**Build $$\sigma$$ one swap at a time.** Put $$\rho_0 = I$$, and get each next permutation by doing
+one more swap after the last one:
+
+```math
+\rho_1 = \tau_p, \quad \rho_2 = \tau_{p-1}\rho_1, \quad \dots, \quad \rho_p = \tau_1\rho_{p-1}
+```
+
+Then $$\rho_p = \tau_1 \tau_2 \cdots \tau_p = \sigma$$, by grouping (:ref{#composite-laws}).
+
+**Count the orbits.** The identity $$\rho_0$$ has $$n$$ orbits. By :ref{#swap-orbits}, each step
+from $$\rho_{j-1}$$ to $$\rho_j$$ adds one orbit or takes one away. Say $$u$$ steps add one and
+$$d$$ steps take one away, so $$u + d = p$$. Then
+
+```math
+\begin{aligned}
+c &= n + u - d &&\qquad \text{start at } n \text{, then } u \text{ up and } d \text{ down} \\
+n - c &= d - u &&\qquad \text{rearrange} \\
+&= p - 2u &&\qquad d = p - u
+\end{aligned}
+```
+
+So $$p = (n - c) + 2u$$, and $$p$$ has the same evenness as $$n - c$$, because adding the even
+number $$2u$$ doesn't change evenness (:ref{#numbers/parity-sums}).
+
+**The same for $$q$$.** The same argument with the chain of $$q$$ swaps shows that $$q$$ has the
+same evenness as $$n - c$$. The numbers $$n$$ and $$c$$ belong to $$\sigma$$ and not to either
+chain, so $$p$$ and $$q$$ have the same evenness.
+
+:::
+
+## The sign of a permutation
+
+So every permutation is a chain of swaps, by :ref{#transpositions-generate}, and every chain for it
+has the same evenness, by :ref{#parity-theorem}. That evenness belongs to the permutation, and it is
+recorded as a number, $$+1$$ or $$-1$$, because those multiply the way evenness adds: even plus odd
+is odd, and $$(+1)(-1) = -1$$.
+
+:::definition[Even, odd and sign]{#permutation-sign}
+
+A permutation is **even** if it is a product of an even number of transpositions, and **odd** if it
+is a product of an odd number. Its **sign** is
+
+```math
+\operatorname{sgn} \sigma = (-1)^p = \begin{cases} +1 & \text{if } \sigma \text{ is even} \\ -1 & \text{if } \sigma \text{ is odd} \end{cases}
+```
+
+where $$\sigma$$ is a product of $$p$$ transpositions.
+
+:::
+
+The identity is even, as a product of no swaps, and every transposition is odd. The proof of
+:ref{#parity-theorem} also gives a way to find the sign without writing any chain at all, by
+counting orbits.
+
+:::corollary[Sign from the cycles]{#sign-from-cycles}
+
+If $$\sigma$$ is a permutation of $$\{1, \dots, n\}$$ with $$c$$ orbits, then
+$$\operatorname{sgn} \sigma = (-1)^{n - c}$$. In particular, a cycle of length $$k$$ has sign
+$$(-1)^{k - 1}$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Parity_of_a_permutation#Example"}
+
+By :ref{#transpositions-generate}, $$\sigma$$ is a product of $$n - c$$ transpositions, so
+$$\operatorname{sgn} \sigma = (-1)^{n - c}$$.
+
+A cycle of length $$k$$ has one orbit of $$k$$ numbers, and each of the other $$n - k$$ numbers is
+an orbit by itself. So $$c = 1 + (n - k)$$, and $$n - c = k - 1$$.
+
+:::
+
+Here are both ways on the permutation $$\sigma = [1, 6, 2][3, 5]$$ of $$\{1, \dots, 7\}$$:
+
+- **By swaps**: $$\sigma = [1, 2][1, 6][3, 5]$$, three swaps, so $$\sigma$$ is odd
+- **By orbits**: $$\sigma$$ has the four orbits $$\{1, 6, 2\}$$, $$\{3, 5\}$$, $$\{4\}$$ and
+  $$\{7\}$$, so $$\operatorname{sgn} \sigma = (-1)^{7 - 4} = -1$$
+
+So a cycle of odd length, such as $$[1, 6, 2]$$, is even, and a cycle of even length, such as
+$$[3, 5]$$, is odd. That sounds backwards at first, but it is the number of swaps, one fewer than
+the length, that counts.
+
+Signs multiply when permutations are combined, since chains of swaps join end to end. For example,
+$$[1, 2, 3]$$ is even and $$[3, 4]$$ is odd, so their product should be odd. It is
+$$[1, 2, 3][3, 4] = [1, 2, 3, 4]$$, a cycle of length 4, with sign $$(-1)^3 = -1$$.
+
+:::proposition[The sign of a composite]{#sign-product}
+
+For permutations $$\sigma$$ and $$\tau$$ of $$\{1, \dots, n\}$$,
+
+```math
+\operatorname{sgn}(\sigma\tau) = \operatorname{sgn}\sigma \cdot \operatorname{sgn}\tau \qquad\text{and}\qquad \operatorname{sgn}(\sigma^{-1}) = \operatorname{sgn}\sigma
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Parity_Function_is_Homomorphism"}
+
+**Products.** Write $$\sigma$$ as a chain of $$p$$ swaps and $$\tau$$ as a chain of $$q$$ swaps
+(:ref{#transpositions-generate}). Writing the chain for $$\sigma$$ followed by the chain for
+$$\tau$$ gives a chain of $$p + q$$ swaps whose product is $$\sigma\tau$$, by grouping
+(:ref{#composite-laws}). So
+
+```math
+\operatorname{sgn}(\sigma\tau) = (-1)^{p + q} = (-1)^p (-1)^q = \operatorname{sgn}\sigma \cdot \operatorname{sgn}\tau
+```
+
+**Inverses.** If $$\sigma = \tau_1 \cdots \tau_p$$, then by :ref{#composite-inverse} its inverse is
+$$\tau_p^{-1} \cdots \tau_1^{-1}$$, undone in reverse order. Each swap is its own inverse, so
+$$\sigma^{-1} = \tau_p \cdots \tau_1$$, also a chain of $$p$$ swaps. So
+$$\operatorname{sgn}(\sigma^{-1}) = (-1)^p = \operatorname{sgn}\sigma$$.
+
+:::
+
+## Half the permutations are even
+
+The six permutations of $$\{1, 2, 3\}$$ split evenly. The identity, $$[1, 2, 3]$$ and $$[1, 3, 2]$$
+are even (no swaps, or a cycle of length 3), and the three swaps $$[1, 2]$$, $$[1, 3]$$ and
+$$[2, 3]$$ are odd. Doing $$[1, 2]$$ after each even one pairs it with an odd one:
+
+- $$[1, 2] \, I = [1, 2]$$
+- $$[1, 2][1, 2, 3] = [2, 3]$$
+- $$[1, 2][1, 3, 2] = [1, 3]$$
+
+:::proposition[Half the permutations are even]{#half-even}
+
+For $$n \ge 2$$, exactly $$\frac{n!}{2}$$ of the permutations of $$\{1, \dots, n\}$$ are even, and
+exactly $$\frac{n!}{2}$$ are odd.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Order_of_Alternating_Group"}
+
+Let $$E$$ be the set of even permutations of $$\{1, \dots, n\}$$ and $$D$$ the set of odd ones.
+Since $$n \ge 2$$, the swap $$[1, 2]$$ exists.
+
+**A mapping each way.** Define $$f: E \to D$$ by $$f(\sigma) = [1, 2]\sigma$$. By
+:ref{#sign-product}, $$\operatorname{sgn} f(\sigma) = (-1) \cdot (+1) = -1$$, so $$f(\sigma)$$ is
+odd and lands in $$D$$. In the same way, $$g: D \to E$$ with $$g(\sigma) = [1, 2]\sigma$$ lands in
+$$E$$.
+
+**Each undoes the other.** For $$\sigma$$ in $$E$$, $$g(f(\sigma)) = [1, 2][1, 2]\sigma = \sigma$$,
+since a swap done twice is the identity. In the same way $$f(g(\sigma)) = \sigma$$ for $$\sigma$$ in
+$$D$$. So $$g$$ is an inverse of $$f$$, and by :ref{#inverse-exists-bijective} the mapping $$f$$ is
+one to one and onto.
+
+**Count.** A one-to-one onto mapping pairs each element of $$E$$ with exactly one element of $$D$$,
+so $$E$$ and $$D$$ have the same number of elements. Every permutation is even or odd and none is
+both (:ref{#parity-theorem}), and there are $$n!$$ permutations in all (:ref{#permutation-count}).
+So each set has $$\frac{n!}{2}$$ elements.
+
+:::
+
+## The 15 puzzle
+
+Now the puzzle from the cracker. Number the sixteen squares of the frame 1 to 16 along the rows,
+from the top left, and call the gap tile 16, so that in the solved puzzle tile $$s$$ sits on square
+$$s$$. Any arrangement is then a permutation $$\alpha$$ of $$\{1, \dots, 16\}$$, where $$\alpha(s)$$
+is the tile on square $$s$$. The solved puzzle is the identity, and the puzzle with the 14 and 15
+swapped is the transposition $$[14, 15]$$, which is odd.
+
+A slide moves a tile from a square $$h$$ into the gap on a neighbouring square $$g$$. Afterwards the
+two squares hold each other's old contents and nothing else changes, so the new arrangement is
+$$\alpha[g, h]$$. By :ref{#sign-product}, every slide flips the sign of the arrangement.
+
+The other half of the argument is about where the gap is. Shade the squares like a chessboard, with
+the bottom right corner shaded. A slide moves the gap to a square beside it, and squares beside each
+other have different shades. So the gap changes shade at every slide, and after an even number of
+slides it is on a shaded square, and after an odd number on an unshaded one.
+
+<GapColours caption="The squares of the 15 puzzle shaded like a chessboard. The purple path takes the gap from its home corner, square 16, through squares 15, 11, 7, 8 and 12 and back home: six slides, landing on the other shade at every step." />
+
+:::proposition[The 14 and 15 can't be swapped back]{#swaps-and-sign-fifteen}
+
+In the 15 puzzle, every arrangement reached from the solved puzzle by slides, with the gap back in
+its home corner, is an even permutation of the 16 squares. So the arrangement with only the 14 and
+15 swapped can't be reached from the solved puzzle, and the solved puzzle can't be reached from it.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/15_puzzle#Solvability"}
+
+**Count the slides.** Suppose $$m$$ slides take the solved puzzle to an arrangement $$\alpha$$ with
+the gap back on square 16. The gap changes shade at every slide and ends on the shade it started on,
+so $$m$$ is even.
+
+**The sign.** The solved puzzle has sign $$+1$$, and each slide flips the sign, so
+$$\operatorname{sgn}\alpha = (-1)^m = +1$$. So $$\alpha$$ is even.
+
+**The swapped puzzle.** The arrangement $$[14, 15]$$ is a transposition, so it is odd, and it can't
+be one of these even arrangements. Last, if some slides took $$[14, 15]$$ to the solved puzzle, then
+doing the reverse slides in reverse order would take the solved puzzle to $$[14, 15]$$, with the gap
+back home. That is impossible, so no slides solve the swapped puzzle either.
+
+:::
+
+The parity argument tells you what can't be done, but not what can. It can be shown that every even
+arrangement with the gap in its corner can be reached by slides, which Johnson and Story also proved
+in 1879, so exactly half of all such arrangements are reachable (:ref{#half-even}). The source for
+that is the
+[solvability section of the 15 puzzle](https://en.wikipedia.org/wiki/15_puzzle#Solvability) article.
+
+Try it on the board below. Every slide changes both the sign and the shade under the gap, so they
+stay in step however much you mix. The cheat button does one swap by hand, and after it they are out
+of step for good.
+
+<SlidingPuzzle />
+
+## Exercises
+
+:::::accordion[Exercises on swaps and the sign, with solutions]
+
+::::exercise{#ex-swaps-and-sign-chain}
+
+Write the cycle $$[2, 5, 3, 6]$$ as a product of swaps, and check your answer by following each of
+the four numbers through the swaps.
+
+:::solution
+
+By :ref{#swaps-and-sign-cycle}, $$[2, 5, 3, 6] = [2, 6][2, 3][2, 5]$$. Follow each number, starting
+with $$[2, 5]$$ on the right:
+
+- 2 goes to 5, then stays 5, then stays 5, and the cycle sends 2 to 5
+- 5 goes to 2, then to 3, then stays 3, and the cycle sends 5 to 3
+- 3 stays 3, then goes to 2, then to 6, and the cycle sends 3 to 6
+- 6 stays 6, then stays 6, then goes to 2, and the cycle sends 6 to 2
+
+Every number agrees, and no other number is moved by either side.
+
+:::
+
+::::
+
+::::exercise{#ex-swaps-and-sign-signs}
+
+Find the sign of each permutation.
+
+1. The permutation of $$\{1, \dots, 5\}$$ with bottom row $$2, 1, 4, 3, 5$$
+2. The cycle $$[1, 2, 3, 4, 5, 6]$$
+3. The permutation of $$\{1, \dots, 6\}$$ with bottom row $$3, 5, 1, 6, 2, 4$$
+
+:::solution
+
+Use :ref{#sign-from-cycles}: find the orbits, then $$\operatorname{sgn}\sigma = (-1)^{n - c}$$.
+
+1. The cycles are $$[1, 2][3, 4][5]$$, three orbits, so the sign is $$(-1)^{5 - 3} = +1$$: even.
+2. A cycle of length 6 has sign $$(-1)^{6 - 1} = -1$$: odd.
+3. Following the arrows, $$1 \to 3 \to 1$$, $$2 \to 5 \to 2$$ and $$4 \to 6 \to 4$$, so the cycles
+   are $$[1, 3][2, 5][4, 6]$$. That is three orbits, so the sign is $$(-1)^{6 - 3} = -1$$: odd. It
+   is also a chain of three swaps, which agrees.
+
+:::
+
+::::
+
+::::exercise{#ex-swaps-and-sign-shuffles}
+
+In [Cycles](./cycles.mdx), the perfect out-shuffle of 8 cards has cycles
+$$[1][2, 3, 5][4, 7, 6][8]$$, and the perfect out-shuffle of 52 cards has two fixed cards, one cycle
+of length 2 and six cycles of length 8. Decide whether each shuffle is even or odd.
+
+:::solution
+
+Use :ref{#sign-from-cycles}.
+
+- **8 cards**: four orbits, so the sign is $$(-1)^{8 - 4} = +1$$, and the shuffle is even.
+- **52 cards**: $$2 + 1 + 6 = 9$$ orbits, so the sign is $$(-1)^{52 - 9} = (-1)^{43} = -1$$, and the
+  shuffle is odd. As a check on the count, $$1 + 1 + 2 + 6 \cdot 8 = 52$$.
+
+:::
+
+::::
+
+::::exercise{#ex-swaps-and-sign-composite}
+
+Let $$\sigma = [1, 3, 5]$$ and $$\tau = [1, 2][4, 5]$$, permutations of $$\{1, \dots, 5\}$$. Find
+$$\sigma\tau$$ as cycles, and check that
+$$\operatorname{sgn}(\sigma\tau) = \operatorname{sgn}\sigma \cdot \operatorname{sgn}\tau$$.
+
+:::solution
+
+Follow each number through $$\tau$$ first, then $$\sigma$$:
+
+- 1: $$\tau$$ sends it to 2, and $$\sigma$$ leaves 2, so 1 goes to 2
+- 2: $$\tau$$ sends it to 1, and $$\sigma$$ sends 1 to 3, so 2 goes to 3
+- 3: $$\tau$$ leaves it, and $$\sigma$$ sends 3 to 5, so 3 goes to 5
+- 5: $$\tau$$ sends it to 4, and $$\sigma$$ leaves 4, so 5 goes to 4
+- 4: $$\tau$$ sends it to 5, and $$\sigma$$ sends 5 to 1, so 4 goes to 1
+
+So $$\sigma\tau = [1, 2, 3, 5, 4]$$, a cycle of length 5, with sign $$(-1)^4 = +1$$.
+
+On the other side, $$\sigma$$ is a cycle of length 3 with sign $$(-1)^2 = +1$$, and $$\tau$$ is two
+swaps with sign $$(-1)^2 = +1$$. The product of the signs is $$+1$$, which agrees with
+:ref{#sign-product}.
+
+:::
+
+::::
+
+::::exercise{#ex-swaps-and-sign-conjugate}
+
+Prove that $$\operatorname{sgn}(\tau\sigma\tau^{-1}) = \operatorname{sgn}\sigma$$ for any
+permutations $$\sigma$$ and $$\tau$$ of $$\{1, \dots, n\}$$.
+
+:::solution
+
+By :ref{#sign-product}, used twice, and then for the inverse,
+
+```math
+\begin{aligned}
+\operatorname{sgn}(\tau\sigma\tau^{-1}) &= \operatorname{sgn}\tau \cdot \operatorname{sgn}\sigma \cdot \operatorname{sgn}(\tau^{-1}) &&\qquad \text{sign of a product} \\
+&= \operatorname{sgn}\tau \cdot \operatorname{sgn}\sigma \cdot \operatorname{sgn}\tau &&\qquad \operatorname{sgn}(\tau^{-1}) = \operatorname{sgn}\tau \\
+&= (\operatorname{sgn}\tau)^2 \operatorname{sgn}\sigma = \operatorname{sgn}\sigma &&\qquad (\pm 1)^2 = 1
+\end{aligned}
+```
+
+:::
+
+::::
+
+::::exercise{#ex-swaps-and-sign-reversed}
+
+A 15 puzzle has its gap in the home corner, but the tiles read 15, 14, 13, …, 1 along the rows: the
+whole order reversed. Decide whether it can be solved by sliding.
+
+:::solution
+
+As a permutation of the squares, square $$s$$ holds tile $$16 - s$$ for $$s = 1, \dots, 15$$, and
+square 16 holds the gap. So the arrangement swaps 1 with 15, 2 with 14, and so on up to 7 with 9,
+while 8 and 16 stay put:
+
+```math
+[1, 15][2, 14][3, 13][4, 12][5, 11][6, 10][7, 9]
+```
+
+That is 7 swaps, an odd number, so the arrangement is odd. By :ref{#swaps-and-sign-fifteen}, an
+arrangement that can be solved with the gap ending at home is even, so this one can't be solved.
+
+:::
+
+::::
+
+::::exercise{#ex-swaps-and-sign-even-four}
+
+Find how many of the permutations of $$\{1, 2, 3, 4\}$$ are even. List the even ones that move all
+four numbers.
+
+:::solution
+
+By :ref{#half-even}, $$\frac{4!}{2} = \frac{24}{2} = 12$$ of them are even.
+
+A permutation moving all four numbers has no orbit of length 1, so its cycles are either one cycle
+of length 4 or two cycles of length 2. A cycle of length 4 has sign $$(-1)^3 = -1$$, so it is odd.
+Two swaps make an even permutation. So the even ones that move every number are the three ways to
+split the numbers into two pairs:
+
+- $$[1, 2][3, 4]$$
+- $$[1, 3][2, 4]$$
+- $$[1, 4][2, 3]$$
+
+:::
+
+::::
+
+::::exercise{#ex-swaps-and-sign-back-home}
+
+A row of cards is put through a chain of swaps, and at the end every card is back in its starting
+place. Prove that the chain had an even number of swaps.
+
+:::solution
+
+At the end every card is in its place, so the chain of swaps, say $$p$$ of them, multiplies out to
+the identity $$I$$. The identity is also the product of no swaps at all, and $$0$$ is even. By
+:ref{#parity-theorem}, $$p$$ and $$0$$ are both even or both odd, so $$p$$ is even.
+
+:::
+
+::::
+
+:::::

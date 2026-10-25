@@ -1,0 +1,509 @@
+---
+title: Curves traced by mappings
+description:
+  Mappings from an interval of times into the plane, the curves they trace, removing the parameter,
+  a ball thrown from a cliff, and the polar map that turns lines into circles.
+---
+
+Imagine a friend waving a sparkler in the dark while you take a photo with the shutter held open.
+The photo shows a glowing figure-eight, but nothing in it says where the sparkler started, which way
+it went or how long it took. A GPS logger taped to the sparkler would record more: a place for each
+second. The middle of the eight would then carry two times, because the sparkler passed through it
+twice.
+
+<SparklerTrail caption="The photo keeps only the shape. The log keeps a place for each second, and the middle of the eight gets two times, 0 s and 4 s." />
+
+The log is a mapping (:ref{#mapping}) from times to points of the plane, and the photo is its image
+(:ref{#image-of-set}). A mapping like this is called a **parametrised curve**. In this guide we'll
+trace lines, circles and other curves this way, turn a moving point back into an equation, and
+follow a mapping that bends straight lines into circles.
+
+## A point that moves
+
+Picture a point moving across the plane. At each moment $$t$$ it has a place, with two coordinates,
+and as $$t$$ runs on, the point leaves a trail. The trail is a set of points, while the mapping also
+says when the point was at each one.
+
+:::definition[Parametrised curve]{#parametrised-curve}
+
+Let $$J$$ be an interval of numbers (:ref{#real-numbers/interval}), possibly all of
+$$(-\infty, \infty)$$. A **parametrised curve** is a mapping $$C: J \to \mathbb{R}^2$$, written
+
+```math
+C(t) = \big(x(t),\ y(t)\big)
+```
+
+The number $$t$$ is the **parameter**, often thought of as time, and $$x(t)$$ and $$y(t)$$ are the
+coordinates of the point at time $$t$$. The image $$C(J)$$ is the **curve traced** by $$C$$.
+
+:::
+
+You've met mappings like this already. The line through a point $$P$$ with direction $$A$$ is the
+set of points $$P + tA$$ (:ref{#segments-rays-and-lines/line-formula}), so $$t \mapsto P + tA$$ is a
+mapping from all numbers into the plane that traces that line. With $$P = (-1, 3)$$ and
+$$A = (2, -1)$$ it is $$C(t) = (-1 + 2t,\ 3 - t)$$:
+
+| $$t$$    | $$-1$$      | $$0$$       | $$1$$      | $$2$$      | $$3$$      |
+| -------- | ----------- | ----------- | ---------- | ---------- | ---------- |
+| $$C(t)$$ | $$(-3, 4)$$ | $$(-1, 3)$$ | $$(1, 2)$$ | $$(3, 1)$$ | $$(5, 0)$$ |
+
+```plane
+point −1 -3 4 ne
+point 0 -1 3 ne
+point 1 1 2 ne
+point 2 3 1 ne
+point 3 5 0 ne
+line −1 3 color=blue extend=0.25
+caption "The points C(t) = (−1 + 2t, 3 − t), each labelled with its time t. Every step of 1 in time moves the point 2 across and 1 down."
+```
+
+Each step of $$1$$ in time adds the direction $$A = (2, -1)$$, so the dots are equally spaced along
+the line. The point moves at a steady speed, in one direction, forever.
+
+### Circles and ellipses
+
+The unit circle is traced by $$t \mapsto (\cos t, \sin t)$$ for $$0 \le t < 2\pi$$, since every
+point of the circle is $$(\cos t, \sin t)$$ for exactly one such $$t$$
+(:ref{#trigonometry/unit-circle-point}). At $$t = 0$$, $$\frac{\pi}{2}$$, $$\pi$$ and
+$$\frac{3\pi}{2}$$ the point is at $$(1, 0)$$, $$(0, 1)$$, $$(-1, 0)$$ and $$(0, -1)$$. So it goes
+round anticlockwise, a quarter of the way in each $$\frac{\pi}{2}$$ of time.
+
+Scaling by $$3$$ and sliding by $$(2, 1)$$ gives the mapping
+
+```math
+C(t) = (2 + 3\cos t,\ 1 + 3\sin t) \qquad 0 \le t < 2\pi
+```
+
+Its points satisfy $$(x - 2)^2 + (y - 1)^2 = 9\cos^2 t + 9\sin^2 t = 9$$, by
+:ref{#trigonometry/pythagorean-identity}. So they lie on the circle with centre $$(2, 1)$$ and
+radius $$3$$ (:ref{#coordinates/circle-equation}). Every point of that circle is reached too: if
+$$(x - 2)^2 + (y - 1)^2 = 9$$, then $$\big(\frac{x - 2}{3}, \frac{y - 1}{3}\big)$$ is on the unit
+circle, so it is $$(\cos t, \sin t)$$ for some $$t$$, and then $$(x, y) = C(t)$$.
+
+Stretching across and up by different amounts gives an ellipse. The mapping
+$$t \mapsto (5\cos t, 2\sin t)$$, for $$t$$ from $$0$$ to $$2\pi$$, traces the graph of
+$$\frac{x^2}{25} + \frac{y^2}{4} = 1$$, by
+:ref{#parabolas-ellipses-and-hyperbolas/ellipses-parametrisation}. At $$t = \frac{\pi}{4}$$ the
+point is $$\big(\frac{5\sqrt2}{2}, \sqrt2\big) \approx (3.54, 1.41)$$, and as a check,
+$$\frac{12.5}{25} + \frac{2}{4} = 1$$.
+
+### The curve and the mapping are different things
+
+A curve can be traced by many different mappings, so it's worth keeping the two apart. The mapping
+$$t \mapsto (\cos 2t, \sin 2t)$$, for $$t$$ from $$0$$ to $$2\pi$$, also traces the unit circle, but
+it goes round twice, twice as fast. The mapping $$t \mapsto (\cos t, -\sin t)$$ goes round once,
+clockwise.
+
+All three mappings have the same image, the unit circle. They are still three different mappings
+(:ref{#mappings-equal}), because they give different points at the same time: at
+$$t = \frac{\pi}{2}$$ the first gives $$(0, 1)$$, the second $$(-1, 0)$$ and the third $$(0, -1)$$.
+Like the sparkler photo, the image forgets the times.
+
+### A curve with a sharp point
+
+The path of a moving point need not be smooth. Take $$C(t) = (t^2, t^3)$$ for every number $$t$$:
+
+| $$t$$    | $$-1.5$$           | $$-1$$      | $$-0.5$$           | $$0$$      | $$0.5$$           | $$1$$      | $$1.5$$           |
+| -------- | ------------------ | ----------- | ------------------ | ---------- | ----------------- | ---------- | ----------------- |
+| $$C(t)$$ | $$(2.25, -3.375)$$ | $$(1, -1)$$ | $$(0.25, -0.125)$$ | $$(0, 0)$$ | $$(0.25, 0.125)$$ | $$(1, 1)$$ | $$(2.25, 3.375)$$ |
+
+Since $$x = t^2$$ is never negative, the curve stays on the right of the $$y$$-axis. Putting $$-t$$
+for $$t$$ keeps $$x$$ and changes the sign of $$y$$, so the curve for negative times is the mirror
+image, in the $$x$$-axis, of the curve for positive times. Every point satisfies $$y^2 = x^3$$,
+since $$(t^3)^2 = t^6 = (t^2)^3$$.
+
+<CuspCurve caption="The curve traced by t ↦ (t², t³). The point comes in below the x-axis, stops at O when t = 0, and goes back out above it, so the curve has a sharp point at O." />
+
+The table shows the point slowing down near $$t = 0$$. From $$t = -1$$ to $$t = -0.5$$ it moves from
+$$(1, -1)$$ to $$(0.25, -0.125)$$, about $$1.15$$ units, but in the next half second it moves from
+there to $$O$$, about $$0.28$$ units. At $$t = 0$$ it comes to a stop at $$O$$ and heads back out to
+the right, now above the $$x$$-axis. That leaves a sharp point in the trail, called a **cusp**.
+
+Try the mappings of this section in the tracer below. The small dots on the trail mark equal steps
+of time, so they are far apart where the point moves fast and crowded where it moves slowly. The
+last choice, $$t \mapsto (\sin 2t, \sin 3t)$$, traces a looping figure called a Lissajous curve, and
+it is there for fun.
+
+<CurveTracer />
+
+## Removing the parameter
+
+Throwing away the times in the log and keeping only the places is called **removing the parameter**.
+When the first coordinate can be solved for $$t$$, there is a recipe: solve $$x$$ for $$t$$ and put
+the result into $$y$$. What's left is an equation in $$x$$ and $$y$$ alone, with no $$t$$ in it.
+
+Take $$C(t) = (2t + 1,\ t^2 - 2t)$$. From $$x = 2t + 1$$ we get $$t = \frac{x - 1}{2}$$, and so
+
+```math
+\begin{aligned}
+y &= \left(\frac{x - 1}{2}\right)^2 - 2 \cdot \frac{x - 1}{2} && \text{put } t = \tfrac{x - 1}{2} \text{ into } y = t^2 - 2t \\
+&= \frac{x^2 - 2x + 1}{4} - (x - 1) && \text{square, and cancel the 2} \\
+&= \frac{x^2 - 6x + 5}{4} && \text{over a common denominator}
+\end{aligned}
+```
+
+Check with $$t = 3$$: $$C(3) = (7, 3)$$, and $$\frac{49 - 42 + 5}{4} = 3$$. So the curve is the
+graph (:ref{#functions/function-graph}) of $$y = \frac{1}{4}x^2 - \frac{3}{2}x + \frac{5}{4}$$, a
+parabola with vertex $$(3, -1)$$ by :ref{#parabolas-ellipses-and-hyperbolas/quadratic-parabola}. The
+vertex is $$C(1)$$, the point at time $$1$$.
+
+:::proposition[Removing the parameter]{#curves-eliminate}
+
+Let $$a$$, $$b$$, $$c$$, $$d$$ and $$e$$ be numbers with $$a \ne 0$$, and let
+
+```math
+C(t) = (at + b,\ ct^2 + dt + e)
+```
+
+for every number $$t$$. Then the image of $$C$$ is the graph of the function on all numbers
+
+```math
+q(x) = c\left(\frac{x - b}{a}\right)^2 + d \cdot \frac{x - b}{a} + e
+```
+
+When $$c \ne 0$$, this graph is a parabola.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Parametric_equation#Implicitization"}
+
+Write $$s(x) = \frac{x - b}{a}$$, which makes sense because $$a \ne 0$$. Two sets are equal when
+each lies inside the other (:ref{#basic-proofs/set-equality}), so there are two things to show.
+
+**The image lies on the graph.** Take a point $$(x, y) = C(t)$$ of the image. Then $$x = at + b$$,
+so $$s(x) = \frac{at + b - b}{a} = t$$. Putting $$s(x)$$ in place of $$t$$,
+$$y = ct^2 + dt + e = q(x)$$. So $$(x, y)$$ is on the graph of $$q$$.
+
+**The graph lies in the image.** Take a point $$(x, q(x))$$ of the graph, and let $$t = s(x)$$. Then
+$$at + b = (x - b) + b = x$$, and $$ct^2 + dt + e = q(x)$$ by the formula for $$q$$. So
+$$(x, q(x)) = C(t)$$, a point of the image.
+
+**The parabola.** Multiplying out,
+
+```math
+q(x) = \frac{c}{a^2}\,x^2 + \left(\frac{d}{a} - \frac{2bc}{a^2}\right)x + \left(\frac{cb^2}{a^2} - \frac{db}{a} + e\right)
+```
+
+When $$c \ne 0$$, the number $$\frac{c}{a^2}$$ in front of $$x^2$$ is not $$0$$, so the graph is a
+parabola by :ref{#parabolas-ellipses-and-hyperbolas/quadratic-parabola}.
+
+:::
+
+The recipe needs the first coordinate to give back $$t$$. For the unit circle it doesn't:
+$$x = \cos t$$ is the same at $$t$$ and $$-t$$, so $$x$$ alone can't say which time it was. There
+the identity $$\cos^2 t + \sin^2 t = 1$$ does the job instead, and removes $$t$$ to leave
+$$x^2 + y^2 = 1$$.
+
+## A ball thrown from a cliff
+
+Stand at the top of a cliff $$20$$ m high and throw a ball out level at $$6$$ m/s. Across, nothing
+pushes the ball, so it keeps moving $$6$$ m every second. Down, gravity pulls it, and in the first
+$$t$$ seconds it falls $$4.9t^2$$ metres, half of $$9.8$$ (the pull of gravity in m/s²) times
+$$t^2$$. We ignore the air, which would slow the ball a little.
+
+Put the origin at the foot of the cliff, with $$x$$ across and $$y$$ up. Then $$t$$ seconds after
+the throw the ball is at
+
+```math
+B(t) = (6t,\ 20 - 4.9t^2)
+```
+
+from $$t = 0$$ until it lands. The section
+[The path of a thrown ball](../parabolas-ellipses-and-hyperbolas/parabolas.mdx#the-path-of-a-thrown-ball)
+rounded $$9.8$$ to $$10$$; here we keep $$9.8$$.
+
+- **When it lands.** The ball lands when its height is $$0$$, so $$4.9t^2 = 20$$, that is,
+  $$t^2 = \frac{20}{4.9} \approx 4.08$$. So $$t = \sqrt{20/4.9} \approx 2.02$$ seconds. Check:
+  $$4.9 \cdot 2.02^2 \approx 19.99$$.
+- **Where it lands.** At that time $$x = 6 \cdot 2.02 \approx 12.1$$, so it lands about $$12.1$$ m
+  from the foot of the cliff.
+- **The path.** By :ref{#curves-eliminate} with $$a = 6$$, $$b = 0$$, $$c = -4.9$$, $$d = 0$$ and
+  $$e = 20$$, putting $$t = \frac{x}{6}$$ into the height gives
+  $$y = 20 - \frac{4.9}{36}x^2 = 20 - \frac{49}{360}x^2 \approx 20 - 0.136x^2$$. The ball traces the
+  part of this parabola from $$x = 0$$ to $$x \approx 12.1$$, because the times stop at $$2.02$$.
+  The same two steps as in the proof show it, with $$t$$ kept between $$0$$ and $$2.02$$.
+
+The top of the parabola is $$(0, 20)$$, where the ball leaves your hand: a level throw starts at the
+highest point of its path.
+
+<CliffBall caption="A ball thrown level at 6 m/s from a 20 m cliff, with a dot every half second. The dots spread out downwards as the ball speeds up, and the ball reaches half height at 1.43 s and the ground at 2.02 s." />
+
+The ball is at half height, $$10$$ m, when $$4.9t^2 = 10$$, that is, at
+$$t = \sqrt{10/4.9} \approx 1.43$$ seconds, about $$8.57$$ m out. So it takes $$1.43$$ s to fall the
+first $$10$$ m and only about $$0.59$$ s for the second $$10$$ m, because it falls faster and
+faster. You can watch it happen with the ball in the tracer under
+[A curve with a sharp point](#a-curve-with-a-sharp-point).
+
+## The polar map
+
+Polar coordinates describe a point by its distance $$r$$ from $$O$$ and an angle $$\theta$$
+(:ref{#trigonometry/polar-coordinates}). Turned into a mapping, the rule takes in a pair of numbers
+and gives out a point. Picture the pairs $$(r, \theta)$$ as points of a second plane, with $$r$$
+across and $$\theta$$ up: the mapping bends that plane's straight lines into circles and into lines
+through $$O$$.
+
+:::definition[The polar map]{#polar-map}
+
+The **polar map** is the mapping $$P: \mathbb{R}^2 \to \mathbb{R}^2$$ given by
+
+```math
+P(r, \theta) = (r\cos\theta,\ r\sin\theta)
+```
+
+for all numbers $$r$$ and $$\theta$$.
+
+:::
+
+For $$r \ge 0$$, the point $$P(r, \theta)$$ is the point with polar coordinates $$r$$ and
+$$\theta$$. The polar map also takes negative $$r$$: $$P(-2, \frac{\pi}{4}) = (-\sqrt2, -\sqrt2)$$,
+the point $$2$$ from $$O$$ in the direction opposite to the angle $$\frac{\pi}{4}$$. Many pairs go
+to the same point. For example $$P(2, 0) = P(2, 2\pi) = (2, 0)$$, and $$P(0, \theta) = O$$ for every
+$$\theta$$.
+
+:::proposition[Images under the polar map]{#polar-map-images}
+
+1. **Vertical lines go to circles**: for a number $$c > 0$$, the image of the vertical line
+   $$r = c$$, the set of pairs $$(c, \theta)$$ for every $$\theta$$, is the circle with centre $$O$$
+   and radius $$c$$.
+2. **Horizontal lines go to lines through O**: for any number $$c$$, the image of the horizontal
+   line $$\theta = c$$, the set of pairs $$(r, c)$$ for every $$r$$, is the line through $$O$$ with
+   direction $$(\cos c, \sin c)$$.
+3. **Rectangles go to pieces of rings**: let $$0 \le r_1 \le r_2$$ and $$\theta_1 \le \theta_2$$.
+   The image of the rectangle of pairs with $$r_1 \le r \le r_2$$ and
+   $$\theta_1 \le \theta \le \theta_2$$ is the set of points $$X = |X|(\cos\theta, \sin\theta)$$
+   with $$r_1 \le |X| \le r_2$$ and $$\theta_1 \le \theta \le \theta_2$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Polar_coordinate_system#Polar_equation_of_a_curve"}
+
+Each part says two sets are equal, so each needs both directions (:ref{#basic-proofs/set-equality}).
+
+**Part 1.** Every point $$P(c, \theta) = (c\cos\theta, c\sin\theta)$$ is at distance
+$$\sqrt{c^2\cos^2\theta + c^2\sin^2\theta} = \sqrt{c^2} = c$$ from $$O$$, by
+:ref{#coordinates/distance-formula} and :ref{#trigonometry/pythagorean-identity}, since $$c > 0$$.
+So it is on the circle. Now take a point $$X = (x, y)$$ of the circle. The point
+$$U = (\frac{x}{c}, \frac{y}{c})$$ is at distance $$\frac{c}{c} = 1$$ from $$O$$, so it is on the
+unit circle, and $$U = (\cos\theta, \sin\theta)$$ for some $$\theta$$
+(:ref{#trigonometry/unit-circle-point}). Then $$X = (c\cos\theta, c\sin\theta) = P(c, \theta)$$.
+
+**Part 2.** Write $$A = (\cos c, \sin c)$$, which is on the unit circle, so $$A \ne O$$. Then
+
+```math
+P(r, c) = (r\cos c,\ r\sin c) = O + rA
+```
+
+As $$r$$ runs through all numbers, the points $$O + rA$$ are exactly the points of the line through
+$$O$$ with direction $$A$$ (:ref{#segments-rays-and-lines/line-formula}).
+
+**Part 3.** Take $$r$$ and $$\theta$$ in the ranges, and let $$X = P(r, \theta)$$. Then
+$$X = r(\cos\theta, \sin\theta)$$, and its length is $$|X| = r \cdot 1 = r$$, because $$r \ge 0$$
+and $$(\cos\theta, \sin\theta)$$ has length $$1$$ (:ref{#adding-and-scaling-points/norm-scale}). So
+$$X = |X|(\cos\theta, \sin\theta)$$ with $$r_1 \le |X| \le r_2$$. The other way round, a point
+$$X = |X|(\cos\theta, \sin\theta)$$ with $$|X|$$ and $$\theta$$ in the ranges is $$P(|X|, \theta)$$,
+the image of a pair in the rectangle.
+
+:::
+
+In words, part 3 says the rectangle goes to the points between the circles of radius $$r_1$$ and
+$$r_2$$ that lie on the rays from $$O$$ at angles from $$\theta_1$$ to $$\theta_2$$. That is a piece
+of a ring, called a **polar rectangle**. For example, the rectangle $$1 \le r \le 2$$,
+$$\frac{\pi}{2} \le \theta \le \pi$$ goes to a quarter of the ring between radius $$1$$ and radius
+$$2$$, in the top left quarter of the plane. Its corners go to $$P(1, \frac{\pi}{2}) = (0, 1)$$,
+$$P(2, \frac{\pi}{2}) = (0, 2)$$, $$P(2, \pi) = (-2, 0)$$ and $$P(1, \pi) = (-1, 0)$$
+(:ref{#trigonometry/quarter-values}).
+
+<PolarMapPicture caption="The polar map P sends the vertical line r = 2.5 onto the circle of radius 2.5, the horizontal line θ = π/4 onto the line y = x, and the rectangle 1 ≤ r ≤ 2, π/2 ≤ θ ≤ π onto a quarter of a ring." />
+
+The sides of the rectangle show where the arcs and the straight edges come from. The sides $$r = 1$$
+and $$r = 2$$ go to arcs of the two circles, by part 1, and the sides $$\theta = \frac{\pi}{2}$$ and
+$$\theta = \pi$$ go to pieces of the axes, by part 2. In the picture, the line $$r = 2.5$$ is drawn
+from $$\theta = -\pi$$ to $$\theta = \pi$$, which is enough for the whole circle. Carrying on up the
+line goes round the circle again and again, since sine and cosine repeat every $$2\pi$$
+(:ref{#trigonometry/periodic}).
+
+## Exercises
+
+:::::accordion[Exercises on curves traced by mappings, with solutions]
+
+::::exercise{#ex-curves-table}
+
+Let $$C(t) = (3 - t,\ 2t + 1)$$ for every number $$t$$.
+
+1. Find $$C(-1)$$, $$C(0)$$ and $$C(2)$$.
+2. Find the time $$t$$ at which the point is at $$(0, 7)$$.
+3. Decide whether the point $$(1, 4)$$ is on the curve traced by $$C$$.
+
+:::solution
+
+1. $$C(-1) = (4, -1)$$, $$C(0) = (3, 1)$$ and $$C(2) = (1, 5)$$.
+2. The first coordinate is $$0$$ when $$3 - t = 0$$, so $$t = 3$$. Then $$2 \cdot 3 + 1 = 7$$, so
+   $$C(3) = (0, 7)$$.
+3. It is not. The first coordinate is $$1$$ only at $$t = 2$$, since $$3 - t = 1$$ gives $$t = 2$$.
+   At that time the point is $$(1, 5)$$, not $$(1, 4)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-curves-circle}
+
+Write down a mapping that traces the circle with centre $$(-1, 2)$$ and radius $$4$$ once,
+anticlockwise, starting from its point furthest to the right. Find the point at
+$$t = \frac{\pi}{2}$$ and at $$t = \pi$$.
+
+:::solution
+
+Take $$C(t) = (-1 + 4\cos t,\ 2 + 4\sin t)$$ for $$0 \le t < 2\pi$$. It traces the circle, as for
+the circle with centre $$(2, 1)$$ under [Circles and ellipses](#circles-and-ellipses), and it starts
+at $$C(0) = (3, 2)$$, the point $$4$$ to the right of the centre.
+
+By :ref{#trigonometry/quarter-values}, $$C(\frac{\pi}{2}) = (-1 + 0,\ 2 + 4) = (-1, 6)$$ and
+$$C(\pi) = (-1 - 4,\ 2 + 0) = (-5, 2)$$. Check: $$(-5, 2)$$ is $$4$$ to the left of the centre, so
+it is on the circle.
+
+:::
+
+::::
+
+::::exercise{#ex-curves-remove}
+
+Remove the parameter from $$C(t) = (t - 2,\ t^2 + 1)$$: find the equation of the curve it traces,
+and find its vertex and the time at which the point is there.
+
+:::solution
+
+From $$x = t - 2$$ we get $$t = x + 2$$. Putting that into the second coordinate gives
+
+```math
+y = (x + 2)^2 + 1 = x^2 + 4x + 5
+```
+
+This is :ref{#curves-eliminate} with $$a = 1$$, $$b = -2$$, $$c = 1$$, $$d = 0$$ and $$e = 1$$, so
+the curve is the whole graph of $$y = x^2 + 4x + 5$$. In the form $$y = (x + 2)^2 + 1$$ it is
+$$y = x^2$$ slid by $$(-2, 1)$$ (:ref{#parabolas-ellipses-and-hyperbolas/quadratic-parabola}), so
+the vertex is $$(-2, 1)$$. That is $$C(0)$$, the point at time $$0$$.
+
+Check with $$t = 1$$: $$C(1) = (-1, 2)$$, and $$1 - 4 + 5 = 2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-curves-same-image}
+
+Let $$C(t) = (t, t^2)$$ and $$D(t) = (-t, t^2)$$ for every number $$t$$. Show that $$C$$ and $$D$$
+trace the same curve, and that they are different mappings.
+
+:::solution
+
+**The images are equal.** The image of $$C$$ is the graph of $$y = x^2$$. Each point
+$$D(t) = (-t, t^2) = (-t, (-t)^2)$$ is on that graph. And each point $$(x, x^2)$$ of the graph is
+$$D(-x)$$, since $$D(-x) = (x, (-x)^2) = (x, x^2)$$. So the image of $$D$$ is the graph of
+$$y = x^2$$ too (:ref{#basic-proofs/set-equality}).
+
+**The mappings are different.** At $$t = 1$$, $$C(1) = (1, 1)$$ and $$D(1) = (-1, 1)$$. One time
+with different points is enough (:ref{#mappings-equal}). The point of $$C$$ runs along the parabola
+from left to right, and the point of $$D$$ runs from right to left.
+
+:::
+
+::::
+
+::::exercise{#ex-curves-wall}
+
+A ball rolls off the top of a wall $$4.9$$ m high at $$5$$ m/s, so that after $$t$$ seconds it is at
+$$B(t) = (5t,\ 4.9 - 4.9t^2)$$, in metres from the foot of the wall.
+
+1. Find when and where it lands.
+2. Find the equation of its path.
+3. Find where it is after half a second, and how much of the height it has fallen by then.
+
+:::solution
+
+1. It lands when $$4.9 - 4.9t^2 = 0$$, that is, $$t^2 = 1$$, so at $$t = 1$$ second. Then $$x = 5$$:
+   it lands $$5$$ m from the wall.
+2. By :ref{#curves-eliminate}, putting $$t = \frac{x}{5}$$ into the height gives
+   $$y = 4.9 - \frac{4.9}{25}x^2 = 4.9 - 0.196x^2$$, for $$x$$ from $$0$$ to $$5$$.
+3. $$B(0.5) = (2.5,\ 4.9 - 4.9 \cdot 0.25) = (2.5, 3.675)$$. It has fallen $$4.9 - 3.675 = 1.225$$
+   m, which is a quarter of the height, in half the time. Check with the path:
+   $$4.9 - 0.196 \cdot 2.5^2 = 4.9 - 1.225 = 3.675$$.
+
+:::
+
+::::
+
+::::exercise{#ex-curves-polar}
+
+1. Find $$P(2, \frac{\pi}{3})$$, $$P(-2, \frac{\pi}{3})$$ and $$P(3, \frac{3\pi}{2})$$, where $$P$$
+   is the polar map.
+2. Find the image of the horizontal line $$\theta = \frac{\pi}{2}$$.
+3. Find the image of the rectangle $$0 \le r \le 1$$, $$0 \le \theta \le 2\pi$$.
+
+:::solution
+
+1. By :ref{#trigonometry/sin-cos-30-60}, $$\cos\frac{\pi}{3} = \frac{1}{2}$$ and
+   $$\sin\frac{\pi}{3} = \frac{\sqrt3}{2}$$, so $$P(2, \frac{\pi}{3}) = (1, \sqrt3)$$ and
+   $$P(-2, \frac{\pi}{3}) = (-1, -\sqrt3)$$. By :ref{#trigonometry/quarter-values},
+   $$\cos\frac{3\pi}{2} = 0$$ and $$\sin\frac{3\pi}{2} = -1$$, so
+   $$P(3, \frac{3\pi}{2}) = (0, -3)$$.
+2. By part 2 of :ref{#polar-map-images}, it is the line through $$O$$ with direction
+   $$(\cos\frac{\pi}{2}, \sin\frac{\pi}{2}) = (0, 1)$$. That is the $$y$$-axis.
+3. By part 3 of :ref{#polar-map-images}, it is the set of points $$X = |X|(\cos\theta, \sin\theta)$$
+   with $$|X| \le 1$$ and $$0 \le \theta \le 2\pi$$. Every point $$X$$ can be written this way with
+   some $$\theta$$ from $$0$$ to $$2\pi$$ (:ref{#trigonometry/polar-exist}), so the image is every
+   point at distance at most $$1$$ from $$O$$: the disc with centre $$O$$ and radius $$1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-curves-three-times}
+
+Let $$C(t) = (\cos 3t, \sin 3t)$$ for $$0 \le t < 2\pi$$. Show that the curve traced by $$C$$ is the
+unit circle, and find every time at which the point is at $$(1, 0)$$.
+
+:::solution
+
+**The image is the unit circle.** Each $$C(t)$$ is on the unit circle, by part 1 of
+:ref{#trigonometry/unit-circle-point} with $$3t$$ in place of $$x$$. The other way round, every
+point $$U$$ of the unit circle is $$(\cos x, \sin x)$$ for some $$x$$ with $$0 \le x < 2\pi$$, by
+part 2. Then $$t = \frac{x}{3}$$ is between $$0$$ and $$2\pi$$, and $$C(t) = U$$.
+
+**The times at (1, 0).** As $$t$$ runs from $$0$$ to $$2\pi$$, the angle $$3t$$ runs from $$0$$ up
+to $$6\pi$$. On each of the stretches $$[0, 2\pi)$$, $$[2\pi, 4\pi)$$ and $$[4\pi, 6\pi)$$, sine and
+cosine repeat the values of $$[0, 2\pi)$$ (:ref{#trigonometry/periodic}), where only the angle $$0$$
+gives $$(1, 0)$$ (:ref{#trigonometry/unit-circle-point}). So $$3t = 0$$, $$2\pi$$ or $$4\pi$$, and
+the point is at $$(1, 0)$$ at the three times $$t = 0$$, $$\frac{2\pi}{3}$$ and $$\frac{4\pi}{3}$$.
+The point goes round the circle three times.
+
+:::
+
+::::
+
+::::exercise{#ex-curves-cusp}
+
+Show that every point $$(x, y)$$ with $$y^2 = x^3$$ is $$(t^2, t^3)$$ for exactly one number $$t$$.
+So the curve traced by $$t \mapsto (t^2, t^3)$$ is the graph of $$y^2 = x^3$$, and each of its
+points is passed at one time only.
+
+:::solution
+
+**When x = 0.** Then $$y^2 = 0$$, so $$y = 0$$. A time $$t$$ with $$t^2 = 0$$ must be $$t = 0$$, and
+$$(0^2, 0^3) = (0, 0)$$. So exactly one time works.
+
+**When x ≠ 0.** If $$(t^2, t^3) = (x, y)$$, then $$t^2 = x \ne 0$$, so
+$$t = \frac{t^3}{t^2} = \frac{y}{x}$$. So at most one time can work, namely $$t = \frac{y}{x}$$. It
+does work:
+
+```math
+t^2 = \frac{y^2}{x^2} = \frac{x^3}{x^2} = x \qquad t^3 = t \cdot t^2 = \frac{y}{x} \cdot x = y
+```
+
+For example, $$(2.25, 3.375)$$ has $$3.375^2 = 2.25^3$$, and $$t = \frac{3.375}{2.25} = 1.5$$.
+
+:::
+
+::::
+
+:::::

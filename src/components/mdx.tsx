@@ -225,6 +225,43 @@ import { ThreeBases } from "./function-illustrations/exponential-functions";
 import { BacteriaDoubling } from "./function-illustrations/exponential-functions";
 import { LongDivision } from "./interactive/long-division";
 import { ExponentialBase } from "./interactive/exponential-base";
+import { ArrowDiagram } from "./interactive/arrow-diagram";
+import { CloakroomHooks } from "./mapping-illustrations/mappings";
+import { MappingOrNot } from "./mapping-illustrations/mappings";
+import { SquareStretch } from "./mapping-illustrations/mappings";
+import { SquaringPreimage } from "./mapping-illustrations/mappings";
+import { SharedHook } from "./mapping-illustrations/mappings";
+import { TheatreSeats } from "./mapping-illustrations/one-to-one-and-onto";
+import { ArrowTests } from "./mapping-illustrations/one-to-one-and-onto";
+import { Pigeonholes } from "./mapping-illustrations/one-to-one-and-onto";
+import { FivePoints } from "./mapping-illustrations/one-to-one-and-onto";
+import { HotelRooms } from "./mapping-illustrations/one-to-one-and-onto";
+import { OutShuffle } from "./mapping-illustrations/cycles";
+import { OutShuffleLoops } from "./mapping-illustrations/cycles";
+import { SevenLoops } from "./mapping-illustrations/cycles";
+import { FourteenFifteen } from "./mapping-illustrations/swaps-and-sign";
+import { GapColours } from "./mapping-illustrations/swaps-and-sign";
+import { LoopCut } from "./mapping-illustrations/swaps-and-sign";
+import { LoopsJoin } from "./mapping-illustrations/swaps-and-sign";
+import { CycleViewer } from "./interactive/cycle-viewer";
+import { SlidingPuzzle } from "./interactive/sliding-puzzle";
+import { PlaylistLoop } from "./mapping-illustrations/repeating-a-mapping";
+import { DoublingJumps } from "./mapping-illustrations/repeating-a-mapping";
+import { TurnPowers } from "./mapping-illustrations/repeating-a-mapping";
+import { CardMoves } from "./mapping-illustrations/permutations";
+import { ComposeColumns } from "./mapping-illustrations/permutations";
+import { CountingTree } from "./mapping-illustrations/permutations";
+import { IterateMap } from "./interactive/iterate-map";
+import { CardShuffle } from "./interactive/card-shuffle";
+import { SparklerTrail } from "./mapping-illustrations/curves";
+import { CuspCurve } from "./mapping-illustrations/curves";
+import { CliffBall } from "./mapping-illustrations/curves";
+import { PolarMapPicture } from "./mapping-illustrations/curves";
+import { GiftWrap } from "./mapping-illustrations/combining-and-undoing";
+import { PegChain } from "./mapping-illustrations/combining-and-undoing";
+import { TicketArrows } from "./mapping-illustrations/combining-and-undoing";
+import { CurveTracer } from "./interactive/curve-tracer";
+import { UndoChain } from "./interactive/undo-chain";
 import {
   Conjecture,
   Corollary,
@@ -360,6 +397,43 @@ export const mdxComponents = {
   HalfTurnPair,
   MoveExplorer,
   SpriteFrames,
+  UndoChain,
+  CurveTracer,
+  TicketArrows,
+  PegChain,
+  GiftWrap,
+  PolarMapPicture,
+  CliffBall,
+  CuspCurve,
+  SparklerTrail,
+  CardShuffle,
+  IterateMap,
+  CountingTree,
+  ComposeColumns,
+  CardMoves,
+  TurnPowers,
+  DoublingJumps,
+  PlaylistLoop,
+  SlidingPuzzle,
+  CycleViewer,
+  LoopsJoin,
+  LoopCut,
+  GapColours,
+  FourteenFifteen,
+  SevenLoops,
+  OutShuffleLoops,
+  OutShuffle,
+  HotelRooms,
+  FivePoints,
+  Pigeonholes,
+  ArrowTests,
+  TheatreSeats,
+  SharedHook,
+  SquaringPreimage,
+  SquareStretch,
+  MappingOrNot,
+  CloakroomHooks,
+  ArrowDiagram,
   ExponentialBase,
   LongDivision,
   BacteriaDoubling,

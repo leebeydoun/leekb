@@ -1,0 +1,544 @@
+---
+title: Combining and undoing mappings
+description:
+  Doing one mapping after another, the identity, which mappings can be undone and why their inverses
+  come in reverse order, cancelling, and undoing a mapping of the plane by solving equations.
+---
+
+Imagine wrapping a present. You put the mug in its box, and then you wrap the box in paper. Whoever
+opens it has to work backwards: the paper comes off first, and only then can the box be opened.
+Taking the mug out first can't be done, because the paper is in the way.
+
+<GiftWrap caption="Boxing, then wrapping. Undoing starts with the step done last: first unwrap, then take the mug out of the box." />
+
+Doing one mapping and then another is called **composing** them, and undoing a mapping means finding
+its **inverse**. In this guide we'll compose mappings of every kind, find out exactly which mappings
+can be undone, and see why a chain of them comes undone in the reverse order.
+
+## One mapping after another
+
+A school cloakroom has four numbered pegs, and each child hangs their coat on their own peg. Pegs
+$$1$$ and $$2$$ are painted red, and pegs $$3$$ and $$4$$ blue. To find the colour of Ana's peg you
+follow two arrows: from Ana to her peg, and then from the peg to its colour.
+
+Write $$f$$ for the mapping from the children to their pegs, with $$f(\text{Ana}) = 2$$,
+$$f(\text{Ben}) = 4$$ and $$f(\text{Cal}) = 1$$, and $$g$$ for the mapping from pegs to colours.
+Following both arrows sends Ana to $$2$$ and then to red, Ben to $$4$$ and then to blue, and Cal to
+$$1$$ and then to red. That is a new mapping, straight from children to colours.
+
+<PegChain caption="First, f sends each child to a peg, and g sends each peg to its colour. Then, following both arrows gives one mapping, g ∘ f, from children straight to colours." />
+
+:::definition[Composite]{#mapping-composite}
+
+Let $$f: S \to T$$ and $$g: T \to U$$ be mappings (:ref{#mapping}). The **composite** $$g \circ f$$,
+read "$$g$$ after $$f$$", is the mapping from $$S$$ to $$U$$ with
+
+```math
+(g \circ f)(x) = g(f(x))
+```
+
+for every $$x$$ in $$S$$. The same formula defines $$g \circ f$$ when $$g$$ is a mapping from any
+set that contains the image $$f(S)$$ (:ref{#image-of-set}).
+
+:::
+
+This is the composite of functions (:ref{#functions/function-composite}) and of moves of the plane
+(:ref{#isometries/composite}), now for any sets. The slip to watch for is the same too: in
+$$g(f(x))$$ the mapping next to $$x$$ is $$f$$, so $$f$$ acts first, even though it is written
+second.
+
+The two mappings in a composite can be of different kinds. Let $$C(t) = (\cos t, \sin t)$$, the
+curve that traces the unit circle (:ref{#parametrised-curve}). Let $$d$$ be the mapping from the
+plane to the numbers that gives each point its distance from $$(1, 0)$$, so
+$$d(x, y) = \sqrt{(x - 1)^2 + y^2}$$ by :ref{#coordinates/distance-formula}. Then $$d \circ C$$
+gives the distance of the moving point from $$(1, 0)$$ at time $$t$$:
+
+```math
+\begin{aligned}
+(d \circ C)(t) &= \sqrt{(\cos t - 1)^2 + \sin^2 t} && \text{put } (\cos t, \sin t) \text{ into } d \\
+&= \sqrt{\cos^2 t - 2\cos t + 1 + \sin^2 t} && \text{multiply out the square} \\
+&= \sqrt{2 - 2\cos t} && \text{since } \cos^2 t + \sin^2 t = 1
+\end{aligned}
+```
+
+The last step is :ref{#trigonometry/pythagorean-identity}. So the composite is a function from
+numbers to numbers, made from a curve and a function on the plane. At $$t = \frac{\pi}{3}$$ it gives
+$$\sqrt{2 - 1} = 1$$, and at $$t = \pi$$, when the point is at $$(-1, 0)$$, it gives
+$$\sqrt{4} = 2$$.
+
+The order matters (:ref{#isometries/order-matters}). Take $$f(x) = x + 3$$ and $$g(x) = 2x$$ on all
+numbers. Then $$(g \circ f)(x) = 2(x + 3) = 2x + 6$$, while $$(f \circ g)(x) = 2x + 3$$, so at
+$$x = 1$$ the first gives $$8$$ and the second $$5$$. For the cloakroom, the other order doesn't
+even make sense: $$g$$ gives colours, and $$f$$ only accepts children.
+
+## Doing nothing, and grouping
+
+A step that leaves everything where it is changes nothing when you put it into a chain, before or
+after the other steps. And in a chain of three steps, it doesn't matter which two you think of as
+one step first: the arrows are followed in the same order either way.
+
+:::definition[Identity mapping]{#identity-mapping}
+
+For a set $$S$$, the **identity mapping** of $$S$$ is the mapping $$I_S: S \to S$$ with
+$$I_S(x) = x$$ for every $$x$$ in $$S$$. When the set is clear, we write $$I$$.
+
+:::
+
+For the set $$\{\text{Ana}, \text{Ben}, \text{Cal}\}$$, the identity draws an arrow from each child
+back to the same child. On the numbers, it is the function $$x \mapsto x$$.
+
+:::proposition[Composing with the identity, and grouping]{#composite-laws}
+
+Let $$f: S \to T$$, $$g: T \to U$$ and $$h: U \to V$$ be mappings. Then
+
+1. $$I_T \circ f = f$$ and $$f \circ I_S = f$$
+2. $$(h \circ g) \circ f = h \circ (g \circ f)$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Function_composition#Properties"}
+
+Two mappings are equal when they have the same domain, the same target and the same value at every
+element (:ref{#mappings-equal}). In each part both sides go from $$S$$, to $$T$$ in part 1 and to
+$$V$$ in part 2, so it is enough to compare values at each $$x$$ in $$S$$.
+
+**Part 1.** By :ref{#mapping-composite} and :ref{#identity-mapping},
+$$(I_T \circ f)(x) = I_T(f(x)) = f(x)$$ and $$(f \circ I_S)(x) = f(I_S(x)) = f(x)$$.
+
+**Part 2.** Using :ref{#mapping-composite} twice on each side,
+
+```math
+\begin{aligned}
+\big((h \circ g) \circ f\big)(x) &= (h \circ g)(f(x)) = h\big(g(f(x))\big) \\
+\big(h \circ (g \circ f)\big)(x) &= h\big((g \circ f)(x)\big) = h\big(g(f(x))\big)
+\end{aligned}
+```
+
+Both sides give $$h(g(f(x)))$$.
+
+:::
+
+So we can write $$h \circ g \circ f$$ without brackets: first $$f$$, then $$g$$, then $$h$$. This is
+:ref{#isometries/composite-associative} again, with any sets in place of the plane.
+
+## Undoing a mapping
+
+At a theatre cloakroom you hand over a coat, a hat and a scarf, and get tickets $$1$$, $$2$$ and
+$$3$$ back. At the end of the evening you hand the tickets in, and each one leads to exactly one of
+your things. Write $$f$$ for the mapping from things to tickets:
+
+```math
+f(\text{coat}) = 2 \qquad f(\text{hat}) = 3 \qquad f(\text{scarf}) = 1
+```
+
+The attendant uses the mapping $$g$$ from tickets to things with $$g(1) = \text{scarf}$$,
+$$g(2) = \text{coat}$$ and $$g(3) = \text{hat}$$. Then $$g$$ undoes $$f$$:
+$$g(f(\text{coat})) = g(2) = \text{coat}$$, and the same for the hat and the scarf. And $$f$$ undoes
+$$g$$: $$f(g(1)) = f(\text{scarf}) = 1$$, and the same for tickets $$2$$ and $$3$$.
+
+<TicketArrows caption="The cloakroom mapping f from things to tickets, then the same arrows turned round: the attendant's mapping, labelled f⁻¹, which takes each ticket back to its thing." />
+
+:::definition[Inverse mapping]{#inverse-mapping}
+
+Let $$f: S \to T$$ be a mapping. A mapping $$g: T \to S$$ is an **inverse** of $$f$$ when
+
+```math
+g \circ f = I_S \qquad \text{and} \qquad f \circ g = I_T
+```
+
+That is, $$g(f(x)) = x$$ for every $$x$$ in $$S$$, and $$f(g(z)) = z$$ for every $$z$$ in $$T$$.
+
+:::
+
+A mapping can't have two different inverses, and the argument is the one used for moves of the plane
+in :ref{#isometries/inverse-map-unique}.
+
+:::proposition[Only one inverse]{#inverse-mapping-unique}
+
+Let $$f: S \to T$$ be a mapping. If $$g$$ and $$h$$ are both inverses of $$f$$, then $$g = h$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Inverse_Mapping_is_Unique"}
+
+Since $$h$$ is an inverse, $$f \circ h = I_T$$, and since $$g$$ is an inverse, $$g \circ f = I_S$$.
+So, with :ref{#composite-laws} for each step,
+
+```math
+\begin{aligned}
+g &= g \circ I_T && \text{part 1} \\
+&= g \circ (f \circ h) && \text{since } f \circ h = I_T \\
+&= (g \circ f) \circ h && \text{part 2} \\
+&= I_S \circ h && \text{since } g \circ f = I_S \\
+&= h && \text{part 1}
+\end{aligned}
+```
+
+:::
+
+So we can speak of **the** inverse of $$f$$, written $$f^{-1}$$ and read "$$f$$ inverse". For the
+cloakroom, $$f^{-1}$$ is the attendant's mapping $$g$$. Here are three inverses you've met before:
+
+- **Powers and logarithms**: for $$a > 0$$ with $$a \ne 1$$, the mapping $$x \mapsto a^x$$ from all
+  numbers to the positive numbers has inverse $$\log_a$$, from the positive numbers to all numbers.
+  The two equations of :ref{#functions/log-inverse} are exactly the two in :ref{#inverse-mapping}.
+- **Squares and square roots**: squaring, from the numbers $$x \ge 0$$ to the numbers $$y \ge 0$$,
+  has inverse $$y \mapsto \sqrt{y}$$, since $$\sqrt{x^2} = x$$ and $$(\sqrt{y})^2 = y$$ for such
+  numbers (:ref{#real-numbers/square-root}).
+- **Turns**: the turn about $$O$$ by an angle $$\theta$$ has inverse the turn back by $$-\theta$$
+  (:ref{#isometries/inverse-map}).
+
+The target matters in the first example. As a mapping from all numbers to all numbers,
+$$x \mapsto a^x$$ has no inverse. An inverse $$g$$ would need $$a^{g(-1)} = -1$$, but every power
+$$a^x$$ is positive (:ref{#functions/exponential-positive}).
+
+A word about the notation. The preimage $$f^{-1}(B)$$ (:ref{#preimage}) makes sense for every
+mapping $$f$$, even one with no inverse. When $$f$$ does have an inverse, the two readings agree: an
+element $$x$$ has $$f(x)$$ in $$B$$ exactly when $$x = f^{-1}(z)$$ for some $$z$$ in $$B$$, namely
+$$z = f(x)$$.
+
+## Which mappings can be undone
+
+The cloakroom shows the two ways undoing can fail. If two things got the same ticket, that ticket
+couldn't say which one to hand back. If some ticket belonged to nothing, handing it in would get you
+nothing back. A mapping can be undone exactly when neither happens: when it is one to one
+(:ref{#injective}) and onto (:ref{#surjective}).
+
+:::theorem[Inverses exist exactly for one-to-one onto mappings]{#inverse-exists-bijective}
+
+A mapping $$f: S \to T$$ has an inverse exactly when it is one to one and onto (:ref{#bijective}).
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Bijection_iff_Left_and_Right_Inverse"}
+
+**An inverse makes f one to one.** Suppose $$g$$ is an inverse of $$f$$, and let $$x$$ and $$x'$$ be
+in $$S$$ with $$f(x) = f(x')$$. Applying $$g$$ to both sides gives $$g(f(x)) = g(f(x'))$$. Since
+$$g \circ f = I_S$$, the left side is $$x$$ and the right side is $$x'$$, so $$x = x'$$.
+
+**An inverse makes f onto.** Take $$z$$ in $$T$$. Since $$f \circ g = I_T$$, $$z = f(g(z))$$, so
+$$z$$ is the value of $$f$$ at the element $$g(z)$$ of $$S$$.
+
+**One to one and onto give an inverse.** Now suppose $$f$$ is one to one and onto, and take $$z$$ in
+$$T$$. Since $$f$$ is onto, at least one $$x$$ in $$S$$ has $$f(x) = z$$. Since $$f$$ is one to one,
+at most one does. So exactly one $$x$$ in $$S$$ has $$f(x) = z$$, and we let $$g(z)$$ be that $$x$$.
+This defines a mapping $$g: T \to S$$, and we check the two equations.
+
+- For $$z$$ in $$T$$, $$g(z)$$ is an element that $$f$$ sends to $$z$$, so $$f(g(z)) = z$$. That is
+  $$f \circ g = I_T$$.
+- For $$x$$ in $$S$$, let $$z = f(x)$$. Then $$g(z)$$ is the one element that $$f$$ sends to $$z$$,
+  and $$x$$ is such an element, so $$g(f(x)) = x$$. That is $$g \circ f = I_S$$.
+
+:::
+
+The inverse built in the proof turns every arrow of $$f$$ round, as in the cloakroom picture. For a
+function that is one to one, :ref{#functions/inverse-function} did the same with the range as the
+target, and that is onto by the definition of the range. The theorem also says when there is no
+inverse. Sending each child in a class of $$30$$ to their birth month can't be undone, since some
+month has at least two children (:ref{#pigeonhole}), and $$x \mapsto x^2$$ from all numbers to all
+numbers can't be undone either: it sends $$3$$ and $$-3$$ both to $$9$$.
+
+## Undoing in reverse order
+
+The present came off in the reverse order of going on, and so did the socks and shoes of
+:ref{#isometries/inverse-composite}. The same is true of any chain of mappings that can each be
+undone: the last one done is the first one undone.
+
+:::proposition[Undoing in reverse order]{#composite-inverse}
+
+1. Let $$f: S \to T$$ and $$g: T \to U$$ be mappings with inverses. Then $$g \circ f$$ has an
+   inverse, and $$(g \circ f)^{-1} = f^{-1} \circ g^{-1}$$.
+2. Let $$f_1, f_2, \ldots, f_m$$ be mappings with inverses, where each $$f_k$$ lands in the domain
+   of $$f_{k-1}$$, so that the composite $$f_1 \circ f_2 \circ \cdots \circ f_m$$ makes sense. Then
+
+   ```math
+   (f_1 \circ f_2 \circ \cdots \circ f_m)^{-1} = f_m^{-1} \circ \cdots \circ f_2^{-1} \circ f_1^{-1}
+   ```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Inverse_of_Composite_Bijection"}
+
+**Part 1.** By :ref{#inverse-mapping}, two composites must be identities. Grouping doesn't matter
+(:ref{#composite-laws}), so we can drop the brackets and work from the middle out:
+
+```math
+\begin{aligned}
+(f^{-1} \circ g^{-1}) \circ (g \circ f) &= f^{-1} \circ (g^{-1} \circ g) \circ f = f^{-1} \circ I_T \circ f = f^{-1} \circ f = I_S \\
+(g \circ f) \circ (f^{-1} \circ g^{-1}) &= g \circ (f \circ f^{-1}) \circ g^{-1} = g \circ I_T \circ g^{-1} = g \circ g^{-1} = I_U
+\end{aligned}
+```
+
+So $$f^{-1} \circ g^{-1}$$ is an inverse of $$g \circ f$$, and by :ref{#inverse-mapping-unique} it
+is the inverse.
+
+**Part 2**, by induction on $$m$$ (:ref{#basic-proofs/induction}). For $$m = 1$$ both sides are
+$$f_1^{-1}$$. Suppose the formula holds for some $$m$$, and take $$m + 1$$ mappings. Group the first
+$$m$$ of them as one mapping $$F = f_1 \circ \cdots \circ f_m$$, which has an inverse by the
+assumption. Then by part 1, with $$f_{m+1}$$ first and $$F$$ second,
+
+```math
+(F \circ f_{m+1})^{-1} = f_{m+1}^{-1} \circ F^{-1} = f_{m+1}^{-1} \circ f_m^{-1} \circ \cdots \circ f_1^{-1}
+```
+
+which is the formula for $$m + 1$$.
+
+:::
+
+Here it is with numbers. With $$f(x) = x + 3$$ and $$g(x) = 2x$$, the composite
+$$(g \circ f)(x) = 2x + 6$$ adds $$3$$ and then doubles. The inverses are $$f^{-1}(y) = y - 3$$ and
+$$g^{-1}(y) = \frac{y}{2}$$, so the proposition says $$(g \circ f)^{-1}(y) = \frac{y}{2} - 3$$:
+halve first, then take away $$3$$. Check: $$x = 1$$ goes to $$8$$, and $$\frac{8}{2} - 3 = 1$$.
+
+Undoing in the same order as the steps were done gives $$g^{-1}(f^{-1}(y)) = \frac{y - 3}{2}$$
+instead, which sends $$8$$ to $$\frac{5}{2}$$, not back to $$1$$. Try both orders with three moves
+of the plane below: a slide $$S$$ by $$(2, 1)$$, the quarter turn $$G$$ anticlockwise about $$O$$,
+and the stretch $$D$$ across by $$2$$, $$D(x, y) = (2x, y)$$.
+
+<UndoChain />
+
+## Cancelling
+
+With numbers, $$3a = 3b$$ gives $$a = b$$, because multiplying by $$\frac{1}{3}$$ undoes multiplying
+by $$3$$. A mapping with an inverse can be cancelled from a composite in the same way, from either
+side.
+
+:::proposition[Cancelling]{#mapping-cancel}
+
+Let $$h$$ be a mapping with an inverse.
+
+1. If $$h: T \to U$$ and $$f, g: S \to T$$ are mappings with $$h \circ f = h \circ g$$, then
+   $$f = g$$.
+2. If $$h: S \to T$$ and $$f, g: T \to U$$ are mappings with $$f \circ h = g \circ h$$, then
+   $$f = g$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Bijection_iff_Left_and_Right_Cancellable"}
+
+**Part 1.** Do $$h^{-1}$$ after both sides, and regroup with :ref{#composite-laws}:
+
+```math
+f = I_T \circ f = (h^{-1} \circ h) \circ f = h^{-1} \circ (h \circ f) = h^{-1} \circ (h \circ g) = (h^{-1} \circ h) \circ g = I_T \circ g = g
+```
+
+**Part 2.** This time do $$h^{-1}$$ before both sides:
+
+```math
+f = f \circ I_T = f \circ (h \circ h^{-1}) = (f \circ h) \circ h^{-1} = (g \circ h) \circ h^{-1} = g \circ (h \circ h^{-1}) = g \circ I_T = g
+```
+
+:::
+
+This is :ref{#isometries/cancel-map} for mappings of any sets. The inverse is needed. Let
+$$h(x) = x^2$$, $$f(x) = x$$ and $$g(x) = -x$$ on all numbers. Then $$h(f(x)) = x^2$$ and
+$$h(g(x)) = (-x)^2 = x^2$$, so $$h \circ f = h \circ g$$, but $$f(1) = 1$$ and $$g(1) = -1$$.
+
+## Undoing a mapping of the plane
+
+Some mappings of the plane come as formulas, and undoing one means solving equations. Take
+
+```math
+f(x, y) = (x + 2y,\ 3x + 4y)
+```
+
+To undo $$f$$, start from a point $$(u, v)$$ and look for the point $$(x, y)$$ that $$f$$ sends
+there. That means solving $$x + 2y = u$$ and $$3x + 4y = v$$ for $$x$$ and $$y$$, which we do by
+substitution (:ref{#linear-equations/substitution}):
+
+```math
+\begin{aligned}
+x &= u - 2y && \text{rearrange the first equation} \\
+3(u - 2y) + 4y &= v && \text{substitute into the second} \\
+3u - 2y &= v && \text{multiply out and collect } y \\
+y &= \frac{3u - v}{2} && \text{solve for } y \\
+x &= u - (3u - v) = v - 2u && \text{back-substitute}
+\end{aligned}
+```
+
+So for every $$(u, v)$$, exactly one point goes to it, and the guess for the inverse is
+
+```math
+g(u, v) = \left(v - 2u,\ \frac{3u - v}{2}\right)
+```
+
+Both equations of :ref{#inverse-mapping} hold. Putting $$g(u, v)$$ into $$f$$ gives
+$$(v - 2u) + (3u - v) = u$$ and $$3(v - 2u) + 2(3u - v) = v$$, so $$f \circ g = I$$. Putting
+$$f(x, y)$$ into $$g$$ gives $$(3x + 4y) - 2(x + 2y) = x$$ and
+$$\frac{3(x + 2y) - (3x + 4y)}{2} = \frac{2y}{2} = y$$, so $$g \circ f = I$$. So $$g = f^{-1}$$.
+Check one point: $$f(1, 1) = (3, 7)$$, and $$f^{-1}(3, 7) = (7 - 6, \frac{9 - 7}{2}) = (1, 1)$$.
+
+What made this work is the number $$1 \cdot 4 - 2 \cdot 3 = -2$$, the determinant of the two
+equations (:ref{#linear-equations/determinant}). When it isn't $$0$$, the equations have exactly one
+solution for every $$(u, v)$$ (:ref{#linear-equations/determinant-test}), and the mapping has an
+inverse. Change $$3x + 4y$$ to $$2x + 4y$$ and the determinant becomes $$0$$. Then $$f(2, 0)$$ and
+$$f(0, 1)$$ are both $$(2, 4)$$, so the new mapping is not one to one and has no inverse.
+
+## Exercises
+
+:::::accordion[Exercises on combining and undoing mappings, with solutions]
+
+::::exercise{#ex-combining-and-undoing-fruit}
+
+Dev, Eli and Fay each pick a piece of fruit, given by the mapping $$f$$ with
+$$f(\text{Dev}) = \text{apple}$$, $$f(\text{Eli}) = \text{pear}$$ and
+$$f(\text{Fay}) = \text{apple}$$. The mapping $$g$$ gives the price of each fruit on the stall:
+apple $$30$$p, pear $$45$$p and plum $$50$$p.
+
+1. Find $$g \circ f$$, and say in words what it does.
+2. Explain why $$f \circ g$$ makes no sense.
+
+:::solution
+
+1. By :ref{#mapping-composite}, $$(g \circ f)(\text{Dev}) = g(\text{apple}) = 30$$p,
+   $$(g \circ f)(\text{Eli}) = g(\text{pear}) = 45$$p and
+   $$(g \circ f)(\text{Fay}) = g(\text{apple}) = 30$$p. It sends each person to the price of the
+   fruit they picked.
+2. $$f \circ g$$ would mean "first $$g$$, then $$f$$". But $$g$$ gives prices, and $$f$$ only
+   accepts the three people, so there is nothing for $$f$$ to do with $$30$$p.
+
+:::
+
+::::
+
+::::exercise{#ex-combining-and-undoing-numbers}
+
+Let $$f(x) = 3x - 1$$ and $$g(x) = x^2$$ on all numbers. Find $$(g \circ f)(2)$$ and
+$$(f \circ g)(2)$$, and a formula for each composite.
+
+:::solution
+
+$$(g \circ f)(2) = g(5) = 25$$ and $$(f \circ g)(2) = f(4) = 11$$. In general
+
+```math
+(g \circ f)(x) = (3x - 1)^2 = 9x^2 - 6x + 1 \qquad (f \circ g)(x) = 3x^2 - 1
+```
+
+Check at $$x = 2$$: $$36 - 12 + 1 = 25$$ and $$12 - 1 = 11$$.
+
+:::
+
+::::
+
+::::exercise{#ex-combining-and-undoing-finite}
+
+1. Let $$f$$ be the mapping from $$\{1, 2, 3, 4\}$$ to $$\{A, B, C, D\}$$ with $$f(1) = C$$,
+   $$f(2) = A$$, $$f(3) = D$$ and $$f(4) = B$$. Find $$f^{-1}$$, and check that
+   $$f^{-1} \circ f = I$$.
+2. Let $$h$$ be the mapping between the same sets with $$h(1) = A$$, $$h(2) = A$$, $$h(3) = B$$ and
+   $$h(4) = C$$. Give two reasons why $$h$$ has no inverse.
+
+:::solution
+
+1. Turning the arrows round gives $$f^{-1}(A) = 2$$, $$f^{-1}(B) = 4$$, $$f^{-1}(C) = 1$$ and
+   $$f^{-1}(D) = 3$$. Check: $$f^{-1}(f(1)) = f^{-1}(C) = 1$$, $$f^{-1}(f(2)) = f^{-1}(A) = 2$$,
+   $$f^{-1}(f(3)) = f^{-1}(D) = 3$$ and $$f^{-1}(f(4)) = f^{-1}(B) = 4$$.
+2. $$h$$ is not one to one, since $$h(1) = h(2) = A$$. And $$h$$ is not onto, since no arrow arrives
+   at $$D$$. Either one is enough, by :ref{#inverse-exists-bijective}.
+
+:::
+
+::::
+
+::::exercise{#ex-combining-and-undoing-plane}
+
+Let $$f(x, y) = (2x + y,\ x + y)$$. Find $$f^{-1}$$ by solving equations, check both equations of
+:ref{#inverse-mapping}, and check your answer with the point $$(1, 2)$$.
+
+:::solution
+
+Solve $$2x + y = u$$ and $$x + y = v$$. Taking the second from the first gives $$x = u - v$$. Then
+the second gives $$y = v - x = v - (u - v) = 2v - u$$. So the guess is
+$$g(u, v) = (u - v,\ 2v - u)$$.
+
+- $$f(g(u, v))$$: $$2(u - v) + (2v - u) = u$$ and $$(u - v) + (2v - u) = v$$, so $$f \circ g = I$$.
+- $$g(f(x, y))$$: $$(2x + y) - (x + y) = x$$ and $$2(x + y) - (2x + y) = y$$, so $$g \circ f = I$$.
+
+So $$f^{-1}(u, v) = (u - v,\ 2v - u)$$. Check: $$f(1, 2) = (4, 3)$$, and $$f^{-1}(4, 3) = (1, 2)$$.
+The determinant is $$2 \cdot 1 - 1 \cdot 1 = 1$$, which is not $$0$$, as
+:ref{#linear-equations/determinant-test} needs.
+
+:::
+
+::::
+
+::::exercise{#ex-combining-and-undoing-three}
+
+Let $$f(x) = x + 4$$, $$g(x) = 3x$$ and $$h(x) = x - 1$$ on all numbers. Find a formula for
+$$h \circ g \circ f$$, and find its inverse in two ways: by solving, and by
+:ref{#composite-inverse}.
+
+:::solution
+
+$$(h \circ g \circ f)(x) = h(3(x + 4)) = 3x + 12 - 1 = 3x + 11$$.
+
+**By solving.** $$y = 3x + 11$$ gives $$x = \frac{y - 11}{3}$$.
+
+**In reverse order.** The inverses are $$f^{-1}(y) = y - 4$$, $$g^{-1}(y) = \frac{y}{3}$$ and
+$$h^{-1}(y) = y + 1$$. By part 2 of :ref{#composite-inverse}, the inverse is
+$$f^{-1} \circ g^{-1} \circ h^{-1}$$: add $$1$$, then divide by $$3$$, then take away $$4$$. That
+gives $$\frac{y + 1}{3} - 4 = \frac{y + 1 - 12}{3} = \frac{y - 11}{3}$$, the same.
+
+Check: $$x = 2$$ goes to $$17$$, and $$\frac{17 - 11}{3} = 2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-combining-and-undoing-bijective}
+
+Let $$f: S \to T$$ and $$g: T \to U$$ both be one to one and onto. Prove that $$g \circ f$$ is one
+to one and onto.
+
+:::solution
+
+By :ref{#inverse-exists-bijective}, $$f$$ and $$g$$ both have inverses. By part 1 of
+:ref{#composite-inverse}, $$g \circ f$$ then has an inverse, namely $$f^{-1} \circ g^{-1}$$. Using
+:ref{#inverse-exists-bijective} again, in the other direction, a mapping with an inverse is one to
+one and onto. So $$g \circ f$$ is one to one and onto.
+
+:::
+
+::::
+
+::::exercise{#ex-combining-and-undoing-one-side}
+
+Let $$f: S \to T$$ and $$g: T \to S$$ be mappings with $$g \circ f = I_S$$.
+
+1. Prove that $$f$$ is one to one and that $$g$$ is onto.
+2. Let $$S = \{1\}$$ and $$T = \{1, 2\}$$, with $$f(1) = 1$$ and $$g(1) = g(2) = 1$$. Check that
+   $$g \circ f = I_S$$, and show that $$g$$ is not an inverse of $$f$$.
+
+:::solution
+
+1. **f is one to one.** If $$f(x) = f(x')$$, then $$x = g(f(x)) = g(f(x')) = x'$$. **g is onto.**
+   Each $$x$$ in $$S$$ is $$g(f(x))$$, the value of $$g$$ at the element $$f(x)$$ of $$T$$.
+2. $$g(f(1)) = g(1) = 1$$, so $$g \circ f = I_S$$. But $$f(g(2)) = f(1) = 1$$, not $$2$$, so
+   $$f \circ g \ne I_T$$, and :ref{#inverse-mapping} needs both equations. One equation on its own
+   is not enough to make an inverse.
+
+:::
+
+::::
+
+::::exercise{#ex-combining-and-undoing-cancel}
+
+Let $$h(x) = x^2$$, $$f(x) = x$$ and $$g(x) = |x|$$ on all numbers. Show that
+$$f \circ h = g \circ h$$ but $$f \ne g$$, and explain why this doesn't contradict
+:ref{#mapping-cancel}.
+
+:::solution
+
+For every $$x$$, $$f(h(x)) = x^2$$, and $$g(h(x)) = |x^2| = x^2$$ because $$x^2 \ge 0$$. So
+$$f \circ h = g \circ h$$. But $$f(-1) = -1$$ and $$g(-1) = 1$$, so $$f \ne g$$
+(:ref{#mappings-equal}).
+
+Part 2 of :ref{#mapping-cancel} needs $$h$$ to have an inverse. As a mapping from all numbers to all
+numbers, $$h$$ is not one to one, since $$h(1) = h(-1) = 1$$, so it has no inverse
+(:ref{#inverse-exists-bijective}).
+
+:::
+
+::::
+
+:::::

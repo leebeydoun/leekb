@@ -1,0 +1,148 @@
+---
+title: Introduction
+description:
+  Mappings between any two sets, curves traced by a moving point, undoing and repeating mappings,
+  and permutations with their cycles and sign.
+---
+
+Picture the seating plan for a wedding. Each guest is sent to exactly one seat, and the plan works
+when no two guests are sent to the same seat and no seat is left empty. Nothing in that plan is a
+number, yet it is the same kind of rule as a function: one arrow out of each guest. A rule like this
+between any two sets is called a **mapping**. In this chapter we'll ask what mappings can do, when
+one can be undone, and what happens when you repeat one, and we'll end with shuffling cards and a
+puzzle that can't be solved.
+
+One idea carries the chapter: a mapping is one arrow out of each element, and everything else is a
+question about the arrows. Being one to one means at most one arrow arrives at each element, and
+being onto means at least one does. Undoing a mapping means turning every arrow round, and a
+permutation is a set of arrows from some numbers back to themselves, which you can follow round in
+loops.
+
+## What this chapter builds on
+
+[Isometries](../isometries/introduction.mdx) combined and undid moves of the plane, and
+[Functions](../functions/introduction.mdx) did the same for rules on numbers. This chapter does it
+once for every kind of mapping, so those chapters become special cases. Curves traced by a moving
+point use the line $$P + tA$$ from [Segments, rays and lines](../segments-rays-and-lines/lines.mdx)
+and polar coordinates from [Trigonometry](../trigonometry/rotations.mdx). Induction from
+[Basic proofs](../basic-proofs/induction.mdx) proves the rules for repeating a mapping.
+
+One group of facts is taken as given: the rules for counting the elements of a finite set
+(:ref{#one-to-one-and-onto-counting-rules}), such as a set having only one count however you list
+it. The guide [Repeating a mapping](./repeating-a-mapping.mdx) also uses once, without proof, the
+fact that $$\pi$$ is irrational. Everything else is proved.
+
+Along the way the chapter keeps two promises from earlier chapters:
+
+- **Counting arrangements**: [Factorials](../numbers/factorials.mdx) counted the ways to put $$n$$
+  things in a row as $$n!$$. Here it is proved (:ref{#permutation-count}).
+- **Undoing**: [Functions](../functions/what-is-a-function.mdx) kept undoing light. Here a mapping
+  has an inverse exactly when it is one to one and onto (:ref{#inverse-exists-bijective}).
+
+## Guides in this chapter
+
+The chapter has ten guides:
+
+1. [Mappings](./mappings.mdx): one arrow out of each element, images and preimages
+2. [Curves traced by mappings](./curves.mdx): a point moving in time, removing the time to find an
+   equation, and the polar map
+3. [One to one and onto](./one-to-one-and-onto.mdx): arrows arriving, the pigeonhole principle, and
+   finite sets
+4. [Combining and undoing mappings](./combining-and-undoing.mdx): composites, inverses, and why
+   undoing goes in reverse order
+5. [Repeating a mapping](./repeating-a-mapping.mdx): powers of a mapping, negative powers, and the
+   rules for exponents
+6. [Permutations](./permutations.mdx): reorderings, combining them, and why there are $$n!$$
+7. [Cycles](./cycles.mdx): following a card round until it comes home, and how many perfect shuffles
+   restore a deck
+8. [Swaps and the sign of a permutation](./swaps-and-sign.mdx): even and odd permutations, and why
+   the 15 puzzle can't swap two tiles
+9. [Test yourself](./test-yourself.mdx): a multiple choice quiz on the ideas in the chapter
+10. [Exercises](./exercises.mdx): exercises on the whole chapter, with worked solutions
+
+The summary below collects every definition and rule from the chapter, for reference while you read.
+
+{/* Keep this summary in sync with the guides whenever they change. */}
+
+:::accordion[Summary of definitions and rules]
+
+**Definitions**
+
+| Term                             | Meaning                                                                               |
+| -------------------------------- | ------------------------------------------------------------------------------------- |
+| :ref{#mapping}                   | $$f: S \to T$$ gives each $$x$$ in $$S$$ exactly one $$f(x)$$ in $$T$$                |
+| :ref{#mappings-equal}            | Same domain, same target and the same value everywhere                                |
+| :ref{#image-of-set}              | $$f(A) = \{f(a) : a \in A\}$$                                                         |
+| :ref{#preimage}                  | $$f^{-1}(B) = \{x : f(x) \in B\}$$, defined for every mapping                         |
+| :ref{#union-intersection}        | $$A \cup B$$: in $$A$$ or $$B$$. $$A \cap B$$: in both                                |
+| :ref{#parametrised-curve}        | A mapping $$t \mapsto (x(t), y(t))$$ from an interval into the plane                  |
+| :ref{#polar-map}                 | $$P(r, \theta) = (r\cos\theta, r\sin\theta)$$                                         |
+| :ref{#injective}                 | One to one: $$f(x) = f(x')$$ only when $$x = x'$$                                     |
+| :ref{#surjective}                | Onto: every element of the target is a value                                          |
+| :ref{#bijective}                 | Both: each element of the target is the value at exactly one element                  |
+| :ref{#one-to-one-and-onto-count} | A set has $$n$$ elements when they can be listed with each appearing exactly once     |
+| :ref{#mapping-composite}         | $$(g \circ f)(x) = g(f(x))$$: do $$f$$ first                                          |
+| :ref{#identity-mapping}          | $$I_S(x) = x$$                                                                        |
+| :ref{#inverse-mapping}           | $$g \circ f = I_S$$ and $$f \circ g = I_T$$                                           |
+| :ref{#mapping-powers}            | $$f^0 = I$$ and $$f^{k + 1} = f \circ f^k$$                                           |
+| :ref{#mapping-negative-powers}   | $$f^{-k} = (f^{-1})^k$$                                                               |
+| :ref{#permutation}               | A one-to-one mapping of $$\{1, \ldots, n\}$$ to itself                                |
+| :ref{#permutation-inverse}       | $$\sigma^{-1}(j)$$ is the one $$i$$ with $$\sigma(i) = j$$                            |
+| :ref{#orbit}                     | $$\{i, \sigma(i), \ldots, \sigma^{k-1}(i)\}$$, with $$k$$ the first return; its cycle |
+| :ref{#cycle-decomposition}       | A permutation written as the product of the cycles of its orbits                      |
+| :ref{#transposition}             | $$[a, b]$$ swaps $$a$$ and $$b$$ and fixes the rest                                   |
+| :ref{#permutation-sign}          | Even or odd number of swaps; $$\operatorname{sgn}\sigma = (-1)^p$$                    |
+
+**Taken as given**
+
+| Rule                                      | Statement                                                                                      |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| :ref{#one-to-one-and-onto-counting-rules} | A finite set has one count, repeats don't add elements, and a part is no bigger than the whole |
+
+**Mappings and curves**
+
+| Result                             | Statement                                                                                                                  |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| :ref{#mappings-unions}             | $$f(A \cup B) = f(A) \cup f(B)$$; preimages keep unions and intersections; $$f(A \cap B)$$ can be smaller                  |
+| :ref{#curves-eliminate}            | $$(at + b, ct^2 + dt + e)$$ with $$a \ne 0$$ traces the graph of a quadratic                                               |
+| :ref{#polar-map-images}            | The polar map sends lines $$r = c$$ to circles, lines $$\theta = c$$ to lines through $$O$$, rectangles to pieces of rings |
+| :ref{#pigeonhole}                  | No mapping from a bigger finite set to a smaller one is one to one                                                         |
+| :ref{#finite-injective-surjective} | Between finite sets of the same size, one to one exactly when onto                                                         |
+
+**Combining, undoing and repeating**
+
+| Result                          | Statement                                                                       |
+| ------------------------------- | ------------------------------------------------------------------------------- |
+| :ref{#composite-laws}           | $$I \circ f = f = f \circ I$$ and $$(h \circ g) \circ f = h \circ (g \circ f)$$ |
+| :ref{#inverse-mapping-unique}   | A mapping has at most one inverse                                               |
+| :ref{#inverse-exists-bijective} | A mapping has an inverse exactly when it is one to one and onto                 |
+| :ref{#composite-inverse}        | $$(g \circ f)^{-1} = f^{-1} \circ g^{-1}$$                                      |
+| :ref{#mapping-cancel}           | If $$h$$ has an inverse, $$h \circ f = h \circ g$$ gives $$f = g$$              |
+| :ref{#powers-add}               | $$f^m \circ f^n = f^{m + n}$$ for whole numbers                                 |
+| :ref{#powers-multiply}          | $$(f^m)^n = f^{mn}$$                                                            |
+| :ref{#powers-undo}              | $$f^k \circ f^{-k} = I = f^{-k} \circ f^k$$                                     |
+| :ref{#powers-add-integers}      | $$f^m \circ f^n = f^{m + n}$$ for all integers, when $$f$$ has an inverse       |
+| :ref{#repeating-inverse}        | If $$f^n = I$$ then $$f^{-1} = f^{n - 1}$$                                      |
+
+**Permutations**
+
+| Result                         | Statement                                                                                  |
+| ------------------------------ | ------------------------------------------------------------------------------------------ |
+| :ref{#permutations-composite}  | A composite of permutations is a permutation                                               |
+| :ref{#permutation-count}       | There are $$n!$$ permutations of $$\{1, \ldots, n\}$$                                      |
+| :ref{#cycles-return}           | Every number comes home after at most $$n$$ steps                                          |
+| :ref{#orbit-distinct}          | An orbit of length $$k$$ has $$k$$ different elements                                      |
+| :ref{#cycles-orbit-powers}     | $$\sigma^t(i) = i$$ exactly when the length of the orbit divides $$t$$                     |
+| :ref{#orbits-disjoint}         | Two orbits are the same or share nothing                                                   |
+| :ref{#cycles-product}          | A permutation is the product of its cycles, in any order                                   |
+| :ref{#permutation-order}       | The order is the least common multiple of the cycle lengths                                |
+| :ref{#swaps-and-sign-cycle}    | $$[a_1, \ldots, a_k] = [a_1, a_k] \cdots [a_1, a_2]$$, so $$k - 1$$ swaps                  |
+| :ref{#transpositions-generate} | Every permutation is a chain of swaps                                                      |
+| :ref{#swap-orbits}             | A swap cuts one orbit in two or joins two orbits into one                                  |
+| :ref{#parity-theorem}          | Two chains of swaps for one permutation are both even or both odd                          |
+| :ref{#sign-from-cycles}        | $$\operatorname{sgn}\sigma = (-1)^{n - c}$$ with $$c$$ orbits                              |
+| :ref{#sign-product}            | $$\operatorname{sgn}(\sigma\tau) = \operatorname{sgn}\sigma \cdot \operatorname{sgn}\tau$$ |
+| :ref{#half-even}               | For $$n \ge 2$$, half of the $$n!$$ permutations are even                                  |
+| :ref{#swaps-and-sign-fifteen}  | In the 15 puzzle, the 14 and 15 can't be swapped with everything else in place             |
+
+:::

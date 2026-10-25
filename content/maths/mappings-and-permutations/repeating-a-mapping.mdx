@@ -1,0 +1,600 @@
+---
+title: Repeating a mapping
+description:
+  Doing a mapping again and again, the rules for powers of a mapping, negative powers for mappings
+  that can be undone, and mappings that come back to where they started.
+---
+
+Imagine a playlist of five songs set to repeat, and you're listening to song 2. Press "next" and
+song 3 starts; press it again and again and you hear songs 4, 5 and 1. The fifth press brings song 2
+back, and five more presses bring it back again, however many rounds you make.
+
+<PlaylistLoop caption="The next button on a playlist of five songs on repeat. Every song has one arrow out, and following five arrows from any song brings you back to it." />
+
+A calculator's "×2" key behaves differently. Start from $$3$$ and press it over and over: $$6$$,
+$$12$$, $$24$$, $$48$$, and the numbers never come back. Both buttons do one mapping again and
+again, and doing a mapping $$k$$ times in a row is called its $$k$$th **power**. In this guide we'll
+define powers of a mapping, prove that they follow the rules you know for powers of numbers, and see
+which mappings come back to where they started.
+
+## Doing a mapping again
+
+To press a button twice, whatever comes out of the first press has to be something the button
+accepts. The next button takes a song and gives a song, so you can press it as often as you like. So
+every mapping in this guide goes from a set to itself, $$f: S \to S$$, and the composite
+$$f \circ f$$ (:ref{#mapping-composite}) always makes sense.
+
+Write $$N$$ for the next button, a mapping from the songs $$\{1, 2, 3, 4, 5\}$$ to themselves:
+$$N(1) = 2$$, $$N(2) = 3$$, $$N(3) = 4$$, $$N(4) = 5$$ and $$N(5) = 1$$. Pressing twice from song
+$$2$$ gives $$N(N(2)) = N(3) = 4$$. Pressing three times gives $$N(N(N(2))) = N(4) = 5$$, and the
+brackets pile up, so powers get a shorter name.
+
+:::definition[Powers of a mapping]{#mapping-powers}
+
+Let $$f: S \to S$$ be a mapping from a set $$S$$ to itself. The **powers** of $$f$$ are the mappings
+$$f^k: S \to S$$, one for each whole number $$k \ge 0$$, given by
+
+```math
+f^0 = I_S \qquad \text{and} \qquad f^{k + 1} = f \circ f^k
+```
+
+where $$I_S$$ is the identity mapping of $$S$$ (:ref{#identity-mapping}). Read $$f^k$$ as "$$f$$ to
+the $$k$$".
+
+:::
+
+Each power is built from the one before it: to do $$f$$ a total of $$k + 1$$ times, do it $$k$$
+times and then once more. A definition made a step at a time like this is called a definition by
+**recursion**. The first few steps give $$f^1 = f \circ I_S = f$$, by :ref{#composite-laws}, then
+$$f^2 = f \circ f$$ and $$f^3 = f \circ f \circ f$$. This is how :ref{#isometries/map-powers}
+counted repeated moves of the plane, now for a mapping of any set.
+
+The two buttons from the start fit the definition. For the playlist, $$N^3(2) = 5$$ and
+$$N^5(2) = 2$$. For the doubling key $$d(x) = 2x$$ on the numbers, $$d^4(3) = 48$$.
+
+<DoublingJumps caption="The doubling key pressed four times from 3: the jumps land on 6, 12, 24 and 48, each twice as long as the one before." />
+
+One slip is worth naming. Here $$f^2(x)$$ means $$f(f(x))$$, which is not the square $$(f(x))^2$$.
+With $$d(x) = 2x$$, $$d^2(3) = d(6) = 12$$, while $$(d(3))^2 = 36$$. The one place where the habit
+differs is trigonometry, where $$\sin^2 x$$ means $$(\sin x)^2$$.
+
+## Powers you can work out
+
+Each of the mappings below has a formula for $$f^k$$. You find it by doing $$f$$ a few times and
+spotting the pattern, and then induction (:ref{#basic-proofs/induction}) proves the pattern holds
+for every $$k$$.
+
+:::example[Adding 5 over and over]{#repeating-a-mapping-add-five}
+
+Let $$a(x) = x + 5$$ on the numbers. From $$2$$ the powers give $$2$$, $$7$$, $$12$$, $$17$$ and
+$$22$$: each press adds $$5$$ more. So we expect $$a^k(x) = x + 5k$$ for every whole number
+$$k \ge 0$$.
+
+**Base case.** For $$k = 0$$, $$a^0(x) = I(x) = x = x + 5 \cdot 0$$.
+
+**Inductive step.** Suppose $$a^k(x) = x + 5k$$ for every $$x$$. Then
+
+```math
+a^{k + 1}(x) = a\big(a^k(x)\big) = (x + 5k) + 5 = x + 5(k + 1)
+```
+
+by the definition of powers and then the assumption.
+
+The principle of induction starts at $$1$$, and this starts at $$0$$. That changes nothing in the
+argument: apply the principle to the statement for $$k - 1$$ in place of $$k$$.
+
+:::
+
+The same pattern-then-induction works for other mappings, with the step changed:
+
+- **Doubling**: $$d^k(x) = 2^k x$$, since $$d^{k + 1}(x) = 2 \cdot 2^k x = 2^{k + 1} x$$. Check with
+  the key: $$2^4 \cdot 3 = 48$$.
+- **Squaring**: for $$s(x) = x^2$$, $$s^k(x) = x^{2^k}$$, since
+  $$s^{k + 1}(x) = (x^{2^k})^2 = x^{2^{k + 1}}$$. From $$2$$ the powers give $$2$$, $$4$$, $$16$$,
+  $$256$$ and $$65536 = 2^{16}$$. The exponent doubles each time, so $$s^3(x) = x^8$$, not $$x^6$$.
+- **A slide**: for the slide $$T_A(X) = X + A$$ by a point $$A$$
+  (:ref{#adding-and-scaling-points/slide-formula}), $$T_A^k(X) = X + kA$$, since
+  $$(X + kA) + A = X + (k + 1)A$$ by :ref{#adding-and-scaling-points/sum-rules} and
+  :ref{#adding-and-scaling-points/scale-sum-rules}. With $$A = (2, 1)$$ and $$X = (-3, 1)$$ the
+  trail is $$(-1, 2)$$, $$(1, 3)$$, $$(3, 4)$$.
+
+A turn behaves like the playlist. Let $$G$$ be the turn by $$\frac{2\pi}{5}$$ about the origin
+$$O$$, written $$G_{2\pi/5}$$ in :ref{#trigonometry/radian-turns}. Turns add, so $$G^k$$ is the turn
+by $$\frac{2\pi k}{5}$$, and $$G^5$$ is the turn by $$2\pi$$, which is the identity. Any point $$X$$
+other than $$O$$ visits the five corners of a regular pentagon and comes home.
+
+<TurnPowers caption="The powers of the turn G by 2π/5 about O, applied to X = (3, 0). The five points are a fifth of a turn apart on the circle of radius 3, and the fifth turn brings X home." />
+
+## Adding and multiplying exponents
+
+Pressing next three times and then twice more is pressing it five times. In symbols that should be
+$$N^2 \circ N^3 = N^5$$, with $$N^3$$ first since it is on the right. The rule
+$$x^m x^n = x^{m + n}$$ for numbers becomes a rule for mappings, and induction proves it.
+
+:::proposition[Adding exponents]{#powers-add}
+
+Let $$f: S \to S$$ be a mapping. For all whole numbers $$m, n \ge 0$$,
+
+```math
+f^m \circ f^n = f^{m + n}
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Index_Laws_for_Monoids/Sum_of_Indices"}
+
+Fix $$n$$, and use induction on $$m$$, starting at $$m = 0$$ as in
+:ref{#repeating-a-mapping-add-five}.
+
+**Base case.** For $$m = 0$$, $$f^0 \circ f^n = I_S \circ f^n = f^n$$, by :ref{#composite-laws}.
+
+**Inductive step.** Suppose $$f^m \circ f^n = f^{m + n}$$. Then
+
+```math
+\begin{aligned}
+f^{m + 1} \circ f^n &= (f \circ f^m) \circ f^n && \text{the definition of powers} \\
+&= f \circ (f^m \circ f^n) && \text{grouping doesn't matter} \\
+&= f \circ f^{m + n} && \text{the assumption} \\
+&= f^{m + n + 1} && \text{the definition of powers}
+\end{aligned}
+```
+
+The second step is the grouping rule in :ref{#composite-laws}.
+
+:::
+
+So $$f^m \circ f^n = f^{m + n} = f^n \circ f^m$$: two powers of one mapping give the same result in
+either order. That is worth noticing, since two different mappings can give different results in the
+two orders (:ref{#isometries/order-matters}). Taking $$n = 1$$ also gives
+$$f^{m + 1} = f^m \circ f$$, so the extra $$f$$ can be done first or last. Check with
+$$a(x) = x + 5$$: $$a^3(a^2(x)) = (x + 10) + 15 = x + 25 = a^5(x)$$.
+
+Pressing next twice, three times over, is pressing it six times. That is the second rule for powers
+of numbers, $$(x^m)^n = x^{mn}$$.
+
+:::proposition[Multiplying exponents]{#powers-multiply}
+
+Let $$f: S \to S$$ be a mapping. For all whole numbers $$m, n \ge 0$$,
+
+```math
+(f^m)^n = f^{mn}
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Index_Laws_for_Monoids/Product_of_Indices"}
+
+Fix $$m$$, and use induction on $$n$$, starting at $$n = 0$$.
+
+**Base case.** For $$n = 0$$, both sides are $$I_S$$: $$(f^m)^0 = I_S = f^0 = f^{m \cdot 0}$$.
+
+**Inductive step.** Suppose $$(f^m)^n = f^{mn}$$. Then
+
+```math
+\begin{aligned}
+(f^m)^{n + 1} &= f^m \circ (f^m)^n && \text{the definition of powers, for the mapping } f^m \\
+&= f^m \circ f^{mn} && \text{the assumption} \\
+&= f^{m + mn} && \text{adding exponents} \\
+&= f^{m(n + 1)} && \text{since } m + mn = m(n + 1)
+\end{aligned}
+```
+
+The third step is :ref{#powers-add}.
+
+:::
+
+For squaring, $$s^2(x) = x^4$$, and doing $$s^2$$ three times gives $$((x^4)^4)^4 = x^{64}$$. The
+rule agrees: $$(s^2)^3 = s^6$$, and $$s^6(x) = x^{2^6} = x^{64}$$.
+
+## Going backwards
+
+A playlist usually has a "previous" button too, and it undoes "next". Pressing previous three times
+is pressing the inverse of $$N$$ three times, and it is natural to write it $$N^{-3}$$. Negative
+powers make sense only for a mapping that can be undone, which by :ref{#inverse-exists-bijective}
+means one that is one to one and onto.
+
+:::definition[Negative powers]{#mapping-negative-powers}
+
+Let $$f: S \to S$$ be a mapping with an inverse $$f^{-1}$$ (:ref{#inverse-mapping}). For each whole
+number $$k \ge 1$$,
+
+```math
+f^{-k} = (f^{-1})^k
+```
+
+the inverse done $$k$$ times.
+
+:::
+
+For $$k = 1$$ this gives $$f^{-1} = (f^{-1})^1$$, so the new meaning of $$f^{-1}$$ agrees with the
+old one. With both definitions together, $$f^k$$ now has a meaning for every integer $$k$$.
+
+Here is what negative powers look like for the examples so far:
+
+- **Adding 5**: $$a^{-1}(x) = x - 5$$, so $$a^{-k}(x) = x - 5k$$. The formula $$a^k(x) = x + 5k$$
+  now holds for every integer $$k$$.
+- **Doubling**: $$d^{-1}(x) = \frac{x}{2}$$, so $$d^{-k}(x) = \frac{x}{2^k} = 2^{-k}x$$, and again
+  $$d^k(x) = 2^k x$$ for every integer $$k$$.
+- **Squaring on all numbers**: no negative powers at all, since $$(-3)^2 = 3^2$$ means squaring is
+  not one to one, so it has no inverse.
+- **The turn** $$G$$: $$G^{-1}$$ is the turn back by $$\frac{2\pi}{5}$$, and $$G^{-k}$$ is the turn
+  by $$-\frac{2\pi k}{5}$$.
+
+Pressing next three times and then previous three times should leave you where you were. The next
+proposition says so for every mapping with an inverse.
+
+:::proposition[Negative powers undo]{#powers-undo}
+
+Let $$f: S \to S$$ be a mapping with an inverse. For every whole number $$k \ge 0$$,
+
+```math
+f^k \circ f^{-k} = I_S = f^{-k} \circ f^k
+```
+
+where $$f^{-0}$$ means $$f^0 = I_S$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Powers_of_Group_Elements/Negative_Index"}
+
+Write $$g = f^{-1}$$, so that $$f^{-k} = g^k$$, and use induction on $$k$$, starting at $$k = 0$$.
+
+**Base case.** For $$k = 0$$, both composites are $$I_S \circ I_S = I_S$$.
+
+**Inductive step.** Suppose $$f^k \circ g^k = I_S$$ and $$g^k \circ f^k = I_S$$. By the definition
+of powers $$f^{k + 1} = f \circ f^k$$, and by :ref{#powers-add} for the mapping $$g$$,
+$$g^{k + 1} = g^k \circ g$$. So
+
+```math
+\begin{aligned}
+f^{k + 1} \circ g^{k + 1} &= (f \circ f^k) \circ (g^k \circ g) && \text{the two facts just given} \\
+&= f \circ (f^k \circ g^k) \circ g && \text{grouping doesn't matter} \\
+&= f \circ I_S \circ g && \text{the assumption} \\
+&= f \circ g = I_S && \text{the identity, then } g \text{ is the inverse of } f
+\end{aligned}
+```
+
+using :ref{#composite-laws} for the second and fourth steps and :ref{#inverse-mapping} for the last.
+In the other order, $$g^{k + 1} = g \circ g^k$$ and $$f^{k + 1} = f^k \circ f$$ give
+$$g^{k + 1} \circ f^{k + 1} = g \circ (g^k \circ f^k) \circ f = g \circ f = I_S$$ in the same way.
+
+:::
+
+So $$f^{-k}$$ undoes $$f^k$$ from both sides, which makes it an inverse of $$f^k$$. A mapping has
+only one inverse (:ref{#inverse-mapping-unique}), so $$(f^k)^{-1} = f^{-k}$$. For the slide by
+$$A = (2, 1)$$, that says the slide by $$3A = (6, 3)$$ is undone by the slide by $$(-6, -3)$$.
+
+Now mix the signs. Two presses forward and then five back should be three back, that is
+$$f^{-5} \circ f^2 = f^{-3}$$. Negative powers were defined separately from positive ones, so this
+needs a proof of its own.
+
+:::theorem[Adding exponents for all integers]{#powers-add-integers}
+
+Let $$f: S \to S$$ be a mapping with an inverse. For all integers $$m$$ and $$n$$,
+
+```math
+f^m \circ f^n = f^{m + n}
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Powers_of_Group_Elements/Sum_of_Indices"}
+
+Write $$g = f^{-1}$$. The plan is to prove the rule for one press forward or back first, and then to
+build up any $$m$$ from those single presses.
+
+**Step 1: one press forward.** For every integer $$n$$, $$f \circ f^n = f^{n + 1}$$. If $$n \ge 0$$,
+this is the definition of $$f^{n + 1}$$. If $$n < 0$$, write $$n = -k$$ with $$k \ge 1$$. Then
+$$f^n = g^k = g \circ g^{k - 1}$$, so
+
+```math
+f \circ f^n = (f \circ g) \circ g^{k - 1} = I_S \circ g^{k - 1} = g^{k - 1}
+```
+
+by :ref{#composite-laws} and :ref{#inverse-mapping}. And $$g^{k - 1} = f^{-(k - 1)} = f^{n + 1}$$:
+for $$k \ge 2$$ by :ref{#mapping-negative-powers}, and for $$k = 1$$ because both sides are $$I_S$$.
+
+**Step 2: one press back.** For every integer $$n$$, $$g \circ f^n = f^{n - 1}$$. If $$n \le 0$$,
+write $$n = -k$$ with $$k \ge 0$$. Then $$g \circ f^n = g \circ g^k = g^{k + 1}$$, which is
+$$f^{-(k + 1)} = f^{n - 1}$$ by :ref{#mapping-negative-powers}. If $$n \ge 1$$, then
+$$f^n = f \circ f^{n - 1}$$, so
+
+```math
+g \circ f^n = (g \circ f) \circ f^{n - 1} = I_S \circ f^{n - 1} = f^{n - 1}
+```
+
+**Step 3: m from 0 upwards.** Fix $$n$$. For $$m = 0$$, $$f^0 \circ f^n = I_S \circ f^n = f^n$$.
+Suppose $$f^m \circ f^n = f^{m + n}$$ for some $$m \ge 0$$. Then
+
+```math
+\begin{aligned}
+f^{m + 1} \circ f^n &= f \circ (f^m \circ f^n) && \text{the definition of powers, and grouping} \\
+&= f \circ f^{m + n} && \text{the assumption} \\
+&= f^{m + n + 1} && \text{step 1}
+\end{aligned}
+```
+
+So by induction the rule holds for every $$m \ge 0$$.
+
+**Step 4: m from 0 downwards.** Step 2 with $$m$$ in place of $$n$$ says $$f^{m - 1} = g \circ f^m$$
+for every integer $$m$$. Suppose $$f^m \circ f^n = f^{m + n}$$ for some $$m \le 0$$. Then
+
+```math
+\begin{aligned}
+f^{m - 1} \circ f^n &= g \circ (f^m \circ f^n) && \text{step 2, and grouping} \\
+&= g \circ f^{m + n} && \text{the assumption} \\
+&= f^{m + n - 1} && \text{step 2}
+\end{aligned}
+```
+
+Starting from $$m = 0$$ and stepping down by $$1$$ reaches every negative integer, so induction on
+$$-m$$ proves the rule for every $$m \le 0$$. Together with step 3, that is every integer $$m$$.
+
+:::
+
+Check with $$a(x) = x + 5$$: $$a^{-5}(a^2(x)) = (x + 10) - 25 = x - 15$$, which is $$a^{-3}(x)$$.
+
+## Coming back to the start
+
+The playlist has $$N^5 = I$$: five presses leave every song where it was. So four presses of next do
+the same as one press of previous, because four more after the one already made complete the round
+of five. A mapping that comes home after $$n$$ presses can always be undone by pressing $$n - 1$$
+more times.
+
+:::proposition[Undoing by repeating]{#repeating-inverse}
+
+Let $$f: S \to S$$ be a mapping, and $$n \ge 1$$ a whole number with $$f^n = I_S$$. Then $$f$$ has
+an inverse, and
+
+```math
+f^{-1} = f^{n - 1}
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Inverse_Element_is_Power_of_Order_Less_1"}
+
+Since $$n - 1 \ge 0$$, :ref{#powers-add} applies with the exponents $$n - 1$$ and $$1$$, in both
+orders:
+
+```math
+f^{n - 1} \circ f = f^n = I_S \qquad \text{and} \qquad f \circ f^{n - 1} = f^n = I_S
+```
+
+So $$f^{n - 1}$$ undoes $$f$$ from both sides, which is what :ref{#inverse-mapping} asks of an
+inverse.
+
+:::
+
+This is the fact :ref{#isometries/inverse-by-repeating} proved for moves of the plane, now for any
+mapping. For the turn $$G$$ by $$\frac{2\pi}{5}$$, $$G^5 = I$$, so $$G^{-1} = G^4$$, the turn by
+$$\frac{8\pi}{5}$$. That agrees with turning back by $$\frac{2\pi}{5}$$, since
+$$-\frac{2\pi}{5} + 2\pi = \frac{8\pi}{5}$$ (part 3 of :ref{#trigonometry/radian-turns}).
+
+When $$f^n = I_S$$, only the remainder of the number of presses on dividing by $$n$$ matters. Take
+$$k$$ presses and divide by $$n$$ (:ref{#numbers/division-remainder}): $$k = nq + r$$ with
+$$0 \le r < n$$. Then
+
+```math
+\begin{aligned}
+f^k &= f^{nq} \circ f^r && \text{adding exponents} \\
+&= (f^n)^q \circ f^r && \text{multiplying exponents} \\
+&= I_S^q \circ f^r = f^r && \text{since } f^n = I_S
+\end{aligned}
+```
+
+using :ref{#powers-add} and :ref{#powers-multiply}, and the fact that every power of $$I_S$$ is
+$$I_S$$ (by induction, since $$I_S \circ I_S = I_S$$). On the playlist, $$23 = 5 \cdot 4 + 3$$, so
+$$23$$ presses from song $$2$$ end where $$3$$ presses do, at song $$5$$.
+
+Equal powers carry information too. Suppose $$f^4 = I_S$$ and $$f^6 = I_S$$. Then, by adding
+exponents,
+
+```math
+f^6 = f^2 \circ f^4 = f^2 \circ I_S = f^2
+```
+
+so $$f^2 = f^6 = I_S$$. The half turn $$(x, y) \mapsto (-x, -y)$$ is a mapping like this, while the
+quarter turn has $$f^4 = I$$ but $$f^6$$ is the half turn, not $$I$$. In the same way, if $$f$$ has
+an inverse and $$f^m = f^n$$, then composing both sides with $$f^{-n}$$ on the right gives
+$$f^{m - n} = f^0 = I_S$$, by :ref{#powers-add-integers}.
+
+Following one element as a mapping repeats, as we followed song $$2$$, traces out the places it
+visits. For permutations those places are called the orbit of the element. Orbits are the subject of
+the guide [Cycles](./cycles.mdx).
+
+## Following a point
+
+The mapping below acts on the plane, and each press of "apply again" adds the next point $$f^k(X)$$
+to the trail. The turn by $$\frac{2\pi}{5}$$ and the mapping $$(x, y) \mapsto (y, -x)$$, which is
+the quarter turn clockwise, come home after $$5$$ and $$4$$ presses. The slide moves the point the
+same step further each time, and the zoom by $$\frac12$$ halves its distance to $$O$$ each time, so
+neither ever returns.
+
+<IterateMap />
+
+The turn by $$1$$ radian never comes home either, though it gets close: after $$44$$ presses the
+point is within $$0.06$$ of $$X$$. Coming home after $$k$$ presses would need $$k$$ radians to be a
+whole number $$m$$ of turns, $$k = 2\pi m$$, and then $$\pi = \frac{k}{2m}$$ would be a fraction.
+But $$\pi$$ is irrational, a fact we take as given here, so the point never comes home. The trail
+also spreads all the way round the circle, as the tracer shows, but proving that takes an argument
+we won't give here.
+
+## Exercises
+
+:::::accordion[Exercises on repeating a mapping, with solutions]
+
+::::exercise{#ex-repeating-a-mapping-values}
+
+Let $$f(x) = 3x - 1$$ on the numbers.
+
+1. Find $$f(1)$$, $$f^2(1)$$ and $$f^3(1)$$.
+2. Find formulas for $$f^2(x)$$ and $$f^3(x)$$, and check the second one at $$x = 1$$.
+
+:::solution
+
+1. $$f(1) = 3 - 1 = 2$$, then $$f^2(1) = f(2) = 5$$ and $$f^3(1) = f(5) = 14$$.
+2. $$f^2(x) = f(3x - 1) = 3(3x - 1) - 1 = 9x - 4$$, and
+   $$f^3(x) = f(9x - 4) = 3(9x - 4) - 1 = 27x - 13$$. Check: $$27 - 13 = 14$$, as in part 1.
+
+:::
+
+::::
+
+::::exercise{#ex-repeating-a-mapping-playlist}
+
+A playlist of $$7$$ songs is on repeat, and the next button $$N$$ sends song $$n$$ to song $$n + 1$$
+for $$n \le 6$$, and song $$7$$ to song $$1$$.
+
+1. You're on song $$3$$ and press next $$10$$ times. Find the song that is playing.
+2. Find the song playing after $$100$$ presses from song $$1$$.
+3. Find a positive power of $$N$$ that does the same as one press of previous.
+
+:::solution
+
+1. Seven presses bring every song home, so $$N^7 = I$$. Since $$10 = 7 \cdot 1 + 3$$,
+   $$N^{10} = N^3$$, as in [Coming back to the start](#coming-back-to-the-start). Three presses from
+   song $$3$$ reach song $$6$$.
+2. $$100 = 7 \cdot 14 + 2$$, so $$N^{100} = N^2$$, and two presses from song $$1$$ reach song $$3$$.
+3. By :ref{#repeating-inverse} with $$n = 7$$, $$N^{-1} = N^6$$: six presses of next do the same as
+   one press of previous.
+
+:::
+
+::::
+
+::::exercise{#ex-repeating-a-mapping-induction}
+
+Let $$h(x) = 2x + 1$$ on the numbers.
+
+1. Prove by induction that $$h^k(x) = 2^k(x + 1) - 1$$ for every whole number $$k \ge 0$$.
+2. Find $$h^{-1}$$, and check that the formula also holds for $$k = -1$$.
+
+:::solution
+
+1. **Base case.** For $$k = 0$$, $$2^0(x + 1) - 1 = x = h^0(x)$$. **Inductive step.** If
+   $$h^k(x) = 2^k(x + 1) - 1$$, then
+   $$h^{k + 1}(x) = h(h^k(x)) = 2\big(2^k(x + 1) - 1\big) + 1 = 2^{k + 1}(x + 1) - 1$$. So the
+   formula holds for every $$k \ge 0$$ (:ref{#basic-proofs/induction}, started at $$0$$). Check at
+   $$k = 2$$, $$x = 1$$: $$h(1) = 3$$ and $$h(3) = 7$$, while $$4 \cdot 2 - 1 = 7$$.
+2. Solving $$y = 2x + 1$$ gives $$x = \frac{y - 1}{2}$$, so $$h^{-1}(x) = \frac{x - 1}{2}$$. The
+   formula with $$k = -1$$ gives $$\frac{1}{2}(x + 1) - 1 = \frac{x + 1 - 2}{2} = \frac{x - 1}{2}$$,
+   the same.
+
+:::
+
+::::
+
+::::exercise{#ex-repeating-a-mapping-five-eight}
+
+Let $$f: S \to S$$ be a mapping with $$f^5 = I_S$$ and $$f^8 = I_S$$. Prove that $$f = I_S$$.
+
+:::solution
+
+Every step uses :ref{#powers-add}, which needs no inverse.
+
+1. $$f^8 = f^3 \circ f^5 = f^3 \circ I_S = f^3$$, so $$f^3 = f^8 = I_S$$.
+2. $$f^5 = f^2 \circ f^3 = f^2 \circ I_S = f^2$$, so $$f^2 = f^5 = I_S$$.
+3. $$f^3 = f \circ f^2 = f \circ I_S = f$$, so $$f = f^3 = I_S$$.
+
+Each step takes the smaller exponent from the larger, so the exponents go $$8, 5, 3, 2, 1$$. Taking
+the smaller from the larger keeps the common divisors the same, so the run ends at the greatest
+common divisor of $$5$$ and $$8$$ (:ref{#numbers/gcd}), which is $$1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-repeating-a-mapping-sixth-turn}
+
+Let $$G$$ be the turn by $$\frac{\pi}{3}$$ about $$O$$. Write each of $$G^{-4}$$, $$G^{10}$$ and
+$$G^{-1}$$ as $$G^r$$ with $$0 \le r < 6$$, and say which turn each one is.
+
+:::solution
+
+Six turns by $$\frac{\pi}{3}$$ make the turn by $$2\pi$$, so $$G^6 = I$$
+(:ref{#trigonometry/radian-turns}). By :ref{#powers-add-integers}, adding a multiple of $$6$$ to the
+exponent changes nothing, since $$G^{k + 6} = G^k \circ G^6 = G^k$$.
+
+- $$G^{-4} = G^{-4 + 6} = G^2$$, the turn by $$\frac{2\pi}{3}$$. Check:
+  $$-\frac{4\pi}{3} + 2\pi = \frac{2\pi}{3}$$.
+- $$G^{10} = G^{10 - 6} = G^4$$, the turn by $$\frac{4\pi}{3}$$.
+- $$G^{-1} = G^5$$, the turn by $$\frac{5\pi}{3}$$, as :ref{#repeating-inverse} also says.
+
+:::
+
+::::
+
+::::exercise{#ex-repeating-a-mapping-shear}
+
+Let $$F(x, y) = (x + y, y)$$, a mapping of the plane to itself.
+
+1. Prove by induction that $$F^k(x, y) = (x + ky, y)$$ for every whole number $$k \ge 0$$, and find
+   $$F^3(2, 5)$$.
+2. Show that $$F^k \ne I$$ for every $$k \ge 1$$.
+3. Find $$F^{-1}$$.
+
+:::solution
+
+1. For $$k = 0$$, $$(x + 0y, y) = (x, y)$$. If $$F^k(x, y) = (x + ky, y)$$, then
+   $$F^{k + 1}(x, y) = F(x + ky, y) = (x + ky + y, y) = (x + (k + 1)y, y)$$. So
+   $$F^3(2, 5) = (2 + 15, 5) = (17, 5)$$.
+2. $$F^k(0, 1) = (k, 1)$$, which is not $$(0, 1)$$ when $$k \ge 1$$. One point that moves is enough.
+3. $$F$$ adds $$y$$ to the first coordinate, so the inverse takes it away:
+   $$F^{-1}(x, y) = (x - y, y)$$. Check: $$F(x - y, y) = (x - y + y, y) = (x, y)$$, and
+   $$F^{-1}(x + y, y) = (x, y)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-repeating-a-mapping-commuting}
+
+1. Let $$f(x) = x + 2$$ and $$g(x) = 2x$$. Show that $$(f \circ g)^2 \ne f^2 \circ g^2$$.
+2. Let $$f, g: S \to S$$ be mappings with $$f \circ g = g \circ f$$. Prove that
+   $$(f \circ g)^k = f^k \circ g^k$$ for every whole number $$k \ge 0$$. First show
+   $$g \circ f^k = f^k \circ g$$ by induction.
+
+:::solution
+
+1. $$(f \circ g)(x) = 2x + 2$$, so $$(f \circ g)^2(x) = 2(2x + 2) + 2 = 4x + 6$$. But
+   $$g^2(x) = 4x$$ and $$f^2(x) = x + 4$$, so $$(f^2 \circ g^2)(x) = 4x + 4$$. At $$x = 0$$ these
+   are $$6$$ and $$4$$.
+2. **First,** $$g \circ f^k = f^k \circ g$$. For $$k = 0$$ both sides are $$g$$. If it holds for
+   $$k$$, then
+   $$g \circ f^{k + 1} = (g \circ f) \circ f^k = f \circ (g \circ f^k) = f \circ f^k \circ g = f^{k + 1} \circ g$$,
+   using grouping (:ref{#composite-laws}), $$g \circ f = f \circ g$$ and the assumption. **Then,**
+   for $$k = 0$$ both sides are $$I_S$$. If $$(f \circ g)^k = f^k \circ g^k$$, then
+   $$(f \circ g)^{k + 1} = f \circ g \circ f^k \circ g^k = f \circ f^k \circ g \circ g^k = f^{k + 1} \circ g^{k + 1}$$,
+   using the first part in the middle.
+
+:::
+
+::::
+
+::::exercise{#ex-repeating-a-mapping-three-steps}
+
+Let $$S$$ be the set of numbers other than $$0$$ and $$1$$, and let $$f(x) = \frac{1}{1 - x}$$ for
+$$x$$ in $$S$$.
+
+1. Show that $$f(x)$$ is in $$S$$ for every $$x$$ in $$S$$, so $$f: S \to S$$.
+2. Show that $$f^2(x) = \frac{x - 1}{x}$$ and $$f^3 = I_S$$, and check with $$x = 3$$.
+3. Find $$f^{-1}$$ and $$f^{100}$$.
+
+:::solution
+
+1. The bottom $$1 - x$$ is not $$0$$, since $$x \ne 1$$. The value $$\frac{1}{1 - x}$$ is never
+   $$0$$, and it equals $$1$$ exactly when $$1 - x = 1$$, that is $$x = 0$$, which is not in $$S$$.
+2. $$f^2(x) = \frac{1}{1 - \frac{1}{1 - x}} = \frac{1 - x}{(1 - x) - 1} = \frac{1 - x}{-x} = \frac{x - 1}{x}$$,
+   multiplying top and bottom by $$1 - x$$. Then
+   $$f^3(x) = f(f^2(x)) = \frac{1}{1 - \frac{x - 1}{x}} = \frac{x}{x - (x - 1)} = x$$. Check:
+   $$f(3) = -\frac12$$, $$f(-\frac12) = \frac{1}{3/2} = \frac23$$ and
+   $$f(\frac23) = \frac{1}{1/3} = 3$$.
+3. By :ref{#repeating-inverse} with $$n = 3$$, $$f^{-1} = f^2$$, so $$f^{-1}(x) = \frac{x - 1}{x}$$.
+   Since $$100 = 3 \cdot 33 + 1$$, $$f^{100} = f^1 = f$$.
+
+:::
+
+::::
+
+:::::

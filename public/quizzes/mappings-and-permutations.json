@@ -1,0 +1,664 @@
+{
+  "title": "Mappings and permutations",
+  "description": "Questions on mappings, curves, one to one and onto, inverses, powers, permutations, cycles and signs.",
+  "questions": [
+    {
+      "id": "what-mapping",
+      "stars": 1,
+      "topic": "Mappings",
+      "question": "What makes a rule from a set $$S$$ to a set $$T$$ a mapping?",
+      "options": [
+        "Every element of $$T$$ gets exactly one arrow in",
+        "Every element of $$S$$ gets exactly one arrow out",
+        "Its values are numbers",
+        "It can be undone"
+      ],
+      "answer": 1,
+      "explanation": "A mapping gives each element of the domain exactly one value (:ref{#mapping}). Arrows arriving at $$T$$ can be any number, including none."
+    },
+    {
+      "id": "not-mapping",
+      "stars": 1,
+      "topic": "Mappings",
+      "question": "Which rule is NOT a mapping from people to numbers?",
+      "options": [
+        "Each person goes to the ages of their siblings",
+        "Each person goes to their height in cm",
+        "Each person goes to their birth year",
+        "Each person goes to the number $$7$$"
+      ],
+      "answer": 0,
+      "explanation": "Someone with two siblings gets two values, and someone with none gets no value. A mapping needs exactly one (:ref{#mapping})."
+    },
+    {
+      "id": "image",
+      "stars": 2,
+      "topic": "Mappings",
+      "question": "What is the image of the interval $$[-2, 1]$$ under $$x \\mapsto x^2$$?",
+      "options": [
+        "$$[1, 4]$$",
+        "$$[4, 1]$$",
+        "$$[-4, 1]$$",
+        "$$[0, 4]$$"
+      ],
+      "answer": 3,
+      "explanation": "Squares of numbers from $$-2$$ to $$1$$ run from $$0$$ (at $$0$$) up to $$4$$ (at $$-2$$) (:ref{#image-of-set}). The ends of an interval don't always go to the ends of its image."
+    },
+    {
+      "id": "preimage",
+      "stars": 2,
+      "topic": "Mappings",
+      "question": "For $$f(x) = x^2$$ on all numbers, what is the preimage $$f^{-1}(\\{16\\})$$?",
+      "options": [
+        "$$\\{4\\}$$",
+        "$$\\{256\\}$$",
+        "$$\\{4, -4\\}$$",
+        "It doesn't exist, since $$f$$ has no inverse"
+      ],
+      "answer": 2,
+      "explanation": "The preimage is every $$x$$ with $$x^2 = 16$$ (:ref{#preimage}). It makes sense for every mapping, with or without an inverse."
+    },
+    {
+      "id": "intersection",
+      "stars": 3,
+      "topic": "Mappings",
+      "question": "Which of these can fail for a mapping $$f$$ and subsets $$A$$, $$B$$ of its domain?",
+      "options": [
+        "$$f(A \\cup B) = f(A) \\cup f(B)$$",
+        "$$f(A \\cap B) = f(A) \\cap f(B)$$",
+        "$$f^{-1}(C \\cap D) = f^{-1}(C) \\cap f^{-1}(D)$$",
+        "$$f^{-1}(C \\cup D) = f^{-1}(C) \\cup f^{-1}(D)$$"
+      ],
+      "answer": 1,
+      "explanation": "With $$f(x) = x^2$$, $$A = \\{-3\\}$$ and $$B = \\{3\\}$$: $$A \\cap B$$ is empty, but $$f(A) \\cap f(B) = \\{9\\}$$ (:ref{#mappings-unions})."
+    },
+    {
+      "id": "curve-point",
+      "stars": 1,
+      "topic": "Curves traced by mappings",
+      "question": "Where is $$C(t) = (1 + 2t,\\ 3 - t)$$ at $$t = 2$$?",
+      "options": [
+        "$$(5, 1)$$",
+        "$$(3, 2)$$",
+        "$$(5, 5)$$",
+        "$$(4, 1)$$"
+      ],
+      "answer": 0,
+      "explanation": "Put $$t = 2$$ into each coordinate (:ref{#parametrised-curve}): $$1 + 4 = 5$$ and $$3 - 2 = 1$$."
+    },
+    {
+      "id": "same-image",
+      "stars": 2,
+      "topic": "Curves traced by mappings",
+      "question": "$$(\\cos t, \\sin t)$$ and $$(\\cos 2t, \\sin 2t)$$, for all $$t$$, trace...",
+      "options": [
+        "Two different circles",
+        "A circle and an ellipse",
+        "A circle and a line",
+        "The same circle, at different speeds"
+      ],
+      "answer": 3,
+      "explanation": "Both images are the unit circle (:ref{#trigonometry/unit-circle-point}); the second goes round twice as fast. A mapping knows when, its image only where (:ref{#parametrised-curve})."
+    },
+    {
+      "id": "remove-t",
+      "stars": 2,
+      "topic": "Curves traced by mappings",
+      "question": "Which equation does $$C(t) = (t + 1,\\ t^2)$$ trace?",
+      "options": [
+        "$$y = (x + 1)^2$$",
+        "$$y = x^2 + 1$$",
+        "$$y = (x - 1)^2$$",
+        "$$x = y^2 + 1$$"
+      ],
+      "answer": 2,
+      "explanation": "From $$x = t + 1$$, $$t = x - 1$$, so $$y = (x - 1)^2$$ (:ref{#curves-eliminate}). Check with $$t = 2$$: the point $$(3, 4)$$ fits."
+    },
+    {
+      "id": "ball",
+      "stars": 2,
+      "topic": "Curves traced by mappings",
+      "question": "A ball is thrown level off a $$20$$ m cliff, with height $$20 - 4.9t^2$$ after $$t$$ seconds. When does it land?",
+      "options": [
+        "After about $$4.08$$ s",
+        "After about $$2.02$$ s",
+        "After $$20$$ s",
+        "After about $$0.49$$ s"
+      ],
+      "answer": 1,
+      "explanation": "It lands when $$20 - 4.9t^2 = 0$$, so $$t = \\sqrt{20/4.9} \\approx 2.02$$. How fast it is thrown sideways doesn't change when it lands. Its path is a parabola (:ref{#curves-eliminate})."
+    },
+    {
+      "id": "polar",
+      "stars": 2,
+      "topic": "Curves traced by mappings",
+      "question": "What does the polar map do to the vertical line $$r = 3$$?",
+      "options": [
+        "Sends it onto the circle of radius $$3$$ about $$O$$",
+        "Sends it onto a line through $$O$$",
+        "Sends it onto a vertical line",
+        "Sends it onto the point $$(3, 0)$$"
+      ],
+      "answer": 0,
+      "explanation": "The pairs $$(3, \\theta)$$ go to $$(3\\cos\\theta, 3\\sin\\theta)$$, all at distance $$3$$ from $$O$$ (:ref{#polar-map-images})."
+    },
+    {
+      "id": "arrows",
+      "stars": 1,
+      "topic": "One to one and onto",
+      "question": "A mapping is one to one when...",
+      "options": [
+        "At least one arrow arrives at each element",
+        "Exactly one arrow leaves each element",
+        "No arrows arrive anywhere",
+        "At most one arrow arrives at each element"
+      ],
+      "answer": 3,
+      "explanation": "Two arrows arriving at one element means two inputs share a value (:ref{#injective}). At least one arriving is onto (:ref{#surjective})."
+    },
+    {
+      "id": "square-both",
+      "stars": 2,
+      "topic": "One to one and onto",
+      "question": "Is $$x \\mapsto x^2$$ from all numbers to all numbers one to one, onto, both or neither?",
+      "options": [
+        "Both",
+        "One to one only",
+        "Neither",
+        "Onto only"
+      ],
+      "answer": 2,
+      "explanation": "$$3$$ and $$-3$$ share the value $$9$$, and $$-1$$ is never a value (:ref{#injective}, :ref{#surjective}). On the numbers $$\\ge 0$$ it is both."
+    },
+    {
+      "id": "exp-onto",
+      "stars": 2,
+      "topic": "One to one and onto",
+      "question": "$$x \\mapsto 2^x$$ from all numbers to all numbers is...",
+      "options": [
+        "Onto but not one to one",
+        "One to one but not onto",
+        "Both",
+        "Neither"
+      ],
+      "answer": 1,
+      "explanation": "Different inputs give different values (:ref{#functions/exponential-one-to-one}), but no value is $$0$$ or negative (:ref{#functions/exponential-positive})."
+    },
+    {
+      "id": "pigeonhole",
+      "stars": 1,
+      "topic": "One to one and onto",
+      "question": "Why must two of any $$13$$ people share a birth month?",
+      "options": [
+        "A mapping from $$13$$ people to $$12$$ months can't be one to one",
+        "Months have different lengths",
+        "$$13$$ is prime",
+        "It isn't true"
+      ],
+      "answer": 0,
+      "explanation": "That is the pigeonhole principle (:ref{#pigeonhole}): more elements than targets forces two arrows into one target."
+    },
+    {
+      "id": "finite",
+      "stars": 2,
+      "topic": "One to one and onto",
+      "question": "A mapping from a $$5$$-element set to itself is one to one. What follows?",
+      "options": [
+        "It is not onto",
+        "It is the identity",
+        "Nothing more",
+        "It is onto as well"
+      ],
+      "answer": 3,
+      "explanation": "For mappings between finite sets of the same size, one to one and onto go together (:ref{#finite-injective-surjective})."
+    },
+    {
+      "id": "hotel",
+      "stars": 3,
+      "topic": "One to one and onto",
+      "question": "Which mapping of the positive integers to themselves is one to one but not onto?",
+      "options": [
+        "$$n \\mapsto n$$",
+        "$$n \\mapsto 1$$",
+        "$$n \\mapsto 2n$$",
+        "$$n \\mapsto n - 1$$"
+      ],
+      "answer": 2,
+      "explanation": "Different $$n$$ give different $$2n$$, but odd numbers are never reached. For infinite sets one to one doesn't give onto (:ref{#finite-injective-surjective} needs finite sets). And $$n - 1$$ isn't a positive integer at $$n = 1$$."
+    },
+    {
+      "id": "composite",
+      "stars": 1,
+      "topic": "Combining and undoing mappings",
+      "question": "For $$f(x) = x + 2$$ and $$g(x) = 3x$$, what is $$(g \\circ f)(1)$$?",
+      "options": [
+        "$$5$$",
+        "$$9$$",
+        "$$6$$",
+        "$$3$$"
+      ],
+      "answer": 1,
+      "explanation": "Do $$f$$ first: $$f(1) = 3$$, then $$g(3) = 9$$ (:ref{#mapping-composite}). Doing $$g$$ first would give $$5$$."
+    },
+    {
+      "id": "inverse-when",
+      "stars": 1,
+      "topic": "Combining and undoing mappings",
+      "question": "When does a mapping have an inverse?",
+      "options": [
+        "Exactly when it is one to one and onto",
+        "Exactly when it is one to one",
+        "Exactly when it is onto",
+        "Always"
+      ],
+      "answer": 0,
+      "explanation": "Turning every arrow round gives a mapping exactly when each element of the target has exactly one arrow in (:ref{#inverse-exists-bijective})."
+    },
+    {
+      "id": "reverse",
+      "stars": 2,
+      "topic": "Combining and undoing mappings",
+      "question": "What is $$(g \\circ f)^{-1}$$?",
+      "options": [
+        "$$g^{-1} \\circ f^{-1}$$",
+        "$$g \\circ f$$",
+        "$$f \\circ g$$",
+        "$$f^{-1} \\circ g^{-1}$$"
+      ],
+      "answer": 3,
+      "explanation": "Undo the last step first, like unwrapping a present before opening its box (:ref{#composite-inverse})."
+    },
+    {
+      "id": "unique",
+      "stars": 2,
+      "topic": "Combining and undoing mappings",
+      "question": "Can a mapping have two different inverses?",
+      "options": [
+        "Yes, for infinite sets",
+        "Yes, if it isn't onto",
+        "No: $$g = g \\circ (f \\circ h) = (g \\circ f) \\circ h = h$$",
+        "Yes, always two: left and right"
+      ],
+      "answer": 2,
+      "explanation": "Grouping doesn't matter (:ref{#composite-laws}), and that chain shows any two inverses agree (:ref{#inverse-mapping-unique})."
+    },
+    {
+      "id": "one-sided",
+      "stars": 3,
+      "topic": "Combining and undoing mappings",
+      "question": "$$g \\circ f = I$$ holds. Which must be true?",
+      "options": [
+        "$$f$$ is onto",
+        "$$f$$ is one to one",
+        "$$g$$ is one to one",
+        "$$f \\circ g = I$$"
+      ],
+      "answer": 1,
+      "explanation": "If $$f(x) = f(x')$$ then $$x = g(f(x)) = g(f(x')) = x'$$. But $$f$$ need not be onto, so an inverse needs both equations (:ref{#inverse-mapping})."
+    },
+    {
+      "id": "cancel",
+      "stars": 2,
+      "topic": "Combining and undoing mappings",
+      "question": "If $$h$$ has an inverse and $$h \\circ f = h \\circ g$$, what follows?",
+      "options": [
+        "$$f = g$$",
+        "$$h = I$$",
+        "$$f = h$$",
+        "Nothing"
+      ],
+      "answer": 0,
+      "explanation": "Compose both sides on the left with $$h^{-1}$$ (:ref{#mapping-cancel}), just as you divide both sides of an equation by a non-zero number."
+    },
+    {
+      "id": "power-add5",
+      "stars": 1,
+      "topic": "Repeating a mapping",
+      "question": "For $$f(x) = x + 5$$, what is $$f^4(x)$$?",
+      "options": [
+        "$$x + 625$$",
+        "$$4x + 5$$",
+        "$$(x + 5)^4$$",
+        "$$x + 20$$"
+      ],
+      "answer": 3,
+      "explanation": "Each step adds $$5$$, so four steps add $$20$$ (:ref{#mapping-powers}). The power counts repeats, not multiplication of values."
+    },
+    {
+      "id": "power-zero",
+      "stars": 1,
+      "topic": "Repeating a mapping",
+      "question": "What is $$f^0$$?",
+      "options": [
+        "The zero mapping",
+        "$$f$$",
+        "The identity mapping",
+        "Undefined"
+      ],
+      "answer": 2,
+      "explanation": "Doing $$f$$ no times leaves everything where it is (:ref{#mapping-powers})."
+    },
+    {
+      "id": "negative",
+      "stars": 2,
+      "topic": "Repeating a mapping",
+      "question": "For a turn $$G$$ by $$\\frac{\\pi}{6}$$, what is $$G^{-3}$$?",
+      "options": [
+        "The turn by $$\\frac{\\pi}{2}$$",
+        "The turn by $$-\\frac{\\pi}{2}$$",
+        "The turn by $$-\\frac{\\pi}{18}$$",
+        "The identity"
+      ],
+      "answer": 1,
+      "explanation": "$$G^{-3} = (G^{-1})^3$$, three turns back by $$\\frac{\\pi}{6}$$ (:ref{#mapping-negative-powers})."
+    },
+    {
+      "id": "repeat-inverse",
+      "stars": 2,
+      "topic": "Repeating a mapping",
+      "question": "If $$f^6 = I$$, what is $$f^{-1}$$?",
+      "options": [
+        "$$f^5$$",
+        "$$f^6$$",
+        "$$f^{-6}$$",
+        "$$f$$"
+      ],
+      "answer": 0,
+      "explanation": "$$f \\circ f^5 = f^6 = I$$, and the same on the other side (:ref{#repeating-inverse})."
+    },
+    {
+      "id": "both-powers",
+      "stars": 3,
+      "topic": "Repeating a mapping",
+      "question": "$$f$$ has an inverse, $$f^4 = I$$ and $$f^6 = I$$. What is the smallest power you can be sure is $$I$$?",
+      "options": [
+        "$$f^{10}$$",
+        "$$f^{24}$$",
+        "$$f^1$$",
+        "$$f^2$$"
+      ],
+      "answer": 3,
+      "explanation": "$$f^2 = f^6 \\circ f^{-4} = I \\circ I = I$$ (:ref{#powers-add-integers}). A turn by $$\\pi$$ shows $$f$$ itself needn't be $$I$$."
+    },
+    {
+      "id": "induction",
+      "stars": 2,
+      "topic": "Repeating a mapping",
+      "question": "How is $$f^m \\circ f^n = f^{m + n}$$ proved for all whole numbers?",
+      "options": [
+        "By checking $$m = n = 1$$",
+        "From the picture",
+        "By induction on $$m$$",
+        "It is taken as given"
+      ],
+      "answer": 2,
+      "explanation": "The case $$m = 0$$ is $$I \\circ f^n = f^n$$, and each step uses $$f^{m + 1} = f \\circ f^m$$ and grouping (:ref{#powers-add})."
+    },
+    {
+      "id": "read-rows",
+      "stars": 1,
+      "topic": "Permutations",
+      "question": "In two-row notation, the column with $$2$$ on top and $$5$$ below means...",
+      "options": [
+        "$$\\sigma(5) = 2$$",
+        "$$\\sigma(2) = 5$$",
+        "$$2$$ and $$5$$ swap",
+        "Place $$2$$ holds card $$5$$"
+      ],
+      "answer": 1,
+      "explanation": "The bottom row says where each number goes (:ref{#permutation})."
+    },
+    {
+      "id": "order-matters",
+      "stars": 2,
+      "topic": "Permutations",
+      "question": "For $$\\sigma = [1, 2]$$ and $$\\tau = [2, 3]$$, is $$\\sigma\\tau = \\tau\\sigma$$?",
+      "options": [
+        "No: $$\\sigma\\tau = [1, 2, 3]$$ and $$\\tau\\sigma = [1, 3, 2]$$",
+        "Yes, always",
+        "Yes, since both are swaps",
+        "No: one of them isn't a permutation"
+      ],
+      "answer": 0,
+      "explanation": "$$\\sigma\\tau$$ does $$\\tau$$ first: $$1 \\to 1 \\to 2$$, $$2 \\to 3 \\to 3$$, $$3 \\to 2 \\to 1$$. Composites of permutations are permutations, but order matters (:ref{#permutations-composite})."
+    },
+    {
+      "id": "inverse-perm",
+      "stars": 2,
+      "topic": "Permutations",
+      "question": "If $$\\sigma(1) = 2$$, $$\\sigma(2) = 4$$, $$\\sigma(3) = 1$$, $$\\sigma(4) = 3$$, what is $$\\sigma^{-1}(1)$$?",
+      "options": [
+        "$$2$$",
+        "$$4$$",
+        "$$1$$",
+        "$$3$$"
+      ],
+      "answer": 3,
+      "explanation": "$$\\sigma^{-1}(1)$$ is the number $$\\sigma$$ sends to $$1$$ (:ref{#permutation-inverse}), which is $$3$$. The value $$\\sigma(1) = 2$$ answers a different question."
+    },
+    {
+      "id": "count",
+      "stars": 1,
+      "topic": "Permutations",
+      "question": "How many permutations of $$\\{1, 2, 3, 4, 5\\}$$ are there?",
+      "options": [
+        "$$25$$",
+        "$$3125$$",
+        "$$120$$",
+        "$$60$$"
+      ],
+      "answer": 2,
+      "explanation": "$$5! = 120$$ (:ref{#permutation-count}): five places for where $$5$$ goes, then $$4!$$ for the rest."
+    },
+    {
+      "id": "deck",
+      "stars": 2,
+      "topic": "Permutations",
+      "question": "About how many orders can a $$52$$-card deck be in?",
+      "options": [
+        "About $$52^2 = 2704$$",
+        "About $$8 \\times 10^{67}$$",
+        "About $$10^{12}$$",
+        "About $$2^{52}$$"
+      ],
+      "answer": 1,
+      "explanation": "$$52!$$ has $$68$$ digits (:ref{#permutation-count}), so a well-shuffled deck is very likely in an order never seen before."
+    },
+    {
+      "id": "cycle-read",
+      "stars": 1,
+      "topic": "Cycles",
+      "question": "What does the cycle $$[2, 5, 4]$$ say?",
+      "options": [
+        "$$2 \\to 5 \\to 4 \\to 2$$",
+        "$$2$$ goes to place $$5$$ and $$4$$",
+        "$$2$$, $$5$$ and $$4$$ stay put",
+        "$$4 \\to 5 \\to 2 \\to 4$$"
+      ],
+      "answer": 0,
+      "explanation": "Each number goes to the next, and the last goes back to the first (:ref{#orbit})."
+    },
+    {
+      "id": "same-cycle",
+      "stars": 2,
+      "topic": "Cycles",
+      "question": "Which cycle is the same as $$[1, 4, 3, 2]$$?",
+      "options": [
+        "$$[1, 2, 3, 4]$$",
+        "$$[4, 1, 3, 2]$$",
+        "$$[2, 3, 4, 1]$$",
+        "$$[3, 2, 1, 4]$$"
+      ],
+      "answer": 3,
+      "explanation": "Starting from $$3$$: $$3 \\to 2 \\to 1 \\to 4 \\to 3$$. A cycle can start anywhere round its loop (:ref{#orbit})."
+    },
+    {
+      "id": "disjoint",
+      "stars": 2,
+      "topic": "Cycles",
+      "question": "Can two different orbits of a permutation share a number?",
+      "options": [
+        "Yes, one number",
+        "Yes, if they have the same length",
+        "No: two orbits are equal or have nothing in common",
+        "Only for the identity"
+      ],
+      "answer": 2,
+      "explanation": "If $$j$$ is in the orbit of $$i$$, following $$j$$ round traces the same loop (:ref{#orbits-disjoint})."
+    },
+    {
+      "id": "order",
+      "stars": 1,
+      "topic": "Cycles",
+      "question": "A permutation has cycles of lengths $$2$$, $$3$$ and $$4$$. What is its order?",
+      "options": [
+        "$$24$$",
+        "$$12$$",
+        "$$9$$",
+        "$$4$$"
+      ],
+      "answer": 1,
+      "explanation": "Every cycle must come home together: the least common multiple of $$2$$, $$3$$ and $$4$$ is $$12$$ (:ref{#permutation-order})."
+    },
+    {
+      "id": "power-orbit",
+      "stars": 2,
+      "topic": "Cycles",
+      "question": "$$i$$ lies in a cycle of length $$5$$. When is $$\\sigma^t(i) = i$$?",
+      "options": [
+        "Exactly when $$5$$ divides $$t$$",
+        "Exactly when $$t = 5$$",
+        "Exactly when $$t$$ is odd",
+        "Never"
+      ],
+      "answer": 0,
+      "explanation": "Divide $$t$$ by $$5$$: only the remainder matters (:ref{#cycles-orbit-powers})."
+    },
+    {
+      "id": "shuffle",
+      "stars": 2,
+      "topic": "Cycles",
+      "question": "How many perfect out-shuffles bring a $$52$$-card deck back to its starting order?",
+      "options": [
+        "$$52$$",
+        "$$26$$",
+        "$$2$$",
+        "$$8$$"
+      ],
+      "answer": 3,
+      "explanation": "Its cycles have lengths $$1$$, $$1$$, $$2$$ and six $$8$$s, whose least common multiple is $$8$$ (:ref{#permutation-order})."
+    },
+    {
+      "id": "fixed",
+      "stars": 1,
+      "topic": "Cycles",
+      "question": "What is a cycle of length $$1$$?",
+      "options": [
+        "A swap",
+        "The whole permutation",
+        "A number the permutation doesn't move",
+        "Not allowed"
+      ],
+      "answer": 2,
+      "explanation": "$$\\sigma(i) = i$$ means $$i$$ is home after one step (:ref{#orbit}). These are usually left out of the decomposition (:ref{#cycle-decomposition})."
+    },
+    {
+      "id": "swaps-cycle",
+      "stars": 2,
+      "topic": "Swaps and the sign of a permutation",
+      "question": "How many swaps does it take to make a cycle of length $$6$$?",
+      "options": [
+        "$$6$$",
+        "$$5$$",
+        "$$3$$",
+        "$$15$$"
+      ],
+      "answer": 1,
+      "explanation": "A cycle of length $$k$$ is a chain of $$k - 1$$ swaps (:ref{#swaps-and-sign-cycle})."
+    },
+    {
+      "id": "parity",
+      "stars": 2,
+      "topic": "Swaps and the sign of a permutation",
+      "question": "A permutation is a chain of $$7$$ swaps. Could it also be a chain of $$4$$?",
+      "options": [
+        "No: the counts are both even or both odd",
+        "Yes",
+        "Only if $$n > 7$$",
+        "Only for the identity"
+      ],
+      "answer": 0,
+      "explanation": "Each swap changes the number of orbits by one (:ref{#swap-orbits}), which fixes the evenness of the count (:ref{#parity-theorem})."
+    },
+    {
+      "id": "sign-cycles",
+      "stars": 2,
+      "topic": "Swaps and the sign of a permutation",
+      "question": "What is the sign of $$[1, 2, 3, 4]$$ as a permutation of $$\\{1, \\ldots, 5\\}$$?",
+      "options": [
+        "$$+1$$",
+        "$$4$$",
+        "$$0$$",
+        "$$-1$$"
+      ],
+      "answer": 3,
+      "explanation": "It has $$2$$ orbits among $$5$$ numbers, so the sign is $$(-1)^{5 - 2} = -1$$ (:ref{#sign-from-cycles}). A $$4$$-cycle is $$3$$ swaps."
+    },
+    {
+      "id": "sign-three",
+      "stars": 1,
+      "topic": "Swaps and the sign of a permutation",
+      "question": "Is a cycle of length $$3$$ even or odd?",
+      "options": [
+        "Odd",
+        "Neither",
+        "Even",
+        "It depends on $$n$$"
+      ],
+      "answer": 2,
+      "explanation": "It is $$2$$ swaps (:ref{#swaps-and-sign-cycle}), so its sign is $$(-1)^2 = +1$$ (:ref{#permutation-sign})."
+    },
+    {
+      "id": "sign-product",
+      "stars": 2,
+      "topic": "Swaps and the sign of a permutation",
+      "question": "$$\\sigma$$ is odd and $$\\tau$$ is odd. What is $$\\sigma\\tau$$?",
+      "options": [
+        "Odd",
+        "Even",
+        "Either",
+        "The identity"
+      ],
+      "answer": 1,
+      "explanation": "Signs multiply: $$(-1)(-1) = +1$$ (:ref{#sign-product})."
+    },
+    {
+      "id": "half",
+      "stars": 2,
+      "topic": "Swaps and the sign of a permutation",
+      "question": "How many of the $$24$$ permutations of $$\\{1, 2, 3, 4\\}$$ are even?",
+      "options": [
+        "$$12$$",
+        "$$6$$",
+        "$$8$$",
+        "$$16$$"
+      ],
+      "answer": 0,
+      "explanation": "For $$n \\ge 2$$, exactly half are even (:ref{#half-even}): composing with $$[1, 2]$$ matches the even ones with the odd ones."
+    },
+    {
+      "id": "fifteen",
+      "stars": 3,
+      "topic": "Swaps and the sign of a permutation",
+      "question": "Why can't the 15 puzzle swap just the 14 and 15 tiles?",
+      "options": [
+        "The tiles are glued",
+        "It needs too many moves",
+        "The gap can never return home",
+        "Every slide sequence returning the gap home is an even permutation, and one swap is odd"
+      ],
+      "answer": 3,
+      "explanation": "Each slide is a swap with the gap, and the gap changes square colour every slide, so returning home takes an even number (:ref{#swaps-and-sign-fifteen})."
+    }
+  ]
+}

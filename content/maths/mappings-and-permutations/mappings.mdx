@@ -1,0 +1,437 @@
+---
+title: Mappings
+description:
+  Rules that send each element of one set to one element of another, drawn as arrows, with the image
+  of a set, the preimage of a set, and how both behave with unions and intersections.
+---
+
+Imagine leaving a party's cloakroom with the attendant's notebook in your hand. Four things were
+handed in: a coat, a hat, a scarf and an umbrella. There are three hooks, A, B and C, and the
+notebook says which hook holds each thing. Each thing is on exactly one hook, since nothing hangs on
+two hooks at once and nothing was left on the floor. But hook A holds three things, hook C holds
+one, and hook B holds nothing at all.
+
+<CloakroomHooks caption="The cloakroom: the coat, the scarf and the umbrella hang on hook A, the hat hangs on hook C, and hook B is empty." />
+
+The notebook is a rule that sends each thing to one hook. A rule like that, between any two sets, is
+called a **mapping**. In this guide we'll draw mappings as arrows between small sets, then ask two
+questions of them: where a group of elements lands, and which elements land in a given place.
+
+## One arrow out of each element
+
+Draw the four things as dots in a column on the left and the three hooks as dots on the right. For
+each thing, draw an arrow to its hook. Each dot on the left then has exactly one arrow leaving it.
+The dots on the right are free: hook A has three arrows arriving, hook C has one, and hook B has
+none.
+
+:::definition[Mapping]{#mapping}
+
+Let $$S$$ and $$T$$ be sets (:ref{#basic-proofs/set}). A **mapping** $$f$$ from $$S$$ to $$T$$,
+written $$f: S \to T$$, is a rule that gives each element $$x$$ of $$S$$ exactly one element of
+$$T$$, written $$f(x)$$ and read "$$f$$ of $$x$$".
+
+- The set $$S$$ is the **domain** of $$f$$, and $$T$$ is its **target**. The usual word for the
+  target is the **codomain**.
+- The element $$f(x)$$ is the **value** of $$f$$ at $$x$$, also called the **image** of $$x$$. We
+  say that $$f$$ **sends** $$x$$ to $$f(x)$$, and write $$x \mapsto f(x)$$.
+
+:::
+
+For the cloakroom, $$S = \{\text{coat}, \text{hat}, \text{scarf}, \text{umbrella}\}$$ and
+$$T = \{A, B, C\}$$. The mapping $$f: S \to T$$ has
+
+```math
+f(\text{coat}) = A \qquad f(\text{hat}) = C \qquad f(\text{scarf}) = A \qquad f(\text{umbrella}) = A
+```
+
+Read as arrows, the definition asks two things of each dot on the left: an arrow must leave it, and
+only one. It asks nothing of the dots on the right. So a picture with a dot on the left that has no
+arrow is not a mapping, and neither is a picture where a dot on the left has two arrows. Three dots
+on the left sharing one dot on the right is fine.
+
+<MappingOrNot caption="Three arrow pictures from three things to three hooks. Only the first is a mapping. In the second the hat has no arrow, and in the third the scarf has two." />
+
+In the cloakroom below, tap a thing on the left and then a hook on the right to draw its arrow.
+Choosing a new hook for a thing moves its arrow, since each thing gets only one. The numbers beside
+the hooks count the arrows arriving.
+
+<ArrowDiagram report="mapping" />
+
+## Mappings you have met
+
+Every rule in the earlier chapters that sent each input to one output is a mapping. To name the sets
+involved, write $$\mathbb{R}$$ for the set of all real numbers, and $$\mathbb{R}^2$$, read "R two",
+for the set of all points $$(x, y)$$ of the plane. Here are some of the mappings you know, with
+their domains and targets:
+
+- **Functions**: a function on a set of numbers $$S$$ (:ref{#functions/function}) is a mapping from
+  $$S$$ to $$\mathbb{R}$$. The function $$x \mapsto 2x + 1$$ sends $$3$$ to $$7$$.
+- **Maps of the plane**: a map of the plane (:ref{#isometries/map}) is a mapping from
+  $$\mathbb{R}^2$$ to $$\mathbb{R}^2$$. A quarter turn about the origin sends $$(1, 0)$$ to
+  $$(0, 1)$$.
+- **A moving point**: the rule $$t \mapsto P + tA$$, which gives the position at time $$t$$ of a
+  point moving along a line (:ref{#segments-rays-and-lines/line-formula}), is a mapping from
+  $$\mathbb{R}$$ to $$\mathbb{R}^2$$. With $$P = (2, -1)$$ and $$A = (1, 3)$$, it sends $$1$$ to
+  $$(3, 2)$$ and $$2$$ to $$(4, 5)$$.
+- **Distance from a point**: the rule that sends each point $$X$$ of the plane to its distance
+  $$d(O, X)$$ from the origin is a mapping from $$\mathbb{R}^2$$ to $$\mathbb{R}$$. By
+  :ref{#coordinates/distance-formula}, it sends $$(3, 4)$$ to $$\sqrt{9 + 16} = 5$$.
+
+The sets don't have to hold numbers or points. Sending each child in a class to the month they were
+born in is a mapping from the class to the set of twelve months. Sending each word of a dictionary
+to its first letter is a mapping from the words to the 26 letters, with "mapping" sent to "m".
+
+A mapping whose target is a set of numbers is also called a **function**, as with the distance from
+the origin. So that mapping is a function on the plane: it takes a point and gives back a number.
+
+## When two mappings are equal
+
+Two cloakroom notebooks written in different handwriting, or in a different order, describe the same
+cloakroom when they put each thing on the same hook. Mappings are compared the same way, by where
+they send each element and not by how the rule is written.
+
+:::definition[Equal mappings]{#mappings-equal}
+
+Two mappings $$f: S \to T$$ and $$g: S' \to T'$$ are **equal**, written $$f = g$$, when they have
+the same domain, $$S = S'$$, the same target, $$T = T'$$, and $$f(x) = g(x)$$ for every $$x$$ in
+$$S$$.
+
+:::
+
+This is the same idea as equal maps of the plane (:ref{#isometries/map-equality}) and equal
+functions (:ref{#functions/function-equality}). Take $$S = \{-1, 0, 1\}$$ and $$T = \{0, 1\}$$, and
+let $$f(x) = x^2$$ and $$g(x) = |x|$$, both from $$S$$ to $$T$$. The formulas look different, but
+
+```math
+f(-1) = 1 = g(-1) \qquad f(0) = 0 = g(0) \qquad f(1) = 1 = g(1)
+```
+
+so $$f = g$$. On all of $$\mathbb{R}$$ the same two formulas give different mappings, because
+$$2^2 = 4$$ while $$|2| = 2$$.
+
+The target counts as part of the mapping. So $$x \mapsto x^2$$ from $$\mathbb{R}$$ to $$\mathbb{R}$$
+and $$x \mapsto x^2$$ from $$\mathbb{R}$$ to the numbers $$y \ge 0$$ are different mappings, even
+though they send each number to the same place. That difference looks fussy now, but it decides
+whether a mapping is "onto", in the guide [One to one and onto](./one-to-one-and-onto.mdx).
+
+## Where a set of elements lands
+
+Back in the cloakroom, suppose you want to know which hooks hold the hat and the scarf. The hat is
+on C and the scarf is on A, so the answer is the set $$\{A, C\}$$. Asking where a whole group goes,
+instead of one element, gives a set of values.
+
+:::definition[Image of a set]{#image-of-set}
+
+Let $$f: S \to T$$ be a mapping and $$A$$ a subset of $$S$$ (:ref{#basic-proofs/subset}). The
+**image** of $$A$$ under $$f$$ is the set of all values of $$f$$ at elements of $$A$$:
+
+```math
+f(A) = \{f(a) : a \in A\}
+```
+
+So $$y$$ is in $$f(A)$$ exactly when $$y = f(a)$$ for some $$a$$ in $$A$$. The image $$f(S)$$ of the
+whole domain is called the **image of** $$f$$.
+
+:::
+
+For the cloakroom, $$f(\{\text{hat}, \text{scarf}\}) = \{C, A\}$$, and the image of $$f$$ is
+$$f(S) = \{A, C\}$$, since each thing hangs on A or C. For a function, the image of $$f$$ is its
+range (:ref{#functions/range}). The image can be smaller than the target, as here: hook B is in
+$$T$$ but not in $$f(S)$$.
+
+Images in the plane are shapes. Take the mapping $$F(x, y) = (2x, y)$$, which stretches the plane
+across by $$2$$. Let $$Q$$ be the unit square, the points $$(x, y)$$ with $$0 \le x \le 1$$ and
+$$0 \le y \le 1$$, and let $$R$$ be the rectangle of points $$(u, v)$$ with $$0 \le u \le 2$$ and
+$$0 \le v \le 1$$. Then $$F(Q) = R$$. Proving it means showing each set is a subset of the other
+(:ref{#basic-proofs/set-equality}):
+
+- **$$F(Q) \subseteq R$$.** A point of $$Q$$ has $$0 \le x \le 1$$ and $$0 \le y \le 1$$.
+  Multiplying by $$2$$ gives $$0 \le 2x \le 2$$, so $$F(x, y) = (2x, y)$$ is in $$R$$.
+- **$$R \subseteq F(Q)$$.** Take $$(u, v)$$ in $$R$$. The point $$(\frac{u}{2}, v)$$ has
+  $$0 \le \frac{u}{2} \le 1$$ and $$0 \le v \le 1$$, so it is in $$Q$$, and
+  $$F(\frac{u}{2}, v) = (u, v)$$.
+
+<SquareStretch caption="The mapping F(x, y) = (2x, y) sends the unit square to the rectangle 2 wide and 1 tall. The corner (1, 1) goes to (2, 1), and the point (0.5, 0.5) goes to (1, 0.5)." />
+
+A mapping from the numbers to the plane has a curve for its image. Take
+$$c: \mathbb{R} \to \mathbb{R}^2$$ with $$c(t) = (\cos t, \sin t)$$. Every point $$c(t)$$ is on the
+unit circle, and every point of the unit circle is $$c(t)$$ for some $$t$$, by
+:ref{#trigonometry/unit-circle-point}. So the image of $$c$$ is the unit circle.
+
+The image and the target are two different sets, and it is worth keeping them apart. The mapping
+$$s: \mathbb{R} \to \mathbb{R}$$ with $$s(x) = x^2$$ has target $$\mathbb{R}$$. Its image is the set
+of numbers $$y \ge 0$$:
+
+- **Every value is at least 0**, because a square is never negative
+  (:ref{#real-numbers/squares-positive}).
+- **Every $$y \ge 0$$ is a value**, because $$s(\sqrt{y}) = y$$ (:ref{#real-numbers/square-root}).
+
+So $$-1$$ is in the target of $$s$$ but not in its image.
+
+## Where a set of elements came from
+
+Now run the cloakroom question the other way. The attendant points at hook A and asks which things
+hang there. The answer is $$\{\text{coat}, \text{scarf}, \text{umbrella}\}$$: each thing whose arrow
+ends at A. For hook B the answer is the empty set (:ref{#basic-proofs/empty-set}), since no arrow
+ends there.
+
+:::definition[Preimage]{#preimage}
+
+Let $$f: S \to T$$ be a mapping and $$B$$ a subset of $$T$$. The **preimage** of $$B$$ under $$f$$
+is the set of elements of $$S$$ that $$f$$ sends into $$B$$:
+
+```math
+f^{-1}(B) = \{x \in S : f(x) \in B\}
+```
+
+So $$x$$ is in $$f^{-1}(B)$$ exactly when $$f(x)$$ is in $$B$$.
+
+:::
+
+The symbol $$f^{-1}(B)$$ is read "the preimage of $$B$$". It makes sense for every mapping, even one
+like the cloakroom's that can't be run backwards. It is a common slip to think the $$-1$$ means
+$$f$$ needs an inverse here, as $$f^{-1}(y)$$ did in :ref{#functions/inverse-function}. The preimage
+only asks which arrows end in $$B$$, and any number of them can, including none.
+
+Take the squaring mapping $$s(x) = x^2$$ on $$\mathbb{R}$$ again:
+
+- **The preimage of $$\{9\}$$** is $$\{3, -3\}$$, the numbers whose square is $$9$$
+  (:ref{#real-numbers/square-root-count}).
+- **The preimage of $$\{-1\}$$** is empty, because no square is negative.
+- **The preimage of the numbers $$y \ge 4$$** is the set of $$x$$ with $$x \le -2$$ or $$x \ge 2$$.
+
+The last one needs a reason. Since $$x^2 = |x|^2$$, the condition $$x^2 \ge 4$$ says
+$$|x|^2 \ge 2^2$$. Both $$|x|$$ and $$2$$ are at least $$0$$, so by
+:ref{#real-numbers/power-order-converse} and :ref{#real-numbers/power-order}, this holds exactly
+when $$|x| \ge 2$$, that is, $$x \le -2$$ or $$x \ge 2$$. Check with $$x = -3$$:
+$$(-3)^2 = 9 \ge 4$$.
+
+<SquaringPreimage caption="The graph of y = x². The heights y ≥ 4 are marked on the y-axis, and the inputs that reach them, x ≤ −2 and x ≥ 2, are marked on the x-axis: those inputs are the preimage." />
+
+## Unions and intersections
+
+Two sets can be put together in two ways: everything in either one, or only what they share. You
+need both to say how images and preimages behave when sets are combined.
+
+:::definition[Union and intersection]{#union-intersection}
+
+Let $$A$$ and $$B$$ be sets. Their **union** $$A \cup B$$ is the set of elements in $$A$$ or in
+$$B$$ (or in both). Their **intersection** $$A \cap B$$ is the set of elements in both $$A$$ and
+$$B$$.
+
+:::
+
+For example, $$\{1, 2, 3\} \cup \{3, 4\} = \{1, 2, 3, 4\}$$ and
+$$\{1, 2, 3\} \cap \{3, 4\} = \{3\}$$. Two sets with no element in common, such as $$\{1, 2\}$$ and
+$$\{5\}$$, have the empty set as their intersection.
+
+Now go back to the cloakroom and take the sets $$\{\text{hat}\}$$ and $$\{\text{scarf}\}$$. Their
+union is $$\{\text{hat}, \text{scarf}\}$$, and its image is $$\{C, A\}$$. Sending the two sets one
+at a time gives $$\{C\}$$ and $$\{A\}$$, whose union is $$\{C, A\}$$ as well. Unions always behave
+like this. Intersections do too for preimages, but not always for images.
+
+:::proposition[Images and preimages of unions]{#mappings-unions}
+
+Let $$f: S \to T$$ be a mapping, $$A$$ and $$B$$ subsets of $$S$$, and $$C$$ and $$D$$ subsets of
+$$T$$. Then:
+
+1. $$f(A \cup B) = f(A) \cup f(B)$$
+2. $$f^{-1}(C \cup D) = f^{-1}(C) \cup f^{-1}(D)$$
+3. $$f^{-1}(C \cap D) = f^{-1}(C) \cap f^{-1}(D)$$
+4. $$f(A \cap B)$$ is a subset of $$f(A) \cap f(B)$$, and can be smaller
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Image_(mathematics)#Properties"}
+
+Parts 1 to 3 say two sets are equal, so for each we show that an element is in one set exactly when
+it is in the other. That gives both subsets, and so equality by :ref{#basic-proofs/set-equality}.
+
+**Part 1.** An element $$y$$ is in $$f(A \cup B)$$
+
+- exactly when $$y = f(x)$$ for some $$x$$ in $$A$$ or in $$B$$, by :ref{#image-of-set} and
+  :ref{#union-intersection}
+- exactly when $$y = f(x)$$ for some $$x$$ in $$A$$, or $$y = f(x)$$ for some $$x$$ in $$B$$
+- exactly when $$y$$ is in $$f(A)$$ or in $$f(B)$$, by :ref{#image-of-set}
+- exactly when $$y$$ is in $$f(A) \cup f(B)$$
+
+**Part 2.** An element $$x$$ of $$S$$ is in $$f^{-1}(C \cup D)$$
+
+- exactly when $$f(x)$$ is in $$C \cup D$$, by :ref{#preimage}
+- exactly when $$f(x)$$ is in $$C$$ or $$f(x)$$ is in $$D$$
+- exactly when $$x$$ is in $$f^{-1}(C)$$ or in $$f^{-1}(D)$$, by :ref{#preimage}
+- exactly when $$x$$ is in $$f^{-1}(C) \cup f^{-1}(D)$$
+
+**Part 3** is part 2 with "and" in place of "or", and $$\cap$$ in place of $$\cup$$.
+
+**Part 4.** Let $$y$$ be in $$f(A \cap B)$$, so $$y = f(x)$$ for some $$x$$ in both $$A$$ and $$B$$.
+Since $$x$$ is in $$A$$, $$y$$ is in $$f(A)$$. Since $$x$$ is in $$B$$, $$y$$ is in $$f(B)$$. So
+$$y$$ is in $$f(A) \cap f(B)$$. The example below shows the two sets can differ.
+
+:::
+
+Part 4 can't be turned round, because two different elements can share an arrow's end. In the
+cloakroom, take the sets $$\{\text{coat}\}$$ and $$\{\text{scarf}\}$$. No thing is in both, so their
+intersection is empty, and so is its image. But both things hang on hook A, so each set has image
+$$\{A\}$$, and the intersection of the two images is $$\{A\}$$.
+
+The squaring mapping does the same with numbers. With $$A = \{-2\}$$ and $$B = \{2\}$$, the
+intersection $$A \cap B$$ is empty, and so is its image. But $$s(A) = \{4\}$$ and $$s(B) = \{4\}$$,
+so $$s(A) \cap s(B) = \{4\}$$. The proof of part 4 only goes one way because $$y$$ in both images
+says $$y = f(a)$$ and $$y = f(b)$$, and nothing forces $$a$$ and $$b$$ to be the same element.
+
+<SharedHook caption="The coat and the scarf are different things, so the set of things that are both is empty. But both arrows end at hook A, so hook A is in the image of each set." />
+
+## Exercises
+
+:::::accordion[Exercises on mappings, with solutions]
+
+::::exercise{#ex-mappings-which}
+
+Let $$S = \{1, 2, 3\}$$ and $$T = \{p, q\}$$. Say which of these rules are mappings from $$S$$ to
+$$T$$, and give a reason for each.
+
+1. $$1 \mapsto p$$, $$2 \mapsto p$$, $$3 \mapsto p$$
+2. $$1 \mapsto q$$, $$3 \mapsto p$$
+3. $$1 \mapsto p$$, $$2 \mapsto q$$, $$2 \mapsto p$$, $$3 \mapsto q$$
+4. $$1 \mapsto q$$, $$2 \mapsto p$$, $$3 \mapsto q$$
+
+:::solution
+
+1. A mapping. Each of $$1$$, $$2$$ and $$3$$ has one arrow, and it is fine for all three to end at
+   $$p$$.
+2. Not a mapping. The element $$2$$ has no arrow.
+3. Not a mapping. The element $$2$$ has two arrows, one to $$q$$ and one to $$p$$.
+4. A mapping. Each element of $$S$$ has exactly one arrow.
+
+:::
+
+::::
+
+::::exercise{#ex-mappings-remainders}
+
+Let $$S = \{1, 2, 3, 4, 5, 6\}$$ and $$T = \{0, 1, 2\}$$, and let $$f: S \to T$$ send each $$n$$ to
+its remainder on division by $$3$$ (:ref{#numbers/division-remainder}).
+
+1. Write down $$f(n)$$ for each $$n$$ in $$S$$.
+2. Find $$f(\{1, 4\})$$ and $$f(\{2, 4, 6\})$$.
+3. Find $$f^{-1}(\{0\})$$ and $$f^{-1}(\{1, 2\})$$.
+
+:::solution
+
+1. $$f(1) = 1$$, $$f(2) = 2$$, $$f(3) = 0$$, $$f(4) = 1$$, $$f(5) = 2$$ and $$f(6) = 0$$. For
+   example, $$5 = 3 \cdot 1 + 2$$, so $$f(5) = 2$$.
+2. $$f(\{1, 4\}) = \{1\}$$, since both go to $$1$$. And $$f(\{2, 4, 6\}) = \{2, 1, 0\}$$, which is
+   all of $$T$$.
+3. $$f^{-1}(\{0\}) = \{3, 6\}$$, the elements sent to $$0$$. And $$f^{-1}(\{1, 2\})$$ is the set of
+   elements sent to $$1$$ or $$2$$, which is $$\{1, 2, 4, 5\}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-mappings-equal}
+
+Let $$f(n) = n^2$$ and $$g(n) = 3n - 2$$.
+
+1. Show that $$f$$ and $$g$$ are equal as mappings from $$\{1, 2\}$$ to $$\mathbb{R}$$.
+2. Show that they are not equal as mappings from $$\{1, 2, 3\}$$ to $$\mathbb{R}$$.
+3. Find every number $$n$$ with $$f(n) = g(n)$$.
+
+:::solution
+
+1. $$f(1) = 1 = 3 - 2 = g(1)$$ and $$f(2) = 4 = 6 - 2 = g(2)$$. The domains and targets are the
+   same, so $$f = g$$ by :ref{#mappings-equal}.
+2. $$f(3) = 9$$ but $$g(3) = 7$$. One element where the values differ is enough.
+3. $$n^2 = 3n - 2$$ means $$n^2 - 3n + 2 = 0$$, that is, $$(n - 1)(n - 2) = 0$$. So $$n = 1$$ or
+   $$n = 2$$ (:ref{#numbers/zero-product}), which is why the domain $$\{1, 2\}$$ worked.
+
+:::
+
+::::
+
+::::exercise{#ex-mappings-interval}
+
+Let $$s(x) = x^2$$ on $$\mathbb{R}$$, and let $$A$$ be the interval $$[-1, 2]$$, the numbers $$x$$
+with $$-1 \le x \le 2$$ (:ref{#real-numbers/interval}). Show that $$s(A) = [0, 4]$$. Explain why the
+answer is not $$[1, 4]$$, which is what you get from squaring the two ends.
+
+:::solution
+
+**$$s(A) \subseteq [0, 4]$$.** Take $$x$$ in $$A$$. A square is never negative, so $$x^2 \ge 0$$. If
+$$0 \le x \le 2$$, then $$x^2 \le 4$$ by :ref{#real-numbers/power-order}. If $$-1 \le x < 0$$, then
+$$0 < -x \le 1$$, so $$x^2 = (-x)^2 \le 1 \le 4$$.
+
+**$$[0, 4] \subseteq s(A)$$.** Take $$y$$ with $$0 \le y \le 4$$. Then $$\sqrt{y}$$ is at least
+$$0$$ and at most $$\sqrt{4} = 2$$ (:ref{#real-numbers/root-order}), so $$\sqrt{y}$$ is in $$A$$,
+and $$s(\sqrt{y}) = y$$.
+
+So $$s(A) = [0, 4]$$ by :ref{#basic-proofs/set-equality}. The ends of $$A$$ go to $$1$$ and $$4$$,
+but $$0$$ lies inside $$A$$ and goes to $$0$$, which is smaller than both. Check: $$s(0.5) = 0.25$$,
+which is in $$[0, 4]$$ but not in $$[1, 4]$$.
+
+:::
+
+::::
+
+::::exercise{#ex-mappings-distance}
+
+Let $$d: \mathbb{R}^2 \to \mathbb{R}$$ send each point $$X$$ to its distance $$d(O, X)$$ from the
+origin. Find the preimages $$d^{-1}(\{5\})$$, $$d^{-1}(\{0\})$$ and $$d^{-1}(\{-1\})$$.
+
+:::solution
+
+- $$d^{-1}(\{5\})$$ is the set of points at distance $$5$$ from $$O$$, the circle with centre $$O$$
+  and radius $$5$$ (:ref{#distance-and-angles/circle}). By :ref{#coordinates/circle-equation}, it is
+  the set of points with $$x^2 + y^2 = 25$$. For example, $$(3, -4)$$ is in it, since
+  $$\sqrt{9 + 16} = 5$$.
+- $$d^{-1}(\{0\}) = \{O\}$$. If $$\sqrt{x^2 + y^2} = 0$$, then $$x^2 + y^2 = 0$$, and two squares
+  that are not negative add to $$0$$ only when both are $$0$$, so $$x = y = 0$$.
+- $$d^{-1}(\{-1\})$$ is empty, because a distance is a square root, and a square root is never
+  negative (:ref{#real-numbers/square-root}).
+
+:::
+
+::::
+
+::::exercise{#ex-mappings-line}
+
+Let $$f(x) = 2x + 3$$ on $$\mathbb{R}$$. Find the preimage $$f^{-1}([5, 11])$$, and check one
+element of it.
+
+:::solution
+
+A number $$x$$ is in the preimage exactly when $$5 \le 2x + 3 \le 11$$. Subtracting $$3$$ gives
+$$2 \le 2x \le 8$$, and dividing by $$2$$ gives $$1 \le x \le 4$$. Each step can be undone, so the
+preimage is $$[1, 4]$$.
+
+Check with $$x = 2.5$$: $$f(2.5) = 5 + 3 = 8$$, which is in $$[5, 11]$$.
+
+:::
+
+::::
+
+::::exercise{#ex-mappings-there-and-back}
+
+Let $$f: S \to T$$ be a mapping, $$A$$ a subset of $$S$$ and $$C$$ a subset of $$T$$.
+
+1. Prove that $$A$$ is a subset of $$f^{-1}(f(A))$$.
+2. Prove that $$f(f^{-1}(C))$$ is a subset of $$C$$.
+3. For $$s(x) = x^2$$ on $$\mathbb{R}$$, find $$s^{-1}(s(\{3\}))$$ and $$s(s^{-1}(\{-1, 4\}))$$.
+   Neither equals the set you started with.
+
+:::solution
+
+1. Let $$a$$ be in $$A$$. Then $$f(a)$$ is in $$f(A)$$, by :ref{#image-of-set}. So $$a$$ is an
+   element that $$f$$ sends into $$f(A)$$, which puts $$a$$ in $$f^{-1}(f(A))$$, by :ref{#preimage}.
+2. Let $$y$$ be in $$f(f^{-1}(C))$$. Then $$y = f(x)$$ for some $$x$$ in $$f^{-1}(C)$$. By
+   :ref{#preimage}, $$f(x)$$ is in $$C$$, so $$y$$ is in $$C$$.
+3. $$s(\{3\}) = \{9\}$$, and $$s^{-1}(\{9\}) = \{3, -3\}$$, which is bigger than $$\{3\}$$. Next,
+   $$s^{-1}(\{-1, 4\}) = \{2, -2\}$$, since no square is $$-1$$, and $$s(\{2, -2\}) = \{4\}$$, which
+   is smaller than $$\{-1, 4\}$$.
+
+:::
+
+::::
+
+:::::

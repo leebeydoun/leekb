@@ -1,0 +1,570 @@
+---
+title: Cycles
+description:
+  Following one number round a permutation until it comes home, orbits and cycle notation, writing
+  any permutation as cycles, and how many repeats bring everything back.
+---
+
+Imagine a magician cutting a deck of 52 cards exactly in half and riffling the halves together so
+perfectly that the cards alternate, one from each half, with the top card staying on top. It looks
+like a thorough mix. But a magician knows that after eight of these perfect shuffles, every card is
+back in the place it started.
+
+To see why, follow one card. Each shuffle sends it to a new place, the next shuffle sends it on from
+there, and after a few shuffles it lands back where it began. The places it visits on the way form a
+loop, called a **cycle**, and every permutation is made of loops like this. In this guide we'll
+follow numbers round their loops, write any permutation as a list of cycles, and use the cycles to
+count how many repeats bring everything home.
+
+<OutShuffle caption="A perfect out-shuffle of eight cards. The deck is cut into a top half (blue) and a bottom half (orange), and the halves are interleaved one card at a time, starting with the top half. Each line joins a card's place before the shuffle to its place after." />
+
+## Following one card
+
+Start with a deck of eight cards, small enough to follow by hand. The out-shuffle in the picture
+moves the card in place 2 to place 3, the card in place 3 to place 5, and so on. Written as a
+permutation (:ref{#permutation}), with the places on top and where each card goes underneath, it is
+
+```math
+\sigma = \begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ 1 & 3 & 5 & 7 & 2 & 4 & 6 & 8 \end{pmatrix}
+```
+
+Now follow the card that starts in place 2. One shuffle takes it to place 3, the next takes it to
+$$\sigma(3) = 5$$, and the next to $$\sigma(5) = 2$$, where it began. In the language of
+:ref{#mapping-powers}, $$\sigma(2) = 3$$, $$\sigma^2(2) = 5$$ and $$\sigma^3(2) = 2$$. The card in
+place 4 does the same with places 4, 7 and 6, and the cards in places 1 and 8 never move.
+
+Every number comes home like this, for every permutation. The numbers $$i$$, $$\sigma(i)$$,
+$$\sigma^2(i)$$, and so on all lie in the set $$\{1, \dots, n\}$$, which has only $$n$$ elements, so
+sooner or later the list repeats itself. The lemma says more: the first number to come round again
+is $$i$$ itself.
+
+:::lemma[Every number comes home]{#cycles-return}
+
+Let $$\sigma$$ be a permutation of $$\{1, \dots, n\}$$, and let $$i$$ be one of the numbers $$1$$ to
+$$n$$. Then $$\sigma^m(i) = i$$ for some whole number $$m$$ with $$1 \le m \le n$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Existence_and_Uniqueness_of_Cycle_Decomposition"}
+
+**Two places agree.** Look at the $$n + 1$$ numbers
+$$\sigma^0(i), \sigma^1(i), \dots, \sigma^n(i)$$. They come from a mapping $$t \mapsto \sigma^t(i)$$
+from the $$n + 1$$ numbers $$0, 1, \dots, n$$ to the $$n$$ numbers $$1, \dots, n$$. That mapping has
+more elements to start from than to land in, so by :ref{#pigeonhole} it is not one to one. So there
+are whole numbers $$r < s$$, both between $$0$$ and $$n$$, with $$\sigma^r(i) = \sigma^s(i)$$.
+
+**Undo the first $$r$$ steps.** A permutation has an inverse (:ref{#permutation}), so its negative
+powers make sense. Apply $$\sigma^{-r}$$ to both sides of $$\sigma^r(i) = \sigma^s(i)$$:
+
+```math
+\begin{aligned}
+\sigma^{-r}(\sigma^r(i)) &= \sigma^{-r}(\sigma^s(i)) &&\qquad \text{apply } \sigma^{-r} \text{ to both sides} \\
+\sigma^{0}(i) &= \sigma^{s - r}(i) &&\qquad \text{add the exponents} \\
+i &= \sigma^{s - r}(i) &&\qquad \sigma^0 = I
+\end{aligned}
+```
+
+The second line uses :ref{#powers-add-integers}, which allows negative exponents.
+
+**The size of the power.** Put $$m = s - r$$. Since $$r < s$$, $$m \ge 1$$, and since both lie
+between $$0$$ and $$n$$, $$m \le n$$.
+
+:::
+
+## Orbits and cycles
+
+So for each number $$i$$ there are positive powers of $$\sigma$$ that bring it home, and among them
+there is a smallest. For the card in place 2 of the out-shuffle the smallest is $$3$$, and on its
+way round the card visits the places 2, 3 and 5. Those places get a name, and so does the loop that
+runs through them.
+
+:::definition[Orbit and cycle]{#orbit}
+
+Let $$\sigma$$ be a permutation of $$\{1, \dots, n\}$$, let $$i$$ be one of the numbers, and let
+$$k$$ be the smallest positive whole number with $$\sigma^k(i) = i$$. The **orbit** of $$i$$ is the
+set
+
+```math
+\{\, i, \ \sigma(i), \ \sigma^2(i), \ \dots, \ \sigma^{k-1}(i) \,\}
+```
+
+and $$k$$ is the **length** of the orbit, also called the **period** of $$i$$.
+
+For different numbers $$a_1, a_2, \dots, a_k$$, the **cycle** $$[a_1, a_2, \dots, a_k]$$ is the
+permutation that sends $$a_1$$ to $$a_2$$, $$a_2$$ to $$a_3$$, and so on, sends $$a_k$$ back to
+$$a_1$$, and leaves every other number where it is. The **cycle of $$i$$** is
+$$[i, \sigma(i), \dots, \sigma^{k-1}(i)]$$.
+
+:::
+
+The cycle of $$i$$ needs the numbers in its list to be different, or it wouldn't make sense. They
+are, and that is the next proposition. For the out-shuffle, the orbit of $$2$$ is $$\{2, 3, 5\}$$ of
+length $$3$$, its cycle is $$[2, 3, 5]$$, and the three numbers in it are indeed different.
+
+:::proposition[The orbit has k different elements]{#orbit-distinct}
+
+In :ref{#orbit}, the $$k$$ numbers $$i, \sigma(i), \dots, \sigma^{k-1}(i)$$ are all different. So
+the orbit of $$i$$ has exactly $$k$$ elements.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Existence_and_Uniqueness_of_Cycle_Decomposition"}
+
+Suppose two of them were equal, say $$\sigma^r(i) = \sigma^s(i)$$ with $$0 \le r < s \le k - 1$$.
+Applying $$\sigma^{-r}$$ to both sides, exactly as in the proof of :ref{#cycles-return}, gives
+$$i = \sigma^{s - r}(i)$$.
+
+But $$s - r$$ is at least $$1$$ and at most $$k - 1$$, so it is a positive power smaller than $$k$$
+that brings $$i$$ home. That contradicts the choice of $$k$$ as the smallest such power. So no two
+of the numbers are equal.
+
+:::
+
+A cycle can start from any of its numbers. The cycles $$[5, 2, 7]$$, $$[2, 7, 5]$$ and $$[7, 5, 2]$$
+all say the same thing: 5 goes to 2, 2 goes to 7, and 7 goes back to 5. So they are the same
+permutation, and the usual habit is to start each cycle from its smallest number, as in
+$$[2, 7, 5]$$.
+
+Two special lengths have names of their own. A cycle of length 1, such as $$[4]$$, sends $$4$$ to
+itself, so it is the identity, and $$4$$ is a fixed point of $$\sigma$$
+(:ref{#isometries/fixed-point}). A cycle of length 2, such as $$[3, 5]$$, swaps two numbers and is
+called a **transposition**, the subject of
+[Swaps and the sign of a permutation](./swaps-and-sign.mdx).
+
+One slip to watch for is reading the two kinds of notation the same way. The cycle $$[1, 4, 2]$$
+says that 1 goes to 4, 4 goes to 2 and 2 goes back to 1. It does not say that 1 goes to the first
+place, which is how you'd read the bottom row of a two-row permutation. Here is the same permutation
+of $$\{1, 2, 3, 4\}$$ both ways:
+
+```math
+[1, 4, 2] = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 4 & 1 & 3 & 2 \end{pmatrix}
+```
+
+## Orbits don't overlap
+
+In the out-shuffle, the orbit of $$3$$ is $$\{3, 5, 2\}$$, which is the orbit of $$2$$ again: if you
+start the loop at a different place you go round the same loop. And the orbit of $$4$$,
+$$\{4, 7, 6\}$$, shares nothing with it. The theorem says that two orbits are always like this,
+either the same loop or apart. First, a lemma about walking round an orbit many times, which is what
+makes the theorem work.
+
+Walking round a loop of length $$k$$ brings you home every $$k$$ steps. So after $$t$$ steps, only
+the steps left over after the whole laps count. For the card in place 2, with $$k = 3$$, seven
+shuffles are two laps and one step more, so $$\sigma^7(2) = \sigma^1(2) = 3$$.
+
+:::lemma[Powers along an orbit]{#cycles-orbit-powers}
+
+Let $$i$$ have period $$k$$ under the permutation $$\sigma$$, and let $$t \ge 0$$ be a whole number.
+Divide $$t$$ by $$k$$ to get $$t = qk + r$$ with $$0 \le r < k$$. Then:
+
+1. $$\sigma^t(i) = \sigma^r(i)$$, so $$\sigma^t(i)$$ lies in the orbit of $$i$$
+2. $$\sigma^t(i) = i$$ exactly when $$k$$ divides $$t$$
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Existence_and_Uniqueness_of_Cycle_Decomposition"}
+
+**Whole laps bring you home.** First, $$\sigma^{qk}(i) = i$$ for every whole number $$q \ge 0$$, by
+induction on $$q$$ (:ref{#basic-proofs/induction}). For $$q = 0$$ it says $$\sigma^0(i) = i$$, which
+is true. If $$\sigma^{qk}(i) = i$$, then by :ref{#powers-add},
+
+```math
+\sigma^{(q + 1)k}(i) = \sigma^k(\sigma^{qk}(i)) = \sigma^k(i) = i
+```
+
+**Part 1.** The numbers $$q$$ and $$r$$ exist by :ref{#numbers/division-remainder}. Then
+
+```math
+\begin{aligned}
+\sigma^t(i) &= \sigma^r(\sigma^{qk}(i)) &&\qquad t = r + qk, \text{ and exponents add} \\
+&= \sigma^r(i) &&\qquad \text{whole laps bring } i \text{ home}
+\end{aligned}
+```
+
+Since $$0 \le r \le k - 1$$, the number $$\sigma^r(i)$$ is one of the numbers listed in the orbit.
+
+**Part 2.** If $$k$$ divides $$t$$, then $$r = 0$$, and part 1 gives
+$$\sigma^t(i) = \sigma^0(i) = i$$. Now suppose $$\sigma^t(i) = i$$. By part 1, $$\sigma^r(i) = i$$.
+If $$r$$ were positive, it would be a positive power smaller than $$k$$ that brings $$i$$ home,
+which can't happen because $$k$$ is the smallest. So $$r = 0$$, and $$k$$ divides $$t$$.
+
+:::
+
+:::theorem[Orbits don't overlap]{#orbits-disjoint}
+
+Let $$\sigma$$ be a permutation of $$\{1, \dots, n\}$$. Any two orbits of $$\sigma$$ are either the
+same set or have no number in common. In particular, if $$j$$ lies in the orbit of $$i$$, then the
+orbit of $$j$$ is the orbit of $$i$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Existence_and_Uniqueness_of_Cycle_Decomposition"}
+
+**Step 1: the orbit of $$j$$ lies inside the orbit of $$i$$.** Let $$j$$ be in the orbit of $$i$$,
+so $$j = \sigma^r(i)$$ for some $$r$$ with $$0 \le r \le k - 1$$, where $$k$$ is the period of
+$$i$$. Each number in the orbit of $$j$$ is $$\sigma^m(j)$$ for some whole number $$m \ge 0$$, and
+
+```math
+\sigma^m(j) = \sigma^m(\sigma^r(i)) = \sigma^{m + r}(i)
+```
+
+by :ref{#powers-add}. That lies in the orbit of $$i$$, by part 1 of :ref{#cycles-orbit-powers}.
+
+**Step 2: $$i$$ lies in the orbit of $$j$$.** Walk on from $$j$$ for the rest of the lap:
+
+```math
+\sigma^{k - r}(j) = \sigma^{k - r}(\sigma^r(i)) = \sigma^k(i) = i
+```
+
+So $$i = \sigma^{k - r}(j)$$, which lies in the orbit of $$j$$ by part 1 of
+:ref{#cycles-orbit-powers}, used for $$j$$.
+
+**Step 3: the orbits are equal.** By step 2, $$i$$ is in the orbit of $$j$$, so step 1 with the
+roles of $$i$$ and $$j$$ swapped says that the orbit of $$i$$ lies inside the orbit of $$j$$.
+Together with step 1, each orbit lies inside the other, so they are equal
+(:ref{#basic-proofs/set-equality}).
+
+**Two orbits.** Now suppose the orbits of $$i$$ and $$i'$$ have a number $$j$$ in common. By steps 1
+to 3, the orbit of $$i$$ is the orbit of $$j$$, and so is the orbit of $$i'$$. So the two orbits are
+the same set.
+
+:::
+
+## Writing a permutation as cycles
+
+Since the orbits don't overlap, and every number lies in its own orbit, the orbits split
+$$\{1, \dots, n\}$$ into separate loops. Each loop is moved by its own cycle, and the cycles of
+different loops never touch the same number. So doing all the cycles, one after another, does what
+$$\sigma$$ does. As in [Permutations](./permutations.mdx), a product $$\sigma\tau$$ means
+$$\sigma \circ \tau$$, with $$\tau$$ done first.
+
+Here is the idea with the out-shuffle. Its orbits are $$\{1\}$$, $$\{2, 3, 5\}$$, $$\{4, 7, 6\}$$
+and $$\{8\}$$, and the claim is that
+
+```math
+\sigma = [1][2, 3, 5][4, 7, 6][8]
+```
+
+Check it on the number 7. Working from the right, $$[8]$$ leaves 7 alone, $$[4, 7, 6]$$ sends it to
+6, and $$[2, 3, 5]$$ and $$[1]$$ leave 6 alone. So the product sends 7 to 6, and so does $$\sigma$$.
+
+<OutShuffleLoops caption="The out-shuffle of eight cards as loops. Each ring is an orbit, with an arrow from each place to the place its card goes to. The cards in places 1 and 8 never move." />
+
+:::proposition[A permutation is the product of its cycles]{#cycles-product}
+
+Let $$\sigma$$ be a permutation of $$\{1, \dots, n\}$$, and let $$\gamma_1, \dots, \gamma_m$$ be the
+cycles of its different orbits. Then
+
+```math
+\sigma = \gamma_1 \gamma_2 \cdots \gamma_m
+```
+
+and the cycles can be multiplied in any order, with the same result.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Disjoint_Permutations_Commute"}
+
+Take any order of the cycles, and any number $$x$$. By :ref{#orbits-disjoint}, $$x$$ lies in exactly
+one of the orbits, say the orbit $$O$$ of the cycle $$\gamma$$. We follow $$x$$ through the product,
+working from the right.
+
+1. The cycles to the right of $$\gamma$$ belong to other orbits, so none of them moves $$x$$.
+2. Then $$\gamma$$ sends $$x$$ to the next number in its cycle, which is $$\sigma(x)$$.
+3. The number $$\sigma(x)$$ is in the orbit $$O$$ too, by part 1 of :ref{#cycles-orbit-powers}. So
+   the cycles to the left of $$\gamma$$, which belong to other orbits, don't move it.
+
+So the product sends $$x$$ to $$\sigma(x)$$. That holds for every $$x$$, so the product is
+$$\sigma$$ (:ref{#mappings-equal}), whatever order the cycles came in.
+
+:::
+
+:::definition[Cycle decomposition]{#cycle-decomposition}
+
+The **cycle decomposition** of a permutation $$\sigma$$ is $$\sigma$$ written as the product of the
+cycles of its different orbits, as in :ref{#cycles-product}. Cycles of length 1 change nothing, so
+they are often left out.
+
+:::
+
+Take a fresh permutation of seven numbers:
+
+```math
+\sigma = \begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 6 & 1 & 5 & 4 & 3 & 2 & 7 \end{pmatrix}
+```
+
+You can find its cycles by hand in three steps:
+
+1. Start a cycle at the smallest number you haven't used yet, and write it down.
+2. Write down where it goes, then where that goes, and so on, and close the bracket when the next
+   number would be the one you started with.
+3. Repeat until every number from 1 to 7 is in some bracket.
+
+Starting at 1 gives $$1 \to 6 \to 2 \to 1$$, so the first cycle is $$[1, 6, 2]$$. The smallest
+unused number is 3, and $$3 \to 5 \to 3$$ gives $$[3, 5]$$. Then 4 and 7 each go to themselves. So
+
+```math
+\sigma = [1, 6, 2][3, 5][4][7] = [1, 6, 2][3, 5]
+```
+
+<SevenLoops caption="The permutation of seven numbers drawn as loops: the orbits {1, 6, 2}, {3, 5}, {4} and {7}. The fixed points 4 and 7 are the grey dots." />
+
+As a check, multiply the cycles back out on one number, say 2. Working from the right, $$[3, 5]$$
+leaves 2 alone and $$[1, 6, 2]$$ sends it to 1. The bottom row of the two-row form also has
+$$\sigma(2) = 1$$.
+
+## How many times to return
+
+Each orbit is a loop, and the numbers in a loop of length $$k$$ all come home together every $$k$$
+steps. So the whole permutation comes back to the identity when every loop has finished a whole
+number of laps at once. For the permutation of seven numbers above, the loop $$[1, 6, 2]$$ needs a
+multiple of 3 steps and $$[3, 5]$$ needs a multiple of 2, so the first time both are home is after 6
+steps.
+
+That first time has a name. The **least common multiple** of some positive whole numbers is the
+smallest positive whole number that is a multiple of each of them. There always is one, because
+their product is a common multiple. For example, the least common multiple of $$2$$, $$3$$ and $$4$$
+is $$12$$.
+
+:::theorem[How many times to return]{#permutation-order}
+
+Let $$\sigma$$ be a permutation of $$\{1, \dots, n\}$$, and let $$m \ge 1$$ be a whole number. Then
+$$\sigma^m = I$$ exactly when $$m$$ is a multiple of the length of every cycle of $$\sigma$$.
+
+So the smallest $$m \ge 1$$ with $$\sigma^m = I$$, called the **order** of $$\sigma$$, is the least
+common multiple of the lengths of its cycles.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Order_of_Product_of_Disjoint_Permutations"}
+
+The permutation $$\sigma^m$$ is the identity exactly when $$\sigma^m(i) = i$$ for every number $$i$$
+(:ref{#mappings-equal}). By part 2 of :ref{#cycles-orbit-powers}, $$\sigma^m(i) = i$$ exactly when
+the period of $$i$$ divides $$m$$. The period of $$i$$ is the length of the cycle of $$i$$, and
+every cycle of $$\sigma$$ is the cycle of each of its numbers. So $$\sigma^m = I$$ exactly when
+every cycle length divides $$m$$.
+
+The smallest such $$m \ge 1$$ is the smallest positive common multiple of the cycle lengths, which
+is their least common multiple.
+
+:::
+
+Here is the theorem with cycles of lengths 2, 3 and 4. The permutation
+
+```math
+\rho = [1, 5][2, 7, 4][3, 9, 6, 8]
+```
+
+of the numbers 1 to 9 has order $$12$$, the least common multiple of $$2$$, $$3$$ and $$4$$. After 6
+steps, for example, the loops $$[1, 5]$$ and $$[2, 7, 4]$$ are home but $$[3, 9, 6, 8]$$ has done
+one and a half laps, so $$\rho^6(3) = 6$$ and $$\rho^6 \ne I$$. Adding the lengths instead,
+$$2 + 3 + 4 = 9$$, is a slip to avoid: it counts the numbers, not the steps.
+
+## The perfect shuffle
+
+Now back to the magician. The out-shuffle of eight cards has cycles of lengths 1, 3, 3 and 1, so by
+:ref{#permutation-order} its order is $$3$$: three perfect out-shuffles put an 8-card deck back in
+order. You can watch it happen in the diagram below.
+
+The other way to interleave starts with the bottom half, so the top card moves to second place. This
+is the **in-shuffle**, and for eight cards it is
+
+```math
+\begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ 2 & 4 & 6 & 8 & 1 & 3 & 5 & 7 \end{pmatrix} = [1, 2, 4, 8, 7, 5][3, 6]
+```
+
+Its cycles have lengths 6 and 2, so it takes 6 in-shuffles to bring the deck home, twice as many as
+the out-shuffle.
+
+<CycleViewer />
+
+For the full deck of 52 cards, the out-shuffle sends the card in place $$p$$ to place $$2p - 1$$ for
+the top half, $$p \le 26$$, and to place $$2p - 52$$ for the bottom half. A computer check of all 52
+places finds its cycles: the top and bottom cards are fixed, the cards in places 18 and 35 swap, and
+the other 48 places form six cycles of length 8. The least common multiple of $$1$$, $$2$$ and $$8$$
+is $$8$$, which is the magician's eight shuffles.
+
+## Exercises
+
+:::::accordion[Exercises on cycles, with solutions]
+
+::::exercise{#ex-cycles-decompose}
+
+Write this permutation of $$\{1, \dots, 6\}$$ as a product of cycles, and find its order.
+
+```math
+\sigma = \begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 \\ 4 & 6 & 1 & 3 & 5 & 2 \end{pmatrix}
+```
+
+:::solution
+
+Start at 1: $$1 \to 4 \to 3 \to 1$$, so the first cycle is $$[1, 4, 3]$$. The smallest unused number
+is 2, and $$2 \to 6 \to 2$$ gives $$[2, 6]$$. Last, 5 goes to itself. So
+
+```math
+\sigma = [1, 4, 3][2, 6][5] = [1, 4, 3][2, 6]
+```
+
+The cycle lengths are 3, 2 and 1, so by :ref{#permutation-order} the order is their least common
+multiple, $$6$$.
+
+:::
+
+::::
+
+::::exercise{#ex-cycles-rows}
+
+Write the permutation $$[1, 5][2, 4, 6]$$ of $$\{1, \dots, 6\}$$ in two rows, and name its fixed
+points.
+
+:::solution
+
+The cycle $$[1, 5]$$ sends 1 to 5 and 5 to 1. The cycle $$[2, 4, 6]$$ sends 2 to 4, 4 to 6 and 6
+to 2. The number 3 is in neither cycle, so it stays put. So
+
+```math
+\begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 \\ 5 & 4 & 3 & 6 & 1 & 2 \end{pmatrix}
+```
+
+The only fixed point is $$3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-cycles-same}
+
+Decide which of the cycles $$[5, 1, 4, 2]$$, $$[4, 2, 5, 1]$$ and $$[1, 5, 2, 4]$$ are the same
+permutation as $$[2, 5, 1, 4]$$. For any that isn't, describe how it is related to $$[2, 5, 1, 4]$$.
+
+:::solution
+
+The cycle $$[2, 5, 1, 4]$$ sends 2 to 5, 5 to 1, 1 to 4 and 4 to 2.
+
+- $$[5, 1, 4, 2]$$ sends 5 to 1, 1 to 4, 4 to 2 and 2 to 5: the same, since it is the same loop
+  started at 5
+- $$[4, 2, 5, 1]$$ is the same loop started at 4, so it is also the same
+- $$[1, 5, 2, 4]$$ sends 1 to 5, but $$[2, 5, 1, 4]$$ sends 1 to 4, so it is different
+
+The last one runs round the same loop the other way: it sends each number back to the one before it.
+So it undoes $$[2, 5, 1, 4]$$, and it is the inverse permutation, as the exercise on inverse cycles
+below proves.
+
+:::
+
+::::
+
+::::exercise{#ex-cycles-orders}
+
+Find the order of each permutation.
+
+1. $$[1, 3][2, 5, 4]$$, a permutation of $$\{1, \dots, 5\}$$
+2. $$[1, 2, 3, 4, 5, 6]$$
+3. $$[1, 4][2, 7][3, 5, 6, 8]$$, a permutation of $$\{1, \dots, 8\}$$
+
+:::solution
+
+By :ref{#permutation-order}, each order is the least common multiple of the cycle lengths.
+
+1. Lengths 2 and 3, so the order is $$6$$.
+2. One cycle of length 6, so the order is $$6$$.
+3. Lengths 2, 2 and 4. Every multiple of 4 is a multiple of 2, so the order is $$4$$.
+
+:::
+
+::::
+
+::::exercise{#ex-cycles-six-cards}
+
+A deck of six cards is cut into halves of three. Write the perfect out-shuffle (top card stays on
+top) and the perfect in-shuffle (top card goes to second place) as permutations in two rows, find
+their cycles, and say how many of each shuffle bring the deck back.
+
+:::solution
+
+The out-shuffle lays the cards down as 1, 4, 2, 5, 3, 6. So card 1 stays in place 1, card 2 goes to
+place 3, card 3 to place 5, card 4 to place 2, card 5 to place 4 and card 6 stays in place 6:
+
+```math
+\begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 \\ 1 & 3 & 5 & 2 & 4 & 6 \end{pmatrix} = [2, 3, 5, 4]
+```
+
+with 1 and 6 fixed. The order is $$4$$, so four out-shuffles bring the deck back.
+
+The in-shuffle lays them down as 4, 1, 5, 2, 6, 3. So card 1 goes to place 2, card 2 to place 4,
+card 3 to place 6, card 4 to place 1, card 5 to place 3 and card 6 to place 5:
+
+```math
+\begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 \\ 2 & 4 & 6 & 1 & 3 & 5 \end{pmatrix} = [1, 2, 4][3, 6, 5]
+```
+
+Both cycles have length 3, so the order is $$3$$: three in-shuffles bring the deck back.
+
+:::
+
+::::
+
+::::exercise{#ex-cycles-seven}
+
+1. Find a permutation of $$\{1, \dots, 7\}$$ whose order is $$12$$.
+2. Explain why no permutation of $$\{1, \dots, 7\}$$ has order $$11$$.
+
+:::solution
+
+1. Take $$[1, 2, 3][4, 5, 6, 7]$$. Its cycles have lengths 3 and 4, so by :ref{#permutation-order}
+   its order is the least common multiple of $$3$$ and $$4$$, which is $$12$$.
+2. Suppose $$\sigma$$ had order 11. Then $$\sigma^{11} = I$$, so by :ref{#permutation-order} every
+   cycle length divides 11. The only positive whole numbers that divide 11 are 1 and 11, and a cycle
+   in $$\{1, \dots, 7\}$$ has at most 7 numbers, so every cycle has length 1. Then $$\sigma = I$$,
+   whose order is 1, not 11. So no such $$\sigma$$ exists.
+
+:::
+
+::::
+
+::::exercise{#ex-cycles-inverse}
+
+Prove that the inverse of the cycle $$[a_1, a_2, \dots, a_k]$$ is the cycle with the same numbers in
+reverse order, $$[a_k, \dots, a_2, a_1]$$. Check it with $$[2, 5, 1, 4]$$.
+
+:::solution
+
+Write $$\gamma = [a_1, \dots, a_k]$$ and $$\rho = [a_k, \dots, a_1]$$. The cycle $$\rho$$ sends each
+$$a_{j+1}$$ back to $$a_j$$, and $$a_1$$ to $$a_k$$. Follow each number through $$\gamma\rho$$, with
+$$\rho$$ first:
+
+- for $$1 \le j \le k - 1$$, $$\rho$$ sends $$a_{j+1}$$ to $$a_j$$, and $$\gamma$$ sends $$a_j$$
+  back to $$a_{j+1}$$
+- $$\rho$$ sends $$a_1$$ to $$a_k$$, and $$\gamma$$ sends $$a_k$$ back to $$a_1$$
+- a number not in the list is left alone by both
+
+So $$\gamma\rho = I$$. In the same way, $$\gamma$$ sends $$a_j$$ to $$a_{j+1}$$ and $$\rho$$ sends
+it back, and $$\gamma$$ sends $$a_k$$ to $$a_1$$ and $$\rho$$ sends it back, so $$\rho\gamma = I$$.
+By :ref{#inverse-mapping}, $$\rho$$ is the inverse of $$\gamma$$.
+
+For $$[2, 5, 1, 4]$$, the reverse is $$[4, 1, 5, 2]$$, which is the same loop as $$[1, 5, 2, 4]$$.
+As a check on the number 5: $$[1, 5, 2, 4]$$ sends 5 to 2, and $$[2, 5, 1, 4]$$ sends 2 back to 5.
+
+:::
+
+::::
+
+::::exercise{#ex-cycles-square}
+
+Prove that $$\sigma^2 = I$$ exactly when every cycle of $$\sigma$$ has length 1 or 2. Give an
+example of a permutation of $$\{1, \dots, 5\}$$ with $$\sigma^2 = I$$ and $$\sigma \ne I$$.
+
+:::solution
+
+By :ref{#permutation-order} with $$m = 2$$, $$\sigma^2 = I$$ exactly when 2 is a multiple of every
+cycle length. The only positive whole numbers that divide 2 are 1 and 2. So $$\sigma^2 = I$$ exactly
+when every cycle has length 1 or 2.
+
+For example, $$\sigma = [1, 4][2, 5]$$ has cycles of lengths 2, 2 and 1 (the fixed point 3), so
+$$\sigma^2 = I$$. As a check on 1: $$\sigma$$ sends 1 to 4, and then 4 back to 1.
+
+:::
+
+::::
+
+:::::

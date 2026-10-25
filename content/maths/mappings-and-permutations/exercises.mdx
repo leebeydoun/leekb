@@ -1,0 +1,265 @@
+---
+title: Exercises
+description: Exercises on the whole Mappings and permutations chapter, with worked solutions.
+---
+
+These exercises use the whole chapter, and most need ideas from more than one guide. They start
+gently and get harder towards the end. Try each one before you open its solution, and name the rule
+or result behind each step, as the guides do.
+
+One habit carries most of them: draw the arrows. Before deciding whether a mapping is one to one,
+whether it can be undone or how a permutation moves its numbers, write out where a few elements go.
+The general answer is usually visible in a small case.
+
+## Mappings and curves
+
+::::exercise{#ex-mappings-ch-plane-sum}
+
+Let $$s: \mathbb{R}^2 \to \mathbb{R}$$ be the mapping $$s(x, y) = x + y$$.
+
+1. Find the image of the square of points $$(x, y)$$ with $$0 \le x \le 1$$ and $$0 \le y \le 1$$.
+2. Describe the preimage $$s^{-1}(\{3\})$$.
+3. Decide whether $$s$$ is one to one, and whether it is onto.
+
+:::solution
+
+1. For a point of the square, $$0 \le x + y \le 2$$, so the image lies in $$[0, 2]$$. Every number
+   $$c$$ in $$[0, 2]$$ is reached: if $$c \le 1$$ take $$(c, 0)$$, and if $$c > 1$$ take
+   $$(1, c - 1)$$. So the image is the interval $$[0, 2]$$ (:ref{#image-of-set}).
+2. By :ref{#preimage} it is the set of points with $$x + y = 3$$, which is the line $$y = 3 - x$$.
+   The whole line is sent to the single number $$3$$.
+3. Not one to one: $$s(3, 0) = s(0, 3) = 3$$ (:ref{#injective}). Onto: every number $$c$$ is
+   $$s(c, 0)$$ (:ref{#surjective}).
+
+:::
+
+::::
+
+::::exercise{#ex-mappings-ch-ellipse}
+
+Let $$C(t) = (2\cos t, 3\sin t)$$.
+
+1. Show that every point $$C(t)$$ lies on the graph of $$\frac{x^2}{4} + \frac{y^2}{9} = 1$$.
+2. Decide whether $$C$$ is one to one on all numbers $$t$$, and whether it is one to one on
+   $$0 \le t < 2\pi$$.
+
+:::solution
+
+1. Put $$x = 2\cos t$$ and $$y = 3\sin t$$ into the left side:
+   $$\frac{4\cos^2 t}{4} + \frac{9\sin^2 t}{9} = \cos^2 t + \sin^2 t = 1$$
+   (:ref{#trigonometry/pythagorean-identity}). So the curve traced lies on that ellipse.
+2. On all numbers it is not one to one, since $$C(0) = C(2\pi) = (2, 0)$$
+   (:ref{#trigonometry/periodic}). On $$0 \le t < 2\pi$$ it is: if $$C(t) = C(t')$$ then
+   $$\cos t = \cos t'$$ and $$\sin t = \sin t'$$, so $$t$$ and $$t'$$ give the same point of the
+   unit circle. By the "exactly one" of :ref{#trigonometry/unit-circle-point}, two angles in
+   $$[0, 2\pi)$$ that give the same point are equal. So each point of the ellipse is traced exactly
+   once in one lap.
+
+:::
+
+::::
+
+## Combining and undoing
+
+::::exercise{#ex-mappings-ch-plane-inverse}
+
+Let $$f(x, y) = (x + 3y,\ 2x + 5y)$$, a mapping of the plane to itself.
+
+1. Find $$f^{-1}$$ by solving equations, and check that $$f \circ f^{-1}$$ is the identity.
+2. Use part 1 to find the point $$X$$ with $$f(X) = (1, 2)$$, and check it.
+
+:::solution
+
+1. Write $$u = x + 3y$$ and $$v = 2x + 5y$$. The determinant is $$1 \cdot 5 - 3 \cdot 2 = -1$$,
+   which is not $$0$$, so there is exactly one solution for each $$u$$ and $$v$$
+   (:ref{#linear-equations/determinant-test}). Solving:
+
+   ```math
+   \begin{aligned}
+   2u - v &= 2x + 6y - 2x - 5y = y && \text{twice the first minus the second} \\
+   x &= u - 3y = u - 6u + 3v = -5u + 3v && \text{from the first equation}
+   \end{aligned}
+   ```
+
+   So $$f^{-1}(u, v) = (-5u + 3v,\ 2u - v)$$ (:ref{#inverse-mapping}). Check $$f(f^{-1}(u, v))$$:
+   the first coordinate is $$(-5u + 3v) + 3(2u - v) = u$$ and the second is
+   $$2(-5u + 3v) + 5(2u - v) = v$$.
+
+2. $$X = f^{-1}(1, 2) = (-5 + 6,\ 2 - 2) = (1, 0)$$. Check: $$f(1, 0) = (1, 2)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-mappings-ch-half}
+
+Let $$f: S \to T$$ and $$g: T \to U$$ be mappings.
+
+1. Prove that if $$g \circ f$$ is onto, then $$g$$ is onto.
+2. Prove that if $$g \circ f$$ is one to one, then $$f$$ is one to one.
+3. Give an example where $$g \circ f$$ is one to one and onto, but $$f$$ is not onto.
+
+:::solution
+
+1. Take $$z$$ in $$U$$. Since $$g \circ f$$ is onto, $$z = g(f(x))$$ for some $$x$$ in $$S$$. So
+   $$z = g(y)$$ with $$y = f(x)$$ in $$T$$, and $$g$$ is onto (:ref{#surjective}).
+2. Suppose $$f(x) = f(x')$$. Applying $$g$$ gives $$g(f(x)) = g(f(x'))$$, and since $$g \circ f$$ is
+   one to one, $$x = x'$$. So $$f$$ is one to one (:ref{#injective}).
+3. Let $$S = \{1, 2\}$$, $$T = \{a, b, c\}$$, $$U = \{1, 2\}$$, with $$f(1) = a$$, $$f(2) = b$$, and
+   $$g(a) = 1$$, $$g(b) = 2$$, $$g(c) = 2$$. Then $$g \circ f$$ is the identity of $$\{1, 2\}$$,
+   which is one to one and onto, but nothing is sent to $$c$$, so $$f$$ is not onto. This is why
+   :ref{#inverse-mapping} asks for both $$g \circ f = I$$ and $$f \circ g = I$$.
+
+:::
+
+::::
+
+::::exercise{#ex-mappings-ch-swap-back}
+
+Let $$S$$ be the numbers other than $$1$$, and let $$f(x) = \frac{x + 1}{x - 1}$$ on $$S$$.
+
+1. Show that $$f$$ sends $$S$$ to itself.
+2. Show that $$f \circ f = I_S$$, and use it to find $$f^{-1}$$ and $$f^{101}$$.
+
+:::solution
+
+1. The formula makes sense for $$x \ne 1$$. If $$f(x)$$ were $$1$$, then $$x + 1 = x - 1$$, which
+   says $$1 = -1$$. So $$f(x)$$ is never $$1$$, and $$f$$ maps $$S$$ to $$S$$.
+2. For $$x$$ in $$S$$,
+
+   ```math
+   \begin{aligned}
+   f(f(x)) &= \frac{\frac{x + 1}{x - 1} + 1}{\frac{x + 1}{x - 1} - 1} \\
+   &= \frac{(x + 1) + (x - 1)}{(x + 1) - (x - 1)} && \text{multiply top and bottom by } x - 1 \\
+   &= \frac{2x}{2} = x
+   \end{aligned}
+   ```
+
+   So $$f^2 = I_S$$, and by :ref{#repeating-inverse} with $$n = 2$$, $$f^{-1} = f^1 = f$$. Since
+   $$101 = 2 \cdot 50 + 1$$, :ref{#powers-add} and :ref{#powers-multiply} give
+   $$f^{101} = (f^2)^{50} \circ f = I \circ f = f$$. Check: $$f(3) = 2$$ and $$f(2) = 3$$.
+
+:::
+
+::::
+
+## Permutations
+
+::::exercise{#ex-mappings-ch-nine}
+
+Let $$\sigma$$ be the permutation of $$\{1, \ldots, 9\}$$ given by
+
+```math
+\sigma = \begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ 4 & 1 & 9 & 7 & 8 & 5 & 2 & 6 & 3 \end{pmatrix}
+```
+
+1. Find its cycle decomposition, its order and its sign.
+2. Find $$\sigma^{100}(1)$$, $$\sigma^{100}(3)$$ and $$\sigma^{100}(5)$$.
+
+:::solution
+
+1. Follow each number until it comes home: $$1 \to 4 \to 7 \to 2 \to 1$$, then $$3 \to 9 \to 3$$,
+   then $$5 \to 8 \to 6 \to 5$$. So $$\sigma = [1, 4, 7, 2][3, 9][5, 8, 6]$$
+   (:ref{#cycle-decomposition}). The cycle lengths are $$4$$, $$2$$ and $$3$$, so the order is their
+   least common multiple, $$12$$ (:ref{#permutation-order}). There are $$3$$ orbits among $$9$$
+   numbers, so the sign is $$(-1)^{9 - 3} = +1$$ (:ref{#sign-from-cycles}), and $$\sigma$$ is even.
+2. By :ref{#cycles-orbit-powers}, only the remainder of $$100$$ on division by each cycle length
+   matters. For $$1$$, in a cycle of length $$4$$: $$100 = 25 \cdot 4$$, so $$\sigma^{100}(1) = 1$$.
+   For $$3$$, length $$2$$: $$100 = 50 \cdot 2$$, so $$\sigma^{100}(3) = 3$$. For $$5$$, length
+   $$3$$: $$100 = 33 \cdot 3 + 1$$, so $$\sigma^{100}(5) = \sigma(5) = 8$$.
+
+:::
+
+::::
+
+::::exercise{#ex-mappings-ch-square-root}
+
+1. Find a permutation $$\tau$$ of $$\{1, \ldots, 5\}$$ with $$\tau^2 = [1, 2, 3, 4, 5]$$.
+2. Prove that no permutation $$\tau$$ of $$\{1, 2, 3\}$$ has $$\tau^2 = [1, 2]$$.
+
+:::solution
+
+1. Doing $$\tau$$ twice should move each number one step along $$1, 2, 3, 4, 5$$. So try a cycle
+   that moves three steps forward each time, $$\tau = [1, 4, 2, 5, 3]$$. Check each number:
+   $$1 \to 4 \to 2$$, $$2 \to 5 \to 3$$, $$3 \to 1 \to 4$$, $$4 \to 2 \to 5$$ and $$5 \to 3 \to 1$$.
+   That is $$1 \to 2 \to 3 \to 4 \to 5 \to 1$$, so $$\tau^2 = [1, 2, 3, 4, 5]$$.
+2. By :ref{#sign-product}, $$\operatorname{sgn}(\tau^2) = (\operatorname{sgn}\tau)^2 = 1$$, so
+   $$\tau^2$$ is always even. But $$[1, 2]$$ is a single swap, which is odd
+   (:ref{#permutation-sign}). So $$\tau^2$$ can never be $$[1, 2]$$.
+
+:::
+
+::::
+
+::::exercise{#ex-mappings-ch-order-two}
+
+Find how many permutations of $$\{1, 2, 3, 4\}$$ have order $$2$$.
+
+:::solution
+
+By :ref{#permutation-order}, $$\sigma$$ has order $$2$$ exactly when the least common multiple of
+its cycle lengths is $$2$$: every cycle has length $$1$$ or $$2$$, and at least one has length
+$$2$$. With four numbers that leaves two shapes.
+
+- **One swap and two fixed numbers**: choose the pair to swap. The pairs are $$\{1, 2\}$$,
+  $$\{1, 3\}$$, $$\{1, 4\}$$, $$\{2, 3\}$$, $$\{2, 4\}$$ and $$\{3, 4\}$$, so $$6$$ ways.
+- **Two swaps**: $$1$$ is swapped with one of $$2$$, $$3$$ or $$4$$, and the other two numbers are
+  swapped with each other, so $$3$$ ways: $$[1, 2][3, 4]$$, $$[1, 3][2, 4]$$ and $$[1, 4][2, 3]$$.
+
+So $$6 + 3 = 9$$ permutations have order $$2$$, out of $$4! = 24$$ (:ref{#permutation-count}).
+
+:::
+
+::::
+
+::::exercise{#ex-mappings-ch-reverse}
+
+Reversing a row of $$n$$ cards is the permutation $$\rho(i) = n + 1 - i$$ of $$\{1, \ldots, n\}$$.
+
+1. Write $$\rho$$ as a product of cycles when $$n = 7$$ and when $$n = 8$$, and find its order.
+2. Find the sign of $$\rho$$ for $$n = 7$$ and $$n = 8$$. Then find the $$n$$ from $$1$$ to $$10$$
+   for which reversing a row is an even permutation.
+
+:::solution
+
+1. For $$n = 7$$: $$\rho = [1, 7][2, 6][3, 5]$$, with $$4$$ fixed in the middle. For $$n = 8$$:
+   $$\rho = [1, 8][2, 7][3, 6][4, 5]$$. In both cases every cycle has length $$1$$ or $$2$$, so
+   $$\rho^2 = I$$ and the order is $$2$$ (:ref{#permutation-order}): reversing twice puts the row
+   back.
+2. Each swap has sign $$-1$$, so by :ref{#sign-product} the sign is $$(-1)$$ to the number of swaps.
+   A row of $$n$$ cards has $$\lfloor \frac{n}{2} \rfloor$$ pairs to swap, using the floor of
+   :ref{#functions/floor}. For $$n = 7$$ that is $$3$$, sign $$-1$$; for $$n = 8$$ it is $$4$$, sign
+   $$+1$$. Going through $$n = 1$$ to $$10$$, the number of swaps is
+   $$0, 1, 1, 2, 2, 3, 3, 4, 4, 5$$, so reversal is even for $$n = 1, 4, 5, 8, 9$$ and odd for
+   $$n = 2, 3, 6, 7, 10$$.
+
+:::
+
+::::
+
+::::exercise{#ex-mappings-ch-pigeon-powers}
+
+Let $$\sigma$$ be any permutation of $$\{1, \ldots, n\}$$. Without using cycles, prove that
+$$\sigma^m = I$$ for some $$m$$ with $$1 \le m \le n!$$.
+
+:::solution
+
+Look at the $$n! + 1$$ powers $$\sigma^0, \sigma^1, \ldots, \sigma^{n!}$$. Each is a permutation
+(:ref{#permutations-composite}), and there are only $$n!$$ permutations (:ref{#permutation-count}).
+So the mapping $$k \mapsto \sigma^k$$ from $$\{0, 1, \ldots, n!\}$$, a set with $$n! + 1$$ elements,
+to the permutations is not one to one, by :ref{#pigeonhole}. That gives $$\sigma^a = \sigma^b$$ for
+some $$0 \le a < b \le n!$$.
+
+Now compose both sides with $$\sigma^{-a}$$, which exists because $$\sigma$$ has an inverse
+(:ref{#permutation-inverse}). By :ref{#powers-add-integers},
+
+```math
+I = \sigma^{a - a} = \sigma^{-a} \circ \sigma^a = \sigma^{-a} \circ \sigma^b = \sigma^{b - a}
+```
+
+So $$m = b - a$$ works, and $$1 \le m \le n!$$. The cycles give a sharper answer, the least common
+multiple of the cycle lengths, but this argument needs nothing about cycles.
+
+:::
+
+::::
