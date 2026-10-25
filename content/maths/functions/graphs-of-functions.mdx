@@ -1,0 +1,485 @@
+---
+title: Graphs of functions
+description:
+  The graph of a function as the points (x, f(x)), reading values, domains and ranges off it, the
+  vertical line test, sketching from values and signs, a gallery of graphs, and where a function
+  rises and falls.
+---
+
+Open the weather app on your phone and look at today's forecast. A line rises through the morning,
+peaks in the afternoon and sinks again towards midnight. To find the temperature at 3 pm, you go
+along the bottom to 3 pm, up to the line, and across to the scale: $$18°$$. Above each time there is
+exactly one point of the line, so the line gives one temperature for each time.
+
+<WeatherForecast caption="A day's temperature forecast. Going up from 3 pm to the line and across to the scale reads off 18°." />
+
+That line is a picture of a function, the temperature at each time, and it is called the **graph**
+of the function. In this guide we'll draw graphs of functions, find a test that tells a graph of a
+function from any other curve, and read off where a function rises and where it falls.
+
+## The graph of a function
+
+A function sends each input $$x$$ to one value $$f(x)$$ (:ref{#function}). Plot the pair as a point,
+with the input across and the value up, and do this for every input. Take $$f(x) = x^2 - 2x$$ on the
+numbers from $$-1$$ to $$3$$. Some of its values are $$f(-1) = 3$$, $$f(0) = 0$$, $$f(1) = -1$$,
+$$f(2) = 0$$ and $$f(3) = 3$$, which give the points $$(-1, 3)$$, $$(0, 0)$$, $$(1, -1)$$,
+$$(2, 0)$$ and $$(3, 3)$$. The points for all the other inputs fill in a U-shaped curve through
+them.
+
+:::definition[Graph of a function]{#function-graph}
+
+The **graph** of a function $$f$$ with domain $$S$$ is the set of all points $$(x, f(x))$$ with
+$$x$$ in $$S$$.
+
+:::
+
+So a point $$(a, b)$$ is on the graph exactly when $$a$$ is in the domain and $$b = f(a)$$. That is
+the graph of the equation $$y = f(x)$$ (:ref{#linear-equations/graph}), with $$x$$ kept to the
+domain. For example, $$(2.5, 1.25)$$ is on the graph of $$f(x) = x^2 - 2x$$, since
+$$2.5^2 - 2 \cdot 2.5 = 6.25 - 5 = 1.25$$, and $$(2, 1)$$ is not, since $$f(2) = 0$$.
+
+A graph can be read in both directions:
+
+- **Reading a value**: to find $$f(a)$$, go from $$a$$ on the $$x$$-axis up or down to the graph,
+  and then across to the $$y$$-axis
+- **The domain** is the shadow of the graph on the $$x$$-axis: the first coordinates of its points
+- **The range** is the shadow on the $$y$$-axis: the second coordinates of its points, which are the
+  values $$f(x)$$ (:ref{#range})
+
+<GraphShadows caption="The graph of f(x) = x² − 2x on [−1, 3]. Its shadow on the x-axis is the domain [−1, 3], and its shadow on the y-axis is the range [−1, 3]. The dashed lines read off f(2.5) = 1.25." />
+
+The shadow on the $$y$$-axis in the picture runs from $$-1$$ to $$3$$, and the algebra agrees.
+Completing the square (:ref{#quadratics/complete-square}) gives $$x^2 - 2x = (x - 1)^2 - 1$$. For
+$$x$$ in $$[-1, 3]$$, the number $$x - 1$$ lies in $$[-2, 2]$$, so $$(x - 1)^2$$ runs over
+$$[0, 4]$$ and $$f(x)$$ over $$[-1, 3]$$.
+
+## The vertical line test
+
+A vertical line $$x = a$$ is made of all the points with first coordinate $$a$$. A graph has at most
+one point with each first coordinate, namely $$(a, f(a))$$ when $$a$$ is in the domain. So a
+vertical line can meet a graph of a function at most once. And that property is enough: any set of
+points with it is the graph of some function.
+
+:::theorem[The vertical line test]{#vertical-line-test}
+
+A set $$C$$ of points in the plane is the graph of a function exactly when every vertical line meets
+$$C$$ in at most one point. The domain of that function is then the set of first coordinates of the
+points of $$C$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Vertical_line_test"}
+
+This is an "exactly when" statement, so there are two directions to prove.
+
+**A graph passes the test.** Let $$C$$ be the graph of a function $$f$$ with domain $$S$$, and let
+$$(a, b)$$ and $$(a, b')$$ be two points of $$C$$ on the line $$x = a$$. By :ref{#function-graph},
+$$a$$ is in $$S$$, $$b = f(a)$$ and $$b' = f(a)$$. So $$b = b'$$, and the two points are the same
+point.
+
+**A set that passes the test is a graph.** Suppose every vertical line meets $$C$$ in at most one
+point. Let $$S$$ be the set of numbers $$a$$ that are the first coordinate of some point of $$C$$.
+For each $$a$$ in $$S$$, the line $$x = a$$ meets $$C$$ in at least one point, and so in exactly
+one, $$(a, b)$$. Let $$f(a) = b$$. This gives each element of $$S$$ exactly one number, so $$f$$ is
+a function with domain $$S$$ (:ref{#function}).
+
+Now compare $$C$$ with the graph of $$f$$. Each point $$(a, b)$$ of $$C$$ has $$a$$ in $$S$$, and it
+is the one point of $$C$$ on the line $$x = a$$, so $$b = f(a)$$ and the point is on the graph. Each
+point $$(a, f(a))$$ of the graph is in $$C$$, by the way $$f(a)$$ was chosen. So the two sets have
+the same elements, and $$C$$ is the graph of $$f$$ (:ref{#basic-proofs/set}).
+
+:::
+
+The circle $$x^2 + y^2 = 9$$ fails the test. The line $$x = 2$$ meets it at $$(2, \sqrt5)$$ and
+$$(2, -\sqrt5)$$, since $$4 + 5 = 9$$ (:ref{#coordinates/circle-equation}). So no function has the
+whole circle as its graph. Its top half passes, though.
+
+A point $$(x, y)$$ with $$y \ge 0$$ is on the circle exactly when $$y^2 = 9 - x^2$$. A number
+$$y \ge 0$$ with that square exists exactly when $$9 - x^2 \ge 0$$, and then it is
+$$y = \sqrt{9 - x^2}$$ (:ref{#real-numbers/square-root}). So the top half is the graph of
+$$f(x) = \sqrt{9 - x^2}$$, whose domain is the $$x$$ with $$x^2 \le 9$$, that is, $$[-3, 3]$$. In
+the same way, the top half of the circle with centre $$O$$ and radius $$r$$ is the graph of
+$$\sqrt{r^2 - x^2}$$.
+
+<CircleHalves caption="The line x = 2 meets the whole circle x² + y² = 9 twice, so the circle is not the graph of a function. It meets the top half once, and the top half is the graph of y = √(9 − x²)." />
+
+The parabola $$x = y^2$$, lying on its side, fails too: the line $$x = 4$$ meets it at $$(4, 2)$$
+and $$(4, -2)$$. Pick a curve below and slide the vertical line across it. For the circle and the
+sideways parabola you can find a line that meets the curve twice. For the other three, every line
+meets the curve at most once, so each of them is the graph of a function.
+
+<VerticalLineTest />
+
+## Sketching a graph from values and signs
+
+A table of values gives some points of a graph, and joining them up gives a sketch. Take
+$$f(x) = (x + 2)(x - 3)$$:
+
+| $$x$$    | $$-3$$ | $$-2$$ | $$-1$$ | $$0$$  | $$1$$  | $$2$$  | $$3$$ | $$4$$ |
+| -------- | ------ | ------ | ------ | ------ | ------ | ------ | ----- | ----- |
+| $$f(x)$$ | $$6$$  | $$0$$  | $$-4$$ | $$-6$$ | $$-6$$ | $$-4$$ | $$0$$ | $$6$$ |
+
+For example, $$f(-1) = (1)(-4) = -4$$. A table alone can't say what happens between its points: the
+graph could wiggle. The signs of the factors say where the graph is above the axis and where it is
+below, with no gaps.
+
+The graph meets the $$x$$-axis where $$f(x) = 0$$, and a product is $$0$$ exactly when one of its
+factors is (:ref{#numbers/zero-product}). So it meets the axis at $$x = -2$$ and $$x = 3$$, and
+nowhere else. Between those points each factor keeps one sign, and the sign of the product follows
+from :ref{#real-numbers/product-sign}:
+
+|                    | $$x < -2$$ | $$-2 < x < 3$$ | $$x > 3$$ |
+| ------------------ | ---------- | -------------- | --------- |
+| $$x + 2$$          | $$-$$      | $$+$$          | $$+$$     |
+| $$x - 3$$          | $$-$$      | $$-$$          | $$+$$     |
+| $$(x + 2)(x - 3)$$ | $$+$$      | $$-$$          | $$+$$     |
+
+So the graph is above the axis to the left of $$-2$$ and to the right of $$3$$, and below it in
+between. It is a parabola, since $$f(x) = x^2 - x - 6$$ (:ref{#quadratics/parabola}), and its lowest
+point is halfway between the two crossings, at $$x = \frac{1}{2}$$ (:ref{#quadratics/vertex}), where
+$$f(\frac{1}{2}) = (2.5)(-2.5) = -6.25$$.
+
+<SignSketch caption="The graph of f(x) = (x + 2)(x − 3) through its table of values. It is above the x-axis where the axis is banded green, and below it where the axis is orange. Each step of 1 up is drawn half as long as a step across, so that the values from −7 to 7 fit." />
+
+## A gallery of graphs
+
+Some functions come up again and again, and their graphs are worth knowing on sight.
+
+**The absolute value.** By :ref{#real-numbers/absolute-value}, $$|x| = x$$ for $$x \ge 0$$ and
+$$|x| = -x$$ for $$x < 0$$. So the right half of the graph of $$|x|$$ is the line $$y = x$$, and the
+left half is the line $$y = -x$$, which meet in a corner at the origin. The range is
+$$[0, \infty)$$.
+
+<AbsoluteValueGraph caption="The graph of y = |x|: the line y = x to the right of the origin and the line y = −x to the left, meeting in a V." />
+
+**One over x.** The function $$\frac{1}{x}$$ has domain every number except $$0$$
+(:ref{#formula-domain}). Its values are big near $$0$$ and small far out: $$\frac{1}{0.5} = 2$$,
+$$\frac{1}{2} = 0.5$$ and $$\frac{1}{4} = 0.25$$. The graph never meets the $$y$$-axis, since $$0$$
+is not in the domain. It never meets the $$x$$-axis either, because $$x \cdot \frac{1}{x} = 1$$, so
+$$\frac{1}{x}$$ is never $$0$$ (:ref{#numbers/zero-times}).
+
+A point $$(x, y)$$ is on the graph exactly when $$xy = 1$$, so the graph of $$\frac{1}{x}$$ is the
+hyperbola $$xy = 1$$. By :ref{#parabolas-ellipses-and-hyperbolas/hyperbola-turn}, that hyperbola is
+$$x^2 - y^2 = 2$$ turned by $$\frac{\pi}{4}$$. The asymptotes of $$x^2 - y^2 = 2$$ are the lines
+$$y = x$$ and $$y = -x$$ (:ref{#parabolas-ellipses-and-hyperbolas/hyperbola-asymptotes}), and the
+turn carries them onto the two axes. That is why the graph of $$\frac{1}{x}$$ hugs both axes.
+
+**One over x squared.** The function $$\frac{1}{x^2}$$ also has domain every number except $$0$$,
+but its values are all positive, since $$x^2 > 0$$ for $$x \ne 0$$
+(:ref{#real-numbers/squares-positive}). It gives the same value at $$x$$ and $$-x$$, such as
+$$\frac{1}{2^2} = \frac{1}{(-2)^2} = \frac{1}{4}$$, so its graph is its own mirror image in the
+$$y$$-axis.
+
+<ReciprocalGraphs caption="The graph of y = 1/x (blue), in two pieces that hug both axes, and the graph of y = 1/x² (purple), both pieces above the x-axis, each the mirror image of the other." />
+
+**The floor.** A person's age in whole years rounds their exact age down to a whole number. So does
+the number of full boxes of six you can fill from a pile of eggs. The function behind both rounds
+any number down.
+
+:::definition[Floor]{#floor}
+
+For each number $$x$$, the **floor** $$\lfloor x \rfloor$$ is the largest integer that is less than
+or equal to $$x$$. It is read "the floor of $$x$$".
+
+:::
+
+So $$\lfloor 2.7 \rfloor = 2$$ and $$\lfloor 5 \rfloor = 5$$. For negative numbers, rounding down
+moves away from $$0$$: $$\lfloor -0.5 \rfloor = -1$$, not $$0$$, and $$\lfloor -3.2 \rfloor = -4$$.
+
+:::remark[Every number has a floor]{#graphs-floor-exists}
+
+By part 2 of :ref{#real-numbers/no-gaps}, each number $$x$$ lies between two integers next to each
+other: there is an integer $$n$$ with $$n \le x < n + 1$$. That $$n$$ is the largest integer
+$$\le x$$. Any integer $$m \le x$$ has $$m < n + 1$$, so $$m - n$$ is an integer less than $$1$$,
+which makes $$m - n \le 0$$ and $$m \le n$$. So $$\lfloor x \rfloor = n$$, and the floor is a
+function on all numbers.
+
+::see-also{src="https://en.wikipedia.org/wiki/Floor_and_ceiling_functions"}
+
+:::
+
+The remark also says how to recognise the floor: if $$n$$ is an integer with $$n \le x < n + 1$$,
+then $$\lfloor x \rfloor = n$$. So for every $$x$$ in $$[n, n + 1)$$ the floor is $$n$$, and the
+graph is a staircase. Each step includes its left end and leaves out its right end, where the graph
+jumps up to the next step.
+
+<FloorStaircase caption="The graph of y = ⌊x⌋. Each step is filled at its left end, which is on the graph, and hollow at its right end, which is not." />
+
+A car park that charges £$$2$$ for every hour or part of an hour rounds up instead. Rounding up is
+rounding down with the signs flipped, so for $$t$$ hours, with $$t > 0$$, the number of started
+hours is $$-\lfloor -t \rfloor$$. For $$2.5$$ hours, $$\lfloor -2.5 \rfloor = -3$$, so you pay for
+$$3$$ hours, £$$6$$. For exactly $$3$$ hours, $$\lfloor -3 \rfloor = -3$$, and you pay £$$6$$ too.
+
+## Rising and falling
+
+Read a graph from left to right, as you read a line of text. Where it climbs, larger inputs give
+larger values, and where it drops, larger inputs give smaller values. The weather forecast drops
+until 3 am, climbs from 3 am to 3 pm, and drops after that.
+
+:::definition[Increasing and decreasing]{#increasing}
+
+Let $$f$$ be a function, and $$A$$ a set of numbers in its domain, such as an interval.
+
+- $$f$$ is **increasing** on $$A$$ when, for all $$x$$ and $$y$$ in $$A$$ with $$x < y$$,
+  $$f(x) < f(y)$$
+- $$f$$ is **decreasing** on $$A$$ when, for all $$x$$ and $$y$$ in $$A$$ with $$x < y$$,
+  $$f(x) > f(y)$$
+
+When $$A$$ is the whole domain, we say that $$f$$ is increasing, or decreasing.
+
+:::
+
+For example, $$f(x) = 2x + 1$$ is increasing. If $$x < y$$, then $$2x < 2y$$, by rule 4 of
+:ref{#real-numbers/inequality-rules}, and then $$2x + 1 < 2y + 1$$, by rule 3. In the same way,
+$$x \mapsto -3x + 5$$ is decreasing, because multiplying $$x < y$$ by $$-3$$ turns it round (rule
+5).
+
+An increasing function climbs the whole time, so it can never come back to a height it has been at.
+That makes it one to one, which the logarithms guide relies on.
+
+:::proposition[Increasing functions are one to one]{#graphs-increasing-one-to-one}
+
+A function that is increasing, or decreasing, on its whole domain is one to one (:ref{#one-to-one}).
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Monotonic_function#Inverse_of_function"}
+
+Let $$f$$ be increasing, and let $$x$$ and $$x'$$ be two different numbers in its domain. By rule 1
+of :ref{#real-numbers/inequality-rules}, $$x < x'$$ or $$x' < x$$. If $$x < x'$$, then
+$$f(x) < f(x')$$, and if $$x' < x$$, then $$f(x') < f(x)$$. Either way $$f(x) \ne f(x')$$. So two
+different inputs never give the same value, and $$f$$ is one to one. For a decreasing $$f$$ the same
+argument works with the inequalities between the values turned round.
+
+:::
+
+It doesn't work the other way round: a one-to-one function need not be increasing or decreasing. The
+exercises show that $$\frac{1}{x}$$ is one to one but neither.
+
+:::example[x³ is increasing]
+
+Let $$x < y$$. We show $$x^3 < y^3$$ in three cases.
+
+- **Both at least 0.** If $$0 \le x < y$$, then $$x^3 < y^3$$ by :ref{#real-numbers/power-order}.
+- **Both at most 0.** If $$x < y \le 0$$, then multiplying by $$-1$$ turns both inequalities round,
+  by rule 5 of :ref{#real-numbers/inequality-rules}, so $$0 \le -y < -x$$. So $$(-y)^3 < (-x)^3$$ by
+  :ref{#real-numbers/power-order}, which is $$-y^3 < -x^3$$, and multiplying by $$-1$$ gives
+  $$x^3 < y^3$$.
+- **One on each side.** If $$x < 0 < y$$, then $$x^3 = -(-x)^3$$ is negative and $$y^3$$ is
+  positive, so $$x^3 < y^3$$.
+
+If $$x \ge 0$$ the first case applies, and if $$y \le 0$$ the second does. Otherwise $$x < 0 < y$$.
+So every pair is covered, and $$x \mapsto x^3$$ is increasing on all numbers.
+
+:::
+
+Squaring is different. For $$0 \le x < y$$, :ref{#real-numbers/power-order} gives $$x^2 < y^2$$, so
+$$x^2$$ is increasing on $$[0, \infty)$$. For $$x < y \le 0$$, the same steps as for the cube give
+$$y^2 < x^2$$, so $$x^2$$ is decreasing on $$(-\infty, 0]$$. On all numbers it is neither:
+$$-1 < 1$$ but $$(-1)^2 = 1^2$$. This is the picture behind
+[Undoing a function](./what-is-a-function.mdx#undoing-a-function): on $$[0, \infty)$$ squaring
+climbs the whole time, so it is one to one there and has the square root as its inverse.
+
+<RisingFalling caption="The graph of y = x² falls from left to right until the origin, then rises. The graph of y = x³ rises the whole way." />
+
+## Exercises
+
+:::::accordion[Exercises on graphs of functions, with solutions]
+
+::::exercise{#ex-graphs-of-functions-points}
+
+Here are four points: $$(-1, 4)$$, $$(2, 1)$$, $$(2, 5)$$ and $$(3, 0)$$.
+
+1. Explain why these four points are not the graph of a function.
+2. Remove one point so that the other three are the graph of a function, and give that function's
+   domain and range.
+
+:::solution
+
+1. The line $$x = 2$$ meets the set at two points, $$(2, 1)$$ and $$(2, 5)$$, so by
+   :ref{#vertical-line-test} the set is not a graph of a function.
+2. Remove $$(2, 5)$$ (removing $$(2, 1)$$ works as well). The three points left are on different
+   vertical lines, so they are the graph of the function $$f$$ with $$f(-1) = 4$$, $$f(2) = 1$$ and
+   $$f(3) = 0$$. Its domain is $$\{-1, 2, 3\}$$, the first coordinates, and its range is
+   $$\{4, 1, 0\}$$, the second coordinates.
+
+:::
+
+::::
+
+::::exercise{#ex-graphs-of-functions-on-graph}
+
+Let $$f(x) = x^2 - 2x + 2$$.
+
+1. Decide whether each of the points $$(3, 5)$$ and $$(-1, 4)$$ is on the graph of $$f$$.
+2. Find where the graph meets the $$y$$-axis.
+3. Show that the graph never meets the $$x$$-axis.
+
+:::solution
+
+1. $$f(3) = 9 - 6 + 2 = 5$$, so $$(3, 5)$$ is on the graph (:ref{#function-graph}).
+   $$f(-1) = 1 + 2 + 2 = 5$$, which is not $$4$$, so $$(-1, 4)$$ is not.
+2. On the $$y$$-axis $$x = 0$$, and $$f(0) = 2$$, so the graph meets it at $$(0, 2)$$.
+3. Completing the square, $$x^2 - 2x + 2 = (x - 1)^2 + 1$$. A square is never negative
+   (:ref{#real-numbers/squares-positive}), so $$f(x) \ge 1$$ for every $$x$$. The value is never
+   $$0$$, so the graph never meets the $$x$$-axis.
+
+:::
+
+::::
+
+::::exercise{#ex-graphs-of-functions-signs}
+
+Make a sign table for $$f(x) = x(x - 2)(x + 3)$$, and say where its graph is above the $$x$$-axis
+and where it is below. Check one value in each piece.
+
+:::solution
+
+The factors are $$0$$ at $$x = 0$$, $$2$$ and $$-3$$, so the graph meets the $$x$$-axis at those
+three points and nowhere else (:ref{#numbers/zero-product}). The product of three numbers is
+positive when an even number of them are negative, and negative when an odd number are
+(:ref{#real-numbers/product-sign}, used twice).
+
+|           | $$x < -3$$ | $$-3 < x < 0$$ | $$0 < x < 2$$ | $$x > 2$$ |
+| --------- | ---------- | -------------- | ------------- | --------- |
+| $$x$$     | $$-$$      | $$-$$          | $$+$$         | $$+$$     |
+| $$x - 2$$ | $$-$$      | $$-$$          | $$-$$         | $$+$$     |
+| $$x + 3$$ | $$-$$      | $$+$$          | $$+$$         | $$+$$     |
+| $$f(x)$$  | $$-$$      | $$+$$          | $$-$$         | $$+$$     |
+
+So the graph is below the axis for $$x < -3$$ and for $$0 < x < 2$$, and above it for $$-3 < x < 0$$
+and for $$x > 2$$. Checks: $$f(-4) = (-4)(-6)(-1) = -24$$, $$f(-1) = (-1)(-3)(2) = 6$$,
+$$f(1) = (1)(-1)(4) = -4$$ and $$f(3) = (3)(1)(6) = 18$$.
+
+:::
+
+::::
+
+::::exercise{#ex-graphs-of-functions-which-graphs}
+
+Use the vertical line test to decide which of these are graphs of functions. For each one that is,
+give a formula for the function.
+
+1. The graph of $$y^2 = x + 1$$
+2. The bottom half of the circle $$x^2 + y^2 = 16$$, the points of it with $$y \le 0$$
+3. The graph of $$y = |x - 1|$$
+4. The vertical line $$x = 2$$
+
+:::solution
+
+1. Not a graph of a function: the line $$x = 3$$ meets it at $$(3, 2)$$ and $$(3, -2)$$, since
+   $$4 = 3 + 1$$.
+2. A graph of a function. A point $$(x, y)$$ with $$y \le 0$$ is on the circle exactly when
+   $$y^2 = 16 - x^2$$, which happens exactly when $$-y = \sqrt{16 - x^2}$$, since $$-y \ge 0$$
+   (:ref{#real-numbers/square-root}). So it is the graph of $$f(x) = -\sqrt{16 - x^2}$$, with domain
+   $$[-4, 4]$$.
+3. A graph of a function, $$f(x) = |x - 1|$$. Each line $$x = a$$ meets it only at $$(a, |a - 1|)$$.
+4. Not a graph of a function: the line $$x = 2$$ meets it at every one of its points, such as
+   $$(2, 0)$$ and $$(2, 1)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-graphs-of-functions-floor}
+
+1. Find $$\lfloor 3.9 \rfloor$$, $$\lfloor -3.9 \rfloor$$, $$\lfloor -7 \rfloor$$ and
+   $$\lfloor \pi \rfloor$$.
+2. Find every $$x$$ with $$\lfloor x \rfloor = 2$$.
+3. Prove that $$\lfloor x + 1 \rfloor = \lfloor x \rfloor + 1$$ for every number $$x$$.
+
+:::solution
+
+1. $$\lfloor 3.9 \rfloor = 3$$, $$\lfloor -3.9 \rfloor = -4$$, $$\lfloor -7 \rfloor = -7$$ and
+   $$\lfloor \pi \rfloor = 3$$, since $$3 \le \pi < 4$$.
+2. By :ref{#graphs-floor-exists}, $$\lfloor x \rfloor = 2$$ exactly when $$2 \le x < 3$$. So the
+   answer is the interval $$[2, 3)$$: the step at height $$2$$ in the staircase.
+3. Let $$n = \lfloor x \rfloor$$, so $$n \le x < n + 1$$. Adding $$1$$ throughout gives
+   $$n + 1 \le x + 1 < (n + 1) + 1$$. Since $$n + 1$$ is an integer, :ref{#graphs-floor-exists}
+   gives $$\lfloor x + 1 \rfloor = n + 1 = \lfloor x \rfloor + 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-graphs-of-functions-reciprocal}
+
+Prove that $$\frac{1}{x}$$ is decreasing on $$(0, \infty)$$ and on $$(-\infty, 0)$$, but not on its
+whole domain. Then show that it is one to one all the same.
+
+:::solution
+
+**On the positive numbers.** If $$0 < x < y$$, then $$\frac{1}{y} < \frac{1}{x}$$ by
+:ref{#real-numbers/reciprocal-order}. So $$\frac{1}{x}$$ is decreasing on $$(0, \infty)$$.
+
+**On the negative numbers.** If $$x < y < 0$$, then $$0 < -y < -x$$, so
+$$\frac{1}{-x} < \frac{1}{-y}$$ by :ref{#real-numbers/reciprocal-order}. That is
+$$-\frac{1}{x} < -\frac{1}{y}$$, and multiplying by $$-1$$ gives $$\frac{1}{y} < \frac{1}{x}$$.
+
+**Not on the whole domain.** $$-1 < 1$$, but $$\frac{1}{-1} = -1$$ is less than $$\frac{1}{1} = 1$$,
+so the values do not go down.
+
+**One to one.** If $$\frac{1}{x} = \frac{1}{y}$$, multiply both sides by $$xy$$, which is not $$0$$,
+to get $$y = x$$. So $$\frac{1}{x}$$ is one to one although it is not decreasing on its whole
+domain: :ref{#graphs-increasing-one-to-one} doesn't work the other way round.
+
+:::
+
+::::
+
+::::exercise{#ex-graphs-of-functions-root}
+
+Let $$f(x) = \sqrt{x - 1} + 2$$.
+
+1. Find the domain of $$f$$, and show that $$f$$ is increasing on it.
+2. Find the range of $$f$$ and a formula for $$f^{-1}$$. Check it at $$f(5)$$.
+
+:::solution
+
+1. The square root needs $$x - 1 \ge 0$$, so the domain is $$[1, \infty)$$. If $$1 \le x < y$$, then
+   $$0 \le x - 1 < y - 1$$, so $$\sqrt{x - 1} < \sqrt{y - 1}$$ (:ref{#real-numbers/root-order}), and
+   adding $$2$$ gives $$f(x) < f(y)$$.
+2. Every value is at least $$2$$, since a square root is never negative. For $$y \ge 2$$, solve
+   $$y = \sqrt{x - 1} + 2$$:
+
+   ```math
+   \begin{aligned}
+   y - 2 &= \sqrt{x - 1} && \text{take 2 from both sides} \\
+   (y - 2)^2 &= x - 1 && \text{square both sides} \\
+   (y - 2)^2 + 1 &= x && \text{add 1 to both sides}
+   \end{aligned}
+   ```
+
+   Going back up, $$x = (y - 2)^2 + 1$$ is in the domain and $$f(x) = |y - 2| + 2 = y$$, since
+   $$y - 2 \ge 0$$. So the range is $$[2, \infty)$$, and $$f^{-1}(y) = (y - 2)^2 + 1$$ for
+   $$y \ge 2$$ (:ref{#inverse-function}). Check: $$f(5) = \sqrt4 + 2 = 4$$, and
+   $$f^{-1}(4) = 2^2 + 1 = 5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-graphs-of-functions-sawtooth}
+
+Let $$s(x) = x - \lfloor x \rfloor$$, the part of $$x$$ after the whole number below it.
+
+1. Find $$s(2.3)$$, $$s(5)$$ and $$s(-0.25)$$.
+2. Show that $$0 \le s(x) < 1$$ for every $$x$$.
+3. Show that $$s(x + 1) = s(x)$$, and describe the graph of $$s$$.
+
+:::solution
+
+1. $$s(2.3) = 2.3 - 2 = 0.3$$, $$s(5) = 5 - 5 = 0$$ and $$s(-0.25) = -0.25 - (-1) = 0.75$$.
+2. With $$n = \lfloor x \rfloor$$, $$n \le x < n + 1$$ (:ref{#graphs-floor-exists}). Taking $$n$$
+   from each part gives $$0 \le x - n < 1$$.
+3. By the last part of the exercise on the floor, $$\lfloor x + 1 \rfloor = \lfloor x \rfloor + 1$$,
+   so $$s(x + 1) = (x + 1) - (\lfloor x \rfloor + 1) = s(x)$$. On $$[0, 1)$$ the floor is $$0$$, so
+   $$s(x) = x$$: a slanting line from $$(0, 0)$$ up towards $$(1, 1)$$, with $$(1, 1)$$ left out.
+   Since $$s(x + 1) = s(x)$$, the same piece repeats on every interval $$[n, n + 1)$$, giving a row
+   of saw teeth.
+
+:::
+
+::::
+
+:::::

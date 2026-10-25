@@ -186,6 +186,45 @@ import { DegenerateCases } from "./conic-illustrations/general-equation";
 import { TurnedEllipse } from "./conic-illustrations/general-equation";
 import { TurnedHyperbola } from "./conic-illustrations/general-equation";
 import { TurnedParabola } from "./conic-illustrations/general-equation";
+import { RumourDoubling } from "./function-illustrations/logarithms";
+import { EveryHeight } from "./function-illustrations/logarithms";
+import { LogMirror } from "./function-illustrations/logarithms";
+import { TeaCooling } from "./function-illustrations/the-number-e";
+import { CarbonHalving } from "./function-illustrations/the-number-e";
+import { LogChecker } from "./interactive/log-checker";
+import { CompoundDial } from "./interactive/compound-dial";
+import { FunctionMachine } from "./interactive/function-machine";
+import { VerticalLineTest } from "./interactive/vertical-line-test";
+import { VendingMachine } from "./function-illustrations/what-is-a-function";
+import { ArrowDiagrams } from "./function-illustrations/what-is-a-function";
+import { InverseArrows } from "./function-illustrations/what-is-a-function";
+import { WeatherForecast } from "./function-illustrations/graphs-of-functions";
+import { GraphShadows } from "./function-illustrations/graphs-of-functions";
+import { CircleHalves } from "./function-illustrations/graphs-of-functions";
+import { SignSketch } from "./function-illustrations/graphs-of-functions";
+import { AbsoluteValueGraph } from "./function-illustrations/graphs-of-functions";
+import { ReciprocalGraphs } from "./function-illustrations/graphs-of-functions";
+import { FloorStaircase } from "./function-illustrations/graphs-of-functions";
+import { RisingFalling } from "./function-illustrations/graphs-of-functions";
+import { LakeReflection } from "./function-illustrations/moving-and-mirroring";
+import { SlidV } from "./function-illustrations/moving-and-mirroring";
+import { StretchedRoot } from "./function-illustrations/moving-and-mirroring";
+import { EvenOddGraphs } from "./function-illustrations/moving-and-mirroring";
+import { InverseMirror } from "./function-illustrations/moving-and-mirroring";
+import { CardBox } from "./function-illustrations/polynomials";
+import { BoxVolume } from "./function-illustrations/polynomials";
+import { FunctionMover } from "./interactive/function-mover";
+import { PolynomialRoots } from "./interactive/polynomial-roots";
+import { SharingSweets } from "./function-illustrations/dividing-polynomials";
+import { RationalNearLine } from "./function-illustrations/dividing-polynomials";
+import { LineWithHole } from "./function-illustrations/dividing-polynomials";
+import { PaperFolds } from "./function-illustrations/exponential-functions";
+import { PowersOfTwoDots } from "./function-illustrations/exponential-functions";
+import { DoubleAndHalve } from "./function-illustrations/exponential-functions";
+import { ThreeBases } from "./function-illustrations/exponential-functions";
+import { BacteriaDoubling } from "./function-illustrations/exponential-functions";
+import { LongDivision } from "./interactive/long-division";
+import { ExponentialBase } from "./interactive/exponential-base";
 import {
   Conjecture,
   Corollary,
@@ -321,6 +360,45 @@ export const mdxComponents = {
   HalfTurnPair,
   MoveExplorer,
   SpriteFrames,
+  ExponentialBase,
+  LongDivision,
+  BacteriaDoubling,
+  ThreeBases,
+  DoubleAndHalve,
+  PowersOfTwoDots,
+  PaperFolds,
+  LineWithHole,
+  RationalNearLine,
+  SharingSweets,
+  PolynomialRoots,
+  FunctionMover,
+  BoxVolume,
+  CardBox,
+  InverseMirror,
+  EvenOddGraphs,
+  StretchedRoot,
+  SlidV,
+  LakeReflection,
+  RisingFalling,
+  FloorStaircase,
+  ReciprocalGraphs,
+  AbsoluteValueGraph,
+  SignSketch,
+  CircleHalves,
+  GraphShadows,
+  WeatherForecast,
+  InverseArrows,
+  ArrowDiagrams,
+  VendingMachine,
+  VerticalLineTest,
+  FunctionMachine,
+  CompoundDial,
+  LogChecker,
+  CarbonHalving,
+  TeaCooling,
+  LogMirror,
+  EveryHeight,
+  RumourDoubling,
   TurnedParabola,
   TurnedHyperbola,
   TurnedEllipse,

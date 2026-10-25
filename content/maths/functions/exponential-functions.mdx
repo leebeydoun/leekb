@@ -1,0 +1,543 @@
+---
+title: Exponential functions
+description:
+  Powers of a number for every exponent, the rules they follow, the graphs of exponential functions
+  for bases above and below 1, and growth and decay by the same factor at every step.
+---
+
+Imagine folding a sheet of paper in half, then in half again, and again. Each fold lays the sheet on
+top of itself, so the stack doubles: $$2$$ layers, then $$4$$, $$8$$ and $$16$$. Paper is about
+$$0.1$$ mm thick, so after $$10$$ folds the stack would be $$2^{10} = 1024$$ layers, about $$10$$ cm
+tall. Nobody can fold real paper that often, but if you could, $$42$$ folds would make a stack
+$$0.1 \cdot 2^{42}$$ mm thick, about $$440{,}000$$ km, further than the Moon.
+
+What you notice is that each fold multiplies the thickness by the same factor, $$2$$, and the number
+of folds sits in the exponent. Change like that is called **exponential**. In this guide we'll give
+a meaning to $$2^x$$ for every number $$x$$, not only whole numbers of folds, draw the graphs of
+these functions, and use them to describe things that grow or shrink by the same factor at every
+step.
+
+<PaperFolds caption="A sheet of paper after 0, 1, 2, 3 and 4 folds. Each fold doubles the number of layers: 1, 2, 4, 8 and 16." />
+
+## Powers we already have
+
+Some powers of $$2$$ are already defined. For a whole number $$n$$, $$2^n$$ is $$n$$ twos multiplied
+together, and $$2^0 = 1$$ (:ref{#numbers/power}). A negative power is a power of the inverse,
+$$2^{-n} = \left(\frac{1}{2}\right)^n$$ (:ref{#numbers/negative-powers}), so it halves where the
+positive powers double. A fraction $$\frac{m}{n}$$ as the exponent means a root and then a power,
+$$2^{m/n} = \left(\sqrt[n]{2}\right)^m$$ (:ref{#real-numbers/rational-power}).
+
+So for every fraction $$x$$ there is already a number $$2^x$$. Here are some of them:
+
+| $$x$$   | $$-3$$          | $$-2$$          | $$-1$$          | $$-\frac{1}{2}$$ | $$0$$ | $$\frac{1}{2}$$ | $$1$$ | $$\frac{3}{2}$$ | $$2$$ | $$3$$ |
+| ------- | --------------- | --------------- | --------------- | ---------------- | ----- | --------------- | ----- | --------------- | ----- | ----- |
+| $$2^x$$ | $$\frac{1}{8}$$ | $$\frac{1}{4}$$ | $$\frac{1}{2}$$ | $$0.707$$        | $$1$$ | $$1.414$$       | $$2$$ | $$2.828$$       | $$4$$ | $$8$$ |
+
+For example, $$2^{1/2} = \sqrt2 \approx 1.414$$, and
+$$2^{3/2} = (\sqrt2)^3 = 2\sqrt2 \approx 2.828$$. Plotting these points, and the quarters between
+them, gives dots that line up along one smooth curve. It rises more and more steeply to the right,
+and on the left it comes down towards the $$x$$-axis, halving the height with each step of $$1$$,
+without ever reaching it.
+
+<PowersOfTwoDots caption="The points (x, 2ˣ) for x from −3 to 3 in steps of a quarter: blue at whole numbers, orange at halves and purple at quarters. The grid is squashed upwards, with one step up drawn half as long as one step across, so that heights up to 8 fit." />
+
+## Powers for every number
+
+The dots leave gaps at numbers that aren't fractions, such as $$\sqrt2$$. To find $$2^{\sqrt2}$$,
+squeeze $$\sqrt2$$ between fractions. It lies between $$1.4$$ and $$1.5$$, between $$1.41$$ and
+$$1.42$$, between $$1.414$$ and $$1.415$$, and so on, since $$\sqrt2 = 1.41421\ldots$$. The powers
+of $$2$$ at those fractions are all defined, and they close in on one number:
+
+| $$\sqrt2$$ lies between | $$1.4$$ and $$1.5$$    | $$1.41$$ and $$1.42$$  | $$1.414$$ and $$1.415$$ | $$1.4142$$ and $$1.4143$$ |
+| ----------------------- | ---------------------- | ---------------------- | ----------------------- | ------------------------- |
+| powers of $$2$$         | $$2.6390$$, $$2.8284$$ | $$2.6574$$, $$2.6759$$ | $$2.6647$$, $$2.6666$$  | $$2.6651$$, $$2.6653$$    |
+
+Each pair is closer than the last, and they squeeze in on $$2^{\sqrt2} \approx 2.66514$$. Each entry
+is a power at a fraction: $$2^{1.4} = 2^{7/5} = \sqrt[5]{2^7} = \sqrt[5]{128}$$, for instance. That
+squeezing is how $$2^x$$ is defined for every number $$x$$, and how $$a^x$$ is defined for every
+base $$a > 0$$.
+
+Making this airtight needs ideas from a course on analysis: that the squeeze always closes in on
+exactly one number, and that the rules for powers survive it. So we take the result as given, in the
+same way as :ref{#real-numbers/nth-roots-exist}.
+
+:::remark[Rules for exponentials]{#exponential-rules}
+
+For each number $$a > 0$$ there is a function $$x \mapsto a^x$$, defined for every number $$x$$,
+such that for all numbers $$x$$ and $$y$$ and every $$b > 0$$:
+
+1. **Fractions as before:** when $$x$$ is a fraction, $$a^x$$ is the fractional power of
+   :ref{#real-numbers/rational-power}.
+2. **Adding exponents:** $$a^{x + y} = a^x a^y$$.
+3. **Power of a power:** $$\left(a^x\right)^y = a^{xy}$$.
+4. **Power of a product:** $$(ab)^x = a^x b^x$$.
+5. **Order:** if $$a > 1$$ and $$x < y$$, then $$a^x < a^y$$.
+
+These are taken as given. For fractions, rules 2 to 4 are :ref{#real-numbers/rational-power-laws},
+and the squeezing above carries all five over to every number. Proving that it does needs the ideas
+of analysis.
+
+::see-also{src="https://en.wikipedia.org/wiki/Exponentiation#Real_exponents"}
+
+:::
+
+Check rule 2 with $$a = 2$$, $$x = 3$$ and $$y = -1$$: $$2^{3 + (-1)} = 2^2 = 4$$, and
+$$2^3 \cdot 2^{-1} = 8 \cdot \frac{1}{2} = 4$$. Rule 3 needs $$a^x$$ to be a positive number, so
+that it can be a base itself, and :ref{#exponential-positive} below shows it is, using rules 1, 2, 4
+and 5 alone.
+
+## Exponential functions
+
+Fix the base and let the exponent vary. Each number $$x$$ goes in, and the one number $$a^x$$ comes
+out, so this is a function in the sense of :ref{#function}. Its graph is the smooth curve that the
+dots in the picture of $$2^x$$ were lining up along.
+
+:::definition[Exponential function]{#exponential-function}
+
+For a number $$a > 0$$, the **exponential function with base** $$a$$ is the function
+$$x \mapsto a^x$$, defined for every number $$x$$.
+
+:::
+
+For example, the exponential function with base $$3$$ sends $$2$$ to $$9$$, $$-1$$ to
+$$\frac{1}{3}$$ and $$\frac{1}{2}$$ to $$\sqrt3 \approx 1.732$$. Base $$1$$ gives the constant
+function $$1$$, as part 4 of :ref{#exponential-positive} shows. Move the base on the slider below
+and watch what each step of $$1$$ to the right does to the height.
+
+<ExponentialBase />
+
+## Every power is positive
+
+Every point in the dots picture sits above the $$x$$-axis. A power of a positive number never
+reaches $$0$$, because multiplying by $$a^{-x}$$ undoes multiplying by $$a^x$$, and nothing undoes
+multiplying by $$0$$. For a base above $$1$$, the powers at positive exponents are more than $$1$$
+and the powers at negative exponents are less.
+
+:::proposition[Exponentials are positive]{#exponential-positive}
+
+Let $$a > 0$$. For every number $$x$$:
+
+1. $$a^0 = 1$$.
+2. $$a^{-x} = \frac{1}{a^x}$$.
+3. $$a^x > 0$$.
+4. $$1^x = 1$$.
+5. If $$a > 1$$, then $$a^x > 1$$ exactly when $$x > 0$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Power_of_Positive_Real_Number_is_Positive#Real_Number"}
+
+All rule numbers refer to :ref{#exponential-rules}.
+
+**Part 1.** The number $$0$$ is a fraction, so by rule 1, $$a^0$$ is the power of
+:ref{#numbers/power}, which is $$1$$.
+
+**Part 2.** By rule 2 with $$y = -x$$, and part 1,
+
+```math
+a^x \cdot a^{-x} = a^{x + (-x)} = a^0 = 1
+```
+
+So $$a^x$$ is not $$0$$, and dividing both sides by it gives $$a^{-x} = \frac{1}{a^x}$$.
+
+**Part 3.** By rule 2, with both exponents equal to $$\frac{x}{2}$$,
+
+```math
+a^x = a^{\frac{x}{2} + \frac{x}{2}} = a^{x/2} \cdot a^{x/2} = \left(a^{x/2}\right)^2
+```
+
+A square is never negative, so $$a^x \ge 0$$. By part 2, $$a^x \ne 0$$, so $$a^x > 0$$.
+
+**Part 4.** By rule 4 with $$a = b = 1$$, $$1^x = (1 \cdot 1)^x = 1^x \cdot 1^x$$. Dividing both
+sides by $$1^x$$, which is not $$0$$ by part 3, gives $$1 = 1^x$$.
+
+**Part 5.** If $$x > 0$$, then $$0 < x$$, so rule 5 and part 1 give $$1 = a^0 < a^x$$. If $$x = 0$$,
+then $$a^x = 1$$, which is not more than $$1$$. If $$x < 0$$, then rule 5 gives $$a^x < a^0 = 1$$.
+So $$a^x > 1$$ exactly when $$x > 0$$.
+
+:::
+
+Check part 2 with $$a = 4$$ and $$x = \frac{1}{2}$$: $$4^{-1/2} = \left(\frac{1}{4}\right)^{1/2}$$,
+which is $$\frac{1}{2}$$, and $$\frac{1}{4^{1/2}} = \frac{1}{2}$$ too. Part 3 is why the graph of an
+exponential function never touches the $$x$$-axis.
+
+## Bases below 1
+
+With base $$\frac{1}{2}$$, each step of $$1$$ to the right halves the height instead of doubling it.
+Halving to the right is the same as doubling to the left, so the graph of
+$$\left(\frac{1}{2}\right)^x$$ should be the graph of $$2^x$$ seen in a mirror standing along the
+$$y$$-axis. In numbers: $$\left(\frac{1}{2}\right)^3 = \frac{1}{8} = 2^{-3}$$.
+
+:::proposition[Bases below 1]{#exponential-small-base}
+
+Let $$0 < a < 1$$. Then $$\frac{1}{a} > 1$$ and, for every number $$x$$,
+
+```math
+a^x = \left(\frac{1}{a}\right)^{-x}
+```
+
+So the graph of $$x \mapsto a^x$$ is the mirror image in the $$y$$-axis of the graph of
+$$x \mapsto \left(\frac{1}{a}\right)^x$$, and the function $$x \mapsto a^x$$ is decreasing.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Power_Function_on_Base_between_Zero_and_One_is_Strictly_Decreasing#Real_Number"}
+
+Write $$b = \frac{1}{a}$$. Since $$0 < a < 1$$, dividing $$a < 1$$ by $$a$$ gives
+$$1 < \frac{1}{a}$$, so $$b > 1$$. Also $$b^{-1} = \frac{1}{b} = a$$ by part 2 of
+:ref{#exponential-positive}. So, with rule 3 of :ref{#exponential-rules},
+
+```math
+b^{-x} = b^{(-1) \cdot x} = \left(b^{-1}\right)^x = a^x
+```
+
+That is, $$a^x = g(-x)$$, where $$g(x) = b^x$$. By :ref{#function-graph-moves}, the graph of
+$$x \mapsto g(-x)$$ is the graph of $$g$$ flipped in the $$y$$-axis.
+
+Now let $$x < y$$. Then $$-y < -x$$, and since $$b > 1$$, rule 5 gives $$b^{-y} < b^{-x}$$, which is
+$$a^y < a^x$$. So $$x \mapsto a^x$$ is decreasing (:ref{#increasing}).
+
+:::
+
+<DoubleAndHalve caption="The graphs of y = 2ˣ (blue) and y = (½)ˣ (orange), mirror images of each other in the y-axis. The point (1, 2) on one faces (−1, 2) on the other. The grid is squashed upwards: one step up is half as long as one step across." />
+
+## One output, one input
+
+An increasing function never takes the same value twice, and neither does a decreasing one: going
+from one input to a larger one always changes the height. So two different exponents always give two
+different powers, as long as the base is not $$1$$. This is what will let us run an exponential
+function backwards.
+
+:::corollary[Exponentials are one to one]{#exponential-one-to-one}
+
+Let $$a > 0$$ with $$a \ne 1$$. If $$a^x = a^y$$, then $$x = y$$. So the function $$x \mapsto a^x$$
+is one to one (:ref{#one-to-one}).
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Strictly_Monotone_Real_Function_is_Bijective"}
+
+If $$a > 1$$, the function is increasing by rule 5 of :ref{#exponential-rules}, so it is one to one
+by :ref{#graphs-increasing-one-to-one}. If $$a < 1$$, it is decreasing by
+:ref{#exponential-small-base}. Then for $$x \ne y$$, say $$x < y$$, we get $$a^x > a^y$$, so the two
+values are different. Either way, $$a^x = a^y$$ leaves no choice but $$x = y$$.
+
+:::
+
+For example, $$2^{x + 1} = 8$$ means $$2^{x + 1} = 2^3$$, so $$x + 1 = 3$$ and $$x = 2$$. Base $$1$$
+is left out because $$1^x = 1$$ for every $$x$$. The values $$a^x$$ for $$a \ne 1$$ in fact fill up
+all the positive numbers, with every positive number the power of $$a$$ at exactly one exponent.
+That is taken as given in [Logarithms](./logarithms.mdx), where it leads to the function that runs
+$$a^x$$ backwards.
+
+## Comparing bases
+
+To the right of the $$y$$-axis, a bigger base climbs faster: $$10^1 = 10$$ beats $$3^1 = 3$$, which
+beats $$2^1 = 2$$. On the left the order turns round, because there each step of $$1$$ divides by
+the base instead: $$10^{-1} = 0.1$$ is below $$3^{-1} \approx 0.333$$, which is below
+$$2^{-1} = 0.5$$. At $$x = 0$$ every base gives $$1$$.
+
+:::proposition[Comparing bases]{#exponential-functions-bases}
+
+Let $$0 < a < b$$. Then $$a^x < b^x$$ for every $$x > 0$$, and $$a^x > b^x$$ for every $$x < 0$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Positive_Power_Function_on_Non-negative_Reals_is_Strictly_Increasing#Real_Index"}
+
+Write $$c = \frac{b}{a}$$, which is more than $$1$$ since $$b > a > 0$$. Then $$b = ca$$, so by rule
+4 of :ref{#exponential-rules},
+
+```math
+b^x = (ca)^x = c^x a^x
+```
+
+If $$x > 0$$, then $$c^x > 1$$ by part 5 of :ref{#exponential-positive}. Multiplying by $$a^x$$,
+which is positive, gives $$c^x a^x > a^x$$, that is, $$b^x > a^x$$. If $$x < 0$$, then rule 5 gives
+$$c^x < c^0 = 1$$, and multiplying by $$a^x$$ gives $$b^x < a^x$$.
+
+:::
+
+<ThreeBases caption="The graphs of y = 2ˣ, y = 3ˣ and y = 10ˣ all pass through (0, 1). To the right of the y-axis the bigger base is higher, and to the left it is lower. The grid is squashed upwards: one step up is a third as long as one step across." />
+
+## Growth and decay
+
+A colony of bacteria in a dish doubles every so many minutes, whatever its size, and a medicine in
+the blood halves every so many hours. Both change by the same factor over equal stretches of time,
+so each is described by an exponential function of time, scaled to start at the right amount.
+
+Take a colony of $$500$$ bacteria that doubles every $$20$$ minutes. After $$t$$ minutes it has
+doubled $$\frac{t}{20}$$ times, so it holds $$f(t) = 500 \cdot 2^{t/20}$$ bacteria. After an hour,
+$$t = 60$$, that is $$500 \cdot 2^3 = 4000$$. After $$10$$ minutes, half a doubling, it is
+$$500 \cdot 2^{1/2} \approx 707$$.
+
+:::definition[Exponential growth and decay]{#growth-decay}
+
+A function of time of the form
+
+```math
+f(t) = C \cdot a^{kt}
+```
+
+with numbers $$C > 0$$, $$a > 0$$ and $$k$$ is called **exponential**. The number $$C = f(0)$$ is
+the **starting amount**. It is **exponential growth** when $$a^k > 1$$, and **exponential decay**
+when $$a^k < 1$$.
+
+:::
+
+The bacteria have $$C = 500$$, $$a = 2$$ and $$k = \frac{1}{20}$$, and $$2^{1/20} > 1$$, so this is
+growth. The starting amount is $$f(0) = 500 \cdot 2^0 = 500$$, by part 1 of
+:ref{#exponential-positive}. The next fact explains the doubling every $$20$$ minutes, whenever you
+start the clock.
+
+:::proposition[Equal steps, equal factors]{#exponential-steps}
+
+Let $$f(t) = C \cdot a^{kt}$$. For all numbers $$t$$ and $$s$$,
+
+```math
+f(t + s) = f(t) \cdot a^{ks}
+```
+
+So over every stretch of time of length $$s$$, the amount is multiplied by the same factor
+$$a^{ks}$$, whatever time $$t$$ the stretch starts at.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Exponential_growth"}
+
+```math
+\begin{aligned}
+f(t + s) &= C \cdot a^{k(t + s)} && \text{by the formula for } f \\
+&= C \cdot a^{kt + ks} && \text{multiplying out the bracket} \\
+&= C \cdot a^{kt} \cdot a^{ks} && \text{by rule 2, adding exponents} \\
+&= f(t) \cdot a^{ks} && \text{by the formula for } f
+\end{aligned}
+```
+
+Rule 2 is from :ref{#exponential-rules}.
+
+:::
+
+For the bacteria and $$s = 20$$, the factor is $$2^{20/20} = 2$$: from $$t = 0$$ to $$20$$ the count
+goes from $$500$$ to $$1000$$, and from $$t = 40$$ to $$60$$ it goes from $$2000$$ to $$4000$$. Both
+stretches double it, although the second adds $$2000$$ bacteria and the first only $$500$$. That is
+what marks out exponential change: equal steps in time multiply by equal factors. Linear change
+$$g(t) = mt + c$$ is different, since $$g(t + s) = g(t) + ms$$ adds the same amount instead.
+
+<BacteriaDoubling caption="The bacteria 500 · 2^(t/20) over the first hour. Every 20 minutes the count doubles, from 500 to 1000, 2000 and 4000. Across is time in minutes and up is the count in thousands, each with its own scale." />
+
+The time it takes an amount to double is its **doubling time**, and the time it takes to halve is
+its **half-life**. Proposition :ref{#exponential-steps} says these don't depend on when you start.
+
+- **A medicine.** A dose of $$200$$ mg with a half-life of $$6$$ hours leaves
+  $$f(t) = 200 \cdot \left(\frac{1}{2}\right)^{t/6}$$ mg after $$t$$ hours. A day is $$4$$
+  half-lives, so after $$24$$ hours $$200 \cdot \frac{1}{16} = 12.5$$ mg is left. This is decay,
+  since $$\left(\frac{1}{2}\right)^{1/6} < 1$$.
+- **Savings.** £$$1000$$ earning $$5\%$$ a year is multiplied by $$1.05$$ each year, so after $$t$$
+  years it is $$1000 \cdot 1.05^t$$ pounds. That is £$$1276.28$$ after $$5$$ years, £$$1628.89$$
+  after $$10$$ and £$$2653.30$$ after $$20$$, to the nearest penny.
+
+## Exercises
+
+:::::accordion[Exercises on exponential functions, with solutions]
+
+::::exercise{#ex-exponential-functions-fractions}
+
+Work out $$4^{3/2}$$, $$8^{-2/3}$$ and $$\left(\frac{1}{3}\right)^{-2}$$ without a calculator, and
+check that $$27^{1/3} \cdot 27^{2/3} = 27$$ agrees with rule 2 of :ref{#exponential-rules}.
+
+:::solution
+
+By :ref{#real-numbers/rational-power} and :ref{#exponential-positive}:
+
+- $$4^{3/2} = \left(\sqrt4\right)^3 = 2^3 = 8$$
+- $$8^{-2/3} = \frac{1}{8^{2/3}} = \frac{1}{\left(\sqrt[3]{8}\right)^2} = \frac{1}{2^2} = \frac{1}{4}$$
+- $$\left(\frac{1}{3}\right)^{-2} = \frac{1}{(1/3)^2} = \frac{1}{1/9} = 9$$
+
+For the check, $$27^{1/3} = 3$$ and $$27^{2/3} = 3^2 = 9$$, so the product is $$27$$. Rule 2 says
+the same: $$27^{1/3 + 2/3} = 27^1 = 27$$.
+
+:::
+
+::::
+
+::::exercise{#ex-exponential-functions-compare}
+
+Without a calculator, say which number is larger in each pair, and which fact you used.
+
+1. $$3^{0.4}$$ and $$3^{0.5}$$
+2. $$0.7^2$$ and $$0.7^3$$
+3. $$5^{-1}$$ and $$4^{-1}$$
+4. $$2^{\sqrt2}$$ and $$2^{1.5}$$
+
+:::solution
+
+1. The base $$3$$ is above $$1$$ and $$0.4 < 0.5$$, so $$3^{0.4} < 3^{0.5}$$ by rule 5 of
+   :ref{#exponential-rules}.
+2. The base $$0.7$$ is below $$1$$, so $$x \mapsto 0.7^x$$ is decreasing
+   (:ref{#exponential-small-base}), and $$0.7^2 > 0.7^3$$. In numbers, $$0.49 > 0.343$$.
+3. The exponent $$-1$$ is negative and $$4 < 5$$, so $$4^{-1} > 5^{-1}$$ by
+   :ref{#exponential-functions-bases}. In numbers, $$0.25 > 0.2$$.
+4. Since $$\sqrt2 \approx 1.414 < 1.5$$, rule 5 gives $$2^{\sqrt2} < 2^{1.5}$$, matching
+   $$2.665 < 2.828$$.
+
+:::
+
+::::
+
+::::exercise{#ex-exponential-functions-solve}
+
+Solve $$2^{x + 1} = 2^{3x - 5}$$, and then $$9^x = 27$$.
+
+:::solution
+
+**The first.** Both sides are powers of $$2$$, so by :ref{#exponential-one-to-one} the exponents are
+equal:
+
+```math
+\begin{aligned}
+x + 1 &= 3x - 5 && \text{the exponents are equal} \\
+6 &= 2x && \text{adding 5 and taking away } x \\
+x &= 3 && \text{dividing by 2}
+\end{aligned}
+```
+
+Check: $$2^{3 + 1} = 16$$ and $$2^{9 - 5} = 16$$.
+
+**The second.** Write both sides as powers of $$3$$. By rule 3 of :ref{#exponential-rules},
+$$9^x = (3^2)^x = 3^{2x}$$, and $$27 = 3^3$$. So $$3^{2x} = 3^3$$, and :ref{#exponential-one-to-one}
+gives $$2x = 3$$, so $$x = \frac{3}{2}$$. Check: $$9^{3/2} = (\sqrt9)^3 = 27$$.
+
+:::
+
+::::
+
+::::exercise{#ex-exponential-functions-bacteria}
+
+A dish holds $$300$$ bacteria, and the number doubles every $$30$$ minutes. Write the number after
+$$t$$ minutes as a function of $$t$$. Then find how many there are after $$3$$ hours, and how many
+minutes it takes to reach $$4800$$.
+
+:::solution
+
+After $$t$$ minutes there have been $$\frac{t}{30}$$ doublings, so $$f(t) = 300 \cdot 2^{t/30}$$.
+Three hours is $$180$$ minutes, so
+
+```math
+f(180) = 300 \cdot 2^{180/30} = 300 \cdot 2^6 = 300 \cdot 64 = 19{,}200
+```
+
+For $$4800$$, divide by the starting amount: $$2^{t/30} = \frac{4800}{300} = 16 = 2^4$$. By
+:ref{#exponential-one-to-one}, $$\frac{t}{30} = 4$$, so $$t = 120$$ minutes, that is, $$2$$ hours.
+
+:::
+
+::::
+
+::::exercise{#ex-exponential-functions-caffeine}
+
+The caffeine in a cup of coffee has a half-life of about $$5$$ hours. You drink $$160$$ mg of it at
+$$8$$ in the morning. Write the amount left after $$t$$ hours, and find how much is left at $$11$$
+at night.
+
+:::solution
+
+Each $$5$$ hours halves the amount, so after $$t$$ hours there are $$\frac{t}{5}$$ halvings, and the
+amount left is $$f(t) = 160 \cdot \left(\frac{1}{2}\right)^{t/5}$$ mg. From $$8$$ in the morning to
+$$11$$ at night is $$15$$ hours, which is $$3$$ half-lives:
+
+```math
+f(15) = 160 \cdot \left(\frac{1}{2}\right)^3 = \frac{160}{8} = 20 \text{ mg}
+```
+
+:::
+
+::::
+
+::::exercise{#ex-exponential-functions-tables}
+
+Each table gives an amount at times $$t = 0, 1, 2, 3$$. Decide which ones change by the same factor
+at each step and which by the same amount, and write a formula for each.
+
+| $$t$$ | $$0$$  | $$1$$  | $$2$$  | $$3$$  |
+| ----- | ------ | ------ | ------ | ------ |
+| A     | $$5$$  | $$8$$  | $$11$$ | $$14$$ |
+| B     | $$5$$  | $$10$$ | $$20$$ | $$40$$ |
+| C     | $$64$$ | $$48$$ | $$36$$ | $$27$$ |
+
+:::solution
+
+- **A** adds $$3$$ at each step, so it is linear: $$A(t) = 5 + 3t$$.
+- **B** multiplies by $$2$$ at each step, so it is exponential growth: $$B(t) = 5 \cdot 2^t$$.
+- **C** multiplies by $$\frac{48}{64} = \frac{3}{4}$$ at each step, and
+  $$\frac{36}{48} = \frac{27}{36} = \frac{3}{4}$$ too. So it is exponential decay:
+  $$C(t) = 64 \cdot \left(\frac{3}{4}\right)^t$$.
+
+By :ref{#exponential-steps}, an exponential multiplies by the same factor over every step of the
+same length, which is how B and C were spotted. Check C at $$t = 3$$:
+$$64 \cdot \frac{27}{64} = 27$$.
+
+:::
+
+::::
+
+::::exercise{#ex-exponential-functions-middle}
+
+Let $$f(t) = C \cdot a^{kt}$$ with $$C > 0$$. Prove that for all numbers $$t$$ and $$s$$,
+
+```math
+f(t) \cdot f(t + 2s) = f(t + s)^2
+```
+
+so the amount halfway through a stretch of time is the square root of the product of the amounts at
+its ends. Check it with the bacteria $$500 \cdot 2^{t/20}$$ at $$t = 0$$, $$20$$ and $$40$$.
+
+:::solution
+
+Write $$m = a^{ks}$$. By :ref{#exponential-steps}, $$f(t + s) = f(t) \cdot m$$, and using it again,
+$$f(t + 2s) = f(t + s) \cdot m = f(t) \cdot m^2$$. So
+
+```math
+f(t) \cdot f(t + 2s) = f(t) \cdot f(t)\,m^2 = \left(f(t)\,m\right)^2 = f(t + s)^2
+```
+
+Every value of $$f$$ is positive (:ref{#exponential-positive}), so $$f(t + s)$$ is the positive
+square root of $$f(t) \cdot f(t + 2s)$$. For the bacteria,
+$$f(0) \cdot f(40) = 500 \cdot 2000 = 1{,}000{,}000$$, and $$f(20)^2 = 1000^2 = 1{,}000{,}000$$.
+
+:::
+
+::::
+
+::::exercise{#ex-exponential-functions-savings}
+
+Account P starts with £$$1000$$ and earns $$5\%$$ a year. Account Q starts with £$$1100$$ and earns
+$$4\%$$ a year. Work out both after $$5$$, $$9$$, $$10$$ and $$20$$ years. Then prove that once P is
+ahead, it stays ahead for good.
+
+:::solution
+
+After $$t$$ years, P holds $$1000 \cdot 1.05^t$$ and Q holds $$1100 \cdot 1.04^t$$ pounds. To the
+nearest penny:
+
+| years | $$5$$       | $$9$$       | $$10$$      | $$20$$      |
+| ----- | ----------- | ----------- | ----------- | ----------- |
+| P     | $$1276.28$$ | $$1551.33$$ | $$1628.89$$ | $$2653.30$$ |
+| Q     | $$1338.32$$ | $$1565.64$$ | $$1628.27$$ | $$2410.24$$ |
+
+So P draws ahead between $$9$$ and $$10$$ years. For the proof, divide the two amounts. By rule 4 of
+:ref{#exponential-rules}, $$1.05^t = \left(\frac{1.05}{1.04}\right)^t \cdot 1.04^t$$, so
+
+```math
+\frac{1000 \cdot 1.05^t}{1100 \cdot 1.04^t} = \frac{10}{11} \left(\frac{1.05}{1.04}\right)^t
+```
+
+The base $$\frac{1.05}{1.04}$$ is more than $$1$$, so by rule 5 this ratio is increasing. P is ahead
+exactly when the ratio is more than $$1$$, and an increasing ratio that has passed $$1$$ stays above
+it.
+
+:::
+
+::::
+
+:::::

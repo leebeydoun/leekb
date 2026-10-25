@@ -1,0 +1,700 @@
+---
+title: Logarithms
+description:
+  Counting how many times a number is multiplied in, the laws that turn multiplying into adding,
+  changing the base, the graph of a logarithm, and equations with the unknown in a power.
+---
+
+Imagine a rumour that starts with one person. Each evening, everyone who has heard it tells one
+friend who hasn't, so the number of people who know it doubles every day: 1, then 2, then 4, then 8.
+One morning you learn that 1024 people know it, and you'd like to know how long it has been going.
+Counting the people won't tell you, but counting the doublings will: 2, 4, 8, 16, 32, 64, 128, 256,
+512 and 1024 is ten doublings, so the rumour is ten days old.
+
+<RumourDoubling caption="The people who know the rumour on each of the first six days. Each day the people who knew it already (blue) each tell one new person (orange), so the count doubles: 1, 2, 4, 8, 16, 32, and ten days in, 1024." />
+
+That count, the number of times you multiply by 2 to get from 1 to 1024, is called the **logarithm**
+of 1024 to base 2. An exponential takes a number of doublings and gives you the size, as
+$$2^{10} = 1024$$ does. A logarithm runs the other way: it takes the size and gives back the number
+of doublings. In this guide we'll get used to logarithms with numbers first, then prove the laws
+they obey, and use them to solve equations where the unknown sits in a power.
+
+## Counting how many times you multiply
+
+Start with something you can work out in your head: the number of 2s you multiply together to
+make 32. Since $$2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = 32$$, the answer is five, and in symbols
+$$2^5 = 32$$. The same counting works for every number in the table below, as long as you allow the
+count to be zero, negative or a fraction.
+
+| Number          | As a power of 2 | How many 2s     |
+| --------------- | --------------- | --------------- |
+| $$32$$          | $$2^5$$         | $$5$$           |
+| $$1024$$        | $$2^{10}$$      | $$10$$          |
+| $$1$$           | $$2^0$$         | $$0$$           |
+| $$\frac{1}{8}$$ | $$2^{-3}$$      | $$-3$$          |
+| $$\sqrt2$$      | $$2^{1/2}$$     | $$\frac{1}{2}$$ |
+
+The last three rows need a word each. To make $$1$$ you start at $$1$$ and multiply by no 2s at all,
+so the count is $$0$$. To make $$\frac{1}{8}$$ you divide by 2 three times, and dividing is
+multiplying by a negative power (:ref{#numbers/negative-powers}), so the count is $$-3$$. And
+$$\sqrt2$$ is half a doubling: multiply by $$\sqrt2$$ twice and you have multiplied by 2, which is
+why $$2^{1/2} = \sqrt2$$ (:ref{#real-numbers/rational-power}).
+
+Now try $$3$$. No whole number of 2s makes it, since $$2^1 = 2$$ is too small and $$2^2 = 4$$ is too
+big, so the count lies between $$1$$ and $$2$$. Trying powers in between narrows it down:
+$$2^{1.5} \approx 2.83$$ is too small and $$2^{1.6} \approx 3.03$$ is too big. Closing in further
+gives about $$1.585$$, and a calculator confirms that $$2^{1.585} \approx 3.0001$$.
+
+## Every positive number is a power
+
+The graph of $$y = 2^x$$ from [Exponential functions](./exponential-functions.mdx) shows why the
+count always exists. The curve rises without a break, from a little above the $$x$$-axis on the left
+to as high as you like on the right. So a horizontal line at any positive height meets it, and the
+$$x$$ where it meets is the number of 2s that make that height.
+
+<EveryHeight caption="The graph of y = 2ˣ meets the line at height 3 above x ≈ 1.58, and the line at height 1/2 above x = −1. Each step up on this grid is drawn half as long as each step across, so that heights up to 9 fit." />
+
+The same holds for every base and every height. Like the existence of roots in
+:ref{#real-numbers/nth-roots-exist}, it comes from the real numbers having no gaps. Proving it needs
+ideas from a course on analysis, so we take it as given.
+
+:::remark[Every positive number is a power]{#log-exists}
+
+For every number $$a > 0$$ with $$a \ne 1$$, and every number $$y > 0$$, there is a number $$x$$
+with $$a^x = y$$.
+
+This is taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Logarithm#Existence"}
+
+:::
+
+The two conditions are there for a reason. The base can't be $$1$$, because $$1^x = 1$$ for every
+$$x$$, so no power of $$1$$ makes $$3$$. And the height must be positive, because every power of a
+positive number is positive (:ref{#exponential-positive}). So no power of 2 is $$0$$, and none is
+$$-4$$.
+
+## The logarithm
+
+So for a base $$a$$ and a positive number $$y$$, there is a power $$x$$ with $$a^x = y$$ by
+:ref{#log-exists}. There is only one, because two different powers of $$a$$ are never equal
+(:ref{#exponential-one-to-one}). That single number gets a name.
+
+:::definition[Logarithm]{#logarithm}
+
+Let $$a > 0$$ with $$a \ne 1$$. For each number $$y > 0$$, the **logarithm of $$y$$ to base $$a$$**,
+written $$\log_a y$$, is the one number $$x$$ with $$a^x = y$$. In other words,
+
+```math
+\log_a y = x \qquad\text{exactly when}\qquad a^x = y
+```
+
+:::
+
+Read $$\log_a y$$ aloud as "log to base $$a$$ of $$y$$", and think of it as "the power you raise
+$$a$$ to, to get $$y$$". Every logarithm can be checked by turning it back into a power:
+
+- $$\log_2 8 = 3$$, because $$2^3 = 8$$
+- $$\log_{10} 1000 = 3$$, because $$10^3 = 1000$$
+- $$\log_3 \frac{1}{9} = -2$$, because $$3^{-2} = \frac{1}{3^2} = \frac{1}{9}$$
+- $$\log_4 2 = \frac{1}{2}$$, because $$4^{1/2} = \sqrt4 = 2$$
+
+When a logarithm looks strange, that check is the thing to reach for. The statement $$\log_a y = x$$
+and the statement $$a^x = y$$ say the same thing, and the second is usually the one you can picture.
+
+On a calculator, the button marked log is the logarithm to base 10, and the button marked ln is a
+logarithm to a base called $$e$$, which is the subject of
+[The number e and using logarithms](./the-number-e.mdx). For example, the log button gives
+$$\log_{10} 2 \approx 0.30103$$, and as a check, $$10^{0.30103} \approx 2.0000$$. Base 10 counts
+factors of 10, so it tells you roughly how many digits a number has. For example,
+$$\log_{10} 500 \approx 2.699$$ lies between $$2$$ and $$3$$, because $$500$$ lies between
+$$10^2 = 100$$ and $$10^3 = 1000$$.
+
+## Undoing an exponential
+
+The rumour runs both ways. Ten days of doubling turn 1 person into $$2^{10} = 1024$$ people, and the
+logarithm turns 1024 people back into ten days. So the logarithm undoes the exponential, and the
+exponential undoes the logarithm. With numbers, $$\log_2(2^5) = \log_2 32 = 5$$, and
+$$2^{\log_2 32} = 2^5 = 32$$.
+
+:::proposition[Logarithms undo exponentials]{#log-inverse}
+
+Let $$a > 0$$ with $$a \ne 1$$. Then
+
+```math
+\log_a(a^x) = x \ \text{ for every number } x, \qquad a^{\log_a y} = y \ \text{ for every number } y > 0
+```
+
+So $$\log_a$$ is the inverse function of $$x \mapsto a^x$$. Its domain is the positive numbers and
+its range is all numbers.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Logarithm#Definition"}
+
+**Undoing a power.** The number $$a^x$$ is positive by :ref{#exponential-positive}, so it has a
+logarithm. By the definition, $$\log_a(a^x)$$ is the one number $$t$$ with $$a^t = a^x$$. The number
+$$t = x$$ has this property, so $$\log_a(a^x) = x$$.
+
+**Undoing a logarithm.** By the definition, $$\log_a y$$ is a number $$x$$ with $$a^x = y$$. Putting
+$$\log_a y$$ in place of $$x$$ gives $$a^{\log_a y} = y$$.
+
+**The inverse function.** The function $$x \mapsto a^x$$ has domain all numbers, and it is one to
+one by :ref{#exponential-one-to-one}. Its range is the positive numbers: every value is positive by
+:ref{#exponential-positive}, and every positive number is a value by :ref{#log-exists}. So by
+:ref{#inverse-function} it has an inverse, defined on the positive numbers, which sends $$y$$ to the
+one $$x$$ with $$a^x = y$$. That is $$\log_a y$$. Its range is all numbers, because each number
+$$x$$ is the value $$\log_a(a^x)$$.
+
+:::
+
+The inverse of a function is written $$f^{-1}$$, and :ref{#inverse-function} warned that
+$$f^{-1}(x)$$ is not $$\frac{1}{f(x)}$$. Logarithms show how different the two are. At $$x = 3$$,
+the inverse of $$x \mapsto 2^x$$ gives $$\log_2 3 \approx 1.585$$, while $$\frac{1}{2^3} = 0.125$$.
+
+## The laws of logarithms
+
+A logarithm to base 2 counts 2s, and that one idea explains every law in this section. The number
+$$8$$ is three 2s multiplied together, and $$4$$ is two. Multiplying $$8$$ by $$4$$ puts all of them
+side by side, $$2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = 32$$, which is five 2s. So
+$$\log_2(8 \cdot 4) = 3 + 2$$: multiplying two numbers adds their logarithms.
+
+Dividing works the other way. Dividing $$32$$ by $$4$$ cancels two of its five 2s and leaves three,
+so $$\log_2 \frac{32}{4} = 5 - 2$$. A power repeats a multiplication: $$8^3 = 8 \cdot 8 \cdot 8$$ is
+three lots of three 2s, which is nine 2s, so $$\log_2(8^3) = \log_2 512 = 3 \cdot 3$$. The theorem
+says the same happens for every base, and for counts that aren't whole numbers.
+
+:::theorem[Laws of logarithms]{#log-laws}
+
+Let $$a > 0$$ with $$a \ne 1$$. For all numbers $$x > 0$$ and $$y > 0$$, and every number $$r$$:
+
+1. **Product:** $$\log_a(xy) = \log_a x + \log_a y$$
+2. **Quotient:** $$\log_a \frac{x}{y} = \log_a x - \log_a y$$
+3. **Power:** $$\log_a(x^r) = r\log_a x$$
+4. **One:** $$\log_a 1 = 0$$
+5. **The base:** $$\log_a a = 1$$
+
+:::
+
+Each proof below goes the same way. It names the logarithms and turns them into powers of $$a$$ with
+:ref{#log-inverse}. Then it uses a rule for powers from :ref{#exponential-rules}, and turns the
+answer back into a logarithm. Each part starts with a check in numbers, so you can see the law work
+before it is proved.
+
+:::proof{source="https://en.wikipedia.org/wiki/Logarithm#Product,_quotient,_power,_and_root"}
+
+**Product.** Check first, with $$a = 2$$, $$x = 8$$ and $$y = 4$$: the left side is
+$$\log_2 32 = 5$$, and the right side is $$3 + 2 = 5$$.
+
+Now let $$p = \log_a x$$ and $$q = \log_a y$$, so that $$a^p = x$$ and $$a^q = y$$ by
+:ref{#log-inverse}. Then
+
+```math
+\begin{aligned}
+xy &= a^p a^q &&\qquad \text{put in } x = a^p \text{ and } y = a^q \\
+&= a^{p + q} &&\qquad \text{multiplying powers adds the exponents}
+\end{aligned}
+```
+
+The second step is the rule $$a^{s + t} = a^s a^t$$ from :ref{#exponential-rules}. So
+$$\log_a(xy) = \log_a(a^{p + q}) = p + q$$ by :ref{#log-inverse}, and $$p + q$$ is
+$$\log_a x + \log_a y$$.
+
+**Quotient.** Check first, with $$a = 2$$, $$x = 32$$ and $$y = 4$$: the left side is
+$$\log_2 8 = 3$$, and the right side is $$5 - 2 = 3$$.
+
+With $$p$$ and $$q$$ as before, we want to show that $$a^{p - q}$$ is $$\frac{x}{y}$$. So multiply
+$$a^{p - q}$$ by $$y$$, and see that it gives $$x$$:
+
+```math
+\begin{aligned}
+a^{p - q} \cdot y &= a^{p - q} a^q &&\qquad \text{put in } y = a^q \\
+&= a^{(p - q) + q} &&\qquad \text{multiplying powers adds the exponents} \\
+&= a^p &&\qquad (p - q) + q = p \\
+&= x &&\qquad a^p = x
+\end{aligned}
+```
+
+The number $$y$$ is positive, so it is not $$0$$, and dividing both sides by $$y$$ gives
+$$a^{p - q} = \frac{x}{y}$$. So $$\log_a \frac{x}{y} = p - q$$ by :ref{#log-inverse}, which is
+$$\log_a x - \log_a y$$.
+
+**Power.** Check first, with $$a = 2$$, $$x = 8$$ and $$r = 3$$: the left side is
+$$\log_2 512 = 9$$, and the right side is $$3 \cdot 3 = 9$$.
+
+With $$p = \log_a x$$, so that $$a^p = x$$,
+
+```math
+\begin{aligned}
+x^r &= (a^p)^r &&\qquad \text{put in } x = a^p \\
+&= a^{pr} &&\qquad \text{a power of a power multiplies the exponents}
+\end{aligned}
+```
+
+The second step is the rule $$(a^s)^t = a^{st}$$ from :ref{#exponential-rules}. So
+$$\log_a(x^r) = pr$$ by :ref{#log-inverse}, which is $$r\log_a x$$.
+
+**One and the base.** Check first, with $$a = 10$$: $$10^0 = 1$$ and $$10^1 = 10$$.
+
+By :ref{#exponential-positive}, $$a^0 = 1$$, so the one number $$x$$ with $$a^x = 1$$ is $$0$$, and
+$$\log_a 1 = 0$$. The exponential agrees with ordinary powers at whole numbers
+(:ref{#exponential-rules}), so $$a^1 = a$$, and $$\log_a a = 1$$.
+
+:::
+
+So a logarithm turns multiplying into adding, dividing into subtracting, and a power into
+multiplying by the exponent. Before calculators, this is how long multiplications were done: you
+looked up the logarithms of the two numbers in a printed table, added them, and looked up which
+number had the sum as its logarithm.
+
+:::example[Logarithms from one known value]
+
+Knowing only $$\log_{10} 2 \approx 0.30103$$, and that $$\log_{10} 10 = 1$$, the laws give three
+more logarithms without a calculator:
+
+```math
+\begin{aligned}
+\log_{10} 20 &= \log_{10}(2 \cdot 10) = \log_{10} 2 + \log_{10} 10 \approx 1.30103 &&\qquad \text{product law} \\
+\log_{10} 8 &= \log_{10}(2^3) = 3\log_{10} 2 \approx 0.90309 &&\qquad \text{power law} \\
+\log_{10} 5 &= \log_{10}\tfrac{10}{2} = \log_{10} 10 - \log_{10} 2 \approx 0.69897 &&\qquad \text{quotient law}
+\end{aligned}
+```
+
+The log button on a calculator gives the same three values, to five decimal places.
+
+:::
+
+## Look-alikes that fail a number check
+
+Three equations look so much like the laws that almost everyone writes one of them at some point.
+Each one fails at the first numbers you try, and each failure has a reason. All the checks below use
+base 2:
+
+- **$$\log_a(x + y)$$ is not $$\log_a x + \log_a y$$.** With $$x = y = 8$$, the left side is
+  $$\log_2 16 = 4$$, but the right side is $$3 + 3 = 6$$. The sum of the two logarithms belongs to
+  the product instead: $$\log_2(8 \cdot 8) = \log_2 64 = 6$$. The laws say what a logarithm does to
+  a product, and there is no law for a sum.
+- **$$\log_a(x^2)$$ is $$2\log_a x$$, not $$(\log_a x)^2$$.** With $$x = 8$$,
+  $$\log_2 64 = 6 = 2 \cdot 3$$, but $$(\log_2 8)^2 = 3^2 = 9$$. In $$\log_a(x^2)$$ the square is on
+  $$x$$, inside the logarithm, and the power law brings it down in front. In $$(\log_a x)^2$$ the
+  square is on the answer.
+- **$$\log_a \frac{x}{y}$$ is not $$\frac{\log_a x}{\log_a y}$$.** With $$x = 64$$ and $$y = 8$$,
+  the left side is $$\log_2 8 = 3$$, which is $$6 - 3$$, but the fraction is $$\frac{6}{3} = 2$$. A
+  fraction of two logarithms does mean something, but something else: it changes the base, as
+  [Changing the base](#changing-the-base) shows.
+
+Pick a law or a look-alike below, and move $$x$$ and $$y$$. The readout puts your numbers into both
+sides and works each one out.
+
+<LogChecker />
+
+## Logarithms keep order
+
+A bigger number takes more doublings to reach. The number $$3$$ lies between $$2$$ and $$4$$, and
+its logarithm $$\log_2 3 \approx 1.585$$ lies between $$\log_2 2 = 1$$ and $$\log_2 4 = 2$$. With a
+base below 1 the order flips, because each step multiplies by a number less than 1 and makes things
+smaller. With base $$\frac{1}{2}$$, $$\log_{1/2} 2 = -1$$ and $$\log_{1/2} 8 = -3$$, so the bigger
+number has the smaller logarithm.
+
+:::proposition[Logarithms keep order]{#log-increasing}
+
+Let $$x > 0$$ and $$y > 0$$.
+
+1. If $$a > 1$$, then $$x < y$$ exactly when $$\log_a x < \log_a y$$.
+2. If $$0 < a < 1$$, then $$x < y$$ exactly when $$\log_a x > \log_a y$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Logarithm#Graph_of_the_logarithm_function"}
+
+Let $$p = \log_a x$$ and $$q = \log_a y$$, so that $$x = a^p$$ and $$y = a^q$$ by
+:ref{#log-inverse}.
+
+**Part 1.** Let $$a > 1$$. If $$p < q$$, then $$a^p < a^q$$ by the order rule in
+:ref{#exponential-rules}, which says $$x < y$$. Now suppose $$x < y$$. By part 1 of
+:ref{#real-numbers/inequality-rules}, exactly one of $$p < q$$, $$p = q$$ and $$p > q$$ is true. If
+$$p = q$$, then $$x = a^p = a^q = y$$. If $$p > q$$, then the order rule with the two swapped gives
+$$x > y$$. Both contradict $$x < y$$, so $$p < q$$.
+
+**Part 2.** Let $$0 < a < 1$$, and let $$b = \frac{1}{a}$$, which is more than $$1$$. By
+:ref{#exponential-small-base}, $$a^t = b^{-t}$$ for every $$t$$, so $$x = a^p = b^{-p}$$. That says
+$$\log_b x = -p$$, that is, $$\log_a x = -\log_b x$$, and in the same way $$\log_a y = -\log_b y$$.
+By part 1 for the base $$b$$, $$x < y$$ exactly when $$\log_b x < \log_b y$$. Multiplying both sides
+by $$-1$$ reverses an inequality (part 5 of :ref{#real-numbers/inequality-rules}), so this happens
+exactly when $$-\log_b x > -\log_b y$$, which is $$\log_a x > \log_a y$$.
+
+:::
+
+Comparing with $$1$$ gives a sign rule. For a base $$a > 1$$, since $$\log_a 1 = 0$$, part 1 says
+$$\log_a x > 0$$ exactly when $$x > 1$$, and $$\log_a x < 0$$ exactly when $$0 < x < 1$$. So the
+logarithm of a number between $$0$$ and $$1$$ is negative: $$\log_{10} 0.5 \approx -0.301$$, and as
+a check, $$10^{-0.301} \approx 0.5$$.
+
+## Changing the base
+
+A calculator has a button for base 10 and a button for base $$e$$, and nothing for base 2. Here is
+how to find $$\log_2 10$$ with the log button anyway. Since $$2^3 = 8$$ and $$2^4 = 16$$, the answer
+lies between $$3$$ and $$4$$. Call it $$x$$, so that $$2^x = 10$$, and take the logarithm to base 10
+of both sides:
+
+```math
+\begin{aligned}
+2^x &= 10 \\
+\log_{10}(2^x) &= \log_{10} 10 &&\qquad \text{take } \log_{10} \text{ of both sides} \\
+x\log_{10} 2 &= 1 &&\qquad \text{power law, and } \log_{10} 10 = 1 \\
+x &= \frac{1}{\log_{10} 2} \approx \frac{1}{0.30103} \approx 3.3219 &&\qquad \text{divide by } \log_{10} 2
+\end{aligned}
+```
+
+As a check, $$2^{3.3219} \approx 9.9998$$, which is $$10$$ to the accuracy we kept. Taking the
+logarithm of both sides is allowed because $$\log_{10}$$ is a function: equal inputs give equal
+outputs, so if $$2^x$$ and $$10$$ are the same number, so are their logarithms.
+
+:::proposition[Change of base]{#change-of-base}
+
+Let $$a > 0$$ and $$b > 0$$, with $$a \ne 1$$ and $$b \ne 1$$. For every number $$x > 0$$,
+
+```math
+\log_b x = \frac{\log_a x}{\log_a b}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Logarithm#Change_of_base"}
+
+Let $$t = \log_b x$$, so that $$b^t = x$$ by :ref{#log-inverse}. Then
+
+```math
+\begin{aligned}
+\log_a(b^t) &= \log_a x &&\qquad \text{take } \log_a \text{ of both sides} \\
+t\log_a b &= \log_a x &&\qquad \text{power law}
+\end{aligned}
+```
+
+The power law is part 3 of :ref{#log-laws}. The number $$\log_a b$$ is not $$0$$: if it were, then
+$$b = a^0 = 1$$ by :ref{#log-inverse}, and $$b \ne 1$$. So we can divide both sides by it, and
+$$t = \frac{\log_a x}{\log_a b}$$.
+
+:::
+
+So one log button is enough for every base. For example,
+$$\log_7 50 = \frac{\log_{10} 50}{\log_{10} 7} \approx \frac{1.69897}{0.84510} \approx 2.0104$$, and
+that fits $$7^2 = 49$$ being a little less than $$50$$. This also explains the third look-alike: the
+fraction $$\frac{\log_2 64}{\log_2 8} = \frac{6}{3} = 2$$ is $$\log_8 64$$, because $$8^2 = 64$$.
+
+## The graph of a logarithm
+
+The graph of $$y = 2^x$$ passes through $$\left(-1, \frac{1}{2}\right)$$, $$(0, 1)$$, $$(1, 2)$$,
+$$(2, 4)$$ and $$(3, 8)$$. Since the logarithm undoes the power, $$\log_2 8 = 3$$, $$\log_2 4 = 2$$,
+and so on, so the graph of $$y = \log_2 x$$ passes through the same points with their coordinates
+swapped: $$\left(\frac{1}{2}, -1\right)$$, $$(1, 0)$$, $$(2, 1)$$, $$(4, 2)$$ and $$(8, 3)$$.
+Swapping the coordinates of every point is the flip in the line $$y = x$$, so the two graphs are
+mirror images (:ref{#inverse-graph}).
+
+<LogMirror caption="The graph of y = 2ˣ (blue) and the graph of y = log₂ x (green) are mirror images in the dashed line y = x. Each blue point is joined to its mirror image: (3, 8) on one graph and (8, 3) on the other." />
+
+:::proposition[The graph of a logarithm]{#log-graph}
+
+Let $$a > 1$$. The graph of $$y = \log_a x$$:
+
+1. is the mirror image of the graph of $$y = a^x$$ in the line $$y = x$$
+2. passes through $$(1, 0)$$ and $$(a, 1)$$
+3. rises from left to right
+4. rises by $$1$$ each time $$x$$ is multiplied by $$a$$: $$\log_a(ax) = \log_a x + 1$$
+5. falls below every height near $$0$$: for every number $$c$$, $$\log_a x < c$$ whenever
+   $$0 < x < a^c$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Logarithm#Graph_of_the_logarithm_function"}
+
+1. By :ref{#log-inverse}, $$\log_a$$ is the inverse function of $$x \mapsto a^x$$, so its graph is
+   the mirror image in $$y = x$$ by :ref{#inverse-graph}.
+2. By parts 4 and 5 of :ref{#log-laws}, $$\log_a 1 = 0$$ and $$\log_a a = 1$$.
+3. By part 1 of :ref{#log-increasing}, $$x < y$$ gives $$\log_a x < \log_a y$$.
+4. By the product law and part 5 of :ref{#log-laws},
+   $$\log_a(ax) = \log_a a + \log_a x = 1 + \log_a x$$.
+5. If $$0 < x < a^c$$, then by part 1 of :ref{#log-increasing} and :ref{#log-inverse},
+   $$\log_a x < \log_a(a^c) = c$$.
+
+:::
+
+Part 4 is why the graph climbs so slowly. To rise from height $$3$$ to height $$4$$, the graph of
+$$\log_2 x$$ has to go from $$x = 8$$ to $$x = 16$$. To rise from $$9$$ to $$10$$, it has to go from
+$$x = 512$$ to $$x = 1024$$. Near $$0$$ it plunges instead: going down from $$-9$$ to $$-10$$ takes
+only the short step from $$x = \frac{1}{512}$$ to $$x = \frac{1}{1024}$$.
+
+For a base between $$0$$ and $$1$$, the proof of :ref{#log-increasing} showed that
+$$\log_a x = -\log_{1/a} x$$. So the graph of $$\log_a$$ is the graph for the base $$\frac{1}{a}$$
+flipped in the $$x$$-axis (part 4 of :ref{#function-graph-moves}), and it falls from left to right.
+
+## Solving equations with the unknown in a power
+
+When the unknown sits in a power, a logarithm is the tool that brings it down. The habit is to tidy
+up everything around the power first, so that one side is a power on its own, and only then take the
+logarithm. Each example ends with a check: put the answer back in.
+
+:::example[Divide first: 3 · 2ˣ = 48]
+
+```math
+\begin{aligned}
+3 \cdot 2^x &= 48 \\
+2^x &= 16 &&\qquad \text{divide both sides by } 3 \\
+x &= \log_2 16 &&\qquad \text{definition of the logarithm} \\
+x &= 4 &&\qquad 2^4 = 16
+\end{aligned}
+```
+
+As a check, $$3 \cdot 2^4 = 3 \cdot 16 = 48$$.
+
+:::
+
+:::example[Match the powers: 5²ˣ⁻¹ = 125]
+
+Solve $$5^{2x - 1} = 125$$. The number $$125$$ is $$5^3$$, so both sides are powers of 5:
+
+```math
+\begin{aligned}
+5^{2x - 1} &= 5^3 &&\qquad 125 = 5^3 \\
+2x - 1 &= 3 &&\qquad \text{equal powers of 5 have equal exponents} \\
+2x &= 4 &&\qquad \text{add } 1 \text{ to both sides} \\
+x &= 2 &&\qquad \text{divide both sides by } 2
+\end{aligned}
+```
+
+The second step is :ref{#exponential-one-to-one}. Taking $$\log_5$$ of both sides gives the same
+line. As a check, $$5^{2 \cdot 2 - 1} = 5^3 = 125$$.
+
+:::
+
+:::example[Savings that double]
+
+The savings in [Exponential functions](./exponential-functions.mdx) grow at 5% a year, from £1000 to
+$$1000 \cdot 1.05^t$$ pounds after $$t$$ years. They have doubled when this is 2000:
+
+```math
+\begin{aligned}
+1000 \cdot 1.05^t &= 2000 \\
+1.05^t &= 2 &&\qquad \text{divide both sides by } 1000 \\
+\log_{10}(1.05^t) &= \log_{10} 2 &&\qquad \text{take } \log_{10} \text{ of both sides} \\
+t\log_{10} 1.05 &= \log_{10} 2 &&\qquad \text{power law} \\
+t &= \frac{\log_{10} 2}{\log_{10} 1.05} &&\qquad \text{divide by } \log_{10} 1.05 \\
+t &\approx \frac{0.30103}{0.021189} \approx 14.2 &&\qquad \text{calculator}
+\end{aligned}
+```
+
+Dividing by $$\log_{10} 1.05$$ is allowed because it is positive, by :ref{#log-increasing}, since
+$$1.05 > 1$$. As a check, $$1.05^{14} \approx 1.980$$ and $$1.05^{15} \approx 2.079$$, so the money
+doubles during the fifteenth year.
+
+:::
+
+:::example[A million people]
+
+The rumour doubles every day, so after $$t$$ days $$2^t$$ people know it. It reaches a million
+people when $$2^t = 1{,}000{,}000 = 10^6$$:
+
+```math
+\begin{aligned}
+t &= \log_2(10^6) &&\qquad \text{definition of the logarithm} \\
+&= 6\log_2 10 &&\qquad \text{power law} \\
+&\approx 6 \cdot 3.3219 \approx 19.93 &&\qquad \log_2 10 \approx 3.3219 \text{ from changing the base}
+\end{aligned}
+```
+
+As a check, $$2^{19} = 524{,}288$$ is less than a million and $$2^{20} = 1{,}048{,}576$$ is more. So
+the rumour passes a million people on day 20, only ten days after it passed a thousand.
+
+:::
+
+## Exercises
+
+:::::accordion[Exercises on logarithms, with solutions]
+
+::::exercise{#ex-logarithms-values}
+
+Find each logarithm, and check each answer by turning it back into a power.
+
+1. $$\log_2 64$$
+2. $$\log_3 81$$
+3. $$\log_{10} 0.001$$
+4. $$\log_5 \frac{1}{25}$$
+5. $$\log_9 3$$
+6. $$\log_7 1$$
+
+:::solution
+
+1. $$\log_2 64 = 6$$, because $$2^6 = 64$$.
+2. $$\log_3 81 = 4$$, because $$3^4 = 81$$.
+3. $$\log_{10} 0.001 = -3$$, because $$10^{-3} = \frac{1}{1000} = 0.001$$.
+4. $$\log_5 \frac{1}{25} = -2$$, because $$5^{-2} = \frac{1}{25}$$.
+5. $$\log_9 3 = \frac{1}{2}$$, because $$9^{1/2} = \sqrt9 = 3$$.
+6. $$\log_7 1 = 0$$, because $$7^0 = 1$$, as part 4 of :ref{#log-laws} says for every base.
+
+:::
+
+::::
+
+::::exercise{#ex-logarithms-rewrite}
+
+Write each power as a logarithm, and each logarithm as a power.
+
+1. $$3^4 = 81$$
+2. $$10^{-2} = 0.01$$
+3. $$\log_2 0.25 = -2$$
+4. $$\log_{16} 4 = \frac{1}{2}$$
+
+:::solution
+
+By :ref{#logarithm}, $$a^x = y$$ and $$\log_a y = x$$ say the same thing.
+
+1. $$\log_3 81 = 4$$
+2. $$\log_{10} 0.01 = -2$$
+3. $$2^{-2} = 0.25$$, and indeed $$\frac{1}{2^2} = \frac{1}{4}$$
+4. $$16^{1/2} = 4$$, and indeed $$\sqrt{16} = 4$$
+
+:::
+
+::::
+
+::::exercise{#ex-logarithms-laws}
+
+Use :ref{#log-laws} to work out each one without a calculator.
+
+1. $$\log_6 4 + \log_6 9$$
+2. $$\log_2 40 - \log_2 5$$
+3. $$\log_{10} 25 + \log_{10} 4$$
+4. $$3\log_4 2$$
+
+:::solution
+
+1. By the product law, $$\log_6 4 + \log_6 9 = \log_6 36 = 2$$, because $$6^2 = 36$$.
+2. By the quotient law, $$\log_2 40 - \log_2 5 = \log_2 8 = 3$$.
+3. By the product law, $$\log_{10} 25 + \log_{10} 4 = \log_{10} 100 = 2$$.
+4. Since $$4^{1/2} = 2$$, $$\log_4 2 = \frac{1}{2}$$, so $$3\log_4 2 = \frac{3}{2}$$. By the power
+   law it is also $$\log_4(2^3) = \log_4 8$$, and as a check, $$4^{3/2} = (\sqrt4)^3 = 2^3 = 8$$.
+
+:::
+
+::::
+
+::::exercise{#ex-logarithms-slip}
+
+A friend works out $$\log_2(8 + 8)$$ like this: "$$\log_2 8 + \log_2 8 = 3 + 3 = 6$$". Explain what
+went wrong, find the right value, and say which number does have $$6$$ as its logarithm to base 2.
+
+:::solution
+
+The friend split a logarithm of a sum into a sum of logarithms, and there is no such law. The
+product law is about $$\log_2(8 \cdot 8)$$, not $$\log_2(8 + 8)$$. The right value is
+$$\log_2(8 + 8) = \log_2 16 = 4$$, since $$2^4 = 16$$.
+
+The sum $$\log_2 8 + \log_2 8 = 6$$ is the logarithm of the product, $$8 \cdot 8 = 64$$, and as a
+check, $$2^6 = 64$$.
+
+:::
+
+::::
+
+::::exercise{#ex-logarithms-solve}
+
+Solve each equation exactly, and check each answer.
+
+1. $$7 \cdot 3^x = 567$$
+2. $$2^{3x + 1} = 32$$
+3. $$4^x = 8$$
+
+:::solution
+
+1. Divide both sides by $$7$$: $$3^x = 81 = 3^4$$, so $$x = 4$$ by :ref{#exponential-one-to-one}. As
+   a check, $$7 \cdot 81 = 567$$.
+2. Since $$32 = 2^5$$, :ref{#exponential-one-to-one} gives $$3x + 1 = 5$$, so $$3x = 4$$ and
+   $$x = \frac{4}{3}$$. As a check, $$3 \cdot \frac{4}{3} + 1 = 5$$, and $$2^5 = 32$$.
+3. Write both sides as powers of 2. Since $$4^x = (2^2)^x = 2^{2x}$$ and $$8 = 2^3$$, the equation
+   says $$2^{2x} = 2^3$$, so $$2x = 3$$ and $$x = \frac{3}{2}$$. As a check,
+   $$4^{3/2} = (\sqrt4)^3 = 2^3 = 8$$.
+
+:::
+
+::::
+
+::::exercise{#ex-logarithms-calculator}
+
+Use the log button (base 10) for both parts.
+
+1. Solve $$3^x = 20$$, to three decimal places, and check your answer.
+2. A whole number $$N$$ with $$10^k \le N < 10^{k + 1}$$ has $$k + 1$$ digits. Use
+   $$\log_{10} 2 \approx 0.30103$$ to find how many digits $$2^{50}$$ has.
+
+:::solution
+
+1. Take $$\log_{10}$$ of both sides and use the power law:
+
+   ```math
+   \begin{aligned}
+   x\log_{10} 3 &= \log_{10} 20 &&\qquad \text{power law} \\
+   x &= \frac{\log_{10} 20}{\log_{10} 3} \approx \frac{1.30103}{0.47712} \approx 2.727 &&\qquad \text{divide by } \log_{10} 3
+   \end{aligned}
+   ```
+
+   This is $$\log_3 20$$, by :ref{#change-of-base}. It lies between $$2$$ and $$3$$, as it should,
+   since $$3^2 = 9$$ and $$3^3 = 27$$. A calculator gives $$3^{2.727} \approx 20.0$$.
+
+2. By the power law, $$\log_{10}(2^{50}) = 50\log_{10} 2 \approx 15.05$$. So
+   $$2^{50} \approx 10^{15.05}$$, which lies between $$10^{15}$$ and $$10^{16}$$ by
+   :ref{#log-increasing}, and $$2^{50}$$ has $$16$$ digits. In fact
+   $$2^{50} = 1{,}125{,}899{,}906{,}842{,}624$$, which has 16 digits.
+
+:::
+
+::::
+
+::::exercise{#ex-logarithms-root}
+
+Prove that $$\log_a \sqrt[n]{x} = \frac{1}{n}\log_a x$$ for every $$x > 0$$ and every positive
+integer $$n$$. Check it with $$\log_2 \sqrt[3]{64}$$.
+
+:::solution
+
+By :ref{#real-numbers/rational-power}, $$\sqrt[n]{x} = x^{1/n}$$. So, by the power law in
+:ref{#log-laws} with $$r = \frac{1}{n}$$,
+
+```math
+\log_a \sqrt[n]{x} = \log_a\left(x^{1/n}\right) = \frac{1}{n}\log_a x
+```
+
+As a check, $$\sqrt[3]{64} = 4$$, so the left side is $$\log_2 4 = 2$$. The right side is
+$$\frac{1}{3}\log_2 64 = \frac{6}{3} = 2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-logarithms-swap-base}
+
+Prove that $$\log_a b \cdot \log_b a = 1$$ for all $$a > 0$$ and $$b > 0$$ with $$a \ne 1$$ and
+$$b \ne 1$$. Check it with $$a = 2$$ and $$b = 8$$.
+
+:::solution
+
+By :ref{#change-of-base}, writing $$\log_b a$$ with base $$a$$,
+
+```math
+\begin{aligned}
+\log_b a &= \frac{\log_a a}{\log_a b} &&\qquad \text{change of base} \\
+&= \frac{1}{\log_a b} &&\qquad \log_a a = 1
+\end{aligned}
+```
+
+The number $$\log_a b$$ is not $$0$$, because $$b \ne 1$$ (as in the proof of
+:ref{#change-of-base}). Multiplying both sides by $$\log_a b$$ gives
+$$\log_a b \cdot \log_b a = 1$$.
+
+As a check, $$\log_2 8 = 3$$ and $$\log_8 2 = \frac{1}{3}$$, since $$8^{1/3} = \sqrt[3]{8} = 2$$.
+And $$3 \cdot \frac{1}{3} = 1$$.
+
+:::
+
+::::
+
+:::::

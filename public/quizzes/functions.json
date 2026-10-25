@@ -1,0 +1,762 @@
+{
+  "title": "Functions",
+  "description": "Questions on functions and their graphs, polynomials, exponentials and logarithms.",
+  "questions": [
+    {
+      "id": "one-output",
+      "stars": 1,
+      "topic": "What a function is",
+      "question": "Which of these rules is a function on all numbers?",
+      "options": [
+        "$$x \\mapsto$$ both square roots of $$x$$",
+        "$$x \\mapsto x^2 + 1$$",
+        "$$x \\mapsto \\frac{1}{x}$$",
+        "$$x \\mapsto \\sqrt{x}$$"
+      ],
+      "answer": 1,
+      "explanation": "A function gives every input in its domain exactly one output (:ref{#function}). Two square roots is two outputs, and $$\\frac{1}{x}$$ and $$\\sqrt{x}$$ have no output at some numbers."
+    },
+    {
+      "id": "domain",
+      "stars": 1,
+      "topic": "What a function is",
+      "question": "What is the domain of the formula $$\\frac{1}{x^2 - 9}$$?",
+      "options": [
+        "Every number except $$3$$ and $$-3$$",
+        "Every number except $$9$$",
+        "The numbers $$x > 3$$",
+        "Every number"
+      ],
+      "answer": 0,
+      "explanation": "With no domain named, the domain is every $$x$$ where the formula makes sense (:ref{#formula-domain}). Here that means $$x^2 \\ne 9$$."
+    },
+    {
+      "id": "range",
+      "stars": 2,
+      "topic": "What a function is",
+      "question": "What is the range of $$x \\mapsto x^2 + 1$$ on all numbers?",
+      "options": [
+        "All numbers",
+        "The numbers $$\\ge 0$$",
+        "The numbers $$> 1$$",
+        "The numbers $$\\ge 1$$"
+      ],
+      "answer": 3,
+      "explanation": "Squares are never negative, so every value is at least $$1$$, and $$y \\ge 1$$ is reached at $$x = \\sqrt{y - 1}$$ (:ref{#range})."
+    },
+    {
+      "id": "equal",
+      "stars": 2,
+      "topic": "What a function is",
+      "question": "Are $$x \\mapsto \\frac{x^2}{x}$$ and $$x \\mapsto x$$ the same function?",
+      "options": [
+        "Yes: cancel the $$x$$",
+        "Yes: they agree at $$x = 1$$",
+        "No: the first isn't defined at $$0$$",
+        "No: they disagree at $$x = 2$$"
+      ],
+      "answer": 2,
+      "explanation": "Equal functions need the same domain as well as the same values (:ref{#function-equality}). They agree everywhere except $$0$$, where the first has no value."
+    },
+    {
+      "id": "composite-order",
+      "stars": 2,
+      "topic": "What a function is",
+      "question": "Let $$f(x) = x - 1$$ and $$g(x) = x^2$$. What is $$(g \\circ f)(3)$$?",
+      "options": [
+        "$$8$$",
+        "$$4$$",
+        "$$9$$",
+        "$$2$$"
+      ],
+      "answer": 1,
+      "explanation": "$$g \\circ f$$ means $$f$$ first, then $$g$$ (:ref{#function-composite}): $$f(3) = 2$$, then $$g(2) = 4$$. Doing $$g$$ first gives $$8$$."
+    },
+    {
+      "id": "inverse-formula",
+      "stars": 2,
+      "topic": "What a function is",
+      "question": "What is the inverse of $$f(x) = 3x - 5$$?",
+      "options": [
+        "$$f^{-1}(y) = \\frac{y + 5}{3}$$",
+        "$$f^{-1}(y) = \\frac{1}{3y - 5}$$",
+        "$$f^{-1}(y) = 3y + 5$$",
+        "$$f^{-1}(y) = \\frac{y}{3} - 5$$"
+      ],
+      "answer": 0,
+      "explanation": "Solve $$y = 3x - 5$$ for $$x$$ (:ref{#inverse-function}). Check: $$f(4) = 7$$ and $$\\frac{7 + 5}{3} = 4$$. And $$f^{-1}$$ is not $$\\frac{1}{f}$$."
+    },
+    {
+      "id": "not-one-to-one",
+      "stars": 2,
+      "topic": "What a function is",
+      "question": "Why doesn't squaring on all numbers have an inverse?",
+      "options": [
+        "Its range is all numbers",
+        "It has no formula",
+        "Its domain is empty",
+        "It isn't one to one: $$3$$ and $$-3$$ both give $$9$$"
+      ],
+      "answer": 3,
+      "explanation": "An inverse needs one input for each value (:ref{#one-to-one}). On $$x \\ge 0$$ squaring is one to one, and $$\\sqrt{\\phantom{x}}$$ undoes it."
+    },
+    {
+      "id": "graph-point",
+      "stars": 1,
+      "topic": "Graphs of functions",
+      "question": "The point $$(2, 5)$$ is on the graph of $$f$$. What does that say?",
+      "options": [
+        "$$f(5) = 2$$",
+        "$$f(2) + f(5) = 0$$",
+        "$$f(2) = 5$$",
+        "$$2$$ is not in the domain"
+      ],
+      "answer": 2,
+      "explanation": "The graph is the points $$(x, f(x))$$ (:ref{#function-graph}): go up from $$2$$ and across to $$5$$."
+    },
+    {
+      "id": "vertical-line",
+      "stars": 1,
+      "topic": "Graphs of functions",
+      "question": "Which of these is NOT the graph of a function?",
+      "options": [
+        "The parabola $$y = x^2 - 2$$",
+        "The circle $$x^2 + y^2 = 9$$",
+        "The line $$y = 3$$",
+        "The top half of a circle"
+      ],
+      "answer": 1,
+      "explanation": "The vertical line $$x = 0$$ meets the circle at $$(0, 3)$$ and $$(0, -3)$$, so it fails the vertical line test (:ref{#vertical-line-test})."
+    },
+    {
+      "id": "floor",
+      "stars": 2,
+      "topic": "Graphs of functions",
+      "question": "What is $$\\lfloor -2.5 \\rfloor$$?",
+      "options": [
+        "$$-3$$",
+        "$$-2$$",
+        "$$-2.5$$",
+        "$$2$$"
+      ],
+      "answer": 0,
+      "explanation": "The floor is the largest integer $$\\le x$$ (:ref{#floor}). $$-2$$ is bigger than $$-2.5$$, so the floor is $$-3$$."
+    },
+    {
+      "id": "signs",
+      "stars": 2,
+      "topic": "Graphs of functions",
+      "question": "Where is $$(x + 2)(x - 3)$$ negative?",
+      "options": [
+        "For $$x < -2$$",
+        "For $$x > 3$$",
+        "Nowhere",
+        "For $$-2 < x < 3$$"
+      ],
+      "answer": 3,
+      "explanation": "Between the roots one factor is positive and the other negative, so the product is negative (:ref{#real-numbers/product-sign}). Outside the roots the factors have the same sign."
+    },
+    {
+      "id": "increasing",
+      "stars": 2,
+      "topic": "Graphs of functions",
+      "question": "Why is an increasing function one to one?",
+      "options": [
+        "Its graph is a line",
+        "Its range is all numbers",
+        "Different inputs give one smaller and one larger value",
+        "It is defined everywhere"
+      ],
+      "answer": 2,
+      "explanation": "If $$x < y$$ then $$f(x) < f(y)$$, so the values differ (:ref{#graphs-increasing-one-to-one})."
+    },
+    {
+      "id": "slide-right",
+      "stars": 1,
+      "topic": "Moving and mirroring graphs",
+      "question": "How does the graph of $$y = \\lvert x - 4 \\rvert$$ sit compared with $$y = \\lvert x \\rvert$$?",
+      "options": [
+        "Slid $$4$$ to the left",
+        "Slid $$4$$ to the right",
+        "Slid $$4$$ up",
+        "Slid $$4$$ down"
+      ],
+      "answer": 1,
+      "explanation": "$$f(x - h)$$ slides the graph by $$h$$ to the right (:ref{#function-graph-moves}). The new graph at $$x$$ does what the old one did at $$x - 4$$."
+    },
+    {
+      "id": "stretch-up",
+      "stars": 2,
+      "topic": "Moving and mirroring graphs",
+      "question": "How is the graph of $$y = 3f(x)$$ moved from the graph of $$f$$?",
+      "options": [
+        "Stretched by $$3$$ away from the $$x$$-axis",
+        "Squeezed by $$3$$ towards the $$y$$-axis",
+        "Slid $$3$$ up",
+        "Stretched by $$3$$ away from the $$y$$-axis"
+      ],
+      "answer": 0,
+      "explanation": "Multiplying the output stretches upwards (:ref{#function-graph-moves}). Changing the input, as in $$f(3x)$$, squeezes across instead."
+    },
+    {
+      "id": "even-odd",
+      "stars": 1,
+      "topic": "Moving and mirroring graphs",
+      "question": "Which function is odd?",
+      "options": [
+        "$$x^2 + 1$$",
+        "$$\\lvert x \\rvert$$",
+        "$$x^2 + x$$",
+        "$$x^3 - x$$"
+      ],
+      "answer": 3,
+      "explanation": "$$(-x)^3 - (-x) = -(x^3 - x)$$, so $$f(-x) = -f(x)$$ (:ref{#even-odd-function}). The second and third are even, and the last is neither."
+    },
+    {
+      "id": "odd-graph",
+      "stars": 2,
+      "topic": "Moving and mirroring graphs",
+      "question": "What symmetry does the graph of an odd function have?",
+      "options": [
+        "The flip in the $$y$$-axis",
+        "The flip in the $$x$$-axis",
+        "The half turn about $$O$$",
+        "The flip in $$y = x$$"
+      ],
+      "answer": 2,
+      "explanation": "$$f(-x) = -f(x)$$ says $$(x, y)$$ on the graph gives $$(-x, -y)$$ on the graph (:ref{#even-odd-graphs})."
+    },
+    {
+      "id": "product-parity",
+      "stars": 2,
+      "topic": "Moving and mirroring graphs",
+      "question": "If $$f$$ is odd and $$g$$ is odd, what is $$fg$$?",
+      "options": [
+        "Odd",
+        "Even",
+        "Neither, in general",
+        "Zero"
+      ],
+      "answer": 1,
+      "explanation": "$$f(-x)g(-x) = (-f(x))(-g(x)) = f(x)g(x)$$, like two minus signs (:ref{#even-odd-arithmetic}). For example $$x \\cdot x^3 = x^4$$."
+    },
+    {
+      "id": "parts",
+      "stars": 3,
+      "topic": "Moving and mirroring graphs",
+      "question": "What is the even part of $$f(x) = x^3 + 2x^2 - x + 4$$?",
+      "options": [
+        "$$2x^2 + 4$$",
+        "$$x^3 - x$$",
+        "$$x^3 + 2x^2$$",
+        "$$4$$"
+      ],
+      "answer": 0,
+      "explanation": "The even part is $$\\frac{f(x) + f(-x)}{2}$$ (:ref{#even-odd-parts}). For a polynomial it collects the even powers."
+    },
+    {
+      "id": "inverse-mirror",
+      "stars": 2,
+      "topic": "Moving and mirroring graphs",
+      "question": "How is the graph of $$f^{-1}$$ related to the graph of $$f$$?",
+      "options": [
+        "It is the mirror image in the $$x$$-axis",
+        "It is the half turn about $$O$$",
+        "It is the graph of $$\\frac{1}{f}$$",
+        "It is the mirror image in the line $$y = x$$"
+      ],
+      "answer": 3,
+      "explanation": "$$(a, b)$$ is on the graph of $$f$$ exactly when $$(b, a)$$ is on the graph of $$f^{-1}$$, and the flip in $$y = x$$ swaps the coordinates (:ref{#inverse-graph})."
+    },
+    {
+      "id": "degree",
+      "stars": 1,
+      "topic": "Polynomials",
+      "question": "What is the degree of $$(2x^3 - x + 1)(x^2 + 5)$$?",
+      "options": [
+        "$$6$$",
+        "$$3$$",
+        "$$5$$",
+        "$$2$$"
+      ],
+      "answer": 2,
+      "explanation": "Degrees add when you multiply (:ref{#degree-product}): $$3 + 2 = 5$$. The leading coefficient is $$2 \\cdot 1 = 2$$."
+    },
+    {
+      "id": "factor",
+      "stars": 2,
+      "topic": "Polynomials",
+      "question": "$$1$$, $$2$$ and $$3$$ are roots of $$x^3 - 6x^2 + 11x - 6$$. What is its factored form?",
+      "options": [
+        "$$(x + 1)(x + 2)(x + 3)$$",
+        "$$(x - 1)(x - 2)(x - 3)$$",
+        "$$6(x - 1)(x - 2)(x - 3)$$",
+        "$$x(x - 1)(x - 6)$$"
+      ],
+      "answer": 1,
+      "explanation": "With $$n$$ different roots, $$f(x) = a_n(x - c_1)\\cdots(x - c_n)$$ (:ref{#factor-by-roots}), and here $$a_n = 1$$."
+    },
+    {
+      "id": "root-count",
+      "stars": 2,
+      "topic": "Polynomials",
+      "question": "At most how many roots can a polynomial of degree $$5$$ have?",
+      "options": [
+        "$$5$$",
+        "$$4$$",
+        "$$6$$",
+        "As many as you like"
+      ],
+      "answer": 0,
+      "explanation": "A polynomial of degree $$n$$ has at most $$n$$ roots (:ref{#root-bound}). Each root splits off a factor $$x - c$$ (:ref{#factor-theorem})."
+    },
+    {
+      "id": "unique",
+      "stars": 3,
+      "topic": "Polynomials",
+      "question": "Why does the degree of a polynomial make sense?",
+      "options": [
+        "Every polynomial has a root",
+        "Polynomials are one to one",
+        "The constant term is never $$0$$",
+        "Two formulas for the same function have the same coefficients"
+      ],
+      "answer": 3,
+      "explanation": "If two formulas agreed everywhere, their difference would have infinitely many roots, so its coefficients are all $$0$$ (:ref{#coefficients-unique})."
+    },
+    {
+      "id": "integer-root",
+      "stars": 2,
+      "topic": "Polynomials",
+      "question": "Which numbers can be whole-number roots of $$x^3 + 2x^2 - 5x - 6$$?",
+      "options": [
+        "Only divisors of $$5$$",
+        "Only even numbers",
+        "Only divisors of $$6$$",
+        "Any integer"
+      ],
+      "answer": 2,
+      "explanation": "With integer coefficients and leading coefficient $$1$$, an integer root divides the constant term (:ref{#integer-root}). Trying them, $$-1$$, $$2$$ and $$-3$$ work."
+    },
+    {
+      "id": "power-roots",
+      "stars": 2,
+      "topic": "Polynomials",
+      "question": "What are the real roots of $$x^4 - 1$$?",
+      "options": [
+        "$$1$$ only",
+        "$$1$$ and $$-1$$",
+        "$$1$$, $$-1$$, $$2$$ and $$-2$$",
+        "None"
+      ],
+      "answer": 1,
+      "explanation": "For even $$n$$, $$x^n = 1$$ has the two real solutions $$\\pm 1$$ (:ref{#power-plus-minus-one})."
+    },
+    {
+      "id": "not-zero",
+      "stars": 2,
+      "topic": "Polynomials",
+      "question": "A polynomial $$f$$ has $$f(2) = 0$$. Is $$f$$ the zero polynomial?",
+      "options": [
+        "Not necessarily: it only has $$2$$ as a root",
+        "Yes",
+        "Yes, if its degree is $$2$$",
+        "Only if $$f(0) = 0$$"
+      ],
+      "answer": 0,
+      "explanation": "The zero polynomial is $$0$$ at every number, with every coefficient $$0$$ (:ref{#degree}). Being $$0$$ at one number makes $$2$$ a root (:ref{#polynomial-root})."
+    },
+    {
+      "id": "remainder",
+      "stars": 1,
+      "topic": "Dividing polynomials",
+      "question": "What is the remainder when $$x^4 - 3x + 1$$ is divided by $$x - 2$$?",
+      "options": [
+        "$$0$$",
+        "$$-5$$",
+        "$$17$$",
+        "$$11$$"
+      ],
+      "answer": 3,
+      "explanation": "The remainder on dividing by $$x - c$$ is $$f(c)$$ (:ref{#remainder-theorem}): $$16 - 6 + 1 = 11$$."
+    },
+    {
+      "id": "remainder-neg",
+      "stars": 2,
+      "topic": "Dividing polynomials",
+      "question": "What is the remainder when $$x^3 - 2x^2 + 5$$ is divided by $$x + 1$$?",
+      "options": [
+        "$$8$$",
+        "$$4$$",
+        "$$2$$",
+        "$$6$$"
+      ],
+      "answer": 2,
+      "explanation": "$$x + 1 = x - (-1)$$, so the remainder is $$f(-1) = -1 - 2 + 5 = 2$$ (:ref{#remainder-theorem})."
+    },
+    {
+      "id": "remainder-degree",
+      "stars": 2,
+      "topic": "Dividing polynomials",
+      "question": "Dividing a polynomial by $$x^2 + 1$$, what can the remainder be?",
+      "options": [
+        "Any polynomial",
+        "$$0$$ or a polynomial of degree at most $$1$$",
+        "A number only",
+        "A polynomial of degree $$2$$"
+      ],
+      "answer": 1,
+      "explanation": "The remainder is $$0$$ or has smaller degree than what you divide by (:ref{#polynomial-division}), like a remainder smaller than the divisor for whole numbers."
+    },
+    {
+      "id": "rational-domain",
+      "stars": 2,
+      "topic": "Dividing polynomials",
+      "question": "What is the domain of $$\\frac{x^2 - 1}{x - 1}$$?",
+      "options": [
+        "Every number except $$1$$",
+        "Every number",
+        "Every number except $$1$$ and $$-1$$",
+        "The numbers $$x > 1$$"
+      ],
+      "answer": 0,
+      "explanation": "A rational function is defined where its denominator isn't $$0$$ (:ref{#rational-function}). It equals $$x + 1$$ except at $$1$$, where it has no value."
+    },
+    {
+      "id": "divides",
+      "stars": 2,
+      "topic": "Dividing polynomials",
+      "question": "When does $$x - c$$ divide a polynomial $$f$$?",
+      "options": [
+        "Exactly when $$f(0) = c$$",
+        "Always",
+        "Exactly when $$c$$ divides the constant term",
+        "Exactly when $$f(c) = 0$$"
+      ],
+      "answer": 3,
+      "explanation": "The remainder is $$f(c)$$, so it is $$0$$ exactly when $$c$$ is a root (:ref{#remainder-theorem})."
+    },
+    {
+      "id": "two-root-two",
+      "stars": 2,
+      "topic": "Exponential functions",
+      "question": "How is $$2^{\\sqrt 2}$$ given a meaning?",
+      "options": [
+        "It is $$2 \\cdot \\sqrt 2$$",
+        "It is $$\\sqrt{2^2}$$",
+        "Powers $$2^{1.4}$$, $$2^{1.41}$$, $$2^{1.414}$$, ... close in on it",
+        "It has no meaning"
+      ],
+      "answer": 2,
+      "explanation": "Fractional powers closing in on $$\\sqrt 2$$ give numbers closing in on about $$2.665$$. The rules for $$a^x$$ are then taken as given (:ref{#exponential-rules})."
+    },
+    {
+      "id": "negative-power",
+      "stars": 1,
+      "topic": "Exponential functions",
+      "question": "What is $$2^{-3}$$?",
+      "options": [
+        "$$-8$$",
+        "$$\\frac{1}{8}$$",
+        "$$-6$$",
+        "$$\\frac{1}{6}$$"
+      ],
+      "answer": 1,
+      "explanation": "$$a^{-x} = \\frac{1}{a^x}$$ (:ref{#exponential-positive}). A negative exponent never gives a negative number."
+    },
+    {
+      "id": "positive",
+      "stars": 2,
+      "topic": "Exponential functions",
+      "question": "Can $$a^x$$ ever be $$0$$ or negative, for $$a > 0$$?",
+      "options": [
+        "No: $$a^x > 0$$ for every $$x$$",
+        "Yes, when $$x < 0$$",
+        "Yes, when $$a < 1$$",
+        "Yes, at $$x = 0$$"
+      ],
+      "answer": 0,
+      "explanation": "Every exponential is positive (:ref{#exponential-positive}). That's why $$2^x = -1$$ has no solution."
+    },
+    {
+      "id": "small-base",
+      "stars": 2,
+      "topic": "Exponential functions",
+      "question": "How does the graph of $$\\left(\\frac12\\right)^x$$ relate to the graph of $$2^x$$?",
+      "options": [
+        "It is its mirror image in the $$x$$-axis",
+        "It is the same graph",
+        "It is slid down by $$\\frac12$$",
+        "It is its mirror image in the $$y$$-axis"
+      ],
+      "answer": 3,
+      "explanation": "$$\\left(\\frac12\\right)^x = 2^{-x}$$, and $$f(-x)$$ flips in the $$y$$-axis (:ref{#exponential-small-base})."
+    },
+    {
+      "id": "bacteria",
+      "stars": 2,
+      "topic": "Exponential functions",
+      "question": "$$500$$ bacteria double every $$20$$ minutes. How many after an hour?",
+      "options": [
+        "$$1500$$",
+        "$$3000$$",
+        "$$4000$$",
+        "$$2000$$"
+      ],
+      "answer": 2,
+      "explanation": "An hour is three doublings: $$500 \\cdot 2^3 = 4000$$. Equal steps multiply by equal factors (:ref{#exponential-steps})."
+    },
+    {
+      "id": "half-life",
+      "stars": 2,
+      "topic": "Exponential functions",
+      "question": "A medicine has a half-life of $$6$$ hours. Of an $$80$$ mg dose, how much is left after $$12$$ hours?",
+      "options": [
+        "$$40$$ mg",
+        "$$20$$ mg",
+        "$$0$$ mg",
+        "$$10$$ mg"
+      ],
+      "answer": 1,
+      "explanation": "Two half-lives: $$80 \\to 40 \\to 20$$. Decay never reaches $$0$$ (:ref{#growth-decay})."
+    },
+    {
+      "id": "fingerprint",
+      "stars": 3,
+      "topic": "Exponential functions",
+      "question": "Which sign tells you a quantity changes exponentially?",
+      "options": [
+        "Equal time steps multiply it by the same factor",
+        "Equal time steps add the same amount",
+        "It doubles once",
+        "It is always increasing"
+      ],
+      "answer": 0,
+      "explanation": "$$f(t + s) = f(t) \\cdot a^{ks}$$, the same factor whatever $$t$$ is (:ref{#exponential-steps}). Adding the same amount is linear change."
+    },
+    {
+      "id": "log-value",
+      "stars": 1,
+      "topic": "Logarithms",
+      "question": "What is $$\\log_2 32$$?",
+      "options": [
+        "$$16$$",
+        "$$6$$",
+        "$$2.5$$",
+        "$$5$$"
+      ],
+      "answer": 3,
+      "explanation": "$$2^5 = 32$$, and $$\\log_a y$$ is the power that gives $$y$$ (:ref{#logarithm})."
+    },
+    {
+      "id": "log-fraction",
+      "stars": 2,
+      "topic": "Logarithms",
+      "question": "What is $$\\log_3 \\frac{1}{9}$$?",
+      "options": [
+        "$$2$$",
+        "$$\\frac{1}{2}$$",
+        "$$-2$$",
+        "$$-\\frac{1}{2}$$"
+      ],
+      "answer": 2,
+      "explanation": "$$3^{-2} = \\frac{1}{9}$$ (:ref{#logarithm}). Logarithms of numbers between $$0$$ and $$1$$ are negative when the base is above $$1$$."
+    },
+    {
+      "id": "log-half",
+      "stars": 2,
+      "topic": "Logarithms",
+      "question": "What is $$\\log_4 2$$?",
+      "options": [
+        "$$2$$",
+        "$$\\frac{1}{2}$$",
+        "$$-2$$",
+        "$$\\frac{1}{4}$$"
+      ],
+      "answer": 1,
+      "explanation": "$$4^{1/2} = \\sqrt 4 = 2$$, so the power is $$\\frac12$$ (:ref{#logarithm})."
+    },
+    {
+      "id": "product-law",
+      "stars": 1,
+      "topic": "Logarithms",
+      "question": "What is $$\\log_a(xy)$$?",
+      "options": [
+        "$$\\log_a x + \\log_a y$$",
+        "$$\\log_a x \\cdot \\log_a y$$",
+        "$$\\log_a(x + y)$$",
+        "$$xy \\log_a 1$$"
+      ],
+      "answer": 0,
+      "explanation": "Multiplying adds the counts of factors of $$a$$ (:ref{#log-laws}): $$\\log_2(8 \\cdot 4) = 3 + 2 = 5$$."
+    },
+    {
+      "id": "slip-sum",
+      "stars": 2,
+      "topic": "Logarithms",
+      "question": "What is $$\\log_2(8 + 8)$$?",
+      "options": [
+        "$$6$$",
+        "$$3$$",
+        "$$9$$",
+        "$$4$$"
+      ],
+      "answer": 3,
+      "explanation": "$$8 + 8 = 16 = 2^4$$. There is no law for the logarithm of a sum, so $$\\log_2 8 + \\log_2 8 = 6$$ is the wrong answer (:ref{#log-laws})."
+    },
+    {
+      "id": "power-law",
+      "stars": 2,
+      "topic": "Logarithms",
+      "question": "Which of these equals $$\\log_{10}(x^2)$$ for $$x > 0$$?",
+      "options": [
+        "$$(\\log_{10} x)^2$$",
+        "$$\\log_{10} 2x$$",
+        "$$2\\log_{10} x$$",
+        "$$\\log_{10} x + 2$$"
+      ],
+      "answer": 2,
+      "explanation": "The power law: $$\\log_a(x^r) = r\\log_a x$$ (:ref{#log-laws}). At $$x = 1000$$: $$\\log_{10} 1000^2 = 6 = 2 \\cdot 3$$, while $$(\\log_{10} 1000)^2 = 9$$."
+    },
+    {
+      "id": "change-base",
+      "stars": 2,
+      "topic": "Logarithms",
+      "question": "How do you find $$\\log_2 10$$ with a calculator that has only $$\\log_{10}$$?",
+      "options": [
+        "$$\\log_{10} 10 \\cdot \\log_{10} 2$$",
+        "$$\\frac{\\log_{10} 10}{\\log_{10} 2} \\approx 3.32$$",
+        "$$\\log_{10} 10 - \\log_{10} 2$$",
+        "$$\\frac{\\log_{10} 2}{\\log_{10} 10}$$"
+      ],
+      "answer": 1,
+      "explanation": "Change of base: $$\\log_b x = \\frac{\\log_a x}{\\log_a b}$$ (:ref{#change-of-base}). Check: $$2^{3.32} \\approx 10$$."
+    },
+    {
+      "id": "log-graph",
+      "stars": 2,
+      "topic": "Logarithms",
+      "question": "Through which point does the graph of every $$\\log_a$$ pass?",
+      "options": [
+        "$$(1, 0)$$",
+        "$$(0, 1)$$",
+        "$$(0, 0)$$",
+        "$$(a, 0)$$"
+      ],
+      "answer": 0,
+      "explanation": "$$\\log_a 1 = 0$$ since $$a^0 = 1$$. The graph is the graph of $$a^x$$, which passes through $$(0, 1)$$, flipped in $$y = x$$ (:ref{#log-graph})."
+    },
+    {
+      "id": "solve-exp",
+      "stars": 2,
+      "topic": "Logarithms",
+      "question": "Solve $$3 \\cdot 2^x = 48$$.",
+      "options": [
+        "$$x = 16$$",
+        "$$x = 8$$",
+        "$$x = 5$$",
+        "$$x = 4$$"
+      ],
+      "answer": 3,
+      "explanation": "Divide by $$3$$: $$2^x = 16$$, so $$x = \\log_2 16 = 4$$ (:ref{#log-inverse})."
+    },
+    {
+      "id": "log-domain",
+      "stars": 2,
+      "topic": "Logarithms",
+      "question": "For which numbers $$x$$ is $$\\log_{10} x$$ defined?",
+      "options": [
+        "$$x \\ge 0$$",
+        "All numbers",
+        "$$x > 0$$",
+        "$$x > 1$$"
+      ],
+      "answer": 2,
+      "explanation": "$$\\log_a$$ undoes $$a^x$$, whose values are the positive numbers, so its domain is the positive numbers (:ref{#log-inverse})."
+    },
+    {
+      "id": "compound",
+      "stars": 1,
+      "topic": "The number e and using logarithms",
+      "question": "£1 earns $$100\\%$$ a year, paid in $$12$$ monthly parts. About how much is there after a year?",
+      "options": [
+        "£2.00",
+        "£2.61",
+        "£12.00",
+        "£2.72 exactly"
+      ],
+      "answer": 1,
+      "explanation": "$$\\left(1 + \\frac{1}{12}\\right)^{12} \\approx 2.613$$. Paying more often gets closer to $$e \\approx 2.718$$ but never past it (:ref{#e-exists})."
+    },
+    {
+      "id": "ln",
+      "stars": 1,
+      "topic": "The number e and using logarithms",
+      "question": "What is $$\\ln e^3$$?",
+      "options": [
+        "$$3$$",
+        "$$e^3$$",
+        "$$3e$$",
+        "$$1$$"
+      ],
+      "answer": 0,
+      "explanation": "$$\\ln = \\log_e$$ undoes $$e^x$$ (:ref{#natural-log}, :ref{#log-inverse})."
+    },
+    {
+      "id": "base-e",
+      "stars": 2,
+      "topic": "The number e and using logarithms",
+      "question": "How can $$2^t$$ be written as a power of $$e$$?",
+      "options": [
+        "$$e^{2t}$$",
+        "$$e^{t / \\ln 2}$$",
+        "$$2e^t$$",
+        "$$e^{t \\ln 2}$$"
+      ],
+      "answer": 3,
+      "explanation": "$$a^x = e^{x\\ln a}$$ (:ref{#base-e}), since $$e^{\\ln 2} = 2$$."
+    },
+    {
+      "id": "doubling",
+      "stars": 2,
+      "topic": "The number e and using logarithms",
+      "question": "A population grows like $$Ce^{0.1t}$$, with $$t$$ in years. About how long does it take to double?",
+      "options": [
+        "$$10$$ years",
+        "$$2$$ years",
+        "About $$6.9$$ years",
+        "$$0.1$$ years"
+      ],
+      "answer": 2,
+      "explanation": "The doubling time is $$\\frac{\\ln 2}{K} = \\frac{0.693}{0.1}$$ (:ref{#half-life}), whatever the starting amount."
+    },
+    {
+      "id": "rate",
+      "stars": 3,
+      "topic": "The number e and using logarithms",
+      "question": "Why doesn't the starting amount $$C$$ matter when finding the rate $$K$$ from two measurements?",
+      "options": [
+        "$$C$$ is always $$1$$",
+        "Dividing one measurement by the other cancels it",
+        "$$C$$ is $$e$$",
+        "Taking $$\\ln$$ removes it"
+      ],
+      "answer": 1,
+      "explanation": "$$\\frac{f(t_2)}{f(t_1)} = \\frac{Ce^{Kt_2}}{Ce^{Kt_1}} = e^{K(t_2 - t_1)}$$ (:ref{#rate-from-two})."
+    },
+    {
+      "id": "savings",
+      "stars": 3,
+      "topic": "The number e and using logarithms",
+      "question": "Savings grow by $$5\\%$$ a year. About how long until they double?",
+      "options": [
+        "About $$14.2$$ years",
+        "$$20$$ years",
+        "$$10$$ years",
+        "About $$7$$ years"
+      ],
+      "answer": 0,
+      "explanation": "Solve $$1.05^t = 2$$: $$t = \\frac{\\ln 2}{\\ln 1.05} \\approx 14.2$$ (:ref{#log-laws})."
+    }
+  ]
+}

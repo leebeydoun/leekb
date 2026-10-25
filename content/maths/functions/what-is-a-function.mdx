@@ -1,0 +1,547 @@
+---
+title: What a function is
+description:
+  Functions as rules that give one output for each input, their domain and range, adding,
+  multiplying and chaining them, and running a function backwards with its inverse.
+---
+
+Imagine standing at a vending machine and pressing B4. A bag of crisps drops into the tray. Press B4
+again tomorrow and the same crisps drop, because the button decides what comes out, every time. If
+the same button gave crisps one day and a chocolate bar the next, you would call the machine broken.
+
+<VendingMachine caption="Each button on a vending machine gives one snack, and the same one every time you press it." />
+
+A rule like the machine's, with one output for each input and the same one every time, is called a
+**function**. In this guide we'll meet functions given in several ways, see which numbers they
+accept and give out, and then combine them and run them backwards.
+
+## One output for each input
+
+Take the rule "double the number and add $$1$$". Feed it $$3$$ and out comes $$7$$. Feed it $$-2$$
+and out comes $$-3$$, and $$0.5$$ gives $$2$$. Every number goes in, and each one comes out as one
+number, the same one every time.
+
+:::definition[Function]{#function}
+
+Let $$S$$ be a set of numbers (:ref{#basic-proofs/set}). A **function** $$f$$ on $$S$$ is a rule
+that gives each element $$x$$ of $$S$$ exactly one number, written $$f(x)$$ and read "$$f$$ of
+$$x$$".
+
+- The set $$S$$ is the **domain** of $$f$$, and its elements are the **inputs**.
+- The number $$f(x)$$ is the **value** of $$f$$ at $$x$$, or the **output** for $$x$$.
+
+:::
+
+The rule from the start is the function $$f(x) = 2x + 1$$ on all numbers, and
+$$f(3) = 2 \cdot 3 + 1 = 7$$. It is also written $$x \mapsto 2x + 1$$, read "$$x$$ goes to
+$$2x + 1$$", which names the rule without giving it a letter. We say "the function $$f$$" for the
+whole rule, and "the number $$f(x)$$" for the one value it gives at $$x$$.
+
+A formula is one way to give a function, but not the only one. A weather station that records the
+temperature every three hours through a spring day gives a table:
+
+| Time $$t$$ (hours after midnight) | $$6$$ | $$9$$  | $$12$$ | $$15$$ | $$18$$ | $$21$$ |
+| --------------------------------- | ----- | ------ | ------ | ------ | ------ | ------ |
+| Temperature $$T(t)$$ (°C)         | $$7$$ | $$11$$ | $$15$$ | $$17$$ | $$14$$ | $$10$$ |
+
+Here the domain is the set of six numbers $$\{6, 9, 12, 15, 18, 21\}$$, and $$T(15) = 17$$. There is
+no formula, and none is needed: the table is the rule, since it gives one temperature for each time.
+
+A rule in words works as well. For each number $$x \ge 0$$, let $$d(x)$$ be the first digit after
+the decimal point of $$x$$. So $$d(3.14159\ldots) = 1$$, $$d(2.5) = 5$$, $$d(7) = 0$$ and
+$$d(\frac{1}{3}) = 3$$. Some numbers have two decimals, such as $$0.25$$ and $$0.24999\ldots$$
+(:ref{#real-numbers/point-nine}), and those would give two different digits. So for $$d$$ to be a
+function, the rule has to say which decimal to use: we take the one that doesn't end in endless
+$$9$$s.
+
+One output for each input is the heart of the definition. Take the rule "the square roots of $$x$$",
+for $$x \ge 0$$. The number $$9$$ has two square roots, $$3$$ and $$-3$$
+(:ref{#real-numbers/square-root-count}), so this rule gives $$9$$ two outputs, and it is not a
+function. The square root sign picks one of them, the one that isn't negative
+(:ref{#real-numbers/square-root}). So $$x \mapsto \sqrt{x}$$ on the numbers $$x \ge 0$$ is a
+function, with $$\sqrt{9} = 3$$.
+
+<ArrowDiagrams caption="Arrows from each input to its outputs. Squaring sends each input to one number, though two inputs may share an output. Taking both square roots sends 1 and 9 to two numbers each, so that rule is not a function." />
+
+Try feeding numbers into the machine below. The table under it keeps the last few inputs: feed the
+same number in twice and the same output comes out. The rules $$\frac{1}{x}$$ and $$\sqrt{x}$$ turn
+some numbers away, and the next two sections explain why.
+
+<FunctionMachine />
+
+## The range of a function
+
+The domain is everything a function accepts. What it gives out is a second set: in the vending
+machine, the snacks that can drop into the tray. For the weather table, the temperatures that occur
+are $$7$$, $$10$$, $$11$$, $$14$$, $$15$$ and $$17$$, and no others.
+
+:::definition[Range]{#range}
+
+The **range** of a function $$f$$ with domain $$S$$ is the set of all its values $$f(x)$$, for $$x$$
+in $$S$$. So a number $$y$$ is in the range exactly when $$y = f(x)$$ for some $$x$$ in $$S$$.
+
+:::
+
+Finding a range means two things: showing each value lies in some set, and showing every number in
+that set is a value. Take $$g(x) = x^2 + 1$$ on all numbers.
+
+- **Every value is at least 1.** A square is never negative (:ref{#real-numbers/squares-positive}),
+  so $$x^2 \ge 0$$ and $$g(x) = x^2 + 1 \ge 1$$.
+- **Every number from 1 up is a value.** Take $$y \ge 1$$. Then $$y - 1 \ge 0$$ has a square root,
+  and with $$x = \sqrt{y - 1}$$, $$g(x) = (y - 1) + 1 = y$$.
+
+So the range of $$g$$ is the set of numbers $$y \ge 1$$, the interval $$[1, \infty)$$
+(:ref{#real-numbers/interval}). Check with $$y = 10$$: the recipe gives $$x = \sqrt{9} = 3$$, and
+$$g(3) = 9 + 1 = 10$$.
+
+The range can be all numbers. For $$f(x) = 2x + 1$$, any number $$y$$ is the value at
+$$x = \frac{y - 1}{2}$$, since $$2 \cdot \frac{y - 1}{2} + 1 = y$$. And the range can be a finite
+set: the digit function $$d$$ has range $$\{0, 1, 2, \ldots, 9\}$$.
+
+## The domain of a formula
+
+A formula often comes without a domain, as in "the function $$\frac{1}{x}$$". The convention is to
+let in every number the formula can handle. Arithmetic breaks down in two places in this chapter:
+dividing by $$0$$, and taking the square root of a negative number.
+
+:::definition[Domain of a formula]{#formula-domain}
+
+When a function is given by a formula and no domain is named, its domain is the set of all numbers
+$$x$$ for which the formula makes sense: no division by $$0$$, and no square root of a negative
+number.
+
+:::
+
+Take $$\sqrt{x - 2}$$. The square root needs $$x - 2 \ge 0$$, that is, $$x \ge 2$$, so the domain is
+$$[2, \infty)$$. At $$x = 6$$ the value is $$\sqrt{4} = 2$$, while $$x = 1$$ would ask for
+$$\sqrt{-1}$$ and is not in the domain.
+
+Now take $$\frac{1}{x^2 - 9}$$. The bottom factors as $$x^2 - 9 = (x - 3)(x + 3)$$, which is $$0$$
+exactly when $$x = 3$$ or $$x = -3$$ (:ref{#numbers/zero-product}). So the domain is every number
+except $$3$$ and $$-3$$. At $$x = 4$$ the value is $$\frac{1}{16 - 9} = \frac{1}{7}$$.
+
+## When two functions are equal
+
+Two machines that give the same output for every button are the same machine as far as anyone using
+them can tell, even if the wiring inside differs. Functions are compared the same way: by what they
+accept and what they give out, not by how the rule is written.
+
+:::definition[Equal functions]{#function-equality}
+
+Two functions $$f$$ and $$g$$ are **equal**, written $$f = g$$, when they have the same domain and
+$$f(x) = g(x)$$ for every $$x$$ in that domain.
+
+:::
+
+For example, $$f(x) = (x + 1)^2 - x^2$$ and $$g(x) = 2x + 1$$ look different, but expanding gives
+$$(x + 1)^2 - x^2 = x^2 + 2x + 1 - x^2 = 2x + 1$$ for every $$x$$. Both have all numbers as their
+domain, so $$f = g$$. Check with $$x = 3$$: $$16 - 9 = 7$$ and $$2 \cdot 3 + 1 = 7$$.
+
+The domain matters as much as the values. The formula $$\frac{x^2}{x}$$ has domain every number
+except $$0$$, by :ref{#formula-domain}, and for those numbers $$\frac{x^2}{x} = x$$. But the
+function $$x \mapsto x$$ has all numbers as its domain, including $$0$$. So the two are different
+functions, even though they agree wherever both are defined.
+
+## Adding and multiplying functions
+
+A phone plan charges a fixed £$$10$$ a month plus £$$2$$ for each gigabyte of data. With $$d$$
+gigabytes, the fixed part is $$f(d) = 10$$ and the data part is $$g(d) = 2d$$, and the bill is their
+sum, $$10 + 2d$$. Adding the two functions means adding their values at each input.
+
+:::definition[Sum and product of functions]{#function-operations}
+
+Let $$f$$ and $$g$$ be functions, and let $$D$$ be the set of numbers in both of their domains, the
+**common domain**. The **sum** $$f + g$$ and the **product** $$fg$$ are the functions on $$D$$ with
+
+```math
+(f + g)(x) = f(x) + g(x) \qquad (fg)(x) = f(x)\,g(x)
+```
+
+For a number $$c$$, the **constant multiple** $$cf$$ is the function on the domain of $$f$$ with
+$$(cf)(x) = c \cdot f(x)$$.
+
+:::
+
+Subtracting works the same way: $$f - g$$ means $$f + (-1)g$$, with values $$f(x) - g(x)$$. Here is
+the common domain at work. Take $$f(x) = \sqrt{x}$$, with domain $$x \ge 0$$, and
+$$g(x) = \frac{1}{x - 4}$$, with domain $$x \ne 4$$. Then $$f + g$$ has domain the numbers
+$$x \ge 0$$ other than $$4$$, and at $$x = 9$$ its value is $$\sqrt{9} + \frac{1}{5} = 3.2$$.
+
+Since every value of $$f + g$$ is a sum of two numbers, the rules for adding numbers carry straight
+over to functions. The same goes for products.
+
+:::proposition[Functions add and multiply like numbers]{#function-arithmetic}
+
+Let $$f$$, $$g$$ and $$h$$ be functions with the same domain $$S$$. Write $$0$$ for the function
+$$x \mapsto 0$$ on $$S$$, and $$1$$ for the function $$x \mapsto 1$$ on $$S$$. Then:
+
+1. **Order doesn't matter:** $$f + g = g + f$$ and $$fg = gf$$.
+2. **Grouping doesn't matter:** $$(f + g) + h = f + (g + h)$$ and $$(fg)h = f(gh)$$.
+3. **Distributivity:** $$f(g + h) = fg + fh$$.
+4. **Zero and one:** $$f + 0 = f$$ and $$1 \cdot f = f$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Pointwise#Properties"}
+
+Every function in the statement has domain $$S$$, so by :ref{#function-equality} it is enough to
+show that the two sides have the same value at each $$x$$ in $$S$$. At such an $$x$$, the values
+$$f(x)$$, $$g(x)$$ and $$h(x)$$ are numbers, so the :ref{#real-numbers/real-rules} apply to them.
+
+For part 1, by :ref{#function-operations} and rule 1 for numbers,
+
+```math
+(f + g)(x) = f(x) + g(x) = g(x) + f(x) = (g + f)(x)
+```
+
+and in the same way $$(fg)(x) = f(x)g(x) = g(x)f(x) = (gf)(x)$$. Part 2 is the same with rule 2. For
+part 3,
+
+```math
+\begin{aligned}
+\big(f(g + h)\big)(x) &= f(x)\,\big(g(x) + h(x)\big) && \text{the product, then the sum} \\
+&= f(x)g(x) + f(x)h(x) && \text{distributivity for numbers} \\
+&= (fg)(x) + (fh)(x) && \text{the two products} \\
+&= (fg + fh)(x) && \text{the sum}
+\end{aligned}
+```
+
+For part 4, $$(f + 0)(x) = f(x) + 0 = f(x)$$ and $$(1 \cdot f)(x) = 1 \cdot f(x) = f(x)$$, by
+rule 3.
+
+:::
+
+So functions can be rearranged and expanded like numbers. For example, $$f(x) = x$$ and
+$$g(x) = x + 3$$ give $$(fg)(x) = x(x + 3) = x^2 + 3x$$: the area of a rectangle $$x$$ wide and
+$$x + 3$$ tall. At $$x = 2$$ that is $$2 \cdot 5 = 10$$, and $$4 + 6 = 10$$.
+
+## One function after another
+
+Line two machines up, so that whatever comes out of the first drops straight into the second. Feed
+$$3$$ into "double it" and out comes $$6$$; feed that $$6$$ into "square it" and out comes $$36$$.
+The pair acts as one machine that sends $$3$$ to $$36$$.
+
+:::definition[Composite of functions]{#function-composite}
+
+Let $$f$$ be a function with domain $$S$$, and $$g$$ a function with domain $$T$$. The **composite**
+$$g \circ f$$, read "$$g$$ after $$f$$", is the function with
+
+```math
+(g \circ f)(x) = g(f(x))
+```
+
+Its domain is the set of $$x$$ in $$S$$ for which $$f(x)$$ is in $$T$$.
+
+:::
+
+This is the same idea as the composite of two maps of the plane (:ref{#isometries/composite}), and
+the order is read the same way. In $$g(f(x))$$ the function next to $$x$$ is $$f$$, so $$f$$ acts
+first, even though it is written second. It is a common slip to do $$g$$ first.
+
+The order matters here as it did for moves of the plane (:ref{#isometries/order-matters}). With
+$$f(x) = 2x$$ and $$g(x) = x^2$$:
+
+```math
+\begin{aligned}
+(g \circ f)(x) &= g(2x) = (2x)^2 = 4x^2 && \text{double, then square} \\
+(f \circ g)(x) &= f(x^2) = 2x^2 && \text{square, then double}
+\end{aligned}
+```
+
+At $$x = 3$$ the first gives $$36$$, as in the two machines, and the second gives $$18$$.
+
+The domain of a composite can be smaller than the domain of $$f$$. Take $$f(x) = x - 5$$ on all
+numbers and $$g(x) = \sqrt{x}$$ on $$x \ge 0$$. Then $$(g \circ f)(x) = \sqrt{x - 5}$$, and $$x$$ is
+in its domain exactly when $$x - 5 \ge 0$$, that is, $$x \ge 5$$. The other order,
+$$(f \circ g)(x) = \sqrt{x} - 5$$, has domain $$x \ge 0$$. At $$x = 9$$ the first is
+$$\sqrt{4} = 2$$ and the second is $$3 - 5 = -2$$.
+
+Switch on the second machine $$g$$ in the function machine under
+[One output for each input](#one-output-for-each-input) to try composites. With $$f(x) = 2x + 1$$
+and $$g(x) = \sqrt{x}$$, the input $$-3$$ goes through $$f$$ to $$-5$$, which $$g$$ turns away.
+
+## Undoing a function
+
+Going backwards through a vending machine means seeing the snack and naming the button. That works
+when no two buttons give the same snack. If B4 and C2 both gave crisps, a bag of crisps wouldn't
+tell you which button was pressed.
+
+:::definition[One to one]{#one-to-one}
+
+A function $$f$$ with domain $$S$$ is **one to one** when it never takes the same value at two
+different inputs: for $$x$$ and $$x'$$ in $$S$$, if $$f(x) = f(x')$$, then $$x = x'$$.
+
+:::
+
+The function $$f(x) = 3x - 5$$ is one to one. If $$3x - 5 = 3x' - 5$$, then adding $$5$$ gives
+$$3x = 3x'$$, and dividing by $$3$$ gives $$x = x'$$. Squaring on all numbers is not one to one,
+since $$(-3)^2 = 3^2 = 9$$: the two arrows into $$9$$ in the arrow picture for squaring show it. But
+squaring on the numbers $$x \ge 0$$ is one to one, because two numbers that aren't negative and have
+equal squares are equal (:ref{#real-numbers/power-order-converse}).
+
+For a one-to-one function, each value in the range came from exactly one input. That is what makes
+it possible to run the function backwards.
+
+:::definition[Inverse function]{#inverse-function}
+
+Let $$f$$ be a one-to-one function with domain $$S$$ and range $$R$$. For each $$y$$ in $$R$$ there
+is exactly one $$x$$ in $$S$$ with $$f(x) = y$$: at least one because $$y$$ is in the range
+(:ref{#range}), and at most one because $$f$$ is one to one. The **inverse** of $$f$$ is the
+function $$f^{-1}$$ on $$R$$ with
+
+```math
+f^{-1}(y) = \text{the one } x \text{ in } S \text{ with } f(x) = y
+```
+
+It is read "$$f$$ inverse". Its domain is $$R$$ and its range is $$S$$.
+
+:::
+
+To find a formula for $$f^{-1}$$, solve $$y = f(x)$$ for $$x$$. For $$f(x) = 3x - 5$$, whose range
+is all numbers:
+
+```math
+\begin{aligned}
+y &= 3x - 5 \\
+y + 5 &= 3x && \text{add 5 to both sides} \\
+\frac{y + 5}{3} &= x && \text{divide both sides by 3}
+\end{aligned}
+```
+
+So $$f^{-1}(y) = \frac{y + 5}{3}$$. Check: $$f(4) = 12 - 5 = 7$$, and
+$$f^{-1}(7) = \frac{12}{3} = 4$$ takes $$7$$ back to $$4$$.
+
+<InverseArrows caption="The arrows of f(x) = 3x − 5, and the same arrows turned round, which are the arrows of its inverse f⁻¹(y) = (y + 5)/3." />
+
+The check worked because $$f^{-1}$$ undoes $$f$$, and $$f$$ undoes $$f^{-1}$$. That is true for
+every one-to-one function.
+
+:::proposition[Undoing a function]{#inverse-undoes}
+
+Let $$f$$ be a one-to-one function with domain $$S$$ and range $$R$$. Then
+
+1. $$f^{-1}(f(x)) = x$$ for every $$x$$ in $$S$$
+2. $$f(f^{-1}(y)) = y$$ for every $$y$$ in $$R$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Inverse_function#Definitions"}
+
+**Part 1.** Let $$x$$ be in $$S$$, and write $$y = f(x)$$, which is in $$R$$. By
+:ref{#inverse-function}, $$f^{-1}(y)$$ is the one number in $$S$$ that $$f$$ sends to $$y$$. The
+number $$x$$ is in $$S$$ and $$f$$ sends it to $$y$$, so $$f^{-1}(y) = x$$, that is,
+$$f^{-1}(f(x)) = x$$.
+
+**Part 2.** Let $$y$$ be in $$R$$. By :ref{#inverse-function}, $$f^{-1}(y)$$ is a number in $$S$$
+with $$f(f^{-1}(y)) = y$$.
+
+:::
+
+In the language of composites, part 1 says $$f^{-1} \circ f$$ sends every $$x$$ in $$S$$ to itself,
+and part 2 says $$f \circ f^{-1}$$ sends every $$y$$ in $$R$$ to itself. That is how
+:ref{#isometries/inverse-map} defined the inverse of a map of the plane. The chapter
+[Mappings and permutations](../mappings-and-permutations/combining-and-undoing.mdx) comes back to
+inverses for rules between any two sets (:ref{#mappings-and-permutations/inverse-exists-bijective}).
+
+Squaring shows why the domain has to be chosen with care. On all numbers it is not one to one, so it
+has no inverse. On $$[0, \infty)$$ it is one to one with range $$[0, \infty)$$, and solving
+$$y = x^2$$ with $$x \ge 0$$ gives $$x = \sqrt{y}$$ (:ref{#real-numbers/square-root}). So the
+inverse of squaring on $$[0, \infty)$$ is the square root. Check: $$\sqrt{5^2} = 5$$, while
+$$\sqrt{(-5)^2} = 5$$ is not $$-5$$, because $$-5$$ was never in the domain.
+
+You have met an inverse like this before. The sine is not one to one on all numbers, but on
+$$[-\frac{\pi}{2}, \frac{\pi}{2}]$$ it is, with range $$[-1, 1]$$. Its inverse there is
+$$\sin^{-1}$$ (:ref{#trigonometry/inverse-sin-cos}). So
+$$\sin^{-1}(\sin\frac{\pi}{6}) = \frac{\pi}{6}$$, but
+$$\sin^{-1}(\sin\frac{5\pi}{6}) = \frac{\pi}{6}$$ too, since $$\frac{5\pi}{6}$$ is outside
+$$[-\frac{\pi}{2}, \frac{\pi}{2}]$$.
+
+As with $$\sin^{-1}$$, the $$-1$$ in $$f^{-1}$$ is not a power: $$f^{-1}(x)$$ is not
+$$\frac{1}{f(x)}$$. For $$f(x) = 3x - 5$$, $$f^{-1}(7) = 4$$, while
+$$\frac{1}{f(7)} = \frac{1}{16}$$.
+
+## Exercises
+
+:::::accordion[Exercises on functions, with solutions]
+
+::::exercise{#ex-what-is-a-function-values}
+
+Let $$f(x) = 5 - 2x$$ and $$a(x) = x^2 - 3x$$, both on all numbers.
+
+1. Find $$f(0)$$, $$f(3)$$ and $$f(-1.5)$$.
+2. Find the number $$x$$ with $$f(x) = 11$$.
+3. Find $$a(4)$$ and $$a(-2)$$.
+
+:::solution
+
+1. $$f(0) = 5 - 0 = 5$$, $$f(3) = 5 - 6 = -1$$ and $$f(-1.5) = 5 + 3 = 8$$.
+2. $$5 - 2x = 11$$ gives $$-2x = 6$$, so $$x = -3$$. Check: $$f(-3) = 5 + 6 = 11$$.
+3. $$a(4) = 16 - 12 = 4$$ and $$a(-2) = 4 + 6 = 10$$. With a negative input, put it in brackets
+   first: $$(-2)^2 - 3 \cdot (-2) = 4 + 6$$.
+
+:::
+
+::::
+
+::::exercise{#ex-what-is-a-function-which}
+
+Say which of these rules are functions, and give a reason for each.
+
+1. To each number $$x \ge 0$$, the numbers $$y$$ with $$y^2 = x$$.
+2. To each number $$x$$, the whole number nearest to $$x$$.
+3. To each whole number $$n \ge 1$$, the number of whole numbers that divide it.
+4. To each number $$x$$, the number $$y$$ with $$x = y + 1$$.
+
+:::solution
+
+1. Not a function. The input $$4$$ gives two numbers, $$2$$ and $$-2$$
+   (:ref{#real-numbers/square-root-count}).
+2. Not a function. The input $$2.5$$ is equally far from $$2$$ and $$3$$, so it has two nearest
+   whole numbers. (On a set that leaves out the halves, such as $$\{0.2, 1.7, 3\}$$, the rule would
+   be a function.)
+3. A function on the whole numbers $$n \ge 1$$. Each $$n$$ has one count of divisors: for example,
+   $$6$$ has the divisors $$1$$, $$2$$, $$3$$ and $$6$$, so it goes to $$4$$.
+4. A function on all numbers. The only $$y$$ with $$x = y + 1$$ is $$y = x - 1$$, so the rule is
+   $$x \mapsto x - 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-what-is-a-function-domains}
+
+Find the domain of each formula, by :ref{#formula-domain}.
+
+1. $$\sqrt{6 - 2x}$$
+2. $$\frac{1}{x^2 + 3x - 10}$$
+3. $$\frac{\sqrt{x}}{x - 3}$$
+
+:::solution
+
+1. The square root needs $$6 - 2x \ge 0$$, that is, $$6 \ge 2x$$, so $$x \le 3$$. The domain is
+   $$(-\infty, 3]$$.
+2. The bottom factors as $$x^2 + 3x - 10 = (x + 5)(x - 2)$$, since multiplying out gives
+   $$x^2 - 2x + 5x - 10$$. It is $$0$$ exactly when $$x = -5$$ or $$x = 2$$
+   (:ref{#numbers/zero-product}), so the domain is every number except $$-5$$ and $$2$$.
+3. The top needs $$x \ge 0$$, and the bottom needs $$x \ne 3$$. The domain is the numbers
+   $$x \ge 0$$ other than $$3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-what-is-a-function-range}
+
+Find the range of $$h(x) = 3 - x^2$$ on all numbers. Show both halves: every value lies in your set,
+and every number in your set is a value.
+
+:::solution
+
+**Every value is at most 3.** A square is never negative (:ref{#real-numbers/squares-positive}), so
+$$x^2 \ge 0$$, and $$h(x) = 3 - x^2 \le 3$$.
+
+**Every number up to 3 is a value.** Take $$y \le 3$$. Then $$3 - y \ge 0$$, and with
+$$x = \sqrt{3 - y}$$,
+
+```math
+h(x) = 3 - \left(\sqrt{3 - y}\right)^2 = 3 - (3 - y) = y
+```
+
+So the range is $$(-\infty, 3]$$. Check with $$y = -1$$: the recipe gives $$x = \sqrt{4} = 2$$, and
+$$h(2) = 3 - 4 = -1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-what-is-a-function-equal}
+
+Let $$f(x) = \sqrt{x^2}$$, $$g(x) = x$$ and $$k(x) = |x|$$, all on all numbers. Find the two of
+these functions that are equal, and show that the third is different from both.
+
+:::solution
+
+$$f = k$$. Both have domain all numbers. For each $$x$$, $$\sqrt{x^2}$$ is the number that is not
+negative and squares to $$x^2$$ (:ref{#real-numbers/square-root}). The number $$|x|$$ is not
+negative (:ref{#real-numbers/absolute-value}), and $$|x|^2 = x^2$$, since $$|x|$$ is $$x$$ or
+$$-x$$. So $$\sqrt{x^2} = |x|$$ for every $$x$$, and $$f = k$$ by :ref{#function-equality}.
+
+$$g$$ is different. At $$x = -3$$, $$g(-3) = -3$$, while $$f(-3) = \sqrt{9} = 3$$ and $$k(-3) = 3$$.
+One input where the values differ is enough.
+
+:::
+
+::::
+
+::::exercise{#ex-what-is-a-function-composite}
+
+Let $$f(x) = x + 4$$ and $$g(x) = \frac{1}{x}$$. Find formulas for $$(g \circ f)(x)$$ and
+$$(f \circ g)(x)$$, their domains, and their values at $$x = 1$$.
+
+:::solution
+
+By :ref{#function-composite}, with $$f$$ first:
+
+```math
+(g \circ f)(x) = g(x + 4) = \frac{1}{x + 4}
+```
+
+Its domain is the $$x$$ with $$f(x) = x + 4$$ in the domain of $$g$$, that is, $$x + 4 \ne 0$$, so
+every number except $$-4$$. At $$x = 1$$ it is $$\frac{1}{5}$$.
+
+With $$g$$ first:
+
+```math
+(f \circ g)(x) = f\left(\frac{1}{x}\right) = \frac{1}{x} + 4
+```
+
+Its domain is the domain of $$g$$, every number except $$0$$, since $$f$$ takes every number. At
+$$x = 1$$ it is $$1 + 4 = 5$$, not $$\frac{1}{5}$$: the order matters.
+
+:::
+
+::::
+
+::::exercise{#ex-what-is-a-function-inverse}
+
+1. Show that $$f(x) = 4 - 3x$$ is one to one, and find $$f^{-1}$$. Check that $$f^{-1}$$ takes
+   $$f(2)$$ back to $$2$$.
+2. Let $$g(x) = x^2 + 1$$ with domain $$[0, \infty)$$. Find the range of $$g$$ and a formula for
+   $$g^{-1}$$, and check it at $$g(3)$$.
+
+:::solution
+
+1. If $$4 - 3x = 4 - 3x'$$, then $$-3x = -3x'$$, and dividing by $$-3$$ gives $$x = x'$$. So $$f$$
+   is one to one (:ref{#one-to-one}). Solving $$y = 4 - 3x$$ gives $$3x = 4 - y$$, so
+   $$f^{-1}(y) = \frac{4 - y}{3}$$, for every number $$y$$. Check: $$f(2) = 4 - 6 = -2$$, and
+   $$f^{-1}(-2) = \frac{6}{3} = 2$$.
+2. For $$x \ge 0$$, $$x^2 \ge 0$$, so $$g(x) \ge 1$$. And each $$y \ge 1$$ is $$g(\sqrt{y - 1})$$,
+   as in the example of $$x^2 + 1$$ under [The range of a function](#the-range-of-a-function), with
+   $$\sqrt{y - 1} \ge 0$$ in the domain. So the range is $$[1, \infty)$$. On $$[0, \infty)$$
+   squaring is one to one, so $$g$$ is too, and solving $$y = x^2 + 1$$ with $$x \ge 0$$ gives
+   $$g^{-1}(y) = \sqrt{y - 1}$$. Check: $$g(3) = 10$$ and $$g^{-1}(10) = \sqrt{9} = 3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-what-is-a-function-chain}
+
+1. Show that $$f(x) = \frac{x}{x^2 + 1}$$ is not one to one, by finding two different inputs with
+   the same value.
+2. Prove that if $$f$$ and $$g$$ are one to one, then so is $$g \circ f$$.
+
+:::solution
+
+1. $$f(2) = \frac{2}{5}$$, and
+   $$f(\frac{1}{2}) = \frac{1/2}{1/4 + 1} = \frac{1/2}{5/4} = \frac{2}{5}$$. The inputs $$2$$ and
+   $$\frac{1}{2}$$ are different, so $$f$$ is not one to one.
+2. Let $$x$$ and $$x'$$ be in the domain of $$g \circ f$$, with $$g(f(x)) = g(f(x'))$$. Since $$g$$
+   is one to one, $$f(x) = f(x')$$. Since $$f$$ is one to one, $$x = x'$$. So $$g \circ f$$ is one
+   to one (:ref{#one-to-one}).
+
+:::
+
+::::
+
+:::::

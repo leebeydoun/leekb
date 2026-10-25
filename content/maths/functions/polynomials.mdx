@@ -1,0 +1,662 @@
+---
+title: Polynomials
+description:
+  Functions built from powers of x, their roots and the factor theorem, why a polynomial of degree n
+  has at most n roots, degree and leading coefficient, and finding whole-number roots.
+---
+
+Imagine a sheet of card $$16$$ cm long and $$10$$ cm wide. Cut the same size of square from each
+corner, fold up the four flaps, and you have an open box. Tiny squares give a wide, shallow tray,
+and big squares give a tall box with a small floor. Squares $$5$$ cm across use up the whole width
+of the card and leave no floor at all, so somewhere in between the box holds the most.
+
+<CardBox caption="A sheet of card 16 cm by 10 cm with a square of side x cut from each corner. Folding up the flaps along the dashed lines gives an open box x tall, with a floor 16 − 2x by 10 − 2x." />
+
+If the squares have side $$x$$, the floor of the box is $$16 - 2x$$ by $$10 - 2x$$ and the box is
+$$x$$ tall, so its volume is $$V(x) = x(16 - 2x)(10 - 2x)$$. Multiplying out gives
+$$4x^3 - 52x^2 + 160x$$: numbers times powers of $$x$$, added up. A function like that is called a
+**polynomial**. In this guide we'll see what the places where a polynomial is $$0$$ tell you about
+its formula, and use them to find the biggest box.
+
+## Polynomials and their roots
+
+A polynomial is any function you can build from $$x$$ and numbers by adding and multiplying. After
+multiplying out, it is a sum of terms, each a number times a power of $$x$$. The volume of the box
+is one, and so is every linear function $$mx + c$$ and every quadratic $$ax^2 + bx + c$$.
+
+:::definition[Polynomial]{#polynomial}
+
+A **polynomial** is a function $$f$$ on all numbers given by a formula
+
+```math
+f(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0
+```
+
+for some whole number $$n \ge 0$$ and some numbers $$a_0, a_1, \ldots, a_n$$, called its
+**coefficients**. The term $$a_0$$ is the **constant term**.
+
+:::
+
+The dots stand for the terms in between, one for each power. For example, $$x^3 - 7x + 6$$ has
+$$n = 3$$ and coefficients $$a_3 = 1$$, $$a_2 = 0$$, $$a_1 = -7$$ and $$a_0 = 6$$. A constant
+function such as $$f(x) = 5$$ is a polynomial with $$n = 0$$. The functions $$\frac{1}{x}$$ and
+$$\sqrt{x}$$ are not polynomials, since a polynomial is defined at every number, while
+$$\frac{1}{x}$$ is not defined at $$0$$ and $$\sqrt{x}$$ is not defined at $$-1$$.
+
+The numbers where a polynomial is $$0$$ are where its graph meets the $$x$$-axis, and they turn out
+to control the whole formula.
+
+:::definition[Root of a polynomial]{#polynomial-root}
+
+A **root** of a polynomial $$f$$ is a number $$c$$ with $$f(c) = 0$$.
+
+:::
+
+The box volume $$V(x) = x(16 - 2x)(10 - 2x)$$ has the roots $$0$$, $$5$$ and $$8$$, since one of the
+three factors is $$0$$ at each. By :ref{#numbers/zero-product}, a product is $$0$$ exactly when one
+of its factors is, so these are all its roots. Squares of side $$0$$ or $$5$$ give boxes with no
+height or no floor, and $$8$$ is too big to cut from the card at all.
+
+## One function, two formulas
+
+The same function can be written in more than one way. The formulas $$(x + 1)^2$$ and
+$$x^2 + 2x + 1$$ look different, but they give the same number at every $$x$$, and multiplying out
+the first turns it into the second. After multiplying out, the coefficients are $$1$$, $$2$$ and
+$$1$$ either way.
+
+But that leaves a real question open. Two formulas with different coefficients might, in principle,
+give the same number at every $$x$$. Then "the coefficient of $$x^2$$" of a polynomial would depend
+on which formula you happened to pick. We settle this in
+[Degree and leading coefficient](#degree-and-leading-coefficient): it can't happen. Until then we
+talk about formulas, and say a formula has **top term** $$a_n x^n$$ when $$a_n \ne 0$$ and every
+higher power is missing.
+
+## The factor theorem
+
+Here is a root peeling off a factor. The polynomial $$x^3 - 8$$ has the root $$2$$, since
+$$2^3 = 8$$. Multiplying out $$(x - 2)(x^2 + 2x + 4)$$ gives
+
+```math
+x^3 + 2x^2 + 4x - 2x^2 - 4x - 8 = x^3 - 8
+```
+
+since the middle terms cancel in pairs. So $$x^3 - 8 = (x - 2)(x^2 + 2x + 4)$$. Check at $$x = 3$$:
+the left side is $$27 - 8 = 19$$, and the right side is $$1 \cdot (9 + 6 + 4) = 19$$.
+
+The same cancelling works for every power. It was proved for fractions with $$c = 1$$ in
+:ref{#numbers/sum-of-powers}, and here we prove it for every pair of numbers.
+
+:::lemma[Difference of two powers]{#polynomials-difference-of-powers}
+
+For every whole number $$k \ge 1$$ and all numbers $$x$$ and $$c$$,
+
+```math
+x^k - c^k = (x - c)(x^{k-1} + x^{k-2}c + \cdots + xc^{k-2} + c^{k-1})
+```
+
+In the second bracket the power of $$x$$ goes down by $$1$$ at each step and the power of $$c$$ goes
+up by $$1$$, and every term has the two powers adding up to $$k - 1$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Difference_of_Two_Powers"}
+
+Write $$q$$ for the second bracket. Multiply it by $$x$$ and by $$c$$, and line the answers up:
+
+```math
+\begin{aligned}
+xq &= x^k + x^{k-1}c + \cdots + x^2c^{k-2} + xc^{k-1} && \text{each power of } x \text{ goes up by } 1 \\
+cq &= \phantom{x^k + {}} x^{k-1}c + \cdots + x^2c^{k-2} + xc^{k-1} + c^k && \text{each power of } c \text{ goes up by } 1
+\end{aligned}
+```
+
+Every term of $$xq$$ after the first appears in $$cq$$ too, and every term of $$cq$$ before the last
+appears in $$xq$$. So subtracting, everything cancels except the first term of $$xq$$ and the last
+term of $$cq$$:
+
+```math
+(x - c)q = xq - cq = x^k - c^k
+```
+
+When $$k = 1$$ the second bracket is $$x^0 = 1$$, and the lemma says $$x - c = (x - c) \cdot 1$$.
+
+:::
+
+With $$k = 3$$ and $$c = 2$$ the lemma gives $$x^3 - 2^3 = (x - 2)(x^2 + 2x + 4)$$, the
+factorisation we found by hand. Now every root peels off a factor in the same way, because a
+polynomial is made of powers.
+
+:::theorem[The factor theorem]{#factor-theorem}
+
+Let $$f(x) = a_n x^n + \cdots + a_1 x + a_0$$ with $$n \ge 1$$, and let $$c$$ be a root of $$f$$.
+Then for every number $$x$$,
+
+```math
+f(x) = (x - c)\,g(x)
+```
+
+where $$g$$ is a polynomial given by a formula $$b_{n-1}x^{n-1} + \cdots + b_1 x + b_0$$ with
+$$b_{n-1} = a_n$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Polynomial_Factor_Theorem"}
+
+Since $$f(c) = 0$$, we can take it away from $$f(x)$$ without changing anything:
+
+```math
+\begin{aligned}
+f(x) &= f(x) - f(c) && \text{since } f(c) = 0 \\
+&= a_n(x^n - c^n) + \cdots + a_1(x - c) + (a_0 - a_0) && \text{group the terms by power} \\
+&= a_n(x^n - c^n) + \cdots + a_1(x - c) && \text{the constant terms cancel}
+\end{aligned}
+```
+
+By :ref{#polynomials-difference-of-powers}, each $$x^k - c^k$$ is $$(x - c)\,q_k(x)$$, where
+$$q_k(x) = x^{k-1} + x^{k-2}c + \cdots + c^{k-1}$$ has top power $$x^{k-1}$$ with coefficient $$1$$.
+Taking out the common factor $$x - c$$,
+
+```math
+f(x) = (x - c)\big(a_n q_n(x) + a_{n-1} q_{n-1}(x) + \cdots + a_1 q_1(x)\big)
+```
+
+Call the big bracket $$g(x)$$. Multiplying it out gives a formula with powers up to $$x^{n-1}$$,
+since $$q_n$$ has the highest powers. The only $$x^{n-1}$$ term comes from $$a_n q_n(x)$$, so its
+coefficient is $$a_n \cdot 1 = a_n$$.
+
+:::
+
+The proof is also a recipe. Take $$f(x) = x^3 - 7x + 6$$, which has the root $$2$$, since
+$$8 - 14 + 6 = 0$$. Then $$f(x) = (x^3 - 8) - 7(x - 2)$$, and the lemma gives
+
+```math
+\begin{aligned}
+f(x) &= (x - 2)(x^2 + 2x + 4) - 7(x - 2) && \text{factor } x^3 - 8 \\
+&= (x - 2)(x^2 + 2x + 4 - 7) && \text{take out } x - 2 \\
+&= (x - 2)(x^2 + 2x - 3) && \text{tidy up}
+\end{aligned}
+```
+
+The quadratic factors too, as $$x^2 + 2x - 3 = (x - 1)(x + 3)$$. So
+$$f(x) = (x - 2)(x - 1)(x + 3)$$, with the roots $$2$$, $$1$$ and $$-3$$.
+
+## At most n roots
+
+Each root peels off one factor $$x - c$$, and each factor uses up one power of $$x$$. A formula with
+top term $$a_n x^n$$ has only $$n$$ powers to give, so it can't have more than $$n$$ roots. The
+proof is an induction (:ref{#basic-proofs/induction}): it peels off one root and uses the case one
+smaller.
+
+:::theorem[A polynomial has at most n roots]{#root-bound}
+
+Let $$n \ge 1$$, and let $$f(x) = a_n x^n + \cdots + a_1 x + a_0$$ with $$a_n \ne 0$$. Then $$f$$
+has at most $$n$$ different roots.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Polynomial_over_Field_has_Finitely_Many_Roots"}
+
+For each positive integer $$n$$, let $$P(n)$$ be the statement "every formula with top term
+$$a_n x^n$$, where $$a_n \ne 0$$, has at most $$n$$ roots".
+
+**Base case.** A formula with top term $$a_1 x$$ is $$a_1 x + a_0$$ with $$a_1 \ne 0$$. It is $$0$$
+exactly when $$x = -\frac{a_0}{a_1}$$, so it has one root.
+
+**Inductive step.** Suppose $$P(k)$$ is true, and let $$f$$ have top term $$a_{k+1}x^{k+1}$$ with
+$$a_{k+1} \ne 0$$. If $$f$$ has no roots, it has at most $$k + 1$$. Otherwise let $$c$$ be a root.
+By :ref{#factor-theorem}, $$f(x) = (x - c)g(x)$$, where $$g$$ has top term $$a_{k+1}x^k$$, and
+$$a_{k+1} \ne 0$$. So $$g$$ has at most $$k$$ roots, by $$P(k)$$.
+
+Now let $$d$$ be any root of $$f$$. Then $$(d - c)g(d) = 0$$, so $$d - c = 0$$ or $$g(d) = 0$$, by
+:ref{#numbers/zero-product}. So $$d$$ is $$c$$ or a root of $$g$$, and that leaves at most $$1 + k$$
+possibilities. So $$P(k + 1)$$ is true.
+
+By induction, $$P(n)$$ is true for every positive integer $$n$$.
+
+:::
+
+For $$n = 2$$ this is :ref{#quadratics/root-count} again: a quadratic has two roots, one or none.
+The cubic $$x^3 - 7x + 6$$ has the three roots $$1$$, $$2$$ and $$-3$$, so by the theorem it has no
+others. A nonzero constant, with $$n = 0$$, has no roots at all.
+
+## Degree and leading coefficient
+
+Now the question from [One function, two formulas](#one-function-two-formulas) can be settled. If
+two formulas gave the same function, their difference would be $$0$$ at every number, so it would
+have more roots than any nonzero formula is allowed.
+
+:::corollary[Coefficients are decided by the function]{#coefficients-unique}
+
+Suppose that for every number $$x$$,
+
+```math
+a_n x^n + \cdots + a_1 x + a_0 = b_n x^n + \cdots + b_1 x + b_0
+```
+
+where a formula with fewer terms is filled up with zero coefficients. Then $$a_k = b_k$$ for every
+$$k$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Polynomial"}
+
+Subtract the right side from the left. For every number $$x$$,
+
+```math
+(a_n - b_n)x^n + \cdots + (a_1 - b_1)x + (a_0 - b_0) = 0
+```
+
+Suppose some $$a_k - b_k$$ is not $$0$$, and take the largest such $$k$$. If $$k = 0$$, the left
+side is the nonzero constant $$a_0 - b_0$$ at every $$x$$, which is not $$0$$. If $$k \ge 1$$, the
+left side is a formula with top term $$(a_k - b_k)x^k$$, so by :ref{#root-bound} it has at most
+$$k$$ roots. But it is $$0$$ at each of the $$k + 1$$ different numbers $$0, 1, \ldots, k$$. Either
+way that is impossible, so every $$a_k - b_k$$ is $$0$$.
+
+:::
+
+So a polynomial that is not always $$0$$ has a top term that doesn't depend on how you write it, and
+that top term gets a name.
+
+:::definition[Degree]{#degree}
+
+Let $$f(x) = a_n x^n + \cdots + a_1 x + a_0$$ be a polynomial with some coefficient not $$0$$. Its
+**degree**, written $$\deg f$$, is the largest $$n$$ with $$a_n \ne 0$$, and that $$a_n$$ is its
+**leading coefficient**. The polynomial with every coefficient $$0$$ is the **zero polynomial**, and
+it has no degree.
+
+:::
+
+By :ref{#coefficients-unique}, the degree and the leading coefficient are the same whichever formula
+you use. The box volume $$4x^3 - 52x^2 + 160x$$ has degree $$3$$, leading coefficient $$4$$ and
+constant term $$0$$. The constant $$5$$ has degree $$0$$, and $$x^2 + 2x - x^2$$ has degree $$1$$,
+since it is $$2x$$.
+
+Take care with the zero polynomial: it is the polynomial that is $$0$$ at **every** number. The
+polynomial $$x - 2$$ is $$0$$ at $$x = 2$$, but it is not the zero polynomial, since it is $$1$$ at
+$$x = 3$$.
+
+Multiplying two polynomials adds their degrees. Multiply $$2x^2 + 1$$ by $$3x^3 - x$$, and the
+largest power comes from the two top terms, $$2x^2 \cdot 3x^3 = 6x^5$$:
+
+```math
+(2x^2 + 1)(3x^3 - x) = 6x^5 - 2x^3 + 3x^3 - x = 6x^5 + x^3 - x
+```
+
+The degree is $$5 = 2 + 3$$, and the leading coefficient is $$6 = 2 \cdot 3$$.
+
+:::proposition[Degree of a product]{#degree-product}
+
+Let $$f$$ and $$g$$ be polynomials, neither of them the zero polynomial. Then $$fg$$ is a polynomial
+with
+
+```math
+\deg(fg) = \deg f + \deg g
+```
+
+and the leading coefficient of $$fg$$ is the product of the leading coefficients of $$f$$ and $$g$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Degree_of_a_polynomial#Multiplication"}
+
+Let $$f$$ have degree $$n$$ and leading coefficient $$a_n$$, and $$g$$ degree $$m$$ and leading
+coefficient $$b_m$$. Multiply out $$f(x)g(x)$$, one term of $$f$$ times one term of $$g$$ at a time.
+A term $$a_i x^i$$ times a term $$b_j x^j$$ is $$a_i b_j x^{i+j}$$, and $$i + j \le n + m$$, with
+$$i + j = n + m$$ exactly when $$i = n$$ and $$j = m$$.
+
+So $$fg$$ is a polynomial whose only term with $$x^{n+m}$$ is $$a_n b_m x^{n+m}$$, and every other
+term has a smaller power. The number $$a_n b_m$$ is not $$0$$, by :ref{#numbers/zero-product}, since
+neither $$a_n$$ nor $$b_m$$ is. So $$fg$$ has degree $$n + m$$ and leading coefficient $$a_n b_m$$.
+
+:::
+
+Adding is different: the top terms can cancel. For example $$(x^2 + x) + (-x^2 + 1) = x + 1$$, so
+the sum of two polynomials of degree $$2$$ can have degree $$1$$.
+
+## Factoring by roots
+
+The factor theorem peels off one root at a time. When a polynomial of degree $$n$$ has $$n$$
+different roots, you can peel off all of them, and what is left at the end is a number, the leading
+coefficient. So the roots and the leading coefficient decide the whole polynomial.
+
+:::proposition[Factoring by roots]{#factor-by-roots}
+
+Let $$f$$ have degree $$n \ge 1$$ and leading coefficient $$a_n$$, and let $$c_1, \ldots, c_n$$ be
+$$n$$ different roots of $$f$$. Then for every number $$x$$,
+
+```math
+f(x) = a_n(x - c_1)(x - c_2)\cdots(x - c_n)
+```
+
+and $$f$$ has no other roots.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Factor_theorem"}
+
+The last part is :ref{#root-bound}. For the formula we use induction on $$n$$, with $$P(n)$$ the
+statement for every polynomial of degree $$n$$.
+
+**Base case.** If $$f(x) = a_1 x + a_0$$ has the root $$c_1$$, then $$a_1 c_1 + a_0 = 0$$, so
+$$a_0 = -a_1 c_1$$ and $$f(x) = a_1 x - a_1 c_1 = a_1(x - c_1)$$.
+
+**Inductive step.** Suppose $$P(k)$$ is true, and let $$f$$ have degree $$k + 1$$, leading
+coefficient $$a$$, and different roots $$c_1, \ldots, c_{k+1}$$. By :ref{#factor-theorem},
+$$f(x) = (x - c_1)g(x)$$, where $$g$$ has degree $$k$$ and leading coefficient $$a$$. For each
+$$i \ge 2$$,
+
+```math
+0 = f(c_i) = (c_i - c_1)\,g(c_i)
+```
+
+and $$c_i - c_1 \ne 0$$, since the roots are different. So $$g(c_i) = 0$$ by
+:ref{#numbers/zero-product}. That makes $$c_2, \ldots, c_{k+1}$$ a list of $$k$$ different roots of
+$$g$$, and $$P(k)$$ gives $$g(x) = a(x - c_2)\cdots(x - c_{k+1})$$. Putting this into
+$$f(x) = (x - c_1)g(x)$$ gives the formula for $$f$$.
+
+:::
+
+For a quadratic with two different roots $$x_1$$ and $$x_2$$, this says
+$$ax^2 + bx + c = a(x - x_1)(x - x_2)$$, as in :ref{#quadratics/vieta}. The box volume has degree
+$$3$$, leading coefficient $$4$$ and roots $$0$$, $$5$$ and $$8$$, so $$V(x) = 4x(x - 5)(x - 8)$$.
+That matches the formula we started from:
+$$x(16 - 2x)(10 - 2x) = x \cdot 2(8 - x) \cdot 2(5 - x) = 4x(x - 8)(x - 5)$$.
+
+The proposition also builds polynomials to order. To find the cubic with roots $$-1$$, $$2$$ and
+$$4$$ that takes the value $$16$$ at $$0$$, write $$f(x) = a(x + 1)(x - 2)(x - 4)$$. Then
+$$f(0) = a \cdot 1 \cdot (-2) \cdot (-4) = 8a$$, so $$8a = 16$$ and $$a = 2$$. Multiplying out,
+$$f(x) = 2x^3 - 10x^2 + 4x + 16$$.
+
+Drag the three roots below and change the leading coefficient. The readout gives the cubic in both
+forms, factored and multiplied out, and counts its different roots.
+
+<PolynomialRoots />
+
+## The roots of xⁿ − 1 and xⁿ + 1
+
+The polynomials $$x^n - 1$$ and $$x^n + 1$$ come up again and again, and their roots are the
+solutions of $$x^n = 1$$ and $$x^n = -1$$. Those equations were solved in
+:ref{#real-numbers/power-equation}: an odd power has one real solution, and an even power has two,
+one or none depending on the sign of the right side.
+
+:::proposition[The real roots of xⁿ − 1 and xⁿ + 1]{#power-plus-minus-one}
+
+Let $$n$$ be a positive integer.
+
+1. If $$n$$ is odd, $$x^n - 1$$ has the one root $$1$$, and $$x^n + 1$$ has the one root $$-1$$
+2. If $$n$$ is even, $$x^n - 1$$ has the two roots $$1$$ and $$-1$$, and $$x^n + 1$$ has no roots
+
+For every $$n$$, $$x^n - 1 = (x - 1)(x^{n-1} + x^{n-2} + \cdots + x + 1)$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Root_of_unity"}
+
+The roots of $$x^n - 1$$ are the solutions of $$x^n = 1$$, and the roots of $$x^n + 1$$ are the
+solutions of $$x^n = -1$$. By :ref{#real-numbers/power-equation}:
+
+- For odd $$n$$, $$x^n = 1$$ has exactly one solution, and it is $$1$$, since $$1^n = 1$$. Also
+  $$x^n = -1$$ has exactly one solution, and it is $$-1$$, since $$(-1)^n = -1$$ for odd $$n$$
+- For even $$n$$, $$x^n = 1$$ has the two solutions $$\pm\sqrt[n]{1} = \pm 1$$, and $$x^n = -1$$ has
+  none, since $$-1 < 0$$
+
+The factorisation is :ref{#polynomials-difference-of-powers} with $$k = n$$ and $$c = 1$$, since
+every power of $$1$$ is $$1$$.
+
+:::
+
+For example, $$x^6 - 1$$ has the roots $$1$$ and $$-1$$, $$x^5 + 1$$ has the root $$-1$$, and
+$$x^4 + 1$$ has none: its values are all at least $$1$$. The factorisation
+$$x^6 - 1 = (x - 1)(x^5 + x^4 + x^3 + x^2 + x + 1)$$ puts the root $$1$$ in the first bracket, so
+the root $$-1$$ must be a root of the second. Check: $$-1 + 1 - 1 + 1 - 1 + 1 = 0$$.
+
+## Whole-number roots
+
+There is a formula for the roots of a quadratic, and there are formulas for degrees $$3$$ and $$4$$
+as well, but they are long. For degree $$5$$ and above there is no formula of that kind that works
+for every polynomial. So it helps to have a way to find the roots that are whole numbers, when there
+are any.
+
+Take $$f(x) = x^3 - 2x^2 - 5x + 6$$, and suppose $$c$$ is a whole-number root. Then
+$$c^3 - 2c^2 - 5c = -6$$, and the left side is $$c(c^2 - 2c - 5)$$, a multiple of $$c$$. So $$c$$
+divides $$6$$, which leaves only eight numbers to try.
+
+:::proposition[Whole-number roots divide the constant term]{#integer-root}
+
+Let $$f(x) = x^n + a_{n-1}x^{n-1} + \cdots + a_1 x + a_0$$, with $$n \ge 1$$ and every coefficient
+an integer. If an integer $$c$$ is a root of $$f$$, then $$c$$ divides $$a_0$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Rational_root_theorem"}
+
+Since $$f(c) = 0$$, moving every term except $$a_0$$ to the other side gives
+
+```math
+\begin{aligned}
+a_0 &= -c^n - a_{n-1}c^{n-1} - \cdots - a_1 c && \text{since } f(c) = 0 \\
+&= c\,(-c^{n-1} - a_{n-1}c^{n-2} - \cdots - a_1) && \text{take out the factor } c
+\end{aligned}
+```
+
+The bracket is built from the integers $$c$$ and $$a_1, \ldots, a_{n-1}$$ by multiplying and adding,
+so it is an integer $$k$$. Then $$a_0 = ck$$, so $$c$$ divides $$a_0$$ (:ref{#numbers/divides}).
+
+:::
+
+For $$x^3 - 2x^2 - 5x + 6$$ the divisors of $$6$$ are $$\pm1$$, $$\pm2$$, $$\pm3$$ and $$\pm6$$.
+Trying $$1$$ gives $$1 - 2 - 5 + 6 = 0$$, so $$1$$ is a root, and by :ref{#factor-theorem}
+$$f(x) = (x - 1)(x^2 + bx + d)$$ for some numbers $$b$$ and $$d$$. Multiplying out the right side,
+
+```math
+(x - 1)(x^2 + bx + d) = x^3 + (b - 1)x^2 + (d - b)x - d
+```
+
+By :ref{#coefficients-unique}, the coefficients match those of $$f$$: $$b - 1 = -2$$, so $$b = -1$$,
+and $$-d = 6$$, so $$d = -6$$. The middle coefficient checks, since $$d - b = -6 + 1 = -5$$. Then
+$$x^2 - x - 6 = (x - 3)(x + 2)$$, so $$f(x) = (x - 1)(x - 3)(x + 2)$$, with roots $$1$$, $$3$$ and
+$$-2$$.
+
+The test can come up empty. The polynomial $$x^3 - 2$$ has no whole-number root, since the divisors
+of $$-2$$ give $$1 - 2 = -1$$, $$-1 - 2 = -3$$, $$8 - 2 = 6$$ and $$-8 - 2 = -10$$. Its one real
+root is $$\sqrt[3]{2} \approx 1.26$$, which is not a whole number.
+
+## Back to the box
+
+The box volume $$V(x) = 4x(x - 5)(x - 8)$$ is now in factors, and the signs of the factors show the
+shape of its graph. For $$0 < x < 5$$, the factor $$x$$ is positive and $$x - 5$$ and $$x - 8$$ are
+both negative, so $$V(x)$$ is positive, as a volume should be. Between $$5$$ and $$8$$ only
+$$x - 8$$ is negative, so $$V(x) < 0$$, and beyond $$8$$ all three factors are positive. Only
+$$0 < x < 5$$ gives a real box.
+
+A few values show where the biggest box is. Squares of side $$1$$, $$2$$, $$3$$ and $$4$$ cm give
+volumes of $$112$$, $$144$$, $$120$$ and $$64$$ cm³, so the largest seems to be near $$x = 2$$.
+
+<BoxVolume caption="The graph of the box volume V(x) = 4x(x − 5)(x − 8) for x from 0 to 9, with heights drawn at a smaller scale than widths. It meets the axis at the roots 0, 5 and 8, and between 0 and 5 it rises to 144 at x = 2 and falls back." />
+
+The factor theorem proves that $$2$$ cm is best. The polynomial $$V(x) - 144$$ has the root $$2$$,
+since $$V(2) = 144$$, so it has a factor $$x - 2$$. Finding the other factor by matching
+coefficients, as for $$x^3 - 2x^2 - 5x + 6$$, gives
+
+```math
+\begin{aligned}
+V(x) - 144 &= 4x^3 - 52x^2 + 160x - 144 && \text{multiply out } V(x) \\
+&= 4(x^3 - 13x^2 + 40x - 36) && \text{take out the factor } 4 \\
+&= 4(x - 2)(x^2 - 11x + 18) && \text{the factor theorem at } 2 \\
+&= 4(x - 2)(x - 2)(x - 9) && \text{factor the quadratic}
+\end{aligned}
+```
+
+Multiplying both sides by $$-1$$, and moving the minus sign into the last factor,
+$$144 - V(x) = 4(x - 2)^2(9 - x)$$. Check at $$x = 0$$: the left side is $$144 - 0 = 144$$, and the
+right side is $$4 \cdot 4 \cdot 9 = 144$$. For every $$x < 9$$ the right side is at least $$0$$,
+since $$(x - 2)^2 \ge 0$$ and $$9 - x > 0$$. So $$V(x) \le 144$$ for every real box, and the box
+$$12$$ cm by $$6$$ cm by $$2$$ cm holds the most.
+
+## Exercises
+
+:::::accordion[Exercises on polynomials, with solutions]
+
+::::exercise{#ex-polynomials-degree}
+
+Give the degree, the leading coefficient and the constant term of each polynomial, or say that it is
+the zero polynomial.
+
+1. $$5 - 3x + x^4$$
+2. $$(x - 1)(2x + 3)$$
+3. $$(x^2 + 1)^2 - x^4$$
+4. $$(x + 1)^2 - (x - 1)^2 - 4x$$
+
+:::solution
+
+Multiply out first, and then read off the top term (:ref{#degree}).
+
+1. $$x^4 - 3x + 5$$: degree $$4$$, leading coefficient $$1$$, constant term $$5$$.
+2. $$2x^2 + 3x - 2x - 3 = 2x^2 + x - 3$$: degree $$2$$, leading coefficient $$2$$, constant term
+   $$-3$$. The degrees of the factors add, $$1 + 1 = 2$$, as in :ref{#degree-product}.
+3. $$x^4 + 2x^2 + 1 - x^4 = 2x^2 + 1$$: degree $$2$$, leading coefficient $$2$$, constant term
+   $$1$$. The $$x^4$$ terms cancel.
+4. $$(x^2 + 2x + 1) - (x^2 - 2x + 1) - 4x = 0$$: the zero polynomial, which has no degree.
+
+:::
+
+::::
+
+::::exercise{#ex-polynomials-factor}
+
+Check that $$3$$ is a root of $$f(x) = x^3 - 5x^2 + 2x + 12$$. Then write $$f(x) = (x - 3)g(x)$$ for
+a quadratic $$g$$, and find every root of $$f$$.
+
+:::solution
+
+$$f(3) = 27 - 45 + 6 + 12 = 0$$. By :ref{#factor-theorem}, $$f(x) = (x - 3)(x^2 + bx + d)$$, and
+multiplying out gives $$x^3 + (b - 3)x^2 + (d - 3b)x - 3d$$. Matching coefficients
+(:ref{#coefficients-unique}): $$b - 3 = -5$$, so $$b = -2$$, and $$-3d = 12$$, so $$d = -4$$. The
+middle one checks: $$d - 3b = -4 + 6 = 2$$.
+
+So $$g(x) = x^2 - 2x - 4$$. Its roots, by the quadratic formula, are
+$$\frac{2 \pm \sqrt{4 + 16}}{2} = 1 \pm \sqrt5$$. So $$f$$ has the three roots $$3$$,
+$$1 + \sqrt5 \approx 3.24$$ and $$1 - \sqrt5 \approx -1.24$$.
+
+:::
+
+::::
+
+::::exercise{#ex-polynomials-fourth-powers}
+
+Use :ref{#polynomials-difference-of-powers} to factor $$x^4 - 81$$, and then factor it as far as you
+can. Find its roots.
+
+:::solution
+
+With $$k = 4$$ and $$c = 3$$, since $$3^4 = 81$$,
+
+```math
+x^4 - 81 = (x - 3)(x^3 + 3x^2 + 9x + 27)
+```
+
+The second bracket has the root $$-3$$, since $$-27 + 27 - 27 + 27 = 0$$, and it is
+$$x^2(x + 3) + 9(x + 3) = (x + 3)(x^2 + 9)$$. So $$x^4 - 81 = (x - 3)(x + 3)(x^2 + 9)$$. The last
+factor is at least $$9$$, so the roots are $$3$$ and $$-3$$. The same factors come from
+$$x^4 - 81 = (x^2 - 9)(x^2 + 9)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-polynomials-build}
+
+Find the polynomial of degree $$3$$ with roots $$-3$$, $$-1$$ and $$2$$ whose value at $$1$$ is
+$$-16$$. Multiply it out and check the value at $$1$$.
+
+:::solution
+
+By :ref{#factor-by-roots}, $$f(x) = a(x + 3)(x + 1)(x - 2)$$ for its leading coefficient $$a$$. Then
+$$f(1) = a \cdot 4 \cdot 2 \cdot (-1) = -8a$$, so $$-8a = -16$$ and $$a = 2$$. Multiplying out,
+$$(x + 3)(x + 1) = x^2 + 4x + 3$$, and
+
+```math
+(x^2 + 4x + 3)(x - 2) = x^3 + 2x^2 - 5x - 6
+```
+
+so $$f(x) = 2x^3 + 4x^2 - 10x - 12$$. Check: $$f(1) = 2 + 4 - 10 - 12 = -16$$.
+
+:::
+
+::::
+
+::::exercise{#ex-polynomials-integer-roots}
+
+Find every root of $$x^3 + x^2 - 10x + 8$$.
+
+:::solution
+
+By :ref{#integer-root}, any whole-number root divides $$8$$, so try $$\pm1$$, $$\pm2$$, $$\pm4$$ and
+$$\pm8$$. At $$1$$: $$1 + 1 - 10 + 8 = 0$$. So by :ref{#factor-theorem} the polynomial is
+$$(x - 1)(x^2 + bx + d)$$, and multiplying out gives $$x^3 + (b - 1)x^2 + (d - b)x - d$$. Matching
+coefficients, $$b = 2$$ and $$d = -8$$, and $$d - b = -10$$ checks.
+
+Then $$x^2 + 2x - 8 = (x - 2)(x + 4)$$, so the polynomial is $$(x - 1)(x - 2)(x + 4)$$, with roots
+$$1$$, $$2$$ and $$-4$$. By :ref{#root-bound} there are no others.
+
+:::
+
+::::
+
+::::exercise{#ex-polynomials-no-integer-root}
+
+Show that $$x^3 + x + 1$$ has no whole-number root.
+
+:::solution
+
+By :ref{#integer-root}, a whole-number root would divide the constant term $$1$$, so it would be
+$$1$$ or $$-1$$. But $$1 + 1 + 1 = 3$$ and $$-1 - 1 + 1 = -1$$, neither of which is $$0$$. So there
+is no whole-number root. A plot of the graph shows it crossing the axis once, between $$-1$$ and
+$$0$$, where the value goes from $$-1$$ to $$1$$, so that root is not a whole number.
+
+:::
+
+::::
+
+::::exercise{#ex-polynomials-agree}
+
+Let $$f$$ and $$g$$ be polynomials given by formulas with powers up to $$x^n$$, where $$n \ge 1$$.
+Prove that if $$f(c) = g(c)$$ at $$n + 1$$ different numbers $$c$$, then $$f$$ and $$g$$ have the
+same coefficients.
+
+:::solution
+
+Let $$h = f - g$$, a formula with powers up to $$x^n$$ whose coefficients are the differences of
+those of $$f$$ and $$g$$. It is $$0$$ at the $$n + 1$$ numbers. Suppose some coefficient of $$h$$ is
+not $$0$$, and let $$k \le n$$ be the largest power with a nonzero coefficient. If $$k = 0$$, $$h$$
+is a nonzero constant and has no roots. If $$k \ge 1$$, $$h$$ has at most $$k \le n$$ roots by
+:ref{#root-bound}. Either way it can't be $$0$$ at $$n + 1$$ numbers, so every coefficient of $$h$$
+is $$0$$, and $$f$$ and $$g$$ have the same coefficients. For example, two different lines that are
+not vertical can't meet at two points.
+
+:::
+
+::::
+
+::::exercise{#ex-polynomials-even}
+
+Prove that a polynomial is an even function (:ref{#even-odd-function}) exactly when every power of
+$$x$$ with a nonzero coefficient is even.
+
+:::solution
+
+Write $$f(x) = e(x) + o(x)$$, where $$e$$ collects the terms with even powers and $$o$$ the terms
+with odd powers. Then $$e$$ is even and $$o$$ is odd, as in the guide
+[Moving and mirroring graphs](./moving-and-mirroring.mdx), so by :ref{#even-odd-parts} they are the
+even part and the odd part of $$f$$.
+
+If every power with a nonzero coefficient is even, then $$o$$ is $$0$$ and $$f = e$$ is even.
+Suppose instead that $$f$$ is even. Then $$f(-x) = f(x)$$, so the odd part
+$$\frac{f(x) - f(-x)}{2}$$ is $$0$$ at every $$x$$, which means $$o(x) = 0$$ for every $$x$$. By
+:ref{#coefficients-unique}, every coefficient of $$o$$ is $$0$$, so no odd power appears in $$f$$.
+
+:::
+
+::::
+
+:::::

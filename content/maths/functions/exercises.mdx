@@ -1,0 +1,363 @@
+---
+title: Exercises
+description: Exercises on the whole Functions chapter, with worked solutions.
+---
+
+These exercises use the whole chapter, and most need ideas from more than one guide. They start
+gently and get harder towards the end. Try each one before you open its solution, and name the rule
+or result behind each step, as the guides do.
+
+Two habits carry most of them. Before you solve anything, write down the domain, so that you know
+which answers are allowed. And after you solve it, put your answer back into the function you
+started with and check that it fits.
+
+## Functions and their graphs
+
+::::exercise{#ex-functions-ch-inverse}
+
+Let $$f(x) = \frac{2x + 1}{x - 3}$$.
+
+1. Find the domain of $$f$$.
+2. Show that $$f$$ is one to one, and find its range.
+3. Find a formula for $$f^{-1}$$, and check it at one point.
+
+:::solution
+
+1. The formula makes sense except where $$x - 3 = 0$$, so the domain is every number except $$3$$
+   (:ref{#formula-domain}).
+2. Take a number $$y$$ and look for the inputs $$x \ne 3$$ with $$f(x) = y$$. Multiplying by
+   $$x - 3$$:
+
+   ```math
+   \begin{aligned}
+   y(x - 3) &= 2x + 1 && \text{multiply both sides by } x - 3 \\
+   yx - 2x &= 3y + 1 && \text{gather the } x \text{ terms on the left} \\
+   x(y - 2) &= 3y + 1 && \text{factor out } x
+   \end{aligned}
+   ```
+
+   If $$y = 2$$ the last line says $$0 = 7$$, so $$2$$ is never a value. If $$y \ne 2$$, there is
+   exactly one $$x$$, namely $$x = \frac{3y + 1}{y - 2}$$, and it isn't $$3$$, since $$x = 3$$ would
+   make the first line read $$0 = 7$$. So each value comes from exactly one input, which makes $$f$$
+   one to one (:ref{#one-to-one}), and the range is every number except $$2$$ (:ref{#range}).
+
+3. The working in part 2 gives the one input for each value, so by :ref{#inverse-function}
+
+   ```math
+   f^{-1}(y) = \frac{3y + 1}{y - 2} \qquad \text{for } y \ne 2
+   ```
+
+   Check: $$f(4) = \frac{9}{1} = 9$$, and $$f^{-1}(9) = \frac{28}{7} = 4$$, as :ref{#inverse-undoes}
+   says.
+
+:::
+
+::::
+
+::::exercise{#ex-functions-ch-composite}
+
+Let $$f(x) = x^2$$, $$g(x) = x - 3$$ and $$h(x) = 2x$$, all on all numbers.
+
+1. Find formulas for $$g \circ f$$, $$f \circ g$$ and $$h \circ f \circ g$$.
+2. Describe how each of the three graphs is moved from the graph of $$f$$.
+
+:::solution
+
+1. By :ref{#function-composite}, the right-hand function goes first:
+   - $$(g \circ f)(x) = g(x^2) = x^2 - 3$$
+   - $$(f \circ g)(x) = f(x - 3) = (x - 3)^2$$
+   - $$(h \circ f \circ g)(x) = h((x - 3)^2) = 2(x - 3)^2$$
+2. By :ref{#function-graph-moves}, $$x^2 - 3$$ is the graph of $$f$$ slid $$3$$ down, while
+   $$(x - 3)^2$$ is the graph of $$f$$ slid $$3$$ to the right. Putting $$x - 3$$ in place of $$x$$
+   moves the graph right, not left, and the two answers differ, so the order of $$f$$ and $$g$$
+   matters. Last, $$2(x - 3)^2$$ is the right-slid graph stretched by $$2$$ away from the
+   $$x$$-axis.
+
+:::
+
+::::
+
+::::exercise{#ex-functions-ch-parts}
+
+Let $$f(x) = x^4 - 3x^3 + 2x - 5$$.
+
+1. Find the even part and the odd part of $$f$$.
+2. Use part 1 to find $$f(2) + f(-2)$$ without working out $$f(2)$$ or $$f(-2)$$, and then check by
+   working them out.
+
+:::solution
+
+1. By :ref{#even-odd-parts}, the even part is $$e(x) = \frac{f(x) + f(-x)}{2}$$. Since
+   $$f(-x) = x^4 + 3x^3 - 2x - 5$$, the odd powers cancel in the sum:
+
+   ```math
+   e(x) = \frac{2x^4 - 10}{2} = x^4 - 5 \qquad o(x) = \frac{-6x^3 + 4x}{2} = -3x^3 + 2x
+   ```
+
+   The even part collects the even powers, and the odd part the odd powers.
+
+2. Since $$e$$ is even and $$o$$ is odd, $$f(2) + f(-2) = e(2) + o(2) + e(2) - o(2) = 2e(2)$$, which
+   is $$2(16 - 5) = 22$$. Check: $$f(2) = 16 - 24 + 4 - 5 = -9$$ and
+   $$f(-2) = 16 + 24 - 4 - 5 = 31$$, and $$-9 + 31 = 22$$.
+
+:::
+
+::::
+
+## Polynomials
+
+::::exercise{#ex-functions-ch-cubic}
+
+Let $$f(x) = 2x^3 - 3x^2 - 11x + 6$$.
+
+1. Show that $$3$$ is a root of $$f$$, and use division to factor $$f$$ completely.
+2. Find every root of $$f$$, and say where the graph of $$f$$ lies above the $$x$$-axis.
+
+:::solution
+
+1. $$f(3) = 54 - 27 - 33 + 6 = 0$$, so by :ref{#remainder-theorem}, $$x - 3$$ divides $$f$$ with
+   remainder $$0$$. Long division (:ref{#polynomial-division}) gives the quotient:
+
+   ```math
+   2x^3 - 3x^2 - 11x + 6 = (x - 3)(2x^2 + 3x - 2)
+   ```
+
+   The quadratic factors as $$(2x - 1)(x + 2)$$: check $$2x^2 + 4x - x - 2 = 2x^2 + 3x - 2$$. So
+   $$f(x) = (x - 3)(2x - 1)(x + 2)$$.
+
+2. A product is $$0$$ exactly when a factor is (:ref{#numbers/zero-product}), so the roots are
+   $$3$$, $$\frac12$$ and $$-2$$. By :ref{#root-bound} there are no more. Each factor changes sign
+   at its own root:
+
+   | $$x$$      | $$x < -2$$ | $$-2 < x < \frac12$$ | $$\frac12 < x < 3$$ | $$x > 3$$ |
+   | ---------- | ---------- | -------------------- | ------------------- | --------- |
+   | $$x + 2$$  | $$-$$      | $$+$$                | $$+$$               | $$+$$     |
+   | $$2x - 1$$ | $$-$$      | $$-$$                | $$+$$               | $$+$$     |
+   | $$x - 3$$  | $$-$$      | $$-$$                | $$-$$               | $$+$$     |
+   | $$f(x)$$   | $$-$$      | $$+$$                | $$-$$               | $$+$$     |
+
+   So the graph is above the axis for $$-2 < x < \frac12$$ and for $$x > 3$$. Check:
+   $$f(0) = 6 > 0$$, and $$0$$ is in the first of those.
+
+:::
+
+::::
+
+::::exercise{#ex-functions-ch-remainders}
+
+Find the numbers $$a$$ and $$b$$ for which $$f(x) = x^3 + ax^2 + bx - 6$$ leaves remainder $$0$$ on
+division by $$x - 1$$ and remainder $$-12$$ on division by $$x + 1$$. Then show that $$1$$ is the
+only root of $$f$$.
+
+:::solution
+
+By :ref{#remainder-theorem}, the remainders are $$f(1)$$ and $$f(-1)$$:
+
+```math
+\begin{aligned}
+f(1) &= 1 + a + b - 6 = 0 && \text{so } a + b = 5 \\
+f(-1) &= -1 + a - b - 6 = -12 && \text{so } a - b = -5
+\end{aligned}
+```
+
+Adding the two gives $$2a = 0$$, so $$a = 0$$ and $$b = 5$$, and $$f(x) = x^3 + 5x - 6$$. Check:
+$$f(1) = 1 + 5 - 6 = 0$$ and $$f(-1) = -1 - 5 - 6 = -12$$.
+
+Since $$1$$ is a root, dividing by $$x - 1$$ gives $$f(x) = (x - 1)(x^2 + x + 6)$$. The quadratic
+has discriminant $$1 - 24 = -23 < 0$$, so it has no roots (:ref{#quadratics/root-count}). A product
+is $$0$$ exactly when a factor is, so $$1$$ is the only root of $$f$$.
+
+:::
+
+::::
+
+::::exercise{#ex-functions-ch-hole}
+
+Let $$r(x) = \frac{x^3 - 2x + 1}{x - 1}$$.
+
+1. Give the domain of $$r$$.
+2. Show that $$r(x) = x^2 + x - 1$$ for every $$x$$ in the domain.
+3. Explain why $$r$$ and $$x \mapsto x^2 + x - 1$$ are still different functions, and describe the
+   graph of $$r$$.
+
+:::solution
+
+1. The denominator is $$0$$ exactly at $$x = 1$$, so the domain is every number except $$1$$
+   (:ref{#rational-function}).
+2. The top is $$0$$ at $$x = 1$$, so by :ref{#factor-theorem} $$x - 1$$ is a factor. Dividing gives
+   $$x^3 - 2x + 1 = (x - 1)(x^2 + x - 1)$$: check $$x^3 + x^2 - x - x^2 - x + 1 = x^3 - 2x + 1$$. So
+   for $$x \ne 1$$ the factor $$x - 1$$ cancels.
+3. Equal functions need the same domain (:ref{#function-equality}), and $$x^2 + x - 1$$ is defined
+   at $$1$$ while $$r$$ is not. The graph of $$r$$ is the parabola $$y = x^2 + x - 1$$ with the
+   single point $$(1, 1)$$ left out, drawn as an open dot.
+
+:::
+
+::::
+
+## Exponentials and logarithms
+
+::::exercise{#ex-functions-ch-hidden-quadratic}
+
+Solve $$4^x - 3 \cdot 2^x - 4 = 0$$.
+
+:::solution
+
+Write $$u = 2^x$$. Then $$4^x = (2^2)^x = 2^{2x} = (2^x)^2 = u^2$$ by the power-of-a-power rule in
+:ref{#exponential-rules}, so the equation is a quadratic in $$u$$:
+
+```math
+\begin{aligned}
+u^2 - 3u - 4 &= 0 \\
+(u - 4)(u + 1) &= 0 && \text{factor}
+\end{aligned}
+```
+
+So $$u = 4$$ or $$u = -1$$. But $$u = 2^x$$ is always positive (:ref{#exponential-positive}), so
+$$u = -1$$ gives no solution. That leaves $$2^x = 4 = 2^2$$, and by :ref{#exponential-one-to-one},
+$$x = 2$$. Check: $$16 - 12 - 4 = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-functions-ch-log-domain}
+
+Solve $$\log_2 x + \log_2(x - 2) = 3$$.
+
+:::solution
+
+Both logarithms need positive inputs, so any solution has $$x > 0$$ and $$x > 2$$, that is
+$$x > 2$$. For those $$x$$:
+
+```math
+\begin{aligned}
+\log_2\big(x(x - 2)\big) &= 3 && \text{product law} \\
+x(x - 2) &= 2^3 = 8 && \text{definition of a logarithm} \\
+x^2 - 2x - 8 &= 0 \\
+(x - 4)(x + 2) &= 0 && \text{factor}
+\end{aligned}
+```
+
+The first step is the product law of :ref{#log-laws} and the second is :ref{#logarithm}. The
+quadratic gives $$x = 4$$ or $$x = -2$$, and only $$4$$ is greater than $$2$$. So $$x = 4$$. Check:
+$$\log_2 4 + \log_2 2 = 2 + 1 = 3$$. The other answer, $$-2$$, solves the quadratic but not the
+equation, because $$\log_2(-2)$$ isn't defined. That's why the domain came first.
+
+:::
+
+::::
+
+::::exercise{#ex-functions-ch-exp-inverse}
+
+Let $$f(x) = 3 \cdot 2^x - 1$$ on all numbers.
+
+1. Find the range of $$f$$.
+2. Find a formula for $$f^{-1}$$, and check it at one point.
+3. Describe how the graph of $$f$$ is moved from the graph of $$2^x$$.
+
+:::solution
+
+1. Every $$2^x$$ is positive, and every positive number is $$2^x$$ for some $$x$$
+   (:ref{#exponential-positive}, :ref{#log-exists}). So $$3 \cdot 2^x$$ takes every positive value,
+   and $$f$$ takes every value greater than $$-1$$. The range is the numbers $$y > -1$$.
+2. For $$y > -1$$, solve $$y = 3 \cdot 2^x - 1$$ for $$x$$:
+
+   ```math
+   \begin{aligned}
+   y + 1 &= 3 \cdot 2^x && \text{add } 1 \\
+   \frac{y + 1}{3} &= 2^x && \text{divide by } 3 \\
+   x &= \log_2 \frac{y + 1}{3} && \text{definition of a logarithm}
+   \end{aligned}
+   ```
+
+   So $$f^{-1}(y) = \log_2 \frac{y + 1}{3}$$ for $$y > -1$$ (:ref{#inverse-function}). Check:
+   $$f(2) = 12 - 1 = 11$$, and $$f^{-1}(11) = \log_2 4 = 2$$.
+
+3. By :ref{#function-graph-moves}, it is the graph of $$2^x$$ stretched by $$3$$ away from the
+   $$x$$-axis and then slid $$1$$ down. The curve now hugs the line $$y = -1$$ on the left instead
+   of the $$x$$-axis, which matches the range in part 1.
+
+:::
+
+::::
+
+::::exercise{#ex-functions-ch-log-moves}
+
+1. Show that the graph of $$y = \log_2(4x)$$ is the graph of $$y = \log_2 x$$ slid $$2$$ up. Then
+   explain why it is also the graph of $$y = \log_2 x$$ squeezed by $$4$$ towards the $$y$$-axis.
+2. The functions $$x \mapsto \ln(x^2)$$ and $$x \mapsto 2\ln x$$ agree wherever both are defined.
+   Explain why they are different functions.
+
+:::solution
+
+1. For $$x > 0$$, the product law of :ref{#log-laws} gives
+   $$\log_2(4x) = \log_2 4 + \log_2 x = 2 + \log_2 x$$, a slide by $$(0, 2)$$
+   (:ref{#function-graph-moves}). Also, $$\log_2(4x) = \log_2\left(\frac{x}{1/4}\right)$$, which is
+   the stretch by $$\frac14$$ away from the $$y$$-axis, that is, a squeeze by $$4$$ towards it. For
+   a logarithm a squeeze across and a slide up give the same graph, because multiplying the input
+   adds to the output.
+2. $$\ln(x^2)$$ is defined for every $$x \ne 0$$, since $$x^2 > 0$$ there, while $$2 \ln x$$ is
+   defined for $$x > 0$$ only. Equal functions need the same domain (:ref{#function-equality}), so
+   they are different. For $$x > 0$$ they agree by the power law. For $$x < 0$$,
+   $$\ln(x^2) = 2\ln\lvert x \rvert$$, so the graph of $$\ln(x^2)$$ has a second branch, the mirror
+   image of the first in the $$y$$-axis: $$\ln(x^2)$$ is an even function
+   (:ref{#even-odd-function}).
+
+:::
+
+::::
+
+::::exercise{#ex-functions-ch-overtake}
+
+Town A has $$20{,}000$$ people and grows by $$3\%$$ a year. Town B has $$30{,}000$$ people and grows
+by $$1\%$$ a year. Assuming both keep growing this way, find when A overtakes B.
+
+:::solution
+
+After $$t$$ years, A has $$20000 \cdot 1.03^t$$ people and B has $$30000 \cdot 1.01^t$$
+(:ref{#growth-decay}). They are equal when
+
+```math
+\begin{aligned}
+20000 \cdot 1.03^t &= 30000 \cdot 1.01^t \\
+\left(\frac{1.03}{1.01}\right)^t &= 1.5 && \text{divide by } 20000 \cdot 1.01^t \\
+t \ln\frac{1.03}{1.01} &= \ln 1.5 && \text{take } \ln \text{ and use the power law} \\
+t &= \frac{\ln 1.5}{\ln(1.03/1.01)} \approx \frac{0.4055}{0.01961} \approx 20.7
+\end{aligned}
+```
+
+The step taking $$\ln$$ is allowed because $$\ln$$ is one to one, and it uses the power law of
+:ref{#log-laws}. Since $$\frac{1.03}{1.01} > 1$$, the left side of the second line is increasing in
+$$t$$ (:ref{#exponential-rules}), so A is behind before $$20.7$$ years and ahead after. Check with
+whole years: after $$20$$ years A has about $$36{,}100$$ and B about $$36{,}600$$; after $$21$$
+years A has about $$37{,}200$$ and B about $$37{,}000$$. So A overtakes B during the $$21$$st year.
+
+:::
+
+::::
+
+::::exercise{#ex-functions-ch-irrational-log}
+
+Prove that $$\log_2 3$$ is irrational.
+
+:::solution
+
+First, $$\log_2 3 > 0$$, since $$3 > 1 = 2^0$$ and logarithms to base $$2$$ keep order
+(:ref{#log-increasing}). Suppose, to get a contradiction, that $$\log_2 3 = \frac{p}{q}$$ with
+positive integers $$p$$ and $$q$$. Then, by :ref{#logarithm},
+
+```math
+\begin{aligned}
+2^{p/q} &= 3 \\
+2^p &= 3^q && \text{raise both sides to the power } q
+\end{aligned}
+```
+
+using the power-of-a-power rule in :ref{#exponential-rules}. Now $$2^p$$ is even, since $$p \ge 1$$,
+and $$3^q$$ is odd, since a product of odd numbers is odd (:ref{#numbers/parity-products}). An even
+number can't equal an odd one, so no such $$p$$ and $$q$$ exist, and $$\log_2 3$$ is irrational.
+
+:::
+
+::::

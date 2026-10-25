@@ -1,0 +1,576 @@
+---
+title: Moving and mirroring graphs
+description:
+  Sliding, stretching and flipping the graph of a function and the matching change to its rule, even
+  and odd functions and their mirror symmetry, and the graph of an inverse in the line y = x.
+---
+
+Imagine standing by a still lake early in the morning, with a mountain on the far shore. The water
+shows a second mountain hanging upside down beneath the first. Every rock on the real mountain has a
+partner in the water, the same distance below the waterline as the rock is above it. Nothing about
+the shape has changed except which way up it is.
+
+<LakeReflection caption="A mountain and its reflection in a still lake. Each point of the reflection is as far below the waterline as its partner on the mountain is above it." />
+
+A graph can be moved like that too: slid across the page, stretched or flipped in a line. When the
+graph belongs to a function, each move changes the rule of the function in a way you can predict,
+and some graphs turn out to be their own mirror image. In this guide we'll find the new rule for
+each move, and then look at the functions whose graphs are symmetric.
+
+## Moving a graph changes its rule
+
+The graph of a function $$f$$ is the set of points $$(x, f(x))$$ with $$x$$ in the domain
+(:ref{#function-graph}). That is the graph of the equation $$y = f(x)$$, so everything the
+[Sliding and stretching graphs](../parabolas-ellipses-and-hyperbolas/sliding-and-stretching.mdx)
+guide proved about moving the graph of an equation works for functions too. The only new step is to
+rearrange the moved equation so that it says "$$y$$ equals something", which gives the rule of a new
+function.
+
+Here is a slide with numbers. Take $$f(x) = |x|$$, whose graph is a V with its corner at $$O$$
+(:ref{#real-numbers/absolute-value}), and slide it by $$(2, 1)$$: $$2$$ to the right and $$1$$ up.
+By :ref{#parabolas-ellipses-and-hyperbolas/slide-graph}, put $$x - 2$$ for $$x$$ and $$y - 1$$ for
+$$y$$ in $$y = |x|$$. That gives $$y - 1 = |x - 2|$$, which is $$y = |x - 2| + 1$$.
+
+Check it with a point. The point $$(3, 3)$$ is on the V, since $$|3| = 3$$, and the slide sends it
+to $$(5, 4)$$. Putting $$x = 5$$ into the new rule gives $$|5 - 2| + 1 = 3 + 1 = 4$$, so the moved
+point is on the new graph. The corner moves from $$(0, 0)$$ to $$(2, 1)$$, where
+$$|2 - 2| + 1 = 1$$.
+
+<SlidV caption="The graph of y = |x| (dashed) and its slide by (2, 1), the graph of y = |x − 2| + 1. The corner moves from O to (2, 1), and the point (3, 3) moves to (5, 4)." />
+
+The same goes for the other moves. A stretch away from the $$x$$-axis multiplies every height, a
+stretch away from the $$y$$-axis multiplies every distance across, and the flips change a sign. Here
+$$D_{a,b}(x, y) = (ax, by)$$ is the stretch along the axes by $$a$$ across and $$b$$ up, from
+:ref{#parabolas-ellipses-and-hyperbolas/axis-stretch}. We write $$x \mapsto f(x - h) + k$$, read
+"$$x$$ goes to $$f(x - h) + k$$", for the function whose value at $$x$$ is $$f(x - h) + k$$.
+
+:::proposition[Moving the graph of a function]{#function-graph-moves}
+
+Let $$f$$ be a function with domain $$S$$, and let $$h$$, $$k$$ and $$a$$ be numbers with $$a > 0$$.
+
+1. The slide by $$(h, k)$$ sends the graph of $$f$$ onto the graph of $$x \mapsto f(x - h) + k$$
+2. The stretch $$D_{1,a}$$, by $$a$$ away from the $$x$$-axis, sends it onto the graph of
+   $$x \mapsto a f(x)$$
+3. The stretch $$D_{a,1}$$, by $$a$$ away from the $$y$$-axis, sends it onto the graph of
+   $$x \mapsto f(\frac{x}{a})$$
+4. The flip in the $$x$$-axis sends it onto the graph of $$x \mapsto -f(x)$$
+5. The flip in the $$y$$-axis sends it onto the graph of $$x \mapsto f(-x)$$
+
+Each new function is defined at the numbers $$x$$ where its formula makes sense: those with
+$$x - h$$ in $$S$$ in part 1, $$\frac{x}{a}$$ in $$S$$ in part 3, $$-x$$ in $$S$$ in part 5, and the
+numbers of $$S$$ in parts 2 and 4.
+
+:::
+
+:::proof{source="https://www.mathsisfun.com/sets/function-transformations.html"}
+
+Let $$E(x, y)$$ be the statement "$$x$$ is in $$S$$ and $$y = f(x)$$". A point $$(x, y)$$ makes it
+true exactly when it is a point $$(x, f(x))$$ of the graph of $$f$$, so the graph of $$f$$ is the
+graph of $$E(x, y)$$. Each part puts something new in place of $$x$$ or $$y$$ in $$E$$, by a result
+of the Sliding and stretching graphs guide, and then rearranges.
+
+**Part 1.** By :ref{#parabolas-ellipses-and-hyperbolas/slide-graph}, the slide sends the graph onto
+the graph of $$E(x - h, y - k)$$, which says "$$x - h$$ is in $$S$$ and $$y - k = f(x - h)$$".
+Adding $$k$$ to both sides, that is $$y = f(x - h) + k$$ at the numbers $$x$$ with $$x - h$$ in
+$$S$$: the graph of $$x \mapsto f(x - h) + k$$.
+
+**Part 2.** By :ref{#parabolas-ellipses-and-hyperbolas/stretch-graph} with $$1$$ across and $$a$$
+up, the image is the graph of $$E(x, \frac{y}{a})$$: "$$x$$ is in $$S$$ and $$\frac{y}{a} = f(x)$$".
+Multiplying both sides by $$a$$, that is $$y = a f(x)$$ for $$x$$ in $$S$$.
+
+**Part 3.** By the same theorem with $$a$$ across and $$1$$ up, the image is the graph of
+$$E(\frac{x}{a}, y)$$: "$$\frac{x}{a}$$ is in $$S$$ and $$y = f(\frac{x}{a})$$".
+
+**Part 4.** By part 2 of :ref{#parabolas-ellipses-and-hyperbolas/flip-graph}, the image is the graph
+of $$E(x, -y)$$: "$$x$$ is in $$S$$ and $$-y = f(x)$$". Multiplying both sides by $$-1$$, that is
+$$y = -f(x)$$.
+
+**Part 5.** By part 1 of :ref{#parabolas-ellipses-and-hyperbolas/flip-graph}, the image is the graph
+of $$E(-x, y)$$: "$$-x$$ is in $$S$$ and $$y = f(-x)$$".
+
+:::
+
+Stretching works the same way with numbers. Take $$f(x) = \sqrt{x}$$, defined for $$x \ge 0$$, and
+the point $$(4, 2)$$ on its graph. The stretch by $$2$$ away from the $$x$$-axis doubles its height
+and sends it to $$(4, 4)$$, and the new rule $$y = 2\sqrt{x}$$ gives $$2\sqrt4 = 4$$ there. The
+stretch by $$2$$ away from the $$y$$-axis doubles its distance across instead, sending it to
+$$(8, 2)$$, and the new rule $$y = \sqrt{x/2}$$ gives $$\sqrt{8/2} = \sqrt4 = 2$$.
+
+<StretchedRoot caption="The graph of y = √x (dashed) with the point (4, 2), stretched two ways by 2. Stretching away from the x-axis gives y = 2√x, through (4, 4). Stretching away from the y-axis gives y = √(x/2), through (8, 2)." />
+
+## Which way the graph moves
+
+Two of the moves go the opposite way from what the formula seems to say. Each one is worth getting
+straight once, because the same slip turns up in every graph that follows.
+
+**A minus inside moves the graph right.** The graph of $$y = (x - 3)^2$$ is the graph of $$x^2$$
+moved $$3$$ to the right, not to the left. The new function at $$x$$ does what the old one did at
+$$x - 3$$: at $$x = 3$$ it is $$0^2 = 0$$, the value $$x^2$$ had at $$0$$. So everything happens
+$$3$$ steps later along the $$x$$-axis, and later means further right.
+
+A related slip is to read $$f(x - 3)$$ as $$f(x) - f(3)$$, as if the function could be split across
+the minus sign. For $$f(x) = x^2$$ the split fails: at $$x = 5$$, $$f(5 - 3) = 2^2 = 4$$, while
+$$f(5) - f(3) = 25 - 9 = 16$$.
+
+**A number outside stretches up, a number inside squeezes across.** Multiplying the value by $$2$$,
+as in $$2\sqrt{x}$$, doubles every height. Multiplying the input by $$2$$, as in $$\sqrt{2x}$$, is
+part 3 of :ref{#function-graph-moves} with $$a = \frac{1}{2}$$, since $$2x = \frac{x}{1/2}$$. So
+$$\sqrt{2x}$$ squeezes the graph towards the $$y$$-axis to half its width. Check: $$\sqrt{2x}$$
+reaches the height $$2$$ at $$x = 2$$, where $$\sqrt{x}$$ needed $$x = 4$$.
+
+Several moves can be done one after another. To get $$y = 2|x - 1| + 3$$ from $$y = |x|$$, first
+stretch by $$2$$ away from the $$x$$-axis to get $$y = 2|x|$$, and then slide by $$(1, 3)$$ to get
+$$y = 2|x - 1| + 3$$. The point $$(1, 1)$$ goes to $$(1, 2)$$ and then to $$(2, 5)$$, and the rule
+gives $$2|2 - 1| + 3 = 5$$ at $$x = 2$$. The corner ends up at $$(1, 3)$$.
+
+Try the moves below on five starting graphs. The faint dashed curve is the starting graph, and the
+readout writes the rule of the bold one with your numbers in it. The flips and the stretch are done
+first and the slide last, as with $$y = 2|x - 1| + 3$$.
+
+<FunctionMover />
+
+## Even and odd functions
+
+Some graphs are their own reflection. The graph of $$x^2$$ is a cup that looks the same in a mirror
+standing on the $$y$$-axis, because $$(-3)^2 = 9 = 3^2$$: the value at $$-3$$ equals the value at
+$$3$$. The graph of $$x^3$$ is different. There $$(-2)^3 = -8$$ is the negative of $$2^3 = 8$$, so
+the value at $$-2$$ is the value at $$2$$ with its sign changed.
+
+For a function $$f$$ with domain $$S$$, write $$-S$$ for the set of the numbers $$-x$$ with $$x$$ in
+$$S$$. Saying $$S = -S$$ means that whenever $$x$$ is in the domain, so is $$-x$$. All numbers, and
+all numbers except $$0$$, are domains like that.
+
+:::definition[Even and odd functions]{#even-odd-function}
+
+Let $$f$$ be a function whose domain $$S$$ has $$-S = S$$.
+
+- $$f$$ is **even** when $$f(-x) = f(x)$$ for every $$x$$ in $$S$$
+- $$f$$ is **odd** when $$f(-x) = -f(x)$$ for every $$x$$ in $$S$$
+
+:::
+
+The cosine is even and the sine is odd, by :ref{#trigonometry/negative-angle}: $$\cos(-x) = \cos x$$
+and $$\sin(-x) = -\sin x$$. The absolute value is even, since $$|-x| = |x|$$, and
+$$x \mapsto \frac{1}{x}$$ on the numbers other than $$0$$ is odd, since
+$$\frac{1}{-x} = -\frac{1}{x}$$. A function can also be neither. For $$f(x) = x^2 + x$$,
+$$f(1) = 2$$ and $$f(-1) = 0$$, which are neither equal nor negatives of each other.
+
+The names come from powers. For a positive integer $$n$$, $$(-x)^n$$ is the product of $$n$$ copies
+of $$-x$$, and the minus signs cancel in pairs (:ref{#numbers/two-minus}). So $$(-x)^n = x^n$$ when
+$$n$$ is even, and $$(-x)^n = -x^n$$ when $$n$$ is odd, with one minus sign left over. Check with
+$$x = 2$$: $$(-2)^4 = 16 = 2^4$$ and $$(-2)^5 = -32 = -2^5$$. So $$x \mapsto x^n$$ is an even
+function for even $$n$$ and an odd function for odd $$n$$.
+
+## Symmetric graphs
+
+Flip the graph of an even function in the $$y$$-axis, and the point above $$x$$ lands above $$-x$$
+at the same height. That height is $$f(x)$$, which is $$f(-x)$$, so the flipped point is on the
+graph already. For an odd function the matching move is the half turn about $$O$$, which changes
+both signs: $$(x, f(x))$$ lands on $$(-x, -f(x))$$, which is $$(-x, f(-x))$$.
+
+The half turn about $$O$$ sends each point $$P$$ to $$-P$$, so it is $$H_O(x, y) = (-x, -y)$$
+(:ref{#adding-and-scaling-points/negative-half-turn}). It is also the flip in the $$x$$-axis
+followed by the flip in the $$y$$-axis, since those send $$(x, y)$$ to $$(x, -y)$$ and then to
+$$(-x, -y)$$. A symmetry of a shape is an isometry that sends the shape onto itself
+(:ref{#isometries/symmetry}), and both flips and the half turn are isometries
+(:ref{#adding-and-scaling-points/formula-isometries}).
+
+:::proposition[Symmetry of even and odd graphs]{#even-odd-graphs}
+
+Let $$f$$ be a function whose domain $$S$$ has $$-S = S$$.
+
+1. $$f$$ is even exactly when the flip in the $$y$$-axis is a symmetry of its graph
+2. $$f$$ is odd exactly when the half turn about $$O$$ is a symmetry of its graph
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Even_and_odd_functions#Basic_properties"}
+
+Two functions with the same graph are the same function. The domain is the set of first coordinates
+of points on the graph, and the value at $$x$$ is the second coordinate of the one point of the
+graph above $$x$$. So two graphs are equal exactly when the functions have the same domain and the
+same value at every point (:ref{#function-equality}).
+
+**Part 1.** By part 5 of :ref{#function-graph-moves}, the flip in the $$y$$-axis sends the graph of
+$$f$$ onto the graph of $$g(x) = f(-x)$$. Its domain is the numbers $$x$$ with $$-x$$ in $$S$$,
+which is $$-S = S$$. So the flip is a symmetry exactly when the graph of $$g$$ is the graph of
+$$f$$, that is, when $$f(-x) = f(x)$$ for every $$x$$ in $$S$$. That is what it means for $$f$$ to
+be even.
+
+**Part 2.** The half turn is the flip in the $$x$$-axis followed by the flip in the $$y$$-axis. By
+part 4 of :ref{#function-graph-moves}, the first flip sends the graph of $$f$$ onto the graph of
+$$x \mapsto -f(x)$$. By part 5, the second sends that onto the graph of
+
+```math
+g(x) = -f(-x)
+```
+
+again with domain $$-S = S$$. So the half turn is a symmetry exactly when $$-f(-x) = f(x)$$ for
+every $$x$$ in $$S$$. Multiplying both sides by $$-1$$, that says $$f(-x) = -f(x)$$, so $$f$$ is
+odd.
+
+:::
+
+The same facts for cosine and sine are :ref{#trigonometry/graphs-symmetry}, proved there point by
+point. In the figure below, the graph of the even function $$4 - x^2$$ passes through $$(1, 3)$$ and
+its mirror image $$(-1, 3)$$. The graph of the odd function $$x^3 - 3x$$ passes through $$(2, 2)$$
+and through $$(-2, -2)$$. The half turn about $$O$$ swaps those two points, and $$O$$ is the
+midpoint of the segment joining them.
+
+<EvenOddGraphs caption="The even function y = 4 − x² (blue), whose graph is its own mirror image in the y-axis; (1, 3) and (−1, 3) are both on it. The odd function y = x³ − 3x (green), whose graph is unchanged by the half turn about O; (2, 2) and (−2, −2) are both on it." />
+
+## Even part and odd part
+
+A function can be neither even nor odd and still be an even function plus an odd function. In fact
+every function on a domain with $$-S = S$$ splits that way. For a polynomial you can see the two
+pieces straight away. Take
+
+```math
+f(x) = x^3 + 2x^2 - 5x + 4
+```
+
+The terms with even powers, $$2x^2 + 4$$, make an even function, since $$4 = 4x^0$$ and $$0$$ is
+even. The terms with odd powers, $$x^3 - 5x$$, make an odd function. Their sum is $$f$$.
+
+There is a formula that finds the two pieces without looking at powers. Here
+$$f(-x) = -x^3 + 2x^2 + 5x + 4$$. Adding $$f(x)$$ and $$f(-x)$$ cancels the odd powers and doubles
+the even ones, so half the sum is $$2x^2 + 4$$. Taking $$f(-x)$$ from $$f(x)$$ cancels the even
+powers instead, and half the difference is $$x^3 - 5x$$.
+
+:::proposition[Even part and odd part]{#even-odd-parts}
+
+Let $$f$$ be a function whose domain $$S$$ has $$-S = S$$. Then $$f = e + o$$ for an even function
+$$e$$ and an odd function $$o$$ on $$S$$, namely
+
+```math
+e(x) = \frac{f(x) + f(-x)}{2} \qquad o(x) = \frac{f(x) - f(-x)}{2}
+```
+
+and these are the only even $$e$$ and odd $$o$$ with $$f = e + o$$. They are called the **even
+part** and the **odd part** of $$f$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Even_and_odd_functions"}
+
+**They add up to f.** For $$x$$ in $$S$$,
+
+```math
+e(x) + o(x) = \frac{f(x) + f(-x) + f(x) - f(-x)}{2} = \frac{2f(x)}{2} = f(x)
+```
+
+**e is even and o is odd.** Put $$-x$$ in place of $$x$$, and use $$-(-x) = x$$:
+
+```math
+\begin{aligned}
+e(-x) &= \frac{f(-x) + f(x)}{2} = e(x) && \text{the same two terms, swapped} \\
+o(-x) &= \frac{f(-x) - f(x)}{2} = -o(x) && \text{the same two terms, the sign changed}
+\end{aligned}
+```
+
+**There is only one way.** Suppose also $$f = e_2 + o_2$$ with $$e_2$$ even and $$o_2$$ odd. Then
+$$e + o = e_2 + o_2$$, so the function $$g = e - e_2$$ equals $$o_2 - o$$. Take any $$x$$ in $$S$$.
+Using the first form of $$g$$, and then the second,
+
+```math
+\begin{aligned}
+g(-x) &= e(-x) - e_2(-x) = e(x) - e_2(x) = g(x) && e \text{ and } e_2 \text{ are even} \\
+g(-x) &= o_2(-x) - o(-x) = -o_2(x) + o(x) = -g(x) && o \text{ and } o_2 \text{ are odd}
+\end{aligned}
+```
+
+So $$g(x) = -g(x)$$, which gives $$2g(x) = 0$$ and $$g(x) = 0$$. That gives $$e_2 = e$$, and then
+$$o_2 = f - e_2 = f - e = o$$.
+
+:::
+
+Check the formula with the polynomial at $$x = 1$$. There $$f(1) = 1 + 2 - 5 + 4 = 2$$ and
+$$f(-1) = -1 + 2 + 5 + 4 = 10$$. So $$e(1) = \frac{2 + 10}{2} = 6$$ and
+$$o(1) = \frac{2 - 10}{2} = -4$$, which match $$2 \cdot 1^2 + 4 = 6$$ and $$1^3 - 5 = -4$$.
+
+The formula also works where there are no powers to sort. Take
+
+```math
+f(x) = \frac{(x + 1)^2}{x^2 + 1}
+```
+
+defined for every $$x$$, since $$x^2 + 1 \ge 1$$. Multiplying out the top gives
+$$x^2 + 2x + 1 = (x^2 + 1) + 2x$$, so $$f(-x) = \frac{(x^2 + 1) - 2x}{x^2 + 1}$$. The formula gives
+the even part $$e(x) = 1$$ and the odd part $$o(x) = \frac{2x}{x^2 + 1}$$. Check at $$x = 1$$:
+$$f(1) = \frac{4}{2} = 2$$, and $$e(1) + o(1) = 1 + \frac{2}{2} = 2$$.
+
+## Adding and multiplying even and odd functions
+
+Even and odd functions combine like the signs $$+$$ and $$-$$ under multiplication. An even function
+times an even function is even, odd times odd is even, like two minus signs, and even times odd is
+odd. Sums keep the type: even plus even is even, odd plus odd is odd. Sums and products of functions
+are worked out point by point (:ref{#function-operations}).
+
+:::proposition[Combining even and odd functions]{#even-odd-arithmetic}
+
+Let $$f$$ and $$g$$ be functions on a domain $$S$$ with $$-S = S$$.
+
+1. If $$f$$ and $$g$$ are both even, then $$f + g$$ and $$fg$$ are even
+2. If $$f$$ and $$g$$ are both odd, then $$f + g$$ is odd and $$fg$$ is even
+3. If $$f$$ is even and $$g$$ is odd, then $$fg$$ is odd
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Even_and_odd_functions#Addition_and_subtraction"}
+
+Take any $$x$$ in $$S$$.
+
+**Part 1.** Using $$f(-x) = f(x)$$ and $$g(-x) = g(x)$$,
+$$(f + g)(-x) = f(-x) + g(-x) = f(x) + g(x) = (f + g)(x)$$, and in the same way
+$$(fg)(-x) = f(-x)g(-x) = f(x)g(x) = (fg)(x)$$.
+
+**Part 2.** Using $$f(-x) = -f(x)$$ and $$g(-x) = -g(x)$$,
+
+```math
+\begin{aligned}
+(f + g)(-x) &= -f(x) - g(x) = -(f + g)(x) && \text{take out the minus sign} \\
+(fg)(-x) &= \big(-f(x)\big)\big(-g(x)\big) = f(x)g(x) = (fg)(x) && \text{two minus signs cancel}
+\end{aligned}
+```
+
+**Part 3.** Using $$f(-x) = f(x)$$ and $$g(-x) = -g(x)$$,
+
+```math
+(fg)(-x) = f(x)\big(-g(x)\big) = -f(x)g(x) = -(fg)(x)
+```
+
+:::
+
+So $$x \mapsto x \sin x$$ is even, as odd times odd, and $$x \mapsto x^2 \sin x$$ is odd, as even
+times odd. Check the first at $$x = \frac{\pi}{2}$$: the value there is
+$$\frac{\pi}{2} \cdot 1 = \frac{\pi}{2}$$, and at $$-\frac{\pi}{2}$$ it is
+$$\left(-\frac{\pi}{2}\right)(-1) = \frac{\pi}{2}$$ too. An even function plus an odd one can be
+neither, as $$x^2 + x$$ showed.
+
+## The graph of an inverse
+
+An inverse function swaps inputs and outputs. If $$f$$ sends $$1$$ to $$3$$, then $$f^{-1}$$ sends
+$$3$$ back to $$1$$ (:ref{#inverse-function}). So the point $$(1, 3)$$ on the graph of $$f$$ becomes
+the point $$(3, 1)$$ on the graph of $$f^{-1}$$, and swapping the two coordinates of a point is the
+flip in the line $$y = x$$ (:ref{#adding-and-scaling-points/diagonal-reflection}).
+
+Take $$f(x) = 2x + 1$$, which is one to one, with inverse $$f^{-1}(y) = \frac{y - 1}{2}$$: to undo
+"double, then add $$1$$", take away $$1$$ and then halve. Here $$f(1) = 3$$ and
+$$f^{-1}(3) = \frac{3 - 1}{2} = 1$$, and also $$f(-2) = -3$$ and $$f^{-1}(-3) = -2$$. Each point of
+one graph, mirrored in $$y = x$$, is a point of the other.
+
+To draw $$f^{-1}$$ on the same axes as $$f$$, we use the letter $$x$$ for its input too, and write
+its graph as the points $$(x, f^{-1}(x))$$. The letter makes no difference to the function.
+
+:::proposition[The graph of an inverse]{#inverse-graph}
+
+Let $$f$$ be a one-to-one function (:ref{#one-to-one}). The flip in the line $$y = x$$ sends the
+graph of $$f$$ onto the graph of $$f^{-1}$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Inverse_function#Graph_of_the_inverse"}
+
+Let $$S$$ be the domain of $$f$$ and $$R$$ its range, so $$f^{-1}$$ has domain $$R$$. As in the
+proof of :ref{#function-graph-moves}, the graph of $$f$$ is the graph of $$E(x, y)$$, the statement
+"$$x$$ is in $$S$$ and $$y = f(x)$$".
+
+By part 3 of :ref{#parabolas-ellipses-and-hyperbolas/flip-graph}, the flip in $$y = x$$ sends that
+graph onto the graph of $$E(y, x)$$, with the letters swapped: "$$y$$ is in $$S$$ and $$x = f(y)$$".
+So a point $$(u, v)$$ is on the flipped graph exactly when $$v$$ is in $$S$$ and $$f(v) = u$$.
+
+Now compare with the graph of $$f^{-1}$$. If $$v$$ is in $$S$$ and $$f(v) = u$$, then $$u$$ is a
+value of $$f$$, so $$u$$ is in $$R$$, and $$v$$ is the one number of $$S$$ that $$f$$ sends to
+$$u$$. That says $$v = f^{-1}(u)$$. Going back, if $$u$$ is in $$R$$ and $$v = f^{-1}(u)$$, then
+$$v$$ is in $$S$$ and $$f(v) = u$$ by :ref{#inverse-undoes}. So the flipped graph is the set of
+points $$(u, f^{-1}(u))$$ with $$u$$ in $$R$$, which is the graph of $$f^{-1}$$.
+
+:::
+
+Squaring is not one to one on all numbers, since $$2^2 = (-2)^2$$, but it is on the numbers
+$$x \ge 0$$, where its inverse is the square root. So the graph of $$\sqrt{x}$$ is the right half of
+the cup $$y = x^2$$, mirrored in $$y = x$$. The point $$(2, 4)$$ on the cup becomes $$(4, 2)$$, and
+$$\sqrt4 = 2$$. The guide [Logarithms](./logarithms.mdx) draws the graph of a logarithm the same
+way.
+
+<InverseMirror caption="First, y = 2x + 1 and its inverse y = (x − 1)/2, mirror images in the dashed line y = x, with (1, 3) and (3, 1) marked. Second, y = x² for x ≥ 0 and its inverse y = √x, with (2, 4) and (4, 2) marked." />
+
+The $$-1$$ in $$f^{-1}$$ is not a power. For $$f(x) = 2x + 1$$, $$f^{-1}(1) = \frac{1 - 1}{2} = 0$$,
+but $$\frac{1}{f(1)} = \frac{1}{3}$$. The inverse undoes $$f$$, and $$\frac{1}{f(x)}$$ is a
+different function altogether.
+
+## Exercises
+
+:::::accordion[Exercises on moving and mirroring graphs, with solutions]
+
+::::exercise{#ex-moving-and-mirroring-rules}
+
+Write the rule of the function whose graph you get from each move, and check it at one point.
+
+1. The graph of $$x^2$$, slid $$4$$ to the left and $$1$$ down
+2. The graph of $$|x|$$, flipped in the $$x$$-axis and then slid $$3$$ up
+3. The graph of $$\sqrt{x}$$, stretched by $$3$$ away from the $$x$$-axis
+
+:::solution
+
+By :ref{#function-graph-moves}:
+
+1. A slide by $$(-4, -1)$$ gives $$y = (x - (-4))^2 + (-1)$$, which is $$y = (x + 4)^2 - 1$$. The
+   point $$(0, 0)$$ moves to $$(-4, -1)$$, and $$(-4 + 4)^2 - 1 = -1$$.
+2. The flip gives $$y = -|x|$$, and the slide by $$(0, 3)$$ gives $$y = -|x| + 3$$, an upside-down V
+   with its corner at $$(0, 3)$$. The point $$(2, 2)$$ goes to $$(2, -2)$$ and then to $$(2, 1)$$,
+   and $$-|2| + 3 = 1$$.
+3. The stretch gives $$y = 3\sqrt{x}$$. The point $$(4, 2)$$ goes to $$(4, 6)$$, and
+   $$3\sqrt4 = 6$$.
+
+:::
+
+::::
+
+::::exercise{#ex-moving-and-mirroring-describe}
+
+Describe moves that take the graph of $$x^2$$ onto the graph of $$y = 3(x + 2)^2 - 5$$, and find
+where the lowest point $$(0, 0)$$ of the cup goes.
+
+:::solution
+
+Write the rule as $$y = 3(x - (-2))^2 + (-5)$$. By parts 2 and 1 of :ref{#function-graph-moves},
+stretch the graph of $$x^2$$ by $$3$$ away from the $$x$$-axis, which gives $$y = 3x^2$$, and then
+slide by $$(-2, -5)$$: $$2$$ to the left and $$5$$ down. The stretch keeps $$(0, 0)$$ where it is,
+and the slide takes it to $$(-2, -5)$$. As a check, $$3(-2 + 2)^2 - 5 = -5$$, and every other value
+is larger, since $$3(x + 2)^2 \ge 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-moving-and-mirroring-squeeze}
+
+Let $$f(x) = x^2 - 4x$$. Find where the graphs of $$f$$, of $$x \mapsto 2f(x)$$ and of
+$$x \mapsto f(2x)$$ meet the $$x$$-axis, and explain the answers with :ref{#function-graph-moves}.
+
+:::solution
+
+Since $$f(x) = x(x - 4)$$, $$f(x) = 0$$ exactly when $$x = 0$$ or $$x = 4$$
+(:ref{#numbers/zero-product}). Then $$2f(x) = 0$$ at the same two numbers, since $$2 \ne 0$$. But
+$$f(2x) = 2x(2x - 4) = 4x(x - 2)$$, which is $$0$$ at $$x = 0$$ and $$x = 2$$.
+
+The stretch by $$2$$ away from the $$x$$-axis changes heights and leaves the points on the
+$$x$$-axis where they are. Multiplying the input by $$2$$ is part 3 with $$a = \frac{1}{2}$$, which
+squeezes the graph towards the $$y$$-axis to half its width, so the crossing at $$4$$ moves in to
+$$2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-moving-and-mirroring-even-odd}
+
+Decide whether each function is even, odd or neither, and give a reason.
+
+1. $$x \mapsto x^4 - 3x^2 + 1$$
+2. $$x \mapsto x^5 + 2x$$
+3. $$x \mapsto x^3 + 1$$
+4. $$x \mapsto \dfrac{x}{x^2 + 4}$$
+5. $$x \mapsto |x| \cos x$$
+
+:::solution
+
+Use :ref{#even-odd-function}, and :ref{#even-odd-arithmetic} for sums and products.
+
+1. Even: only even powers appear, and $$1 = x^0$$, so $$f(-x) = f(x)$$.
+2. Odd: $$(-x)^5 + 2(-x) = -x^5 - 2x = -(x^5 + 2x)$$.
+3. Neither: $$f(1) = 2$$ and $$f(-1) = 0$$, which are neither equal nor negatives of each other.
+4. Odd: the top is odd and the bottom is even and never $$0$$, so
+   $$f(-x) = \frac{-x}{x^2 + 4} = -f(x)$$.
+5. Even: $$|x|$$ and $$\cos x$$ are both even, so their product is even.
+
+:::
+
+::::
+
+::::exercise{#ex-moving-and-mirroring-parts}
+
+Find the even and odd parts of $$f(x) = (x + 2)^3$$, and check that they add up to $$f$$ at
+$$x = 1$$.
+
+:::solution
+
+Multiplying out, $$(x + 2)^3 = x^3 + 6x^2 + 12x + 8$$. By :ref{#even-odd-parts}, the even part is
+half of
+
+```math
+f(x) + f(-x) = (x^3 + 6x^2 + 12x + 8) + (-x^3 + 6x^2 - 12x + 8) = 12x^2 + 16
+```
+
+so $$e(x) = 6x^2 + 8$$, the even powers. In the same way the odd part is $$o(x) = x^3 + 12x$$, the
+odd powers. At $$x = 1$$, $$e(1) + o(1) = 14 + 13 = 27$$, and $$f(1) = 3^3 = 27$$.
+
+:::
+
+::::
+
+::::exercise{#ex-moving-and-mirroring-zero}
+
+Let $$f$$ be an odd function whose domain contains $$0$$. Prove that $$f(0) = 0$$. Then prove that
+the only function on all numbers that is both even and odd is the zero function.
+
+:::solution
+
+**The value at 0.** Since $$f$$ is odd, $$f(-0) = -f(0)$$. But $$-0 = 0$$, so $$f(0) = -f(0)$$.
+Adding $$f(0)$$ to both sides gives $$2f(0) = 0$$, so $$f(0) = 0$$. On the graph, the half turn
+about $$O$$ sends $$(0, f(0))$$ to $$(0, -f(0))$$, and both are the one point of the graph above
+$$0$$.
+
+**Both even and odd.** If $$g$$ is both, then for every $$x$$, $$g(x) = g(-x) = -g(x)$$, so
+$$2g(x) = 0$$ and $$g(x) = 0$$. This is the step that proved uniqueness in :ref{#even-odd-parts}.
+
+:::
+
+::::
+
+::::exercise{#ex-moving-and-mirroring-inverse}
+
+The function $$f(x) = 3x - 6$$ is one to one. Find its inverse, and check with two points that each
+graph is the mirror image of the other in the line $$y = x$$.
+
+:::solution
+
+Solve $$y = 3x - 6$$ for $$x$$: adding $$6$$ gives $$y + 6 = 3x$$, and dividing by $$3$$ gives
+$$x = \frac{y + 6}{3}$$. So $$f^{-1}(x) = \frac{x + 6}{3}$$, written with the letter $$x$$ for its
+input. Check: $$f(f^{-1}(x)) = 3 \cdot \frac{x + 6}{3} - 6 = x$$.
+
+The points $$(2, 0)$$ and $$(0, -6)$$ are on the graph of $$f$$, since $$f(2) = 0$$ and
+$$f(0) = -6$$. Their mirror images in $$y = x$$ are $$(0, 2)$$ and $$(-6, 0)$$, and indeed
+$$f^{-1}(0) = \frac{6}{3} = 2$$ and $$f^{-1}(-6) = 0$$, as :ref{#inverse-graph} says.
+
+:::
+
+::::
+
+::::exercise{#ex-moving-and-mirroring-composite}
+
+Let $$f$$ and $$g$$ be functions on all numbers. Prove that if $$f$$ is even, then $$g \circ f$$ is
+even, and that if $$f$$ and $$g$$ are both odd, then $$g \circ f$$ is odd. Check the second with
+$$f(x) = x^3$$ and $$g(x) = \sin x$$ at $$x = 1$$.
+
+:::solution
+
+By :ref{#function-composite}, $$(g \circ f)(x) = g(f(x))$$.
+
+**f even.** $$(g \circ f)(-x) = g(f(-x)) = g(f(x)) = (g \circ f)(x)$$, whatever $$g$$ is.
+
+**Both odd.** Using first that $$f$$ is odd and then that $$g$$ is odd,
+
+```math
+(g \circ f)(-x) = g\big(f(-x)\big) = g\big(-f(x)\big) = -g\big(f(x)\big) = -(g \circ f)(x)
+```
+
+**Check.** $$(g \circ f)(x) = \sin(x^3)$$. At $$x = 1$$ it is $$\sin 1 \approx 0.841$$, and at
+$$x = -1$$ it is $$\sin(-1) \approx -0.841$$.
+
+:::
+
+::::
+
+:::::

@@ -1,0 +1,517 @@
+---
+title: Dividing polynomials
+description:
+  Long division of polynomials, why it always gives one quotient and one remainder, the remainder
+  theorem, and rational functions written as a polynomial plus a proper part.
+---
+
+Imagine sharing a bag of $$47$$ sweets among $$6$$ children. You hand out a round of $$6$$, then
+another, and after $$7$$ rounds $$42$$ sweets are gone and $$5$$ are still in the bag. Five is too
+few for another round, so each child gets $$7$$ and $$5$$ are left over. The pile left over is
+always smaller than the number of children, because otherwise you could hand out one more round.
+
+Polynomials can be shared out in the same way. Dividing one polynomial by another gives a
+**quotient** and a **remainder**, and the remainder is smaller in the sense that its degree is lower
+than the degree of the polynomial you divide by. In this guide we'll learn the long division that
+finds them, prove that it always works, and then use the remainder to find roots and to read the
+graphs of fractions of polynomials.
+
+<SharingSweets caption="47 sweets shared among 6 children: 7 rounds of 6 use up 42, and the 5 left over are too few for another round. So 47 = 6 · 7 + 5." />
+
+## Whole numbers first
+
+You have met division with a remainder for whole numbers in :ref{#numbers/division-remainder}:
+dividing $$n$$ by $$d > 0$$ gives $$n = dq + r$$ with $$0 \le r < d$$. The sweets are the case
+$$47 = 6 \cdot 7 + 5$$. Long division at school finds $$q$$ one digit at a time, and each digit
+stands for a batch of $$d$$s taken away.
+
+Take $$452 \div 13$$. Thirteen hundreds would be $$1300$$, more than $$452$$, so the first batch is
+tens of thirteens: $$13$$ goes into $$45$$ three times, so $$30$$ thirteens, which is $$390$$, fit
+into $$452$$. Taking them away leaves $$62$$, and $$4$$ more thirteens, which is $$52$$, leave
+$$10$$:
+
+```math
+\begin{array}{lr}
+ & 452 \\
+\text{take away } 30 \times 13 & 390 \\
+\hline
+\text{leaves} & 62 \\
+\text{take away } 4 \times 13 & 52 \\
+\hline
+\text{leaves} & 10
+\end{array}
+```
+
+Since $$10 < 13$$, we stop. We took away $$30 + 4 = 34$$ thirteens in all, so
+$$452 = 34 \cdot 13 + 10$$. As a check, $$34 \cdot 13 = 442$$ and $$442 + 10 = 452$$. Each batch was
+chosen to clear the leading digits of what was left, and that is the idea to carry over to
+polynomials.
+
+## Long division of polynomials
+
+For polynomials the batches are multiples of the divisor $$g$$ by a single term, such as $$2x$$ or
+$$3$$. Each one is chosen so that its top term matches the top term of what is left, so subtracting
+it makes that term cancel. The degree drops every time, and we stop once the degree of what is left
+is below the degree of $$g$$.
+
+Here is a worked case. Divide
+
+```math
+f(x) = 2x^3 + x^2 - 5x + 4 \quad\text{by}\quad g(x) = x^2 - x + 2
+```
+
+**Round 1.** The top term of $$f$$ is $$2x^3$$, and the top term of $$g$$ is $$x^2$$. To turn
+$$x^2$$ into $$2x^3$$ you multiply it by $$2x$$, so $$2x$$ is the first term of the quotient.
+Multiplying the whole of $$g$$ by $$2x$$ gives $$2x^3 - 2x^2 + 4x$$, and we take that away from
+$$f$$. The $$2x^3$$ terms cancel, because $$2x$$ was chosen to make them match.
+
+**Round 2.** What is left is $$3x^2 - 9x + 4$$, with top term $$3x^2$$. To turn $$x^2$$ into
+$$3x^2$$ you multiply by $$3$$, so $$3$$ is the next term of the quotient. Taking away
+$$3g(x) = 3x^2 - 3x + 6$$ leaves $$-6x - 2$$.
+
+**Stop.** The degree of $$-6x - 2$$ is $$1$$, less than $$2$$, the degree of $$g$$. Laid out in
+columns, one for each power, the two rounds look like the ladder for $$452 \div 13$$:
+
+```math
+\begin{array}{lrrrr}
+ & 2x^3 & {} + x^2 & {} - 5x & {} + 4 \\
+\text{take away } 2x \cdot g(x) & 2x^3 & {} - 2x^2 & {} + 4x & \\
+\hline
+\text{leaves} & & 3x^2 & {} - 9x & {} + 4 \\
+\text{take away } 3 \cdot g(x) & & 3x^2 & {} - 3x & {} + 6 \\
+\hline
+\text{leaves} & & & -6x & {} - 2
+\end{array}
+```
+
+We took away $$2x \cdot g(x)$$ and then $$3 \cdot g(x)$$, so $$(2x + 3)\,g(x)$$ in all. So the
+quotient is $$q(x) = 2x + 3$$, the remainder is $$r(x) = -6x - 2$$, and
+
+```math
+2x^3 + x^2 - 5x + 4 = (2x + 3)(x^2 - x + 2) + (-6x - 2)
+```
+
+Check it at $$x = 1$$. The left side is $$2 + 1 - 5 + 4 = 2$$. On the right, $$q(1) = 5$$,
+$$g(1) = 2$$ and $$r(1) = -8$$, and $$5 \cdot 2 - 8 = 2$$. The two calculations match the whole
+numbers line by line: $$452$$ plays $$f$$, $$13$$ plays $$g$$, and the batches $$30$$ and $$4$$ play
+$$2x$$ and $$3$$.
+
+One habit saves a lot of slips: give every power its own column, and write a missing power with a
+$$0$$. So $$x^4 - 3x + 1$$ goes down as $$x^4 + 0x^3 + 0x^2 - 3x + 1$$, and the terms you take away
+then land under the right powers. Step through three divisions below, and $$452 \div 13$$ beside
+them.
+
+<LongDivision />
+
+## Division always works
+
+Each round of long division lowers the degree of what is left by at least $$1$$. So after at most as
+many rounds as the degree of $$f$$, what is left has degree below the degree of $$g$$, or is the
+zero polynomial, and the division stops. The theorem says this, and adds that the answer can't come
+out two different ways.
+
+Degrees and leading coefficients are as in :ref{#degree}: the **leading coefficient** of a nonzero
+polynomial is the number in front of its highest power.
+
+:::theorem[Dividing polynomials with remainder]{#polynomial-division}
+
+Let $$f$$ and $$g$$ be polynomials, with $$g$$ not the zero polynomial. Then there are polynomials
+$$q$$ and $$r$$ with
+
+```math
+f = qg + r
+```
+
+where $$r$$ is the zero polynomial or $$\deg r < \deg g$$. There is only one such pair. The
+polynomial $$q$$ is the **quotient** and $$r$$ the **remainder** on dividing $$f$$ by $$g$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Division_Theorem_for_Polynomial_Forms_over_Field#Proof_3"}
+
+Write $$m = \deg g$$, and $$b$$ for the leading coefficient of $$g$$, so $$b \ne 0$$. Two facts do
+the work.
+
+- **Small $$f$$.** If $$f$$ is the zero polynomial or $$\deg f < m$$, take $$q = 0$$ and $$r = f$$.
+  This is the bag with too few sweets for another round.
+- **One round.** Suppose $$f$$ has degree $$k \ge m$$ and leading coefficient $$a$$. Then
+  $$f_1(x) = f(x) - \frac{a}{b}x^{k - m}g(x)$$ is the zero polynomial or has degree less than $$k$$.
+  Indeed, $$\frac{a}{b}x^{k - m}g(x)$$ has degree $$(k - m) + m = k$$ and leading coefficient
+  $$\frac{a}{b} \cdot b = a$$ (:ref{#degree-product}), and all its other terms have powers below
+  $$k$$. So in $$f_1$$ the $$x^k$$ terms cancel, and every term left has a power below $$k$$.
+
+**There is such a pair.** For each positive integer $$n$$, let $$P(n)$$ be the statement "for every
+polynomial $$f$$ that is the zero polynomial or has degree less than $$n$$, there are $$q$$ and
+$$r$$ as in the theorem". We prove every $$P(n)$$ by induction (:ref{#basic-proofs/induction}). That
+covers every $$f$$, since a nonzero $$f$$ has degree less than $$n = \deg f + 1$$.
+
+**Base case.** For $$P(1)$$, $$f$$ is the zero polynomial or a nonzero constant $$a$$. If
+$$m \ge 1$$, this is a small $$f$$. If $$m = 0$$, then $$g$$ is the constant $$b$$, and
+$$f = \frac{f}{b} \cdot g + 0$$, where $$\frac{f}{b}$$ is the constant $$\frac{a}{b}$$, or $$0$$
+when $$f$$ is zero.
+
+**Inductive step.** Suppose $$P(k)$$ is true, and let $$f$$ be zero or have degree less than
+$$k + 1$$. If $$f$$ is zero or $$\deg f < k$$, then $$P(k)$$ gives $$q$$ and $$r$$. If
+$$\deg f = k < m$$, $$f$$ is small. That leaves $$\deg f = k \ge m$$, with leading coefficient
+$$a$$. One round gives $$f_1$$, which is zero or has degree less than $$k$$, so by $$P(k)$$,
+$$f_1 = q_1 g + r$$ with $$r$$ zero or $$\deg r < m$$. Then
+
+```math
+\begin{aligned}
+f(x) &= f_1(x) + \tfrac{a}{b}x^{k - m}g(x) && \text{by the definition of } f_1 \\
+&= q_1(x)g(x) + r(x) + \tfrac{a}{b}x^{k - m}g(x) && \text{by } P(k) \\
+&= \left(q_1(x) + \tfrac{a}{b}x^{k - m}\right)g(x) + r(x) && \text{taking out the factor } g(x)
+\end{aligned}
+```
+
+which is $$f = qg + r$$ with $$q(x) = q_1(x) + \frac{a}{b}x^{k - m}$$. So $$P(k + 1)$$ is true.
+
+**There is only one pair.** Suppose $$f = qg + r$$ and $$f = q'g + r'$$, where $$r$$ and $$r'$$ are
+each zero or of degree less than $$m$$. Subtracting one equation from the other,
+
+```math
+(q - q')\,g = r' - r
+```
+
+Every term of $$r$$ and of $$r'$$ has a power below $$m$$, so $$r' - r$$ is zero or has degree less
+than $$m$$. Now suppose $$q - q'$$ were not the zero polynomial. Then by :ref{#degree-product} the
+left side would have degree $$\deg(q - q') + m$$, so it would have a nonzero coefficient at a power
+of at least $$m$$. On the right side every coefficient at a power of $$m$$ or more is $$0$$. But the
+two sides are the same function, so they have the same coefficients (:ref{#coefficients-unique}). So
+$$q - q'$$ is the zero polynomial, which makes $$r' - r = 0$$ too: $$q = q'$$ and $$r = r'$$.
+
+:::
+
+The proof is long division written out once and for all: each round in the worked case was one use
+of the "one round" fact, with $$\frac{a}{b}x^{k - m}$$ equal to $$2x$$ and then $$3$$. Because the
+pair is unique, any way you find a $$q$$ and an $$r$$ with $$f = qg + r$$ and $$r$$ small enough
+gives the same answer as long division.
+
+## The remainder theorem
+
+Dividing by $$x - c$$, a polynomial of degree $$1$$, leaves a remainder of degree $$0$$ or the zero
+polynomial. Either way the remainder is a constant. Putting $$x = c$$ into
+$$f = q \cdot (x - c) + r$$ makes the first part $$0$$, so the remainder is the value $$f(c)$$.
+
+Try it with numbers. Dividing $$x^4 - 3x + 1$$ by $$x - 2$$, the second choice in the long division
+steps under [Long division of polynomials](#long-division-of-polynomials), gives the quotient
+$$x^3 + 2x^2 + 4x + 5$$ and the remainder $$11$$. And $$f(2) = 16 - 6 + 1 = 11$$, the same number.
+We say that $$g$$ **divides** $$f$$ when $$f = qg$$ for some polynomial $$q$$, that is, when the
+remainder is $$0$$.
+
+:::corollary[The remainder theorem]{#remainder-theorem}
+
+Let $$f$$ be a polynomial and $$c$$ a number. The remainder on dividing $$f$$ by $$x - c$$ is the
+constant $$f(c)$$:
+
+```math
+f(x) = q(x)(x - c) + f(c)
+```
+
+for a polynomial $$q$$. So $$c$$ is a root of $$f$$ exactly when $$x - c$$ divides $$f$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Polynomial_remainder_theorem#Using_Euclidean_division"}
+
+By :ref{#polynomial-division} with $$g(x) = x - c$$, which has degree $$1$$, there are $$q$$ and
+$$r$$ with $$f(x) = q(x)(x - c) + r(x)$$, where $$r$$ is zero or has degree $$0$$. Either way $$r$$
+is a constant, say $$r(x) = r$$ for every $$x$$. Putting in $$x = c$$,
+
+```math
+f(c) = q(c)(c - c) + r = q(c) \cdot 0 + r = r
+```
+
+For the second part, if $$f(c) = 0$$, then $$f(x) = q(x)(x - c)$$, so $$x - c$$ divides $$f$$. If
+$$f(x) = q(x)(x - c)$$ for some $$q$$, then $$f(c) = q(c) \cdot 0 = 0$$, so $$c$$ is a root.
+
+:::
+
+The second part is :ref{#factor-theorem} again, reached a second way: a root $$c$$ gives the factor
+$$x - c$$. When $$f$$ is not the zero polynomial, :ref{#degree-product} shows that the other factor
+$$q$$ has degree one less than $$f$$.
+
+The theorem also finds remainders without any dividing. The remainder of $$x^{10} + 1$$ on division
+by $$x + 1 = x - (-1)$$ is $$(-1)^{10} + 1 = 2$$, with no long division at all. The third choice in
+those long division steps divides $$x^3 + 2x^2 - 5x - 6$$ by $$x + 3$$, and the remainder is $$0$$.
+The theorem predicts it: at $$x = -3$$ the value is $$-27 + 18 + 15 - 6 = 0$$, so $$-3$$ is a root.
+
+## Rational functions
+
+Dividing whole numbers gives fractions, and dividing polynomials gives fractions of polynomials,
+such as $$\frac{x^2 + 1}{x - 1}$$. Each one is a function you can work out at every number where the
+bottom isn't $$0$$. They add like fractions, and long division splits each one into a polynomial
+plus a part that shrinks far out along the axis.
+
+:::definition[Rational function]{#rational-function}
+
+A **rational function** is a function $$x \mapsto \frac{f(x)}{g(x)}$$, where $$f$$ and $$g$$ are
+polynomials and $$g$$ is not the zero polynomial. Its domain is the set of numbers $$x$$ with
+$$g(x) \ne 0$$.
+
+:::
+
+By :ref{#root-bound}, $$g$$ has finitely many roots, so a rational function is defined at every
+number except finitely many. For example, $$\frac{4x + 5}{(x + 2)(x - 1)}$$ is defined except at
+$$x = -2$$ and $$x = 1$$.
+
+Two rational functions add over a common denominator, in the same way as fractions
+(:ref{#numbers/fraction-addition}). Multiply the top and bottom of each by the other's bottom:
+
+```math
+\begin{aligned}
+\frac{1}{x + 2} + \frac{3}{x - 1} &= \frac{x - 1}{(x + 2)(x - 1)} + \frac{3(x + 2)}{(x + 2)(x - 1)} && \text{a common bottom} \\
+&= \frac{x - 1 + 3x + 6}{(x + 2)(x - 1)} && \text{adding the tops} \\
+&= \frac{4x + 5}{(x + 2)(x - 1)} && \text{collecting terms}
+\end{aligned}
+```
+
+for every $$x$$ other than $$-2$$ and $$1$$. Check at $$x = 0$$: the left side is
+$$\frac{1}{2} + \frac{3}{-1} = -2.5$$, and the right side is $$\frac{5}{2 \cdot (-1)} = -2.5$$.
+
+Long division turns a rational function into a polynomial plus a **proper** part, one whose top has
+lower degree than its bottom. Divide both sides of $$f = qg + r$$ by $$g(x)$$:
+
+```math
+\frac{f(x)}{g(x)} = q(x) + \frac{r(x)}{g(x)} \qquad \text{whenever } g(x) \ne 0
+```
+
+For example, dividing $$x^2 + 1$$ by $$x - 1$$ takes away $$x(x - 1)$$, leaving $$x + 1$$, and then
+$$1 \cdot (x - 1)$$, leaving $$2$$. So $$x^2 + 1 = (x + 1)(x - 1) + 2$$, and
+
+```math
+\frac{x^2 + 1}{x - 1} = x + 1 + \frac{2}{x - 1}
+```
+
+Check at $$x = 3$$: the left side is $$\frac{10}{2} = 5$$, and the right side is
+$$4 + \frac{2}{2} = 5$$. Far from $$x = 1$$ the proper part is small: at $$x = 101$$ it is
+$$\frac{2}{100} = 0.02$$. So the graph runs close to the line $$y = x + 1$$, a little above it on
+the right and a little below it on the left, where $$x - 1$$ is negative.
+
+<RationalNearLine caption="The graph of y = (x² + 1)/(x − 1) on a square grid. Far from the dashed line x = 1 it runs close to the faint line y = x + 1, and at x = 5 it is 2/(5 − 1) = 0.5 above the line: (5, 6.5) against (5, 6)." />
+
+One slip waits here. Dividing $$x^2 - 1$$ by $$x - 1$$ gives the quotient $$x + 1$$ and the
+remainder $$0$$, so $$\frac{x^2 - 1}{x - 1} = x + 1$$ at every $$x$$ where the left side is defined.
+But the left side is not defined at $$x = 1$$, and $$x + 1$$ is. The two are different functions,
+since equal functions have the same domain (:ref{#function-equality}). Cancelling a factor of
+$$x - 1$$ gives a new function that is defined at $$x = 1$$, where the old one was not.
+
+<LineWithHole caption="The graph of y = (x² − 1)/(x − 1) is the line y = x + 1 with one point left out, the open dot at (1, 2), because the function is not defined at x = 1." />
+
+## Exercises
+
+:::::accordion[Exercises on dividing polynomials, with solutions]
+
+::::exercise{#ex-dividing-polynomials-whole-numbers}
+
+Divide $$389$$ by $$12$$ with a remainder, writing out each batch you take away. Check your answer.
+
+:::solution
+
+Twelve tens are $$120$$ and twelve hundreds are $$1200$$, so the first batch is tens of twelves.
+Since $$12$$ goes into $$38$$ three times, take away $$30 \cdot 12 = 360$$, which leaves $$29$$.
+Then $$12$$ goes into $$29$$ twice, so take away $$2 \cdot 12 = 24$$, which leaves $$5$$. Since
+$$5 < 12$$ we stop, with $$30 + 2 = 32$$ twelves taken away:
+
+```math
+389 = 32 \cdot 12 + 5
+```
+
+Check: $$32 \cdot 12 = 384$$, and $$384 + 5 = 389$$.
+
+:::
+
+::::
+
+::::exercise{#ex-dividing-polynomials-linear}
+
+Divide $$x^2 + 5x + 9$$ by $$x + 2$$. Check your answer at $$x = 0$$, and check the remainder with
+:ref{#remainder-theorem}.
+
+:::solution
+
+**Round 1.** To turn $$x$$ into $$x^2$$, multiply by $$x$$. Taking away $$x(x + 2) = x^2 + 2x$$
+leaves $$3x + 9$$.
+
+**Round 2.** To turn $$x$$ into $$3x$$, multiply by $$3$$. Taking away $$3(x + 2) = 3x + 6$$ leaves
+$$3$$, of degree $$0$$, so we stop.
+
+So $$x^2 + 5x + 9 = (x + 3)(x + 2) + 3$$. At $$x = 0$$ the left side is $$9$$ and the right side is
+$$3 \cdot 2 + 3 = 9$$. Dividing by $$x + 2 = x - (-2)$$, the remainder theorem says the remainder is
+the value at $$-2$$: $$4 - 10 + 9 = 3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-dividing-polynomials-quadratic-divisor}
+
+Divide $$3x^3 - 2x^2 + 4x - 1$$ by $$x^2 + 1$$. Check your answer at $$x = 1$$.
+
+:::solution
+
+Write the divisor as $$x^2 + 0x + 1$$, so each power has a place.
+
+**Round 1.** To turn $$x^2$$ into $$3x^3$$, multiply by $$3x$$. Taking away
+$$3x(x^2 + 1) = 3x^3 + 3x$$ leaves $$-2x^2 + x - 1$$.
+
+**Round 2.** To turn $$x^2$$ into $$-2x^2$$, multiply by $$-2$$. Taking away
+$$-2(x^2 + 1) = -2x^2 - 2$$ leaves $$x + 1$$, of degree $$1 < 2$$, so we stop.
+
+```math
+3x^3 - 2x^2 + 4x - 1 = (3x - 2)(x^2 + 1) + (x + 1)
+```
+
+At $$x = 1$$ the left side is $$3 - 2 + 4 - 1 = 4$$, and the right side is $$1 \cdot 2 + 2 = 4$$.
+
+:::
+
+::::
+
+::::exercise{#ex-dividing-polynomials-remainders}
+
+Without dividing, find the remainder of $$x^5 - 2x^3 + 3x + 7$$ on division by $$x - 1$$, and on
+division by $$x + 1$$.
+
+:::solution
+
+By :ref{#remainder-theorem}, the remainder on division by $$x - c$$ is the value at $$c$$. For
+$$x - 1$$ it is
+
+```math
+1 - 2 + 3 + 7 = 9
+```
+
+For $$x + 1 = x - (-1)$$ it is the value at $$-1$$. Odd powers of $$-1$$ are $$-1$$, so the value is
+$$-1 + 2 - 3 + 7 = 5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-dividing-polynomials-find-k}
+
+Find the number $$k$$ for which $$x - 3$$ divides $$x^3 - 2x^2 + kx + 6$$. For that $$k$$, factor
+the polynomial completely.
+
+:::solution
+
+By :ref{#remainder-theorem}, $$x - 3$$ divides it exactly when its value at $$3$$ is $$0$$:
+
+```math
+\begin{aligned}
+27 - 18 + 3k + 6 &= 0 && \text{putting in } x = 3 \\
+15 + 3k &= 0 && \text{adding the numbers} \\
+k &= -5 && \text{taking away 15 and dividing by 3}
+\end{aligned}
+```
+
+Dividing $$x^3 - 2x^2 - 5x + 6$$ by $$x - 3$$ takes away $$x^2(x - 3)$$, then $$x(x - 3)$$, then
+$$-2(x - 3)$$, leaving $$0$$. So the quotient is $$x^2 + x - 2$$, which is $$(x + 2)(x - 1)$$, and
+
+```math
+x^3 - 2x^2 - 5x + 6 = (x - 3)(x + 2)(x - 1)
+```
+
+Check at $$x = 0$$: the left side is $$6$$, and the right side is $$(-3) \cdot 2 \cdot (-1) = 6$$.
+
+:::
+
+::::
+
+::::exercise{#ex-dividing-polynomials-proper-part}
+
+Write $$\frac{2x^2 + 3x - 1}{x + 2}$$ as a polynomial plus a proper part, and name the line its
+graph runs close to far from $$x = -2$$.
+
+:::solution
+
+Taking away $$2x(x + 2) = 2x^2 + 4x$$ leaves $$-x - 1$$, and taking away $$-1 \cdot (x + 2)$$ leaves
+$$1$$. So $$2x^2 + 3x - 1 = (2x - 1)(x + 2) + 1$$, and
+
+```math
+\frac{2x^2 + 3x - 1}{x + 2} = 2x - 1 + \frac{1}{x + 2} \qquad \text{for } x \ne -2
+```
+
+Check at $$x = 0$$: the left side is $$-\frac{1}{2}$$, and the right side is
+$$-1 + \frac{1}{2} = -\frac{1}{2}$$. Far from $$x = -2$$ the part $$\frac{1}{x + 2}$$ is small, so
+the graph runs close to the line $$y = 2x - 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-dividing-polynomials-add}
+
+Write $$\frac{2}{x - 3} - \frac{1}{x + 1}$$ as one rational function, and give its domain. Check
+your answer at $$x = 0$$.
+
+:::solution
+
+Over the common bottom $$(x - 3)(x + 1)$$:
+
+```math
+\begin{aligned}
+\frac{2}{x - 3} - \frac{1}{x + 1} &= \frac{2(x + 1) - (x - 3)}{(x - 3)(x + 1)} && \text{a common bottom} \\
+&= \frac{x + 5}{(x - 3)(x + 1)} && \text{collecting terms}
+\end{aligned}
+```
+
+The domain is every number except $$3$$ and $$-1$$, where the bottom is $$0$$. At $$x = 0$$ the left
+side is $$-\frac{2}{3} - 1 = -\frac{5}{3}$$, and the right side is
+$$\frac{5}{(-3) \cdot 1} = -\frac{5}{3}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-dividing-polynomials-two-roots}
+
+Let $$f$$ be a polynomial and $$a \ne b$$ two numbers. Prove that the remainder on dividing $$f$$ by
+$$(x - a)(x - b)$$ is the polynomial $$px + s$$ whose graph is the line through $$(a, f(a))$$ and
+$$(b, f(b))$$. Use this to find the remainder of $$x^4$$ on division by $$(x - 1)(x + 2)$$, and
+check it by long division.
+
+:::solution
+
+The divisor has degree $$2$$, so by :ref{#polynomial-division} the remainder is zero or has degree
+less than $$2$$. Either way it is $$px + s$$ for some numbers $$p$$ and $$s$$, and
+
+```math
+f(x) = q(x)(x - a)(x - b) + px + s
+```
+
+Putting in $$x = a$$ and $$x = b$$ makes the first part $$0$$, so $$pa + s = f(a)$$ and
+$$pb + s = f(b)$$. That says the line $$y = px + s$$ passes through $$(a, f(a))$$ and $$(b, f(b))$$.
+Two points with different first coordinates lie on only one line of this form, so these two
+conditions fix $$p$$ and $$s$$.
+
+For $$f(x) = x^4$$ with $$a = 1$$ and $$b = -2$$, the points are $$(1, 1)$$ and $$(-2, 16)$$. The
+slope is $$\frac{16 - 1}{-2 - 1} = -5$$, and $$s = 1 - (-5) \cdot 1 = 6$$, so the remainder is
+$$-5x + 6$$.
+
+By long division, $$(x - 1)(x + 2) = x^2 + x - 2$$. Taking away $$x^2$$, $$-x$$ and $$3$$ times it
+in turn:
+
+```math
+\begin{array}{lrrrrr}
+ & x^4 & {} + 0x^3 & {} + 0x^2 & {} + 0x & {} + 0 \\
+\text{take away } x^2(x^2 + x - 2) & x^4 & {} + x^3 & {} - 2x^2 & & \\
+\hline
+\text{leaves} & & -x^3 & {} + 2x^2 & {} + 0x & {} + 0 \\
+\text{take away } -x(x^2 + x - 2) & & -x^3 & {} - x^2 & {} + 2x & \\
+\hline
+\text{leaves} & & & 3x^2 & {} - 2x & {} + 0 \\
+\text{take away } 3(x^2 + x - 2) & & & 3x^2 & {} + 3x & {} - 6 \\
+\hline
+\text{leaves} & & & & -5x & {} + 6
+\end{array}
+```
+
+The remainder is $$-5x + 6$$, as predicted, and the quotient is $$x^2 - x + 3$$.
+
+:::
+
+::::
+
+:::::

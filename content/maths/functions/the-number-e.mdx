@@ -1,0 +1,539 @@
+---
+title: The number e and using logarithms
+description:
+  Interest paid more and more often, the number e it settles towards, the natural logarithm, and
+  rates, doubling times and half-lives worked out from real measurements.
+---
+
+Imagine putting £1 into a bank that pays interest of 100% a year. If it pays once, at the end of the
+year, you finish with £2. If instead it pays half of that, 50%, every six months, the second payment
+earns interest on the first: £1.50 after six months, then £2.25 at the end of the year. Paying a
+twelfth of the rate every month gives about £2.61, and paying every day gives about £2.71. The more
+often the bank pays, the more you end with, but the totals creep up more and more slowly, and
+however often it pays, they never pass £2.72.
+
+The number those totals settle towards is called **e**, and it is about $$2.718$$. Logarithms to
+base $$e$$, the ln button on a calculator, are the ones scientists use for growth and decay. In this
+guide we'll meet $$e$$ through this bank account, and then use logarithms to read rates, doubling
+times and half-lives from real measurements.
+
+## Paying interest more often
+
+Suppose the bank pays $$n$$ times a year. Each payment is $$\frac{1}{n}$$ of 100%, so it adds
+$$\frac{1}{n}$$ of whatever is in the account, and that multiplies the amount by
+$$1 + \frac{1}{n}$$. After the year's $$n$$ payments, £1 has been multiplied by $$1 + \frac{1}{n}$$
+a total of $$n$$ times, so it has become
+
+```math
+\left(1 + \frac{1}{n}\right)^n \text{ pounds}
+```
+
+With $$n = 4$$, for example, each quarter multiplies by $$1.25$$. The amount goes from £1 to £1.25,
+then £1.5625, then £1.953125, and finishes the year at $$1.25^4 = 2.44140625$$ pounds. The table
+gives the total for a few more choices of $$n$$, rounded to six decimal places.
+
+| Payments in the year, $$n$$ | Paid             | Total after a year, $$\left(1 + \frac{1}{n}\right)^n$$ |
+| --------------------------- | ---------------- | ------------------------------------------------------ |
+| $$1$$                       | once             | $$2.000000$$                                           |
+| $$2$$                       | every six months | $$2.250000$$                                           |
+| $$4$$                       | every quarter    | $$2.441406$$                                           |
+| $$12$$                      | every month      | $$2.613035$$                                           |
+| $$365$$                     | every day        | $$2.714567$$                                           |
+| $$8760$$                    | every hour       | $$2.718127$$                                           |
+| $$1{,}000{,}000$$           | a million times  | $$2.718280$$                                           |
+
+Each total is bigger than the one above it, but the gains shrink fast. Going from one payment to two
+gains 25p, while going from daily to hourly payments gains less than half a penny. Move the slider
+below to try other choices of $$n$$, and watch the staircase of payments close in on a curve.
+
+<CompoundDial />
+
+So the totals keep growing, yet stay below a ceiling, and they settle towards one number. Proving
+that needs limits, the idea at the start of a course on analysis, so we take it as given. You can
+check the first few cases of "they keep growing" yourself in the exercises.
+
+:::remark[The number e]{#e-exists}
+
+As $$n$$ runs through $$1, 2, 3, \ldots$$, the numbers $$\left(1 + \frac{1}{n}\right)^n$$ increase,
+and they settle towards one number, called **e**:
+
+```math
+e \approx 2.718281828
+```
+
+Settling towards $$e$$ means that every one of the numbers is less than $$e$$, and that by taking
+$$n$$ large enough, they come as close to $$e$$ as you like.
+
+This is taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/E_(mathematical_constant)#Compound_interest"}
+
+:::
+
+Since the first total is $$2$$ and they all lie below $$e$$, the number $$e$$ is more than $$2$$. In
+particular $$e > 1$$, so it can be the base of an exponential and of a logarithm.
+
+## Interest at any rate
+
+Real banks pay less than 100%. At 5% a year, paid once, £1 becomes $$1 + 0.05 = 1.05$$ pounds. Paid
+monthly, each payment is $$\frac{0.05}{12}$$, and £1 becomes
+$$\left(1 + \frac{0.05}{12}\right)^{12} \approx 1.051162$$ pounds. Paid daily, it becomes
+$$\left(1 + \frac{0.05}{365}\right)^{365} \approx 1.051267$$ pounds. These settle towards
+$$e^{0.05} \approx 1.051271$$, and the same thing happens at every rate.
+
+:::remark[Interest at any rate]{#the-number-e-rate}
+
+For every number $$r$$, as $$n$$ grows, the numbers $$\left(1 + \frac{r}{n}\right)^n$$ settle
+towards $$e^r$$.
+
+This is taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Exponential_function#Compound_interest"}
+
+:::
+
+Paying more and more often, without end, is called paying interest **continuously**. At a rate
+$$r$$, each year then multiplies the money by $$e^r$$. Over $$t$$ whole years, £$$P$$ becomes
+$$P(e^r)^t = Pe^{rt}$$ pounds, by the rule for a power of a power in :ref{#exponential-rules}, and
+the same formula $$Pe^{rt}$$ is used for any length of time $$t \ge 0$$. For example, £1000 at 5%
+paid continuously for 10 years becomes $$1000e^{0.5} \approx 1648.72$$ pounds, while paid once a
+year it becomes $$1000 \cdot 1.05^{10} \approx 1628.89$$ pounds.
+
+## The natural logarithm
+
+Since $$e > 1$$, there is a logarithm to base $$e$$, and it has its own name.
+
+:::definition[Natural logarithm]{#natural-log}
+
+For each number $$x > 0$$, the **natural logarithm** of $$x$$ is
+
+```math
+\ln x = \log_e x
+```
+
+the one number $$t$$ with $$e^t = x$$.
+
+:::
+
+Read $$\ln x$$ aloud as "the natural log of $$x$$". Everything in [Logarithms](./logarithms.mdx)
+holds for it, with base $$e$$:
+
+- $$\ln 1 = 0$$ and $$\ln e = 1$$, by :ref{#log-laws}
+- $$\ln(e^x) = x$$ for every $$x$$, and $$e^{\ln x} = x$$ for every $$x > 0$$, by :ref{#log-inverse}
+- $$\ln(xy) = \ln x + \ln y$$, $$\ln \frac{x}{y} = \ln x - \ln y$$ and $$\ln(x^r) = r\ln x$$, by
+  :ref{#log-laws}
+
+On a calculator, the ln button gives $$\ln 2 \approx 0.693147$$, and as a check, the $$e^x$$ button
+gives $$e^{0.693147} \approx 2.000000$$. Similarly, $$\ln 10 \approx 2.302585$$. The word "natural"
+comes from calculus: of all the graphs $$y = a^x$$, the graph of $$y = e^x$$ is the one that crosses
+the $$y$$-axis at a slope of exactly $$1$$, and that makes its formulas the tidiest. We won't need
+calculus here.
+
+## Every exponential is a power of e
+
+Since $$\ln 2 \approx 0.693$$, the number $$2$$ is $$e^{0.693}$$. So doubling is the same as
+multiplying by $$e^{0.693}$$, and $$2^x$$ is $$(e^{0.693})^x = e^{0.693x}$$. With $$x = 3$$, as a
+check, $$e^{3\ln 2} \approx e^{2.0794} \approx 8.000$$, which is $$2^3$$. Every positive base is a
+power of $$e$$ in the same way, so every exponential can be written with base $$e$$.
+
+:::proposition[Every exponential is a power of e]{#base-e}
+
+For every number $$a > 0$$ and every number $$x$$,
+
+```math
+a^x = e^{x\ln a}
+```
+
+So a growth or decay $$f(t) = C \cdot a^{kt}$$ can be written $$f(t) = Ce^{Kt}$$ with
+$$K = k\ln a$$. It is growth, with $$a^k > 1$$, exactly when $$K > 0$$, and decay, with $$a^k < 1$$,
+exactly when $$K < 0$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Exponential_function#General_exponential_functions"}
+
+By :ref{#log-inverse}, $$a = e^{\ln a}$$. So
+
+```math
+\begin{aligned}
+a^x &= \left(e^{\ln a}\right)^x &&\qquad \text{put in } a = e^{\ln a} \\
+&= e^{(\ln a)x} &&\qquad \text{a power of a power multiplies the exponents}
+\end{aligned}
+```
+
+The second step is the rule $$(a^s)^t = a^{st}$$ from :ref{#exponential-rules}. Putting $$kt$$ in
+place of $$x$$ gives $$a^{kt} = e^{kt\ln a} = e^{Kt}$$, so $$C \cdot a^{kt} = Ce^{Kt}$$.
+
+For the sign of $$K$$, the power law in :ref{#log-laws} gives $$K = k\ln a = \ln(a^k)$$. The base
+$$e$$ is more than $$1$$ and $$\ln 1 = 0$$, so by part 1 of :ref{#log-increasing}, $$\ln(a^k) > 0$$
+exactly when $$a^k > 1$$, and $$\ln(a^k) < 0$$ exactly when $$a^k < 1$$.
+
+:::
+
+Take the bacteria from [Exponential functions](./exponential-functions.mdx), 500 of them doubling
+every 20 minutes, so $$f(t) = 500 \cdot 2^{t/20}$$ with $$t$$ in minutes. Here $$a = 2$$ and
+$$k = \frac{1}{20}$$, so $$K = \frac{\ln 2}{20} \approx 0.034657$$, and $$f(t) = 500e^{0.034657t}$$.
+As a check, after an hour, $$500e^{0.034657 \cdot 60} \approx 4000$$, which is $$500 \cdot 2^3$$.
+Writing every growth and decay with the one base $$e$$ means each is described by one number $$K$$,
+which we'll call its **rate**: the bacteria grow at the rate $$0.034657$$ per minute.
+
+## The rate from two measurements
+
+Out in the world, nobody tells you $$C$$ and $$K$$. You measure the amount at two times, and the
+rate has to come from those two numbers. The key is to divide one measurement by the other. The
+starting amount $$C$$ appears in both, so it cancels, and what is left is a power of $$e$$ whose
+logarithm you can take.
+
+Here is that with numbers. A cup of tea is poured at 90° in a room at 20°, so it starts 70° above
+room temperature. Ten minutes later it is at 70°, which is 50° above. Physics says that the
+difference between the tea and the room decays exponentially, to a good approximation, so the
+difference after $$t$$ minutes is $$D(t) = 70e^{Kt}$$. Dividing the two measurements,
+
+```math
+\begin{aligned}
+e^{10K} &= \frac{70e^{10K}}{70} = \frac{D(10)}{D(0)} &&\qquad \text{the 70s cancel} \\
+&= \frac{50}{70} = \frac{5}{7} &&\qquad \text{the measurements} \\
+10K &= \ln\frac{5}{7} &&\qquad \text{take ln of both sides} \\
+K &= \frac{1}{10}\ln\frac{5}{7} \approx -0.033647 &&\qquad \text{divide both sides by } 10
+\end{aligned}
+```
+
+The rate is negative, as it should be for something that is decaying.
+
+:::proposition[The rate from two measurements]{#rate-from-two}
+
+Let $$f(t) = Ce^{Kt}$$ with $$C > 0$$. For any two different times $$t_1$$ and $$t_2$$,
+
+```math
+K = \frac{\ln\left(f(t_2)/f(t_1)\right)}{t_2 - t_1}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Exponential_growth#Basic_formula"}
+
+Both measurements are positive, since $$C > 0$$ and every power of $$e$$ is positive
+(:ref{#exponential-positive}), so their quotient has a logarithm. Then
+
+```math
+\begin{aligned}
+\frac{f(t_2)}{f(t_1)} &= \frac{Ce^{Kt_2}}{Ce^{Kt_1}} &&\qquad \text{the formula for } f \\
+&= \frac{e^{Kt_2}}{e^{Kt_1}} &&\qquad \text{cancel } C \text{, which is not } 0 \\
+&= e^{Kt_2 - Kt_1} &&\qquad \text{dividing powers subtracts the exponents} \\
+&= e^{K(t_2 - t_1)} &&\qquad \text{take out the common factor } K
+\end{aligned}
+```
+
+The third step holds because $$e^{u - v} \cdot e^v = e^u$$ by the rule for adding exponents in
+:ref{#exponential-rules}, as in the proof of the quotient law in :ref{#log-laws}. Taking $$\ln$$ of
+both sides gives $$\ln\left(f(t_2)/f(t_1)\right) = K(t_2 - t_1)$$, by :ref{#log-inverse}. Since
+$$t_1 \ne t_2$$, we can divide both sides by $$t_2 - t_1$$.
+
+:::
+
+The cancelling of $$C$$ is the useful part. You don't need to know how much there was at the start,
+only how many times bigger one measurement is than the other. With the tea, $$t_1 = 0$$ and
+$$t_2 = 10$$ give $$K = \frac{1}{10}\ln\frac{50}{70}$$, the rate we found above.
+
+## Doubling time and half-life
+
+Bacteria that double every 20 minutes double from 500 to 1000 in the first 20 minutes, and from 1000
+to 2000 in the next 20. Each step of the same length multiplies the amount by the same factor,
+whatever time it starts at (:ref{#exponential-steps}). So the time it takes to double doesn't depend
+on when you start counting, and it is a fixed property of the growth. Decay works the same way with
+halving.
+
+:::proposition[Doubling time and half-life]{#half-life}
+
+Let $$f(t) = Ce^{Kt}$$ with $$C > 0$$.
+
+1. If $$K > 0$$, then $$f\left(t + \frac{\ln 2}{K}\right) = 2f(t)$$ for every $$t$$. The number
+   $$\frac{\ln 2}{K}$$ is the **doubling time**.
+2. If $$K < 0$$, then $$f\left(t + \frac{\ln 2}{-K}\right) = \frac{1}{2}f(t)$$ for every $$t$$. The
+   number $$\frac{\ln 2}{-K}$$ is the **half-life**.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Exponential_decay#Half-life"}
+
+By :ref{#exponential-steps} with the base $$e$$, $$f(t + s) = f(t)e^{Ks}$$ for every $$t$$ and
+$$s$$.
+
+1. With $$s = \frac{\ln 2}{K}$$, $$Ks = \ln 2$$, and $$e^{\ln 2} = 2$$ by :ref{#log-inverse}. So
+   $$f(t + s) = 2f(t)$$.
+2. With $$s = \frac{\ln 2}{-K}$$, $$Ks = -\ln 2$$. By :ref{#exponential-positive},
+   $$e^{-\ln 2} = \frac{1}{e^{\ln 2}} = \frac{1}{2}$$. So $$f(t + s) = \frac{1}{2}f(t)$$.
+
+:::
+
+Turned round, a doubling time $$T$$ gives the rate $$K = \frac{\ln 2}{T}$$, and a half-life $$T$$
+gives $$K = -\frac{\ln 2}{T}$$. As a check, the bacteria have $$K = \frac{\ln 2}{20}$$, and their
+doubling time is $$\frac{\ln 2}{K} = 20$$ minutes. The tea's rate $$K \approx -0.033647$$ gives a
+half-life of $$\frac{0.693147}{0.033647} \approx 20.6$$ minutes, for its distance above room
+temperature.
+
+## Three problems from real measurements
+
+Each problem below follows the same plan. Find the rate $$K$$, from two measurements or from a
+half-life, then set the formula equal to the amount you're asking about and solve with $$\ln$$.
+
+:::example[When the tea is drinkable]
+
+The tea from above starts 70° above room temperature, with $$K = \frac{1}{10}\ln\frac{5}{7}$$. It is
+at 40°, which is 20° above the room, when $$D(t) = 20$$:
+
+```math
+\begin{aligned}
+70e^{Kt} &= 20 \\
+e^{Kt} &= \frac{2}{7} &&\qquad \text{divide both sides by } 70 \\
+Kt &= \ln\frac{2}{7} &&\qquad \text{take ln of both sides} \\
+t &= \frac{\ln(2/7)}{K} &&\qquad \text{divide both sides by } K \text{, which is not } 0 \\
+&= \frac{10\ln(2/7)}{\ln(5/7)} \approx \frac{10 \cdot (-1.25276)}{-0.33647} \approx 37.2 &&\qquad \text{put in } K
+\end{aligned}
+```
+
+So the tea has cooled to 40° after about 37 minutes. As a check,
+$$70e^{-0.033647 \cdot 37.2} \approx 20.0$$.
+
+:::
+
+<TeaCooling caption="How far the tea is above room temperature, minute by minute (across) and in degrees (up). The two measurements are the blue dots, and the green dot is the answer: 20° above, after about 37 minutes. Each step of 10° up is drawn half as long as each step of 10 minutes across." />
+
+:::example[How old is the bone]
+
+A living animal keeps a steady share of carbon-14 in its body. When it dies, the carbon-14 decays,
+with a half-life of about 5730 years. A bone is found with 30% of its carbon-14 left. By
+:ref{#half-life}, the rate is $$K = -\frac{\ln 2}{5730} \approx -0.00012097$$ per year, and the
+share left after $$t$$ years is $$e^{Kt}$$. It is 30% when
+
+```math
+\begin{aligned}
+e^{Kt} &= 0.3 \\
+Kt &= \ln 0.3 &&\qquad \text{take ln of both sides} \\
+t &= \frac{\ln 0.3}{K} = \frac{5730\ln 0.3}{-\ln 2} &&\qquad \text{divide by } K \text{, and put it in} \\
+&\approx \frac{5730 \cdot (-1.20397)}{-0.69315} \approx 9953 &&\qquad \text{calculator}
+\end{aligned}
+```
+
+So the bone is about 10,000 years old. That fits the halvings: 30% lies between 50%, after one
+half-life of 5730 years, and 25%, after two half-lives, 11,460 years. As a check,
+$$2^{-9953/5730} \approx 0.300$$.
+
+:::
+
+<CarbonHalving caption="The share of carbon-14 left in a bone, against thousands of years since the animal died. It halves every 5730 years (orange dots), and the green dot marks 30% left, at about 9950 years. Each step of 10% up is drawn a little longer than each step of 1000 years across." />
+
+:::example[A growing town]
+
+A town had 36,000 people at a census in 2011 and 41,400 at the next census, in 2021. Suppose it
+keeps growing exponentially, and measure $$t$$ in years after 2011. By :ref{#rate-from-two}, with
+$$t_1 = 0$$ and $$t_2 = 10$$,
+
+```math
+K = \frac{\ln(41400/36000)}{10} = \frac{\ln 1.15}{10} \approx 0.013976 \text{ per year}
+```
+
+The population is $$36000e^{Kt}$$, and it reaches 50,000 when
+
+```math
+\begin{aligned}
+36000e^{Kt} &= 50000 \\
+e^{Kt} &= \frac{50000}{36000} \approx 1.38889 &&\qquad \text{divide both sides by } 36000 \\
+Kt &= \ln 1.38889 \approx 0.32850 &&\qquad \text{take ln of both sides} \\
+t &\approx \frac{0.32850}{0.013976} \approx 23.5 &&\qquad \text{divide both sides by } K
+\end{aligned}
+```
+
+So the town passes 50,000 people about 23.5 years after 2011, during 2034. As a check,
+$$36000e^{0.013976 \cdot 23.5} \approx 49{,}997$$. Its doubling time is
+$$\frac{\ln 2}{K} \approx 49.6$$ years. A real town grows only roughly like an exponential, so these
+answers are estimates.
+
+:::
+
+## Exercises
+
+:::::accordion[Exercises on e and using logarithms, with solutions]
+
+::::exercise{#ex-the-number-e-growing}
+
+Work out $$\left(1 + \frac{1}{n}\right)^n$$ to six decimal places for $$n = 1, 2, 3, 4, 5, 6$$, and
+check that each number is bigger than the one before.
+
+:::solution
+
+```math
+\begin{aligned}
+n = 1:&\quad 2^1 = 2.000000 \\
+n = 2:&\quad 1.5^2 = 2.250000 \\
+n = 3:&\quad \left(\tfrac{4}{3}\right)^3 = \tfrac{64}{27} \approx 2.370370 \\
+n = 4:&\quad 1.25^4 \approx 2.441406 \\
+n = 5:&\quad 1.2^5 = 2.488320 \\
+n = 6:&\quad \left(\tfrac{7}{6}\right)^6 \approx 2.521626
+\end{aligned}
+```
+
+Each is bigger than the one before, as :ref{#e-exists} says, and all are below
+$$e \approx 2.718282$$. A handful of cases is a check, not a proof.
+
+:::
+
+::::
+
+::::exercise{#ex-the-number-e-ln-values}
+
+Work out each one without a calculator.
+
+1. $$\ln(e^3)$$
+2. $$\ln \frac{1}{e}$$
+3. $$e^{\ln 5}$$
+4. $$\ln \sqrt{e}$$
+5. $$\ln(e^2 \cdot e^5)$$
+
+:::solution
+
+1. $$\ln(e^3) = 3$$, by :ref{#log-inverse}.
+2. $$\frac{1}{e} = e^{-1}$$, so $$\ln \frac{1}{e} = -1$$.
+3. $$e^{\ln 5} = 5$$, by :ref{#log-inverse}.
+4. $$\sqrt{e} = e^{1/2}$$, so $$\ln \sqrt{e} = \frac{1}{2}$$.
+5. By the product law, $$\ln(e^2 \cdot e^5) = \ln(e^2) + \ln(e^5) = 2 + 5 = 7$$. Or, since
+   $$e^2 \cdot e^5 = e^7$$, it is $$\ln(e^7) = 7$$.
+
+:::
+
+::::
+
+::::exercise{#ex-the-number-e-continuous}
+
+£500 is saved at 4% a year for 6 years. Find how much there is at the end if the interest is paid
+continuously, and how much there is if it is paid once a year.
+
+:::solution
+
+Paid continuously, £500 becomes $$500e^{0.04 \cdot 6} = 500e^{0.24} \approx 635.62$$ pounds. Paid
+once a year, each year multiplies the money by $$1.04$$, so it becomes
+$$500 \cdot 1.04^6 \approx 632.66$$ pounds. Paying continuously gives about £2.96 more.
+
+:::
+
+::::
+
+::::exercise{#ex-the-number-e-solve}
+
+Solve each equation, giving an exact answer and a decimal, and check it.
+
+1. $$e^{2x} = 9$$
+2. $$4e^{-0.5t} = 1$$
+
+:::solution
+
+1. Take ln of both sides: $$2x = \ln 9$$, so $$x = \frac{\ln 9}{2}$$. Since
+   $$\ln 9 = \ln(3^2) = 2\ln 3$$ by the power law, $$x = \ln 3 \approx 1.0986$$. As a check,
+   $$e^{2\ln 3} = (e^{\ln 3})^2 = 3^2 = 9$$.
+
+2. Divide both sides by $$4$$ to get $$e^{-0.5t} = \frac{1}{4}$$, then take ln:
+   $$-0.5t = \ln \frac{1}{4} = -\ln 4$$. So $$t = 2\ln 4 \approx 2.7726$$. As a check,
+   $$e^{-0.5 \cdot 2\ln 4} = e^{-\ln 4} = \frac{1}{4}$$, and $$4 \cdot \frac{1}{4} = 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-the-number-e-convert}
+
+Write each one in the form $$Ce^{Kt}$$, say whether it is growth or decay, and find its doubling
+time or half-life.
+
+1. $$3 \cdot 5^t$$
+2. $$80 \cdot 0.9^t$$
+
+:::solution
+
+By :ref{#base-e}, $$a^t = e^{t\ln a}$$.
+
+1. $$3 \cdot 5^t = 3e^{t\ln 5}$$, so $$K = \ln 5 \approx 1.6094$$. This is positive, so it is
+   growth, with doubling time $$\frac{\ln 2}{\ln 5} \approx 0.4307$$. As a check at $$t = 1$$,
+   $$3e^{1.6094} \approx 15 = 3 \cdot 5$$.
+2. $$80 \cdot 0.9^t = 80e^{t\ln 0.9}$$, so $$K = \ln 0.9 \approx -0.10536$$. This is negative, so it
+   is decay, with half-life $$\frac{\ln 2}{0.10536} \approx 6.579$$. As a check at $$t = 2$$,
+   $$80e^{-0.21072} \approx 64.8 = 80 \cdot 0.81$$.
+
+:::
+
+::::
+
+::::exercise{#ex-the-number-e-medicine}
+
+A medicine has a half-life of 6 hours in the blood, and a patient takes a dose of 200 mg. Find how
+much is left after 15 hours, and how long it takes until less than 10 mg is left.
+
+:::solution
+
+By :ref{#half-life}, $$K = -\frac{\ln 2}{6}$$, and the amount after $$t$$ hours is
+$$200e^{Kt} = 200 \cdot 2^{-t/6}$$, since $$e^{-t\ln 2/6} = (e^{\ln 2})^{-t/6}$$. After 15 hours,
+that is $$200 \cdot 2^{-2.5} \approx 35.36$$ mg.
+
+It is $$10$$ mg when
+
+```math
+\begin{aligned}
+200e^{Kt} &= 10 \\
+e^{Kt} &= \frac{1}{20} &&\qquad \text{divide both sides by } 200 \\
+Kt &= -\ln 20 &&\qquad \text{take ln, and } \ln\tfrac{1}{20} = -\ln 20 \\
+t &= \frac{6\ln 20}{\ln 2} \approx 25.93 &&\qquad \text{divide by } K = -\tfrac{\ln 2}{6}
+\end{aligned}
+```
+
+The amount keeps falling, so less than 10 mg is left from about 25.9 hours on. As a check, that is
+between four half-lives (24 hours, 12.5 mg) and five (30 hours, 6.25 mg).
+
+:::
+
+::::
+
+::::exercise{#ex-the-number-e-two-counts}
+
+A culture of bacteria has 1200 cells after 2 hours and 4800 after 5 hours. Assuming exponential
+growth $$Ce^{Kt}$$, find the rate $$K$$, the doubling time, and the number of cells at the start.
+
+:::solution
+
+By :ref{#rate-from-two}, with $$t_1 = 2$$ and $$t_2 = 5$$,
+
+```math
+K = \frac{\ln(4800/1200)}{5 - 2} = \frac{\ln 4}{3} \approx 0.46210 \text{ per hour}
+```
+
+By :ref{#half-life}, the doubling time is
+$$\frac{\ln 2}{K} = \frac{3\ln 2}{\ln 4} = \frac{3\ln 2}{2\ln 2} = 1.5$$ hours. As a check, from 2
+hours to 5 hours is two doubling times, and $$1200 \cdot 2 \cdot 2 = 4800$$.
+
+At the start, $$t = 0$$, so going back 2 hours from the first count,
+$$C = 1200e^{-2K} \approx 1200e^{-0.92420} \approx 476$$ cells.
+
+:::
+
+::::
+
+::::exercise{#ex-the-number-e-any-factor}
+
+Let $$f(t) = Ce^{Kt}$$ with $$C > 0$$ and $$K > 0$$, and let $$m > 1$$. Prove that $$f$$ is
+multiplied by $$m$$ over every stretch of time of length $$\frac{\ln m}{K}$$, whenever it starts.
+Then find how long the town in
+[Three problems from real measurements](#three-problems-from-real-measurements) takes to triple.
+
+:::solution
+
+By :ref{#exponential-steps} with base $$e$$, $$f(t + s) = f(t)e^{Ks}$$ for every $$t$$ and $$s$$.
+With $$s = \frac{\ln m}{K}$$, $$Ks = \ln m$$, and $$e^{\ln m} = m$$ by :ref{#log-inverse}. So
+$$f(t + s) = mf(t)$$, whatever $$t$$ is. With $$m = 2$$ this is the doubling time of
+:ref{#half-life}.
+
+The town has $$K \approx 0.013976$$ per year, so it triples every
+$$\frac{\ln 3}{K} \approx \frac{1.09861}{0.013976} \approx 78.6$$ years.
+
+:::
+
+::::
+
+:::::
