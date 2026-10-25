@@ -1,0 +1,384 @@
+---
+title: Exercises
+description: Exercises on the whole Trigonometry chapter, with worked solutions.
+---
+
+These exercises use the whole chapter, and most need ideas from more than one guide. They start
+gently and get harder towards the end. Try each one before you open its solution, and name the rule
+or result behind each step, as the guides do.
+
+Two habits carry most of them. When you need a value, picture the point on the unit circle: which
+quadrant it is in, which special angle it is close to, and which signs its coordinates have. When
+you need to prove an identity, write everything in sines and cosines, work on one side, and check
+the finished identity with a number.
+
+## Values and the circle
+
+::::exercise{#ex-trig-ch-wheel}
+
+A Ferris wheel has radius $$15$$ m, and its centre is $$17$$ m above the ground. A seat starts level
+with the centre, on the right, and the wheel turns anticlockwise.
+
+1. How high is the seat after the wheel has turned by $$\frac{2\pi}{3}$$, and after
+   $$\frac{7\pi}{6}$$?
+2. How far has the seat travelled along its circle after the turn by $$\frac{2\pi}{3}$$?
+
+:::solution
+
+1. Put the centre of the wheel at $$O$$, so the seat starts at $$(15, 0)$$. After a turn by $$x$$ it
+   is at $$(15\cos x, 15\sin x)$$ (:ref{#circle-point-radius}), so its height above the ground is
+   $$17 + 15\sin x$$.
+   - For $$x = \frac{2\pi}{3}$$: the point is in the second quadrant with reference angle
+     $$\frac{\pi}{3}$$, so $$\sin\frac{2\pi}{3} = \sin\frac{\pi}{3} = \frac{\sqrt3}{2}$$
+     (:ref{#supplement-identities}, :ref{#sin-cos-30-60}). The height is
+     $$17 + \frac{15\sqrt3}{2} \approx 30.0$$ m.
+   - For $$x = \frac{7\pi}{6}$$: the point is in the third quadrant with reference angle
+     $$\frac{\pi}{6}$$, so $$\sin\frac{7\pi}{6} = -\sin\frac{\pi}{6} = -\frac12$$
+     (:ref{#half-turn-identities}). The height is $$17 - 7.5 = 9.5$$ m.
+2. By :ref{#radian-arc-sector}, a turn by $$x$$ radians on a circle of radius $$r$$ covers an arc of
+   length $$rx$$. Here that is $$15 \cdot \frac{2\pi}{3} = 10\pi \approx 31.4$$ m.
+
+:::
+
+::::
+
+::::exercise{#ex-trig-ch-exact}
+
+Find the exact values, and check each one with a calculator in radian mode.
+
+1. $$\cos\frac{5\pi}{6}$$
+2. $$\sin\left(-\frac{3\pi}{4}\right)$$
+3. $$\tan\frac{4\pi}{3}$$
+4. $$\sin\frac{7\pi}{12}$$
+
+:::solution
+
+1. $$\frac{5\pi}{6} = \pi - \frac{\pi}{6}$$, so by :ref{#supplement-identities}
+   $$\cos\frac{5\pi}{6} = -\cos\frac{\pi}{6} = -\frac{\sqrt3}{2} \approx -0.866$$.
+2. By :ref{#negative-angle}, $$\sin(-\frac{3\pi}{4}) = -\sin\frac{3\pi}{4}$$, and
+   $$\sin\frac{3\pi}{4} = \sin(\pi - \frac{\pi}{4}) = \frac{\sqrt2}{2}$$. So the value is
+   $$-\frac{\sqrt2}{2} \approx -0.707$$.
+3. $$\frac{4\pi}{3} = \frac{\pi}{3} + \pi$$, and the tangent repeats every half turn
+   (:ref{#tangent-period}), so $$\tan\frac{4\pi}{3} = \tan\frac{\pi}{3} = \sqrt3 \approx 1.732$$.
+4. $$\frac{7\pi}{12} = \frac{\pi}{3} + \frac{\pi}{4}$$, so by :ref{#addition-formulas}
+
+   ```math
+   \sin\frac{7\pi}{12} = \sin\frac{\pi}{3}\cos\frac{\pi}{4} + \cos\frac{\pi}{3}\sin\frac{\pi}{4}
+   = \frac{\sqrt3}{2} \cdot \frac{\sqrt2}{2} + \frac12 \cdot \frac{\sqrt2}{2}
+   = \frac{\sqrt6 + \sqrt2}{4} \approx 0.966
+   ```
+
+:::
+
+::::
+
+::::exercise{#ex-trig-ch-from-one}
+
+Suppose $$\cos x = -\frac{5}{13}$$ and $$\pi < x < \frac{3\pi}{2}$$. Find $$\sin x$$, $$\tan x$$,
+$$\sin 2x$$ and $$\cos 2x$$.
+
+:::solution
+
+By :ref{#pythagorean-identity}, $$\sin^2 x = 1 - \frac{25}{169} = \frac{144}{169}$$, so
+$$\sin x = \pm\frac{12}{13}$$. The angle is in the third quadrant, where sine is negative
+(:ref{#quadrant-signs}), so $$\sin x = -\frac{12}{13}$$. Then
+
+```math
+\tan x = \frac{\sin x}{\cos x} = \frac{-12/13}{-5/13} = \frac{12}{5}
+```
+
+By :ref{#double-angle},
+
+```math
+\sin 2x = 2\sin x\cos x = 2 \cdot \left(-\frac{12}{13}\right)\left(-\frac{5}{13}\right) = \frac{120}{169}
+\qquad
+\cos 2x = \cos^2 x - \sin^2 x = \frac{25 - 144}{169} = -\frac{119}{169}
+```
+
+Check:
+$$\left(\frac{120}{169}\right)^2 + \left(\frac{119}{169}\right)^2 = \frac{14400 + 14161}{28561} = 1$$,
+as :ref{#pythagorean-identity} says it must be for the angle $$2x$$.
+
+:::
+
+::::
+
+## Identities and equations
+
+::::exercise{#ex-trig-ch-identity}
+
+Prove that for all numbers $$a$$ and $$b$$,
+
+```math
+\cos(a + b)\cos(a - b) = \cos^2 a - \sin^2 b
+```
+
+Then check it with $$a = \frac{\pi}{3}$$ and $$b = \frac{\pi}{6}$$.
+
+:::solution
+
+Start from the left side and expand both factors with :ref{#addition-formulas}. They have the form
+$$(p - q)(p + q)$$ with $$p = \cos a\cos b$$ and $$q = \sin a\sin b$$, so
+
+```math
+\begin{aligned}
+\cos(a + b)\cos(a - b) &= \cos^2 a\cos^2 b - \sin^2 a\sin^2 b && \text{difference of two squares} \\
+&= \cos^2 a\,(1 - \sin^2 b) - (1 - \cos^2 a)\sin^2 b && \text{sine squared plus cosine squared} \\
+&= \cos^2 a - \cos^2 a\sin^2 b - \sin^2 b + \cos^2 a\sin^2 b && \text{multiply out} \\
+&= \cos^2 a - \sin^2 b && \text{the middle terms cancel}
+\end{aligned}
+```
+
+The second line uses :ref{#pythagorean-identity} twice, once for $$b$$ and once for $$a$$.
+
+Check: on the left, $$a + b = \frac{\pi}{2}$$ and $$\cos\frac{\pi}{2} = 0$$, so the left side is
+$$0$$. On the right, $$\cos^2\frac{\pi}{3} - \sin^2\frac{\pi}{6} = \frac14 - \frac14 = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-trig-ch-solve}
+
+Find every solution of $$2\cos^2 x - 3\cos x + 1 = 0$$, and list the ones with $$0 \le x < 2\pi$$.
+
+:::solution
+
+Write $$c = \cos x$$. The equation is $$2c^2 - 3c + 1 = 0$$, which factors as
+$$(2c - 1)(c - 1) = 0$$, so $$c = \frac12$$ or $$c = 1$$.
+
+- $$\cos x = \frac12$$: here $$\cos^{-1}\frac12 = \frac{\pi}{3}$$ (:ref{#sin-cos-30-60}), so by
+  :ref{#cosine-solutions} the solutions are $$x = \pm\frac{\pi}{3} + 2\pi n$$.
+- $$\cos x = 1$$: the point $$(\cos x, \sin x)$$ is on the unit circle with first coordinate $$1$$,
+  so it is $$E_1$$, and by :ref{#working-with-identities-same-point} this happens exactly when
+  $$x = 2\pi n$$.
+
+So the solutions are $$x = 2\pi n$$ and $$x = \pm\frac{\pi}{3} + 2\pi n$$, for integers $$n$$. Those
+with $$0 \le x < 2\pi$$ are $$0$$, $$\frac{\pi}{3}$$ and $$\frac{5\pi}{3}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-trig-ch-two-tangents}
+
+Prove that $$\tan^{-1}\frac12 + \tan^{-1}\frac13 = \frac{\pi}{4}$$.
+
+:::solution
+
+Let $$a = \tan^{-1}\frac12$$ and $$b = \tan^{-1}\frac13$$, so $$\tan a = \frac12$$ and
+$$\tan b = \frac13$$. By :ref{#tan-addition},
+
+```math
+\tan(a + b) = \frac{\frac12 + \frac13}{1 - \frac12 \cdot \frac13} = \frac{\frac56}{\frac56} = 1
+```
+
+Both $$a$$ and $$b$$ lie between $$0$$ and $$\frac{\pi}{2}$$. By :ref{#inverse-tan} they lie between
+$$-\frac{\pi}{2}$$ and $$\frac{\pi}{2}$$, where the cosine is positive. Their tangents are positive,
+so their sines are positive too, and by :ref{#quadrant-signs} and :ref{#negative-angle} that rules
+out the angles from $$-\frac{\pi}{2}$$ to $$0$$. So $$0 < a + b < \pi$$.
+
+Now find every angle in that range with tangent $$1$$. The tangent repeats every half turn
+(:ref{#tangent-period}), so any angle with tangent $$1$$ can be moved by a whole number of half
+turns into the range from $$-\frac{\pi}{2}$$ to $$\frac{\pi}{2}$$, where :ref{#tangent-one-angle}
+says the only angle with tangent $$1$$ is $$\frac{\pi}{4}$$ (:ref{#sin-cos-45}). So the angles with
+tangent $$1$$ are $$\frac{\pi}{4} + n\pi$$, and the only one between $$0$$ and $$\pi$$ is
+$$\frac{\pi}{4}$$. So $$a + b = \frac{\pi}{4}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-trig-ch-three-squares}
+
+Prove that for every number $$x$$,
+
+```math
+\cos^2 x + \cos^2\left(x + \frac{2\pi}{3}\right) + \cos^2\left(x + \frac{4\pi}{3}\right) = \frac32
+```
+
+:::solution
+
+First, a smaller fact: for every number $$y$$,
+$$\cos y + \cos(y + \frac{2\pi}{3}) + \cos(y + \frac{4\pi}{3}) = 0$$. By :ref{#addition-formulas},
+
+```math
+\cos\left(y + \frac{2\pi}{3}\right) + \cos\left(y + \frac{4\pi}{3}\right)
+= \cos y\left(\cos\frac{2\pi}{3} + \cos\frac{4\pi}{3}\right) - \sin y\left(\sin\frac{2\pi}{3} + \sin\frac{4\pi}{3}\right)
+```
+
+From the table round the circle, $$\cos\frac{2\pi}{3} = \cos\frac{4\pi}{3} = -\frac12$$ and
+$$\sin\frac{4\pi}{3} = -\sin\frac{2\pi}{3}$$ (:ref{#symmetries-reference-values}). So the first
+bracket is $$-1$$ and the second is $$0$$, and the sum is $$-\cos y$$. Adding $$\cos y$$ gives
+$$0$$. In the picture, the three points a third of a turn apart balance each other out.
+
+Now write each square with :ref{#half-angle}, $$\cos^2 u = \frac{1 + \cos 2u}{2}$$:
+
+```math
+\text{left side} = \frac32 + \frac12\left(\cos 2x + \cos\left(2x + \frac{4\pi}{3}\right) + \cos\left(2x + \frac{8\pi}{3}\right)\right)
+```
+
+Since $$\frac{8\pi}{3} = \frac{2\pi}{3} + 2\pi$$, the last cosine equals
+$$\cos(2x + \frac{2\pi}{3})$$ (:ref{#periodic}). The bracket is the smaller fact with $$y = 2x$$, so
+it is $$0$$, and the left side is $$\frac32$$.
+
+Check with $$x = 0$$: $$1 + \frac14 + \frac14 = \frac32$$.
+
+:::
+
+::::
+
+## Turns and triangles
+
+::::exercise{#ex-trig-ch-turn}
+
+1. Turn the point $$P = (3, 1)$$ by $$\frac{\pi}{3}$$ about the point $$Q = (1, 1)$$.
+2. Square the matrix $$M_{\pi/3}$$ of the turn by $$\frac{\pi}{3}$$, and check that you get
+   $$M_{2\pi/3}$$.
+
+:::solution
+
+1. By :ref{#rotations-about-point}, the image is $$Q + G_{\pi/3}(P - Q)$$, and $$P - Q = (2, 0)$$.
+   By :ref{#rotation-formula},
+
+   ```math
+   G_{\pi/3}(2, 0) = \left(2\cos\frac{\pi}{3},\ 2\sin\frac{\pi}{3}\right) = (1, \sqrt3)
+   ```
+
+   So the image is $$(1, 1) + (1, \sqrt3) = (2, 1 + \sqrt3) \approx (2, 2.73)$$. Check: it is $$2$$
+   from $$Q$$, as $$P$$ is, since $$1^2 + (\sqrt3)^2 = 4$$.
+
+2. By :ref{#rotation-matrix} and :ref{#rotations-matrix-product},
+
+   ```math
+   M_{\pi/3}M_{\pi/3}
+   = \begin{pmatrix} \frac12 & -\frac{\sqrt3}{2} \\ \frac{\sqrt3}{2} & \frac12 \end{pmatrix}
+     \begin{pmatrix} \frac12 & -\frac{\sqrt3}{2} \\ \frac{\sqrt3}{2} & \frac12 \end{pmatrix}
+   = \begin{pmatrix} \frac14 - \frac34 & -\frac{\sqrt3}{4} - \frac{\sqrt3}{4} \\ \frac{\sqrt3}{4} + \frac{\sqrt3}{4} & -\frac34 + \frac14 \end{pmatrix}
+   = \begin{pmatrix} -\frac12 & -\frac{\sqrt3}{2} \\ \frac{\sqrt3}{2} & -\frac12 \end{pmatrix}
+   ```
+
+   Since $$\cos\frac{2\pi}{3} = -\frac12$$ and $$\sin\frac{2\pi}{3} = \frac{\sqrt3}{2}$$, this is
+   $$M_{2\pi/3}$$, as :ref{#rotation-composite} says.
+
+:::
+
+::::
+
+::::exercise{#ex-trig-ch-angle}
+
+Let $$A = (1, 2)$$, $$B = (5, 3)$$ and $$C = (2, 6)$$. Find the angle $$\angle BAC$$ in two ways:
+from a dot product, and from the slopes of the lines $$AB$$ and $$AC$$.
+
+:::solution
+
+**From the dot product.** The steps from $$A$$ are $$B - A = (4, 1)$$ and $$C - A = (1, 4)$$, with
+dot product $$4 + 4 = 8$$ and lengths $$\sqrt{17}$$ each. By :ref{#angle-from-dot},
+
+```math
+\cos\angle BAC = \frac{8}{\sqrt{17}\sqrt{17}} = \frac{8}{17}
+\qquad
+\angle BAC = \cos^{-1}\frac{8}{17} \approx 1.081 \ (\approx 61.9^\circ)
+```
+
+**From the slopes.** The line $$AB$$ has slope $$\frac14$$ and the line $$AC$$ has slope $$4$$, so
+they make angles $$\alpha = \tan^{-1}\frac14$$ and $$\beta = \tan^{-1}4$$ with the $$x$$-axis
+(:ref{#tangent-slope}). Both steps point up and to the right, so $$\angle BAC = \beta - \alpha$$,
+and by the formula for the tangent of a difference after :ref{#tan-addition},
+
+```math
+\tan(\beta - \alpha) = \frac{4 - \frac14}{1 + 4 \cdot \frac14} = \frac{\frac{15}{4}}{2} = \frac{15}{8}
+```
+
+The two answers agree: a right triangle with legs $$8$$ and $$15$$ has hypotenuse $$17$$, so the
+angle with tangent $$\frac{15}{8}$$ has cosine $$\frac{8}{17}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-trig-ch-field}
+
+Two sides of a triangular field are $$7$$ m and $$8$$ m, with an angle of $$\frac{\pi}{3}$$ between
+them.
+
+1. Find the third side and the area.
+2. Find the angle opposite the side of length $$7$$.
+
+:::solution
+
+1. By :ref{#law-of-cosines}, the third side $$c$$ has
+
+   ```math
+   c^2 = 7^2 + 8^2 - 2 \cdot 7 \cdot 8 \cos\frac{\pi}{3} = 49 + 64 - 56 = 57
+   ```
+
+   so $$c = \sqrt{57} \approx 7.55$$ m. By :ref{#area-sine}, the area is
+   $$\frac12 \cdot 7 \cdot 8 \sin\frac{\pi}{3} = 14\sqrt3 \approx 24.2$$ square metres.
+
+2. By :ref{#law-of-cosines}, used with the side $$7$$ as the third side, the angle $$\alpha$$
+   opposite it has
+
+   ```math
+   7^2 = 8^2 + 57 - 2 \cdot 8 \cdot \sqrt{57}\cos\alpha
+   \qquad\text{so}\qquad
+   \cos\alpha = \frac{64 + 57 - 49}{16\sqrt{57}} = \frac{72}{16\sqrt{57}} \approx 0.596
+   ```
+
+   The angle is between $$0$$ and $$\pi$$, so by :ref{#inverse-sin-cos} it is
+   $$\alpha = \cos^{-1}(0.596) \approx 0.932$$, about $$53.4^\circ$$. Check with
+   :ref{#law-of-sines}: $$\sin\alpha$$ should be $$\frac{7\sin(\pi/3)}{\sqrt{57}} \approx 0.803$$,
+   and $$\sin 0.932 \approx 0.803$$.
+
+   The law of cosines is the safer tool for finding an angle. The law of sines gives $$\sin\alpha$$,
+   but two angles between $$0$$ and $$\pi$$ share each sine, $$\alpha$$ and $$\pi - \alpha$$
+   (:ref{#supplement-identities}), so it leaves a choice to make. The cosine leaves none.
+
+:::
+
+::::
+
+::::exercise{#ex-trig-ch-dodecagon}
+
+1. Show that the regular $$n$$-sided polygon in a circle of radius $$r$$ has area
+   $$\frac{n}{2}r^2\sin\frac{2\pi}{n}$$.
+2. Show that the regular $$12$$-sided polygon in a circle of radius $$r$$ has area exactly $$3r^2$$,
+   and compare it with the area of the disc.
+
+:::solution
+
+1. Join the centre to each corner. This cuts the polygon into $$n$$ triangles, each with two sides
+   $$r$$ and an angle of $$\frac{2\pi}{n}$$ between them, as in
+   :ref{#area-and-scaling/inscribed-polygon}. By :ref{#area-sine}, each has area
+   $$\frac12 r^2\sin\frac{2\pi}{n}$$, and there are $$n$$ of them.
+2. With $$n = 12$$, $$\frac{2\pi}{12} = \frac{\pi}{6}$$ and $$\sin\frac{\pi}{6} = \frac12$$, so the
+   area is $$6r^2 \cdot \frac12 = 3r^2$$. The disc has area $$\pi r^2 \approx 3.14r^2$$, so the
+   polygon fills about $$95\%$$ of it. This is another way to see that $$\pi$$ is more than $$3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-trig-ch-largest}
+
+Two sticks of lengths $$a$$ and $$b$$ are hinged together at one end, and a string joins their free
+ends to make a triangle. Prove that the triangle has the largest area when the angle at the hinge is
+a right angle.
+
+:::solution
+
+Let $$\gamma$$ be the angle at the hinge, with $$0 < \gamma < \pi$$. By :ref{#area-sine}, the area
+is $$\frac12 ab\sin\gamma$$. Since $$\sin\gamma \le 1$$ (:ref{#sine-and-cosine-bounds}), the area is
+at most $$\frac12 ab$$.
+
+The area equals $$\frac12 ab$$ exactly when $$\sin\gamma = 1$$. By :ref{#right-triangles-one-angle},
+exactly one angle between $$-\frac{\pi}{2}$$ and $$\frac{\pi}{2}$$ has sine $$1$$, and it is
+$$\frac{\pi}{2}$$ (:ref{#quarter-values}). So every $$\gamma$$ between $$0$$ and $$\frac{\pi}{2}$$
+has $$\sin\gamma < 1$$. If $$\gamma$$ is between $$\frac{\pi}{2}$$ and $$\pi$$, then
+$$\sin\gamma = \sin(\pi - \gamma)$$ (:ref{#supplement-identities}), and $$\pi - \gamma$$ is between
+$$0$$ and $$\frac{\pi}{2}$$, so $$\sin\gamma < 1$$ again. So the area is largest exactly when
+$$\gamma = \frac{\pi}{2}$$.
+
+:::
+
+::::

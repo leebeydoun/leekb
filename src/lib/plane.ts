@@ -13,6 +13,9 @@
  *   ticks P Q 1             equal-length marks on the segment PQ (1, 2 or 3 of them)
  *   text 1 2 "c = 5"        a label at (1, 2)
  *   caption "Words under the figure"
+ *   scale 3                 draw every coordinate 3 times as far apart, so a figure in small units
+ *                           (such as the unit circle) shows large; r= and extend= scale with it,
+ *                           while labels, tick marks and arcs without r= keep their usual size
  *
  * Options after an item: label="a", color=orange (blue, orange, green, purple, red, muted),
  * dashed, fill, arrow (on an angle's arc), full (an angle all the way round), r=0.8 (an angle's
@@ -86,6 +89,7 @@ export function parsePlane(source: string): PlaneSpec {
   const points = new Map<string, PlanePoint>();
   const items: PlaneItem[] = [];
   let caption: string | undefined;
+  let scale = 1;
 
   for (const [index, raw] of source.split("\n").entries()) {
     const line = raw.trim();
@@ -187,12 +191,31 @@ export function parsePlane(source: string): PlaneSpec {
         caption = unquote(text!);
         break;
       }
+      case "scale":
+        scale = number(args[0], "the scale");
+        if (scale <= 0) problem("the scale should be positive");
+        break;
       default:
         problem(`unknown item "${command}"`);
     }
   }
   if (points.size === 0)
     throw new Error("plane figure: add at least one point");
+  if (scale !== 1) {
+    for (const p of points.values()) {
+      p.x *= scale;
+      p.y *= scale;
+    }
+    for (const item of items) {
+      if (item.style.r !== undefined) item.style.r *= scale;
+      if (item.style.extend !== undefined) item.style.extend *= scale;
+      if (item.kind === "circle") item.radius *= scale;
+      if (item.kind === "text") {
+        item.x *= scale;
+        item.y *= scale;
+      }
+    }
+  }
   return { points: [...points.values()], items, caption };
 }
 

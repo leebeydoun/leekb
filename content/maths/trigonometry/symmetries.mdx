@@ -1,0 +1,853 @@
+---
+title: Identities you can see
+description:
+  Flips and turns of the point on the unit circle, and the identities for minus x, x plus a half
+  turn or a quarter turn, and the angles that add to a straight angle or a right angle.
+---
+
+Imagine a clock on the wall opposite a bathroom mirror. In the mirror, the hour hand that points at
+2 seems to point at 10, and while the real second hand sweeps clockwise, the one in the mirror
+sweeps anticlockwise. Nothing about the clock has changed except the way round it goes. A mirror
+reverses every turn.
+
+That one picture explains a whole family of **trigonometric identities**: equations involving sine
+and cosine that are true for every value of $$x$$, like $$\cos^2 x + \sin^2 x = 1$$
+(:ref{#pythagorean-identity}). Each identity in this guide comes from moving the point on the unit
+circle with a flip or a turn whose formula we already know, and seeing where it lands. In this guide
+we'll prove that a flip reverses a turn, and then watch five identities happen, one for each move.
+
+## One idea behind every identity
+
+The point on the unit circle for an angle $$x$$ is where $$E_1 = (1, 0)$$ lands after a turn by
+$$x$$ about the origin, and its coordinates are $$(\cos x, \sin x)$$ (:ref{#sine-cosine}): cosine is
+how far across, sine is how far up. Now move that point with a flip or a turn about the origin. It
+stays on the unit circle, so it lands on the point for some other angle. The formula for the move
+gives its coordinates one way, the new angle gives them another way, and the two answers must agree.
+
+Here is the idea with numbers. Take $$x = \frac{\pi}{3}$$ ($$60^\circ$$), whose point is
+$$P = \left(\frac{1}{2}, \frac{\sqrt3}{2}\right)$$ (:ref{#sin-cos-30-60}). The half turn about the
+origin sends each point to its negative (:ref{#adding-and-scaling-points/half-turn-formula}), so it
+sends $$P$$ to $$\left(-\frac{1}{2}, -\frac{\sqrt3}{2}\right)$$. But by part 5 of
+:ref{#radian-turns} the half turn is also the turn by $$\pi$$ ($$180^\circ$$), so it turns the point
+for $$\frac{\pi}{3}$$ into the point for $$\frac{\pi}{3} + \pi = \frac{4\pi}{3}$$ ($$240^\circ$$).
+Comparing the two answers gives $$\cos\frac{4\pi}{3} = -\frac{1}{2}$$ and
+$$\sin\frac{4\pi}{3} = -\frac{\sqrt3}{2}$$.
+
+Nothing in that argument depended on $$x$$ being $$\frac{\pi}{3}$$, and the same goes for the other
+moves we have formulas for. The table lists all five. In the formula column, $$a$$ and $$b$$ stand
+for the coordinates of any point, since the letter $$x$$ is busy being the angle.
+
+| Move                   | Formula                     | $$(\cos x, \sin x)$$ goes to | The point for         | Identity                                                                    |
+| ---------------------- | --------------------------- | ---------------------------- | --------------------- | --------------------------------------------------------------------------- |
+| Flip in the $$x$$-axis | $$(a, b) \mapsto (a, -b)$$  | $$(\cos x, -\sin x)$$        | $$-x$$                | $$\cos(-x) = \cos x$$, $$\sin(-x) = -\sin x$$                               |
+| Half turn              | $$(a, b) \mapsto (-a, -b)$$ | $$(-\cos x, -\sin x)$$       | $$x + \pi$$           | $$\cos(x + \pi) = -\cos x$$, $$\sin(x + \pi) = -\sin x$$                    |
+| Quarter turn           | $$(a, b) \mapsto (-b, a)$$  | $$(-\sin x, \cos x)$$        | $$x + \frac{\pi}{2}$$ | $$\cos(x + \frac{\pi}{2}) = -\sin x$$, $$\sin(x + \frac{\pi}{2}) = \cos x$$ |
+| Flip in the $$y$$-axis | $$(a, b) \mapsto (-a, b)$$  | $$(-\cos x, \sin x)$$        | $$\pi - x$$           | $$\cos(\pi - x) = -\cos x$$, $$\sin(\pi - x) = \sin x$$                     |
+| Flip in $$y = x$$      | $$(a, b) \mapsto (b, a)$$   | $$(\sin x, \cos x)$$         | $$\frac{\pi}{2} - x$$ | $$\cos(\frac{\pi}{2} - x) = \sin x$$, $$\sin(\frac{\pi}{2} - x) = \cos x$$  |
+
+Try each move below. Slide $$x$$ round the circle and watch where the image $$P'$$ lands, and check
+the identity in the readout with the numbers.
+
+<MirrorIdentity />
+
+The two turns in the table follow from the rule that turns add. The three flips need one more fact,
+the one the mirror and the clock show: a flip reverses the direction of a turn.
+
+## A flip reverses a turn
+
+Turn a point anticlockwise and then look at it in a mirror lying along the $$x$$-axis. The mirror
+shows the flipped point turned the same amount clockwise, as the clock on the bathroom wall does. So
+"turn by $$x$$, then flip" should land where "flip, then turn by $$x$$ the other way" lands.
+
+Here it is with numbers, for a quarter turn. The quarter turn anticlockwise sends $$(a, b)$$ to
+$$(-b, a)$$ (:ref{#adding-and-scaling-points/quarter-turn}), and the quarter turn clockwise sends
+$$(a, b)$$ to $$(b, -a)$$ (:ref{#adding-and-scaling-points/combining-moves-flips}, part 3). Start at
+$$(3, 1)$$:
+
+- **Turn, then flip**: the quarter turn sends $$(3, 1)$$ to $$(-1, 3)$$, and the flip
+  $$R_1(a, b) = (a, -b)$$ sends that to $$(-1, -3)$$
+- **Flip, then turn back**: the flip sends $$(3, 1)$$ to $$(3, -1)$$, and the clockwise quarter turn
+  sends that to $$(-1, -3)$$
+
+Both orders end at the same point. The lemma says this happens for every angle and every point. As
+everywhere in this chapter, $$G_x$$ is the turn about $$O$$ by $$x$$ radians, anticlockwise when
+$$x > 0$$ and clockwise when $$x < 0$$ (:ref{#radians-turn-notation}).
+
+:::lemma[A flip reverses turns]{#flip-reverses-turn}
+
+Let $$R_1(a, b) = (a, -b)$$ be the flip in the $$x$$-axis. For every number $$x$$,
+
+```math
+R_1 \circ G_x = G_{-x} \circ R_1
+```
+
+So turning by $$x$$ and then flipping has the same effect as flipping and then turning by $$x$$ the
+other way.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Rotations_and_reflections_in_two_dimensions#Mathematical_expression"}
+
+The idea is that a turn is two flips. By :ref{#isometries/crossing-mirrors}, flipping in the
+$$x$$-axis and then in a second mirror is a turn, and flipping in the same two mirrors in the other
+order is the same size of turn the other way. So we write $$G_x$$ as two flips, one of them $$R_1$$,
+and then regroup.
+
+The crossing-mirrors theorem talks about the angle you turn through, anticlockwise, from one line
+through $$O$$ to another. Such an angle is less than a half turn, since a half turn brings a line
+through $$O$$ back onto itself (:ref{#isometries/half-turn}). So we first make sure every angle we
+use lies between $$0$$ and $$\pi$$ ($$180^\circ$$).
+
+**Step 1: an angle less than a full turn.** Write $$x = w + 2\pi n$$, with $$n$$ an integer and
+$$0 \le w < 2\pi$$ (part 3 of :ref{#radian-turns}). Then $$-x = -w + 2\pi(-n)$$, so by the same
+part,
+
+```math
+G_x = G_w \qquad G_{-x} = G_{-w}
+```
+
+So it is enough to prove $$R_1 \circ G_w = G_{-w} \circ R_1$$. If $$w = 0$$, both sides are $$R_1$$,
+since $$G_0$$ is the identity. From now on $$0 < w < 2\pi$$, and we write $$\theta = \frac{w}{2}$$,
+so that $$0 < \theta < \pi$$.
+
+**Step 2: the second mirror.** Let $$Q = G_\theta(E_1)$$, which is on the unit circle, so
+$$Q \ne O$$. Let $$K$$ be the line through $$O$$ and $$Q$$. The turn $$G_\theta$$ keeps $$O$$ where
+it is and sends $$E_1$$ to $$Q$$, and it sends lines to lines (:ref{#isometries/basic-isometries},
+:ref{#isometries/isometry-lines}). So it carries the $$x$$-axis, the line through $$O$$ and $$E_1$$,
+onto $$K$$: turning anticlockwise by $$\theta$$ takes the $$x$$-axis to $$K$$. By
+:ref{#adding-and-scaling-points/axis-reflections}, $$R_1$$ is the flip in the $$x$$-axis. Write
+$$R_K$$ for the flip in $$K$$.
+
+**Step 3: flip in the x-axis, then in K.** By :ref{#isometries/crossing-mirrors}, with $$L$$ the
+$$x$$-axis, $$R_K \circ R_1$$ is the turn about $$O$$ by twice $$\theta$$. That theorem counts in
+degrees, but doubling an angle doubles it in either unit: $$\theta$$ radians is
+$$\frac{180\theta}{\pi}$$ degrees, twice that is $$\frac{360\theta}{\pi}$$ degrees, and that is
+$$2\theta$$ radians (:ref{#radians-turn-notation}). So
+
+```math
+R_K \circ R_1 = G_{2\theta} = G_w
+```
+
+**Step 4: flip in K, then in the x-axis.** Now turn on from $$K$$ by $$\pi - \theta$$. By parts 1
+and 5 of :ref{#radian-turns}, turns add and $$G_\pi$$ is the half turn, which sends each point to
+its negative:
+
+```math
+G_{\pi - \theta}(Q) = G_{\pi - \theta}\big(G_\theta(E_1)\big) = G_\pi(E_1) = -E_1 = (-1, 0)
+```
+
+So the turn by $$\pi - \theta$$ keeps $$O$$ and sends $$Q$$ to a point of the $$x$$-axis. As in step
+2, it carries $$K$$ onto the line through $$O$$ and $$(-1, 0)$$, which is the $$x$$-axis. Since
+$$0 < \theta < \pi$$, the angle $$\pi - \theta$$ is between $$0$$ and $$\pi$$ too. By
+:ref{#isometries/crossing-mirrors} again, now with $$K$$ as the first mirror and the $$x$$-axis as
+the second, $$R_1 \circ R_K$$ is the turn by $$2(\pi - \theta) = 2\pi - w$$. By part 3 of
+:ref{#radian-turns}, turns that differ by $$2\pi$$ are equal, so
+
+```math
+R_1 \circ R_K = G_{2\pi - w} = G_{-w}
+```
+
+**Step 5: regroup.** Using step 3, then :ref{#isometries/composite-associative} to move the
+brackets, then step 4:
+
+```math
+\begin{aligned}
+R_1 \circ G_w &= R_1 \circ (R_K \circ R_1) && \text{step 3} \\
+&= (R_1 \circ R_K) \circ R_1 && \text{grouping doesn't matter} \\
+&= G_{-w} \circ R_1 && \text{step 4}
+\end{aligned}
+```
+
+By step 1, that is $$R_1 \circ G_x = G_{-x} \circ R_1$$.
+
+:::
+
+The proof leans on :ref{#isometries/crossing-mirrors}, whose proof reads the angles off the picture.
+That is the footing of this whole chapter: angle sizes come from the picture, and trigonometry is
+built on top of them.
+
+The lemma can also be written without $$R_1$$ on the right. Flip first and then apply either side of
+the lemma. On the right the two flips cancel, since $$R_1 \circ R_1 = I$$
+(:ref{#isometries/reflection-twice}), so $$R_1 \circ G_x \circ R_1 = G_{-x}$$. In words: flip, turn
+and flip back, and you have turned the other way, as the clock in the bathroom mirror shows.
+
+## Negative angles
+
+Turning $$E_1$$ clockwise by an angle lands at the mirror image, in the $$x$$-axis, of where turning
+anticlockwise by the same angle lands. The two points are equally far across. One is as far below
+the axis as the other is above it.
+
+```plane
+scale 3.2
+point X1 -1.3 0 hidden
+point X2 1.3 0 hidden
+point Y1 0 -1.3 hidden
+point Y2 0 1.3 hidden
+point O 0 0 nw
+point E 1 0 hidden
+point P 0.866 0.5 ne
+point P' 0.866 -0.5 se
+segment Y1 Y2 color=muted
+circle O 1 color=muted
+line X1 X2 color=purple
+segment P P' dashed
+angle E O P color=blue arrow r=0.3 label="x"
+angle P' O E color=orange r=0.45 label="x"
+caption "The point P for x = π/6 (30°) and its mirror image P′ in the x-axis. P′ is the point for −x, where E₁ lands after turning π/6 clockwise."
+```
+
+So the cosines of $$x$$ and $$-x$$ are equal, and their sines are negatives of each other.
+
+:::proposition[Negative angles]{#negative-angle}
+
+For every number $$x$$,
+
+```math
+\cos(-x) = \cos x \qquad \sin(-x) = -\sin x
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/List_of_trigonometric_identities#Reflections"}
+
+The flip leaves $$E_1$$ where it is, since $$R_1(1, 0) = (1, -0) = (1, 0)$$. By
+:ref{#flip-reverses-turn}, applied to $$E_1$$,
+
+```math
+R_1\big(G_x(E_1)\big) = G_{-x}\big(R_1(E_1)\big) = G_{-x}(E_1)
+```
+
+Work out each side with :ref{#sine-cosine}. The left side is
+$$R_1(\cos x, \sin x) = (\cos x, -\sin x)$$, and the right side is $$(\cos(-x), \sin(-x))$$. Two
+points are equal exactly when their coordinates are, so $$\cos(-x) = \cos x$$ and
+$$\sin(-x) = -\sin x$$.
+
+:::
+
+As a check, put $$x = \frac{\pi}{6}$$ ($$30^\circ$$), where
+$$\cos x = \frac{\sqrt3}{2} \approx 0.866$$ and $$\sin x = \frac{1}{2}$$ (:ref{#sin-cos-30-60}). A
+calculator in radian mode gives $$\cos(-0.5236) \approx 0.866$$ and $$\sin(-0.5236) \approx -0.5$$,
+as the proposition says.
+
+The minus sign comes out of the sine but disappears from the cosine. It's worth remembering which is
+which by the picture: flipping in the $$x$$-axis changes how far up, never how far across.
+
+## A half turn more
+
+Adding $$\pi$$ ($$180^\circ$$) to the angle means turning on by a further half turn. A half turn
+about the origin sends every point straight through the origin to the opposite side, at the same
+distance. So both coordinates change sign.
+
+```plane
+scale 3.2
+point X1 -1.3 0 hidden
+point X2 1.3 0 hidden
+point Y1 0 -1.3 hidden
+point Y2 0 1.3 hidden
+point O 0 0 nw
+point E 1 0 hidden
+point P 0.866 0.5 ne
+point P' -0.866 -0.5 sw
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+circle O 1 color=muted
+segment P P' color=purple dashed
+angle E O P color=blue arrow r=0.3 label="x"
+angle P O P' color=purple arrow r=0.55 label="π"
+caption "The half turn sends the point P for x = π/6 (30°) through O to P′, the point for x + π = 7π/6 (210°)."
+```
+
+:::proposition[A half turn more]{#half-turn-identities}
+
+For every number $$x$$,
+
+```math
+\cos(x + \pi) = -\cos x \qquad \sin(x + \pi) = -\sin x
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/List_of_trigonometric_identities#Shifts_and_periodicity"}
+
+By parts 1 and 5 of :ref{#radian-turns}, turning by $$x$$ and then by $$\pi$$ is turning by
+$$x + \pi$$, and $$G_\pi$$ is the half turn about $$O$$, which sends each point $$P$$ to $$-P$$. So,
+with :ref{#sine-cosine},
+
+```math
+\begin{aligned}
+(\cos(x + \pi), \sin(x + \pi)) &= G_{x + \pi}(E_1) && \text{the point for } x + \pi \\
+&= G_\pi\big(G_x(E_1)\big) && \text{turns add} \\
+&= -(\cos x, \sin x) && \text{the half turn} \\
+&= (-\cos x, -\sin x)
+\end{aligned}
+```
+
+Comparing coordinates gives both identities.
+
+:::
+
+As a check, put $$x = \frac{\pi}{6}$$ ($$30^\circ$$), so $$x + \pi = \frac{7\pi}{6}$$
+($$210^\circ$$). A calculator in radian mode gives $$\cos 3.6652 \approx -0.866$$ and
+$$\sin 3.6652 \approx -0.5$$, which are $$-\cos\frac{\pi}{6}$$ and $$-\sin\frac{\pi}{6}$$.
+
+## A quarter turn more
+
+Adding $$\frac{\pi}{2}$$ ($$90^\circ$$) to the angle means turning on by a quarter turn
+anticlockwise. The quarter turn swings the positive $$x$$-axis up onto the positive $$y$$-axis, and
+the positive $$y$$-axis round to the left. So what was across becomes up, and what was up becomes
+across, backwards.
+
+```plane
+scale 3.2
+point X1 -1.3 0 hidden
+point X2 1.3 0 hidden
+point Y1 0 -1.3 hidden
+point Y2 0 1.3 hidden
+point O 0 0 sw
+point E 1 0 hidden
+point P 0.866 0.5 ne
+point P' -0.5 0.866 nw
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+circle O 1 color=muted
+segment O P color=blue
+segment O P' color=purple
+right P O P'
+angle E O P color=blue arrow r=0.3 label="x"
+caption "The quarter turn sends the point P = (0.87, 0.5) for x = π/6 (30°) to P′ = (−0.5, 0.87), the point for x + π/2 = 2π/3 (120°)."
+```
+
+:::proposition[A quarter turn more]{#quarter-turn-identities}
+
+For every number $$x$$,
+
+```math
+\cos\left(x + \frac{\pi}{2}\right) = -\sin x \qquad \sin\left(x + \frac{\pi}{2}\right) = \cos x
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/List_of_trigonometric_identities#Shifts_and_periodicity"}
+
+By parts 1 and 4 of :ref{#radian-turns}, turning by $$x$$ and then by $$\frac{\pi}{2}$$ is turning
+by $$x + \frac{\pi}{2}$$, and $$G_{\pi/2}$$ is the quarter turn $$(a, b) \mapsto (-b, a)$$. So
+
+```math
+\begin{aligned}
+\left(\cos\left(x + \tfrac{\pi}{2}\right), \sin\left(x + \tfrac{\pi}{2}\right)\right) &= G_{\pi/2}\big(G_x(E_1)\big) && \text{turns add} \\
+&= G_{\pi/2}(\cos x, \sin x) && \text{the point for } x \\
+&= (-\sin x, \cos x) && \text{the quarter turn}
+\end{aligned}
+```
+
+Comparing coordinates gives both identities.
+
+:::
+
+As a check, put $$x = \frac{\pi}{6}$$ ($$30^\circ$$), so $$x + \frac{\pi}{2} = \frac{2\pi}{3}$$
+($$120^\circ$$). A calculator in radian mode gives $$\cos 2.0944 \approx -0.5$$ and
+$$\sin 2.0944 \approx 0.866$$, which are $$-\sin\frac{\pi}{6}$$ and $$\cos\frac{\pi}{6}$$.
+
+It's tempting to read $$\cos\left(x + \frac{\pi}{2}\right)$$ as $$\cos x + \cos\frac{\pi}{2}$$, and
+that is a slip almost everyone makes at some point. Cosine doesn't share out over a sum. At
+$$x = 0$$ the left side is $$\cos\frac{\pi}{2} = 0$$, but
+$$\cos 0 + \cos\frac{\pi}{2} = 1 + 0 = 1$$. The guide [Addition formulas](./addition-formulas.mdx)
+finds what the cosine of a sum is (:ref{#addition-formulas}).
+
+## Angles that add to a straight angle
+
+The angles $$x$$ and $$\pi - x$$ add up to $$\pi$$ ($$180^\circ$$), a straight angle. Their points
+are mirror images in the $$y$$-axis: at the same height, and equally far across on opposite sides.
+So they have the same sine, and cosines of opposite sign.
+
+```plane
+scale 3.2
+point X1 -1.3 0 hidden
+point X2 1.3 0 hidden
+point Y1 0 -1.3 hidden
+point Y2 0 1.3 hidden
+point O 0 0 s
+point E 1 0 hidden
+point W -1 0 hidden
+point P 0.866 0.5 ne
+point P' -0.866 0.5 nw
+segment X1 X2 color=muted
+circle O 1 color=muted
+line Y1 Y2 color=purple
+segment P P' dashed
+angle E O P color=blue arrow r=0.3 label="x"
+angle P' O W color=orange r=0.3 label="x"
+caption "The flip in the y-axis sends the point P for x = π/6 (30°) to P′, the point for π − x = 5π/6 (150°), at the same height."
+```
+
+:::proposition[Angles that add to a straight angle]{#supplement-identities}
+
+For every number $$x$$,
+
+```math
+\sin(\pi - x) = \sin x \qquad \cos(\pi - x) = -\cos x
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/List_of_trigonometric_identities#Reflections"}
+
+Write $$\pi - x$$ as $$(-x) + \pi$$. By :ref{#half-turn-identities} with $$-x$$ in place of $$x$$,
+and then :ref{#negative-angle},
+
+```math
+\begin{aligned}
+\sin(\pi - x) &= \sin\big((-x) + \pi\big) = -\sin(-x) = -(-\sin x) = \sin x \\
+\cos(\pi - x) &= \cos\big((-x) + \pi\big) = -\cos(-x) = -\cos x
+\end{aligned}
+```
+
+:::
+
+The proof flips the point in the $$x$$-axis and then turns it a half turn. That pair of moves is the
+flip in the $$y$$-axis: $$(a, b)$$ goes to $$(a, -b)$$ and then to $$(-a, b)$$, as part 1 of
+:ref{#adding-and-scaling-points/combining-moves-flips} found. So the algebra and the picture agree.
+
+As a check, put $$x = \frac{\pi}{6}$$ ($$30^\circ$$), so $$\pi - x = \frac{5\pi}{6}$$
+($$150^\circ$$). A calculator in radian mode gives $$\sin 2.618 \approx 0.5$$ and
+$$\cos 2.618 \approx -0.866$$. This is why an equation such as $$\sin x = \frac{1}{2}$$ has two
+answers in a full turn, $$\frac{\pi}{6}$$ and $$\frac{5\pi}{6}$$, as :ref{#same-sine} showed with
+the picture.
+
+## Angles that add to a right angle
+
+The angles $$x$$ and $$\frac{\pi}{2} - x$$ add up to $$\frac{\pi}{2}$$ ($$90^\circ$$), a right
+angle. Their points are mirror images in the diagonal line $$y = x$$, and that flip swaps the two
+coordinates. So the cosine of each angle is the sine of the other.
+
+```plane
+scale 3.2
+point X1 -1.3 0 hidden
+point X2 1.3 0 hidden
+point Y1 0 -1.3 hidden
+point Y2 0 1.3 hidden
+point D1 -1.2 -1.2 hidden
+point D2 1.2 1.2 hidden
+point O 0 0 se
+point E 1 0 hidden
+point N 0 1 hidden
+point P 0.866 0.5 e
+point P' 0.5 0.866 n
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+circle O 1 color=muted
+line D1 D2 color=purple
+segment P P' dashed
+angle E O P color=blue arrow r=0.3 label="x"
+angle P' O N color=orange r=0.3 label="x"
+caption "The flip in y = x sends the point P = (0.87, 0.5) for x = π/6 (30°) to P′ = (0.5, 0.87), the point for π/2 − x = π/3 (60°)."
+```
+
+:::proposition[Angles that add to a right angle]{#complement-identities}
+
+For every number $$x$$,
+
+```math
+\cos\left(\frac{\pi}{2} - x\right) = \sin x \qquad \sin\left(\frac{\pi}{2} - x\right) = \cos x
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/List_of_trigonometric_identities#Reflections"}
+
+Write $$\frac{\pi}{2} - x$$ as $$(-x) + \frac{\pi}{2}$$. By :ref{#quarter-turn-identities} with
+$$-x$$ in place of $$x$$, and then :ref{#negative-angle},
+
+```math
+\begin{aligned}
+\cos\left(\tfrac{\pi}{2} - x\right) &= \cos\left((-x) + \tfrac{\pi}{2}\right) = -\sin(-x) = -(-\sin x) = \sin x \\
+\sin\left(\tfrac{\pi}{2} - x\right) &= \sin\left((-x) + \tfrac{\pi}{2}\right) = \cos(-x) = \cos x
+\end{aligned}
+```
+
+:::
+
+Here too the algebra follows the picture. The proof flips in the $$x$$-axis and then turns a quarter
+turn, and $$(a, b)$$ goes to $$(a, -b)$$ and then to $$(b, a)$$: that pair of moves is the flip
+$$S$$ in $$y = x$$, as part 3 of :ref{#adding-and-scaling-points/combining-moves-flips} found.
+
+As a check, put $$x = \frac{\pi}{6}$$ ($$30^\circ$$), so $$\frac{\pi}{2} - x = \frac{\pi}{3}$$
+($$60^\circ$$). By :ref{#sin-cos-30-60}, $$\cos\frac{\pi}{3} = \frac{1}{2} = \sin\frac{\pi}{6}$$ and
+$$\sin\frac{\pi}{3} = \frac{\sqrt3}{2} = \cos\frac{\pi}{6}$$. In a right triangle the two angles
+other than the right angle add up to $$\frac{\pi}{2}$$, and :ref{#other-angle} found these
+identities there, for $$0 < x < \frac{\pi}{2}$$. The proposition shows they hold for every $$x$$.
+
+The name cosine comes from this identity. Two angles that add up to a right angle are called
+**complementary**, and the cosine of an angle is the sine of its complement: the "co" is short for
+"complement".
+
+## Round the whole circle
+
+The flips in the two axes and the half turn carry the first quadrant onto each of the other three.
+So every point of the unit circle that isn't on an axis is a mirror image of a point in the first
+quadrant, and its sine and cosine are those of an angle between $$0$$ and $$\frac{\pi}{2}$$
+($$90^\circ$$), with signs changed to suit its quadrant.
+
+```plane
+scale 3.2
+point X1 -1.3 0 hidden
+point X2 1.3 0 hidden
+point Y1 0 -1.3 hidden
+point Y2 0 1.3 hidden
+point O 0 0 hidden
+point E 1 0 hidden
+point W -1 0 hidden
+point A 0.866 0.5 ne
+point B -0.866 0.5 nw
+point C -0.866 -0.5 sw
+point D 0.866 -0.5 se
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+circle O 1 color=muted
+segment A B dashed
+segment B C dashed
+segment C D dashed
+segment D A dashed
+angle E O A color=blue r=0.35 label="π/6"
+angle B O W color=orange r=0.35 label="π/6"
+angle W O C color=green r=0.35 label="π/6"
+angle D O E color=purple r=0.35 label="π/6"
+caption "The points for π/6, 5π/6, 7π/6 and 11π/6 (30°, 150°, 210° and 330°). Each makes an angle of π/6 with the x-axis, so they share the numbers ½ and √3/2, with different signs."
+```
+
+The angle between the point's ray and the $$x$$-axis does the work, and it has a name.
+
+:::definition[Reference angle]{#symmetries-reference-angle}
+
+Let $$0 \le x < 2\pi$$, with the point for $$x$$ off both axes. The **reference angle** $$r$$ of
+$$x$$ is the angle between $$0$$ and $$\frac{\pi}{2}$$ that the ray from $$O$$ through the point
+makes with the $$x$$-axis:
+
+- **First quadrant**, $$0 < x < \frac{\pi}{2}$$: $$r = x$$
+- **Second quadrant**, $$\frac{\pi}{2} < x < \pi$$: $$r = \pi - x$$
+- **Third quadrant**, $$\pi < x < \frac{3\pi}{2}$$: $$r = x - \pi$$
+- **Fourth quadrant**, $$\frac{3\pi}{2} < x < 2\pi$$: $$r = 2\pi - x$$
+
+For any other $$x$$ whose point is off the axes, first add or subtract a multiple of $$2\pi$$ to
+land between $$0$$ and $$2\pi$$, which changes neither sine nor cosine (:ref{#periodic}).
+
+:::
+
+In each case $$r$$ is between $$0$$ and $$\frac{\pi}{2}$$. For example, in the second quadrant,
+$$\frac{\pi}{2} < x < \pi$$ gives $$0 < \pi - x < \frac{\pi}{2}$$.
+
+:::proposition[Sine and cosine from the reference angle]{#symmetries-reference-values}
+
+Let $$x$$ be as in :ref{#symmetries-reference-angle}, with reference angle $$r$$. Then
+$$\cos x = \pm\cos r$$ and $$\sin x = \pm\sin r$$, with these signs:
+
+- **First quadrant**: $$\cos x = \cos r$$ and $$\sin x = \sin r$$
+- **Second quadrant**: $$\cos x = -\cos r$$ and $$\sin x = \sin r$$
+- **Third quadrant**: $$\cos x = -\cos r$$ and $$\sin x = -\sin r$$
+- **Fourth quadrant**: $$\cos x = \cos r$$ and $$\sin x = -\sin r$$
+
+:::
+
+:::proof{source="https://www.mathsisfun.com/algebra/trig-four-quadrants.html"}
+
+In the first quadrant $$x = r$$. In the second, $$x = \pi - r$$, and :ref{#supplement-identities}
+gives $$\cos x = -\cos r$$ and $$\sin x = \sin r$$. In the third, $$x = r + \pi$$, and
+:ref{#half-turn-identities} gives $$\cos x = -\cos r$$ and $$\sin x = -\sin r$$.
+
+In the fourth, $$x = -r + 2\pi$$. By :ref{#periodic} and then :ref{#negative-angle},
+
+```math
+\cos x = \cos(-r) = \cos r \qquad \sin x = \sin(-r) = -\sin r
+```
+
+:::
+
+The signs are the ones :ref{#quadrant-signs} found from where the point lies: the reference angle
+gives the size of each number, and the quadrant gives its sign. Together with the special angles
+from [Special angles](./special-angles.mdx), that finds sine and cosine of every multiple of
+$$\frac{\pi}{6}$$ or $$\frac{\pi}{4}$$ in three steps:
+
+1. Find the quadrant the point lies in.
+2. Find the reference angle, which is $$\frac{\pi}{6}$$, $$\frac{\pi}{4}$$ or $$\frac{\pi}{3}$$.
+3. Take its sine or cosine, and give it the sign that the quadrant asks for.
+
+:::example[Three values from the reference angle]
+
+**$$\sin\frac{5\pi}{6}$$.** The angle $$\frac{5\pi}{6}$$ ($$150^\circ$$) is between
+$$\frac{\pi}{2}$$ and $$\pi$$, so the point is in the second quadrant. The reference angle is
+$$\pi - \frac{5\pi}{6} = \frac{\pi}{6}$$, and sine is positive there. So
+$$\sin\frac{5\pi}{6} = \sin\frac{\pi}{6} = \frac{1}{2}$$.
+
+**$$\cos\frac{4\pi}{3}$$.** The angle $$\frac{4\pi}{3}$$ ($$240^\circ$$) is between $$\pi$$ and
+$$\frac{3\pi}{2}$$, so the point is in the third quadrant. The reference angle is
+$$\frac{4\pi}{3} - \pi = \frac{\pi}{3}$$, and cosine is negative there. So
+$$\cos\frac{4\pi}{3} = -\cos\frac{\pi}{3} = -\frac{1}{2}$$, as we found with the half turn at the
+start of the guide.
+
+**$$\sin\left(-\frac{\pi}{4}\right)$$.** Here :ref{#negative-angle} does it in one step:
+$$\sin\left(-\frac{\pi}{4}\right) = -\sin\frac{\pi}{4} = -\frac{\sqrt2}{2}$$ (:ref{#sin-cos-45}).
+The three steps agree: $$-\frac{\pi}{4}$$ ($$-45^\circ$$) plus $$2\pi$$ is $$\frac{7\pi}{4}$$, in
+the fourth quadrant, with reference angle $$\frac{\pi}{4}$$ and sine negative.
+
+:::
+
+The table goes once round the circle in steps of $$\frac{\pi}{6}$$ and $$\frac{\pi}{4}$$. The values
+on the axes come from :ref{#quarter-values}, and every other row from the three steps.
+
+| $$x$$               | Degrees       | $$\cos x$$            | $$\sin x$$            |
+| ------------------- | ------------- | --------------------- | --------------------- |
+| $$0$$               | $$0^\circ$$   | $$1$$                 | $$0$$                 |
+| $$\frac{\pi}{6}$$   | $$30^\circ$$  | $$\frac{\sqrt3}{2}$$  | $$\frac{1}{2}$$       |
+| $$\frac{\pi}{4}$$   | $$45^\circ$$  | $$\frac{\sqrt2}{2}$$  | $$\frac{\sqrt2}{2}$$  |
+| $$\frac{\pi}{3}$$   | $$60^\circ$$  | $$\frac{1}{2}$$       | $$\frac{\sqrt3}{2}$$  |
+| $$\frac{\pi}{2}$$   | $$90^\circ$$  | $$0$$                 | $$1$$                 |
+| $$\frac{2\pi}{3}$$  | $$120^\circ$$ | $$-\frac{1}{2}$$      | $$\frac{\sqrt3}{2}$$  |
+| $$\frac{3\pi}{4}$$  | $$135^\circ$$ | $$-\frac{\sqrt2}{2}$$ | $$\frac{\sqrt2}{2}$$  |
+| $$\frac{5\pi}{6}$$  | $$150^\circ$$ | $$-\frac{\sqrt3}{2}$$ | $$\frac{1}{2}$$       |
+| $$\pi$$             | $$180^\circ$$ | $$-1$$                | $$0$$                 |
+| $$\frac{7\pi}{6}$$  | $$210^\circ$$ | $$-\frac{\sqrt3}{2}$$ | $$-\frac{1}{2}$$      |
+| $$\frac{5\pi}{4}$$  | $$225^\circ$$ | $$-\frac{\sqrt2}{2}$$ | $$-\frac{\sqrt2}{2}$$ |
+| $$\frac{4\pi}{3}$$  | $$240^\circ$$ | $$-\frac{1}{2}$$      | $$-\frac{\sqrt3}{2}$$ |
+| $$\frac{3\pi}{2}$$  | $$270^\circ$$ | $$0$$                 | $$-1$$                |
+| $$\frac{5\pi}{3}$$  | $$300^\circ$$ | $$\frac{1}{2}$$       | $$-\frac{\sqrt3}{2}$$ |
+| $$\frac{7\pi}{4}$$  | $$315^\circ$$ | $$\frac{\sqrt2}{2}$$  | $$-\frac{\sqrt2}{2}$$ |
+| $$\frac{11\pi}{6}$$ | $$330^\circ$$ | $$\frac{\sqrt3}{2}$$  | $$-\frac{1}{2}$$      |
+| $$2\pi$$            | $$360^\circ$$ | $$1$$                 | $$0$$                 |
+
+You don't need to learn the table by heart. Each row is a special angle from the first quadrant,
+moved by a flip or a half turn, and the picture of the unit circle tells you the signs.
+
+## Exercises
+
+:::::accordion[Exercises on identities you can see, with solutions]
+
+::::exercise{#ex-symmetries-negative}
+
+Take $$x = \frac{\pi}{3}$$ ($$60^\circ$$). Use :ref{#negative-angle} and :ref{#half-turn-identities}
+to find the exact values of $$\cos\left(-\frac{\pi}{3}\right)$$,
+$$\sin\left(-\frac{\pi}{3}\right)$$, $$\cos\left(\frac{\pi}{3} + \pi\right)$$ and
+$$\sin\left(\frac{\pi}{3} + \pi\right)$$.
+
+:::solution
+
+By :ref{#sin-cos-30-60}, $$\cos\frac{\pi}{3} = \frac{1}{2}$$ and
+$$\sin\frac{\pi}{3} = \frac{\sqrt3}{2}$$. Flipping in the $$x$$-axis keeps the cosine and changes
+the sign of the sine:
+
+```math
+\cos\left(-\tfrac{\pi}{3}\right) = \cos\tfrac{\pi}{3} = \tfrac{1}{2} \qquad \sin\left(-\tfrac{\pi}{3}\right) = -\sin\tfrac{\pi}{3} = -\tfrac{\sqrt3}{2}
+```
+
+The half turn changes the sign of both:
+
+```math
+\cos\left(\tfrac{\pi}{3} + \pi\right) = -\tfrac{1}{2} \qquad \sin\left(\tfrac{\pi}{3} + \pi\right) = -\tfrac{\sqrt3}{2}
+```
+
+:::
+
+::::
+
+::::exercise{#ex-symmetries-five-moves}
+
+An angle $$x$$ has $$\cos x = \frac{5}{13}$$ and $$\sin x = \frac{12}{13}$$. Without finding $$x$$,
+write down the cosine and sine of each angle:
+
+1. $$-x$$
+2. $$x + \pi$$
+3. $$x + \frac{\pi}{2}$$
+4. $$\pi - x$$
+5. $$\frac{\pi}{2} - x$$
+
+:::solution
+
+Each answer is the image of $$P = \left(\frac{5}{13}, \frac{12}{13}\right)$$ under one of the five
+moves in the table at the start of the guide:
+
+1. The flip in the $$x$$-axis: $$\cos(-x) = \frac{5}{13}$$, $$\sin(-x) = -\frac{12}{13}$$
+2. The half turn: $$\cos(x + \pi) = -\frac{5}{13}$$, $$\sin(x + \pi) = -\frac{12}{13}$$
+3. The quarter turn: $$\cos\left(x + \frac{\pi}{2}\right) = -\frac{12}{13}$$,
+   $$\sin\left(x + \frac{\pi}{2}\right) = \frac{5}{13}$$
+4. The flip in the $$y$$-axis: $$\cos(\pi - x) = -\frac{5}{13}$$, $$\sin(\pi - x) = \frac{12}{13}$$
+5. The flip in $$y = x$$: $$\cos\left(\frac{\pi}{2} - x\right) = \frac{12}{13}$$,
+   $$\sin\left(\frac{\pi}{2} - x\right) = \frac{5}{13}$$
+
+As a check, each pair still has squares adding up to $$\frac{25 + 144}{169} = 1$$, as every point of
+the unit circle must (:ref{#pythagorean-identity}).
+
+:::
+
+::::
+
+::::exercise{#ex-symmetries-exact-values}
+
+Use reference angles to find the exact values:
+
+1. $$\sin\frac{7\pi}{6}$$
+2. $$\cos\frac{3\pi}{4}$$
+3. $$\sin\frac{5\pi}{3}$$
+4. $$\cos\left(-\frac{5\pi}{4}\right)$$
+
+:::solution
+
+By :ref{#symmetries-reference-values}:
+
+1. $$\frac{7\pi}{6}$$ ($$210^\circ$$) is in the third quadrant, with reference angle
+   $$\frac{7\pi}{6} - \pi = \frac{\pi}{6}$$. Sine is negative there, so
+   $$\sin\frac{7\pi}{6} = -\frac{1}{2}$$.
+2. $$\frac{3\pi}{4}$$ ($$135^\circ$$) is in the second quadrant, with reference angle
+   $$\pi - \frac{3\pi}{4} = \frac{\pi}{4}$$. Cosine is negative there, so
+   $$\cos\frac{3\pi}{4} = -\frac{\sqrt2}{2}$$.
+3. $$\frac{5\pi}{3}$$ ($$300^\circ$$) is in the fourth quadrant, with reference angle
+   $$2\pi - \frac{5\pi}{3} = \frac{\pi}{3}$$. Sine is negative there, so
+   $$\sin\frac{5\pi}{3} = -\frac{\sqrt3}{2}$$.
+4. By :ref{#negative-angle}, $$\cos\left(-\frac{5\pi}{4}\right) = \cos\frac{5\pi}{4}$$. The angle
+   $$\frac{5\pi}{4}$$ ($$225^\circ$$) is in the third quadrant, with reference angle
+   $$\frac{\pi}{4}$$, and cosine is negative there. So
+   $$\cos\left(-\frac{5\pi}{4}\right) = -\frac{\sqrt2}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-symmetries-two-answers}
+
+Find every $$x$$ with $$0 \le x < 2\pi$$ and $$\sin x = -\frac{\sqrt3}{2}$$. Explain why there are
+no others in that range.
+
+:::solution
+
+Since $$\sin\frac{\pi}{3} = \frac{\sqrt3}{2}$$, the reference angle is $$\frac{\pi}{3}$$, and sine
+is negative in the third and fourth quadrants. By :ref{#symmetries-reference-values}, that gives
+
+```math
+x = \pi + \tfrac{\pi}{3} = \tfrac{4\pi}{3} \qquad x = 2\pi - \tfrac{\pi}{3} = \tfrac{5\pi}{3}
+```
+
+that is, $$240^\circ$$ and $$300^\circ$$, and indeed
+$$\sin\frac{4\pi}{3} = \sin\frac{5\pi}{3} = -\frac{\sqrt3}{2}$$.
+
+There are no others. A point $$(a, b)$$ of the unit circle with $$b = -\frac{\sqrt3}{2}$$ has
+$$a^2 = 1 - \frac{3}{4} = \frac{1}{4}$$ (:ref{#coordinates/circle-equation}), so $$a = \frac{1}{2}$$
+or $$a = -\frac{1}{2}$$. That makes two points, and by :ref{#unit-circle-point} each is the point
+for exactly one $$x$$ with $$0 \le x < 2\pi$$.
+
+:::
+
+::::
+
+::::exercise{#ex-symmetries-minus-pi}
+
+Show that $$\cos(x - \pi) = -\cos x$$ and $$\sin(x - \pi) = -\sin x$$ for every $$x$$, in two ways:
+
+1. with :ref{#half-turn-identities}, putting $$x - \pi$$ in place of $$x$$
+2. with :ref{#periodic}
+
+Say in words which move of the point on the unit circle these identities describe.
+
+:::solution
+
+1. By :ref{#half-turn-identities} with $$x - \pi$$ in place of $$x$$,
+   $$\cos x = \cos\big((x - \pi) + \pi\big) = -\cos(x - \pi)$$. Multiplying both sides by $$-1$$
+   gives $$\cos(x - \pi) = -\cos x$$. The same steps with sine give $$\sin(x - \pi) = -\sin x$$.
+2. Since $$x - \pi = (x + \pi) - 2\pi$$, :ref{#periodic} gives
+   $$\cos(x - \pi) = \cos(x + \pi) = -\cos x$$, and the same for sine.
+
+Subtracting $$\pi$$ turns the point a half turn clockwise, and that lands in the same place as a
+half turn anticlockwise: straight through the origin to the opposite side.
+
+:::
+
+::::
+
+::::exercise{#ex-symmetries-three-quarters}
+
+Prove that $$\cos\left(\frac{3\pi}{2} - x\right) = -\sin x$$ and
+$$\sin\left(\frac{3\pi}{2} - x\right) = -\cos x$$ for every $$x$$. Check both with
+$$x = \frac{\pi}{6}$$ ($$30^\circ$$).
+
+:::solution
+
+Write $$\frac{3\pi}{2} - x$$ as $$\left(\frac{\pi}{2} - x\right) + \pi$$. By
+:ref{#half-turn-identities} with $$\frac{\pi}{2} - x$$ in place of $$x$$, and then
+:ref{#complement-identities},
+
+```math
+\begin{aligned}
+\cos\left(\tfrac{3\pi}{2} - x\right) &= -\cos\left(\tfrac{\pi}{2} - x\right) = -\sin x \\
+\sin\left(\tfrac{3\pi}{2} - x\right) &= -\sin\left(\tfrac{\pi}{2} - x\right) = -\cos x
+\end{aligned}
+```
+
+For $$x = \frac{\pi}{6}$$, $$\frac{3\pi}{2} - \frac{\pi}{6} = \frac{4\pi}{3}$$. From the table,
+$$\cos\frac{4\pi}{3} = -\frac{1}{2} = -\sin\frac{\pi}{6}$$ and
+$$\sin\frac{4\pi}{3} = -\frac{\sqrt3}{2} = -\cos\frac{\pi}{6}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-symmetries-other-mirror}
+
+Let $$R_2(a, b) = (-a, b)$$ be the flip in the $$y$$-axis.
+
+1. Show that $$R_2 = G_\pi \circ R_1$$.
+2. Use part 1 and :ref{#flip-reverses-turn} to show that $$R_2 \circ G_x = G_{-x} \circ R_2$$ for
+   every $$x$$.
+3. Apply part 2 to $$E_1$$ to give a second proof of :ref{#supplement-identities}.
+
+:::solution
+
+1. $$R_1$$ sends $$(a, b)$$ to $$(a, -b)$$, and the half turn $$G_\pi$$ sends that to its negative,
+   $$(-a, b)$$ (part 5 of :ref{#radian-turns}). That is $$R_2(a, b)$$.
+2. Turns add in either order, since $$\pi + (-x) = -x + \pi$$, so
+   $$G_\pi \circ G_{-x} = G_{-x} \circ G_\pi$$ (:ref{#radian-turns}). Then, regrouping freely
+   (:ref{#isometries/composite-associative}),
+
+   ```math
+   \begin{aligned}
+   R_2 \circ G_x &= G_\pi \circ R_1 \circ G_x && \text{part 1} \\
+   &= G_\pi \circ G_{-x} \circ R_1 && \text{a flip reverses turns} \\
+   &= G_{-x} \circ G_\pi \circ R_1 && \text{turns add in either order} \\
+   &= G_{-x} \circ R_2 && \text{part 1}
+   \end{aligned}
+   ```
+
+3. $$R_2(E_1) = (-1, 0) = G_\pi(E_1)$$. So by part 2 and :ref{#radian-turns},
+
+   ```math
+   R_2\big(G_x(E_1)\big) = G_{-x}\big(G_\pi(E_1)\big) = G_{\pi - x}(E_1)
+   ```
+
+   The left side is $$R_2(\cos x, \sin x) = (-\cos x, \sin x)$$ and the right side is
+   $$(\cos(\pi - x), \sin(\pi - x))$$. Comparing coordinates gives $$\cos(\pi - x) = -\cos x$$ and
+   $$\sin(\pi - x) = \sin x$$.
+
+:::
+
+::::
+
+::::exercise{#ex-symmetries-slip}
+
+A friend says that $$\sin(x + \pi) = \sin x$$, because adding $$\pi$$ flips the point over. Test the
+claim with $$x = \frac{\pi}{6}$$ ($$30^\circ$$), say which move adding $$\pi$$ does make, and
+correct the claim. Which angle does have the same sine as $$x$$?
+
+:::solution
+
+At $$x = \frac{\pi}{6}$$ the right side is $$\frac{1}{2}$$, but
+$$\sin\left(\frac{\pi}{6} + \pi\right) = \sin\frac{7\pi}{6} = -\frac{1}{2}$$. The two sides differ,
+so the claim is false.
+
+Adding $$\pi$$ turns the point a half turn about the origin, which sends it straight through to the
+opposite side, so its height changes sign: $$\sin(x + \pi) = -\sin x$$
+(:ref{#half-turn-identities}). The move that keeps the height is the flip in the $$y$$-axis, which
+sends the point for $$x$$ to the point for $$\pi - x$$. So $$\sin(\pi - x) = \sin x$$
+(:ref{#supplement-identities}), and at $$x = \frac{\pi}{6}$$ that is
+$$\sin\frac{5\pi}{6} = \frac{1}{2}$$.
+
+:::
+
+::::
+
+:::::

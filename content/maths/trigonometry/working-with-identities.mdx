@@ -1,0 +1,907 @@
+---
+title: Working with identities
+description:
+  Three formulas to carry, everything else rebuilt from them, a method for proving identities, a
+  check with numbers, and every solution of an equation like sin x = 1/2.
+---
+
+Imagine a cook in a busy restaurant kitchen with forty dishes on the menu. She hasn't learned forty
+separate recipes by heart. She knows a handful of basic sauces, and most dishes start from one of
+them: a cheese sauce is a white sauce with cheese stirred in, and a mushroom sauce is the same white
+sauce with mushrooms. So when a dish she hasn't cooked for months comes up, she doesn't panic. She
+asks which sauce it starts from, and builds it from there.
+
+Trigonometric identities work the same way. By now the chapter has met more than twenty formulas,
+and holding all of them in your head as separate facts turns trigonometry into a memory test. You
+don't need to: almost every one of them comes from three starting formulas in a line or two. In this
+guide we'll pick out those three, rebuild the others from them, and then practise proving identities
+and solving equations one careful step at a time.
+
+## What an identity is
+
+Some equations are true whatever number you put in. The equation $$2x + 3x = 5x$$ holds for
+$$x = 1$$, for $$x = -7$$ and for every other number. Other equations hold for a few numbers and
+fail for the rest: $$2x = 6$$ holds for $$x = 3$$ and for no other number. Trigonometry has both
+kinds. The equation $$\cos^2 x + \sin^2 x = 1$$ holds for every $$x$$, while
+$$\sin x = \frac{1}{2}$$ holds for $$x = \frac{\pi}{6}$$ but not for $$x = 0$$.
+
+:::definition[Identity]{#identity}
+
+An **identity** is an equation in $$x$$ that holds for every number $$x$$ where both sides are
+defined. An equation that holds for some numbers and fails for others is an equation to **solve**,
+and the numbers that make it hold are its **solutions**.
+
+:::
+
+The words "where both sides are defined" matter because of the tangent. At $$x = \frac{\pi}{2}$$,
+$$\cos x = 0$$, so $$\tan x$$ has no value there (:ref{#tangent}). Take the equation
+$$\tan x \cos x = \sin x$$. At every $$x$$ with $$\cos x \ne 0$$, the left side is
+$$\frac{\sin x}{\cos x} \cdot \cos x = \sin x$$, so the equation holds. It is an identity, and it
+says nothing at the points where $$\cos x = 0$$.
+
+To prove that an equation is an identity, you show that it holds for every $$x$$, which takes an
+argument. To show that it is not one, a single number where the two sides differ is enough. Both
+skills come up in this guide.
+
+## Three formulas to carry
+
+Everything in this chapter comes from one picture: turn the point $$E_1 = (1, 0)$$ about the origin
+by $$x$$, and it lands at $$(\cos x, \sin x)$$, so cosine is how far across and sine is how far up.
+Three facts about that picture are worth knowing by heart, because the rest grow out of them. The
+point is always $$1$$ from the origin. Turning backwards by $$x$$ gives the mirror image, in the
+$$x$$-axis, of turning forwards by $$x$$. And turning by $$a$$ and then by $$b$$ is turning by
+$$a + b$$.
+
+In symbols, these are :ref{#pythagorean-identity}, :ref{#negative-angle} and
+:ref{#addition-formulas}:
+
+```math
+\begin{aligned}
+\cos^2 x + \sin^2 x &= 1 \\[6pt]
+\cos(-x) = \cos x \qquad \sin(-x) &= -\sin x \\[6pt]
+\sin(a + b) &= \sin a\cos b + \cos a\sin b \\
+\cos(a + b) &= \cos a\cos b - \sin a\sin b
+\end{aligned}
+```
+
+Along with them, keep the values at the quarter turns, read off the unit circle
+(:ref{#quarter-values}). The point for $$\frac{\pi}{2}$$ is $$(0, 1)$$, so $$\cos\frac{\pi}{2} = 0$$
+and $$\sin\frac{\pi}{2} = 1$$. The point for $$\pi$$ is $$(-1, 0)$$, so $$\cos\pi = -1$$ and
+$$\sin\pi = 0$$.
+
+The addition formulas are the ones people mix up, so here is a way to hold them in words. Sine
+mixes: a sine times a cosine, plus a cosine times a sine. Cosine keeps like with like: the two
+cosines, then the two sines, with a minus sign between them. To check that you have them right, try
+$$a = \frac{\pi}{6}$$ and $$b = \frac{\pi}{3}$$, so that $$a + b = \frac{\pi}{2}$$. With the values
+from :ref{#sin-cos-30-60},
+
+```math
+\begin{aligned}
+\sin a\cos b + \cos a\sin b &= \tfrac{1}{2} \cdot \tfrac{1}{2} + \tfrac{\sqrt3}{2} \cdot \tfrac{\sqrt3}{2} = \tfrac{1}{4} + \tfrac{3}{4} = 1 = \sin\tfrac{\pi}{2} \\
+\cos a\cos b - \sin a\sin b &= \tfrac{\sqrt3}{2} \cdot \tfrac{1}{2} - \tfrac{1}{2} \cdot \tfrac{\sqrt3}{2} = 0 = \cos\tfrac{\pi}{2}
+\end{aligned}
+```
+
+<IdentityTree caption="The three starting formulas, shaded, and the formulas built from them. Each arrow says what you do to get from one formula to the next." />
+
+## Rebuilding the rest
+
+Every other formula in the chapter is one of the starting formulas with something done to it: a
+particular number put in, or a division, or the first formula used to swap a square. So when you
+can't remember a formula, you haven't lost it. You can rebuild it in a line or two, and the rebuild
+also tells you that you have it right. Each rebuild below ends with a check at a special angle, so
+you can see the formula working before you rely on it.
+
+One honest note before we start. The chapter proved some of these formulas in a different order:
+[Identities you can see](./symmetries.mdx) found the formulas for right and straight angles from
+flips and turns, and [Addition formulas](./addition-formulas.mdx) used them to prove the addition
+formulas. So the rebuilds below are a way to recover a formula you've forgotten, not new proofs.
+Used as proofs of those first formulas, they would go round in a circle.
+
+### Differences
+
+To get $$\sin(a - b)$$, write $$a - b$$ as $$a + (-b)$$ and put $$-b$$ in place of $$b$$ in the
+addition formula. The negative angle formulas then tidy up the result.
+
+```math
+\begin{aligned}
+\sin(a - b) &= \sin a\cos(-b) + \cos a\sin(-b) &&\qquad \text{addition formula, with } -b \text{ for } b \\
+&= \sin a\cos b - \cos a\sin b &&\qquad \text{negative angles} \\[6pt]
+\cos(a - b) &= \cos a\cos(-b) - \sin a\sin(-b) &&\qquad \text{addition formula, with } -b \text{ for } b \\
+&= \cos a\cos b + \sin a\sin b &&\qquad \text{negative angles}
+\end{aligned}
+```
+
+So the formulas for a difference are the formulas for a sum with the middle sign flipped. As a
+check, take $$a = \frac{\pi}{3}$$ and $$b = \frac{\pi}{6}$$, so $$a - b = \frac{\pi}{6}$$. Then
+$$\sin a\cos b - \cos a\sin b = \frac{\sqrt3}{2} \cdot \frac{\sqrt3}{2} - \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{2}$$,
+which is $$\sin\frac{\pi}{6}$$. These are the formulas of :ref{#addition-formulas} and
+:ref{#cos-difference}.
+
+### Right and straight angles
+
+Put $$a = \frac{\pi}{2}$$ in the difference formulas, and the values $$\cos\frac{\pi}{2} = 0$$ and
+$$\sin\frac{\pi}{2} = 1$$ wipe out half of each formula.
+
+```math
+\begin{aligned}
+\sin\left(\tfrac{\pi}{2} - x\right) &= \sin\tfrac{\pi}{2}\cos x - \cos\tfrac{\pi}{2}\sin x = 1 \cdot \cos x - 0 \cdot \sin x = \cos x \\
+\cos\left(\tfrac{\pi}{2} - x\right) &= \cos\tfrac{\pi}{2}\cos x + \sin\tfrac{\pi}{2}\sin x = 0 \cdot \cos x + 1 \cdot \sin x = \sin x
+\end{aligned}
+```
+
+Putting $$a = \pi$$ instead, with $$\cos\pi = -1$$ and $$\sin\pi = 0$$, works the same way:
+
+```math
+\begin{aligned}
+\sin(\pi - x) &= \sin\pi\cos x - \cos\pi\sin x = 0 \cdot \cos x - (-1)\sin x = \sin x \\
+\cos(\pi - x) &= \cos\pi\cos x + \sin\pi\sin x = -\cos x + 0 \cdot \sin x = -\cos x
+\end{aligned}
+```
+
+These are :ref{#complement-identities} and :ref{#supplement-identities}. With $$x = \frac{\pi}{6}$$,
+the first says $$\sin\frac{\pi}{3} = \cos\frac{\pi}{6}$$, and both are $$\frac{\sqrt3}{2}$$. The
+same move with $$a + b$$ gives the formulas for a half turn and a quarter turn more,
+:ref{#half-turn-identities} and :ref{#quarter-turn-identities}.
+
+### Double angles
+
+A double angle $$2x$$ is $$x + x$$, so put $$b = a$$ in the addition formulas. Writing $$x$$ for
+$$a$$,
+
+```math
+\begin{aligned}
+\sin 2x &= \sin x\cos x + \cos x\sin x = 2\sin x\cos x &&\qquad \text{addition formula, with } b = a = x \\
+\cos 2x &= \cos x\cos x - \sin x\sin x = \cos^2 x - \sin^2 x &&\qquad \text{addition formula, with } b = a = x
+\end{aligned}
+```
+
+As a check, take $$x = \frac{\pi}{6}$$. Then
+$$2\sin x\cos x = 2 \cdot \frac{1}{2} \cdot \frac{\sqrt3}{2} = \frac{\sqrt3}{2}$$, which is
+$$\sin\frac{\pi}{3}$$, and $$\cos^2 x - \sin^2 x = \frac{3}{4} - \frac{1}{4} = \frac{1}{2}$$, which
+is $$\cos\frac{\pi}{3}$$. These are the first two parts of :ref{#double-angle}.
+
+### Two more forms of cos 2x
+
+The first starting formula lets you trade a square for the other square: $$\sin^2 x = 1 - \cos^2 x$$
+and $$\cos^2 x = 1 - \sin^2 x$$. Trading in the double angle formula gives a form of $$\cos 2x$$
+with cosines alone, and a form with sines alone.
+
+```math
+\begin{aligned}
+\cos 2x &= \cos^2 x - \sin^2 x &&\qquad \text{double angle} \\
+&= \cos^2 x - (1 - \cos^2 x) &&\qquad \sin^2 x = 1 - \cos^2 x \\
+&= 2\cos^2 x - 1 &&\qquad \text{collect the two } \cos^2 x \\[6pt]
+\cos 2x &= (1 - \sin^2 x) - \sin^2 x &&\qquad \cos^2 x = 1 - \sin^2 x \\
+&= 1 - 2\sin^2 x &&\qquad \text{collect the two } \sin^2 x
+\end{aligned}
+```
+
+With $$x = \frac{\pi}{6}$$, both give $$2 \cdot \frac{3}{4} - 1 = \frac{1}{2}$$ and
+$$1 - 2 \cdot \frac{1}{4} = \frac{1}{2}$$, which is $$\cos\frac{\pi}{3}$$. Which form to use depends
+on where you're heading: the form with only cosines when the other side has only cosines, and so on.
+
+### Half angles
+
+Read the last two formulas backwards, and they turn a square into a formula with no square in it.
+Solve $$\cos 2x = 2\cos^2 x - 1$$ for $$\cos^2 x$$, and $$\cos 2x = 1 - 2\sin^2 x$$ for
+$$\sin^2 x$$.
+
+```math
+\begin{aligned}
+2\cos^2 x &= 1 + \cos 2x &&\qquad \text{add } 1 \text{ to both sides} \\
+\cos^2 x &= \frac{1 + \cos 2x}{2} &&\qquad \text{divide both sides by } 2 \\[6pt]
+2\sin^2 x &= 1 - \cos 2x &&\qquad \text{add } 2\sin^2 x - \cos 2x \text{ to both sides} \\
+\sin^2 x &= \frac{1 - \cos 2x}{2} &&\qquad \text{divide both sides by } 2
+\end{aligned}
+```
+
+Here moving terms across the equals sign is fine, because we're working from a formula we already
+know, not towards one we want to prove. With $$x = \frac{\pi}{6}$$, the first says
+$$\frac{3}{4} = \frac{1 + \frac{1}{2}}{2}$$, which is right. These are :ref{#half-angle}.
+
+The name "half angles" comes from reading them the other way round. Put $$\frac{x}{2}$$ in place of
+$$x$$, and the first says $$\cos^2\frac{x}{2} = \frac{1 + \cos x}{2}$$: the cosine of an angle tells
+you the cosine of half of it, up to a sign. For example, with $$x = \frac{\pi}{4}$$ it gives
+$$\cos^2\frac{\pi}{8} = \frac{1 + \frac{\sqrt2}{2}}{2} = \frac{2 + \sqrt2}{4}$$. The angle
+$$\frac{\pi}{8}$$ is in the first quadrant, so its cosine is positive, and
+$$\cos\frac{\pi}{8} = \frac{\sqrt{2 + \sqrt2}}{2} \approx 0.924$$.
+
+### One plus tangent squared
+
+The tangent is $$\frac{\sin x}{\cos x}$$ and the secant is $$\frac{1}{\cos x}$$ (:ref{#tangent},
+:ref{#reciprocal-trig}), so dividing by $$\cos^2 x$$ turns sines and cosines into tangents and
+secants. Divide the first starting formula by $$\cos^2 x$$, at every $$x$$ where $$\cos x \ne 0$$:
+
+```math
+\begin{aligned}
+\frac{\cos^2 x}{\cos^2 x} + \frac{\sin^2 x}{\cos^2 x} &= \frac{1}{\cos^2 x} &&\qquad \text{divide both sides by } \cos^2 x \\
+1 + \tan^2 x &= \sec^2 x &&\qquad \tan x = \frac{\sin x}{\cos x},\ \sec x = \frac{1}{\cos x}
+\end{aligned}
+```
+
+With $$x = \frac{\pi}{3}$$, $$\tan x = \sqrt3$$ and $$\sec x = 2$$, and indeed $$1 + 3 = 4$$.
+Dividing by $$\sin^2 x$$ instead gives $$\cot^2 x + 1 = \csc^2 x$$. Both are
+:ref{#tan-sec-identity}.
+
+### The tangent of a sum
+
+The tangent of $$a + b$$ is its sine over its cosine, and both of those have addition formulas.
+Dividing the top and the bottom by $$\cos a\cos b$$ then turns every sine over cosine into a
+tangent. This works at every $$a$$ and $$b$$ with $$\cos a$$, $$\cos b$$ and $$\cos(a + b)$$ not
+$$0$$.
+
+```math
+\begin{aligned}
+\tan(a + b) &= \frac{\sin(a + b)}{\cos(a + b)} &&\qquad \text{definition of the tangent} \\
+&= \frac{\sin a\cos b + \cos a\sin b}{\cos a\cos b - \sin a\sin b} &&\qquad \text{addition formulas} \\
+&= \frac{\frac{\sin a\cos b}{\cos a\cos b} + \frac{\cos a\sin b}{\cos a\cos b}}{\frac{\cos a\cos b}{\cos a\cos b} - \frac{\sin a\sin b}{\cos a\cos b}} &&\qquad \text{divide top and bottom by } \cos a\cos b \\
+&= \frac{\tan a + \tan b}{1 - \tan a\tan b} &&\qquad \text{cancel, and } \tfrac{\sin}{\cos} = \tan
+\end{aligned}
+```
+
+With $$a = b = \frac{\pi}{6}$$, $$\tan a = \tan b = \frac{1}{\sqrt3}$$, and the right side is
+$$\frac{2/\sqrt3}{1 - 1/3} = \frac{2}{\sqrt3} \cdot \frac{3}{2} = \sqrt3$$, which is
+$$\tan\frac{\pi}{3}$$. This is :ref{#tan-addition}.
+
+## How to prove an identity
+
+Proving an identity is like showing that two roads lead to the same town. You start at one side,
+change it one honest step at a time, and give a reason for every step, until it has turned into the
+other side. A few habits make the route much shorter:
+
+1. **Start from the messier side.** It has more to simplify, and simplifying is a clearer road than
+   making something more complicated.
+2. **Write everything in sine and cosine.** The tangent, secant, cosecant and cotangent are
+   shorthand for fractions of sines and cosines (:ref{#reciprocal-trig}), and unpacking them shows
+   what you have.
+3. **Look for the starting formulas.** Wherever $$\sin^2 x + \cos^2 x$$ appears, replace it by
+   $$1$$. Wherever a sum or a double angle sits inside a sine or a cosine, open it up with the
+   addition formulas.
+4. **Combine fractions, and factorise.** Put fractions over one denominator, and watch for a common
+   factor or a difference of squares.
+5. **Keep the other side in view.** At each choice, pick the move that brings you closer to it.
+6. **Never move terms across the equals sign you are proving.** Work on one side until it becomes
+   the other, or show that each side equals the same third expression.
+
+The last habit needs a reason, because moving terms across is what you do when solving equations.
+When you solve an equation, you know it holds and you want to find $$x$$. When you prove an
+identity, you don't yet know it holds, so you can't treat it as a true equation to rearrange. That
+would be assuming what you want to prove.
+
+Here is how that goes wrong. The equation $$\cos x = \sqrt{1 - \sin^2 x}$$ looks plausible, and
+squaring both sides gives $$\cos^2 x = 1 - \sin^2 x$$, which is true. But the equation is false: at
+$$x = \pi$$, the left side is $$-1$$ and the right side is $$\sqrt{1 - 0} = 1$$. Squaring turned a
+false equation into a true one, so arriving at something true proves nothing about where you
+started.
+
+:::example[A square of a sum]
+
+Prove that $$(\sin x + \cos x)^2 = 1 + \sin 2x$$.
+
+The left side is the messier one, so start there and multiply out the square
+(:ref{#numbers/square-formulas}):
+
+```math
+\begin{aligned}
+(\sin x + \cos x)^2 &= \sin^2 x + 2\sin x\cos x + \cos^2 x &&\qquad \text{square of a sum} \\
+&= (\sin^2 x + \cos^2 x) + 2\sin x\cos x &&\qquad \text{put the two squares together} \\
+&= 1 + 2\sin x\cos x &&\qquad \text{sine squared plus cosine squared} \\
+&= 1 + \sin 2x &&\qquad \text{double angle}
+\end{aligned}
+```
+
+The last two steps use :ref{#pythagorean-identity} and :ref{#double-angle}. As a check, at
+$$x = \frac{\pi}{6}$$ the left side is
+$$\left(\frac{1 + \sqrt3}{2}\right)^2 = \frac{4 + 2\sqrt3}{4} = 1 + \frac{\sqrt3}{2}$$, and the
+right side is $$1 + \sin\frac{\pi}{3} = 1 + \frac{\sqrt3}{2}$$.
+
+:::
+
+:::example[Two fractions into one]
+
+Prove that $$\tan x + \cot x = \dfrac{1}{\sin x\cos x}$$ wherever $$\sin x$$ and $$\cos x$$ are not
+$$0$$.
+
+Write everything in sine and cosine, and put the two fractions over the denominator $$\sin x\cos x$$
+(:ref{#numbers/fraction-addition}):
+
+```math
+\begin{aligned}
+\tan x + \cot x &= \frac{\sin x}{\cos x} + \frac{\cos x}{\sin x} &&\qquad \text{definitions} \\
+&= \frac{\sin x \cdot \sin x + \cos x \cdot \cos x}{\cos x\sin x} &&\qquad \text{one denominator} \\
+&= \frac{\sin^2 x + \cos^2 x}{\sin x\cos x} &&\qquad \text{tidy up} \\
+&= \frac{1}{\sin x\cos x} &&\qquad \text{sine squared plus cosine squared}
+\end{aligned}
+```
+
+Since $$\sin x\cos x = \frac{1}{2}\sin 2x$$ by :ref{#double-angle}, the right side is also
+$$\frac{2}{\sin 2x}$$. As a check, at $$x = \frac{\pi}{4}$$ the left side is $$1 + 1 = 2$$, and
+$$\frac{2}{\sin\frac{\pi}{2}} = 2$$.
+
+:::
+
+:::example[Choosing the right form of cos 2x]
+
+Prove that $$\dfrac{1 - \cos 2x}{\sin 2x} = \tan x$$ wherever $$\sin 2x \ne 0$$.
+
+The left side has double angles and the right side doesn't, so open them up. For the top, choose the
+form of $$\cos 2x$$ that cancels the $$1$$, which is $$1 - 2\sin^2 x$$:
+
+```math
+\begin{aligned}
+\frac{1 - \cos 2x}{\sin 2x} &= \frac{1 - (1 - 2\sin^2 x)}{2\sin x\cos x} &&\qquad \text{double angles} \\
+&= \frac{2\sin^2 x}{2\sin x\cos x} &&\qquad \text{the 1s cancel} \\
+&= \frac{\sin x}{\cos x} &&\qquad \text{cancel } 2\sin x \\
+&= \tan x &&\qquad \text{definition of the tangent}
+\end{aligned}
+```
+
+Cancelling $$2\sin x$$ from the top and the bottom (:ref{#numbers/fraction-cancel}) is allowed
+because it is not $$0$$: since $$\sin 2x = 2\sin x\cos x \ne 0$$, neither $$\sin x$$ nor $$\cos x$$
+is $$0$$. As a check, at $$x = \frac{\pi}{6}$$ the left side is
+$$\frac{1 - \frac{1}{2}}{\frac{\sqrt3}{2}} = \frac{1}{\sqrt3}$$, which is $$\tan\frac{\pi}{6}$$.
+
+:::
+
+:::example[A difference of squares]
+
+Prove that $$\cos^4 x - \sin^4 x = \cos 2x$$.
+
+A fourth power is the square of a square, so the left side is a difference of two squares, with
+$$\cos^2 x$$ and $$\sin^2 x$$ in place of $$a$$ and $$b$$ in $$a^2 - b^2 = (a - b)(a + b)$$
+(:ref{#numbers/square-formulas}):
+
+```math
+\begin{aligned}
+\cos^4 x - \sin^4 x &= (\cos^2 x)^2 - (\sin^2 x)^2 &&\qquad \text{squares of squares} \\
+&= (\cos^2 x - \sin^2 x)(\cos^2 x + \sin^2 x) &&\qquad \text{difference of squares} \\
+&= (\cos^2 x - \sin^2 x) \cdot 1 &&\qquad \text{sine squared plus cosine squared} \\
+&= \cos 2x &&\qquad \text{double angle}
+\end{aligned}
+```
+
+As a check, at $$x = \frac{\pi}{3}$$ the left side is
+$$\frac{1}{16} - \frac{9}{16} = -\frac{1}{2}$$, and
+$$\cos\frac{2\pi}{3} = -\cos\frac{\pi}{3} = -\frac{1}{2}$$ by :ref{#supplement-identities}.
+
+:::
+
+:::example[A triple angle]
+
+Prove that $$\sin 3x = 3\sin x - 4\sin^3 x$$.
+
+The right side has sines alone, so aim for sines at every choice. Write $$3x$$ as $$2x + x$$, open
+it with the addition formula, and pick the form of $$\cos 2x$$ with sines alone:
+
+```math
+\begin{aligned}
+\sin 3x &= \sin(2x + x) \\
+&= \sin 2x\cos x + \cos 2x\sin x &&\qquad \text{addition formula} \\
+&= 2\sin x\cos x \cdot \cos x + (1 - 2\sin^2 x)\sin x &&\qquad \text{double angles} \\
+&= 2\sin x\cos^2 x + \sin x - 2\sin^3 x &&\qquad \text{multiply out} \\
+&= 2\sin x(1 - \sin^2 x) + \sin x - 2\sin^3 x &&\qquad \cos^2 x = 1 - \sin^2 x \\
+&= 2\sin x - 2\sin^3 x + \sin x - 2\sin^3 x &&\qquad \text{multiply out} \\
+&= 3\sin x - 4\sin^3 x &&\qquad \text{collect like terms}
+\end{aligned}
+```
+
+As a check, at $$x = \frac{\pi}{6}$$ the left side is $$\sin\frac{\pi}{2} = 1$$, and the right side
+is $$3 \cdot \frac{1}{2} - 4 \cdot \frac{1}{8} = \frac{3}{2} - \frac{1}{2} = 1$$.
+
+:::
+
+## Checking with a number
+
+Before you spend ten lines proving something, spend one line testing it. Put a number in for $$x$$
+on both sides and compare. If the two sides differ at even one number, the equation is not an
+identity, and you can stop. If they agree, that is good evidence, but it is not a proof, because a
+false equation can agree at a few lucky numbers.
+
+Take $$\sin 2x = 2\sin x$$, which looks like the sort of thing that ought to be true. At $$x = 0$$
+both sides are $$0$$, and at $$x = \pi$$ both are $$0$$ again. But at $$x = \frac{\pi}{2}$$ the left
+side is $$\sin\pi = 0$$ and the right side is $$2\sin\frac{\pi}{2} = 2$$. So it is not an identity,
+and the true formula is $$\sin 2x = 2\sin x\cos x$$.
+
+Special angles such as $$\frac{\pi}{6}$$ give exact values, which suits a check by hand. A plain
+number such as $$x = 1$$ is a stronger test on a calculator, because it avoids the neat coincidences
+of special angles. Set the calculator to radians first: in degree mode, $$\sin 1$$ is the sine of
+one degree.
+
+Pick an equation below and move $$x$$. The left side is drawn solid and the right side dashed, so
+where the two curves lie on top of each other you can still see both.
+
+<IdentityChecker />
+
+## Look-alikes that aren't identities
+
+Some equations look so natural that almost everyone writes them at some point. Each one below fails
+a number check, and each failure has a reason worth knowing:
+
+- **$$\sin(a + b)$$ is not $$\sin a + \sin b$$.** With $$a = \frac{\pi}{6}$$ and
+  $$b = \frac{\pi}{3}$$, the left side is $$\sin\frac{\pi}{2} = 1$$, but the right side is
+  $$\frac{1}{2} + \frac{\sqrt3}{2} \approx 1.37$$. Sine is not a number multiplying the bracket, so
+  it doesn't share out over a sum; the addition formula says what happens instead.
+- **$$\sin 2x$$ is not $$2\sin x$$.** The $$2$$ sits inside, as part of the angle, and doubling the
+  angle doesn't double the height. At $$x = \frac{\pi}{2}$$ the two are $$0$$ and $$2$$.
+- **$$\sin^2 x$$ is not $$\sin x^2$$.** The first means $$(\sin x)^2$$, the sine squared, and the
+  second means $$\sin(x^2)$$, the sine of $$x^2$$. At $$x = 2$$ they are about $$0.83$$ and
+  $$-0.76$$.
+- **$$\sin^{-1} x$$ is not $$\dfrac{1}{\sin x}$$.** The first is an angle, the inverse sine of
+  :ref{#inverse-sin-cos}: $$\sin^{-1}\frac{1}{2} = \frac{\pi}{6} \approx 0.52$$. The second is the
+  cosecant, and $$\frac{1}{\sin(1/2)} \approx 2.09$$.
+- **$$\dfrac{\sin 2x}{\sin x}$$ is not $$2$$.** "Cancelling the sin" treats $$\sin$$ as a number
+  multiplying $$2x$$, but it is the name of what you do to $$2x$$. At $$x = \frac{\pi}{3}$$ the
+  fraction is $$\frac{\sqrt3/2}{\sqrt3/2} = 1$$. In fact it is $$2\cos x$$, by :ref{#double-angle}.
+  For the same reason, $$\frac{\sin x}{x}$$ doesn't simplify to anything.
+
+## Solving equations with sine and cosine
+
+An equation such as $$\sin x = \frac{1}{2}$$ asks for every turn that lands the point at height
+$$\frac{1}{2}$$. Draw the horizontal line at that height across the unit circle. It meets the circle
+at two points, mirror images of each other in the $$y$$-axis. In the first full turn, the point
+passes each of them once. After that it passes them again on every extra full turn, forwards or
+backwards, so the solutions come in two families, one for each point.
+
+```plane
+scale 3.2
+point A -1.4 0 hidden
+point B 1.4 0 hidden
+point C 0 -1.2 hidden
+point D 0 1.3 hidden
+point L -1.4 0.5 hidden
+point M 1.4 0.5 hidden
+point O 0 0 sw
+point E1 1 0 se
+point P 0.866 0.5 ne
+point P' -0.866 0.5 nw
+segment A B color=muted
+segment C D color=muted
+circle O 1 color=muted
+line L M color=orange dashed
+segment O P color=blue
+segment O P' color=green
+angle E1 O P label="π/6" color=blue r=0.45
+angle E1 O P' label="5π/6" color=green r=0.25
+caption "The line at height 1/2 meets the unit circle at P, the point for π/6, and at its mirror image P', the point for 5π/6"
+```
+
+To count every solution, we need to know when two turns land on the same point. Turning by $$x$$ and
+by $$x + 2\pi$$ lands at the same place, since a full turn changes nothing. The lemma below says
+that whole turns are the only way it happens.
+
+:::lemma[When two angles give the same point]{#working-with-identities-same-point}
+
+For all numbers $$x$$ and $$y$$, the points $$(\cos x, \sin x)$$ and $$(\cos y, \sin y)$$ are equal
+exactly when $$x - y = 2\pi n$$ for some integer $$n$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Trigonometric_functions#Periods"}
+
+If $$x = y + 2\pi n$$, the points are equal by :ref{#periodic}.
+
+Now suppose the points are equal. Let $$k$$ be the whole number of full turns in $$x$$, that is, the
+integer with $$0 \le x - 2\pi k < 2\pi$$, and let $$m$$ be the integer with
+$$0 \le y - 2\pi m < 2\pi$$. By :ref{#periodic},
+
+```math
+(\cos(x - 2\pi k), \sin(x - 2\pi k)) = (\cos x, \sin x) = (\cos y, \sin y) = (\cos(y - 2\pi m), \sin(y - 2\pi m))
+```
+
+So $$x - 2\pi k$$ and $$y - 2\pi m$$ are two numbers in $$0 \le t < 2\pi$$ that give the same point
+of the unit circle. By :ref{#unit-circle-point}, only one number in that range does, so
+$$x - 2\pi k = y - 2\pi m$$. That is, $$x - y = 2\pi(k - m)$$, and $$k - m$$ is an integer.
+
+:::
+
+:::proposition[All solutions of a sine equation]{#sine-solutions}
+
+Let $$-1 < c < 1$$ and $$x_0 = \sin^{-1} c$$. Then $$\sin x = c$$ exactly when
+
+```math
+x = x_0 + 2\pi n \qquad\text{or}\qquad x = \pi - x_0 + 2\pi n
+```
+
+for some integer $$n$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Solutions_to_elementary_trigonometric_equations"}
+
+**The two points at height c.** Let $$s = \sqrt{1 - c^2}$$, which is more than $$0$$ since
+$$c^2 < 1$$. A point $$(u, c)$$ is on the unit circle exactly when $$u^2 + c^2 = 1$$, that is,
+$$u^2 = s^2$$, which happens exactly when $$u = s$$ or $$u = -s$$. So the unit circle has exactly
+two points at height $$c$$: $$(s, c)$$ and $$(-s, c)$$.
+
+**Two angles that reach them.** By :ref{#inverse-sin-cos}, $$\sin x_0 = c$$, so the point
+$$(\cos x_0, \sin x_0)$$ is one of the two, and $$\cos x_0$$ is $$s$$ or $$-s$$. By
+:ref{#supplement-identities}, the point for $$\pi - x_0$$ is $$(-\cos x_0, c)$$. Since
+$$\cos x_0 \ne 0$$, this is the other one.
+
+**Every solution.** By :ref{#pythagorean-identity}, the point $$(\cos x, \sin x)$$ is on the unit
+circle for every $$x$$. So $$\sin x = c$$ exactly when it is one of the two points at height $$c$$,
+that is, exactly when it is the point for $$x_0$$ or the point for $$\pi - x_0$$. By
+:ref{#working-with-identities-same-point}, that happens exactly when $$x - x_0$$ or
+$$x - (\pi - x_0)$$ is $$2\pi n$$ for some integer $$n$$.
+
+:::
+
+When $$c = 1$$ or $$c = -1$$, the horizontal line touches the circle at one point, and the two
+families become one. For example, $$\sin x = 1$$ exactly when $$x = \frac{\pi}{2} + 2\pi n$$, by
+:ref{#working-with-identities-same-point}, since the only point at height $$1$$ is $$(0, 1)$$.
+
+:::example[The solutions of sin x = 1/2]
+
+Here $$x_0 = \sin^{-1}\frac{1}{2} = \frac{\pi}{6}$$ (:ref{#sin-cos-30-60}). So
+$$\sin x = \frac{1}{2}$$ exactly when
+
+```math
+x = \frac{\pi}{6} + 2\pi n \qquad\text{or}\qquad x = \frac{5\pi}{6} + 2\pi n
+```
+
+In one full turn, $$0 \le x < 2\pi$$, the solutions are $$\frac{\pi}{6}$$ and $$\frac{5\pi}{6}$$. A
+calculator's $$\sin^{-1}$$ button gives only the first one. As a check on a later one,
+$$\frac{13\pi}{6} \approx 6.807$$, and a calculator in radian mode gives $$\sin 6.807 \approx 0.5$$.
+
+:::
+
+For cosine, the line to draw is vertical, at the distance across that you want. It meets the circle
+at two points that are mirror images in the $$x$$-axis, and the flip in the $$x$$-axis turns an
+angle $$x_0$$ into $$-x_0$$.
+
+:::proposition[All solutions of a cosine equation]{#cosine-solutions}
+
+Let $$-1 < c < 1$$ and $$x_0 = \cos^{-1} c$$. Then $$\cos x = c$$ exactly when
+
+```math
+x = x_0 + 2\pi n \qquad\text{or}\qquad x = -x_0 + 2\pi n
+```
+
+for some integer $$n$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Solutions_to_elementary_trigonometric_equations"}
+
+The argument is the proof of :ref{#sine-solutions} with the two coordinates trading places. Let
+$$s = \sqrt{1 - c^2} > 0$$. A point $$(c, v)$$ is on the unit circle exactly when $$v^2 = s^2$$, so
+the two points with first coordinate $$c$$ are $$(c, s)$$ and $$(c, -s)$$.
+
+By :ref{#inverse-sin-cos}, $$\cos x_0 = c$$, so the point for $$x_0$$ is one of the two, and
+$$\sin x_0 \ne 0$$. By :ref{#negative-angle}, the point for $$-x_0$$ is $$(c, -\sin x_0)$$, which is
+the other one. By :ref{#pythagorean-identity} and :ref{#working-with-identities-same-point},
+$$\cos x = c$$ exactly when $$x - x_0$$ or $$x - (-x_0)$$ is $$2\pi n$$ for some integer $$n$$.
+
+:::
+
+:::example[The solutions of cos x = −√2/2]
+
+First find $$x_0 = \cos^{-1}\left(-\frac{\sqrt2}{2}\right)$$, the angle between $$0$$ and $$\pi$$
+with this cosine. The special angle $$\frac{\pi}{4}$$ has cosine $$\frac{\sqrt2}{2}$$
+(:ref{#sin-cos-45}), and by :ref{#supplement-identities},
+$$\cos\frac{3\pi}{4} = \cos\left(\pi - \frac{\pi}{4}\right) = -\frac{\sqrt2}{2}$$. So
+$$x_0 = \frac{3\pi}{4}$$, and $$\cos x = -\frac{\sqrt2}{2}$$ exactly when
+
+```math
+x = \frac{3\pi}{4} + 2\pi n \qquad\text{or}\qquad x = -\frac{3\pi}{4} + 2\pi n
+```
+
+In one full turn the solutions are $$\frac{3\pi}{4}$$ and
+$$-\frac{3\pi}{4} + 2\pi = \frac{5\pi}{4}$$.
+
+:::
+
+Harder equations come back to these two. The job is to rearrange until each piece says "$$\sin x$$
+is a number" or "$$\cos x$$ is a number", and then the propositions finish it.
+
+:::example[A square: 2 sin² x = 1]
+
+Divide by $$2$$ to get $$\sin^2 x = \frac{1}{2}$$. A number whose square is $$\frac{1}{2}$$ is
+$$\frac{\sqrt2}{2}$$ or $$-\frac{\sqrt2}{2}$$, and forgetting the negative one would lose half the
+answers. So $$\sin x = \frac{\sqrt2}{2}$$ or $$\sin x = -\frac{\sqrt2}{2}$$.
+
+- $$\sin x = \frac{\sqrt2}{2}$$: here $$x_0 = \frac{\pi}{4}$$, so $$x = \frac{\pi}{4} + 2\pi n$$ or
+  $$x = \frac{3\pi}{4} + 2\pi n$$
+- $$\sin x = -\frac{\sqrt2}{2}$$: here $$x_0 = -\frac{\pi}{4}$$, by :ref{#negative-angle}, so
+  $$x = -\frac{\pi}{4} + 2\pi n$$ or $$x = \frac{5\pi}{4} + 2\pi n$$
+
+In one full turn that is $$\frac{\pi}{4}$$, $$\frac{3\pi}{4}$$, $$\frac{5\pi}{4}$$ and
+$$\frac{7\pi}{4}$$, a quarter turn apart. An identity gives a second route: by :ref{#double-angle},
+$$2\sin^2 x = 1$$ says $$\cos 2x = 1 - 2\sin^2 x = 0$$, and the cosine is $$0$$ at the odd multiples
+of $$\frac{\pi}{2}$$, so $$2x = \frac{\pi}{2} + n\pi$$ and $$x = \frac{\pi}{4} + \frac{n\pi}{2}$$,
+the same answers.
+
+:::
+
+:::example[Factorise, don't divide: sin 2x = sin x]
+
+Open the double angle and bring everything to one side:
+
+```math
+\begin{aligned}
+2\sin x\cos x &= \sin x &&\qquad \text{double angle} \\
+2\sin x\cos x - \sin x &= 0 &&\qquad \text{take } \sin x \text{ from both sides} \\
+\sin x\,(2\cos x - 1) &= 0 &&\qquad \text{common factor } \sin x
+\end{aligned}
+```
+
+A product is $$0$$ exactly when one of its factors is (:ref{#numbers/zero-product}), so
+$$\sin x = 0$$ or $$\cos x = \frac{1}{2}$$. The first gives $$x = n\pi$$ (:ref{#trig-zeros}). The
+second gives $$x = \pm\frac{\pi}{3} + 2\pi n$$, by :ref{#cosine-solutions}. In one full turn the
+solutions are $$0$$, $$\frac{\pi}{3}$$, $$\pi$$ and $$\frac{5\pi}{3}$$.
+
+It is tempting to divide both sides of $$2\sin x\cos x = \sin x$$ by $$\sin x$$ at the start. That
+leaves $$2\cos x = 1$$, and quietly loses $$x = 0$$ and $$x = \pi$$, where $$\sin x = 0$$ and
+dividing was not allowed. Both are real solutions: at $$x = \pi$$, $$\sin 2\pi = 0 = \sin\pi$$.
+
+:::
+
+:::example[A tangent: tan x = √3]
+
+The tangent repeats every half turn (:ref{#tangent-period}), so the solutions come in one family,
+spaced $$\pi$$ apart. Between $$-\frac{\pi}{2}$$ and $$\frac{\pi}{2}$$ there is exactly one
+solution, $$\tan^{-1}\sqrt3$$ (:ref{#inverse-tan}), and that is $$\frac{\pi}{3}$$, since
+$$\tan\frac{\pi}{3} = \frac{\sqrt3/2}{1/2} = \sqrt3$$.
+
+Every $$x$$ where the tangent is defined is $$x' + n\pi$$ for some integer $$n$$ and some $$x'$$
+strictly between $$-\frac{\pi}{2}$$ and $$\frac{\pi}{2}$$. Then $$\tan x = \tan x'$$, which is
+$$\sqrt3$$ exactly when $$x' = \frac{\pi}{3}$$. So $$\tan x = \sqrt3$$ exactly when
+$$x = \frac{\pi}{3} + n\pi$$.
+
+:::
+
+## Exercises
+
+:::::accordion[Exercises on working with identities, with solutions]
+
+::::exercise{#ex-working-with-identities-check}
+
+Use $$x = \frac{\pi}{6}$$ to test each equation. Which ones can you rule out as identities? For any
+that pass, say which formula proves it.
+
+1. $$\cos 2x = 2\cos x$$
+2. $$\sin x\cos x = \frac{1}{2}\sin 2x$$
+3. $$\sin\left(x + \frac{\pi}{3}\right) = \sin x + \sin\frac{\pi}{3}$$
+
+:::solution
+
+1. The left side is $$\cos\frac{\pi}{3} = \frac{1}{2}$$, and the right side is
+   $$2 \cdot \frac{\sqrt3}{2} = \sqrt3 \approx 1.73$$. They differ, so this is not an identity.
+2. The left side is $$\frac{1}{2} \cdot \frac{\sqrt3}{2} = \frac{\sqrt3}{4}$$, and the right side is
+   $$\frac{1}{2}\sin\frac{\pi}{3} = \frac{\sqrt3}{4}$$. They agree, which is evidence but not proof.
+   The proof is :ref{#double-angle}: $$\sin 2x = 2\sin x\cos x$$, and halving both sides gives the
+   equation.
+3. The left side is $$\sin\frac{\pi}{2} = 1$$, and the right side is
+   $$\frac{1}{2} + \frac{\sqrt3}{2} \approx 1.37$$. They differ, so this is not an identity.
+
+:::
+
+::::
+
+::::exercise{#ex-working-with-identities-square-difference}
+
+Prove that $$(\sin x - \cos x)^2 = 1 - \sin 2x$$, and check it at $$x = \frac{\pi}{4}$$.
+
+:::solution
+
+Start from the left side and multiply out the square of a difference
+(:ref{#numbers/square-formulas}):
+
+```math
+\begin{aligned}
+(\sin x - \cos x)^2 &= \sin^2 x - 2\sin x\cos x + \cos^2 x &&\qquad \text{square of a difference} \\
+&= (\sin^2 x + \cos^2 x) - 2\sin x\cos x &&\qquad \text{put the two squares together} \\
+&= 1 - 2\sin x\cos x &&\qquad \text{sine squared plus cosine squared} \\
+&= 1 - \sin 2x &&\qquad \text{double angle}
+\end{aligned}
+```
+
+At $$x = \frac{\pi}{4}$$, $$\sin x = \cos x$$, so the left side is $$0$$. The right side is
+$$1 - \sin\frac{\pi}{2} = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-working-with-identities-rebuild}
+
+Rebuild each formula from the addition formulas and the values at the quarter turns, then check it
+at $$x = \frac{\pi}{6}$$.
+
+1. $$\sin\left(x + \frac{\pi}{2}\right)$$
+2. $$\cos(x - \pi)$$
+
+:::solution
+
+1. By :ref{#addition-formulas} and :ref{#quarter-values},
+
+   ```math
+   \sin\left(x + \tfrac{\pi}{2}\right) = \sin x\cos\tfrac{\pi}{2} + \cos x\sin\tfrac{\pi}{2} = \sin x \cdot 0 + \cos x \cdot 1 = \cos x
+   ```
+
+   At $$x = \frac{\pi}{6}$$, the left side is $$\sin\frac{2\pi}{3} = \frac{\sqrt3}{2}$$ (by
+   :ref{#supplement-identities}, it equals $$\sin\frac{\pi}{3}$$), and
+   $$\cos\frac{\pi}{6} = \frac{\sqrt3}{2}$$.
+
+2. By the formula for the cosine of a difference (:ref{#cos-difference}),
+
+   ```math
+   \cos(x - \pi) = \cos x\cos\pi + \sin x\sin\pi = \cos x \cdot (-1) + \sin x \cdot 0 = -\cos x
+   ```
+
+   At $$x = \frac{\pi}{6}$$, the left side is
+   $$\cos\left(-\frac{5\pi}{6}\right) = \cos\frac{5\pi}{6}$$ by :ref{#negative-angle}, which is
+   $$-\cos\frac{\pi}{6} = -\frac{\sqrt3}{2}$$ by :ref{#supplement-identities}. The right side is
+   $$-\frac{\sqrt3}{2}$$ too.
+
+:::
+
+::::
+
+::::exercise{#ex-working-with-identities-fractions}
+
+Prove that
+
+```math
+\frac{1}{1 - \sin x} + \frac{1}{1 + \sin x} = 2\sec^2 x
+```
+
+wherever $$\cos x \ne 0$$, and check it at $$x = \frac{\pi}{6}$$. Why does the condition
+$$\cos x \ne 0$$ also keep both denominators on the left away from $$0$$?
+
+:::solution
+
+Put the two fractions over one denominator (:ref{#numbers/fraction-addition}), and spot a difference
+of squares underneath (:ref{#numbers/square-formulas}):
+
+```math
+\begin{aligned}
+\frac{1}{1 - \sin x} + \frac{1}{1 + \sin x} &= \frac{(1 + \sin x) + (1 - \sin x)}{(1 - \sin x)(1 + \sin x)} &&\qquad \text{one denominator} \\
+&= \frac{2}{1 - \sin^2 x} &&\qquad \text{difference of squares} \\
+&= \frac{2}{\cos^2 x} &&\qquad 1 - \sin^2 x = \cos^2 x \\
+&= 2\sec^2 x &&\qquad \sec x = \frac{1}{\cos x}
+\end{aligned}
+```
+
+The third step uses :ref{#pythagorean-identity} and the last uses :ref{#reciprocal-trig}. At
+$$x = \frac{\pi}{6}$$, the left side is
+$$\frac{1}{1/2} + \frac{1}{3/2} = 2 + \frac{2}{3} = \frac{8}{3}$$, and the right side is
+$$\frac{2}{3/4} = \frac{8}{3}$$.
+
+A denominator $$1 \mp \sin x$$ is $$0$$ exactly when $$\sin x = \pm1$$. Then
+$$\cos^2 x = 1 - \sin^2 x = 0$$, so $$\cos x = 0$$. So wherever $$\cos x \ne 0$$, neither
+denominator is $$0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-working-with-identities-triple-cos}
+
+Prove that $$\cos 3x = 4\cos^3 x - 3\cos x$$, following the triple angle example for the sine, and
+check it at $$x = \frac{\pi}{3}$$.
+
+:::solution
+
+The right side has cosines alone, so choose the form of $$\cos 2x$$ with cosines alone, and replace
+$$\sin^2 x$$ by $$1 - \cos^2 x$$:
+
+```math
+\begin{aligned}
+\cos 3x &= \cos(2x + x) \\
+&= \cos 2x\cos x - \sin 2x\sin x &&\qquad \text{addition formula} \\
+&= (2\cos^2 x - 1)\cos x - 2\sin x\cos x \cdot \sin x &&\qquad \text{double angles} \\
+&= 2\cos^3 x - \cos x - 2\sin^2 x\cos x &&\qquad \text{multiply out} \\
+&= 2\cos^3 x - \cos x - 2(1 - \cos^2 x)\cos x &&\qquad \sin^2 x = 1 - \cos^2 x \\
+&= 2\cos^3 x - \cos x - 2\cos x + 2\cos^3 x &&\qquad \text{multiply out} \\
+&= 4\cos^3 x - 3\cos x &&\qquad \text{collect like terms}
+\end{aligned}
+```
+
+At $$x = \frac{\pi}{3}$$, the left side is $$\cos\pi = -1$$, and the right side is
+$$4 \cdot \frac{1}{8} - 3 \cdot \frac{1}{2} = \frac{1}{2} - \frac{3}{2} = -1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-working-with-identities-tangent-quarter}
+
+Use :ref{#tan-addition} to show that
+
+```math
+\tan\left(x + \frac{\pi}{4}\right) = \frac{1 + \tan x}{1 - \tan x}
+```
+
+wherever both sides are defined. Then use it with $$x = \frac{\pi}{6}$$ to find
+$$\tan\frac{5\pi}{12}$$ exactly.
+
+:::solution
+
+Since $$\tan\frac{\pi}{4} = 1$$ (:ref{#sin-cos-45}: the sine and cosine are equal),
+
+```math
+\tan\left(x + \tfrac{\pi}{4}\right) = \frac{\tan x + \tan\frac{\pi}{4}}{1 - \tan x\tan\frac{\pi}{4}} = \frac{\tan x + 1}{1 - \tan x}
+```
+
+With $$x = \frac{\pi}{6}$$, $$\tan x = \frac{1}{\sqrt3}$$, and
+$$\frac{\pi}{6} + \frac{\pi}{4} = \frac{5\pi}{12}$$. Multiply the top and the bottom by $$\sqrt3$$,
+then by $$\sqrt3 + 1$$:
+
+```math
+\tan\frac{5\pi}{12} = \frac{1 + \frac{1}{\sqrt3}}{1 - \frac{1}{\sqrt3}} = \frac{\sqrt3 + 1}{\sqrt3 - 1} = \frac{(\sqrt3 + 1)^2}{3 - 1} = \frac{4 + 2\sqrt3}{2} = 2 + \sqrt3
+```
+
+A calculator in radian mode gives $$\tan\frac{5\pi}{12} \approx 3.732$$, and
+$$2 + \sqrt3 \approx 3.732$$.
+
+:::
+
+::::
+
+::::exercise{#ex-working-with-identities-solve-double}
+
+Find every solution of $$\cos 2x = \cos x$$ with $$0 \le x < 2\pi$$.
+
+:::solution
+
+Use the form of $$\cos 2x$$ with cosines alone, so the equation has one unknown, $$\cos x$$:
+
+```math
+\begin{aligned}
+2\cos^2 x - 1 &= \cos x &&\qquad \text{double angle} \\
+2\cos^2 x - \cos x - 1 &= 0 &&\qquad \text{take } \cos x \text{ from both sides} \\
+(2\cos x + 1)(\cos x - 1) &= 0 &&\qquad \text{factorise}
+\end{aligned}
+```
+
+Multiplying out the last line gives back the one before, as a check. By :ref{#numbers/zero-product},
+$$\cos x = -\frac{1}{2}$$ or $$\cos x = 1$$.
+
+- $$\cos x = 1$$ happens at the point $$(1, 0)$$, so $$x = 2\pi n$$ by
+  :ref{#working-with-identities-same-point}; in the range, $$x = 0$$
+- $$\cos x = -\frac{1}{2}$$: here $$x_0 = \frac{2\pi}{3}$$, since
+  $$\cos\frac{2\pi}{3} = -\cos\frac{\pi}{3} = -\frac{1}{2}$$ (:ref{#supplement-identities}). By
+  :ref{#cosine-solutions}, $$x = \pm\frac{2\pi}{3} + 2\pi n$$; in the range, $$x = \frac{2\pi}{3}$$
+  and $$x = \frac{4\pi}{3}$$
+
+So the solutions are $$0$$, $$\frac{2\pi}{3}$$ and $$\frac{4\pi}{3}$$. As a check at
+$$x = \frac{2\pi}{3}$$: $$\cos\frac{4\pi}{3} = -\frac{1}{2}$$ by :ref{#half-turn-identities}, since
+$$\frac{4\pi}{3} = \frac{\pi}{3} + \pi$$, and $$\cos\frac{2\pi}{3} = -\frac{1}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-working-with-identities-no-divide}
+
+Find every solution of $$2\sin x\cos x = \cos x$$. Then explain which solutions you would lose by
+dividing both sides by $$\cos x$$.
+
+:::solution
+
+Bring everything to one side and take out the common factor:
+
+```math
+\begin{aligned}
+2\sin x\cos x - \cos x &= 0 &&\qquad \text{take } \cos x \text{ from both sides} \\
+\cos x\,(2\sin x - 1) &= 0 &&\qquad \text{common factor } \cos x
+\end{aligned}
+```
+
+By :ref{#numbers/zero-product}, $$\cos x = 0$$ or $$\sin x = \frac{1}{2}$$.
+
+- $$\cos x = 0$$ exactly when $$x = \frac{\pi}{2} + n\pi$$ (:ref{#trig-zeros})
+- $$\sin x = \frac{1}{2}$$ exactly when $$x = \frac{\pi}{6} + 2\pi n$$ or
+  $$x = \frac{5\pi}{6} + 2\pi n$$ (:ref{#sine-solutions})
+
+Dividing by $$\cos x$$ leaves $$2\sin x = 1$$, which keeps the second family and loses every
+$$x = \frac{\pi}{2} + n\pi$$. Those are real solutions: at $$x = \frac{\pi}{2}$$ both sides are
+$$0$$. Dividing was not allowed there, because $$\cos x = 0$$.
+
+:::
+
+::::
+
+:::::

@@ -122,6 +122,31 @@ import { CrossingPaths } from "./interactive/crossing-paths";
 import { SkewLines } from "./lines-illustrations/space";
 import { LineCircle } from "./interactive/line-circle";
 import { PerpendicularFoot } from "./interactive/perpendicular-foot";
+import { ChordTwoWays } from "./interactive/chord-two-ways";
+import { RadianWrap } from "./interactive/radian-wrap";
+import { TriangleRatios } from "./interactive/triangle-ratios";
+import { UnitCircle } from "./interactive/unit-circle";
+import { MirrorIdentity } from "./interactive/mirror-identity";
+import { HalfSquare } from "./trig-illustrations/special-angles";
+import { HalfEquilateral } from "./trig-illustrations/special-angles";
+import { WaveTracer } from "./interactive/wave-tracer";
+import { FerrisHeights } from "./trig-illustrations/graphs";
+import { SineGraph } from "./trig-illustrations/graphs";
+import { CosineGraph } from "./trig-illustrations/graphs";
+import { SineRepeats } from "./trig-illustrations/graphs";
+import { CosineShift } from "./trig-illustrations/graphs";
+import { WaveSymmetry } from "./trig-illustrations/graphs";
+import { WaveTaller } from "./trig-illustrations/graphs";
+import { WaveSqueezed } from "./trig-illustrations/graphs";
+import { WaveWidened } from "./trig-illustrations/graphs";
+import { WaveSlid } from "./trig-illustrations/graphs";
+import { TrigZeros } from "./trig-illustrations/graphs";
+import { TangentLine } from "./interactive/tangent-line";
+import { TangentGraph } from "./trig-illustrations/tangent";
+import { TriangleLaws } from "./interactive/triangle-laws";
+import { RotateShape } from "./interactive/rotate-shape";
+import { IdentityChecker } from "./interactive/identity-checker";
+import { IdentityTree } from "./trig-illustrations/identity-tree";
 import {
   Conjecture,
   Corollary,
@@ -257,6 +282,31 @@ export const mdxComponents = {
   HalfTurnPair,
   MoveExplorer,
   SpriteFrames,
+  IdentityTree,
+  IdentityChecker,
+  RotateShape,
+  TriangleLaws,
+  TangentGraph,
+  TangentLine,
+  TrigZeros,
+  WaveSlid,
+  WaveWidened,
+  WaveSqueezed,
+  WaveTaller,
+  WaveSymmetry,
+  CosineShift,
+  SineRepeats,
+  CosineGraph,
+  SineGraph,
+  FerrisHeights,
+  WaveTracer,
+  HalfEquilateral,
+  HalfSquare,
+  MirrorIdentity,
+  UnitCircle,
+  TriangleRatios,
+  RadianWrap,
+  ChordTwoWays,
   PerpendicularFoot,
   LineCircle,
   SkewLines,

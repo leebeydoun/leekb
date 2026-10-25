@@ -1,0 +1,767 @@
+---
+title: Angles in any triangle
+description:
+  The dot product and the angle between two points, the laws of cosines and sines, the area from two
+  sides and an angle, and why zooms keep angles.
+---
+
+Imagine you're mapping a field with a pond in the middle, and you need the distance between two
+posts on opposite banks. You can't stretch a tape across the water. But from a third post on dry
+ground you can tape the distance to each of the two, and read the angle between the two directions
+off a compass. Two sides and the angle between them fix the triangle (:ref{#isometries/sas}), so
+they must fix the distance across the pond too.
+
+If the angle were a right angle, the Pythagoras theorem would give that distance. For any other
+angle, the cosine of the angle tells you how much to add or take away, and the rule that does it is
+called the **law of cosines**. In this guide we'll find it from the dot product, and then use the
+sine of an angle to find the area of a triangle and its other sides.
+
+## The dot product measures the angle
+
+The dot product of two steps from the origin is $$0$$ exactly when they make a right angle
+(:ref{#segments-rays-and-lines/perpendicular-dot}). So the dot product notices a right angle, and it
+notices every other angle too, through its cosine. Divide the dot product by the two lengths, and
+what is left is the cosine of the angle between the steps.
+
+Here is a case with numbers. Take $$A = (2, 0)$$, which is $$2$$ along the positive x-axis, and the
+point $$B$$ at distance $$3$$ along the ray at angle $$\frac{\pi}{3}$$ ($$60^\circ$$). By
+:ref{#circle-point-radius} and :ref{#sin-cos-30-60},
+
+```math
+B = \left(3\cos\tfrac{\pi}{3},\ 3\sin\tfrac{\pi}{3}\right) = \left(\tfrac{3}{2},\ \tfrac{3\sqrt3}{2}\right)
+```
+
+Then $$A \cdot B = 2 \cdot \frac{3}{2} + 0 \cdot \frac{3\sqrt3}{2} = 3$$. The lengths are
+$$|A| = 2$$ and $$|B| = 3$$, and $$2 \cdot 3 \cdot \cos\frac{\pi}{3} = 6 \cdot \frac{1}{2} = 3$$,
+the same number.
+
+```plane
+scale 1.5
+point O 0 0 sw
+point A 2 0 se
+point B 1.5 2.598 n
+segment O A color=blue label="2" side=right
+segment O B color=orange label="3"
+angle A O B color=green label="π/3" r=0.6
+caption "The points A = (2, 0) and B at distance 3 along the ray at angle π/3: A · B = 3 = 2 · 3 · cos(π/3)"
+```
+
+:::theorem[The dot product and the angle]{#dot-angle}
+
+Let $$A$$ and $$B$$ be points other than $$O$$, and let $$\theta = \angle AOB$$, measured in
+radians, so $$0 \le \theta \le \pi$$. Then
+
+```math
+A \cdot B = |A|\,|B|\cos\theta
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Cosine_Formula_for_Dot_Product"}
+
+**Writing the points with sine and cosine.** By :ref{#adding-and-scaling-points/direction},
+$$A = |A|\,U$$ and $$B = |B|\,V$$ for unit points $$U$$ and $$V$$. By :ref{#unit-circle-point},
+there are numbers $$\alpha$$ and $$\beta$$, each at least $$0$$ and less than $$2\pi$$, with
+
+```math
+U = (\cos\alpha, \sin\alpha) = G_\alpha(E_1) \qquad V = (\cos\beta, \sin\beta) = G_\beta(E_1)
+```
+
+The second form of each is the definition of sine and cosine (:ref{#sine-cosine}).
+
+**The dot product.** By parts 1 and 3 of :ref{#segments-rays-and-lines/dot-rules}, the two lengths
+come out in front. Then :ref{#cos-difference}, with $$a = \beta$$ and $$b = \alpha$$, turns the
+bracket into one cosine:
+
+```math
+\begin{aligned}
+A \cdot B &= |A|\,|B|\,(U \cdot V) && \text{moving the numbers out} \\
+&= |A|\,|B|\,(\cos\beta\cos\alpha + \sin\beta\sin\alpha) && \text{by the definition of } U \cdot V \\
+&= |A|\,|B|\cos(\beta - \alpha) && \text{cosine of a difference}
+\end{aligned}
+```
+
+**The turn from one ray to the other.** The number $$\beta - \alpha$$ lies between $$-2\pi$$ and
+$$2\pi$$. Let $$w$$ be $$\beta - \alpha$$ if that is $$0$$ or more, and $$\beta - \alpha + 2\pi$$
+otherwise, so that $$0 \le w < 2\pi$$ and $$G_w = G_{\beta - \alpha}$$ (:ref{#radian-turns}). Turns
+add (:ref{#radian-turns}), so
+
+```math
+G_w(U) = G_{\beta - \alpha}\big(G_\alpha(E_1)\big) = G_\beta(E_1) = V
+```
+
+By :ref{#turn-scales}, $$G_w(A) = G_w(|A|\,U) = |A|\,V = \frac{|A|}{|B|}\,B$$. That is a positive
+multiple of $$B$$, so it lies on the ray from $$O$$ through $$B$$
+(:ref{#segments-rays-and-lines/zoom-on-ray}). So the turn by $$w$$ sends the ray $$OA$$ to the ray
+$$OB$$, and by the definition of a turn (:ref{#isometries/rotation}), the angle turning
+anticlockwise from the ray $$OA$$ to the ray $$OB$$ measures $$w$$ radians.
+
+**Which of the two angles.** The two rays make two angles, which together fill a full turn, so the
+other one measures $$2\pi - w$$. By :ref{#distance-and-angles/angle-name}, $$\angle AOB$$ is the one
+that is at most a straight angle, $$\pi$$. So $$\theta = w$$ when $$w \le \pi$$, and
+$$\theta = 2\pi - w$$ when $$w > \pi$$.
+
+**The cosine.** In the second case, :ref{#periodic} and :ref{#negative-angle} give
+
+```math
+\cos\theta = \cos(2\pi - w) = \cos(-w) = \cos w
+```
+
+So in both cases $$\cos\theta = \cos w$$. Since $$w$$ and $$\beta - \alpha$$ differ by $$0$$ or
+$$2\pi$$, $$\cos w = \cos(\beta - \alpha)$$ (:ref{#periodic}). So
+$$A \cdot B = |A|\,|B|\cos\theta$$.
+
+:::
+
+Two steps of the proof come from the picture rather than from algebra. The first is that a turn by
+$$w$$ makes an anticlockwise angle of $$w$$, which is how turns were defined in
+[Slides and turns](../isometries/slides-and-turns.mdx), with the sizes of angles taken from sectors
+of a disc. The second is that the two angles between two rays fill a full turn, because their
+sectors fill the disc. The chapter keeps those foundations as they are, and everything else in the
+proof is calculation.
+
+### The angle at any corner
+
+The theorem measures the angle at the origin. To measure the angle at a corner $$P$$, slide $$P$$ to
+the origin first: the steps from $$P$$ to the other two points become points, and the slide doesn't
+change the angle. Then the theorem applies to those steps.
+
+:::corollary[The angle from the dot product]{#angle-from-dot}
+
+Let $$P$$, $$M$$ and $$N$$ be points with $$M \ne P$$ and $$N \ne P$$. Then
+
+```math
+\cos\angle MPN = \frac{(M - P) \cdot (N - P)}{|M - P|\,|N - P|} \qquad \angle MPN = \cos^{-1}\left(\frac{(M - P) \cdot (N - P)}{|M - P|\,|N - P|}\right)
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Dot_product#Geometric_definition"}
+
+The slide $$T_{-P}$$ sends each point $$X$$ to $$X - P$$
+(:ref{#adding-and-scaling-points/slide-formula}), and it is an isometry
+(:ref{#adding-and-scaling-points/formula-isometries}). It sends $$P$$ to $$O$$, $$M$$ to $$M - P$$
+and $$N$$ to $$N - P$$. Isometries keep angles (:ref{#isometries/isometry-angles}), so
+$$\angle MPN$$ is the angle at $$O$$ between the rays through $$M - P$$ and $$N - P$$. Neither point
+is $$O$$, so :ref{#dot-angle} gives the first formula.
+
+For the second, write $$c$$ for the fraction. The angle $$\angle MPN$$ is between $$0$$ and $$\pi$$
+and has cosine $$c$$. By :ref{#inverse-sin-cos}, $$\cos^{-1} c$$ is the only such angle, so
+$$\angle MPN = \cos^{-1} c$$.
+
+:::
+
+:::example[The angle between (3, 1) and (1, 2)]
+
+Take $$A = (3, 1)$$ and $$B = (1, 2)$$. Then $$A \cdot B = 3 + 2 = 5$$, $$|A| = \sqrt{10}$$ and
+$$|B| = \sqrt{5}$$, so
+
+```math
+\cos\angle AOB = \frac{5}{\sqrt{10}\,\sqrt{5}} = \frac{5}{\sqrt{50}} = \frac{5}{5\sqrt2} = \frac{1}{\sqrt2}
+```
+
+By :ref{#sin-cos-45}, $$\cos\frac{\pi}{4} = \frac{1}{\sqrt2}$$, and $$\frac{\pi}{4}$$ is between
+$$0$$ and $$\pi$$. So $$\angle AOB = \frac{\pi}{4}$$, which is $$45^\circ$$.
+
+:::
+
+The test for right angles is the case $$\theta = \frac{\pi}{2}$$. A cosine is $$0$$ at
+$$\frac{\pi}{2}$$ and nowhere else between $$0$$ and $$\pi$$ (:ref{#quadrant-signs}), so for
+$$A, B \ne O$$ the angle $$\angle AOB$$ is a right angle exactly when $$A \cdot B = 0$$. That is
+part 2 of :ref{#segments-rays-and-lines/perpendicular-dot} again, now as one value of a general
+formula.
+
+## The law of cosines
+
+Hinge two sticks, $$a$$ and $$b$$ long, at one end. Opened a little, their free ends are close
+together, and opened wide, they are far apart. At a right angle, the gap is $$\sqrt{a^2 + b^2}$$, by
+the Pythagoras theorem. The law of cosines gives the gap at every angle in between: it corrects
+$$a^2 + b^2$$ by an amount that depends on the cosine of the angle.
+
+:::theorem[The law of cosines]{#law-of-cosines}
+
+In a triangle with corners $$A$$, $$B$$ and $$C$$, let $$a = d(B, C)$$, $$b = d(C, A)$$ and
+$$c = d(A, B)$$ be the sides opposite the corners, and let $$\gamma = \angle ACB$$ be the angle at
+$$C$$. Then
+
+```math
+c^2 = a^2 + b^2 - 2ab\cos\gamma
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Law_of_cosines#Using_vectors"}
+
+Take the steps from $$C$$ to the other two corners, $$X = A - C$$ and $$Y = B - C$$. By
+:ref{#adding-and-scaling-points/distance-norm}, $$|X| = b$$ and $$|Y| = a$$. The two copies of $$C$$
+cancel in $$X - Y = A - B$$, so $$|X - Y| = c$$. The second line below is
+:ref{#segments-rays-and-lines/difference-length}, and the last is :ref{#angle-from-dot}, which says
+$$X \cdot Y = |X|\,|Y|\cos\gamma$$:
+
+```math
+\begin{aligned}
+c^2 &= |X - Y|^2 && \text{the side } AB \\
+&= |X|^2 + |Y|^2 - 2\,X \cdot Y && \text{the length of a difference} \\
+&= b^2 + a^2 - 2\,X \cdot Y && \text{the sides } CA \text{ and } CB \\
+&= a^2 + b^2 - 2ab\cos\gamma && \text{the angle from the dot product}
+\end{aligned}
+```
+
+:::
+
+When $$\gamma = \frac{\pi}{2}$$, the cosine is $$0$$ and the law says $$c^2 = a^2 + b^2$$, which is
+the Pythagoras theorem (:ref{#distance-and-angles/pythagoras}). When $$\gamma$$ is wider than a
+right angle, $$\cos\gamma$$ is negative (:ref{#quadrant-signs}), so $$-2ab\cos\gamma$$ adds to
+$$a^2 + b^2$$ and the third side is longer than Pythagoras would give. When $$\gamma$$ is narrower
+than a right angle, the third side is shorter.
+
+:::example[Across the pond]
+
+From the post $$C$$, the post $$A$$ is $$80$$ m away and the post $$B$$ is $$50$$ m away, with an
+angle of $$\frac{\pi}{3}$$ ($$60^\circ$$) between the two directions. By :ref{#law-of-cosines} and
+:ref{#sin-cos-30-60},
+
+```math
+c^2 = 80^2 + 50^2 - 2 \cdot 80 \cdot 50 \cdot \tfrac{1}{2} = 6400 + 2500 - 4000 = 4900
+```
+
+So the posts are $$\sqrt{4900} = 70$$ m apart, across the water. A right angle at $$C$$ would have
+put them $$\sqrt{8900} \approx 94.3$$ m apart.
+
+:::
+
+```plane
+point C 0 0 sw
+point A 8 0 se
+point B 2.5 4.33 n
+polygon C A B color=blue
+segment C A label="80 m" side=right
+segment C B label="50 m"
+segment A B color=orange dashed label="70 m" side=right
+angle A C B color=green label="π/3" r=0.8
+caption "The posts A and B are 80 m and 50 m from C with π/3 between them, so they are 70 m apart across the pond"
+```
+
+Set the two sides and the angle below, and watch the third side grow as the angle opens. The faint
+point is where $$B$$ would be with a right angle at $$C$$.
+
+<TriangleLaws />
+
+The law also runs backwards. If you know all three sides, solve for the cosine of an angle:
+
+```math
+\cos\gamma = \frac{a^2 + b^2 - c^2}{2ab}
+```
+
+For the triangle with sides $$3$$, $$5$$ and $$7$$, the angle facing the side $$7$$ has cosine
+$$\frac{9 + 25 - 49}{2 \cdot 3 \cdot 5} = \frac{-15}{30} = -\frac{1}{2}$$. By
+:ref{#supplement-identities}, $$\cos\frac{2\pi}{3} = -\cos\frac{\pi}{3} = -\frac{1}{2}$$, and
+$$\frac{2\pi}{3}$$ is between $$0$$ and $$\pi$$. So the angle is $$\frac{2\pi}{3}$$, which is
+$$120^\circ$$ (:ref{#inverse-sin-cos}).
+
+## Area from two sides and the angle
+
+Lean a ladder of length $$a$$ against a wall at an angle $$\gamma$$ to the ground, and its top is
+$$a\sin\gamma$$ up (:ref{#right-triangle-ratios}). A triangle's height works the same way. Stand the
+triangle on its side $$CA$$, and the side $$CB$$ is the ladder: the corner $$B$$ is $$a\sin\gamma$$
+above the line $$CA$$. When $$\gamma$$ is wider than a right angle, the ladder leans back past
+$$C$$, but the height is $$a\sin(\pi - \gamma)$$, which is still $$a\sin\gamma$$
+(:ref{#supplement-identities}).
+
+:::theorem[Area from two sides and the angle]{#area-sine}
+
+In a triangle with corners $$A$$, $$B$$ and $$C$$, with $$a = d(B, C)$$, $$b = d(C, A)$$ and
+$$\gamma = \angle ACB$$,
+
+```math
+\text{area} = \tfrac{1}{2}ab\sin\gamma
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Area_of_Triangle_in_Terms_of_Two_Sides_and_Angle"}
+
+Take the side $$CA$$ as the base, of length $$b$$. The proof works out the height $$h$$, the
+distance from $$B$$ to the line $$CA$$ (:ref{#distance-and-angles/height}), with coordinates, so
+that wide and narrow angles are handled together.
+
+**The foot of the height.** The line $$CA$$ is the line $$C + t(A - C)$$
+(:ref{#segments-rays-and-lines/two-point-line}). Let $$F$$ be its closest point to $$B$$, given by
+:ref{#segments-rays-and-lines/closest-point}:
+
+```math
+F = C + t_0(A - C) \qquad t_0 = \frac{(B - C) \cdot (A - C)}{|A - C|^2}
+```
+
+$$F$$ is the foot of the perpendicular from $$B$$, so $$h = |B - F|$$, as the paragraph after
+:ref{#segments-rays-and-lines/closest-point} explains.
+
+**The distance from C to the foot.** By :ref{#angle-from-dot},
+$$(B - C) \cdot (A - C) = ab\cos\gamma$$, and $$|A - C| = b$$. So by
+:ref{#adding-and-scaling-points/norm-scale},
+
+```math
+|F - C| = |t_0|\,|A - C| = \frac{|ab\cos\gamma|}{b^2}\,b = a\,|\cos\gamma|
+```
+
+**The height.** :ref{#segments-rays-and-lines/closest-point} with $$Y = C$$ gives
+$$|B - C|^2 = |B - F|^2 + |F - C|^2$$. So, using :ref{#pythagorean-identity} in the last line,
+
+```math
+\begin{aligned}
+h^2 &= |B - C|^2 - |F - C|^2 && \text{taking } |F - C|^2 \text{ from both sides} \\
+&= a^2 - a^2\cos^2\gamma && \text{the side } CB \text{ and the step above} \\
+&= a^2(1 - \cos^2\gamma) && \text{taking out } a^2 \\
+&= a^2\sin^2\gamma && \text{since } \cos^2\gamma + \sin^2\gamma = 1
+\end{aligned}
+```
+
+The corners don't lie on one line, so $$\gamma$$ is neither the zero angle nor a straight angle, and
+$$0 < \gamma < \pi$$. Then $$\sin\gamma > 0$$, by :ref{#quadrant-signs} and :ref{#quarter-values}.
+Since $$h \ge 0$$ too, $$h = a\sin\gamma$$. By :ref{#distance-and-angles/triangle-area}, the area is
+$$\frac{1}{2}bh = \frac{1}{2}ab\sin\gamma$$.
+
+:::
+
+```plane
+point C 0 0 s
+point A 6 0 se
+point B -2 3.464 n
+point F -2 0 sw
+polygon C A B color=blue
+segment C A label="b" side=right
+segment C B label="a"
+segment A B
+segment F C color=muted dashed
+segment B F color=purple dashed
+text -2.9 1.73 "a sin γ" color=purple
+right B F A color=purple
+angle A C B color=green label="γ" r=0.6
+caption "When the angle γ at C is wider than a right angle, the foot F falls outside the side CA, and the height is still a sin γ"
+```
+
+As a check, a right triangle with legs $$3$$ and $$4$$ has $$\gamma = \frac{\pi}{2}$$, and the
+formula gives $$\frac{1}{2} \cdot 3 \cdot 4 \cdot 1 = 6$$, which is half the $$3$$ by $$4$$
+rectangle. For an equilateral triangle with sides $$2$$, every angle is $$\frac{\pi}{3}$$, and the
+area is $$\frac{1}{2} \cdot 2 \cdot 2 \cdot \frac{\sqrt3}{2} = \sqrt3$$. For the posts across the
+pond, the triangle has area $$\frac{1}{2} \cdot 80 \cdot 50 \cdot \frac{\sqrt3}{2} \approx 1732$$
+square metres.
+
+## The law of sines
+
+The area formula $$\frac{1}{2}ab\sin\gamma$$ works at any corner of a triangle, with the two sides
+that meet there. All three versions give the same area, and setting them equal ties each side to the
+angle facing it. The result is the law of sines: each side divided by the sine of the angle facing
+it gives the same number.
+
+:::theorem[The law of sines]{#law-of-sines}
+
+In a triangle with corners $$A$$, $$B$$ and $$C$$, let $$a$$, $$b$$ and $$c$$ be the sides opposite
+them, and $$\alpha$$, $$\beta$$ and $$\gamma$$ the angles at them. Then
+
+```math
+\frac{a}{\sin\alpha} = \frac{b}{\sin\beta} = \frac{c}{\sin\gamma}
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Law_of_Sines"}
+
+By :ref{#area-sine} at each corner in turn, with the two sides that meet there, the area of the
+triangle is
+
+```math
+\tfrac{1}{2}ab\sin\gamma = \tfrac{1}{2}bc\sin\alpha = \tfrac{1}{2}ca\sin\beta
+```
+
+Divide all three by $$\frac{1}{2}abc$$, which is positive:
+
+```math
+\frac{\sin\gamma}{c} = \frac{\sin\alpha}{a} = \frac{\sin\beta}{b}
+```
+
+Each angle is between $$0$$ and $$\pi$$, so each sine is positive, as in the proof of
+:ref{#area-sine}. Turning all three fractions upside down gives the law.
+
+:::
+
+As a check, take the half equilateral triangle of [Special angles](./special-angles.mdx), with sides
+$$1$$, $$\sqrt3$$ and $$2$$ facing the angles $$\frac{\pi}{6}$$, $$\frac{\pi}{3}$$ and
+$$\frac{\pi}{2}$$. The three fractions are $$\frac{1}{1/2} = 2$$, $$\frac{\sqrt3}{\sqrt3/2} = 2$$
+and $$\frac{2}{1} = 2$$.
+
+:::example[A tree across a river]
+
+You stand at $$P$$ on a straight riverbank, and a friend stands at $$Q$$, $$40$$ m further along. A
+tree $$T$$ grows on the far bank. You measure the angle at $$P$$ between the bank and the direction
+of the tree as $$70^\circ$$, and your friend measures $$60^\circ$$ at $$Q$$. The angles of a
+triangle add up to a straight angle (:ref{#distance-and-angles/triangle-angle-sum}), so the angle at
+$$T$$ is $$180^\circ - 70^\circ - 60^\circ = 50^\circ$$.
+
+The side $$PT$$ faces the angle at $$Q$$, and the side $$PQ$$ faces the angle at $$T$$. By
+:ref{#law-of-sines},
+
+```math
+\frac{d(P, T)}{\sin 60^\circ} = \frac{40}{\sin 50^\circ} \qquad\text{so}\qquad d(P, T) = \frac{40 \sin 60^\circ}{\sin 50^\circ} \approx \frac{40 \cdot 0.866}{0.766} \approx 45.2 \text{ m}
+```
+
+The width of the river is the height of $$T$$ above the bank. The side $$PT$$ leans at $$70^\circ$$
+to the bank, so the width is about $$45.2 \sin 70^\circ \approx 42.5$$ m. Working from $$Q$$ instead
+gives $$d(Q, T) = \frac{40 \sin 70^\circ}{\sin 50^\circ} \approx 49.1$$ m and the same width,
+$$49.1 \sin 60^\circ \approx 42.5$$ m.
+
+:::
+
+```plane
+point P 0 0 sw
+point Q 4 0 se
+point T 1.547 4.249 n
+point F 1.547 0 s
+text 2.8 -0.4 "40 m"
+segment P Q
+segment P T color=blue label="45.2 m"
+segment Q T color=blue label="49.1 m" side=right
+segment T F color=purple dashed
+right T F Q color=purple
+angle Q P T color=green label="70°" r=0.7
+angle T Q P color=green label="60°" r=0.7
+angle P T Q color=orange label="50°" r=0.7
+caption "From P and Q, 40 m apart on the bank, the tree T is 45.2 m and 49.1 m away. The dashed width of the river is about 42.5 m."
+```
+
+### Two sides and an angle that isn't between them
+
+Two sides and the angle between them fix a triangle. Two sides and an angle that is not between them
+may not. The law of sines gives the sine of the missing angle, and two different angles from $$0$$
+to $$\pi$$ share each sine between $$0$$ and $$1$$ (:ref{#same-sine}). For example, take an angle of
+$$\frac{\pi}{6}$$ ($$30^\circ$$) at $$A$$, with $$d(A, B) = 10$$ and $$d(B, C) = 6$$, and $$C$$ on a
+fixed ray from $$A$$. By :ref{#law-of-sines},
+
+```math
+\sin\gamma = \frac{10 \sin(\pi/6)}{6} = \frac{10 \cdot \frac{1}{2}}{6} = \frac{5}{6}
+```
+
+Both $$\gamma \approx 0.985$$ ($$56.4^\circ$$) and $$\gamma \approx \pi - 0.985 \approx 2.156$$
+($$123.6^\circ$$) have that sine, and either one leaves room for the angle at $$A$$. So there are
+two triangles. Swing a side of length $$6$$ about $$B$$, and it meets the ray from $$A$$ at two
+points, $$C_1$$ and $$C_2$$.
+
+```plane
+scale 0.4
+point A 0 0 sw
+point X 13.5 0 hidden
+point B 8.66 5 n
+point C1 5.344 0 s
+point C2 11.977 0 s
+ray A X color=muted
+segment A B label="10"
+segment B C1 color=blue label="6"
+segment B C2 color=orange label="6" side=right
+segment C1 C2 color=muted dashed
+angle X A B color=green label="30°" r=1.6
+caption "With 30° at A, AB = 10 and BC = 6, the side BC can reach the ray from A at C1 or at C2, so there are two different triangles"
+```
+
+## Zooms keep angles
+
+Zoom in on a photo and a square corner stays square. Every other corner keeps its size too. That was
+rule 3 of :ref{#area-and-scaling/zoom-rules}, taken as given there. With :ref{#angle-from-dot} it
+can be proved. A zoom by $$r$$ multiplies every step by $$r$$, so it multiplies the dot product by
+$$r^2$$ and each length by $$r$$, and those factors cancel in the cosine.
+
+Here are numbers first. The zoom by $$2$$ about $$Q = (1, 0)$$ sends $$X$$ to $$Q + 2(X - Q)$$
+(:ref{#adding-and-scaling-points/zoom-formula}). It sends $$P = (1, 1)$$, $$M = (3, 1)$$ and
+$$N = (2, 2)$$ to $$P' = (1, 2)$$, $$M' = (5, 2)$$ and $$N' = (3, 4)$$. Before the zoom, the steps
+from $$P$$ are $$(2, 0)$$ and $$(1, 1)$$, with dot product $$2$$ and lengths $$2$$ and $$\sqrt2$$.
+After it, the steps from $$P'$$ are $$(4, 0)$$ and $$(2, 2)$$, with dot product $$8$$ and lengths
+$$4$$ and $$2\sqrt2$$. Both times the cosine is $$\frac{1}{\sqrt2}$$, since
+$$\frac{2}{2\sqrt2} = \frac{8}{8\sqrt2}$$.
+
+```plane
+scale 1.4
+point Q 1 0 s
+point P 1 1 w
+point M 3 1 s
+point N 2 2 n
+point P' 1 2 w
+point M' 5 2 se
+point N' 3 4 n
+ray P M color=blue extend=0.3
+ray P N color=blue extend=0.3
+ray P' M' color=orange extend=0.3
+ray P' N' color=orange extend=0.3
+angle M P N color=blue r=0.5
+angle M' P' N' color=orange r=0.9
+caption "The zoom by 2 about Q = (1, 0) sends the angle at P to the angle at P', and both measure π/4"
+```
+
+:::theorem[Zooms keep angles]{#zoom-angles}
+
+Let $$Q$$ be a point and $$r > 0$$, and write $$X'$$ for $$Z_{r,Q}(X)$$. Let $$P$$, $$M$$ and $$N$$
+be points with $$M \ne P$$ and $$N \ne P$$. Then the zoom sends the rays $$PM$$ and $$PN$$ to the
+rays $$P'M'$$ and $$P'N'$$, and
+
+```math
+\angle M'P'N' = \angle MPN
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Homothety#Properties"}
+
+**Steps are multiplied by r.** By :ref{#adding-and-scaling-points/zoom-formula}, the two copies of
+$$Q$$ cancel:
+
+```math
+M' - P' = \big(Q + r(M - Q)\big) - \big(Q + r(P - Q)\big) = r(M - Q) - r(P - Q) = r(M - P)
+```
+
+In the same way $$N' - P' = r(N - P)$$. Since $$r > 0$$ and $$M - P \ne O$$, these steps are not
+$$O$$, so $$M' \ne P'$$ and $$N' \ne P'$$.
+
+**Arms go to arms.** The ray $$PM$$ is made of the points $$P + t(M - P)$$ with $$t \ge 0$$
+(:ref{#segments-rays-and-lines/ray-formula}). The zoom sends such a point to
+
+```math
+Q + r\big(P + t(M - P) - Q\big) = Q + r(P - Q) + t\,r(M - P) = P' + t(M' - P')
+```
+
+with the same $$t$$. So it sends each point of the ray $$PM$$ to a point of the ray $$P'M'$$, and
+each point of the ray $$P'M'$$ comes from one of the ray $$PM$$. The same holds for the rays $$PN$$
+and $$P'N'$$.
+
+**The angle.** By :ref{#angle-from-dot}, then parts 1 and 3 of
+:ref{#segments-rays-and-lines/dot-rules} and :ref{#adding-and-scaling-points/norm-scale},
+
+```math
+\cos\angle M'P'N' = \frac{r(M - P) \cdot r(N - P)}{|r(M - P)|\,|r(N - P)|} = \frac{r^2\,(M - P) \cdot (N - P)}{r^2\,|M - P|\,|N - P|} = \cos\angle MPN
+```
+
+Both angles are between $$0$$ and $$\pi$$ (:ref{#distance-and-angles/angle-name}), and by
+:ref{#inverse-sin-cos} only one angle in that range has a given cosine. So
+$$\angle M'P'N' = \angle MPN$$.
+
+:::
+
+The reflex angle at $$P$$ is what is left of a full turn, so the zoom keeps it too. This proves rule
+3 of :ref{#area-and-scaling/zoom-rules}, for zooms about any centre. The other two rules are proved
+already, by :ref{#coordinates/origin-zoom} and :ref{#segments-rays-and-lines/moves-keep-lines}, so
+none of the rules for zooms is still taken as given.
+
+It also settles the angles of similar shapes. A shape similar to another is a zoom of it followed by
+an isometry (:ref{#area-and-scaling/similar}), and both keep angles (:ref{#zoom-angles},
+:ref{#isometries/isometry-angles}). So two similar triangles have the same three angles, matched up
+corner by corner.
+
+## Exercises
+
+:::::accordion[Exercises on angles in any triangle, with solutions]
+
+::::exercise{#ex-triangles-angle-between}
+
+Find the angle $$\angle AOB$$ for each pair of points, in radians and in degrees.
+
+1. $$A = (2, 0)$$ and $$B = (1, \sqrt3)$$
+2. $$A = (3, 3)$$ and $$B = (-4, 0)$$
+
+:::solution
+
+By :ref{#angle-from-dot}, the cosine of the angle is the dot product divided by the two lengths.
+
+1. $$A \cdot B = 2$$, $$|A| = 2$$ and $$|B| = \sqrt{1 + 3} = 2$$, so
+   $$\cos\angle AOB = \frac{2}{4} = \frac{1}{2}$$. By :ref{#sin-cos-30-60},
+   $$\cos\frac{\pi}{3} = \frac{1}{2}$$, so $$\angle AOB = \frac{\pi}{3}$$, which is $$60^\circ$$.
+2. $$A \cdot B = -12$$, $$|A| = \sqrt{18} = 3\sqrt2$$ and $$|B| = 4$$, so
+   $$\cos\angle AOB = \frac{-12}{12\sqrt2} = -\frac{1}{\sqrt2}$$. By :ref{#supplement-identities}
+   and :ref{#sin-cos-45}, $$\cos\frac{3\pi}{4} = -\cos\frac{\pi}{4} = -\frac{1}{\sqrt2}$$, so
+   $$\angle AOB = \frac{3\pi}{4}$$, which is $$135^\circ$$.
+
+In both parts the angle is between $$0$$ and $$\pi$$, so it is the one :ref{#inverse-sin-cos} picks.
+
+:::
+
+::::
+
+::::exercise{#ex-triangles-third-side}
+
+Two sides of a triangle are $$5$$ cm and $$8$$ cm, with an angle of $$\frac{\pi}{3}$$ ($$60^\circ$$)
+between them. Find the third side and the area.
+
+:::solution
+
+By :ref{#law-of-cosines}, with $$\cos\frac{\pi}{3} = \frac{1}{2}$$,
+
+```math
+c^2 = 25 + 64 - 2 \cdot 5 \cdot 8 \cdot \tfrac{1}{2} = 89 - 40 = 49
+```
+
+so the third side is $$7$$ cm. By :ref{#area-sine}, with $$\sin\frac{\pi}{3} = \frac{\sqrt3}{2}$$,
+the area is $$\frac{1}{2} \cdot 5 \cdot 8 \cdot \frac{\sqrt3}{2} = 10\sqrt3 \approx 17.3$$ square
+cm.
+
+:::
+
+::::
+
+::::exercise{#ex-triangles-buoy}
+
+Two friends stand $$200$$ m apart on a straight beach, at $$A$$ and $$B$$, and both look at a buoy
+$$C$$ out at sea. The angle at $$A$$ between the beach and the buoy is $$40^\circ$$, and at $$B$$ it
+is $$75^\circ$$. How far is the buoy from each friend?
+
+:::solution
+
+The angles add up to $$180^\circ$$ (:ref{#distance-and-angles/triangle-angle-sum}), so the angle at
+$$C$$ is $$180^\circ - 40^\circ - 75^\circ = 65^\circ$$, facing the side $$AB = 200$$. By
+:ref{#law-of-sines}, each side is $$\frac{200}{\sin 65^\circ}$$ times the sine of the angle facing
+it. The side $$AC$$ faces the angle at $$B$$, and $$BC$$ faces the angle at $$A$$:
+
+```math
+d(A, C) = \frac{200 \sin 75^\circ}{\sin 65^\circ} \approx \frac{200 \cdot 0.966}{0.906} \approx 213.2 \text{ m} \qquad d(B, C) = \frac{200 \sin 40^\circ}{\sin 65^\circ} \approx \frac{200 \cdot 0.643}{0.906} \approx 141.8 \text{ m}
+```
+
+So the friend at $$B$$ is nearer to the buoy.
+
+:::
+
+::::
+
+::::exercise{#ex-triangles-how-many}
+
+A triangle has an angle of $$40^\circ$$ at $$A$$ and $$d(A, B) = 9$$. For each length of the side
+$$BC$$ below, say how many triangles there are, and find the angle at $$C$$ in each.
+
+1. $$d(B, C) = 7$$
+2. $$d(B, C) = 5$$
+3. $$d(B, C) = 10$$
+
+:::solution
+
+By :ref{#law-of-sines}, $$\frac{\sin\gamma}{9} = \frac{\sin 40^\circ}{d(B, C)}$$, so
+$$\sin\gamma = \frac{9\sin 40^\circ}{d(B, C)}$$, with $$\sin 40^\circ \approx 0.643$$. An angle
+between $$0^\circ$$ and $$180^\circ$$ with a given sine below $$1$$ is one of two, $$\gamma$$ or
+$$180^\circ - \gamma$$ (:ref{#same-sine}). Each one gives a triangle exactly when it leaves room for
+the $$40^\circ$$ at $$A$$, that is, when it is less than $$140^\circ$$.
+
+1. $$\sin\gamma \approx 0.826$$, so $$\gamma \approx 55.7^\circ$$ or $$\gamma \approx 124.3^\circ$$.
+   Both are less than $$140^\circ$$, so there are two triangles.
+2. $$\sin\gamma \approx 1.157$$, but no sine is more than $$1$$ (:ref{#sine-and-cosine-bounds}). So
+   there is no triangle: the side $$BC$$ is too short to reach the ray from $$A$$.
+3. $$\sin\gamma \approx 0.579$$, so $$\gamma \approx 35.3^\circ$$ or $$\gamma \approx 144.7^\circ$$.
+   Only the first is less than $$140^\circ$$, so there is one triangle.
+
+:::
+
+::::
+
+::::exercise{#ex-triangles-obtuse-test}
+
+In a triangle with sides $$a$$, $$b$$ and $$c$$, and the angle $$\gamma$$ facing $$c$$, show that
+$$\gamma$$ is wider than a right angle exactly when $$c^2 > a^2 + b^2$$. Then decide whether the
+triangle with sides $$4$$, $$5$$ and $$6$$ has an angle wider than a right angle.
+
+:::solution
+
+By :ref{#law-of-cosines}, $$c^2 - (a^2 + b^2) = -2ab\cos\gamma$$. Since $$2ab > 0$$, this is
+positive exactly when $$\cos\gamma < 0$$. The angle is between $$0$$ and $$\pi$$, and there
+$$\cos\gamma$$ is positive for $$\gamma < \frac{\pi}{2}$$, $$0$$ at $$\frac{\pi}{2}$$ and negative
+for $$\gamma > \frac{\pi}{2}$$ (:ref{#quadrant-signs}, :ref{#quarter-values}). So
+$$c^2 > a^2 + b^2$$ exactly when $$\gamma > \frac{\pi}{2}$$.
+
+Test each angle with the side it faces. For the side $$6$$, $$36 < 16 + 25 = 41$$. For the side
+$$5$$, $$25 < 16 + 36$$, and for the side $$4$$, $$16 < 25 + 36$$. So no angle is wider than a right
+angle.
+
+:::
+
+::::
+
+::::exercise{#ex-triangles-four-five-six}
+
+In the triangle with sides $$4$$, $$5$$ and $$6$$, find the cosines of the angles facing the sides
+$$4$$ and $$6$$. Then use :ref{#double-angle} to show that the angle facing $$6$$ is exactly twice
+the angle facing $$4$$.
+
+:::solution
+
+Let $$x$$ be the angle facing the side $$4$$ and $$y$$ the angle facing the side $$6$$. By
+:ref{#law-of-cosines}, solved for the cosine,
+
+```math
+\cos x = \frac{25 + 36 - 16}{2 \cdot 5 \cdot 6} = \frac{45}{60} = \frac{3}{4} \qquad \cos y = \frac{16 + 25 - 36}{2 \cdot 4 \cdot 5} = \frac{5}{40} = \frac{1}{8}
+```
+
+By :ref{#double-angle},
+
+```math
+\cos 2x = 2\cos^2 x - 1 = 2 \cdot \tfrac{9}{16} - 1 = \tfrac{18}{16} - \tfrac{16}{16} = \tfrac{1}{8}
+```
+
+Since $$\cos x > 0$$, the angle $$x$$ is less than $$\frac{\pi}{2}$$ (:ref{#quadrant-signs}), so
+$$2x$$ is between $$0$$ and $$\pi$$. So $$2x$$ and $$y$$ are both between $$0$$ and $$\pi$$ with
+cosine $$\frac{1}{8}$$, and by :ref{#inverse-sin-cos} they are equal. In degrees,
+$$x \approx 41.4^\circ$$ and $$y \approx 82.8^\circ$$.
+
+:::
+
+::::
+
+::::exercise{#ex-triangles-projection}
+
+In a triangle with sides $$a$$, $$b$$ and $$c$$ facing the angles $$\alpha$$, $$\beta$$ and
+$$\gamma$$, show that
+
+```math
+a = b\cos\gamma + c\cos\beta
+```
+
+Check it with the triangle with sides $$a = 7$$, $$b = 3$$ and $$c = 5$$.
+
+:::solution
+
+The angle $$\gamma$$ sits between the sides $$a$$ and $$b$$, and $$\beta$$ between $$a$$ and $$c$$.
+By :ref{#law-of-cosines}, solved for each cosine,
+
+```math
+b\cos\gamma = b \cdot \frac{a^2 + b^2 - c^2}{2ab} = \frac{a^2 + b^2 - c^2}{2a} \qquad c\cos\beta = c \cdot \frac{a^2 + c^2 - b^2}{2ac} = \frac{a^2 + c^2 - b^2}{2a}
+```
+
+Adding, the $$b^2$$ and $$c^2$$ cancel, and
+
+```math
+b\cos\gamma + c\cos\beta = \frac{2a^2}{2a} = a
+```
+
+For the check, $$\cos\gamma = \frac{49 + 9 - 25}{42} = \frac{33}{42}$$ and
+$$\cos\beta = \frac{49 + 25 - 9}{70} = \frac{65}{70}$$. Then
+$$3 \cdot \frac{33}{42} + 5 \cdot \frac{65}{70} = \frac{33}{14} + \frac{65}{14} = \frac{98}{14} = 7$$.
+
+:::
+
+::::
+
+::::exercise{#ex-triangles-zoom}
+
+The triangle with corners $$P = (0, 0)$$, $$M = (4, 0)$$ and $$N = (1, 3)$$ is zoomed by $$3$$ about
+$$Q = (2, 1)$$. Find the corners $$P'$$, $$M'$$ and $$N'$$ of the image, and check with
+:ref{#angle-from-dot} that the angle at $$P'$$ has the same cosine as the angle at $$P$$.
+
+:::solution
+
+By :ref{#adding-and-scaling-points/zoom-formula}, each point $$X$$ goes to $$Q + 3(X - Q)$$:
+
+```math
+P' = (2, 1) + 3(-2, -1) = (-4, -2) \qquad M' = (2, 1) + 3(2, -1) = (8, -2) \qquad N' = (2, 1) + 3(-1, 2) = (-1, 7)
+```
+
+At $$P$$, the steps are $$(4, 0)$$ and $$(1, 3)$$, with dot product $$4$$ and lengths $$4$$ and
+$$\sqrt{10}$$, so the cosine is $$\frac{4}{4\sqrt{10}} = \frac{1}{\sqrt{10}}$$. At $$P'$$, the steps
+are $$(12, 0)$$ and $$(3, 9)$$, three times as long, with dot product $$36$$ and lengths $$12$$ and
+$$\sqrt{90} = 3\sqrt{10}$$. The cosine is $$\frac{36}{36\sqrt{10}} = \frac{1}{\sqrt{10}}$$, the
+same, as :ref{#zoom-angles} says. The angle is about $$1.25$$ radians, or $$71.6^\circ$$.
+
+:::
+
+::::
+
+:::::

@@ -1,0 +1,790 @@
+{
+  "title": "Trigonometry",
+  "description": "Questions on radians, sine and cosine, right triangles, identities, graphs, the tangent, turns and triangles.",
+  "questions": [
+    {
+      "id": "full-turn",
+      "stars": 1,
+      "topic": "Radians",
+      "question": "How many radians make a full turn?",
+      "options": [
+        "$$360$$",
+        "$$2\\pi$$, about $$6.28$$",
+        "$$\\pi$$, about $$3.14$$",
+        "$$1$$"
+      ],
+      "answer": 1,
+      "explanation": "A full turn travels once round a circle of radius $$1$$, which has length $$2\\pi$$ (:ref{#radian-arc-sector}). Half a turn is $$\\pi$$."
+    },
+    {
+      "id": "deg-to-rad",
+      "stars": 1,
+      "topic": "Radians",
+      "question": "What is $$135^\\circ$$ in radians?",
+      "options": [
+        "$$\\frac{3\\pi}{4}$$",
+        "$$\\frac{4\\pi}{3}$$",
+        "$$\\frac{3\\pi}{2}$$",
+        "$$135\\pi$$"
+      ],
+      "answer": 0,
+      "explanation": "Multiply by $$\\frac{\\pi}{180}$$ (:ref{#radian}): $$\\frac{135\\pi}{180} = \\frac{3\\pi}{4}$$. As a check, $$135^\\circ$$ is three quarters of a straight angle, and a straight angle is $$\\pi$$."
+    },
+    {
+      "id": "one-radian",
+      "stars": 2,
+      "topic": "Radians",
+      "question": "What is special about an angle of $$1$$ radian at the centre of a circle?",
+      "options": [
+        "It cuts an arc of length $$1$$ whatever the radius",
+        "It is a right angle",
+        "It cuts off a sector of area $$1$$ whatever the radius",
+        "It cuts an arc as long as the radius"
+      ],
+      "answer": 3,
+      "explanation": "An angle of $$x$$ radians cuts an arc of length $$rx$$ (:ref{#radian-arc-sector}), so with $$x = 1$$ the arc is $$r$$, as long as the radius. That is about $$57.3^\\circ$$."
+    },
+    {
+      "id": "sector",
+      "stars": 2,
+      "topic": "Radians",
+      "question": "What is the area of the sector cut by an angle of $$\\frac{\\pi}{4}$$ from a disc of radius $$4$$?",
+      "options": [
+        "$$\\pi$$",
+        "$$4\\pi$$",
+        "$$2\\pi$$",
+        "$$\\frac{\\pi}{4}$$"
+      ],
+      "answer": 2,
+      "explanation": "The sector has area $$\\frac12 r^2 x$$ (:ref{#radian-arc-sector}): $$\\frac12 \\cdot 16 \\cdot \\frac{\\pi}{4} = 2\\pi$$. It is an eighth of the disc, whose area is $$16\\pi$$."
+    },
+    {
+      "id": "turn-reduce",
+      "stars": 2,
+      "topic": "Radians",
+      "question": "Which turn is the same as $$G_{7\\pi/2}$$?",
+      "options": [
+        "$$G_{\\pi/2}$$, a quarter turn",
+        "$$G_{3\\pi/2}$$, three quarters of a turn",
+        "$$G_{\\pi}$$, a half turn",
+        "The identity"
+      ],
+      "answer": 1,
+      "explanation": "$$\\frac{7\\pi}{2} = \\frac{3\\pi}{2} + 2\\pi$$, and a whole turn more makes no difference (:ref{#radian-turns})."
+    },
+    {
+      "id": "definition",
+      "stars": 1,
+      "topic": "Sine and cosine",
+      "question": "Turn the point $$(1, 0)$$ about the origin by $$x$$ radians. Where does it land?",
+      "options": [
+        "At $$(\\cos x, \\sin x)$$",
+        "At $$(\\sin x, \\cos x)$$",
+        "At $$(x, \\sin x)$$",
+        "At $$(\\cos x, \\tan x)$$"
+      ],
+      "answer": 0,
+      "explanation": "That is the definition (:ref{#sine-cosine}): cosine is how far across, and sine is how far up."
+    },
+    {
+      "id": "pythagorean",
+      "stars": 1,
+      "topic": "Sine and cosine",
+      "question": "Which equation holds for every number $$x$$?",
+      "options": [
+        "$$\\cos x + \\sin x = 1$$",
+        "$$\\cos^2 x - \\sin^2 x = 1$$",
+        "$$\\sin^2 x = \\sin(x^2)$$",
+        "$$\\cos^2 x + \\sin^2 x = 1$$"
+      ],
+      "answer": 3,
+      "explanation": "The point $$(\\cos x, \\sin x)$$ lies on the unit circle, at distance $$1$$ from $$O$$ (:ref{#pythagorean-identity}). The sum $$\\cos x + \\sin x$$ is $$\\sqrt2$$ at $$\\frac{\\pi}{4}$$, so it isn't always $$1$$."
+    },
+    {
+      "id": "signs",
+      "stars": 2,
+      "topic": "Sine and cosine",
+      "question": "For $$x = 2.5$$, which is between $$\\frac{\\pi}{2}$$ and $$\\pi$$, what are the signs of $$\\cos x$$ and $$\\sin x$$?",
+      "options": [
+        "Both positive",
+        "Both negative",
+        "$$\\cos x < 0$$ and $$\\sin x > 0$$",
+        "$$\\cos x > 0$$ and $$\\sin x < 0$$"
+      ],
+      "answer": 2,
+      "explanation": "The point is in the second quadrant, left of the $$y$$-axis and above the $$x$$-axis (:ref{#quadrant-signs}). In fact $$\\cos 2.5 \\approx -0.80$$ and $$\\sin 2.5 \\approx 0.60$$."
+    },
+    {
+      "id": "from-sine",
+      "stars": 2,
+      "topic": "Sine and cosine",
+      "question": "If $$\\sin x = \\frac35$$ and the point for $$x$$ is in the second quadrant, what is $$\\cos x$$?",
+      "options": [
+        "$$\\frac45$$",
+        "$$-\\frac45$$",
+        "$$\\frac25$$",
+        "$$-\\frac25$$"
+      ],
+      "answer": 1,
+      "explanation": "$$\\cos^2 x = 1 - \\frac{9}{25} = \\frac{16}{25}$$ (:ref{#pythagorean-identity}), so $$\\cos x = \\pm\\frac45$$, and cosine is negative in the second quadrant (:ref{#quadrant-signs})."
+    },
+    {
+      "id": "calculator",
+      "stars": 2,
+      "topic": "Sine and cosine",
+      "question": "A calculator in radian mode gives $$\\sin 30 \\approx -0.988$$. Why isn't it $$\\frac12$$?",
+      "options": [
+        "It turned by $$30$$ radians, not $$30^\\circ$$",
+        "The calculator is broken",
+        "Sine is negative for big angles",
+        "$$\\frac12$$ is only roughly right"
+      ],
+      "answer": 0,
+      "explanation": "In radian mode, $$30$$ means $$30$$ radians, almost five full turns. Switch to degree mode, or type $$\\frac{\\pi}{6}$$, to get $$\\frac12$$ (:ref{#radian})."
+    },
+    {
+      "id": "sin30",
+      "stars": 1,
+      "topic": "Special angles",
+      "question": "What is $$\\sin\\frac{\\pi}{6}$$, the sine of $$30^\\circ$$?",
+      "options": [
+        "$$\\frac{\\sqrt3}{2}$$",
+        "$$\\frac{\\sqrt2}{2}$$",
+        "$$\\frac{\\pi}{6}$$",
+        "$$\\frac12$$"
+      ],
+      "answer": 3,
+      "explanation": "Half an equilateral triangle with sides $$2$$ has a side $$1$$ opposite its $$30^\\circ$$ angle and hypotenuse $$2$$ (:ref{#sin-cos-30-60})."
+    },
+    {
+      "id": "cos45",
+      "stars": 1,
+      "topic": "Special angles",
+      "question": "What is $$\\cos\\frac{\\pi}{4}$$, the cosine of $$45^\\circ$$?",
+      "options": [
+        "$$\\frac12$$",
+        "$$1$$",
+        "$$\\frac{\\sqrt2}{2}$$",
+        "$$\\frac{\\sqrt3}{2}$$"
+      ],
+      "answer": 2,
+      "explanation": "Half a square with sides $$1$$ has a diagonal $$\\sqrt2$$, so the cosine is $$\\frac{1}{\\sqrt2} = \\frac{\\sqrt2}{2}$$ (:ref{#sin-cos-45})."
+    },
+    {
+      "id": "pattern",
+      "stars": 2,
+      "topic": "Special angles",
+      "question": "Sine at $$0, \\frac{\\pi}{6}, \\frac{\\pi}{4}, \\frac{\\pi}{3}, \\frac{\\pi}{2}$$ follows the pattern $$\\frac{\\sqrt0}{2}, \\frac{\\sqrt1}{2}, \\frac{\\sqrt2}{2}, \\frac{\\sqrt3}{2}, \\frac{\\sqrt4}{2}$$. What does cosine do at the same angles?",
+      "options": [
+        "The same list",
+        "The same list backwards",
+        "Every value doubled",
+        "The list with minus signs"
+      ],
+      "answer": 1,
+      "explanation": "Cosine at an angle is sine at the angle that makes a right angle with it (:ref{#complement-identities}), so the list runs the other way. The triangles are the reason the values are right (:ref{#sin-cos-30-60})."
+    },
+    {
+      "id": "wheel",
+      "stars": 2,
+      "topic": "Special angles",
+      "question": "A seat on a wheel of radius $$10$$ m starts level with the centre and turns by $$\\frac{\\pi}{6}$$. How far above the centre is it?",
+      "options": [
+        "$$5$$ m",
+        "$$5\\sqrt3 \\approx 8.7$$ m",
+        "$$\\frac{10\\pi}{6}$$ m",
+        "$$10$$ m"
+      ],
+      "answer": 0,
+      "explanation": "It is at $$(10\\cos\\frac{\\pi}{6}, 10\\sin\\frac{\\pi}{6})$$ (:ref{#circle-point-radius}), so its height is $$10 \\cdot \\frac12 = 5$$ m."
+    },
+    {
+      "id": "soh",
+      "stars": 1,
+      "topic": "Sine and cosine in right triangles",
+      "question": "In a right triangle, what is $$\\sin\\theta$$ for one of the other angles $$\\theta$$?",
+      "options": [
+        "Adjacent side divided by hypotenuse",
+        "Opposite side divided by adjacent side",
+        "Hypotenuse divided by opposite side",
+        "Opposite side divided by hypotenuse"
+      ],
+      "answer": 3,
+      "explanation": "Put the corner at $$O$$ with the adjacent side along the $$x$$-axis, and the far corner is the hypotenuse times $$(\\cos\\theta, \\sin\\theta)$$ (:ref{#right-triangle-ratios})."
+    },
+    {
+      "id": "size",
+      "stars": 2,
+      "topic": "Sine and cosine in right triangles",
+      "question": "Two right triangles have the same angle $$\\theta$$, but one is three times as big. How do their values of $$\\frac{\\text{opposite}}{\\text{hypotenuse}}$$ compare?",
+      "options": [
+        "The big one's is three times as big",
+        "The big one's is nine times as big",
+        "They are equal",
+        "The big one's is a third"
+      ],
+      "answer": 2,
+      "explanation": "Both ratios equal $$\\sin\\theta$$ (:ref{#right-triangle-ratios}). Zooming multiplies both sides by the same number, which cancels."
+    },
+    {
+      "id": "ladder",
+      "stars": 2,
+      "topic": "Sine and cosine in right triangles",
+      "question": "A $$4$$ m ladder leans against a wall, making $$\\frac{\\pi}{3}$$ ($$60^\\circ$$) with the ground. How high up the wall does it reach?",
+      "options": [
+        "$$2$$ m",
+        "$$2\\sqrt3 \\approx 3.46$$ m",
+        "$$4$$ m",
+        "$$\\frac{4\\pi}{3}$$ m"
+      ],
+      "answer": 1,
+      "explanation": "The height is the side opposite the angle, so it is $$4\\sin\\frac{\\pi}{3} = 4 \\cdot \\frac{\\sqrt3}{2}$$ (:ref{#right-triangle-ratios})."
+    },
+    {
+      "id": "inverse-not-reciprocal",
+      "stars": 2,
+      "topic": "Sine and cosine in right triangles",
+      "question": "What does $$\\sin^{-1}\\frac12$$ mean?",
+      "options": [
+        "The angle in $$[-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$$ whose sine is $$\\frac12$$, which is $$\\frac{\\pi}{6}$$",
+        "$$\\frac{1}{\\sin(1/2)}$$",
+        "$$(\\sin\\frac12)^{-1}$$, about $$2.09$$",
+        "$$-\\sin\\frac12$$"
+      ],
+      "answer": 0,
+      "explanation": "The $$-1$$ means the inverse, not a power (:ref{#inverse-sin-cos}). The button finds the angle."
+    },
+    {
+      "id": "two-answers",
+      "stars": 3,
+      "topic": "Sine and cosine in right triangles",
+      "question": "How many numbers $$x$$ with $$0 \\le x < 2\\pi$$ have $$\\sin x = \\frac12$$?",
+      "options": [
+        "One: $$\\frac{\\pi}{6}$$",
+        "Four",
+        "None",
+        "Two: $$\\frac{\\pi}{6}$$ and $$\\frac{5\\pi}{6}$$"
+      ],
+      "answer": 3,
+      "explanation": "Two points of the unit circle are at height $$\\frac12$$, mirror images in the $$y$$-axis (:ref{#same-sine}). The button gives only the one on the right."
+    },
+    {
+      "id": "polygon",
+      "stars": 3,
+      "topic": "Sine and cosine in right triangles",
+      "question": "What is the side of the regular hexagon in a circle of radius $$3$$?",
+      "options": [
+        "$$6$$",
+        "$$\\frac{3}{2}$$",
+        "$$3$$",
+        "$$3\\sqrt3$$"
+      ],
+      "answer": 2,
+      "explanation": "The side is $$2r\\sin\\frac{\\pi}{n} = 6\\sin\\frac{\\pi}{6} = 3$$ (:ref{#polygon-side}), as long as the radius."
+    },
+    {
+      "id": "negative",
+      "stars": 1,
+      "topic": "Identities you can see",
+      "question": "Which pair is right for every number $$x$$?",
+      "options": [
+        "$$\\cos(-x) = -\\cos x$$ and $$\\sin(-x) = \\sin x$$",
+        "$$\\cos(-x) = \\cos x$$ and $$\\sin(-x) = -\\sin x$$",
+        "Both change sign",
+        "Neither changes"
+      ],
+      "answer": 1,
+      "explanation": "Turning by $$-x$$ lands on the mirror image in the $$x$$-axis: the same distance across, the opposite height (:ref{#negative-angle})."
+    },
+    {
+      "id": "move-for-supplement",
+      "stars": 2,
+      "topic": "Identities you can see",
+      "question": "The point for $$\\pi - x$$ is the point for $$x$$ moved by which move?",
+      "options": [
+        "The flip in the $$y$$-axis",
+        "The flip in the $$x$$-axis",
+        "A quarter turn",
+        "The flip in the line $$y = x$$"
+      ],
+      "answer": 0,
+      "explanation": "The flip in the $$y$$-axis keeps the height and changes the sign across, so $$\\sin(\\pi - x) = \\sin x$$ and $$\\cos(\\pi - x) = -\\cos x$$ (:ref{#supplement-identities})."
+    },
+    {
+      "id": "quarter-turn",
+      "stars": 2,
+      "topic": "Identities you can see",
+      "question": "What is $$\\sin(x + \\frac{\\pi}{2})$$?",
+      "options": [
+        "$$-\\cos x$$",
+        "$$\\sin x + 1$$",
+        "$$-\\sin x$$",
+        "$$\\cos x$$"
+      ],
+      "answer": 3,
+      "explanation": "A quarter turn sends $$(a, b)$$ to $$(-b, a)$$, so the new height is the old distance across (:ref{#quarter-turn-identities})."
+    },
+    {
+      "id": "table",
+      "stars": 2,
+      "topic": "Identities you can see",
+      "question": "What is $$\\cos\\frac{4\\pi}{3}$$?",
+      "options": [
+        "$$\\frac12$$",
+        "$$-\\frac{\\sqrt3}{2}$$",
+        "$$-\\frac12$$",
+        "$$\\frac{\\sqrt3}{2}$$"
+      ],
+      "answer": 2,
+      "explanation": "$$\\frac{4\\pi}{3} = \\pi + \\frac{\\pi}{3}$$, in the third quadrant with reference angle $$\\frac{\\pi}{3}$$, where cosine is negative (:ref{#symmetries-reference-values}). So it is $$-\\cos\\frac{\\pi}{3}$$."
+    },
+    {
+      "id": "fourth",
+      "stars": 3,
+      "topic": "Identities you can see",
+      "question": "What is $$\\cos\\frac{7\\pi}{4}$$?",
+      "options": [
+        "$$-\\frac{\\sqrt2}{2}$$",
+        "$$\\frac{\\sqrt2}{2}$$",
+        "$$\\frac12$$",
+        "$$0$$"
+      ],
+      "answer": 1,
+      "explanation": "$$\\frac{7\\pi}{4}$$ is in the fourth quadrant with reference angle $$\\frac{\\pi}{4}$$, and cosine is positive there (:ref{#symmetries-reference-values})."
+    },
+    {
+      "id": "period",
+      "stars": 1,
+      "topic": "The graphs of sine and cosine",
+      "question": "How often does the graph of $$y = \\sin x$$ repeat?",
+      "options": [
+        "Every $$2\\pi$$",
+        "Every $$\\pi$$",
+        "Every $$1$$",
+        "Every $$\\frac{\\pi}{2}$$"
+      ],
+      "answer": 0,
+      "explanation": "A whole turn brings the point back where it started (:ref{#periodic}), and no shorter shift works (:ref{#graphs-least-period})."
+    },
+    {
+      "id": "shift",
+      "stars": 2,
+      "topic": "The graphs of sine and cosine",
+      "question": "How is the graph of cosine related to the graph of sine?",
+      "options": [
+        "It is the sine graph flipped upside down",
+        "It is the sine graph stretched",
+        "They are unrelated",
+        "It is the sine graph slid left by $$\\frac{\\pi}{2}$$"
+      ],
+      "answer": 3,
+      "explanation": "$$\\cos x = \\sin(x + \\frac{\\pi}{2})$$ (:ref{#cosine-shift}), so the cosine reaches each height $$\\frac{\\pi}{2}$$ earlier."
+    },
+    {
+      "id": "squeeze",
+      "stars": 2,
+      "topic": "The graphs of sine and cosine",
+      "question": "What is the smallest period of $$y = \\sin 3x$$?",
+      "options": [
+        "$$6\\pi$$",
+        "$$2\\pi$$",
+        "$$\\frac{2\\pi}{3}$$",
+        "$$3$$"
+      ],
+      "answer": 2,
+      "explanation": "For $$b > 0$$, $$\\sin bx$$ has smallest period $$\\frac{2\\pi}{b}$$ (:ref{#squeezed-period}): three waves fit where sine has one."
+    },
+    {
+      "id": "zeros",
+      "stars": 2,
+      "topic": "The graphs of sine and cosine",
+      "question": "For which numbers $$x$$ is $$\\cos x = 0$$?",
+      "options": [
+        "$$x = n\\pi$$",
+        "$$x = \\frac{\\pi}{2} + n\\pi$$ for integers $$n$$",
+        "$$x = 2n\\pi$$",
+        "$$x = 0$$ only"
+      ],
+      "answer": 1,
+      "explanation": "The points of the unit circle with first coordinate $$0$$ are $$E_2$$ and $$-E_2$$, at $$\\frac{\\pi}{2}$$ and $$\\frac{3\\pi}{2}$$, half a turn apart (:ref{#trig-zeros})."
+    },
+    {
+      "id": "amplitude",
+      "stars": 1,
+      "topic": "The graphs of sine and cosine",
+      "question": "How high does the graph of $$y = 3\\sin x$$ reach?",
+      "options": [
+        "$$3$$",
+        "$$1$$",
+        "$$\\frac13$$",
+        "$$3\\pi$$"
+      ],
+      "answer": 0,
+      "explanation": "Every height of the sine graph is multiplied by $$3$$, and sine reaches $$1$$ at most (:ref{#sine-and-cosine-bounds})."
+    },
+    {
+      "id": "tan-def",
+      "stars": 1,
+      "topic": "The tangent",
+      "question": "What is $$\\tan x$$?",
+      "options": [
+        "$$\\frac{\\cos x}{\\sin x}$$",
+        "$$\\sin x \\cos x$$",
+        "$$\\frac{1}{\\cos x}$$",
+        "$$\\frac{\\sin x}{\\cos x}$$, when $$\\cos x \\ne 0$$"
+      ],
+      "answer": 3,
+      "explanation": "That is the definition (:ref{#tangent}). It is the slope of the ray at angle $$x$$ (:ref{#tangent-slope})."
+    },
+    {
+      "id": "tan60",
+      "stars": 1,
+      "topic": "The tangent",
+      "question": "What is $$\\tan\\frac{\\pi}{3}$$?",
+      "options": [
+        "$$\\frac{1}{\\sqrt3}$$",
+        "$$1$$",
+        "$$\\sqrt3$$",
+        "$$\\frac{\\sqrt3}{2}$$"
+      ],
+      "answer": 2,
+      "explanation": "$$\\frac{\\sin(\\pi/3)}{\\cos(\\pi/3)} = \\frac{\\sqrt3/2}{1/2} = \\sqrt3$$ (:ref{#tangent}, :ref{#sin-cos-30-60})."
+    },
+    {
+      "id": "tree",
+      "stars": 2,
+      "topic": "The tangent",
+      "question": "From $$20$$ m away, the top of a tree is $$\\frac{\\pi}{4}$$ above level. How tall is the tree above eye level?",
+      "options": [
+        "$$10\\sqrt2$$ m",
+        "$$20$$ m",
+        "$$20\\sqrt2$$ m",
+        "$$10$$ m"
+      ],
+      "answer": 1,
+      "explanation": "The height is the opposite side and $$20$$ m is the adjacent side, so the height is $$20\\tan\\frac{\\pi}{4} = 20$$ (:ref{#tangent-slope})."
+    },
+    {
+      "id": "gradient",
+      "stars": 3,
+      "topic": "The tangent",
+      "question": "A road climbs with a gradient of $$10\\%$$: it rises $$1$$ m for every $$10$$ m across. About what angle does it make with level ground?",
+      "options": [
+        "About $$5.7^\\circ$$",
+        "$$10^\\circ$$",
+        "About $$0.1^\\circ$$",
+        "$$36^\\circ$$"
+      ],
+      "answer": 0,
+      "explanation": "The angle has tangent $$0.1$$, so it is $$\\tan^{-1} 0.1 \\approx 5.7^\\circ$$ (:ref{#inverse-tan})."
+    },
+    {
+      "id": "tan-sec",
+      "stars": 2,
+      "topic": "The tangent",
+      "question": "If $$\\tan x = \\frac34$$, what is $$\\sec^2 x$$?",
+      "options": [
+        "$$\\frac{9}{16}$$",
+        "$$\\frac{7}{16}$$",
+        "$$\\frac{16}{9}$$",
+        "$$\\frac{25}{16}$$"
+      ],
+      "answer": 3,
+      "explanation": "$$1 + \\tan^2 x = \\sec^2 x$$ (:ref{#tan-sec-identity}), so $$\\sec^2 x = 1 + \\frac{9}{16}$$."
+    },
+    {
+      "id": "tan-period",
+      "stars": 2,
+      "topic": "The tangent",
+      "question": "How often does the tangent repeat?",
+      "options": [
+        "Every $$2\\pi$$",
+        "Every $$\\frac{\\pi}{2}$$",
+        "Every $$\\pi$$",
+        "It never repeats"
+      ],
+      "answer": 2,
+      "explanation": "A half turn changes the sign of both sine and cosine, so their ratio stays the same (:ref{#tangent-period})."
+    },
+    {
+      "id": "not-add",
+      "stars": 1,
+      "topic": "Addition formulas",
+      "question": "Which is true for every $$a$$ and $$b$$?",
+      "options": [
+        "$$\\sin(a + b) = \\sin a + \\sin b$$",
+        "$$\\sin(a + b) = \\sin a\\cos b + \\cos a\\sin b$$",
+        "$$\\sin(a + b) = \\sin a\\sin b + \\cos a\\cos b$$",
+        "$$\\sin(a + b) = \\sin a\\sin b$$"
+      ],
+      "answer": 1,
+      "explanation": "That is the addition formula (:ref{#addition-formulas}). With $$a = b = \\frac{\\pi}{4}$$, $$\\sin a + \\sin b = \\sqrt2$$, more than $$1$$, so sines don't add."
+    },
+    {
+      "id": "cos-diff",
+      "stars": 2,
+      "topic": "Addition formulas",
+      "question": "The proof of $$\\cos(a - b) = \\cos a\\cos b + \\sin a\\sin b$$ works out one distance in two ways. Which distance?",
+      "options": [
+        "Between the points for $$a$$ and $$b$$ on the unit circle",
+        "From the origin to the point for $$a$$",
+        "From the point for $$a$$ to the $$x$$-axis",
+        "Between $$a$$ and $$b$$ on the number line"
+      ],
+      "answer": 0,
+      "explanation": "The chord between the points for $$a$$ and $$b$$, turned back by $$b$$, becomes the chord from $$(1, 0)$$ to the point for $$a - b$$. Turns keep distances (:ref{#cos-difference})."
+    },
+    {
+      "id": "cos15",
+      "stars": 3,
+      "topic": "Addition formulas",
+      "question": "What is $$\\cos\\frac{\\pi}{12}$$, the cosine of $$15^\\circ$$?",
+      "options": [
+        "$$\\frac{\\sqrt6 - \\sqrt2}{4}$$",
+        "$$\\frac{\\sqrt3}{4}$$",
+        "$$\\frac12 - \\frac{\\sqrt2}{2}$$",
+        "$$\\frac{\\sqrt6 + \\sqrt2}{4}$$"
+      ],
+      "answer": 3,
+      "explanation": "$$\\frac{\\pi}{12} = \\frac{\\pi}{3} - \\frac{\\pi}{4}$$, so it is $$\\cos\\frac{\\pi}{3}\\cos\\frac{\\pi}{4} + \\sin\\frac{\\pi}{3}\\sin\\frac{\\pi}{4} = \\frac{\\sqrt2 + \\sqrt6}{4}$$ (:ref{#addition-formulas})."
+    },
+    {
+      "id": "double",
+      "stars": 2,
+      "topic": "Addition formulas",
+      "question": "If $$\\sin x = 0.6$$ and $$0 < x < \\frac{\\pi}{2}$$, what is $$\\sin 2x$$?",
+      "options": [
+        "$$1.2$$",
+        "$$0.36$$",
+        "$$0.96$$",
+        "$$0.48$$"
+      ],
+      "answer": 2,
+      "explanation": "$$\\cos x = 0.8$$, and $$\\sin 2x = 2\\sin x\\cos x = 2(0.6)(0.8)$$ (:ref{#double-angle}). Doubling the sine would give $$1.2$$, more than any sine can be."
+    },
+    {
+      "id": "half",
+      "stars": 3,
+      "topic": "Addition formulas",
+      "question": "Which formula gives $$\\cos^2 x$$ from the cosine of $$2x$$?",
+      "options": [
+        "$$\\cos^2 x = \\frac{1 - \\cos 2x}{2}$$",
+        "$$\\cos^2 x = \\frac{1 + \\cos 2x}{2}$$",
+        "$$\\cos^2 x = 2\\cos 2x$$",
+        "$$\\cos^2 x = \\cos 2x - 1$$"
+      ],
+      "answer": 1,
+      "explanation": "$$\\cos 2x = 2\\cos^2 x - 1$$ (:ref{#double-angle}); solve for $$\\cos^2 x$$ (:ref{#half-angle}). Check with $$x = 0$$: both sides are $$1$$."
+    },
+    {
+      "id": "identity-def",
+      "stars": 1,
+      "topic": "Working with identities",
+      "question": "What makes an equation in $$x$$ an identity?",
+      "options": [
+        "It holds for every $$x$$ where both sides are defined",
+        "It holds for at least one $$x$$",
+        "It has a sine in it",
+        "It holds when $$x = 0$$"
+      ],
+      "answer": 0,
+      "explanation": "That is the definition (:ref{#identity}). An equation that holds for only some $$x$$ is one to solve."
+    },
+    {
+      "id": "check-number",
+      "stars": 2,
+      "topic": "Working with identities",
+      "question": "You put $$x = 1$$ into both sides of an equation and get the same number. What does that show?",
+      "options": [
+        "It is an identity",
+        "It is false",
+        "It holds for whole numbers",
+        "Nothing for certain: it is evidence, not a proof"
+      ],
+      "answer": 3,
+      "explanation": "One matching value can be a coincidence. A value that doesn't match shows the equation is not an identity; a proof is needed to show it is one."
+    },
+    {
+      "id": "catch-false",
+      "stars": 2,
+      "topic": "Working with identities",
+      "question": "Which value of $$x$$ shows that $$\\sin 2x = 2\\sin x$$ is not an identity?",
+      "options": [
+        "$$x = 0$$",
+        "$$x = \\pi$$",
+        "$$x = \\frac{\\pi}{2}$$: the left is $$0$$ and the right is $$2$$",
+        "No value: it is an identity"
+      ],
+      "answer": 2,
+      "explanation": "$$\\sin\\pi = 0$$ but $$2\\sin\\frac{\\pi}{2} = 2$$. At $$x = 0$$ and $$x = \\pi$$ both sides are $$0$$, which is why one check is never enough. The right formula is $$\\sin 2x = 2\\sin x\\cos x$$ (:ref{#double-angle})."
+    },
+    {
+      "id": "all-solutions",
+      "stars": 3,
+      "topic": "Working with identities",
+      "question": "Which describes every solution of $$\\sin x = \\frac12$$?",
+      "options": [
+        "$$x = \\frac{\\pi}{6}$$",
+        "$$x = \\frac{\\pi}{6} + 2\\pi n$$ or $$x = \\frac{5\\pi}{6} + 2\\pi n$$",
+        "$$x = \\frac{\\pi}{6} + \\pi n$$",
+        "$$x = \\pm\\frac{\\pi}{6} + 2\\pi n$$"
+      ],
+      "answer": 1,
+      "explanation": "The two points at height $$\\frac12$$ are at $$\\frac{\\pi}{6}$$ and $$\\pi - \\frac{\\pi}{6}$$, and each repeats every whole turn (:ref{#sine-solutions})."
+    },
+    {
+      "id": "dont-divide",
+      "stars": 3,
+      "topic": "Working with identities",
+      "question": "Solving $$\\sin 2x = \\sin x$$, why not divide both sides by $$\\sin x$$?",
+      "options": [
+        "It loses the solutions where $$\\sin x = 0$$",
+        "It is against the rules to divide by a sine",
+        "It gives the wrong answer for every $$x$$",
+        "Sines can't be divided"
+      ],
+      "answer": 0,
+      "explanation": "Write $$2\\sin x\\cos x - \\sin x = \\sin x(2\\cos x - 1) = 0$$ instead (:ref{#double-angle}). Then $$\\sin x = 0$$ or $$\\cos x = \\frac12$$, and dividing would have thrown the first away."
+    },
+    {
+      "id": "polar",
+      "stars": 1,
+      "topic": "Polar coordinates and rotations",
+      "question": "What are polar coordinates for the point $$(-2, 2)$$, with the angle in $$[0, 2\\pi)$$?",
+      "options": [
+        "Distance $$2\\sqrt2$$, angle $$-\\frac{\\pi}{4}$$",
+        "Distance $$4$$, angle $$\\frac{3\\pi}{4}$$",
+        "Distance $$2$$, angle $$\\frac{\\pi}{4}$$",
+        "Distance $$2\\sqrt2$$, angle $$\\frac{3\\pi}{4}$$"
+      ],
+      "answer": 3,
+      "explanation": "The distance is $$\\sqrt{4 + 4}$$, and the point is in the second quadrant on the line $$y = -x$$, at $$\\frac{3\\pi}{4}$$ (:ref{#polar-coordinates})."
+    },
+    {
+      "id": "atan-slip",
+      "stars": 3,
+      "topic": "Polar coordinates and rotations",
+      "question": "For the point $$(-1, -1)$$, $$\\tan^{-1}\\frac{y}{x} = \\tan^{-1} 1 = \\frac{\\pi}{4}$$. Is $$\\frac{\\pi}{4}$$ an angle for the point?",
+      "options": [
+        "Yes",
+        "No: the angle is $$-\\frac{\\pi}{4}$$",
+        "No: the point is in the third quadrant, so add $$\\pi$$ to get $$\\frac{5\\pi}{4}$$",
+        "No: the angle is $$\\frac{3\\pi}{4}$$"
+      ],
+      "answer": 2,
+      "explanation": "$$(1, 1)$$ and $$(-1, -1)$$ give the same ratio $$\\frac{y}{x}$$. When $$x < 0$$, add $$\\pi$$ (:ref{#rotations-polar-angle})."
+    },
+    {
+      "id": "formula",
+      "stars": 2,
+      "topic": "Polar coordinates and rotations",
+      "question": "What does the turn by $$\\frac{\\pi}{3}$$ about $$O$$ do to $$(4, 0)$$?",
+      "options": [
+        "Sends it to $$(2\\sqrt3, 2)$$",
+        "Sends it to $$(2, 2\\sqrt3)$$",
+        "Sends it to $$(0, 4)$$",
+        "Sends it to $$(4\\cos\\frac{\\pi}{3}, 0)$$"
+      ],
+      "answer": 1,
+      "explanation": "By :ref{#rotation-formula}, $$(4, 0)$$ goes to $$(4\\cos\\frac{\\pi}{3}, 4\\sin\\frac{\\pi}{3}) = (2, 2\\sqrt3)$$."
+    },
+    {
+      "id": "quarter-check",
+      "stars": 2,
+      "topic": "Polar coordinates and rotations",
+      "question": "What does the formula $$(x\\cos\\varphi - y\\sin\\varphi,\\ x\\sin\\varphi + y\\cos\\varphi)$$ give for $$\\varphi = \\frac{\\pi}{2}$$?",
+      "options": [
+        "$$(-y, x)$$, the quarter turn",
+        "$$(y, x)$$",
+        "$$(-x, -y)$$",
+        "$$(x, -y)$$"
+      ],
+      "answer": 0,
+      "explanation": "$$\\cos\\frac{\\pi}{2} = 0$$ and $$\\sin\\frac{\\pi}{2} = 1$$, so the formula becomes $$(-y, x)$$, the quarter turn of earlier chapters (:ref{#rotation-formula})."
+    },
+    {
+      "id": "matrices",
+      "stars": 3,
+      "topic": "Polar coordinates and rotations",
+      "question": "What is the product $$M_\\alpha M_\\beta$$ of the matrices of two turns?",
+      "options": [
+        "$$M_{\\alpha\\beta}$$",
+        "$$M_{\\alpha - \\beta}$$",
+        "The identity",
+        "$$M_{\\alpha + \\beta}$$"
+      ],
+      "answer": 3,
+      "explanation": "Turning by $$\\beta$$ and then by $$\\alpha$$ is turning by $$\\alpha + \\beta$$, and multiplying out the matrices gives the addition formulas (:ref{#rotation-composite})."
+    },
+    {
+      "id": "dot-angle",
+      "stars": 2,
+      "topic": "Angles in any triangle",
+      "question": "What is the angle between the steps $$(3, 1)$$ and $$(1, 2)$$?",
+      "options": [
+        "$$\\frac{\\pi}{3}$$",
+        "$$\\frac{\\pi}{2}$$",
+        "$$\\frac{\\pi}{4}$$",
+        "$$\\frac{\\pi}{6}$$"
+      ],
+      "answer": 2,
+      "explanation": "The dot product is $$5$$ and the lengths are $$\\sqrt{10}$$ and $$\\sqrt5$$, so the cosine is $$\\frac{5}{\\sqrt{50}} = \\frac{1}{\\sqrt2}$$ (:ref{#dot-angle})."
+    },
+    {
+      "id": "cosines",
+      "stars": 2,
+      "topic": "Angles in any triangle",
+      "question": "Two sides of a triangle are $$5$$ and $$8$$ with $$\\frac{\\pi}{3}$$ between them. What is the third side?",
+      "options": [
+        "$$\\sqrt{89}$$",
+        "$$7$$",
+        "$$13$$",
+        "$$\\sqrt{129}$$"
+      ],
+      "answer": 1,
+      "explanation": "$$c^2 = 25 + 64 - 2 \\cdot 5 \\cdot 8 \\cdot \\frac12 = 49$$ (:ref{#law-of-cosines}). $$\\sqrt{89}$$ is what Pythagoras would give with a right angle."
+    },
+    {
+      "id": "cos-pythagoras",
+      "stars": 1,
+      "topic": "Angles in any triangle",
+      "question": "What does the law of cosines become when the angle $$\\gamma$$ is a right angle?",
+      "options": [
+        "The Pythagoras theorem",
+        "The law of sines",
+        "$$c = a + b$$",
+        "$$c = 0$$"
+      ],
+      "answer": 0,
+      "explanation": "$$\\cos\\frac{\\pi}{2} = 0$$, so $$c^2 = a^2 + b^2 - 2ab\\cos\\gamma$$ becomes $$c^2 = a^2 + b^2$$ (:ref{#law-of-cosines})."
+    },
+    {
+      "id": "area",
+      "stars": 2,
+      "topic": "Angles in any triangle",
+      "question": "A triangle has sides $$6$$ and $$4$$ with $$\\frac{\\pi}{6}$$ between them. What is its area?",
+      "options": [
+        "$$12$$",
+        "$$24$$",
+        "$$6\\sqrt3$$",
+        "$$6$$"
+      ],
+      "answer": 3,
+      "explanation": "The area is $$\\frac12 ab\\sin\\gamma = \\frac12 \\cdot 6 \\cdot 4 \\cdot \\frac12$$ (:ref{#area-sine})."
+    },
+    {
+      "id": "zoom",
+      "stars": 3,
+      "topic": "Angles in any triangle",
+      "question": "Why does a zoom keep every angle?",
+      "options": [
+        "A zoom keeps distances",
+        "A zoom is a turn",
+        "Steps are multiplied by $$r$$, so the dot product over the lengths, the cosine, is unchanged",
+        "It is taken as given"
+      ],
+      "answer": 2,
+      "explanation": "The dot product is multiplied by $$r^2$$ and each length by $$r$$, so the cosine is the same, and an angle between $$0$$ and $$\\pi$$ is fixed by its cosine (:ref{#zoom-angles}). This proves the last zoom rule."
+    }
+  ]
+}

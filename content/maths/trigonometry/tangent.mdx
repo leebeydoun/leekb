@@ -1,0 +1,741 @@
+---
+title: The tangent
+description:
+  The tangent as rise over run, the slope of a line and a height on the line x = 1, its graph,
+  heights and angles, and the secant, cosecant and cotangent.
+---
+
+Imagine driving towards a hill and passing a red triangle with a slope drawn on it and the number
+$$20\%$$. The sign means that the road climbs $$20$$ m for every $$100$$ m you move across the map,
+which is $$1$$ m up for every $$5$$ m across. You feel it as the car tilts back: the bigger that
+ratio, the steeper the angle between the road and level ground. The sign gives the ratio and a
+protractor would give the angle, and each one fixes the other.
+
+The number that turns the angle into the ratio is the **tangent** of the angle. In this guide we'll
+build it from the point on the unit circle, read it as a slope and as a height, and then use it to
+find heights and angles you can't measure directly.
+
+## Rise over run
+
+Turn the point $$E_1 = (1, 0)$$ about the origin by an angle $$x$$, and it lands on the unit circle
+at $$(\cos x, \sin x)$$, as in :ref{#sine-cosine}. Cosine is how far across the point is, and sine
+is how far up. So the straight path from $$O$$ to the point climbs $$\sin x$$ while it moves
+$$\cos x$$ across, and dividing gives how much it climbs for each step of $$1$$ across.
+
+Take $$x = \frac{\pi}{3}$$. The point on the unit circle is $$(\frac{1}{2}, \frac{\sqrt3}{2})$$, by
+:ref{#sin-cos-30-60}. The path climbs $$\frac{\sqrt3}{2}$$ while it moves $$\frac{1}{2}$$ across, so
+it climbs $$\frac{\sqrt3}{2} \div \frac{1}{2} = \sqrt3 \approx 1.73$$ for each step across. That
+number is the tangent of $$\frac{\pi}{3}$$.
+
+:::definition[Tangent]{#tangent}
+
+For every number $$x$$ with $$\cos x \ne 0$$, the **tangent** of $$x$$ is
+
+```math
+\tan x = \frac{\sin x}{\cos x}
+```
+
+read "tan $$x$$". By :ref{#trig-zeros}, $$\cos x = 0$$ exactly when $$x = \frac{\pi}{2} + n\pi$$ for
+an integer $$n$$, so $$\tan x$$ is defined for every other $$x$$.
+
+:::
+
+At $$x = \frac{\pi}{2}$$ the point on the unit circle is $$E_2 = (0, 1)$$, straight up from $$O$$
+(:ref{#quarter-values}). The path to it climbs $$1$$ without moving across at all, so there is no
+"climb per step across", and no tangent. The same happens at $$\frac{3\pi}{2}$$, where the point is
+straight down, and at every angle a whole number of half turns from these two.
+
+## The tangent as a slope
+
+The slope of a line is how much it climbs for each step of $$1$$ to the right
+(:ref{#linear-equations/slope}). The line through $$O$$ and the point on the unit circle climbs
+$$\sin x$$ for every $$\cos x$$ across, all the way along. So its slope should be the tangent.
+
+In this section we write the angle as $$\theta$$, so that $$x$$ and $$y$$ can be the coordinates of
+points. The **ray at angle** $$\theta$$ is the ray from $$O$$ through $$(\cos\theta, \sin\theta)$$,
+and the **line at angle** $$\theta$$ is the line through $$O$$ in that direction.
+
+:::proposition[The tangent as a slope]{#tangent-slope}
+
+Let $$\theta$$ be a number with $$\cos\theta \ne 0$$.
+
+1. The line at angle $$\theta$$ has slope $$\tan\theta$$: it is the line $$y = (\tan\theta)\,x$$.
+2. Every point $$(a, b)$$ other than $$O$$ on the ray at angle $$\theta$$ has $$a \ne 0$$ and
+   $$\tan\theta = \frac{b}{a}$$.
+3. In a right triangle with an angle $$\theta$$ that is not the right angle,
+   $$\tan\theta = \frac{\text{opposite}}{\text{adjacent}}$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Slope#Definition"}
+
+**Part 1.** The direction $$(\cos\theta, \sin\theta)$$ is not $$O$$, since it has length $$1$$. By
+:ref{#segments-rays-and-lines/line-equation} with $$P = O$$ and $$A = (\cos\theta, \sin\theta)$$, a
+point $$(x, y)$$ is on the line exactly when
+
+```math
+(\sin\theta)\,x - (\cos\theta)\,y = 0
+```
+
+This is $$ax + by = c$$ with $$a = \sin\theta$$, $$b = -\cos\theta$$ and $$c = 0$$. Since
+$$b \ne 0$$, :ref{#linear-equations/slope} gives the slope
+
+```math
+m = -\frac{a}{b} = -\frac{\sin\theta}{-\cos\theta} = \frac{\sin\theta}{\cos\theta} = \tan\theta
+```
+
+and $$k = \frac{c}{b} = 0$$, so the line is $$y = (\tan\theta)\,x$$.
+
+**Part 2.** By :ref{#segments-rays-and-lines/ray-formula}, the points of the ray are
+$$t(\cos\theta, \sin\theta) = (t\cos\theta, t\sin\theta)$$ with $$t \ge 0$$. So $$a = t\cos\theta$$
+and $$b = t\sin\theta$$, and $$t \ne 0$$ because the point is not $$O$$. Then $$a \ne 0$$, since
+neither $$t$$ nor $$\cos\theta$$ is $$0$$, and
+
+```math
+\frac{b}{a} = \frac{t\sin\theta}{t\cos\theta} = \frac{\sin\theta}{\cos\theta} = \tan\theta
+```
+
+**Part 3.** By :ref{#right-triangle-ratios},
+$$\sin\theta = \frac{\text{opposite}}{\text{hypotenuse}}$$ and
+$$\cos\theta = \frac{\text{adjacent}}{\text{hypotenuse}}$$. The adjacent side has positive length,
+so $$\cos\theta \ne 0$$. Dividing,
+
+```math
+\tan\theta = \frac{\text{opposite}}{\text{hypotenuse}} \div \frac{\text{adjacent}}{\text{hypotenuse}} = \frac{\text{opposite}}{\text{adjacent}}
+```
+
+since the two hypotenuses cancel.
+
+:::
+
+For example, the line at angle $$\frac{\pi}{4}$$ has slope $$\tan\frac{\pi}{4} = 1$$, so it is the
+line $$y = x$$. The point $$(4, 3)$$ lies on the ray at some angle $$\theta$$, and part 2 says
+$$\tan\theta = \frac{3}{4}$$ without our knowing $$\theta$$ itself. Part 3 completes the memory aid
+from [Sine and cosine in right triangles](./right-triangles.mdx): SOH CAH TOA, where TOA stands for
+"tangent is opposite over adjacent".
+
+## The tangent on the touching line
+
+The vertical line $$x = 1$$ touches the unit circle at $$E_1$$ and nowhere else. Now let the ray at
+angle $$x$$ run on past the circle until it hits that line. It climbs $$\tan x$$ for each step
+across, and the line is $$1$$ step across from $$O$$, so it hits the line at height $$\tan x$$. The
+tangent is a height you can see.
+
+In this section $$x$$ is the angle again, and in "the line $$x = 1$$" the letter names the first
+coordinate, as usual. That line is a tangent to the unit circle
+(:ref{#segments-rays-and-lines/tangent-line}). A point $$(1, y)$$ is on the unit circle exactly when
+$$1 + y^2 = 1$$ (:ref{#coordinates/circle-equation}), that is, when $$y = 0$$. So the line meets the
+circle only at $$E_1$$. That is where the name comes from: "tangent" is from the Latin for
+"touching", and $$\tan x$$ is measured along the touching line.
+
+:::proposition[The tangent on the touching line]{#tangent-on-line}
+
+Let $$x$$ be a number with $$\cos x \ne 0$$.
+
+1. The line at angle $$x$$ meets the line $$x = 1$$ at exactly one point, $$(1, \tan x)$$.
+2. If $$-\frac{\pi}{2} < x < \frac{\pi}{2}$$, then $$\cos x > 0$$, and that point lies on the ray at
+   angle $$x$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Trigonometric_functions#Unit-circle_definitions"}
+
+Write $$U = (\cos x, \sin x)$$. By :ref{#segments-rays-and-lines/line-formula}, the points of the
+line at angle $$x$$ are $$tU = (t\cos x, t\sin x)$$ for numbers $$t$$.
+
+**Part 1.** The point $$tU$$ is on the line $$x = 1$$ exactly when $$t\cos x = 1$$, that is, when
+$$t = \frac{1}{\cos x}$$. So there is exactly one meeting point, and it is
+
+```math
+\frac{1}{\cos x}\,(\cos x, \sin x) = \left(1, \frac{\sin x}{\cos x}\right) = (1, \tan x)
+```
+
+**Part 2.** For $$x = 0$$, $$\cos 0 = 1$$ (:ref{#quarter-values}). For $$0 < x < \frac{\pi}{2}$$,
+the point $$U$$ is in the first quadrant, so $$\cos x > 0$$ (:ref{#quadrant-signs}). For
+$$-\frac{\pi}{2} < x < 0$$, the number $$x + 2\pi$$ is between $$\frac{3\pi}{2}$$ and $$2\pi$$, in
+the fourth quadrant, so $$\cos x = \cos(x + 2\pi) > 0$$ (:ref{#periodic}, :ref{#quadrant-signs}).
+Either way $$t = \frac{1}{\cos x}$$ is positive, so the meeting point $$tU$$ is on the ray at angle
+$$x$$ (:ref{#segments-rays-and-lines/ray-formula}).
+
+:::
+
+The figure below, for $$x = \frac{\pi}{3}$$, has two right triangles with the same shape. The small
+one sits under the point on the unit circle, with sides $$\frac{1}{2}$$ across and
+$$\frac{\sqrt3}{2}$$ up. The large one sits under the line $$x = 1$$, with sides $$1$$ across and
+$$\sqrt3$$ up: it is the small one zoomed by $$2 = \frac{1}{\cos x}$$ about $$O$$.
+
+```plane
+scale 2.2
+point O 0 0 sw
+point E1 1 0 se
+point F 0.5 0 s
+point P 0.5 0.866 nw
+point T 1 1.7321 e
+point X1 -1.3 0 hidden
+point X2 1.6 0 hidden
+point Y1 0 -1.3 hidden
+point Y2 0 2.1 hidden
+point L1 1 -1 hidden
+point L2 1 2.1 hidden
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+circle O 1 color=muted
+segment L1 L2 color=purple
+segment O T
+segment O F color=blue label="1/2" side=right
+segment F P color=orange dashed label="√3/2" side=right
+segment E1 T color=green label="√3" side=right
+right O F P
+right O E1 T
+angle E1 O P label="π/3" r=0.3
+caption "At x = π/3 the point on the unit circle is P = (1/2, √3/2). The ray from O through P meets the line x = 1 at T = (1, √3), and √3 = (√3/2) ÷ (1/2) = tan(π/3)."
+```
+
+Turn the ray below and watch the height on the line $$x = 1$$. As $$x$$ comes close to
+$$\frac{\pi}{2}$$, the ray stands nearly upright and meets the line far above $$E_1$$:
+$$\tan 1.5 \approx 14.1$$, $$\tan 1.55 \approx 48.1$$ and $$\tan 1.57 \approx 1256$$. At
+$$\frac{\pi}{2}$$ itself the ray is the positive $$y$$-axis, which runs parallel to the line
+$$x = 1$$ and never meets it. That is the picture of $$\tan\frac{\pi}{2}$$ not being defined.
+
+<TangentLine />
+
+## Values at the special angles
+
+The exact values of sine and cosine at the special angles ([Special angles](./special-angles.mdx))
+give the tangent by one division. Degrees are shown beside radians in the table, since the set
+squares of that guide are marked in degrees.
+
+| $$x$$                            | $$\sin x$$           | $$\cos x$$           | $$\tan x$$                                            |
+| -------------------------------- | -------------------- | -------------------- | ----------------------------------------------------- |
+| $$0$$ ($$0^\circ$$)              | $$0$$                | $$1$$                | $$0$$                                                 |
+| $$\frac{\pi}{6}$$ ($$30^\circ$$) | $$\frac{1}{2}$$      | $$\frac{\sqrt3}{2}$$ | $$\frac{1}{\sqrt3} = \frac{\sqrt3}{3} \approx 0.577$$ |
+| $$\frac{\pi}{4}$$ ($$45^\circ$$) | $$\frac{\sqrt2}{2}$$ | $$\frac{\sqrt2}{2}$$ | $$1$$                                                 |
+| $$\frac{\pi}{3}$$ ($$60^\circ$$) | $$\frac{\sqrt3}{2}$$ | $$\frac{1}{2}$$      | $$\sqrt3 \approx 1.732$$                              |
+| $$\frac{\pi}{2}$$ ($$90^\circ$$) | $$1$$                | $$0$$                | not defined                                           |
+
+For example,
+$$\tan\frac{\pi}{6} = \frac{1}{2} \div \frac{\sqrt3}{2} = \frac{1}{2} \cdot \frac{2}{\sqrt3} = \frac{1}{\sqrt3}$$,
+and multiplying top and bottom by $$\sqrt3$$ gives $$\frac{\sqrt3}{3}$$. At $$\frac{\pi}{4}$$ the
+point on the unit circle is equally far across and up, so the tangent is $$1$$: the ray climbs one
+step for each step across.
+
+The sign of the tangent comes from the signs of sine and cosine (:ref{#quadrant-signs}). A quotient
+is positive when both numbers have the same sign, so the tangent is positive in the first quadrant,
+where both are positive, and in the third, where both are negative. It is negative in the second and
+fourth quadrants. Seen as a slope, the tangent is positive when the line at angle $$x$$ climbs from
+left to right, and negative when it falls.
+
+## The tangent repeats every half turn
+
+A half turn sends the point $$(\cos x, \sin x)$$ to the opposite point $$(-\cos x, -\sin x)$$ on the
+far side of the circle. Both coordinates change sign, so their quotient stays the same. Both points
+lie on the same line through $$O$$, and that line has one slope. So the tangent comes back after a
+half turn, where sine and cosine need a full turn.
+
+:::proposition[The tangent repeats every half turn]{#tangent-period}
+
+For every number $$x$$ with $$\cos x \ne 0$$,
+
+```math
+\tan(x + \pi) = \tan x \qquad \tan(-x) = -\tan x
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Tangent_Function_is_Periodic_on_Reals"}
+
+**A half turn more.** By :ref{#half-turn-identities}, $$\cos(x + \pi) = -\cos x$$, which is not
+$$0$$, and $$\sin(x + \pi) = -\sin x$$. So
+
+```math
+\tan(x + \pi) = \frac{\sin(x + \pi)}{\cos(x + \pi)} = \frac{-\sin x}{-\cos x} = \frac{\sin x}{\cos x} = \tan x
+```
+
+**Negative angles.** By :ref{#negative-angle}, $$\cos(-x) = \cos x$$, which is not $$0$$, and
+$$\sin(-x) = -\sin x$$. So
+
+```math
+\tan(-x) = \frac{\sin(-x)}{\cos(-x)} = \frac{-\sin x}{\cos x} = -\tan x
+```
+
+:::
+
+Check with $$x = \frac{\pi}{6}$$. The point for $$\frac{7\pi}{6}$$ is
+$$(-\frac{\sqrt3}{2}, -\frac{1}{2})$$, so
+$$\tan\frac{7\pi}{6} = \frac{-1/2}{-\sqrt3/2} = \frac{1}{\sqrt3}$$, the same as
+$$\tan\frac{\pi}{6}$$. Using the first formula again and again, $$\tan(x + n\pi) = \tan x$$ for
+every integer $$n$$, so $$\pi$$ is a period of the tangent (:ref{#period}).
+
+No smaller positive number is a period. If $$p$$ were one, with $$0 < p < \pi$$, then
+$$\tan p = \tan 0 = 0$$, so $$\sin p = 0$$. But by :ref{#trig-zeros}, $$\sin p = 0$$ exactly when
+$$p$$ is a whole multiple of $$\pi$$, and $$p$$ is not one.
+
+## The graph of the tangent
+
+Picture the ray turning anticlockwise from straight down to straight up, as $$x$$ goes from
+$$-\frac{\pi}{2}$$ to $$\frac{\pi}{2}$$. Its meeting point with the line $$x = 1$$ starts far below
+$$E_1$$, climbs through $$E_1$$ at $$x = 0$$, and ends far above. So the graph of the tangent climbs
+the whole time, from far below the $$x$$-axis to far above it, and then the same piece repeats every
+$$\pi$$.
+
+As for sine and cosine (:ref{#trig-graphs}), the graph of the tangent is the set of points
+$$(x, \tan x)$$ for every $$x$$ with $$\cos x \ne 0$$.
+
+That the meeting point climbs as the ray turns anticlockwise is taken from the picture here. Near
+the dashed lines $$x = \frac{\pi}{2} + n\pi$$ the graph runs up or down alongside the line without
+ever reaching it, because the tangent is not defined there. A line like that is called a **vertical
+asymptote** of the graph.
+
+<TangentGraph caption="The graph of y = tan x from −3π/2 to 3π/2, cut off at heights ±4. Each piece climbs between two dashed asymptotes, and the dots at height 1, at x = −3π/4, π/4 and 5π/4, are a half turn apart." />
+
+The graph crosses the $$x$$-axis at $$0$$, $$\pi$$, $$-\pi$$ and every other multiple of $$\pi$$,
+where the sine is $$0$$. It also has the symmetry of :ref{#tangent-period}: since
+$$\tan(-x) = -\tan x$$, a half turn about the origin sends the graph to itself.
+
+## Heights and angles with the tangent
+
+The top of a tree is out of reach of a tape measure, but the ground in front of it is not. Measure
+how far away you are along the level ground, and the angle up to the top. The height is then the
+distance across times the tangent of the angle, because the tangent is rise over run.
+
+:::example[The height of a tree]
+
+You stand $$15$$ m from the foot of a tree on level ground. A clinometer held at ground level
+measures the angle up to the top as $$40^\circ$$, which is $$\frac{2\pi}{9}$$ radians. The ground,
+the trunk and your line of sight make a right triangle with the right angle at the foot of the tree.
+By part 3 of :ref{#tangent-slope},
+
+```math
+\text{height} = 15 \tan 40^\circ \approx 15 \times 0.839 \approx 12.6 \text{ m}
+```
+
+A calculator in radian mode reads "tan 40" as the tangent of $$40$$ radians, which is about
+$$-1.12$$. Type $$\tan(2\pi/9)$$ in radian mode, or $$\tan 40$$ in degree mode.
+
+:::
+
+Going the other way, from a slope to an angle, needs an angle with a given tangent. The line
+$$x = 1$$ shows there is always one. For any number $$c$$, the point $$(1, c)$$ sits on the line at
+height $$c$$, and the ray from $$O$$ through it is the ray at some angle between $$-\frac{\pi}{2}$$
+and $$\frac{\pi}{2}$$.
+
+:::proposition[One angle for each tangent]{#tangent-one-angle}
+
+For every number $$c$$, there is exactly one angle $$x$$ with $$-\frac{\pi}{2} < x < \frac{\pi}{2}$$
+and $$\tan x = c$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Shape_of_Tangent_Function"}
+
+Write $$s = \sqrt{1 + c^2}$$, which is at least $$1$$.
+
+**There is one.** The point $$U = (\frac{1}{s}, \frac{c}{s})$$ has
+$$|U|^2 = \frac{1 + c^2}{s^2} = 1$$. By :ref{#unit-circle-point}, $$U = (\cos x_0, \sin x_0)$$ for
+some $$x_0$$ with $$0 \le x_0 < 2\pi$$. Here $$\cos x_0 = \frac{1}{s} > 0$$. The cosine is $$0$$ at
+$$\frac{\pi}{2}$$ and $$\frac{3\pi}{2}$$, $$-1$$ at $$\pi$$ (:ref{#quarter-values}), and negative in
+the second and third quadrants (:ref{#quadrant-signs}). So $$x_0 < \frac{\pi}{2}$$ or
+$$x_0 > \frac{3\pi}{2}$$.
+
+- If $$x_0 < \frac{\pi}{2}$$, take $$x = x_0$$.
+- If $$x_0 > \frac{3\pi}{2}$$, take $$x = x_0 - 2\pi$$, which is between $$-\frac{\pi}{2}$$ and
+  $$0$$ and has the same sine and cosine as $$x_0$$ (:ref{#periodic}).
+
+Either way $$\tan x = \frac{c}{s} \div \frac{1}{s} = c$$.
+
+**There is only one.** Let $$x$$ be any angle with $$-\frac{\pi}{2} < x < \frac{\pi}{2}$$ and
+$$\tan x = c$$. Then $$\cos x > 0$$, by part 2 of :ref{#tangent-on-line}, and $$\sin x = c\cos x$$.
+By :ref{#pythagorean-identity},
+
+```math
+\cos^2 x + c^2\cos^2 x = 1 \quad\text{so}\quad \cos^2 x = \frac{1}{1 + c^2} = \frac{1}{s^2}
+```
+
+Since $$\cos x > 0$$, $$\cos x = \frac{1}{s}$$, and then $$\sin x = \frac{c}{s}$$. So every such
+$$x$$ gives the same point $$U$$ on the unit circle. Now move $$x$$ into $$[0, 2\pi)$$: keep it if
+$$x \ge 0$$, and add $$2\pi$$ if $$x < 0$$ (:ref{#periodic}). The result is the one angle in
+$$[0, 2\pi)$$ for $$U$$ (:ref{#unit-circle-point}), which is $$x_0$$. If $$x_0 < \frac{\pi}{2}$$, it
+came from $$x = x_0$$, since adding $$2\pi$$ to a negative $$x$$ gives more than $$\frac{3\pi}{2}$$.
+If $$x_0 > \frac{3\pi}{2}$$, it came from $$x = x_0 - 2\pi$$. Either way $$x$$ is the angle found
+above.
+
+:::
+
+:::definition[Inverse tangent]{#inverse-tan}
+
+For every number $$c$$, the **inverse tangent** $$\tan^{-1} c$$ is the one angle $$x$$ with
+$$-\frac{\pi}{2} < x < \frac{\pi}{2}$$ and $$\tan x = c$$, from :ref{#tangent-one-angle}. It is read
+"inverse tan of $$c$$", and it is also called the **arctangent**, written $$\arctan c$$.
+
+:::
+
+The calculator button is marked $$\tan^{-1}$$. As with $$\sin^{-1}$$ in :ref{#inverse-sin-cos}, the
+$$-1$$ is not a power: $$\tan^{-1} 1 = \frac{\pi}{4}$$, while $$\frac{1}{\tan 1} \approx 0.642$$.
+
+:::example[Slopes as angles]
+
+A wheelchair ramp that rises $$1$$ m over $$12$$ m across makes an angle
+$$\tan^{-1}\frac{1}{12} \approx 0.0831$$ radians with the ground, about $$4.76^\circ$$. A road with
+a gradient of $$10\%$$ climbs $$0.1$$ m per metre across, so its angle is
+$$\tan^{-1} 0.1 \approx 0.0997$$ radians, about $$5.71^\circ$$. The hill sign from the start of this
+guide, $$20\%$$, gives $$\tan^{-1} 0.2 \approx 0.197$$ radians, about $$11.3^\circ$$.
+
+:::
+
+The button gives one answer, but an equation $$\tan x = c$$ has more. If $$\tan x = c$$, then $$x$$
+is not $$\frac{\pi}{2} + n\pi$$, so some whole number of half turns moves it into
+$$(-\frac{\pi}{2}, \frac{\pi}{2})$$: $$x - n\pi$$ lies there for one integer $$n$$. By
+:ref{#tangent-period}, $$\tan(x - n\pi) = \tan x = c$$, so $$x - n\pi = \tan^{-1} c$$ by
+:ref{#tangent-one-angle}. So the solutions are exactly $$x = \tan^{-1} c + n\pi$$, which gives two
+answers in each full turn. For $$\tan x = 1$$ in $$[0, 2\pi)$$ they are $$\frac{\pi}{4}$$ and
+$$\frac{5\pi}{4}$$, the two dots at height $$1$$ in the right half of the graph.
+
+## Perpendicular lines and the tangent
+
+Turn a line through $$O$$ by a quarter turn and it becomes perpendicular to where it was. Its angle
+goes up by $$\frac{\pi}{2}$$, so its slope changes from $$\tan x$$ to $$\tan(x + \frac{\pi}{2})$$.
+The rule for perpendicular slopes says the new slope should be $$-\frac{1}{\tan x}$$, and the
+quarter turn identities show that it is.
+
+:::proposition[Perpendicular lines and the tangent]{#tangent-perpendicular-slopes}
+
+For every number $$x$$ with $$\sin x \ne 0$$ and $$\cos x \ne 0$$,
+
+```math
+\tan\left(x + \frac{\pi}{2}\right) = -\frac{1}{\tan x}
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Tangent_of_Angle_plus_Right_Angle"}
+
+By :ref{#quarter-turn-identities},
+
+```math
+\cos\left(x + \frac{\pi}{2}\right) = -\sin x \qquad \sin\left(x + \frac{\pi}{2}\right) = \cos x
+```
+
+The first is not $$0$$, since $$\sin x \ne 0$$, so the tangent of $$x + \frac{\pi}{2}$$ is defined.
+Then
+
+```math
+\begin{aligned}
+\tan\left(x + \frac{\pi}{2}\right) &= \frac{\cos x}{-\sin x} && \text{by the two identities} \\
+&= -\frac{1}{\sin x / \cos x} && \text{dividing top and bottom by } \cos x \\
+&= -\frac{1}{\tan x} && \text{by the definition of } \tan x
+\end{aligned}
+```
+
+:::
+
+Check with $$x = \frac{\pi}{6}$$: the point for $$\frac{2\pi}{3}$$ is
+$$(-\frac{1}{2}, \frac{\sqrt3}{2})$$, so $$\tan\frac{2\pi}{3} = -\sqrt3$$, and
+$$-\frac{1}{\tan(\pi/6)} = -\sqrt3$$ too.
+
+This explains :ref{#segments-rays-and-lines/perpendicular-slopes} with angles. A line through $$O$$
+that is not vertical is the line at some angle $$x$$ (:ref{#adding-and-scaling-points/direction},
+:ref{#unit-circle-point}), and its slope is $$m = \tan x$$ (:ref{#tangent-slope}). The quarter turn
+sends its direction $$(\cos x, \sin x)$$ to $$(\cos(x + \frac{\pi}{2}), \sin(x + \frac{\pi}{2}))$$
+(:ref{#radian-turns}).
+
+That new direction gives the perpendicular line through $$O$$, since a point and its quarter turn
+have dot product $$0$$, as [Perpendicular lines](../segments-rays-and-lines/perpendicular.mdx)
+shows. So when neither line is vertical, the second slope is
+$$m' = \tan(x + \frac{\pi}{2}) = -\frac{1}{m}$$ by :ref{#tangent-perpendicular-slopes}, and
+$$mm' = -1$$.
+
+## Secant, cosecant and cotangent
+
+Three more names turn up in books and on calculators, each built from sine and cosine. They are
+shorthand and nothing more: any sentence with them can be rewritten with sine and cosine alone. When
+an identity with them looks hard, rewriting it that way is a good first step.
+
+:::definition[Secant, cosecant and cotangent]{#reciprocal-trig}
+
+For every number $$x$$ with $$\cos x \ne 0$$, the **secant** of $$x$$ is
+$$\sec x = \frac{1}{\cos x}$$. For every $$x$$ with $$\sin x \ne 0$$, the **cosecant** and the
+**cotangent** of $$x$$ are
+
+```math
+\csc x = \frac{1}{\sin x} \qquad \cot x = \frac{\cos x}{\sin x}
+```
+
+:::
+
+When $$\tan x$$ and $$\cot x$$ are both defined, $$\cot x = \frac{1}{\tan x}$$. For example,
+$$\sec\frac{\pi}{3} = \frac{1}{1/2} = 2$$, $$\csc\frac{\pi}{6} = 2$$ and $$\cot\frac{\pi}{4} = 1$$.
+The same slip as with the inverse tangent waits here: $$\sec x = \frac{1}{\cos x}$$ is a different
+thing from $$\cos^{-1} x$$.
+
+The secant has a picture on the touching line too. For $$-\frac{\pi}{2} < x < \frac{\pi}{2}$$, the
+triangle with corners $$O$$, $$E_1$$ and $$T = (1, \tan x)$$ has a right angle at $$E_1$$, with legs
+$$1$$ and $$|\tan x|$$. Its hypotenuse $$OT$$ has length $$\frac{1}{\cos x} = \sec x$$, because
+$$T = \frac{1}{\cos x}(\cos x, \sin x)$$ and the point $$(\cos x, \sin x)$$ has length $$1$$
+(:ref{#adding-and-scaling-points/norm-scale}). So the Pythagoras theorem in that triangle says
+$$1 + \tan^2 x = \sec^2 x$$. The name is from the Latin for "cutting", since the line $$OT$$ cuts
+through the circle.
+
+:::proposition[One plus tangent squared]{#tan-sec-identity}
+
+For every number $$x$$ with $$\cos x \ne 0$$, and every $$x$$ with $$\sin x \ne 0$$, respectively,
+
+```math
+1 + \tan^2 x = \sec^2 x \qquad 1 + \cot^2 x = \csc^2 x
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Difference_of_Squares_of_Secant_and_Tangent"}
+
+By :ref{#pythagorean-identity}, $$\cos^2 x + \sin^2 x = 1$$. When $$\cos x \ne 0$$, divide both
+sides by $$\cos^2 x$$:
+
+```math
+\begin{aligned}
+\frac{\cos^2 x}{\cos^2 x} + \frac{\sin^2 x}{\cos^2 x} &= \frac{1}{\cos^2 x} \\
+1 + \left(\frac{\sin x}{\cos x}\right)^2 &= \left(\frac{1}{\cos x}\right)^2 \\
+1 + \tan^2 x &= \sec^2 x
+\end{aligned}
+```
+
+When $$\sin x \ne 0$$, divide by $$\sin^2 x$$ instead. That gives
+$$\frac{\cos^2 x}{\sin^2 x} + 1 = \frac{1}{\sin^2 x}$$, which is $$\cot^2 x + 1 = \csc^2 x$$.
+
+:::
+
+Check with $$x = \frac{\pi}{3}$$: $$1 + (\sqrt3)^2 = 4$$ and $$\sec^2\frac{\pi}{3} = 2^2 = 4$$.
+
+:::example[Sine and cosine from the tangent]
+
+Suppose $$\tan x = \frac{3}{4}$$ and the point on the unit circle for $$x$$ is in the third
+quadrant. By :ref{#tan-sec-identity}, $$\sec^2 x = 1 + \frac{9}{16} = \frac{25}{16}$$, so
+$$\cos^2 x = \frac{16}{25}$$ and $$\cos x = \pm\frac{4}{5}$$. In the third quadrant the cosine is
+negative (:ref{#quadrant-signs}), so $$\cos x = -\frac{4}{5}$$. Then
+
+```math
+\sin x = \tan x \cdot \cos x = \frac{3}{4} \cdot \left(-\frac{4}{5}\right) = -\frac{3}{5}
+```
+
+The picture gives the same answer. A tangent of $$\frac{3}{4}$$ in the third quadrant means the ray
+at angle $$x$$ goes through a point $$3$$ down for every $$4$$ to the left, such as $$(-4, -3)$$, by
+part 2 of :ref{#tangent-slope}. That point is $$5$$ from $$O$$, the hypotenuse of a $$3$$, $$4$$,
+$$5$$ triangle, so the point on the unit circle is
+$$\frac{1}{5}(-4, -3) = (-\frac{4}{5}, -\frac{3}{5})$$. As a check,
+$$\frac{16}{25} + \frac{9}{25} = 1$$.
+
+:::
+
+## Exercises
+
+:::::accordion[Exercises on the tangent, with solutions]
+
+::::exercise{#ex-tangent-from-point}
+
+Each point below is on the unit circle, the point $$(\cos x, \sin x)$$ for some angle $$x$$. Find
+$$\tan x$$, and say which quadrant the point is in and whether that sign is what you expected.
+
+1. $$(0.6, 0.8)$$
+2. $$(-0.28, 0.96)$$
+3. $$(-0.8, -0.6)$$
+
+:::solution
+
+By :ref{#tangent}, $$\tan x$$ is the second coordinate divided by the first.
+
+1. $$\tan x = \frac{0.8}{0.6} = \frac{4}{3}$$. The point is in the first quadrant, where the tangent
+   is positive.
+2. $$\tan x = \frac{0.96}{-0.28} = -\frac{24}{7} \approx -3.43$$. The point is in the second
+   quadrant, where sine is positive and cosine negative, so the tangent is negative.
+3. $$\tan x = \frac{-0.6}{-0.8} = \frac{3}{4}$$. The point is in the third quadrant, where both are
+   negative, so the tangent is positive.
+
+:::
+
+::::
+
+::::exercise{#ex-tangent-right-triangle}
+
+A right triangle has legs $$5$$ and $$12$$. Find the tangent of each of its other two angles, and
+then the angles themselves with $$\tan^{-1}$$, in degrees. Check that they add up to $$90^\circ$$.
+
+:::solution
+
+By part 3 of :ref{#tangent-slope}, the angle opposite the leg $$12$$ has tangent
+$$\frac{12}{5} = 2.4$$, and the angle opposite the leg $$5$$ has tangent $$\frac{5}{12}$$. Both
+angles are between $$0$$ and $$\frac{\pi}{2}$$, so :ref{#inverse-tan} gives them:
+
+```math
+\tan^{-1} 2.4 \approx 67.38^\circ \qquad \tan^{-1}\frac{5}{12} \approx 22.62^\circ
+```
+
+and $$67.38^\circ + 22.62^\circ = 90^\circ$$, as :ref{#distance-and-angles/right-triangle-angles}
+says. The two tangents are $$\frac{12}{5}$$ and $$\frac{5}{12}$$, one the reciprocal of the other:
+the opposite side of one angle is the adjacent side of the other.
+
+:::
+
+::::
+
+::::exercise{#ex-tangent-exact}
+
+Find the exact values of $$\tan\frac{5\pi}{6}$$, $$\tan\frac{4\pi}{3}$$ and
+$$\tan\left(-\frac{\pi}{4}\right)$$. Then find every $$x$$ with $$0 \le x < 2\pi$$ and
+$$\tan x = -1$$.
+
+:::solution
+
+By :ref{#tangent-period}, adding or taking away $$\pi$$ doesn't change the tangent, and a minus sign
+inside comes out.
+
+- $$\frac{5\pi}{6} = -\frac{\pi}{6} + \pi$$, so
+  $$\tan\frac{5\pi}{6} = \tan\left(-\frac{\pi}{6}\right) = -\tan\frac{\pi}{6} = -\frac{1}{\sqrt3}$$
+- $$\frac{4\pi}{3} = \frac{\pi}{3} + \pi$$, so $$\tan\frac{4\pi}{3} = \tan\frac{\pi}{3} = \sqrt3$$
+- $$\tan\left(-\frac{\pi}{4}\right) = -\tan\frac{\pi}{4} = -1$$
+
+So $$\tan^{-1}(-1) = -\frac{\pi}{4}$$, and every solution of $$\tan x = -1$$ is
+$$-\frac{\pi}{4} + n\pi$$ for an integer $$n$$. Those in $$[0, 2\pi)$$ come from $$n = 1$$ and
+$$n = 2$$: $$x = \frac{3\pi}{4}$$ and $$x = \frac{7\pi}{4}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-tangent-building}
+
+You stand $$40$$ m from a tall building on level ground. Holding a clinometer at eye height, $$1.5$$
+m above the ground, you read an angle of $$25^\circ$$ up to the top of the building. How tall is the
+building, to the nearest tenth of a metre?
+
+:::solution
+
+Your line of sight, the level line from your eye to the building, and the building above eye height
+make a right triangle, with the right angle on the wall at eye height. The side next to the
+$$25^\circ$$ angle is $$40$$ m. By part 3 of :ref{#tangent-slope}, the part of the building above
+your eye is
+
+```math
+40 \tan 25^\circ \approx 40 \times 0.4663 \approx 18.65 \text{ m}
+```
+
+Adding the $$1.5$$ m below eye height, the building is about $$18.65 + 1.5 = 20.15$$ m, or $$20.2$$
+m to the nearest tenth.
+
+:::
+
+::::
+
+::::exercise{#ex-tangent-line-angle}
+
+Find the slope of the line $$3x - 2y = 6$$, and the angle in degrees between the line and the
+$$x$$-axis, measured anticlockwise from the positive direction. Then find the slope of a
+perpendicular line, and its angle in $$(-90^\circ, 90^\circ)$$.
+
+:::solution
+
+Rearranging, $$y = \frac{3}{2}x - 3$$, so the slope is $$\frac{3}{2}$$
+(:ref{#linear-equations/slope}). The line through $$O$$ with the same slope is parallel, and by
+:ref{#tangent-slope} its angle $$\theta$$ has $$\tan\theta = \frac{3}{2}$$. The slope is positive,
+so the angle is between $$0$$ and $$90^\circ$$, and
+
+```math
+\theta = \tan^{-1} 1.5 \approx 56.31^\circ
+```
+
+By :ref{#segments-rays-and-lines/perpendicular-slopes}, a perpendicular line has slope
+$$-\frac{2}{3}$$, and its angle is $$\tan^{-1}\left(-\frac{2}{3}\right) \approx -33.69^\circ$$. The
+angles fit together. A quarter turn takes the first line through $$O$$ to the angle
+$$56.31^\circ + 90^\circ = 146.31^\circ$$, as in :ref{#tangent-perpendicular-slopes}. A half turn
+brings a line through $$O$$ back onto itself, since it sends each point $$X$$ to $$-X$$
+(:ref{#adding-and-scaling-points/negative-half-turn}), so the same line is at
+$$146.31^\circ - 180^\circ = -33.69^\circ$$.
+
+:::
+
+::::
+
+::::exercise{#ex-tangent-all-six}
+
+The point on the unit circle for an angle $$x$$ is in the fourth quadrant, and
+$$\sin x = -\frac{5}{13}$$. Find $$\cos x$$, $$\tan x$$, $$\sec x$$, $$\csc x$$ and $$\cot x$$, and
+check your answers with :ref{#tan-sec-identity}.
+
+:::solution
+
+By :ref{#pythagorean-identity}, $$\cos^2 x = 1 - \frac{25}{169} = \frac{144}{169}$$, so
+$$\cos x = \pm\frac{12}{13}$$. In the fourth quadrant the cosine is positive
+(:ref{#quadrant-signs}), so $$\cos x = \frac{12}{13}$$. Then, by :ref{#tangent} and
+:ref{#reciprocal-trig}:
+
+- $$\tan x = -\frac{5}{13} \div \frac{12}{13} = -\frac{5}{12}$$
+- $$\sec x = \frac{13}{12}$$ and $$\csc x = -\frac{13}{5}$$
+- $$\cot x = \frac{12}{13} \div \left(-\frac{5}{13}\right) = -\frac{12}{5}$$
+
+As a check, $$1 + \tan^2 x = 1 + \frac{25}{144} = \frac{169}{144} = \sec^2 x$$, and
+$$1 + \cot^2 x = 1 + \frac{144}{25} = \frac{169}{25} = \csc^2 x$$.
+
+:::
+
+::::
+
+::::exercise{#ex-tangent-supplement-complement}
+
+Use :ref{#supplement-identities} and :ref{#complement-identities} to prove that
+
+```math
+\tan(\pi - x) = -\tan x \qquad \tan\left(\frac{\pi}{2} - x\right) = \cot x
+```
+
+the first whenever $$\cos x \ne 0$$ and the second whenever $$\sin x \ne 0$$. Check both with
+$$x = \frac{\pi}{6}$$.
+
+:::solution
+
+**The first.** By :ref{#supplement-identities}, $$\sin(\pi - x) = \sin x$$ and
+$$\cos(\pi - x) = -\cos x$$, which is not $$0$$. So
+
+```math
+\tan(\pi - x) = \frac{\sin(\pi - x)}{\cos(\pi - x)} = \frac{\sin x}{-\cos x} = -\tan x
+```
+
+**The second.** By :ref{#complement-identities}, $$\sin(\frac{\pi}{2} - x) = \cos x$$ and
+$$\cos(\frac{\pi}{2} - x) = \sin x$$, which is not $$0$$. So
+
+```math
+\tan\left(\frac{\pi}{2} - x\right) = \frac{\sin(\pi/2 - x)}{\cos(\pi/2 - x)} = \frac{\cos x}{\sin x} = \cot x
+```
+
+**Checks.** With $$x = \frac{\pi}{6}$$, the first says $$\tan\frac{5\pi}{6} = -\frac{1}{\sqrt3}$$,
+as in the exercise on exact values. The second says $$\tan\frac{\pi}{3} = \cot\frac{\pi}{6}$$, and
+indeed $$\cot\frac{\pi}{6} = \frac{\sqrt3}{2} \div \frac{1}{2} = \sqrt3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-tangent-sec-csc}
+
+Prove that $$\sec^2 x + \csc^2 x = \sec^2 x \csc^2 x$$ for every $$x$$ that is not a whole multiple
+of $$\frac{\pi}{2}$$, and check it with $$x = \frac{\pi}{4}$$.
+
+:::solution
+
+For such an $$x$$, neither $$\cos x$$ nor $$\sin x$$ is $$0$$ (:ref{#trig-zeros}), so both sides are
+defined. Write everything with sine and cosine (:ref{#reciprocal-trig}) and work on the left side:
+
+```math
+\begin{aligned}
+\sec^2 x + \csc^2 x &= \frac{1}{\cos^2 x} + \frac{1}{\sin^2 x} \\
+&= \frac{\sin^2 x + \cos^2 x}{\cos^2 x \sin^2 x} && \text{over a common denominator} \\
+&= \frac{1}{\cos^2 x \sin^2 x} && \text{since } \sin^2 x + \cos^2 x = 1 \\
+&= \sec^2 x \csc^2 x
+\end{aligned}
+```
+
+With $$x = \frac{\pi}{4}$$, $$\cos x = \sin x = \frac{\sqrt2}{2}$$, so $$\sec^2 x = \csc^2 x = 2$$.
+The left side is $$2 + 2 = 4$$ and the right side is $$2 \cdot 2 = 4$$.
+
+:::
+
+::::
+
+:::::

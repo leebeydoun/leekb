@@ -1,0 +1,650 @@
+---
+title: The graphs of sine and cosine
+description:
+  Sine and cosine drawn as waves, how often they repeat, their mirror and turn symmetries, taller,
+  squeezed and slid waves, and where they cross zero.
+---
+
+Imagine riding the Ferris wheel from [Sine and cosine](./sine-and-cosine.mdx) while it turns at a
+steady speed. A friend on the ground writes down how high your car is above the centre of the wheel
+every few seconds, and plots each height against the time. The dots climb, level off at the top,
+fall through the middle, level off at the bottom and climb again. Turn after turn, the same wave
+comes back.
+
+<FerrisHeights caption="A twelfth of a turn passes between one dot and the next. The marked car is a sixth of a turn up from the right, and its height is carried across to its dot." />
+
+Each height is the radius of the wheel times the sine of the angle the car has turned through. So
+the wave has the shape of the **graph of sine**. In this guide we'll draw the graphs of sine and
+cosine from the unit circle, and read what they tell us about the two numbers.
+
+## From the circle to a wave
+
+Picture the point on the unit circle as it turns once round, starting at $$(1, 0)$$. Sine is how far
+up the point is. At the start the point is on the $$x$$-axis, so its height is $$0$$. It climbs to
+height $$1$$ at the top of the circle after a quarter turn, comes back down to $$0$$ on the left
+after a half turn, sinks to $$-1$$ at the bottom and returns to $$0$$ after a full turn.
+
+So as $$x$$ goes from $$0$$ to $$2\pi$$, the height $$\sin x$$ goes $$0$$, $$1$$, $$0$$, $$-1$$,
+$$0$$. The table fills in the values at every multiple of $$\frac{\pi}{6}$$ in between, from
+:ref{#quarter-values}, :ref{#sin-cos-30-60} and the table round the whole circle in
+[Identities you can see](./symmetries.mdx). Cosine, how far across the point is, has its own column.
+
+| $$x$$               | $$\sin x$$            | $$\approx$$ | $$\cos x$$            | $$\approx$$ |
+| ------------------- | --------------------- | ----------- | --------------------- | ----------- |
+| $$0$$               | $$0$$                 | $$0$$       | $$1$$                 | $$1$$       |
+| $$\frac{\pi}{6}$$   | $$\frac{1}{2}$$       | $$0.5$$     | $$\frac{\sqrt3}{2}$$  | $$0.87$$    |
+| $$\frac{\pi}{3}$$   | $$\frac{\sqrt3}{2}$$  | $$0.87$$    | $$\frac{1}{2}$$       | $$0.5$$     |
+| $$\frac{\pi}{2}$$   | $$1$$                 | $$1$$       | $$0$$                 | $$0$$       |
+| $$\frac{2\pi}{3}$$  | $$\frac{\sqrt3}{2}$$  | $$0.87$$    | $$-\frac{1}{2}$$      | $$-0.5$$    |
+| $$\frac{5\pi}{6}$$  | $$\frac{1}{2}$$       | $$0.5$$     | $$-\frac{\sqrt3}{2}$$ | $$-0.87$$   |
+| $$\pi$$             | $$0$$                 | $$0$$       | $$-1$$                | $$-1$$      |
+| $$\frac{7\pi}{6}$$  | $$-\frac{1}{2}$$      | $$-0.5$$    | $$-\frac{\sqrt3}{2}$$ | $$-0.87$$   |
+| $$\frac{4\pi}{3}$$  | $$-\frac{\sqrt3}{2}$$ | $$-0.87$$   | $$-\frac{1}{2}$$      | $$-0.5$$    |
+| $$\frac{3\pi}{2}$$  | $$-1$$                | $$-1$$      | $$0$$                 | $$0$$       |
+| $$\frac{5\pi}{3}$$  | $$-\frac{\sqrt3}{2}$$ | $$-0.87$$   | $$\frac{1}{2}$$       | $$0.5$$     |
+| $$\frac{11\pi}{6}$$ | $$-\frac{1}{2}$$      | $$-0.5$$    | $$\frac{\sqrt3}{2}$$  | $$0.87$$    |
+| $$2\pi$$            | $$0$$                 | $$0$$       | $$1$$                 | $$1$$       |
+
+Plot each pair $$(x, \sin x)$$ from the first two columns as a point, and the thirteen dots trace
+out one wave. The curve through them is drawn from many more values worked out by a computer. Its
+smooth shape between the dots is taken from that picture here, not proved.
+
+<SineGraph caption="The thirteen points (x, sin x) from the table, with the curve through them: up to 1 at π/2, down to −1 at 3π/2, back to 0 at 2π." />
+
+:::definition[Graph of sine and cosine]{#trig-graphs}
+
+The **graph of sine** is the graph (:ref{#linear-equations/graph}) of the equation $$y = \sin x$$:
+the set of all points $$(x, \sin x)$$, for every real number $$x$$. The **graph of cosine** is the
+graph of $$y = \cos x$$, the set of all points $$(x, \cos x)$$.
+
+:::
+
+The point on the circle and the point on the graph share the same height. Move the slider below and
+a dashed line carries the height from the circle across to the graph, which fills in as the point
+turns. With the cosine button, the across distance is first stood upright by a quarter turn about
+$$O$$, and then carried across in the same way.
+
+<WaveTracer />
+
+Plotting the points $$(x, \cos x)$$ from the table in the same way gives the graph of cosine. It is
+the same shape of wave, but it starts at the top: $$1$$ at $$x = 0$$, down through $$0$$ at
+$$\frac{\pi}{2}$$ to $$-1$$ at $$\pi$$, and back up to $$1$$ at $$2\pi$$.
+
+<CosineGraph caption="The thirteen points (x, cos x) from the table, with the curve through them: down from 1 at 0 to −1 at π, back to 1 at 2π." />
+
+Both waves stay between the lines $$y = 1$$ and $$y = -1$$, since every point of the unit circle is
+at most $$1$$ from each axis (:ref{#sine-and-cosine-bounds}).
+
+## The wave repeats
+
+After a full turn the point on the circle is back where it started, so it goes round again through
+the same heights in the same order. On the graph, the wave from $$2\pi$$ to $$4\pi$$ is a copy of
+the wave from $$0$$ to $$2\pi$$, slid along by $$2\pi$$. The same goes backwards: turning by
+negative angles takes the point clockwise through the same heights.
+
+<SineRepeats caption="The graph of sine from −2π to 4π. Each stretch of length 2π holds a copy of the solid wave from 0 to 2π." />
+
+For example, $$\sin\frac{13\pi}{6} = \sin\left(\frac{\pi}{6} + 2\pi\right) = \frac12$$, the same
+height as at $$\frac{\pi}{6}$$. A wave that repeats like this gets a name, and so does the distance
+after which it repeats.
+
+:::definition[Period]{#period}
+
+Let $$f$$ be a rule that gives a number $$f(x)$$ for every real number $$x$$, such as
+$$x \mapsto \sin x$$ or $$x \mapsto \sin 2x$$. A number $$p > 0$$ is a **period** of $$f$$ if
+
+```math
+f(x + p) = f(x) \quad \text{for every real number } x
+```
+
+A rule with a period is called **periodic**.
+
+:::
+
+By :ref{#periodic} with $$n = 1$$, $$\sin(x + 2\pi) = \sin x$$ and $$\cos(x + 2\pi) = \cos x$$ for
+every $$x$$. So $$2\pi$$ is a period of sine and of cosine. On the graph, sliding by $$2\pi$$ to the
+right sends each point $$(x, \sin x)$$ to $$(x + 2\pi, \sin x)$$, which is again a point of the
+graph.
+
+A rule with one period has many: if $$2\pi$$ is a period, so are $$4\pi$$ and $$6\pi$$, since two
+full turns bring the point back too. When people say "the period of sine is $$2\pi$$", they mean the
+smallest one. Nothing smaller than $$2\pi$$ works, because sine reaches its top, the height $$1$$,
+once in each full turn.
+
+:::proposition[The smallest period of sine and cosine]{#graphs-least-period}
+
+Every period of sine is a whole multiple of $$2\pi$$, so $$2\pi$$ is the smallest one. The same
+holds for cosine.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Sine_and_Cosine_are_Periodic_on_Reals"}
+
+Let $$p$$ be a period of sine. Put $$x = \frac{\pi}{2}$$ into the definition, and use
+:ref{#quarter-values} for $$\sin\frac{\pi}{2}$$:
+
+```math
+\begin{aligned}
+\sin\left(\tfrac{\pi}{2} + p\right) &= \sin\tfrac{\pi}{2} && \text{since } p \text{ is a period} \\
+&= 1 && \text{the value at a quarter turn}
+\end{aligned}
+```
+
+Let $$m$$ be the largest whole number with $$2\pi m \le \frac{\pi}{2} + p$$, and write
+$$\frac{\pi}{2} + p = y + 2\pi m$$, so that $$0 \le y < 2\pi$$. By :ref{#periodic}, $$\sin y = 1$$.
+By :ref{#pythagorean-identity}, $$\cos^2 y = 1 - 1 = 0$$, so $$\cos y = 0$$ and the point
+$$(\cos y, \sin y)$$ is $$E_2 = (0, 1)$$.
+
+By :ref{#unit-circle-point}, exactly one angle $$y$$ with $$0 \le y < 2\pi$$ gives $$E_2$$, and
+:ref{#quarter-values} says it is $$\frac{\pi}{2}$$. So $$y = \frac{\pi}{2}$$ and $$p = 2\pi m$$.
+Since $$p > 0$$, $$m$$ is at least $$1$$, so $$p \ge 2\pi$$.
+
+For cosine, the same argument with $$x = 0$$ works: a period $$p$$ gives $$\cos p = \cos 0 = 1$$, so
+$$\sin p = 0$$, the point is $$E_1$$, and $$p$$ is a whole multiple of $$2\pi$$.
+
+:::
+
+## Cosine is sine slid sideways
+
+Put the two waves on the same axes and they look alike. Cosine reaches its top at $$0$$ and sine at
+$$\frac{\pi}{2}$$; cosine reaches its bottom at $$\pi$$ and sine at $$\frac{3\pi}{2}$$. Everything
+sine does, cosine does a quarter turn earlier.
+
+<CosineShift caption="Sine in blue and cosine in orange. Sliding the sine wave left by π/2 lays it exactly on the cosine wave." />
+
+The circle says why. Turn the point a further quarter turn: the quarter turn sends $$(a, b)$$ to
+$$(-b, a)$$, so the across distance $$a$$ of the point now becomes the height of the point a quarter
+turn on. That is :ref{#quarter-turn-identities} read from right to left.
+
+:::proposition[Cosine is a shifted sine]{#cosine-shift}
+
+For every real number $$x$$,
+
+```math
+\cos x = \sin\left(x + \frac{\pi}{2}\right)
+```
+
+So the slide by $$\left(-\frac{\pi}{2}, 0\right)$$, which moves every point $$\frac{\pi}{2}$$ to the
+left, sends the graph of sine onto the graph of cosine.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Sine_of_Angle_plus_Right_Angle"}
+
+The equation is the second part of :ref{#quarter-turn-identities}, which says
+$$\sin\left(x + \frac{\pi}{2}\right) = \cos x$$.
+
+For the graphs, let $$T$$ be the slide by $$\left(-\frac{\pi}{2}, 0\right)$$
+(:ref{#adding-and-scaling-points/slide-formula}). Take a point $$(t, \sin t)$$ of the graph of sine
+and write $$x = t - \frac{\pi}{2}$$. Then
+
+```math
+\begin{aligned}
+T(t, \sin t) &= \left(t - \tfrac{\pi}{2}, \sin t\right) && \text{by the slide's formula} \\
+&= \left(x, \sin\left(x + \tfrac{\pi}{2}\right)\right) && \text{since } t = x + \tfrac{\pi}{2} \\
+&= (x, \cos x) && \text{by the equation above}
+\end{aligned}
+```
+
+which is a point of the graph of cosine. Every point $$(x, \cos x)$$ of the graph of cosine is hit
+this way, from the point $$\left(x + \frac{\pi}{2}, \sin\left(x + \frac{\pi}{2}\right)\right)$$ of
+the graph of sine.
+
+:::
+
+Check it with $$x = \frac{\pi}{6}$$. The left side is $$\cos\frac{\pi}{6} = \frac{\sqrt3}{2}$$. The
+right side is $$\sin\left(\frac{\pi}{6} + \frac{\pi}{2}\right) = \sin\frac{2\pi}{3}$$, which the
+table gives as $$\frac{\sqrt3}{2}$$ too.
+
+## Symmetry of the two graphs
+
+Fold the cosine graph along the $$y$$-axis and the two halves match: the wave at $$-x$$ is as high
+as the wave at $$x$$. The sine graph has a different symmetry. Turn it half a turn about the origin
+and it lands on itself: the wave at $$-x$$ is as far below the axis as the wave at $$x$$ is above
+it.
+
+<WaveSymmetry caption="Top: the cosine graph is its own mirror image in the y-axis; the points at π/3 and −π/3 are both at height 1/2. Bottom: the sine graph is its own image under a half turn about the origin; the points at π/3 and −π/3 are at heights √3/2 and −√3/2." />
+
+Both come from flipping the point on the unit circle in the $$x$$-axis. The flip turns the point for
+$$x$$ into the point for $$-x$$, keeping its across distance and changing the sign of its height:
+$$\cos(-x) = \cos x$$ and $$\sin(-x) = -\sin x$$ (:ref{#negative-angle}).
+
+A rule $$f$$ with $$f(-x) = f(x)$$ for every $$x$$ is called **even**, and one with
+$$f(-x) = -f(x)$$ for every $$x$$ is called **odd**. So cosine is even and sine is odd. The names
+come from powers: $$x^2$$ is even and $$x^3$$ is odd.
+
+:::proposition[Symmetries of the graphs]{#graphs-symmetry}
+
+1. The flip $$R_2$$ in the $$y$$-axis is a symmetry (:ref{#isometries/symmetry}) of the graph of
+   cosine.
+2. The half turn $$H_O$$ about the origin is a symmetry of the graph of sine.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Even_and_odd_functions"}
+
+**Part 1.** By :ref{#adding-and-scaling-points/axis-reflections}, $$R_2(x, y) = (-x, y)$$. For a
+point $$(x, \cos x)$$ of the graph of cosine, using :ref{#negative-angle},
+
+```math
+\begin{aligned}
+R_2(x, \cos x) &= (-x, \cos x) && \text{by the formula for } R_2 \\
+&= \big(-x, \cos(-x)\big) && \text{a negative angle}
+\end{aligned}
+```
+
+which is the point of the graph at $$-x$$. So $$R_2$$ sends the graph into itself. Every point
+$$(x, \cos x)$$ is hit, by the point $$(-x, \cos(-x))$$, so the image is the whole graph.
+
+**Part 2.** The half turn is $$H_O(x, y) = (-x, -y)$$
+(:ref{#adding-and-scaling-points/half-turn-formula} with $$Q = O$$). For a point $$(x, \sin x)$$,
+again using :ref{#negative-angle},
+
+```math
+\begin{aligned}
+H_O(x, \sin x) &= (-x, -\sin x) && \text{by the formula for } H_O \\
+&= \big(-x, \sin(-x)\big) && \text{a negative angle}
+\end{aligned}
+```
+
+which is the point of the graph at $$-x$$. As in part 1, every point $$(x, \sin x)$$ is hit, by the
+point $$(-x, \sin(-x))$$.
+
+:::
+
+Check with $$x = \frac{\pi}{3}$$: $$\cos\left(-\frac{\pi}{3}\right) = \cos\frac{5\pi}{3}$$ by
+:ref{#periodic}, and the table gives $$\frac12$$, the same as $$\cos\frac{\pi}{3}$$. Likewise
+$$\sin\left(-\frac{\pi}{3}\right) = \sin\frac{5\pi}{3} = -\frac{\sqrt3}{2}$$, the opposite of
+$$\sin\frac{\pi}{3}$$.
+
+## Taller, squeezed and slid waves
+
+A bigger Ferris wheel gives a taller wave, and a faster one gives more waves in the same time. Each
+change to the wheel changes the formula in its own way. Multiplying the sine by a number makes the
+wave taller, and multiplying $$x$$ inside the sine squeezes the wave sideways.
+
+### Taller waves
+
+On the Ferris wheel of radius $$20$$ m, the car after a turn by $$x$$ is at
+$$(20\cos x, 20\sin x)$$, measured from the centre (:ref{#circle-point-radius}). So its height is
+$$20\sin x$$: every height on the sine wave times $$20$$. The wave keeps its period, $$2\pi$$, and
+crosses zero at the same places, but it now reaches up to $$20$$ and down to $$-20$$.
+
+In the same way, for a number $$a > 0$$ the graph of $$y = a\sin x$$ rises to $$a$$ and falls to
+$$-a$$. The number $$a$$ is the **amplitude** of the wave. Its graph is the graph of sine stretched
+by $$a$$ away from the $$x$$-axis (:ref{#area-and-scaling/stretch}), which moves each point
+$$(x, y)$$ to $$(x, ay)$$.
+
+<WaveTaller caption="The graph of y = 3 sin x is the sine wave stretched upwards by 3: amplitude 3, the same period 2π, the same crossings at 0, π and 2π." />
+
+### Squeezed waves
+
+Now imagine the wheel turning twice as fast. After time $$x$$ it has turned through $$2x$$, so the
+height is $$\sin 2x$$. At $$x = \frac{\pi}{4}$$ the turn is already $$\frac{\pi}{2}$$ and the car is
+at the top; at $$x = \frac{\pi}{2}$$ the turn is $$\pi$$ and the car is level with the centre; at
+$$x = \pi$$ the car has been all the way round. So one whole wave fits between $$0$$ and $$\pi$$,
+and two fit between $$0$$ and $$2\pi$$.
+
+<WaveSqueezed caption="The graph of y = sin 2x fits two whole waves between 0 and 2π, each π long. Its tops are at π/4 and 5π/4." />
+
+One slip to watch for: $$\sin 2x$$ and $$2\sin x$$ are different waves. The first is squeezed and
+the second is stretched. At $$x = \frac{\pi}{2}$$, $$\sin 2x = \sin\pi = 0$$, but $$2\sin x = 2$$.
+
+:::proposition[Period of a squeezed wave]{#squeezed-period}
+
+Let $$b > 0$$. Then $$\frac{2\pi}{b}$$ is a period of $$x \mapsto \sin bx$$ and of
+$$x \mapsto \cos bx$$, and every period of either is at least $$\frac{2\pi}{b}$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Periodic_function#Properties"}
+
+**A period.** For every $$x$$, using :ref{#periodic},
+
+```math
+\begin{aligned}
+\sin\left(b\left(x + \tfrac{2\pi}{b}\right)\right) &= \sin(bx + 2\pi) && \text{multiplying out the bracket} \\
+&= \sin bx && \text{a full turn more}
+\end{aligned}
+```
+
+The same lines with $$\cos$$ in place of $$\sin$$ work for cosine.
+
+**No smaller period.** Let $$p$$ be a period of $$x \mapsto \sin bx$$. For every number $$t$$, put
+$$x = \frac{t}{b}$$ into the definition of a period:
+
+```math
+\begin{aligned}
+\sin(t + bp) &= \sin\left(b\left(\tfrac{t}{b} + p\right)\right) && \text{multiplying out the bracket} \\
+&= \sin\left(b \cdot \tfrac{t}{b}\right) && \text{since } p \text{ is a period} \\
+&= \sin t
+\end{aligned}
+```
+
+So $$bp > 0$$ is a period of sine, and by :ref{#graphs-least-period}, $$bp \ge 2\pi$$. Dividing by
+$$b > 0$$ gives $$p \ge \frac{2\pi}{b}$$. The same argument works for cosine.
+
+:::
+
+So the number $$b$$ counts how many whole waves fit into a stretch of length $$2\pi$$. A number
+$$b$$ between $$0$$ and $$1$$ fits less than one wave, so the wave is longer than $$2\pi$$.
+
+:::example[Three waves]
+
+- **$$y = \sin 2x$$**: amplitude $$1$$ and period $$\frac{2\pi}{2} = \pi$$. It is $$0$$ at $$0$$,
+  $$1$$ at $$\frac{\pi}{4}$$, $$0$$ at $$\frac{\pi}{2}$$, $$-1$$ at $$\frac{3\pi}{4}$$ and $$0$$
+  again at $$\pi$$.
+- **$$y = 3\sin x$$**: amplitude $$3$$ and period $$2\pi$$. It is $$3$$ at $$\frac{\pi}{2}$$ and
+  $$-3$$ at $$\frac{3\pi}{2}$$. At $$\frac{\pi}{6}$$ it is $$3 \cdot \frac12 = 1.5$$.
+- **$$y = \cos\frac{x}{2}$$**: here $$b = \frac12$$, so the period is $$\frac{2\pi}{1/2} = 4\pi$$.
+  It starts at $$\cos 0 = 1$$, is $$\cos\frac{\pi}{2} = 0$$ at $$x = \pi$$, reaches $$\cos\pi = -1$$
+  at $$x = 2\pi$$, and climbs back to $$1$$ at $$x = 4\pi$$.
+
+:::
+
+<WaveWidened caption="The graph of y = cos(x/2) takes 4π to make one whole wave, twice as long as cosine." />
+
+### Slid waves
+
+A wheel that starts a little late reaches every height a little later. The wave
+$$y = \sin\left(x - \frac{\pi}{3}\right)$$ reaches at $$x = \frac{5\pi}{6}$$ the height that sine
+reaches at $$\frac{\pi}{2}$$, since $$\frac{5\pi}{6} - \frac{\pi}{3} = \frac{\pi}{2}$$. So its graph
+is the sine wave slid right by $$\frac{\pi}{3}$$.
+
+<WaveSlid caption="The graph of y = sin(x − π/3) is the sine wave slid right by π/3. Its top moves from π/2 to 5π/6." />
+
+In general, for a number $$c$$ the graph of $$y = \sin(x - c)$$ is the graph of sine slid right by
+$$c$$. The minus sign inside means a slide to the right, which can feel backwards at first.
+:ref{#cosine-shift} is the case $$c = -\frac{\pi}{2}$$: $$\sin\left(x + \frac{\pi}{2}\right)$$ is
+the sine wave slid left by $$\frac{\pi}{2}$$.
+
+## Where sine and cosine are zero
+
+The sine wave crosses the $$x$$-axis at $$0$$, $$\pi$$, $$2\pi$$, and on in both directions, once
+every half turn. On the circle, the height is $$0$$ exactly when the point is on the $$x$$-axis, and
+the unit circle meets the $$x$$-axis at two points: $$(1, 0)$$ on the right and $$(-1, 0)$$ on the
+left. The point passes one of them every half turn.
+
+<TrigZeros caption="Sine (blue) is zero at every whole multiple of π. Cosine (orange) is zero halfway between, at π/2 plus a whole multiple of π." />
+
+```plane
+scale 2.5
+point O 0 0 sw
+point E1 1 0 e
+point -E1 -1 0 w
+point E2 0 1 n
+point -E2 0 -1 s
+circle O 1 color=muted
+segment -E1 E1 color=blue
+segment -E2 E2 color=orange
+caption "The points of the unit circle at height 0 are E1 and −E1, on the blue axis. The points with across distance 0 are E2 and −E2, on the orange axis."
+```
+
+For cosine the picture is the same with across and up swapped: the across distance is $$0$$ exactly
+when the point is at the top, $$(0, 1)$$, or the bottom, $$(0, -1)$$. The point reaches one of these
+every half turn too, starting a quarter turn in.
+
+:::proposition[Where sine and cosine are zero]{#trig-zeros}
+
+1. $$\sin x = 0$$ exactly when $$x = n\pi$$ for some integer $$n$$.
+2. $$\cos x = 0$$ exactly when $$x = \frac{\pi}{2} + n\pi$$ for some integer $$n$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Zeroes_of_Sine_and_Cosine"}
+
+**Part 1.** Suppose $$\sin x = 0$$. Let $$m$$ be the largest whole number with $$2\pi m \le x$$, and
+write $$x = y + 2\pi m$$, so that $$0 \le y < 2\pi$$. By :ref{#periodic} and
+:ref{#pythagorean-identity},
+
+```math
+\begin{aligned}
+\sin y &= \sin x = 0 && \text{whole turns repeat} \\
+\cos^2 y &= 1 - \sin^2 y = 1 && \text{sine squared plus cosine squared}
+\end{aligned}
+```
+
+So $$\cos y$$ is $$1$$ or $$-1$$, and the point $$(\cos y, \sin y)$$ is $$E_1 = (1, 0)$$ or
+$$-E_1 = (-1, 0)$$. By :ref{#quarter-values}, these are the points for $$y = 0$$ and $$y = \pi$$,
+and by :ref{#unit-circle-point} no other $$y$$ with $$0 \le y < 2\pi$$ gives them. So $$y = 0$$ and
+$$x = 2m \cdot \pi$$, or $$y = \pi$$ and $$x = (2m + 1)\pi$$. Either way $$x$$ is a whole multiple
+of $$\pi$$.
+
+Conversely, every integer $$n$$ is $$2m$$ or $$2m + 1$$ for some integer $$m$$
+(:ref{#numbers/even-or-odd}). By :ref{#periodic} and :ref{#quarter-values},
+
+```math
+\sin(2m\pi) = \sin 0 = 0 \qquad \sin\big((2m + 1)\pi\big) = \sin(\pi + 2m\pi) = \sin\pi = 0
+```
+
+**Part 2.** By :ref{#cosine-shift}, $$\cos x = \sin\left(x + \frac{\pi}{2}\right)$$. By part 1, that
+is $$0$$ exactly when $$x + \frac{\pi}{2} = k\pi$$ for some integer $$k$$, that is, when
+
+```math
+x = k\pi - \frac{\pi}{2} = \frac{\pi}{2} + (k - 1)\pi
+```
+
+Writing $$n = k - 1$$, which runs through all the integers as $$k$$ does, gives
+$$x = \frac{\pi}{2} + n\pi$$.
+
+:::
+
+For example, $$\sin 5\pi = 0$$ and
+$$\cos\frac{7\pi}{2} = \cos\left(\frac{\pi}{2} + 3\pi\right) = 0$$. But $$\frac{\pi}{2}$$ is not a
+whole multiple of $$\pi$$, so $$\sin\frac{\pi}{2}$$ is not $$0$$: it is $$1$$.
+
+## Waves in the world
+
+A sine wave also turns up, at least roughly, in things that repeat on a steady cycle without any
+wheel in sight. The length of the day is one example. In London the shortest day, in late December,
+has about $$7.8$$ hours of daylight and the longest, in late June, about $$16.6$$ hours. Over a year
+the hours of daylight rise and fall roughly like a sine wave of period $$365$$ days.
+
+The middle of the two extremes is $$12.2$$ hours and half the gap is $$4.4$$ hours. Counting $$t$$
+in days from the start of the year, with day $$80$$ about 21 March, a good rough model is
+
+```math
+\text{hours of daylight} \approx 12.2 + 4.4 \sin\left(\frac{2\pi}{365}(t - 80)\right)
+```
+
+By :ref{#squeezed-period} with $$b = \frac{2\pi}{365}$$, its period is
+$$\frac{2\pi}{2\pi/365} = 365$$ days. On 21 June, day $$172$$, the angle inside is about $$1.58$$,
+close to $$\frac{\pi}{2}$$, and the model gives about $$12.2 + 4.4 = 16.6$$ hours. The real figures
+wobble a little around the curve, but the shape is right.
+
+Sound is another. A tuning fork for the note A shakes $$440$$ times a second, and the air pressure
+next to it rises and falls close to a sine wave of period $$\frac{1}{440}$$ of a second. In the
+formula $$\sin(880\pi t)$$, with $$t$$ in seconds, :ref{#squeezed-period} gives that period:
+$$\frac{2\pi}{880\pi} = \frac{1}{440}$$.
+
+## Exercises
+
+:::::accordion[Exercises on the graphs of sine and cosine, with solutions]
+
+::::exercise{#ex-graphs-repeat}
+
+Use the table of values and the fact that the waves repeat every $$2\pi$$ to find:
+
+1. $$\sin\frac{13\pi}{6}$$
+2. $$\cos\frac{7\pi}{3}$$
+3. $$\sin\left(-\frac{3\pi}{2}\right)$$
+
+:::solution
+
+Each time, add or take away $$2\pi$$ until the angle is between $$0$$ and $$2\pi$$, then read the
+table. This is allowed by :ref{#periodic}.
+
+1. $$\frac{13\pi}{6} = \frac{\pi}{6} + 2\pi$$, so
+   $$\sin\frac{13\pi}{6} = \sin\frac{\pi}{6} = \frac12$$.
+2. $$\frac{7\pi}{3} = \frac{\pi}{3} + 2\pi$$, so
+   $$\cos\frac{7\pi}{3} = \cos\frac{\pi}{3} = \frac12$$.
+3. $$-\frac{3\pi}{2} + 2\pi = \frac{\pi}{2}$$, so
+   $$\sin\left(-\frac{3\pi}{2}\right) = \sin\frac{\pi}{2} = 1$$. On the circle, turning three
+   quarter turns clockwise lands on the top point $$(0, 1)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-graphs-amplitude-period}
+
+Give the amplitude and the period of each wave.
+
+1. $$y = 5\sin x$$
+2. $$y = \sin 3x$$
+3. $$y = 2\cos\frac{x}{3}$$
+
+:::solution
+
+The number in front is the amplitude, and the number $$b$$ multiplying $$x$$ gives the period
+$$\frac{2\pi}{b}$$ (:ref{#squeezed-period}).
+
+1. Amplitude $$5$$, period $$2\pi$$.
+2. Amplitude $$1$$, period $$\frac{2\pi}{3}$$: three whole waves fit between $$0$$ and $$2\pi$$.
+3. Amplitude $$2$$. Here $$b = \frac13$$, so the period is $$\frac{2\pi}{1/3} = 6\pi$$.
+
+:::
+
+::::
+
+::::exercise{#ex-graphs-zeros-squeezed}
+
+Find every $$x$$ with $$0 \le x \le 2\pi$$ and $$\sin 2x = 0$$.
+
+:::solution
+
+By :ref{#trig-zeros}, $$\sin 2x = 0$$ exactly when $$2x = n\pi$$ for an integer $$n$$, that is,
+$$x = \frac{n\pi}{2}$$. Between $$0$$ and $$2\pi$$ that gives $$n = 0, 1, 2, 3, 4$$:
+
+```math
+x = 0, \quad \frac{\pi}{2}, \quad \pi, \quad \frac{3\pi}{2}, \quad 2\pi
+```
+
+That is twice as many as for $$\sin x$$, which fits with the squeezed wave making two whole waves in
+the same stretch.
+
+:::
+
+::::
+
+::::exercise{#ex-graphs-cos-half-zeros}
+
+Find every $$x$$ with $$\cos\frac{x}{2} = 0$$. Check one of your answers with the table.
+
+:::solution
+
+By part 2 of :ref{#trig-zeros}, $$\cos\frac{x}{2} = 0$$ exactly when
+$$\frac{x}{2} = \frac{\pi}{2} + n\pi$$ for an integer $$n$$. Multiplying both sides by $$2$$ gives
+
+```math
+x = \pi + 2n\pi
+```
+
+so the answers are the odd multiples of $$\pi$$: $$\dots, -3\pi, -\pi, \pi, 3\pi, \dots$$. As a
+check, $$x = \pi$$ gives $$\cos\frac{\pi}{2} = 0$$, which is in the table.
+
+:::
+
+::::
+
+::::exercise{#ex-graphs-sine-from-cosine}
+
+Show that $$\sin x = \cos\left(x - \frac{\pi}{2}\right)$$ for every $$x$$, so the graph of sine is
+the graph of cosine slid right by $$\frac{\pi}{2}$$. Check it with $$x = \frac{\pi}{6}$$.
+
+:::solution
+
+:ref{#cosine-shift} holds for every number, so put $$x - \frac{\pi}{2}$$ in place of $$x$$:
+
+```math
+\begin{aligned}
+\cos\left(x - \tfrac{\pi}{2}\right) &= \sin\left(\left(x - \tfrac{\pi}{2}\right) + \tfrac{\pi}{2}\right) && \text{cosine is a shifted sine} \\
+&= \sin x && \text{since } -\tfrac{\pi}{2} + \tfrac{\pi}{2} = 0
+\end{aligned}
+```
+
+By the paragraph on slid waves, $$\cos\left(x - \frac{\pi}{2}\right)$$ is the cosine wave slid right
+by $$\frac{\pi}{2}$$. As a check, with $$x = \frac{\pi}{6}$$ the sine is
+$$\sin\frac{\pi}{6} = \frac12$$, and the cosine is
+$$\cos\left(-\frac{\pi}{3}\right) = \cos\frac{\pi}{3} = \frac12$$ by :ref{#negative-angle}.
+
+:::
+
+::::
+
+::::exercise{#ex-graphs-not-a-period}
+
+Show with one value of $$x$$ that $$2\pi$$ is not a period of $$x \mapsto \sin\frac{x}{2}$$. What is
+its smallest period?
+
+:::solution
+
+A period must work for every $$x$$, so one $$x$$ where it fails is enough. Take $$x = \pi$$:
+
+```math
+\sin\frac{\pi}{2} = 1 \qquad \sin\frac{\pi + 2\pi}{2} = \sin\frac{3\pi}{2} = -1
+```
+
+These differ, so $$2\pi$$ is not a period. By :ref{#squeezed-period} with $$b = \frac12$$, the
+smallest period is $$\frac{2\pi}{1/2} = 4\pi$$: the wave is twice as long as sine.
+
+:::
+
+::::
+
+::::exercise{#ex-graphs-ferris}
+
+A Ferris wheel of radius $$15$$ m has its centre $$17$$ m above the ground, and turns anticlockwise
+once every $$10$$ minutes. Your car starts level with the centre, on the right. After $$t$$ minutes
+its height above the ground is
+
+```math
+h = 17 + 15\sin\frac{\pi t}{5}
+```
+
+1. Explain where each number in the formula comes from.
+2. Find $$h$$ after $$2.5$$, $$5$$ and $$7.5$$ minutes, and after $$50$$ seconds.
+
+:::solution
+
+1. The wheel turns $$2\pi$$ in $$10$$ minutes, so after $$t$$ minutes it has turned
+   $$\frac{2\pi t}{10} = \frac{\pi t}{5}$$. By :ref{#circle-point-radius}, the car is then
+   $$15\sin\frac{\pi t}{5}$$ above the centre, and the centre is $$17$$ m up. The period is
+   $$\frac{2\pi}{\pi/5} = 10$$ minutes (:ref{#squeezed-period}), one turn of the wheel.
+2. At $$t = 2.5$$: $$\sin\frac{\pi}{2} = 1$$, so $$h = 32$$ m, the top. At $$t = 5$$:
+   $$\sin\pi = 0$$, so $$h = 17$$ m. At $$t = 7.5$$: $$\sin\frac{3\pi}{2} = -1$$, so $$h = 2$$ m,
+   the bottom. Fifty seconds is $$\frac56$$ of a minute, and
+   $$\sin\left(\frac{\pi}{5} \cdot \frac{5}{6}\right) = \sin\frac{\pi}{6} = \frac12$$, so
+   $$h = 17 + 7.5 = 24.5$$ m.
+
+:::
+
+::::
+
+::::exercise{#ex-graphs-sine-squared}
+
+Show that $$\pi$$ is a period of $$x \mapsto \sin^2 x$$, even though it is not a period of sine.
+Check with $$x = \frac{\pi}{6}$$.
+
+:::solution
+
+Recall that $$\sin^2 x$$ means $$(\sin x)^2$$. For every $$x$$, using :ref{#half-turn-identities},
+
+```math
+\begin{aligned}
+\sin^2(x + \pi) &= \big(\sin(x + \pi)\big)^2 && \text{what the notation means} \\
+&= (-\sin x)^2 && \text{a half turn more} \\
+&= \sin^2 x && \text{a square doesn't change when the sign does}
+\end{aligned}
+```
+
+So $$\pi$$ is a period. It is not a period of sine: at $$x = \frac{\pi}{2}$$,
+$$\sin\frac{3\pi}{2} = -1$$ but $$\sin\frac{\pi}{2} = 1$$. Squaring removes the sign, so the dips
+below the axis flip up and match the humps above. As a check,
+$$\sin^2\frac{7\pi}{6} = \left(-\frac12\right)^2 = \frac14 = \sin^2\frac{\pi}{6}$$.
+
+:::
+
+::::
+
+:::::

@@ -1,0 +1,484 @@
+---
+title: Radians
+description:
+  Measuring a turn by the distance travelled round a circle of radius 1, converting to and from
+  degrees, arcs and sectors, and turns written in radians.
+---
+
+Imagine someone measuring a footpath with a trundle wheel, a wheel on a long handle that clicks as
+it rolls. She never lays a tape on the ground. She walks the wheel along the path, and the distance
+comes from how far the wheel has turned. One whole turn rolls out one circumference of path, half a
+turn rolls out half of that, and a tenth of a turn rolls out a tenth.
+
+So the size of a turn can be read as a distance. Mathematicians measure angles this way, with a
+wheel of radius $$1$$: the size of a turn is how far a point on the rim travels. That unit is the
+**radian**, and a full turn is $$2\pi$$ radians, about $$6.28$$. In this guide we'll get used to
+radians, convert them to and from degrees, and see how they fit arcs, sectors and turning wheels.
+
+## Measuring a turn by distance
+
+Degrees cut a full turn into $$360$$ equal parts. The number $$360$$ is a choice made thousands of
+years ago, and nothing about a circle forces it. Radians use the circle itself instead: roll a wheel
+of radius $$1$$, and measure the turn by the distance a point on its rim covers.
+
+A full turn of that wheel covers its circumference, $$2\pi \cdot 1 = 2\pi$$
+(:ref{#area-and-scaling/circumference-formula}). An angle of $$x^\circ$$ is $$\frac{x}{360}$$ of a
+full turn (:ref{#distance-and-angles/degree}), so it should cover $$\frac{x}{360}$$ of that
+distance. And $$\frac{x}{360} \cdot 2\pi = \frac{\pi x}{180}$$, which is the definition.
+
+:::definition[Radians]{#radian}
+
+An angle of $$x^\circ$$ has $$\frac{\pi x}{180}$$ **radians**.
+
+:::
+
+Radians are a new unit for the same sizes, not a new way to find them. An angle still gets its size
+from the share of a disc its sector takes up, as in :ref{#distance-and-angles/degree}, and this
+chapter keeps that as its starting point. What changes is the number we write: a straight angle is
+$$180^\circ$$, and in radians it is $$\frac{\pi \cdot 180}{180} = \pi$$.
+
+From now on, an angle written without the degree sign is in radians. So an angle of $$2$$ means
+$$2$$ radians, and an angle of $$2^\circ$$ means $$2$$ degrees. The angles you'll meet most often
+are these:
+
+| Degrees              | Radians           | Roughly  |
+| -------------------- | ----------------- | -------- |
+| $$360^\circ$$        | $$2\pi$$          | $$6.28$$ |
+| $$180^\circ$$        | $$\pi$$           | $$3.14$$ |
+| $$90^\circ$$         | $$\frac{\pi}{2}$$ | $$1.57$$ |
+| $$60^\circ$$         | $$\frac{\pi}{3}$$ | $$1.05$$ |
+| $$45^\circ$$         | $$\frac{\pi}{4}$$ | $$0.79$$ |
+| $$30^\circ$$         | $$\frac{\pi}{6}$$ | $$0.52$$ |
+| about $$57.3^\circ$$ | $$1$$             | $$1$$    |
+
+Turn the radius in the diagram below and watch the orange arc grow from $$E_1 = (1, 0)$$. The ticks
+along it mark each whole radius length, so you can count the radians as you turn. A full turn holds
+six whole radii and a little more, since $$2\pi \approx 6.28$$. That the arc is exactly $$x$$ radii
+long is proved in [Arcs and sectors in radians](#arcs-and-sectors-in-radians).
+
+<RadianWrap />
+
+## Converting between degrees and radians
+
+A half turn is $$180^\circ$$ and also $$\pi$$ radians, and every conversion comes from that one
+pair. To go from degrees to radians, multiply by $$\frac{\pi}{180}$$. To go back, multiply by
+$$\frac{180}{\pi}$$, which undoes it.
+
+:::example[Converting both ways]
+
+- **$$135^\circ$$ to radians**: $$135 \cdot \frac{\pi}{180} = \frac{135\pi}{180} = \frac{3\pi}{4}$$,
+  dividing the top and bottom by $$45$$
+- **$$20^\circ$$ to radians**: $$\frac{20\pi}{180} = \frac{\pi}{9} \approx 0.349$$
+- **$$\frac{5\pi}{6}$$ to degrees**:
+  $$\frac{5\pi}{6} \cdot \frac{180}{\pi} = \frac{5 \cdot 180}{6} = 150$$, so the angle is
+  $$150^\circ$$
+- **$$2.5$$ radians to degrees**: $$2.5 \cdot \frac{180}{\pi} = \frac{450}{\pi} \approx 143.2$$, so
+  the angle is about $$143.2^\circ$$
+
+:::
+
+Notice that when an angle is a fraction of $$\pi$$, the $$\pi$$ cancels on the way to degrees. That
+is why angles in radians are usually written with $$\pi$$ in them: $$\frac{3\pi}{4}$$ says "three
+quarters of a half turn" at a glance, and $$2.356$$ hides it.
+
+The angle of exactly $$1$$ radian has $$\frac{180}{\pi}$$ degrees, about $$57.3^\circ$$. It is a
+little less than $$60^\circ$$, because $$60^\circ$$ is $$\frac{\pi}{3}$$ radians and $$\pi$$ is a
+little more than $$3$$.
+
+```plane
+scale 3.2
+point X1 -1.3 0 hidden
+point X2 1.4 0 hidden
+point Y1 0 -0.4 hidden
+point Y2 0 1.3 hidden
+point O 0 0 sw
+point E₁ 1 0 se
+point P 0.5403 0.8415 ne
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+circle O 1 color=muted
+segment O E₁ color=blue label="1" side=right
+segment O P color=blue label="1"
+angle E₁ O P r=1 color=orange label="1"
+caption "An angle of 1 radian at O cuts an arc of the unit circle as long as the radius, 1"
+```
+
+## Arcs and sectors in radians
+
+On a wheel of radius $$1$$, the arc an angle cuts out is as long as the angle in radians. A bigger
+wheel rolls out more ground for the same turn: radius $$3$$ gives three times as much. So on a
+circle of radius $$r$$ the arc should be $$r$$ times the angle, and the sector's area should follow
+in the same way from :ref{#distance-and-angles/sector-area}.
+
+There is one gap to fill first. An **arc** is the part of a circle inside an angle
+(:ref{#distance-and-angles/sector}), and earlier chapters found the length of a whole circle, but
+never of an arc. Cut a circle into $$8$$ equal slices from its centre, and the turns about the
+centre carry each slice onto the next, so the $$8$$ arcs match and each is $$\frac{1}{8}$$ of the
+circle. In the same way, an angle that is $$\frac{3}{8}$$ of a turn cuts $$3$$ of those arcs, which
+is $$\frac{3}{8}$$ of the circle, matching its sector. We take this from the picture for every
+angle:
+
+:::remark[Rules for arcs]{#arc-rule}
+
+Let $$A$$ be an angle with vertex $$P$$, and let $$C$$ be a circle with centre $$P$$. The arc that
+$$A$$ cuts from $$C$$ is the same fraction of the length of $$C$$ as the sector that $$A$$ cuts from
+the disc inside $$C$$ is of the area of that disc. So an angle of $$x^\circ$$ cuts an arc that is
+$$\frac{x}{360}$$ of the circle.
+
+This is taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Arc_length#Arcs_of_circles"}
+
+:::
+
+With that rule, both lengths and areas come straight from the share of the turn.
+
+:::proposition[Arc length and sector area in radians]{#radian-arc-sector}
+
+In a circle of radius $$r$$, an angle of $$x$$ radians at the centre cuts out:
+
+1. **An arc** of length $$rx$$
+2. **A sector** of area $$\frac{1}{2}r^2x$$
+
+So an angle of $$1$$ radian cuts an arc as long as the radius.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Circular_sector#Area"}
+
+An angle of $$x$$ radians has $$d$$ degrees, where $$\frac{\pi d}{180} = x$$ (:ref{#radian}).
+Multiplying both sides by $$\frac{180}{\pi}$$, $$d = \frac{180x}{\pi}$$. So the share of a full turn
+is
+
+```math
+\frac{d}{360} = \frac{180x}{360\pi} = \frac{x}{2\pi}
+```
+
+**The arc.** By :ref{#arc-rule}, the arc is $$\frac{d}{360}$$ of the circle. The circle has length
+$$2\pi r$$ (:ref{#area-and-scaling/circumference-formula}), so the arc has length
+
+```math
+\frac{x}{2\pi} \cdot 2\pi r = rx
+```
+
+**The sector.** By :ref{#distance-and-angles/sector-area}, the sector has area $$\frac{d}{360}$$
+times $$\pi r^2$$, so
+
+```math
+\frac{x}{2\pi} \cdot \pi r^2 = \frac{1}{2}r^2x
+```
+
+With $$x = 1$$, the arc has length $$r \cdot 1 = r$$.
+
+:::
+
+The name comes from that last fact: one radian is the angle whose arc is one radius long. So the
+radian measure of an angle counts how many radii fit along its arc, on a circle of any size.
+
+:::example[An angle of 2 in a circle of radius 3]
+
+An angle of $$2$$ radians at the centre of a circle of radius $$3$$ cuts an arc of length
+$$3 \cdot 2 = 6$$ and a sector of area $$\frac{1}{2} \cdot 3^2 \cdot 2 = 9$$.
+
+Check with degrees. The angle is $$\frac{180 \cdot 2}{\pi} = \frac{360}{\pi} \approx 114.6^\circ$$,
+so by :ref{#distance-and-angles/sector-area} the sector has area
+
+```math
+\frac{360/\pi}{360} \cdot \pi \cdot 3^2 = \frac{1}{\pi} \cdot 9\pi = 9
+```
+
+the same. The degree version needs $$360$$, $$\pi$$ and a cancellation, and the radian version needs
+none of them.
+
+:::
+
+## Turns measured in radians
+
+The rest of this chapter turns points about the origin $$O$$ all the time, so we'll measure those
+turns in radians as well. A turn by $$\frac{\pi}{2}$$ is a quarter turn, a turn by $$\pi$$ is a half
+turn, and a turn by $$2\pi$$ goes once round. As in
+[Slides and turns](../isometries/slides-and-turns.mdx), a negative number means turning clockwise,
+and a number bigger than $$2\pi$$ means going round more than once.
+
+:::definition[Turns measured in radians]{#radians-turn-notation}
+
+For every number $$x$$, in this chapter $$G_x$$ is the turn about $$O$$ by $$x$$ radians: the turn
+by $$\left(\frac{180x}{\pi}\right)^\circ$$ of :ref{#isometries/rotation}. It turns anticlockwise
+when $$x > 0$$ and clockwise when $$x < 0$$.
+
+:::
+
+Earlier chapters wrote turns in degrees, so the same letter now means something different. There,
+$$G_{90}$$ was the quarter turn; here it would be a turn by $$90$$ radians, more than $$14$$ whole
+turns. We keep the name $$G_{90}$$ for one thing only, the formula $$G_{90}(x, y) = (-y, x)$$ of
+:ref{#adding-and-scaling-points/quarter-turn}, and the next proposition shows it is $$G_{\pi/2}$$.
+
+:::proposition[Turns in radians]{#radian-turns}
+
+For all numbers $$x$$ and $$y$$ and every integer $$n$$:
+
+1. **Turns add**: $$G_x \circ G_y = G_{x + y}$$
+2. **A full turn**: $$G_{2\pi} = G_0 = I$$, the identity
+3. **Whole turns make no difference**: $$G_{x + 2\pi n} = G_x$$, so every turn is $$G_w$$ for some
+   $$w$$ with $$0 \le w < 2\pi$$
+4. **The quarter turn**: $$G_{\pi/2}(x, y) = (-y, x)$$, the formula $$G_{90}$$
+5. **The half turn**: $$G_\pi(x, y) = (-x, -y)$$, the half turn $$H_O$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Rotation_(mathematics)#Two_dimensions"}
+
+Each part is a fact about turns in degrees, from the Isometries chapter, written with
+$$\frac{180x}{\pi}$$ degrees in place of $$x$$ radians (:ref{#radians-turn-notation}).
+
+1. $$G_x \circ G_y$$ turns by $$\frac{180y}{\pi}$$ degrees and then by $$\frac{180x}{\pi}$$ degrees.
+   By rule 2 of :ref{#isometries/rotation-rules}, that is a turn by
+   $$\frac{180y}{\pi} + \frac{180x}{\pi} = \frac{180(x + y)}{\pi}$$ degrees, which is $$G_{x + y}$$.
+2. $$2\pi$$ radians is $$\frac{180 \cdot 2\pi}{\pi} = 360$$ degrees, and $$0$$ radians is $$0$$
+   degrees. Both turns are the identity, by rule 3 of :ref{#isometries/rotation-rules}.
+3. $$x + 2\pi n$$ radians is $$\frac{180x}{\pi} + 360n$$ degrees, so the turn is the same as the
+   turn by $$\frac{180x}{\pi}$$ degrees, by :ref{#isometries/rotation-whole-turns}. For the last
+   part, that proposition gives $$\frac{180x}{\pi} = 360n + v$$ with $$0 \le v < 360$$; take
+   $$w = \frac{\pi v}{180}$$, which has $$0 \le w < 2\pi$$.
+4. $$\frac{\pi}{2}$$ radians is $$90$$ degrees, anticlockwise. The formula
+   $$G_{90}(x, y) = (-y, x)$$ is that turn: it is $$S \circ R_1$$
+   (:ref{#adding-and-scaling-points/combining-moves-flips}), which is the turn by $$90^\circ$$
+   anticlockwise by :ref{#isometries/crossing-mirrors}.
+5. $$\pi$$ radians is $$180$$ degrees. The half turn about $$O$$ is the reflection through $$O$$
+   (:ref{#isometries/half-turn}), and its formula is $$H_O(P) = -P$$
+   (:ref{#adding-and-scaling-points/half-turn-formula}), which is $$(-x, -y)$$ for $$P = (x, y)$$.
+
+:::
+
+Part 1 also says that the order of two turns about $$O$$ never matters, because $$x + y = y + x$$.
+Part 4 rests on :ref{#isometries/crossing-mirrors}, and the proof of that theorem follows the
+directions of points round $$O$$ in the picture.
+
+:::example[Cutting turns down to size]
+
+- $$\frac{9\pi}{2} = 4\pi + \frac{\pi}{2}$$, which is two whole turns and a quarter, so
+  $$G_{9\pi/2} = G_{\pi/2}$$. It sends $$(3, 1)$$ to $$(-1, 3)$$.
+- $$-\frac{\pi}{2} = -2\pi + \frac{3\pi}{2}$$, so $$G_{-\pi/2} = G_{3\pi/2}$$: a quarter turn
+  clockwise is three quarter turns anticlockwise.
+- $$-3\pi = -4\pi + \pi$$, so $$G_{-3\pi} = G_\pi = H_O$$. It sends $$(3, 1)$$ to $$(-3, -1)$$.
+
+To cut a turn down, add or take away whole multiples of $$2\pi$$ until the angle lies from $$0$$ up
+to $$2\pi$$.
+
+:::
+
+## Wheels and angular speed
+
+A car's speedometer never measures the road. A sensor counts how fast a wheel turns, and the car's
+computer turns that into a speed using the size of the tyre. Radians make that step one
+multiplication.
+
+Say the wheels have radius $$0.3$$ metres and each turns through $$50$$ radians every second. In one
+second a point on the tread travels $$0.3 \cdot 50 = 15$$ metres round the wheel
+(:ref{#radian-arc-sector}), and the tread rolls that much road under the car. So the car moves at
+$$15$$ metres per second, which is $$15 \cdot 3.6 = 54$$ kilometres per hour. In whole turns, the
+wheel goes round $$\frac{50}{2\pi} \approx 7.96$$ times a second.
+
+The number of radians turned each second is the **angular speed**. For a wheel of radius $$r$$
+turning at angular speed $$\omega$$ (the Greek letter omega), the rim moves at $$r\omega$$, and so
+does a car rolling on that wheel. So fitting bigger tyres without telling the computer makes the
+speedometer read low. With radius $$0.33$$ metres, the same $$50$$ radians a second carries the car
+$$16.5$$ metres, about $$59.4$$ kilometres per hour, while the computer, still assuming $$0.3$$,
+shows $$54$$.
+
+## Exercises
+
+:::::accordion[Exercises on radians, with solutions]
+
+::::exercise{#ex-radians-to-radians}
+
+Write each angle in radians, as a fraction of $$\pi$$:
+
+1. $$120^\circ$$
+2. $$270^\circ$$
+3. $$15^\circ$$
+4. $$225^\circ$$
+
+:::solution
+
+Multiply by $$\frac{\pi}{180}$$ (:ref{#radian}) and cancel.
+
+1. $$\frac{120\pi}{180} = \frac{2\pi}{3}$$, dividing the top and bottom by $$60$$
+2. $$\frac{270\pi}{180} = \frac{3\pi}{2}$$, dividing by $$90$$
+3. $$\frac{15\pi}{180} = \frac{\pi}{12}$$, dividing by $$15$$
+4. $$\frac{225\pi}{180} = \frac{5\pi}{4}$$, dividing by $$45$$
+
+:::
+
+::::
+
+::::exercise{#ex-radians-to-degrees}
+
+Write each angle in degrees:
+
+1. $$\frac{5\pi}{3}$$
+2. $$\frac{7\pi}{6}$$
+3. $$\frac{\pi}{10}$$
+4. $$3$$, to one decimal place
+
+:::solution
+
+Multiply by $$\frac{180}{\pi}$$, which undoes multiplying by $$\frac{\pi}{180}$$ (:ref{#radian}).
+
+1. $$\frac{5\pi}{3} \cdot \frac{180}{\pi} = \frac{5 \cdot 180}{3} = 300$$, so $$300^\circ$$
+2. $$\frac{7 \cdot 180}{6} = 210$$, so $$210^\circ$$
+3. $$\frac{180}{10} = 18$$, so $$18^\circ$$
+4. $$3 \cdot \frac{180}{\pi} = \frac{540}{\pi} \approx 171.9$$, so about $$171.9^\circ$$
+
+:::
+
+::::
+
+::::exercise{#ex-radians-one-radian}
+
+Using only $$3 < \pi < 4$$, show that an angle of $$1$$ radian is more than $$45^\circ$$ and less
+than $$60^\circ$$.
+
+:::solution
+
+By :ref{#radian}, $$45^\circ$$ is $$\frac{45\pi}{180} = \frac{\pi}{4}$$ radians and $$60^\circ$$ is
+$$\frac{\pi}{3}$$ radians. Since $$\pi < 4$$, dividing by $$4$$ gives $$\frac{\pi}{4} < 1$$. Since
+$$\pi > 3$$, dividing by $$3$$ gives $$\frac{\pi}{3} > 1$$. So
+
+```math
+\frac{\pi}{4} < 1 < \frac{\pi}{3}
+```
+
+and an angle of $$1$$ radian lies between $$45^\circ$$ and $$60^\circ$$.
+
+:::
+
+::::
+
+::::exercise{#ex-radians-arc-to-angle}
+
+An arc of length $$10$$ cm lies on a circle of radius $$4$$ cm. Find the angle it makes at the
+centre, in radians and in degrees, and the area of its sector.
+
+:::solution
+
+By :ref{#radian-arc-sector}, the arc has length $$rx$$, so $$4x = 10$$ and $$x = 2.5$$ radians. In
+degrees that is $$2.5 \cdot \frac{180}{\pi} \approx 143.2^\circ$$. The sector has area
+
+```math
+\frac{1}{2} r^2 x = \frac{1}{2} \cdot 16 \cdot 2.5 = 20
+```
+
+square centimetres.
+
+:::
+
+::::
+
+::::exercise{#ex-radians-wiper}
+
+A windscreen wiper turns about a pivot through $$\frac{2\pi}{3}$$ radians. Its rubber blade runs
+from $$15$$ cm to $$60$$ cm from the pivot.
+
+1. How far does the tip of the blade travel in one sweep?
+2. What area of windscreen does the blade clean in one sweep?
+
+:::solution
+
+1. The tip moves along an arc of radius $$60$$, so by :ref{#radian-arc-sector} it travels
+   $$60 \cdot \frac{2\pi}{3} = 40\pi \approx 125.7$$ cm.
+2. The cleaned region is the sector of radius $$60$$ with the sector of radius $$15$$ taken away. By
+   :ref{#radian-arc-sector} their areas are
+
+   ```math
+   \frac{1}{2} \cdot 60^2 \cdot \frac{2\pi}{3} = 1200\pi \qquad \frac{1}{2} \cdot 15^2 \cdot \frac{2\pi}{3} = 75\pi
+   ```
+
+   so the blade cleans $$1200\pi - 75\pi = 1125\pi \approx 3534$$ square centimetres.
+
+:::
+
+::::
+
+::::exercise{#ex-radians-reduce-turns}
+
+Write each turn as $$G_w$$ with $$0 \le w < 2\pi$$:
+
+1. $$G_{7\pi/2}$$
+2. $$G_{-\pi/3}$$
+3. $$G_{13\pi/4}$$
+
+Then find where $$G_{7\pi/2}$$ sends the point $$(2, 1)$$.
+
+:::solution
+
+Add or take away multiples of $$2\pi$$ (part 3 of :ref{#radian-turns}).
+
+1. $$\frac{7\pi}{2} = 2\pi + \frac{3\pi}{2}$$, so $$G_{7\pi/2} = G_{3\pi/2}$$
+2. $$-\frac{\pi}{3} = -2\pi + \frac{5\pi}{3}$$, so $$G_{-\pi/3} = G_{5\pi/3}$$
+3. $$\frac{13\pi}{4} = 2\pi + \frac{5\pi}{4}$$, so $$G_{13\pi/4} = G_{5\pi/4}$$
+
+For the point, $$\frac{3\pi}{2} = \frac{\pi}{2} + \pi$$, so by part 1 of :ref{#radian-turns},
+$$G_{3\pi/2} = G_\pi \circ G_{\pi/2}$$: first a quarter turn, then a half turn. By parts 4 and 5,
+
+```math
+(2, 1) \xrightarrow{\ G_{\pi/2}\ } (-1, 2) \xrightarrow{\ G_\pi\ } (1, -2)
+```
+
+So $$G_{7\pi/2}$$ sends $$(2, 1)$$ to $$(1, -2)$$. Check: a turn by $$\frac{3\pi}{2}$$ anticlockwise
+is a quarter turn clockwise, and turning $$(2, 1)$$ a quarter turn clockwise lands at $$(1, -2)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-radians-quarter-turns}
+
+Using only the formula $$G_{\pi/2}(x, y) = (-y, x)$$ and part 1 of :ref{#radian-turns}:
+
+1. Find a formula for $$G_\pi$$, and check that it agrees with part 5.
+2. Find a formula for $$G_{3\pi/2}$$.
+3. Show that doing $$G_{\pi/2}$$ four times gives the identity, and explain why part 2 of
+   :ref{#radian-turns} says the same.
+
+:::solution
+
+1. $$G_\pi = G_{\pi/2} \circ G_{\pi/2}$$, since $$\frac{\pi}{2} + \frac{\pi}{2} = \pi$$. Then
+   $$(x, y)$$ goes to $$(-y, x)$$, and that goes to $$(-x, -y)$$. So $$G_\pi(x, y) = (-x, -y)$$,
+   which is $$H_O$$, as part 5 says.
+2. $$G_{3\pi/2} = G_{\pi/2} \circ G_\pi$$. Then $$(x, y)$$ goes to $$(-x, -y)$$, and the quarter
+   turn sends that to $$(-(-y), -x) = (y, -x)$$. So $$G_{3\pi/2}(x, y) = (y, -x)$$.
+3. One more quarter turn sends $$(y, -x)$$ to $$(-(-x), y) = (x, y)$$, so four quarter turns move
+   every point back to where it started. By part 1 the four together are the turn by
+   $$4 \cdot \frac{\pi}{2} = 2\pi$$, which is the identity by part 2.
+
+:::
+
+::::
+
+::::exercise{#ex-radians-earth}
+
+The Earth turns once about its axis in roughly $$24$$ hours. Take the radius at the equator to be
+$$6400$$ km.
+
+1. What is its angular speed, in radians per hour?
+2. How fast is a point on the equator moving, in kilometres per hour?
+
+:::solution
+
+1. One full turn is $$2\pi$$ radians, so the angular speed is $$\frac{2\pi}{24} = \frac{\pi}{12}$$
+   radians per hour, about $$0.26$$.
+2. In one hour a point on the equator moves along an arc of radius $$6400$$ km and angle
+   $$\frac{\pi}{12}$$, so by :ref{#radian-arc-sector} it travels
+
+   ```math
+   6400 \cdot \frac{\pi}{12} = \frac{1600\pi}{3} \approx 1676
+   ```
+
+   kilometres. So it moves at roughly $$1676$$ kilometres per hour.
+
+:::
+
+::::
+
+:::::

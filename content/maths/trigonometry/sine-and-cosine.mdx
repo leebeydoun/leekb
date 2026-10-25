@@ -1,0 +1,763 @@
+---
+title: Sine and cosine
+description:
+  The point where (1, 0) lands after a turn by x, its two coordinates cos x and sin x, and the facts
+  that follow from that one picture.
+---
+
+Imagine riding a Ferris wheel, with your seat starting level with the hub, out to the right. As the
+wheel turns, the seat climbs and moves inwards. A quarter of the way round you are straight above
+the hub, and half way round you are level with it again, out to the left. At every moment two
+numbers say where you are: how far across from the hub, and how far up.
+
+For a wheel of radius $$1$$, those two numbers are called the **cosine** and the **sine** of the
+angle the wheel has turned. Cosine is how far across, and sine is how far up. In this guide we'll
+define both from a turning point, and work out what that picture tells us about them.
+
+## The point on the unit circle
+
+Draw the Ferris wheel on a grid, with the hub at the origin $$O$$ and a radius of $$1$$. The seat
+then travels round the **unit circle**, the circle of radius $$1$$ centred at $$O$$. It starts at
+$$E_1 = (1, 0)$$, and turning the wheel by an angle $$x$$ carries it to a new point of the circle.
+The two coordinates of that point are the two numbers we want.
+
+In this chapter $$G_x$$ is the turn about $$O$$ by $$x$$ radians, anticlockwise when $$x$$ is
+positive and clockwise when $$x$$ is negative (:ref{#radians-turn-notation}). So the seat, turned by
+$$x$$, is at $$G_x(E_1)$$.
+
+:::definition[Cosine and sine]{#sine-cosine}
+
+Let $$x$$ be a real number. Turn the point $$E_1 = (1, 0)$$ about $$O$$ by $$x$$ radians. The point
+where it lands has coordinates written $$(\cos x, \sin x)$$:
+
+```math
+(\cos x, \sin x) = G_x(E_1)
+```
+
+The first coordinate, $$\cos x$$, is the **cosine** of $$x$$, read "cos $$x$$". The second,
+$$\sin x$$, is the **sine** of $$x$$, read "sine $$x$$".
+
+:::
+
+So cosine and sine are names for the two coordinates of one point, nothing more mysterious.
+$$\cos x$$ says how far across the point is: to the right of the $$y$$-axis when it is positive, to
+the left when it is negative. $$\sin x$$ says how far up it is: above the $$x$$-axis when it is
+positive, below when it is negative.
+
+```plane
+scale 3.2
+point X1 -1.4 0 hidden
+point X2 1.4 0 hidden
+point Y1 0 -1.4 hidden
+point Y2 0 1.4 hidden
+point O 0 0 sw
+point E₁ 1 0 se
+point P 0.6 0.8 ne
+point F 0.6 0 hidden
+point H 0 0.8 hidden
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+circle O 1 color=muted
+segment O P
+segment P H color=orange dashed
+segment O F color=blue label="cos x" side=right
+segment F P color=orange label="sin x" side=right
+angle E₁ O P color=purple arrow label="x" r=0.3
+caption "Turning E₁ = (1, 0) by x about O lands it at P = (cos x, sin x): cos x is how far across, sin x is how far up"
+```
+
+The brackets round $$x$$ are usually left out when the input is a single letter or number, as in
+$$\sin x$$ and $$\cos 2$$. When the input is longer, keep them: $$\sin(x + 1)$$ is the sine of the
+number $$x + 1$$, which is a different thing from $$\sin x + 1$$.
+
+Move the slider below to turn the point, and watch the blue and orange segments change. The diagram
+starts at $$x = 2.5$$, about $$143.2^\circ$$, where the point is left of the $$y$$-axis and above
+the $$x$$-axis. So its cosine is negative and its sine is positive.
+
+<UnitCircle />
+
+The definition says where the point is. It doesn't give a recipe for working out $$\cos x$$ from the
+number $$x$$. As in the Isometries chapter, the size of an angle and the turn by it come from the
+picture, with the [rules for rotations](../isometries/slides-and-turns.mdx) taken as given, and this
+chapter builds on those rules rather than computing angles from formulas. For most $$x$$ we read the
+values off a calculator, which gives $$\cos 1 \approx 0.5403$$ and $$\sin 1 \approx 0.8415$$. The
+guide [Special angles](./special-angles.mdx) finds exact values for a few angles.
+
+## Sine and cosine at the quarter turns
+
+At four places on the wheel you can read the answer without a calculator: the seat far right, at the
+top, far left and at the bottom. These are the quarter turns, and the moves that reach them already
+have formulas. A quarter turn sends $$(a, b)$$ to $$(-b, a)$$, and a half turn sends it to
+$$(-a, -b)$$.
+
+:::proposition[Sine and cosine at the quarter turns]{#quarter-values}
+
+| $$x$$      | $$0$$       | $$\frac{\pi}{2}$$ | $$\pi$$       | $$\frac{3\pi}{2}$$ | $$2\pi$$      |
+| ---------- | ----------- | ----------------- | ------------- | ------------------ | ------------- |
+| in degrees | $$0^\circ$$ | $$90^\circ$$      | $$180^\circ$$ | $$270^\circ$$      | $$360^\circ$$ |
+| the point  | $$E_1$$     | $$E_2$$           | $$-E_1$$      | $$-E_2$$           | $$E_1$$       |
+| $$\cos x$$ | $$1$$       | $$0$$             | $$-1$$        | $$0$$              | $$1$$         |
+| $$\sin x$$ | $$0$$       | $$1$$             | $$0$$         | $$-1$$             | $$0$$         |
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Sine_and_cosine#Unit_circle_definition"}
+
+Each column finds $$G_x(E_1)$$ for one value of $$x$$, using the parts of :ref{#radian-turns}.
+
+- **For** $$x = 0$$: $$G_0$$ is the identity (part 2), so $$G_0(E_1) = E_1 = (1, 0)$$.
+- **For** $$x = \frac{\pi}{2}$$ ($$90^\circ$$): $$G_{\pi/2}(a, b) = (-b, a)$$ (part 4), so
+  $$G_{\pi/2}(1, 0) = (0, 1) = E_2$$.
+- **For** $$x = \pi$$ ($$180^\circ$$): $$G_\pi(a, b) = (-a, -b)$$, the half turn about $$O$$ (part
+  5). So $$G_\pi(E_1) = (-1, 0) = -E_1$$.
+- **For** $$x = \frac{3\pi}{2}$$ ($$270^\circ$$): turning by $$\pi$$ and then by $$\frac{\pi}{2}$$
+  is turning by $$\frac{3\pi}{2}$$ (part 1). So
+  $$G_{3\pi/2}(E_1) = G_{\pi/2}(-1, 0) = (0, -1) = -E_2$$.
+- **For** $$x = 2\pi$$ ($$360^\circ$$): $$G_{2\pi}$$ is the identity (part 2), so
+  $$G_{2\pi}(E_1) = E_1 = (1, 0)$$.
+
+In each case $$\cos x$$ is the first coordinate of the point and $$\sin x$$ the second.
+
+:::
+
+The columns for $$0$$ and $$2\pi$$ ($$360^\circ$$) agree, because a full turn brings the seat back
+to where it started. Try the buttons $$0$$, $$\frac{\pi}{2}$$ ($$90^\circ$$) and $$\pi$$
+($$180^\circ$$) in the unit circle diagram in
+[The point on the unit circle](#the-point-on-the-unit-circle): at each of them one segment vanishes
+and the other has length $$1$$.
+
+## Every point of the unit circle
+
+A turn keeps every point the same distance from the centre, so the seat never leaves the wheel. And
+every point of the wheel is a place the seat reaches, at exactly one moment during the first full
+turn. So the points of the unit circle and the angles from $$0$$ up to a full turn match up one to
+one.
+
+:::proposition[Every point of the unit circle]{#unit-circle-point}
+
+1. **On the circle**: for every number $$x$$, the point $$(\cos x, \sin x)$$ is on the unit circle
+2. **Every point once**: for every point $$U$$ of the unit circle, there is exactly one number $$x$$
+   with $$0 \le x < 2\pi$$ such that $$U = (\cos x, \sin x)$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Trigonometric_functions#Unit-circle_definitions"}
+
+**On the circle.** By part 3 of :ref{#radian-turns}, the turn $$G_x$$ equals a turn $$G_w$$ with
+$$0 \le w < 2\pi$$. By the definition of a turn (:ref{#isometries/rotation}), $$G_w$$ keeps the
+distance from $$O$$:
+
+```math
+d\big(O, G_x(E_1)\big) = d(O, E_1) = 1
+```
+
+So $$(\cos x, \sin x) = G_x(E_1)$$ is on the circle with centre $$O$$ and radius $$1$$
+(:ref{#distance-and-angles/circle}).
+
+**Every point once.** Let $$U$$ be a point of the unit circle, so $$d(O, U) = 1 = d(O, E_1)$$, and
+$$E_1 \ne O$$. By rule 1 of :ref{#isometries/rotation-rules}, exactly one turn about $$O$$ by
+$$y^\circ$$ with $$0 \le y < 360$$ sends $$E_1$$ to $$U$$. That angle has $$x = \frac{\pi y}{180}$$
+radians (:ref{#radian}), and $$G_x$$ is that turn (:ref{#radians-turn-notation}). Also
+$$0 \le y < 360$$ exactly when $$0 \le x < 2\pi$$. So exactly one $$x$$ with $$0 \le x < 2\pi$$ has
+$$G_x(E_1) = U$$, which says $$U = (\cos x, \sin x)$$.
+
+:::
+
+For example, $$(0.6, 0.8)$$ is on the unit circle, since $$0.6^2 + 0.8^2 = 0.36 + 0.64 = 1$$. So it
+is $$(\cos x, \sin x)$$ for exactly one $$x$$ from $$0$$ up to $$2\pi$$ ($$360^\circ$$). That $$x$$
+is about $$0.93$$ radians, or $$53.1^\circ$$. Finding it takes the inverse buttons on a calculator,
+which [Sine and cosine in right triangles](./right-triangles.mdx) explains.
+
+Outside that range there are more answers. Adding a full turn to $$x$$ lands the point in the same
+place, as [Whole turns change nothing](#whole-turns-change-nothing) shows.
+
+## Sine squared plus cosine squared
+
+Drop a line from the point straight down to the $$x$$-axis. Together with the radius, it makes a
+right triangle whose hypotenuse is the radius, of length $$1$$. Its other two sides are as long as
+$$\cos x$$ and $$\sin x$$, apart from their signs. So by the Pythagoras theorem the squares of the
+cosine and the sine add up to $$1$$, for every angle.
+
+```plane
+scale 3.2
+point X1 -0.3 0 hidden
+point X2 1.4 0 hidden
+point Y1 0 -0.3 hidden
+point Y2 0 1.2 hidden
+point O 0 0 sw
+point P 0.6 0.8 ne
+point F 0.6 0 s
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+segment O P label="1"
+segment O F color=blue label="cos x" side=right
+segment F P color=orange label="sin x" side=right
+right O F P
+angle F O P color=purple label="x" r=0.25
+caption "The radius from O to P = (cos x, sin x) is the hypotenuse, of length 1. The other sides are cos x across and sin x up."
+```
+
+The square of $$\sin x$$ is written $$\sin^2 x$$, read "sine squared $$x$$". It means
+$$(\sin x)^2$$: work out $$\sin x$$ first, and then square it. Putting the $$2$$ up next to $$\sin$$
+saves a pair of brackets, and $$\cos^2 x$$ means $$(\cos x)^2$$ in the same way.
+
+:::theorem[Sine squared plus cosine squared]{#pythagorean-identity}
+
+For every number $$x$$,
+
+```math
+\cos^2 x + \sin^2 x = 1
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Pythagorean_trigonometric_identity#Proof_using_the_unit_circle"}
+
+Let $$P = (\cos x, \sin x)$$. Part 1 of :ref{#unit-circle-point} says $$P$$ is on the unit circle,
+so $$d(O, P) = 1$$. Work out the same distance with the distance formula
+(:ref{#coordinates/distance-formula}), from $$O = (0, 0)$$ to $$P$$:
+
+```math
+\begin{aligned}
+1 &= d(O, P) &&\qquad \text{$P$ is on the unit circle} \\
+&= \sqrt{(\cos x - 0)^2 + (\sin x - 0)^2} &&\qquad \text{the distance formula} \\
+&= \sqrt{\cos^2 x + \sin^2 x} &&\qquad \text{subtracting $0$ changes nothing} \\
+1 &= \cos^2 x + \sin^2 x &&\qquad \text{squaring both sides}
+\end{aligned}
+```
+
+The last step squares a square root, which gives back the number inside, since
+$$\cos^2 x + \sin^2 x$$ is not negative.
+
+:::
+
+Check it with a calculator at $$x = 1$$ (about $$57.3^\circ$$): $$\cos 1 \approx 0.5403$$ and
+$$\sin 1 \approx 0.8415$$, and $$0.5403^2 + 0.8415^2 \approx 0.2919 + 0.7081 = 1.0000$$. At
+$$x = \pi$$ ($$180^\circ$$) it says $$(-1)^2 + 0^2 = 1$$. The proof doesn't use the triangle at all,
+so it works when the point is on an axis and there is no triangle to draw.
+
+One warning about the notation. The raised number in $$\sin^{-1} x$$ is not a power: it names an
+angle whose sine is $$x$$, which the guide
+[Sine and cosine in right triangles](./right-triangles.mdx) defines (:ref{#inverse-sin-cos}). So
+$$\sin^{-1} x$$ is not $$\frac{1}{\sin x}$$. When you want $$\frac{1}{\sin x}$$, write it as a
+fraction or as $$(\sin x)^{-1}$$.
+
+:::example[From the sine to the cosine]
+
+Suppose $$\sin x = \frac{3}{5}$$. By :ref{#pythagorean-identity},
+
+```math
+\cos^2 x = 1 - \sin^2 x = 1 - \frac{9}{25} = \frac{16}{25}
+```
+
+So $$\cos x = \frac{4}{5}$$ or $$\cos x = -\frac{4}{5}$$. The identity can't decide between them,
+because there are two points of the unit circle at height $$\frac{3}{5}$$, one on each side of the
+$$y$$-axis. If you also know that the point is in the second quadrant, left of the $$y$$-axis, then
+$$\cos x = -\frac{4}{5}$$. To two decimal places, that point is the starting position of the unit
+circle diagram, at $$x = 2.5$$ ($$143.2^\circ$$), where $$\cos x \approx -0.80$$ and
+$$\sin x \approx 0.60$$.
+
+:::
+
+```plane
+scale 3.2
+point X1 -1.4 0 hidden
+point X2 1.4 0 hidden
+point Y1 0 -1.4 hidden
+point Y2 0 1.4 hidden
+point O 0 0 sw
+point A 0.8 0.6 ne
+point B -0.8 0.6 nw
+point L -1.3 0.6 hidden
+point R 1.3 0.6 hidden
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+circle O 1 color=muted
+segment L R color=orange dashed
+segment O A color=blue
+segment O B color=blue
+text 0.8 0.85 "(4/5, 3/5)"
+text -0.8 0.85 "(−4/5, 3/5)"
+caption "The two points of the unit circle at height 3/5 are (4/5, 3/5) and (−4/5, 3/5): the sine alone leaves two choices for the cosine"
+```
+
+Since a square is never negative, the identity also keeps both numbers between $$-1$$ and $$1$$.
+That matches the picture: no point of the unit circle is further than $$1$$ across or $$1$$ up from
+$$O$$.
+
+:::corollary[Sine and cosine lie between minus one and one]{#sine-and-cosine-bounds}
+
+For every number $$x$$,
+
+```math
+-1 \le \cos x \le 1 \qquad -1 \le \sin x \le 1
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Real_Sine_Function_is_Bounded"}
+
+By :ref{#pythagorean-identity}, $$\sin^2 x = 1 - \cos^2 x$$. Since $$\cos^2 x \ge 0$$, this gives
+$$\sin^2 x \le 1$$. A number bigger than $$1$$ has a square bigger than $$1$$, and so does a number
+smaller than $$-1$$. So $$-1 \le \sin x \le 1$$. Swapping the roles of $$\sin x$$ and $$\cos x$$
+gives the same for $$\cos x$$.
+
+:::
+
+## Whole turns change nothing
+
+After one full turn of the wheel, the seat is back where it started. So turning by $$x$$ and turning
+by $$x$$ plus a full turn put the seat in the same place, and the cosine and sine come out the same.
+Turning a full turn backwards, or several full turns, makes no difference either.
+
+:::proposition[Sine and cosine repeat]{#periodic}
+
+For every number $$x$$ and every integer $$n$$,
+
+```math
+\cos(x + 2\pi n) = \cos x \qquad \sin(x + 2\pi n) = \sin x
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Sine_and_Cosine_are_Periodic_on_Reals"}
+
+By part 3 of :ref{#radian-turns}, $$G_{x + 2\pi n} = G_x$$. So the two turns send $$E_1$$ to the
+same point:
+
+```math
+\big(\cos(x + 2\pi n), \sin(x + 2\pi n)\big) = G_{x + 2\pi n}(E_1) = G_x(E_1) = (\cos x, \sin x)
+```
+
+Two points are equal exactly when their coordinates are equal, so the cosines agree and the sines
+agree.
+
+:::
+
+For example, $$\cos(2.5 + 2\pi) = \cos 2.5 \approx -0.80$$. A negative angle can be moved into the
+first full turn in the same way. The turn by $$-\frac{\pi}{2}$$ ($$-90^\circ$$) is a quarter turn
+clockwise, and with $$n = 1$$,
+
+```math
+\sin\left(-\frac{\pi}{2}\right) = \sin\left(-\frac{\pi}{2} + 2\pi\right) = \sin\frac{3\pi}{2} = -1
+```
+
+using :ref{#quarter-values}. A quarter turn clockwise lands the seat at the bottom, as three quarter
+turns anticlockwise do.
+
+## Signs in each quadrant
+
+The cosine is positive when the point is to the right of the $$y$$-axis, and the sine is positive
+when it is above the $$x$$-axis. So the quadrant the point lands in decides both signs. A memory aid
+in words: cosine is across, so it is positive on the right half of the circle; sine is up, so it is
+positive on the top half.
+
+```plane
+scale 3.2
+point X1 -1.4 0 hidden
+point X2 1.4 0 hidden
+point Y1 0 -1.4 hidden
+point Y2 0 1.4 hidden
+point O 0 0 sw
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+circle O 1 color=muted
+text 0.55 0.55 "(+, +)" color=green
+text -0.55 0.55 "(−, +)" color=blue
+text -0.55 -0.55 "(−, −)" color=orange
+text 0.55 -0.55 "(+, −)" color=purple
+caption "The signs of (cos x, sin x) in each quadrant: both positive top right, then anticlockwise (−, +), (−, −) and (+, −)"
+```
+
+:::proposition[Signs in each quadrant]{#quadrant-signs}
+
+1. **First quadrant**: for $$0 < x < \frac{\pi}{2}$$ ($$0^\circ$$ to $$90^\circ$$), $$\cos x > 0$$
+   and $$\sin x > 0$$
+2. **Second quadrant**: for $$\frac{\pi}{2} < x < \pi$$ ($$90^\circ$$ to $$180^\circ$$),
+   $$\cos x < 0$$ and $$\sin x > 0$$
+3. **Third quadrant**: for $$\pi < x < \frac{3\pi}{2}$$ ($$180^\circ$$ to $$270^\circ$$),
+   $$\cos x < 0$$ and $$\sin x < 0$$
+4. **Fourth quadrant**: for $$\frac{3\pi}{2} < x < 2\pi$$ ($$270^\circ$$ to $$360^\circ$$),
+   $$\cos x > 0$$ and $$\sin x < 0$$
+
+The same holds for $$x + 2\pi n$$ in place of $$x$$, for every integer $$n$$.
+
+:::
+
+:::proof{source="https://www.mathsisfun.com/geometry/unit-circle.html"}
+
+**First quadrant.** Let $$0 < t < \frac{\pi}{2}$$, that is, between $$0^\circ$$ and $$90^\circ$$.
+Turning the positive $$x$$-axis anticlockwise by less than a right angle carries it into the quarter
+of the plane between the positive $$x$$-axis and the positive $$y$$-axis, short of the $$y$$-axis.
+We take this from the picture. So $$G_t(E_1) = (a, b)$$ with $$a > 0$$ and $$b > 0$$: it is in the
+first quadrant (:ref{#coordinates/quadrants}).
+
+**The other quadrants.** Write $$x$$ as a quarter turn, a half turn or three quarter turns, plus
+such a $$t$$. Turns add (part 1 of :ref{#radian-turns}), so the point for $$x$$ is the point
+$$(a, b)$$ for $$t$$, turned further. Parts 4 and 5 give the formulas for the extra turns:
+
+- **Second**: if $$x = \frac{\pi}{2} + t$$, the point is $$G_{\pi/2}(a, b) = (-b, a)$$, with
+  $$-b < 0$$ and $$a > 0$$
+- **Third**: if $$x = \pi + t$$, the point is $$G_\pi(a, b) = (-a, -b)$$, with both coordinates
+  negative
+- **Fourth**: if $$x = \frac{3\pi}{2} + t$$, the point is $$G_{\pi/2}(-a, -b) = (b, -a)$$, with
+  $$b > 0$$ and $$-a < 0$$
+
+Each range for $$x$$ in the statement is exactly the values $$\frac{\pi}{2} + t$$, $$\pi + t$$ or
+$$\frac{3\pi}{2} + t$$ with $$0 < t < \frac{\pi}{2}$$. The last sentence of the statement follows
+from :ref{#periodic}, since $$x + 2\pi n$$ gives the same point as $$x$$.
+
+:::
+
+The proof found more than signs: it shows the point for $$x + \frac{\pi}{2}$$ is the point for $$x$$
+given a quarter turn. The guide [Identities you can see](./symmetries.mdx) turns facts like that
+into formulas.
+
+:::example[Which quadrant]
+
+Take $$x = 4$$, about $$229.2^\circ$$. Since $$\pi \approx 3.14$$ and
+$$\frac{3\pi}{2} \approx 4.71$$, the number $$4$$ is between $$\pi$$ and $$\frac{3\pi}{2}$$. So the
+point is in the third quadrant, and both coordinates are negative. A calculator agrees:
+$$\cos 4 \approx -0.65$$ and $$\sin 4 \approx -0.76$$.
+
+:::
+
+## Points further from the centre
+
+A real Ferris wheel is bigger than $$1$$ unit. Picture a wheel of radius $$20$$ m beside the unit
+circle, both turned by the same angle: the big seat is $$20$$ times as far across and $$20$$ times
+as far up as the small one. So turning and then scaling by $$20$$ gives the same point as scaling
+and then turning.
+
+:::proposition[Turning keeps rays]{#turn-scales}
+
+For every number $$x$$, every point $$P$$ and every number $$c > 0$$,
+
+```math
+G_x(cP) = c\,G_x(P)
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Rotation_(mathematics)#Two_dimensions"}
+
+By part 3 of :ref{#radian-turns}, $$G_x$$ equals a turn $$G_w$$ with $$0 \le w < 2\pi$$, so we may
+take $$0 \le x < 2\pi$$. If $$P = O$$, both sides are $$O$$, since a turn about $$O$$ keeps $$O$$
+where it is and $$cO = O$$. So let $$P \ne O$$, and write $$Q = G_x(P)$$ and $$M = G_x(cP)$$.
+
+**The distance.** By :ref{#adding-and-scaling-points/distance-norm} and
+:ref{#adding-and-scaling-points/norm-scale}, $$d(O, cP) = |cP| = c\,|P|$$. A turn keeps the distance
+from $$O$$ (:ref{#isometries/rotation}), so $$|M| = c\,|P|$$, which is not $$0$$.
+
+**Scaling back.** Let $$N = \frac{1}{c}M$$. By :ref{#adding-and-scaling-points/norm-scale},
+
+```math
+|N| = \frac{1}{c}\,|M| = \frac{1}{c} \cdot c\,|P| = |P|
+```
+
+**The rays.** The point $$cP$$ is a positive multiple of $$P$$, so the ray from $$O$$ through $$cP$$
+is the ray from $$O$$ through $$P$$ (:ref{#segments-rays-and-lines/rays-equal}, with the rays read
+as in :ref{#segments-rays-and-lines/ray-agrees}). In the same way, $$N$$ is a positive multiple of
+$$M$$, so the ray from $$O$$ through $$N$$ is the ray from $$O$$ through $$M$$.
+
+**The angle.** By the definition of a turn, the angle turning anticlockwise from the ray $$O(cP)$$
+to the ray $$OM$$ measures $$x$$ radians. By the step before, these are the rays $$OP$$ and $$ON$$.
+So the angle turning anticlockwise from $$OP$$ to $$ON$$ measures $$x$$ radians.
+
+**The conclusion.** So $$N$$ has both properties that the definition of a turn asks of $$G_x(P)$$:
+it is as far from $$O$$ as $$P$$, and the angle from $$OP$$ to $$ON$$ is $$x$$. The definition
+speaks of the one point with these two properties, so $$N = Q$$. Then $$M = cN = c\,Q$$, by
+:ref{#adding-and-scaling-points/scale-twice}, which is $$G_x(cP) = c\,G_x(P)$$.
+
+:::
+
+The name says what the proof found: the turn carries the ray from $$O$$ through $$P$$ onto the ray
+from $$O$$ through $$G_x(P)$$, and keeps each point's distance along it. With $$P = E_1$$, the point
+$$(r, 0) = rE_1$$ at distance $$r$$ along the positive $$x$$-axis turns to $$r$$ times the point on
+the unit circle.
+
+:::corollary[Points at any distance from the centre]{#circle-point-radius}
+
+Let $$r > 0$$ and let $$x$$ be a number. Then
+
+```math
+G_x(r, 0) = (r\cos x, r\sin x)
+```
+
+So if a point $$X$$ is at distance $$r$$ from $$O$$, and the angle turning anticlockwise from the
+ray $$OE_1$$ to the ray $$OX$$ measures $$x$$ radians, with $$0 \le x < 2\pi$$, then
+$$X = (r\cos x, r\sin x)$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Polar_coordinate_system#Converting_between_polar_and_Cartesian_coordinates"}
+
+**The formula.** Since $$(r, 0) = rE_1$$ (:ref{#adding-and-scaling-points/scalar-multiple}), and
+$$r > 0$$, :ref{#turn-scales} gives
+
+```math
+G_x(rE_1) = r\,G_x(E_1) = r(\cos x, \sin x) = (r\cos x, r\sin x)
+```
+
+**The point X.** The point $$rE_1$$ is at distance $$r$$ from $$O$$, and the ray from $$O$$ through
+it is the ray $$OE_1$$, since it is a positive multiple of $$E_1$$
+(:ref{#segments-rays-and-lines/rays-equal}). So $$X$$ is as far from $$O$$ as $$rE_1$$, and the
+angle turning anticlockwise from the ray through $$rE_1$$ to the ray $$OX$$ measures $$x$$. Those
+are the two properties of $$G_x(rE_1)$$ in the definition of a turn (:ref{#isometries/rotation}), so
+$$X = G_x(rE_1) = (r\cos x, r\sin x)$$.
+
+:::
+
+:::example[Where the seat is]
+
+Put the hub of a Ferris wheel of radius $$20$$ m at $$O$$, with distances in metres, and start a
+seat at $$(20, 0)$$, level with the hub on the right. After a quarter turn, $$\frac{\pi}{2}$$
+($$90^\circ$$), the seat is at
+
+```math
+\left(20\cos\frac{\pi}{2}, 20\sin\frac{\pi}{2}\right) = (20 \cdot 0, 20 \cdot 1) = (0, 20)
+```
+
+straight above the hub, $$20$$ m up. After a turn of $$2$$ radians (about $$114.6^\circ$$), a
+calculator gives $$\cos 2 \approx -0.4161$$ and $$\sin 2 \approx 0.9093$$, so the seat is at about
+
+```math
+(20 \cdot (-0.4161), 20 \cdot 0.9093) \approx (-8.32, 18.19)
+```
+
+That is $$8.32$$ m to the left of the hub and $$18.19$$ m above it. In
+[Special angles](./special-angles.mdx) we'll find the seat after a turn of $$\frac{\pi}{6}$$
+($$30^\circ$$) exactly, without a calculator.
+
+:::
+
+```plane
+scale 0.2
+point X1 -23 0 hidden
+point X2 23 0 hidden
+point Y1 0 -23 hidden
+point Y2 0 23 hidden
+point O 0 0 sw
+point S 20 0 se
+point T 0 20 ne
+point W -8.32 18.19 nw
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+circle O 20 color=muted
+segment O T color=blue
+segment O W color=orange
+angle S O W color=orange arrow label="2" r=5
+caption "A seat starting at S = (20, 0) is at T = (0, 20) after a quarter turn, and at W ≈ (−8.32, 18.19) after a turn of 2 radians"
+```
+
+## Radian mode and degree mode
+
+A calculator can measure angles in degrees or in radians, and it doesn't ask which you mean. It uses
+whichever mode it is set to. So the same keys can give two different answers, and only one of them
+is the one you wanted.
+
+Type $$\sin 30$$ meaning $$30^\circ$$. In degree mode you get $$0.5$$. In radian mode you get about
+$$-0.988$$, the sine of $$30$$ radians. That is about $$1718.9^\circ$$, four full turns and then
+$$278.9^\circ$$ more, which lands in the fourth quadrant, where the sine is negative. Neither answer
+is a mistake by the calculator; it answered a different question.
+
+In this chapter, $$\sin x$$ always means $$x$$ in radians. When an angle is given in degrees, write
+the degree sign: $$\sin 30^\circ$$ means the sine of the angle of $$30^\circ$$, which is
+$$\sin\frac{\pi}{6}$$ (:ref{#radian}). Before a calculation, test the mode with an answer you know:
+in radian mode $$\sin\frac{\pi}{2}$$ gives $$1$$, and in degree mode $$\sin 90$$ gives $$1$$.
+
+## Exercises
+
+:::::accordion[Exercises on sine and cosine, with solutions]
+
+::::exercise{#ex-sine-and-cosine-read-off}
+
+For a certain $$x$$, the turn $$G_x$$ sends $$E_1$$ to $$(-0.28, 0.96)$$. Write down $$\cos x$$ and
+$$\sin x$$, check that $$\cos^2 x + \sin^2 x = 1$$, and say which quadrant the point is in.
+
+:::solution
+
+By :ref{#sine-cosine}, $$\cos x$$ and $$\sin x$$ are the coordinates of $$G_x(E_1)$$, so
+$$\cos x = -0.28$$ and $$\sin x = 0.96$$. Then
+
+```math
+(-0.28)^2 + 0.96^2 = 0.0784 + 0.9216 = 1
+```
+
+as :ref{#pythagorean-identity} says it must be. The point is left of the $$y$$-axis and above the
+$$x$$-axis, so it is in the second quadrant.
+
+:::
+
+::::
+
+::::exercise{#ex-sine-and-cosine-whole-turns}
+
+Use the quarter turns and whole turns to find $$\cos x$$ and $$\sin x$$ for each angle:
+
+1. $$x = \frac{5\pi}{2}$$ ($$450^\circ$$)
+2. $$x = -\pi$$ ($$-180^\circ$$)
+3. $$x = 3\pi$$ ($$540^\circ$$)
+4. $$x = -\frac{\pi}{2}$$ ($$-90^\circ$$)
+
+:::solution
+
+In each case add or take away whole turns of $$2\pi$$ ($$360^\circ$$) to reach the table in
+:ref{#quarter-values}, using :ref{#periodic}.
+
+1. $$\frac{5\pi}{2} = \frac{\pi}{2} + 2\pi$$, so the point is $$E_2$$: $$\cos x = 0$$ and
+   $$\sin x = 1$$.
+2. $$-\pi = \pi - 2\pi$$, so the point is $$-E_1$$: $$\cos x = -1$$ and $$\sin x = 0$$.
+3. $$3\pi = \pi + 2\pi$$, so again the point is $$-E_1$$: $$\cos x = -1$$ and $$\sin x = 0$$.
+4. $$-\frac{\pi}{2} = \frac{3\pi}{2} - 2\pi$$, so the point is $$-E_2$$: $$\cos x = 0$$ and
+   $$\sin x = -1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sine-and-cosine-signs}
+
+Without a calculator, give the signs of $$\cos x$$ and $$\sin x$$ for $$x = 2$$, $$x = -1$$ and
+$$x = 7$$ (radians). Use $$\pi \approx 3.14$$. Then check with a calculator in radian mode.
+
+:::solution
+
+Use :ref{#quadrant-signs}, with $$\frac{\pi}{2} \approx 1.57$$, $$\pi \approx 3.14$$,
+$$\frac{3\pi}{2} \approx 4.71$$ and $$2\pi \approx 6.28$$:
+
+- **For** $$x = 2$$: $$1.57 < 2 < 3.14$$, so second quadrant: $$\cos 2 < 0$$ and $$\sin 2 > 0$$. A
+  calculator gives $$\cos 2 \approx -0.42$$ and $$\sin 2 \approx 0.91$$.
+- **For** $$x = -1$$: add $$2\pi$$ to get about $$5.28$$, between $$4.71$$ and $$6.28$$, so fourth
+  quadrant: $$\cos(-1) > 0$$ and $$\sin(-1) < 0$$. A calculator gives about $$0.54$$ and $$-0.84$$.
+- **For** $$x = 7$$: take away $$2\pi$$ to get about $$0.72$$, between $$0$$ and $$1.57$$, so first
+  quadrant: both positive. A calculator gives $$\cos 7 \approx 0.75$$ and $$\sin 7 \approx 0.66$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sine-and-cosine-third-quadrant}
+
+Suppose $$\cos x = -\frac{5}{13}$$, and $$\pi < x < \frac{3\pi}{2}$$. Find $$\sin x$$.
+
+:::solution
+
+By :ref{#pythagorean-identity},
+
+```math
+\sin^2 x = 1 - \cos^2 x = 1 - \frac{25}{169} = \frac{144}{169}
+```
+
+So $$\sin x = \frac{12}{13}$$ or $$\sin x = -\frac{12}{13}$$. Since $$\pi < x < \frac{3\pi}{2}$$,
+the point is in the third quadrant, where the sine is negative (:ref{#quadrant-signs}). So
+$$\sin x = -\frac{12}{13}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sine-and-cosine-not-a-point}
+
+A classmate says that for some $$x$$, $$\cos x = 0.7$$ and $$\sin x = 0.7$$. Show that this is
+impossible, and say what it means about the point $$(0.7, 0.7)$$.
+
+:::solution
+
+If it were true, :ref{#pythagorean-identity} would give $$0.7^2 + 0.7^2 = 1$$. But
+$$0.49 + 0.49 = 0.98$$, which is not $$1$$. So no such $$x$$ exists.
+
+In the picture, the point $$(0.7, 0.7)$$ is at distance $$\sqrt{0.98} \approx 0.99$$ from $$O$$, a
+little inside the unit circle. Every point $$(\cos x, \sin x)$$ is on the circle
+(:ref{#unit-circle-point}), so $$(0.7, 0.7)$$ is not one of them, however close it is.
+
+:::
+
+::::
+
+::::exercise{#ex-sine-and-cosine-roundabout}
+
+A seat on a roundabout in a playground is $$3$$ m from the centre. With the centre at $$O$$ and
+distances in metres, the seat starts at $$(3, 0)$$, and the roundabout turns anticlockwise by
+$$1.2$$ radians. Find where the seat ends up, to two decimal places, and check that it is still
+$$3$$ m from the centre.
+
+:::solution
+
+By :ref{#circle-point-radius}, the seat ends at $$(3\cos 1.2, 3\sin 1.2)$$. A calculator in radian
+mode gives $$\cos 1.2 \approx 0.3624$$ and $$\sin 1.2 \approx 0.9320$$, so the seat is at about
+$$(1.09, 2.80)$$.
+
+Its distance from $$O$$ is
+
+```math
+\sqrt{(3\cos 1.2)^2 + (3\sin 1.2)^2} = \sqrt{9\,(\cos^2 1.2 + \sin^2 1.2)} = \sqrt{9} = 3
+```
+
+using :ref{#pythagorean-identity}. With the rounded numbers, $$1.09^2 + 2.80^2 = 1.1881 + 7.84$$,
+which is about $$9.03$$, close to $$9$$ as it should be.
+
+:::
+
+::::
+
+::::exercise{#ex-sine-and-cosine-sum-of-squares}
+
+Show that for every number $$x$$,
+
+```math
+(\cos x + \sin x)^2 + (\cos x - \sin x)^2 = 2
+```
+
+Then check it at $$x = \frac{\pi}{2}$$ ($$90^\circ$$).
+
+:::solution
+
+Multiply out each square, one step at a time:
+
+```math
+\begin{aligned}
+(\cos x + \sin x)^2 &= \cos^2 x + 2\cos x\sin x + \sin^2 x &&\qquad \text{square of a sum} \\
+(\cos x - \sin x)^2 &= \cos^2 x - 2\cos x\sin x + \sin^2 x &&\qquad \text{square of a difference}
+\end{aligned}
+```
+
+Adding them, the middle terms cancel, and :ref{#pythagorean-identity} finishes it:
+
+```math
+\begin{aligned}
+(\cos x + \sin x)^2 + (\cos x - \sin x)^2 &= 2\cos^2 x + 2\sin^2 x &&\qquad \text{adding} \\
+&= 2\,(\cos^2 x + \sin^2 x) &&\qquad \text{taking out the } 2 \\
+&= 2 &&\qquad \text{sine squared plus cosine squared}
+\end{aligned}
+```
+
+At $$x = \frac{\pi}{2}$$, $$\cos x = 0$$ and $$\sin x = 1$$ (:ref{#quarter-values}), and the left
+side is $$1^2 + (-1)^2 = 2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sine-and-cosine-zero-cosine}
+
+Show that $$\cos x = 0$$ exactly when $$\sin x = 1$$ or $$\sin x = -1$$.
+
+:::solution
+
+By :ref{#pythagorean-identity}, $$\cos^2 x = 1 - \sin^2 x$$.
+
+If $$\cos x = 0$$, then $$0 = 1 - \sin^2 x$$, so $$\sin^2 x = 1$$. The only numbers whose square is
+$$1$$ are $$1$$ and $$-1$$, so $$\sin x = 1$$ or $$\sin x = -1$$.
+
+Conversely, if $$\sin x = 1$$ or $$\sin x = -1$$, then $$\sin^2 x = 1$$, so $$\cos^2 x = 0$$, and
+the only number whose square is $$0$$ is $$0$$. So $$\cos x = 0$$.
+
+In the picture, the points of the unit circle with first coordinate $$0$$ are the top and the
+bottom, $$E_2$$ and $$-E_2$$.
+
+:::
+
+::::
+
+:::::

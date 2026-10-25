@@ -1,0 +1,580 @@
+---
+title: Special angles
+description:
+  Exact values of sine and cosine at 30, 45 and 60 degrees, read from half a square and half an
+  equilateral triangle.
+---
+
+Open a school geometry set and you'll find two plastic set squares. One has corners of $$45^\circ$$,
+$$45^\circ$$ and $$90^\circ$$, and its two short edges are the same length: it is half of a square,
+cut along the diagonal. The other has corners of $$30^\circ$$, $$60^\circ$$ and $$90^\circ$$, and
+two copies laid back to back make a triangle with three equal sides.
+
+A square and a triangle with equal sides are shapes whose lengths we know exactly, so the two set
+squares carry exact lengths with them. Put the corner of one at the centre of the unit circle, with
+its longest side along a radius, and its far corner lands at a point whose coordinates are fractions
+and square roots. Those coordinates are the sine and cosine of $$30^\circ$$, $$45^\circ$$ and
+$$60^\circ$$, which are called the **special angles**. In this guide we'll read the values off the
+two set squares, and then prove them from the turn that defines sine and cosine.
+
+## Two set squares
+
+The first set square is half of a square. Take the square with sides of length $$1$$. Its diagonal
+is the long side of a right triangle with legs $$1$$ and $$1$$, so by the Pythagoras theorem
+(:ref{#distance-and-angles/pythagoras}) its length squared is $$1^2 + 1^2 = 2$$, and the diagonal is
+$$\sqrt{2}$$. Fold the square along that diagonal and the two halves match, so the diagonal cuts
+each of the two corners it joins into equal halves of a right angle, $$45^\circ$$ each.
+
+<HalfSquare caption="Half of a square of side 1: two sides of 1 meet at a right angle, the diagonal is √2, and the angles at its two ends are 45°" />
+
+The second set square is half of an equilateral triangle, a triangle with three equal sides. Take
+the one with sides of length $$2$$. Its three angles are equal and add up to $$180^\circ$$, so each
+is $$60^\circ$$. Fold it from the top corner down to the middle of the base: the halves match, so
+the fold meets the base square on, splits the base into $$1$$ and $$1$$, and splits the top angle
+into $$30^\circ$$ and $$30^\circ$$. The height $$h$$ of the fold has $$h^2 + 1^2 = 2^2$$, so
+$$h^2 = 3$$ and $$h = \sqrt{3}$$.
+
+<HalfEquilateral caption="Half of an equilateral triangle of side 2: the sides are 1, √3 and 2, and the angles are 30°, 60° and 90°" />
+
+These lengths and angles are read from the folds in the pictures. The proofs later in the guide
+check every value they need from the definitions, without the folds.
+
+## Set squares in the unit circle
+
+The point on the unit circle after a turn of $$x$$ radians from $$E_1 = (1, 0)$$ is
+$$(\cos x, \sin x)$$ (:ref{#sine-cosine}): cosine is how far across, sine is how far up. So to read
+sine and cosine off a set square, put its corner at the centre $$O$$ with one short side along the
+positive $$x$$-axis and the triangle above it. Its far corner should land on the unit circle, so the
+long side must have length $$1$$.
+
+The half square has long side $$\sqrt{2}$$, so shrink it by the factor $$\frac{1}{\sqrt{2}}$$. A
+zoom keeps every angle (rule 3 of :ref{#area-and-scaling/zoom-rules}), so the angles stay
+$$45^\circ$$, $$45^\circ$$ and $$90^\circ$$, and the legs become $$\frac{1}{\sqrt{2}}$$ each. With
+the $$45^\circ$$ corner at $$O$$, the far corner is $$\frac{1}{\sqrt{2}}$$ across and
+$$\frac{1}{\sqrt{2}}$$ up, at the point $$\left(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}\right)$$. A
+turn of $$45^\circ$$ is a turn of $$\frac{\pi}{4}$$ radians (:ref{#radian}), so the picture says
+$$\cos\frac{\pi}{4} = \sin\frac{\pi}{4} = \frac{1}{\sqrt{2}}$$, about $$0.71$$.
+
+```plane
+point X1 -5 0 hidden
+point X2 5 0 hidden
+point Y1 0 -5 hidden
+point Y2 0 5 hidden
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+point O 0 0 sw
+circle O 4 color=muted dashed
+point E1 4 0 se
+point F 2.8284 0 hidden
+point U 2.8284 2.8284 ne
+polygon O F U color=orange
+segment O U label="1"
+segment O F color=blue label="1/√2" side=right
+segment F U color=purple label="1/√2" side=right
+right O F U
+angle F O U label="45°" color=orange r=1
+caption "The half square shrunk so its long side is 1, with its 45° corner at O: the far corner U is 1/√2 across and 1/√2 up"
+```
+
+The half equilateral triangle has long side $$2$$, so halve it. Its sides become $$\frac{1}{2}$$,
+$$\frac{\sqrt{3}}{2}$$ and $$1$$. With the $$60^\circ$$ corner at $$O$$, the short side
+$$\frac{1}{2}$$ lies along the $$x$$-axis and the far corner is at
+$$\left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right)$$. With the $$30^\circ$$ corner at $$O$$ instead, the
+side $$\frac{\sqrt{3}}{2}$$ lies along the $$x$$-axis and the far corner is at
+$$\left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right)$$. So the picture says that a turn of
+$$\frac{\pi}{3}$$ ($$60^\circ$$) lands at $$\left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right)$$, and a
+turn of $$\frac{\pi}{6}$$ ($$30^\circ$$) lands at $$\left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right)$$.
+
+```plane
+point X1 -5 0 hidden
+point X2 5 0 hidden
+point Y1 0 -5 hidden
+point Y2 0 5 hidden
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+point O 0 0 sw
+circle O 4 color=muted dashed
+point E1 4 0 se
+point A 2 0 hidden
+point B 3.4641 0 hidden
+point Q 2 3.4641 n
+point V 3.4641 2 ne
+polygon O A Q color=green
+polygon O B V color=orange
+segment O Q
+segment O V
+segment A Q color=green dashed
+segment B V color=orange dashed
+angle E1 O Q label="60°" color=green r=0.9
+angle E1 O V label="30°" color=orange r=2
+caption "The half equilateral triangle with long side 1, placed twice: with its 60° corner at O the far corner is Q = (1/2, √3/2), and with its 30° corner at O it is V = (√3/2, 1/2)"
+```
+
+The pictures are convincing, but they place each set square by eye. The rest of the guide proves
+that the three points are exactly where a turn of $$\frac{\pi}{4}$$ ($$45^\circ$$),
+$$\frac{\pi}{3}$$ ($$60^\circ$$) or $$\frac{\pi}{6}$$ ($$30^\circ$$) sends $$E_1$$.
+
+## From an angle to a turn
+
+A set square tells you an angle at $$O$$, between the ray along the $$x$$-axis and the ray to the
+far corner. The definition of sine and cosine needs a turn instead. For a point above the $$x$$-axis
+the two agree, because the turn from $$E_1$$ to it goes anticlockwise less than a half turn, and
+sweeps out exactly that angle. Below the axis they disagree: the point $$(0, -1)$$ makes an angle of
+$$90^\circ$$ with the ray $$OE_1$$, but the anticlockwise turn to it is $$270^\circ$$.
+
+Angles here are measured as in earlier chapters, by their share of a disc
+(:ref{#distance-and-angles/degree}), and that is taken as given rather than worked out from
+formulas. The lemma below links those angles to turns, for points above the $$x$$-axis.
+
+:::lemma[From an angle to a turn]{#special-angles-angle-to-turn}
+
+Let $$U$$ be a point of the unit circle above the $$x$$-axis, and suppose the angle $$\angle E_1OU$$
+measures $$\theta^\circ$$. Then
+
+```math
+U = (\cos x, \sin x) \qquad\text{with}\qquad x = \frac{\pi\theta}{180}
+```
+
+the angle $$\theta^\circ$$ written in radians.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Unit_circle"}
+
+By part 2 of :ref{#unit-circle-point}, there is exactly one number $$x$$ with $$0 \le x < 2\pi$$ and
+$$U = (\cos x, \sin x)$$, that is, $$U = G_x(E_1)$$. The turn by $$x$$ radians is the turn by
+$$w^\circ$$, where $$w = \frac{180x}{\pi}$$ (:ref{#radians-turn-notation}), and $$0 \le w < 360$$.
+
+**Two choices.** By the definition of a turn (:ref{#isometries/rotation}), the angle turning
+anticlockwise from the ray $$OE_1$$ to the ray $$OU$$ measures $$w^\circ$$. The two rays make two
+angles, which together fill the disc, so their sizes add up to $$360^\circ$$
+(:ref{#distance-and-angles/degree}). The angle $$\angle E_1OU$$ is the one that is at most a
+straight angle (:ref{#distance-and-angles/angle-name}), so the other is $$(360 - \theta)^\circ$$.
+The anticlockwise angle is one of the two, so $$w = \theta$$ or $$w = 360 - \theta$$.
+
+**Ruling one out.** The point $$U$$ is not on the $$x$$-axis, so $$\theta$$ is neither $$0$$ nor
+$$180$$, and $$0 < \theta < 180$$. If $$w = 360 - \theta$$, then $$180 < w < 360$$, so
+$$\pi < x < 2\pi$$. For those $$x$$ the point $$(\cos x, \sin x)$$ lies below the $$x$$-axis:
+$$\sin x < 0$$ in the third and fourth quadrants (:ref{#quadrant-signs}), and
+$$\sin\frac{3\pi}{2} = -1$$ (:ref{#quarter-values}). But $$U$$ is above the $$x$$-axis, so
+$$\sin x > 0$$. So $$w = \theta$$, and $$x = \frac{\pi w}{180} = \frac{\pi\theta}{180}$$.
+
+:::
+
+So for a point above the $$x$$-axis, you can find its turn by measuring one angle at $$O$$. The next
+two sections find that angle for each set square's corner, using moves that keep angles.
+
+## Half a right angle
+
+Flip the plane in the line $$y = x$$. The positive $$x$$-axis and the positive $$y$$-axis swap
+places, and every point of the mirror stays where it is. The corner of the half square,
+$$U = \left(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}\right)$$, is on the mirror, so the flip carries
+the angle from the $$x$$-axis to $$U$$ onto the angle from the $$y$$-axis to $$U$$. The two angles
+are equal and together make a right angle, so each is half a right angle.
+
+First check that $$U$$ is on the unit circle. Its length squared is
+$$\frac{1}{2} + \frac{1}{2} = 1$$, so $$|U| = 1$$ (:ref{#adding-and-scaling-points/norm}). The
+number $$\frac{1}{\sqrt{2}}$$ is also written $$\frac{\sqrt{2}}{2}$$: multiply the top and bottom by
+$$\sqrt{2}$$, and the bottom becomes $$\sqrt{2} \cdot \sqrt{2} = 2$$.
+
+:::proposition[Sine and cosine of half a right angle]{#sin-cos-45}
+
+```math
+\cos\frac{\pi}{4} = \sin\frac{\pi}{4} = \frac{1}{\sqrt{2}} = \frac{\sqrt{2}}{2}
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Sine_of_45_Degrees"}
+
+Let $$U = \left(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}\right)$$ and $$E_2 = (0, 1)$$. Then
+$$|U| = 1$$, as worked out above, and $$U$$ is above the $$x$$-axis.
+
+**The flip keeps the angle.** Let $$S(x, y) = (y, x)$$, the flip in the line $$y = x$$
+(:ref{#adding-and-scaling-points/diagonal-reflection}). Flips are isometries
+(:ref{#isometries/basic-isometries}). The flip gives
+
+```math
+S(O) = O \qquad S(E_1) = E_2 \qquad S(U) = U
+```
+
+So by :ref{#isometries/isometry-angles}, $$S$$ sends the angle at $$O$$ between the rays $$OE_1$$
+and $$OU$$ to the angle at $$O$$ between the rays $$OE_2$$ and $$OU$$, of the same size:
+
+```math
+\angle E_1OU = \angle E_2OU
+```
+
+**The two angles make a right angle.** The angle $$\angle E_1OE_2$$ is a right angle, by part 2 of
+:ref{#segments-rays-and-lines/perpendicular-dot}, since
+$$E_1 \cdot E_2 = 1 \cdot 0 + 0 \cdot 1 = 0$$ and $$O$$, $$E_1$$ and $$E_2$$ are not on one line.
+The point $$U$$ has both coordinates positive, so the ray $$OU$$ lies inside $$\angle E_1OE_2$$,
+between the two positive axes; this is read from the picture. By
+:ref{#distance-and-angles/angle-addition},
+
+```math
+\angle E_1OU + \angle UOE_2 = 90^\circ
+```
+
+The two angles are equal, so $$2\,\angle E_1OU = 90^\circ$$, and $$\angle E_1OU = 45^\circ$$.
+
+**From the angle to the turn.** By :ref{#special-angles-angle-to-turn} with $$\theta = 45$$,
+$$U = (\cos x, \sin x)$$ with $$x = \frac{45\pi}{180} = \frac{\pi}{4}$$. Comparing coordinates,
+$$\cos\frac{\pi}{4} = \frac{1}{\sqrt{2}}$$ and $$\sin\frac{\pi}{4} = \frac{1}{\sqrt{2}}$$.
+
+:::
+
+As a check, :ref{#pythagorean-identity} says $$\cos^2 x + \sin^2 x = 1$$ for every $$x$$. At
+$$x = \frac{\pi}{4}$$ ($$45^\circ$$) it gives
+$$\left(\frac{1}{\sqrt{2}}\right)^2 + \left(\frac{1}{\sqrt{2}}\right)^2 = \frac{1}{2} + \frac{1}{2} = 1$$.
+
+## A third and two thirds of a right angle
+
+Take the point $$Q = \left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right)$$. It is $$1$$ from $$O$$, and it
+is also $$1$$ from $$E_1$$, so $$O$$, $$E_1$$ and $$Q$$ are the corners of an equilateral triangle
+with sides $$1$$. That makes the angle at $$O$$ a third of a straight angle, $$60^\circ$$. Then the
+flip in $$y = x$$ moves $$Q$$ to $$V = \left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right)$$, and carries
+the $$30^\circ$$ left over between $$OQ$$ and the $$y$$-axis into the angle between the $$x$$-axis
+and $$OV$$.
+
+```plane
+point X1 -0.8 0 hidden
+point X2 5 0 hidden
+point Y1 0 -0.8 hidden
+point Y2 0 5 hidden
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+point O 0 0 sw
+point E1 4 0 s
+point E2 0 4 w
+point Q 2 3.4641 n
+point V 3.4641 2 e
+point D1 -0.6 -0.6 hidden
+point D2 4.6 4.6 hidden
+segment D1 D2 color=purple dashed
+polygon O E1 Q color=green
+segment O Q color=green
+segment E1 Q color=green
+segment O V color=orange
+angle E1 O Q label="60°" color=green r=0.8
+angle Q O E2 label="30°" color=green r=1.6
+angle E1 O V label="30°" color=orange r=2.5
+caption "O, E₁ and Q = (1/2, √3/2) make an equilateral triangle, so the angle at O is 60°. The flip in the dashed line y = x sends Q to V = (√3/2, 1/2) and the 30° between OQ and the y-axis to the angle between the x-axis and OV."
+```
+
+:::proposition[Sine and cosine of a third and two thirds of a right angle]{#sin-cos-30-60}
+
+```math
+\cos\frac{\pi}{3} = \frac{1}{2} \qquad \sin\frac{\pi}{3} = \frac{\sqrt{3}}{2} \qquad \cos\frac{\pi}{6} = \frac{\sqrt{3}}{2} \qquad \sin\frac{\pi}{6} = \frac{1}{2}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Special_right_triangle#30-60-90_triangle"}
+
+Let $$Q = \left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right)$$ and $$E_2 = (0, 1)$$.
+
+**Three equal sides.** By :ref{#coordinates/distance-formula},
+
+```math
+\begin{aligned}
+d(O, E_1)^2 &= 1^2 + 0^2 = 1 \\
+d(O, Q)^2 &= \left(\tfrac{1}{2}\right)^2 + \left(\tfrac{\sqrt{3}}{2}\right)^2 = \tfrac{1}{4} + \tfrac{3}{4} = 1 \\
+d(E_1, Q)^2 &= \left(\tfrac{1}{2} - 1\right)^2 + \left(\tfrac{\sqrt{3}}{2}\right)^2 = \tfrac{1}{4} + \tfrac{3}{4} = 1
+\end{aligned}
+```
+
+So all three distances are $$1$$. The point $$Q$$ is not on the $$x$$-axis, which is the line
+through $$O$$ and $$E_1$$, so $$O$$, $$E_1$$ and $$Q$$ are the corners of a triangle.
+
+**Three equal angles.** Since $$d(O, E_1) = d(O, Q)$$, the triangle is isosceles with apex $$O$$,
+and by :ref{#isometries/isosceles}, $$\angle OE_1Q = \angle OQE_1$$. Since
+$$d(E_1, O) = d(E_1, Q)$$, it is also isosceles with apex $$E_1$$, so
+$$\angle E_1OQ = \angle E_1QO$$. So all three angles are equal. They add up to $$180^\circ$$
+(:ref{#distance-and-angles/triangle-angle-sum}), so each is $$60^\circ$$. In particular
+$$\angle E_1OQ = 60^\circ$$.
+
+**The turn for Q.** The point $$Q$$ is on the unit circle and above the $$x$$-axis. By
+:ref{#special-angles-angle-to-turn} with $$\theta = 60$$, $$Q = (\cos x, \sin x)$$ with
+$$x = \frac{60\pi}{180} = \frac{\pi}{3}$$. So $$\cos\frac{\pi}{3} = \frac{1}{2}$$ and
+$$\sin\frac{\pi}{3} = \frac{\sqrt{3}}{2}$$.
+
+**The angle left over.** As in the proof of :ref{#sin-cos-45}, $$\angle E_1OE_2 = 90^\circ$$. Both
+coordinates of $$Q$$ are positive, so the ray $$OQ$$ lies inside $$\angle E_1OE_2$$; this is read
+from the picture. By :ref{#distance-and-angles/angle-addition},
+$$\angle E_1OQ + \angle QOE_2 = 90^\circ$$, so $$\angle QOE_2 = 90^\circ - 60^\circ = 30^\circ$$.
+
+**The flip.** Let $$S(x, y) = (y, x)$$, the flip in $$y = x$$
+(:ref{#adding-and-scaling-points/diagonal-reflection}), and let
+$$V = S(Q) = \left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right)$$. The flip is an isometry
+(:ref{#isometries/basic-isometries}) with $$S(O) = O$$ and $$S(E_2) = E_1$$. By
+:ref{#isometries/isometry-angles}, it sends the angle at $$O$$ between the rays $$OE_2$$ and $$OQ$$
+to the angle at $$O$$ between the rays $$OE_1$$ and $$OV$$, of the same size. So
+$$\angle E_1OV = \angle E_2OQ = 30^\circ$$.
+
+**The turn for V.** The flip keeps the distance from $$O = S(O)$$, so $$|V| = |Q| = 1$$, and $$V$$
+is above the $$x$$-axis. By :ref{#special-angles-angle-to-turn} with $$\theta = 30$$,
+$$V = (\cos x, \sin x)$$ with $$x = \frac{30\pi}{180} = \frac{\pi}{6}$$. So
+$$\cos\frac{\pi}{6} = \frac{\sqrt{3}}{2}$$ and $$\sin\frac{\pi}{6} = \frac{1}{2}$$.
+
+:::
+
+As a check with :ref{#pythagorean-identity}, at $$x = \frac{\pi}{3}$$ ($$60^\circ$$) the squares add
+up to $$\frac{1}{4} + \frac{3}{4} = 1$$, and at $$x = \frac{\pi}{6}$$ ($$30^\circ$$) they are the
+same two squares in the other order.
+
+The values for $$\frac{\pi}{6}$$ ($$30^\circ$$) are the values for $$\frac{\pi}{3}$$ ($$60^\circ$$)
+swapped round, and the reason is the flip in $$y = x$$, which swaps the two coordinates. The two
+angles add up to a right angle, and the guide [Identities you can see](./symmetries.mdx) shows that
+the same swap happens for any two angles that add up to a right angle
+(:ref{#complement-identities}).
+
+## The table of special angles
+
+Turning from $$E_1$$ towards $$E_2 = (0, 1)$$, the point on the unit circle climbs and moves in
+towards the $$y$$-axis. So the sine grows from $$0$$ to $$1$$ while the cosine shrinks from $$1$$ to
+$$0$$. The values from :ref{#sin-cos-45} and :ref{#sin-cos-30-60}, with those at $$0$$ and
+$$\frac{\pi}{2}$$ ($$90^\circ$$) from :ref{#quarter-values}, fill in the steps between.
+
+| Angle $$x$$       | Degrees      | $$\sin x$$             | $$\cos x$$             |
+| ----------------- | ------------ | ---------------------- | ---------------------- |
+| $$0$$             | $$0^\circ$$  | $$0$$                  | $$1$$                  |
+| $$\frac{\pi}{6}$$ | $$30^\circ$$ | $$\frac{1}{2}$$        | $$\frac{\sqrt{3}}{2}$$ |
+| $$\frac{\pi}{4}$$ | $$45^\circ$$ | $$\frac{\sqrt{2}}{2}$$ | $$\frac{\sqrt{2}}{2}$$ |
+| $$\frac{\pi}{3}$$ | $$60^\circ$$ | $$\frac{\sqrt{3}}{2}$$ | $$\frac{1}{2}$$        |
+| $$\frac{\pi}{2}$$ | $$90^\circ$$ | $$1$$                  | $$0$$                  |
+
+A pattern helps you rebuild the sine column. Write each value with a square root on top and $$2$$
+underneath:
+
+```math
+\frac{\sqrt{0}}{2}, \quad \frac{\sqrt{1}}{2}, \quad \frac{\sqrt{2}}{2}, \quad \frac{\sqrt{3}}{2}, \quad \frac{\sqrt{4}}{2}
+```
+
+These are $$0$$, $$\frac{1}{2}$$, $$\frac{\sqrt{2}}{2}$$, $$\frac{\sqrt{3}}{2}$$ and $$1$$, the
+sines of the five angles in order. The cosine column is the same list read backwards. This is a
+memory aid that happens to work for these five angles. The reason for the values is the two set
+squares, and the pattern doesn't continue to other angles.
+
+In decimals, $$\frac{\sqrt{2}}{2} \approx 0.707$$ and $$\frac{\sqrt{3}}{2} \approx 0.866$$. A
+calculator in radian mode agrees: it gives $$\sin\frac{\pi}{4} \approx 0.7071$$ for $$45^\circ$$ and
+$$\cos\frac{\pi}{6} \approx 0.8660$$ for $$30^\circ$$. The calculator shows rounded decimals, while
+the table gives the exact numbers.
+
+The table covers the first quarter of the circle. The guide
+[Identities you can see](./symmetries.mdx) uses flips and turns to carry it round the rest, to
+angles such as $$\frac{2\pi}{3}$$ ($$120^\circ$$) and $$\frac{5\pi}{4}$$ ($$225^\circ$$). The next
+guide, [Sine and cosine in right triangles](./right-triangles.mdx), uses the same values to find
+lengths in right triangles.
+
+## A Ferris wheel car
+
+Picture a Ferris wheel of radius $$20$$ m turning anticlockwise as you look at it. Put the hub at
+$$O$$, and start with your car level with the hub on the right, at $$(20, 0)$$, measured in metres.
+After the wheel has turned by $$x$$, your car is at $$20(\cos x, \sin x)$$, by
+:ref{#circle-point-radius}: $$20\cos x$$ metres across from the hub and $$20\sin x$$ metres above
+it.
+
+:::example[Thirty degrees round the wheel]
+
+After a turn of $$\frac{\pi}{6}$$ ($$30^\circ$$), the car is at
+
+```math
+20\left(\cos\frac{\pi}{6}, \sin\frac{\pi}{6}\right) = 20\left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right) = \left(10\sqrt{3}, 10\right)
+```
+
+So the car is $$10$$ m above the hub and $$10\sqrt{3} \approx 17.3$$ m across from it. After a turn
+of $$\frac{\pi}{4}$$ ($$45^\circ$$), it is $$\frac{20}{\sqrt{2}} = 10\sqrt{2} \approx 14.1$$ m
+across and the same distance up. After $$\frac{\pi}{3}$$ ($$60^\circ$$), it is $$10$$ m across and
+$$10\sqrt{3} \approx 17.3$$ m up.
+
+:::
+
+Doubling the turn from $$\frac{\pi}{6}$$ to $$\frac{\pi}{3}$$ ($$30^\circ$$ to $$60^\circ$$) takes
+the car from $$10$$ m up to about $$17.3$$ m up, not to $$20$$ m. That is a slip worth naming: the
+sine of twice an angle is not twice its sine. The car climbs more slowly as it nears the top, and
+its height can never go past the radius of $$20$$ m.
+
+## Exercises
+
+:::::accordion[Exercises on special angles, with solutions]
+
+::::exercise{#ex-special-angles-values}
+
+Work out each number exactly, without a calculator. Recall that $$\frac{\pi}{6}$$, $$\frac{\pi}{4}$$
+and $$\frac{\pi}{3}$$ are $$30^\circ$$, $$45^\circ$$ and $$60^\circ$$.
+
+1. $$\sin\frac{\pi}{6} + \cos\frac{\pi}{3}$$
+2. $$\sin\frac{\pi}{4}\cos\frac{\pi}{4}$$
+3. $$\cos^2\frac{\pi}{6} - \sin^2\frac{\pi}{6}$$
+
+:::solution
+
+From the table of special angles:
+
+1. $$\sin\frac{\pi}{6} = \frac{1}{2}$$ and $$\cos\frac{\pi}{3} = \frac{1}{2}$$, so the sum is $$1$$.
+2. Both are $$\frac{\sqrt{2}}{2}$$, so the product is $$\frac{2}{4} = \frac{1}{2}$$.
+3. $$\cos^2\frac{\pi}{6} = \left(\frac{\sqrt{3}}{2}\right)^2 = \frac{3}{4}$$ and
+   $$\sin^2\frac{\pi}{6} = \left(\frac{1}{2}\right)^2 = \frac{1}{4}$$, so the difference is
+   $$\frac{1}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-special-angles-clock}
+
+The minute hand of a wall clock is $$12$$ cm long. Put the centre of the clock at $$O$$, with the
+positive $$x$$-axis pointing at the $$3$$ and the positive $$y$$-axis at the $$12$$. Find exactly
+where the tip of the hand is at $$5$$ past, $$7\frac{1}{2}$$ minutes past and $$10$$ past the hour,
+and give each coordinate to two decimal places.
+
+:::solution
+
+Each minute the hand moves $$\frac{360^\circ}{60} = 6^\circ$$ clockwise. At $$15$$ past it points at
+the $$3$$, so at $$m$$ minutes past, for $$m$$ from $$0$$ to $$15$$, it is $$6(15 - m)$$ degrees
+anticlockwise from the positive $$x$$-axis. By :ref{#circle-point-radius}, the tip is at
+$$12(\cos x, \sin x)$$ with $$x$$ that angle in radians.
+
+- **5 past**: $$60^\circ = \frac{\pi}{3}$$, so the tip is at
+  $$12\left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right) = (6, 6\sqrt{3}) \approx (6.00, 10.39)$$
+- **7½ past**: $$45^\circ = \frac{\pi}{4}$$, so the tip is at
+  $$12\left(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}\right) = (6\sqrt{2}, 6\sqrt{2}) \approx (8.49, 8.49)$$
+- **10 past**: $$30^\circ = \frac{\pi}{6}$$, so the tip is at
+  $$12\left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right) = (6\sqrt{3}, 6) \approx (10.39, 6.00)$$
+
+:::
+
+::::
+
+::::exercise{#ex-special-angles-radius-four}
+
+Find exactly the points of the circle with centre $$O$$ and radius $$4$$ on the rays at angles
+$$\frac{\pi}{6}$$, $$\frac{\pi}{4}$$ and $$\frac{\pi}{3}$$ ($$30^\circ$$, $$45^\circ$$ and
+$$60^\circ$$) anticlockwise from the positive $$x$$-axis. Check with the distance formula that each
+is $$4$$ from $$O$$.
+
+:::solution
+
+By :ref{#circle-point-radius} the points are $$4(\cos x, \sin x)$$:
+
+- $$x = \frac{\pi}{6}$$: $$4\left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right) = (2\sqrt{3}, 2)$$, and
+  $$(2\sqrt{3})^2 + 2^2 = 12 + 4 = 16$$
+- $$x = \frac{\pi}{4}$$:
+  $$4\left(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}\right) = (2\sqrt{2}, 2\sqrt{2})$$, and
+  $$8 + 8 = 16$$
+- $$x = \frac{\pi}{3}$$: $$4\left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right) = (2, 2\sqrt{3})$$, and
+  $$4 + 12 = 16$$
+
+Each squared distance is $$16 = 4^2$$, so each point is $$4$$ from $$O$$
+(:ref{#coordinates/distance-formula}).
+
+:::
+
+::::
+
+::::exercise{#ex-special-angles-doubling}
+
+1. Compare $$\sin\frac{\pi}{3}$$ ($$60^\circ$$) with $$2\sin\frac{\pi}{6}$$ ($$30^\circ$$), and
+   $$\sin\frac{\pi}{2}$$ ($$90^\circ$$) with $$2\sin\frac{\pi}{4}$$ ($$45^\circ$$).
+2. Explain, using the unit circle, why $$\sin 2x = 2\sin x$$ can't hold for every $$x$$.
+
+:::solution
+
+1. $$\sin\frac{\pi}{3} = \frac{\sqrt{3}}{2} \approx 0.866$$, but
+   $$2\sin\frac{\pi}{6} = 2 \cdot \frac{1}{2} = 1$$. And $$\sin\frac{\pi}{2} = 1$$
+   (:ref{#quarter-values}), but $$2\sin\frac{\pi}{4} = \sqrt{2} \approx 1.414$$. Neither pair is
+   equal.
+2. The sine of any number is the height of a point of the unit circle, so it is never more than
+   $$1$$ (:ref{#sine-and-cosine-bounds}). If $$\sin 2x = 2\sin x$$ held for every $$x$$, then at
+   $$x = \frac{\pi}{4}$$ it would give $$\sin\frac{\pi}{2} = \sqrt{2}$$, which is more than $$1$$.
+   So doubling the angle does not double the sine.
+
+:::
+
+::::
+
+::::exercise{#ex-special-angles-from-one-value}
+
+1. Suppose you remember only that $$\cos\frac{\pi}{3} = \frac{1}{2}$$, for $$60^\circ$$. Use
+   :ref{#pythagorean-identity} to find $$\sin\frac{\pi}{3}$$, and say how you choose the sign.
+2. Suppose you remember only that $$\cos\frac{\pi}{4} = \sin\frac{\pi}{4}$$, from the flip in
+   $$y = x$$. Find their value in the same way.
+
+:::solution
+
+1. By :ref{#pythagorean-identity}, $$\sin^2\frac{\pi}{3} = 1 - \frac{1}{4} = \frac{3}{4}$$, so
+   $$\sin\frac{\pi}{3}$$ is $$\frac{\sqrt{3}}{2}$$ or $$-\frac{\sqrt{3}}{2}$$. The angle
+   $$\frac{\pi}{3}$$ is between $$0$$ and $$\frac{\pi}{2}$$, so the point is in the first quadrant
+   and its sine is positive (:ref{#quadrant-signs}). So $$\sin\frac{\pi}{3} = \frac{\sqrt{3}}{2}$$.
+2. Write $$c$$ for the common value. By :ref{#pythagorean-identity}, $$c^2 + c^2 = 1$$, so
+   $$c^2 = \frac{1}{2}$$, and $$c$$ is $$\frac{1}{\sqrt{2}}$$ or $$-\frac{1}{\sqrt{2}}$$. Again
+   $$\frac{\pi}{4}$$ is in the first quadrant, so $$c > 0$$ and $$c = \frac{1}{\sqrt{2}}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-special-angles-ray}
+
+Let $$P = (3, \sqrt{3})$$. Write $$P$$ as $$r(\cos x, \sin x)$$ with $$r > 0$$ and
+$$0 \le x < 2\pi$$ ($$360^\circ$$), and explain why there is only one such $$x$$.
+
+:::solution
+
+The length of $$P$$ is $$|P| = \sqrt{9 + 3} = \sqrt{12} = 2\sqrt{3}$$
+(:ref{#adding-and-scaling-points/norm}). By :ref{#adding-and-scaling-points/direction},
+$$P = 2\sqrt{3}\,U$$ with the unit point
+
+```math
+U = \frac{1}{2\sqrt{3}}(3, \sqrt{3}) = \left(\frac{3}{2\sqrt{3}}, \frac{\sqrt{3}}{2\sqrt{3}}\right) = \left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right)
+```
+
+using $$\frac{3}{\sqrt{3}} = \sqrt{3}$$. By :ref{#sin-cos-30-60}, the turn of $$\frac{\pi}{6}$$
+($$30^\circ$$) lands at this point: $$U = \left(\cos\frac{\pi}{6}, \sin\frac{\pi}{6}\right)$$. So
+
+```math
+P = 2\sqrt{3}\left(\cos\frac{\pi}{6}, \sin\frac{\pi}{6}\right)
+```
+
+with $$r = 2\sqrt{3}$$ and $$x = \frac{\pi}{6}$$. If also $$P = s(\cos y, \sin y)$$ with $$s > 0$$,
+then $$s = |P|$$, since $$(\cos y, \sin y)$$ has length $$1$$
+(:ref{#adding-and-scaling-points/norm-scale}). So $$(\cos y, \sin y) = \frac{1}{|P|}P = U$$. By part
+2 of :ref{#unit-circle-point}, only one $$y$$ with $$0 \le y < 2\pi$$ gives $$U$$, so
+$$y = \frac{\pi}{6}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-special-angles-twelve-sides}
+
+Take the regular $$12$$-sided polygon in the unit circle (:ref{#area-and-scaling/inscribed-polygon})
+with corners at $$E_1$$ and $$V = \left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right)$$.
+
+1. Show that the side from $$E_1$$ to $$V$$ has length $$\sqrt{2 - \sqrt{3}}$$.
+2. Every side has the same length. Find the perimeter divided by the diameter to four decimal
+   places, and compare it with the table in the guide on the circumference of a circle.
+
+:::solution
+
+1. By :ref{#coordinates/distance-formula},
+
+   ```math
+   d(E_1, V)^2 = \left(1 - \frac{\sqrt{3}}{2}\right)^2 + \left(\frac{1}{2}\right)^2 = 1 - \sqrt{3} + \frac{3}{4} + \frac{1}{4} = 2 - \sqrt{3}
+   ```
+
+   So $$d(E_1, V) = \sqrt{2 - \sqrt{3}}$$. The two corners are neighbours, since the angle
+   $$\angle E_1OV$$ is $$30^\circ = \frac{360^\circ}{12}$$, as shown in the proof of
+   :ref{#sin-cos-30-60}.
+
+2. The perimeter is $$12\sqrt{2 - \sqrt{3}}$$ and the diameter is $$2$$, so the ratio is
+   $$6\sqrt{2 - \sqrt{3}} \approx 6 \times 0.517638 \approx 3.1058$$. That is the value for
+   $$n = 12$$ in the table after :ref{#area-and-scaling/circumference-formula}, a little less than
+   $$\pi \approx 3.1416$$.
+
+:::
+
+::::
+
+:::::

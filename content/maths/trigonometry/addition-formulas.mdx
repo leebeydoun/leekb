@@ -1,0 +1,773 @@
+---
+title: Addition formulas
+description:
+  The cosine and sine of a sum or difference of two angles, proved from one chord of the unit
+  circle, with double angles, half angles and the tangent of a sum.
+---
+
+Imagine the dial on an oven with a white dot painted on its rim. Turn the dial part of the way round
+and the dot moves to a new place; turn it again and it moves on. The two turns together are one turn
+by the two angles added up. So if you know where the dot sits after each turn on its own, how far
+across and how far up, there should be a way to work out where it sits after both.
+
+There is, and the rules that do it are called the **addition formulas**. They give the cosine and
+sine of $$a + b$$ from the cosines and sines of $$a$$ and $$b$$. In this guide we'll prove them from
+one picture, a chord of the unit circle and a turned copy of it, and then use them to find exact
+values we couldn't reach before.
+
+## Sines don't add
+
+The first thing to try is adding. If the dot rises by $$\sin a$$ in the first turn, it seems that it
+should rise by another $$\sin b$$ in the second. But it doesn't, and it is worth seeing that with
+numbers before anything else.
+
+Take $$a = b = \frac{\pi}{4}$$. Then $$a + b = \frac{\pi}{2}$$, a quarter turn, which takes
+$$E_1 = (1, 0)$$ to $$E_2 = (0, 1)$$. So $$\sin(a + b) = 1$$ (:ref{#quarter-values}). Adding the
+sines instead gives
+
+```math
+\sin\frac{\pi}{4} + \sin\frac{\pi}{4} = \frac{\sqrt2}{2} + \frac{\sqrt2}{2} = \sqrt2 \approx 1.41
+```
+
+by :ref{#sin-cos-45}, which is more than $$1$$. No point of the unit circle is that high.
+
+So $$\sin(a + b)$$ is not $$\sin a + \sin b$$, and $$\cos(a + b)$$ is not $$\cos a + \cos b$$
+either. It's a common slip, so this example is worth keeping in mind. The reason is in the picture:
+the second turn starts from a tilted position, so the height it adds depends on where the dot
+already is.
+
+## The chord and its turned copy
+
+Mark two points on the unit circle, and join them with a segment. A segment like that, between two
+points of a circle, is called a **chord**. Its length depends only on how far apart the two points
+are round the circle. Turn both points about $$O$$ by the same angle, and the chord turns with them
+without changing length, because a turn keeps distances.
+
+So turn the pair until one of the points lands on $$E_1$$. Let $$P$$ be the point on the unit circle
+at angle $$a$$, and $$Q$$ the point at angle $$b$$. Turning both by $$-b$$ takes $$Q$$ to $$E_1$$,
+at angle $$0$$, and takes $$P$$ to the point at angle $$a - b$$. Call that point $$R$$.
+
+```plane
+scale 3.2
+point O 0 0 sw
+point E₁ 1 0 e
+point P -0.9397 0.3420 w
+point Q -0.1736 0.9848 n
+point R 0.5 0.8660 ne
+circle O 1 color=muted
+segment O P color=muted dashed
+segment O Q color=muted dashed
+segment O R color=muted dashed
+segment O E₁ color=muted dashed
+segment P Q color=blue
+segment E₁ R color=orange
+angle Q O P color=blue r=0.35 label="a − b"
+angle E₁ O R color=orange r=0.3 label="a − b"
+caption "P is at angle a and Q at angle b. Turning both by −b takes Q to E₁ and P to R, at angle a − b. The blue chord PQ and the orange chord E₁R have the same length."
+```
+
+The two chords have the same length, and the distance formula gives each length in terms of cosines
+and sines. The blue chord brings in $$\cos a$$, $$\sin a$$, $$\cos b$$ and $$\sin b$$; the orange
+chord brings in $$\cos(a - b)$$ and $$\sin(a - b)$$. Setting the two lengths equal is the whole
+proof.
+
+Here is the calculation once with numbers. Take $$a = \frac{\pi}{2}$$ and $$b = \frac{\pi}{6}$$, so
+$$P = (0, 1)$$ and $$Q = \left(\frac{\sqrt3}{2}, \frac12\right)$$ (:ref{#sin-cos-30-60}). The blue
+chord has squared length
+
+```math
+\left(0 - \frac{\sqrt3}{2}\right)^2 + \left(1 - \frac12\right)^2 = \frac34 + \frac14 = 1
+```
+
+The difference is $$a - b = \frac{\pi}{3}$$, so $$R = \left(\frac12, \frac{\sqrt3}{2}\right)$$, and
+the orange chord has squared length
+
+```math
+\left(\frac12 - 1\right)^2 + \left(\frac{\sqrt3}{2} - 0\right)^2 = \frac14 + \frac34 = 1
+```
+
+The two agree, as they must. Move $$a$$ and $$b$$ below, and press the button to watch the blue
+chord turn down onto the orange one.
+
+<ChordTwoWays />
+
+## The cosine of a difference
+
+The picture turns into a formula once both chord lengths are written out. Squaring each length gets
+rid of the square roots, and $$\cos^2 x + \sin^2 x = 1$$ tidies what is left.
+
+:::theorem[Cosine of a difference]{#cos-difference}
+
+For all numbers $$a$$ and $$b$$,
+
+```math
+\cos(a - b) = \cos a\cos b + \sin a\sin b
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Cosine_of_Difference"}
+
+**Step 1: name the points.** By :ref{#sine-cosine}, the three points
+
+```math
+\begin{aligned}
+P &= G_a(E_1) = (\cos a, \sin a) \\
+Q &= G_b(E_1) = (\cos b, \sin b) \\
+R &= G_{a - b}(E_1) = \big(\cos(a - b), \sin(a - b)\big)
+\end{aligned}
+```
+
+lie on the unit circle.
+
+**Step 2: the turn by −b sends Q to E₁.** By :ref{#radian-turns}, turning by $$b$$ and then by
+$$-b$$ is turning by $$b + (-b) = 0$$, and $$G_0 = G_{2\pi} = I$$ moves nothing. So
+
+```math
+G_{-b}(Q) = G_{-b}\big(G_b(E_1)\big) = G_0(E_1) = E_1
+```
+
+**Step 3: the same turn sends P to R.** Again by :ref{#radian-turns}, turning by $$a$$ and then by
+$$-b$$ is turning by $$a - b$$. So
+
+```math
+G_{-b}(P) = G_{-b}\big(G_a(E_1)\big) = G_{a - b}(E_1) = R
+```
+
+**Step 4: the two chords have the same length.** A turn keeps distances
+(:ref{#isometries/basic-isometries}). The turn $$G_{-b}$$ sends $$P$$ to $$R$$ and $$Q$$ to $$E_1$$,
+so $$d(P, Q) = d(R, E_1)$$, and the squares of the two distances are equal too.
+
+**Step 5: the blue chord.** By :ref{#coordinates/distance-formula},
+
+```math
+\begin{aligned}
+d(P, Q)^2 &= (\cos a - \cos b)^2 + (\sin a - \sin b)^2 &&\qquad \text{distance formula} \\
+&= \cos^2 a - 2\cos a\cos b + \cos^2 b + \sin^2 a - 2\sin a\sin b + \sin^2 b &&\qquad \text{multiply out each square} \\
+&= (\cos^2 a + \sin^2 a) + (\cos^2 b + \sin^2 b) - 2(\cos a\cos b + \sin a\sin b) &&\qquad \text{regroup the terms} \\
+&= 2 - 2(\cos a\cos b + \sin a\sin b) &&\qquad \text{each bracket is } 1
+\end{aligned}
+```
+
+where the last line uses :ref{#pythagorean-identity} twice, once for $$a$$ and once for $$b$$.
+
+**Step 6: the orange chord.** Write $$x = a - b$$ for short, so $$R = (\cos x, \sin x)$$ and
+$$E_1 = (1, 0)$$. In the same way,
+
+```math
+\begin{aligned}
+d(R, E_1)^2 &= (\cos x - 1)^2 + (\sin x - 0)^2 &&\qquad \text{distance formula} \\
+&= \cos^2 x - 2\cos x + 1 + \sin^2 x &&\qquad \text{multiply out the square} \\
+&= (\cos^2 x + \sin^2 x) + 1 - 2\cos x &&\qquad \text{regroup the terms} \\
+&= 2 - 2\cos x &&\qquad \text{the bracket is } 1
+\end{aligned}
+```
+
+**Step 7: set them equal.** By step 4 the two squared lengths are equal, so
+
+```math
+\begin{aligned}
+2 - 2\cos(a - b) &= 2 - 2(\cos a\cos b + \sin a\sin b) &&\qquad \text{steps 5 and 6} \\
+-2\cos(a - b) &= -2(\cos a\cos b + \sin a\sin b) &&\qquad \text{take 2 from both sides} \\
+\cos(a - b) &= \cos a\cos b + \sin a\sin b &&\qquad \text{divide both sides by } -2
+\end{aligned}
+```
+
+:::
+
+Nothing in the proof needs $$a$$ to be bigger than $$b$$, or either of them to be positive. Turns
+are defined for every number, and the rules for adding turns hold for all of them, so the formula
+holds for every pair of numbers. The picture shows why the proof works; the steps themselves use
+only the rules for turns and the distance formula.
+
+Check it with $$a = \frac{\pi}{2}$$ and $$b = \frac{\pi}{3}$$. The left side is
+$$\cos\frac{\pi}{6} = \frac{\sqrt3}{2}$$. The right side is
+
+```math
+\cos\frac{\pi}{2}\cos\frac{\pi}{3} + \sin\frac{\pi}{2}\sin\frac{\pi}{3} = 0 \cdot \frac12 + 1 \cdot \frac{\sqrt3}{2} = \frac{\sqrt3}{2}
+```
+
+using :ref{#quarter-values} and :ref{#sin-cos-30-60}. Putting $$b = a$$ is a check of a different
+kind: the left side is $$\cos 0 = 1$$, and the right side is $$\cos^2 a + \sin^2 a$$, so the theorem
+contains :ref{#pythagorean-identity}.
+
+The right side of the theorem is the dot product $$P \cdot Q$$ of the two points
+(:ref{#segments-rays-and-lines/dot-product}). So the theorem says that the dot product of two points
+on the unit circle is the cosine of the angle between them. The guide
+[Angles in any triangle](./triangles.mdx) builds on that in :ref{#dot-angle}.
+
+## Four formulas from one
+
+Once the cosine of a difference is known, the other three formulas take one or two lines each. Two
+moves from earlier guides do the work. Changing $$b$$ to $$-b$$ turns a difference into a sum, and
+:ref{#negative-angle} says what that does to cosine and sine. Swapping $$x$$ for
+$$\frac{\pi}{2} - x$$ swaps sine and cosine (:ref{#complement-identities}), which turns a formula
+for cosine into one for sine.
+
+:::theorem[The addition formulas]{#addition-formulas}
+
+For all numbers $$a$$ and $$b$$,
+
+```math
+\begin{aligned}
+\cos(a + b) &= \cos a\cos b - \sin a\sin b \\
+\cos(a - b) &= \cos a\cos b + \sin a\sin b \\
+\sin(a + b) &= \sin a\cos b + \cos a\sin b \\
+\sin(a - b) &= \sin a\cos b - \cos a\sin b
+\end{aligned}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Proofs_of_trigonometric_identities#Angle_sum_identities"}
+
+**The cosine of a difference** is :ref{#cos-difference}.
+
+**The cosine of a sum.** Write $$a + b$$ as $$a - (-b)$$, and use :ref{#cos-difference} with $$-b$$
+in place of $$b$$:
+
+```math
+\begin{aligned}
+\cos(a + b) &= \cos\big(a - (-b)\big) &&\qquad a + b = a - (-b) \\
+&= \cos a\cos(-b) + \sin a\sin(-b) &&\qquad \text{cosine of a difference} \\
+&= \cos a\cos b - \sin a\sin b &&\qquad \cos(-b) = \cos b,\ \sin(-b) = -\sin b
+\end{aligned}
+```
+
+where the last step is :ref{#negative-angle}.
+
+**The sine of a sum.** By :ref{#complement-identities},
+$$\sin x = \cos\left(\frac{\pi}{2} - x\right)$$ for every $$x$$. Take $$x = a + b$$:
+
+```math
+\begin{aligned}
+\sin(a + b) &= \cos\left(\frac{\pi}{2} - (a + b)\right) &&\qquad \text{complement identity} \\
+&= \cos\left(\left(\frac{\pi}{2} - a\right) - b\right) &&\qquad \text{regroup inside the bracket} \\
+&= \cos\left(\frac{\pi}{2} - a\right)\cos b + \sin\left(\frac{\pi}{2} - a\right)\sin b &&\qquad \text{cosine of a difference} \\
+&= \sin a\cos b + \cos a\sin b &&\qquad \text{complement identities}
+\end{aligned}
+```
+
+where the last step uses both parts of :ref{#complement-identities}:
+$$\cos\left(\frac{\pi}{2} - a\right) = \sin a$$ and $$\sin\left(\frac{\pi}{2} - a\right) = \cos a$$.
+
+**The sine of a difference.** Use the sine of a sum with $$-b$$ in place of $$b$$:
+
+```math
+\begin{aligned}
+\sin(a - b) &= \sin a\cos(-b) + \cos a\sin(-b) &&\qquad \text{sine of a sum} \\
+&= \sin a\cos b - \cos a\sin b &&\qquad \text{negative angles}
+\end{aligned}
+```
+
+again by :ref{#negative-angle}.
+
+:::
+
+The patterns are worth saying in words. Cosine keeps like with like, cosine times cosine and sine
+times sine, and the sign in the middle is the opposite of the sign inside the bracket. Sine mixes
+them, sine times cosine and cosine times sine, and keeps the sign it was given.
+
+Go back to the example from the start, with $$a = b = \frac{\pi}{4}$$. The sine of a sum gives
+
+```math
+\sin\frac{\pi}{2} = \frac{\sqrt2}{2} \cdot \frac{\sqrt2}{2} + \frac{\sqrt2}{2} \cdot \frac{\sqrt2}{2} = \frac12 + \frac12 = 1
+```
+
+which is the right answer. Each sine in the formula is multiplied by a cosine, and a cosine is at
+most $$1$$ in size, so neither height counts in full. That is the tilt from the start of the guide
+at work.
+
+## New exact values
+
+The special angles give exact cosines and sines at $$\frac{\pi}{6}$$, $$\frac{\pi}{4}$$ and
+$$\frac{\pi}{3}$$. Sums and differences of these reach new angles. For example,
+$$\frac{\pi}{3} - \frac{\pi}{4} = \frac{\pi}{12}$$, which is $$15^\circ$$, so the addition formulas
+give its sine and cosine exactly.
+
+:::example[The sine and cosine of a twelfth of a half turn]
+
+By :ref{#sin-cos-30-60} and :ref{#sin-cos-45}, $$\cos\frac{\pi}{3} = \frac12$$,
+$$\sin\frac{\pi}{3} = \frac{\sqrt3}{2}$$ and
+$$\cos\frac{\pi}{4} = \sin\frac{\pi}{4} = \frac{\sqrt2}{2}$$. The sine of a difference gives
+
+```math
+\begin{aligned}
+\sin\frac{\pi}{12} &= \sin\frac{\pi}{3}\cos\frac{\pi}{4} - \cos\frac{\pi}{3}\sin\frac{\pi}{4} \\
+&= \frac{\sqrt3}{2} \cdot \frac{\sqrt2}{2} - \frac12 \cdot \frac{\sqrt2}{2} \\
+&= \frac{\sqrt6 - \sqrt2}{4}
+\end{aligned}
+```
+
+and the cosine of a difference gives
+
+```math
+\begin{aligned}
+\cos\frac{\pi}{12} &= \cos\frac{\pi}{3}\cos\frac{\pi}{4} + \sin\frac{\pi}{3}\sin\frac{\pi}{4} \\
+&= \frac12 \cdot \frac{\sqrt2}{2} + \frac{\sqrt3}{2} \cdot \frac{\sqrt2}{2} \\
+&= \frac{\sqrt6 + \sqrt2}{4}
+\end{aligned}
+```
+
+using $$\sqrt3\sqrt2 = \sqrt6$$. As decimals these are about $$0.2588$$ and $$0.9659$$, and a
+calculator in radian mode gives the same for $$\sin(0.2618)$$ and $$\cos(0.2618)$$. As a check,
+their squares are $$\frac{8 - 2\sqrt{12}}{16}$$ and $$\frac{8 + 2\sqrt{12}}{16}$$, which add to
+$$1$$.
+
+:::
+
+The same values turn up further round the circle. The angle $$\frac{7\pi}{12}$$ is
+$$\frac{\pi}{3} + \frac{\pi}{4}$$, so the cosine of a sum gives
+
+```math
+\cos\frac{7\pi}{12} = \frac12 \cdot \frac{\sqrt2}{2} - \frac{\sqrt3}{2} \cdot \frac{\sqrt2}{2} = \frac{\sqrt2 - \sqrt6}{4} \approx -0.2588
+```
+
+The answer is negative, which fits :ref{#quadrant-signs}: $$\frac{7\pi}{12}$$ is a little more than
+$$\frac{\pi}{2}$$, in the second quadrant, where cosine is negative.
+
+## Double angles
+
+Turning by $$x$$ twice is turning by $$2x$$. So putting $$b = a$$ in the addition formulas gives the
+cosine and sine of a double angle. For cosine there are three ways to write the answer, because
+:ref{#pythagorean-identity} lets you trade $$\sin^2 x$$ for $$1 - \cos^2 x$$ and back.
+
+:::corollary[Double angles]{#double-angle}
+
+For every number $$x$$,
+
+```math
+\begin{aligned}
+\sin 2x &= 2\sin x\cos x \\
+\cos 2x &= \cos^2 x - \sin^2 x = 2\cos^2 x - 1 = 1 - 2\sin^2 x
+\end{aligned}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Proofs_of_trigonometric_identities#Double-angle_identities"}
+
+Put $$a = b = x$$ in :ref{#addition-formulas}. The sine of a sum gives
+
+```math
+\sin 2x = \sin(x + x) = \sin x\cos x + \cos x\sin x = 2\sin x\cos x
+```
+
+The cosine of a sum gives
+
+```math
+\cos 2x = \cos(x + x) = \cos x\cos x - \sin x\sin x = \cos^2 x - \sin^2 x
+```
+
+By :ref{#pythagorean-identity}, $$\sin^2 x = 1 - \cos^2 x$$, so
+
+```math
+\cos^2 x - \sin^2 x = \cos^2 x - (1 - \cos^2 x) = 2\cos^2 x - 1
+```
+
+In the same way $$\cos^2 x = 1 - \sin^2 x$$, so
+
+```math
+\cos^2 x - \sin^2 x = (1 - \sin^2 x) - \sin^2 x = 1 - 2\sin^2 x
+```
+
+:::
+
+Check with $$x = \frac{\pi}{6}$$. Then $$\sin 2x = \sin\frac{\pi}{3} = \frac{\sqrt3}{2}$$, and
+$$2\sin\frac{\pi}{6}\cos\frac{\pi}{6} = 2 \cdot \frac12 \cdot \frac{\sqrt3}{2} = \frac{\sqrt3}{2}$$.
+Notice that $$\sin 2x$$ is not $$2\sin x$$: at $$x = \frac{\pi}{2}$$, $$\sin\pi = 0$$ but
+$$2\sin\frac{\pi}{2} = 2$$.
+
+:::example[Doubling an angle with sine 5/13]
+
+Suppose $$\sin x = \frac{5}{13}$$ and $$x$$ is in the first quadrant. By
+:ref{#pythagorean-identity}, $$\cos^2 x = 1 - \frac{25}{169} = \frac{144}{169}$$, and cosine is
+positive in the first quadrant (:ref{#quadrant-signs}), so $$\cos x = \frac{12}{13}$$. Then
+
+```math
+\sin 2x = 2 \cdot \frac{5}{13} \cdot \frac{12}{13} = \frac{120}{169} \qquad \cos 2x = \frac{144}{169} - \frac{25}{169} = \frac{119}{169}
+```
+
+As a check, $$120^2 + 119^2 = 14400 + 14161 = 28561 = 169^2$$, so the point $$(\cos 2x, \sin 2x)$$
+is on the unit circle, as it should be.
+
+:::
+
+## Half angles
+
+The last two forms of $$\cos 2x$$ can be read the other way round. Each has one square in it, so
+solving for that square gives $$\cos^2 x$$ and $$\sin^2 x$$ in terms of $$\cos 2x$$, the cosine of
+twice the angle. Read with $$2x$$ as the known angle, this halves an angle.
+
+:::corollary[Half angles]{#half-angle}
+
+For every number $$x$$,
+
+```math
+\cos^2 x = \frac{1 + \cos 2x}{2} \qquad \sin^2 x = \frac{1 - \cos 2x}{2}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Proofs_of_trigonometric_identities#Half-angle_identities"}
+
+By :ref{#double-angle}, $$\cos 2x = 2\cos^2 x - 1$$. Add $$1$$ to both sides to get
+$$1 + \cos 2x = 2\cos^2 x$$, and divide by $$2$$.
+
+Also by :ref{#double-angle}, $$\cos 2x = 1 - 2\sin^2 x$$. Add $$2\sin^2 x - \cos 2x$$ to both sides
+to get $$2\sin^2 x = 1 - \cos 2x$$, and divide by $$2$$.
+
+:::
+
+A square has two square roots, so the formula gives $$\cos x$$ only up to its sign. The quadrant of
+$$x$$ settles the sign, as it did for the angle with sine $$\frac{5}{13}$$.
+
+:::example[The cosine of an eighth of a half turn]
+
+Take $$x = \frac{\pi}{8}$$, so $$2x = \frac{\pi}{4}$$ and $$\cos 2x = \frac{\sqrt2}{2}$$
+(:ref{#sin-cos-45}). By :ref{#half-angle},
+
+```math
+\cos^2\frac{\pi}{8} = \frac{1 + \frac{\sqrt2}{2}}{2} = \frac{2 + \sqrt2}{4}
+```
+
+The angle $$\frac{\pi}{8}$$ is in the first quadrant, so its cosine is positive
+(:ref{#quadrant-signs}), and
+
+```math
+\cos\frac{\pi}{8} = \frac{\sqrt{2 + \sqrt2}}{2} \approx 0.9239
+```
+
+In the same way $$\sin\frac{\pi}{8} = \frac{\sqrt{2 - \sqrt2}}{2} \approx 0.3827$$. A calculator in
+radian mode gives the same two decimals for $$\cos(0.3927)$$ and $$\sin(0.3927)$$.
+
+:::
+
+## The tangent of a sum
+
+The tangent is sine divided by cosine (:ref{#tangent}), so the tangent of a sum is the sine of a sum
+over the cosine of a sum. Dividing the top and the bottom by $$\cos a\cos b$$ turns every sine and
+cosine into a tangent.
+
+:::proposition[Tangent of a sum]{#tan-addition}
+
+Let $$a$$ and $$b$$ be numbers with $$\cos a$$, $$\cos b$$ and $$\cos(a + b)$$ all not $$0$$. Then
+
+```math
+\tan(a + b) = \frac{\tan a + \tan b}{1 - \tan a\tan b}
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Tangent_of_Sum"}
+
+By :ref{#tangent} and :ref{#addition-formulas},
+
+```math
+\begin{aligned}
+\tan(a + b) &= \frac{\sin(a + b)}{\cos(a + b)} &&\qquad \text{definition of tangent} \\
+&= \frac{\sin a\cos b + \cos a\sin b}{\cos a\cos b - \sin a\sin b} &&\qquad \text{addition formulas} \\
+&= \frac{\dfrac{\sin a\cos b}{\cos a\cos b} + \dfrac{\cos a\sin b}{\cos a\cos b}}{\dfrac{\cos a\cos b}{\cos a\cos b} - \dfrac{\sin a\sin b}{\cos a\cos b}} &&\qquad \text{divide top and bottom by } \cos a\cos b \\
+&= \frac{\tan a + \tan b}{1 - \tan a\tan b} &&\qquad \text{cancel, and sine over cosine is tangent}
+\end{aligned}
+```
+
+Dividing by $$\cos a\cos b$$ is allowed because neither cosine is $$0$$. The bottom line is never
+$$0$$ either: $$1 - \tan a\tan b$$ is $$\frac{\cos(a + b)}{\cos a\cos b}$$, and
+$$\cos(a + b) \ne 0$$.
+
+:::
+
+Check with $$a = b = \frac{\pi}{6}$$, where $$\tan\frac{\pi}{6} = \frac{1}{\sqrt3}$$. The formula
+gives
+
+```math
+\tan\frac{\pi}{3} = \frac{\frac{1}{\sqrt3} + \frac{1}{\sqrt3}}{1 - \frac13} = \frac{2}{\sqrt3} \cdot \frac32 = \frac{3}{\sqrt3} = \sqrt3
+```
+
+which matches the value from the special angles. The conditions matter. With
+$$a = b = \frac{\pi}{4}$$ the bottom is $$1 - 1 \cdot 1 = 0$$, and indeed $$\tan\frac{\pi}{2}$$ is
+not defined, since $$\cos\frac{\pi}{2} = 0$$.
+
+Putting $$-b$$ in place of $$b$$ gives the tangent of a difference. Since $$\tan(-b) = -\tan b$$
+(:ref{#tangent-period}),
+
+```math
+\tan(a - b) = \frac{\tan a - \tan b}{1 + \tan a\tan b}
+```
+
+whenever $$\cos a$$, $$\cos b$$ and $$\cos(a - b)$$ are not $$0$$.
+
+### The angle between two roads
+
+On a map, two straight roads leave a junction at $$O$$. One climbs $$1$$ for every $$2$$ across,
+slope $$\frac12$$, and the other climbs $$3$$ for every $$1$$ across, slope $$3$$. The tangent of a
+difference finds the angle between them without finding either angle first.
+
+Let $$\theta_1$$ and $$\theta_2$$ be the angles the roads make with the $$x$$-axis, both between
+$$0$$ and $$\frac{\pi}{2}$$. By :ref{#tangent-slope}, $$\tan\theta_1 = \frac12$$ and
+$$\tan\theta_2 = 3$$. So
+
+```math
+\tan(\theta_2 - \theta_1) = \frac{3 - \frac12}{1 + 3 \cdot \frac12} = \frac{\frac52}{\frac52} = 1
+```
+
+The difference $$\theta_2 - \theta_1$$ lies between $$-\frac{\pi}{2}$$ and $$\frac{\pi}{2}$$, and
+the only angle there with tangent $$1$$ is $$\frac{\pi}{4}$$ (:ref{#inverse-tan}). So the roads meet
+at $$\frac{\pi}{4}$$. For lines with slopes $$m_1$$ and $$m_2$$ the bottom of the fraction is
+$$1 + m_1m_2$$, which is $$0$$ exactly when the lines are perpendicular
+(:ref{#segments-rays-and-lines/perpendicular-slopes}).
+
+## Where a robot arm puts its hand
+
+A robot arm on a workbench has a shoulder joint at $$O$$, an upper arm $$30$$ cm long and a forearm
+$$20$$ cm long. The shoulder turns the upper arm by an angle $$a$$ from the $$x$$-axis. The elbow
+then turns the forearm by a further angle $$b$$, measured from the line of the upper arm. So the
+forearm points at angle $$a + b$$, and the addition formulas find the hand from the two joint
+angles.
+
+```plane
+point O 0 0 sw
+point M 2.598 1.5 se
+point H 3.116 3.432 n
+point X 3.464 2.0 hidden
+point A 1 0 hidden
+point F 3.6 0 hidden
+segment O F color=muted
+segment M X color=muted dashed
+segment O M color=blue label="30 cm"
+segment M H color=orange label="20 cm"
+angle A O M color=blue r=0.8 label="a"
+angle X M H color=orange r=0.5 label="b"
+caption "The shoulder at O turns the upper arm by a = π/6. The elbow at M turns the forearm by b = π/4 more, so the forearm points at angle a + b and the hand is at H."
+```
+
+The elbow is at $$M = 30(\cos a, \sin a)$$ (:ref{#circle-point-radius}). The forearm points along
+the upper arm turned by $$b$$, and turning the direction $$G_a(E_1)$$ by $$b$$ gives
+$$G_{a + b}(E_1)$$ (:ref{#radian-turns}). So the hand is at
+
+```math
+H = 30(\cos a, \sin a) + 20\big(\cos(a + b), \sin(a + b)\big)
+```
+
+Take $$a = \frac{\pi}{6}$$ and $$b = \frac{\pi}{4}$$. The elbow is at
+$$M = (15\sqrt3, 15) \approx (25.98, 15)$$. By :ref{#addition-formulas},
+
+```math
+\begin{aligned}
+\cos\frac{5\pi}{12} &= \frac{\sqrt3}{2} \cdot \frac{\sqrt2}{2} - \frac12 \cdot \frac{\sqrt2}{2} = \frac{\sqrt6 - \sqrt2}{4} \\
+\sin\frac{5\pi}{12} &= \frac12 \cdot \frac{\sqrt2}{2} + \frac{\sqrt3}{2} \cdot \frac{\sqrt2}{2} = \frac{\sqrt6 + \sqrt2}{4}
+\end{aligned}
+```
+
+So the forearm adds $$\left(5(\sqrt6 - \sqrt2), 5(\sqrt6 + \sqrt2)\right) \approx (5.18, 19.32)$$,
+and the hand is at about $$(31.16, 34.32)$$, in centimetres from the shoulder. The controller of a
+real arm with more joints does the same sum once for each joint.
+
+## Exercises
+
+:::::accordion[Exercises on addition formulas, with solutions]
+
+::::exercise{#ex-addition-formulas-check}
+
+Work out $$\cos\left(\frac{\pi}{3} - \frac{\pi}{6}\right)$$ in two ways: directly, and with
+:ref{#cos-difference}. Check that the answers agree.
+
+:::solution
+
+Directly, $$\frac{\pi}{3} - \frac{\pi}{6} = \frac{\pi}{6}$$, and
+$$\cos\frac{\pi}{6} = \frac{\sqrt3}{2}$$ (:ref{#sin-cos-30-60}). With the formula,
+
+```math
+\cos\frac{\pi}{3}\cos\frac{\pi}{6} + \sin\frac{\pi}{3}\sin\frac{\pi}{6} = \frac12 \cdot \frac{\sqrt3}{2} + \frac{\sqrt3}{2} \cdot \frac12 = \frac{\sqrt3}{4} + \frac{\sqrt3}{4} = \frac{\sqrt3}{2}
+```
+
+The two answers agree.
+
+:::
+
+::::
+
+::::exercise{#ex-addition-formulas-seven-twelfths}
+
+Use the sine of a sum to find $$\sin\frac{7\pi}{12}$$ exactly, writing $$\frac{7\pi}{12}$$ as
+$$\frac{\pi}{3} + \frac{\pi}{4}$$. Give a decimal value too.
+
+:::solution
+
+By :ref{#addition-formulas}, :ref{#sin-cos-30-60} and :ref{#sin-cos-45},
+
+```math
+\sin\frac{7\pi}{12} = \sin\frac{\pi}{3}\cos\frac{\pi}{4} + \cos\frac{\pi}{3}\sin\frac{\pi}{4} = \frac{\sqrt3}{2} \cdot \frac{\sqrt2}{2} + \frac12 \cdot \frac{\sqrt2}{2} = \frac{\sqrt6 + \sqrt2}{4}
+```
+
+which is about $$0.9659$$. That is the same as $$\cos\frac{\pi}{12}$$. It has to be:
+$$\frac{7\pi}{12} = \frac{\pi}{2} + \frac{\pi}{12}$$, and a quarter turn more takes cosine to sine
+(:ref{#quarter-turn-identities}).
+
+:::
+
+::::
+
+::::exercise{#ex-addition-formulas-not-adding}
+
+Is $$\sin\left(\frac{\pi}{6} + \frac{\pi}{3}\right)$$ equal to
+$$\sin\frac{\pi}{6} + \sin\frac{\pi}{3}$$? Work out both, then show that the sine of a sum gives the
+right one.
+
+:::solution
+
+The angle is $$\frac{\pi}{6} + \frac{\pi}{3} = \frac{\pi}{2}$$, so the left side is
+$$\sin\frac{\pi}{2} = 1$$. The right side is $$\frac12 + \frac{\sqrt3}{2} \approx 1.37$$, which is
+bigger than $$1$$. So they are not equal.
+
+The sine of a sum gives
+
+```math
+\sin\frac{\pi}{6}\cos\frac{\pi}{3} + \cos\frac{\pi}{6}\sin\frac{\pi}{3} = \frac12 \cdot \frac12 + \frac{\sqrt3}{2} \cdot \frac{\sqrt3}{2} = \frac14 + \frac34 = 1
+```
+
+which is right.
+
+:::
+
+::::
+
+::::exercise{#ex-addition-formulas-double}
+
+Suppose $$\cos x = -\frac35$$ and $$x$$ is in the second quadrant. Find $$\sin x$$, $$\sin 2x$$ and
+$$\cos 2x$$, and check that $$(\cos 2x, \sin 2x)$$ is on the unit circle.
+
+:::solution
+
+By :ref{#pythagorean-identity}, $$\sin^2 x = 1 - \frac{9}{25} = \frac{16}{25}$$. Sine is positive in
+the second quadrant (:ref{#quadrant-signs}), so $$\sin x = \frac45$$. By :ref{#double-angle},
+
+```math
+\sin 2x = 2 \cdot \frac45 \cdot \left(-\frac35\right) = -\frac{24}{25} \qquad \cos 2x = \frac{9}{25} - \frac{16}{25} = -\frac{7}{25}
+```
+
+The check: $$\frac{576}{625} + \frac{49}{625} = \frac{625}{625} = 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-addition-formulas-half}
+
+Use :ref{#half-angle} with $$x = \frac{\pi}{12}$$ to show that
+$$\sin\frac{\pi}{12} = \frac{\sqrt{2 - \sqrt3}}{2}$$. Then show that this is the same number as
+$$\frac{\sqrt6 - \sqrt2}{4}$$, the value found from a difference of angles.
+
+:::solution
+
+Here $$2x = \frac{\pi}{6}$$, and $$\cos\frac{\pi}{6} = \frac{\sqrt3}{2}$$. By :ref{#half-angle},
+
+```math
+\sin^2\frac{\pi}{12} = \frac{1 - \frac{\sqrt3}{2}}{2} = \frac{2 - \sqrt3}{4}
+```
+
+The angle $$\frac{\pi}{12}$$ is in the first quadrant, so its sine is positive, and
+$$\sin\frac{\pi}{12} = \frac{\sqrt{2 - \sqrt3}}{2}$$.
+
+Both numbers are positive, so they are equal exactly when their squares are. The square of the
+second is
+
+```math
+\left(\frac{\sqrt6 - \sqrt2}{4}\right)^2 = \frac{6 - 2\sqrt{12} + 2}{16} = \frac{8 - 4\sqrt3}{16} = \frac{2 - \sqrt3}{4}
+```
+
+using $$\sqrt{12} = 2\sqrt3$$. The squares agree, so the two numbers agree. Both are about
+$$0.2588$$.
+
+:::
+
+::::
+
+::::exercise{#ex-addition-formulas-tan}
+
+Use the tangent of a difference to find $$\tan\frac{\pi}{12}$$ exactly, from
+$$\frac{\pi}{12} = \frac{\pi}{3} - \frac{\pi}{4}$$. Write the answer without a square root on the
+bottom.
+
+:::solution
+
+Here $$\tan\frac{\pi}{3} = \sqrt3$$ and $$\tan\frac{\pi}{4} = 1$$. So
+
+```math
+\tan\frac{\pi}{12} = \frac{\sqrt3 - 1}{1 + \sqrt3 \cdot 1} = \frac{\sqrt3 - 1}{\sqrt3 + 1}
+```
+
+Multiply the top and the bottom by $$\sqrt3 - 1$$:
+
+```math
+\frac{(\sqrt3 - 1)^2}{(\sqrt3 + 1)(\sqrt3 - 1)} = \frac{3 - 2\sqrt3 + 1}{3 - 1} = \frac{4 - 2\sqrt3}{2} = 2 - \sqrt3
+```
+
+That is about $$0.2679$$, which matches $$\sin\frac{\pi}{12} \div \cos\frac{\pi}{12}$$ from the
+example: $$0.2588 \div 0.9659 \approx 0.2679$$.
+
+:::
+
+::::
+
+::::exercise{#ex-addition-formulas-product}
+
+Show that for all numbers $$a$$ and $$b$$,
+
+```math
+\sin(a + b)\sin(a - b) = \sin^2 a - \sin^2 b
+```
+
+Then check it with $$a = \frac{\pi}{2}$$ and $$b = \frac{\pi}{6}$$.
+
+:::solution
+
+By :ref{#addition-formulas}, the left side is a sum times a difference of the same two terms:
+
+```math
+\begin{aligned}
+\sin(a + b)\sin(a - b) &= (\sin a\cos b + \cos a\sin b)(\sin a\cos b - \cos a\sin b) &&\qquad \text{addition formulas} \\
+&= \sin^2 a\cos^2 b - \cos^2 a\sin^2 b &&\qquad (u + v)(u - v) = u^2 - v^2 \\
+&= \sin^2 a\,(1 - \sin^2 b) - (1 - \sin^2 a)\sin^2 b &&\qquad \text{Pythagorean identity, twice} \\
+&= \sin^2 a - \sin^2 a\sin^2 b - \sin^2 b + \sin^2 a\sin^2 b &&\qquad \text{multiply out} \\
+&= \sin^2 a - \sin^2 b &&\qquad \text{the middle terms cancel}
+\end{aligned}
+```
+
+The check:
+$$\sin\frac{2\pi}{3}\sin\frac{\pi}{3} = \frac{\sqrt3}{2} \cdot \frac{\sqrt3}{2} = \frac34$$, and
+$$\sin^2\frac{\pi}{2} - \sin^2\frac{\pi}{6} = 1 - \frac14 = \frac34$$. Here
+$$\sin\frac{2\pi}{3} = \sin\frac{\pi}{3}$$ by :ref{#supplement-identities}.
+
+:::
+
+::::
+
+::::exercise{#ex-addition-formulas-triple}
+
+Write $$3x$$ as $$2x + x$$ to show that $$\cos 3x = 4\cos^3 x - 3\cos x$$ for every $$x$$. Check it
+with $$x = \frac{\pi}{3}$$.
+
+:::solution
+
+By :ref{#addition-formulas} and :ref{#double-angle},
+
+```math
+\begin{aligned}
+\cos 3x &= \cos 2x\cos x - \sin 2x\sin x &&\qquad \text{cosine of a sum} \\
+&= (2\cos^2 x - 1)\cos x - 2\sin x\cos x\sin x &&\qquad \text{double angles} \\
+&= 2\cos^3 x - \cos x - 2\sin^2 x\cos x &&\qquad \text{multiply out} \\
+&= 2\cos^3 x - \cos x - 2(1 - \cos^2 x)\cos x &&\qquad \text{Pythagorean identity} \\
+&= 2\cos^3 x - \cos x - 2\cos x + 2\cos^3 x &&\qquad \text{multiply out} \\
+&= 4\cos^3 x - 3\cos x &&\qquad \text{collect terms}
+\end{aligned}
+```
+
+The check: $$\cos\pi = -1$$, and $$4 \cdot \frac18 - 3 \cdot \frac12 = \frac12 - \frac32 = -1$$.
+
+:::
+
+::::
+
+:::::

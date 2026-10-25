@@ -1,0 +1,735 @@
+---
+title: Sine and cosine in right triangles
+description:
+  Sine and cosine as ratios of sides in a right triangle, finding sides and angles, inverse sine and
+  cosine, and the side of a regular polygon.
+---
+
+Imagine leaning a ladder against a wall. Stand it up steeply and the top reaches high; pull the foot
+out and the top slides down. Now take a ladder half as long and lean it at the same steep angle. Its
+top reaches half as high, so the height is the same fraction of the ladder's length as before. That
+fraction depends on the angle alone, and it is the **sine** of the angle.
+
+It is the same sine as in [Sine and cosine](./sine-and-cosine.mdx), the height of the point on the
+unit circle, because every right triangle is a copy of a triangle inside the unit circle. In this
+guide we'll see why, and use it to find lengths and angles you can't measure directly.
+
+## The triangle inside the unit circle
+
+Take the point on the unit circle at an angle between $$0$$ and a right angle, and drop a line from
+it straight down to the $$x$$-axis. That cuts off a right triangle with its corner at the origin.
+Its long side runs from the origin to the point, so it has length $$1$$, and its other two sides are
+how far across and how far up the point is: the cosine and the sine.
+
+Try it with the angle $$\frac{\pi}{6}$$ ($$30^\circ$$). The point is
+$$\left(\frac{\sqrt3}{2}, \frac12\right) \approx (0.87, 0.5)$$ (:ref{#sin-cos-30-60}), so the
+triangle has sides $$1$$, $$0.5$$ and about $$0.87$$. Now zoom it up by $$3$$ about the origin. The
+long side becomes $$3$$, the height $$1.5$$ and the base about $$2.6$$, and the angle stays
+$$\frac{\pi}{6}$$, since a zoom keeps angles (:ref{#area-and-scaling/zoom-rules}). The height
+divided by the long side is $$\frac{1.5}{3} = 0.5$$, which is still $$\sin\frac{\pi}{6}$$.
+
+```plane
+scale 1.6
+point O 0 0 sw
+point P 0.866 0.5 nw
+point F 0.866 0 hidden
+point B 2.598 0 se
+point C 2.598 1.5 ne
+circle O 1 color=muted
+segment O C label="3"
+segment F P dashed
+segment O B color=blue label="≈ 2.6" side=right
+segment B C color=orange label="1.5" side=right
+angle B O C label="30°" r=0.45
+right O F P r=0.12
+right O B C r=0.2
+caption "The point P on the unit circle at 30° cuts off a triangle with sides 1, 0.5 and 0.87. Zoomed up by 3 it has sides 3, 1.5 and 2.6, and height ÷ long side is still 0.5."
+```
+
+The sides of a right triangle have names that say where they sit. The **hypotenuse** faces the right
+angle (:ref{#distance-and-angles/right-triangle}). Of the two shorter sides, one touches the angle
+you're looking at and the other faces it.
+
+:::definition[Opposite and adjacent sides]{#right-triangles-sides}
+
+Take a right triangle and one of its angles $$\theta$$ other than the right angle.
+
+- **Opposite side**: the side facing $$\theta$$, which doesn't touch its corner
+- **Adjacent side**: the side other than the hypotenuse that runs along one arm of $$\theta$$
+
+The word "adjacent" means "next to".
+
+:::
+
+Which side is opposite depends on the angle. At the other corner the two names swap, as
+:ref{#other-angle} shows. In the interactive diagram, change the angle and the size of the triangle,
+and watch the two fractions.
+
+<TriangleRatios />
+
+## Sine and cosine as ratios of sides
+
+The zoom by $$3$$ in the $$30^\circ$$ picture works for every size. A right triangle with an angle
+$$\theta$$ is the triangle inside the unit circle at $$\theta$$, zoomed up and perhaps moved
+somewhere else. So its height divided by its long side is $$\sin\theta$$ whatever its size, and its
+base divided by its long side is $$\cos\theta$$.
+
+:::theorem[Sine and cosine in a right triangle]{#right-triangle-ratios}
+
+In a right triangle with an angle $$\theta$$ other than the right angle,
+
+```math
+\sin\theta = \frac{\text{opposite}}{\text{hypotenuse}} \qquad \cos\theta = \frac{\text{adjacent}}{\text{hypotenuse}}
+```
+
+:::
+
+The proof moves the triangle until its angle $$\theta$$ sits at the origin with the adjacent side
+along the $$x$$-axis. Then the third corner is a point at the end of the ray at angle $$\theta$$,
+and its coordinates are the two shorter sides.
+
+```plane
+point O 0 0 sw
+point B 4 0 se
+point M 4 3 ne
+point U 0.8 0.6 nw
+point X -1.2 0 hidden
+point X2 5.2 0 hidden
+circle O 1 color=muted
+segment X X2 color=muted
+segment O M label="h"
+segment O B color=blue label="adj" side=right
+segment B M color=orange label="opp" side=right
+angle B O M label="θ" r=0.6
+right O B M r=0.3
+caption "The triangle moved so that θ is at O and the adjacent side runs along the x-axis. The third corner is M = (adj, opp), and the ray OM crosses the unit circle at U = (cos θ, sin θ)."
+```
+
+:::proof{source="https://en.wikipedia.org/wiki/Sine_and_cosine#Right-angled_triangle_definition"}
+
+Name the corners: $$P$$ has the angle $$\theta$$, $$Q$$ has the right angle, and $$M$$ is the third.
+Write $$h$$ for the hypotenuse, $$\text{adj} = d(P, Q)$$ and $$\text{opp} = d(Q, M)$$.
+
+**Step 1: slide the corner to the origin.** The slide by $$-P$$ sends $$P$$ to $$P - P = O$$
+(:ref{#adding-and-scaling-points/slide-formula}).
+
+**Step 2: turn the adjacent side onto the x-axis.** After the slide, the image of $$Q$$ is
+$$\text{adj}$$ from $$O$$, and so is the point $$(\text{adj}, 0)$$. Since $$\text{adj} > 0$$, rule 1
+of :ref{#isometries/rotation-rules}, with the angle in radians, gives a turn about $$O$$ that sends
+the one to the other.
+
+**What the two moves keep.** Slides and turns are isometries (:ref{#isometries/basic-isometries}),
+so doing one and then the other is an isometry too (:ref{#isometries/composite-isometry}). It keeps
+distances and angles (:ref{#isometries/isometry-angles}). So the moved triangle has corners $$O$$,
+$$B = (\text{adj}, 0)$$ and some point $$(x, y)$$, with the same sides and angles as before: the
+right angle at $$B$$, the angle $$\theta$$ at $$O$$, and the hypotenuse $$h$$ from $$O$$ to
+$$(x, y)$$.
+
+**Step 3: the third corner is straight above or below B.** The angle at $$B$$ is a right angle, so
+by :ref{#segments-rays-and-lines/perpendicular-dot}, taken at the corner $$B$$,
+
+```math
+\begin{aligned}
+(O - B) \cdot \big((x, y) - B\big) &= 0 && \text{right angle at } B \\
+(-\text{adj})(x - \text{adj}) + 0 \cdot y &= 0 && \text{the dot product, worked out} \\
+x &= \text{adj} && \text{divide by } -\text{adj} \ne 0
+\end{aligned}
+```
+
+So the third corner is $$(\text{adj}, y)$$, and its distance from $$B$$ is $$|y| = \text{opp}$$. If
+$$y = -\text{opp}$$, flip everything in the $$x$$-axis with $$R_1$$
+(:ref{#adding-and-scaling-points/axis-reflections}). The flip is an isometry, it leaves $$O$$ and
+$$B$$ where they are, and it sends $$(\text{adj}, -\text{opp})$$ to $$(\text{adj}, \text{opp})$$. So
+we can take the third corner to be $$M' = (\text{adj}, \text{opp})$$.
+
+**Step 4: the third corner is on the ray at angle θ.** The point $$M'$$ and the point $$(h, 0)$$ are
+both $$h$$ from $$O$$. By rule 1 of :ref{#isometries/rotation-rules}, exactly one turn $$G_x$$ about
+$$O$$, with $$0 \le x < 2\pi$$, sends $$(h, 0)$$ to $$M'$$, and by :ref{#turn-scales},
+
+```math
+M' = G_x(hE_1) = h\,G_x(E_1) = (h\cos x, h\sin x)
+```
+
+By the definition of a turn (:ref{#isometries/rotation}), $$x$$ is the angle turning anticlockwise
+from the ray through $$(h, 0)$$, which is the ray $$OB$$, to the ray $$OM'$$. The two angles between
+these rays add up to a full turn, and the angle $$\theta$$ of the triangle is the one that is at
+most a straight angle (:ref{#distance-and-angles/angle-name}). So $$x = \theta$$ or
+$$x = 2\pi - \theta$$.
+
+**Step 5: rule out the wrong one.** The other two angles of a right triangle add up to a right angle
+(:ref{#distance-and-angles/right-triangle-angles}), so $$\theta < \frac{\pi}{2}$$ ($$90^\circ$$).
+Then $$2\pi - \theta$$ lies between $$\frac{3\pi}{2}$$ ($$270^\circ$$) and $$2\pi$$ ($$360^\circ$$),
+where the sine is negative (:ref{#quadrant-signs}). But $$h\sin x = \text{opp}$$ is positive, so
+$$x = \theta$$.
+
+**Step 6: compare coordinates.** Now $$(\text{adj}, \text{opp}) = (h\cos\theta, h\sin\theta)$$, so
+$$\text{adj} = h\cos\theta$$ and $$\text{opp} = h\sin\theta$$. Dividing both by $$h$$ gives the two
+ratios.
+
+:::
+
+The heart of the proof is Step 4. Once the angle $$\theta$$ sits at $$O$$, the third corner is the
+point at distance $$h$$ along the ray at angle $$\theta$$, which is $$(h\cos\theta, h\sin\theta)$$
+(:ref{#circle-point-radius}). That is the point $$(\cos\theta, \sin\theta)$$ on the unit circle
+scaled up by $$h$$, so the moved triangle is the unit circle's triangle zoomed by $$h$$. Zooming
+multiplies every side by $$h$$ (rule 1 of :ref{#area-and-scaling/zoom-rules}), and a fraction whose
+top and bottom are both multiplied by $$h$$ doesn't change. That is why the size of the triangle
+never matters: right triangles with the same angle $$\theta$$ are similar
+(:ref{#area-and-scaling/similar}).
+
+The picture of the moved triangle is drawn with $$h = 5$$, $$\text{adj} = 4$$ and
+$$\text{opp} = 3$$. So $$\cos\theta = \frac45 = 0.8$$ and $$\sin\theta = \frac35 = 0.6$$, and the
+ray meets the unit circle at $$U = (0.8, 0.6)$$. As a check, $$0.8^2 + 0.6^2 = 0.64 + 0.36 = 1$$, as
+:ref{#pythagorean-identity} says it must.
+
+If you learned trigonometry as "SOH CAH TOA", this theorem is the first two parts. **S**ine is
+**O**pposite over **H**ypotenuse, and **C**osine is **A**djacent over **H**ypotenuse. The third
+part, for the tangent, comes in [The tangent](./tangent.mdx). The rhyme is a memory aid, and the
+reason behind it is the triangle inside the unit circle.
+
+## The other angle
+
+A right triangle has two angles besides the right angle, and they share the two shorter sides. The
+side opposite one of them is adjacent to the other. So swapping angles swaps the two fractions, and
+the sine of one angle is the cosine of the other.
+
+:::corollary[The other angle swaps sine and cosine]{#other-angle}
+
+For $$0 < \theta < \frac{\pi}{2}$$, that is, for angles between $$0^\circ$$ and $$90^\circ$$,
+
+```math
+\sin\left(\frac{\pi}{2} - \theta\right) = \cos\theta \qquad \cos\left(\frac{\pi}{2} - \theta\right) = \sin\theta
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/List_of_trigonometric_identities#Reflections"}
+
+**A triangle with the angle θ.** Let $$P = (\cos\theta, \sin\theta)$$ and $$F = (\cos\theta, 0)$$.
+Both coordinates of $$P$$ are positive (:ref{#quadrant-signs}), so the three points $$O$$, $$F$$ and
+$$P$$ are different. The angle at $$F$$ is a right angle, since
+$$(O - F) \cdot (P - F) = (-\cos\theta, 0) \cdot (0, \sin\theta) = 0$$
+(:ref{#segments-rays-and-lines/perpendicular-dot}). The turn $$G_\theta$$ sends $$E_1$$ to $$P$$
+(:ref{#sine-cosine}), and $$F = \cos\theta \, E_1$$ is on the ray $$OE_1$$ since $$\cos\theta > 0$$
+(:ref{#segments-rays-and-lines/ray-formula}), so the angle at $$O$$ is $$\theta$$
+(:ref{#isometries/rotation}, and :ref{#distance-and-angles/angle-name} since $$\theta < \pi$$).
+
+**The other angle.** The angle at $$P$$ is $$\frac{\pi}{2} - \theta$$, since the two angles other
+than the right angle add up to a right angle (:ref{#distance-and-angles/right-triangle-angles}). The
+side opposite it is $$OF$$, of length $$\cos\theta$$, and the side adjacent to it is $$FP$$, of
+length $$\sin\theta$$. The hypotenuse $$OP$$ has length $$1$$. By :ref{#right-triangle-ratios},
+applied at $$P$$,
+
+```math
+\sin\left(\frac{\pi}{2} - \theta\right) = \frac{\cos\theta}{1} \qquad \cos\left(\frac{\pi}{2} - \theta\right) = \frac{\sin\theta}{1}
+```
+
+:::
+
+For example, take $$\theta = \frac{\pi}{6}$$ ($$30^\circ$$). Then
+$$\frac{\pi}{2} - \theta = \frac{\pi}{3}$$ ($$60^\circ$$), and the corollary says
+$$\sin\frac{\pi}{3} = \cos\frac{\pi}{6}$$. Both are $$\frac{\sqrt3}{2}$$, by :ref{#sin-cos-30-60}.
+The same two equations hold for every number $$\theta$$, not only angles of a triangle, and
+:ref{#complement-identities} proves them with a flip.
+
+## Finding the sides
+
+When you know one angle of a right triangle and one side, the theorem gives the other sides. Write
+it as $$\text{opposite} = \text{hypotenuse} \cdot \sin\theta$$ and
+$$\text{adjacent} = \text{hypotenuse} \cdot \cos\theta$$, and put in the numbers. A calculator gives
+the values of sine and cosine, in the mode that matches your angle.
+
+:::example[A ladder against a wall]
+
+A ladder $$5$$ m long leans against a wall at $$70^\circ$$ to the ground, which is about $$1.22$$
+radians. The ladder is the hypotenuse, the wall from the ground to the top of the ladder is opposite
+the angle, and the ground from the wall to the foot is adjacent. So
+
+```math
+\begin{aligned}
+\text{height of the top} &= 5\sin 70^\circ \approx 5 \cdot 0.940 \approx 4.70 \text{ m} \\
+\text{foot to wall} &= 5\cos 70^\circ \approx 5 \cdot 0.342 \approx 1.71 \text{ m}
+\end{aligned}
+```
+
+As a check, $$4.70^2 + 1.71^2 \approx 22.1 + 2.9 = 25.0 = 5^2$$, as
+:ref{#distance-and-angles/pythagoras} says it should be.
+
+:::
+
+:::example[A kite on a string]
+
+A kite flies on a taut string $$30$$ m long, at $$\frac{\pi}{6}$$ ($$30^\circ$$) above the ground.
+Treat the string as straight, held at ground level. The special angles give exact answers
+(:ref{#sin-cos-30-60}):
+
+```math
+\begin{aligned}
+\text{height of the kite} &= 30\sin\frac{\pi}{6} = 30 \cdot \frac12 = 15 \text{ m} \\
+\text{distance across the ground} &= 30\cos\frac{\pi}{6} = 30 \cdot \frac{\sqrt3}{2} = 15\sqrt3 \approx 25.98 \text{ m}
+\end{aligned}
+```
+
+:::
+
+Sometimes the side you know is one of the shorter ones, and then you divide instead of multiplying.
+Say a roof beam climbs at $$\frac{\pi}{6}$$ ($$30^\circ$$) and rises $$2$$ m from its low end to its
+high end. The rise is opposite the angle and the beam is the hypotenuse $$h$$, so
+$$\frac{2}{h} = \sin\frac{\pi}{6} = \frac12$$. Then $$h = 2 \div \frac12 = 4$$ m: the beam is twice
+as long as its rise.
+
+## Finding the angle
+
+Now turn the question round. A ramp climbs $$1$$ m along a slope $$12$$ m long, and you want the
+angle of the slope. The theorem says the angle $$\theta$$ has $$\sin\theta = \frac{1}{12}$$. What's
+missing is a way to go from a sine back to the angle.
+
+On the unit circle, that means finding the point at a given height. A horizontal line at height
+$$\frac{1}{12}$$ crosses the circle twice, once on the right half and once on the left. The right
+half covers the angles from $$-\frac{\pi}{2}$$ to $$\frac{\pi}{2}$$ ($$-90^\circ$$ to $$90^\circ$$),
+so exactly one of those angles has the sine you want. In the same way a vertical line crosses the
+upper half of the circle once, and the upper half covers the angles from $$0$$ to $$\pi$$.
+
+:::proposition[One angle for each sine and each cosine]{#right-triangles-one-angle}
+
+Let $$c$$ be a number with $$-1 \le c \le 1$$.
+
+1. Exactly one number $$x$$ with $$-\frac{\pi}{2} \le x \le \frac{\pi}{2}$$ has $$\sin x = c$$: one
+   angle from $$-90^\circ$$ to $$90^\circ$$.
+2. Exactly one number $$x$$ with $$0 \le x \le \pi$$ has $$\cos x = c$$: one angle from $$0^\circ$$
+   to $$180^\circ$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Principal_values"}
+
+**The angles of each half.** By :ref{#quarter-values} and :ref{#quadrant-signs}, for $$x$$ in
+$$[0, 2\pi)$$ the cosine is $$0$$ or more exactly when $$x$$ is in $$[0, \frac{\pi}{2}]$$ or in
+$$[\frac{3\pi}{2}, 2\pi)$$, and the sine is $$0$$ or more exactly when $$x$$ is in $$[0, \pi]$$.
+
+**Part 1.** A point $$(u, c)$$ is on the unit circle exactly when $$u^2 + c^2 = 1$$
+(:ref{#coordinates/circle-equation}), that is, $$u = \pm\sqrt{1 - c^2}$$. So exactly one point of
+the circle at height $$c$$ has $$u \ge 0$$, namely $$V = (\sqrt{1 - c^2}, c)$$.
+
+Adding $$2\pi$$ to each $$x$$ in $$[-\frac{\pi}{2}, 0)$$ moves it to $$[\frac{3\pi}{2}, 2\pi)$$ and
+doesn't change its sine or cosine (:ref{#periodic}). So the numbers of
+$$[-\frac{\pi}{2}, \frac{\pi}{2}]$$ match up, one for one, with the numbers $$y$$ of $$[0, 2\pi)$$
+that have $$\cos y \ge 0$$. For each of these, $$(\cos y, \sin y)$$ is a point of the circle with
+first coordinate $$0$$ or more, so its sine is $$c$$ exactly when the point is $$V$$. By
+:ref{#unit-circle-point}, exactly one $$y$$ in $$[0, 2\pi)$$ gives the point $$V$$, and its cosine
+$$\sqrt{1 - c^2}$$ is $$0$$ or more. So exactly one $$x$$ in $$[-\frac{\pi}{2}, \frac{\pi}{2}]$$ has
+$$\sin x = c$$.
+
+**Part 2.** In the same way, exactly one point of the circle with first coordinate $$c$$ has second
+coordinate $$0$$ or more, namely $$W = (c, \sqrt{1 - c^2})$$. A number $$x$$ in $$[0, \pi]$$ has
+$$\sin x \ge 0$$, so $$\cos x = c$$ exactly when $$(\cos x, \sin x) = W$$. By
+:ref{#unit-circle-point}, exactly one $$x$$ in $$[0, 2\pi)$$ gives $$W$$, and its sine is $$0$$ or
+more, so it lies in $$[0, \pi]$$.
+
+:::
+
+:::definition[Inverse sine and inverse cosine]{#inverse-sin-cos}
+
+Let $$-1 \le c \le 1$$.
+
+- The **inverse sine** $$\sin^{-1} c$$ is the one angle in $$[-\frac{\pi}{2}, \frac{\pi}{2}]$$ whose
+  sine is $$c$$.
+- The **inverse cosine** $$\cos^{-1} c$$ is the one angle in $$[0, \pi]$$ whose cosine is $$c$$.
+
+They are also called $$\arcsin c$$ and $$\arccos c$$.
+
+:::
+
+These are the $$\sin^{-1}$$ and $$\cos^{-1}$$ buttons on a calculator. For example,
+$$\sin^{-1}\frac12 = \frac{\pi}{6}$$ ($$30^\circ$$), since $$\sin\frac{\pi}{6} = \frac12$$ and
+$$\frac{\pi}{6}$$ lies between $$-\frac{\pi}{2}$$ and $$\frac{\pi}{2}$$. Similarly
+$$\cos^{-1} 0 = \frac{\pi}{2}$$ ($$90^\circ$$) and $$\cos^{-1}(-1) = \pi$$ ($$180^\circ$$), by
+:ref{#quarter-values}.
+
+As [Sine and cosine](./sine-and-cosine.mdx) warned, the little $$-1$$ in $$\sin^{-1}$$ is not a
+power. It means "the angle whose sine is", so $$\sin^{-1} c$$ is not $$\frac{1}{\sin c}$$. With
+$$c = \frac12$$, the angle $$\sin^{-1}\frac12$$ is about $$0.52$$, but $$\frac{1}{\sin(0.5)}$$ is
+about $$2.09$$. When you mean the fraction, write $$\frac{1}{\sin x}$$ or $$(\sin x)^{-1}$$.
+
+In a right triangle, every angle other than the right angle lies between $$0$$ and $$\frac{\pi}{2}$$
+($$90^\circ$$). That is inside both ranges in :ref{#inverse-sin-cos}, so the calculator buttons
+always give the angle of the triangle.
+
+:::example[The angle of a ramp]
+
+The ramp climbs $$1$$ m along a slope $$12$$ m long. The climb is opposite the angle and the slope
+is the hypotenuse, so
+
+```math
+\theta = \sin^{-1}\frac{1}{12} \approx 0.0834 \text{ radians} \approx 4.78^\circ
+```
+
+The ground the ramp covers is the adjacent side, $$12\cos\theta \approx 11.96$$ m. As a check, by
+:ref{#distance-and-angles/pythagoras} it is $$\sqrt{12^2 - 1^2} = \sqrt{143} \approx 11.96$$ m too.
+
+:::
+
+## Two angles with the same sine
+
+Inside a triangle there is one angle for each sine. Round the whole circle there are two, because
+the horizontal line at height $$c$$ crosses the circle at two points, mirror images in the
+$$y$$-axis. Take the height $$\frac12$$. The point on the right is at $$\frac{\pi}{6}$$
+($$30^\circ$$). Its mirror image on the left is $$\frac{\pi}{6}$$ short of a half turn, at
+$$\pi - \frac{\pi}{6} = \frac{5\pi}{6}$$ ($$150^\circ$$). So both $$\frac{\pi}{6}$$ and
+$$\frac{5\pi}{6}$$ have sine $$\frac12$$.
+
+```plane
+scale 3.2
+point O 0 0 s
+point P 0.866 0.5 ne
+point Q -0.866 0.5 nw
+point E 1 0 hidden
+point X -1.3 0 hidden
+point X2 1.3 0 hidden
+point Y 0 -1.2 hidden
+point Y2 0 1.2 hidden
+point L -1.25 0.5 hidden
+point R 1.25 0.5 hidden
+circle O 1 color=muted
+segment X X2 color=muted
+segment Y Y2 color=muted
+segment L R color=orange dashed
+segment O P color=blue
+segment O Q color=green
+angle E O P label="π/6" r=0.4
+angle E O Q label="5π/6" r=0.22 arrow
+caption "The line at height 1/2 meets the unit circle at P, at π/6 (30°), and at its mirror image Q in the y-axis, at 5π/6 (150°)."
+```
+
+The same mirror works for every point above the $$x$$-axis. The flip in the $$y$$-axis keeps the
+height of a point, and it swaps the two ends of the $$x$$-axis. So a point at angle $$x$$ from the
+right-hand end of the axis lands at angle $$x$$ from the left-hand end. The two angles at $$O$$ on
+either side of the image add up to a straight angle, $$\pi$$ ($$180^\circ$$), so the image is at
+angle $$\pi - x$$ from the right-hand end.
+
+:::proposition[Two angles with the same sine]{#same-sine}
+
+For every number $$x$$ with $$0 < x < \pi$$, that is, for every angle between $$0^\circ$$ and
+$$180^\circ$$,
+
+```math
+\sin(\pi - x) = \sin x
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/List_of_trigonometric_identities#Reflections"}
+
+Let $$P = (\cos x, \sin x)$$, and let $$P' = (-\cos x, \sin x)$$, its mirror image in the
+$$y$$-axis.
+
+**Both points are above the axis.** For $$0 < x < \pi$$ the sine is positive: by
+:ref{#quadrant-signs} in the first and second quadrants, and $$\sin\frac{\pi}{2} = 1$$ by
+:ref{#quarter-values}. So $$P$$ and $$P'$$, which have height $$\sin x$$, are both above the
+$$x$$-axis. The point $$P$$ is on the unit circle by part 1 of :ref{#unit-circle-point}.
+
+**The angle for P.** Say $$\angle E_1OP$$ measures $$\theta^\circ$$. By
+:ref{#special-angles-angle-to-turn}, $$P = (\cos y, \sin y)$$ with $$y = \frac{\pi\theta}{180}$$,
+and $$0 < y < \pi$$ since $$0 < \theta < 180$$. But $$P$$ is also $$(\cos x, \sin x)$$, and part 2
+of :ref{#unit-circle-point} says only one number from $$0$$ up to $$2\pi$$ gives $$P$$. So
+$$y = x$$, and $$\theta = \frac{180x}{\pi}$$: the angle $$x$$, written in degrees.
+
+**The flip keeps that angle.** The flip $$R_2(a, b) = (-a, b)$$ in the $$y$$-axis
+(:ref{#adding-and-scaling-points/axis-reflections}) is an isometry
+(:ref{#isometries/basic-isometries}). It sends $$O$$ to $$O$$, $$E_1$$ to $$-E_1$$ and $$P$$ to
+$$P'$$. So by :ref{#isometries/isometry-angles}, the angle $$\angle(-E_1)OP'$$ also measures
+$$\theta^\circ$$. Because the flip keeps the distance from $$O = R_2(O)$$, the point $$P'$$ is on
+the unit circle too.
+
+**The angle for P'.** The point $$O$$ lies between $$E_1$$ and $$-E_1$$ on the $$x$$-axis, and
+$$P'$$ is not on that line. By :ref{#distance-and-angles/angles-on-line},
+
+```math
+\angle E_1OP' + \angle P'O(-E_1) = 180^\circ
+```
+
+So $$\angle E_1OP'$$ measures $$(180 - \theta)^\circ$$.
+
+**Comparing heights.** By :ref{#special-angles-angle-to-turn} again, $$P' = (\cos z, \sin z)$$ with
+
+```math
+z = \frac{\pi(180 - \theta)}{180} = \pi - \frac{\pi\theta}{180} = \pi - x
+```
+
+So $$P' = \big(\cos(\pi - x), \sin(\pi - x)\big)$$. The second coordinate of $$P'$$ is $$\sin x$$,
+so $$\sin(\pi - x) = \sin x$$.
+
+:::
+
+Comparing the first coordinates in the same way gives $$\cos(\pi - x) = -\cos x$$: the mirror image
+is as far across as $$P$$, on the other side. Both equations hold for every number $$x$$, not only
+between $$0$$ and $$\pi$$. The guide [Identities you can see](./symmetries.mdx) proves them for
+every $$x$$ (:ref{#supplement-identities}), by a different route that doesn't use this proposition.
+
+So an equation $$\sin x = c$$ with $$-1 < c < 1$$ has two answers in each full turn, and the
+calculator gives only one of them, $$\sin^{-1} c$$. The other is $$\pi - \sin^{-1} c$$, by
+:ref{#supplement-identities}, which covers negative $$c$$ too. In a right triangle that second
+answer is never needed, since it is bigger than $$\frac{\pi}{2}$$ ($$90^\circ$$) when the first is
+smaller. But when you solve an equation round the whole circle, remember to look for it. The guide
+[Working with identities](./working-with-identities.mdx) finds every solution
+(:ref{#sine-solutions}).
+
+## The side of a regular polygon
+
+A regular polygon in a circle (:ref{#area-and-scaling/inscribed-polygon}) is made of thin isosceles
+slices, each with two sides equal to the radius. Cut one slice down the middle, from the centre to
+the middle of the polygon's side, and it falls into two right triangles. Each has the radius as its
+hypotenuse and half the slice's angle at the centre, so half the polygon's side is the radius times
+a sine.
+
+```plane
+point O 0 0 sw
+point A 3 0 se
+point B 2.1213 2.1213 ne
+point M 2.5607 1.0607 e
+circle O 3 color=muted
+segment O A label="r" side=right
+segment O B label="r"
+segment A B color=orange
+segment O M color=blue dashed
+angle A O M label="π/n" r=1.1
+right O M B r=0.25
+caption "One slice of a regular polygon in a circle of radius r. The dashed line from O to the midpoint M of the side cuts it into two right triangles, each with angle π/n at O."
+```
+
+:::proposition[The side of a regular polygon in a circle]{#polygon-side}
+
+The regular $$n$$-sided polygon in a circle of radius $$r$$ has sides of length
+$$2r\sin\frac{\pi}{n}$$, and its perimeter is
+
+```math
+2nr\sin\frac{\pi}{n}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Regular_polygon#Circumradius"}
+
+Let $$O$$ be the centre and $$A$$, $$B$$ two neighbouring corners, so $$d(O, A) = d(O, B) = r$$ and
+the angle $$AOB$$ is $$\frac{360}{n}$$ degrees (:ref{#area-and-scaling/inscribed-polygon}), which is
+$$\frac{2\pi}{n}$$ radians (:ref{#radian}). Let $$M$$ be the midpoint of $$AB$$.
+
+**The right angle.** Both $$O$$ and $$M$$ are as far from $$A$$ as from $$B$$, so both lie on the
+perpendicular bisector of $$AB$$ (:ref{#distance-and-angles/perpendicular-bisector-rule}). Since
+$$n \ge 3$$, the angle $$AOB$$ is less than a straight angle, so $$O$$ is not on $$AB$$ and
+$$O \ne M$$. So the line $$OM$$ is the perpendicular bisector, and the angle at $$M$$ in the
+triangle $$OMA$$ is a right angle.
+
+**The half angle.** The triangles $$OMA$$ and $$OMB$$ have the same three sides: $$r$$, the shared
+side $$OM$$, and $$d(M, A) = d(M, B)$$. So they are congruent (:ref{#isometries/sss}), and the
+isometry matching them keeps the angle at $$O$$ (:ref{#isometries/isometry-angles}), so
+$$\angle AOM = \angle MOB$$. The point $$M$$ is on the segment $$AB$$, so these two angles add up to
+$$\angle AOB = \frac{2\pi}{n}$$ (:ref{#distance-and-angles/angle-addition}). Each is
+$$\frac{\pi}{n}$$.
+
+**The side.** In the right triangle $$OMA$$ the hypotenuse is $$OA$$, of length $$r$$, and the side
+opposite the angle $$\frac{\pi}{n}$$ at $$O$$ is $$MA$$. By :ref{#right-triangle-ratios},
+$$d(M, A) = r\sin\frac{\pi}{n}$$. The side $$AB$$ is twice as long, $$2r\sin\frac{\pi}{n}$$, and the
+$$n$$ equal sides make the perimeter $$2nr\sin\frac{\pi}{n}$$.
+
+:::
+
+For the hexagon, $$n = 6$$, and the angle $$\frac{\pi}{6}$$ ($$30^\circ$$) has sine $$\frac12$$, so
+each side is $$2r \cdot \frac12 = r$$. That matches the hexagon in
+[Around the circle](../area-and-scaling/circumference.mdx), whose slices are equilateral.
+
+Dividing the perimeter by the diameter $$2r$$ leaves $$n\sin\frac{\pi}{n}$$, with no $$r$$ in it.
+These are the numbers in the table under
+[Pinning down pi](../area-and-scaling/circumference.mdx#pinning-down-pi), which creep up towards
+$$\pi$$ as the polygon hugs the circle:
+
+| Sides $$n$$ | $$n \sin\frac{\pi}{n}$$ |
+| ----------- | ----------------------- |
+| $$6$$       | $$3$$                   |
+| $$12$$      | $$3.1058$$              |
+| $$24$$      | $$3.1326$$              |
+| $$48$$      | $$3.1394$$              |
+| $$96$$      | $$3.1410$$              |
+
+## Exercises
+
+:::::accordion[Exercises on sine and cosine in right triangles, with solutions]
+
+::::exercise{#ex-right-triangles-ratios}
+
+A right triangle has hypotenuse $$10$$. The side opposite the angle $$\theta$$ is $$6$$ and the side
+adjacent to it is $$8$$. Find $$\sin\theta$$ and $$\cos\theta$$, and check that
+$$\sin^2\theta + \cos^2\theta = 1$$.
+
+:::solution
+
+By :ref{#right-triangle-ratios}, $$\sin\theta = \frac{6}{10} = 0.6$$ and
+$$\cos\theta = \frac{8}{10} = 0.8$$. Then $$0.6^2 + 0.8^2 = 0.36 + 0.64 = 1$$, as
+:ref{#pythagorean-identity} says.
+
+:::
+
+::::
+
+::::exercise{#ex-right-triangles-sides}
+
+A right triangle has hypotenuse $$8$$ and an angle of $$\frac{\pi}{3}$$ ($$60^\circ$$). Find the
+side opposite that angle and the side adjacent to it, exactly and to two decimal places.
+
+:::solution
+
+By :ref{#right-triangle-ratios} and :ref{#sin-cos-30-60},
+
+```math
+\begin{aligned}
+\text{opposite} &= 8\sin\frac{\pi}{3} = 8 \cdot \frac{\sqrt3}{2} = 4\sqrt3 \approx 6.93 \\
+\text{adjacent} &= 8\cos\frac{\pi}{3} = 8 \cdot \frac12 = 4
+\end{aligned}
+```
+
+As a check, $$(4\sqrt3)^2 + 4^2 = 48 + 16 = 64 = 8^2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-right-triangles-escalator}
+
+An escalator $$15$$ m long climbs at $$\frac{\pi}{6}$$ ($$30^\circ$$) to the floor. How high does it
+lift you, and how far across the floor does it carry you?
+
+:::solution
+
+The escalator is the hypotenuse. By :ref{#right-triangle-ratios} and :ref{#sin-cos-30-60}, the
+height is $$15\sin\frac{\pi}{6} = 15 \cdot \frac12 = 7.5$$ m, and the distance across is
+$$15\cos\frac{\pi}{6} = \frac{15\sqrt3}{2} \approx 12.99$$ m.
+
+:::
+
+::::
+
+::::exercise{#ex-right-triangles-mast}
+
+A rope $$13$$ m long runs from the top of a mast straight to a peg in the ground, $$5$$ m from the
+foot of the mast. Find the angle between the rope and the ground, and the height of the mast.
+
+:::solution
+
+The rope is the hypotenuse, and the ground from the peg to the foot of the mast is adjacent to the
+angle $$\theta$$ at the peg. So $$\cos\theta = \frac{5}{13}$$, and by :ref{#inverse-sin-cos},
+
+```math
+\theta = \cos^{-1}\frac{5}{13} \approx 1.176 \text{ radians} \approx 67.38^\circ
+```
+
+The mast is the opposite side. By :ref{#distance-and-angles/pythagoras}, its height is
+$$\sqrt{13^2 - 5^2} = \sqrt{144} = 12$$ m. As a check, $$\sin\theta = \frac{12}{13}$$, and
+$$\left(\frac{5}{13}\right)^2 + \left(\frac{12}{13}\right)^2 = \frac{25 + 144}{169} = 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-right-triangles-inverse}
+
+1. Find $$\sin^{-1}\frac{\sqrt3}{2}$$, and both angles $$x$$ with $$0 \le x < 2\pi$$ that have
+   $$\sin x = \frac{\sqrt3}{2}$$.
+2. A friend works out $$\sin^{-1} 0.5$$ as $$\frac{1}{\sin 0.5}$$ and gets about $$2.09$$. Explain
+   the slip, and give the right value.
+
+:::solution
+
+1. $$\sin\frac{\pi}{3} = \frac{\sqrt3}{2}$$ (:ref{#sin-cos-30-60}), and $$\frac{\pi}{3}$$ lies in
+   $$[-\frac{\pi}{2}, \frac{\pi}{2}]$$, so $$\sin^{-1}\frac{\sqrt3}{2} = \frac{\pi}{3}$$
+   ($$60^\circ$$) by :ref{#inverse-sin-cos}. By :ref{#same-sine},
+   $$\pi - \frac{\pi}{3} = \frac{2\pi}{3}$$ ($$120^\circ$$) has the same sine. So the two angles are
+   $$\frac{\pi}{3}$$ and $$\frac{2\pi}{3}$$, the point on the unit circle at height
+   $$\frac{\sqrt3}{2}$$ and its mirror image in the $$y$$-axis.
+2. The $$-1$$ in $$\sin^{-1}$$ is not a power: $$\sin^{-1} 0.5$$ is the angle in
+   $$[-\frac{\pi}{2}, \frac{\pi}{2}]$$ whose sine is $$0.5$$. That angle is $$\frac{\pi}{6}$$
+   ($$30^\circ$$), about $$0.52$$, since $$\sin\frac{\pi}{6} = \frac12$$ (:ref{#sin-cos-30-60}). The
+   friend's number, $$\frac{1}{\sin 0.5} \approx \frac{1}{0.479} \approx 2.09$$, is the reciprocal
+   of a sine, a different thing.
+
+:::
+
+::::
+
+::::exercise{#ex-right-triangles-square}
+
+Use :ref{#polygon-side} to find the side of a square in a circle of radius $$r$$, and check it with
+the Pythagoras theorem. Then find the perimeter divided by the diameter for the regular octagon, to
+four decimal places.
+
+:::solution
+
+For the square, $$n = 4$$, so the side is
+$$2r\sin\frac{\pi}{4} = 2r \cdot \frac{\sqrt2}{2} = r\sqrt2$$ (:ref{#sin-cos-45}). As a check,
+neighbouring corners make a right angle at the centre ($$\frac{360}{4} = 90$$ degrees), with legs
+$$r$$ and $$r$$, so by :ref{#distance-and-angles/pythagoras} the side is
+$$\sqrt{r^2 + r^2} = r\sqrt2$$.
+
+For the octagon, $$n = 8$$, and the perimeter divided by the diameter is
+$$8\sin\frac{\pi}{8} \approx 8 \cdot 0.38268 \approx 3.0615$$. It lies between the hexagon's $$3$$
+and the twelve-sided polygon's $$3.1058$$.
+
+:::
+
+::::
+
+::::exercise{#ex-right-triangles-pythagoras}
+
+Use :ref{#right-triangle-ratios} and the Pythagoras theorem to show that
+$$\sin^2\theta + \cos^2\theta = 1$$ for every angle $$\theta$$ of a right triangle other than the
+right angle.
+
+:::solution
+
+Write $$h$$ for the hypotenuse and $$p$$ and $$q$$ for the sides opposite and adjacent to
+$$\theta$$. By :ref{#right-triangle-ratios}, $$\sin\theta = \frac{p}{h}$$ and
+$$\cos\theta = \frac{q}{h}$$. So
+
+```math
+\begin{aligned}
+\sin^2\theta + \cos^2\theta &= \frac{p^2}{h^2} + \frac{q^2}{h^2} && \text{square each fraction} \\
+&= \frac{p^2 + q^2}{h^2} && \text{same bottom} \\
+&= \frac{h^2}{h^2} = 1 && p^2 + q^2 = h^2 \text{ by Pythagoras}
+\end{aligned}
+```
+
+The last step is :ref{#distance-and-angles/pythagoras}, with the hypotenuse $$h$$ and the legs $$p$$
+and $$q$$.
+
+This is :ref{#pythagorean-identity} for angles between $$0$$ and $$\frac{\pi}{2}$$, seen from the
+triangle instead of the circle.
+
+:::
+
+::::
+
+::::exercise{#ex-right-triangles-equilateral}
+
+Cut an equilateral triangle with sides $$2$$ in half, from one corner to the midpoint of the
+opposite side. Each half is a right triangle with angles $$\frac{\pi}{6}$$ ($$30^\circ$$) and
+$$\frac{\pi}{3}$$ ($$60^\circ$$), hypotenuse $$2$$, and side $$1$$ opposite the angle
+$$\frac{\pi}{6}$$. Find the third side, and use :ref{#right-triangle-ratios} to find the sine and
+cosine of both angles. Compare with :ref{#sin-cos-30-60}.
+
+:::solution
+
+By :ref{#distance-and-angles/pythagoras}, the third side is $$\sqrt{2^2 - 1^2} = \sqrt3$$. The side
+$$1$$ is opposite $$\frac{\pi}{6}$$ and adjacent to $$\frac{\pi}{3}$$. The side $$\sqrt3$$ is
+opposite $$\frac{\pi}{3}$$ and adjacent to $$\frac{\pi}{6}$$. So by :ref{#right-triangle-ratios},
+
+```math
+\sin\frac{\pi}{6} = \cos\frac{\pi}{3} = \frac12 \qquad \cos\frac{\pi}{6} = \sin\frac{\pi}{3} = \frac{\sqrt3}{2}
+```
+
+These are the values of :ref{#sin-cos-30-60}, and the pairs agree as :ref{#other-angle} says, since
+$$\frac{\pi}{6} + \frac{\pi}{3} = \frac{\pi}{2}$$.
+
+:::
+
+::::
+
+:::::
