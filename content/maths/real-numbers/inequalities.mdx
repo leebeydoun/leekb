@@ -45,20 +45,20 @@ $$[5, \infty)$$:
 The symbol $$\infty$$, read "infinity", is not a number. In $$[5, \infty)$$ it says that the
 interval goes on forever to the right, which is why that end always has a round bracket.
 
-A solution can be made of several intervals. The word **or** joins them, or the symbol $$\cup$$,
-read "union": $$(-\infty, -1) \cup (2, \infty)$$ means the numbers that are less than $$-1$$ or
-greater than $$2$$.
+A solution can be made of several intervals. The word **or** joins them, or the symbol $$\cup$$ for
+their union (:ref{#basic-proofs/union-intersection}): $$(-\infty, -1) \cup (2, \infty)$$ means the
+numbers that are less than $$-1$$ or greater than $$2$$.
 
 ## Safe steps for inequalities
 
 As with equations, an inequality is solved by replacing it with simpler and simpler ones that have
 exactly the same solutions. A safe step must neither lose a solution nor add one.
 
-:ref{#inequality-rules} say which moves keep the order of two numbers. Sliding both sides by the
-same amount keeps it, and so does stretching both by the same positive amount. Multiplying by a
-negative number flips the order, so the inequality sign has to be turned round to match. Each of
-these moves can also be undone by another move of the same kind, which is why nothing is gained or
-lost. These steps are safe.
+The rules in :ref{#inequality-rules} say which moves keep the order of two numbers. Sliding both
+sides by the same amount keeps it, and so does stretching both by the same positive amount.
+Multiplying by a negative number flips the order, so the inequality sign has to be turned round to
+match. Each of these moves can also be undone by another move of the same kind, which is why nothing
+is gained or lost. These steps are safe.
 
 <InequalityScale a={-1} b={2} />
 
@@ -76,7 +76,8 @@ Changing an inequality in any of these ways gives one with exactly the same solu
 :::proof{source="https://www.mathsisfun.com/algebra/inequality-solving.html"}
 
 As for equations, the proof checks that each step keeps every solution and can be undone. For
-particular values of the unknowns, both sides are numbers, so :ref{#inequality-rules} apply.
+particular values of the unknowns, both sides are numbers, so the rules in :ref{#inequality-rules}
+apply.
 
 1. Adding $$c$$ keeps the inequality, by rule 3. Adding $$-c$$ undoes it.
 2. Multiplying by $$c > 0$$ keeps the inequality, by rule 4. Multiplying by $$\frac{1}{c}$$, which

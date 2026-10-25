@@ -145,11 +145,12 @@ $$\frac{16}{9} \cdot \frac{5}{4} = \frac{20}{9}$$:
 \frac{\left(u - \frac{\sqrt5}{3}\right)^2}{20/9} + \frac{v^2}{4/3} = 1
 ```
 
-By :ref{#slide-graph}, this is the ellipse with half-widths $$a = \frac{2\sqrt5}{3} \approx 1.49$$
-and $$b = \frac{2}{\sqrt3} \approx 1.15$$, slid right by $$\frac{\sqrt5}{3}$$. As a check, the ends
-of the long axis are where $$y = 0$$, so $$\frac{3}{4}x^2 - x - 1 = 0$$, that is
-$$(3x + 2)(x - 2) = 0$$. They are $$(2, 0, 2)$$ and $$\left(-\frac{2}{3}, 0, \frac{2}{3}\right)$$,
-and by :ref{#coordinates/space-distance} their distance apart is
+By :ref{#functions/slide-graph}, this is the ellipse with half-widths
+$$a = \frac{2\sqrt5}{3} \approx 1.49$$ and $$b = \frac{2}{\sqrt3} \approx 1.15$$, slid right by
+$$\frac{\sqrt5}{3}$$. As a check, the ends of the long axis are where $$y = 0$$, so
+$$\frac{3}{4}x^2 - x - 1 = 0$$, that is $$(3x + 2)(x - 2) = 0$$. They are $$(2, 0, 2)$$ and
+$$\left(-\frac{2}{3}, 0, \frac{2}{3}\right)$$, and by :ref{#coordinates/space-distance} their
+distance apart is
 
 ```math
 \sqrt{\left(\tfrac{8}{3}\right)^2 + \left(\tfrac{4}{3}\right)^2} = \sqrt{\tfrac{80}{9}} = \tfrac{4\sqrt5}{3} = 2a
@@ -285,10 +286,10 @@ u &= \frac{v^2 - 1}{\sqrt2} && \text{solve for } u
 ```
 
 Swapping the letters gives $$v = \frac{u^2}{\sqrt2} - \frac{1}{\sqrt2}$$, which by
-:ref{#slide-graph} is the graph of $$v = \frac{u^2}{\sqrt2}$$ slid down by $$\frac{1}{\sqrt2}$$. By
-:ref{#flip-graph}, the slice is the image of that graph under the flip in the line $$v = u$$. So the
-slice is the graph of $$v = \frac{u^2}{\sqrt2}$$ moved by a slide and then a flip, which is a
-parabola (:ref{#parabola-definition}).
+:ref{#functions/slide-graph} is the graph of $$v = \frac{u^2}{\sqrt2}$$ slid down by
+$$\frac{1}{\sqrt2}$$. By :ref{#functions/flip-graph}, the slice is the image of that graph under the
+flip in the line $$v = u$$. So the slice is the graph of $$v = \frac{u^2}{\sqrt2}$$ moved by a slide
+and then a flip, which is a parabola (:ref{#parabola-definition}).
 
 **Step 4: complete the square.** From now on $$m \ne 1$$, so $$1 - m^2 \ne 0$$. Write
 $$h = \frac{m}{1 - m^2}$$, so that $$2m = 2h(1 - m^2)$$. Then
@@ -326,9 +327,9 @@ So the slice is the graph of
 
 **Step 6: less steep than the side.** When $$0 < m < 1$$, $$1 - m^2 > 0$$ and
 $$1 - m^2 = \frac{1}{b^2}$$ with $$b = \frac{1}{\sqrt{1 - m^2}}$$. The equation is
-$$\frac{(u - u_0)^2}{a^2} + \frac{v^2}{b^2} = 1$$, and by :ref{#slide-graph} its graph is the slide
-by $$(u_0, 0)$$ of the graph of $$\frac{u^2}{a^2} + \frac{v^2}{b^2} = 1$$. A slide is an isometry,
-so the slice is an ellipse (:ref{#ellipse-definition}). Also $$a \ge b$$, since
+$$\frac{(u - u_0)^2}{a^2} + \frac{v^2}{b^2} = 1$$, and by :ref{#functions/slide-graph} its graph is
+the slide by $$(u_0, 0)$$ of the graph of $$\frac{u^2}{a^2} + \frac{v^2}{b^2} = 1$$. A slide is an
+isometry, so the slice is an ellipse (:ref{#ellipse-definition}). Also $$a \ge b$$, since
 $$a^2 = \frac{1 + m^2}{(1 - m^2)^2}$$ and $$b^2 = \frac{1 - m^2}{(1 - m^2)^2}$$.
 
 **Step 7: steeper than the side.** When $$m > 1$$, $$1 - m^2 = -(m^2 - 1)$$ is negative and equals
@@ -501,8 +502,8 @@ x^2 + y^2 &= e^2x^2 + 2e^2dx + e^2d^2 && \text{expand the square} \\
 
 **Step 3: e = 1.** The equation is $$-2dx + y^2 = d^2$$, so $$x = \frac{y^2}{2d} - \frac{d}{2}$$.
 Swapping the letters gives $$y = \frac{x^2}{2d} - \frac{d}{2}$$, the graph of $$y = \frac{x^2}{2d}$$
-slid down by $$\frac{d}{2}$$ (:ref{#slide-graph}). By :ref{#flip-graph}, $$M(C)$$ is its image under
-the flip in $$y = x$$, so it is a parabola (:ref{#parabola-definition}).
+slid down by $$\frac{d}{2}$$ (:ref{#functions/slide-graph}). By :ref{#functions/flip-graph},
+$$M(C)$$ is its image under the flip in $$y = x$$, so it is a parabola (:ref{#parabola-definition}).
 
 **Step 4: complete the square.** From now on $$e \ne 1$$. Write $$h = \frac{e^2d}{1 - e^2}$$, so
 that $$2e^2d = 2h(1 - e^2)$$. As in step 4 of :ref{#cone-slices},
@@ -522,8 +523,8 @@ $$\frac{(x - h)^2}{a^2} + \frac{y^2}{b^2} = 1$$ with
 a = \frac{ed}{1 - e^2} \qquad b = \frac{ed}{\sqrt{1 - e^2}}
 ```
 
-By :ref{#slide-graph} it is a slid ellipse, and $$a \ge b$$ since $$1 - e^2 \le \sqrt{1 - e^2}$$.
-Then
+By :ref{#functions/slide-graph} it is a slid ellipse, and $$a \ge b$$ since
+$$1 - e^2 \le \sqrt{1 - e^2}$$. Then
 
 ```math
 c^2 = a^2 - b^2 = \frac{e^2d^2 - e^2d^2(1 - e^2)}{(1 - e^2)^2} = \frac{e^4d^2}{(1 - e^2)^2}

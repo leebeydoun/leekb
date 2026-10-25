@@ -47,8 +47,9 @@ The two branches are mirror images of each other in two ways. The half turn abou
 $$(x, y)$$ to $$(-x, -y)$$, and $$(-x)(-y) = xy$$, so it sends every point of the graph to another
 point of the graph. Swapping the coordinates, the flip $$S$$ in the line $$y = x$$
 (:ref{#adding-and-scaling-points/diagonal-reflection}), does the same, since $$yx = xy$$. By
-:ref{#flip-graph}, the flip $$S$$ sends the graph of $$xy = 12$$ onto the graph of $$yx = 12$$,
-which is the same equation, so $$S$$ is a symmetry of the graph (:ref{#isometries/symmetry}).
+:ref{#functions/flip-graph}, the flip $$S$$ sends the graph of $$xy = 12$$ onto the graph of
+$$yx = 12$$, which is the same equation, so $$S$$ is a symmetry of the graph
+(:ref{#isometries/symmetry}).
 
 ### Close to the axes, never on them
 
@@ -61,7 +62,10 @@ $$\frac{12}{12\,000} = 0.001$$.
 The curve never reaches the axis, though. A point of the $$x$$-axis has $$y = 0$$, so $$xy = 0$$,
 which is not $$12$$. The same goes for the $$y$$-axis, which the branch approaches as $$x$$ gets
 close to $$0$$. A line that a curve gets as close as you like to, far out, without meeting it, is
-called an **asymptote** of the curve. So the two axes are the asymptotes of $$xy = 12$$.
+called an **asymptote** of the curve. So the two axes are the asymptotes of $$xy = 12$$. The graph
+of the function $$\frac{1}{x}$$ in
+[A gallery of graphs](../functions/graphs-of-functions.mdx#a-gallery-of-graphs) hugs the axes in the
+same way, because it is the graph of $$xy = 1$$.
 
 Everything here works for any number $$c \ne 0$$ in place of $$12$$. For $$c > 0$$ the branches sit
 in the top right and bottom left quarters, as for $$xy = 12$$. For $$c < 0$$ one coordinate must be
@@ -69,9 +73,9 @@ negative and the other positive, so the branches sit in the top left and bottom 
 
 ## Sliding the graph of xy = c
 
-Slide the graph of $$xy = 6$$ by $$(-2, 3)$$, two to the left and three up. By :ref{#slide-graph},
-the new graph has the equation we get by putting $$x - (-2) = x + 2$$ in place of $$x$$ and
-$$y - 3$$ in place of $$y$$:
+Slide the graph of $$xy = 6$$ by $$(-2, 3)$$, two to the left and three up. By
+:ref{#functions/slide-graph}, the new graph has the equation we get by putting $$x - (-2) = x + 2$$
+in place of $$x$$ and $$y - 3$$ in place of $$y$$:
 
 ```math
 (x + 2)(y - 3) = 6
@@ -122,8 +126,8 @@ xy + px + qy + r = 0 &\iff xy + px + qy + pq = pq - r && \text{add } pq - r \tex
 ```
 
 The two equations have the same solutions, so the same graph. Writing $$x + q$$ as $$x - (-q)$$ and
-$$y + p$$ as $$y - (-p)$$, :ref{#slide-graph} says this is the graph of $$xy = pq - r$$ slid by
-$$(-q, -p)$$. The slide carries the axes, the asymptotes of $$xy = pq - r$$, onto the lines
+$$y + p$$ as $$y - (-p)$$, :ref{#functions/slide-graph} says this is the graph of $$xy = pq - r$$
+slid by $$(-q, -p)$$. The slide carries the axes, the asymptotes of $$xy = pq - r$$, onto the lines
 $$x = -q$$ and $$y = -p$$.
 
 :::
@@ -264,9 +268,9 @@ the turn sends $$(\sqrt{2c}, 0)$$ to
 That fits: $$\sqrt c \cdot \sqrt c = c$$. For $$xy = 12$$, $$a = b = \sqrt{24} = 2\sqrt6$$, and the
 vertices are $$(2\sqrt3, 2\sqrt3) \approx (3.46, 3.46)$$ and $$(-2\sqrt3, -2\sqrt3)$$. For
 $$c < 0$$, the number $$-c$$ is positive, so the graph of $$xy = -c$$ is a hyperbola. The flip in
-the $$y$$-axis sends it onto the graph of $$(-x)y = -c$$ by :ref{#flip-graph}, which is $$xy = c$$.
-A turn followed by a flip is an isometry (:ref{#isometries/composite-isometry}), so $$xy = c$$ is a
-hyperbola for every $$c \ne 0$$.
+the $$y$$-axis sends it onto the graph of $$(-x)y = -c$$ by :ref{#functions/flip-graph}, which is
+$$xy = c$$. A turn followed by a flip is an isometry (:ref{#isometries/composite-isometry}), so
+$$xy = c$$ is a hyperbola for every $$c \ne 0$$.
 
 One slip is worth naming here. The equation $$x^2 - y^2 = 4$$ is a hyperbola, but to read off $$a$$
 and $$b$$ you first divide by $$4$$ to get $$1$$ on the right:
@@ -275,8 +279,8 @@ $$\frac{x^2}{4} - \frac{y^2}{4} = 1$$, so $$a = b = 2$$, not $$1$$.
 ### Hyperbolas that open up and down
 
 The graph of $$y^2 - x^2 = 4$$ from part 1 of :ref{#hyperbola-turn} opens up and down, not left and
-right. It is a hyperbola too. By :ref{#flip-graph}, swapping the letters $$x$$ and $$y$$ is the flip
-in $$y = x$$, and swapping them in $$\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$$ gives
+right. It is a hyperbola too. By :ref{#functions/flip-graph}, swapping the letters $$x$$ and $$y$$
+is the flip in $$y = x$$, and swapping them in $$\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$$ gives
 $$\frac{y^2}{a^2} - \frac{x^2}{b^2} = 1$$. So every equation of that second shape is a flipped
 standard hyperbola, with vertices $$(0, \pm a)$$ on the $$y$$-axis.
 
@@ -370,11 +374,11 @@ that.
 <AsymptoteGap caption="The upper part of the right branch of x²/9 − y²/16 = 1 and the asymptote y = 4x/3. The gap between them shrinks from 1.81 at x = 4 to 0.78 at x = 8 and 0.51 at x = 12, and it is never 0." />
 
 The other three quarters behave the same way. Swapping $$x$$ for $$-x$$, or $$y$$ for $$-y$$, leaves
-the equation unchanged, so by :ref{#flip-graph} the flips in the two axes are symmetries of $$C$$.
-Each flip swaps the two asymptotes, so the same gaps appear in every quarter. For $$xy = c$$ the
-asymptotes are the axes: the turn by $$\frac{\pi}{4}$$ carries the lines $$y = \pm x$$, the
-asymptotes of $$x^2 - y^2 = 2c$$ (where $$\frac{b}{a} = 1$$), onto the two axes, as the orange lines
-in the turning diagram show.
+the equation unchanged, so by :ref{#functions/flip-graph} the flips in the two axes are symmetries
+of $$C$$. Each flip swaps the two asymptotes, so the same gaps appear in every quarter. For
+$$xy = c$$ the asymptotes are the axes: the turn by $$\frac{\pi}{4}$$ carries the lines
+$$y = \pm x$$, the asymptotes of $$x^2 - y^2 = 2c$$ (where $$\frac{b}{a} = 1$$), onto the two axes,
+as the orange lines in the turning diagram show.
 
 ## The two foci
 

@@ -42,10 +42,10 @@ In this guide $$F$$ is the number at the end of the equation, not a focus. For t
 $$x^2 + y^2 - 2x - 8 = 0$$, $$A = C = 1$$, $$B = 0$$, $$D = -2$$, $$E = 0$$ and $$F = -8$$. For
 $$xy - 1 = 0$$, the only numbers that aren't $$0$$ are $$B = 1$$ and $$F = -1$$.
 
-Moving a curve keeps its equation of this kind. By :ref{#slide-graph}, :ref{#flip-graph} and
-:ref{#turn-graph}, a move puts first-degree expressions such as $$x - 3$$ or
-$$x\cos\varphi + y\sin\varphi$$ in place of $$x$$ and $$y$$, so multiplying out never makes a power
-higher than $$2$$.
+Moving a curve keeps its equation of this kind. By :ref{#functions/slide-graph},
+:ref{#functions/flip-graph} and :ref{#turn-graph}, a move puts first-degree expressions such as
+$$x - 3$$ or $$x\cos\varphi + y\sin\varphi$$ in place of $$x$$ and $$y$$, so multiplying out never
+makes a power higher than $$2$$.
 
 The squared terms can't all cancel either. If they did, the new equation would have no $$x^2$$,
 $$xy$$ or $$y^2$$ at all. Undoing the move puts first-degree expressions in again, which would give
@@ -59,9 +59,9 @@ this guide goes the other way, from the equation to the curve.
 
 When $$B = 0$$, the equation splits into an $$x$$ part and a $$y$$ part that don't mix. Completing
 the square in each part (:ref{#quadratics/complete-square}) gathers each letter into one bracket,
-such as $$(x - 3)^2$$. Then :ref{#slide-graph} reads the brackets as a slide: $$x - 3$$ means the
-curve has been slid $$3$$ to the right. What is left is a standard equation from the earlier guides,
-and the numbers in the brackets say where it went.
+such as $$(x - 3)^2$$. Then :ref{#functions/slide-graph} reads the brackets as a slide: $$x - 3$$
+means the curve has been slid $$3$$ to the right. What is left is a standard equation from the
+earlier guides, and the numbers in the brackets say where it went.
 
 :::example[An ellipse]
 
@@ -78,9 +78,10 @@ square:
 \end{aligned}
 ```
 
-By :ref{#slide-graph}, this is the ellipse $$\frac{x^2}{4} + y^2 = 1$$ slid by $$(3, -1)$$: an
-ellipse centred at $$(3, -1)$$, reaching $$2$$ either side across and $$1$$ up and down. As a check,
-the point $$(5, -1)$$ is $$2$$ to the right of the centre, and $$25 + 4 - 30 - 8 + 9 = 0$$.
+By :ref{#functions/slide-graph}, this is the ellipse $$\frac{x^2}{4} + y^2 = 1$$ slid by
+$$(3, -1)$$: an ellipse centred at $$(3, -1)$$, reaching $$2$$ either side across and $$1$$ up and
+down. As a check, the point $$(5, -1)$$ is $$2$$ to the right of the centre, and
+$$25 + 4 - 30 - 8 + 9 = 0$$.
 
 :::
 
@@ -104,11 +105,11 @@ Take $$9x^2 - 4y^2 + 18x + 16y + 29 = 0$$. This time the $$y^2$$ term has a minu
 ```
 
 Dividing by $$-36$$ changes both signs, so the minus sign moves to the $$x$$ term. By
-:ref{#flip-graph}, swapping the letters in $$\frac{x^2}{9} - \frac{y^2}{4} = 1$$ gives the flip of
-that hyperbola in the line $$y = x$$, which opens up and down. Then :ref{#slide-graph} slides it by
-$$(-1, 2)$$. So the curve is a hyperbola centred at $$(-1, 2)$$ with its vertices $$3$$ above and
-below the centre, at $$(-1, 5)$$ and $$(-1, -1)$$. As a check, $$(-1, 5)$$ gives
-$$9 - 100 - 18 + 80 + 29 = 0$$.
+:ref{#functions/flip-graph}, swapping the letters in $$\frac{x^2}{9} - \frac{y^2}{4} = 1$$ gives the
+flip of that hyperbola in the line $$y = x$$, which opens up and down. Then
+:ref{#functions/slide-graph} slides it by $$(-1, 2)$$. So the curve is a hyperbola centred at
+$$(-1, 2)$$ with its vertices $$3$$ above and below the centre, at $$(-1, 5)$$ and $$(-1, -1)$$. As
+a check, $$(-1, 5)$$ gives $$9 - 100 - 18 + 80 + 29 = 0$$.
 
 :::
 
@@ -126,8 +127,9 @@ x - 2 &= \frac{(y + 1)^2}{4} &&\qquad \text{divide by } 4 \text{ and swap the si
 ```
 
 The graph of $$x = \frac{y^2}{4}$$ is the flip of $$y = \frac{x^2}{4}$$ in the line $$y = x$$
-(:ref{#flip-graph}), a parabola opening to the right. Sliding it by $$(2, -1)$$ gives our curve,
-with its vertex at $$(2, -1)$$. As a check, the point $$(3, 1)$$ gives $$1 - 12 + 2 + 9 = 0$$.
+(:ref{#functions/flip-graph}), a parabola opening to the right. Sliding it by $$(2, -1)$$ gives our
+curve, with its vertex at $$(2, -1)$$. As a check, the point $$(3, 1)$$ gives
+$$1 - 12 + 2 + 9 = 0$$.
 
 :::
 
@@ -196,8 +198,8 @@ Ax^2 + Dx = A\Big(x^2 + \frac{D}{A}x\Big) = A\Big(x + \frac{D}{2A}\Big)^2 - \fra
 
 and in the same way $$Cy^2 + Ey = C\big(y + \frac{E}{2C}\big)^2 - \frac{E^2}{4C}$$. Write
 $$h = -\frac{D}{2A}$$, $$k = -\frac{E}{2C}$$ and $$K = \frac{D^2}{4A} + \frac{E^2}{4C} - F$$. Then
-the equation says $$A(x - h)^2 + C(y - k)^2 = K$$, so by :ref{#slide-graph} its graph is the slide
-by $$(h, k)$$ of the graph of $$Ax^2 + Cy^2 = K$$. A slide is an isometry
+the equation says $$A(x - h)^2 + C(y - k)^2 = K$$, so by :ref{#functions/slide-graph} its graph is
+the slide by $$(h, k)$$ of the graph of $$Ax^2 + Cy^2 = K$$. A slide is an isometry
 (:ref{#adding-and-scaling-points/formula-isometries}), and an isometry after an isometry is one
 (:ref{#isometries/composite-isometry}). So a slide sends ellipses to ellipses, hyperbolas to
 hyperbolas, a point to a point and lines to lines (:ref{#isometries/isometry-lines}), and it is
@@ -221,7 +223,7 @@ dividing by $$K$$ gives $$\frac{x^2}{K/A} - \frac{y^2}{K/c} = 1$$, a hyperbola
 \frac{y^2}{-K/c} - \frac{x^2}{-K/A} = 1
 ```
 
-which by :ref{#flip-graph} is the flip in $$y = x$$ of the hyperbola
+which by :ref{#functions/flip-graph} is the flip in $$y = x$$ of the hyperbola
 $$\frac{x^2}{-K/c} - \frac{y^2}{-K/A} = 1$$, so a hyperbola again. If $$K = 0$$, the equation is
 $$Ax^2 - cy^2 = 0$$, which factorises as
 
@@ -244,8 +246,8 @@ y = -\frac{A}{E}x^2 - \frac{D}{E}x - \frac{F}{E}
 whose graph is a parabola by :ref{#quadratic-parabola}. If $$E = 0$$, the equation
 $$Ax^2 + Dx + F = 0$$ doesn't involve $$y$$. By :ref{#quadratics/root-count} it has two solutions,
 one or none, and the graph is the vertical lines through them: two parallel lines, one line, or
-nothing. The case $$A = 0$$ is the same with the letters swapped, which by :ref{#flip-graph} flips
-everything in $$y = x$$. That flip is an isometry
+nothing. The case $$A = 0$$ is the same with the letters swapped, which by
+:ref{#functions/flip-graph} flips everything in $$y = x$$. That flip is an isometry
 (:ref{#adding-and-scaling-points/diagonal-reflection}), so it sends a parabola to a parabola and
 parallel lines to parallel lines.
 

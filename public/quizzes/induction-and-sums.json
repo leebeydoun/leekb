@@ -36,7 +36,7 @@
       "topic": "Induction in practice",
       "question": "Why do the 4p and 5p stamp proofs need four base cases (12p to 15p)?",
       "options": [
-        "Four is a lucky number",
+        "Each amount is built by swapping a 4p stamp for a 5p stamp in the amount one less",
         "Because $$4 \\cdot 5 = 20$$",
         "They don't",
         "Each amount is built by adding a 4p stamp to the amount four less"
@@ -165,7 +165,7 @@
         "Because $$\\frac1n = 0$$",
         "It doesn't, it only gets close",
         "Any gap would be bigger than $$\\frac1n$$ for some $$n$$",
-        "By the binomial theorem"
+        "Because the strips end up with width $$0$$"
       ],
       "answer": 2,
       "explanation": "If $$A \\ne \\frac13$$, pick $$n$$ larger than $$\\frac{1}{\\lvert A - 1/3 \\rvert}$$ for a contradiction (:ref{#areas-and-volumes-squeeze})."
@@ -252,7 +252,7 @@
         "$$s_n$$ reaches $$L$$ at infinity"
       ],
       "answer": 0,
-      "explanation": "That is the definition (:ref{#settles-towards}); \\\"infinity\\\" is not a number."
+      "explanation": "That is the definition (:ref{#settles-towards}); \"infinity\" is not a number."
     },
     {
       "id": "big-c",
@@ -305,7 +305,7 @@
         "The sums only grow and stay below $$2$$",
         "The terms shrink to $$0$$",
         "They are a geometric series",
-        "By the binomial theorem"
+        "Each term is smaller than the one before"
       ],
       "answer": 0,
       "explanation": "Increasing sums with an upper bound settle, taken as given (:ref{#bounded-increasing})."
@@ -328,7 +328,7 @@
       "id": "crayons",
       "stars": 2,
       "topic": "Induction in practice",
-      "question": "A \\\"proof\\\" that all crayons in a box share a colour breaks where?",
+      "question": "A \"proof\" that all crayons in a box share a colour breaks where?",
       "options": [
         "At the base case",
         "At $$100$$ crayons",
@@ -458,7 +458,7 @@
       "options": [
         "Because $$c < 1$$ means $$c^n = 0$$",
         "Write $$\\frac1c = 1 + h$$; Bernoulli makes $$\\frac{1}{c^n} \\ge 1 + nh$$ grow",
-        "By the binomial theorem only",
+        "Each power is smaller than the one before, and that is enough",
         "They don't"
       ],
       "answer": 1,

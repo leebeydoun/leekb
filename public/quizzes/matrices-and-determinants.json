@@ -65,7 +65,7 @@
       "question": "Is $$AB = BA$$ for all square matrices $$A$$ and $$B$$?",
       "options": [
         "Yes, always",
-        "No: the order usually matters",
+        "No: the order can matter",
         "Only for 3 by 3",
         "Yes, if they are the same size"
       ],
@@ -98,7 +98,7 @@
         "The mapping flips the plane over"
       ],
       "answer": 3,
-      "explanation": "The sign says whether the turn from the first column to the second is anticlockwise (:ref{#signed-area})."
+      "explanation": "A negative determinant means the turn from the first column to the second is clockwise, so the picture comes out as its mirror image (:ref{#signed-area})."
     },
     {
       "id": "zero",
@@ -476,7 +476,7 @@
         "It depends"
       ],
       "answer": 0,
-      "explanation": "$$\\det A = \\det A^{\\mathsf T} = \\det(-A) = -\\det A$$ (:ref{#properties-scale})."
+      "explanation": "$$\\det A = \\det A^{\\mathsf T}$$ (:ref{#det3-transpose}), which is $$\\det(-A) = -\\det A$$ (:ref{#properties-scale}), so $$\\det A = 0$$."
     },
     {
       "id": "replaced",

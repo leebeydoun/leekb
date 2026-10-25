@@ -28,7 +28,7 @@
         "$$Q$$ always lies between $$P$$ and $$M$$"
       ],
       "answer": 1,
-      "explanation": "A detour through a third point covers at least as much ground as the direct route (:ref{#distance-rules}). It can be equal, when $$Q$$ is on the segment $$PM$$, so \\\"always longer\\\" is too strong."
+      "explanation": "A detour through a third point covers at least as much ground as the direct route (:ref{#distance-rules}). It can be equal, when $$Q$$ is on the segment $$PM$$, so \"always longer\" is too strong."
     },
     {
       "id": "rules-assumed",
@@ -42,7 +42,7 @@
         "It proves it from the triangle inequality"
       ],
       "answer": 2,
-      "explanation": "\\\"The same both ways\\\" is one of the three rules for distance that the guide takes as given and doesn't prove (:ref{#distance-rules}). Every other fact about distance rests on these."
+      "explanation": "\"The same both ways\" is one of the three rules for distance that the guide takes as given and doesn't prove (:ref{#distance-rules}). Every other fact about distance rests on these."
     },
     {
       "id": "between-equality",
@@ -98,7 +98,7 @@
         "Three points always lie on one line"
       ],
       "answer": 2,
-      "explanation": "\\\"Two points, one line\\\" is the first rule for lines (:ref{#line-rules}). Parallel lines never meet, so not every pair of lines meets (:ref{#crossing-lines}), and the rectangle fact is proved (:ref{#rectangle-sides})."
+      "explanation": "\"Two points, one line\" is the first rule for lines (:ref{#line-rules}). Parallel lines never meet, so not every pair of lines meets (:ref{#crossing-lines}), and the rectangle fact is proved (:ref{#rectangle-sides})."
     },
     {
       "id": "one-parallel",
@@ -189,7 +189,12 @@
       "stars": 1,
       "topic": "Angles",
       "question": "How many angles do two rays from the same point make?",
-      "options": ["Four", "Two", "It depends on the rays", "One"],
+      "options": [
+        "Four",
+        "Two",
+        "It depends on the rays",
+        "One"
+      ],
       "answer": 1,
       "explanation": "The two rays split the plane into two regions, and each region with its two edge rays is an angle (:ref{#angle}). That is why a name for an angle needs a rule for which one it means."
     },
@@ -253,7 +258,7 @@
       "id": "degree-area",
       "stars": 2,
       "topic": "Measuring angles",
-      "question": "How does the definition of degrees make \\\"a fraction of a turn\\\" precise?",
+      "question": "How does the definition of degrees make \"a fraction of a turn\" precise?",
       "options": [
         "By counting how many right angles fit inside it",
         "By the distance between the ends of the arms",
@@ -345,7 +350,7 @@
         "Their angles add up to $$180^\\circ$$"
       ],
       "answer": 0,
-      "explanation": "The rules for right triangles take the full match as given (:ref{#right-triangle-rule}). The others are proved from it: :ref{#pythagoras}, :ref{#triangle-angle-sum} and :ref{#right-triangle-area}. The Isometries chapter later proves that the hypotenuses and angles match (:ref{#isometries/right-triangles-congruent})."
+      "explanation": "The rules for right triangles take the full match as given (:ref{#right-triangle-rule}). The others are proved from it: :ref{#pythagoras}, :ref{#triangle-angle-sum} and :ref{#right-triangle-area}. The Isometries chapter later shows that the rule is one case of congruence (:ref{#isometries/right-triangles-congruent})."
     },
     {
       "id": "other-two-angles",
@@ -485,7 +490,7 @@
         "Only that points on the bisector are the same distance from $$P$$ and $$Q$$"
       ],
       "answer": 2,
-      "explanation": "\\\"Exactly when\\\" claims both directions (:ref{#basic-proofs/exactly-when}). The proof handles both with a chain of statements, each true exactly when the next is (:ref{#perpendicular-bisector-rule})."
+      "explanation": "\"Exactly when\" claims both directions (:ref{#basic-proofs/exactly-when}). The proof handles both with a chain of statements, each true exactly when the next is (:ref{#perpendicular-bisector-rule})."
     },
     {
       "id": "bisector-proof-tool",

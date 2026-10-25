@@ -119,9 +119,9 @@ This is the heart of the proof: after the turn, the determinant is the length of
 times the height of the second column above the $$x$$-axis.
 
 **The turn carries the parallelogram along.** The formula for $$G$$ is a $$2$$ by $$2$$ matrix times
-$$(x, y)$$ (:ref{#trigonometry/rotation-matrix}). A column is a matrix with one column, so a matrix
-respects adding and scaling columns (parts 4 and 5 of :ref{#matrix-product-rules}), so for all
-numbers $$s$$ and $$t$$,
+$$(x, y)$$ (:ref{#trigonometry/rotation-matrix}). A column is a matrix with one column, so parts 4
+and 5 of :ref{#matrix-product-rules} say that a matrix respects adding and scaling columns. So for
+all numbers $$s$$ and $$t$$,
 
 ```math
 G(sA^1 + tA^2) = sG(A^1) + tG(A^2) = s(r, 0) + t(p, q)
@@ -376,7 +376,7 @@ Here $$\det A = 5$$ and $$\det B = -2$$, and $$\det(AB) = 7 \cdot (-2) - (-1) \c
 is $$5 \cdot (-2)$$. In pictures, $$B$$ doubles every area and flips it over, then $$A$$ multiplies
 the area by $$5$$, so the total is $$10$$ times the area, flipped.
 
-Adding matrices is a different story, and a slip to watch for: $$\det(A + B)$$ is usually not
+Adding matrices is a different story, and a slip to watch for: $$\det(A + B)$$ need not be
 $$\det A + \det B$$. With $$A = B = I$$, $$\det(I + I) = \det(2I) = 2 \cdot 2 = 4$$, while
 $$\det I + \det I = 2$$. The same example shows a second slip: $$\det(cA) = c^2\det A$$, not
 $$c\det A$$, because scaling the matrix by $$c$$ scales both columns, and each one multiplies the

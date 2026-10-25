@@ -26,8 +26,8 @@ without bending or stretching it. Wherever it lands, we call it a parabola.
 
 Putting a stencil down somewhere else is an isometry: a move of the plane that keeps every distance
 (:ref{#isometries/isometry}). By :ref{#isometries/classification}, every isometry is built from
-slides, turns and flips, and [Sliding and stretching graphs](./sliding-and-stretching.mdx) shows how
-each of those changes the equation of a graph.
+slides, turns and flips. [Moving graphs](../functions/moving-graphs.mdx) and
+[Turning graphs](./turning-graphs.mdx) show how each of those changes the equation of a graph.
 
 :::definition[Parabola]{#parabola-definition}
 
@@ -38,16 +38,17 @@ $$y$$-axis is its **axis**.
 :::
 
 Here is one with numbers. Slide the graph of $$y = x^2$$ by $$(3, 1)$$, that is, $$3$$ to the right
-and $$1$$ up. By :ref{#slide-graph}, we replace $$x$$ by $$x - 3$$ and $$y$$ by $$y - 1$$, so the
-new curve is the graph of $$y - 1 = (x - 3)^2$$, or $$y = (x - 3)^2 + 1$$. Its vertex is where $$O$$
-lands, $$(3, 1)$$, and its axis is where the $$y$$-axis lands, the vertical line $$x = 3$$. As a
-check, the point $$(1, 1)$$ on $$y = x^2$$ slides to $$(4, 2)$$, and $$(4 - 3)^2 + 1 = 2$$.
+and $$1$$ up. By :ref{#functions/slide-graph}, we replace $$x$$ by $$x - 3$$ and $$y$$ by $$y - 1$$,
+so the new curve is the graph of $$y - 1 = (x - 3)^2$$, or $$y = (x - 3)^2 + 1$$. Its vertex is
+where $$O$$ lands, $$(3, 1)$$, and its axis is where the $$y$$-axis lands, the vertical line
+$$x = 3$$. As a check, the point $$(1, 1)$$ on $$y = x^2$$ slides to $$(4, 2)$$, and
+$$(4 - 3)^2 + 1 = 2$$.
 
 The same parabola can come from more than one move. The flip in the $$y$$-axis sends the graph of
-$$y = ax^2$$ onto itself (:ref{#flip-graph} turns $$y = ax^2$$ into $$y = a(-x)^2$$, the same
-equation), so flipping first and then moving gives the same curve as moving alone. Every such choice
-gives the same vertex and the same axis. We take that from the picture for now, and prove it in
-[One vertex and one axis](#one-vertex-and-one-axis) once we have tangents.
+$$y = ax^2$$ onto itself (:ref{#functions/flip-graph} turns $$y = ax^2$$ into $$y = a(-x)^2$$, the
+same equation), so flipping first and then moving gives the same curve as moving alone. Every such
+choice gives the same vertex and the same axis. We take that from the picture for now, and prove it
+in [One vertex and one axis](#one-vertex-and-one-axis) once we have tangents.
 
 ## Every quadratic graph is a parabola
 
@@ -67,8 +68,8 @@ Take $$y = 3x^2 + 12x + 7$$. Taking out $$3$$ and completing the square
 \end{aligned}
 ```
 
-Now slide the graph of $$y = 3x^2$$ by $$(-2, -5)$$. By :ref{#slide-graph}, replace $$x$$ by
-$$x + 2$$ and $$y$$ by $$y + 5$$: the new curve is the graph of $$y + 5 = 3(x + 2)^2$$, which is
+Now slide the graph of $$y = 3x^2$$ by $$(-2, -5)$$. By :ref{#functions/slide-graph}, replace $$x$$
+by $$x + 2$$ and $$y$$ by $$y + 5$$: the new curve is the graph of $$y + 5 = 3(x + 2)^2$$, which is
 $$y = 3(x + 2)^2 - 5$$, the same equation. Notice the signs: the slide is to the left, and the
 equation has $$x + 2$$. Check a point: $$(1, 3)$$ on $$y = 3x^2$$ slides to $$(-1, -2)$$, and
 $$3 \cdot 1 - 12 + 7 = -2$$.
@@ -90,9 +91,9 @@ it is a parabola, with vertex $$(h, k)$$ and axis the vertical line $$x = h$$.
 
 :::proof{source="https://en.wikipedia.org/wiki/Quadratic_function#Graph_of_the_univariate_function"}
 
-The graph of $$y = ax^2$$ is the graph of the equation $$y - ax^2 = 0$$. By :ref{#slide-graph}, the
-slide by $$(h, k)$$ sends it onto the graph of the equation we get by putting $$x - h$$ for $$x$$
-and $$y - k$$ for $$y$$:
+The graph of $$y = ax^2$$ is the graph of the equation $$y - ax^2 = 0$$. By
+:ref{#functions/slide-graph}, the slide by $$(h, k)$$ sends it onto the graph of the equation we get
+by putting $$x - h$$ for $$x$$ and $$y - k$$ for $$y$$:
 
 ```math
 \begin{aligned}
@@ -190,9 +191,9 @@ curve back.
 :::proof{source="https://en.wikipedia.org/wiki/Parabola#Similarity_to_the_unit_parabola"}
 
 **Part 1.** The zoom by $$\frac{1}{a}$$ about $$O$$ is the stretch along the axes $$D_{1/a,\,1/a}$$
-(:ref{#axis-stretch-two}). By :ref{#stretch-graph}, it sends the graph of $$y - x^2 = 0$$ onto the
-graph of the equation we get by putting $$ax$$ for $$x$$ and $$ay$$ for $$y$$, since dividing by
-$$\frac{1}{a}$$ is multiplying by $$a$$:
+(:ref{#functions/axis-stretch-two}). By :ref{#functions/stretch-graph}, it sends the graph of
+$$y - x^2 = 0$$ onto the graph of the equation we get by putting $$ax$$ for $$x$$ and $$ay$$ for
+$$y$$, since dividing by $$\frac{1}{a}$$ is multiplying by $$a$$:
 
 ```math
 \begin{aligned}
@@ -208,9 +209,10 @@ is congruent to a zoom of that graph (:ref{#isometries/congruent}).
 
 If $$a < 0$$, then $$-a > 0$$, and part 1 gives the graph of $$y = -ax^2$$ as a zoom of the graph of
 $$y = x^2$$. The flip $$R_1$$ in the $$x$$-axis sends that onto the graph of $$-y = -ax^2$$
-(:ref{#flip-graph}), which is $$C$$. So $$F(C)$$ is the image of a zoom of the graph of $$y = x^2$$
-under the isometry $$F \circ R_1$$ (:ref{#adding-and-scaling-points/formula-isometries}). Either
-way, the parabola is similar to the graph of $$y = x^2$$.
+(:ref{#functions/flip-graph}), which is $$C$$. So $$F(C)$$ is the image of a zoom of the graph of
+$$y = x^2$$ under the isometry $$F \circ R_1$$
+(:ref{#adding-and-scaling-points/formula-isometries}). Either way, the parabola is similar to the
+graph of $$y = x^2$$.
 
 :::
 
@@ -231,7 +233,7 @@ like that is no longer the graph of a quadratic in $$x$$, since a vertical line 
 Instead, its equation has $$x$$ as a quadratic in $$y$$.
 
 The move that lays a parabola on its side is the flip $$S$$ in the line $$y = x$$. By
-:ref{#flip-graph}, it swaps the letters $$x$$ and $$y$$ in the equation. So the graph of
+:ref{#functions/flip-graph}, it swaps the letters $$x$$ and $$y$$ in the equation. So the graph of
 $$x = ay^2 + by + c$$ is the flip of the graph of $$y = ax^2 + bx + c$$, which is a parabola by
 :ref{#quadratic-parabola}. The flip of a parabola is again a parabola, since an isometry followed by
 an isometry is an isometry (:ref{#isometries/composite-isometry}).
@@ -358,8 +360,8 @@ with slope $$2ap$$.
 
 A tangent is not vertical, so it has a slope $$m$$ (:ref{#linear-equations/slope}). It passes
 through $$(p, ap^2)$$, so it is the line $$y - ap^2 = m(x - p)$$, the slide of $$y = mx$$ by
-$$(p, ap^2)$$ (:ref{#slide-graph}). A point $$(x, y)$$ is on both this line and the parabola exactly
-when $$y = ax^2$$ and
+$$(p, ap^2)$$ (:ref{#functions/slide-graph}). A point $$(x, y)$$ is on both this line and the
+parabola exactly when $$y = ax^2$$ and
 
 ```math
 \begin{aligned}
@@ -542,9 +544,9 @@ does it cross the $$y$$-axis?
 Completing the square,
 $$-y^2 + 2y + 3 = -(y^2 - 2y) + 3 = -\big((y - 1)^2 - 1\big) + 3 = -(y - 1)^2 + 4$$. This is the
 flip in $$y = x$$ of the graph of $$y = -(x - 1)^2 + 4$$, which has vertex $$(1, 4)$$ and axis
-$$x = 1$$ (:ref{#quadratic-parabola}). The flip swaps the coordinates (:ref{#flip-graph}), so our
-parabola has vertex $$(4, 1)$$ and axis $$y = 1$$. The term $$-(y - 1)^2$$ is never positive, so
-$$x \le 4$$ at every point, and it opens to the left.
+$$x = 1$$ (:ref{#quadratic-parabola}). The flip swaps the coordinates (:ref{#functions/flip-graph}),
+so our parabola has vertex $$(4, 1)$$ and axis $$y = 1$$. The term $$-(y - 1)^2$$ is never positive,
+so $$x \le 4$$ at every point, and it opens to the left.
 
 It crosses the $$y$$-axis where $$x = 0$$: $$-y^2 + 2y + 3 = 0$$, that is
 $$y^2 - 2y - 3 = (y - 3)(y + 1) = 0$$. So it crosses at $$(0, 3)$$ and $$(0, -1)$$, which are $$2$$
@@ -589,8 +591,8 @@ The slide sends lines to lines (:ref{#segments-rays-and-lines/moves-keep-lines})
 lines to vertical lines and slanted lines to slanted lines, since it moves every point the same
 amount across. It moves different points to different points, so a line meeting $$y = x^2$$ exactly
 once lands on a line meeting the slid parabola exactly once. So it sends the tangent $$y = 2x - 1$$
-at $$(1, 1)$$ (:ref{#parabola-tangent}) to the tangent at $$(3, 4)$$. By :ref{#slide-graph}, that
-tangent is
+at $$(1, 1)$$ (:ref{#parabola-tangent}) to the tangent at $$(3, 4)$$. By
+:ref{#functions/slide-graph}, that tangent is
 
 ```math
 y - 3 = 2(x - 2) - 1, \quad\text{that is,}\quad y = 2x - 2

@@ -3,7 +3,7 @@ import { Figure } from "../figure";
 import { BLUE, ORANGE, PURPLE, Svg, Words } from "../illustrations";
 
 /**
- * Pictures for the guide Sliding and stretching graphs. Each one draws a starting curve faint and
+ * Pictures for the guides Moving graphs and Turning graphs. Each one draws a starting curve faint and
  * dashed and its moved copy bold, on squared axes with the same scale across and up, and marks a
  * point or two with the place it moves to: the parabola y = x² slid 3 to the right, the unit circle
  * stretched into an ellipse in two steps, the parabola flipped in the line y = x, and the parabola

@@ -3,9 +3,10 @@ import { BLUE, ORANGE, PURPLE, Svg, Words } from "../illustrations";
 import { Arrow, GREEN, MUTED, Plot, Spot, graph, type Pt } from "./plot";
 
 /**
- * Pictures for the guide Moving and mirroring graphs: a mountain reflected in a lake, the V of
- * y = |x| slid by (2, 1), the graph of √x stretched two ways, an even and an odd graph side by side,
- * and two functions mirrored onto their inverses in the line y = x. Every grid is square.
+ * Pictures for the guides Moving graphs and Symmetric graphs and inverses: a mountain reflected in
+ * a lake, the V of y = |x| slid by (2, 1), the graph of √x stretched two ways, an even and an odd
+ * graph side by side, and two functions mirrored onto their inverses in the line y = x. Every grid
+ * is square.
  */
 
 const SKY = "#bae6fd";

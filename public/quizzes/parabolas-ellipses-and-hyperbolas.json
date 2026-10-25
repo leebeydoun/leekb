@@ -3,65 +3,9 @@
   "description": "Questions on moving graphs, parabolas and their focus, ellipses, hyperbolas, cones and the general equation.",
   "questions": [
     {
-      "id": "slide-direction",
-      "stars": 1,
-      "topic": "Sliding and stretching graphs",
-      "question": "How does the graph of $$y = (x - 3)^2$$ sit compared with the graph of $$y = x^2$$?",
-      "options": [
-        "Slid $$3$$ to the left",
-        "Slid $$3$$ to the right",
-        "Slid $$3$$ up",
-        "Stretched by $$3$$"
-      ],
-      "answer": 1,
-      "explanation": "Replacing $$x$$ by $$x - 3$$ slides the graph by $$(3, 0)$$ (:ref{#slide-graph}). The new curve at $$x$$ does what the old one did at $$x - 3$$, three steps earlier."
-    },
-    {
-      "id": "slide-circle",
-      "stars": 1,
-      "topic": "Sliding and stretching graphs",
-      "question": "What is the equation of the circle $$x^2 + y^2 = 4$$ slid by $$(3, -1)$$?",
-      "options": [
-        "$$(x - 3)^2 + (y + 1)^2 = 4$$",
-        "$$(x + 3)^2 + (y - 1)^2 = 4$$",
-        "$$(x - 3)^2 + (y - 1)^2 = 4$$",
-        "$$x^2 + y^2 = 4 + 3 - 1$$"
-      ],
-      "answer": 0,
-      "explanation": "Replace $$x$$ by $$x - 3$$ and $$y$$ by $$y - (-1) = y + 1$$ (:ref{#slide-graph})."
-    },
-    {
-      "id": "stretch",
-      "stars": 2,
-      "topic": "Sliding and stretching graphs",
-      "question": "The stretch $$D_{3,2}(x, y) = (3x, 2y)$$ sends the unit circle onto which graph?",
-      "options": [
-        "$$9x^2 + 4y^2 = 1$$",
-        "$$3x^2 + 2y^2 = 1$$",
-        "$$\\frac{x^2}{3} + \\frac{y^2}{2} = 1$$",
-        "$$\\frac{x^2}{9} + \\frac{y^2}{4} = 1$$"
-      ],
-      "answer": 3,
-      "explanation": "Replace $$x$$ by $$\\frac{x}{3}$$ and $$y$$ by $$\\frac{y}{2}$$ (:ref{#stretch-graph}): $$\\left(\\frac{x}{3}\\right)^2 + \\left(\\frac{y}{2}\\right)^2 = 1$$."
-    },
-    {
-      "id": "flip-swap",
-      "stars": 2,
-      "topic": "Sliding and stretching graphs",
-      "question": "Swapping $$x$$ and $$y$$ in an equation does what to its graph?",
-      "options": [
-        "Turns it a quarter turn",
-        "Flips it in the $$x$$-axis",
-        "Flips it in the line $$y = x$$",
-        "Nothing"
-      ],
-      "answer": 2,
-      "explanation": "The flip in $$y = x$$ sends $$(x, y)$$ to $$(y, x)$$ (:ref{#flip-graph}). So $$x = y^2$$ is $$y = x^2$$ flipped, opening to the right."
-    },
-    {
       "id": "turn",
       "stars": 3,
-      "topic": "Sliding and stretching graphs",
+      "topic": "Turning graphs",
       "question": "To turn a graph by $$\\varphi$$ about $$O$$, what do you put into its equation?",
       "options": [
         "The point turned on by $$\\varphi$$",
@@ -71,6 +15,34 @@
       ],
       "answer": 1,
       "explanation": "A point is on the turned graph exactly when turning it back by $$\\varphi$$ lands on the old graph (:ref{#turn-graph}). The same backwards rule is why $$x - 3$$ slides right."
+    },
+    {
+      "id": "half-turn",
+      "stars": 2,
+      "topic": "Turning graphs",
+      "question": "What does the half turn about $$O$$ do to the parabola $$y = x^2$$?",
+      "options": [
+        "It gives $$x = -y^2$$",
+        "It gives $$y = x^2$$ again",
+        "It gives $$x = y^2$$",
+        "It gives $$y = -x^2$$"
+      ],
+      "answer": 3,
+      "explanation": "For $$\\varphi = \\pi$$ the turned-back point is $$(-x, -y)$$ (:ref{#turn-graph}), so $$-y = (-x)^2 = x^2$$, which is $$y = -x^2$$: the cup upside down."
+    },
+    {
+      "id": "quarter-turn-circle",
+      "stars": 2,
+      "topic": "Turning graphs",
+      "question": "Where is the centre of the circle $$(x - 2)^2 + y^2 = 1$$ after a quarter turn anticlockwise about $$O$$?",
+      "options": [
+        "$$(0, 2)$$",
+        "$$(0, -2)$$",
+        "$$(-2, 0)$$",
+        "$$(2, 0)$$"
+      ],
+      "answer": 0,
+      "explanation": "For $$\\varphi = \\frac{\\pi}{2}$$ put $$y$$ for $$x$$ and $$-x$$ for $$y$$ (:ref{#turn-graph}): $$(y - 2)^2 + x^2 = 1$$, the circle with centre $$(0, 2)$$. The turn sends the old centre $$(2, 0)$$ there."
     },
     {
       "id": "vertex",

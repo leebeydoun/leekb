@@ -493,6 +493,20 @@
       "explanation": "Together the two inclusions make the list exactly the solution set (:ref{#set-equality}). Steps such as squaring can add candidates, which is why the check matters."
     },
     {
+      "id": "set-union-intersection",
+      "stars": 2,
+      "topic": "Sets",
+      "question": "Let $$A$$ be the set of even integers and $$B$$ the set of multiples of $$3$$. Which integers are in $$A \\cap B$$?",
+      "options": [
+        "The integers that are even and a multiple of $$3$$, such as $$6$$ and $$12$$",
+        "The integers that are even or a multiple of $$3$$, such as $$2$$ and $$3$$",
+        "No integers, since a number can't be in two sets at once",
+        "Only the numbers $$2$$ and $$3$$"
+      ],
+      "answer": 0,
+      "explanation": "The intersection holds the elements in both sets (:ref{#union-intersection}). The integers that are even or a multiple of $$3$$ form the union $$A \\cup B$$, which is bigger."
+    },
+    {
       "id": "no-subscript",
       "stars": 1,
       "topic": "Notation",
@@ -525,7 +539,12 @@
       "stars": 2,
       "topic": "Notation",
       "question": "How many terms does $$\\sum_{i=3}^{8} x_i$$ add up?",
-      "options": ["$$5$$", "$$6$$", "$$8$$", "$$11$$"],
+      "options": [
+        "$$5$$",
+        "$$6$$",
+        "$$8$$",
+        "$$11$$"
+      ],
       "answer": 1,
       "explanation": "The index runs through $$3, 4, 5, 6, 7, 8$$ (:ref{#sum-notation}). From $$m$$ to $$n$$ there are $$n - m + 1$$ terms, not $$n - m$$."
     },

@@ -313,7 +313,7 @@
         "$$\\left(-\\frac{7}{25}, \\frac{24}{25}\\right)$$"
       ],
       "answer": 3,
-      "explanation": "$$|(-7, 24)| = \\sqrt{49 + 576} = 25$$, and dividing by the length gives the unit point (:ref{#direction}). Dividing by $$17 = 24 - 7$$ doesn't give length $$1$$, and the last option points the opposite way."
+      "explanation": "$$|(-7, 24)| = \\sqrt{49 + 576} = 25$$, and dividing by the length gives the unit point (:ref{#direction}). Dividing by $$17 = 24 - 7$$ doesn't give length $$1$$, and $$\\left(\\frac{7}{25}, -\\frac{24}{25}\\right)$$ points the opposite way."
     },
     {
       "id": "unit-length",

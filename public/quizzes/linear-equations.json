@@ -1,6 +1,6 @@
 {
   "title": "Review: Linear equations",
-  "description": "Questions on the ideas in this guide, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
+  "description": "Questions on the ideas in this chapter, from one star (a check of the definitions) to four stars (combining several ideas). They come in a random order each time.",
   "questions": [
     {
       "id": "what-solving-means",
@@ -25,7 +25,7 @@
         "When they have exactly the same solutions",
         "When they have at least one solution in common",
         "When they look the same after expanding brackets",
-        "When one is a multiple of the other"
+        "When they have the same right-hand side"
       ],
       "answer": 0,
       "explanation": "Equivalent equations have exactly the same solutions (:ref{#equivalent}). Sharing one solution isn't enough: $$x^2 = 4$$ and $$x = 2$$ share a solution but aren't equivalent."
@@ -119,7 +119,12 @@
       "stars": 1,
       "topic": "Two equations in two unknowns",
       "question": "How many solutions does a single equation like $$x + y = 5$$ have?",
-      "options": ["None", "Infinitely many", "Exactly two", "Exactly one"],
+      "options": [
+        "None",
+        "Infinitely many",
+        "Exactly two",
+        "Exactly one"
+      ],
       "answer": 1,
       "explanation": "Any $$x$$ can be chosen, and then $$y = 5 - x$$ is forced, so there are infinitely many pairs (:ref{#linear-two})."
     },
@@ -215,7 +220,7 @@
       "options": [
         "Checking is never needed if elimination was used",
         "Because (2) is always the harder equation",
-        "Equation (1) is automatically satisfied by back-substitution, so only (2) can catch a slip",
+        "Back-substitution makes the pair fit equation (1) by construction, so a slip earlier on only shows up in (2)",
         "To find the value of the second unknown"
       ],
       "answer": 2,
@@ -352,7 +357,12 @@
       "stars": 1,
       "topic": "No solution, or infinitely many",
       "question": "What is the determinant of the system $$ax + by = u$$, $$cx + dy = v$$?",
-      "options": ["$$ad - bc$$", "$$ab - cd$$", "$$ac - bd$$", "$$uv - ad$$"],
+      "options": [
+        "$$ad - bc$$",
+        "$$ab - cd$$",
+        "$$ac - bd$$",
+        "$$uv - ad$$"
+      ],
       "answer": 0,
       "explanation": "It is the product down one diagonal of the coefficients minus the product down the other: $$ad - bc$$ (:ref{#determinant})."
     },
@@ -438,7 +448,7 @@
         "It is the determinant"
       ],
       "answer": 2,
-      "explanation": "Choosing $$y = t$$ freely forces $$x = 3 - 2t$$, and different values of $$t$$ give different solutions. This is how infinitely many solutions are written down exactly."
+      "explanation": "Choosing $$y = t$$ freely forces $$x = 3 - 2t$$, and different values of $$t$$ give different solutions. This is how infinitely many solutions are written down exactly. The proof of :ref{#determinant-zero} builds solutions in the same way, by adding multiples of a fixed pair to one solution."
     },
     {
       "id": "direction-proof",
@@ -501,7 +511,12 @@
       "stars": 2,
       "topic": "Equations as lines",
       "question": "Two equations draw the same line. How many solutions does the system have?",
-      "options": ["None", "Infinitely many", "Exactly two", "Exactly one"],
+      "options": [
+        "None",
+        "Infinitely many",
+        "Exactly two",
+        "Exactly one"
+      ],
       "answer": 1,
       "explanation": "Every point on the line lies on both graphs, so every one is a solution (:ref{#graph})."
     },
@@ -510,7 +525,12 @@
       "stars": 2,
       "topic": "Equations as lines",
       "question": "What is the slope of $$3x + 2y = 6$$?",
-      "options": ["$$-\\frac{3}{2}$$", "$$3$$", "$$\\frac{2}{3}$$", "$$6$$"],
+      "options": [
+        "$$-\\frac{3}{2}$$",
+        "$$3$$",
+        "$$\\frac{2}{3}$$",
+        "$$6$$"
+      ],
       "answer": 0,
       "explanation": "Rearranging gives $$y = -\\frac{3}{2}x + 3$$, so the slope is $$-\\frac{a}{b} = -\\frac{3}{2}$$ (:ref{#slope})."
     },
@@ -554,7 +574,7 @@
         "Lines can't be drawn accurately for whole numbers"
       ],
       "answer": 1,
-      "explanation": "A sketch shows roughly where lines meet, but a crossing point like $$(\\frac{31}{38}, -\\frac{8}{19})$$ can only be found exactly by algebra. The picture is for understanding and checking."
+      "explanation": "A sketch shows roughly where lines meet, but a crossing point like $$(\\frac{31}{38}, -\\frac{8}{19})$$ can only be found exactly by algebra (:ref{#elimination}). The picture is for understanding and checking."
     },
     {
       "id": "three-eliminate-same",
@@ -589,7 +609,12 @@
       "stars": 1,
       "topic": "Three equations in three unknowns",
       "question": "How many equations are usually needed to pin down three unknowns?",
-      "options": ["One", "Two", "Three", "Six"],
+      "options": [
+        "One",
+        "Two",
+        "Three",
+        "Six"
+      ],
       "answer": 2,
       "explanation": "One equation leaves two of the unknowns free to choose. Each further equation that says something new pins down one more, so three unknowns usually need three equations (:ref{#linear-three})."
     },

@@ -1,6 +1,7 @@
 ---
 title: Sets
-description: Sets, elements and subsets, and how to prove two sets are equal.
+description:
+  Sets, elements and subsets, how to prove two sets are equal, and unions and intersections.
 ---
 
 Think of the guest list for a party. One person might write it as "everyone in my class" and another
@@ -14,8 +15,8 @@ standard way to check whether two descriptions give the same set.
 ## Sets and elements
 
 Think of a set as a bag of things. All that matters about a bag is what is in it: there is no first
-or last item, and putting the same thing in twice doesn't give two of it. For any object, there is
-one question to ask, with a yes or no answer: is it in the bag?
+or last item, and putting the same thing in twice doesn't give two of it. For any object, the one
+thing to ask is whether it is in the bag, and the answer is yes or no.
 
 :::definition[Sets and elements]{#set}
 
@@ -214,6 +215,30 @@ every candidate is a solution. Only both together show that the list is exactly 
 The check matters because some steps, like squaring both sides, can add candidates that are not
 solutions.
 
+## Union and intersection
+
+Two sets can be put together in two ways: everything in either one, or only what they share. A class
+trip lists the pupils who chose the museum and the pupils who chose the zoo. The pupils on at least
+one list form one set, and the pupils on both lists form another.
+
+:::definition[Union and intersection]{#union-intersection}
+
+Let $$A$$ and $$B$$ be sets. Their **union** $$A \cup B$$ is the set of elements in $$A$$ or in
+$$B$$ (or in both). Their **intersection** $$A \cap B$$ is the set of elements in both $$A$$ and
+$$B$$.
+
+:::
+
+For example, $$\{1, 2, 3\} \cup \{3, 4\} = \{1, 2, 3, 4\}$$ and
+$$\{1, 2, 3\} \cap \{3, 4\} = \{3\}$$. Two sets with no element in common, such as $$\{1, 2\}$$ and
+$$\{5\}$$, have the empty set as their intersection. Unions come up whenever an answer is made of
+separate pieces: the [Solving inequalities](../real-numbers/inequalities.mdx) guide writes the
+numbers less than $$-1$$ or greater than $$2$$ as $$(-\infty, -1) \cup (2, \infty)$$.
+
+The word "or" in the definition includes the elements in both sets, as it does in a statement "$$P$$
+or $$Q$$", which is true when at least one of them is. So $$A \cap B$$ is always a subset of
+$$A \cup B$$.
+
 ## Exercises
 
 :::::accordion[Exercises on sets, with solutions]
@@ -372,6 +397,23 @@ even, so $$n$$ is even: $$n = 2m$$. Now $$4m^2 = 8j$$, so $$m^2 = 2j$$ is even, 
 too: $$m = 2l$$. That makes $$n = 4l$$, a multiple of $$4$$, so $$n \in A$$.
 
 So $$A = B$$, although the two tests look quite different.
+
+:::
+
+::::
+
+::::exercise{#ex-sets-union}
+
+Let $$A = \{n \in \mathbb{Z} : 1 \le n \le 6\}$$ and let $$B$$ be the set of even integers. List the
+elements of $$A \cap B$$, and explain why $$A \cup B$$ can't be written out in full.
+
+:::solution
+
+$$A = \{1, 2, 3, 4, 5, 6\}$$, and its even elements are $$2$$, $$4$$ and $$6$$, so
+$$A \cap B = \{2, 4, 6\}$$ (:ref{#union-intersection}). The union $$A \cup B$$ contains every even
+integer, and there are infinitely many of those, so no finite list holds them all. It can still be
+described: $$A \cup B = \{1, 3, 5\} \cup B$$, the even integers together with $$1$$, $$3$$ and
+$$5$$.
 
 :::
 

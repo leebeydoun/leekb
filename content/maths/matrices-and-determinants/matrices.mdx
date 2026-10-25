@@ -427,10 +427,10 @@ $$ca_{i1}b_{1j} + \cdots + ca_{in}b_{nj}$$, which is $$c$$ times the same entry 
 :::
 
 Part 2 means brackets can be left out of a product of three matrices, and $$ABC$$ has one meaning.
-The rule that's missing is $$AB = BA$$, and it is missing for good reason. Often only one of the two
-products makes sense: the matrix of counts times the matrix of prices is a $$3$$ by $$3$$ times a
-$$3$$ by $$2$$, but the other way round is a $$3$$ by $$2$$ times a $$3$$ by $$3$$, which doesn't
-fit. Even for square matrices of the same size, the two orders usually differ:
+The rule that's missing is $$AB = BA$$, and it is missing for good reason. Sometimes only one of the
+two products makes sense: the matrix of counts times the matrix of prices is a $$3$$ by $$3$$ times
+a $$3$$ by $$2$$, but the other way round is a $$3$$ by $$2$$ times a $$3$$ by $$3$$, which doesn't
+fit. Even for square matrices of the same size, the two orders can differ:
 
 ```math
 \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix} = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}, \qquad \begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ 1 & 2 \end{pmatrix}
@@ -726,8 +726,8 @@ $$(AB)^{\mathsf T}$$ has rows $$(6, 12)$$ and $$(0, 6)$$. And
 B^{\mathsf T}A^{\mathsf T} = \begin{pmatrix} 1 & 4 \\ -1 & 2 \end{pmatrix}\begin{pmatrix} 2 & 0 \\ 1 & 3 \end{pmatrix} = \begin{pmatrix} 2 + 4 & 0 + 12 \\ -2 + 2 & 0 + 6 \end{pmatrix} = \begin{pmatrix} 6 & 12 \\ 0 & 6 \end{pmatrix}
 ```
 
-The other order often doesn't even make sense: $$A^{\mathsf T}$$ is $$n$$ by $$m$$ and
-$$B^{\mathsf T}$$ is $$p$$ by $$n$$, so $$A^{\mathsf T}B^{\mathsf T}$$ needs $$m = p$$.
+The other order may not even make sense: $$A^{\mathsf T}$$ is $$n$$ by $$m$$ and $$B^{\mathsf T}$$
+is $$p$$ by $$n$$, so $$A^{\mathsf T}B^{\mathsf T}$$ needs $$m = p$$.
 
 :::
 

@@ -336,12 +336,15 @@ Both are statements about one point lying on a segment, which the isometry keeps
 (:ref{#isometry-segments}), so the ray $$PQ$$ lands on the ray $$P'Q'$$. In the same way the ray
 $$PM$$ lands on the ray $$P'M'$$.
 
-**The region.** Take the angle up to a straight angle, as in :ref{#distance-and-angles/angle-name}.
-The region inside it is filled by the segments that join a point of one ray to a point of the other,
-as the picture of an angle shows; this description is taken from the picture. Each such segment
-$$XY$$ lands on the segment $$X'Y'$$, which joins a point of the ray $$P'Q'$$ to a point of the ray
-$$P'M'$$ (:ref{#isometry-segments}). So the angle $$A$$ lands inside the angle $$A'$$ at $$P'$$
-between those rays.
+**The region.** If $$A$$ is a straight angle, then $$P$$ lies between $$Q$$ and $$M$$, so $$P'$$
+lies between $$Q'$$ and $$M'$$ (:ref{#isometry-segments}). So the angle at $$P'$$ is a straight
+angle too, of $$180^\circ$$ (:ref{#distance-and-angles/straight-angle}). Otherwise take the angle
+smaller than a straight angle, as in :ref{#distance-and-angles/angle-name}, and leave the reflex
+angle to the end. The region inside it is filled by the segments that join a point of one ray to a
+point of the other, as the picture of an angle shows; this description is taken from the picture.
+Each such segment $$XY$$ lands on the segment $$X'Y'$$, which joins a point of the ray $$P'Q'$$ to a
+point of the ray $$P'M'$$ (:ref{#isometry-segments}). So the angle $$A$$ lands inside the angle
+$$A'$$ at $$P'$$ between those rays.
 
 **The disc.** Let $$D$$ be the disc with centre $$P$$ and radius $$1$$. A point within $$1$$ of
 $$P$$ lands within $$1$$ of $$P'$$, so $$F(D)$$ lies inside the disc $$D'$$ with centre $$P'$$ and
@@ -371,14 +374,9 @@ $$a^\circ$$. But it sends $$P$$ to the other side of the mirror (:ref{#reflectio
 $$OP'$$ is reached by turning $$a^\circ$$ clockwise instead. The size is the same and the direction
 is reversed, the way a right hand looks like a left hand in a mirror.
 
-This settles a fact the [Reflections](./reflections.mdx) guide pointed ahead to: light bouncing off
-a mirror, or a ball bouncing off a cushion, leaves at the same angle it arrived at. Take the
-shortest route from $$P$$ to $$X$$ on the mirror and on to $$Q$$ (:ref{#shortest-route}), where
-$$X$$ lies on the straight line from $$P'$$ to $$Q$$. The flip fixes $$X$$ and the mirror, and sends
-$$P$$ to $$P'$$, so the angle between $$XP$$ and the mirror equals the angle between $$XP'$$ and the
-mirror. Since $$P'$$, $$X$$ and $$Q$$ lie on one line, that angle is opposite the angle between
-$$XQ$$ and the mirror, and opposite angles are equal (:ref{#distance-and-angles/opposite-angles}).
-So the path arrives and leaves at the same angle.
+This completes the argument in the [Reflections](./reflections.mdx) guide that light leaves a mirror
+at the same angle it arrived at. That argument needed the flip to keep the angle between the
+incoming path and the mirror, and :ref{#isometry-angles} now proves it.
 
 ## How few pins hold the sheet still
 

@@ -588,7 +588,7 @@
         "$$\\left(\\frac{8}{17}, \\frac{15}{17}\\right)$$"
       ],
       "answer": 3,
-      "explanation": "A rational point has both coordinates rational (:ref{#rational-point}), and the unit circle needs $$x^2 + y^2 = 1$$. $$\\frac{64 + 225}{289} = 1$$ for the third point. The first and last are rational but not on the circle, and the second is on the circle but not rational."
+      "explanation": "A rational point has both coordinates rational (:ref{#rational-point}), and the unit circle needs $$x^2 + y^2 = 1$$. $$\\frac{64 + 225}{289} = 1$$ for $$\\left(\\frac{8}{17}, \\frac{15}{17}\\right)$$. The points $$\\left(\\frac{1}{2}, \\frac{1}{2}\\right)$$ and $$\\left(\\frac{1}{3}, \\frac{2}{3}\\right)$$ are rational but not on the circle, and $$\\left(\\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2}\\right)$$ is on the circle but not rational."
     },
     {
       "id": "irrational-slope",

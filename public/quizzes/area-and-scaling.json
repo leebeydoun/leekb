@@ -9,7 +9,7 @@
       "question": "A zoom about $$O$$ has scale factor $$r = 3$$. Where does it send a point $$P$$ that is $$2$$ from $$O$$?",
       "options": [
         "To the point on the ray $$OP$$ at distance $$6$$ from $$O$$",
-        "To the point $$3$$ further along the ray, at distance $$5$$ from $$P$$",
+        "To the point on the ray $$OP$$ at distance $$3$$ from $$O$$",
         "To the point on the ray $$OP$$ at distance $$5$$ from $$O$$",
         "To a point at distance $$6$$ from $$O$$, in any direction"
       ],
@@ -484,7 +484,7 @@
         "Its area is $$3r^2$$, which is more than the disc's"
       ],
       "answer": 0,
-      "explanation": "Each slice of the hexagon is congruent to an equilateral triangle with sides $$r$$. The polygon's perimeter is shorter than the circle, so $$6r < 2\\pi r$$, giving $$\\pi > 3$$."
+      "explanation": "Each slice of the hexagon is congruent to an equilateral triangle with sides $$r$$. The polygon's perimeter is shorter than the circle, so $$6r < 2\\pi r$$, giving $$\\pi > 3$$ (:ref{#circumference-formula})."
     },
     {
       "id": "rope-earth",

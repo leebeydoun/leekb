@@ -50,29 +50,24 @@ The same holds, word for word, for every complex number $$c \ne 1$$.
 
 :::proof{source="https://proofwiki.org/wiki/Sum_of_Geometric_Sequence"}
 
-Call the sum $$S$$. Multiplying it by $$c$$ moves every term along one place, so
+This is :ref{#numbers/sum-of-powers} with $$x = c$$ and $$n + 1$$ in place of $$n$$:
 
 ```math
-\begin{aligned}
-cS &= c + c^2 + \cdots + c^n + c^{n+1} &&\qquad \text{multiply each term by } c \\
-S - cS &= 1 - c^{n+1} &&\qquad \text{the powers } c \text{ to } c^n \text{ cancel} \\
-(1 - c)S &= 1 - c^{n+1} &&\qquad \text{take out the common factor } S \\
-S &= \frac{1 - c^{n+1}}{1 - c} &&\qquad \text{divide by } 1 - c \text{, which is not } 0
-\end{aligned}
+1 + c + \cdots + c^n = \frac{c^{n+1} - 1}{c - 1} = \frac{1 - c^{n+1}}{1 - c}
 ```
 
-The cancelling in the second line is a telescoping sum. With $$a_k = -c^k$$, the difference
-$$a_{k+1} - a_k$$ is $$c^k - c^{k+1}$$, and adding these up for $$k = 0$$ to $$n$$ leaves
-$$a_{n+1} - a_0 = 1 - c^{n+1}$$, by :ref{#telescoping}.
+where the second step multiplies the top and the bottom by $$-1$$. The proof there was written for
+fractions, but it uses only the rules of arithmetic. Real numbers obey the same rules
+(:ref{#real-numbers/real-rules}), and so do complex numbers
+(:ref{#complex-numbers/complex-arithmetic}), so it works for them too.
 
-Every step uses only the rules of arithmetic. Complex numbers obey the same rules, by
-:ref{#complex-numbers/complex-arithmetic}, so the proof works for them too.
+The trick with $$3$$ above is the same proof done with numbers. It is also a telescoping sum
+(:ref{#telescoping}): the differences $$c^k - c^{k+1}$$ for $$k = 0$$ to $$n$$ add up to
+$$1 - c^{n+1}$$, which is $$(1 - c)$$ times the sum.
 
 :::
 
-The Numbers chapter proved the same formula for fractions as :ref{#numbers/sum-of-powers}, written
-there as $$\frac{x^n - 1}{x - 1}$$. Multiplying both sides by a number $$a$$ handles a sum that
-starts at $$a$$ instead of $$1$$:
+Multiplying both sides by a number $$a$$ handles a sum that starts at $$a$$ instead of $$1$$:
 
 ```math
 a + ac + ac^2 + \cdots + ac^n = \frac{a(1 - c^{n+1})}{1 - c}
@@ -387,32 +382,6 @@ So the shorthand $$\frac{1}{1 - c}$$ belongs to $$|c| < 1$$ alone. Putting $$c =
 $$1 + 2 + 4 + 8 + \cdots = -1$$, a negative answer for a sum of positive numbers, and that nonsense
 is a sign that the sums never settled in the first place. An exercise shows that the sums fail to
 settle for every real $$c$$ with $$|c| \ge 1$$.
-
-## Roots of unity add up to zero
-
-The finite formula works for complex numbers too, and it gives a neat fact about the roots of unity,
-the numbers $$w$$ with $$w^n = 1$$ (:ref{#complex-numbers/roots-of-unity}). Take $$w = i$$, a fourth
-root of unity. Its powers go round the square $$1, i, -1, -i$$, and they add up to
-$$1 + i - 1 - i = 0$$.
-
-:::example[Roots of unity add up to zero]
-
-Let $$n \ge 2$$ and let $$w = e^{2\pi i/n}$$ (:ref{#complex-numbers/e-i-theta}), so $$w^n = 1$$ and
-$$w \ne 1$$. By :ref{#geometric-sum}, with $$n - 1$$ as the last power,
-
-```math
-1 + w + w^2 + \cdots + w^{n-1} = \frac{1 - w^n}{1 - w} = \frac{1 - 1}{1 - w} = 0
-```
-
-The numbers $$1, w, \ldots, w^{n-1}$$ are the corners of a regular polygon around $$0$$ with a
-corner at $$1$$, so the corners of every such polygon add up to $$0$$. For the triangle,
-$$w = -\frac{1}{2} + \frac{\sqrt{3}}{2}i$$ and $$w^2 = -\frac{1}{2} - \frac{\sqrt{3}}{2}i$$, and
-$$1 + w + w^2 = 0$$ as promised.
-
-This is a second proof of :ref{#complex-numbers/roots-sum-zero}, straight from the formula for a
-finite geometric sum.
-
-:::
 
 ## Exercises
 

@@ -91,7 +91,12 @@
       "stars": 1,
       "topic": "Slides and turns",
       "question": "Which turn about $$O$$ is the same map as $$G_{500}$$?",
-      "options": ["$$G_{50}$$", "$$G_{-140}$$", "$$G_{220}$$", "$$G_{140}$$"],
+      "options": [
+        "$$G_{50}$$",
+        "$$G_{-140}$$",
+        "$$G_{220}$$",
+        "$$G_{140}$$"
+      ],
       "answer": 3,
       "explanation": "$$500 = 360 + 140$$, and a whole turn changes nothing, so $$G_{500} = G_{140}$$ (:ref{#rotation-whole-turns})."
     },
@@ -324,7 +329,12 @@
       "stars": 2,
       "topic": "What an isometry keeps",
       "question": "How many fixed points, not all on one line, force an isometry to be the identity?",
-      "options": ["Two", "Four", "One", "Three"],
+      "options": [
+        "Two",
+        "Four",
+        "One",
+        "Three"
+      ],
       "answer": 3,
       "explanation": "Two fixed points still allow the flip in the line through them. Three fixed points not on one line leave nothing free (:ref{#three-fixed-points}). Each fixed point lies on the perpendicular bisector of $$XX'$$ for any moved point $$X$$, and three points off a line can't all lie on one line."
     },
@@ -417,7 +427,12 @@
       "stars": 1,
       "topic": "Combining moves",
       "question": "Each footprint in a line of footprints is the one before it, flipped across the line of the walk and slid along it. What is this move called?",
-      "options": ["A slide", "A turn", "A glide reflection", "A flip"],
+      "options": [
+        "A slide",
+        "A turn",
+        "A glide reflection",
+        "A flip"
+      ],
       "answer": 2,
       "explanation": "First a flip in $$L$$, then a slide along $$L$$, is a glide reflection (:ref{#glide-reflection}). It has no fixed points, unlike a flip or a turn."
     },
@@ -580,7 +595,12 @@
       "stars": 2,
       "topic": "Every isometry is a slide, turn or flip",
       "question": "An isometry fixes no point and turns shapes over, a left shoe into a right shoe. What kind of isometry is it?",
-      "options": ["A turn", "A flip", "A glide reflection", "A slide"],
+      "options": [
+        "A turn",
+        "A flip",
+        "A glide reflection",
+        "A slide"
+      ],
       "answer": 2,
       "explanation": "Slides and glides fix no point, but only the glide turns the sheet face down (:ref{#four-kinds}). A flip turns shapes over but fixes its whole mirror."
     },
@@ -589,7 +609,12 @@
       "stars": 2,
       "topic": "Every isometry is a slide, turn or flip",
       "question": "An isometry fixes exactly one point. What kind is it?",
-      "options": ["A turn", "A slide", "A glide reflection", "A flip"],
+      "options": [
+        "A turn",
+        "A slide",
+        "A glide reflection",
+        "A flip"
+      ],
       "answer": 0,
       "explanation": "In the table of :ref{#four-kinds}, a turn fixes exactly its centre, a flip fixes a whole line, and slides and glides fix nothing."
     },
@@ -725,13 +750,13 @@
       "topic": "Congruence",
       "question": "Two right triangles have legs of matching lengths. Which result shows they are congruent?",
       "options": [
-        "None: it stays taken as given",
+        "None: congruence needs all three sides to be known",
         "Side, angle, side, with the right angle between the legs",
         "The base angles of an isosceles triangle",
         "Side, side, side, since the legs match"
       ],
       "answer": 1,
-      "explanation": "The right angles are equal and lie between the matching legs, so :ref{#sas} applies (:ref{#right-triangles-congruent}). This proves the fact the Distance and angles chapter had to take as given."
+      "explanation": "The right angles are equal and lie between the matching legs, so :ref{#sas} applies (:ref{#right-triangles-congruent}). So the rule that the Distance and angles chapter took as given is one case of congruence."
     },
     {
       "id": "symmetry-def",
@@ -752,7 +777,12 @@
       "stars": 1,
       "topic": "Symmetry",
       "question": "Which of these letters has a half turn symmetry but no mirror line?",
-      "options": ["N", "F", "H", "A"],
+      "options": [
+        "N",
+        "F",
+        "H",
+        "A"
+      ],
       "answer": 0,
       "explanation": "A has one upright mirror line, H has two mirror lines and a half turn, and F has no symmetry except the identity. N has no mirror line, but a half turn puts it back (:ref{#symmetry})."
     },
@@ -761,7 +791,12 @@
       "stars": 2,
       "topic": "Symmetry",
       "question": "You give a mattress a half turn (end to end, same side up), then a long flip (rolled over sideways). Which single move has the same effect?",
-      "options": ["The half turn", "The short flip", "Stay", "The long flip"],
+      "options": [
+        "The half turn",
+        "The short flip",
+        "Stay",
+        "The long flip"
+      ],
       "answer": 1,
       "explanation": "Follow a tag in one corner: the half turn sends it to the opposite corner, and the long flip moves it across the long middle line, where a short flip alone would have put it. Symmetries combine into symmetries (:ref{#symmetry-combine})."
     },
@@ -770,7 +805,12 @@
       "stars": 3,
       "topic": "Symmetry",
       "question": "Every few months you alternate between a half turn and a long flip. How many of the four positions does the mattress visit?",
-      "options": ["One", "Three", "Two", "All four"],
+      "options": [
+        "One",
+        "Three",
+        "Two",
+        "All four"
+      ],
       "answer": 3,
       "explanation": "Starting from stay, it goes to half turn, then short flip, then long flip, then back to stay. Doing the half turn every time would only use two positions (:ref{#symmetry-combine})."
     },
@@ -779,7 +819,12 @@
       "stars": 2,
       "topic": "Symmetry",
       "question": "How many symmetries does a square have?",
-      "options": ["$$8$$", "$$4$$", "Infinitely many", "$$6$$"],
+      "options": [
+        "$$8$$",
+        "$$4$$",
+        "Infinitely many",
+        "$$6$$"
+      ],
       "answer": 0,
       "explanation": "Four turns, counting the identity, and four flips: two through the middles of opposite sides and two along the diagonals (:ref{#regular-turns})."
     },

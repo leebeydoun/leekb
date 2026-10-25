@@ -28,7 +28,7 @@
         "It sits further to the left"
       ],
       "answer": 2,
-      "explanation": "Every step to the right is one more, so the further right a number sits, the bigger it is. That is why $$-1$$ is bigger than $$-4$$, even though $$-4$$ is further from $$0$$."
+      "explanation": "Every step to the right is one more, so the further right a number sits, the bigger it is. That is why $$-1$$ is bigger than $$-4$$, even though $$-4$$ is further from $$0$$. :ref{#order} makes this precise."
     },
     {
       "id": "minus-sign",
@@ -80,11 +80,11 @@
       "options": [
         "Yes, because subtraction is a kind of addition and addition is commutative",
         "Only when both are positive",
-        "No: $$a - b$$ and $$b - a$$ are opposites, so they are equal only when $$a = b$$",
+        "No: $$a - b$$ and $$b - a$$ are opposites, so they are equal exactly when $$a = b$$",
         "No: they are never equal"
       ],
       "answer": 2,
-      "explanation": "Commutativity lets you swap $$a$$ and $$-b$$ in $$a + (-b)$$, giving $$-b + a$$, not $$b - a$$. In fact $$b - a = -(a - b)$$, and a number equals its opposite only when it is $$0$$, that is when $$a = b$$."
+      "explanation": "Commutativity lets you swap $$a$$ and $$-b$$ in $$a + (-b)$$, giving $$-b + a$$, not $$b - a$$. In fact $$b - a = -(a - b)$$ (:ref{#opposite-sum}), and a number equals its opposite exactly when it is $$0$$, that is when $$a = b$$."
     },
     {
       "id": "double-opposite",
@@ -98,7 +98,7 @@
         "Subtraction is commutative"
       ],
       "answer": 1,
-      "explanation": "If $$x + y = 0$$ then $$y = -x$$, so an opposite is the only way back to zero. Applying this to $$-a + a = 0$$ says that $$a$$ is the opposite of $$-a$$."
+      "explanation": "If $$x + y = 0$$ then $$y = -x$$, so an opposite is the only way back to zero (:ref{#opposite-unique}). Applying this to $$-a + a = 0$$ says that $$a$$ is the opposite of $$-a$$."
     },
     {
       "id": "opposite-of-sum",
@@ -112,7 +112,7 @@
         "It has been checked for enough examples to be sure"
       ],
       "answer": 1,
-      "explanation": "Regrouping gives $$(a - a) + (b - b) = 0 + 0 = 0$$, and an opposite is the only way back to zero. No multiplication is needed, and checking examples never proves a rule for all integers."
+      "explanation": "Regrouping gives $$(a - a) + (b - b) = 0 + 0 = 0$$, and an opposite is the only way back to zero (:ref{#opposite-sum}). No multiplication is needed, and checking examples never proves a rule for all integers."
     },
     {
       "id": "negative-sum",
@@ -126,7 +126,7 @@
         "By walking along the number line for every pair"
       ],
       "answer": 1,
-      "explanation": "Only the fact about **positive** sums is assumed. The negative case follows from it using the opposite of a sum."
+      "explanation": "Only the fact about **positive** sums is assumed. The negative case follows from it using the opposite of a sum (:ref{#negative-sum})."
     },
     {
       "id": "mixed-sum",
@@ -140,7 +140,7 @@
         "It can be positive, negative or $$0$$"
       ],
       "answer": 3,
-      "explanation": "With mixed signs the result can go either way: $$-5 + 11 = 6$$, $$5 + (-11) = -6$$ and $$5 + (-5) = 0$$."
+      "explanation": "With mixed signs the result can go either way: $$-5 + 11 = 6$$, $$5 + (-11) = -6$$ and $$5 + (-5) = 0$$. Only sums with both signs the same have a fixed sign (:ref{#negative-sum})."
     },
     {
       "id": "zero-times",
@@ -154,7 +154,7 @@
         "$$0 \\cdot a = a \\cdot 0$$ by commutativity"
       ],
       "answer": 1,
-      "explanation": "Distributivity together with $$1 \\cdot a = a$$ gives $$0 \\cdot a + a = a$$, and subtracting $$a$$ leaves $$0 \\cdot a = 0$$. The third option needs $$(-a)a = -(a^2)$$, which the chapter proves using $$0 \\cdot a = 0$$, so it goes round in a circle. The fourth only swaps the order."
+      "explanation": "Distributivity together with $$1 \\cdot a = a$$ gives $$0 \\cdot a + a = a$$, and subtracting $$a$$ leaves $$0 \\cdot a = 0$$ (:ref{#zero-times}). The third option needs $$(-a)a = -(a^2)$$, which the chapter proves using $$0 \\cdot a = 0$$, so it goes round in a circle. The fourth only swaps the order."
     },
     {
       "id": "minus-one",
@@ -182,7 +182,7 @@
         "Because both sides have the same size"
       ],
       "answer": 2,
-      "explanation": "First $$-(xy) = (-x)y = x(-y)$$ is proved from distributivity. Moving each minus sign out in turn leaves two minus signs in front, and $$-(-c) = c$$."
+      "explanation": "First $$-(xy) = (-x)y = x(-y)$$ is proved from distributivity (:ref{#minus-in-product}). Moving each minus sign out in turn leaves two minus signs in front, and $$-(-c) = c$$ (:ref{#two-minus})."
     },
     {
       "id": "count-minus-signs",
@@ -196,7 +196,7 @@
         "It could be either"
       ],
       "answer": 1,
-      "explanation": "Each pair of minus signs cancels, so an odd number of negative factors leaves the product negative."
+      "explanation": "Each pair of minus signs cancels, so an odd number of negative factors leaves the product negative (:ref{#two-minus})."
     },
     {
       "id": "distributivity-forms",
@@ -210,7 +210,7 @@
         "Both must be assumed separately"
       ],
       "answer": 0,
-      "explanation": "$$(b + c)a = a(b + c) = ab + ac = ba + ca$$, using only that the order of factors does not matter."
+      "explanation": "$$(b + c)a = a(b + c) = ab + ac = ba + ca$$, using only that the order of factors does not matter (:ref{#multiplication-rules})."
     },
     {
       "id": "power-definition",
@@ -238,7 +238,7 @@
         "$$(ab)^n = a^n b^n$$"
       ],
       "answer": 2,
-      "explanation": "The rules come from counting copies of $$a$$ in a **product**. A sum of powers does not combine: $$2^2 + 2^1 = 6$$, but $$2^3 = 8$$."
+      "explanation": "The rules come from counting copies of $$a$$ in a **product** (:ref{#power-rules}). A sum of powers does not combine: $$2^2 + 2^1 = 6$$, but $$2^3 = 8$$."
     },
     {
       "id": "negative-base",
@@ -252,7 +252,7 @@
         "Exactly when $$n$$ is even"
       ],
       "answer": 3,
-      "explanation": "The product has $$n$$ negative factors, and an even number of minus signs gives a positive product, for example $$(-2)^4 = 16$$ and $$(-2)^3 = -8$$."
+      "explanation": "The product has $$n$$ negative factors, and an even number of minus signs gives a positive product (:ref{#two-minus}), for example $$(-2)^4 = 16$$ and $$(-2)^3 = -8$$."
     },
     {
       "id": "square-of-sum",
@@ -266,7 +266,7 @@
         "It is equal, by the power of a product rule"
       ],
       "answer": 1,
-      "explanation": "Multiplying every part of one bracket by every part of the other gives four terms, $$a^2 + ab + ba + b^2$$. As an area, a square of side $$a + b$$ contains **two** rectangles of area $$ab$$. The power of a product rule is about $$(ab)^2$$, not $$(a + b)^2$$."
+      "explanation": "Multiplying every part of one bracket by every part of the other gives four terms, $$a^2 + ab + ba + b^2$$ (:ref{#square-formulas}). As an area, a square of side $$a + b$$ contains **two** rectangles of area $$ab$$. The power of a product rule is about $$(ab)^2$$, not $$(a + b)^2$$."
     },
     {
       "id": "no-sum-of-squares",
@@ -280,7 +280,7 @@
         "$$a^2 + b^2$$"
       ],
       "answer": 3,
-      "explanation": "$$a^2 - b^2 = (a + b)(a - b)$$, and both differences and sums of cubes factor. A sum of squares does not factor this way."
+      "explanation": "$$a^2 - b^2 = (a + b)(a - b)$$ (:ref{#square-formulas}), and both differences and sums of cubes factor (:ref{#cube-formulas}). A sum of squares does not factor this way."
     },
     {
       "id": "sum-of-cubes",
@@ -294,7 +294,7 @@
         "$$a^3 + b^3 = (a + b)^3$$"
       ],
       "answer": 1,
-      "explanation": "The short bracket has the same sign as the left side, and the middle term of the long bracket has the opposite sign. Expanding $$(a + b)(a^2 - ab + b^2)$$ makes the middle terms cancel, leaving $$a^3 + b^3$$."
+      "explanation": "The short bracket has the same sign as the left side, and the middle term of the long bracket has the opposite sign. Expanding $$(a + b)(a^2 - ab + b^2)$$ makes the middle terms cancel, leaving $$a^3 + b^3$$ (:ref{#cube-formulas})."
     },
     {
       "id": "cube-of-difference",
@@ -308,7 +308,7 @@
         "It cannot; it has to be expanded from scratch"
       ],
       "answer": 2,
-      "explanation": "$$a - b = a + (-b)$$, and $$(-b)^2 = b^2$$ while $$(-b)^3 = -b^3$$. So $$a^3 + 3a^2 b + 3ab^2 + b^3$$ becomes $$a^3 - 3a^2 b + 3ab^2 - b^3$$."
+      "explanation": "$$a - b = a + (-b)$$, and $$(-b)^2 = b^2$$ while $$(-b)^3 = -b^3$$. So $$a^3 + 3a^2 b + 3ab^2 + b^3$$ becomes $$a^3 - 3a^2 b + 3ab^2 - b^3$$ (:ref{#cube-formulas})."
     },
     {
       "id": "odd-definition",
@@ -350,7 +350,7 @@
         "Because $$(2n + 1) + (2k + 1) = 2(n + k) + 1$$"
       ],
       "answer": 1,
-      "explanation": "The two leftover $$1$$s pair up with each other. Examples alone do not prove a rule for every pair, and the last option has an arithmetic slip."
+      "explanation": "The two leftover $$1$$s pair up with each other (:ref{#parity-sums}). Examples alone do not prove a rule for every pair, and the last option has an arithmetic slip."
     },
     {
       "id": "odd-product",
@@ -364,7 +364,7 @@
         "When the number of factors is odd"
       ],
       "answer": 2,
-      "explanation": "An even number times any integer is even, so a single even factor makes the whole product even."
+      "explanation": "An even number times any integer is even, so a single even factor makes the whole product even (:ref{#parity-products})."
     },
     {
       "id": "even-square-converse",
@@ -406,7 +406,7 @@
         "Only $$1$$ divides $$0$$"
       ],
       "answer": 1,
-      "explanation": "$$0 = d \\cdot 0$$ for every $$d$$, so $$0$$ is a multiple of everything. But $$0 \\mid n$$ would need $$n = 0 \\cdot k = 0$$, so $$0$$ divides only $$0$$."
+      "explanation": "$$0 = d \\cdot 0$$ for every $$d$$, so $$0$$ is a multiple of everything (:ref{#divides}). But $$0 \\mid n$$ would need $$n = 0 \\cdot k = 0$$, so $$0$$ divides only $$0$$."
     },
     {
       "id": "multiples-lemma",
@@ -441,9 +441,14 @@
       "stars": 1,
       "topic": "Congruence",
       "question": "Which statement says the same as $$n \\equiv 0 \\pmod{d}$$?",
-      "options": ["$$n = 0$$", "$$n = d$$", "$$d \\mid n$$", "$$n \\mid d$$"],
+      "options": [
+        "$$n = 0$$",
+        "$$n = d$$",
+        "$$d \\mid n$$",
+        "$$n \\mid d$$"
+      ],
       "answer": 2,
-      "explanation": "$$n \\equiv 0$$ means $$d \\mid n - 0$$, which is $$d \\mid n$$. So “divisible by $$d$$” and “congruent to $$0$$ modulo $$d$$” are the same thing."
+      "explanation": "$$n \\equiv 0$$ means $$d \\mid n - 0$$, which is $$d \\mid n$$ (:ref{#congruence}). So “divisible by $$d$$” and “congruent to $$0$$ modulo $$d$$” are the same thing."
     },
     {
       "id": "transitivity-proof",
@@ -520,7 +525,12 @@
       "stars": 1,
       "topic": "Rational numbers",
       "question": "Which of these is **not** a rational number?",
-      "options": ["$$\\frac{-5}{2}$$", "$$7$$", "$$0.03$$", "$$\\frac{5}{0}$$"],
+      "options": [
+        "$$\\frac{-5}{2}$$",
+        "$$7$$",
+        "$$0.03$$",
+        "$$\\frac{5}{0}$$"
+      ],
       "answer": 3,
       "explanation": "A rational number is $$\\frac{m}{n}$$ with $$m$$, $$n$$ integers and $$n \\neq 0$$ (:ref{#rational}). $$7 = \\frac{7}{1}$$ and $$0.03 = \\frac{3}{100}$$ are rational, but $$\\frac{5}{0}$$ has no meaning: no number multiplied by $$0$$ gives $$5$$."
     },
@@ -606,7 +616,7 @@
         "The numerators must be positive"
       ],
       "answer": 2,
-      "explanation": "$$\\frac{1}{2}$$ and $$\\frac{2}{4}$$ are the same number, so adding either one to $$\\frac{1}{3}$$ must give the same result: $$\\frac{5}{6}$$ and $$\\frac{10}{12}$$ are indeed equal. This can be proved in general by cross-multiplying."
+      "explanation": "$$\\frac{1}{2}$$ and $$\\frac{2}{4}$$ are the same number, so adding either one to $$\\frac{1}{3}$$ must give the same result: $$\\frac{5}{6}$$ and $$\\frac{10}{12}$$ are indeed equal. This can be proved in general by cross-multiplying (:ref{#fraction-addition})."
     },
     {
       "id": "rules-carry-over",
@@ -620,7 +630,7 @@
         "They do not all hold for rational numbers"
       ],
       "answer": 1,
-      "explanation": "A proof that only uses certain rules works for any numbers that obey those rules. This is one of the payoffs of proving things from a few basic rules."
+      "explanation": "A proof that only uses certain rules works for any numbers that obey those rules (:ref{#addition-rules}). This is one of the payoffs of proving things from a few basic rules."
     },
     {
       "id": "positive-sum",
@@ -774,7 +784,7 @@
         "Because it was left out of the definition"
       ],
       "answer": 1,
-      "explanation": "An inverse $$b$$ would need $$0 \\cdot b = 1$$, which never happens. That is the reason you can't divide by zero."
+      "explanation": "An inverse $$b$$ would need $$0 \\cdot b = 1$$ (:ref{#inverse}), which never happens. That is the reason you can't divide by zero."
     },
     {
       "id": "inverse-unique",
@@ -865,9 +875,14 @@
       "stars": 1,
       "topic": "Inverses and division",
       "question": "What is assumed about $$x$$ whenever $$\\frac{1}{x - 2}$$ appears?",
-      "options": ["$$x \\neq 2$$", "$$x \\neq 0$$", "$$x > 2$$", "Nothing"],
+      "options": [
+        "$$x \\neq 2$$",
+        "$$x \\neq 0$$",
+        "$$x > 2$$",
+        "Nothing"
+      ],
       "answer": 0,
-      "explanation": "A denominator can never be $$0$$, so letters in denominators only take values that keep every denominator non-zero."
+      "explanation": "A denominator can never be $$0$$ (:ref{#quotient}), so letters in denominators only take values that keep every denominator non-zero."
     },
     {
       "id": "sum-of-powers",
@@ -930,7 +945,12 @@
       "stars": 2,
       "topic": "Divisibility",
       "question": "What is the remainder when $$-17$$ is divided by $$5$$?",
-      "options": ["$$-2$$", "$$2$$", "$$3$$", "$$-3$$"],
+      "options": [
+        "$$-2$$",
+        "$$2$$",
+        "$$3$$",
+        "$$-3$$"
+      ],
       "answer": 2,
       "explanation": "The remainder must satisfy $$0 \\le r < 5$$ (:ref{#division-remainder}), and $$-17 = 5 \\cdot (-4) + 3$$. Writing $$-17 = 5 \\cdot (-3) - 2$$ doesn't count, because $$-2$$ is not between $$0$$ and $$4$$."
     },
@@ -1002,7 +1022,7 @@
         "Replacing $$7$$ by $$-2$$ in $$7 + 5$$"
       ],
       "answer": 2,
-      "explanation": "Numbers being added, multiplied or raised to a power can be swapped for congruent ones, but exponents can't: $$2^5 = 32 \\equiv 2$$, while $$2^2 = 4 \\equiv 1 \\pmod{3}$$, even though $$5 \\equiv 2 \\pmod{3}$$."
+      "explanation": "Numbers being added, multiplied or raised to a power can be swapped for congruent ones (:ref{#congruence-arithmetic}, :ref{#congruence-powers}), but exponents can't: $$2^5 = 32 \\equiv 2$$, while $$2^2 = 4 \\equiv 1 \\pmod{3}$$, even though $$5 \\equiv 2 \\pmod{3}$$."
     },
     {
       "id": "compare-fractions",
@@ -1044,14 +1064,19 @@
         "None of these"
       ],
       "answer": 1,
-      "explanation": "A repeating decimal can be turned back into a fraction: $$0.2727\\ldots = \\frac{27}{99} = \\frac{3}{11}$$. The rational numbers are exactly the decimals that stop or repeat."
+      "explanation": "A repeating decimal can be turned back into a fraction: $$0.2727\\ldots = \\frac{27}{99} = \\frac{3}{11}$$, a rational number (:ref{#rational}). The rational numbers are exactly the decimals that stop or repeat."
     },
     {
       "id": "negative-power",
       "stars": 1,
       "topic": "Inverses and division",
       "question": "What is $$2^{-3}$$?",
-      "options": ["$$-8$$", "$$-6$$", "$$\\frac{1}{8}$$", "$$\\frac{1}{6}$$"],
+      "options": [
+        "$$-8$$",
+        "$$-6$$",
+        "$$\\frac{1}{8}$$",
+        "$$\\frac{1}{6}$$"
+      ],
       "answer": 2,
       "explanation": "A negative power means a power of the inverse: $$2^{-3} = \\left(\\frac{1}{2}\\right)^3 = \\frac{1}{8}$$ (:ref{#negative-powers}). A negative exponent doesn't make the answer negative."
     },

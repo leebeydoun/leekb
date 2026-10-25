@@ -53,9 +53,9 @@ smooth shape between the dots is taken from that picture here, not proved.
 
 :::definition[Graph of sine and cosine]{#trig-graphs}
 
-The **graph of sine** is the graph (:ref{#linear-equations/graph}) of the equation $$y = \sin x$$:
-the set of all points $$(x, \sin x)$$, for every real number $$x$$. The **graph of cosine** is the
-graph of $$y = \cos x$$, the set of all points $$(x, \cos x)$$.
+The **graph of sine** is the graph of the function $$x \mapsto \sin x$$ on all real numbers
+(:ref{#functions/function-graph}): the set of all points $$(x, \sin x)$$. The **graph of cosine** is
+the graph of the function $$x \mapsto \cos x$$, the set of all points $$(x, \cos x)$$.
 
 :::
 
@@ -90,14 +90,14 @@ after which it repeats.
 
 :::definition[Period]{#period}
 
-Let $$f$$ be a rule that gives a number $$f(x)$$ for every real number $$x$$, such as
+Let $$f$$ be a function defined at every real number (:ref{#functions/function}), such as
 $$x \mapsto \sin x$$ or $$x \mapsto \sin 2x$$. A number $$p > 0$$ is a **period** of $$f$$ if
 
 ```math
 f(x + p) = f(x) \quad \text{for every real number } x
 ```
 
-A rule with a period is called **periodic**.
+A function with a period is called **periodic**.
 
 :::
 
@@ -106,10 +106,10 @@ every $$x$$. So $$2\pi$$ is a period of sine and of cosine. On the graph, slidin
 right sends each point $$(x, \sin x)$$ to $$(x + 2\pi, \sin x)$$, which is again a point of the
 graph.
 
-A rule with one period has many: if $$2\pi$$ is a period, so are $$4\pi$$ and $$6\pi$$, since two
-full turns bring the point back too. When people say "the period of sine is $$2\pi$$", they mean the
-smallest one. Nothing smaller than $$2\pi$$ works, because sine reaches its top, the height $$1$$,
-once in each full turn.
+A function with one period has many: if $$2\pi$$ is a period, so are $$4\pi$$ and $$6\pi$$, since
+two full turns bring the point back too. When people say "the period of sine is $$2\pi$$", they mean
+the smallest one. Nothing smaller than $$2\pi$$ works, because sine reaches its top, the height
+$$1$$, once in each full turn.
 
 :::proposition[The smallest period of sine and cosine]{#graphs-least-period}
 
@@ -174,21 +174,10 @@ left, sends the graph of sine onto the graph of cosine.
 The equation is the second part of :ref{#quarter-turn-identities}, which says
 $$\sin\left(x + \frac{\pi}{2}\right) = \cos x$$.
 
-For the graphs, let $$T$$ be the slide by $$\left(-\frac{\pi}{2}, 0\right)$$
-(:ref{#adding-and-scaling-points/slide-formula}). Take a point $$(t, \sin t)$$ of the graph of sine
-and write $$x = t - \frac{\pi}{2}$$. Then
-
-```math
-\begin{aligned}
-T(t, \sin t) &= \left(t - \tfrac{\pi}{2}, \sin t\right) && \text{by the slide's formula} \\
-&= \left(x, \sin\left(x + \tfrac{\pi}{2}\right)\right) && \text{since } t = x + \tfrac{\pi}{2} \\
-&= (x, \cos x) && \text{by the equation above}
-\end{aligned}
-```
-
-which is a point of the graph of cosine. Every point $$(x, \cos x)$$ of the graph of cosine is hit
-this way, from the point $$\left(x + \frac{\pi}{2}, \sin\left(x + \frac{\pi}{2}\right)\right)$$ of
-the graph of sine.
+For the graphs, use part 1 of :ref{#functions/function-graph-moves} with $$h = -\frac{\pi}{2}$$ and
+$$k = 0$$. The slide by $$\left(-\frac{\pi}{2}, 0\right)$$ sends the graph of sine onto the graph of
+$$x \mapsto \sin\left(x + \frac{\pi}{2}\right)$$, and by the equation above that is the function
+$$x \mapsto \cos x$$.
 
 :::
 
@@ -209,9 +198,8 @@ Both come from flipping the point on the unit circle in the $$x$$-axis. The flip
 $$x$$ into the point for $$-x$$, keeping its across distance and changing the sign of its height:
 $$\cos(-x) = \cos x$$ and $$\sin(-x) = -\sin x$$ (:ref{#negative-angle}).
 
-A rule $$f$$ with $$f(-x) = f(x)$$ for every $$x$$ is called **even**, and one with
-$$f(-x) = -f(x)$$ for every $$x$$ is called **odd**. So cosine is even and sine is odd. The names
-come from powers: $$x^2$$ is even and $$x^3$$ is odd.
+That makes cosine an even function and sine an odd one (:ref{#functions/even-odd-function}), like
+$$x^2$$ and $$x^3$$.
 
 :::proposition[Symmetries of the graphs]{#graphs-symmetry}
 
@@ -223,32 +211,9 @@ come from powers: $$x^2$$ is even and $$x^3$$ is odd.
 
 :::proof{source="https://en.wikipedia.org/wiki/Even_and_odd_functions"}
 
-**Part 1.** By :ref{#adding-and-scaling-points/axis-reflections}, $$R_2(x, y) = (-x, y)$$. For a
-point $$(x, \cos x)$$ of the graph of cosine, using :ref{#negative-angle},
-
-```math
-\begin{aligned}
-R_2(x, \cos x) &= (-x, \cos x) && \text{by the formula for } R_2 \\
-&= \big(-x, \cos(-x)\big) && \text{a negative angle}
-\end{aligned}
-```
-
-which is the point of the graph at $$-x$$. So $$R_2$$ sends the graph into itself. Every point
-$$(x, \cos x)$$ is hit, by the point $$(-x, \cos(-x))$$, so the image is the whole graph.
-
-**Part 2.** The half turn is $$H_O(x, y) = (-x, -y)$$
-(:ref{#adding-and-scaling-points/half-turn-formula} with $$Q = O$$). For a point $$(x, \sin x)$$,
-again using :ref{#negative-angle},
-
-```math
-\begin{aligned}
-H_O(x, \sin x) &= (-x, -\sin x) && \text{by the formula for } H_O \\
-&= \big(-x, \sin(-x)\big) && \text{a negative angle}
-\end{aligned}
-```
-
-which is the point of the graph at $$-x$$. As in part 1, every point $$(x, \sin x)$$ is hit, by the
-point $$(-x, \sin(-x))$$.
+Cosine is even and sine is odd, by :ref{#negative-angle}. For an even function the flip $$R_2$$ in
+the $$y$$-axis is a symmetry of the graph, and for an odd function the half turn $$H_O$$ about the
+origin is (:ref{#functions/even-odd-graphs}).
 
 :::
 
@@ -272,8 +237,8 @@ crosses zero at the same places, but it now reaches up to $$20$$ and down to $$-
 
 In the same way, for a number $$a > 0$$ the graph of $$y = a\sin x$$ rises to $$a$$ and falls to
 $$-a$$. The number $$a$$ is the **amplitude** of the wave. Its graph is the graph of sine stretched
-by $$a$$ away from the $$x$$-axis (:ref{#area-and-scaling/stretch}), which moves each point
-$$(x, y)$$ to $$(x, ay)$$.
+by $$a$$ away from the $$x$$-axis, which moves each point $$(x, y)$$ to $$(x, ay)$$ (part 2 of
+:ref{#functions/function-graph-moves}).
 
 <WaveTaller caption="The graph of y = 3 sin x is the sine wave stretched upwards by 3: amplitude 3, the same period 2π, the same crossings at 0, π and 2π." />
 
@@ -283,7 +248,9 @@ Now imagine the wheel turning twice as fast. After time $$x$$ it has turned thro
 height is $$\sin 2x$$. At $$x = \frac{\pi}{4}$$ the turn is already $$\frac{\pi}{2}$$ and the car is
 at the top; at $$x = \frac{\pi}{2}$$ the turn is $$\pi$$ and the car is level with the centre; at
 $$x = \pi$$ the car has been all the way round. So one whole wave fits between $$0$$ and $$\pi$$,
-and two fit between $$0$$ and $$2\pi$$.
+and two fit between $$0$$ and $$2\pi$$. In the words of :ref{#functions/function-graph-moves}, part
+3 with $$a = \frac12$$, the graph of $$\sin 2x$$ is the sine wave squeezed towards the $$y$$-axis to
+half its width.
 
 <WaveSqueezed caption="The graph of y = sin 2x fits two whole waves between 0 and 2π, each π long. Its tops are at π/4 and 5π/4." />
 
@@ -354,9 +321,9 @@ is the sine wave slid right by $$\frac{\pi}{3}$$.
 <WaveSlid caption="The graph of y = sin(x − π/3) is the sine wave slid right by π/3. Its top moves from π/2 to 5π/6." />
 
 In general, for a number $$c$$ the graph of $$y = \sin(x - c)$$ is the graph of sine slid right by
-$$c$$. The minus sign inside means a slide to the right, which can feel backwards at first.
-:ref{#cosine-shift} is the case $$c = -\frac{\pi}{2}$$: $$\sin\left(x + \frac{\pi}{2}\right)$$ is
-the sine wave slid left by $$\frac{\pi}{2}$$.
+$$c$$ (part 1 of :ref{#functions/function-graph-moves}). The minus sign inside means a slide to the
+right, which can feel backwards at first. :ref{#cosine-shift} is the case $$c = -\frac{\pi}{2}$$:
+$$\sin\left(x + \frac{\pi}{2}\right)$$ is the sine wave slid left by $$\frac{\pi}{2}$$.
 
 ## Where sine and cosine are zero
 
@@ -563,8 +530,9 @@ the graph of cosine slid right by $$\frac{\pi}{2}$$. Check it with $$x = \frac{\
 \end{aligned}
 ```
 
-By the paragraph on slid waves, $$\cos\left(x - \frac{\pi}{2}\right)$$ is the cosine wave slid right
-by $$\frac{\pi}{2}$$. As a check, with $$x = \frac{\pi}{6}$$ the sine is
+By part 1 of :ref{#functions/function-graph-moves} with $$h = \frac{\pi}{2}$$ and $$k = 0$$, the
+graph of $$x \mapsto \cos\left(x - \frac{\pi}{2}\right)$$ is the cosine wave slid right by
+$$\frac{\pi}{2}$$. As a check, with $$x = \frac{\pi}{6}$$ the sine is
 $$\sin\frac{\pi}{6} = \frac12$$, and the cosine is
 $$\cos\left(-\frac{\pi}{3}\right) = \cos\frac{\pi}{3} = \frac12$$ by :ref{#negative-angle}.
 

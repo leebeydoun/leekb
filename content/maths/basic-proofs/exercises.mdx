@@ -616,6 +616,28 @@ $$\mathbb{Z} \subseteq \mathbb{R}$$.
 
 ::::
 
+::::exercise{#ex-intersection-inside-union}
+
+Let $$A$$ and $$B$$ be any sets. Prove that $$A \cap B \subseteq A$$ and $$A \subseteq A \cup B$$.
+Then find $$A \cap B$$ and $$A \cup B$$ for $$A = \{1, 2, 4\}$$ and $$B = \{2, 3, 4, 5\}$$.
+
+:::solution
+
+Both are subset statements, so take any element of the smaller set and show it is in the bigger one
+(:ref{#subset}).
+
+- **$$A \cap B \subseteq A$$.** Take any $$x \in A \cap B$$. Then $$x$$ is in both $$A$$ and $$B$$
+  (:ref{#union-intersection}), so in particular $$x \in A$$.
+- **$$A \subseteq A \cup B$$.** Take any $$x \in A$$. Then $$x$$ is in $$A$$ or in $$B$$, so
+  $$x \in A \cup B$$.
+
+For the two sets given, $$A \cap B = \{2, 4\}$$ and $$A \cup B = \{1, 2, 3, 4, 5\}$$. As the proof
+says, $$\{2, 4\} \subseteq \{1, 2, 4\} \subseteq \{1, 2, 3, 4, 5\}$$.
+
+:::
+
+::::
+
 ## Notation
 
 ::::exercise{#ex-expand-sums}

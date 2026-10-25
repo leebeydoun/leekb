@@ -19,12 +19,18 @@ arrive from exponentials.
 ## What this chapter builds on
 
 The rules for fractional powers come from [Roots and powers](../real-numbers/roots-and-powers.mdx),
-and they grow here into powers $$a^x$$ for every number $$x$$. Moving a graph uses
-[Sliding and stretching graphs](../parabolas-ellipses-and-hyperbolas/sliding-and-stretching.mdx).
-Combining and undoing functions repeat for numbers what [Isometries](../isometries/introduction.mdx)
-did for moves of the plane, and [Division with remainder](../numbers/divisibility.mdx) is the model
-for dividing polynomials. [Mappings and permutations](../mappings-and-permutations/introduction.mdx)
-takes combining and undoing further.
+and they grow here into powers $$a^x$$ for every number $$x$$. Graphs live in the coordinate plane
+of [Coordinates](../coordinates/introduction.mdx), and moving them uses the slides, stretches and
+flips written as formulas in
+[Moves as formulas](../adding-and-scaling-points/moves-as-formulas.mdx). The stretches themselves
+come from [Area and scaling](../area-and-scaling/introduction.mdx), and the test for parallel lines
+from [Segments, rays and lines](../segments-rays-and-lines/introduction.mdx). Combining and undoing
+functions repeat for numbers what [Isometries](../isometries/introduction.mdx) did for moves of the
+plane, and [Division with remainder](../numbers/divisibility.mdx) is the model for dividing
+polynomials. Later chapters lean on this one: [Trigonometry](../trigonometry/introduction.mdx) draws
+sine and cosine as functions, and
+[Mappings and permutations](../mappings-and-permutations/introduction.mdx) takes combining and
+undoing further.
 
 Four facts are taken as given, because proving them needs ideas from a course on analysis: the rules
 for powers $$a^x$$ with any exponent (:ref{#exponential-rules}), that every positive number is a
@@ -34,33 +40,36 @@ Everything else is proved.
 
 Along the way the chapter picks up two threads from earlier chapters:
 
-- **Inverse functions**: [Trigonometry](../trigonometry/right-triangles.mdx) met $$\sin^{-1}$$ as an
-  angle with a given sine. Here it becomes one case of undoing a function (:ref{#inverse-function}).
+- **Lines through a point**: [Equations as lines](../linear-equations/lines.mdx) met the slope of a
+  line. Here the line through a point with a given slope is the line $$y = mx$$ slid into place
+  (:ref{#point-slope}).
 - **Counting roots**: [The discriminant](../quadratics/discriminant.mdx) showed a quadratic has at
   most two solutions. Here every polynomial of degree $$n$$ has at most $$n$$ (:ref{#root-bound}).
 
 ## Guides in this chapter
 
-The chapter has ten guides:
+The chapter has eleven guides:
 
 1. [What a function is](./what-is-a-function.mdx): inputs, outputs, domain and range, and combining
    and undoing functions
 2. [Graphs of functions](./graphs-of-functions.mdx): reading a graph, the vertical line test,
    sketching from signs, and increasing functions
-3. [Moving and mirroring graphs](./moving-and-mirroring.mdx): $$f(x - h) + k$$, even and odd
-   functions, and the graph of an inverse
-4. [Polynomials](./polynomials.mdx): roots and factors, why a polynomial of degree $$n$$ has at most
+3. [Moving graphs](./moving-graphs.mdx): what slides, stretches and flips do to an equation, the
+   line through a point, and $$f(x - h) + k$$
+4. [Symmetric graphs and inverses](./symmetric-graphs.mdx): even and odd functions, even and odd
+   parts, and the graph of an inverse
+5. [Polynomials](./polynomials.mdx): roots and factors, why a polynomial of degree $$n$$ has at most
    $$n$$ roots, and finding whole-number roots
-5. [Dividing polynomials](./dividing-polynomials.mdx): long division with a remainder, the remainder
+6. [Dividing polynomials](./dividing-polynomials.mdx): long division with a remainder, the remainder
    theorem, and rational functions
-6. [Exponential functions](./exponential-functions.mdx): $$a^x$$ for every $$x$$, its rules and
+7. [Exponential functions](./exponential-functions.mdx): $$a^x$$ for every $$x$$, its rules and
    graph, and growth and decay
-7. [Logarithms](./logarithms.mdx): counting how many times to multiply, the laws of logarithms, and
+8. [Logarithms](./logarithms.mdx): counting how many times to multiply, the laws of logarithms, and
    solving equations with powers
-8. [The number e and using logarithms](./the-number-e.mdx): compound interest, the natural
+9. [The number e and using logarithms](./the-number-e.mdx): compound interest, the natural
    logarithm, and half-lives
-9. [Test yourself](./test-yourself.mdx): a multiple choice quiz on the ideas in the chapter
-10. [Exercises](./exercises.mdx): exercises on the whole chapter, with worked solutions
+10. [Test yourself](./test-yourself.mdx): a multiple choice quiz on the ideas in the chapter
+11. [Exercises](./exercises.mdx): exercises on the whole chapter, with worked solutions
 
 The summary below collects every definition and rule from the chapter, for reference while you read.
 
@@ -82,6 +91,7 @@ The summary below collects every definition and rule from the chapter, for refer
 | :ref{#inverse-function}     | $$f^{-1}(y)$$ is the one $$x$$ with $$f(x) = y$$                                         |
 | :ref{#function-graph}       | The points $$(x, f(x))$$ for $$x$$ in the domain                                         |
 | :ref{#floor}                | $$\lfloor x \rfloor$$ is the largest integer $$\le x$$                                   |
+| :ref{#axis-stretch}         | $$D_{a,b}(x, y) = (ax, by)$$, a stretch by $$a$$ across and $$b$$ up                     |
 | :ref{#increasing}           | $$x < y$$ gives $$f(x) < f(y)$$ (increasing) or $$f(x) > f(y)$$ (decreasing)             |
 | :ref{#even-odd-function}    | Even: $$f(-x) = f(x)$$. Odd: $$f(-x) = -f(x)$$                                           |
 | :ref{#polynomial}           | $$a_n x^n + \cdots + a_1 x + a_0$$, with coefficients $$a_k$$                            |
@@ -111,6 +121,11 @@ The summary below collects every definition and rule from the chapter, for refer
 | :ref{#vertical-line-test}           | A set is a graph of a function exactly when no vertical line meets it twice                     |
 | :ref{#graphs-floor-exists}          | Every number lies in a step $$n \le x < n + 1$$, so it has a floor                              |
 | :ref{#graphs-increasing-one-to-one} | An increasing or decreasing function is one to one                                              |
+| :ref{#slide-graph}                  | The slide by $$(h, k)$$ sends the graph of $$E(x, y)$$ to the graph of $$E(x - h, y - k)$$      |
+| :ref{#point-slope}                  | The line through $$(h, k)$$ with slope $$m$$ is $$y - k = m(x - h)$$                            |
+| :ref{#axis-stretch-two}             | $$D_{a,b}$$ is a stretch away from the $$y$$-axis then one away from the $$x$$-axis             |
+| :ref{#stretch-graph}                | $$D_{a,b}$$ sends the graph of $$E(x, y)$$ to the graph of $$E(\frac{x}{a}, \frac{y}{b})$$      |
+| :ref{#flip-graph}                   | The flips give $$E(-x, y)$$, $$E(x, -y)$$ and $$E(y, x)$$                                       |
 | :ref{#function-graph-moves}         | $$f(x - h) + k$$ slides, $$af(x)$$ and $$f(\frac{x}{a})$$ stretch, $$-f(x)$$ and $$f(-x)$$ flip |
 | :ref{#even-odd-graphs}              | Even means mirror symmetric in the $$y$$-axis; odd means unchanged by a half turn               |
 | :ref{#even-odd-parts}               | Every $$f$$ is one even function plus one odd function, in exactly one way                      |

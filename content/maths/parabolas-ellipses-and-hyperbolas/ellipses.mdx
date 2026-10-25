@@ -23,9 +23,9 @@ how round it is and where a line meets it.
 
 Start with the unit circle, and pull the plane out evenly: every point three times as far from the
 $$y$$-axis, and then twice as far from the $$x$$-axis. That is the stretch along the axes
-$$D_{3,2}(x, y) = (3x, 2y)$$ from :ref{#axis-stretch}, and the circle becomes an oval three across
-and two up. The equation changes in a way we can predict, because dividing by $$3$$ and $$2$$ undoes
-the stretch.
+$$D_{3,2}(x, y) = (3x, 2y)$$ from :ref{#functions/axis-stretch}, and the circle becomes an oval
+three across and two up. The equation changes in a way we can predict, because dividing by $$3$$ and
+$$2$$ undoes the stretch.
 
 Take the point $$(0.6, 0.8)$$ of the unit circle, which is on it because $$0.36 + 0.64 = 1$$. The
 stretch sends it to $$(1.8, 1.6)$$, which no longer fits $$x^2 + y^2 = 1$$, since
@@ -71,11 +71,11 @@ $$\frac{x^2}{a^2} + \frac{y^2}{b^2} \le 1$$.
 
 :::
 
-Part 1 is :ref{#stretch-graph} for the unit circle: put $$\frac{x}{a}$$ and $$\frac{y}{b}$$ in place
-of $$x$$ and $$y$$. By :ref{#axis-stretch-two}, $$D_{a,b}$$ is the stretch by $$a$$ away from the
-$$y$$-axis followed by the stretch by $$b$$ away from the $$x$$-axis. So it is the pair of stretches
-of :ref{#area-and-scaling/ellipse}, with the $$y$$-axis as the first line and the $$x$$-axis as the
-second.
+Part 1 is :ref{#functions/stretch-graph} for the unit circle: put $$\frac{x}{a}$$ and
+$$\frac{y}{b}$$ in place of $$x$$ and $$y$$. By :ref{#functions/axis-stretch-two}, $$D_{a,b}$$ is
+the stretch by $$a$$ away from the $$y$$-axis followed by the stretch by $$b$$ away from the
+$$x$$-axis. So it is the pair of stretches of :ref{#area-and-scaling/ellipse}, with the $$y$$-axis
+as the first line and the $$x$$-axis as the second.
 
 So the stretched disc of that guide is the region $$\frac{x^2}{a^2} + \frac{y^2}{b^2} \le 1$$, and
 its edge is the curve $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$. Its area is $$\pi ab$$, by
@@ -146,10 +146,10 @@ An isometry keeps every distance (:ref{#isometries/isometry}), so a moved ellips
 same lengths $$2a$$ and $$2b$$. A circle of radius $$r$$ is the ellipse with $$a = b = r$$. With
 $$a = b = r$$ the equation becomes $$x^2 + y^2 = r^2$$, the circle with centre $$O$$ and radius
 $$r$$ (:ref{#coordinates/circle-equation}), and every other circle of radius $$r$$ is a slide of
-that one (:ref{#slide-graph}).
+that one (:ref{#functions/slide-graph}).
 
 When $$a < b$$ the ellipse is taller than it is wide. The flip $$S$$ in the line $$y = x$$ swaps the
-letters $$x$$ and $$y$$ in an equation (:ref{#flip-graph}), so it sends the graph of
+letters $$x$$ and $$y$$ in an equation (:ref{#functions/flip-graph}), so it sends the graph of
 $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$ to the graph of $$\frac{y^2}{a^2} + \frac{x^2}{b^2} = 1$$,
 which has the bigger number $$b^2$$ under $$x^2$$. For example,
 $$\frac{x^2}{4} + \frac{y^2}{9} = 1$$ is the flip of $$\frac{x^2}{9} + \frac{y^2}{4} = 1$$.
@@ -161,8 +161,8 @@ ellipse in **standard position**.
 
 ## Sliding an ellipse
 
-Moving an ellipse changes its equation in a way you can predict. By :ref{#slide-graph}, the slide by
-$$(h, k)$$ replaces $$x$$ by $$x - h$$ and $$y$$ by $$y - k$$. So sliding
+Moving an ellipse changes its equation in a way you can predict. By :ref{#functions/slide-graph},
+the slide by $$(h, k)$$ replaces $$x$$ by $$x - h$$ and $$y$$ by $$y - k$$. So sliding
 $$\frac{x^2}{9} + \frac{y^2}{4} = 1$$ by $$(2, -1)$$ gives
 
 ```math
@@ -520,8 +520,8 @@ half-widths have the same ratio are similar.
 :::proof{source="https://en.wikipedia.org/wiki/Similarity_(geometry)#Similar_curves"}
 
 The zoom by $$r$$ about $$O$$ sends $$(x, y)$$ to $$(rx, ry)$$ (:ref{#coordinates/origin-zoom}),
-which is the stretch along the axes $$D_{r,r}$$. By :ref{#stretch-graph} it sends the graph to the
-graph of
+which is the stretch along the axes $$D_{r,r}$$. By :ref{#functions/stretch-graph} it sends the
+graph to the graph of
 
 ```math
 \begin{aligned}
@@ -573,15 +573,15 @@ area.
 
 :::solution
 
-By :ref{#slide-graph}, $$x + 1 = x - (-1)$$ and $$y - 2$$ mean a slide by $$(-1, 2)$$: 1 to the left
-and 2 up. So the centre is $$(-1, 2)$$. The half-widths are $$\sqrt{16} = 4$$ across and
+By :ref{#functions/slide-graph}, $$x + 1 = x - (-1)$$ and $$y - 2$$ mean a slide by $$(-1, 2)$$: 1
+to the left and 2 up. So the centre is $$(-1, 2)$$. The half-widths are $$\sqrt{16} = 4$$ across and
 $$\sqrt{49} = 7$$ up, so the major axis is vertical, of length $$14$$, and the minor axis is
 horizontal, of length $$8$$.
 
 The curve is the slide by $$(-1, 2)$$ of $$\frac{x^2}{16} + \frac{y^2}{49} = 1$$, which is the flip
-in $$y = x$$ of $$\frac{x^2}{49} + \frac{y^2}{16} = 1$$ (:ref{#flip-graph}). That one is in standard
-position with $$a = 7$$, $$b = 4$$ and $$c = \sqrt{49 - 16} = \sqrt{33} \approx 5.74$$, with foci
-$$(\pm\sqrt{33}, 0)$$. The flip sends them to $$(0, \pm\sqrt{33})$$, and the slide to
+in $$y = x$$ of $$\frac{x^2}{49} + \frac{y^2}{16} = 1$$ (:ref{#functions/flip-graph}). That one is
+in standard position with $$a = 7$$, $$b = 4$$ and $$c = \sqrt{49 - 16} = \sqrt{33} \approx 5.74$$,
+with foci $$(\pm\sqrt{33}, 0)$$. The flip sends them to $$(0, \pm\sqrt{33})$$, and the slide to
 $$(-1, 2 + \sqrt{33}) \approx (-1, 7.74)$$ and $$(-1, 2 - \sqrt{33}) \approx (-1, -3.74)$$, by
 :ref{#ellipses-moved-foci}.
 
@@ -696,8 +696,8 @@ differ, so by :ref{#ellipses-moved-foci} these points can't be the foci.
 
 The bigger number, $$25$$, is under $$y^2$$, so the major axis runs up the $$y$$-axis, with
 $$a = 5$$. The ellipse is the flip in $$y = x$$ of $$\frac{x^2}{25} + \frac{y^2}{9} = 1$$
-(:ref{#flip-graph}), whose foci are $$(\pm 4, 0)$$. The flip swaps coordinates, so the foci are
-$$(0, 4)$$ and $$(0, -4)$$.
+(:ref{#functions/flip-graph}), whose foci are $$(\pm 4, 0)$$. The flip swaps coordinates, so the
+foci are $$(0, 4)$$ and $$(0, -4)$$.
 
 As a check, from $$(0, 5)$$ the distances are $$1$$ and $$9$$, and from $$(3, 0)$$ they are both
 $$\sqrt{9 + 16} = 5$$. Both totals are $$10 = 2a$$.

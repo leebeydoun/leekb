@@ -247,7 +247,7 @@
       "question": "What does $$\\sin^{-1}\\frac12$$ mean?",
       "options": [
         "The angle in $$[-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$$ whose sine is $$\\frac12$$, which is $$\\frac{\\pi}{6}$$",
-        "$$\\frac{1}{\\sin(1/2)}$$",
+        "$$\\sin\\frac12$$, about $$0.48$$",
         "$$(\\sin\\frac12)^{-1}$$, about $$2.09$$",
         "$$-\\sin\\frac12$$"
       ],
@@ -602,7 +602,7 @@
         "Nothing for certain: it is evidence, not a proof"
       ],
       "answer": 3,
-      "explanation": "One matching value can be a coincidence. A value that doesn't match shows the equation is not an identity; a proof is needed to show it is one."
+      "explanation": "One matching value can be a coincidence. A value that doesn't match shows the equation is not an identity; a proof is needed to show it is one (:ref{#identity})."
     },
     {
       "id": "catch-false",

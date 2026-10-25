@@ -173,7 +173,7 @@
     {
       "id": "slide-right",
       "stars": 1,
-      "topic": "Moving and mirroring graphs",
+      "topic": "Moving graphs",
       "question": "How does the graph of $$y = \\lvert x - 4 \\rvert$$ sit compared with $$y = \\lvert x \\rvert$$?",
       "options": [
         "Slid $$4$$ to the left",
@@ -187,7 +187,7 @@
     {
       "id": "stretch-up",
       "stars": 2,
-      "topic": "Moving and mirroring graphs",
+      "topic": "Moving graphs",
       "question": "How is the graph of $$y = 3f(x)$$ moved from the graph of $$f$$?",
       "options": [
         "Stretched by $$3$$ away from the $$x$$-axis",
@@ -199,9 +199,51 @@
       "explanation": "Multiplying the output stretches upwards (:ref{#function-graph-moves}). Changing the input, as in $$f(3x)$$, squeezes across instead."
     },
     {
+      "id": "slide-circle",
+      "stars": 1,
+      "topic": "Moving graphs",
+      "question": "What is the equation of the circle $$x^2 + y^2 = 4$$ slid by $$(3, -1)$$?",
+      "options": [
+        "$$(x - 3)^2 + (y + 1)^2 = 4$$",
+        "$$(x + 3)^2 + (y - 1)^2 = 4$$",
+        "$$(x - 3)^2 + (y - 1)^2 = 4$$",
+        "$$x^2 + y^2 = 4 + 3 - 1$$"
+      ],
+      "answer": 0,
+      "explanation": "Replace $$x$$ by $$x - 3$$ and $$y$$ by $$y - (-1) = y + 1$$ (:ref{#slide-graph})."
+    },
+    {
+      "id": "stretch",
+      "stars": 2,
+      "topic": "Moving graphs",
+      "question": "The stretch $$D_{3,2}(x, y) = (3x, 2y)$$ sends the unit circle onto which graph?",
+      "options": [
+        "$$9x^2 + 4y^2 = 1$$",
+        "$$3x^2 + 2y^2 = 1$$",
+        "$$\\frac{x^2}{3} + \\frac{y^2}{2} = 1$$",
+        "$$\\frac{x^2}{9} + \\frac{y^2}{4} = 1$$"
+      ],
+      "answer": 3,
+      "explanation": "Replace $$x$$ by $$\\frac{x}{3}$$ and $$y$$ by $$\\frac{y}{2}$$ (:ref{#stretch-graph}): $$\\left(\\frac{x}{3}\\right)^2 + \\left(\\frac{y}{2}\\right)^2 = 1$$."
+    },
+    {
+      "id": "flip-swap",
+      "stars": 2,
+      "topic": "Moving graphs",
+      "question": "Swapping $$x$$ and $$y$$ in an equation does what to its graph?",
+      "options": [
+        "Turns it a quarter turn",
+        "Flips it in the $$x$$-axis",
+        "Flips it in the line $$y = x$$",
+        "Nothing"
+      ],
+      "answer": 2,
+      "explanation": "The flip in $$y = x$$ sends $$(x, y)$$ to $$(y, x)$$ (:ref{#flip-graph}). So $$x = y^2$$ is $$y = x^2$$ flipped, opening to the right."
+    },
+    {
       "id": "even-odd",
       "stars": 1,
-      "topic": "Moving and mirroring graphs",
+      "topic": "Symmetric graphs and inverses",
       "question": "Which function is odd?",
       "options": [
         "$$x^2 + 1$$",
@@ -210,12 +252,12 @@
         "$$x^3 - x$$"
       ],
       "answer": 3,
-      "explanation": "$$(-x)^3 - (-x) = -(x^3 - x)$$, so $$f(-x) = -f(x)$$ (:ref{#even-odd-function}). The second and third are even, and the last is neither."
+      "explanation": "$$(-x)^3 - (-x) = -(x^3 - x)$$, so $$f(-x) = -f(x)$$ (:ref{#even-odd-function}). The first two are even, and the third is neither."
     },
     {
       "id": "odd-graph",
       "stars": 2,
-      "topic": "Moving and mirroring graphs",
+      "topic": "Symmetric graphs and inverses",
       "question": "What symmetry does the graph of an odd function have?",
       "options": [
         "The flip in the $$y$$-axis",
@@ -229,7 +271,7 @@
     {
       "id": "product-parity",
       "stars": 2,
-      "topic": "Moving and mirroring graphs",
+      "topic": "Symmetric graphs and inverses",
       "question": "If $$f$$ is odd and $$g$$ is odd, what is $$fg$$?",
       "options": [
         "Odd",
@@ -243,7 +285,7 @@
     {
       "id": "parts",
       "stars": 3,
-      "topic": "Moving and mirroring graphs",
+      "topic": "Symmetric graphs and inverses",
       "question": "What is the even part of $$f(x) = x^3 + 2x^2 - x + 4$$?",
       "options": [
         "$$2x^2 + 4$$",
@@ -257,7 +299,7 @@
     {
       "id": "inverse-mirror",
       "stars": 2,
-      "topic": "Moving and mirroring graphs",
+      "topic": "Symmetric graphs and inverses",
       "question": "How is the graph of $$f^{-1}$$ related to the graph of $$f$$?",
       "options": [
         "It is the mirror image in the $$x$$-axis",

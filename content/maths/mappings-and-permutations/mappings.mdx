@@ -210,20 +210,9 @@ $$(-3)^2 = 9 \ge 4$$.
 
 ## Unions and intersections
 
-Two sets can be put together in two ways: everything in either one, or only what they share. You
-need both to say how images and preimages behave when sets are combined.
-
-:::definition[Union and intersection]{#union-intersection}
-
-Let $$A$$ and $$B$$ be sets. Their **union** $$A \cup B$$ is the set of elements in $$A$$ or in
-$$B$$ (or in both). Their **intersection** $$A \cap B$$ is the set of elements in both $$A$$ and
-$$B$$.
-
-:::
-
-For example, $$\{1, 2, 3\} \cup \{3, 4\} = \{1, 2, 3, 4\}$$ and
-$$\{1, 2, 3\} \cap \{3, 4\} = \{3\}$$. Two sets with no element in common, such as $$\{1, 2\}$$ and
-$$\{5\}$$, have the empty set as their intersection.
+Two sets can be put together in two ways: the **union** $$A \cup B$$, everything in either one, and
+the **intersection** $$A \cap B$$, only what they share (:ref{#basic-proofs/union-intersection}).
+You need both to say how images and preimages behave when sets are combined.
 
 Now go back to the cloakroom and take the sets $$\{\text{hat}\}$$ and $$\{\text{scarf}\}$$. Their
 union is $$\{\text{hat}, \text{scarf}\}$$, and its image is $$\{C, A\}$$. Sending the two sets one
@@ -250,7 +239,7 @@ it is in the other. That gives both subsets, and so equality by :ref{#basic-proo
 **Part 1.** An element $$y$$ is in $$f(A \cup B)$$
 
 - exactly when $$y = f(x)$$ for some $$x$$ in $$A$$ or in $$B$$, by :ref{#image-of-set} and
-  :ref{#union-intersection}
+  :ref{#basic-proofs/union-intersection}
 - exactly when $$y = f(x)$$ for some $$x$$ in $$A$$, or $$y = f(x)$$ for some $$x$$ in $$B$$
 - exactly when $$y$$ is in $$f(A)$$ or in $$f(B)$$, by :ref{#image-of-set}
 - exactly when $$y$$ is in $$f(A) \cup f(B)$$

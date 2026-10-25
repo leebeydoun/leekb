@@ -1,8 +1,8 @@
 ---
-title: Sliding and stretching graphs
+title: Moving graphs
 description:
-  Moving a graph by a slide, a stretch, a flip or a turn, the matching change to its equation, and
-  the line through a point with a given slope.
+  Moving the graph of an equation by a slide, a stretch or a flip, the matching change to its
+  equation, the line through a point with a given slope, and the new rule for a moved function.
 ---
 
 Imagine drawing round a plastic circle stencil on squared paper, with its centre on the origin and
@@ -12,8 +12,9 @@ equations are different. The first circle is $$x^2 + y^2 = 4$$, and the second i
 $$(x - 3)^2 + (y + 1)^2 = 4$$, so the numbers that appeared in the equation are the numbers of the
 slide.
 
-That is the idea behind this whole chapter: moving a graph changes its equation in a way you can
-predict. In this guide we'll find the change for each kind of move, and prove that it always works.
+Moving a graph changes its equation in a way you can predict. In this guide we'll find the change
+for slides, stretches and flips, prove that it always works, and then see what each move does to the
+rule of a function.
 
 ## Graphs and their equations
 
@@ -34,6 +35,11 @@ graph (:ref{#isometries/image}). Each result in this guide says that this image 
 new equation. Two sets are equal exactly when each is a subset of the other
 (:ref{#basic-proofs/set-equality}), so every proof has two halves: every moved point fits the new
 equation, and every point that fits the new equation is a moved point.
+
+The graph of a function $$f$$ is the graph of the equation $$y = f(x)$$ (:ref{#function-graph}), so
+everything in this guide works for functions too. The section
+[Moving the graph of a function](#moving-the-graph-of-a-function) turns each rule into a rule for
+functions.
 
 ## Sliding a graph
 
@@ -145,7 +151,7 @@ $$y - 5 = 3(x - 2)$$, which is $$y = 3x - 1$$. Check: at $$x = 2$$ it gives $$y 
 
 ::graph{lines="y = 3x; y = 3x - 1" points="0, 0; 2, 5" x="-2 4" y="-3 7" caption="Slid by (2, 5)"}
 
-:::corollary[The line through a point with a given slope]{#sliding-and-stretching-point-slope}
+:::corollary[The line through a point with a given slope]{#point-slope}
 
 Let $$h$$, $$k$$ and $$m$$ be numbers. The line through $$(h, k)$$ with slope $$m$$ is the graph of
 
@@ -299,8 +305,9 @@ unit disc stretched by $$a$$ away from one line and by $$b$$ away from a line sq
 (:ref{#area-and-scaling/ellipse}). The proof of :ref{#stretch-graph} never used that $$E$$ was an
 equation, only that each point either fits it or doesn't. So it works for the condition
 $$x^2 + y^2 \le 1$$ too, and $$D_{3,2}$$ sends the unit disc onto the region where
-$$\frac{x^2}{9} + \frac{y^2}{4} \le 1$$. The [Ellipses](./ellipses.mdx) guide takes these curves
-further (:ref{#ellipse-equation}).
+$$\frac{x^2}{9} + \frac{y^2}{4} \le 1$$. The
+[Ellipses](../parabolas-ellipses-and-hyperbolas/ellipses.mdx) guide in Parabolas, ellipses and
+hyperbolas takes these curves further.
 
 Try stretching and sliding each of the three starting curves below. The bold curve is the starting
 curve stretched first and then slid, and the readout gives its equation from :ref{#stretch-graph}
@@ -360,84 +367,123 @@ flip sends the parabola onto itself, so the flip in the $$y$$-axis is a symmetry
 (:ref{#isometries/symmetry}). Flipping it in the $$x$$-axis gives $$-y = x^2$$, which is
 $$y = -x^2$$: the same cup, upside down.
 
-## Turning a graph
+## Moving the graph of a function
 
-A turn works the same way, with one more step: to take a point back after a turn by $$\varphi$$, you
-turn it by $$-\varphi$$, the same amount the other way. By :ref{#trigonometry/rotation-formula} with
-$$-\varphi$$ in place of $$\varphi$$, and $$\cos(-\varphi) = \cos\varphi$$ and
-$$\sin(-\varphi) = -\sin\varphi$$ from :ref{#trigonometry/negative-angle},
+The graph of a function $$f$$ is the set of points $$(x, f(x))$$ with $$x$$ in the domain
+(:ref{#function-graph}). That is the graph of the equation $$y = f(x)$$, so the rules above move it.
+The only new step is to rearrange the moved equation so that it says "$$y$$ equals something", which
+gives the rule of a new function.
 
-```math
-G_{-\varphi}(x, y) = (x\cos\varphi + y\sin\varphi,\ -x\sin\varphi + y\cos\varphi)
-```
+Here is a slide with numbers. Take $$f(x) = |x|$$, whose graph is a V with its corner at $$O$$
+(:ref{#real-numbers/absolute-value}), and slide it by $$(2, 1)$$: $$2$$ to the right and $$1$$ up.
+By :ref{#slide-graph}, put $$x - 2$$ for $$x$$ and $$y - 1$$ for $$y$$ in $$y = |x|$$. That gives
+$$y - 1 = |x - 2|$$, which is $$y = |x - 2| + 1$$.
 
-As in the Trigonometry chapter, $$G_\varphi$$ is the turn about $$O$$ by $$\varphi$$ radians,
-anticlockwise when $$\varphi > 0$$ (:ref{#trigonometry/radians-turn-notation}).
+Check it with a point. The point $$(3, 3)$$ is on the V, since $$|3| = 3$$, and the slide sends it
+to $$(5, 4)$$. Putting $$x = 5$$ into the new rule gives $$|5 - 2| + 1 = 3 + 1 = 4$$, so the moved
+point is on the new graph. The corner moves from $$(0, 0)$$ to $$(2, 1)$$, where
+$$|2 - 2| + 1 = 1$$.
 
-:::theorem[Turning a graph]{#turn-graph}
+<SlidV caption="The graph of y = |x| (dashed) and its slide by (2, 1), the graph of y = |x − 2| + 1. The corner moves from O to (2, 1), and the point (3, 3) moves to (5, 4)." />
 
-Let $$\varphi$$ be a number. The turn $$G_\varphi$$ about $$O$$ sends the graph of an equation
-$$E(x, y)$$ onto the graph of
+The same goes for the other moves. A stretch away from the $$x$$-axis multiplies every height, a
+stretch away from the $$y$$-axis multiplies every distance across, and the flips change a sign. We
+write $$x \mapsto f(x - h) + k$$, read "$$x$$ goes to $$f(x - h) + k$$", for the function whose
+value at $$x$$ is $$f(x - h) + k$$.
 
-```math
-E(x\cos\varphi + y\sin\varphi,\ -x\sin\varphi + y\cos\varphi)
-```
+:::proposition[Moving the graph of a function]{#function-graph-moves}
 
-That is, put in the point turned back by $$\varphi$$.
+Let $$f$$ be a function with domain $$S$$, and let $$h$$, $$k$$ and $$a$$ be numbers with $$a > 0$$.
 
-:::
+1. The slide by $$(h, k)$$ sends the graph of $$f$$ onto the graph of $$x \mapsto f(x - h) + k$$
+2. The stretch $$D_{1,a}$$, by $$a$$ away from the $$x$$-axis, sends it onto the graph of
+   $$x \mapsto a f(x)$$
+3. The stretch $$D_{a,1}$$, by $$a$$ away from the $$y$$-axis, sends it onto the graph of
+   $$x \mapsto f(\frac{x}{a})$$
+4. The flip in the $$x$$-axis sends it onto the graph of $$x \mapsto -f(x)$$
+5. The flip in the $$y$$-axis sends it onto the graph of $$x \mapsto f(-x)$$
 
-:::proof{source="https://en.wikipedia.org/wiki/Rotation_of_axes"}
-
-Let $$C$$ be the graph of $$E(x, y)$$ and $$C'$$ the graph of the new equation. By the formula for
-$$G_{-\varphi}$$ above, a point $$Q$$ is on $$C'$$ exactly when $$G_{-\varphi}(Q)$$ is on $$C$$.
-Turns add, and the turn by $$0$$ is the identity $$I$$ (parts 1 and 2 of
-:ref{#trigonometry/radian-turns}), so
-
-```math
-G_{-\varphi} \circ G_\varphi = G_0 = I \qquad G_\varphi \circ G_{-\varphi} = G_0 = I
-```
-
-**Every turned point is on C′.** Take $$P$$ on $$C$$. Then $$G_{-\varphi}(G_\varphi(P)) = P$$, which
-is on $$C$$. So $$G_\varphi(P)$$ is on $$C'$$.
-
-**Every point of C′ is a turned point.** Take $$Q$$ on $$C'$$, and let $$P = G_{-\varphi}(Q)$$,
-which is on $$C$$. Then $$G_\varphi(P) = G_\varphi(G_{-\varphi}(Q)) = Q$$. So $$Q$$ is in
-$$G_\varphi(C)$$.
+Each new function is defined at the numbers $$x$$ where its formula makes sense: those with
+$$x - h$$ in $$S$$ in part 1, $$\frac{x}{a}$$ in $$S$$ in part 3, $$-x$$ in $$S$$ in part 5, and the
+numbers of $$S$$ in parts 2 and 4.
 
 :::
 
-Turn $$y = x^2$$ a quarter turn anticlockwise, $$\varphi = \frac{\pi}{2}$$. Here
-$$\cos\frac{\pi}{2} = 0$$ and $$\sin\frac{\pi}{2} = 1$$, so the turned-back point is
+:::proof{source="https://www.mathsisfun.com/sets/function-transformations.html"}
 
-```math
-(x \cdot 0 + y \cdot 1,\ -x \cdot 1 + y \cdot 0) = (y, -x)
-```
+Let $$E(x, y)$$ be the statement "$$x$$ is in $$S$$ and $$y = f(x)$$". A point $$(x, y)$$ makes it
+true exactly when it is a point $$(x, f(x))$$ of the graph of $$f$$, so the graph of $$f$$ is the
+graph of $$E(x, y)$$. Each part puts something new in place of $$x$$ or $$y$$ in $$E$$, by one of
+the rules above, and then rearranges.
 
-In $$y = x^2$$, the first letter is the one squared and the second stands alone. Putting $$y$$ for
-the first and $$-x$$ for the second gives $$-x = y^2$$, which is $$x = -y^2$$: a parabola opening to
-the left. That matches the picture of a cup tipped over a quarter turn anticlockwise, which ends up
-with its opening facing left.
+**Part 1.** By :ref{#slide-graph}, the slide sends the graph onto the graph of $$E(x - h, y - k)$$,
+which says "$$x - h$$ is in $$S$$ and $$y - k = f(x - h)$$". Adding $$k$$ to both sides, that is
+$$y = f(x - h) + k$$ at the numbers $$x$$ with $$x - h$$ in $$S$$: the graph of
+$$x \mapsto f(x - h) + k$$.
 
-Check with a point. The point $$(1, 1)$$ is on $$y = x^2$$. The quarter turn sends it to $$(-1, 1)$$
-(part 4 of :ref{#trigonometry/radian-turns}), and $$-y^2 = -1$$, so $$(-1, 1)$$ fits $$x = -y^2$$.
-The same turn sends $$(2, 4)$$ to $$(-4, 2)$$, and $$-2^2 = -4$$.
+**Part 2.** By :ref{#stretch-graph} with $$1$$ across and $$a$$ up, the image is the graph of
+$$E(x, \frac{y}{a})$$: "$$x$$ is in $$S$$ and $$\frac{y}{a} = f(x)$$". Multiplying both sides by
+$$a$$, that is $$y = a f(x)$$ for $$x$$ in $$S$$.
 
-<TurnParabola caption="The parabola y = x² (dashed) turned a quarter turn anticlockwise about O becomes x = −y², opening to the left. The point (1, 1) turns to (−1, 1), and (2, 4) to (−4, 2)." />
+**Part 3.** By the same theorem with $$a$$ across and $$1$$ up, the image is the graph of
+$$E(\frac{x}{a}, y)$$: "$$\frac{x}{a}$$ is in $$S$$ and $$y = f(\frac{x}{a})$$".
+
+**Part 4.** By part 2 of :ref{#flip-graph}, the image is the graph of $$E(x, -y)$$: "$$x$$ is in
+$$S$$ and $$-y = f(x)$$". Multiplying both sides by $$-1$$, that is $$y = -f(x)$$.
+
+**Part 5.** By part 1 of :ref{#flip-graph}, the image is the graph of $$E(-x, y)$$: "$$-x$$ is in
+$$S$$ and $$y = f(-x)$$".
+
+:::
+
+Stretching works the same way with numbers. Take $$f(x) = \sqrt{x}$$, defined for $$x \ge 0$$, and
+the point $$(4, 2)$$ on its graph. The stretch by $$2$$ away from the $$x$$-axis doubles its height
+and sends it to $$(4, 4)$$, and the new rule $$y = 2\sqrt{x}$$ gives $$2\sqrt4 = 4$$ there. The
+stretch by $$2$$ away from the $$y$$-axis doubles its distance across instead, sending it to
+$$(8, 2)$$, and the new rule $$y = \sqrt{x/2}$$ gives $$\sqrt{8/2} = \sqrt4 = 2$$.
+
+<StretchedRoot caption="The graph of y = √x (dashed) with the point (4, 2), stretched two ways by 2. Stretching away from the x-axis gives y = 2√x, through (4, 4). Stretching away from the y-axis gives y = √(x/2), through (8, 2)." />
+
+## Which way the graph moves
+
+Two of the moves go the opposite way from what the formula seems to say. Each one is worth getting
+straight once, because the same slip turns up in every graph that follows.
+
+**A minus inside moves the graph right.** By part 1 of :ref{#function-graph-moves}, the graph of
+$$f(x - 3)$$ is the graph of $$f$$ slid $$3$$ to the right, for the reason given under
+[Why x − 3 slides right](#why-x--3-slides-right). A related slip is to read $$f(x - 3)$$ as
+$$f(x) - f(3)$$, as if the function could be split across the minus sign. For $$f(x) = x^2$$ the
+split fails: at $$x = 5$$, $$f(5 - 3) = 2^2 = 4$$, while $$f(5) - f(3) = 25 - 9 = 16$$.
+
+**A number outside stretches up, a number inside squeezes across.** Multiplying the value by $$2$$,
+as in $$2\sqrt{x}$$, doubles every height. Multiplying the input by $$2$$, as in $$\sqrt{2x}$$, is
+part 3 of :ref{#function-graph-moves} with $$a = \frac{1}{2}$$, since $$2x = \frac{x}{1/2}$$. So
+$$\sqrt{2x}$$ squeezes the graph towards the $$y$$-axis to half its width. Check: $$\sqrt{2x}$$
+reaches the height $$2$$ at $$x = 2$$, where $$\sqrt{x}$$ needed $$x = 4$$.
+
+Several moves can be done one after another. To get $$y = 2|x - 1| + 3$$ from $$y = |x|$$, first
+stretch by $$2$$ away from the $$x$$-axis to get $$y = 2|x|$$, and then slide by $$(1, 3)$$ to get
+$$y = 2|x - 1| + 3$$. The point $$(1, 1)$$ goes to $$(1, 2)$$ and then to $$(2, 5)$$, and the rule
+gives $$2|2 - 1| + 3 = 5$$ at $$x = 2$$. The corner ends up at $$(1, 3)$$.
+
+Try the moves below on five starting graphs. The faint dashed curve is the starting graph, and the
+readout writes the rule of the bold one with your numbers in it. The flips and the stretch are done
+first and the slide last, as with $$y = 2|x - 1| + 3$$.
+
+<FunctionMover />
 
 ## The recipe for every move
 
 Each rule in this guide follows one pattern: to move a graph, put in the point moved back. The table
 gathers them, with what each does to the parabola $$y = x^2$$.
 
-| Move                            | Formula                                                         | Put in place of $$x$$           | Put in place of $$y$$            | $$y = x^2$$ becomes                           |
-| ------------------------------- | --------------------------------------------------------------- | ------------------------------- | -------------------------------- | --------------------------------------------- |
-| Slide by $$(h, k)$$             | $$(x + h, y + k)$$                                              | $$x - h$$                       | $$y - k$$                        | $$y - k = (x - h)^2$$                         |
-| Stretch $$D_{a,b}$$             | $$(ax, by)$$                                                    | $$\frac{x}{a}$$                 | $$\frac{y}{b}$$                  | $$\frac{y}{b} = \frac{x^2}{a^2}$$             |
-| Flip in the $$y$$-axis, $$R_2$$ | $$(-x, y)$$                                                     | $$-x$$                          | $$y$$                            | $$y = x^2$$                                   |
-| Flip in the $$x$$-axis, $$R_1$$ | $$(x, -y)$$                                                     | $$x$$                           | $$-y$$                           | $$y = -x^2$$                                  |
-| Flip in $$y = x$$, $$S$$        | $$(y, x)$$                                                      | $$y$$                           | $$x$$                            | $$x = y^2$$                                   |
-| Turn $$G_\varphi$$ about $$O$$  | $$(x\cos\varphi - y\sin\varphi,\ x\sin\varphi + y\cos\varphi)$$ | $$x\cos\varphi + y\sin\varphi$$ | $$-x\sin\varphi + y\cos\varphi$$ | for $$\varphi = \frac{\pi}{2}$$, $$x = -y^2$$ |
+| Move                            | Formula            | Put in place of $$x$$ | Put in place of $$y$$ | $$y = x^2$$ becomes               |
+| ------------------------------- | ------------------ | --------------------- | --------------------- | --------------------------------- |
+| Slide by $$(h, k)$$             | $$(x + h, y + k)$$ | $$x - h$$             | $$y - k$$             | $$y - k = (x - h)^2$$             |
+| Stretch $$D_{a,b}$$             | $$(ax, by)$$       | $$\frac{x}{a}$$       | $$\frac{y}{b}$$       | $$\frac{y}{b} = \frac{x^2}{a^2}$$ |
+| Flip in the $$y$$-axis, $$R_2$$ | $$(-x, y)$$        | $$-x$$                | $$y$$                 | $$y = x^2$$                       |
+| Flip in the $$x$$-axis, $$R_1$$ | $$(x, -y)$$        | $$x$$                 | $$-y$$                | $$y = -x^2$$                      |
+| Flip in $$y = x$$, $$S$$        | $$(y, x)$$         | $$y$$                 | $$x$$                 | $$x = y^2$$                       |
 
 Two moves one after the other means two rules one after the other. Stretch the unit circle by $$3$$
 across and $$2$$ up, giving $$\frac{x^2}{9} + \frac{y^2}{4} = 1$$, and then slide it by $$(2, -1)$$.
@@ -448,16 +494,16 @@ The slide puts $$x - 2$$ for $$x$$ and $$y + 1$$ for $$y$$:
 ```
 
 The order matters, because the stretch also stretches any slide done before it.
-:ref{#ex-sliding-and-stretching-order} shows what happens the other way round.
+:ref{#ex-moving-graphs-order} shows what happens the other way round.
 
-Every later guide in this chapter uses these rules. Each curve starts from one standard equation,
-and every other curve of the same kind is that one moved by slides, turns and flips.
+The [Turning graphs](../parabolas-ellipses-and-hyperbolas/turning-graphs.mdx) guide in Parabolas,
+ellipses and hyperbolas adds turns to the table, once trigonometry has given every turn a formula.
 
 ## Exercises
 
-:::::accordion[Exercises on sliding and stretching graphs, with solutions]
+:::::accordion[Exercises on moving graphs, with solutions]
 
-::::exercise{#ex-sliding-and-stretching-circle}
+::::exercise{#ex-moving-graphs-circle}
 
 Slide the circle $$x^2 + y^2 = 9$$ by $$(-2, 4)$$. Write down the new equation, and check it with
 the points $$(3, 0)$$ and $$(0, 3)$$ of the first circle.
@@ -478,7 +524,7 @@ $$(-2 + 2)^2 + (7 - 4)^2 = 0 + 9 = 9$$. Both moved points fit.
 
 ::::
 
-::::exercise{#ex-sliding-and-stretching-which-slide}
+::::exercise{#ex-moving-graphs-which-slide}
 
 Which slide sends the graph of $$y = x^2$$ onto the graph of $$y = (x + 1)^2 - 5$$? Where does the
 lowest point $$(0, 0)$$ go?
@@ -496,14 +542,14 @@ check, $$(1, 1)$$ goes to $$(0, -4)$$, and $$(0 + 1)^2 - 5 = -4$$.
 
 ::::
 
-::::exercise{#ex-sliding-and-stretching-line}
+::::exercise{#ex-moving-graphs-line}
 
 Find the equation of the line through $$(-1, 4)$$ with slope $$-2$$, in the form $$y = mx + c$$.
 Which slide of which line through $$O$$ is it, and where does it cross the $$y$$-axis?
 
 :::solution
 
-By :ref{#sliding-and-stretching-point-slope}, the line is
+By :ref{#point-slope}, the line is
 
 ```math
 \begin{aligned}
@@ -520,7 +566,7 @@ the $$y$$-axis where $$x = 0$$, at $$(0, 2)$$.
 
 ::::
 
-::::exercise{#ex-sliding-and-stretching-stretch}
+::::exercise{#ex-moving-graphs-stretch}
 
 1. Stretch the line $$x + y = 1$$ by $$D_{4,2}$$. Find the new equation and where it crosses the
    axes.
@@ -541,7 +587,7 @@ the $$y$$-axis where $$x = 0$$, at $$(0, 2)$$.
 
 ::::
 
-::::exercise{#ex-sliding-and-stretching-order}
+::::exercise{#ex-moving-graphs-order}
 
 Start with the unit circle $$x^2 + y^2 = 1$$.
 
@@ -573,7 +619,7 @@ The two ovals have the same shape but different centres, so the order matters.
 
 ::::
 
-::::exercise{#ex-sliding-and-stretching-flips}
+::::exercise{#ex-moving-graphs-flips}
 
 Take the parabola $$y = (x - 2)^2$$. Find the equation of its flip in the $$y$$-axis, in the
 $$x$$-axis and in the line $$y = x$$. Check each with the image of the point $$(3, 1)$$.
@@ -595,55 +641,62 @@ point from $$(2, 0)$$ to $$(-2, 0)$$.
 
 ::::
 
-::::exercise{#ex-sliding-and-stretching-turn-axis}
+::::exercise{#ex-moving-graphs-rules}
 
-Use :ref{#turn-graph} to turn the $$x$$-axis, the graph of $$y = 0$$, by $$\frac{\pi}{4}$$ about
-$$O$$. Then show that for any $$\varphi$$ with $$\cos\varphi \ne 0$$ the turned axis is the line
-$$y = (\tan\varphi)\,x$$.
+Write the rule of the function whose graph you get from each move, and check it at one point.
+
+1. The graph of $$x^2$$, slid $$4$$ to the left and $$1$$ down
+2. The graph of $$|x|$$, flipped in the $$x$$-axis and then slid $$3$$ up
+3. The graph of $$\sqrt{x}$$, stretched by $$3$$ away from the $$x$$-axis
 
 :::solution
 
-Here $$E(x, y)$$ is $$y = 0$$, which only involves the second letter. By :ref{#turn-graph}, the
-turned graph is $$-x\sin\varphi + y\cos\varphi = 0$$. With $$\varphi = \frac{\pi}{4}$$,
-$$\cos\varphi = \sin\varphi = \frac{\sqrt2}{2}$$, so
+By :ref{#function-graph-moves}:
 
-```math
-\begin{aligned}
-\tfrac{\sqrt2}{2}(-x + y) &= 0 && \text{take out } \tfrac{\sqrt2}{2} \\
-y &= x && \text{divide by } \tfrac{\sqrt2}{2} \ne 0 \text{ and add } x
-\end{aligned}
-```
-
-Check: the turn sends $$(1, 0)$$ to $$(\cos\frac{\pi}{4}, \sin\frac{\pi}{4})$$, which has equal
-coordinates. For any $$\varphi$$ with $$\cos\varphi \ne 0$$, divide $$y\cos\varphi = x\sin\varphi$$
-by $$\cos\varphi$$ to get $$y = \frac{\sin\varphi}{\cos\varphi}x = (\tan\varphi)\,x$$
-(:ref{#trigonometry/tangent}). The turned axis climbs $$\tan\varphi$$ for each step right, as
-:ref{#trigonometry/tangent-slope} says.
+1. A slide by $$(-4, -1)$$ gives $$y = (x - (-4))^2 + (-1)$$, which is $$y = (x + 4)^2 - 1$$. The
+   point $$(0, 0)$$ moves to $$(-4, -1)$$, and $$(-4 + 4)^2 - 1 = -1$$.
+2. The flip gives $$y = -|x|$$, and the slide by $$(0, 3)$$ gives $$y = -|x| + 3$$, an upside-down V
+   with its corner at $$(0, 3)$$. The point $$(2, 2)$$ goes to $$(2, -2)$$ and then to $$(2, 1)$$,
+   and $$-|2| + 3 = 1$$.
+3. The stretch gives $$y = 3\sqrt{x}$$. The point $$(4, 2)$$ goes to $$(4, 6)$$, and
+   $$3\sqrt4 = 6$$.
 
 :::
 
 ::::
 
-::::exercise{#ex-sliding-and-stretching-turn-circle}
+::::exercise{#ex-moving-graphs-describe}
 
-Use :ref{#turn-graph} to show that every turn about $$O$$ sends the unit circle onto itself.
+Describe moves that take the graph of $$x^2$$ onto the graph of $$y = 3(x + 2)^2 - 5$$, and find
+where the lowest point $$(0, 0)$$ of the cup goes.
 
 :::solution
 
-Write $$c = \cos\varphi$$ and $$s = \sin\varphi$$. By :ref{#turn-graph}, the turn sends the graph of
-$$x^2 + y^2 = 1$$ onto the graph of $$(xc + ys)^2 + (-xs + yc)^2 = 1$$. Multiply out the left side:
+Write the rule as $$y = 3(x - (-2))^2 + (-5)$$. By parts 2 and 1 of :ref{#function-graph-moves},
+stretch the graph of $$x^2$$ by $$3$$ away from the $$x$$-axis, which gives $$y = 3x^2$$, and then
+slide by $$(-2, -5)$$: $$2$$ to the left and $$5$$ down. The stretch keeps $$(0, 0)$$ where it is,
+and the slide takes it to $$(-2, -5)$$. As a check, $$3(-2 + 2)^2 - 5 = -5$$, and every other value
+is larger, since $$3(x + 2)^2 \ge 0$$.
 
-```math
-\begin{aligned}
-(xc + ys)^2 + (-xs + yc)^2
-&= x^2c^2 + 2xycs + y^2s^2 + x^2s^2 - 2xycs + y^2c^2 && \text{multiply out} \\
-&= x^2(c^2 + s^2) + y^2(s^2 + c^2) && \text{the } xy \text{ terms cancel} \\
-&= x^2 + y^2 && c^2 + s^2 = 1
-\end{aligned}
-```
+:::
 
-The last step is :ref{#trigonometry/pythagorean-identity}. So the new equation is $$x^2 + y^2 = 1$$
-again, and the turned circle is the unit circle.
+::::
+
+::::exercise{#ex-moving-graphs-squeeze}
+
+Let $$f(x) = x^2 - 4x$$. Find where the graphs of $$f$$, of $$x \mapsto 2f(x)$$ and of
+$$x \mapsto f(2x)$$ meet the $$x$$-axis, and explain the answers with :ref{#function-graph-moves}.
+
+:::solution
+
+Since $$f(x) = x(x - 4)$$, $$f(x) = 0$$ exactly when $$x = 0$$ or $$x = 4$$
+(:ref{#numbers/zero-product}). Then $$2f(x) = 0$$ at the same two numbers, since $$2 \ne 0$$. But
+$$f(2x) = 2x(2x - 4) = 4x(x - 2)$$, which is $$0$$ at $$x = 0$$ and $$x = 2$$.
+
+The stretch by $$2$$ away from the $$x$$-axis changes heights and leaves the points on the
+$$x$$-axis where they are. Multiplying the input by $$2$$ is part 3 with $$a = \frac{1}{2}$$, which
+squeezes the graph towards the $$y$$-axis to half its width, so the crossing at $$4$$ moves in to
+$$2$$.
 
 :::
 

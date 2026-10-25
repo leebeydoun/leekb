@@ -161,18 +161,16 @@ Let $$f: S \to T$$ be a mapping. If $$g$$ and $$h$$ are both inverses of $$f$$, 
 
 :::proof{source="https://proofwiki.org/wiki/Inverse_Mapping_is_Unique"}
 
-Since $$h$$ is an inverse, $$f \circ h = I_T$$, and since $$g$$ is an inverse, $$g \circ f = I_S$$.
-So, with :ref{#composite-laws} for each step,
+The proof of :ref{#isometries/inverse-map-unique} used only the rules for composites, and those hold
+for every mapping (:ref{#composite-laws}). Here there are two identities, $$I_S$$ and $$I_T$$, in
+place of the one $$I$$. Since $$f \circ h = I_T$$ and $$g \circ f = I_S$$,
 
 ```math
-\begin{aligned}
-g &= g \circ I_T && \text{part 1} \\
-&= g \circ (f \circ h) && \text{since } f \circ h = I_T \\
-&= (g \circ f) \circ h && \text{part 2} \\
-&= I_S \circ h && \text{since } g \circ f = I_S \\
-&= h && \text{part 1}
-\end{aligned}
+g = g \circ I_T = g \circ (f \circ h) = (g \circ f) \circ h = I_S \circ h = h
 ```
+
+The first and last steps are part 1 of :ref{#composite-laws}, and the middle step regroups by
+part 2.
 
 :::
 
@@ -259,8 +257,10 @@ undone: the last one done is the first one undone.
 
 :::proof{source="https://proofwiki.org/wiki/Inverse_of_Composite_Bijection"}
 
-**Part 1.** By :ref{#inverse-mapping}, two composites must be identities. Grouping doesn't matter
-(:ref{#composite-laws}), so we can drop the brackets and work from the middle out:
+**Part 1.** This is :ref{#isometries/inverse-composite} with any sets in place of the plane. Its
+proof used only grouping and the identity, which work for all mappings (:ref{#composite-laws}). By
+:ref{#inverse-mapping}, two composites must be identities. Dropping the brackets and working from
+the middle out, with $$g^{-1} \circ g = I_T$$ and $$f \circ f^{-1} = I_T$$,
 
 ```math
 \begin{aligned}
@@ -316,13 +316,15 @@ Let $$h$$ be a mapping with an inverse.
 
 :::proof{source="https://proofwiki.org/wiki/Bijection_iff_Left_and_Right_Cancellable"}
 
-**Part 1.** Do $$h^{-1}$$ after both sides, and regroup with :ref{#composite-laws}:
+The proof of :ref{#isometries/cancel-map} works here, with :ref{#composite-laws} for each step.
+
+**Part 1.** Do $$h^{-1}$$ after both sides. Since $$h^{-1} \circ h = I_T$$,
 
 ```math
 f = I_T \circ f = (h^{-1} \circ h) \circ f = h^{-1} \circ (h \circ f) = h^{-1} \circ (h \circ g) = (h^{-1} \circ h) \circ g = I_T \circ g = g
 ```
 
-**Part 2.** This time do $$h^{-1}$$ before both sides:
+**Part 2.** This time do $$h^{-1}$$ before both sides. Since $$h \circ h^{-1} = I_T$$,
 
 ```math
 f = f \circ I_T = f \circ (h \circ h^{-1}) = (f \circ h) \circ h^{-1} = (g \circ h) \circ h^{-1} = g \circ (h \circ h^{-1}) = g \circ I_T = g
@@ -330,9 +332,9 @@ f = f \circ I_T = f \circ (h \circ h^{-1}) = (f \circ h) \circ h^{-1} = (g \circ
 
 :::
 
-This is :ref{#isometries/cancel-map} for mappings of any sets. The inverse is needed. Let
-$$h(x) = x^2$$, $$f(x) = x$$ and $$g(x) = -x$$ on all numbers. Then $$h(f(x)) = x^2$$ and
-$$h(g(x)) = (-x)^2 = x^2$$, so $$h \circ f = h \circ g$$, but $$f(1) = 1$$ and $$g(1) = -1$$.
+The inverse is needed. Let $$h(x) = x^2$$, $$f(x) = x$$ and $$g(x) = -x$$ on all numbers. Then
+$$h(f(x)) = x^2$$ and $$h(g(x)) = (-x)^2 = x^2$$, so $$h \circ f = h \circ g$$, but $$f(1) = 1$$ and
+$$g(1) = -1$$.
 
 ## Undoing a mapping of the plane
 

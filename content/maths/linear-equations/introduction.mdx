@@ -14,7 +14,9 @@ we'll find out what can go wrong, and how to tell in advance whether a system ha
 none, or infinitely many.
 
 This chapter builds on the [Numbers](../numbers/introduction.mdx) chapter, especially the guides on
-rational numbers and inverses, and links back to it wherever a result from there is used.
+rational numbers and inverses, and links back to it wherever a result from there is used. One fact
+is taken from the picture: the solutions of a linear equation in two unknowns lie on a straight
+line. The [Segments, rays and lines](../segments-rays-and-lines/introduction.mdx) chapter proves it.
 
 ## Guides in this chapter
 
@@ -38,16 +40,18 @@ The summary below collects every definition and rule in one place.
 
 **Definitions**
 
-| Term                                    | Meaning                                                              |
-| --------------------------------------- | -------------------------------------------------------------------- |
-| :ref[Solution]{#solution}               | Values of the unknowns that make the equation true                   |
-| :ref[Equivalent equations]{#equivalent} | Equations with exactly the same solutions                            |
-| :ref[Linear equation]{#linear-one}      | One that can be brought to $$ax = c$$, or $$ax + by = c$$, and so on |
-| :ref[System]{#system}                   | Equations to be satisfied at the same time                           |
-| :ref[Consistent]{#consistent}           | Having at least one solution; **inconsistent** means having none     |
-| :ref[Determinant]{#determinant}         | $$ad - bc$$, for $$ax + by = u$$ and $$cx + dy = v$$                 |
-| :ref[Graph]{#graph}                     | All points $$(x, y)$$ whose coordinates solve the equation           |
-| :ref[Slope]{#slope}                     | $$m$$ in $$y = mx + k$$: how much $$y$$ changes per step right       |
+| Term                                          | Meaning                                                                     |
+| --------------------------------------------- | --------------------------------------------------------------------------- |
+| :ref[Solution]{#solution}                     | Values of the unknowns that make the equation true                          |
+| :ref[Equivalent equations]{#equivalent}       | Equations with exactly the same solutions                                   |
+| :ref[Linear equation]{#linear-one}            | One that can be brought to $$ax = c$$ by safe steps                         |
+| :ref[Linear in two unknowns]{#linear-two}     | One that can be brought to $$ax + by = c$$, with $$a$$, $$b$$ not both zero |
+| :ref[Linear in three unknowns]{#linear-three} | One that can be brought to $$ax + by + cz = d$$                             |
+| :ref[System]{#system}                         | Equations to be satisfied at the same time                                  |
+| :ref[Consistent]{#consistent}                 | Having at least one solution; **inconsistent** means having none            |
+| :ref[Determinant]{#determinant}               | $$ad - bc$$, for $$ax + by = u$$ and $$cx + dy = v$$                        |
+| :ref[Graph]{#graph}                           | All points $$(x, y)$$ whose coordinates solve the equation                  |
+| :ref[Slope]{#slope}                           | $$m$$ in $$y = mx + k$$: how much $$y$$ changes per step right              |
 
 **Equations and solutions**
 
@@ -58,15 +62,17 @@ The summary below collects every definition and rule in one place.
 
 **Two unknowns**
 
-| Rule                    | Statement                                                                                          |
-| ----------------------- | -------------------------------------------------------------------------------------------------- |
-| :ref{#combining}        | Adding a multiple of one equation to another gives an equivalent system                            |
-| :ref{#elimination}      | Match one unknown's coefficients, add or subtract, solve, back-substitute                          |
-| :ref{#substitution}     | Rearrange one equation as $$y = \ldots$$ and put it into the other                                 |
-| :ref{#determinant-test} | $$ad - bc \neq 0$$: one solution, $$x = \frac{du - bv}{ad - bc}$$, $$y = \frac{av - cu}{ad - bc}$$ |
-| :ref{#determinant-zero} | $$ad - bc = 0$$: no solution or infinitely many                                                    |
-| :ref{#zero-right-side}  | With $$u = v = 0$$: only $$(0, 0)$$ exactly when $$ad - bc \neq 0$$                                |
-| :ref{#parallel-test}    | Non-vertical lines have the same slope exactly when $$ad - bc = 0$$                                |
+| Rule                      | Statement                                                                                          |
+| ------------------------- | -------------------------------------------------------------------------------------------------- |
+| :ref{#combining}          | Adding a multiple of one equation to another gives an equivalent system                            |
+| :ref{#elimination}        | Match one unknown's coefficients, add or subtract, solve, back-substitute                          |
+| :ref{#substitution}       | Rearrange one equation as $$y = \ldots$$ and put it into the other                                 |
+| :ref{#substitution-works} | Replacing $$y$$ by $$E$$ in the other equation, keeping $$y = E$$, gives an equivalent system      |
+| :ref{#determinant-test}   | $$ad - bc \neq 0$$: one solution, $$x = \frac{du - bv}{ad - bc}$$, $$y = \frac{av - cu}{ad - bc}$$ |
+| :ref{#determinant-zero}   | $$ad - bc = 0$$: no solution or infinitely many                                                    |
+| :ref{#zero-right-side}    | With $$u = v = 0$$: only $$(0, 0)$$ exactly when $$ad - bc \neq 0$$                                |
+| :ref{#line}               | The graph of $$ax + by = c$$ is a straight line (taken as given)                                   |
+| :ref{#parallel-test}      | Non-vertical lines have the same slope exactly when $$ad - bc = 0$$                                |
 
 **Three unknowns**
 

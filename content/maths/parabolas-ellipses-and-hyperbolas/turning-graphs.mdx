@@ -1,0 +1,223 @@
+---
+title: Turning graphs
+description:
+  The rules for sliding, stretching and flipping a graph gathered together, turning a graph about
+  the origin, and the recipe for moving any curve.
+---
+
+Imagine the cup $$y = x^2$$ drawn on a sheet of tracing paper, pinned to the page at the origin.
+Turn the sheet a quarter turn anticlockwise and the cup lies on its side, opening to the left. The
+curve keeps its shape, but its equation changes. In this guide we'll find the new equation for any
+turn, and gather it with the other moves into one recipe that the rest of the chapter uses.
+
+## The moves so far
+
+The [Moving graphs](../functions/moving-graphs.mdx) guide found what three kinds of move do to an
+equation $$E(x, y)$$. The slide by $$(h, k)$$ puts $$x - h$$ for $$x$$ and $$y - k$$ for $$y$$
+(:ref{#functions/slide-graph}). The stretch $$D_{a,b}(x, y) = (ax, by)$$ puts $$\frac{x}{a}$$ for
+$$x$$ and $$\frac{y}{b}$$ for $$y$$ (:ref{#functions/stretch-graph}). The flips change the sign of a
+letter, or swap the two letters for the flip in $$y = x$$ (:ref{#functions/flip-graph}).
+
+All three follow one pattern: to move a graph, put in the point moved back. For example, the slide
+by $$(3, -1)$$ sends the circle $$x^2 + y^2 = 4$$ onto $$(x - 3)^2 + (y + 1)^2 = 4$$. Turns are the
+one move still missing, because a turn by an angle needs sine and cosine to write down.
+
+## Turning a graph
+
+A turn works the same way, with one more step to find the point moved back. As in the Trigonometry
+chapter, $$G_\varphi$$ is the turn about $$O$$ by $$\varphi$$ radians, anticlockwise when
+$$\varphi > 0$$ (:ref{#trigonometry/radians-turn-notation}). To take a point back after
+$$G_\varphi$$, you turn it by $$-\varphi$$, the same amount the other way. By
+:ref{#trigonometry/rotation-formula} with $$-\varphi$$ in place of $$\varphi$$, and
+$$\cos(-\varphi) = \cos\varphi$$ and $$\sin(-\varphi) = -\sin\varphi$$ from
+:ref{#trigonometry/negative-angle},
+
+```math
+G_{-\varphi}(x, y) = (x\cos\varphi + y\sin\varphi,\ -x\sin\varphi + y\cos\varphi)
+```
+
+:::theorem[Turning a graph]{#turn-graph}
+
+Let $$\varphi$$ be a number. The turn $$G_\varphi$$ about $$O$$ sends the graph of an equation
+$$E(x, y)$$ onto the graph of
+
+```math
+E(x\cos\varphi + y\sin\varphi,\ -x\sin\varphi + y\cos\varphi)
+```
+
+That is, put in the point turned back by $$\varphi$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Rotation_of_axes"}
+
+Let $$C$$ be the graph of $$E(x, y)$$ and $$C'$$ the graph of the new equation. By the formula for
+$$G_{-\varphi}$$ above, a point $$Q$$ is on $$C'$$ exactly when $$G_{-\varphi}(Q)$$ is on $$C$$.
+Turns add, and the turn by $$0$$ is the identity $$I$$ (parts 1 and 2 of
+:ref{#trigonometry/radian-turns}), so
+
+```math
+G_{-\varphi} \circ G_\varphi = G_0 = I \qquad G_\varphi \circ G_{-\varphi} = G_0 = I
+```
+
+**Every turned point is on C′.** Take $$P$$ on $$C$$. Then $$G_{-\varphi}(G_\varphi(P)) = P$$, which
+is on $$C$$. So $$G_\varphi(P)$$ is on $$C'$$.
+
+**Every point of C′ is a turned point.** Take $$Q$$ on $$C'$$, and let $$P = G_{-\varphi}(Q)$$,
+which is on $$C$$. Then $$G_\varphi(P) = G_\varphi(G_{-\varphi}(Q)) = Q$$. So $$Q$$ is in
+$$G_\varphi(C)$$.
+
+:::
+
+Turn $$y = x^2$$ a quarter turn anticlockwise, $$\varphi = \frac{\pi}{2}$$. Here
+$$\cos\frac{\pi}{2} = 0$$ and $$\sin\frac{\pi}{2} = 1$$, so the turned-back point is
+
+```math
+(x \cdot 0 + y \cdot 1,\ -x \cdot 1 + y \cdot 0) = (y, -x)
+```
+
+In $$y = x^2$$, the first letter is the one squared and the second stands alone. Putting $$y$$ for
+the first and $$-x$$ for the second gives $$-x = y^2$$, which is $$x = -y^2$$: a parabola opening to
+the left. That matches the picture of a cup tipped over a quarter turn anticlockwise, which ends up
+with its opening facing left.
+
+Check with a point. The point $$(1, 1)$$ is on $$y = x^2$$. The quarter turn sends it to $$(-1, 1)$$
+(part 4 of :ref{#trigonometry/radian-turns}), and $$-y^2 = -1$$, so $$(-1, 1)$$ fits $$x = -y^2$$.
+The same turn sends $$(2, 4)$$ to $$(-4, 2)$$, and $$-2^2 = -4$$.
+
+<TurnParabola caption="The parabola y = x² (dashed) turned a quarter turn anticlockwise about O becomes x = −y², opening to the left. The point (1, 1) turns to (−1, 1), and (2, 4) to (−4, 2)." />
+
+## The recipe for every move
+
+The table from [Moving graphs](../functions/moving-graphs.mdx#the-recipe-for-every-move) now gains a
+row for turns. Each row shows a move, the point moved back, and what the move does to the parabola
+$$y = x^2$$.
+
+| Move                            | Formula                                                         | Put in place of $$x$$           | Put in place of $$y$$            | $$y = x^2$$ becomes                           |
+| ------------------------------- | --------------------------------------------------------------- | ------------------------------- | -------------------------------- | --------------------------------------------- |
+| Slide by $$(h, k)$$             | $$(x + h, y + k)$$                                              | $$x - h$$                       | $$y - k$$                        | $$y - k = (x - h)^2$$                         |
+| Stretch $$D_{a,b}$$             | $$(ax, by)$$                                                    | $$\frac{x}{a}$$                 | $$\frac{y}{b}$$                  | $$\frac{y}{b} = \frac{x^2}{a^2}$$             |
+| Flip in the $$y$$-axis, $$R_2$$ | $$(-x, y)$$                                                     | $$-x$$                          | $$y$$                            | $$y = x^2$$                                   |
+| Flip in the $$x$$-axis, $$R_1$$ | $$(x, -y)$$                                                     | $$x$$                           | $$-y$$                           | $$y = -x^2$$                                  |
+| Flip in $$y = x$$, $$S$$        | $$(y, x)$$                                                      | $$y$$                           | $$x$$                            | $$x = y^2$$                                   |
+| Turn $$G_\varphi$$ about $$O$$  | $$(x\cos\varphi - y\sin\varphi,\ x\sin\varphi + y\cos\varphi)$$ | $$x\cos\varphi + y\sin\varphi$$ | $$-x\sin\varphi + y\cos\varphi$$ | for $$\varphi = \frac{\pi}{2}$$, $$x = -y^2$$ |
+
+Two moves one after the other means two rules one after the other, and turns combine with the other
+moves in the same way. Turn $$y = x^2$$ a quarter turn anticlockwise, giving $$x = -y^2$$, and then
+slide it by $$(1, 2)$$. The slide puts $$x - 1$$ for $$x$$ and $$y - 2$$ for $$y$$:
+
+```math
+x - 1 = -(y - 2)^2
+```
+
+This parabola opens to the left from the point $$(1, 2)$$. Check with a point: the turn sends
+$$(1, 1)$$ to $$(-1, 1)$$, and the slide sends that to $$(0, 3)$$. Then $$0 - 1 = -1$$ and
+$$-(3 - 2)^2 = -1$$, so $$(0, 3)$$ is on the new curve.
+
+Every later guide in this chapter uses these rules. Each curve starts from one standard equation,
+and every other curve of the same kind is that one moved by slides, turns and flips.
+
+## Exercises
+
+:::::accordion[Exercises on turning graphs, with solutions]
+
+::::exercise{#ex-turning-graphs-turn-axis}
+
+Use :ref{#turn-graph} to turn the $$x$$-axis, the graph of $$y = 0$$, by $$\frac{\pi}{4}$$ about
+$$O$$. Then show that for any $$\varphi$$ with $$\cos\varphi \ne 0$$ the turned axis is the line
+$$y = (\tan\varphi)\,x$$.
+
+:::solution
+
+Here $$E(x, y)$$ is $$y = 0$$, which only involves the second letter. By :ref{#turn-graph}, the
+turned graph is $$-x\sin\varphi + y\cos\varphi = 0$$. With $$\varphi = \frac{\pi}{4}$$,
+$$\cos\varphi = \sin\varphi = \frac{\sqrt2}{2}$$, so
+
+```math
+\begin{aligned}
+\tfrac{\sqrt2}{2}(-x + y) &= 0 && \text{take out } \tfrac{\sqrt2}{2} \\
+y &= x && \text{divide by } \tfrac{\sqrt2}{2} \ne 0 \text{ and add } x
+\end{aligned}
+```
+
+Check: the turn sends $$(1, 0)$$ to $$(\cos\frac{\pi}{4}, \sin\frac{\pi}{4})$$, which has equal
+coordinates. For any $$\varphi$$ with $$\cos\varphi \ne 0$$, divide $$y\cos\varphi = x\sin\varphi$$
+by $$\cos\varphi$$ to get $$y = \frac{\sin\varphi}{\cos\varphi}x = (\tan\varphi)\,x$$
+(:ref{#trigonometry/tangent}). The turned axis climbs $$\tan\varphi$$ for each step right, as
+:ref{#trigonometry/tangent-slope} says.
+
+:::
+
+::::
+
+::::exercise{#ex-turning-graphs-turn-circle}
+
+Use :ref{#turn-graph} to show that every turn about $$O$$ sends the unit circle onto itself.
+
+:::solution
+
+Write $$c = \cos\varphi$$ and $$s = \sin\varphi$$. By :ref{#turn-graph}, the turn sends the graph of
+$$x^2 + y^2 = 1$$ onto the graph of $$(xc + ys)^2 + (-xs + yc)^2 = 1$$. Multiply out the left side:
+
+```math
+\begin{aligned}
+(xc + ys)^2 + (-xs + yc)^2
+&= x^2c^2 + 2xycs + y^2s^2 + x^2s^2 - 2xycs + y^2c^2 && \text{multiply out} \\
+&= x^2(c^2 + s^2) + y^2(s^2 + c^2) && \text{the } xy \text{ terms cancel} \\
+&= x^2 + y^2 && c^2 + s^2 = 1
+\end{aligned}
+```
+
+The last step is :ref{#trigonometry/pythagorean-identity}. So the new equation is $$x^2 + y^2 = 1$$
+again, and the turned circle is the unit circle.
+
+:::
+
+::::
+
+::::exercise{#ex-turning-graphs-half-turn}
+
+Use :ref{#turn-graph} to turn the parabola $$y = x^2$$ by $$\pi$$ about $$O$$, and check the answer
+with the point $$(2, 4)$$.
+
+:::solution
+
+Here $$\cos\pi = -1$$ and $$\sin\pi = 0$$ (:ref{#trigonometry/quarter-values}), so the turned-back
+point is
+
+```math
+(x \cdot (-1) + y \cdot 0,\ -x \cdot 0 + y \cdot (-1)) = (-x, -y)
+```
+
+Putting $$-x$$ for $$x$$ and $$-y$$ for $$y$$ in $$y = x^2$$ gives $$-y = (-x)^2 = x^2$$, which is
+$$y = -x^2$$: the cup upside down. The half turn sends $$(2, 4)$$ to $$(-2, -4)$$, and
+$$-(-2)^2 = -4$$. The answer matches the flip in the $$x$$-axis, because the parabola is its own
+mirror image in the $$y$$-axis, and the half turn is those two flips one after the other.
+
+:::
+
+::::
+
+::::exercise{#ex-turning-graphs-circle-centre}
+
+Turn the circle $$(x - 2)^2 + y^2 = 1$$ a quarter turn anticlockwise about $$O$$. Find the new
+equation and its centre.
+
+:::solution
+
+For $$\varphi = \frac{\pi}{2}$$ the turned-back point is $$(y, -x)$$, as in the guide. Put $$y$$ for
+$$x$$ and $$-x$$ for $$y$$ (:ref{#turn-graph}):
+
+```math
+(y - 2)^2 + (-x)^2 = 1 \qquad\text{which is}\qquad x^2 + (y - 2)^2 = 1
+```
+
+This is the circle with centre $$(0, 2)$$ and radius $$1$$ (:ref{#coordinates/circle-equation}). The
+quarter turn sends the old centre $$(2, 0)$$ to $$(0, 2)$$ (part 4 of
+:ref{#trigonometry/radian-turns}), as it should.
+
+:::
+
+::::
+
+:::::
