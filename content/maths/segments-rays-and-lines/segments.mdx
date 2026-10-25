@@ -1,0 +1,591 @@
+---
+title: Segments
+description:
+  The segment from P to Q as the points P + t(Q − P) with t from 0 to 1, points a fraction of the
+  way along, and arrows with their steps.
+---
+
+Imagine watching a download bar fill up on a screen. At $$25\%$$ the coloured part reaches a quarter
+of the way along the bar, and at $$50\%$$ it reaches the middle. Each percentage picks out one spot
+on the bar, and as the number climbs from $$0$$ to $$100$$ that spot sweeps from one end to the
+other, missing nothing.
+
+The bar is a segment, and the percentage says how far along it you are. In this guide we'll describe
+every point of a segment by one formula, with a number between $$0$$ and $$1$$ saying how far along
+the point is, and then add a direction of travel to turn a segment into an arrow.
+
+## The points of a segment
+
+To get from a point $$P$$ to a point $$Q$$, you take the step $$Q - P$$
+(:ref{#adding-and-scaling-points/difference-step}). A quarter of that step takes you a quarter of
+the way, and half of it takes you halfway. So each point of the segment is $$P$$ plus some fraction
+of the step, and the fraction says how far along it is.
+
+For example, take $$P = (1, 1)$$ and $$Q = (5, 4)$$. The step from $$P$$ to $$Q$$ is
+$$Q - P = (4, 3)$$. A quarter of it is $$(1, 0.75)$$, which lands at $$(2, 1.75)$$. Half of it is
+$$(2, 1.5)$$, which lands at $$(3, 2.5)$$, and three quarters of it lands at $$(4, 3.25)$$.
+
+```plane
+point P 1 1 se
+point Q 5 4 se
+point X 2 1.75 nw
+point M 3 2.5 nw
+point Y 4 3.25 nw
+segment P Q color=blue
+caption "The segment from P = (1, 1) to Q = (5, 4), with X = (2, 1.75), M = (3, 2.5) and Y = (4, 3.25) a quarter, a half and three quarters of the way along"
+```
+
+:::definition[Segment in coordinates]{#segment-formula}
+
+Let $$P$$ and $$Q$$ be different points of $$\mathbb{R}^2$$. The **segment** $$PQ$$ is made of the
+points
+
+```math
+P + t(Q - P) \qquad \text{for every number } t \text{ with } 0 \le t \le 1
+```
+
+The point for $$t = 0$$ is $$P$$, the point for $$t = 1$$ is $$Q$$, and the point for
+$$t = \frac{1}{2}$$ is $$\frac{1}{2}(P + Q)$$, the midpoint of
+:ref{#adding-and-scaling-points/midpoint-formula}.
+
+:::
+
+The three named points follow from the rules for adding and scaling
+(:ref{#adding-and-scaling-points/sum-rules}, :ref{#adding-and-scaling-points/scale-sum-rules},
+:ref{#adding-and-scaling-points/scale-twice}). For $$t = 0$$ the step is $$0(Q - P) = O$$, which
+leaves $$P$$. For $$t = 1$$ it is the whole step, and $$P + (Q - P) = Q$$ by
+:ref{#adding-and-scaling-points/difference-step}.
+
+The same rules rewrite the formula in a second way. Multiplying out,
+
+```math
+P + t(Q - P) = P + tQ - tP = (1 - t)P + tQ
+```
+
+so the point a fraction $$t$$ of the way along is $$(1 - t)P + tQ$$. With $$t = \frac{1}{2}$$ this
+is $$\frac{1}{2}P + \frac{1}{2}Q = \frac{1}{2}(P + Q)$$, the midpoint.
+
+Drag the slider for $$t$$ and watch the point $$X = P + t(Q - P)$$ move. Between $$0$$ and $$1$$ it
+stays on the segment. Push $$t$$ below $$0$$ or above $$1$$, and the same formula carries on along
+the line through $$P$$ and $$Q$$, past one end or the other.
+
+<SegmentSlider />
+
+## How far along
+
+A point a quarter of the way from $$P$$ to $$Q$$ should be a quarter of the distance from $$P$$, and
+three quarters of the distance from $$Q$$. The formula gives that, because the step from $$P$$ to
+the point is $$t$$ times the whole step, and scaling a step scales its length
+(:ref{#adding-and-scaling-points/norm-scale}).
+
+In the example, $$Q - P = (4, 3)$$ has length $$\sqrt{16 + 9} = 5$$. The point $$X = (2, 1.75)$$ is
+a step of $$(1, 0.75)$$ from $$P$$, of length $$\sqrt{1 + 0.5625} = 1.25$$, which is
+$$\frac{1}{4} \cdot 5$$. The step from $$X$$ to $$Q$$ is $$(3, 2.25)$$, of length
+$$3.75 = \frac{3}{4} \cdot 5$$.
+
+:::proposition[The point a fraction of the way along]{#fraction-along}
+
+Let $$P$$ and $$Q$$ be different points, let $$0 \le t \le 1$$, and let $$X = P + t(Q - P)$$. Then
+
+```math
+d(P, X) = t\,d(P, Q) \qquad d(X, Q) = (1 - t)\,d(P, Q)
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Section_formula#Internal_divisions"}
+
+By :ref{#adding-and-scaling-points/difference-step}, $$X - P$$ is the only step that takes $$P$$ to
+$$X$$, and $$t(Q - P)$$ is such a step, so $$X - P = t(Q - P)$$. Since $$t \ge 0$$, we have
+$$|t| = t$$, so by :ref{#adding-and-scaling-points/distance-norm} and
+:ref{#adding-and-scaling-points/norm-scale},
+
+```math
+d(P, X) = |t(Q - P)| = t\,|Q - P| = t\,d(P, Q)
+```
+
+For the other part, write $$X = (1 - t)P + tQ$$. By the rules for adding and scaling
+(:ref{#adding-and-scaling-points/sum-rules}, :ref{#adding-and-scaling-points/scale-sum-rules},
+:ref{#adding-and-scaling-points/scale-twice}),
+
+```math
+Q - X = Q - tQ - (1 - t)P = (1 - t)Q - (1 - t)P = (1 - t)(Q - P)
+```
+
+Since $$t \le 1$$, the number $$1 - t$$ is not negative, so $$|1 - t| = 1 - t$$ and in the same way
+$$d(X, Q) = (1 - t)\,d(P, Q)$$.
+
+:::
+
+Adding the two distances gives $$t\,d(P, Q) + (1 - t)\,d(P, Q) = d(P, Q)$$, so going from $$P$$ to
+$$Q$$ by way of $$X$$ is exactly as long as going straight. The proposition also says that different
+values of $$t$$ give different points, since they give different distances from $$P$$. So each point
+of the segment has one value of $$t$$, and $$t = \frac{d(P, X)}{d(P, Q)}$$ says how far along it is.
+
+### The formula and the picture
+
+Distance and angles described the segment $$PQ$$ as the straight piece of a line from $$P$$ to $$Q$$
+(:ref{#distance-and-angles/segment}), and took its rules from the picture
+(:ref{#distance-and-angles/segment-rules}). Using those rules, the formula gives exactly the same
+points as the picture. Each point $$X = P + t(Q - P)$$ has $$d(P, X) + d(X, Q) = d(P, Q)$$, so by
+rule 1 it lies on the drawn segment.
+
+The other way round, take any point $$Y$$ of the drawn segment, at distance $$c$$ from $$P$$. Then
+$$0 \le c \le d(P, Q)$$, and rule 2 says $$Y$$ is the only point of the drawn segment at that
+distance. With $$t = \frac{c}{d(P, Q)}$$, the point $$X = P + t(Q - P)$$ is on the drawn segment and
+also at distance $$c$$ from $$P$$, by :ref{#fraction-along}. So $$X = Y$$, and every point of the
+drawn segment comes from the formula.
+
+That check leans on the picture. From now on, in $$\mathbb{R}^2$$, :ref{#segment-formula} is the
+definition of a segment, in the same way that the Coordinates chapter made distance a formula
+(:ref{#coordinates/coordinate-plane}). The rules for segments then become things to prove, and
+:ref{#segment-rules-proved} proves them for the formula.
+
+## Segments either way round
+
+Walking from the bus stop to the shop covers the same stretch of pavement as walking back. A point a
+quarter of the way along on the way there is three quarters of the way along on the way back. So the
+segment from $$P$$ to $$Q$$ and the segment from $$Q$$ to $$P$$ should be the same points, with
+$$t$$ and $$1 - t$$ trading places.
+
+:::proposition[Segments either way round]{#segment-symmetric}
+
+Let $$P$$ and $$Q$$ be different points. The segment $$PQ$$ and the segment $$QP$$ are made of the
+same points. The point of $$PQ$$ for the number $$t$$ is the point of $$QP$$ for the number
+$$1 - t$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Line_segment#In_real_or_complex_vector_spaces"}
+
+By :ref{#segment-formula}, written in its second form, the point of $$PQ$$ for $$t$$ is
+$$(1 - t)P + tQ$$, and the point of $$QP$$ for a number $$s$$ is $$(1 - s)Q + sP$$. Taking
+$$s = 1 - t$$, the second is
+
+```math
+\big(1 - (1 - t)\big)Q + (1 - t)P = tQ + (1 - t)P = (1 - t)P + tQ
+```
+
+by :ref{#adding-and-scaling-points/sum-rules}, which is the first. When $$t$$ runs from $$0$$ to
+$$1$$, so does $$1 - t$$. So every point of $$PQ$$ is a point of $$QP$$, and every point of $$QP$$,
+with $$s$$ between $$0$$ and $$1$$, is the point of $$PQ$$ for $$t = 1 - s$$.
+
+:::
+
+For example, with $$P = (1, 1)$$ and $$Q = (5, 4)$$, the point a quarter of the way from $$P$$ is
+$$(2, 1.75)$$. From $$Q$$, the step to $$P$$ is $$(-4, -3)$$, and three quarters of it is
+$$(-3, -2.25)$$, which lands at $$(5, 4) + (-3, -2.25) = (2, 1.75)$$, the same point.
+
+## Dividing a segment into equal pieces
+
+To cut a segment into five equal pieces, mark the points a fifth, two fifths, three fifths and four
+fifths of the way along. Each piece goes from one value of $$t$$ to the next, a fifth more, so by
+:ref{#fraction-along} each piece has a fifth of the whole length.
+
+:::example[Points a third and two thirds of the way]
+
+Take $$P = (-2, 1)$$ and $$Q = (4, 10)$$. The step is $$Q - P = (6, 9)$$, and a third of it is
+$$(2, 3)$$. So the point a third of the way along is $$(-2, 1) + (2, 3) = (0, 4)$$, and the point
+two thirds of the way along is $$(-2, 1) + (4, 6) = (2, 7)$$.
+
+The whole segment has length $$\sqrt{36 + 81} = \sqrt{117} = 3\sqrt{13}$$. The first point is
+$$|(2, 3)| = \sqrt{13}$$ from $$P$$, a third of that, as :ref{#fraction-along} says.
+
+:::
+
+:::example[Fence posts]
+
+A straight fence runs from a post at $$P = (2, 1)$$ to a post at $$Q = (12, 6)$$, in metres, and
+four more posts go in between to split it into five equal lengths. The step is $$(10, 5)$$, and a
+fifth of it is $$(2, 1)$$. So the posts stand at the points for $$t = 0$$, $$t = \frac{1}{5}$$ and
+so on up to $$t = 1$$, which are
+
+```math
+(2, 1) \quad (4, 2) \quad (6, 3) \quad (8, 4) \quad (10, 5) \quad (12, 6)
+```
+
+Each gap is a step of $$(2, 1)$$, of length $$\sqrt{5} \approx 2.24$$ m, and five gaps make the
+whole length $$\sqrt{125} = 5\sqrt{5} \approx 11.18$$ m.
+
+:::
+
+```plane
+point P 2 1 se
+point F1 4 2 se
+point F2 6 3 se
+point F3 8 4 se
+point F4 10 5 se
+point Q 12 6 se
+segment P Q color=blue
+ticks P F1 1
+ticks F1 F2 1
+ticks F2 F3 1
+ticks F3 F4 1
+ticks F4 Q 1
+caption "Six fence posts from P = (2, 1) to Q = (12, 6), at t = 0, 1/5, 2/5, 3/5, 4/5 and 1, split the fence into five gaps of √5 m"
+```
+
+## Blending between two positions
+
+Animation software fills in movement with the formula $$(1 - t)P + tQ$$. An animator draws a ball at
+its start position in one keyframe and at its end position in a later one, and the software fills in
+the frames between. Over ten frames, frame $$k$$ shows the ball at $$(1 - t)P + tQ$$ with
+$$t = \frac{k}{10}$$.
+
+Read the formula as a blend: $$1 - t$$ of the start mixed with $$t$$ of the end. Say the ball starts
+at $$P = (40, 300)$$ and ends at $$Q = (440, 100)$$, in pixels from the bottom left corner of the
+screen. Frame $$3$$ is a $$70\%$$ to $$30\%$$ blend, so the ball is at
+
+```math
+0.7(40, 300) + 0.3(440, 100) = (28, 210) + (132, 30) = (160, 240)
+```
+
+Each frame is a step of $$\frac{1}{10}(Q - P)$$ on from the one before, so by
+:ref{#adding-and-scaling-points/norm-scale} consecutive frames are a tenth of the whole path apart,
+and the ball moves at a steady speed. Animators call this filling in "tweening", short for
+in-betweening.
+
+## Arrows
+
+A segment has no start and no end, since $$PQ$$ and $$QP$$ are the same points
+(:ref{#segment-symmetric}). A step does have a way of going: the step from $$(1, 1)$$ to $$(5, 4)$$
+is $$(4, 3)$$, and the step back is $$(-4, -3)$$. An arrow keeps track of which end comes first.
+
+Two arrows can also have the same step without sharing any points. The arrow from $$(1, 1)$$ to
+$$(5, 4)$$ and the arrow from $$(-4, 2)$$ to $$(0, 5)$$ both have step $$(4, 3)$$: they are the same
+move, made from two different places.
+
+:::definition[Arrow]{#arrow}
+
+Let $$P$$ and $$Q$$ be points. The **arrow** $$\overrightarrow{PQ}$$, read "the arrow from $$P$$ to
+$$Q$$", is the pair of points $$P$$ and $$Q$$ in that order, drawn from its **start** $$P$$ to its
+**end** $$Q$$. Its **step** is $$Q - P$$.
+
+Two arrows are **equivalent** when they have the same step.
+
+:::
+
+Order matters for arrows. The arrow $$\overrightarrow{QP}$$ has step $$P - Q = -(Q - P)$$, so it is
+not equivalent to $$\overrightarrow{PQ}$$ unless $$P = Q$$.
+
+Arrows are what slides move by. :ref{#isometries/translation} defines the translation by the arrow
+from $$O$$ to $$M$$. In coordinates that arrow has step $$M - O = M$$, and adding $$M$$ to every
+point is the slide $$T_M$$ of :ref{#adding-and-scaling-points/slide-formula}. The proof that $$T_M$$
+moves each point in the direction of the arrow is :ref{#slide-direction}, in
+[Rays and direction](./rays.mdx).
+
+### Equivalent arrows and parallelograms
+
+Draw two equivalent arrows and join their starts and their ends. The four points make a
+parallelogram, since the two arrows are opposite sides that point the same way and have the same
+length. In a parallelogram the two diagonals cross at their midpoints, and that gives a test with no
+subtraction in it.
+
+:::proposition[Equivalent arrows make a parallelogram]{#arrow-equivalent}
+
+For points $$P$$, $$Q$$, $$M$$ and $$N$$, the following say the same thing:
+
+1. $$\overrightarrow{PQ}$$ and $$\overrightarrow{MN}$$ are equivalent
+2. $$N = M + (Q - P)$$
+3. $$P + N = Q + M$$
+
+When $$P \ne N$$ and $$Q \ne M$$, part 3 says that the segments $$PN$$ and $$QM$$ have the same
+midpoint.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Equipollence_(geometry)#Parallelogram_property"}
+
+**Parts 1 and 2.** The arrows are equivalent when $$N - M = Q - P$$. By
+:ref{#adding-and-scaling-points/difference-step}, $$N - M$$ is the only point $$X$$ with
+$$M + X = N$$. So $$N - M = Q - P$$ exactly when $$M + (Q - P) = N$$.
+
+**Parts 2 and 3.** If $$N = M + (Q - P)$$, adding $$P$$ to both sides gives
+$$P + N = M + Q = Q + M$$, by :ref{#adding-and-scaling-points/sum-rules}. If $$P + N = Q + M$$,
+subtracting $$P$$ from both sides gives $$N = Q + M - P = M + (Q - P)$$.
+
+**The midpoints.** By :ref{#segment-formula}, the midpoints of $$PN$$ and $$QM$$ are
+$$\frac{1}{2}(P + N)$$ and $$\frac{1}{2}(Q + M)$$. If $$P + N = Q + M$$, halving both sides makes
+the midpoints equal. If the midpoints are equal, doubling both sides
+(:ref{#adding-and-scaling-points/scale-twice}) gives $$P + N = Q + M$$.
+
+:::
+
+```plane
+point P 1 1 se
+point Q 5 4 se
+point M -4 2 sw
+point N 0 5 nw
+point C 0.5 3 s
+segment P Q color=blue
+segment M N color=blue
+segment P M dashed color=muted
+segment Q N dashed color=muted
+segment P N dashed color=orange
+segment Q M dashed color=orange
+caption "The arrows from P = (1, 1) to Q = (5, 4) and from M = (−4, 2) to N = (0, 5) both have step (4, 3). The diagonals PN and QM cross at their common midpoint C = (0.5, 3)."
+```
+
+:::example[Finding the end of an arrow]
+
+Find the point $$N$$ that makes $$\overrightarrow{MN}$$ equivalent to $$\overrightarrow{PQ}$$, for
+$$P = (1, 1)$$, $$Q = (5, 4)$$ and $$M = (-4, 2)$$.
+
+By :ref{#arrow-equivalent}, $$N = M + (Q - P) = (-4, 2) + (4, 3) = (0, 5)$$. As a check,
+$$P + N = (1, 6)$$ and $$Q + M = (1, 6)$$, so the diagonals $$PN$$ and $$QM$$ share the midpoint
+$$(0.5, 3)$$.
+
+:::
+
+## Sliding and zooming a segment
+
+Slide a ruler across a table and every mark on it moves by the same step. The two ends land in new
+places, and the mark a quarter of the way along is still a quarter of the way along. So the slide of
+a segment is the segment between the slid ends, and each point keeps its value of $$t$$. A zoom
+about the origin stretches every step by the same factor, and a segment goes to a segment in the
+same way.
+
+For example, slide the segment from $$P = (1, 1)$$ to $$Q = (5, 4)$$ by $$A = (2, -3)$$. Its ends go
+to $$(3, -2)$$ and $$(7, 1)$$. The point $$(2, 1.75)$$ a quarter of the way along goes to
+$$(4, -1.25)$$, and a quarter of the step $$(4, 3)$$ from $$(3, -2)$$ lands there too.
+
+:::proposition[Slides move segments]{#segment-slide}
+
+Let $$P$$ and $$Q$$ be different points, let $$A$$ be a point and let $$r > 0$$.
+
+1. **Slides**: $$T_A$$ sends the segment $$PQ$$ onto the segment from $$P + A$$ to $$Q + A$$, and it
+   sends the point for $$t$$ to the point for $$t$$
+2. **Arrows**: $$T_A$$ sends each arrow $$\overrightarrow{PQ}$$ to the equivalent arrow from
+   $$P + A$$ to $$Q + A$$
+3. **Zooms**: the zoom $$Z_r(X) = rX$$ about the origin sends the segment $$PQ$$ onto the segment
+   from $$rP$$ to $$rQ$$, and the point for $$t$$ to the point for $$t$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Affine_transformation#Properties_preserved"}
+
+**Slides.** First, $$P + A \ne Q + A$$, since adding $$-A$$ to both sides of $$P + A = Q + A$$ would
+give $$P = Q$$. Working coordinate by coordinate, $$(Q + A) - (P + A) = Q - P$$. So for
+$$0 \le t \le 1$$,
+
+```math
+T_A\big(P + t(Q - P)\big) = (P + A) + t(Q - P) = (P + A) + t\big((Q + A) - (P + A)\big)
+```
+
+by :ref{#adding-and-scaling-points/sum-rules}. The right side is the point for $$t$$ of the segment
+from $$P + A$$ to $$Q + A$$ (:ref{#segment-formula}). So every point of $$PQ$$ lands on the new
+segment, and every point of the new segment, with its own $$t$$, is the image of the point of $$PQ$$
+for that $$t$$.
+
+**Arrows.** The image arrow has step $$(Q + A) - (P + A) = Q - P$$, the step of
+$$\overrightarrow{PQ}$$, so the two arrows are equivalent.
+
+**Zooms.** First, $$rP \ne rQ$$ by :ref{#adding-and-scaling-points/scale-cancel}, since $$r \ne 0$$.
+By :ref{#adding-and-scaling-points/scale-sum-rules} and
+:ref{#adding-and-scaling-points/scale-twice},
+
+```math
+r\big(P + t(Q - P)\big) = rP + (rt)(Q - P) = rP + t(rQ - rP)
+```
+
+which is the point for $$t$$ of the segment from $$rP$$ to $$rQ$$. As for slides, every point of
+each segment is matched with the point of the other for the same $$t$$.
+
+:::
+
+Part 3 proves the half of rule 2 of :ref{#area-and-scaling/zoom-rules} that is about segments, for
+zooms about the origin written as formulas. :ref{#moves-keep-lines} in
+[The rules for lines, proved](./rules-proved.mdx) does the same for lines, and for the other moves
+of the Adding and scaling points chapter. With $$r = 2$$, the zoom sends the segment from $$(1, 1)$$
+to $$(5, 4)$$ onto the segment from $$(2, 2)$$ to $$(10, 8)$$, and the quarter point $$(2, 1.75)$$
+onto $$(4, 3.5)$$, which is $$(2, 2) + \frac{1}{4}(8, 6)$$.
+
+## Exercises
+
+:::::accordion[Exercises on segments, with solutions]
+
+::::exercise{#ex-segments-points}
+
+Let $$P = (-3, 2)$$ and $$Q = (5, -2)$$.
+
+1. Find the points a quarter, a half and three quarters of the way from $$P$$ to $$Q$$.
+2. Find $$d(P, Q)$$, and check :ref{#fraction-along} for the point a quarter of the way along.
+
+:::solution
+
+1. The step is $$Q - P = (8, -4)$$, and a quarter of it is $$(2, -1)$$. So by :ref{#segment-formula}
+   the three points are $$(-3, 2) + (2, -1) = (-1, 1)$$, $$(-3, 2) + (4, -2) = (1, 0)$$ and
+   $$(-3, 2) + (6, -3) = (3, -1)$$.
+2. $$d(P, Q) = \sqrt{64 + 16} = \sqrt{80} = 4\sqrt{5}$$. The quarter point is a step of $$(2, -1)$$
+   from $$P$$, of length $$\sqrt{5}$$, which is $$\frac{1}{4} \cdot 4\sqrt{5}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-segments-on-or-off}
+
+Let $$P = (1, 1)$$ and $$Q = (9, 5)$$. For each point, decide whether it lies on the segment $$PQ$$,
+and if it does, find its value of $$t$$.
+
+1. $$(7, 4)$$
+2. $$(5, 4)$$
+3. $$(13, 7)$$
+
+:::solution
+
+The step is $$Q - P = (8, 4)$$. A point $$X$$ is on the segment exactly when $$X - P = t(8, 4)$$ for
+some $$t$$ with $$0 \le t \le 1$$ (:ref{#segment-formula},
+:ref{#adding-and-scaling-points/difference-step}).
+
+1. $$(7, 4) - P = (6, 3)$$. The first coordinate gives $$t = \frac{6}{8} = \frac{3}{4}$$ and the
+   second gives $$t = \frac{3}{4}$$ too, so the point is on the segment, three quarters of the way
+   along.
+2. $$(5, 4) - P = (4, 3)$$. The first coordinate needs $$t = \frac{1}{2}$$ and the second needs
+   $$t = \frac{3}{4}$$, so no single $$t$$ works and the point is not on the segment.
+3. $$(13, 7) - P = (12, 6) = 1.5(8, 4)$$. So $$t = 1.5$$, which is more than $$1$$: the point is on
+   the line through $$P$$ and $$Q$$, past $$Q$$, but not on the segment.
+
+:::
+
+::::
+
+::::exercise{#ex-segments-thirds}
+
+Split the segment from $$(-1, 4)$$ to $$(11, -5)$$ into three equal pieces. Find the two points
+where it is cut, and the length of each piece.
+
+:::solution
+
+The step is $$(12, -9)$$, and a third of it is $$(4, -3)$$. So the cuts are at
+$$(-1, 4) + (4, -3) = (3, 1)$$ and $$(-1, 4) + (8, -6) = (7, -2)$$. The whole segment has length
+$$\sqrt{144 + 81} = 15$$, so by :ref{#fraction-along} each piece has length $$5$$, which is
+$$|(4, -3)|$$.
+
+:::
+
+::::
+
+::::exercise{#ex-segments-find-end}
+
+The point $$M = (2, 3)$$ is two fifths of the way from $$P = (-2, 1)$$ to a point $$Q$$. Find $$Q$$.
+
+:::solution
+
+By :ref{#segment-formula}, $$M = P + \frac{2}{5}(Q - P)$$, so
+$$\frac{2}{5}(Q - P) = M - P = (4, 2)$$ (:ref{#adding-and-scaling-points/difference-step}).
+Multiplying by $$\frac{5}{2}$$ (:ref{#adding-and-scaling-points/scale-twice}) gives
+$$Q - P = (10, 5)$$, so $$Q = (-2, 1) + (10, 5) = (8, 6)$$.
+
+Check: $$(-2, 1) + \frac{2}{5}(10, 5) = (-2, 1) + (4, 2) = (2, 3)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-segments-arrows}
+
+Let $$P = (2, -1)$$, $$Q = (5, 3)$$ and $$M = (-1, 0)$$.
+
+1. Find $$N$$ so that $$\overrightarrow{MN}$$ is equivalent to $$\overrightarrow{PQ}$$, and check
+   that $$P + N = Q + M$$.
+2. Find the step of $$\overrightarrow{QP}$$, and explain why it is not equivalent to
+   $$\overrightarrow{PQ}$$.
+3. Show that whenever $$\overrightarrow{PQ}$$ and $$\overrightarrow{MN}$$ are equivalent, so are
+   $$\overrightarrow{PM}$$ and $$\overrightarrow{QN}$$, for any four points.
+
+:::solution
+
+1. By :ref{#arrow-equivalent}, $$N = (-1, 0) + (3, 4) = (2, 4)$$. Then $$P + N = (4, 3)$$ and
+   $$Q + M = (4, 3)$$.
+2. Its step is $$P - Q = (-3, -4)$$, while the step of $$\overrightarrow{PQ}$$ is $$(3, 4)$$. The
+   steps differ, so the arrows are not equivalent (:ref{#arrow}). They have the same length, $$5$$,
+   but point opposite ways.
+3. By :ref{#arrow-equivalent}, $$P + N = Q + M$$. By :ref{#adding-and-scaling-points/sum-rules} this
+   is the same as $$P + N = M + Q$$, which is part 3 of :ref{#arrow-equivalent} for the arrows
+   $$\overrightarrow{PM}$$ and $$\overrightarrow{QN}$$. So they are equivalent too. In the
+   parallelogram, these are the other pair of opposite sides.
+
+:::
+
+::::
+
+::::exercise{#ex-segments-moves}
+
+Let $$P = (1, 0)$$ and $$Q = (4, 3)$$, and let $$X$$ be the point a third of the way from $$P$$ to
+$$Q$$.
+
+1. Find $$X$$.
+2. Slide the segment by $$A = (-2, 5)$$. Find the image of $$X$$, and check that it is a third of
+   the way along the image segment.
+3. Do the same for the zoom $$Z_2$$ about the origin.
+
+:::solution
+
+1. The step is $$(3, 3)$$, so $$X = (1, 0) + (1, 1) = (2, 1)$$.
+2. The ends go to $$(-1, 5)$$ and $$(2, 8)$$, and $$X$$ goes to $$(0, 6)$$. A third of the way from
+   $$(-1, 5)$$ to $$(2, 8)$$ is $$(-1, 5) + (1, 1) = (0, 6)$$, the same point, as
+   :ref{#segment-slide} says.
+3. The ends go to $$(2, 0)$$ and $$(8, 6)$$, and $$X$$ goes to $$(4, 2)$$. A third of the way from
+   $$(2, 0)$$ to $$(8, 6)$$ is $$(2, 0) + (2, 2) = (4, 2)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-segments-midpoint-distance}
+
+Let $$P \ne Q$$, let $$C = \frac{1}{2}(P + Q)$$ be the midpoint of $$PQ$$, and let
+$$X = P + t(Q - P)$$ with $$0 \le t \le 1$$. Show that
+
+```math
+d(X, C) = \left|t - \tfrac{1}{2}\right|\,d(P, Q)
+```
+
+and deduce that the points for $$t$$ and $$1 - t$$ are the same distance from the midpoint.
+
+:::solution
+
+The midpoint is the point for $$\frac{1}{2}$$, so $$C = P + \frac{1}{2}(Q - P)$$
+(:ref{#segment-formula}). By the rules for adding and scaling
+(:ref{#adding-and-scaling-points/sum-rules}, :ref{#adding-and-scaling-points/scale-sum-rules}),
+
+```math
+X - C = t(Q - P) - \tfrac{1}{2}(Q - P) = \left(t - \tfrac{1}{2}\right)(Q - P)
+```
+
+So by :ref{#adding-and-scaling-points/distance-norm} and
+:ref{#adding-and-scaling-points/norm-scale}, $$d(X, C) = \left|t - \frac{1}{2}\right|\,d(P, Q)$$.
+
+For $$1 - t$$ the factor is $$\left|\frac{1}{2} - t\right|$$, which is the same number, since a
+number and its negative have the same absolute value. For example, the points a quarter and three
+quarters of the way along are both a quarter of the length from the midpoint.
+
+:::
+
+::::
+
+::::exercise{#ex-segments-tween}
+
+In an animation, a ball moves from $$(40, 300)$$ to $$(440, 100)$$ over $$8$$ frames, filled in with
+$$(1 - t)P + tQ$$ and $$t = \frac{k}{8}$$ for frame $$k$$.
+
+1. Where is the ball in frame $$3$$?
+2. How far does it move from one frame to the next?
+
+:::solution
+
+1. With $$t = \frac{3}{8}$$, the ball is at
+   $$\frac{5}{8}(40, 300) + \frac{3}{8}(440, 100) = (25, 187.5) + (165, 37.5) = (190, 225)$$.
+2. The whole path has length $$|(400, -200)| = \sqrt{200000} = 200\sqrt{5} \approx 447.2$$ pixels.
+   Frame $$k$$ and frame $$k + 1$$ are the points for $$\frac{k}{8}$$ and $$\frac{k + 1}{8}$$, and
+   their difference is $$\frac{1}{8}(Q - P)$$ by the rules for adding and scaling
+   (:ref{#adding-and-scaling-points/scale-sum-rules}). So by
+   :ref{#adding-and-scaling-points/norm-scale} each frame moves the ball
+   $$\frac{1}{8} \cdot 200\sqrt{5} = 25\sqrt{5} \approx 55.9$$ pixels.
+
+:::
+
+::::
+
+:::::

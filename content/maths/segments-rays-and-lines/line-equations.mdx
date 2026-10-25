@@ -1,0 +1,454 @@
+---
+title: Equations of lines
+description:
+  Turning the points P + tA of a line into one equation ax + by = c and back, with slopes, parallel
+  lines and the two-point equation.
+---
+
+Imagine a straight road drawn across a map with a grid on it. One way to record the road is to walk
+along it and note the grid reference every few hundred metres: $$(2, 1)$$, then $$(5, 3)$$, then
+$$(8, 5)$$, and so on in both directions. Now a surveyor is handed the grid reference $$(6, 4)$$ of
+a new house and asked whether it sits on the road. The list doesn't settle that.
+
+One line of arithmetic settles it instead. For this road, a point $$(x, y)$$ is on it exactly when
+$$2x - 3y = 1$$. The house gives $$2 \cdot 6 - 3 \cdot 4 = 0$$, so it is off the road.
+
+The list is the description of a line from the [Lines](./lines.mdx) guide, one point for each number
+$$t$$. The test is an **equation of the line**. In this guide we'll turn every line into an
+equation, and every linear equation back into a line.
+
+```plane
+point W -1 -1 hidden
+point P 2 1 nw
+point M 5 3 nw
+point N 8 5 nw
+point H 6 4 n
+line W N color=blue extend=1
+text 6 1.5 "2x − 3y = 1" color=blue
+caption "The road through (2, 1), (5, 3) and (8, 5) is the line 2x − 3y = 1. The house H = (6, 4) gives 2x − 3y = 0, so it is off the road."
+```
+
+## From a line to an equation
+
+Walk along the road from $$(2, 1)$$. Each step of the walk is the direction $$(3, 2)$$: $$3$$ across
+and $$2$$ up. So as you go, $$x$$ grows by $$3$$ every time $$y$$ grows by $$2$$. Twice the change
+in $$x$$ is $$6$$, and three times the change in $$y$$ is $$6$$ too, so the combination $$2x - 3y$$
+never changes. It stays at its starting value, $$2 \cdot 2 - 3 \cdot 1 = 1$$.
+
+The same thing in symbols removes the parameter $$t$$. By :ref{#line-formula}, the road is the line
+through $$P = (2, 1)$$ with direction $$A = (3, 2)$$, made of the points
+
+```math
+P + tA = (2 + 3t, \; 1 + 2t)
+```
+
+for every real $$t$$. So a point of the road has $$x = 2 + 3t$$ and $$y = 1 + 2t$$ for some $$t$$.
+The first equation gives $$t = \frac{x - 2}{3}$$, and putting that into the second,
+
+```math
+y = 1 + \frac{2(x - 2)}{3} \quad\text{so}\quad 3y = 3 + 2x - 4 \quad\text{and}\quad 2x - 3y = 1
+```
+
+The general line works the same way. With direction $$A = (a_1, a_2)$$, the change in $$x$$ is a
+multiple of $$a_1$$ and the change in $$y$$ the same multiple of $$a_2$$. So $$a_2x - a_1y$$ never
+changes along the line.
+
+:::theorem[Every line has a linear equation]{#line-equation}
+
+Let $$L$$ be the line through $$P = (p_1, p_2)$$ with direction $$A = (a_1, a_2) \ne O$$. A point
+$$(x, y)$$ lies on $$L$$ exactly when
+
+```math
+a_2x - a_1y = a_2p_1 - a_1p_2
+```
+
+This is a linear equation, since its coefficients $$a_2$$ and $$-a_1$$ are not both $$0$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Linear_equation#Equation_of_a_line"}
+
+The coefficients $$a_2$$ and $$-a_1$$ are not both $$0$$, since $$A \ne O$$. Write $$c$$ for
+$$a_2p_1 - a_1p_2$$. There are two things to show.
+
+**Every point of the line solves the equation.** A point of $$L$$ is
+$$P + tA = (p_1 + ta_1, \; p_2 + ta_2)$$ for some number $$t$$ (:ref{#line-formula}). Putting its
+coordinates into the left side, the two terms with $$t$$ cancel:
+
+```math
+a_2(p_1 + ta_1) - a_1(p_2 + ta_2) = a_2p_1 + ta_1a_2 - a_1p_2 - ta_1a_2 = c
+```
+
+**Every solution is a point of the line.** Let $$(x, y)$$ solve the equation. Moving everything to
+one side, it says
+
+```math
+a_2(x - p_1) = a_1(y - p_2)
+```
+
+We need one number $$t$$ with $$x = p_1 + ta_1$$ and $$y = p_2 + ta_2$$. One of $$a_1$$ and $$a_2$$
+is not $$0$$, which gives two cases.
+
+- **If $$a_1 \ne 0$$**, take $$t = \frac{x - p_1}{a_1}$$. Then $$x - p_1 = ta_1$$. Putting that into
+  the equation gives $$a_2ta_1 = a_1(y - p_2)$$, and dividing by $$a_1$$ gives $$y - p_2 = ta_2$$.
+- **If $$a_1 = 0$$**, then $$a_2 \ne 0$$, and the equation says $$a_2(x - p_1) = 0$$, so
+  $$x = p_1 = p_1 + ta_1$$ whatever $$t$$ is. Take $$t = \frac{y - p_2}{a_2}$$, so that
+  $$y - p_2 = ta_2$$.
+
+Either way $$(x, y) = P + tA$$, by :ref{#coordinates/coordinate-plane}, so it lies on $$L$$.
+
+:::
+
+The equation is the surveyor's test. For the road, $$p_1 = 2$$, $$p_2 = 1$$, $$a_1 = 3$$ and
+$$a_2 = 2$$, so the theorem gives $$2x - 3y = 2 \cdot 2 - 3 \cdot 1 = 1$$, as we found by removing
+$$t$$. A house at $$(14, 9)$$ gives $$28 - 27 = 1$$, so it is on the road, at $$t = 4$$. The house
+at $$(6, 4)$$ gives $$0$$ instead of $$1$$, so it is not.
+
+## From an equation to a line
+
+Now suppose someone hands you only the equation $$2x + 5y = 10$$. To describe its solutions as a
+line, you need one point on it and a direction to walk in. A point is one solution, such as
+$$(0, 2)$$. A direction is a step that leaves $$2x + 5y$$ unchanged, and the step $$(-5, 2)$$ does
+that: it changes $$2x$$ by $$-10$$ and $$5y$$ by $$+10$$.
+
+In general, the step $$(-b, a)$$ changes $$ax + by$$ by $$a(-b) + b \cdot a = 0$$. So once you've
+found one solution, you can walk from it in direction $$(-b, a)$$ and stay on the solutions.
+
+:::theorem[Every linear equation is a line]{#equation-line}
+
+Let $$a$$ and $$b$$ be numbers, not both $$0$$, and $$c$$ any number. The equation $$ax + by = c$$
+has a solution. For any solution $$P$$, the points $$(x, y)$$ with $$ax + by = c$$ are exactly the
+line through $$P$$ with direction $$(-b, a)$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Line_(geometry)#Linear_equation"}
+
+**A solution.** If $$b \ne 0$$, put $$x = 0$$: then $$by = c$$, so $$(0, \frac{c}{b})$$ is a
+solution. If $$b = 0$$, then $$a \ne 0$$, and putting $$y = 0$$ gives the solution
+$$(\frac{c}{a}, 0)$$.
+
+**The line.** Let $$P = (p_1, p_2)$$ be any solution, so $$ap_1 + bp_2 = c$$. The direction
+$$A = (-b, a)$$ is not $$O$$, since $$a$$ and $$b$$ are not both $$0$$. Here $$a_1 = -b$$ and
+$$a_2 = a$$, so by :ref{#line-equation} the line through $$P$$ with direction $$A$$ is made of the
+points with
+
+```math
+a x - (-b) y = a p_1 - (-b) p_2, \quad\text{that is,}\quad ax + by = ap_1 + bp_2 = c
+```
+
+So that line and the solutions of $$ax + by = c$$ are the same points.
+
+:::
+
+For $$2x + 5y = 10$$, the solution $$(0, 2)$$ and the direction $$(-5, 2)$$ give the points
+$$(-5t, \; 2 + 2t)$$. At $$t = -1$$ this is $$(5, 0)$$, and $$2 \cdot 5 + 5 \cdot 0 = 10$$, as it
+should be.
+
+The two theorems together prove :ref{#linear-equations/line}. The Linear equations chapter took from
+the picture that the graph of $$ax + by = c$$ is a straight line, and that every straight line is
+such a graph. In $$\mathbb{R}^2$$, where a line is defined by :ref{#line-formula}, the first is
+:ref{#equation-line} and the second is :ref{#line-equation}.
+
+One line has many equations. Multiplying $$ax + by = c$$ by a number $$k \ne 0$$ gives
+$$kax + kby = kc$$, which has the same solutions, since you can divide by $$k$$ again. So
+$$2x - 3y = 1$$ and $$4x - 6y = 2$$ are two equations of the same road.
+
+## Slope
+
+The road's direction $$(3, 2)$$ says that $$3$$ steps across take you $$2$$ up. Shrink the step to
+$$1$$ across, and it takes you $$\frac{2}{3}$$ up. That rise for each step of $$1$$ to the right is
+the slope from the Linear equations chapter, and the direction tells you what it is.
+
+By :ref{#line-descriptions}, multiplying a direction by a nonzero number gives the same line. So if
+the direction $$A = (a_1, a_2)$$ has $$a_1 \ne 0$$, the line also has direction
+$$\frac{1}{a_1}A = (1, m)$$ with
+
+```math
+m = \frac{a_2}{a_1}
+```
+
+Its points are $$(p_1 + t, \; p_2 + tm)$$: each step of $$1$$ to the right goes up by $$m$$. By
+:ref{#line-equation} with direction $$(1, m)$$, the equation is $$mx - y = mp_1 - p_2$$, which
+rearranges to $$y = mx + k$$ with $$k = p_2 - mp_1$$. For the road, $$m = \frac{2}{3}$$ and
+$$k = 1 - \frac{2}{3} \cdot 2 = -\frac{1}{3}$$, so the road is $$y = \frac{2}{3}x - \frac{1}{3}$$.
+At $$x = 5$$ this gives $$y = 3$$, the point $$(5, 3)$$ from the surveyor's list.
+
+This matches :ref{#linear-equations/slope}. The line $$ax + by = c$$ has direction $$(-b, a)$$ by
+:ref{#equation-line}, so when $$b \ne 0$$ its slope is $$\frac{a}{-b} = -\frac{a}{b}$$, the slope
+found there by rearranging.
+
+When $$a_1 = 0$$, every point $$(p_1, p_2 + ta_2)$$ of the line has first coordinate $$p_1$$. The
+line is vertical, with equation $$x = p_1$$. No step along it goes to the right at all, so a
+vertical line has no slope.
+
+## Parallel lines from their equations
+
+Two equations with the same left side, such as $$2x - 3y = 1$$ and $$2x - 3y = 7$$, give two
+parallel roads. The numbers $$a$$ and $$b$$ fix the direction $$(-b, a)$$, and changing $$c$$ only
+moves the line sideways. So two equations give parallel lines when their directions are multiples of
+each other, and the determinant tests that.
+
+:::proposition[Parallel lines from their equations]{#parallel-equations}
+
+The lines $$ax + by = c$$ and $$a'x + b'y = c'$$ (each with coefficients not both $$0$$) are
+parallel exactly when
+
+```math
+ab' - a'b = 0
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Line-line_intersection#Given_two_line_equations"}
+
+By :ref{#equation-line}, the two lines have directions $$A = (-b, a)$$ and $$B = (-b', a')$$, and
+neither is $$O$$. By :ref{#parallel-formula}, the lines are parallel exactly when $$B$$ is a nonzero
+multiple of $$A$$. By :ref{#parallel-determinant}, that happens exactly when
+
+```math
+a_1b_2 - a_2b_1 = (-b)a' - a(-b') = ab' - a'b
+```
+
+is $$0$$.
+
+:::
+
+For $$2x - 3y = 1$$ and $$4x - 6y = 7$$, the test gives $$2 \cdot (-6) - 4 \cdot (-3) = 0$$, so the
+lines are parallel. They are different lines: doubling the first equation gives $$4x - 6y = 2$$, and
+no point has $$4x - 6y$$ equal to both $$2$$ and $$7$$. For the vertical line $$x = 2$$ and the line
+$$x + y = 1$$, the test gives $$1 \cdot 1 - 1 \cdot 0 = 1$$, so they are not parallel, and by
+:ref{#line-intersection} they meet in exactly one point, $$(2, -1)$$.
+
+This generalises :ref{#linear-equations/parallel-test}, which needed both lines to be non-vertical.
+The proposition covers vertical lines too: $$x = 2$$ and $$3x = -1$$ have
+$$1 \cdot 0 - 3 \cdot 0 = 0$$, and both are vertical, so they are parallel.
+
+The proposition also explains the determinant tests for systems of two equations. The number
+$$ab' - a'b$$ is the determinant of the system (:ref{#linear-equations/determinant}). When it is not
+$$0$$, the lines are not parallel, so by :ref{#line-intersection} they cross in one point: the one
+solution of :ref{#linear-equations/determinant-test}. When it is $$0$$, the lines are parallel, so
+they share every point or none, as :ref{#linear-equations/determinant-zero} says.
+
+## Going back and forth
+
+Each description of a line is good at one job. The points $$P + tA$$ are good for producing points
+of the line, one for each $$t$$, and for moving along it. The equation is good for testing whether a
+given point is on it, and for finding where it crosses something else. So it pays to pass between
+them in either direction.
+
+:::example[From two points to an equation]
+
+Find an equation of the line through $$P = (2, -1)$$ and $$Q = (5, 3)$$.
+
+By :ref{#two-point-line}, it is the line through $$P$$ with direction $$Q - P = (3, 4)$$. By
+:ref{#line-equation}, with $$a_1 = 3$$ and $$a_2 = 4$$,
+
+```math
+4x - 3y = 4 \cdot 2 - 3 \cdot (-1) = 11
+```
+
+As a check, $$Q$$ gives $$4 \cdot 5 - 3 \cdot 3 = 11$$.
+
+:::
+
+:::example[From an equation to its points]
+
+Describe the line $$3x - 4y = 12$$ as the points $$P + tA$$, and find where it crosses the axes.
+
+Here $$b = -4 \ne 0$$, so put $$x = 0$$: then $$-4y = 12$$ and $$y = -3$$. So $$P = (0, -3)$$ is a
+solution. By :ref{#equation-line}, the direction is $$(-b, a) = (4, 3)$$, and the points are
+
+```math
+(0, -3) + t(4, 3) = (4t, \; -3 + 3t)
+```
+
+The line crosses the $$y$$-axis where $$x = 0$$, which is $$P$$ itself. It crosses the $$x$$-axis
+where $$y = 0$$: then $$3x = 12$$, so $$x = 4$$, which is the point at $$t = 1$$.
+
+:::
+
+The points where a line crosses the axes are its **intercepts**. From the equation, put $$x = 0$$ to
+find where it crosses the $$y$$-axis and $$y = 0$$ to find where it crosses the $$x$$-axis. A
+horizontal line $$y = k$$ with $$k \ne 0$$ never meets the $$x$$-axis, so it has only one intercept.
+
+In the next figure, choose two points $$P$$ and $$Q$$ with the sliders, and watch both descriptions
+of the line through them change. The equation is divided through by the largest whole number that
+goes into its coefficients, so it uses the smallest whole numbers that work.
+
+<LineThroughPoints />
+
+## Exercises
+
+:::::accordion[Exercises on equations of lines, with solutions]
+
+::::exercise{#ex-line-equations-direction}
+
+Find an equation of the line through $$(-3, 1)$$ with direction $$(2, 5)$$. Which of the points
+$$(-1, 6)$$, $$(1, 11)$$ and $$(0, 8)$$ lie on it?
+
+:::solution
+
+By :ref{#line-equation}, with $$p_1 = -3$$, $$p_2 = 1$$, $$a_1 = 2$$ and $$a_2 = 5$$,
+
+```math
+5x - 2y = 5 \cdot (-3) - 2 \cdot 1 = -17
+```
+
+Testing each point:
+
+- $$(-1, 6)$$: $$-5 - 12 = -17$$, so it is on the line (at $$t = 1$$)
+- $$(1, 11)$$: $$5 - 22 = -17$$, so it is on the line (at $$t = 2$$)
+- $$(0, 8)$$: $$0 - 16 = -16$$, so it isn't
+
+:::
+
+::::
+
+::::exercise{#ex-line-equations-two-points}
+
+Find an equation of the line through each pair of points, with the smallest whole numbers you can.
+
+1. $$(-2, 3)$$ and $$(6, -1)$$
+2. $$(4, -2)$$ and $$(4, 7)$$
+
+:::solution
+
+1. The direction is $$(6, -1) - (-2, 3) = (8, -4)$$ (:ref{#two-point-line}). By
+   :ref{#line-equation}, $$-4x - 8y = -4 \cdot (-2) - 8 \cdot 3 = -16$$. Dividing by $$-4$$ gives
+   $$x + 2y = 4$$. Check: $$-2 + 6 = 4$$ and $$6 - 2 = 4$$.
+2. The direction is $$(0, 9)$$, so $$a_1 = 0$$ and the equation is $$9x - 0y = 9 \cdot 4$$, that is,
+   $$x = 4$$: a vertical line, with no slope.
+
+:::
+
+::::
+
+::::exercise{#ex-line-equations-points}
+
+Describe each line as the points $$P + tA$$, and find where it crosses each axis.
+
+1. $$3x - 2y = 6$$
+2. $$y = 4$$
+
+:::solution
+
+1. Putting $$x = 0$$ gives $$y = -3$$, so $$P = (0, -3)$$. The direction is $$(-b, a) = (2, 3)$$
+   (:ref{#equation-line}), so the points are $$(2t, \; -3 + 3t)$$. It crosses the $$y$$-axis at
+   $$(0, -3)$$, and putting $$y = 0$$ gives $$3x = 6$$, so it crosses the $$x$$-axis at $$(2, 0)$$,
+   the point at $$t = 1$$.
+2. Here $$a = 0$$ and $$b = 1$$. Putting $$x = 0$$ gives $$P = (0, 4)$$, and the direction is
+   $$(-1, 0)$$, so the points are $$(-t, 4)$$. It crosses the $$y$$-axis at $$(0, 4)$$ and is
+   parallel to the $$x$$-axis, so it never crosses it.
+
+:::
+
+::::
+
+::::exercise{#ex-line-equations-parallel}
+
+For each pair, decide whether the lines are parallel. If they are not, find where they meet.
+
+1. $$4x - 6y = 1$$ and $$-6x + 9y = 2$$
+2. $$x = 3$$ and $$2x = 5$$
+3. $$x = 3$$ and $$x + y = 1$$
+
+:::solution
+
+By :ref{#parallel-equations}, compute $$ab' - a'b$$.
+
+1. $$4 \cdot 9 - (-6) \cdot (-6) = 36 - 36 = 0$$, so they are parallel. Multiplying the first by
+   $$-\frac{3}{2}$$ gives $$-6x + 9y = -\frac{3}{2}$$, and no point has $$-6x + 9y$$ equal to both
+   $$-\frac{3}{2}$$ and $$2$$. So they are different lines that never meet.
+2. $$1 \cdot 0 - 2 \cdot 0 = 0$$, so they are parallel: both are vertical, at $$x = 3$$ and
+   $$x = \frac{5}{2}$$.
+3. $$1 \cdot 1 - 1 \cdot 0 = 1 \ne 0$$, so they meet in exactly one point
+   (:ref{#line-intersection}). Putting $$x = 3$$ into $$x + y = 1$$ gives $$y = -2$$, so they meet
+   at $$(3, -2)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-line-equations-slope}
+
+Find the slope of the line through $$(1, -2)$$ and $$(4, 7)$$, and write the line as $$y = mx + k$$.
+
+:::solution
+
+The direction is $$(4, 7) - (1, -2) = (3, 9)$$, so the slope is $$m = \frac{9}{3} = 3$$. Then
+$$k = p_2 - mp_1 = -2 - 3 \cdot 1 = -5$$, and the line is $$y = 3x - 5$$. Check:
+$$3 \cdot 4 - 5 = 7$$.
+
+:::
+
+::::
+
+::::exercise{#ex-line-equations-same-road}
+
+The road from the opening of this guide is the line through $$(2, 1)$$ with direction $$(3, 2)$$. A
+second map lists it as the line through $$(-1, -1)$$ with direction $$(6, 4)$$. Use equations to
+show that the two descriptions give the same line.
+
+:::solution
+
+By :ref{#line-equation}, the first description gives $$2x - 3y = 2 \cdot 2 - 3 \cdot 1 = 1$$. The
+second gives
+
+```math
+4x - 6y = 4 \cdot (-1) - 6 \cdot (-1) = 2
+```
+
+which is the first equation multiplied by $$2$$. Both have the same solutions, so both describe the
+same points. This agrees with :ref{#line-descriptions}: $$(6, 4) = 2(3, 2)$$, and $$(-1, -1)$$ is
+the point of the first line at $$t = -1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-line-equations-intercept-form}
+
+Let $$p$$ and $$q$$ be nonzero numbers. Show that the line through $$(p, 0)$$ and $$(0, q)$$ has the
+equation
+
+```math
+\frac{x}{p} + \frac{y}{q} = 1
+```
+
+Use it to write down the line crossing the axes at $$(5, 0)$$ and $$(0, -2)$$.
+
+:::solution
+
+The direction is $$(0, q) - (p, 0) = (-p, q)$$ (:ref{#two-point-line}). By :ref{#line-equation},
+with $$P = (p, 0)$$, $$a_1 = -p$$ and $$a_2 = q$$,
+
+```math
+qx - (-p)y = q \cdot p - (-p) \cdot 0, \quad\text{that is,}\quad qx + py = pq
+```
+
+Dividing by $$pq$$, which is not $$0$$, gives $$\frac{x}{p} + \frac{y}{q} = 1$$, with the same
+solutions. For $$p = 5$$ and $$q = -2$$, the line is $$\frac{x}{5} - \frac{y}{2} = 1$$, or
+$$2x - 5y = 10$$ after multiplying by $$10$$.
+
+:::
+
+::::
+
+::::exercise{#ex-line-equations-through-origin}
+
+Show that a line passes through the origin exactly when it has an equation $$ax + by = c$$ with
+$$c = 0$$.
+
+:::solution
+
+If the line has an equation $$ax + by = 0$$, then $$(0, 0)$$ solves it, so the origin is on the
+line. Now suppose the origin is on the line. By :ref{#line-descriptions}, any point of the line can
+replace $$P$$, so the line is the line through $$O$$ with some direction $$A$$. By
+:ref{#line-equation} with $$p_1 = p_2 = 0$$, its equation is $$a_2x - a_1y = 0$$.
+
+:::
+
+::::
+
+:::::

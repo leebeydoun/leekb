@@ -1,0 +1,547 @@
+---
+title: Lines in space
+description:
+  Segments, rays and lines written with triples, lines in space that miss each other without being
+  parallel, and right angles from the dot product with three coordinates.
+---
+
+Imagine lying in a field on a clear afternoon, watching two planes high overhead. Their vapour
+trails draw two long white lines across the sky, and the lines seem to cross in a wide X. But one
+plane was flying a kilometre or two above the other, so the trails never touched: one passed over
+the other. From the ground you can't see height, so the two trails look as if they meet.
+
+In the plane, two lines that aren't parallel always meet. In space they can miss each other, and
+lines like that are called **skew**. In this guide we'll write segments, rays and lines in space
+with the same formulas as in the plane, and then see what the third coordinate changes.
+
+## Segments, rays and lines in space
+
+A straight path in space works like one in the plane. You start at a point and take the same step
+over and over, or a fraction of it, and the step now has three numbers instead of two. The formulas
+of the earlier guides in this chapter only add and scale points, and
+[Points in space](../adding-and-scaling-points/space.mdx) showed that adding and scaling work for
+triples too. So the formulas carry over unchanged.
+
+:::definition[Segments, rays and lines in space]{#space-lines}
+
+Let $$P$$ and $$Q$$ be points of $$\mathbb{R}^3$$ (:ref{#coordinates/coordinate-space}), and let
+$$A \ne O$$ be a point of $$\mathbb{R}^3$$ used as a direction, where $$O = (0, 0, 0)$$. Then:
+
+- for $$P \ne Q$$, the **segment** $$PQ$$ is the set of points $$P + t(Q - P)$$ with
+  $$0 \le t \le 1$$
+- the **ray** from $$P$$ in direction $$A$$ is the set of points $$P + tA$$ with $$t \ge 0$$, and
+  for $$Q \ne P$$ the ray from $$P$$ through $$Q$$ is the ray from $$P$$ in direction $$Q - P$$
+- the **line** through $$P$$ with direction $$A$$ is $$\{P + tA : t \in \mathbb{R}\}$$, the set of
+  all points $$P + tA$$ with $$t$$ a real number
+
+The sums and multiples are those of :ref{#adding-and-scaling-points/space-operations}.
+
+:::
+
+These are :ref{#segment-formula}, :ref{#ray-formula} and :ref{#line-formula} with triples in place
+of pairs. The parameter $$t$$ still says how many steps of $$A$$ to take from $$P$$, and each step
+now moves you east, north and up at once.
+
+:::example[A cable car up a hillside]
+
+A cable car runs in a straight line from a valley station at $$P = (0, 0, 20)$$ to a top station at
+$$Q = (180, 60, 110)$$, in metres east, north and up. The step from $$P$$ to $$Q$$ is
+$$Q - P = (180, 60, 90)$$, so the cable is the segment of points
+
+```math
+P + t(Q - P) = (180t,\ 60t,\ 20 + 90t), \qquad 0 \le t \le 1
+```
+
+A third of the way along, $$t = \frac{1}{3}$$ gives $$(60, 20, 50)$$: the car has climbed $$30$$ of
+the $$90$$ metres. By :ref{#adding-and-scaling-points/space-norm}, the cable is
+
+```math
+|Q - P| = \sqrt{180^2 + 60^2 + 90^2} = \sqrt{32\,400 + 3600 + 8100} = \sqrt{44\,100} = 210
+```
+
+metres long.
+
+:::
+
+The car at $$(60, 20, 50)$$ is $$70$$ metres from the valley station and $$140$$ metres from the top
+station, a third and two thirds of the cable. In the plane that is :ref{#fraction-along}, and its
+proof works in space too. The same goes for the facts about lines in [Lines](./lines.mdx). Their
+proofs never look at the coordinates of a point: they only add, scale and measure length, and those
+follow the same rules for triples (:ref{#adding-and-scaling-points/space-rules} and
+:ref{#adding-and-scaling-points/space-norm-rules}).
+
+:::proposition[Facts about lines that hold in space]{#space-line-facts}
+
+Let $$P$$ and $$Q$$ be different points of $$\mathbb{R}^3$$, and $$A \ne O$$ a point of
+$$\mathbb{R}^3$$.
+
+1. **A fraction of the way along**: if $$X = P + t(Q - P)$$ with $$0 \le t \le 1$$, then
+   $$d(P, X) = t\,d(P, Q)$$ and $$d(X, Q) = (1 - t)\,d(P, Q)$$
+2. **Other descriptions of a line**: for every $$c \ne 0$$, the line through $$P$$ with direction
+   $$cA$$ is the line through $$P$$ with direction $$A$$. For every point $$M$$ of that line, the
+   line through $$M$$ with direction $$A$$ is the same line
+3. **The line through two points**: the line through $$P$$ with direction $$Q - P$$ contains $$P$$
+   and $$Q$$, and it is the only line that contains both
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Line_(geometry)#Parametric_equation"}
+
+The proofs of :ref{#fraction-along}, :ref{#line-descriptions} and :ref{#two-point-line} work word
+for word, because every rule they use holds for triples. Here they are in short.
+
+**Part 1.** By :ref{#adding-and-scaling-points/space-rules}, $$X - P = t(Q - P)$$ and
+$$Q - X = (1 - t)(Q - P)$$. Both $$t$$ and $$1 - t$$ are not negative, so by parts 1 and 2 of
+:ref{#adding-and-scaling-points/space-norm-rules},
+
+```math
+d(P, X) = |t(Q - P)| = t\,|Q - P| = t\,d(P, Q),
+\qquad
+d(X, Q) = |(1 - t)(Q - P)| = (1 - t)\,d(P, Q)
+```
+
+**Part 2.** A point $$P + t(cA)$$ of the first line is $$P + (tc)A$$, a point of the second. A point
+$$P + tA$$ of the second is $$P + \frac{t}{c}(cA)$$, a point of the first. For the second sentence,
+write $$M = P + uA$$. Then $$P + tA = M + (t - u)A$$ and $$M + tA = P + (u + t)A$$, so the line
+through $$P$$ and the line through $$M$$ have the same points.
+
+**Part 3.** The values $$t = 0$$ and $$t = 1$$ give $$P$$ and $$Q$$. Now suppose the line through a
+point $$N$$ with direction $$B$$ contains both, say $$P = N + uB$$ and $$Q = N + vB$$. Then
+$$Q - P = (v - u)B$$, and $$v \ne u$$ since $$P \ne Q$$. By part 2, that line is the line through
+$$P$$ with direction $$B$$, and so also the line through $$P$$ with direction $$(v - u)B = Q - P$$.
+
+:::
+
+Part 1 with $$t = \frac{1}{2}$$ gives the midpoint.
+[Points in space](../adding-and-scaling-points/space.mdx) found the midpoint $$\frac{1}{2}(P + Q)$$
+in :ref{#adding-and-scaling-points/space-midpoint}, taking a rule for segments from the picture. Now
+$$\frac{1}{2}(P + Q) = P + \frac{1}{2}(Q - P)$$ lies on the segment $$PQ$$ by definition, and part 1
+puts it half the length from each end, with no picture needed. Halfway up the cable car is
+$$(90, 30, 65)$$, $$105$$ metres from each station.
+
+## Parallel lines in space
+
+Picture the two rails of a straight railway climbing a hillside. A step along one rail is the same
+as a step along the other: same steepness, same heading. So the rails run side by side and never
+meet. In coordinates this says the directions of the two lines are multiples of each other, as in
+the plane.
+
+:::definition[Parallel in space]{#space-parallel}
+
+Lines in $$\mathbb{R}^3$$ with directions $$A$$ and $$B$$ are **parallel**, written
+$$L \parallel K$$, when $$B = cA$$ for some number $$c \ne 0$$. The directions $$A$$ and $$B$$ have
+the **same direction** when $$c > 0$$, and **opposite directions** when $$c < 0$$.
+
+:::
+
+This is :ref{#parallel-formula} and :ref{#same-direction} with triples. To test two directions, find
+$$c$$ from a coordinate of $$A$$ that is not $$0$$, and then check the other two coordinates.
+
+:::example[Testing for parallel lines]
+
+Let $$L$$ be the line through $$(1, 0, 2)$$ with direction $$A = (2, -1, 3)$$, and $$K$$ the line
+through $$(0, 4, 0)$$ with direction $$B = (-4, 2, -6)$$. The first coordinates need $$-4 = 2c$$, so
+$$c = -2$$. Then $$-2A = (-4, 2, -6) = B$$, so $$L \parallel K$$, with opposite directions.
+
+They are different lines. The step from $$(1, 0, 2)$$ to $$(0, 4, 0)$$ is $$(-1, 4, -2)$$. If
+$$(0, 4, 0)$$ were on $$L$$, this step would be $$tA$$ for some $$t$$. The first coordinates give
+$$t = -\frac{1}{2}$$, but then the second coordinate would be $$\frac{1}{2}$$, not $$4$$.
+
+:::
+
+Two parallel lines that share a point are the same line, as in the plane. Part 2 of
+:ref{#space-meeting} proves it, so the lines $$L$$ and $$K$$ in the example never meet.
+
+## Skew lines
+
+Stand in a room and look at two of its edges: the one where the floor meets the front wall, and the
+one where the ceiling meets the left wall. The first runs across in front of you along the floor,
+and the second runs away from you overhead. They don't point the same way, yet they never meet,
+since one stays on the floor and the other stays on the ceiling.
+
+:::definition[Skew lines]{#skew-lines}
+
+Two lines in $$\mathbb{R}^3$$ are **skew** when they are not parallel and never meet.
+
+:::
+
+<SkewLines caption="In a room 6 by 4 by 3, the line L runs along the floor edge at the front and the line K along the ceiling edge above the left wall. They never meet, and the upright edge from O to (0, 0, 3) joins them." />
+
+:::example[Two edges of a room]
+
+Put a corner of a room $$6$$ long, $$4$$ deep and $$3$$ high at $$O$$, with the $$x$$-axis along the
+front wall, the $$y$$-axis along the left wall and the $$z$$-axis up. Let $$L$$ be the line through
+$$O$$ with direction $$(1, 0, 0)$$, the floor edge, and $$K$$ the line through $$(0, 0, 3)$$ with
+direction $$(0, 1, 0)$$, the ceiling edge above the left wall.
+
+**They never meet.** Every point of $$L$$ is $$(t, 0, 0)$$, with third coordinate $$0$$. Every point
+of $$K$$ is $$(0, s, 3)$$, with third coordinate $$3$$. No point has both, so no point is on both
+lines.
+
+**They are not parallel.** If $$(0, 1, 0) = c(1, 0, 0) = (c, 0, 0)$$, the second coordinates would
+give $$1 = 0$$.
+
+So $$L$$ and $$K$$ are skew.
+
+:::
+
+The vapour trails work the same way. Looking up from the ground loses the height, which is like
+dropping the third coordinate. Then $$L$$ becomes the points $$(t, 0)$$ and $$K$$ the points
+$$(0, s)$$, the two axes of the plane, and they cross at the origin. So the flattened lines cross,
+while the lines themselves miss by $$3$$, the height of the room.
+
+## When two lines in space meet
+
+To find where two lines meet, look for a point that is on both. A point of the first line is
+$$P + tA$$ and a point of the second is $$Q + sB$$, so we need numbers $$t$$ and $$s$$ that make
+these equal. In the plane that is two equations, one for each coordinate. In space it is three
+equations in the same two unknowns, and three conditions are harder to meet than two.
+
+:::proposition[Meeting in space]{#space-meeting}
+
+Let $$L$$ be the line through $$P = (p_1, p_2, p_3)$$ with direction $$A = (a_1, a_2, a_3)$$, and
+$$K$$ the line through $$Q = (q_1, q_2, q_3)$$ with direction $$B = (b_1, b_2, b_3)$$, in
+$$\mathbb{R}^3$$.
+
+1. $$L$$ and $$K$$ meet exactly when there are numbers $$t$$ and $$s$$ with $$P + tA = Q + sB$$,
+   that is,
+
+   ```math
+   p_1 + ta_1 = q_1 + sb_1, \qquad p_2 + ta_2 = q_2 + sb_2, \qquad p_3 + ta_3 = q_3 + sb_3
+   ```
+
+   and then they meet at $$P + tA$$
+
+2. If $$L \parallel K$$, then $$L$$ and $$K$$ are the same line or never meet
+3. If $$L$$ and $$K$$ are not parallel, they meet in at most one point. So they meet in exactly one
+   point, or they are skew
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection#In_three_dimensions"}
+
+**Part 1.** By :ref{#space-lines}, a point is on $$L$$ exactly when it is $$P + tA$$ for some $$t$$,
+and on $$K$$ exactly when it is $$Q + sB$$ for some $$s$$. Two triples are equal exactly when their
+three coordinates are (:ref{#coordinates/coordinate-space}), which gives the three equations.
+
+**Part 2.** Let $$B = cA$$ with $$c \ne 0$$, and suppose a point $$M$$ is on both lines. By part 2
+of :ref{#space-line-facts}, $$L$$ is the line through $$M$$ with direction $$A$$, and $$K$$ is the
+line through $$M$$ with direction $$cA$$. By the same part, these are the same line.
+
+**Part 3.** Suppose $$L$$ and $$K$$ meet at two different points $$M$$ and $$N$$. On $$L$$, write
+$$M = P + t_1A$$ and $$N = P + t_2A$$. Then $$N - M = (t_2 - t_1)A$$, with $$t_2 \ne t_1$$ since
+$$M \ne N$$. On $$K$$ in the same way, $$N - M = (s_2 - s_1)B$$ with $$s_2 \ne s_1$$. So
+
+```math
+B = \frac{t_2 - t_1}{s_2 - s_1}\,A
+```
+
+a multiple of $$A$$ that is not $$0$$, and $$L \parallel K$$. So lines that are not parallel share
+at most one point.
+
+:::
+
+In each example below, two of the equations fix $$t$$ and $$s$$, and the third is a check. It holds
+when the lines meet and fails when they miss.
+
+:::example[Two lines that meet]
+
+Let $$L$$ be the line through $$P = (1, 0, 2)$$ with direction $$A = (1, 1, 0)$$, and $$K$$ the line
+through $$Q = (3, -1, 5)$$ with direction $$B = (0, 1, -1)$$. The three equations of
+:ref{#space-meeting} are
+
+```math
+1 + t = 3, \qquad t = -1 + s, \qquad 2 = 5 - s
+```
+
+The first gives $$t = 2$$ and the third gives $$s = 3$$. The middle one checks: $$2 = -1 + 3$$. So
+the lines meet at $$P + 2A = (3, 2, 2)$$, and as a check, $$Q + 3B = (3, 2, 2)$$ too.
+
+:::
+
+:::example[Lifting one line by one unit]
+
+Keep $$L$$, and replace $$K$$ by the line $$K'$$ through $$(3, -1, 6)$$ with the same direction
+$$(0, 1, -1)$$, one unit higher. Now the equations are
+
+```math
+1 + t = 3, \qquad t = -1 + s, \qquad 2 = 6 - s
+```
+
+The first gives $$t = 2$$ and the third gives $$s = 4$$, but then the middle one says $$2 = 3$$. So
+the lines never meet. They are not parallel either: $$(0, 1, -1) = c(1, 1, 0)$$ would need $$c = 0$$
+from the first coordinates and $$c = 1$$ from the second. So $$L$$ and $$K'$$ are skew.
+
+:::
+
+Air traffic control uses this idea. One way to keep two planes on crossing routes apart is to fly
+them at heights at least $$1000$$ feet apart. Each plane flying level follows a line with a fixed
+third coordinate, like $$L$$ and $$K$$ in the room. The routes cross on the map, so the directions
+are not parallel, and the heights differ, so the paths never meet: they are skew. Paths that do meet
+lead to a collision exactly when both planes reach the meeting point at the same time, as in
+[Crossing paths and collisions](./lines.mdx#crossing-paths-and-collisions).
+
+## Right angles in space
+
+Look at a corner of a box. Three edges meet there, and each is square to the other two. In the
+plane, [Perpendicular lines](./perpendicular.mdx) found a test for a right angle with numbers alone,
+built from Pythagoras and the length of a difference. The same algebra works with a third
+coordinate.
+
+:::definition[Dot product in space]{#space-dot}
+
+For points $$A = (a_1, a_2, a_3)$$ and $$B = (b_1, b_2, b_3)$$ of $$\mathbb{R}^3$$, the **dot
+product** is the number
+
+```math
+A \cdot B = a_1b_1 + a_2b_2 + a_3b_3
+```
+
+:::
+
+This is :ref{#dot-product} with a third term. The rules in :ref{#dot-rules} carry over, one
+coordinate at a time. In particular $$A \cdot A = a_1^2 + a_2^2 + a_3^2 = |A|^2$$, by
+:ref{#adding-and-scaling-points/space-norm}.
+
+:::proposition[The length of a difference in space]{#space-difference-length}
+
+For all points $$A$$ and $$B$$ of $$\mathbb{R}^3$$,
+
+```math
+|A - B|^2 = |A|^2 + |B|^2 - 2\,A \cdot B
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Dot_product#Application_to_the_law_of_cosines"}
+
+The coordinates of $$A - B$$ are $$a_1 - b_1$$, $$a_2 - b_2$$ and $$a_3 - b_3$$, so $$|A - B|^2$$ is
+the sum of their squares (:ref{#adding-and-scaling-points/space-norm}). By
+:ref{#numbers/square-formulas}, each square is $$(a_i - b_i)^2 = a_i^2 - 2a_ib_i + b_i^2$$. Adding
+the three,
+
+```math
+|A - B|^2 = (a_1^2 + a_2^2 + a_3^2) + (b_1^2 + b_2^2 + b_3^2) - 2(a_1b_1 + a_2b_2 + a_3b_3)
+```
+
+which is $$|A|^2 + |B|^2 - 2\,A \cdot B$$. This is the proof of :ref{#difference-length} with one
+more term.
+
+:::
+
+Now take $$A$$ and $$B$$ not on one line through $$O$$. Then $$O$$, $$A$$ and $$B$$ are the corners
+of a triangle, and the triangle lies flat, in a plane through its three corners. That is taken from
+the picture, since flat planes in space have no formulas in these notes yet. In that flat plane,
+:ref{#distance-and-angles/pythagoras} and its converse :ref{#coordinates/pythagoras-converse} hold.
+So the angle at $$O$$ is a right angle exactly when $$|A - B|^2 = |A|^2 + |B|^2$$, which by
+:ref{#space-difference-length} is exactly when $$A \cdot B = 0$$.
+
+So we use $$A \cdot B = 0$$ as the meaning of a right angle between two directions in space. Lines
+need one more condition, because in space two lines can have such directions and still miss each
+other.
+
+:::definition[Perpendicular in space]{#space-perpendicular}
+
+Two directions $$A$$ and $$B$$ in $$\mathbb{R}^3$$ are **perpendicular** when $$A \cdot B = 0$$. Two
+lines in $$\mathbb{R}^3$$ are **perpendicular**, written $$L \perp K$$, when they meet and their
+directions are perpendicular.
+
+:::
+
+The edges of the room show why the lines must meet. The floor edge $$L$$ and the ceiling edge $$K$$
+have directions with $$(1, 0, 0) \cdot (0, 1, 0) = 0$$, but they never meet. They are skew lines
+with perpendicular directions, not perpendicular lines. In the plane the extra condition changes
+nothing: perpendicular directions are never multiples of each other (one of the exercises proves
+it), so the lines meet by :ref{#line-intersection}, and the definition agrees with
+:ref{#perpendicular-formula}.
+
+:::example[The edges of a tilted crate]
+
+A computer game stores a crate tipped at an angle, with one corner at $$O$$ and the three edges from
+that corner ending at
+
+```math
+A = (2, 2, 1), \qquad B = (-1, 2, -2), \qquad C = (2, -1, -2)
+```
+
+The dot products are
+
+```math
+A \cdot B = -2 + 4 - 2 = 0, \qquad A \cdot C = 4 - 2 - 2 = 0, \qquad B \cdot C = -2 - 2 + 4 = 0
+```
+
+So the three edges are perpendicular in pairs, as the edges at a corner of a box must be. Each has
+length $$\sqrt{4 + 4 + 1} = 3$$, so the crate is a cube of side $$3$$. As a check with Pythagoras,
+$$|A - B|^2 = |(3, 0, 3)|^2 = 18 = 3^2 + 3^2$$.
+
+:::
+
+One warning about equations. In the plane, $$ax + by = c$$ is a line, but in space a single equation
+$$ax + by + cz = d$$ describes a flat plane: the points with $$z = 0$$ make up the whole floor, not
+a line. So in space we describe lines with a parameter, as in this guide.
+
+## Exercises
+
+:::::accordion[Exercises on lines in space, with solutions]
+
+::::exercise{#ex-space-floor-crossing}
+
+A straight wire runs from $$P = (1, -2, 4)$$ to $$Q = (7, 1, -2)$$. Where does it pass through the
+floor $$z = 0$$, and how far is that point from each end?
+
+:::solution
+
+The step is $$Q - P = (6, 3, -6)$$, so the wire is the segment of points
+$$(1 + 6t,\ -2 + 3t,\ 4 - 6t)$$ with $$0 \le t \le 1$$ (:ref{#space-lines}). The third coordinate is
+$$0$$ when $$t = \frac{2}{3}$$, which is between $$0$$ and $$1$$, at the point
+
+```math
+\left(1 + 4,\ -2 + 2,\ 4 - 4\right) = (5, 0, 0)
+```
+
+The wire has length $$|Q - P| = \sqrt{36 + 9 + 36} = \sqrt{81} = 9$$. By part 1 of
+:ref{#space-line-facts}, the point is $$\frac{2}{3} \cdot 9 = 6$$ from $$P$$ and
+$$\frac{1}{3} \cdot 9 = 3$$ from $$Q$$.
+
+:::
+
+::::
+
+::::exercise{#ex-space-parallel-test}
+
+Which of these directions give lines parallel to a line with direction $$(2, -1, 3)$$? For those
+that do, say whether the direction is the same or opposite.
+
+1. $$(-6, 3, -9)$$
+2. $$(4, -2, 5)$$
+3. $$\left(1, -\frac{1}{2}, \frac{3}{2}\right)$$
+
+:::solution
+
+By :ref{#space-parallel}, find $$c$$ from the first coordinate and check the other two:
+
+1. $$c = -3$$, and $$-3(2, -1, 3) = (-6, 3, -9)$$. Parallel, opposite directions
+2. $$c = 2$$ gives $$(4, -2, 6)$$, but the third coordinate is $$5$$. Not parallel
+3. $$c = \frac{1}{2}$$, and $$\frac{1}{2}(2, -1, 3) = \left(1, -\frac{1}{2}, \frac{3}{2}\right)$$.
+   Parallel, same direction
+
+:::
+
+::::
+
+::::exercise{#ex-space-meet-or-skew}
+
+For each pair, decide whether the lines meet, and if they do, find where.
+
+1. The line through $$(2, 1, 0)$$ with direction $$(1, -1, 2)$$, and the line through $$(0, 4, 1)$$
+   with direction $$(1, 1, -1)$$
+2. The line through $$(1, 2, -1)$$ with direction $$(2, 0, 1)$$, and the line through $$(4, -1, 5)$$
+   with direction $$(1, 1, -1)$$
+
+:::solution
+
+By :ref{#space-meeting}, write out the three equations.
+
+1. They are $$2 + t = s$$, $$1 - t = 4 + s$$ and $$2t = 1 - s$$. Adding the first two gives
+   $$3 = 4 + 2s$$, so $$s = -\frac{1}{2}$$ and $$t = s - 2 = -\frac{5}{2}$$. Then the third says
+   $$-5 = \frac{3}{2}$$, which is false, so the lines never meet. They are not parallel, since
+   $$(1, 1, -1) = c(1, -1, 2)$$ would need $$c = 1$$ and $$c = -1$$. So they are skew.
+2. They are $$1 + 2t = 4 + s$$, $$2 = -1 + s$$ and $$-1 + t = 5 - s$$. The second gives $$s = 3$$,
+   and then the third gives $$t = 3$$. The first checks: $$1 + 6 = 7 = 4 + 3$$. So the lines meet,
+   at $$(1, 2, -1) + 3(2, 0, 1) = (7, 2, 2)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-space-cube-diagonals}
+
+In the cube with corners at $$O$$ and $$(1, 1, 1)$$, let $$L$$ be the line through $$O$$ with
+direction $$(1, 1, 1)$$, along the long diagonal, and $$K$$ the line through $$(1, 0, 0)$$ with
+direction $$(-1, 1, 0)$$, along a diagonal of the floor. Show that $$L$$ and $$K$$ are skew, and
+that their directions are perpendicular.
+
+:::solution
+
+A point on both would have $$(t, t, t) = (1 - s, s, 0)$$. The third coordinates give $$t = 0$$, and
+then the first two give $$1 - s = 0$$ and $$s = 0$$, which can't both hold. So the lines never meet.
+They are not parallel, since $$(-1, 1, 0) = c(1, 1, 1)$$ would need $$c = -1$$ and $$c = 1$$. So
+they are skew (:ref{#skew-lines}).
+
+Their directions have $$(1, 1, 1) \cdot (-1, 1, 0) = -1 + 1 + 0 = 0$$, so they are perpendicular
+(:ref{#space-perpendicular}). The lines are not perpendicular lines, though, since they don't meet.
+
+:::
+
+::::
+
+::::exercise{#ex-space-third-edge}
+
+Show that $$A = (1, 2, 2)$$ and $$B = (2, 1, -2)$$ are perpendicular. Then find the point
+$$C = (x, y, 1)$$ that is perpendicular to both, and check that $$A$$, $$B$$ and $$C$$ all have the
+same length.
+
+:::solution
+
+$$A \cdot B = 2 + 2 - 4 = 0$$ (:ref{#space-dot}). For $$C$$ we need
+
+```math
+A \cdot C = x + 2y + 2 = 0, \qquad B \cdot C = 2x + y - 2 = 0
+```
+
+Doubling the second gives $$4x + 2y = 4$$, and taking the first away gives $$3x - 2 = 4$$, so
+$$x = 2$$. Then $$y = 2 - 2x = -2$$, and $$C = (2, -2, 1)$$. Check: $$A \cdot C = 2 - 4 + 2 = 0$$
+and $$B \cdot C = 4 - 2 - 2 = 0$$.
+
+All three have length $$\sqrt{1 + 4 + 4} = \sqrt{4 + 1 + 4} = \sqrt{4 + 4 + 1} = 3$$. So $$A$$,
+$$B$$ and $$C$$ are the three edges at a corner of a cube of side $$3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-space-perpendicular-not-parallel}
+
+Let $$A$$ and $$B$$ be directions, both $$\ne O$$, in the plane or in space. Prove that if
+$$A \cdot B = 0$$, then $$B$$ is not a multiple of $$A$$.
+
+:::solution
+
+Suppose $$B = cA$$ for some number $$c$$. Since $$B \ne O$$, $$c \ne 0$$. Then, by the rules in
+:ref{#dot-rules},
+
+```math
+A \cdot B = A \cdot (cA) = c\,(A \cdot A) = c\,|A|^2
+```
+
+Here $$c \ne 0$$, and $$|A|^2 > 0$$ because $$A \ne O$$. A product of two numbers that are not $$0$$
+is not $$0$$, so $$A \cdot B \ne 0$$. This contradicts $$A \cdot B = 0$$, so $$B$$ is not a multiple
+of $$A$$. In particular, lines with perpendicular directions are never parallel.
+
+:::
+
+::::
+
+::::exercise{#ex-space-vapour-trails}
+
+Two planes fly level in straight lines, with distances in kilometres east, north and up. The first
+follows the line through $$(0, 0, 9)$$ with direction $$(1, 2, 0)$$, and the second the line through
+$$(6, 0, 11)$$ with direction $$(-1, 1, 0)$$. Show that their paths are skew. Then find the point on
+the ground above which the paths seem to cross, and how far apart in height they are there.
+
+:::solution
+
+Every point of the first path has height $$9$$, and every point of the second has height $$11$$, so
+the paths never meet. The directions are not parallel, since $$(-1, 1, 0) = c(1, 2, 0)$$ would need
+$$c = -1$$ and $$c = \frac{1}{2}$$. So the paths are skew.
+
+Dropping the height leaves the points $$(t, 2t)$$ and $$(6 - s, s)$$ on the ground. These are equal
+when $$t = 6 - s$$ and $$2t = s$$, so $$3t = 6$$, $$t = 2$$ and $$s = 4$$. The paths seem to cross
+above $$(2, 4)$$, where the first plane's path is at $$(2, 4, 9)$$ and the second's at
+$$(2, 4, 11)$$, $$2$$ kilometres higher.
+
+:::
+
+::::
+
+:::::

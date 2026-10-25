@@ -115,6 +115,13 @@ import { MoveExplorer } from "./interactive/move-explorer";
 import { SpriteFrames } from "./points-illustrations/moves-as-formulas";
 import { GridCount } from "./interactive/grid-count";
 import { Quiz } from "./quiz";
+import { RayDirection } from "./interactive/ray-direction";
+import { LineThroughPoints } from "./interactive/line-through-points";
+import { SegmentSlider } from "./interactive/segment-slider";
+import { CrossingPaths } from "./interactive/crossing-paths";
+import { SkewLines } from "./lines-illustrations/space";
+import { LineCircle } from "./interactive/line-circle";
+import { PerpendicularFoot } from "./interactive/perpendicular-foot";
 import {
   Conjecture,
   Corollary,
@@ -250,6 +257,13 @@ export const mdxComponents = {
   HalfTurnPair,
   MoveExplorer,
   SpriteFrames,
+  PerpendicularFoot,
+  LineCircle,
+  SkewLines,
+  CrossingPaths,
+  SegmentSlider,
+  LineThroughPoints,
+  RayDirection,
   SpaceAxes,
   RoomDiagonal,
   GridCount,

@@ -1,0 +1,580 @@
+---
+title: Rays and direction
+description:
+  Rays written as formulas, when two steps point the same way, arrows of a given length, and why
+  zooms and slides move points along rays.
+---
+
+Imagine standing in a dark field and switching on a torch. The beam starts at the glass and runs out
+across the grass in one direction, and nothing behind you lights up. Now a friend a few metres to
+your left points a second torch the same way. The two beams start in different places, but they run
+side by side and never drift apart.
+
+Each beam is a **ray**: it has a starting point, and from there it goes on without end one way only.
+What the two beams share is their **direction**. In this guide we'll write rays with adding and
+scaling points, and then say in numbers when two steps point the same way.
+
+## Rays as formulas
+
+Stand at a point $$P$$ and pick a step $$A$$. Take the step once and you reach $$P + A$$, twice and
+you reach $$P + 2A$$, half of it and you reach $$P + \frac{1}{2}A$$. Every amount of the step, from
+none at all upwards, lands somewhere along the torch beam. A negative amount would walk you
+backwards behind the torch, which the beam doesn't light.
+
+For example, take $$P = (-1, 1)$$ and $$A = (2, 1)$$. The amounts $$0$$, $$\frac{1}{2}$$, $$1$$ and
+$$2$$ give the points
+
+```math
+(-1, 1) \qquad (0, 1.5) \qquad (1, 2) \qquad (3, 3)
+```
+
+all on the beam. The amount $$-1$$ gives $$(-3, 0)$$, which is behind $$P$$.
+
+```plane
+point P -1 1 nw
+point P+A 1 2 nw
+point P+2A 3 3 nw
+point P−A -3 0 nw
+point X1 -4 0 hidden
+point X2 5 0 hidden
+point Y1 0 -1 hidden
+point Y2 0 4.5 hidden
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+segment P−A P color=muted dashed
+ray P P+A color=blue extend=1.5
+caption "The ray from P = (−1, 1) in direction A = (2, 1) passes P + A and P + 2A. The point P − A, at t = −1, is behind P and off the ray."
+```
+
+:::definition[Ray in coordinates]{#ray-formula}
+
+Let $$P$$ be a point and $$A \ne O$$ a point, called the **direction**. The **ray from** $$P$$ **in
+direction** $$A$$ is the set of points
+
+```math
+P + tA \qquad \text{for every number } t \ge 0
+```
+
+Its **starting point** is $$P$$, at $$t = 0$$. For a point $$Q \ne P$$, the **ray from** $$P$$
+**through** $$Q$$ is the ray from $$P$$ in direction $$Q - P$$.
+
+:::
+
+The direction can't be $$O$$, since $$P + tO = P$$ for every $$t$$, and the "ray" would be the one
+point $$P$$. The ray from $$P$$ through $$Q$$ does pass through $$Q$$: at $$t = 1$$ it reaches
+$$P + (Q - P) = Q$$ (:ref{#adding-and-scaling-points/difference-step}). Its points with
+$$0 \le t \le 1$$ make up the segment $$PQ$$ of :ref{#segment-formula}, and the points with
+$$t > 1$$ carry on past $$Q$$.
+
+The picture's ray (:ref{#distance-and-angles/ray}) is $$P$$ together with every point $$X$$ of the
+line $$PQ$$ for which $$P$$ is not between $$X$$ and $$Q$$. In the formula, the points with
+$$t < 0$$ are the ones on the far side of $$P$$ from $$Q$$, so the two descriptions agree in the
+picture. From now on, in $$\mathbb{R}^2$$, the formula is the definition of a ray, and
+:ref{#ray-agrees} proves that it matches the picture's ray.
+
+:::example[The ray from (2, 1) through (5, −3)]
+
+Take $$P = (2, 1)$$ and $$Q = (5, -3)$$. The direction is $$Q - P = (3, -4)$$, so the ray is made of
+the points $$(2 + 3t, 1 - 4t)$$ with $$t \ge 0$$. At $$t = 2$$ it reaches $$(8, -7)$$, past $$Q$$.
+The point $$(-1, 5)$$ is not on the ray: the first coordinate gives $$2 + 3t = -1$$, so $$t = -1$$,
+which is negative.
+
+:::
+
+## Stretching the direction
+
+Walking along the beam in steps of $$A$$ or in steps of $$3A$$ covers the same ground. With the
+longer step you need a third as many of them, so the amount $$t = 6$$ of $$A$$ is the amount
+$$t = 2$$ of $$3A$$. Each point of the ray is reached either way, so the two rays are the same.
+
+:::proposition[Stretching the direction]{#ray-multiple}
+
+Let $$P$$ be a point, $$A \ne O$$ and $$c > 0$$. The ray from $$P$$ in direction $$A$$ is the same
+as the ray from $$P$$ in direction $$cA$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Line_(geometry)#Ray"}
+
+First, $$cA \ne O$$ by :ref{#adding-and-scaling-points/scale-cancel}, since $$c \ne 0$$ and
+$$A \ne O$$. So $$cA$$ is a direction. There are two things to show.
+
+- **Every point of the first ray is on the second.** Let $$X = P + tA$$ with $$t \ge 0$$. By
+  :ref{#adding-and-scaling-points/scale-twice},
+  $$\frac{t}{c}(cA) = \left(\frac{t}{c} \cdot c\right)A = tA$$, so $$X = P + \frac{t}{c}(cA)$$.
+  Since $$t \ge 0$$ and $$c > 0$$, the amount $$\frac{t}{c}$$ is at least $$0$$.
+- **Every point of the second ray is on the first.** Let $$X = P + s(cA)$$ with $$s \ge 0$$. By
+  :ref{#adding-and-scaling-points/scale-twice}, $$X = P + (sc)A$$, and $$sc \ge 0$$.
+
+:::
+
+A negative multiple does something else. The direction $$-A = (-2, -1)$$ sends the ray from
+$$P = (-1, 1)$$ through $$(-3, 0)$$ and $$(-5, -1)$$, the dashed part of the figure under
+[Rays as formulas](#rays-as-formulas) and beyond. That ray runs the opposite way, and it shares only
+its starting point $$P$$ with the ray in direction $$A$$, as an exercise at the end of this guide
+proves.
+
+Change $$c$$ below and watch the orange ray. For every $$c > 0$$ it lies on top of the blue one,
+however long the step $$cA$$ is. As $$c$$ passes through $$0$$, it flips round to point the other
+way.
+
+<RayDirection />
+
+## Pointing the same way
+
+Two torches pointed the same way give beams that run side by side. In steps, that means one torch's
+step is a stretched copy of the other's: $$(6, -3)$$ points the same way as $$(2, -1)$$, since it is
+$$3$$ times as long. A negative multiple such as $$(-4, 2) = -2(2, -1)$$ points the opposite way.
+
+:::definition[Same direction]{#same-direction}
+
+Let $$A$$ and $$B$$ be points other than $$O$$.
+
+- $$A$$ and $$B$$ have the **same direction** when $$B = cA$$ for some number $$c > 0$$
+- $$A$$ and $$B$$ have **opposite directions** when $$B = cA$$ for some number $$c < 0$$
+
+Two arrows (:ref{#arrow}) have the same direction when their steps have the same direction, and
+opposite directions when their steps do.
+
+:::
+
+A pair of steps can be neither. Take $$A = (2, -1)$$ and $$D = (1, 2)$$. If $$D = cA$$, the first
+coordinates give $$1 = 2c$$, so $$c = \frac{1}{2}$$, and the second give $$2 = -c$$, so $$c = -2$$.
+No number does both, so $$D$$ is not a multiple of $$A$$, and the two steps point in different ways
+that are not opposite.
+
+With this definition, :ref{#ray-multiple} says that two directions with the same direction give the
+same ray from $$P$$. The reverse holds too, so the ray from a point is fixed by which way it points
+and by nothing else.
+
+:::proposition[When two rays from one point are the same]{#rays-equal}
+
+Let $$P$$ be a point, and $$A$$ and $$B$$ points other than $$O$$. The ray from $$P$$ in direction
+$$A$$ and the ray from $$P$$ in direction $$B$$ are the same ray exactly when $$A$$ and $$B$$ have
+the same direction.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Direction_(geometry)"}
+
+**If they have the same direction**, then $$B = cA$$ with $$c > 0$$, and the rays are the same by
+:ref{#ray-multiple}.
+
+**If the rays are the same**, then $$P + B$$, the point at $$t = 1$$ on the ray in direction $$B$$,
+is on the ray in direction $$A$$. So $$P + B = P + tA$$ for some $$t \ge 0$$. Taking $$P$$ from both
+sides (:ref{#adding-and-scaling-points/sum-rules}) gives $$B = tA$$. If $$t$$ were $$0$$, then
+$$B = 0A = O$$, which it is not, so $$t > 0$$ and $$A$$ and $$B$$ have the same direction.
+
+:::
+
+### Same direction behaves like equality
+
+Having the same direction works like being equal in three ways. Every step points the same way as
+itself. If $$B$$ points the same way as $$A$$, then $$A$$ points the same way as $$B$$. And two
+steps that each point the same way as a third point the same way as each other, as the two torches
+both pointing at one tree do.
+
+:::proposition[Same direction behaves like equality]{#same-direction-rules}
+
+Let $$A$$, $$B$$ and $$C$$ be points other than $$O$$.
+
+1. $$A$$ has the same direction as $$A$$.
+2. If $$A$$ has the same direction as $$B$$, then $$B$$ has the same direction as $$A$$.
+3. If $$A$$ has the same direction as $$B$$, and $$B$$ has the same direction as $$C$$, then $$A$$
+   has the same direction as $$C$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Direction_(geometry)"}
+
+All three use :ref{#adding-and-scaling-points/scale-twice} and
+:ref{#adding-and-scaling-points/scalar-multiple}.
+
+1. $$A = 1A$$, and $$1 > 0$$.
+2. Suppose $$B = cA$$ with $$c > 0$$. Then $$\frac{1}{c}B = \left(\frac{1}{c} \cdot c\right)A = A$$,
+   and $$\frac{1}{c} > 0$$. So $$A$$ is a positive multiple of $$B$$.
+3. Suppose $$B = cA$$ and $$C = dB$$, with $$c > 0$$ and $$d > 0$$. Then $$C = d(cA) = (dc)A$$, and
+   $$dc > 0$$, since the product of two positive numbers is positive.
+
+:::
+
+### One unit point for each direction
+
+The last chapter shrank each step $$A \ne O$$ to its unit point $$U = \frac{1}{|A|}A$$, of length
+$$1$$ (:ref{#adding-and-scaling-points/direction}). Stretching the step doesn't move $$U$$, and the
+interactive under
+[Which way a step points](../adding-and-scaling-points/length.mdx#which-way-a-step-points) shows
+$$U$$ staying put while $$A$$ grows. So two steps have the same direction exactly when they share a
+unit point, and the unit circle holds one point for each direction.
+
+For example, $$(2, -1)$$ has length $$\sqrt{5}$$ and $$(6, -3)$$ has length
+$$\sqrt{45} = 3\sqrt{5}$$. Dividing each by its length gives the same unit point,
+$$\left(\frac{2}{\sqrt{5}}, -\frac{1}{\sqrt{5}}\right) \approx (0.89, -0.45)$$.
+
+:::proposition[One unit point for each direction]{#direction-unit}
+
+Let $$A$$ and $$B$$ be points other than $$O$$. They have the same direction exactly when their unit
+points are equal:
+
+```math
+\frac{1}{|A|}A = \frac{1}{|B|}B
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Unit_vector"}
+
+Both lengths are positive (:ref{#coordinates/distance-zero}), so both unit points exist.
+
+**If they have the same direction**, then $$B = cA$$ with $$c > 0$$. By
+:ref{#adding-and-scaling-points/norm-scale}, $$|B| = |c|\,|A| = c\,|A|$$. So by
+:ref{#adding-and-scaling-points/scale-twice},
+
+```math
+\frac{1}{|B|}B = \frac{1}{c\,|A|}(cA) = \left(\frac{c}{c\,|A|}\right)A = \frac{1}{|A|}A
+```
+
+**If the unit points are equal**, call them both $$U$$. By
+:ref{#adding-and-scaling-points/direction}, $$A = |A|\,U$$ and $$B = |B|\,U$$. Then by
+:ref{#adding-and-scaling-points/scale-twice},
+
+```math
+\frac{|B|}{|A|}A = \left(\frac{|B|}{|A|} \cdot |A|\right)U = |B|\,U = B
+```
+
+and $$\frac{|B|}{|A|} > 0$$, so $$A$$ and $$B$$ have the same direction.
+
+:::
+
+## An arrow of a given length
+
+Directions on the ground often come as "walk this far, that way". To follow one, shrink the step
+towards your target to length $$1$$, which gives its unit point, and take that unit step as many
+times as the distance says. The length of an arrow from $$M$$ to $$N$$ is the distance
+$$d(M, N) = |N - M|$$ (:ref{#adding-and-scaling-points/distance-norm}).
+
+:::proposition[An arrow of a given length and direction]{#arrow-given}
+
+Let $$M$$ be a point, $$A \ne O$$ a direction and $$\ell > 0$$ a length. The arrow from $$M$$ with
+the same direction as $$A$$ and length $$\ell$$ ends at
+
+```math
+N = M + \frac{\ell}{|A|}A
+```
+
+and it is the only such arrow.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_vector#Scalar_multiplication"}
+
+The step of the arrow from $$M$$ to $$N$$ is $$N - M = \frac{\ell}{|A|}A$$
+(:ref{#adding-and-scaling-points/sum-rules}, :ref{#adding-and-scaling-points/difference-step}). It
+is a positive multiple of $$A$$, so it has the same direction as $$A$$. By
+:ref{#adding-and-scaling-points/norm-scale} its length is $$\frac{\ell}{|A|}\,|A| = \ell$$.
+
+Now take any arrow from $$M$$ with the same direction as $$A$$ and length $$\ell$$. Its step is
+$$cA$$ for some $$c > 0$$, and by :ref{#adding-and-scaling-points/norm-scale} its length is
+$$c\,|A|$$. So $$c\,|A| = \ell$$, which gives $$c = \frac{\ell}{|A|}$$, and the arrow ends at
+$$M + \frac{\ell}{|A|}A = N$$.
+
+:::
+
+```plane
+point M 1 0.5 sw
+point N 3.4 2.3 se
+point C 5 3.5 ne
+point X1 -0.5 0 hidden
+point X2 6 0 hidden
+point Y1 0 -0.5 hidden
+point Y2 0 4.2 hidden
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+segment N C color=muted dashed label="200 m" side=right
+segment M N color=blue label="300 m" side=right
+caption "Grid squares are 100 m. From M = (100, 50), walking 300 m towards the church at C = (500, 350) ends at N = (340, 230), with 200 m still to go."
+```
+
+:::example[Walking towards the church]
+
+You stand at $$M = (100, 50)$$ on a town map measured in metres, and a sign says "walk 300 m in the
+direction of the church". The church is at $$C = (500, 350)$$, so the step towards it is
+$$C - M = (400, 300)$$, of length $$\sqrt{160000 + 90000} = 500$$. By :ref{#arrow-given} with
+$$A = C - M$$ and $$\ell = 300$$, you stop at
+
+```math
+N = (100, 50) + \frac{300}{500}(400, 300) = (100, 50) + (240, 180) = (340, 230)
+```
+
+As a check, $$C - N = (160, 120)$$, of length $$\sqrt{25600 + 14400} = 200$$. So you are $$200$$ m
+from the church, and $$300 + 200 = 500$$.
+
+:::
+
+### Speed and heading
+
+A boat's heading and speed together make a step for each hour. Suppose a boat leaves a harbour at
+$$H = (4, -2)$$, with distances in kilometres, heading in direction $$A = (-5, 12)$$ at $$26$$ km/h.
+The length of $$A$$ is $$\sqrt{25 + 144} = 13$$, so its unit point is $$U = \frac{1}{13}(-5, 12)$$,
+and each hour the boat moves
+
+```math
+26U = 2(-5, 12) = (-10, 24)
+```
+
+After $$t$$ hours the boat is at $$H + t(-10, 24)$$, so its track is the ray from $$H$$ in direction
+$$A$$, with the time as the amount $$t$$. After an hour and a half it is at
+$$(4 - 15, -2 + 36) = (-11, 34)$$, which is $$1.5 \times 26 = 39$$ km from the harbour. A step made
+from a speed and a heading like this is called a **velocity**. Forces are drawn as arrows in the
+same way, with the length giving how hard the push is and the direction giving which way.
+
+## Zooms and slides along rays
+
+Pinch a photo to zoom in, and each spot slides straight away from the spot between your fingers. It
+never swings round to one side. So a zoom about $$Q$$ moves each point along the ray from $$Q$$
+through it. A slide moves points along arrows too: every point travels along an arrow that matches
+the slide's own arrow, with the same length and pointing the same way.
+
+:::proposition[Zooms keep rays]{#zoom-on-ray}
+
+Let $$Q$$ and $$P$$ be different points and $$r > 0$$. Then $$Z_{r,Q}(P)$$ lies on the ray from
+$$Q$$ through $$P$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Homothety"}
+
+The ray from $$Q$$ through $$P$$ is made of the points $$Q + t(P - Q)$$ with $$t \ge 0$$
+(:ref{#ray-formula}). By :ref{#adding-and-scaling-points/zoom-formula},
+$$Z_{r,Q}(P) = Q + r(P - Q)$$, which is the point with $$t = r$$, and $$r > 0$$.
+
+:::
+
+For example, the zoom by $$2$$ about $$Q = (1, 0)$$ sends $$P = (3, 1)$$ to $$(5, 2)$$, as in
+[Zooms about any point](../adding-and-scaling-points/moves-as-formulas.mdx#zooms-about-any-point).
+The ray from $$Q$$ through $$P$$ is $$(1, 0) + t(2, 1)$$, and $$t = 2$$ gives $$(5, 2)$$.
+
+This finishes a proof left open in the last chapter. The dilation by $$r$$ about $$Q$$
+(:ref{#isometries/dilation}) sends each point $$P \ne Q$$ to the point on the ray from $$Q$$ through
+$$P$$ at $$r$$ times the distance. :ref{#adding-and-scaling-points/zoom-formula-distances} proved
+the distance part for $$Z_{r,Q}$$, and :ref{#zoom-on-ray} proves the ray part. So $$Z_{r,Q}$$ is
+that dilation, with the ray read as the formula ray, which :ref{#ray-agrees} matches to the
+picture's ray.
+
+With $$Q = O$$, the zoom is $$Z_r(P) = rP$$. So for every $$r > 0$$ the multiple $$rA$$ of a point
+$$A \ne O$$ lies on the ray from $$O$$ through $$A$$, as the plotted multiples in
+[Scaling points](../adding-and-scaling-points/scaling-points.mdx) suggested.
+
+:::proposition[Slides move along their arrow]{#slide-direction}
+
+Let $$A \ne O$$. For every point $$P$$, the arrow from $$P$$ to $$T_A(P)$$ is equivalent to the
+arrow $$\overrightarrow{OA}$$. So every point moves the distance $$|A|$$, in the same direction as
+$$A$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Translation_(geometry)#As_a_function"}
+
+By :ref{#adding-and-scaling-points/slide-formula}, $$T_A(P) = P + A$$. So the step of the arrow from
+$$P$$ to $$T_A(P)$$ is $$(P + A) - P = A$$ (:ref{#adding-and-scaling-points/sum-rules}), and the
+step of $$\overrightarrow{OA}$$ is $$A - O = A$$. The steps are equal, so the arrows are equivalent
+(:ref{#arrow}).
+
+Both arrows have length $$|A|$$ (:ref{#adding-and-scaling-points/distance-norm}). Their steps are
+equal, and $$A = 1A$$, so they have the same direction (:ref{#same-direction}).
+
+:::
+
+For example, the slide by $$A = (3, -1)$$ sends $$(2, 2)$$ to $$(5, 1)$$ and $$(-4, 0)$$ to
+$$(-1, -1)$$. Both arrows have the step $$(3, -1)$$, the same as the arrow from $$O$$ to $$A$$.
+
+The translation of :ref{#isometries/translation} moves every point a fixed distance "in the
+direction from $$O$$ to $$M$$", with direction in its everyday sense. :ref{#slide-direction} makes
+that phrase exact for $$T_A$$ with $$A = M$$: each point moves along an arrow with the same step as
+$$\overrightarrow{OM}$$, so the same length and the same direction.
+
+## Exercises
+
+:::::accordion[Exercises on rays and direction, with solutions]
+
+::::exercise{#ex-rays-points}
+
+Let $$P = (2, -1)$$ and $$A = (-1, 3)$$. Decide which of these points lie on the ray from $$P$$ in
+direction $$A$$, and give $$t$$ for those that do:
+
+1. $$(0, 5)$$
+2. $$(3, -4)$$
+3. $$(1.5, 0.5)$$
+4. $$(-2, 10)$$
+
+:::solution
+
+The ray is made of the points $$(2 - t, -1 + 3t)$$ with $$t \ge 0$$ (:ref{#ray-formula}). The first
+coordinate fixes $$t$$, and then the second must match.
+
+1. $$2 - t = 0$$ gives $$t = 2$$, and $$-1 + 6 = 5$$. On the ray, at $$t = 2$$.
+2. $$2 - t = 3$$ gives $$t = -1$$, and $$-1 - 3 = -4$$. The point is $$P - A$$, behind $$P$$, so it
+   is not on the ray.
+3. $$2 - t = 1.5$$ gives $$t = 0.5$$, and $$-1 + 1.5 = 0.5$$. On the ray, at $$t = 0.5$$.
+4. $$2 - t = -2$$ gives $$t = 4$$, but then $$-1 + 12 = 11$$, not $$10$$. Not on the ray.
+
+:::
+
+::::
+
+::::exercise{#ex-rays-same-direction}
+
+For each pair, decide whether the two points have the same direction, opposite directions or
+neither:
+
+1. $$(4, -6)$$ and $$(-2, 3)$$
+2. $$(3, 5)$$ and $$(6, 10)$$
+3. $$(1, 2)$$ and $$(2, 1)$$
+4. $$(0, -2)$$ and $$(0, 7)$$
+
+:::solution
+
+By :ref{#same-direction}, look for $$c$$ with the second point equal to $$c$$ times the first.
+
+1. $$(-2, 3) = -\frac{1}{2}(4, -6)$$, and $$-\frac{1}{2} < 0$$: opposite directions.
+2. $$(6, 10) = 2(3, 5)$$: the same direction.
+3. The first coordinates need $$2 = c$$ and the second need $$1 = 2c$$, so $$c = \frac{1}{2}$$. No
+   number does both: neither.
+4. $$(0, 7) = -\frac{7}{2}(0, -2)$$: opposite directions. One points down the $$y$$-axis and the
+   other up it.
+
+:::
+
+::::
+
+::::exercise{#ex-rays-unit-points}
+
+Find the unit points of $$(6, 8)$$, $$(9, 12)$$ and $$(-3, -4)$$. Use them to say which pairs have
+the same direction.
+
+:::solution
+
+The lengths are $$\sqrt{36 + 64} = 10$$, $$\sqrt{81 + 144} = 15$$ and $$\sqrt{9 + 16} = 5$$. So the
+unit points are
+
+```math
+\tfrac{1}{10}(6, 8) = (0.6, 0.8) \qquad \tfrac{1}{15}(9, 12) = (0.6, 0.8) \qquad \tfrac{1}{5}(-3, -4) = (-0.6, -0.8)
+```
+
+By :ref{#direction-unit}, $$(6, 8)$$ and $$(9, 12)$$ have the same direction, and indeed
+$$(9, 12) = 1.5(6, 8)$$. The point $$(-3, -4)$$ has a different unit point, so it does not have the
+same direction as either of them. In fact it is $$-\frac{1}{2}(6, 8)$$, the opposite direction.
+
+:::
+
+::::
+
+::::exercise{#ex-rays-arrow-length}
+
+Let $$M = (1, 1)$$ and $$A = (-3, 4)$$. Find the end of each arrow from $$M$$:
+
+1. the arrow of length $$10$$ with the same direction as $$A$$
+2. the arrow of length $$2$$ with the same direction as $$A$$
+3. the arrow of length $$10$$ with the opposite direction to $$A$$
+
+:::solution
+
+Here $$|A| = \sqrt{9 + 16} = 5$$. By :ref{#arrow-given}:
+
+1. $$(1, 1) + \frac{10}{5}(-3, 4) = (1, 1) + (-6, 8) = (-5, 9)$$
+2. $$(1, 1) + \frac{2}{5}(-3, 4) = (1, 1) + (-1.2, 1.6) = (-0.2, 2.6)$$
+3. The opposite direction is $$-A = (3, -4)$$, which also has length $$5$$. So the arrow ends at
+   $$(1, 1) + 2(3, -4) = (7, -7)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-rays-through-a-point}
+
+Let $$P \ne Q$$, and let $$R \ne P$$ be a point of the ray from $$P$$ through $$Q$$. Prove that the
+ray from $$P$$ through $$R$$ is the same as the ray from $$P$$ through $$Q$$.
+
+:::solution
+
+Since $$R$$ is on the ray, $$R = P + t(Q - P)$$ for some $$t \ge 0$$ (:ref{#ray-formula}). If
+$$t = 0$$ then $$R = P$$, which it is not, so $$t > 0$$. Taking $$P$$ from both sides
+(:ref{#adding-and-scaling-points/sum-rules}) gives $$R - P = t(Q - P)$$. So $$R - P$$ and $$Q - P$$
+have the same direction (:ref{#same-direction}), and by :ref{#rays-equal} the rays from $$P$$ in
+these two directions are the same.
+
+This is the fact noted after :ref{#distance-and-angles/ray}: a ray is fixed by its starting point
+and any one other point on it.
+
+:::
+
+::::
+
+::::exercise{#ex-rays-opposite}
+
+Let $$P$$ be a point and $$A \ne O$$. Prove that the ray from $$P$$ in direction $$A$$ and the ray
+from $$P$$ in direction $$-A$$ have exactly one point in common, $$P$$.
+
+:::solution
+
+Both rays contain $$P$$, at $$t = 0$$. Now suppose a point $$X$$ is on both, so
+$$X = P + tA = P + s(-A)$$ with $$t \ge 0$$ and $$s \ge 0$$. Taking $$P$$ from both sides
+(:ref{#adding-and-scaling-points/sum-rules}) gives $$tA = -sA$$, and so $$(t + s)A = O$$
+(:ref{#adding-and-scaling-points/scale-sum-rules}).
+
+Since $$A \ne O$$, :ref{#adding-and-scaling-points/scale-cancel} gives $$t + s = 0$$. Two numbers
+that are at least $$0$$ add to $$0$$ exactly when both are $$0$$, so $$t = 0$$ and $$X = P$$.
+
+:::
+
+::::
+
+::::exercise{#ex-rays-ship}
+
+A ship leaves port at $$(2, -3)$$, with distances in kilometres, heading in direction $$(8, 15)$$ at
+$$34$$ km/h.
+
+1. Find the step the ship makes each hour, and where it is after $$2$$ hours.
+2. How long does it take to reach $$(26, 42)$$, and how far has it gone by then?
+3. Does it pass through $$(18, 30)$$?
+
+:::solution
+
+1. The direction has length $$\sqrt{64 + 225} = 17$$, so each hour the ship moves
+   $$\frac{34}{17}(8, 15) = (16, 30)$$ (:ref{#arrow-given}). After $$2$$ hours it is at
+   $$(2, -3) + 2(16, 30) = (34, 57)$$.
+2. The step from port is $$(26, 42) - (2, -3) = (24, 45)$$, which is $$1.5(16, 30)$$. So it takes
+   $$1.5$$ hours, and the ship has gone $$1.5 \times 34 = 51$$ km. As a check,
+   $$|(24, 45)| = \sqrt{576 + 2025} = \sqrt{2601} = 51$$.
+3. The step from port is $$(16, 33)$$. Matching $$(16, 33) = t(16, 30)$$ needs $$t = 1$$ from the
+   first coordinate, but then $$30 \ne 33$$. So the ship's track misses $$(18, 30)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-rays-zoom-half-turn}
+
+Let $$Q = (1, 2)$$ and $$P = (2, 0)$$.
+
+1. Find $$Z_{3,Q}(P)$$, give its value of $$t$$ on the ray from $$Q$$ through $$P$$, and check that
+   it is $$3$$ times as far from $$Q$$ as $$P$$ is.
+2. Find the half turn $$H_Q(P)$$, and show that it lies on the ray from $$Q$$ in direction
+   $$-(P - Q)$$, the opposite direction.
+
+:::solution
+
+1. $$P - Q = (1, -2)$$, so $$Z_{3,Q}(P) = (1, 2) + 3(1, -2) = (4, -4)$$
+   (:ref{#adding-and-scaling-points/zoom-formula}). That is the point $$t = 3$$ of the ray
+   $$Q + t(P - Q)$$ (:ref{#zoom-on-ray}). Its distance from $$Q$$ is
+   $$|(3, -6)| = \sqrt{45} = 3\sqrt{5}$$, and $$d(Q, P) = |(1, -2)| = \sqrt{5}$$.
+2. $$H_Q(P) = 2(1, 2) - (2, 0) = (0, 4)$$ (:ref{#adding-and-scaling-points/half-turn-formula}). Also
+   $$Q + 1 \cdot \big(-(P - Q)\big) = (1, 2) + (-1, 2) = (0, 4)$$, the point $$t = 1$$ of the ray
+   from $$Q$$ in direction $$-(P - Q) = (-1, 2)$$. So a half turn sends $$P$$ the same distance
+   along the opposite ray, as a "zoom by $$-1$$" would.
+
+:::
+
+::::
+
+:::::

@@ -1,0 +1,860 @@
+---
+title: The rules for lines, proved
+description:
+  Proving from the formulas that lines, segments, rays, parallels and perpendiculars obey every rule
+  the picture gave us.
+---
+
+Imagine writing a geometry app. You tap two points and the app draws the line through them, then you
+tap a third point and ask for the parallel through it. Behind the screen there is no ruler, only
+pairs of numbers and the formula $$P + t(Q - P)$$, worked out for many values of $$t$$. If the app
+is to be trusted, the lines it draws have to behave like lines on paper.
+
+The earlier chapters leaned on a few rules about lines, segments and rays that came from the picture
+and were taken as given. Now that each of these objects is a formula, each rule is a claim about
+numbers, and a claim about numbers can be proved. In this guide we'll prove that the formulas obey
+every rule for lines and segments that ruler and pencil gave us.
+
+## What there is to prove
+
+On paper, a line was something you could draw, and facts about it were read off the drawing. In
+$$\mathbb{R}^2$$ a line is a set of points given by a formula, so nothing can be read off. Every
+fact has to come from the formula, the same way the rules for distance came from the distance
+formula in [Geometry from numbers](../coordinates/geometry-from-numbers.mdx).
+
+In this guide, these are the meanings of the words, all from earlier guides of this chapter:
+
+- **Segment** $$PQ$$, for $$P \ne Q$$: the points $$P + t(Q - P)$$ with $$0 \le t \le 1$$
+  (:ref{#segment-formula})
+- **Between**: a point of the segment $$PQ$$ other than $$P$$ and $$Q$$ lies between $$P$$ and
+  $$Q$$, as in :ref{#distance-and-angles/segment}
+- **Ray** from $$P$$ in direction $$A$$: the points $$P + tA$$ with $$t \ge 0$$ (:ref{#ray-formula})
+- **Line** through $$P$$ with direction $$A$$: the points $$P + tA$$ for every real $$t$$
+  (:ref{#line-formula})
+- **Parallel**: lines with directions $$A$$ and $$B$$ are parallel when $$B = cA$$ for some
+  $$c \ne 0$$ (:ref{#parallel-formula})
+- **Perpendicular**: lines with directions $$A$$ and $$B$$ are perpendicular when $$A \cdot B = 0$$
+  (:ref{#perpendicular-formula})
+
+A direction is always a point other than $$O$$. The proofs below use these definitions, the rules
+for adding and scaling points, and results already proved from them. They never use a rule from the
+picture, because those rules are what we're proving.
+
+## Lines through points
+
+Stretch a string between two nails and it always takes the same path. In $$\mathbb{R}^2$$ that
+becomes a claim about sets: of all the sets $$P + tA$$, exactly one contains both points. The same
+line has many descriptions, with a different starting point or a stretched direction, so "exactly
+one line" means one set, however it is written.
+
+:::theorem[Two points, one line]{#line-rule-two-points}
+
+Two different points $$P$$ and $$Q$$ of $$\mathbb{R}^2$$ lie on exactly one line: the line through
+$$P$$ with direction $$Q - P$$. This is rule 1 of :ref{#distance-and-angles/line-rules}, and this
+line is the line $$PQ$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Line_(geometry)#Parametric_equation"}
+
+First, $$Q - P$$ is not $$O$$. By :ref{#adding-and-scaling-points/difference-step},
+$$P + (Q - P) = Q$$, so if $$Q - P$$ were $$O$$ this would say $$P = Q$$
+(:ref{#adding-and-scaling-points/sum-rules}, rule 3). So $$Q - P$$ can be used as a direction.
+
+By :ref{#two-point-line}, the line through $$P$$ with direction $$Q - P$$ contains $$P$$ and $$Q$$,
+and it is the only line that contains both.
+
+:::
+
+One line has many directions. The line through $$O$$ with direction $$(2, 1)$$ is also the line
+through $$O$$ with direction $$(4, 2)$$, or $$(-2, -1)$$. Part 3 of :ref{#line-descriptions} says
+there are no others: any two directions of one line are nonzero multiples of each other. That is why
+the tests for parallel and perpendicular give the same answer whichever directions we pick, as the
+checks after :ref{#parallel-formula} and :ref{#perpendicular-formula} show.
+
+The second rule for lines is about parallels. Through a point $$X$$, the line that runs the same way
+as $$L$$ is the one with the same direction, and stretching that direction or moving the starting
+point along the line gives nothing new.
+
+:::theorem[One parallel through a point]{#line-rule-parallel}
+
+For any line $$L$$ and any point $$X$$ of $$\mathbb{R}^2$$, exactly one line through $$X$$ is
+parallel to $$L$$. This is rule 2 of :ref{#distance-and-angles/line-rules}.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Playfair%27s_axiom"}
+
+Let $$A$$ be a direction of $$L$$, and let $$K$$ be the line through $$X$$ with direction $$A$$.
+
+**There is one.** $$K$$ contains $$X = X + 0A$$, and its direction is $$1A$$, so $$K$$ is parallel
+to $$L$$.
+
+**There is only one.** Let $$K'$$ be any line through $$X$$ parallel to $$L$$, and let $$B$$ be a
+direction of $$K'$$. Since $$X$$ is on $$K'$$, part 2 of :ref{#line-descriptions} lets $$X$$ be its
+starting point, so $$K'$$ is the line through $$X$$ with direction $$B$$. Since $$K' \parallel L$$,
+$$B = cA$$ for some $$c \ne 0$$, whichever directions are used (:ref{#parallel-formula}). By part 1
+of :ref{#line-descriptions}, the direction $$cA$$ gives the same line as $$A$$. So $$K' = K$$.
+
+:::
+
+If $$X$$ is on $$L$$, the line $$K$$ is $$L$$ itself, which matches the picture's convention that a
+line counts as parallel to itself.
+
+In the picture, two lines were parallel when they were the same line or never met. In
+$$\mathbb{R}^2$$ parallel means directions that are multiples of each other, and
+:ref{#line-intersection} links that to meeting. So the two meanings agree. The two facts that the
+picture proved from its rules for lines, about crossing lines and chains of parallels, now follow
+from the formulas.
+
+:::proposition[Parallel and crossing lines]{#rules-proved-crossing}
+
+For lines $$L_1$$, $$L_2$$ and $$L_3$$ of $$\mathbb{R}^2$$:
+
+1. **Parallel means the same or apart**: $$L_1 \parallel L_2$$ exactly when $$L_1$$ and $$L_2$$ are
+   the same line or never meet
+2. **Crossing lines**: two different lines meet in at most one point, and two lines that are not
+   parallel meet in exactly one point, as :ref{#distance-and-angles/crossing-lines} says
+3. **Parallel to a parallel**: if $$L_1 \parallel L_2$$ and $$L_2 \parallel L_3$$, then
+   $$L_1 \parallel L_3$$, as :ref{#distance-and-angles/parallel-transitive} says
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection"}
+
+**Part 1.** If $$L_1 \parallel L_2$$, then by :ref{#line-intersection} they are the same line or
+never meet. For the other way, if they are the same line, any two of its directions are nonzero
+multiples of each other (part 3 of :ref{#line-descriptions}), so the line is parallel to itself. If
+they never meet, they can't be non-parallel, since non-parallel lines meet by
+:ref{#line-intersection}. So they are parallel.
+
+**Part 2.** Take two different lines. If they are not parallel, they meet in exactly one point by
+:ref{#line-intersection}. If they are parallel, part 1 says they never meet, since they are not the
+same line. Either way they meet in at most one point.
+
+**Part 3.** Let $$A_1$$, $$A_2$$ and $$A_3$$ be directions of the three lines. By the checks after
+:ref{#parallel-formula} it doesn't matter which ones. Then $$A_2 = cA_1$$ and $$A_3 = c'A_2$$ with
+$$c, c' \ne 0$$, so $$A_3 = c'(cA_1) = (c'c)A_1$$ (:ref{#adding-and-scaling-points/scale-twice}).
+Since $$c'c \ne 0$$ (:ref{#numbers/zero-product}), $$L_1 \parallel L_3$$.
+
+:::
+
+## A detour of no extra length
+
+Walk from $$P$$ to $$M$$ by way of a third point $$Q$$. The triangle inequality says the detour is
+never shorter than the direct route, and when $$Q$$ sits on the segment from $$P$$ to $$M$$ the two
+are the same length. Rule 1 of :ref{#distance-and-angles/segment-rules} says more: those are the
+only points where the detour adds nothing. In $$\mathbb{R}^2$$, the work is in finding when the
+bound of :ref{#coordinates/product-bound} is an equality.
+
+### When the bound is an equality
+
+Recall the bound: for steps $$(a, b)$$ and $$(s, t)$$, the number $$as + bt$$ is at most the product
+of their lengths, $$\sqrt{a^2 + b^2}\,\sqrt{s^2 + t^2}$$. Try the steps $$(2, 1)$$ and $$(6, 3)$$,
+where the second is the first one tripled. Then $$as + bt = 12 + 3 = 15$$ and
+$$\sqrt{5}\,\sqrt{45} = \sqrt{225} = 15$$, so the two sides are equal.
+
+Now turn the second step round to $$(-4, -2)$$, which is $$-2$$ times the first. The lengths
+multiply to $$\sqrt{5}\,\sqrt{20} = 10$$ as before, but $$as + bt = -8 - 2 = -10$$. The bound holds,
+with room to spare. So equality needs more than one step being a multiple of the other: the multiple
+can't be negative.
+
+:::lemma[When the bound is an equality]{#product-bound-equality}
+
+Let $$a$$, $$b$$, $$s$$ and $$t$$ be real numbers with $$(a, b) \ne (0, 0)$$. Then
+
+```math
+as + bt = \sqrt{a^2 + b^2}\,\sqrt{s^2 + t^2}
+```
+
+exactly when $$(s, t) = c(a, b)$$ for some number $$c \ge 0$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality#R2_-_The_plane"}
+
+Write $$R = \sqrt{a^2 + b^2}\,\sqrt{s^2 + t^2}$$. Since $$(a, b) \ne (0, 0)$$, the number
+$$a^2 + b^2$$ is not $$0$$ (part 2 of :ref{#real-numbers/squares-positive}), and it is not negative,
+so it is positive.
+
+**If $$(s, t) = c(a, b)$$ with $$c \ge 0$$.** Then $$s = ca$$ and $$t = cb$$, so
+$$as + bt = c(a^2 + b^2)$$. Also $$s^2 + t^2 = c^2(a^2 + b^2)$$, and since $$c \ge 0$$,
+$$\sqrt{c^2} = c$$ (:ref{#real-numbers/square-root}). By :ref{#real-numbers/root-product},
+$$\sqrt{s^2 + t^2} = \sqrt{c^2}\,\sqrt{a^2 + b^2} = c\sqrt{a^2 + b^2}$$, so
+
+```math
+R = c\left(\sqrt{a^2 + b^2}\right)^2 = c(a^2 + b^2) = as + bt
+```
+
+**If $$as + bt = R$$.** A product of square roots is not negative, so $$as + bt \ge 0$$, and the
+squares of the two sides are equal. The proof of :ref{#coordinates/product-bound} showed that
+
+```math
+R^2 - (as + bt)^2 = (at - bs)^2
+```
+
+so $$(at - bs)^2 = 0$$, and therefore $$at - bs = 0$$ (part 1 of
+:ref{#real-numbers/squares-positive}). That is, $$at = bs$$. Now let
+
+```math
+c = \frac{as + bt}{a^2 + b^2}
+```
+
+which is at least $$0$$, as a number $$\ge 0$$ divided by a positive one. Using $$at = bs$$ to
+replace $$abt$$ by $$b^2s$$ and $$abs$$ by $$a^2t$$,
+
+```math
+ca = \frac{a^2s + abt}{a^2 + b^2} = \frac{a^2s + b^2s}{a^2 + b^2} = s \qquad cb = \frac{abs + b^2t}{a^2 + b^2} = \frac{a^2t + b^2t}{a^2 + b^2} = t
+```
+
+So $$(s, t) = c(a, b)$$ with $$c \ge 0$$.
+
+:::
+
+In the language of points, the lemma says that the bound is an equality exactly when the second step
+is a multiple of the first by a number $$c \ge 0$$. When $$c > 0$$, the two steps have the same
+direction (:ref{#same-direction}), and when $$c = 0$$ the second step is $$O$$.
+
+### When a detour is no longer
+
+Take $$P = (1, 1)$$ and $$M = (7, 4)$$. The point a third of the way along is
+$$Q = P + \frac{1}{3}(M - P) = (3, 2)$$, and the distances are $$d(P, Q) = \sqrt{5}$$,
+$$d(Q, M) = \sqrt{20} = 2\sqrt{5}$$ and $$d(P, M) = \sqrt{45} = 3\sqrt{5}$$. So the detour through
+$$Q$$ adds nothing. Through $$Q' = (3, 3)$$, off the segment, it is
+$$\sqrt{8} + \sqrt{17} \approx 6.95$$, which beats $$3\sqrt{5} \approx 6.71$$.
+
+```plane
+point P 1 1 sw
+point Q 3 2 se
+point M 7 4 ne
+point Q' 3 3 nw
+segment P M color=blue
+segment P Q' color=orange dashed
+segment Q' M color=orange dashed
+caption "Q = (3, 2) is on the segment from P = (1, 1) to M = (7, 4), so the detour through it adds nothing; the detour through Q' = (3, 3) is longer"
+```
+
+The proof follows the triangle inequality's own proof, which squared both sides and compared the
+middle terms. The two sides are equal exactly when those middle terms are, and the lemma says when
+that happens.
+
+:::theorem[When a detour is no longer]{#triangle-equality}
+
+Let $$P \ne M$$ be points of $$\mathbb{R}^2$$. For any point $$Q$$,
+
+```math
+d(P, M) = d(P, Q) + d(Q, M)
+```
+
+exactly when $$Q$$ lies on the segment $$PM$$. This is rule 1 of
+:ref{#distance-and-angles/segment-rules}.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Triangle_inequality#Triangle_equality"}
+
+The letter $$t$$ is needed below for a step, so write the points of the segment $$PM$$ as
+$$P + u(M - P)$$ with $$0 \le u \le 1$$.
+
+**On the segment.** Let $$Q = P + u(M - P)$$ with $$0 \le u \le 1$$. By :ref{#fraction-along},
+$$d(P, Q) = u\,d(P, M)$$ and $$d(Q, M) = (1 - u)\,d(P, M)$$. These add up to $$d(P, M)$$.
+
+**Equal distances.** Suppose $$d(P, M) = d(P, Q) + d(Q, M)$$. If $$Q = P$$, then $$Q$$ is on the
+segment, with $$u = 0$$. Otherwise, write the steps as in
+[Trips as steps](../coordinates/geometry-from-numbers.mdx#trips-as-steps): $$(a, b) = Q - P$$, which
+is not $$O$$, and $$(s, t) = M - Q$$. The proof of :ref{#coordinates/triangle-inequality-plane}
+worked out
+
+```math
+d(P, M)^2 = (a^2 + b^2) + 2(as + bt) + (s^2 + t^2)
+```
+
+```math
+\big(d(P, Q) + d(Q, M)\big)^2 = (a^2 + b^2) + 2\sqrt{a^2 + b^2}\,\sqrt{s^2 + t^2} + (s^2 + t^2)
+```
+
+The distances are equal, so their squares are, and so the middle terms are:
+$$as + bt = \sqrt{a^2 + b^2}\,\sqrt{s^2 + t^2}$$. By :ref{#product-bound-equality},
+$$M - Q = c(Q - P)$$ for some $$c \ge 0$$.
+
+Next, $$P + (Q - P) + (M - Q) = Q + (M - Q) = M$$, so $$(Q - P) + (M - Q)$$ is a step from $$P$$ to
+$$M$$. By the uniqueness in :ref{#adding-and-scaling-points/difference-step}, it is $$M - P$$. So
+
+```math
+M - P = c(Q - P) + 1(Q - P) = (1 + c)(Q - P)
+```
+
+by :ref{#adding-and-scaling-points/scale-sum-rules}. Let $$u = \frac{1}{1 + c}$$, so $$0 < u \le 1$$
+since $$1 + c \ge 1$$. Then $$u(M - P) = Q - P$$ (:ref{#adding-and-scaling-points/scale-twice}), so
+$$Q = P + u(M - P)$$, a point of the segment.
+
+:::
+
+In the example, $$Q - P = (2, 1)$$ and $$M - Q = (4, 2)$$, so $$c = 2$$ and $$u = \frac{1}{3}$$: the
+point a third of the way along, as it should be.
+
+## The rules for segments
+
+Every point of a line has a label, its parameter $$t$$, like the distance markers along a motorway.
+Which point is between which is then a question about the labels: a car at marker $$40$$ is between
+markers $$30$$ and $$70$$, and not between $$30$$ and $$35$$. The lemma below turns that into a
+statement about the formula.
+
+:::lemma[Reading a line by its parameters]{#rules-proved-parameters}
+
+Let $$L$$ be the line through $$P$$ with direction $$A$$, and write $$X_t = P + tA$$ for the point
+with parameter $$t$$.
+
+1. **One point, one parameter**: $$X_t = X_u$$ exactly when $$t = u$$
+2. **Segments are intervals**: for numbers $$r \ne w$$, the segment from $$X_r$$ to $$X_w$$ is made
+   of the points $$X_t$$ with $$t$$ from $$r$$ to $$w$$, ends included, whichever of $$r$$ and $$w$$
+   is larger. So $$X_t$$ lies between $$X_r$$ and $$X_w$$ exactly when $$t$$ lies strictly between
+   $$r$$ and $$w$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Line_segment"}
+
+**Part 1.** If $$P + tA = P + uA$$, adding $$-P$$ to both sides gives $$tA = uA$$
+(:ref{#adding-and-scaling-points/sum-rules}). Since $$A \ne O$$, this gives $$t = u$$ by part 2 of
+:ref{#adding-and-scaling-points/scale-cancel}. And equal parameters give the same point.
+
+**Part 2.** By part 1, $$X_r \ne X_w$$, so the segment from $$X_r$$ to $$X_w$$ is defined. The step
+between its ends is $$X_w - X_r = (w - r)A$$, since $$X_r + (w - r)A = P + wA$$ by
+:ref{#adding-and-scaling-points/scale-sum-rules}. So the points of the segment are
+
+```math
+X_r + v(w - r)A = P + \big(r + v(w - r)\big)A = X_{r + v(w - r)} \qquad 0 \le v \le 1
+```
+
+using :ref{#adding-and-scaling-points/scale-twice} and
+:ref{#adding-and-scaling-points/scale-sum-rules}. As $$v$$ runs from $$0$$ to $$1$$, the number
+$$t = r + v(w - r)$$ runs from $$r$$ to $$w$$, and each $$t$$ from $$r$$ to $$w$$ comes from
+$$v = \frac{t - r}{w - r}$$, which lies from $$0$$ to $$1$$. So the segment is the set of $$X_t$$
+with $$t$$ from $$r$$ to $$w$$.
+
+The ends $$X_r$$ and $$X_w$$ have parameters $$r$$ and $$w$$, and by part 1 no other parameter gives
+them. So the points between $$X_r$$ and $$X_w$$ are the $$X_t$$ with $$t$$ from $$r$$ to $$w$$ other
+than $$r$$ and $$w$$, that is, strictly between them.
+
+:::
+
+With the lemma and :ref{#triangle-equality}, all three rules for segments follow.
+
+:::theorem[The rules for segments hold]{#segment-rules-proved}
+
+In $$\mathbb{R}^2$$, with segments as in :ref{#segment-formula}, the three rules of
+:ref{#distance-and-angles/segment-rules} hold. Let $$P \ne M$$.
+
+1. **Points on the segment**: for any point $$Q$$, $$d(P, M) = d(P, Q) + d(Q, M)$$ exactly when
+   $$Q$$ lies on the segment $$PM$$
+2. **Every length is reached**: for every number $$c$$ with $$0 \le c \le d(P, M)$$, exactly one
+   point $$Q$$ of the segment $$PM$$ has $$d(P, Q) = c$$
+3. **One point in the middle**: of three different points on one line, exactly one lies between the
+   other two
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Line_segment"}
+
+**Rule 1** is :ref{#triangle-equality}.
+
+**Rule 2.** Since $$P \ne M$$, $$d(P, M) > 0$$ (:ref{#coordinates/distance-zero}). Each point of the
+segment is $$Q_t = P + t(M - P)$$ for some $$t$$ with $$0 \le t \le 1$$, and by
+:ref{#fraction-along}, $$d(P, Q_t) = t\,d(P, M)$$. So $$d(P, Q_t) = c$$ exactly when
+$$t = \frac{c}{d(P, M)}$$. That number lies from $$0$$ to $$1$$, because $$0 \le c \le d(P, M)$$, so
+the point $$Q_t$$ with this $$t$$ is on the segment and has $$d(P, Q_t) = c$$. Any point of the
+segment at distance $$c$$ from $$P$$ has this same $$t$$, so it is the same point.
+
+**Rule 3.** Let the line be the line through a point $$N$$ with direction $$A$$, and write
+$$X_t = N + tA$$. Write the three points as $$X_r$$, $$X_s$$ and $$X_w$$. The points are different,
+so the parameters are different (part 1 of :ref{#rules-proved-parameters}). Name them so that
+$$r < s < w$$. By part 2 of the same lemma:
+
+- $$X_s$$ lies between $$X_r$$ and $$X_w$$, since $$s$$ is strictly between $$r$$ and $$w$$
+- $$X_r$$ doesn't lie between $$X_s$$ and $$X_w$$, since $$r$$ is less than both $$s$$ and $$w$$
+- $$X_w$$ doesn't lie between $$X_r$$ and $$X_s$$, since $$w$$ is more than both $$r$$ and $$s$$
+
+So exactly one of the three points, $$X_s$$, lies between the other two.
+
+:::
+
+## Rays
+
+A torch beam starts at the torch and runs on in one direction. The [Rays and direction](./rays.mdx)
+guide wrote that as $$P + tA$$ with $$t \ge 0$$. The picture described the same beam another way:
+take the whole line, and throw away the points on the far side of $$P$$ from $$Q$$, the points where
+$$P$$ sits between them and $$Q$$. On the line, those are the points with negative parameters.
+
+```plane
+point X -1 0 se
+point P 1 1 se
+point Q 3 2 se
+point Y 5 3 se
+ray P Y extend=0.4 color=blue
+segment X P color=muted dashed
+text -1 0.7 "t = −1"
+text 1 1.7 "t = 0"
+text 3 2.7 "t = 1"
+text 5 3.7 "t = 2"
+caption "The line through P = (1, 1) and Q = (3, 2): the ray from P through Q (blue) is the part with t ≥ 0; P lies between X, at t = −1, and Q"
+```
+
+:::proposition[The two descriptions of a ray agree]{#ray-agrees}
+
+Let $$P \ne Q$$, and let $$A = Q - P$$. The ray from $$P$$ through $$Q$$ of :ref{#ray-formula}, the
+points $$P + tA$$ with $$t \ge 0$$, is the same set as the ray $$PQ$$ of
+:ref{#distance-and-angles/ray}: the point $$P$$ together with every point $$X$$ of the line $$PQ$$
+for which $$P$$ doesn't lie between $$X$$ and $$Q$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Line_(geometry)#Ray"}
+
+By :ref{#line-rule-two-points}, the line $$PQ$$ is the line through $$P$$ with direction $$A$$.
+Write its points as $$X_t = P + tA$$, so $$X_0 = P$$ and $$X_1 = P + (Q - P) = Q$$. The point
+$$P = X_0$$ belongs to both sets. Take any other point $$X_t$$ of the line, so $$t \ne 0$$.
+
+**If $$t = 1$$**, then $$X_t = Q$$. Between needs a segment with two different ends, so $$P$$
+doesn't lie between $$Q$$ and $$Q$$, and $$Q$$ is in the picture's ray. It is also in the formula
+ray, since $$1 \ge 0$$.
+
+**If $$t \ne 1$$**, part 2 of :ref{#rules-proved-parameters} with ends $$X_t$$ and $$X_1$$ says that
+$$P = X_0$$ lies between $$X_t$$ and $$Q$$ exactly when $$0$$ is strictly between $$t$$ and $$1$$.
+Since $$0 < 1$$, that happens exactly when $$t < 0$$. So $$X_t$$ is in the picture's ray exactly
+when $$t > 0$$, which is exactly when it is in the formula ray.
+
+:::
+
+So the beam from the formula and the beam from the picture are the same set of points. The ray from
+$$P$$ in a direction $$A$$ is the ray from $$P$$ through $$P + A$$, since its direction is
+$$(P + A) - P = A$$, so every formula ray is covered.
+
+## Perpendicular lines
+
+A carpenter's set square fits only one way against a straight edge at a given point, and sliding it
+along to a parallel edge keeps it square. In $$\mathbb{R}^2$$ a square corner is a dot product of
+$$0$$, and the quarter turn of :ref{#adding-and-scaling-points/quarter-turn} hands us a direction
+square on to any direction. For $$A = (3, 1)$$, the quarter turn gives $$(-1, 3)$$, and
+$$(3, 1) \cdot (-1, 3) = -3 + 3 = 0$$.
+
+:::theorem[The rules for perpendicular lines hold]{#perpendicular-rules-proved}
+
+In $$\mathbb{R}^2$$, with perpendicular as in :ref{#perpendicular-formula}:
+
+1. **One perpendicular through a point**: for any line $$L$$ and point $$X$$, exactly one line
+   through $$X$$ is perpendicular to $$L$$
+2. **Perpendicular to parallels**: if $$L_1 \perp L_2$$ and $$L_2 \parallel L_3$$, then
+   $$L_1 \perp L_3$$
+3. **Perpendicular lines cross**: two perpendicular lines meet in exactly one point
+4. **Two perpendiculars are parallel**: if $$L_1 \perp L_2$$ and $$L_2 \perp L_3$$, then
+   $$L_1 \parallel L_3$$
+
+Rules 1 and 2 are the two rules of :ref{#distance-and-angles/perpendicular-rules}, and rule 4 is
+:ref{#distance-and-angles/perpendiculars-parallel}.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Perpendicular#In_relationship_to_parallel_lines"}
+
+By the check after :ref{#perpendicular-formula}, any direction of each line may be used.
+
+**Rule 1.** Let $$A = (a_1, a_2)$$ be a direction of $$L$$ and let $$G = G_{90}(A) = (-a_2, a_1)$$.
+Its coordinates are those of $$A$$ swapped, one with its sign changed, so $$G \ne O$$. And
+$$A \cdot G = -a_1a_2 + a_2a_1 = 0$$. So the line $$K$$ through $$X$$ with direction $$G$$ is
+perpendicular to $$L$$.
+
+Now we show that every direction $$B = (b_1, b_2)$$ with $$A \cdot B = 0$$ is a nonzero multiple of
+$$G$$. The parallel test for $$G$$ and $$B$$ (:ref{#parallel-determinant}) uses the number
+
+```math
+(-a_2)b_2 - a_1b_1 = -(a_1b_1 + a_2b_2) = -(A \cdot B) = 0
+```
+
+so $$B = cG$$ for some $$c \ne 0$$. Let $$K'$$ be any line through $$X$$ perpendicular to $$L$$,
+with direction $$B$$. By part 2 of :ref{#line-descriptions}, $$K'$$ is the line through $$X$$ with
+direction $$B = cG$$, and by part 1 that is the line through $$X$$ with direction $$G$$. So
+$$K' = K$$.
+
+**Rule 2.** Let $$A_1$$, $$A_2$$ and $$A_3$$ be directions of the three lines, with
+$$A_1 \cdot A_2 = 0$$ and $$A_3 = cA_2$$. By :ref{#dot-rules},
+$$A_1 \cdot A_3 = A_1 \cdot (cA_2) = c\,(A_1 \cdot A_2) = 0$$.
+
+**Rule 3.** Let the lines have directions $$A$$ and $$B$$ with $$A \cdot B = 0$$. If they were
+parallel, then $$B = cA$$ with $$c \ne 0$$, and :ref{#dot-rules} would give
+$$A \cdot B = c\,(A \cdot A) = c\,|A|^2$$. That is not $$0$$ (:ref{#numbers/zero-product}), since
+$$c \ne 0$$ and $$|A| > 0$$ (:ref{#coordinates/distance-zero}). So the lines are not parallel, and
+by :ref{#line-intersection} they meet in exactly one point.
+
+**Rule 4.** Let the directions be $$A_1$$, $$A_2$$ and $$A_3$$. Then $$A_2 \cdot A_3 = 0$$, and
+$$A_2 \cdot A_1 = A_1 \cdot A_2 = 0$$ by :ref{#dot-rules}. By the second paragraph of the proof of
+rule 1, with $$G = G_{90}(A_2)$$, both are nonzero multiples of $$G$$: $$A_1 = cG$$ and
+$$A_3 = c'G$$. So $$A_3 = \frac{c'}{c}A_1$$ (:ref{#adding-and-scaling-points/scale-twice}), with
+$$\frac{c'}{c} \ne 0$$, and $$L_1 \parallel L_3$$.
+
+:::
+
+Rule 3 is what the picture's definition (:ref{#distance-and-angles/perpendicular}) asks for first:
+perpendicular lines cross.
+
+The Pythagoras theorem of Distance and angles was proved with areas. For perpendicular in the
+formula sense it needs no area at all, because :ref{#difference-length} already has the right shape.
+
+:::proposition[Pythagoras from the dot product]{#rules-proved-pythagoras}
+
+For any points $$A$$ and $$B$$, $$A \cdot B = 0$$ exactly when $$|A - B|^2 = |A|^2 + |B|^2$$. So if
+$$C$$, $$P$$ and $$Q$$ are points with $$P \ne C$$ and $$Q \ne C$$, and the lines $$CP$$ and $$CQ$$
+are perpendicular, then
+
+```math
+d(P, Q)^2 = d(C, P)^2 + d(C, Q)^2
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Pythagorean_theorem#Inner_product_spaces"}
+
+By :ref{#difference-length}, $$|A - B|^2 = |A|^2 + |B|^2 - 2\,A \cdot B$$. This equals
+$$|A|^2 + |B|^2$$ exactly when $$2\,A \cdot B = 0$$, that is, when $$A \cdot B = 0$$.
+
+For the triangle, the lines $$CP$$ and $$CQ$$ have directions $$A = P - C$$ and $$B = Q - C$$
+(:ref{#line-rule-two-points}), so $$A \cdot B = 0$$. The two copies of $$C$$ cancel in
+$$A - B = (P - C) - (Q - C) = P - Q$$ (:ref{#adding-and-scaling-points/sum-rules}). By
+:ref{#adding-and-scaling-points/distance-norm}, $$|A - B| = d(P, Q)$$, $$|A| = d(C, P)$$ and
+$$|B| = d(C, Q)$$, and the first part gives the result.
+
+:::
+
+For example, the lines from $$C = (1, 1)$$ to $$P = (4, 2)$$ and to $$Q = (0, 4)$$ have directions
+$$(3, 1)$$ and $$(-1, 3)$$, which have dot product $$0$$. And $$d(C, P)^2 + d(C, Q)^2 = 10 + 10$$,
+which is $$d(P, Q)^2 = 16 + 4 = 20$$.
+
+## Moves send lines to lines
+
+Slide a ruler across a page and its edge stays straight. A half turn, a zoom or a flip does the
+same. With formulas this is a calculation: each move turns $$P + tB$$ into a new starting point plus
+$$t$$ times a new direction. Take the slide by $$A$$: $$T_A(P + tB) = (P + tB) + A = (P + A) + tB$$,
+so the line through $$P$$ with direction $$B$$ lands on the line through $$P + A$$ with the same
+direction.
+
+:::theorem[Moves send lines to lines]{#moves-keep-lines}
+
+Let $$F$$ be one of the moves of
+[Moves as formulas](../adding-and-scaling-points/moves-as-formulas.mdx): a slide $$T_A$$, a half
+turn $$H_Q$$, a zoom $$Z_{r,Q}$$ with $$r > 0$$, a flip $$R_1$$, $$R_2$$ or $$S$$, or the quarter
+turn $$G_{90}$$. For every point $$P$$ and direction $$B$$ there is a direction $$B'$$ with
+
+```math
+F(P + tB) = F(P) + tB' \quad \text{for every real } t
+```
+
+So $$F$$ sends:
+
+- the line through $$P$$ with direction $$B$$ onto the line through $$F(P)$$ with direction $$B'$$
+- the ray from $$P$$ in direction $$B$$ onto the ray from $$F(P)$$ in direction $$B'$$
+- the segment $$PM$$, for $$P \ne M$$, onto the segment from $$F(P)$$ to $$F(M)$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Affine_transformation#Properties_preserved"}
+
+**Finding $$B'$$.** For the slide, half turn and zoom, the rules for adding and scaling
+(:ref{#adding-and-scaling-points/sum-rules}, :ref{#adding-and-scaling-points/scale-sum-rules},
+:ref{#adding-and-scaling-points/scale-twice}) give
+
+```math
+T_A(P + tB) = (P + A) + tB \qquad H_Q(P + tB) = (2Q - P) + t(-B) \qquad Z_{r,Q}(P + tB) = \big(Q + r(P - Q)\big) + t(rB)
+```
+
+So $$B' = B$$, $$-B$$ and $$rB$$. For the flips and the quarter turn, write $$P = (p_1, p_2)$$ and
+$$B = (b_1, b_2)$$, so $$P + tB = (p_1 + tb_1, p_2 + tb_2)$$. Then
+
+```math
+R_1(P + tB) = (p_1, -p_2) + t(b_1, -b_2) \qquad R_2(P + tB) = (-p_1, p_2) + t(-b_1, b_2)
+```
+
+```math
+S(P + tB) = (p_2, p_1) + t(b_2, b_1) \qquad G_{90}(P + tB) = (-p_2, p_1) + t(-b_2, b_1)
+```
+
+In each case the first point is $$F(P)$$, the case $$t = 0$$. None of the seven points $$B'$$ is
+$$O$$. The first is $$B$$ itself, and for $$-B$$ and $$rB$$ this is part 1 of
+:ref{#adding-and-scaling-points/scale-cancel}, since $$-1 \ne 0$$ and $$r > 0$$. The other four have
+the coordinates of $$B$$, perhaps swapped and with signs changed, so both are $$0$$ exactly when
+$$b_1 = b_2 = 0$$.
+
+**Lines and rays.** Every image $$F(P + tB)$$ of a point of the line is $$F(P) + tB'$$, a point of
+the line through $$F(P)$$ with direction $$B'$$. And every point $$F(P) + tB'$$ of that line is the
+image of $$P + tB$$. So the first line goes onto the second. The same argument with $$t \ge 0$$
+throughout covers rays.
+
+**Segments.** Take $$B = M - P$$. Then $$F(M) = F(P + 1B) = F(P) + B'$$, so $$B' = F(M) - F(P)$$
+(:ref{#adding-and-scaling-points/difference-step}), and $$F(M) \ne F(P)$$ since $$B' \ne O$$. The
+same argument with $$0 \le t \le 1$$ shows that $$F$$ sends the points $$P + t(M - P)$$ onto the
+points $$F(P) + t\big(F(M) - F(P)\big)$$, which make up the segment from $$F(P)$$ to $$F(M)$$.
+
+:::
+
+For a zoom about the origin, $$Z_r(P) = rP$$, so the segment $$PM$$ goes onto the segment from
+$$rP$$ to $$rM$$. That is rule 2 of :ref{#area-and-scaling/zoom-rules}, now proved for zooms written
+as formulas, about the origin or any other centre. It also matches :ref{#isometries/isometry-lines},
+which the Isometries chapter proved from the picture's rules for any isometry.
+
+Rule 3 of the same remark, that a zoom keeps the size of every angle, is still taken as given. Angle
+sizes in coordinates need more than right angles, and they wait for a later chapter on trigonometry.
+
+## What is proved now
+
+Every rule about lines and segments that Distance and angles took from the picture is now a theorem
+in $$\mathbb{R}^2$$:
+
+- **Distance**: the three rules of :ref{#distance-and-angles/distance-rules}, from
+  [Geometry from numbers](../coordinates/geometry-from-numbers.mdx)
+- **Segments**: the three rules of :ref{#distance-and-angles/segment-rules}, by
+  :ref{#segment-rules-proved}
+- **Lines**: both rules of :ref{#distance-and-angles/line-rules}, by :ref{#line-rule-two-points} and
+  :ref{#line-rule-parallel}, along with crossing lines and parallel to a parallel
+  (:ref{#rules-proved-crossing})
+- **Perpendicular lines**: both rules of :ref{#distance-and-angles/perpendicular-rules}, by
+  :ref{#perpendicular-rules-proved}
+- **Zooms**: rules 1 and 2 of :ref{#area-and-scaling/zoom-rules}, for zooms written as formulas
+
+Results that Distance and angles proved from these rules alone carry over to $$\mathbb{R}^2$$ too,
+since their proofs used nothing else. The distance between parallel lines
+(:ref{#distance-and-angles/parallel-distance}) was also taken as given, and the last exercise proves
+it from :ref{#distance-to-line}.
+
+Some facts still come from the picture. Measuring angles rests on the rules for disc area
+(:ref{#distance-and-angles/disc-area}), and areas rest on :ref{#distance-and-angles/area-rules}.
+Results built on them, such as the angles of a triangle adding up to $$180^\circ$$ and the link in
+:ref{#perpendicular-dot} between a dot product of $$0$$ and the picture's right angle, still lean on
+those rules.
+
+## Exercises
+
+:::::accordion[Exercises on the rules for lines, with solutions]
+
+::::exercise{#ex-rules-proved-equality}
+
+Take $$(a, b) = (3, -2)$$. For each step $$(s, t)$$ below, work out both sides of
+:ref{#product-bound-equality} and say whether they are equal. Where they aren't, say which condition
+of the lemma fails.
+
+1. $$(s, t) = (4.5, -3)$$
+2. $$(s, t) = (-6, 4)$$
+3. $$(s, t) = (2, 3)$$
+
+:::solution
+
+Here $$\sqrt{a^2 + b^2} = \sqrt{13}$$.
+
+1. $$as + bt = 13.5 + 6 = 19.5$$. The lengths are $$\sqrt{13}$$ and
+   $$\sqrt{20.25 + 9} = \sqrt{29.25}$$, and their product is $$\sqrt{380.25} = 19.5$$. They are
+   equal, and $$(4.5, -3) = 1.5\,(3, -2)$$ with $$1.5 \ge 0$$.
+2. $$as + bt = -18 - 8 = -26$$, and $$\sqrt{13}\,\sqrt{52} = \sqrt{676} = 26$$. Not equal:
+   $$(-6, 4) = -2\,(3, -2)$$ is a multiple, but by a negative number.
+3. $$as + bt = 6 - 6 = 0$$, and $$\sqrt{13}\,\sqrt{13} = 13$$. Not equal: $$at - bs = 9 + 4 = 13$$,
+   which is not $$0$$, so $$(2, 3)$$ is not a multiple of $$(3, -2)$$ at all. In fact the dot
+   product is $$0$$, so the two steps are perpendicular.
+
+:::
+
+::::
+
+::::exercise{#ex-rules-proved-detour}
+
+Let $$P = (-2, 3)$$ and $$M = (6, -3)$$.
+
+1. For $$Q = (2, 0)$$, check that $$d(P, M) = d(P, Q) + d(Q, M)$$, and find the $$u$$ with
+   $$Q = P + u(M - P)$$.
+2. For $$Q' = (2, 1)$$, work out $$d(P, Q') + d(Q', M)$$, and use :ref{#triangle-equality} to say
+   whether $$Q'$$ is on the segment $$PM$$.
+
+:::solution
+
+1. $$d(P, Q) = \sqrt{16 + 9} = 5$$, $$d(Q, M) = \sqrt{16 + 9} = 5$$ and
+   $$d(P, M) = \sqrt{64 + 36} = 10$$, so the detour adds nothing. The steps are $$Q - P = (4, -3)$$
+   and $$M - Q = (4, -3)$$, so $$c = 1$$ in the proof of :ref{#triangle-equality} and
+   $$u = \frac{1}{1 + 1} = \frac{1}{2}$$. Indeed $$P + \frac{1}{2}(8, -6) = (2, 0)$$: $$Q$$ is the
+   midpoint.
+2. $$d(P, Q') = \sqrt{16 + 4} = \sqrt{20} \approx 4.47$$ and
+   $$d(Q', M) = \sqrt{16 + 16} = \sqrt{32} \approx 5.66$$. The sum is about $$10.13$$, which is not
+   $$10$$, so by :ref{#triangle-equality} the point $$Q'$$ is not on the segment.
+
+:::
+
+::::
+
+::::exercise{#ex-rules-proved-middle}
+
+Show that $$X_1 = (7, -1)$$, $$X_2 = (-2, 5)$$ and $$X_3 = (1, 3)$$ lie on one line. Use
+:ref{#rules-proved-parameters} to say which one lies between the other two, and check the answer
+with distances.
+
+:::solution
+
+Take the line through $$X_2$$ with direction $$A = X_3 - X_2 = (3, -2)$$. Then $$X_2$$ has parameter
+$$0$$ and $$X_3$$ has parameter $$1$$. Also $$X_2 + 3A = (-2 + 9, 5 - 6) = (7, -1) = X_1$$, so
+$$X_1$$ is on the line, with parameter $$3$$.
+
+The parameters are $$0$$, $$1$$ and $$3$$, and $$1$$ is strictly between the others, so $$X_3$$ lies
+between $$X_2$$ and $$X_1$$. As a check, $$d(X_2, X_3) = \sqrt{13}$$,
+$$d(X_3, X_1) = \sqrt{36 + 16} = 2\sqrt{13}$$ and $$d(X_2, X_1) = \sqrt{81 + 36} = 3\sqrt{13}$$, and
+$$\sqrt{13} + 2\sqrt{13} = 3\sqrt{13}$$, as :ref{#triangle-equality} requires.
+
+:::
+
+::::
+
+::::exercise{#ex-rules-proved-ray}
+
+Let $$P = (1, 2)$$ and $$Q = (3, 1)$$. For each point, decide whether it lies on the ray from $$P$$
+through $$Q$$:
+
+1. $$(7, -1)$$
+2. $$(-3, 4)$$
+3. $$(2, 1.5)$$
+4. $$(4, 1)$$
+
+For the point that is on the line but not on the ray, check the picture's description from
+:ref{#ray-agrees}: $$P$$ lies between it and $$Q$$.
+
+:::solution
+
+The direction is $$A = Q - P = (2, -1)$$. A point $$X$$ is on the line when $$X - P$$ is a multiple
+$$tA$$, and on the ray when also $$t \ge 0$$.
+
+1. $$X - P = (6, -3) = 3A$$, so $$t = 3$$: on the ray.
+2. $$X - P = (-4, 2) = -2A$$, so $$t = -2$$: on the line, not on the ray.
+3. $$X - P = (1, -0.5) = 0.5A$$, so $$t = 0.5$$: on the ray, and on the segment $$PQ$$ too.
+4. $$X - P = (3, -1)$$. A multiple of $$(2, -1)$$ with first coordinate $$3$$ is
+   $$1.5A = (3, -1.5)$$, so $$X$$ is not on the line at all.
+
+For $$X = (-3, 4)$$: $$Q - X = (6, -3)$$ and $$P - X = (4, -2) = \frac{2}{3}(6, -3)$$. So
+$$P = X + \frac{2}{3}(Q - X)$$, and since $$0 < \frac{2}{3} < 1$$, $$P$$ lies between $$X$$ and
+$$Q$$, so the picture leaves $$X$$ out of the ray too.
+
+:::
+
+::::
+
+::::exercise{#ex-rules-proved-perpendicular}
+
+Let $$L$$ be the line through $$O$$ with direction $$A = (3, 4)$$, and let $$X = (-5, 10)$$.
+
+1. Use the proof of :ref{#perpendicular-rules-proved} to write down the line $$K$$ through $$X$$
+   perpendicular to $$L$$.
+2. Find the point $$F$$ where $$K$$ meets $$L$$, and the distance $$d(X, F)$$.
+3. Someone suggests the line through $$X$$ with direction $$(8, -6)$$. Explain why it is the same
+   line as $$K$$.
+
+:::solution
+
+1. $$G_{90}(A) = (-4, 3)$$, and $$A \cdot (-4, 3) = -12 + 12 = 0$$. So $$K$$ is the line through
+   $$X$$ with direction $$(-4, 3)$$: the points $$(-5 - 4s, 10 + 3s)$$.
+2. A meeting point has $$t(3, 4) = (-5 - 4s, 10 + 3s)$$, so $$3t + 4s = -5$$ and $$4t - 3s = 10$$.
+   Multiplying the first by $$3$$, the second by $$4$$ and adding gives $$25t = 25$$, so $$t = 1$$,
+   and then $$s = -2$$. So $$F = (3, 4)$$. Then $$X - F = (-8, 6)$$, and
+   $$d(X, F) = \sqrt{64 + 36} = 10$$.
+3. $$(8, -6) \cdot (3, 4) = 24 - 24 = 0$$, so this line is perpendicular to $$L$$ too, and it passes
+   through $$X$$. By rule 1 there is only one such line, so it is $$K$$. Directly,
+   $$(8, -6) = -2\,(-4, 3)$$, and :ref{#line-descriptions} gives the same line.
+
+:::
+
+::::
+
+::::exercise{#ex-rules-proved-shear}
+
+The **shear** $$F(x, y) = (x + y, y)$$ slides each point sideways by its height. It is not one of
+the moves in :ref{#moves-keep-lines}. Prove that it still sends the line through $$P$$ with
+direction $$B$$ onto a line, and find the image of the line through $$(0, 0)$$ with direction
+$$(1, 1)$$.
+
+:::solution
+
+Write $$P = (p_1, p_2)$$ and $$B = (b_1, b_2)$$. Then
+
+```math
+F(P + tB) = \big(p_1 + tb_1 + p_2 + tb_2,\ p_2 + tb_2\big) = (p_1 + p_2, p_2) + t(b_1 + b_2, b_2)
+```
+
+So $$F(P + tB) = F(P) + tB'$$ with $$B' = (b_1 + b_2, b_2)$$. This $$B'$$ is not $$O$$: if
+$$b_2 = 0$$ and $$b_1 + b_2 = 0$$, then $$b_1 = 0$$ too, but $$B \ne O$$. Now the argument of
+:ref{#moves-keep-lines} applies word for word: every image lies on the line through $$F(P)$$ with
+direction $$B'$$, and every point $$F(P) + tB'$$ of that line is the image of $$P + tB$$.
+
+For $$P = (0, 0)$$ and $$B = (1, 1)$$, $$F(P) = (0, 0)$$ and $$B' = (2, 1)$$. So the diagonal
+$$y = x$$ goes onto the line through $$O$$ with direction $$(2, 1)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-rules-proved-half-turn}
+
+Let $$L$$ be the line through $$P$$ with direction $$B$$, and let $$Q$$ be any point. Prove that the
+half turn $$H_Q$$ sends $$L$$ onto a line parallel to $$L$$, and that this line is $$L$$ itself
+exactly when $$Q$$ lies on $$L$$.
+
+:::solution
+
+By :ref{#moves-keep-lines}, $$H_Q$$ sends $$L$$ onto the line $$L'$$ through $$2Q - P$$ with
+direction $$-B = (-1)B$$. Since $$-1 \ne 0$$, $$L' \parallel L$$.
+
+**If $$Q$$ is on $$L$$**, say $$Q = P + t_0B$$, then $$2Q - P = P + 2t_0B$$, a point of $$L$$. By
+part 2 of :ref{#line-descriptions} it can be the starting point of $$L$$, and by part 1 the
+direction $$-B$$ gives the same line as $$B$$. So $$L' = L$$.
+
+**If $$L' = L$$**, then $$2Q - P$$ is on $$L$$, so $$2Q - P = P + uB$$ for some $$u$$. Adding $$P$$
+and halving gives $$Q = P + \frac{u}{2}B$$, so $$Q$$ is on $$L$$.
+
+:::
+
+::::
+
+::::exercise{#ex-rules-proved-parallel-gap}
+
+Let $$L$$ be the line $$3x + 4y = 2$$ and $$L'$$ the line $$3x + 4y = 27$$.
+
+1. Check that $$P = (2, -1)$$ and $$Q = (-2, 2)$$ lie on $$L$$. The lines through them perpendicular
+   to $$L$$ meet $$L'$$ at $$P'$$ and $$Q'$$. Find $$P'$$ and $$Q'$$, and check that
+   $$d(P, P') = d(Q, Q')$$.
+2. Prove the rule of :ref{#distance-and-angles/parallel-distance} in $$\mathbb{R}^2$$: for parallel
+   lines $$L$$ and $$L'$$ and points $$P$$ and $$Q$$ of $$L$$, with $$P'$$ and $$Q'$$ as in part 1,
+   $$d(P, P') = d(Q, Q')$$.
+
+:::solution
+
+1. $$3 \cdot 2 + 4 \cdot (-1) = 2$$ and $$3 \cdot (-2) + 4 \cdot 2 = 2$$, so both are on $$L$$. By
+   :ref{#normal-direction}, $$(3, 4)$$ is perpendicular to $$L$$, so the perpendicular through $$P$$
+   is $$(2 + 3t, -1 + 4t)$$. Putting it into the equation of $$L'$$ gives
+   $$3(2 + 3t) + 4(-1 + 4t) = 2 + 25t = 27$$, so $$t = 1$$ and $$P' = (5, 3)$$. For $$Q$$, in the
+   same way, $$3(-2 + 3t) + 4(2 + 4t) = 2 + 25t = 27$$, so $$t = 1$$ and $$Q' = (1, 6)$$. Both
+   distances are $$|1 \cdot (3, 4)| = 5$$.
+2. Let $$A = (a_1, a_2)$$ be a direction of $$L'$$, and let $$D$$ be a direction of the line through
+   $$P$$ perpendicular to $$L$$. By rule 2 of :ref{#perpendicular-rules-proved}, that line is
+   perpendicular to $$L'$$ too, so $$D \cdot A = 0$$, and by rule 3 it meets $$L'$$, at $$P'$$.
+   Since $$P'$$ is on it, $$P' = P + kD$$ for some $$k$$, so
+   $$(P - P') \cdot A = -k\,(D \cdot A) = 0$$ (:ref{#dot-rules}). By :ref{#closest-point}, $$P'$$ is
+   the closest point of $$L'$$ to $$P$$, so $$d(P, P')$$ is the distance from $$P$$ to $$L'$$. The
+   same goes for $$Q$$ and $$Q'$$.
+
+   Since $$L \parallel L'$$, the direction $$A$$ is a direction of $$L$$ too
+   (:ref{#parallel-formula} and part 1 of :ref{#line-descriptions}). So by :ref{#line-equation},
+   $$L'$$ is $$a_2x - a_1y = c'$$ and $$L$$ is $$a_2x - a_1y = c$$ for some numbers $$c$$ and
+   $$c'$$. Every point $$(x_0, y_0)$$ of $$L$$ has $$a_2x_0 - a_1y_0 = c$$, so by
+   :ref{#distance-to-line} its distance to $$L'$$ is
+
+   ```math
+   \frac{|c - c'|}{\sqrt{a_1^2 + a_2^2}}
+   ```
+
+   This doesn't depend on the point, so $$d(P, P') = d(Q, Q')$$. In part 1 it is
+   $$\frac{|2 - 27|}{5} = 5$$.
+
+:::
+
+::::
+
+:::::

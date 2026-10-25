@@ -1,0 +1,600 @@
+{
+  "title": "Segments, rays and lines",
+  "description": "Questions on segments, rays, lines, their equations, circles, right angles and lines in space.",
+  "questions": [
+    {
+      "id": "segment-t-range",
+      "stars": 1,
+      "topic": "Segments",
+      "question": "Which points $$P + t(Q - P)$$ make up the segment $$PQ$$?",
+      "options": [
+        "Those with $$t \\ge 0$$",
+        "Those with $$0 \\le t \\le 1$$",
+        "Every real $$t$$",
+        "Those with $$-1 \\le t \\le 1$$"
+      ],
+      "answer": 1,
+      "explanation": "$$t = 0$$ gives $$P$$, $$t = 1$$ gives $$Q$$, and the numbers in between give the points between (:ref{#segment-formula}). $$t \\ge 0$$ gives a ray, and every $$t$$ gives the whole line."
+    },
+    {
+      "id": "quarter-way",
+      "stars": 1,
+      "topic": "Segments",
+      "question": "What point is a quarter of the way from $$P = (2, 1)$$ to $$Q = (10, -3)$$?",
+      "options": [
+        "$$(4, 0)$$",
+        "$$(\\frac{1}{2}, \\frac{1}{4})$$",
+        "$$(8, -2)$$",
+        "$$(6, -1)$$"
+      ],
+      "answer": 0,
+      "explanation": "$$Q - P = (8, -4)$$, and $$P + \\frac{1}{4}(8, -4) = (4, 0)$$ (:ref{#fraction-along}). $$(8, -2)$$ is three quarters of the way, and $$(6, -1)$$ is the midpoint."
+    },
+    {
+      "id": "fraction-distance",
+      "stars": 2,
+      "topic": "Segments",
+      "question": "$$d(P, Q) = 10$$ and $$X = P + 0.3(Q - P)$$. What are $$d(P, X)$$ and $$d(X, Q)$$?",
+      "options": [
+        "$$0.3$$ and $$0.7$$",
+        "$$7$$ and $$3$$",
+        "$$3$$ and $$10$$",
+        "$$3$$ and $$7$$"
+      ],
+      "answer": 3,
+      "explanation": "The point for $$t$$ is $$t\\,d(P, Q)$$ from $$P$$ and $$(1 - t)\\,d(P, Q)$$ from $$Q$$ (:ref{#fraction-along}): $$3$$ and $$7$$, which add up to $$10$$."
+    },
+    {
+      "id": "segment-either-way",
+      "stars": 2,
+      "topic": "Segments",
+      "question": "How are the segments $$PQ$$ and $$QP$$ related?",
+      "options": [
+        "$$QP$$ is $$PQ$$ slid by $$Q - P$$",
+        "They only share the midpoint",
+        "They are the same set of points; the point for $$t$$ on one is the point for $$1 - t$$ on the other",
+        "They point opposite ways, so they are different sets"
+      ],
+      "answer": 2,
+      "explanation": "A segment is a set of points with no order (:ref{#segment-symmetric}). Arrows are the ones where order matters: $$\\overrightarrow{PQ}$$ and $$\\overrightarrow{QP}$$ have opposite steps."
+    },
+    {
+      "id": "arrow-step",
+      "stars": 1,
+      "topic": "Segments",
+      "question": "What is the step of the arrow $$\\overrightarrow{PQ}$$ from $$P = (1, 2)$$ to $$Q = (3, 7)$$?",
+      "options": ["$$(-2, -5)$$", "$$(2, 5)$$", "$$(4, 9)$$", "$$(3, 7)$$"],
+      "answer": 1,
+      "explanation": "The step is end minus start, $$Q - P = (2, 5)$$ (:ref{#arrow}). $$(-2, -5)$$ is the step of $$\\overrightarrow{QP}$$."
+    },
+    {
+      "id": "equivalent-arrow",
+      "stars": 2,
+      "topic": "Segments",
+      "question": "The arrow from $$M = (4, -1)$$ is equivalent to $$\\overrightarrow{PQ}$$, where $$P = (1, 2)$$ and $$Q = (3, 7)$$. Where does it end?",
+      "options": ["$$(6, 4)$$", "$$(2, -6)$$", "$$(7, 6)$$", "$$(3, 7)$$"],
+      "answer": 0,
+      "explanation": "Equivalent arrows have the same step (:ref{#arrow-equivalent}), so the end is $$M + (Q - P) = (4, -1) + (2, 5) = (6, 4)$$."
+    },
+    {
+      "id": "arrow-parallelogram",
+      "stars": 3,
+      "topic": "Segments",
+      "question": "Which condition says that $$\\overrightarrow{PQ}$$ and $$\\overrightarrow{MN}$$ are equivalent?",
+      "options": [
+        "$$P + Q = M + N$$",
+        "$$d(P, Q) = d(M, N)$$",
+        "$$P - N = Q - M$$",
+        "$$P + N = Q + M$$"
+      ],
+      "answer": 3,
+      "explanation": "$$N - M = Q - P$$ rearranges to $$P + N = Q + M$$ (:ref{#arrow-equivalent}): the diagonals $$PN$$ and $$QM$$ share a midpoint. Equal lengths alone allow arrows pointing different ways, and $$P + Q = M + N$$ says the segments $$PQ$$ and $$MN$$ share a midpoint."
+    },
+    {
+      "id": "ray-t-range",
+      "stars": 1,
+      "topic": "Rays and direction",
+      "question": "Which points make up the ray from $$P$$ in direction $$A$$?",
+      "options": [
+        "$$P + tA$$ with $$0 \\le t \\le 1$$",
+        "$$P + tA$$ for every $$t$$",
+        "$$P + tA$$ with $$t \\ge 0$$",
+        "$$tP + A$$ with $$t \\ge 0$$"
+      ],
+      "answer": 2,
+      "explanation": "The ray starts at $$P$$ (at $$t = 0$$) and goes on forever in the direction of $$A$$ (:ref{#ray-formula})."
+    },
+    {
+      "id": "same-direction",
+      "stars": 1,
+      "topic": "Rays and direction",
+      "question": "Which point has the same direction as $$A = (2, -1)$$?",
+      "options": ["$$(-4, 2)$$", "$$(6, -3)$$", "$$(1, -2)$$", "$$(2, 1)$$"],
+      "answer": 1,
+      "explanation": "Same direction means a positive multiple (:ref{#same-direction}). $$(6, -3) = 3A$$. $$(-4, 2) = -2A$$ has the opposite direction, and the other two are not multiples of $$A$$."
+    },
+    {
+      "id": "ray-multiple",
+      "stars": 2,
+      "topic": "Rays and direction",
+      "question": "The ray from $$P$$ in direction $$A$$ and the ray from $$P$$ in direction $$-2A$$: what are they?",
+      "options": [
+        "Opposite rays that share only $$P$$",
+        "The same ray",
+        "The same ray, traced twice as fast",
+        "Parallel rays from different points"
+      ],
+      "answer": 0,
+      "explanation": "A positive multiple of the direction gives the same ray (:ref{#ray-multiple}), but $$-2$$ is negative. Two rays from $$P$$ are the same exactly when their directions are the same direction (:ref{#rays-equal})."
+    },
+    {
+      "id": "arrow-given",
+      "stars": 2,
+      "topic": "Rays and direction",
+      "question": "Which point is $$10$$ units from $$M = (1, 1)$$ in the direction of $$A = (3, 4)$$?",
+      "options": ["$$(31, 41)$$", "$$(11, 11)$$", "$$(4, 5)$$", "$$(7, 9)$$"],
+      "answer": 3,
+      "explanation": "$$|A| = 5$$, so the unit point is $$(\\frac{3}{5}, \\frac{4}{5})$$, and $$M + 10(\\frac{3}{5}, \\frac{4}{5}) = (7, 9)$$ (:ref{#arrow-given}). $$(31, 41)$$ uses $$10A$$, which is $$50$$ units long."
+    },
+    {
+      "id": "zoom-on-ray",
+      "stars": 3,
+      "topic": "Rays and direction",
+      "question": "Why is the zoom $$Z_{r,Q}(P) = Q + r(P - Q)$$ with $$r > 0$$ on the ray from $$Q$$ through $$P$$?",
+      "options": [
+        "Because zooms keep distances",
+        "Because $$r(P - Q)$$ is shorter than $$P - Q$$",
+        "It is $$Q + tA$$ with $$A = P - Q$$ and $$t = r \\ge 0$$",
+        "It isn't: it is on the opposite ray"
+      ],
+      "answer": 2,
+      "explanation": "The ray from $$Q$$ through $$P$$ is the points $$Q + t(P - Q)$$ with $$t \\ge 0$$, and the zoom is the one with $$t = r$$ (:ref{#zoom-on-ray}). Zooms with $$r \\ne 1$$ don't keep distances, and $$r$$ may be larger than $$1$$."
+    },
+    {
+      "id": "slide-direction",
+      "stars": 2,
+      "topic": "Rays and direction",
+      "question": "The slide $$T_A$$ with $$A \\ne O$$ moves every point...",
+      "options": [
+        "to the line through $$O$$ and $$A$$",
+        "the distance $$|A|$$ in the direction of $$A$$",
+        "towards $$A$$, by different amounts",
+        "the distance $$|A|$$ in a direction that depends on the point"
+      ],
+      "answer": 1,
+      "explanation": "The arrow from $$P$$ to $$P + A$$ has step $$A$$, the same as $$\\overrightarrow{OA}$$ (:ref{#slide-direction}). So every point makes the same step."
+    },
+    {
+      "id": "line-t-range",
+      "stars": 1,
+      "topic": "Lines",
+      "question": "Which values of $$t$$ give the line through $$P$$ with direction $$A$$?",
+      "options": [
+        "Every real number",
+        "$$t \\ge 0$$",
+        "$$0 \\le t \\le 1$$",
+        "Whole numbers only"
+      ],
+      "answer": 0,
+      "explanation": "A line goes on both ways, so $$t$$ can be positive, negative or zero (:ref{#line-formula}). Whole numbers would give equally spaced dots along it."
+    },
+    {
+      "id": "two-point-line",
+      "stars": 1,
+      "topic": "Lines",
+      "question": "Which describes the line through $$P = (1, 3)$$ and $$Q = (4, 1)$$?",
+      "options": [
+        "$$(1, 3) + t(4, 1)$$",
+        "$$(1, 3) + t(5, 4)$$",
+        "$$(4, 1) + t(1, 3)$$",
+        "$$(1, 3) + t(3, -2)$$"
+      ],
+      "answer": 3,
+      "explanation": "Start at $$P$$ and use the step $$Q - P = (3, -2)$$ as direction (:ref{#two-point-line}). Using $$Q$$ itself as the direction gives a line through $$P$$ that misses $$Q$$."
+    },
+    {
+      "id": "parallel-lines",
+      "stars": 2,
+      "topic": "Lines",
+      "question": "Which pair of directions gives parallel lines?",
+      "options": [
+        "$$(1, 2)$$ and $$(2, 1)$$",
+        "$$(1, 2)$$ and $$(-2, 1)$$",
+        "$$(1, 2)$$ and $$(-3, -6)$$",
+        "$$(1, 2)$$ and $$(1, -2)$$"
+      ],
+      "answer": 2,
+      "explanation": "Lines are parallel when one direction is a non-zero multiple of the other (:ref{#parallel-formula}): $$(-3, -6) = -3(1, 2)$$. The test $$a_1b_2 - a_2b_1 = 1 \\cdot (-6) - 2 \\cdot (-3) = 0$$ agrees (:ref{#parallel-determinant})."
+    },
+    {
+      "id": "determinant-test",
+      "stars": 2,
+      "topic": "Lines",
+      "question": "Lines with directions $$(3, 2)$$ and $$(-6, 4)$$: how many points do they share?",
+      "options": [
+        "None",
+        "Exactly one",
+        "Infinitely many",
+        "It depends on where they start"
+      ],
+      "answer": 1,
+      "explanation": "$$3 \\cdot 4 - 2 \\cdot (-6) = 24 \\ne 0$$, so the directions are not parallel, and lines that aren't parallel meet in exactly one point (:ref{#line-intersection}), wherever they start."
+    },
+    {
+      "id": "parallel-share",
+      "stars": 2,
+      "topic": "Lines",
+      "question": "Two parallel lines share one point. What can you conclude?",
+      "options": [
+        "They are the same line",
+        "They share only that point",
+        "They are perpendicular",
+        "Nothing"
+      ],
+      "answer": 0,
+      "explanation": "Parallel lines are either the same line or never meet (:ref{#line-intersection}). Sharing a point rules out the second."
+    },
+    {
+      "id": "collide",
+      "stars": 3,
+      "topic": "Lines",
+      "question": "Two ships at $$P + tA$$ and $$Q + tB$$ at time $$t$$ have paths that cross. When do they collide?",
+      "options": [
+        "Always, since their paths cross",
+        "Never, since ships on different lines can't meet",
+        "When $$|A| = |B|$$",
+        "When one value of $$t$$ gives $$P + tA = Q + tB$$"
+      ],
+      "answer": 3,
+      "explanation": "Crossing paths only say the ships pass the same point, maybe at different times. A collision needs them there at the same time, so the same $$t$$ for both (see [Lines](./lines.mdx#crossing-paths-and-collisions))."
+    },
+    {
+      "id": "multiples-line",
+      "stars": 2,
+      "topic": "Lines",
+      "question": "Where do all the multiples $$tA$$ of a point $$A \\ne O$$ lie?",
+      "options": [
+        "On the ray from $$O$$ through $$A$$",
+        "On the circle through $$A$$",
+        "On the line through $$O$$ and $$A$$",
+        "On the segment $$OA$$"
+      ],
+      "answer": 2,
+      "explanation": "They are the points $$O + tA$$ for every $$t$$, the line through $$O$$ with direction $$A$$ (:ref{#multiples-line}). Negative $$t$$ gives the half of the line beyond $$O$$."
+    },
+    {
+      "id": "line-equation",
+      "stars": 2,
+      "topic": "Equations of lines",
+      "question": "Which equation describes the line through $$(1, 2)$$ with direction $$(3, -1)$$?",
+      "options": [
+        "$$3x - y = 1$$",
+        "$$x + 3y = 7$$",
+        "$$x - 3y = -5$$",
+        "$$3x + y = 5$$"
+      ],
+      "answer": 1,
+      "explanation": "By :ref{#line-equation}, $$a_2x - a_1y = a_2p_1 - a_1p_2$$ gives $$-x - 3y = -1 - 6$$, which is $$x + 3y = 7$$. Check with $$t = 1$$: $$(4, 1)$$ gives $$4 + 3 = 7$$. The equation $$3x - y = 1$$ has the direction's numbers as coefficients, which describes a perpendicular line."
+    },
+    {
+      "id": "equation-direction",
+      "stars": 2,
+      "topic": "Equations of lines",
+      "question": "What is a direction of the line $$2x + 5y = 7$$?",
+      "options": ["$$(-5, 2)$$", "$$(2, 5)$$", "$$(5, 2)$$", "$$(7, 7)$$"],
+      "answer": 0,
+      "explanation": "The line $$ax + by = c$$ has direction $$(-b, a)$$ (:ref{#equation-line}). Moving by $$(-5, 2)$$ changes $$2x + 5y$$ by $$-10 + 10 = 0$$. $$(2, 5)$$ is perpendicular to the line."
+    },
+    {
+      "id": "intercepts",
+      "stars": 1,
+      "topic": "Equations of lines",
+      "question": "Where does $$2x - y = 4$$ cross the $$y$$-axis?",
+      "options": ["$$(2, 0)$$", "$$(0, 4)$$", "$$(-4, 0)$$", "$$(0, -4)$$"],
+      "answer": 3,
+      "explanation": "On the $$y$$-axis $$x = 0$$, so $$-y = 4$$ and $$y = -4$$. $$(2, 0)$$ is where it crosses the $$x$$-axis."
+    },
+    {
+      "id": "linear-is-line",
+      "stars": 2,
+      "topic": "Equations of lines",
+      "question": "What did this chapter prove that the Linear equations chapter took from the picture?",
+      "options": [
+        "That every line passes through the origin",
+        "That every line has a slope",
+        "That the solutions of $$ax + by = c$$, with $$a$$ and $$b$$ not both $$0$$, form a straight line",
+        "That two equations always have one solution"
+      ],
+      "answer": 2,
+      "explanation": "The solutions are exactly the line through one solution with direction $$(-b, a)$$ (:ref{#equation-line}), and every line has such an equation (:ref{#line-equation}). Vertical lines have no slope."
+    },
+    {
+      "id": "parallel-equations",
+      "stars": 2,
+      "topic": "Equations of lines",
+      "question": "Which line is parallel to $$4x - 6y = 1$$?",
+      "options": [
+        "$$6x - 4y = 1$$",
+        "$$2x - 3y = 5$$",
+        "$$3x + 2y = 0$$",
+        "$$4x + 6y = 1$$"
+      ],
+      "answer": 1,
+      "explanation": "$$ax + by = c$$ and $$a'x + b'y = c'$$ are parallel when $$ab' - a'b = 0$$ (:ref{#parallel-equations}): $$4 \\cdot (-3) - 2 \\cdot (-6) = 0$$. $$3x + 2y = 0$$ is perpendicular to it instead."
+    },
+    {
+      "id": "vertical-slope",
+      "stars": 1,
+      "topic": "Equations of lines",
+      "question": "Which line has no slope?",
+      "options": ["$$x = 3$$", "$$y = 3$$", "$$y = x$$", "$$x + y = 3$$"],
+      "answer": 0,
+      "explanation": "$$x = 3$$ is vertical, with direction $$(0, 1)$$. Its first coordinate never changes, so there is no number of steps up per step across."
+    },
+    {
+      "id": "line-circle-count",
+      "stars": 1,
+      "topic": "Lines and circles",
+      "question": "How many points can a line and a circle share?",
+      "options": [
+        "Exactly $$2$$",
+        "$$0$$ or $$2$$",
+        "Any number",
+        "$$0$$, $$1$$ or $$2$$"
+      ],
+      "answer": 3,
+      "explanation": "Putting $$P + tA$$ into the circle's equation gives a quadratic in $$t$$, with $$0$$, $$1$$ or $$2$$ solutions as its discriminant is negative, zero or positive (:ref{#line-circle})."
+    },
+    {
+      "id": "line-circle-meet",
+      "stars": 2,
+      "topic": "Lines and circles",
+      "question": "Where does the line $$(0, 1) + t(1, 1)$$ meet the circle $$x^2 + y^2 = 1$$?",
+      "options": [
+        "Only at $$(0, 1)$$",
+        "At $$(1, 0)$$ and $$(0, 1)$$",
+        "At $$(0, 1)$$ and $$(-1, 0)$$",
+        "Nowhere"
+      ],
+      "answer": 2,
+      "explanation": "$$t^2 + (1 + t)^2 = 1$$ gives $$2t^2 + 2t = 0$$, so $$t = 0$$ or $$t = -1$$, the points $$(0, 1)$$ and $$(-1, 0)$$ (:ref{#line-circle})."
+    },
+    {
+      "id": "tangent-def",
+      "stars": 1,
+      "topic": "Lines and circles",
+      "question": "When is a line tangent to a circle?",
+      "options": [
+        "When it passes through the centre",
+        "When it meets the circle in exactly one point",
+        "When it meets the circle in two points",
+        "When it misses the circle"
+      ],
+      "answer": 1,
+      "explanation": "That is the definition (:ref{#tangent-line}). The discriminant of the quadratic in $$t$$ is then $$0$$."
+    },
+    {
+      "id": "inside-point",
+      "stars": 3,
+      "topic": "Lines and circles",
+      "question": "A point $$P$$ is inside a circle. What is true of every line through $$P$$?",
+      "options": [
+        "It meets the circle twice, once on each side of $$P$$",
+        "It is tangent to the circle",
+        "It meets the circle once",
+        "It might miss the circle"
+      ],
+      "answer": 0,
+      "explanation": "The quadratic's constant term $$|P - C|^2 - r^2$$ is negative, so its two roots have opposite signs (:ref{#inside-point-line}): one meeting point on each side of $$P$$."
+    },
+    {
+      "id": "dot-value",
+      "stars": 1,
+      "topic": "Perpendicular lines",
+      "question": "What is $$(2, -3) \\cdot (4, 1)$$?",
+      "options": ["$$(8, -3)$$", "$$11$$", "$$-5$$", "$$5$$"],
+      "answer": 3,
+      "explanation": "$$2 \\cdot 4 + (-3) \\cdot 1 = 5$$ (:ref{#dot-product}). A dot product is a number, not a point."
+    },
+    {
+      "id": "perp-test",
+      "stars": 1,
+      "topic": "Perpendicular lines",
+      "question": "Which direction is perpendicular to $$(2, 3)$$?",
+      "options": ["$$(3, 2)$$", "$$(-2, -3)$$", "$$(-3, 2)$$", "$$(2, -3)$$"],
+      "answer": 2,
+      "explanation": "$$(2, 3) \\cdot (-3, 2) = -6 + 6 = 0$$ (:ref{#perpendicular-formula}). Swapping the numbers and changing one sign always works, and that's the quarter turn."
+    },
+    {
+      "id": "perp-slopes",
+      "stars": 2,
+      "topic": "Perpendicular lines",
+      "question": "A line has slope $$\\frac{2}{3}$$. What slope does a perpendicular line have?",
+      "options": [
+        "$$\\frac{3}{2}$$",
+        "$$-\\frac{3}{2}$$",
+        "$$-\\frac{2}{3}$$",
+        "$$\\frac{2}{3}$$"
+      ],
+      "answer": 1,
+      "explanation": "Non-vertical lines are perpendicular exactly when their slopes multiply to $$-1$$ (:ref{#perpendicular-slopes}), and $$\\frac{2}{3} \\cdot \\left(-\\frac{3}{2}\\right) = -1$$."
+    },
+    {
+      "id": "difference-length",
+      "stars": 2,
+      "topic": "Perpendicular lines",
+      "question": "Which formula holds for all points $$A$$ and $$B$$?",
+      "options": [
+        "$$|A - B|^2 = |A|^2 + |B|^2 - 2\\,A \\cdot B$$",
+        "$$|A - B|^2 = |A|^2 - |B|^2$$",
+        "$$|A - B| = |A| - |B|$$",
+        "$$|A - B|^2 = |A|^2 + |B|^2$$"
+      ],
+      "answer": 0,
+      "explanation": "Multiply out $$(A - B) \\cdot (A - B)$$ (:ref{#difference-length}). The last option is the right-angle case, when $$A \\cdot B = 0$$."
+    },
+    {
+      "id": "distance-line",
+      "stars": 2,
+      "topic": "Perpendicular lines",
+      "question": "How far is the point $$(1, 1)$$ from the line $$3x + 4y = 17$$?",
+      "options": ["$$10$$", "$$\\frac{17}{5}$$", "$$\\sqrt{2}$$", "$$2$$"],
+      "answer": 3,
+      "explanation": "$$\\frac{|3 + 4 - 17|}{\\sqrt{9 + 16}} = \\frac{10}{5} = 2$$ (:ref{#distance-to-line}). Forgetting to divide by $$\\sqrt{a^2 + b^2} = 5$$ gives $$10$$."
+    },
+    {
+      "id": "closest-point",
+      "stars": 3,
+      "topic": "Perpendicular lines",
+      "question": "What is special about the closest point $$F$$ of a line to a point $$X$$?",
+      "options": [
+        "$$F$$ is where the line meets the $$x$$-axis",
+        "$$F$$ is the midpoint of the line",
+        "The step $$X - F$$ is perpendicular to the line",
+        "$$X - F$$ has the line's direction"
+      ],
+      "answer": 2,
+      "explanation": "$$F$$ is the one point of the line with $$(X - F) \\cdot A = 0$$ (:ref{#closest-point}), and then every other point is further away, by Pythagoras."
+    },
+    {
+      "id": "tangent-radius",
+      "stars": 2,
+      "topic": "Perpendicular lines",
+      "question": "How does the tangent to a circle at $$Q$$ meet the radius to $$Q$$?",
+      "options": [
+        "At $$45^\\circ$$",
+        "At a right angle",
+        "It runs along it",
+        "It depends on the circle"
+      ],
+      "answer": 1,
+      "explanation": "A line through a point of the circle is tangent exactly when it is perpendicular to the radius there (:ref{#tangent-perpendicular})."
+    },
+    {
+      "id": "rules-why",
+      "stars": 2,
+      "topic": "The rules for lines, proved",
+      "question": "What does the guide on the rules for lines show?",
+      "options": [
+        "That the rules taken from the picture hold for lines defined by formulas",
+        "That the picture rules are wrong",
+        "That lines are circles of infinite radius",
+        "That every line passes through the origin"
+      ],
+      "answer": 0,
+      "explanation": "With lines, segments and rays defined by $$P + tA$$, every rule from the picture, such as two points fixing one line (:ref{#line-rule-two-points}), becomes a theorem."
+    },
+    {
+      "id": "triangle-equality",
+      "stars": 3,
+      "topic": "The rules for lines, proved",
+      "question": "When is $$d(P, M) = d(P, Q) + d(Q, M)$$, for $$P \\ne M$$?",
+      "options": [
+        "Always",
+        "Exactly when $$Q$$ lies on the line $$PM$$",
+        "Never",
+        "Exactly when $$Q$$ lies on the segment $$PM$$"
+      ],
+      "answer": 3,
+      "explanation": "A detour through $$Q$$ is no longer exactly when $$Q$$ is on the way (:ref{#triangle-equality}). A point of the line beyond $$M$$ makes the detour longer."
+    },
+    {
+      "id": "bound-equality",
+      "stars": 4,
+      "topic": "The rules for lines, proved",
+      "question": "When is $$as + bt = \\sqrt{a^2 + b^2}\\sqrt{s^2 + t^2}$$, for $$(a, b) \\ne (0, 0)$$?",
+      "options": [
+        "Exactly when $$(s, t) = c(a, b)$$ for some $$c$$",
+        "Exactly when $$as + bt = 0$$",
+        "Exactly when $$(s, t) = c(a, b)$$ for some $$c \\ge 0$$",
+        "Never"
+      ],
+      "answer": 2,
+      "explanation": "Equality needs $$(at - bs)^2 = 0$$ and $$as + bt \\ge 0$$ (:ref{#product-bound-equality}). A negative multiple makes the left side negative."
+    },
+    {
+      "id": "moves-lines",
+      "stars": 2,
+      "topic": "The rules for lines, proved",
+      "question": "What does a zoom about any point do to a line?",
+      "options": [
+        "Bends it into a curve",
+        "Sends it onto a line parallel to it",
+        "Sends it onto a perpendicular line",
+        "Sends it to a single point"
+      ],
+      "answer": 1,
+      "explanation": "$$Z_{r,Q}(P + tB) = Z_{r,Q}(P) + t(rB)$$, so the image is the line with direction $$rB$$, parallel to the first (:ref{#moves-keep-lines}). This proves the zoom rule about lines."
+    },
+    {
+      "id": "one-perpendicular",
+      "stars": 2,
+      "topic": "The rules for lines, proved",
+      "question": "Why is there exactly one line through a point $$X$$ perpendicular to the line $$P + tA$$?",
+      "options": [
+        "Its direction must be a non-zero multiple of $$G_{90}(A) = (-a_2, a_1)$$",
+        "Because there is only one line through $$X$$",
+        "Because $$X$$ must be on the line",
+        "There are two, one each side"
+      ],
+      "answer": 0,
+      "explanation": "Every direction $$B$$ with $$A \\cdot B = 0$$ is a non-zero multiple of $$(-a_2, a_1)$$, and the line through $$X$$ with that direction is unique (:ref{#perpendicular-rules-proved})."
+    },
+    {
+      "id": "space-segment",
+      "stars": 1,
+      "topic": "Lines in space",
+      "question": "What is the midpoint of $$(1, 0, 2)$$ and $$(3, 2, 0)$$, using $$P + \\frac{1}{2}(Q - P)$$?",
+      "options": [
+        "$$(1, 1, -1)$$",
+        "$$(4, 2, 2)$$",
+        "$$(2, 2, 1)$$",
+        "$$(2, 1, 1)$$"
+      ],
+      "answer": 3,
+      "explanation": "$$Q - P = (2, 2, -2)$$, and $$P + \\frac{1}{2}(2, 2, -2) = (2, 1, 1)$$ (:ref{#space-lines})."
+    },
+    {
+      "id": "skew-def",
+      "stars": 1,
+      "topic": "Lines in space",
+      "question": "What are skew lines?",
+      "options": [
+        "Lines that meet at an angle other than $$90^\\circ$$",
+        "Parallel lines in space",
+        "Lines in space that are not parallel and never meet",
+        "Lines that meet twice"
+      ],
+      "answer": 2,
+      "explanation": "That is the definition (:ref{#skew-lines}). In the plane, lines that aren't parallel always meet, so skew lines need space."
+    },
+    {
+      "id": "space-meet",
+      "stars": 2,
+      "topic": "Lines in space",
+      "question": "Why do two lines in space usually fail to meet?",
+      "options": [
+        "Lines in space are always parallel",
+        "Meeting needs three equations in only two unknowns $$t$$ and $$s$$",
+        "Lines in space are curved",
+        "Lines in space have no direction"
+      ],
+      "answer": 1,
+      "explanation": "$$P + tA = Q + sB$$ is one equation for each coordinate (:ref{#space-meeting}). Two unknowns can usually satisfy two equations, but not a third as well."
+    },
+    {
+      "id": "space-perp",
+      "stars": 3,
+      "topic": "Lines in space",
+      "question": "In space, lines with directions $$(1, 2, -1)$$ and $$(3, -1, 1)$$ never meet. Are they perpendicular?",
+      "options": [
+        "No: the directions are perpendicular, but perpendicular lines must meet",
+        "Yes, since the dot product is $$0$$",
+        "No, since the dot product isn't $$0$$",
+        "Yes, since they never meet"
+      ],
+      "answer": 0,
+      "explanation": "$$3 - 2 - 1 = 0$$, so the directions are perpendicular (:ref{#space-dot}). Lines in space are perpendicular when they meet and their directions are (:ref{#space-perpendicular}), so these skew lines are not."
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+---
+title: Introduction
+description:
+  Lines written as a starting point plus a number of steps, and the rules for lines proved from
+  that.
+---
+
+Imagine watching a delivery van on a map in your phone, a dot creeping along a straight road. The
+app doesn't store the whole road. It knows where the van started and the step it makes each minute,
+and from those two things it can say where the van will be after any number of minutes, whether it
+passes your door, and how close it comes if it doesn't. A straight line described this way, as a
+starting point plus some number of steps, is called a **parametric** line. In this chapter we'll
+describe segments, rays and lines like this, and use the description to prove the facts about lines
+that earlier chapters took from the picture.
+
+The idea to keep in mind is the point $$P + tA$$. Here $$P$$ is where you start, $$A$$ is the step,
+and $$t$$ is how many steps you take. Letting $$t$$ run from $$0$$ to $$1$$ gives a segment, letting
+it run over every number from $$0$$ up gives a ray, and letting it be any number at all gives a
+whole line. Questions about lines then turn into equations for $$t$$, and the algebra of the earlier
+chapters answers them.
+
+Nothing new is taken as given. Everything is proved from the adding, scaling and lengths of
+[Adding and scaling points](../adding-and-scaling-points/introduction.mdx), the distance formula of
+[Coordinates](../coordinates/introduction.mdx) and the solving of
+[Linear equations](../linear-equations/introduction.mdx) and
+[Quadratics](../quadratics/introduction.mdx). Along the way the chapter settles questions that
+several earlier chapters left open:
+
+- **Linear equations draw lines**: [Linear equations](../linear-equations/introduction.mdx) took it
+  from the picture that $$ax + by = c$$ is a straight line. Here it is proved, both ways round.
+- **The rules for lines and segments**:
+  [Distance and angles](../distance-and-angles/introduction.mdx) took as given that two points fix
+  one line, that each point has one parallel and one perpendicular to a line, and three rules about
+  segments. Here every one of them is proved.
+- **Zooms and slides**: a zoom about any point keeps each point on its ray from the centre, a slide
+  moves every point in the direction of its arrow, and every move of
+  [Moves as formulas](../adding-and-scaling-points/moves-as-formulas.mdx) sends lines to lines.
+- **Parallelograms**: the opposite sides of the parallelogram built from two steps are parallel.
+- **Lines and circles**: any line meets a circle twice, once or not at all, and a tangent meets the
+  radius at a right angle.
+
+Two things still come from the picture: measuring angles in degrees, and area. Angles get formulas
+with trigonometry, in the [Trigonometry](../trigonometry/introduction.mdx) chapter, which also
+proves that a zoom keeps angles.
+
+## Guides in this chapter
+
+The chapter has ten guides:
+
+1. [Segments](./segments.mdx): the points a fraction of the way from $$P$$ to $$Q$$, arrows and
+   their steps, and segments moved by slides and zooms
+2. [Rays and direction](./rays.mdx): rays as formulas, when two steps point the same way, an arrow
+   of a given length, and why zooms and slides move points along rays
+3. [Lines](./lines.mdx): lines as $$P + tA$$, the line through two points, parallel lines, where two
+   lines meet, and when two moving ships collide
+4. [Equations of lines](./line-equations.mdx): turning $$P + tA$$ into $$ax + by = c$$ and back,
+   slopes, and parallel lines from their equations
+5. [Lines and circles](./lines-and-circles.mdx): where a line meets a circle, tangents, and lines
+   through a point inside a circle
+6. [Perpendicular lines](./perpendicular.mdx): the dot product, a test for right angles with numbers
+   alone, the closest point of a line, and tangents meeting the radius square on
+7. [The rules for lines, proved](./rules-proved.mdx): every rule the picture gave about lines,
+   segments, rays, parallels and perpendiculars, proved from the formulas
+8. [Lines in space](./space.mdx): segments, rays and lines with triples, and lines that miss each
+   other without being parallel
+9. [Test yourself](./test-yourself.mdx): a multiple choice quiz on the ideas in the chapter
+10. [Exercises](./exercises.mdx): exercises on the whole chapter, with worked solutions
+
+The summary below collects every definition and rule from the chapter, for reference while you read.
+
+{/* Keep this summary in sync with the guides whenever they change. */}
+
+:::accordion[Summary of definitions and rules]
+
+**Definitions**
+
+| Term                         | Meaning                                                                              |
+| ---------------------------- | ------------------------------------------------------------------------------------ |
+| :ref{#segment-formula}       | The points $$P + t(Q - P)$$ with $$0 \le t \le 1$$                                   |
+| :ref{#arrow}                 | The pair $$P$$, $$Q$$ in order, written $$\overrightarrow{PQ}$$, with step $$Q - P$$ |
+| :ref{#ray-formula}           | The points $$P + tA$$ with $$t \ge 0$$                                               |
+| :ref{#same-direction}        | $$B = cA$$ with $$c > 0$$; opposite directions with $$c < 0$$                        |
+| :ref{#line-formula}          | The points $$P + tA$$ for every real number $$t$$                                    |
+| :ref{#parallel-formula}      | Directions with $$B = cA$$ for some $$c \ne 0$$                                      |
+| :ref{#tangent-line}          | A line meeting a circle in exactly one point                                         |
+| :ref{#dot-product}           | $$A \cdot B = a_1b_1 + a_2b_2$$                                                      |
+| :ref{#perpendicular-formula} | Directions with $$A \cdot B = 0$$                                                    |
+| :ref{#space-lines}           | Segments, rays and lines with triples                                                |
+| :ref{#space-parallel}        | Lines in space with $$B = cA$$ for some $$c \ne 0$$                                  |
+| :ref{#skew-lines}            | Lines in space that are not parallel and never meet                                  |
+| :ref{#space-dot}             | $$A \cdot B = a_1b_1 + a_2b_2 + a_3b_3$$                                             |
+| :ref{#space-perpendicular}   | Lines in space that meet, with $$A \cdot B = 0$$                                     |
+
+**Segments**
+
+| Rule                     | Statement                                                                                          |
+| ------------------------ | -------------------------------------------------------------------------------------------------- |
+| :ref{#fraction-along}    | $$X = P + t(Q - P)$$ has $$d(P, X) = t\,d(P, Q)$$ and $$d(X, Q) = (1 - t)\,d(P, Q)$$               |
+| :ref{#segment-symmetric} | The segments $$PQ$$ and $$QP$$ are the same, with $$t$$ swapped for $$1 - t$$                      |
+| :ref{#arrow-equivalent}  | $$\overrightarrow{PQ}$$ and $$\overrightarrow{MN}$$ are equivalent exactly when $$P + N = Q + M$$  |
+| :ref{#segment-slide}     | $$T_A$$ and $$Z_r$$ send the segment $$PQ$$ onto the segment between the images of $$P$$ and $$Q$$ |
+
+**Rays and direction**
+
+| Rule                        | Statement                                                                                                |
+| --------------------------- | -------------------------------------------------------------------------------------------------------- |
+| :ref{#ray-multiple}         | Directions $$A$$ and $$cA$$ with $$c > 0$$ give the same ray                                             |
+| :ref{#rays-equal}           | Two rays from $$P$$ are the same exactly when their directions are the same direction                    |
+| :ref{#same-direction-rules} | Same direction behaves like equality                                                                     |
+| :ref{#direction-unit}       | Same direction exactly when the unit points are equal                                                    |
+| :ref{#arrow-given}          | The arrow from $$M$$ of length $$\ell$$ in direction $$A$$ ends at $$M + \frac{\ell}{\lvert A \rvert}A$$ |
+| :ref{#zoom-on-ray}          | $$Z_{r,Q}(P)$$ lies on the ray from $$Q$$ through $$P$$                                                  |
+| :ref{#slide-direction}      | $$T_A$$ moves every point the distance $$\lvert A \rvert$$ in the direction of $$A$$                     |
+
+**Lines**
+
+| Rule                          | Statement                                                                       |
+| ----------------------------- | ------------------------------------------------------------------------------- |
+| :ref{#line-descriptions}      | Any non-zero multiple of $$A$$ and any point of the line describe the same line |
+| :ref{#two-point-line}         | Two different points lie on exactly one line, with direction $$Q - P$$          |
+| :ref{#multiples-line}         | The multiples $$tA$$ make up the line through $$O$$ and $$A$$                   |
+| :ref{#parallelogram-parallel} | The opposite sides of $$O$$, $$A$$, $$A + B$$, $$B$$ are parallel               |
+| :ref{#parallel-determinant}   | Directions are parallel exactly when $$a_1b_2 - a_2b_1 = 0$$                    |
+| :ref{#line-intersection}      | Lines that aren't parallel meet once; parallel lines are equal or never meet    |
+
+**Equations of lines**
+
+| Rule                      | Statement                                                                          |
+| ------------------------- | ---------------------------------------------------------------------------------- |
+| :ref{#line-equation}      | The line $$P + tA$$ is the equation $$a_2x - a_1y = a_2p_1 - a_1p_2$$              |
+| :ref{#equation-line}      | $$ax + by = c$$ is the line through any solution with direction $$(-b, a)$$        |
+| :ref{#parallel-equations} | $$ax + by = c$$ and $$a'x + b'y = c'$$ are parallel exactly when $$ab' - a'b = 0$$ |
+
+**Lines and circles**
+
+| Rule                     | Statement                                                                                   |
+| ------------------------ | ------------------------------------------------------------------------------------------- |
+| :ref{#line-circle}       | A quadratic in $$t$$ whose discriminant says the line meets the circle twice, once or never |
+| :ref{#inside-point-line} | Every line through a point inside a circle meets it twice, once on each side                |
+| :ref{#on-circle-line}    | A line through a point of the circle meets it again, or is tangent there                    |
+
+**Perpendicular lines**
+
+| Rule                         | Statement                                                                                                         |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| :ref{#dot-rules}             | $$A \cdot B = B \cdot A$$, sums and multiples come out, $$A \cdot A = \lvert A \rvert^2$$                         |
+| :ref{#difference-length}     | $$\lvert A - B \rvert^2 = \lvert A \rvert^2 + \lvert B \rvert^2 - 2\,A \cdot B$$                                  |
+| :ref{#perpendicular-dot}     | The angle at $$O$$ in the triangle $$O$$, $$A$$, $$B$$ is right exactly when $$A \cdot B = 0$$                    |
+| :ref{#normal-direction}      | $$(a, b)$$ is perpendicular to $$ax + by = c$$; two such lines are perpendicular when $$aa' + bb' = 0$$           |
+| :ref{#perpendicular-slopes}  | Slopes $$m$$ and $$m'$$ give perpendicular lines exactly when $$mm' = -1$$                                        |
+| :ref{#closest-point}         | $$F = P + t_0A$$ with $$t_0 = \frac{(X - P) \cdot A}{\lvert A \rvert^2}$$ is the closest point to $$X$$           |
+| :ref{#distance-to-line}      | The distance from $$(x_0, y_0)$$ to $$ax + by = c$$ is $$\frac{\lvert ax_0 + by_0 - c \rvert}{\sqrt{a^2 + b^2}}$$ |
+| :ref{#tangent-perpendicular} | A line through a point of a circle is tangent exactly when it is perpendicular to the radius                      |
+
+**The rules for lines, proved**
+
+| Rule                              | Statement                                                                                          |
+| --------------------------------- | -------------------------------------------------------------------------------------------------- |
+| :ref{#line-rule-two-points}       | Two different points lie on exactly one line                                                       |
+| :ref{#line-rule-parallel}         | Exactly one line through a point is parallel to a given line                                       |
+| :ref{#rules-proved-crossing}      | Parallel means equal or never meeting; crossing lines and parallel to a parallel                   |
+| :ref{#product-bound-equality}     | $$as + bt = \sqrt{a^2 + b^2}\sqrt{s^2 + t^2}$$ exactly when $$(s, t) = c(a, b)$$, $$c \ge 0$$      |
+| :ref{#triangle-equality}          | $$d(P, M) = d(P, Q) + d(Q, M)$$ exactly when $$Q$$ is on the segment $$PM$$                        |
+| :ref{#rules-proved-parameters}    | One parameter for each point, and segments are intervals of parameters                             |
+| :ref{#segment-rules-proved}       | The three rules for segments hold                                                                  |
+| :ref{#ray-agrees}                 | The formula ray and the picture's ray are the same                                                 |
+| :ref{#perpendicular-rules-proved} | One perpendicular through a point, perpendicular to parallels, and two perpendiculars are parallel |
+| :ref{#rules-proved-pythagoras}    | $$A \cdot B = 0$$ exactly when $$\lvert A - B \rvert^2 = \lvert A \rvert^2 + \lvert B \rvert^2$$   |
+| :ref{#moves-keep-lines}           | Slides, half turns, zooms, flips and the quarter turn send lines, rays and segments to the same    |
+
+**Lines in space**
+
+| Rule                           | Statement                                                                                 |
+| ------------------------------ | ----------------------------------------------------------------------------------------- |
+| :ref{#space-line-facts}        | Fractions along, other descriptions and the line through two points work as in the plane  |
+| :ref{#space-meeting}           | Three equations in $$t$$ and $$s$$; lines that aren't parallel meet once or are skew      |
+| :ref{#space-difference-length} | $$\lvert A - B \rvert^2 = \lvert A \rvert^2 + \lvert B \rvert^2 - 2\,A \cdot B$$ in space |
+
+:::

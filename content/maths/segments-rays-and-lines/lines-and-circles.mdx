@@ -1,0 +1,580 @@
+---
+title: Lines and circles
+description:
+  Where a line meets a circle, found by solving one quadratic, and what its discriminant says about
+  missing, touching and crossing.
+---
+
+Imagine a straight road that runs past a round lake. Depending on where the road was built, it
+passes the lake without coming near the water, or it runs right up to the shore at one spot and
+carries on, or it needs a bridge that leaves one bank and lands on the other. You won't find a
+straight road that meets the shore at three places.
+
+In the language of this chapter the road is a line and the shore is a circle. A line that touches a
+circle at exactly one point is called a **tangent**. In this guide we'll find where any line meets
+any circle by solving one quadratic, and read the three cases off its discriminant.
+
+## Putting a line into the circle's equation
+
+Each point of a line is $$P + tA$$ for one number $$t$$, and a point is on a circle exactly when its
+distance from the centre is the radius. So asking which points of the line are on the circle is the
+same as asking which numbers $$t$$ pass that distance test. Writing the test out leaves a single
+equation in $$t$$, and squaring the distance makes it a quadratic.
+
+Take a lake whose shore is the circle with centre $$C = (1, -1)$$ and radius $$5$$, on a map marked
+in kilometres. A road runs along the line through $$P = (-7, 5)$$ with direction $$A = (4, -3)$$
+(:ref{#line-formula}). Its point with parameter $$t$$ is
+
+```math
+X = P + tA = (-7 + 4t,\ 5 - 3t)
+```
+
+The step from the centre to $$X$$ is $$X - C = (-8 + 4t,\ 6 - 3t)$$, so by the equation of a circle
+(:ref{#coordinates/circle-equation}) the point $$X$$ is on the shore exactly when
+
+```math
+(-8 + 4t)^2 + (6 - 3t)^2 = 25
+```
+
+Multiplying out, the left side is $$64 - 64t + 16t^2 + 36 - 36t + 9t^2 = 25t^2 - 100t + 100$$. So
+the equation is $$25t^2 - 100t + 75 = 0$$, and dividing by $$25$$ gives
+
+```math
+t^2 - 4t + 3 = (t - 1)(t - 3) = 0
+```
+
+The solutions are $$t = 1$$ and $$t = 3$$. They give the points $$(-3, 2)$$ and $$(5, -4)$$, where
+the bridge leaves the shore and lands again. As a check, $$(-3 - 1)^2 + (2 + 1)^2 = 16 + 9 = 25$$,
+and $$(5 - 1)^2 + (-4 + 1)^2 = 16 + 9 = 25$$.
+
+The same steps work for every line and every circle. The square of the length $$|A|$$
+(:ref{#adding-and-scaling-points/norm}) ends up in front of $$t^2$$, and one more number, which
+we'll call $$k$$, sits in front of $$2t$$.
+
+:::proposition[Where a line meets a circle]{#line-circle}
+
+Let $$C = (c_1, c_2)$$ and $$r > 0$$, and let $$L$$ be the line through $$P = (p_1, p_2)$$ with
+direction $$A = (a_1, a_2)$$. Write
+
+```math
+k = a_1(p_1 - c_1) + a_2(p_2 - c_2)
+```
+
+Then the point $$P + tA$$ is on the circle with centre $$C$$ and radius $$r$$ exactly when
+
+```math
+|A|^2t^2 + 2kt + \left(|P - C|^2 - r^2\right) = 0
+```
+
+This is a quadratic in $$t$$, with discriminant
+$$4\left(k^2 - |A|^2\left(|P - C|^2 - r^2\right)\right)$$, and different solutions give different
+points. So the line meets the circle:
+
+1. in exactly two points, when the discriminant is positive
+2. in exactly one point, when the discriminant is $$0$$
+3. nowhere, when the discriminant is negative
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Line%E2%80%93sphere_intersection"}
+
+By :ref{#adding-and-scaling-points/scalar-multiple} and :ref{#adding-and-scaling-points/point-sum},
+$$P + tA = (p_1 + ta_1,\ p_2 + ta_2)$$. Write $$u_1 = p_1 - c_1$$ and $$u_2 = p_2 - c_2$$, so that
+$$P - C = (u_1, u_2)$$ (:ref{#adding-and-scaling-points/point-difference}). By
+:ref{#coordinates/circle-equation}, the point $$P + tA$$ is on the circle exactly when
+
+```math
+(u_1 + a_1t)^2 + (u_2 + a_2t)^2 = r^2
+```
+
+By the square of a sum (:ref{#numbers/square-formulas}),
+
+```math
+(u_1 + a_1t)^2 = u_1^2 + 2a_1u_1t + a_1^2t^2
+```
+
+and the same holds with $$u_2$$ and $$a_2$$. Adding the two and gathering the terms, the left side
+is
+
+```math
+\left(a_1^2 + a_2^2\right)t^2 + 2\left(a_1u_1 + a_2u_2\right)t + \left(u_1^2 + u_2^2\right) = |A|^2t^2 + 2kt + |P - C|^2
+```
+
+by :ref{#adding-and-scaling-points/norm}. Taking $$r^2$$ from both sides gives the equation in the
+statement.
+
+Since $$A \ne O$$, its length is positive (:ref{#coordinates/distance-zero}), so $$|A|^2 \ne 0$$ and
+the equation is a quadratic. Its discriminant (:ref{#quadratics/discriminant}) is
+
+```math
+(2k)^2 - 4|A|^2\left(|P - C|^2 - r^2\right) = 4\left(k^2 - |A|^2\left(|P - C|^2 - r^2\right)\right)
+```
+
+Different solutions give different points. Suppose $$P + tA = P + sA$$. Comparing first coordinates
+gives $$ta_1 = sa_1$$, so $$(t - s)a_1 = 0$$, and in the same way $$(t - s)a_2 = 0$$. Since
+$$A \ne O$$, one of $$a_1$$ and $$a_2$$ is not $$0$$, so $$t - s = 0$$
+(:ref{#numbers/zero-product}). So the line meets the circle in as many points as the quadratic has
+solutions, and :ref{#quadratics/root-count} counts them: two, one or none as the discriminant is
+positive, $$0$$ or negative.
+
+:::
+
+The number in brackets has a meaning of its own. By :ref{#coordinates/disc-inequality},
+$$|P - C|^2 - r^2$$ is negative, $$0$$ or positive as the starting point $$P$$ is inside, on or
+outside the circle. The number $$k$$ is built from the direction $$A$$ and the step $$P - C$$, and
+[Lines through a point on the circle](#lines-through-a-point-on-the-circle) shows what $$k = 0$$
+means.
+
+For the road, $$|A|^2 = 16 + 9 = 25$$ and $$|P - C|^2 = 64 + 36 = 100$$. Also
+$$k = 4 \cdot (-8) + (-3) \cdot 6 = -50$$, so the proposition gives
+$$25t^2 - 100t + (100 - 25) = 0$$, the equation we found by hand.
+
+The Coordinates chapter could only handle horizontal and vertical lines, in
+:ref{#coordinates/circle-horizontal-line}. The proposition covers every line, including those, and
+one of the exercises recovers the horizontal case from it.
+
+## Two points, one point or none
+
+Picture the road being moved sideways across the map while it keeps its direction, so that each new
+road is parallel to the last. Far from the lake it misses the water. As it moves in, it first
+touches the shore at one spot, then cuts across the lake, then touches the shore again on the far
+side, and finally misses once more.
+
+Keep the lake and the direction $$A = (4, -3)$$, and move the starting point. The road through
+$$(-7, 5)$$ gave $$25t^2 - 100t + 75 = 0$$, with discriminant
+$$100^2 - 4 \cdot 25 \cdot 75 = 2500$$, which is positive. That matches its two meeting points.
+
+Now take the road through $$P = (0, 6)$$. Here $$P - C = (-1, 7)$$, so $$|P - C|^2 = 50$$ and
+$$k = 4 \cdot (-1) + (-3) \cdot 7 = -25$$. The quadratic is
+
+```math
+25t^2 - 50t + 25 = 25(t - 1)^2 = 0
+```
+
+Its discriminant is $$50^2 - 4 \cdot 25 \cdot 25 = 0$$, and the only solution is $$t = 1$$. So this
+road meets the shore at the one point $$(0, 6) + (4, -3) = (4, 3)$$.
+
+Move a little further, to the road through $$P = (0, 8)$$. Then $$P - C = (-1, 9)$$, so
+$$|P - C|^2 = 82$$ and $$k = -4 - 27 = -31$$. The quadratic is $$25t^2 - 62t + 57 = 0$$, with
+discriminant $$62^2 - 4 \cdot 25 \cdot 57 = 3844 - 5700 = -1856$$. That is negative, so this road
+misses the lake.
+
+By :ref{#line-equation}, the three roads are the lines $$3x + 4y = -1$$, $$3x + 4y = 24$$ and
+$$3x + 4y = 32$$.
+
+<Graph
+  lines={[
+    { a: 3, b: 4, c: -1, label: "3x + 4y = −1" },
+    { a: 3, b: 4, c: 24, label: "3x + 4y = 24" },
+    { a: 3, b: 4, c: 32, label: "3x + 4y = 32" },
+  ]}
+  circles={[{ a: 1, b: -1, r: 5, label: "(x − 1)² + (y + 1)² = 25" }]}
+  points={[
+    { x: -3, y: 2, label: "(−3, 2)" },
+    { x: 5, y: -4, label: "(5, −4)" },
+    { x: 4, y: 3, label: "(4, 3)" },
+  ]}
+  x={[-5, 9]}
+  y={[-7, 7]}
+  caption="The lake with centre (1, −1) and radius 5, and three parallel roads with direction (4, −3). The first crosses the lake, the second touches the shore at (4, 3), and the third misses."
+/>
+
+:::definition[Tangent line]{#tangent-line}
+
+A line that meets a circle in exactly one point is **tangent** to the circle at that point. The line
+is called a **tangent** to the circle, and the point is the **point of contact**.
+
+:::
+
+So the line $$3x + 4y = 24$$ is tangent to the lake's circle at $$(4, 3)$$. The same family has a
+second tangent, on the other side of the lake: the road through $$(0, -6.5)$$ touches the shore at
+$$(-2, -5)$$. Slide the road below to find both, and watch the sign of the discriminant change each
+time the road passes one of them.
+
+<LineCircle />
+
+## Lines through a point inside
+
+Now put yourself in a rowing boat out on the lake. Row in a straight line in any direction you like,
+and you reach the shore ahead of you. Had you rowed the opposite way instead, you'd have reached the
+shore behind you. So every line through a point inside a circle crosses it twice, with one meeting
+point on each side, and no such line is a tangent.
+
+:::theorem[Lines through a point inside]{#inside-point-line}
+
+Let $$P$$ be inside the circle with centre $$C$$ and radius $$r$$, that is, $$|P - C| < r$$. Then
+every line through $$P$$ meets the circle in exactly two points. Written as $$P + tA$$, the line
+meets the circle once with $$t > 0$$ and once with $$t < 0$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Power_of_a_point"}
+
+By part 2 of :ref{#line-descriptions}, any point of a line can serve as its starting point, so the
+line can be written as $$P + tA$$ for some direction $$A$$. Since $$0 \le |P - C| < r$$,
+:ref{#real-numbers/power-order} gives $$|P - C|^2 < r^2$$. So the number $$m = |P - C|^2 - r^2$$ in
+:ref{#line-circle} is negative.
+
+The discriminant is $$4\left(k^2 - |A|^2m\right)$$. Here $$k^2 \ge 0$$
+(:ref{#real-numbers/squares-positive}), and $$-|A|^2m > 0$$, because $$|A|^2 > 0$$ and $$m < 0$$
+(:ref{#real-numbers/sign-rules}). So the discriminant is positive, and the line meets the circle in
+exactly two points, with parameters $$t_1$$ and $$t_2$$ (:ref{#line-circle}).
+
+By :ref{#quadratics/vieta}, $$t_1t_2 = \frac{m}{|A|^2}$$, which is negative. A product of two
+numbers is negative exactly when one is positive and the other negative
+(:ref{#real-numbers/product-sign}), so one of $$t_1$$ and $$t_2$$ is positive and the other is
+negative.
+
+:::
+
+The point with $$t > 0$$ is on the ray from $$P$$ in direction $$A$$ (:ref{#ray-formula}). The point
+with $$t < 0$$ is $$P + (-t)(-A)$$ with $$-t > 0$$, so it is on the ray from $$P$$ in the opposite
+direction $$-A$$. So the two meeting points lie one ahead of the boat and one behind it, along the
+line it rows.
+
+For example, take $$P = (2, 1)$$ and the direction $$A = (1, 1)$$, with the lake as before. Then
+$$P - C = (1, 2)$$, so $$|P - C|^2 = 5$$, which is less than $$25$$, and $$P$$ is inside. Also
+$$k = 1 + 2 = 3$$ and $$|A|^2 = 2$$, so the quadratic is $$2t^2 + 6t - 20 = 0$$, that is,
+
+```math
+t^2 + 3t - 10 = (t + 5)(t - 2) = 0
+```
+
+The solutions $$t = 2$$ and $$t = -5$$ have opposite signs, as the theorem says. They give the
+points $$(4, 3)$$, ahead of $$P$$, and $$(-3, -4)$$, behind it.
+
+```plane
+point C 1 -1 se
+point P 2 1 se
+point X1 -3 -4 w
+point X2 4 3 n
+point L1 -4 -6 hidden
+point L2 6 4 hidden
+circle C 5 color=blue
+line X1 X2 color=orange
+caption "The point P = (2, 1) is inside the circle with centre C = (1, −1) and radius 5. The line through P with direction (1, 1) meets the circle at X2 = (4, 3) ahead of P and at X1 = (−3, −4) behind it."
+```
+
+## Lines through a point on the circle
+
+Now stand on the shore, at a point $$P$$ of the circle, and set off in a straight line. Most
+directions take you across the lake to a second point on the far shore. There is one line through
+$$P$$ that only grazes the lake, touching the shore at $$P$$ and leaving straight away. In the
+quadratic, $$t = 0$$ is always a solution, because $$P$$ itself is on the circle.
+
+:::proposition[Lines through a point on the circle]{#on-circle-line}
+
+Let $$P$$ be on the circle with centre $$C$$ and radius $$r$$, and let $$L$$ be the line $$P + tA$$,
+with $$k$$ as in :ref{#line-circle}. Then $$L$$ meets the circle at $$P$$, where $$t = 0$$, and at
+the point with
+
+```math
+t = -\frac{2k}{|A|^2}
+```
+
+These are two different points exactly when $$k \ne 0$$. So $$L$$ meets the circle a second time
+when $$k \ne 0$$, and $$L$$ is tangent to the circle at $$P$$ when $$k = 0$$.
+
+:::
+
+:::proof{source="https://mathworld.wolfram.com/Circle-LineIntersection.html"}
+
+Since $$P$$ is on the circle, $$|P - C| = r$$ (:ref{#adding-and-scaling-points/distance-norm}), so
+$$|P - C|^2 - r^2 = 0$$. The quadratic of :ref{#line-circle} becomes
+
+```math
+|A|^2t^2 + 2kt = t\left(|A|^2t + 2k\right) = 0
+```
+
+By :ref{#numbers/zero-product}, either $$t = 0$$ or $$|A|^2t + 2k = 0$$, and the second gives
+$$t = -\frac{2k}{|A|^2}$$, since $$|A|^2 \ne 0$$. The two values of $$t$$ are equal exactly when
+$$k = 0$$. Different values of $$t$$ give different points (:ref{#line-circle}), so the line meets
+the circle twice when $$k \ne 0$$ and once when $$k = 0$$, and then it is tangent by
+:ref{#tangent-line}.
+
+:::
+
+The point $$P = (4, 3)$$ is on the lake's circle, since $$P - C = (3, 4)$$ has length $$5$$. Here
+are three lines through it:
+
+- **Direction $$(1, 1)$$**: $$k = 3 + 4 = 7$$ and $$|A|^2 = 2$$, so the second point has $$t = -7$$.
+  It is $$(4, 3) - 7(1, 1) = (-3, -4)$$, the far end of the boat's line.
+- **Direction $$(3, 4)$$**: $$k = 9 + 16 = 25$$ and $$|A|^2 = 25$$, so $$t = -2$$ and the second
+  point is $$(4, 3) - 2(3, 4) = (-2, -5)$$. This line goes through the centre, since
+  $$P - C = (3, 4)$$ is its direction, and $$(-2, -5)$$ is the opposite end of a diameter.
+- **Direction $$(4, -3)$$**: $$k = 4 \cdot 3 + (-3) \cdot 4 = 0$$, so the line is tangent at
+  $$(4, 3)$$. It is the road $$3x + 4y = 24$$ in the figure under
+  [Two points, one point or none](#two-points-one-point-or-none).
+
+Draw the radius from $$C$$ to $$(4, 3)$$ in that figure, and it looks square to the tangent line.
+That is true for every circle: $$k = 0$$ says exactly that the line is perpendicular to the radius
+$$CP$$. Proving it needs perpendicular lines described with numbers, and
+:ref{#tangent-perpendicular} does it.
+
+## Does a flight path pass within range
+
+A radar station can see a plane while the plane is within a fixed distance of it. So the region it
+covers is a disc, with the station at the centre. A plane flying a straight course at a steady speed
+has a position $$P + tA$$ after $$t$$ minutes. So working out when the plane is in range means
+finding the numbers $$t$$ for which $$P + tA$$ is in the disc.
+
+Mark a map in kilometres, with an airport at the origin. A plane leaves the airport $$P = O$$ at
+$$t = 0$$ and flies with step $$A = (8, 6)$$ each minute, so its speed is $$|A| = 10$$ km a minute,
+or $$600$$ km an hour. A radar station at $$C = (80, 10)$$ can see $$50$$ km. Then $$|A|^2 = 100$$,
+$$k = 8 \cdot (-80) + 6 \cdot (-10) = -700$$ and $$|P - C|^2 = 6400 + 100 = 6500$$.
+
+By :ref{#coordinates/disc-inequality}, the plane is in range exactly when
+$$|P + tA - C|^2 \le 50^2$$. The proof of :ref{#line-circle} shows that $$|P + tA - C|^2 - 50^2$$ is
+the left side of its quadratic, so the plane is in range exactly when
+
+```math
+100t^2 - 1400t + 4000 \le 0
+```
+
+Dividing by $$100$$, this is $$t^2 - 14t + 40 \le 0$$, and $$t^2 - 14t + 40 = (t - 4)(t - 10)$$
+(:ref{#quadratics/vieta}). Between $$t = 4$$ and $$t = 10$$ the first bracket is positive and the
+second negative, so the product is negative. Before $$t = 4$$ both brackets are negative, and after
+$$t = 10$$ both are positive, so there the product is positive (:ref{#real-numbers/product-sign}).
+
+So the plane comes into range $$4$$ minutes after take-off, at $$4A = (32, 24)$$, and leaves it
+after $$10$$ minutes, at $$10A = (80, 60)$$. It is seen for $$6$$ minutes, which is $$60$$ km of its
+flight. Halfway through, at $$t = 7$$, it is at $$(56, 42)$$, which is $$\sqrt{24^2 + 32^2} = 40$$
+km from the station.
+
+A second station at $$(100, 0)$$, also with a range of $$50$$ km, gives $$k = -800$$ and
+$$|P - C|^2 = 10\,000$$. Its quadratic is $$100t^2 - 1600t + 7500 = 0$$, with discriminant
+$$1600^2 - 4 \cdot 100 \cdot 7500 = -440\,000$$. That is negative, so by :ref{#line-circle} the
+flight path never meets the edge of that station's range. Completing the square
+(:ref{#quadratics/complete-square}) shows which side it stays on:
+
+```math
+100t^2 - 1600t + 7500 = 100\left((t - 8)^2 + 11\right)
+```
+
+which is positive for every $$t$$ (:ref{#real-numbers/squares-positive}). So the plane stays outside
+the disc, and that station never sees it.
+
+## Exercises
+
+:::::accordion[Exercises on lines and circles, with solutions]
+
+::::exercise{#ex-lines-and-circles-count}
+
+The circle $$(x + 1)^2 + (y - 2)^2 = 10$$ has centre $$C = (-1, 2)$$. Take the point $$P = (3, 0)$$.
+For each direction, say whether the line through $$P$$ with that direction crosses the circle,
+touches it or misses it, and find any meeting points.
+
+1. $$A = (1, 1)$$
+2. $$A = (1, -1)$$
+3. $$A = (-1, 3)$$
+
+:::solution
+
+Here $$P - C = (4, -2)$$, so $$|P - C|^2 = 20$$ and $$|P - C|^2 - r^2 = 20 - 10 = 10$$. By
+:ref{#line-circle}, the discriminant is $$4\left(k^2 - 10|A|^2\right)$$.
+
+1. $$k = 4 - 2 = 2$$ and $$|A|^2 = 2$$, so the discriminant is $$4(4 - 20) = -64$$. The line misses
+   the circle.
+2. $$k = 4 + 2 = 6$$ and $$|A|^2 = 2$$, so the discriminant is $$4(36 - 20) = 64$$, and the line
+   crosses the circle twice. The quadratic is $$2t^2 + 12t + 10 = 0$$, that is,
+   $$t^2 + 6t + 5 = (t + 1)(t + 5) = 0$$. So $$t = -1$$ or $$t = -5$$, giving $$(2, 1)$$ and
+   $$(-2, 5)$$.
+3. $$k = -4 - 6 = -10$$ and $$|A|^2 = 10$$, so the discriminant is $$4(100 - 100) = 0$$. The line is
+   tangent (:ref{#tangent-line}). The quadratic is $$10t^2 - 20t + 10 = 10(t - 1)^2 = 0$$, so
+   $$t = 1$$ and the point of contact is $$(3, 0) + (-1, 3) = (2, 3)$$.
+
+Check the points: $$(2, 1)$$ gives $$9 + 1 = 10$$, $$(-2, 5)$$ gives $$1 + 9 = 10$$, and $$(2, 3)$$
+gives $$9 + 1 = 10$$.
+
+:::
+
+::::
+
+::::exercise{#ex-lines-and-circles-equation}
+
+Find where the line $$x - y = -1$$ meets the circle $$(x + 1)^2 + (y - 2)^2 = 10$$. Start by writing
+the line as $$P + tA$$.
+
+:::solution
+
+By :ref{#equation-line}, the line has direction $$(1, 1)$$. Putting $$x = 0$$ gives $$y = 1$$, so it
+passes through $$P = (0, 1)$$. With $$C = (-1, 2)$$, the step is $$P - C = (1, -1)$$, so
+$$|P - C|^2 = 2$$ and $$k = 1 - 1 = 0$$. By :ref{#line-circle}, the quadratic is
+
+```math
+2t^2 + (2 - 10) = 2t^2 - 8 = 0
+```
+
+so $$t^2 = 4$$, and $$t = 2$$ or $$t = -2$$. The meeting points are $$(2, 3)$$ and $$(-2, -1)$$.
+Both satisfy $$x - y = -1$$, and both give $$10$$ in the circle's equation: $$9 + 1$$ and $$1 + 9$$.
+
+The point $$P$$ is inside the circle, since $$2 < 10$$, so :ref{#inside-point-line} promised two
+points with parameters of opposite signs.
+
+:::
+
+::::
+
+::::exercise{#ex-lines-and-circles-horizontal}
+
+Use :ref{#line-circle} with $$P = (0, h)$$ and $$A = (1, 0)$$ to find where the horizontal line
+$$y = h$$ meets the circle with centre $$(a, b)$$ and radius $$r$$. Check that you get the same
+quadratic and the same three cases as :ref{#coordinates/circle-horizontal-line}.
+
+:::solution
+
+The point $$P + tA$$ is $$(t, h)$$, so $$t$$ is the first coordinate $$x$$. Here $$|A|^2 = 1$$,
+$$k = 1 \cdot (0 - a) + 0 \cdot (h - b) = -a$$ and $$|P - C|^2 = a^2 + (h - b)^2$$. The quadratic of
+:ref{#line-circle} is
+
+```math
+t^2 - 2at + \left(a^2 + (h - b)^2 - r^2\right) = 0
+```
+
+which is the quadratic of :ref{#coordinates/circle-horizontal-line} with $$t$$ in place of $$x$$.
+Its discriminant is
+
+```math
+4\left(a^2 - \left(a^2 + (h - b)^2 - r^2\right)\right) = 4\left(r^2 - (h - b)^2\right)
+```
+
+the same as before. So the three cases agree: two points when $$|h - b| < r$$, one when
+$$|h - b| = r$$, and none when $$|h - b| > r$$.
+
+:::
+
+::::
+
+::::exercise{#ex-lines-and-circles-tangents}
+
+The lines $$y = 2x + b$$ all have direction $$(1, 2)$$, and the line for $$b$$ passes through
+$$(0, b)$$. For which numbers $$b$$ does the line meet the circle $$(x - 1)^2 + (y - 2)^2 = 5$$
+twice, once or not at all? Find the points of contact of the tangents.
+
+:::solution
+
+Here $$C = (1, 2)$$, $$P = (0, b)$$ and $$A = (1, 2)$$, so $$|A|^2 = 5$$,
+$$k = 1 \cdot (-1) + 2(b - 2) = 2b - 5$$ and $$|P - C|^2 - 5 = 1 + (b - 2)^2 - 5 = b^2 - 4b$$. By
+:ref{#line-circle}, the discriminant is $$4$$ times
+
+```math
+(2b - 5)^2 - 5\left(b^2 - 4b\right) = 4b^2 - 20b + 25 - 5b^2 + 20b = 25 - b^2
+```
+
+So the line crosses twice when $$b^2 < 25$$, that is, when $$-5 < b < 5$$. It is tangent when
+$$b = 5$$ or $$b = -5$$, and it misses when $$b > 5$$ or $$b < -5$$.
+
+At a tangent the one solution is $$t = -\frac{2k}{2|A|^2} = -\frac{k}{5}$$
+(:ref{#quadratics/root-count}). For $$b = 5$$, $$k = 5$$ and $$t = -1$$, so the point of contact is
+$$(0, 5) - (1, 2) = (-1, 3)$$. For $$b = -5$$, $$k = -15$$ and $$t = 3$$, so it is
+$$(0, -5) + 3(1, 2) = (3, 1)$$. Both are on the circle: $$4 + 1 = 5$$ and $$4 + 1 = 5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-lines-and-circles-inside}
+
+Take the lake's circle, with centre $$C = (1, -1)$$ and radius $$5$$, and the point $$P = (3, 2)$$.
+
+1. Show that $$P$$ is inside the circle.
+2. Find where the line through $$P$$ with direction $$(1, -1)$$ meets the circle, and check that the
+   two parameters have opposite signs.
+
+:::solution
+
+1. $$P - C = (2, 3)$$, so $$|P - C|^2 = 4 + 9 = 13$$, which is less than $$25$$. By
+   :ref{#coordinates/disc-inequality}, $$P$$ is inside.
+2. $$|A|^2 = 2$$ and $$k = 1 \cdot 2 + (-1) \cdot 3 = -1$$. By :ref{#line-circle}, the quadratic is
+   $$2t^2 - 2t + (13 - 25) = 0$$, that is, $$t^2 - t - 6 = (t - 3)(t + 2) = 0$$. So $$t = 3$$,
+   giving $$(6, -1)$$, or $$t = -2$$, giving $$(1, 4)$$. The parameters $$3$$ and $$-2$$ have
+   opposite signs, as :ref{#inside-point-line} says, and their product $$-6$$ is $$\frac{-12}{2}$$
+   (:ref{#quadratics/vieta}).
+
+:::
+
+::::
+
+::::exercise{#ex-lines-and-circles-on}
+
+The point $$P = (5, 2)$$ is on the lake's circle, with centre $$C = (1, -1)$$ and radius $$5$$.
+
+1. Find the second point where the line through $$P$$ with direction $$(1, -1)$$ meets the circle.
+2. Find the number $$m$$ for which the line through $$P$$ with direction $$(1, m)$$ is tangent to
+   the circle.
+
+:::solution
+
+Here $$P - C = (4, 3)$$, which has length $$5$$, so $$P$$ is on the circle.
+
+1. $$k = 4 - 3 = 1$$ and $$|A|^2 = 2$$, so by :ref{#on-circle-line} the second point has
+   $$t = -\frac{2}{2} = -1$$. It is $$(5, 2) - (1, -1) = (4, 3)$$, and
+   $$(4 - 1)^2 + (3 + 1)^2 = 25$$.
+2. With $$A = (1, m)$$, $$k = 4 + 3m$$. By :ref{#on-circle-line}, the line is tangent exactly when
+   $$k = 0$$, that is, when $$m = -\frac{4}{3}$$. A tidier direction for the same line is
+   $$3\left(1, -\frac{4}{3}\right) = (3, -4)$$ (part 1 of :ref{#line-descriptions}).
+
+:::
+
+::::
+
+::::exercise{#ex-lines-and-circles-diameter}
+
+Show that a line through the centre $$C$$ of a circle with radius $$r$$, with direction $$A$$, meets
+the circle at the two points
+
+```math
+C + \frac{r}{|A|}A \qquad \text{and} \qquad C - \frac{r}{|A|}A
+```
+
+and that these points are $$2r$$ apart. Check it with the lake's circle and $$A = (4, -3)$$.
+
+:::solution
+
+Take $$P = C$$ in :ref{#line-circle}. Then $$P - C = O$$, so $$k = 0$$ and $$|P - C|^2 = 0$$, and
+the quadratic is $$|A|^2t^2 - r^2 = 0$$. So $$t^2 = \frac{r^2}{|A|^2}$$, and $$t = \frac{r}{|A|}$$
+or $$t = -\frac{r}{|A|}$$, which give the two points.
+
+Their difference is $$\frac{2r}{|A|}A$$, so by :ref{#adding-and-scaling-points/distance-norm} and
+:ref{#adding-and-scaling-points/norm-scale} the distance between them is
+
+```math
+\frac{2r}{|A|}\,|A| = 2r
+```
+
+For the lake, $$C = (1, -1)$$, $$r = 5$$ and $$|A| = 5$$, so the points are
+$$(1, -1) + (4, -3) = (5, -4)$$ and $$(1, -1) - (4, -3) = (-3, 2)$$. These are the two ends of the
+bridge in the first example, and they are $$\sqrt{64 + 36} = 10$$ apart.
+
+:::
+
+::::
+
+::::exercise{#ex-lines-and-circles-train}
+
+A train leaves a station at the origin, on a map marked in kilometres, and travels with step
+$$(0.6, 0.8)$$ each minute. A phone mast at $$(6, 3)$$ gives a signal up to $$5$$ km away.
+
+1. For how long does a passenger have signal, and where is the train when the signal starts and
+   stops?
+2. A second mast at $$(10, 0)$$ also reaches $$5$$ km. Does the passenger ever get its signal?
+
+:::solution
+
+1. The train is at $$tA$$ after $$t$$ minutes, with $$A = (0.6, 0.8)$$ and $$|A|^2 = 1$$. With
+   $$P = O$$ and $$C = (6, 3)$$, $$k = 0.6 \cdot (-6) + 0.8 \cdot (-3) = -6$$ and
+   $$|P - C|^2 = 45$$. As in the radar example, the passenger has signal exactly when
+   $$t^2 - 12t + (45 - 25) \le 0$$, and $$t^2 - 12t + 20 = (t - 2)(t - 10)$$. That is negative or
+   $$0$$ exactly when $$2 \le t \le 10$$ (:ref{#real-numbers/product-sign}). So the signal lasts
+   $$8$$ minutes, from $$(1.2, 1.6)$$ to $$(6, 8)$$.
+2. With $$C = (10, 0)$$, $$k = -6$$ and $$|P - C|^2 = 100$$, so the quadratic is
+   $$t^2 - 12t + 75 = 0$$, with discriminant $$144 - 300 = -156$$. It is negative, so the track
+   never reaches the edge of the second mast's range (:ref{#line-circle}). Completing the square,
+   $$t^2 - 12t + 75 = (t - 6)^2 + 39$$, which is positive for every $$t$$. So the train is always
+   outside the range, and the passenger never gets that signal.
+
+:::
+
+::::
+
+:::::

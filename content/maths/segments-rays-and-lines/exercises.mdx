@@ -1,0 +1,307 @@
+---
+title: Exercises
+description: Exercises on the whole Segments, rays and lines chapter, with worked solutions.
+---
+
+These exercises use the whole chapter, and most need ideas from more than one guide. Try each one
+before you open its solution, and name the rule or result behind each step, as the guides do.
+
+Two habits carry most of them. To find where a line meets something, write its points as $$P + tA$$,
+put that into the other condition and solve for $$t$$. To test for a right angle, take a dot product
+and see whether it is $$0$$.
+
+## Segments and lines
+
+::::exercise{#ex-lines-ch-thirds}
+
+Let $$P = (-2, 1)$$ and $$Q = (7, 7)$$.
+
+1. Find the two points that split the segment $$PQ$$ into three equal pieces.
+2. Find an equation $$ax + by = c$$ for the line $$PQ$$, and check that all four points satisfy it.
+
+:::solution
+
+1. The step from $$P$$ to $$Q$$ is $$Q - P = (9, 6)$$. By :ref{#fraction-along}, the points with
+   $$t = \frac{1}{3}$$ and $$t = \frac{2}{3}$$ are a third and two thirds of the way along:
+
+   ```math
+   P + \tfrac{1}{3}(9, 6) = (1, 3) \qquad P + \tfrac{2}{3}(9, 6) = (4, 5)
+   ```
+
+2. The direction $$(9, 6)$$ is $$3$$ times $$(3, 2)$$, so the line has direction $$(3, 2)$$ too
+   (:ref{#line-descriptions}). By :ref{#line-equation}, with $$a_1 = 3$$, $$a_2 = 2$$ and the point
+   $$P$$, its equation is
+
+   ```math
+   2x - 3y = 2 \cdot (-2) - 3 \cdot 1 = -7
+   ```
+
+   Check: $$2(-2) - 3(1)$$, $$2(1) - 3(3)$$, $$2(4) - 3(5)$$ and $$2(7) - 3(7)$$ are all $$-7$$.
+
+:::
+
+::::
+
+::::exercise{#ex-lines-ch-both-ways}
+
+1. Find an equation for the line through $$(1, -2)$$ and $$(4, 4)$$, and the points where it crosses
+   the axes.
+2. Write the line $$3x - 2y = 6$$ in the form $$P + tA$$.
+
+:::solution
+
+1. The step between the points is $$(3, 6)$$, so $$(1, 2)$$ is a direction. By :ref{#line-equation}
+   the equation is $$2x - y = 2 \cdot 1 - (-2) = 4$$, and $$(4, 4)$$ checks: $$8 - 4 = 4$$. Setting
+   $$y = 0$$ gives $$x = 2$$, and setting $$x = 0$$ gives $$y = -4$$, so the line crosses the axes
+   at $$(2, 0)$$ and $$(0, -4)$$.
+2. Setting $$y = 0$$ gives the solution $$(2, 0)$$. By :ref{#equation-line} the line has direction
+   $$(-b, a) = (2, 3)$$, so it is the set of points $$(2, 0) + t(2, 3)$$. Check with $$t = 1$$: the
+   point $$(4, 3)$$ has $$12 - 6 = 6$$.
+
+:::
+
+::::
+
+::::exercise{#ex-lines-ch-meet}
+
+Find where the line through $$(1, 1)$$ with direction $$(2, 1)$$ meets the line $$3x + y = 18$$.
+
+:::solution
+
+The points of the first line are $$(1 + 2t, 1 + t)$$. Such a point is on the second line exactly
+when
+
+```math
+3(1 + 2t) + (1 + t) = 18
+```
+
+that is, $$4 + 7t = 18$$, so $$t = 2$$. The lines meet at $$(5, 3)$$, and they meet nowhere else,
+since there was only one solution. This agrees with :ref{#line-intersection}: the second line has
+direction $$(-1, 3)$$ by :ref{#equation-line}, and $$2 \cdot 3 - 1 \cdot (-1) = 7 \ne 0$$, so the
+lines are not parallel (:ref{#parallel-determinant}).
+
+:::
+
+::::
+
+::::exercise{#ex-lines-ch-collide}
+
+At time $$t$$ hours, one boat is at $$(0, 0) + t(4, 2)$$ and another is at $$(10, -2) + t(-1, 3)$$,
+in kilometres.
+
+1. Find where their paths cross.
+2. Do the boats collide? If they do, say when and where.
+3. How far apart are they after one hour?
+
+:::solution
+
+1. The paths meet where $$t(4, 2) = (10, -2) + s(-1, 3)$$ for some numbers $$t$$ and $$s$$, that is,
+   $$4t = 10 - s$$ and $$2t = -2 + 3s$$. The first gives $$s = 10 - 4t$$, and then
+   $$2t = -2 + 30 - 12t$$, so $$t = 2$$ and $$s = 2$$. The paths cross at $$(8, 4)$$.
+2. The parameters agree: the first boat reaches $$(8, 4)$$ at $$t = 2$$, and so does the second. So
+   they collide after $$2$$ hours at $$(8, 4)$$, unless one of them changes course. Had the two
+   parameters been different, the paths would cross but the boats would pass through the crossing at
+   different times.
+3. After one hour they are at $$(4, 2)$$ and $$(9, 1)$$, which are $$\sqrt{25 + 1} = \sqrt{26}$$ km
+   apart, about $$5.1$$ km.
+
+:::
+
+::::
+
+## Circles and right angles
+
+::::exercise{#ex-lines-ch-circle}
+
+Find where the line $$y = x + 1$$ meets the circle $$x^2 + y^2 = 25$$.
+
+:::solution
+
+The line goes through $$(0, 1)$$ with direction $$(1, 1)$$, so its points are $$(t, 1 + t)$$. Such a
+point is on the circle exactly when
+
+```math
+t^2 + (1 + t)^2 = 25
+```
+
+which is $$2t^2 + 2t - 24 = 0$$, or $$t^2 + t - 12 = 0$$. This factorises as $$(t + 4)(t - 3) = 0$$,
+so $$t = 3$$ or $$t = -4$$, and the meeting points are $$(3, 4)$$ and $$(-4, -3)$$. Two solutions
+means two meeting points, as :ref{#line-circle} says.
+
+:::
+
+::::
+
+::::exercise{#ex-lines-ch-tangent}
+
+Find the equation of the tangent to the circle $$x^2 + y^2 = 25$$ at the point $$(3, 4)$$, and check
+that its distance from the centre is the radius.
+
+:::solution
+
+By :ref{#tangent-perpendicular}, the tangent at $$(3, 4)$$ is the line through $$(3, 4)$$
+perpendicular to the radius, whose direction is $$(3, 4)$$. By :ref{#normal-direction}, the lines
+perpendicular to the direction $$(3, 4)$$ have equations $$3x + 4y = c$$. Putting in $$(3, 4)$$
+gives $$c = 9 + 16 = 25$$, so the tangent is $$3x + 4y = 25$$.
+
+By :ref{#distance-to-line}, its distance from $$(0, 0)$$ is
+$$\frac{|0 + 0 - 25|}{\sqrt{9 + 16}} = 5$$, which is the radius.
+
+:::
+
+::::
+
+::::exercise{#ex-lines-ch-house}
+
+A straight road follows the line $$3x + 4y = 12$$, in units of $$100$$ m. A house stands at
+$$X = (2, 9)$$.
+
+1. How far is the house from the road?
+2. Find the point of the road closest to the house.
+
+:::solution
+
+1. By :ref{#distance-to-line}, the distance is
+
+   ```math
+   \frac{|3 \cdot 2 + 4 \cdot 9 - 12|}{\sqrt{9 + 16}} = \frac{30}{5} = 6
+   ```
+
+   that is, $$600$$ m.
+
+2. The closest point $$F$$ is where the perpendicular from $$X$$ meets the road
+   (:ref{#closest-point}). The direction $$(3, 4)$$ is perpendicular to the road
+   (:ref{#normal-direction}), and $$|(3, 4)| = 5$$. Since $$3 \cdot 2 + 4 \cdot 9 = 42$$ is more
+   than $$12$$, the house is on the side the step $$(3, 4)$$ points to, so walk $$6$$ units the
+   other way:
+
+   ```math
+   F = (2, 9) - \tfrac{6}{5}(3, 4) = \left(-\tfrac{8}{5}, \tfrac{21}{5}\right)
+   ```
+
+   Check: $$3\left(-\frac{8}{5}\right) + 4 \cdot \frac{21}{5} = \frac{-24 + 84}{5} = 12$$, so $$F$$
+   is on the road.
+
+:::
+
+::::
+
+::::exercise{#ex-lines-ch-bisector}
+
+Let $$A = (1, 2)$$ and $$B = (5, 4)$$.
+
+1. Show that a point $$X$$ satisfies $$|X - A|^2 - |X - B|^2 = 2\,X \cdot (B - A) - |B|^2 + |A|^2$$.
+2. Deduce that the points equally far from $$A$$ and $$B$$ make up the line $$2x + y = 9$$.
+3. Check that this line passes through the midpoint of $$AB$$ and is perpendicular to $$AB$$.
+
+:::solution
+
+1. By :ref{#difference-length}, $$|X - A|^2 = |X|^2 + |A|^2 - 2\,X \cdot A$$, and the same with
+   $$B$$. Subtracting, the $$|X|^2$$ terms cancel, and by :ref{#dot-rules}
+
+   ```math
+   |X - A|^2 - |X - B|^2 = 2\,X \cdot B - 2\,X \cdot A + |A|^2 - |B|^2 = 2\,X \cdot (B - A) + |A|^2 - |B|^2
+   ```
+
+2. Distances are never negative, so $$|X - A| = |X - B|$$ exactly when their squares are equal, that
+   is, when $$2\,X \cdot (B - A) = |B|^2 - |A|^2$$. Here $$B - A = (4, 2)$$, $$|B|^2 = 41$$ and
+   $$|A|^2 = 5$$, so with $$X = (x, y)$$ the condition is $$2(4x + 2y) = 36$$, which is
+   $$2x + y = 9$$.
+3. The midpoint is $$(3, 3)$$ (:ref{#adding-and-scaling-points/midpoint-formula}), and
+   $$6 + 3 = 9$$. The line $$2x + y = 9$$ is perpendicular to every line with direction $$(2, 1)$$
+   (:ref{#normal-direction}), and $$AB$$ has direction $$(4, 2) = 2(2, 1)$$. So this line is the
+   perpendicular bisector of $$AB$$, and the exercise proves
+   :ref{#distance-and-angles/perpendicular-bisector-rule} for these two points by algebra.
+
+:::
+
+::::
+
+::::exercise{#ex-lines-ch-altitudes}
+
+In a triangle, the line through a corner perpendicular to the opposite side is called an
+**altitude**.
+
+1. Let $$H$$ be a point with $$(H - A) \cdot (B - C) = 0$$ and $$(H - B) \cdot (C - A) = 0$$. Show
+   that $$(H - C) \cdot (A - B) = 0$$.
+2. Explain why this shows that the three altitudes of a triangle meet at one point.
+3. Check with $$A = (0, 0)$$, $$B = (6, 0)$$, $$C = (2, 4)$$ and $$H = (2, 2)$$.
+
+:::solution
+
+1. Multiply out each dot product with :ref{#dot-rules}:
+
+   ```math
+   (H - A) \cdot (B - C) = H \cdot B - H \cdot C - A \cdot B + A \cdot C
+   ```
+
+   ```math
+   (H - B) \cdot (C - A) = H \cdot C - H \cdot A - B \cdot C + B \cdot A
+   ```
+
+   Adding the two, the terms $$H \cdot C$$ and $$A \cdot B$$ cancel, leaving
+   $$H \cdot B - H \cdot A + A \cdot C - B \cdot C$$, which is $$(H - C) \cdot (B - A)$$ multiplied
+   out. Both given dot products are $$0$$, so $$(H - C) \cdot (B - A) = 0$$, and so
+   $$(H - C) \cdot (A - B) = 0$$ too.
+
+2. The altitudes from $$A$$ and from $$B$$ are perpendicular to the sides $$BC$$ and $$CA$$, which
+   are not parallel, so the altitudes are not parallel either (by parts 2 and 4 of
+   :ref{#perpendicular-rules-proved}) and meet at one point $$H$$ (:ref{#line-intersection}). That
+   $$H$$ satisfies both conditions of part 1, so $$(H - C) \cdot (A - B) = 0$$: the step from $$C$$
+   to $$H$$ is perpendicular to $$AB$$, which puts $$H$$ on the altitude from $$C$$ (if $$H = C$$,
+   it is on that altitude anyway). This point is called the **orthocentre**.
+
+3. All three dot products are $$0$$:
+
+   - $$(H - A) \cdot (B - C) = (2, 2) \cdot (4, -4) = 0$$
+   - $$(H - B) \cdot (C - A) = (-4, 2) \cdot (2, 4) = 0$$
+   - $$(H - C) \cdot (A - B) = (0, -2) \cdot (-6, 0) = 0$$
+
+:::
+
+::::
+
+## Moves and space
+
+::::exercise{#ex-lines-ch-zoom}
+
+Find the image of the line $$x + y = 4$$ under the zoom by $$2$$ about $$(1, 1)$$, and check that
+the image is parallel to the line.
+
+:::solution
+
+The zoom is $$Z(P) = (1, 1) + 2(P - (1, 1)) = 2P - (1, 1)$$
+(:ref{#adding-and-scaling-points/zoom-formula}). By :ref{#moves-keep-lines} it sends the line onto a
+line, so two points decide the image. The points $$(4, 0)$$ and $$(0, 4)$$ of the line go to
+$$(7, -1)$$ and $$(-1, 7)$$, and the line through these is $$x + y = 6$$.
+
+The old line has direction $$(1, -1)$$, and so does the new one, since
+$$(-1, 7) - (7, -1) = (-8, 8) = -8(1, -1)$$. So the two lines are parallel
+(:ref{#parallel-formula}). A zoom moves a line straight away from the centre without turning it.
+
+:::
+
+::::
+
+::::exercise{#ex-lines-ch-skew}
+
+In space, let $$L$$ be the line $$(0, 0, 0) + t(1, 1, 0)$$ and $$K$$ the line
+$$(0, 2, 1) + s(1, -1, 0)$$.
+
+1. Show that $$L$$ and $$K$$ are skew.
+2. Show that their directions are perpendicular, and explain why $$L$$ and $$K$$ are still not
+   perpendicular lines.
+
+:::solution
+
+1. Every point of $$L$$ has third coordinate $$0$$ and every point of $$K$$ has third coordinate
+   $$1$$, so they never meet. If $$(1, -1, 0) = c(1, 1, 0)$$, the first coordinates give $$c = 1$$
+   and the second give $$c = -1$$, which can't both hold, so they aren't parallel
+   (:ref{#space-parallel}). So they are skew (:ref{#skew-lines}).
+2. $$(1, 1, 0) \cdot (1, -1, 0) = 1 - 1 + 0 = 0$$ (:ref{#space-dot}). But perpendicular lines must
+   meet (:ref{#space-perpendicular}), and these never do. Seen from above, the two lines cross
+   square on, one $$1$$ unit above the other.
+
+:::
+
+::::
