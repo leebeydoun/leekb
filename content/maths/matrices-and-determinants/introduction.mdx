@@ -1,0 +1,127 @@
+---
+title: Introduction
+description:
+  Matrices as grids of numbers and as moves of the plane and space, determinants as signed areas and
+  volumes, and Cramer's rule for three equations.
+---
+
+Picture three shopping receipts from the same bakery, each listing how many croissants, muffins and
+cookies were bought and the total paid, with the prices smudged out. Three receipts give three
+equations in three unknown prices, and laid out neatly the numbers form a grid: a **matrix**. One
+number worked out from that grid, its **determinant**, tells you at once whether the prices can be
+recovered, and a formula built from determinants gives them. In this chapter we'll learn to work
+with matrices, see what a determinant measures, and solve three equations in three unknowns with it.
+
+One idea carries the chapter: a matrix moves the unit square to a parallelogram, or the unit cube to
+a slanted box, and the determinant is the area or volume of what you get, with a sign that says
+whether the picture was flipped. Its rules are the rules you would expect of an area, and the
+formulas are how you calculate the picture.
+
+## What this chapter builds on
+
+[Linear equations](../linear-equations/special-cases.mdx) met the 2 by 2 determinant and used it to
+decide when two equations have one solution, and [Trigonometry](../trigonometry/rotations.mdx) met
+matrices and how to multiply them. This chapter takes both further. Areas and volumes come from
+[Area and scaling](../area-and-scaling/introduction.mdx), and a matrix acting on points is a mapping
+in the sense of [Mappings and permutations](../mappings-and-permutations/mappings.mdx).
+
+One fact is taken as given: sliding the layers of a box sideways, as you might push a stack of
+cards, doesn't change its volume (:ref{#properties-shear}). Two smaller points are taken from the
+picture and said so where they come up: that a parallelogram's diagonal splits it into two
+triangles, and which way round a box is when its determinant is positive. The step from
+parallelograms and boxes to every other shape, by covering it with a fine grid, is described but not
+written out. Everything else is proved.
+
+Along the way the chapter keeps two promises from earlier chapters:
+
+- **When two equations have one solution**:
+  [Linear equations](../linear-equations/special-cases.mdx) showed that a non-zero determinant gives
+  exactly one solution. Here the determinant gets its meaning, an area (:ref{#signed-area}), and the
+  same test is proved for three equations (:ref{#cramer}, :ref{#cramer-converse}).
+- **Matrices**: [Trigonometry](../trigonometry/rotations.mdx) multiplied 2 by 2 matrices to combine
+  turns. Here matrices of any size are added, multiplied and transposed (:ref{#matrix-product}).
+
+## Guides in this chapter
+
+The chapter has seven guides:
+
+1. [Matrices](./matrices.mdx): rows, columns and entries, a matrix times a column, products, and a
+   matrix as a move of the plane
+2. [Determinants of order 2](./order-two.mdx): the determinant as a signed area, its six properties,
+   products and inverses
+3. [Determinants of order 3](./order-three.mdx): expanding along a row or column, the diagonal
+   shortcut, and triangular matrices
+4. [Properties and faster calculation](./properties.mdx): the six properties for 3 by 3, making
+   zeros, signed volume, and when a determinant is zero
+5. [Cramer's rule](./cramers-rule.mdx): three equations in three unknowns, the inverse matrix, and
+   what happens when the determinant is zero
+6. [Test yourself](./test-yourself.mdx): a multiple choice quiz on the ideas in the chapter
+7. [Exercises](./exercises.mdx): exercises on the whole chapter, with worked solutions
+
+The summary below collects every definition and rule from the chapter, for reference while you read.
+
+{/* Keep this summary in sync with the guides whenever they change. */}
+
+:::accordion[Summary of definitions and rules]
+
+**Definitions**
+
+| Term                          | Meaning                                                                          |
+| ----------------------------- | -------------------------------------------------------------------------------- |
+| :ref{#matrix-size}            | An $$m$$ by $$n$$ grid of numbers, with $$a_{ij}$$ in row $$i$$ and column $$j$$ |
+| :ref{#matrix-operations}      | Add and scale entry by entry                                                     |
+| :ref{#transpose}              | $$A^{\mathsf T}$$ has the rows of $$A$$ as its columns                           |
+| :ref{#matrix-times-column}    | Entry $$i$$ of $$AX$$ is $$a_{i1}x_1 + \cdots + a_{in}x_n$$                      |
+| :ref{#matrix-product}         | Column $$j$$ of $$AB$$ is $$A$$ times column $$j$$ of $$B$$                      |
+| :ref{#matrices-parallelogram} | The points $$sP + tQ$$ with $$0 \le s, t \le 1$$                                 |
+| :ref{#det3}                   | $$\det A = a_{11}\det M_{11} - a_{12}\det M_{12} + a_{13}\det M_{13}$$           |
+| :ref{#properties-box}         | The points $$sP + tQ + uR$$ with $$0 \le s, t, u \le 1$$                         |
+| :ref{#cramers-rule-cofactors} | $$C_{ij} = (-1)^{i + j}\det M_{ij}$$                                             |
+
+**Taken as given**
+
+| Rule                    | Statement                                                                                       |
+| ----------------------- | ----------------------------------------------------------------------------------------------- |
+| :ref{#properties-shear} | The box on $$P$$, $$Q$$ and $$R + cP$$ has the same volume as the box on $$P$$, $$Q$$ and $$R$$ |
+
+**Matrices**
+
+| Result                             | Statement                                                                     |
+| ---------------------------------- | ----------------------------------------------------------------------------- |
+| :ref{#transpose-rules}             | $$(A^{\mathsf T})^{\mathsf T} = A$$, and transposing keeps sums and multiples |
+| :ref{#matrices-column-combination} | $$AX = x_1A^1 + \cdots + x_nA^n$$                                             |
+| :ref{#columns-images}              | $$AE^j = A^j$$: the columns are where the unit columns go                     |
+| :ref{#matrix-product-rules}        | $$(AB)C = A(BC)$$, $$AI = A = IA$$, and products distribute over sums         |
+| :ref{#matrices-unit-square}        | $$X \mapsto AX$$ sends the unit square to the parallelogram on the columns    |
+
+**Determinants of order 2**
+
+| Result                 | Statement                                                                                          |
+| ---------------------- | -------------------------------------------------------------------------------------------------- |
+| :ref{#signed-area}     | The parallelogram on the columns has area $$\lvert \det A \rvert$$; the sign gives the orientation |
+| :ref{#det2-properties} | D1 to D6: adding and scaling a column, $$D(E^1, E^2) = 1$$, equal columns, shears, swaps           |
+| :ref{#det2-transpose}  | $$\det A^{\mathsf T} = \det A$$                                                                    |
+| :ref{#det2-product}    | $$\det(AB) = \det A \det B$$                                                                       |
+| :ref{#det2-inverse}    | $$A^{-1} = \frac{1}{\det A}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$$ when $$\det A \ne 0$$  |
+| :ref{#cramer-two}      | $$x = \frac{D(B, A^2)}{D(A^1, A^2)}$$ and $$y = \frac{D(A^1, B)}{D(A^1, A^2)}$$                    |
+
+**Determinants of order 3 and Cramer's rule**
+
+| Result                            | Statement                                                                              |
+| --------------------------------- | -------------------------------------------------------------------------------------- |
+| :ref{#det3-any-row}               | Expanding along any row or column gives the same number                                |
+| :ref{#sarrus}                     | Three down-diagonals minus three up-diagonals, for 3 by 3 only                         |
+| :ref{#det3-transpose}             | $$\det A^{\mathsf T} = \det A$$                                                        |
+| :ref{#det3-triangular}            | A triangular matrix has determinant $$a_{11}a_{22}a_{33}$$                             |
+| :ref{#det3-properties}            | D1 to D6 for three columns, and so for rows                                            |
+| :ref{#properties-zeros}           | Make zeros in a column with D5, then expand along it                                   |
+| :ref{#properties-scale}           | $$\det(cA) = c^3\det A$$                                                               |
+| :ref{#signed-volume}              | The box on the columns has volume $$\lvert \det A \rvert$$                             |
+| :ref{#det3-zero}                  | $$\det A = 0$$ exactly when a column is a combination of the others                    |
+| :ref{#det3-product}               | $$\det(AB) = \det A \det B$$                                                           |
+| :ref{#cramers-rule-cofactor-rows} | A row times its own cofactors gives $$\det A$$; times another row's, $$0$$             |
+| :ref{#cramer}                     | If $$\det A \ne 0$$, $$AX = B$$ has exactly one solution, $$x_j = \frac{D_j}{\det A}$$ |
+| :ref{#det3-inverse}               | $$A^{-1} = \frac{1}{\det A}C^{\mathsf T}$$                                             |
+| :ref{#cramer-converse}            | If $$\det A = 0$$, $$AX = B$$ has no solution or infinitely many                       |
+
+:::

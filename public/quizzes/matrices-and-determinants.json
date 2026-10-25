@@ -1,0 +1,510 @@
+{
+  "title": "Matrices and determinants",
+  "description": "Questions on matrices and their products, determinants as signed areas and volumes, and Cramer's rule.",
+  "questions": [
+    {
+      "id": "entry",
+      "stars": 1,
+      "topic": "Matrices",
+      "question": "In a matrix, where is the entry $$a_{23}$$?",
+      "options": [
+        "Row $$3$$, column $$2$$",
+        "Row $$2$$, column $$3$$",
+        "The $$23$$rd entry",
+        "Row $$2$$ times column $$3$$"
+      ],
+      "answer": 1,
+      "explanation": "The first number is the row (:ref{#matrix-size})."
+    },
+    {
+      "id": "transpose",
+      "stars": 1,
+      "topic": "Matrices",
+      "question": "What does transposing a matrix do?",
+      "options": [
+        "Turns its rows into columns",
+        "Changes every sign",
+        "Reverses the order of the rows",
+        "Inverts it"
+      ],
+      "answer": 0,
+      "explanation": "Row $$i$$ of $$A^{\\mathsf T}$$ is column $$i$$ of $$A$$ (:ref{#transpose})."
+    },
+    {
+      "id": "times-column",
+      "stars": 2,
+      "topic": "Matrices",
+      "question": "What is $$\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$$?",
+      "options": [
+        "$$\\begin{pmatrix} 4 \\\\ 6 \\end{pmatrix}$$",
+        "$$\\begin{pmatrix} 1 \\\\ 4 \\end{pmatrix}$$",
+        "$$\\begin{pmatrix} 10 \\end{pmatrix}$$",
+        "$$\\begin{pmatrix} 3 \\\\ 7 \\end{pmatrix}$$"
+      ],
+      "answer": 3,
+      "explanation": "Each entry is a row times the column (:ref{#matrix-times-column}); also the sum of the two columns (:ref{#matrices-column-combination})."
+    },
+    {
+      "id": "columns",
+      "stars": 2,
+      "topic": "Matrices",
+      "question": "Where does $$X \\mapsto AX$$ send the unit column $$E^1$$?",
+      "options": [
+        "To the first row of $$A$$",
+        "To $$E^1$$",
+        "To the first column of $$A$$",
+        "To $$0$$"
+      ],
+      "answer": 2,
+      "explanation": "$$AE^j = A^j$$ (:ref{#columns-images}): the columns record where the unit columns go."
+    },
+    {
+      "id": "commute",
+      "stars": 2,
+      "topic": "Matrices",
+      "question": "Is $$AB = BA$$ for all square matrices $$A$$ and $$B$$?",
+      "options": [
+        "Yes, always",
+        "No: the order usually matters",
+        "Only for 3 by 3",
+        "Yes, if they are the same size"
+      ],
+      "answer": 1,
+      "explanation": "Like moves of the plane, doing one then the other depends on the order (:ref{#matrix-product-rules})."
+    },
+    {
+      "id": "area",
+      "stars": 1,
+      "topic": "Determinants of order 2",
+      "question": "What is the area of the parallelogram on $$(3, 1)$$ and $$(1, 2)$$?",
+      "options": [
+        "$$5$$",
+        "$$7$$",
+        "$$6$$",
+        "$$1$$"
+      ],
+      "answer": 0,
+      "explanation": "$$\\lvert 3 \\cdot 2 - 1 \\cdot 1 \\rvert$$ (:ref{#signed-area})."
+    },
+    {
+      "id": "sign",
+      "stars": 2,
+      "topic": "Determinants of order 2",
+      "question": "What does a negative determinant mean for a 2 by 2 matrix?",
+      "options": [
+        "The area is negative",
+        "There's no inverse",
+        "The columns are equal",
+        "The mapping flips the plane over"
+      ],
+      "answer": 3,
+      "explanation": "The sign says whether the turn from the first column to the second is anticlockwise (:ref{#signed-area})."
+    },
+    {
+      "id": "zero",
+      "stars": 2,
+      "topic": "Determinants of order 2",
+      "question": "Is $$\\det\\begin{pmatrix} 2 & 4 \\\\ 1 & 2 \\end{pmatrix}$$ zero, and what does that mean?",
+      "options": [
+        "No, it is $$8$$",
+        "No, it is $$-4$$",
+        "Yes: the columns lie on one line through $$O$$",
+        "Yes: the matrix is the identity"
+      ],
+      "answer": 2,
+      "explanation": "$$4 - 4 = 0$$, and the second column is twice the first, so the parallelogram is flat (:ref{#signed-area})."
+    },
+    {
+      "id": "swap",
+      "stars": 1,
+      "topic": "Determinants of order 2",
+      "question": "Swapping the two columns of a matrix does what to its determinant?",
+      "options": [
+        "Leaves it alone",
+        "Changes its sign",
+        "Doubles it",
+        "Makes it $$0$$"
+      ],
+      "answer": 1,
+      "explanation": "Property D6 (:ref{#det2-properties}): a swap reverses the orientation."
+    },
+    {
+      "id": "scale",
+      "stars": 2,
+      "topic": "Determinants of order 2",
+      "question": "For a 2 by 2 matrix, what is $$\\det(3A)$$?",
+      "options": [
+        "$$9\\det A$$",
+        "$$3\\det A$$",
+        "$$27\\det A$$",
+        "$$\\det A$$"
+      ],
+      "answer": 0,
+      "explanation": "Each of the two columns is scaled by $$3$$, so by D2 twice the factor is $$3^2$$ (:ref{#det2-properties})."
+    },
+    {
+      "id": "product",
+      "stars": 2,
+      "topic": "Determinants of order 2",
+      "question": "If $$\\det A = 2$$ and $$\\det B = 5$$, what is $$\\det(AB)$$?",
+      "options": [
+        "$$7$$",
+        "$$25$$",
+        "It depends",
+        "$$10$$"
+      ],
+      "answer": 3,
+      "explanation": "Area factors multiply when one mapping follows another (:ref{#det2-product})."
+    },
+    {
+      "id": "inverse2",
+      "stars": 2,
+      "topic": "Determinants of order 2",
+      "question": "When does a 2 by 2 matrix have an inverse?",
+      "options": [
+        "Always",
+        "When its entries are whole numbers",
+        "Exactly when its determinant isn't $$0$$",
+        "When its determinant is $$1$$"
+      ],
+      "answer": 2,
+      "explanation": "Then $$A^{-1} = \\frac{1}{\\det A}\\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}$$ (:ref{#det2-inverse})."
+    },
+    {
+      "id": "triangular",
+      "stars": 1,
+      "topic": "Determinants of order 3",
+      "question": "What is the determinant of the matrix with rows $$(2, 0, 0)$$, $$(5, 3, 0)$$, $$(1, 7, 4)$$?",
+      "options": [
+        "$$9$$",
+        "$$24$$",
+        "$$0$$",
+        "$$-24$$"
+      ],
+      "answer": 1,
+      "explanation": "It is triangular, so the determinant is the product of the diagonal (:ref{#det3-triangular})."
+    },
+    {
+      "id": "any-row",
+      "stars": 2,
+      "topic": "Determinants of order 3",
+      "question": "Which row or column should you expand along to save work?",
+      "options": [
+        "Any one: they all give the same answer, so pick one with zeros",
+        "Only the first row",
+        "Only the first column",
+        "The longest one"
+      ],
+      "answer": 0,
+      "explanation": "Every row and column gives the same number with the checkerboard signs (:ref{#det3-any-row})."
+    },
+    {
+      "id": "sarrus",
+      "stars": 2,
+      "topic": "Determinants of order 3",
+      "question": "Does the diagonal shortcut work for 4 by 4 determinants?",
+      "options": [
+        "Yes, for every size",
+        "Only for 2 by 2",
+        "Yes, if you copy three columns",
+        "No, only for 3 by 3"
+      ],
+      "answer": 3,
+      "explanation": "It gives the six terms of the 3 by 3 formula and nothing else (:ref{#sarrus})."
+    },
+    {
+      "id": "equal-cols",
+      "stars": 2,
+      "topic": "Properties and faster calculation",
+      "question": "What is the determinant of the matrix with rows $$(1, 2, 3)$$, $$(4, 5, 6)$$, $$(7, 8, 9)$$?",
+      "options": [
+        "$$45$$",
+        "$$-3$$",
+        "$$0$$",
+        "$$1$$"
+      ],
+      "answer": 2,
+      "explanation": "Its middle column is the average of the other two, a combination of them (:ref{#det3-zero})."
+    },
+    {
+      "id": "volume",
+      "stars": 1,
+      "topic": "Properties and faster calculation",
+      "question": "What does $$\\lvert \\det A \\rvert$$ measure for a 3 by 3 matrix?",
+      "options": [
+        "The length of its first column",
+        "The volume of the box on its columns",
+        "The sum of its entries",
+        "The area of a face"
+      ],
+      "answer": 1,
+      "explanation": "The determinant is a signed volume (:ref{#signed-volume})."
+    },
+    {
+      "id": "scale3",
+      "stars": 2,
+      "topic": "Properties and faster calculation",
+      "question": "For a 3 by 3 matrix, what is $$\\det(-A)$$?",
+      "options": [
+        "$$-\\det A$$",
+        "$$\\det A$$",
+        "$$9\\det A$$",
+        "$$0$$"
+      ],
+      "answer": 0,
+      "explanation": "$$\\det(cA) = c^3\\det A$$ (:ref{#properties-scale}), and $$(-1)^3 = -1$$."
+    },
+    {
+      "id": "add-multiple",
+      "stars": 2,
+      "topic": "Properties and faster calculation",
+      "question": "Adding twice the first column to the third does what to the determinant?",
+      "options": [
+        "Doubles it",
+        "Changes its sign",
+        "Adds $$2$$",
+        "Nothing"
+      ],
+      "answer": 3,
+      "explanation": "Property D5 (:ref{#det3-properties}), which in pictures slides the layers of a box (:ref{#properties-shear})."
+    },
+    {
+      "id": "sum-slip",
+      "stars": 2,
+      "topic": "Properties and faster calculation",
+      "question": "Is $$\\det(A + B) = \\det A + \\det B$$?",
+      "options": [
+        "Yes, always",
+        "Yes, for 3 by 3",
+        "Not in general: with $$A = B = I$$ it is $$8 \\ne 2$$",
+        "Only if $$A = B$$"
+      ],
+      "answer": 2,
+      "explanation": "Determinants multiply over products (:ref{#det3-product}), not over sums."
+    },
+    {
+      "id": "cramer",
+      "stars": 1,
+      "topic": "Cramer's rule",
+      "question": "When does Cramer's rule give the solution of $$AX = B$$?",
+      "options": [
+        "Always",
+        "When $$\\det A \\ne 0$$",
+        "When $$B = 0$$",
+        "When $$\\det A = 0$$"
+      ],
+      "answer": 1,
+      "explanation": "Then there is exactly one solution, $$x_j = \\frac{D_j}{\\det A}$$ (:ref{#cramer})."
+    },
+    {
+      "id": "numerator",
+      "stars": 2,
+      "topic": "Cramer's rule",
+      "question": "In Cramer's rule, how is the numerator for $$x_2$$ made?",
+      "options": [
+        "Put $$B$$ in place of the second column of $$A$$",
+        "Put $$B$$ in place of the second row",
+        "Delete the second column",
+        "Multiply the second column by $$B$$"
+      ],
+      "answer": 0,
+      "explanation": "Since $$B = x_1A^1 + x_2A^2 + x_3A^3$$, properties D1, D2 and D4 leave $$x_2\\det A$$ (:ref{#cramer})."
+    },
+    {
+      "id": "singular",
+      "stars": 2,
+      "topic": "Cramer's rule",
+      "question": "If $$\\det A = 0$$, how many solutions can $$AX = B$$ have?",
+      "options": [
+        "Exactly one",
+        "Exactly two",
+        "Always none",
+        "None or infinitely many"
+      ],
+      "answer": 3,
+      "explanation": "Never exactly one (:ref{#cramer-converse})."
+    },
+    {
+      "id": "inverse3",
+      "stars": 3,
+      "topic": "Cramer's rule",
+      "question": "How is the inverse of a 3 by 3 matrix with $$\\det A \\ne 0$$ built?",
+      "options": [
+        "By inverting every entry",
+        "By transposing $$A$$",
+        "$$\\frac{1}{\\det A}$$ times the transpose of the matrix of cofactors",
+        "$$\\frac{1}{\\det A}$$ times $$A$$"
+      ],
+      "answer": 2,
+      "explanation": "A row times its own cofactors gives $$\\det A$$, times another row's gives $$0$$ (:ref{#det3-inverse})."
+    },
+    {
+      "id": "sizes",
+      "stars": 2,
+      "topic": "Matrices",
+      "question": "If $$A$$ is 2 by 3 and $$B$$ is 3 by 4, what size is $$AB$$?",
+      "options": [
+        "3 by 3",
+        "2 by 4",
+        "4 by 2",
+        "It isn't defined"
+      ],
+      "answer": 1,
+      "explanation": "Rows of $$A$$ meet columns of $$B$$; the inner sizes must match (:ref{#matrix-product})."
+    },
+    {
+      "id": "system",
+      "stars": 1,
+      "topic": "Matrices",
+      "question": "How can three equations in three unknowns be written?",
+      "options": [
+        "As one equation $$AX = B$$",
+        "As $$A + X = B$$",
+        "As $$X = AB$$",
+        "They can't be"
+      ],
+      "answer": 0,
+      "explanation": "$$A$$ holds the coefficients, $$X$$ the unknowns and $$B$$ the totals (:ref{#matrix-times-column})."
+    },
+    {
+      "id": "transpose-product",
+      "stars": 3,
+      "topic": "Matrices",
+      "question": "What is $$(AB)^{\\mathsf T}$$?",
+      "options": [
+        "$$A^{\\mathsf T}B^{\\mathsf T}$$",
+        "$$AB$$",
+        "$$BA$$",
+        "$$B^{\\mathsf T}A^{\\mathsf T}$$"
+      ],
+      "answer": 3,
+      "explanation": "Transposing reverses the order of a product; the matrices guide proves it in an exercise (:ref{#ex-matrices-transpose-product})."
+    },
+    {
+      "id": "inverse-example",
+      "stars": 2,
+      "topic": "Determinants of order 2",
+      "question": "What is the inverse of $$\\begin{pmatrix} 4 & 3 \\\\ 1 & 1 \\end{pmatrix}$$?",
+      "options": [
+        "$$\\begin{pmatrix} \\frac14 & \\frac13 \\\\ 1 & 1 \\end{pmatrix}$$",
+        "$$\\begin{pmatrix} 1 & 3 \\\\ 1 & 4 \\end{pmatrix}$$",
+        "$$\\begin{pmatrix} 1 & -3 \\\\ -1 & 4 \\end{pmatrix}$$",
+        "It has none"
+      ],
+      "answer": 2,
+      "explanation": "The determinant is $$1$$, so swap the diagonal and change the signs of the others (:ref{#det2-inverse})."
+    },
+    {
+      "id": "shear",
+      "stars": 2,
+      "topic": "Determinants of order 2",
+      "question": "What does adding a multiple of one column to the other do to the parallelogram?",
+      "options": [
+        "Doubles its area",
+        "Shears it, keeping its area",
+        "Flips it",
+        "Makes it flat"
+      ],
+      "answer": 1,
+      "explanation": "That is property D5 (:ref{#det2-properties}): the determinant doesn't change."
+    },
+    {
+      "id": "zero-row",
+      "stars": 1,
+      "topic": "Determinants of order 3",
+      "question": "What is the determinant of a 3 by 3 matrix with a row of zeros?",
+      "options": [
+        "$$0$$",
+        "$$1$$",
+        "The product of the other rows",
+        "It depends"
+      ],
+      "answer": 0,
+      "explanation": "Expand along that row: every term has a factor $$0$$ (:ref{#det3-any-row})."
+    },
+    {
+      "id": "checkerboard",
+      "stars": 2,
+      "topic": "Determinants of order 3",
+      "question": "In the checkerboard of signs for a 3 by 3 determinant, what sign goes with the middle entry $$a_{22}$$?",
+      "options": [
+        "$$-$$",
+        "It depends on the matrix",
+        "No sign",
+        "$$+$$"
+      ],
+      "answer": 3,
+      "explanation": "The sign is $$(-1)^{2 + 2} = +1$$ (:ref{#det3-any-row})."
+    },
+    {
+      "id": "transpose3",
+      "stars": 2,
+      "topic": "Properties and faster calculation",
+      "question": "Why is every column rule also a row rule?",
+      "options": [
+        "Rows and columns are the same",
+        "By Cramer's rule",
+        "Transposing doesn't change the determinant",
+        "It isn't"
+      ],
+      "answer": 2,
+      "explanation": "$$\\det A^{\\mathsf T} = \\det A$$ (:ref{#det3-transpose}), and transposing turns rows into columns."
+    },
+    {
+      "id": "plane",
+      "stars": 2,
+      "topic": "Properties and faster calculation",
+      "question": "Three columns lie in one plane through $$O$$. What is the determinant?",
+      "options": [
+        "$$1$$",
+        "$$0$$",
+        "Negative",
+        "It depends on the plane"
+      ],
+      "answer": 1,
+      "explanation": "The box on them is flat and has no volume (:ref{#det3-zero})."
+    },
+    {
+      "id": "skew",
+      "stars": 3,
+      "topic": "Properties and faster calculation",
+      "question": "A 3 by 3 matrix has $$A^{\\mathsf T} = -A$$. What is $$\\det A$$?",
+      "options": [
+        "$$0$$",
+        "$$1$$",
+        "$$-1$$",
+        "It depends"
+      ],
+      "answer": 0,
+      "explanation": "$$\\det A = \\det A^{\\mathsf T} = \\det(-A) = -\\det A$$ (:ref{#properties-scale})."
+    },
+    {
+      "id": "replaced",
+      "stars": 2,
+      "topic": "Cramer's rule",
+      "question": "Why does putting $$B$$ in place of column $$1$$ give $$x_1 \\det A$$?",
+      "options": [
+        "Because $$B$$ is a column",
+        "By the diagonal shortcut",
+        "It doesn't",
+        "$$B = x_1A^1 + x_2A^2 + x_3A^3$$, and the terms with a repeated column vanish"
+      ],
+      "answer": 3,
+      "explanation": "Split $$D(B, A^2, A^3)$$ with D1 and D2; the terms with $$A^2$$ or $$A^3$$ twice are $$0$$ by D4 (:ref{#cramer})."
+    },
+    {
+      "id": "cost",
+      "stars": 2,
+      "topic": "Cramer's rule",
+      "question": "Why do computers solve large systems by elimination instead of Cramer's rule?",
+      "options": [
+        "Cramer's rule is wrong for large systems",
+        "Elimination needs no arithmetic",
+        "Cramer's rule needs far more multiplications as the size grows",
+        "Determinants only exist for 3 by 3"
+      ],
+      "answer": 2,
+      "explanation": "Each determinant is expensive, and Cramer's rule needs one more than the number of unknowns (:ref{#cramer})."
+    }
+  ]
+}

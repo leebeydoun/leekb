@@ -1,0 +1,13 @@
+{
+  "title": "Matrices and determinants",
+  "pages": [
+    "introduction",
+    "matrices",
+    "order-two",
+    "order-three",
+    "properties",
+    "cramers-rule",
+    "test-yourself",
+    "exercises"
+  ]
+}

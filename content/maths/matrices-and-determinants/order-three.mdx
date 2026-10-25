@@ -1,0 +1,548 @@
+---
+title: Determinants of order 3
+description:
+  The volume factor of a 3 by 3 matrix, worked out by expanding along a row or a column, the
+  diagonal shortcut, transposes and triangular matrices.
+---
+
+Imagine a box of chocolates left at the bottom of a shopping bag. Something heavy has pushed its lid
+sideways and pressed it down, so the box now leans like a slanted brick. Its corners are no longer
+square, yet it still holds some amount of chocolate, and you could ask how much room is left inside
+compared with before.
+
+<ChocolateBoxes caption="A box of chocolates before and after a squash. The squashed box leans and is lower, and its volume is the original volume times one number, the determinant of the matrix that does the squashing." />
+
+A 3 by 3 matrix does this to space. It sends the unit cube to a slanted box, and every volume is
+multiplied by the same number, called the **determinant** of the matrix. In this guide we'll learn
+to calculate that number from the nine entries, and see why the answer doesn't depend on which row
+or column you start from.
+
+## From the unit square to the unit cube
+
+In the plane, a 2 by 2 matrix sends the unit square to the parallelogram on its two columns
+(:ref{#matrices-unit-square}), and its determinant is the signed area of that parallelogram
+(:ref{#signed-area}). Space works the same way with one more column. A 3 by 3 matrix $$A$$ sends
+each unit column $$E^j$$ to its column $$A^j$$ (:ref{#columns-images}). So the edges of the unit
+cube from $$O$$ go to $$A^1$$, $$A^2$$ and $$A^3$$.
+
+The corners of the unit cube are the points $$(s, t, u)$$ with each of $$s$$, $$t$$ and $$u$$ equal
+to $$0$$ or $$1$$, and its inside has every coordinate between $$0$$ and $$1$$. The matrix sends
+$$(s, t, u)$$ to $$sA^1 + tA^2 + uA^3$$ (:ref{#matrices-column-combination}). The points
+$$sA^1 + tA^2 + uA^3$$ with $$s$$, $$t$$ and $$u$$ between $$0$$ and $$1$$ make a slanted box with
+edges $$A^1$$, $$A^2$$ and $$A^3$$ from $$O$$, called the **box on the columns**.
+
+<CubeToBox caption="The unit cube, with edges E¹, E² and E³ from O, and the slanted box it is sent to by a 3 by 3 matrix, with edges the three columns A¹, A² and A³. Opposite faces of the box are parallelograms of the same shape." />
+
+The superscripts in $$A^1$$, $$A^2$$ and $$A^3$$ are labels for the columns, not powers. What we
+want is one number, worked out from the nine entries, that gives the volume of the box on the
+columns, with a sign for whether the box is flipped over. This guide finds the formula. Proving that
+it measures volume needs the rules in the next guide, where the proof is :ref{#signed-volume}.
+
+## Expanding along the first row
+
+The plan is to build the new determinant out of 2 by 2 determinants, which you already know how to
+work out (:ref{#linear-equations/determinant}). Take an entry of the first row and cross out its row
+and its column. Four entries are left, in a 2 by 2 grid, and that grid has a determinant.
+
+For example, take
+
+```math
+A = \begin{pmatrix} 2 & 1 & -2 \\ 3 & -1 & -2 \\ 1 & 0 & 2 \end{pmatrix}
+```
+
+Crossing out row $$1$$ and column $$1$$ leaves the grid with rows $$(-1, -2)$$ and $$(0, 2)$$, whose
+determinant is $$(-1) \cdot 2 - (-2) \cdot 0 = -2$$. Crossing out row $$1$$ and column $$2$$ leaves
+rows $$(3, -2)$$ and $$(1, 2)$$, with determinant $$3 \cdot 2 - (-2) \cdot 1 = 8$$. Crossing out row
+$$1$$ and column $$3$$ leaves rows $$(3, -1)$$ and $$(1, 0)$$, with determinant
+$$3 \cdot 0 - (-1) \cdot 1 = 1$$.
+
+:::definition[Determinant of order 3]{#det3}
+
+Let $$A$$ be a 3 by 3 matrix with entries $$a_{ij}$$. The **minor** $$M_{ij}$$ is the 2 by 2 matrix
+left when row $$i$$ and column $$j$$ of $$A$$ are crossed out. The **determinant** of $$A$$ is
+
+```math
+\det A = a_{11} \det M_{11} - a_{12} \det M_{12} + a_{13} \det M_{13}
+```
+
+Written out with vertical bars, this is
+
+```math
+\begin{vmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{vmatrix}
+= a_{11} \begin{vmatrix} a_{22} & a_{23} \\ a_{32} & a_{33} \end{vmatrix}
+- a_{12} \begin{vmatrix} a_{21} & a_{23} \\ a_{31} & a_{33} \end{vmatrix}
++ a_{13} \begin{vmatrix} a_{21} & a_{22} \\ a_{31} & a_{32} \end{vmatrix}
+```
+
+This is called **expanding along the first row**. When we think of the determinant as depending on
+the three columns, we write it $$D(A^1, A^2, A^3)$$.
+
+:::
+
+The signs go $$+$$, $$-$$, $$+$$ along the row. Remember that $$a_{ij}$$ is the entry in row $$i$$
+and column $$j$$, in that order, so $$a_{12}$$ is in the first row and the second column.
+
+:::example[Expanding the matrix A]
+
+For the matrix $$A$$ above, the first row is $$2$$, $$1$$, $$-2$$, and the three minors have
+determinants $$-2$$, $$8$$ and $$1$$. So
+
+```math
+\det A = 2 \cdot (-2) - 1 \cdot 8 + (-2) \cdot 1 = -4 - 8 - 2 = -14
+```
+
+The box on the columns of $$A$$ has volume $$14$$, and the minus sign says it is flipped over, as
+:ref{#signed-volume} explains in the next guide.
+
+:::
+
+A box with its edges along the axes is a good check. The matrix with $$a$$, $$b$$ and $$c$$ down the
+diagonal and $$0$$ everywhere else sends the unit cube to a box $$a$$ by $$b$$ by $$c$$. Expanding
+along the first row, the last two terms have $$a_{12} = a_{13} = 0$$, so
+
+```math
+\begin{vmatrix} a & 0 & 0 \\ 0 & b & 0 \\ 0 & 0 & c \end{vmatrix} = a \begin{vmatrix} b & 0 \\ 0 & c \end{vmatrix} = a \cdot bc = abc
+```
+
+which is the volume of that box when $$a$$, $$b$$ and $$c$$ are positive
+(:ref{#area-and-scaling/volume-rules}).
+
+## The six-term formula
+
+Each 2 by 2 determinant in :ref{#det3} has two terms, so multiplying out gives six:
+
+```math
+\det A = a_{11}a_{22}a_{33} - a_{11}a_{23}a_{32} - a_{12}a_{21}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32} - a_{13}a_{22}a_{31}
+```
+
+Look at the row and column numbers in any one term. Each term takes one entry from each row and one
+from each column: in $$a_{12}a_{23}a_{31}$$ the rows are $$1$$, $$2$$, $$3$$ and the columns are
+$$2$$, $$3$$, $$1$$. So the column numbers are always some rearrangement of $$1$$, $$2$$, $$3$$, and
+all six rearrangements appear once each.
+
+Those six rearrangements are the six permutations of $$\{1, 2, 3\}$$, and the sign of each term is
+the sign of its permutation (:ref{#mappings-and-permutations/permutation-sign}). We won't need that
+here, but it is how determinants of bigger matrices are built.
+
+## Expanding along any row or column
+
+The first row isn't special. You can cross out any entry's row and column in the same way, and
+expand along any row, or down any column. The one change is the sign in front of each term, which
+follows a checkerboard:
+
+```math
+\begin{pmatrix} + & - & + \\ - & + & - \\ + & - & + \end{pmatrix}
+```
+
+The sign in row $$i$$ and column $$j$$ is $$+$$ when $$i + j$$ is even and $$-$$ when it is odd. So
+along the second row the signs are $$-$$, $$+$$, $$-$$, not $$+$$, $$-$$, $$+$$.
+
+:::proposition[Expanding along any row or column]{#det3-any-row}
+
+Let $$A$$ be a 3 by 3 matrix, and write $$\pm$$ for the sign in row $$i$$ and column $$j$$ of the
+checkerboard. Expanding along row $$i$$,
+
+```math
+\det A = \pm\, a_{i1} \det M_{i1} \pm a_{i2} \det M_{i2} \pm a_{i3} \det M_{i3}
+```
+
+and expanding down column $$j$$,
+
+```math
+\det A = \pm\, a_{1j} \det M_{1j} \pm a_{2j} \det M_{2j} \pm a_{3j} \det M_{3j}
+```
+
+with each sign taken from the checkerboard. Every row and every column gives the same number.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Laplace_expansion"}
+
+The plan is to multiply out each expansion and check that it gives the six terms of the six-term
+formula.
+
+**Along the second row.** The signs are $$-$$, $$+$$, $$-$$. The three minors are
+
+```math
+\det M_{21} = a_{12}a_{33} - a_{13}a_{32}, \quad \det M_{22} = a_{11}a_{33} - a_{13}a_{31}, \quad \det M_{23} = a_{11}a_{32} - a_{12}a_{31}
+```
+
+So the expansion is
+
+```math
+\begin{aligned}
+&-a_{21}(a_{12}a_{33} - a_{13}a_{32}) + a_{22}(a_{11}a_{33} - a_{13}a_{31}) - a_{23}(a_{11}a_{32} - a_{12}a_{31}) \\
+&= -a_{12}a_{21}a_{33} + a_{13}a_{21}a_{32} + a_{11}a_{22}a_{33} - a_{13}a_{22}a_{31} - a_{11}a_{23}a_{32} + a_{12}a_{23}a_{31}
+\end{aligned}
+```
+
+after putting each product's factors in row order. These are the six terms of the six-term formula,
+each with the same sign, so the sum is $$\det A$$.
+
+**Down the first column.** The signs are $$+$$, $$-$$, $$+$$, and the minors are
+
+```math
+\det M_{11} = a_{22}a_{33} - a_{23}a_{32}, \quad \det M_{21} = a_{12}a_{33} - a_{13}a_{32}, \quad \det M_{31} = a_{12}a_{23} - a_{13}a_{22}
+```
+
+So the expansion is
+
+```math
+\begin{aligned}
+&a_{11}(a_{22}a_{33} - a_{23}a_{32}) - a_{21}(a_{12}a_{33} - a_{13}a_{32}) + a_{31}(a_{12}a_{23} - a_{13}a_{22}) \\
+&= a_{11}a_{22}a_{33} - a_{11}a_{23}a_{32} - a_{12}a_{21}a_{33} + a_{13}a_{21}a_{32} + a_{12}a_{23}a_{31} - a_{13}a_{22}a_{31}
+\end{aligned}
+```
+
+which again is the six-term formula, term for term.
+
+**The rest.** The third row and the second and third columns are the same check: multiply out the
+three minors, attach the checkerboard signs, and each of the six terms appears once with its sign
+from the six-term formula. The first row is :ref{#det3} itself.
+
+:::
+
+The checkerboard is what makes this work. A wrong sign pattern gives a different number: along the
+second row, using $$+$$, $$-$$, $$+$$ flips every sign and gives $$-\det A$$ instead of $$\det A$$.
+
+:::example[Choosing a row with a zero]
+
+The matrix $$A$$ from the first section has a $$0$$ in row $$3$$, column $$2$$. Expanding along the
+third row, with signs $$+$$, $$-$$, $$+$$, the middle term has the factor $$0$$ and drops out:
+
+```math
+\det A = 1 \cdot \begin{vmatrix} 1 & -2 \\ -1 & -2 \end{vmatrix} - 0 + 2 \cdot \begin{vmatrix} 2 & 1 \\ 3 & -1 \end{vmatrix} = 1 \cdot (-4) + 2 \cdot (-5) = -14
+```
+
+The same entry sits in the second column, whose signs are $$-$$, $$+$$, $$-$$. Expanding down it,
+
+```math
+\det A = -1 \cdot \begin{vmatrix} 3 & -2 \\ 1 & 2 \end{vmatrix} + (-1) \cdot \begin{vmatrix} 2 & -2 \\ 1 & 2 \end{vmatrix} - 0 = -8 - 6 = -14
+```
+
+Both match the expansion along the first row. Every zero in the row or column you choose is one 2 by
+2 determinant you don't need to work out.
+
+:::
+
+The interactive below expands the same matrix along whichever row or column you pick. Step through
+the three terms to see each entry, its sign and its minor.
+
+<Det3Expander />
+
+A row or column with two zeros is better still. In
+
+```math
+\begin{vmatrix} 3 & 5 & 2 \\ 0 & 4 & -1 \\ 0 & 2 & 3 \end{vmatrix}
+```
+
+the first column has only one non-zero entry, so expanding down it leaves one term:
+$$3 \cdot (4 \cdot 3 - (-1) \cdot 2) = 3 \cdot 14 = 42$$.
+
+## The diagonal shortcut
+
+There is a pattern that gives the six terms without minors. Copy the first two columns again to the
+right of the matrix. Then the three diagonals running down to the right each give a product with a
+$$+$$ sign, and the three diagonals running up to the right each give a product with a $$-$$ sign.
+
+<SarrusDiagonals caption="The matrix A with its first two columns copied on the right. The three diagonals running down to the right (blue) give 2·(−1)·2, 1·(−2)·1 and (−2)·3·0, and the three running up to the right (orange) give (−2)·(−1)·1, 2·(−2)·0 and 1·3·2." />
+
+For the matrix $$A$$, the down-diagonals give $$-4$$, $$-2$$ and $$0$$, which add to $$-6$$. The
+up-diagonals give $$2$$, $$0$$ and $$6$$, which add to $$8$$. So $$\det A = -6 - 8 = -14$$, as
+before.
+
+:::remark[The diagonal shortcut]{#sarrus}
+
+For a 3 by 3 matrix $$A$$, $$\det A$$ is the sum of the three down-diagonal products,
+
+```math
+a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32}
+```
+
+minus the sum of the three up-diagonal products,
+
+```math
+a_{13}a_{22}a_{31} + a_{11}a_{23}a_{32} + a_{12}a_{21}a_{33}
+```
+
+This is called the **rule of Sarrus**. It works for 3 by 3 matrices and no others.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Rule_of_Sarrus"}
+
+In the six-term formula, the terms with a $$+$$ sign are $$a_{11}a_{22}a_{33}$$,
+$$a_{12}a_{23}a_{31}$$ and $$a_{13}a_{21}a_{32}$$: the three down-diagonals. The terms with a $$-$$
+sign are $$a_{11}a_{23}a_{32}$$, $$a_{12}a_{21}a_{33}$$ and $$a_{13}a_{22}a_{31}$$: the three
+up-diagonals. So the diagonal shortcut adds up exactly the six terms of the six-term formula, with
+the same signs.
+
+:::
+
+The shortcut belongs to 3 by 3 matrices alone. Bigger square matrices also have determinants, built
+by expanding along a row in the same way, but a 4 by 4 determinant has $$24$$ terms. Copying columns
+and reading diagonals gives only $$8$$ products, so the pattern can't give the right answer there.
+
+## Turning rows into columns
+
+The transpose $$A^{\mathsf T}$$ of a matrix has the rows of $$A$$ as its columns (:ref{#transpose}).
+In the plane, a matrix and its transpose have the same determinant (:ref{#det2-transpose}), and the
+same holds in space. This is useful: every fact about the columns of a determinant will turn into
+the same fact about its rows.
+
+:::theorem[The transpose has the same determinant]{#det3-transpose}
+
+For every 3 by 3 matrix $$A$$,
+
+```math
+\det A^{\mathsf T} = \det A
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Determinant_of_Transpose"}
+
+Write $$B = A^{\mathsf T}$$, so $$b_{ij} = a_{ji}$$. Its first row is $$a_{11}$$, $$a_{21}$$,
+$$a_{31}$$, the first column of $$A$$.
+
+Cross out row $$1$$ and column $$j$$ of $$B$$. What is left is the transpose of the grid left by
+crossing out row $$j$$ and column $$1$$ of $$A$$, since transposing swaps rows and columns. A 2 by 2
+grid and its transpose have the same determinant (:ref{#det2-transpose}), so the minors of $$B$$
+along its first row have the same determinants as the minors $$M_{11}$$, $$M_{21}$$ and $$M_{31}$$
+of $$A$$.
+
+So expanding $$B$$ along its first row gives
+
+```math
+\det B = a_{11} \det M_{11} - a_{21} \det M_{21} + a_{31} \det M_{31}
+```
+
+This is the expansion of $$A$$ down its first column, which is $$\det A$$ by :ref{#det3-any-row}.
+
+:::
+
+For instance, the transpose of the matrix $$A$$ from the first section has first row $$2$$, $$3$$,
+$$1$$. Expanding it gives $$2 \cdot (-2) - 3 \cdot 2 + 1 \cdot (-4) = -14$$, the same as $$\det A$$.
+
+## Triangular matrices
+
+Some matrices have zeros all on one side of the diagonal, the entries $$a_{11}$$, $$a_{22}$$ and
+$$a_{33}$$ from the top left to the bottom right. Such a matrix is called **triangular**. Expanding
+down the first column, only the top entry survives, and the same happens again inside its minor. So
+the determinant is the product of the diagonal.
+
+:::proposition[Triangular matrices]{#det3-triangular}
+
+If every entry below the diagonal of a 3 by 3 matrix is $$0$$, or every entry above it is $$0$$,
+then
+
+```math
+\det A = a_{11}a_{22}a_{33}
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Determinant_of_Triangular_Matrix"}
+
+**Zeros below.** Here $$a_{21} = a_{31} = a_{32} = 0$$. Expand down the first column
+(:ref{#det3-any-row}). The second and third terms have the factors $$a_{21} = 0$$ and
+$$a_{31} = 0$$, so
+
+```math
+\det A = a_{11} \begin{vmatrix} a_{22} & a_{23} \\ 0 & a_{33} \end{vmatrix} = a_{11}(a_{22}a_{33} - a_{23} \cdot 0) = a_{11}a_{22}a_{33}
+```
+
+**Zeros above.** Then $$A^{\mathsf T}$$ has its zeros below the diagonal and the same diagonal, so
+$$\det A^{\mathsf T} = a_{11}a_{22}a_{33}$$ by the first part. By :ref{#det3-transpose},
+$$\det A = \det A^{\mathsf T}$$.
+
+:::
+
+For example,
+
+```math
+\begin{vmatrix} 2 & 5 & -3 \\ 0 & 3 & 7 \\ 0 & 0 & -1 \end{vmatrix} = 2 \cdot 3 \cdot (-1) = -6
+```
+
+whatever the entries $$5$$, $$-3$$ and $$7$$ above the diagonal are. The identity matrix $$I$$ is
+triangular with $$1$$ all down its diagonal, so $$\det I = 1$$: the unit cube is sent to itself, and
+its volume is multiplied by $$1$$.
+
+## Exercises
+
+:::::accordion[Exercises on determinants of order 3, with solutions]
+
+::::exercise{#ex-order-three-first-row}
+
+Find the determinant below by expanding along the first row. Then check your answer by expanding
+down the first column, which has a zero.
+
+```math
+\begin{vmatrix} 3 & 1 & 2 \\ 0 & 2 & -1 \\ 1 & 4 & 1 \end{vmatrix}
+```
+
+:::solution
+
+Along the first row, with signs $$+$$, $$-$$, $$+$$ (:ref{#det3}):
+
+```math
+3 \begin{vmatrix} 2 & -1 \\ 4 & 1 \end{vmatrix} - 1 \begin{vmatrix} 0 & -1 \\ 1 & 1 \end{vmatrix} + 2 \begin{vmatrix} 0 & 2 \\ 1 & 4 \end{vmatrix} = 3 \cdot 6 - 1 \cdot 1 + 2 \cdot (-2) = 13
+```
+
+Down the first column, the signs are also $$+$$, $$-$$, $$+$$, and the middle entry is $$0$$
+(:ref{#det3-any-row}):
+
+```math
+3 \begin{vmatrix} 2 & -1 \\ 4 & 1 \end{vmatrix} - 0 + 1 \begin{vmatrix} 1 & 2 \\ 2 & -1 \end{vmatrix} = 3 \cdot 6 + 1 \cdot (-5) = 13
+```
+
+Both give $$13$$.
+
+:::
+
+::::
+
+::::exercise{#ex-order-three-zeros}
+
+Choose the column that saves the most work, and find
+
+```math
+\begin{vmatrix} 4 & 0 & 1 \\ 2 & 0 & -3 \\ 5 & 2 & 6 \end{vmatrix}
+```
+
+:::solution
+
+The second column has two zeros, so expanding down it leaves one term. Its non-zero entry $$2$$ is
+in row $$3$$ and column $$2$$, and $$3 + 2 = 5$$ is odd, so its sign is $$-$$ (:ref{#det3-any-row}).
+Crossing out row $$3$$ and column $$2$$ leaves rows $$(4, 1)$$ and $$(2, -3)$$, so
+
+```math
+\det = -2 \begin{vmatrix} 4 & 1 \\ 2 & -3 \end{vmatrix} = -2 \cdot (-12 - 2) = -2 \cdot (-14) = 28
+```
+
+:::
+
+::::
+
+::::exercise{#ex-order-three-sarrus}
+
+Use the diagonal shortcut (:ref{#sarrus}) to find
+
+```math
+\begin{vmatrix} 1 & -2 & 3 \\ 2 & 1 & 0 \\ -1 & 2 & 4 \end{vmatrix}
+```
+
+Then check the answer by expanding along the second row.
+
+:::solution
+
+The down-diagonals are $$1 \cdot 1 \cdot 4 = 4$$, $$(-2) \cdot 0 \cdot (-1) = 0$$ and
+$$3 \cdot 2 \cdot 2 = 12$$, which add to $$16$$. The up-diagonals are $$3 \cdot 1 \cdot (-1) = -3$$,
+$$1 \cdot 0 \cdot 2 = 0$$ and $$(-2) \cdot 2 \cdot 4 = -16$$, which add to $$-19$$. So the
+determinant is $$16 - (-19) = 35$$.
+
+Along the second row the signs are $$-$$, $$+$$, $$-$$, and the last entry is $$0$$:
+
+```math
+-2 \begin{vmatrix} -2 & 3 \\ 2 & 4 \end{vmatrix} + 1 \begin{vmatrix} 1 & 3 \\ -1 & 4 \end{vmatrix} - 0 = -2 \cdot (-14) + 1 \cdot 7 = 35
+```
+
+:::
+
+::::
+
+::::exercise{#ex-order-three-unknown}
+
+Find every number $$x$$ for which
+
+```math
+\begin{vmatrix} x & 2 & 1 \\ 1 & x & 0 \\ 0 & 1 & 1 \end{vmatrix} = 0
+```
+
+:::solution
+
+Expanding along the first row (:ref{#det3}),
+
+```math
+x \begin{vmatrix} x & 0 \\ 1 & 1 \end{vmatrix} - 2 \begin{vmatrix} 1 & 0 \\ 0 & 1 \end{vmatrix} + 1 \begin{vmatrix} 1 & x \\ 0 & 1 \end{vmatrix} = x \cdot x - 2 \cdot 1 + 1 \cdot 1 = x^2 - 1
+```
+
+So the determinant is $$0$$ exactly when $$x^2 = 1$$, that is, when $$x = 1$$ or $$x = -1$$. As a
+check with $$x = 1$$: the rows are $$(1, 2, 1)$$, $$(1, 1, 0)$$ and $$(0, 1, 1)$$, and the six-term
+formula gives $$1 + 0 + 1 - 0 - 0 - 2 = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-order-three-wrong-signs}
+
+A student expands the matrix $$A$$ from
+[Expanding along the first row](#expanding-along-the-first-row) along its second row, but uses the
+signs $$+$$, $$-$$, $$+$$. Find the answer they get, and explain why it is exactly the negative of
+$$\det A$$.
+
+:::solution
+
+The second row is $$3$$, $$-1$$, $$-2$$. The minors are
+$$\det M_{21} = 1 \cdot 2 - (-2) \cdot 0 = 2$$, $$\det M_{22} = 2 \cdot 2 - (-2) \cdot 1 = 6$$ and
+$$\det M_{23} = 2 \cdot 0 - 1 \cdot 1 = -1$$. With the wrong signs,
+
+```math
+3 \cdot 2 - (-1) \cdot 6 + (-2) \cdot (-1) = 6 + 6 + 2 = 14
+```
+
+The checkerboard signs for the second row are $$-$$, $$+$$, $$-$$ (:ref{#det3-any-row}), which give
+$$-6 - 6 - 2 = -14 = \det A$$. The student's signs are the opposite of the right ones in every
+place, so each of the three terms has the wrong sign, and so does their total.
+
+:::
+
+::::
+
+::::exercise{#ex-order-three-zero-row}
+
+Show that a 3 by 3 matrix with a row of zeros has determinant $$0$$, and that so does a 3 by 3
+matrix with a column of zeros.
+
+:::solution
+
+Expand along the row of zeros (:ref{#det3-any-row}). Each of the three terms is an entry of that row
+times a sign times a 2 by 2 determinant, and each entry is $$0$$, so every term is $$0$$ and so is
+the determinant.
+
+For a column of zeros, expand down that column instead. The same reasoning gives $$0$$. In the
+picture, a column of zeros means one edge of the box on the columns is the point $$O$$ itself, so
+the box is flat and holds no volume.
+
+:::
+
+::::
+
+::::exercise{#ex-order-three-lower}
+
+Prove the second half of :ref{#det3-triangular} directly, without the transpose: if
+$$a_{12} = a_{13} = a_{23} = 0$$, expand along the first row. Then find
+
+```math
+\begin{vmatrix} 2 & 0 & 0 \\ 5 & -1 & 0 \\ 3 & 4 & 3 \end{vmatrix}
+```
+
+:::solution
+
+With $$a_{12} = a_{13} = 0$$, the expansion along the first row (:ref{#det3}) has only its first
+term:
+
+```math
+\det A = a_{11} \begin{vmatrix} a_{22} & 0 \\ a_{32} & a_{33} \end{vmatrix} = a_{11}(a_{22}a_{33} - 0 \cdot a_{32}) = a_{11}a_{22}a_{33}
+```
+
+using $$a_{23} = 0$$. For the matrix given, every entry above the diagonal is $$0$$, so the
+determinant is $$2 \cdot (-1) \cdot 3 = -6$$. The entries $$5$$, $$3$$ and $$4$$ below the diagonal
+make no difference.
+
+:::
+
+::::
+
+:::::

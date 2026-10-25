@@ -268,6 +268,10 @@ import { ConeStacks } from "./sum-illustrations/areas-and-volumes";
 import { HalfBallStacks } from "./sum-illustrations/areas-and-volumes";
 import { InsideTheCylinder } from "./sum-illustrations/areas-and-volumes";
 import { RectangleSqueeze } from "./interactive/rectangle-squeeze";
+import { BakeryReceipts } from "./determinant-illustrations/cramers-rule";
+import { ReplacedColumn } from "./determinant-illustrations/cramers-rule";
+import { FlatColumns } from "./determinant-illustrations/cramers-rule";
+import { CramerSolver } from "./interactive/cramer-solver";
 import { QuarterTurns } from "./complex-illustrations/polar-form";
 import { TurnThenZoom } from "./complex-illustrations/polar-form";
 import { PowersOfOnePlusI } from "./complex-illustrations/powers-and-identities";
@@ -296,6 +300,14 @@ import { RootPolygons } from "./complex-illustrations/roots";
 import { CubeRootsEightI } from "./complex-illustrations/roots";
 import { ParabolaAndRoots } from "./complex-illustrations/every-quadratic";
 import { RootsOfUnity } from "./interactive/roots-of-unity";
+import { ChocolateBoxes } from "./determinant-illustrations/order-three";
+import { CubeToBox } from "./determinant-illustrations/order-three";
+import { SarrusDiagonals } from "./determinant-illustrations/order-three";
+import { ShelfPush } from "./determinant-illustrations/properties";
+import { ShearedBox } from "./determinant-illustrations/properties";
+import { Handedness } from "./determinant-illustrations/properties";
+import { ColumnsInAPlane } from "./determinant-illustrations/properties";
+import { Det3Expander } from "./interactive/det3-expander";
 import { SquaresNeverNegative } from "./complex-illustrations/meeting-i";
 import { MultiplyPreview } from "./complex-illustrations/meeting-i";
 import { TimesITurns } from "./complex-illustrations/meeting-i";
@@ -307,6 +319,15 @@ import { DifferenceStep } from "./complex-illustrations/complex-plane";
 import { ConjugateFlip } from "./complex-illustrations/complex-plane";
 import { AbsoluteCircle } from "./complex-illustrations/complex-plane";
 import { ComplexPlane } from "./interactive/complex-plane";
+import { MatrixGrid } from "./interactive/matrix-grid";
+import { ShoppingReceipts } from "./determinant-illustrations/matrices";
+import { EntryAddress } from "./determinant-illustrations/matrices";
+import { ColumnSteps } from "./determinant-illustrations/matrices";
+import { PhotoPrints } from "./determinant-illustrations/order-two";
+import { BoxAndSubtract } from "./determinant-illustrations/order-two";
+import { TurnedParallelogram } from "./determinant-illustrations/order-two";
+import { TwoOrientations } from "./determinant-illustrations/order-two";
+import { ShearKeepsArea } from "./determinant-illustrations/order-two";
 import {
   Conjecture,
   Corollary,
@@ -442,6 +463,15 @@ export const mdxComponents = {
   HalfTurnPair,
   MoveExplorer,
   SpriteFrames,
+  ShearKeepsArea,
+  TwoOrientations,
+  TurnedParallelogram,
+  BoxAndSubtract,
+  PhotoPrints,
+  ColumnSteps,
+  EntryAddress,
+  ShoppingReceipts,
+  MatrixGrid,
   ComplexPlane,
   AbsoluteCircle,
   ConjugateFlip,
@@ -453,6 +483,14 @@ export const mdxComponents = {
   TimesITurns,
   MultiplyPreview,
   SquaresNeverNegative,
+  Det3Expander,
+  ColumnsInAPlane,
+  Handedness,
+  ShearedBox,
+  ShelfPush,
+  SarrusDiagonals,
+  CubeToBox,
+  ChocolateBoxes,
   RootsOfUnity,
   ParabolaAndRoots,
   CubeRootsEightI,
@@ -481,6 +519,10 @@ export const mdxComponents = {
   PowersOfOnePlusI,
   TurnThenZoom,
   QuarterTurns,
+  CramerSolver,
+  FlatColumns,
+  ReplacedColumn,
+  BakeryReceipts,
   RectangleSqueeze,
   InsideTheCylinder,
   HalfBallStacks,

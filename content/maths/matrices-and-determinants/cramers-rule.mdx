@@ -1,0 +1,847 @@
+---
+title: Cramer's rule
+description:
+  Solving three equations in three unknowns with determinants, the inverse matrix built from
+  cofactors, and what a zero determinant means for a system.
+---
+
+Imagine finding three receipts from the same bakery in your coat pocket. Each one lists how many
+croissants, muffins and cookies were bought and the total paid, but the price beside each item has
+been smudged away. The three totals are still enough to find the three prices, because each receipt
+is an equation in three unknowns. Better still, each price turns out to be one determinant divided
+by another, where the two determinants differ in a single column.
+
+<BakeryReceipts caption="Three receipts from one bakery. Each shows how many croissants, muffins and cookies were bought and the total paid, but not the prices." />
+
+That recipe for the answer is called **Cramer's rule**. It works exactly when the determinant of the
+system is not zero. In this guide we'll see why the recipe gives the prices, prove that it always
+gives the one solution, and see what a system does when its determinant is zero.
+
+## The receipts as one equation
+
+Call the price of a croissant $$x$$ pounds, a muffin $$y$$ and a cookie $$z$$. The first receipt
+shows 2 croissants, 1 muffin and 1 cookie for £8, so $$2x + y + z = 8$$. Reading the other two the
+same way gives three equations in three unknowns, with one row for each receipt:
+
+```math
+\begin{aligned}
+2x + y + z &= 8 \\
+3x + 2y + 4z &= 16 \\
+4x + 3z &= 11
+\end{aligned}
+```
+
+The third receipt has no muffins, so $$y$$ is missing from the third equation: its coefficient is
+$$0$$. Putting the coefficients in a grid, one row per receipt, the system is the single equation
+$$AX = B$$ of :ref{#matrix-times-column}:
+
+```math
+A = \begin{pmatrix} 2 & 1 & 1 \\ 3 & 2 & 4 \\ 4 & 0 & 3 \end{pmatrix},
+\qquad
+X = \begin{pmatrix} x \\ y \\ z \end{pmatrix},
+\qquad
+B = \begin{pmatrix} 8 \\ 16 \\ 11 \end{pmatrix}
+```
+
+Each column of $$A$$ belongs to one item: $$A^1$$ counts the croissants on the three receipts,
+$$A^2$$ the muffins and $$A^3$$ the cookies. By :ref{#matrices-column-combination}, $$AX$$ is also
+$$xA^1 + yA^2 + zA^3$$. So the column of totals is $$x$$ lots of the croissant column, plus $$y$$
+lots of the muffin column, plus $$z$$ lots of the cookie column:
+
+```math
+x\begin{pmatrix} 2 \\ 3 \\ 4 \end{pmatrix}
++ y\begin{pmatrix} 1 \\ 2 \\ 0 \end{pmatrix}
++ z\begin{pmatrix} 1 \\ 4 \\ 3 \end{pmatrix}
+= \begin{pmatrix} 8 \\ 16 \\ 11 \end{pmatrix}
+```
+
+Elimination would find the prices, as in :ref{#linear-equations/three-method}. Cramer's rule finds
+each price on its own instead, from determinants. The first one we need is $$\det A$$, and the third
+row of $$A$$ has a zero in it, so expanding along that row saves work (:ref{#det3-any-row}). The
+signs along the third row are $$+$$, $$-$$, $$+$$:
+
+```math
+\det A
+= 4\begin{vmatrix} 1 & 1 \\ 2 & 4 \end{vmatrix}
+- 0\begin{vmatrix} 2 & 1 \\ 3 & 4 \end{vmatrix}
++ 3\begin{vmatrix} 2 & 1 \\ 3 & 2 \end{vmatrix}
+= 4 \cdot 2 - 0 + 3 \cdot 1
+= 11
+```
+
+## Putting the totals in place of a column
+
+The idea behind Cramer's rule is clearest in the plane. There, $$D(A^1, A^2)$$ is the signed area of
+the parallelogram on the two columns (:ref{#signed-area}).
+
+Suppose $$B = xA^1 + yA^2$$, and put $$B$$ in place of the first column. The part $$yA^2$$ pushes
+the parallelogram along its own side $$A^2$$, which is a shear and keeps the area (rule D5 of
+:ref{#det2-properties}). The part $$xA^1$$ stretches the other side $$x$$ times, which multiplies
+the area by $$x$$. So $$D(B, A^2) = x\,D(A^1, A^2)$$, and dividing gives $$x$$.
+
+<ReplacedColumn caption="The blue parallelogram on A¹ = (2, 1) and A² = (0, 2) has area 4. Then B = 2A¹ + A² = (4, 4) replaces A¹. The dashed parallelogram on 2A¹ and A² has twice the area, 8, and sliding it along A² gives the orange parallelogram on B and A², with the same area 8. So D(B, A²) is 2 times D(A¹, A²)." />
+
+This is :ref{#cramer-two}, seen as a picture. In space the same thing happens to the slanted box on
+three columns (:ref{#signed-volume}). Writing $$B = xA^1 + yA^2 + zA^3$$ and putting $$B$$ in place
+of $$A^1$$, the parts $$yA^2$$ and $$zA^3$$ slide the box sideways, parallel to its face on $$A^2$$
+and $$A^3$$, which keeps its volume (rule D5 of :ref{#det3-properties}). What is left is $$xA^1$$,
+which multiplies the volume by $$x$$. So
+
+```math
+D(B, A^2, A^3) = x \det A
+```
+
+Try it on the receipts. Replacing the croissant column of $$A$$ by the totals, and expanding along
+the third row again,
+
+```math
+D(B, A^2, A^3)
+= \begin{vmatrix} 8 & 1 & 1 \\ 16 & 2 & 4 \\ 11 & 0 & 3 \end{vmatrix}
+= 11 \cdot 2 - 0 + 3 \cdot (8 \cdot 2 - 1 \cdot 16)
+= 22
+```
+
+That is $$2 \cdot 11$$, twice $$\det A$$, so a croissant costs £2. Replacing the muffin column, and
+then the cookie column, gives
+
+```math
+D(A^1, B, A^3)
+= \begin{vmatrix} 2 & 8 & 1 \\ 3 & 16 & 4 \\ 4 & 11 & 3 \end{vmatrix}
+= 33,
+\qquad
+D(A^1, A^2, B)
+= \begin{vmatrix} 2 & 1 & 8 \\ 3 & 2 & 16 \\ 4 & 0 & 11 \end{vmatrix}
+= 11
+```
+
+So $$x = \frac{22}{11} = 2$$, $$y = \frac{33}{11} = 3$$ and $$z = \frac{11}{11} = 1$$: a croissant
+is £2, a muffin £3 and a cookie £1. As a check, the receipts come to $$4 + 3 + 1 = 8$$,
+$$6 + 6 + 4 = 16$$ and $$8 + 0 + 3 = 11$$.
+
+## Cofactors
+
+Each determinant above is expanded along a row or a column, and the same small determinants keep
+coming back. Expanding $$D(B, A^2, A^3)$$ down its first column, the one holding $$B$$, each entry
+of $$B$$ is multiplied by a signed 2 by 2 determinant made from the other two columns, and those
+columns are the same as in $$A$$. So the multipliers are the same as when $$\det A$$ is expanded
+down its first column. These signed 2 by 2 determinants get a name.
+
+:::definition[Cofactors]{#cramers-rule-cofactors}
+
+Let $$A$$ be a 3 by 3 matrix, and let $$M_{ij}$$ be its minor from :ref{#det3}, the 2 by 2 matrix
+left when row $$i$$ and column $$j$$ are crossed out. The **cofactor** $$C_{ij}$$ is $$\det M_{ij}$$
+with the sign $$(-1)^{i + j}$$ in front:
+
+```math
+C_{ij} = (-1)^{i + j} \det M_{ij}
+```
+
+The **matrix of cofactors** $$C$$ has $$C_{ij}$$ in row $$i$$ and column $$j$$.
+
+:::
+
+The sign $$(-1)^{i + j}$$ is $$+$$ when $$i + j$$ is even and $$-$$ when it is odd, which is the
+checkerboard of signs from :ref{#det3-any-row}:
+
+```math
+\begin{pmatrix} + & - & + \\ - & + & - \\ + & - & + \end{pmatrix}
+```
+
+So :ref{#det3-any-row} says that $$\det A$$ is any row times its own cofactors, added up, and also
+any column times its own cofactors. For row $$i$$ and for column $$j$$,
+
+```math
+\det A = a_{i1}C_{i1} + a_{i2}C_{i2} + a_{i3}C_{i3},
+\qquad
+\det A = a_{1j}C_{1j} + a_{2j}C_{2j} + a_{3j}C_{3j}
+```
+
+:::example[The cofactors of the receipts matrix]
+
+For the first row of $$A$$, delete row 1 and each column in turn:
+
+```math
+C_{11} = +\begin{vmatrix} 2 & 4 \\ 0 & 3 \end{vmatrix} = 6,
+\qquad
+C_{12} = -\begin{vmatrix} 3 & 4 \\ 4 & 3 \end{vmatrix} = 7,
+\qquad
+C_{13} = +\begin{vmatrix} 3 & 2 \\ 4 & 0 \end{vmatrix} = -8
+```
+
+The other two rows go the same way, and the whole matrix of cofactors is
+
+```math
+C = \begin{pmatrix} 6 & 7 & -8 \\ -3 & 2 & 4 \\ 2 & -5 & 1 \end{pmatrix}
+```
+
+As a check, the first row of $$A$$ times its cofactors gives
+$$2 \cdot 6 + 1 \cdot 7 + 1 \cdot (-8) = 11$$, which is $$\det A$$.
+
+:::
+
+The numerators of Cramer's rule are now short to write. Expanding $$D(B, A^2, A^3)$$ down its first
+column uses the cofactors $$C_{11}$$, $$C_{21}$$ and $$C_{31}$$ of $$A$$, because each of them
+deletes the first column and never sees $$B$$. For the receipts this gives
+$$8 \cdot 6 + 16 \cdot (-3) + 11 \cdot 2 = 22$$, as before. In the same way, with $$b_1$$, $$b_2$$
+and $$b_3$$ the entries of $$B$$, the determinant of $$A$$ with $$B$$ in place of column $$j$$ is
+
+```math
+b_1C_{1j} + b_2C_{2j} + b_3C_{3j}
+```
+
+One more fact about cofactors drives the rest of this guide. Multiply the first row of $$A$$ by the
+cofactors of the second row instead of its own: $$2 \cdot (-3) + 1 \cdot 2 + 1 \cdot 4 = 0$$. The
+third row against the cofactors of the first row gives $$4 \cdot 6 + 0 \cdot 7 + 3 \cdot (-8) = 0$$
+too. A row times the cofactors of a different row always gives $$0$$, because the sum is the
+determinant of a matrix with two equal rows.
+
+:::lemma[Rows against cofactors]{#cramers-rule-cofactor-rows}
+
+Let $$A$$ be a 3 by 3 matrix with cofactors $$C_{ij}$$. For any rows $$i$$ and $$k$$,
+
+```math
+a_{k1}C_{i1} + a_{k2}C_{i2} + a_{k3}C_{i3} = \begin{cases} \det A & \text{if } k = i \\ 0 & \text{if } k \neq i \end{cases}
+```
+
+In the same way, for any columns $$j$$ and $$k$$,
+
+```math
+a_{1k}C_{1j} + a_{2k}C_{2j} + a_{3k}C_{3j} = \begin{cases} \det A & \text{if } k = j \\ 0 & \text{if } k \neq j \end{cases}
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Matrix_Product_with_Adjugate_Matrix"}
+
+**A row against its own cofactors.** When $$k = i$$, the sum is the expansion of $$\det A$$ along
+row $$i$$, which is $$\det A$$ by :ref{#det3-any-row}.
+
+**A row against another row's cofactors.** Now let $$k \neq i$$. Make a new matrix $$A'$$ from $$A$$
+by replacing row $$i$$ with a copy of row $$k$$. Each of the cofactors $$C_{i1}$$, $$C_{i2}$$ and
+$$C_{i3}$$ deletes row $$i$$, so it uses only the other two rows, and $$A'$$ has the same other two
+rows as $$A$$. So the cofactors along row $$i$$ of $$A'$$ are the same numbers as those of $$A$$.
+Expanding $$\det A'$$ along row $$i$$, by :ref{#det3-any-row},
+
+```math
+\det A' = a_{k1}C_{i1} + a_{k2}C_{i2} + a_{k3}C_{i3}
+```
+
+But rows $$i$$ and $$k$$ of $$A'$$ are equal. By :ref{#det3-transpose}, $$\det A'$$ is the
+determinant of the transpose of $$A'$$, which has two equal columns. Two equal columns give
+determinant $$0$$, by :ref{#det3-properties}. So the sum is $$0$$.
+
+**Columns.** The same argument works with columns in place of rows. When $$k = j$$ the sum is the
+expansion along column $$j$$. When $$k \neq j$$, replace column $$j$$ by a copy of column $$k$$: the
+sum is the expansion of the new matrix along column $$j$$, and the new matrix has two equal columns,
+so its determinant is $$0$$ by :ref{#det3-properties}.
+
+:::
+
+## Cramer's rule
+
+Everything is now in place. The picture said that putting $$B$$ in place of a column multiplies the
+determinant by the matching unknown, and the receipts showed it with numbers. The theorem says this
+always gives the one solution when $$\det A$$ is not zero.
+
+:::theorem[Cramer's rule]{#cramer}
+
+Let $$A$$ be a 3 by 3 matrix with $$\det A \neq 0$$, and let $$B$$ be a column with three entries.
+Then the system $$AX = B$$ has exactly one solution, and its entries are
+
+```math
+x_1 = \frac{D(B, A^2, A^3)}{D(A^1, A^2, A^3)},
+\qquad
+x_2 = \frac{D(A^1, B, A^3)}{D(A^1, A^2, A^3)},
+\qquad
+x_3 = \frac{D(A^1, A^2, B)}{D(A^1, A^2, A^3)}
+```
+
+In words, $$x_j$$ is the determinant of $$A$$ with column $$j$$ replaced by $$B$$, divided by
+$$\det A$$.
+
+:::
+
+There are two things to prove, as in :ref{#linear-equations/determinant-test}. The first is that a
+solution can only be this column. The second is that this column is a solution. The first half needs
+only the rules for determinants, and the second needs the lemma about cofactors.
+
+:::proof{source="https://en.wikipedia.org/wiki/Cramer%27s_rule#Proof"}
+
+Write $$D$$ for $$\det A$$, and $$b_1$$, $$b_2$$, $$b_3$$ for the entries of $$B$$.
+
+**A solution can only be this one.** Suppose $$X$$ is a solution. By
+:ref{#matrices-column-combination}, $$AX = x_1A^1 + x_2A^2 + x_3A^3$$, so $$B$$ is this combination
+of the columns. Then, with the rules D1, D2 and D4 of :ref{#det3-properties},
+
+```math
+\begin{aligned}
+D(B, A^2, A^3) &= D(x_1A^1 + x_2A^2 + x_3A^3,\ A^2, A^3) &&\qquad \text{put in } B \\
+&= D(x_1A^1, A^2, A^3) + D(x_2A^2, A^2, A^3) + D(x_3A^3, A^2, A^3) &&\qquad \text{D1, used twice} \\
+&= x_1D(A^1, A^2, A^3) + x_2D(A^2, A^2, A^3) + x_3D(A^3, A^2, A^3) &&\qquad \text{D2} \\
+&= x_1D + 0 + 0 &&\qquad \text{D4, two equal columns}
+\end{aligned}
+```
+
+Since $$D \neq 0$$, dividing by it gives $$x_1 = \frac{D(B, A^2, A^3)}{D}$$. Putting $$B$$ in the
+second column instead, the terms with $$A^1$$ and $$A^3$$ have two equal columns, and
+$$D(A^1, B, A^3) = x_2D$$. Putting it in the third column gives $$D(A^1, A^2, B) = x_3D$$ in the
+same way. So every solution has the entries in the theorem, and there is at most one solution.
+
+**The numerators with cofactors.** Let $$x_1$$, $$x_2$$ and $$x_3$$ now be the three fractions in
+the theorem. Expanding each numerator down the column that holds $$B$$, as in
+[Cofactors](#cofactors), gives
+
+```math
+Dx_1 = b_1C_{11} + b_2C_{21} + b_3C_{31},
+\qquad
+Dx_2 = b_1C_{12} + b_2C_{22} + b_3C_{32},
+\qquad
+Dx_3 = b_1C_{13} + b_2C_{23} + b_3C_{33}
+```
+
+**This one is a solution.** Put these numbers into the left side of the first equation, multiplied
+by $$D$$, and collect the terms by $$b_1$$, $$b_2$$ and $$b_3$$:
+
+```math
+\begin{aligned}
+D(a_{11}x_1 + a_{12}x_2 + a_{13}x_3)
+&= a_{11}(Dx_1) + a_{12}(Dx_2) + a_{13}(Dx_3) &&\qquad \text{multiply out} \\
+&= b_1(a_{11}C_{11} + a_{12}C_{12} + a_{13}C_{13}) \\
+&\quad + b_2(a_{11}C_{21} + a_{12}C_{22} + a_{13}C_{23}) \\
+&\quad + b_3(a_{11}C_{31} + a_{12}C_{32} + a_{13}C_{33}) &&\qquad \text{put in the cofactor forms, regroup} \\
+&= b_1D + b_2 \cdot 0 + b_3 \cdot 0 &&\qquad \text{rows against cofactors}
+\end{aligned}
+```
+
+The last step is :ref{#cramers-rule-cofactor-rows}: the first row against its own cofactors gives
+$$D$$, and against the cofactors of rows 2 and 3 it gives $$0$$. Dividing by $$D$$, the left side of
+the first equation is $$b_1$$, which is its right side. For the second equation the same steps put
+the $$D$$ with $$b_2$$, and for the third with $$b_3$$. So the column $$X$$ satisfies all three
+equations.
+
+:::
+
+The first half of the proof divides by $$\det A$$ only in its last step. Before that, it shows that
+every solution of $$AX = B$$ has $$x_1 \det A = D(B, A^2, A^3)$$, and the same for the other two
+unknowns, whatever $$\det A$$ is. That fact comes back in
+[When the determinant is zero](#when-the-determinant-is-zero).
+
+Cramer's rule needs a non-zero determinant, and a slip to watch for is using it anyway. When
+$$\det A = 0$$ the fractions have $$0$$ on the bottom and mean nothing, and the system has no
+solution or infinitely many. Below, change any number in the three equations and watch the four
+determinants change. The readout divides, then puts the answer back into each equation as a check.
+
+<CramerSolver />
+
+## The inverse matrix
+
+Cramer's rule turns any column of totals $$B$$ into the solution, and the cofactor form of the
+numerators shows it does so with one fixed grid of numbers. Each $$x_j$$ is
+$$b_1C_{1j} + b_2C_{2j} + b_3C_{3j}$$ divided by $$\det A$$. That is column $$j$$ of $$C$$ times
+$$B$$, which is row $$j$$ of the transpose $$C^{\mathsf T}$$ times $$B$$. So
+$$X = \frac{1}{\det A}C^{\mathsf T}B$$, and the matrix $$\frac{1}{\det A}C^{\mathsf T}$$ undoes
+$$A$$.
+
+:::proposition[The inverse matrix]{#det3-inverse}
+
+Let $$A$$ be a 3 by 3 matrix with $$\det A \neq 0$$, and let $$C$$ be its matrix of cofactors. Then
+the matrix
+
+```math
+A^{-1} = \frac{1}{\det A}\,C^{\mathsf T}
+```
+
+satisfies $$AA^{-1} = I$$ and $$A^{-1}A = I$$, where $$I$$ is the identity matrix.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Invertible_matrix#In_relation_to_its_adjugate"}
+
+Write $$D$$ for $$\det A$$.
+
+**The product $$AC^{\mathsf T}$$.** By :ref{#matrix-product}, the entry in row $$k$$ and column
+$$i$$ of $$AC^{\mathsf T}$$ is row $$k$$ of $$A$$ times column $$i$$ of $$C^{\mathsf T}$$. Column
+$$i$$ of $$C^{\mathsf T}$$ is row $$i$$ of $$C$$, so the entry is
+
+```math
+a_{k1}C_{i1} + a_{k2}C_{i2} + a_{k3}C_{i3}
+```
+
+By :ref{#cramers-rule-cofactor-rows}, this is $$D$$ when $$k = i$$ and $$0$$ when $$k \neq i$$. So
+$$AC^{\mathsf T}$$ has $$D$$ down its diagonal and $$0$$ everywhere else, which is $$D$$ times
+$$I$$.
+
+**Dividing by the determinant.** Every entry of a product of matrices is a sum of products of
+entries, one from each matrix. So scaling the second matrix by $$\frac{1}{D}$$ scales every entry of
+the product by $$\frac{1}{D}$$, and
+
+```math
+AA^{-1} = A\left(\frac{1}{D}C^{\mathsf T}\right) = \frac{1}{D}\left(AC^{\mathsf T}\right) = \frac{1}{D}(DI) = I
+```
+
+**The product $$C^{\mathsf T}A$$.** The entry in row $$i$$ and column $$k$$ of $$C^{\mathsf T}A$$ is
+row $$i$$ of $$C^{\mathsf T}$$, which is column $$i$$ of $$C$$, times column $$k$$ of $$A$$:
+
+```math
+C_{1i}a_{1k} + C_{2i}a_{2k} + C_{3i}a_{3k}
+```
+
+By the column part of :ref{#cramers-rule-cofactor-rows}, this is $$D$$ when $$k = i$$ and $$0$$
+otherwise. So $$C^{\mathsf T}A = DI$$, and dividing by $$D$$ as before gives $$A^{-1}A = I$$.
+
+:::
+
+The transpose matters, and leaving it out is a slip that a single entry catches. For the receipts,
+row 1 of $$A$$ times column 2 of $$C$$ itself is $$2 \cdot 7 + 1 \cdot 2 + 1 \cdot (-5) = 11$$, but
+an entry off the diagonal of $$AA^{-1}$$ has to be $$0$$. With the transpose, the cofactors of each
+row of $$C$$ become a column of $$A^{-1}$$:
+
+```math
+A^{-1} = \frac{1}{11}\begin{pmatrix} 6 & -3 & 2 \\ 7 & 2 & -5 \\ -8 & 4 & 1 \end{pmatrix},
+\qquad
+A^{-1}B = \frac{1}{11}\begin{pmatrix} 48 - 48 + 22 \\ 56 + 32 - 55 \\ -64 + 64 + 11 \end{pmatrix}
+= \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix}
+```
+
+which are the prices again. The same recipe works for a 2 by 2 matrix
+$$\begin{pmatrix} a & b \\ c & d \end{pmatrix}$$. Deleting a row and a column leaves a single
+number, so the cofactors are $$C_{11} = d$$, $$C_{12} = -c$$, $$C_{21} = -b$$ and $$C_{22} = a$$,
+and $$\frac{1}{\det A}C^{\mathsf T}$$ is the inverse from :ref{#det2-inverse}.
+
+As mappings, $$X \mapsto A^{-1}X$$ undoes $$X \mapsto AX$$. By :ref{#matrix-product-rules},
+$$A^{-1}(AX) = (A^{-1}A)X = IX = X$$, and in the same way $$A(A^{-1}X) = X$$, so the two mappings
+are inverse to each other (:ref{#mappings-and-permutations/inverse-mapping}). This gives a second
+way to read Cramer's rule: $$AX = B$$ exactly when $$X = A^{-1}B$$.
+
+When $$\det A = 0$$ there is no inverse matrix at all. A matrix $$M$$ with $$AM = I$$ would give
+$$\det A \cdot \det M = \det I = 1$$ by :ref{#det3-product}, and that is impossible when
+$$\det A = 0$$.
+
+## When the determinant is zero
+
+A zero determinant means the slanted box on the columns has no volume: the three columns lie in one
+plane through $$O$$ (:ref{#det3-zero}). Every combination $$xA^1 + yA^2 + zA^3$$ then lies in that
+plane too. So a target $$B$$ off the plane can't be reached at all, and the system has no solution.
+A target in the plane can be reached in infinitely many ways, because some combination of the
+columns that isn't all zeros adds up to $$0$$, and adding any multiple of it changes nothing.
+
+<FlatColumns caption="When det A = 0, the columns A¹, A² and A³ lie in one plane through O, drawn as a flat sheet. Every AX lies in the sheet, so a target B in the sheet is reached in infinitely many ways and a target B′ above it is never reached." />
+
+:::proposition[When the determinant is zero]{#cramer-converse}
+
+Let $$A$$ be a 3 by 3 matrix with $$\det A = 0$$. Then:
+
+1. the system $$AX = 0$$ has a solution $$X$$ whose entries are not all zero
+2. for every column $$B$$, the system $$AX = B$$ has either no solution or infinitely many, and
+   never exactly one
+
+:::
+
+This is the 3 by 3 version of :ref{#linear-equations/determinant-zero}. The proof of part 1 has to
+find a column $$X$$, and the cofactors supply one. When every cofactor is zero, the rows are
+multiples of each other, and a column is found directly.
+
+:::proof{source="https://en.wikipedia.org/wiki/System_of_linear_equations#Homogeneous_systems"}
+
+**Part 1, when some cofactor is not zero.** Say a cofactor in row $$i$$ is not zero, and let $$X$$
+be the column $$(C_{i1}, C_{i2}, C_{i3})$$ of the cofactors of that row. Entry $$k$$ of $$AX$$ is
+$$a_{k1}C_{i1} + a_{k2}C_{i2} + a_{k3}C_{i3}$$. By :ref{#cramers-rule-cofactor-rows}, this is
+$$\det A = 0$$ when $$k = i$$, and $$0$$ when $$k \neq i$$. So $$AX = 0$$, and $$X$$ has a non-zero
+entry.
+
+**Part 1, when every cofactor is zero.** If every entry of $$A$$ is $$0$$, the column $$(1, 0, 0)$$
+works. Otherwise some entry $$a_{pq}$$ is not zero. Every 2 by 2 determinant made from two rows and
+two columns of $$A$$ is plus or minus a cofactor, so all of them are $$0$$. Taking rows $$k$$ and
+$$p$$ and columns $$j$$ and $$q$$, for any $$k \neq p$$ and $$j \neq q$$,
+
+```math
+a_{kj}a_{pq} - a_{kq}a_{pj} = 0, \qquad\text{so}\qquad a_{kj} = \frac{a_{kq}}{a_{pq}}\,a_{pj}
+```
+
+This also holds when $$j = q$$, since then both sides are $$a_{kq}$$. So every row $$k$$ is the
+number $$t_k = \frac{a_{kq}}{a_{pq}}$$ times row $$p$$, and for row $$p$$ itself $$t_p = 1$$.
+
+Now pick a column $$r \neq q$$, and let $$X$$ have $$a_{pq}$$ in place $$r$$, $$-a_{pr}$$ in place
+$$q$$ and $$0$$ in the third place. Row $$p$$ times $$X$$ is $$a_{pr}a_{pq} - a_{pq}a_{pr} = 0$$,
+and each row $$k$$ times $$X$$ is $$t_k \cdot 0 = 0$$. So $$AX = 0$$, and the entry $$a_{pq}$$ of
+$$X$$ is not zero.
+
+**Part 2.** If $$AX = B$$ has no solution, there is nothing to prove. Otherwise let $$X_0$$ be a
+solution, and let $$N$$ be the column from part 1, with $$AN = 0$$. For every number $$t$$, entry
+$$i$$ of $$A(X_0 + tN)$$ is
+
+```math
+a_{i1}(x_1 + tn_1) + a_{i2}(x_2 + tn_2) + a_{i3}(x_3 + tn_3)
+= (a_{i1}x_1 + a_{i2}x_2 + a_{i3}x_3) + t(a_{i1}n_1 + a_{i2}n_2 + a_{i3}n_3)
+```
+
+where $$x_1$$, $$x_2$$, $$x_3$$ are the entries of $$X_0$$ and $$n_1$$, $$n_2$$, $$n_3$$ those of
+$$N$$. The first bracket is entry $$i$$ of $$AX_0 = B$$ and the second is entry $$i$$ of $$AN = 0$$.
+So $$A(X_0 + tN) = B$$, and every $$X_0 + tN$$ is a solution.
+
+**These are all different.** For two numbers $$s \neq t$$, the columns $$X_0 + sN$$ and $$X_0 + tN$$
+differ by $$(t - s)N$$. Since $$t - s \neq 0$$ and some entry of $$N$$ is not zero, that entry of
+$$(t - s)N$$ is not zero by :ref{#numbers/zero-product}. So different numbers $$t$$ give different
+solutions, and there are infinitely many.
+
+:::
+
+Part 1 says something about the columns too. A solution $$X$$ of $$AX = 0$$ gives
+$$x_1A^1 + x_2A^2 + x_3A^3 = 0$$ with some $$x_j$$ not zero, and dividing by that $$x_j$$ writes
+column $$j$$ as a combination of the other two. This is the column picture of :ref{#det3-zero},
+reached a second way, through cofactors. The solutions $$X_0 + tN$$ of part 2 are the points of the
+line through $$X_0$$ in the direction $$N$$ (:ref{#segments-rays-and-lines/space-lines}).
+
+:::example[Infinitely many solutions]
+
+Take
+
+```math
+\begin{aligned}
+x + 2y + z &= 4 &\quad (1) \\
+2x + y + 3z &= 6 &\quad (2) \\
+3x + 3y + 4z &= 10 &\quad (3)
+\end{aligned}
+```
+
+The left side of (3) is the sum of the left sides of (1) and (2), so the third row of the matrix is
+the sum of the first two and the determinant is $$0$$. Expanding along the first row confirms it:
+$$1 \cdot (4 - 9) - 2 \cdot (8 - 9) + 1 \cdot (6 - 3) = -5 + 2 + 3 = 0$$.
+
+The right sides agree too, since $$4 + 6 = 10$$. So (3) is (1) plus (2) and says nothing new
+(:ref{#linear-equations/combining}). From (1), $$x = 4 - 2y - z$$, and putting this into (2) gives
+$$8 - 3y + z = 6$$, so $$z = 3y - 2$$ and then $$x = 6 - 5y$$. Choosing any number $$t$$ for $$y$$,
+the solutions are
+
+```math
+(6 - 5t,\ t,\ 3t - 2) \qquad\text{for every number } t
+```
+
+This is the line through $$(6, 0, -2)$$ in the direction $$(-5, 1, 3)$$, and that direction is the
+column of cofactors of the first row, as in the proof. **Check** with $$t = 1$$, which gives
+$$(1, 1, 1)$$: $$1 + 2 + 1 = 4$$, $$2 + 1 + 3 = 6$$ and $$3 + 3 + 4 = 10$$.
+
+:::
+
+:::example[No solution]
+
+Change the last total to $$9$$:
+
+```math
+\begin{aligned}
+x + 2y + z &= 4 &\quad (1) \\
+2x + y + 3z &= 6 &\quad (2) \\
+3x + 3y + 4z &= 9 &\quad (3)
+\end{aligned}
+```
+
+Adding (1) and (2) gives $$3x + 3y + 4z = 10$$, and subtracting (3) from this leaves $$0 = 1$$. So
+there is no solution: (1) and (2) together force $$3x + 3y + 4z$$ to be $$10$$, but (3) says it is
+$$9$$.
+
+The numerators of Cramer's rule show the same thing. With the totals in the first column,
+$$D(B, A^2, A^3) = -5$$. The first half of the proof of :ref{#cramer} says that any solution has
+$$x \cdot 0 = -5$$, which no number $$x$$ satisfies.
+
+:::
+
+When every numerator is $$0$$ as well, the first half of the proof only says $$0 = 0$$, which leaves
+both cases open. The exercise :ref{#ex-cramers-rule-all-zero} has a system where all four
+determinants are $$0$$ and there is still no solution. In the solver above, the presets "No
+solution" and "Infinitely many" are the two examples here.
+
+## Cramer's rule or elimination
+
+For three equations, Cramer's rule takes more arithmetic than elimination. It needs four
+determinants of order 3, and expanding each one along a row takes 9 multiplications: two for each of
+the three 2 by 2 determinants, and three more for the entries in front. That makes 36
+multiplications and 3 divisions. Elimination in the usual order takes 11 multiplications and 6
+divisions, under half as many.
+
+The gap grows fast with the size of the system. Determinants of bigger square matrices are defined
+by expanding along a row in the same way, though this chapter stops at order 3. For 10 equations,
+Cramer's rule done like that needs about 69 million multiplications, while elimination needs 375
+multiplications and 55 divisions.
+
+That is why computers solve large systems by elimination, and work out large determinants by it too,
+using rule D5 of :ref{#det3-properties} to make zeros. Cramer's rule is worth having for what it
+says: each unknown is a ratio of two determinants, a formula in the coefficients that you can reason
+with. The exercises :ref{#ex-cramers-rule-parameter} and :ref{#ex-cramers-rule-whole-inverse} both
+use it that way.
+
+## Exercises
+
+:::::accordion[Exercises on Cramer's rule, with solutions]
+
+::::exercise{#ex-cramers-rule-applies}
+
+Find the determinants of
+
+```math
+P = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 10 \end{pmatrix},
+\qquad
+Q = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{pmatrix}
+```
+
+Say which of them Cramer's rule applies to, for every system with that matrix. For the other, find a
+column $$X$$, not all zeros, that it sends to the zero column.
+
+:::solution
+
+Expanding along the first row,
+
+```math
+\det P = 1 \cdot (50 - 48) - 2 \cdot (40 - 42) + 3 \cdot (32 - 35) = 2 + 4 - 9 = -3
+```
+
+```math
+\det Q = 1 \cdot (45 - 48) - 2 \cdot (36 - 42) + 3 \cdot (32 - 35) = -3 + 12 - 9 = 0
+```
+
+So Cramer's rule applies to $$PX = B$$ for every $$B$$, and not to $$QX = B$$. For $$Q$$, the
+columns satisfy $$A^1 + A^3 = 2A^2$$, since $$(1, 4, 7) + (3, 6, 9) = (4, 10, 16) = 2(2, 5, 8)$$. So
+$$1 \cdot A^1 - 2A^2 + 1 \cdot A^3 = 0$$, and $$X = (1, -2, 1)$$ has $$QX = 0$$ by
+:ref{#matrices-column-combination}.
+
+**Check:** $$1 - 4 + 3 = 0$$, $$4 - 10 + 6 = 0$$ and $$7 - 16 + 9 = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-cramers-rule-one-unknown}
+
+Use Cramer's rule to find $$y$$ alone, without finding $$x$$ or $$z$$:
+
+```math
+\begin{aligned}
+x + y + z &= 6 \\
+2x - y + z &= 3 \\
+x + 2y - z &= 2
+\end{aligned}
+```
+
+:::solution
+
+Expanding along the first row,
+
+```math
+\det A = \begin{vmatrix} 1 & 1 & 1 \\ 2 & -1 & 1 \\ 1 & 2 & -1 \end{vmatrix}
+= 1 \cdot (1 - 2) - 1 \cdot (-2 - 1) + 1 \cdot (4 + 1) = -1 + 3 + 5 = 7
+```
+
+Putting the right sides in the second column, and expanding along the first row again,
+
+```math
+D(A^1, B, A^3) = \begin{vmatrix} 1 & 6 & 1 \\ 2 & 3 & 1 \\ 1 & 2 & -1 \end{vmatrix}
+= 1 \cdot (-3 - 2) - 6 \cdot (-2 - 1) + 1 \cdot (4 - 3) = -5 + 18 + 1 = 14
+```
+
+So $$y = \frac{14}{7} = 2$$ by :ref{#cramer}. This is the first example in
+[Three equations in three unknowns](../linear-equations/three-unknowns.mdx), whose solution is
+$$(1, 2, 3)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-cramers-rule-solve}
+
+Solve by Cramer's rule, and check your answer:
+
+```math
+\begin{aligned}
+x + 2z &= 3 \\
+3x + 2y - z &= -1 \\
+2x + 2y - z &= -2
+\end{aligned}
+```
+
+:::solution
+
+Each determinant is expanded along its first row, which has a $$0$$ in the middle for three of them:
+
+```math
+\det A = \begin{vmatrix} 1 & 0 & 2 \\ 3 & 2 & -1 \\ 2 & 2 & -1 \end{vmatrix}
+= 1 \cdot (-2 + 2) - 0 + 2 \cdot (6 - 4) = 4
+```
+
+```math
+D(B, A^2, A^3) = \begin{vmatrix} 3 & 0 & 2 \\ -1 & 2 & -1 \\ -2 & 2 & -1 \end{vmatrix}
+= 3 \cdot (-2 + 2) - 0 + 2 \cdot (-2 + 4) = 4
+```
+
+```math
+D(A^1, B, A^3) = \begin{vmatrix} 1 & 3 & 2 \\ 3 & -1 & -1 \\ 2 & -2 & -1 \end{vmatrix}
+= 1 \cdot (1 - 2) - 3 \cdot (-3 + 2) + 2 \cdot (-6 + 2) = -1 + 3 - 8 = -6
+```
+
+```math
+D(A^1, A^2, B) = \begin{vmatrix} 1 & 0 & 3 \\ 3 & 2 & -1 \\ 2 & 2 & -2 \end{vmatrix}
+= 1 \cdot (-4 + 2) - 0 + 3 \cdot (6 - 4) = 4
+```
+
+So $$x = \frac{4}{4} = 1$$, $$y = \frac{-6}{4} = -\frac{3}{2}$$ and $$z = \frac{4}{4} = 1$$.
+
+**Check:** $$1 + 2 = 3$$, $$3 - 3 - 1 = -1$$ and $$2 - 3 - 1 = -2$$. Elimination agrees: subtracting
+the third equation from the second gives $$x = 1$$ straight away.
+
+:::
+
+::::
+
+::::exercise{#ex-cramers-rule-inverse}
+
+Find the inverse of
+
+```math
+A = \begin{pmatrix} 2 & 3 & 2 \\ 1 & 1 & 2 \\ 1 & 1 & 1 \end{pmatrix}
+```
+
+using cofactors, check that $$AA^{-1} = I$$, and use it to solve $$AX = B$$ with $$B = (7, 4, 3)$$.
+
+:::solution
+
+The cofactors, row by row, with the checkerboard of signs:
+
+```math
+\begin{aligned}
+C_{11} &= +(1 - 2) = -1, & C_{12} &= -(1 - 2) = 1, & C_{13} &= +(1 - 1) = 0 \\
+C_{21} &= -(3 - 2) = -1, & C_{22} &= +(2 - 2) = 0, & C_{23} &= -(2 - 3) = 1 \\
+C_{31} &= +(6 - 2) = 4, & C_{32} &= -(4 - 2) = -2, & C_{33} &= +(2 - 3) = -1
+\end{aligned}
+```
+
+The third row of $$A$$ times its own cofactors gives $$\det A = 4 - 2 - 1 = 1$$. So by
+:ref{#det3-inverse}, $$A^{-1}$$ is the transpose of $$C$$:
+
+```math
+A^{-1} = \begin{pmatrix} -1 & -1 & 4 \\ 1 & 0 & -2 \\ 0 & 1 & -1 \end{pmatrix}
+```
+
+**Check.** Row 1 of $$A$$ times the three columns of $$A^{-1}$$ gives $$-2 + 3 + 0 = 1$$,
+$$-2 + 0 + 2 = 0$$ and $$8 - 6 - 2 = 0$$. Row 2 gives $$-1 + 1 + 0 = 0$$, $$-1 + 0 + 2 = 1$$ and
+$$4 - 2 - 2 = 0$$. Row 3 gives $$-1 + 1 + 0 = 0$$, $$-1 + 0 + 1 = 0$$ and $$4 - 2 - 1 = 1$$. So
+$$AA^{-1} = I$$.
+
+**Solving.** $$X = A^{-1}B = (-7 - 4 + 12,\ 7 + 0 - 6,\ 0 + 4 - 3) = (1, 1, 1)$$. As a check,
+$$2 + 3 + 2 = 7$$, $$1 + 1 + 2 = 4$$ and $$1 + 1 + 1 = 3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-cramers-rule-all-zero}
+
+Show that for the system $$x + y + z = 1$$, $$x + y + z = 2$$, $$x + y + z = 3$$, the determinant
+and all three numerators of Cramer's rule are $$0$$. Then decide whether the system has any
+solutions.
+
+:::solution
+
+All three columns of $$A$$ are $$(1, 1, 1)$$, so $$\det A$$ has two equal columns and is $$0$$ by D4
+of :ref{#det3-properties}. Each numerator replaces one column by $$B = (1, 2, 3)$$ and keeps the
+other two, which are equal to each other. So each numerator also has two equal columns and is $$0$$.
+
+The system has **no solution**: the first two equations say the same quantity $$x + y + z$$ is both
+$$1$$ and $$2$$. So all the numerators being $$0$$ does not promise a solution. The first half of
+the proof of :ref{#cramer} says that a solution would have $$x \cdot 0 = 0$$, which every number
+satisfies, so it rules nothing out. By :ref{#cramer-converse}, the system has no solution or
+infinitely many, and here it is none.
+
+:::
+
+::::
+
+::::exercise{#ex-cramers-rule-parameter}
+
+Consider
+
+```math
+\begin{aligned}
+x + y + z &= 1 \\
+x + 2y + 3z &= 2 \\
+x + 3y + kz &= c
+\end{aligned}
+```
+
+1. Find the numbers $$k$$ for which the system has exactly one solution, whatever $$c$$ is.
+2. For the other value of $$k$$, find the $$c$$ for which there are solutions, and describe them.
+
+:::solution
+
+1. Expanding along the first row,
+
+   ```math
+   \det A = 1 \cdot (2k - 9) - 1 \cdot (k - 3) + 1 \cdot (3 - 2) = k - 5
+   ```
+
+   So for every $$k \neq 5$$ there is exactly one solution, by :ref{#cramer}.
+
+2. When $$k = 5$$, the third left side is twice the second minus the first:
+   $$2(x + 2y + 3z) - (x + y + z) = x + 3y + 5z$$. So taking twice the second equation minus the
+   first gives $$x + 3y + 5z = 3$$. If $$c \neq 3$$ this contradicts the third equation, and there
+   is **no solution**. If $$c = 3$$ the third equation says nothing new. Subtracting the first
+   equation from the second gives $$y + 2z = 1$$, so $$y = 1 - 2z$$ and then $$x = 1 - y - z = z$$.
+   Choosing any number $$t$$ for $$z$$, the solutions are
+
+   ```math
+   (t,\ 1 - 2t,\ t) \qquad\text{for every number } t
+   ```
+
+   **Check** with $$t = 1$$, which gives $$(1, -1, 1)$$: $$1 - 1 + 1 = 1$$, $$1 - 2 + 3 = 2$$ and
+   $$1 - 3 + 5 = 3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-cramers-rule-whole-inverse}
+
+Let $$A$$ be a 3 by 3 matrix whose entries are whole numbers.
+
+1. Prove that if $$\det A$$ is $$1$$ or $$-1$$, then every entry of $$A^{-1}$$ is a whole number.
+2. Prove that if $$A^{-1}$$ exists and its entries are whole numbers too, then $$\det A$$ is $$1$$
+   or $$-1$$.
+
+:::solution
+
+1. Each cofactor is plus or minus a 2 by 2 determinant $$ps - qr$$ of entries of $$A$$, so it is a
+   whole number. By :ref{#det3-inverse}, every entry of $$A^{-1}$$ is a cofactor divided by
+   $$\det A$$. Dividing a whole number by $$1$$ or $$-1$$ gives a whole number. The matrix in
+   :ref{#ex-cramers-rule-inverse} is an example, with $$\det A = 1$$.
+2. The six-term formula for a determinant only adds, subtracts and multiplies entries, so $$\det A$$
+   and $$\det A^{-1}$$ are whole numbers. By :ref{#det3-product},
+   $$\det A \cdot \det A^{-1} = \det(AA^{-1}) = \det I = 1$$. Two whole numbers with product $$1$$
+   are both $$1$$ or both $$-1$$, so $$\det A$$ is $$1$$ or $$-1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-cramers-rule-only-zero}
+
+Let $$A$$ be a 3 by 3 matrix.
+
+1. Prove that if $$\det A \neq 0$$, the only solution of $$AX = 0$$ is $$X = 0$$.
+2. Deduce that if $$AX = B$$ has two different solutions, then $$\det A = 0$$.
+
+:::solution
+
+1. By :ref{#cramer}, $$AX = 0$$ has exactly one solution. The column $$X = 0$$ is a solution,
+   because every entry of $$A0$$ is a sum of entries of $$A$$ times $$0$$. So it is the only one.
+   Cramer's rule agrees: each numerator has a column of zeros, so it is $$0$$ by D2 of
+   :ref{#det3-properties}, scaling that column by $$0$$.
+2. Let $$X_1$$ and $$X_2$$ be different solutions. Entry $$i$$ of $$A(X_1 - X_2)$$ is entry $$i$$ of
+   $$AX_1$$ minus entry $$i$$ of $$AX_2$$, by the formula in :ref{#matrix-times-column}, so
+   $$A(X_1 - X_2) = B - B = 0$$. The column $$X_1 - X_2$$ is not zero, since the solutions are
+   different. If $$\det A$$ were not zero, part 1 would make $$X_1 - X_2 = 0$$. So $$\det A = 0$$.
+
+Together with part 1 of :ref{#cramer-converse}, this shows that $$\det A = 0$$ exactly when
+$$AX = 0$$ has a solution other than $$X = 0$$.
+
+:::
+
+::::
+
+:::::

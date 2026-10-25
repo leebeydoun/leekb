@@ -1,0 +1,679 @@
+---
+title: Properties and faster calculation
+description:
+  Six rules for 3 by 3 determinants, calculating by making zeros, the determinant as a signed
+  volume, when it is zero, and the determinant of a product.
+---
+
+Imagine a carpenter's shelf unit standing against a wall, three shelves high. Lean on its top corner
+and the whole frame tips sideways into a slant, each shelf sliding a little further than the one
+below it. The shelves keep their size and stay the same distance apart, so the unit still holds
+exactly as many books as before.
+
+<ShelfPush caption="A shelf unit standing square, and the same unit pushed sideways at the top. Each shelf slides along without changing size, the higher ones further, so the space inside is the same." />
+
+Pushing the top of a box sideways like this is a rule about determinants in disguise: adding a
+multiple of one column to another doesn't change the determinant. In this guide we'll prove that
+rule and five others, use them to calculate determinants with far less work, and then show that the
+determinant is the signed volume of the box on the columns.
+
+## Six rules, seen on numbers first
+
+Start with the matrix from [Determinants of order 3](./order-three.mdx), whose determinant is
+$$-14$$:
+
+```math
+A = \begin{pmatrix} 2 & 1 & -2 \\ 3 & -1 & -2 \\ 1 & 0 & 2 \end{pmatrix}
+```
+
+Change its columns in three ways and expand each new matrix along its first row (:ref{#det3}):
+
+- **Swap the first two columns**: the determinant becomes $$14$$, the same size with the opposite
+  sign
+- **Double the second column**: the determinant becomes $$-28$$, twice as much
+- **Add twice the first column to the third**: the third column becomes $$(2, 4, 4)$$, and the
+  determinant is still $$-14$$
+
+The determinants of order 2 obey six rules (:ref{#det2-properties}), and these three changes follow
+three of them. The same six hold with three columns.
+
+:::theorem[Properties of 3 by 3 determinants]{#det3-properties}
+
+Write $$D(A^1, A^2, A^3)$$ for the determinant of the 3 by 3 matrix with columns $$A^1$$, $$A^2$$
+and $$A^3$$, and let $$E^1$$, $$E^2$$ and $$E^3$$ be the unit columns.
+
+1. **D1, adding in one column**: if $$A^1 = B + C$$, then
+   $$D(B + C, A^2, A^3) = D(B, A^2, A^3) + D(C, A^2, A^3)$$, and the same holds in the second and
+   third columns
+2. **D2, scaling a column**: $$D(cA^1, A^2, A^3) = c\,D(A^1, A^2, A^3)$$ for every number $$c$$, and
+   the same holds in the other columns
+3. **D3, the unit columns**: $$D(E^1, E^2, E^3) = 1$$
+4. **D4, equal columns**: if two of the columns are equal, the determinant is $$0$$
+5. **D5, adding a multiple of one column to another** leaves the determinant unchanged, as in
+   $$D(A^1 + cA^2, A^2, A^3) = D(A^1, A^2, A^3)$$
+6. **D6, swapping two columns** changes the sign of the determinant, as in
+   $$D(A^2, A^1, A^3) = -D(A^1, A^2, A^3)$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Determinant#Basic_rules"}
+
+The first two rules come from expanding down the column that changes, the third from triangular
+matrices, and D6 from 2 by 2 determinants. D4 and D5 then follow from the others.
+
+**D1 and D2.** Expand down the first column (:ref{#det3-any-row}):
+
+```math
+D(A^1, A^2, A^3) = a_{11} \det M_{11} - a_{21} \det M_{21} + a_{31} \det M_{31}
+```
+
+The minors $$M_{11}$$, $$M_{21}$$ and $$M_{31}$$ are made from the second and third columns only. So
+if the first column is $$B + C$$, with entries $$b_i + c_i$$, the expansion is
+
+```math
+(b_1 + c_1) \det M_{11} - (b_2 + c_2) \det M_{21} + (b_3 + c_3) \det M_{31}
+```
+
+Multiplying out and collecting the $$b$$ terms and the $$c$$ terms gives
+$$D(B, A^2, A^3) + D(C, A^2, A^3)$$. In the same way, if the first column is $$cA^1$$, every term of
+the expansion has a factor $$c$$, which comes out in front. For the second or third column, expand
+down that column instead.
+
+**D3.** The matrix with columns $$E^1$$, $$E^2$$ and $$E^3$$ is the identity matrix $$I$$. It is
+triangular with $$1$$ all down the diagonal, so its determinant is $$1 \cdot 1 \cdot 1 = 1$$
+(:ref{#det3-triangular}).
+
+**D6.** Take the swap of the first two columns, and expand down the third column, which the swap
+doesn't touch:
+
+```math
+D(A^1, A^2, A^3) = a_{13} \det M_{13} - a_{23} \det M_{23} + a_{33} \det M_{33}
+```
+
+Each minor $$M_{i3}$$ is made of the first two columns, with row $$i$$ crossed out. Swapping $$A^1$$
+and $$A^2$$ swaps the two columns of each of these 2 by 2 minors, which changes the sign of its
+determinant (D6 in :ref{#det2-properties}). The entries $$a_{13}$$, $$a_{23}$$ and $$a_{33}$$ and
+the checkerboard signs stay as they were, so every term changes sign, and so does the total. To swap
+the first and third columns, expand down the second instead, and to swap the second and third,
+expand down the first.
+
+**D4.** Suppose two columns are equal, and swap them. The matrix doesn't change, so neither does its
+determinant $$D$$. But by D6 the determinant changes sign, so $$D = -D$$. Then $$2D = 0$$, and
+$$D = 0$$.
+
+**D5.** By D1 and then D2 in the first column,
+
+```math
+D(A^1 + cA^2, A^2, A^3) = D(A^1, A^2, A^3) + c\,D(A^2, A^2, A^3)
+```
+
+The last determinant has two equal columns, so it is $$0$$ by D4. That leaves $$D(A^1, A^2, A^3)$$.
+Adding a multiple of any column to any other works the same way.
+
+:::
+
+The rows of $$A$$ are the columns of its transpose $$A^{\mathsf T}$$, and the two have the same
+determinant (:ref{#det3-transpose}). So all six rules hold for rows as well. For instance, adding a
+multiple of one row to another leaves the determinant unchanged, and swapping two rows changes its
+sign.
+
+Each rule says something about the box on the columns. D2 makes one edge $$c$$ times as long, and
+the volume $$c$$ times as much, with a flip when $$c$$ is negative. D6 lists the same three edges in
+another order, so the box and its size stay the same, but the sign flips, as
+[Right hands and left hands](#right-hands-and-left-hands) explains. D4 makes two edges the same,
+which squashes the box flat, and D5 is the shelf unit: it slides the layers of the box along one
+edge, which keeps the volume.
+
+## Making zeros first
+
+Expanding down a column is least work when that column is mostly zeros. The row version of D5 lets
+you make those zeros yourself: subtract a multiple of one row from another, and the determinant
+stays the same. So you can clear out a column and then expand down it, leaving a single 2 by 2
+determinant.
+
+:::remark[Calculating a determinant by making zeros]{#properties-zeros}
+
+To find the determinant of a 3 by 3 matrix:
+
+1. **Choose a pivot**: a non-zero entry of the first column, ideally $$1$$ or $$-1$$. If it isn't in
+   the top row, you can swap it there, which changes the sign (D6 for rows)
+2. **Clear the column**: add a multiple of the pivot's row to each other row, chosen to make that
+   row's entry in the first column $$0$$. This doesn't change the determinant (D5 for rows)
+3. **Expand down the first column**: only the pivot is left, so the determinant is the pivot times
+   the 2 by 2 determinant of its minor (:ref{#det3-any-row})
+
+If every entry of a row shares a factor, you can take it out in front first (D2 for rows).
+
+:::
+
+:::example[Clearing the first column]
+
+Find
+
+```math
+\begin{vmatrix} 2 & 3 & 5 \\ 4 & 9 & 8 \\ 6 & 12 & 21 \end{vmatrix}
+```
+
+The pivot is the $$2$$ at the top left. Taking twice the first row from the second, and three times
+the first row from the third, gives the rows $$(0, 3, -2)$$ and $$(0, 3, 6)$$. Expanding down the
+first column,
+
+```math
+\begin{vmatrix} 2 & 3 & 5 \\ 4 & 9 & 8 \\ 6 & 12 & 21 \end{vmatrix} = \begin{vmatrix} 2 & 3 & 5 \\ 0 & 3 & -2 \\ 0 & 3 & 6 \end{vmatrix} = 2 \begin{vmatrix} 3 & -2 \\ 3 & 6 \end{vmatrix} = 2 \cdot (18 + 6) = 48
+```
+
+:::
+
+:::example[Taking out a factor first]
+
+Find
+
+```math
+\begin{vmatrix} 3 & 12 & -6 \\ 2 & 9 & 1 \\ 5 & 17 & 4 \end{vmatrix}
+```
+
+Every entry of the first row is a multiple of $$3$$, so take $$3$$ out in front (D2 for rows). The
+first row becomes $$(1, 4, -2)$$, with a pivot of $$1$$. Taking twice it from the second row, and
+five times it from the third, gives the rows $$(0, 1, 5)$$ and $$(0, -3, 14)$$. So
+
+```math
+3 \begin{vmatrix} 1 & 4 & -2 \\ 0 & 1 & 5 \\ 0 & -3 & 14 \end{vmatrix} = 3 \cdot 1 \cdot \begin{vmatrix} 1 & 5 \\ -3 & 14 \end{vmatrix} = 3 \cdot (14 + 15) = 87
+```
+
+The six-term formula would need twelve multiplications of numbers up to $$21$$. Here the multiplying
+is all by small numbers.
+
+:::
+
+Taking out a factor works one row or one column at a time. So multiplying the whole matrix by a
+number $$c$$ takes out $$c$$ three times, once for each column.
+
+:::corollary[Scaling the whole matrix]{#properties-scale}
+
+For every 3 by 3 matrix $$A$$ and every number $$c$$,
+
+```math
+\det(cA) = c^3 \det A
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Determinant#Basic_rules"}
+
+The columns of $$cA$$ are $$cA^1$$, $$cA^2$$ and $$cA^3$$ (:ref{#matrix-operations}). Using D2 once
+in each column (:ref{#det3-properties}),
+
+```math
+D(cA^1, cA^2, cA^3) = c\,D(A^1, cA^2, cA^3) = c^2 D(A^1, A^2, cA^3) = c^3 D(A^1, A^2, A^3)
+```
+
+:::
+
+So $$\det(2A)$$ for the matrix $$A$$ above is $$8 \cdot (-14) = -112$$, not $$2 \cdot (-14)$$. That
+matches the picture: doubling every edge of a box multiplies its volume by $$2^3 = 8$$
+(:ref{#area-and-scaling/box-scaling}). For a 2 by 2 matrix the factor is $$c^2$$, since there are
+two columns to take it out of.
+
+## The determinant is a signed volume
+
+[Determinants of order 3](./order-three.mdx) promised that the determinant measures volume. A box
+with edges along the axes has volume length times width times height, and the determinant of its
+matrix is the same product. The rules D5 and D6 turn any box into one of those without changing its
+volume, and without changing the determinant except for its sign. So the two must agree for every
+box.
+
+:::definition[The box on three columns]{#properties-box}
+
+Let $$P$$, $$Q$$ and $$R$$ be points in space. The **box on $$P$$, $$Q$$ and $$R$$** is the set of
+points
+
+```math
+sP + tQ + uR \qquad \text{with } 0 \le s \le 1,\ 0 \le t \le 1,\ 0 \le u \le 1
+```
+
+Its corners include $$O$$, $$P$$, $$Q$$ and $$R$$, and it has edges from $$O$$ to each of them. Its
+faces are parallelograms, and opposite faces are copies of each other.
+
+:::
+
+The order of $$P$$, $$Q$$ and $$R$$ doesn't matter: listing them in another order gives the same set
+of points. The box on the columns of a matrix $$A$$ is the image of the unit cube under
+$$X \mapsto AX$$, as in
+[From the unit square to the unit cube](./order-three.mdx#from-the-unit-square-to-the-unit-cube).
+
+The shelf unit is the one fact about volume we need beyond :ref{#area-and-scaling/volume-rules}. Cut
+a box into thin layers parallel to one face, and slide each layer along that face without turning
+it. Each layer keeps its shape, so the total volume should stay the same. The
+:ref{#area-and-scaling/volume-rules} don't cover sliding layers, so this fact is taken as given.
+
+<ShearedBox caption="The box on P, Q and R, and the box on P, Q and R + cP. The second is the first cut into layers parallel to the face on P and Q, with each layer slid along P: the higher the layer, the further it slides." />
+
+:::remark[Sliding the layers of a box]{#properties-shear}
+
+Let $$P$$, $$Q$$ and $$R$$ be points in space and $$c$$ a number. The box on $$P$$, $$Q$$ and
+$$R + cP$$ has the same volume as the box on $$P$$, $$Q$$ and $$R$$.
+
+This is taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Cavalieri%27s_principle#3-dimensional"}
+
+:::
+
+The layer of the first box at height $$u$$ is the parallelogram on $$P$$ and $$Q$$ moved up by
+$$uR$$. In the second box the same layer is moved by $$u(R + cP)$$, which is $$ucP$$ further along
+$$P$$. So the layers are the same parallelograms, each slid a different distance, as on the shelf.
+
+:::theorem[The determinant is a signed volume]{#signed-volume}
+
+Let $$A$$ be a 3 by 3 matrix. The box on its columns $$A^1$$, $$A^2$$ and $$A^3$$ has volume
+$$|\det A|$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Determinant#Signed_volume_of_a_parallelotope"}
+
+Write $$V$$ for the volume of the box on the columns and $$D$$ for $$\det A$$. The plan is to change
+the columns in two kinds of step that keep both $$V$$ and $$|D|$$, until the box is one whose volume
+we know.
+
+**Two steps that keep both.** Adding a multiple of one column to another keeps $$V$$ by
+:ref{#properties-shear}, and keeps $$D$$ by D5 (:ref{#det3-properties}). Swapping two columns keeps
+the box, so it keeps $$V$$, and it changes $$D$$ to $$-D$$ by D6, which keeps $$|D|$$.
+
+**Flat boxes.** A box lying in one plane has volume $$0$$. Turn space so that the plane becomes the
+floor, which keeps volume (rule 4 of :ref{#area-and-scaling/volume-rules}). Then the box lies inside
+a box with a fixed floor rectangle and any height $$h > 0$$ you like, so its volume is at most the
+area of that rectangle times $$h$$ (rules 1 and 3). The only volume that is that small for every
+$$h > 0$$ is $$0$$.
+
+**Clearing the heights.** If every column has third coordinate $$0$$, all three columns lie in the
+floor, so the box is flat and $$V = 0$$. The matrix then has a row of zeros, so $$D = 0$$
+(:ref{#det3-any-row}). Otherwise, swap a column with non-zero third coordinate $$h$$ into third
+place. Then subtract multiples of it from the first two columns to make their third coordinates
+$$0$$.
+
+**Clearing the second coordinates.** Now $$A^1$$ and $$A^2$$ lie in the floor. If both have second
+coordinate $$0$$, both lie on the $$x$$-axis, and subtracting a multiple of one from the other (or
+doing nothing, if one is already $$O$$) leaves a column equal to $$O$$. The box on $$O$$ and two
+other points is a parallelogram, so it is flat and $$V = 0$$, and a column of zeros gives $$D = 0$$.
+Otherwise, swap a column with non-zero second coordinate $$r$$ into second place, and subtract a
+multiple of it from $$A^1$$ to make the second coordinate of $$A^1$$ equal to $$0$$.
+
+**Reaching the axes.** The columns are now $$A^1 = (p, 0, 0)$$, $$A^2 = (q, r, 0)$$ and
+$$A^3 = (s, t, h)$$, with $$r \ne 0$$ and $$h \ne 0$$. If $$p = 0$$, then $$A^1 = O$$, and as before
+$$V = 0 = D$$. If $$p \ne 0$$, subtract multiples of $$A^1$$ from $$A^2$$ and $$A^3$$, and then a
+multiple of $$A^2$$ from $$A^3$$, to reach
+
+```math
+(p, 0, 0), \quad (0, r, 0), \quad (0, 0, h)
+```
+
+The box on these is an ordinary box with edges along the axes, of lengths $$|p|$$, $$|r|$$ and
+$$|h|$$, so $$V = |p|\,|r|\,|h|$$ (rule 1 of :ref{#area-and-scaling/volume-rules}). Its matrix is
+triangular, so $$D = prh$$ (:ref{#det3-triangular}). So $$V = |D|$$ for this box.
+
+**Back to the start.** Every step kept both $$V$$ and $$|D|$$. They are equal at the end, so they
+were equal for the box we started with.
+
+:::
+
+For the matrix $$A$$ from the first section, the box on the columns $$(2, 3, 1)$$, $$(1, -1, 0)$$
+and $$(-2, -2, 2)$$ has volume $$|-14| = 14$$. The same idea carries over to other solids: each
+little cube of a grid is sent to a box with $$|\det A|$$ times its volume, and that's why every
+volume is multiplied by $$|\det A|$$. We don't prove that step here; it follows the grid argument of
+:ref{#area-and-scaling/volume-scaling}.
+
+### Right hands and left hands
+
+The sign of $$\det A$$ says whether the box is flipped. Point the thumb, first finger and middle
+finger of your right hand along $$E^1$$, $$E^2$$ and $$E^3$$, and they fit. The determinant is
+positive when $$A^1$$, $$A^2$$ and $$A^3$$ fit a right hand in the same way, and negative when they
+fit only a left hand, the mirror image. We take this reading of the sign from the picture, as in the
+plane (:ref{#signed-area}).
+
+<Handedness caption="In the order E¹, E², E³, the unit columns fit the thumb, first finger and middle finger of a right hand, and D(E¹, E², E³) = 1. In the order E², E¹, E³ they fit only a left hand, and the determinant is −1." />
+
+Swapping two columns (D6) turns one hand into the other, in the same way that a mirror shows your
+right hand as a left hand. The matrix $$A$$ has determinant $$-14$$, so its columns fit a left hand:
+$$X \mapsto AX$$ sends the unit cube to a box of volume $$14$$, flipped over.
+
+## When the determinant is zero
+
+The determinant is $$0$$ exactly when the box on the columns has no volume. That happens when the
+three columns lie in one plane through $$O$$, so the box is squashed flat. In symbols, one column is
+then a combination of the other two.
+
+<ColumnsInAPlane caption="Three columns A¹, A² and A³ lying in one plane through O, with A³ = A¹ + 2A²: the dashed path goes from A¹ by two steps of A². The box on them is squashed into that plane, so it has no volume." />
+
+For example, take the columns $$(1, 2, 0)$$, $$(3, -1, 1)$$ and $$(7, 0, 2)$$. The third is the
+first plus twice the second, and expanding along the first row gives
+
+```math
+\begin{vmatrix} 1 & 3 & 7 \\ 2 & -1 & 0 \\ 0 & 1 & 2 \end{vmatrix} = 1 \cdot (-2) - 3 \cdot 4 + 7 \cdot 2 = 0
+```
+
+The same tie between the columns gives a solution of $$AX = 0$$ other than $$X = 0$$, where $$0$$ is
+the column of three zeros. Taking $$x_1 = 1$$, $$x_2 = 2$$ and $$x_3 = -1$$ gives
+$$A^1 + 2A^2 - A^3 = 0$$.
+
+:::theorem[Zero determinant]{#det3-zero}
+
+For a 3 by 3 matrix $$A$$, these three statements say the same thing:
+
+1. $$\det A = 0$$
+2. one column of $$A$$ is a combination of the other two, such as $$A^1 = sA^2 + tA^3$$ for some
+   numbers $$s$$ and $$t$$
+3. $$AX = 0$$ has a solution $$X$$ other than $$0$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Invertible_matrix#Invertible_matrix_theorem"}
+
+We show that 2 gives 1, that 2 and 3 say the same thing, and that 1 gives 3.
+
+**2 gives 1.** Say $$A^1 = sA^2 + tA^3$$. By D1 and D2 in the first column (:ref{#det3-properties}),
+
+```math
+D(sA^2 + tA^3, A^2, A^3) = s\,D(A^2, A^2, A^3) + t\,D(A^3, A^2, A^3)
+```
+
+Both determinants on the right have two equal columns, so both are $$0$$ by D4. If it is another
+column that is the combination, the same steps work in that column.
+
+**2 and 3 say the same thing.** For a column $$X$$ with entries $$x_1$$, $$x_2$$ and $$x_3$$,
+$$AX = x_1A^1 + x_2A^2 + x_3A^3$$ (:ref{#matrices-column-combination}). If $$A^1 = sA^2 + tA^3$$,
+the column with entries $$1$$, $$-s$$ and $$-t$$ is not $$0$$ and gives
+$$AX = A^1 - sA^2 - tA^3 = 0$$. The other way round, suppose $$AX = 0$$ with $$X \ne 0$$, say with
+$$x_1 \ne 0$$. Dividing $$x_1A^1 + x_2A^2 + x_3A^3 = 0$$ by $$x_1$$ and rearranging gives
+
+```math
+A^1 = -\frac{x_2}{x_1} A^2 - \frac{x_3}{x_1} A^3
+```
+
+If instead $$x_2$$ or $$x_3$$ is the entry that isn't $$0$$, the same steps make $$A^2$$ or $$A^3$$
+the combination.
+
+**1 gives 3.** Suppose $$\det A = 0$$. If the first column is all zeros, then $$X = E^1$$ works,
+since $$AE^1 = A^1 = 0$$ (:ref{#columns-images}). Otherwise, think of $$AX = 0$$ as three equations
+in $$x_1$$, $$x_2$$ and $$x_3$$, one for each row, and eliminate $$x_1$$:
+
+- swap rows, if needed, so that $$a_{11} \ne 0$$
+- add multiples of the first row to the other two rows to make their first entries $$0$$
+
+Neither step changes the solutions of the system (:ref{#linear-equations/combining}). The first step
+changes only the sign of the determinant and the second doesn't change it (D6 and D5 for rows), so
+the new matrix $$A'$$ still has determinant $$0$$. Its first column is $$a_{11}$$, $$0$$, $$0$$.
+
+Expanding $$A'$$ down its first column (:ref{#det3-any-row}) gives $$\det A' = a_{11} \det M_{11}$$,
+where $$M_{11}$$ is the 2 by 2 matrix in its bottom right corner. Since $$a_{11} \ne 0$$ and
+$$\det A' = 0$$, $$\det M_{11} = 0$$. The last two equations of the new system involve only $$x_2$$
+and $$x_3$$, with coefficients from $$M_{11}$$, and right-hand sides $$0$$. A 2 by 2 system like
+that with determinant $$0$$ has a solution other than $$x_2 = x_3 = 0$$
+(:ref{#linear-equations/zero-right-side}).
+
+Take such $$x_2$$ and $$x_3$$, and choose $$x_1$$ to make the first equation true:
+
+```math
+x_1 = -\frac{a_{12}x_2 + a_{13}x_3}{a_{11}}
+```
+
+where $$a_{12}$$ and $$a_{13}$$ are the entries of the first row of $$A'$$. All three equations of
+the new system now hold, so $$X$$ solves $$AX = 0$$, and $$X \ne 0$$ because $$x_2$$ and $$x_3$$ are
+not both $$0$$.
+
+:::
+
+Turned around, the theorem says that when $$\det A \ne 0$$, the only solution of $$AX = 0$$ is
+$$X = 0$$, and no column is a combination of the other two. What a zero determinant means for
+$$AX = B$$ with other right-hand sides is the subject of :ref{#cramer-converse}, in the guide on
+[Cramer's rule](./cramers-rule.mdx).
+
+## The determinant of a product
+
+The product $$AB$$ is the matrix of doing $$B$$ first and then $$A$$ (:ref{#matrix-product}). The
+mapping $$X \mapsto BX$$ multiplies every volume by $$|\det B|$$, and then $$X \mapsto AX$$
+multiplies the result by $$|\det A|$$. So the two together should multiply volumes by
+$$|\det A|\,|\det B|$$, and with the signs the same holds exactly.
+
+:::proposition[The determinant of a product]{#det3-product}
+
+For 3 by 3 matrices $$A$$ and $$B$$,
+
+```math
+\det(AB) = \det A \cdot \det B
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Determinant_of_Matrix_Product"}
+
+**The columns of AB.** Column $$j$$ of $$AB$$ is $$A$$ times column $$j$$ of $$B$$
+(:ref{#matrix-product}), and that is a combination of the columns of $$A$$
+(:ref{#matrices-column-combination}):
+
+```math
+(AB)^j = b_{1j}A^1 + b_{2j}A^2 + b_{3j}A^3
+```
+
+**Spreading out.** Put these three columns into $$D$$ and use D1 and D2 in each column in turn
+(:ref{#det3-properties}). The first column splits into three terms, each of those into three more by
+the second column, and each of those into three more by the third. That gives $$27$$ terms, each of
+the form
+
+```math
+b_{i1}\, b_{j2}\, b_{k3}\; D(A^i, A^j, A^k)
+```
+
+with each of $$i$$, $$j$$ and $$k$$ equal to $$1$$, $$2$$ or $$3$$.
+
+**Most terms vanish.** If two of $$i$$, $$j$$ and $$k$$ are equal, $$D(A^i, A^j, A^k)$$ has two
+equal columns and is $$0$$ by D4. That leaves the six terms where $$i$$, $$j$$ and $$k$$ are $$1$$,
+$$2$$ and $$3$$ in some order. For each of them, swapping columns back into the order $$A^1$$,
+$$A^2$$, $$A^3$$ gives $$\pm \det A$$, with a minus sign for each swap (D6):
+
+| $$i, j, k$$ | Swaps to $$1, 2, 3$$ | $$D(A^i, A^j, A^k)$$ | Term                          |
+| ----------- | -------------------- | -------------------- | ----------------------------- |
+| 1, 2, 3     | none                 | $$\det A$$           | $$b_{11}b_{22}b_{33}\det A$$  |
+| 1, 3, 2     | one                  | $$-\det A$$          | $$-b_{11}b_{32}b_{23}\det A$$ |
+| 2, 1, 3     | one                  | $$-\det A$$          | $$-b_{21}b_{12}b_{33}\det A$$ |
+| 2, 3, 1     | two                  | $$\det A$$           | $$b_{21}b_{32}b_{13}\det A$$  |
+| 3, 1, 2     | two                  | $$\det A$$           | $$b_{31}b_{12}b_{23}\det A$$  |
+| 3, 2, 1     | one                  | $$-\det A$$          | $$-b_{31}b_{22}b_{13}\det A$$ |
+
+**What is left is det B.** Taking out the factor $$\det A$$, the six terms add to $$\det A$$ times
+
+```math
+b_{11}b_{22}b_{33} - b_{11}b_{23}b_{32} - b_{12}b_{21}b_{33} + b_{13}b_{21}b_{32} + b_{12}b_{23}b_{31} - b_{13}b_{22}b_{31}
+```
+
+with the factors of each product reordered. This is the expansion of $$\det B$$ down its first
+column, multiplied out, from the proof of :ref{#det3-any-row}. So
+$$\det(AB) = \det A \cdot \det B$$.
+
+:::
+
+For a check with numbers, take $$A$$ from the first section and
+
+```math
+B = \begin{pmatrix} 1 & 0 & 2 \\ 0 & 1 & -1 \\ 1 & 1 & 0 \end{pmatrix}, \qquad AB = \begin{pmatrix} 0 & -1 & 3 \\ 1 & -3 & 7 \\ 3 & 2 & 2 \end{pmatrix}
+```
+
+Then $$\det A = -14$$ and $$\det B = -1$$, and expanding $$AB$$ along its first row gives
+$$0 - (-1) \cdot (2 - 21) + 3 \cdot (2 + 9) = -19 + 33 = 14$$, which is $$(-14) \cdot (-1)$$.
+
+Adding doesn't work the same way. For these two matrices, $$\det A + \det B = -15$$, but $$A + B$$
+has determinant $$-3$$. The determinant of a sum is not the sum of the determinants, because volumes
+don't add up when you add the edges of boxes.
+
+## Exercises
+
+:::::accordion[Exercises on properties of determinants, with solutions]
+
+::::exercise{#ex-properties-from-known}
+
+The matrix $$A$$ from the first section has determinant $$-14$$. Without expanding anything, find
+the determinant of the matrix you get from $$A$$ by each change:
+
+1. swapping the first and third columns
+2. multiplying the second column by $$5$$
+3. adding $$4$$ times the first column to the third
+4. replacing the third column by a copy of the first
+
+:::solution
+
+Each part is one rule from :ref{#det3-properties}.
+
+1. A swap changes the sign (D6), so the determinant is $$14$$.
+2. Scaling a column scales the determinant (D2), so it is $$5 \cdot (-14) = -70$$.
+3. Adding a multiple of one column to another changes nothing (D5), so it is $$-14$$.
+4. Two columns are now equal (D4), so it is $$0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-properties-scale}
+
+For the same matrix $$A$$, find $$\det(2A)$$ and $$\det(-A)$$. A student says $$\det(2A) = -28$$.
+Explain what went wrong.
+
+:::solution
+
+By :ref{#properties-scale}, $$\det(2A) = 2^3 \cdot (-14) = -112$$ and
+$$\det(-A) = (-1)^3 \cdot (-14) = 14$$.
+
+The student multiplied the determinant by $$2$$ once. But $$2A$$ doubles all three columns, and each
+column contributes its own factor of $$2$$ (D2), so the factor is $$2 \cdot 2 \cdot 2 = 8$$. In the
+picture, doubling every edge of a box multiplies its volume by $$8$$, not $$2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-properties-zeros}
+
+Find the determinant below by clearing the first column (:ref{#properties-zeros}).
+
+```math
+\begin{vmatrix} 1 & 2 & -1 \\ 3 & 8 & 2 \\ -2 & -1 & 9 \end{vmatrix}
+```
+
+:::solution
+
+The pivot is the $$1$$ at the top left. Take $$3$$ times the first row from the second, and add
+$$2$$ times the first row to the third. The new rows are $$(0, 2, 5)$$ and $$(0, 3, 7)$$, and the
+determinant is unchanged (D5 for rows). Expanding down the first column,
+
+```math
+1 \cdot \begin{vmatrix} 2 & 5 \\ 3 & 7 \end{vmatrix} = 14 - 15 = -1
+```
+
+:::
+
+::::
+
+::::exercise{#ex-properties-volume}
+
+Find the volume of the box on $$(2, 1, 0)$$, $$(1, 3, 1)$$ and $$(0, 1, 4)$$. Then say whether these
+three points, in this order, fit a right hand or a left hand.
+
+:::solution
+
+Put the three points in as the columns of a matrix. Expanding along the first row,
+
+```math
+\begin{vmatrix} 2 & 1 & 0 \\ 1 & 3 & 1 \\ 0 & 1 & 4 \end{vmatrix} = 2 \cdot (12 - 1) - 1 \cdot (4 - 0) + 0 = 22 - 4 = 18
+```
+
+So the box has volume $$18$$ (:ref{#signed-volume}). The determinant is positive, so the three
+points fit a right hand, like $$E^1$$, $$E^2$$ and $$E^3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-properties-plane}
+
+Show that the columns $$(1, 0, 2)$$, $$(2, 1, 1)$$ and $$(4, 1, 5)$$ lie in one plane through $$O$$
+by writing one of them as a combination of the other two. Check that the determinant is $$0$$, and
+find a solution of $$AX = 0$$ other than $$X = 0$$ for the matrix with these columns.
+
+:::solution
+
+Try $$(4, 1, 5) = s(1, 0, 2) + t(2, 1, 1)$$. The second coordinates give $$t = 1$$, then the first
+coordinates give $$4 = s + 2$$, so $$s = 2$$. The third coordinates check: $$2 \cdot 2 + 1 = 5$$. So
+$$A^3 = 2A^1 + A^2$$.
+
+Expanding along the first row,
+
+```math
+\begin{vmatrix} 1 & 2 & 4 \\ 0 & 1 & 1 \\ 2 & 1 & 5 \end{vmatrix} = 1 \cdot (5 - 1) - 2 \cdot (0 - 2) + 4 \cdot (0 - 2) = 4 + 4 - 8 = 0
+```
+
+as :ref{#det3-zero} says. Since $$2A^1 + A^2 - A^3 = 0$$, the column with entries $$2$$, $$1$$ and
+$$-1$$ solves $$AX = 0$$ (:ref{#matrices-column-combination}).
+
+:::
+
+::::
+
+::::exercise{#ex-properties-which-t}
+
+Find every number $$t$$ for which the determinant below is $$0$$. For each such $$t$$, say which
+columns of the matrix are equal.
+
+```math
+\begin{vmatrix} 1 & 1 & 1 \\ 1 & 2 & t \\ 1 & 4 & t^2 \end{vmatrix}
+```
+
+:::solution
+
+Clear the first column by taking the first row from each of the others (D5 for rows). The new rows
+are $$(0, 1, t - 1)$$ and $$(0, 3, t^2 - 1)$$. Expanding down the first column,
+
+```math
+\begin{vmatrix} 1 & t - 1 \\ 3 & t^2 - 1 \end{vmatrix} = (t^2 - 1) - 3(t - 1) = (t - 1)(t + 1) - 3(t - 1) = (t - 1)(t - 2)
+```
+
+A product is $$0$$ exactly when a factor is $$0$$, so the determinant is $$0$$ exactly when
+$$t = 1$$ or $$t = 2$$. For $$t = 1$$ the third column is $$(1, 1, 1)$$, equal to the first. For
+$$t = 2$$ it is $$(1, 2, 4)$$, equal to the second. Either way D4 gives $$0$$ as well.
+
+:::
+
+::::
+
+::::exercise{#ex-properties-inverse}
+
+Suppose $$A$$ and $$B$$ are 3 by 3 matrices with $$AB = I$$. Show that $$\det A \ne 0$$ and that
+$$\det B = \frac{1}{\det A}$$.
+
+:::solution
+
+By :ref{#det3-product}, $$\det A \cdot \det B = \det(AB) = \det I$$. The identity matrix is
+triangular with $$1$$ down the diagonal, so $$\det I = 1$$ (:ref{#det3-triangular}). So
+$$\det A \cdot \det B = 1$$.
+
+If $$\det A$$ were $$0$$, the product would be $$0$$, not $$1$$. So $$\det A \ne 0$$, and dividing
+both sides by it gives $$\det B = \frac{1}{\det A}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-properties-sum}
+
+Show with $$A = B = I$$ that $$\det(A + B)$$ need not equal $$\det A + \det B$$.
+
+:::solution
+
+Here $$A + B = 2I$$, the matrix with $$2$$ down the diagonal and $$0$$ elsewhere. It is triangular,
+so its determinant is $$2 \cdot 2 \cdot 2 = 8$$ (:ref{#det3-triangular}). But
+$$\det A + \det B = 1 + 1 = 2$$. So the determinant of a sum is not the sum of the determinants. The
+box on the columns of $$2I$$ is a cube of side $$2$$, which holds $$8$$ unit cubes, not $$2$$.
+
+:::
+
+::::
+
+:::::

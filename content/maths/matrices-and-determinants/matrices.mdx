@@ -1,0 +1,768 @@
+---
+title: Matrices
+description:
+  Grids of numbers, adding and scaling them, a matrix times a column, multiplying matrices, and a
+  matrix as a way of moving the plane.
+---
+
+Imagine three receipts from the same corner shop, smoothed out side by side on a table. The first
+says 4 apples, 1 loaf of bread and 2 bottles of milk came to £4.10. The second says 2 apples, 2
+loaves and 1 bottle of milk came to £3.70, and the third says 5 apples and 1 loaf came to £2.60. The
+words are the same on every receipt, and only the numbers change.
+
+<ShoppingReceipts caption="Three receipts, and the same counts with the words taken away: one row for each receipt, one column for each item, and the totals in pence beside them." />
+
+So you can strip the words away and keep each number in its place: one row for each receipt, one
+column for each item. What's left is a grid of numbers with three rows and three columns, and a grid
+like this is called a **matrix**. In this guide we'll learn to add and multiply matrices, and to
+read a matrix as a way of moving the plane, which is the picture the rest of the chapter is built
+on.
+
+## Grids of numbers
+
+A matrix is a table with the headings taken off. Its size says how many rows and how many columns it
+has. Each number in it has an address, a row and a column, in the same way as a seat in a theatre
+has a row and a seat number. The address is always given row first.
+
+:::definition[Matrix]{#matrix-size}
+
+An **$$m$$ by $$n$$ matrix** is a grid of numbers with $$m$$ rows and $$n$$ columns. The numbers are
+its **entries**, and the entry in row $$i$$ and column $$j$$ is written $$a_{ij}$$, read "a i j":
+
+```math
+A = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{pmatrix}
+```
+
+A matrix with as many rows as columns is **square**. Two matrices are **equal** when they have the
+same size and the same entry in every place.
+
+:::
+
+For example, here is a $$2$$ by $$3$$ matrix:
+
+```math
+A = \begin{pmatrix} 3 & -1 & 0 \\ 5 & 2 & 7 \end{pmatrix}
+```
+
+Its entry in row 2 and column 3 is $$a_{23} = 7$$. The order of the two small numbers matters:
+$$a_{21} = 5$$ is in row 2 and column 1, while $$a_{12} = -1$$ is in row 1 and column 2. Mixing the
+two up is a slip worth watching for, and the theatre seat is a good way to remember the order: row
+first, then column.
+
+<EntryAddress caption="The entry a₂₃ sits where row 2 crosses column 3. Reading the address the other way round, row 3 and column 2, would point outside this matrix, which has only two rows." />
+
+Each row of a matrix is a list of numbers written across, called a **row vector**, and each column
+is a list written upright, called a **column vector**. We write $$A_i$$ for row $$i$$ and $$A^j$$
+for column $$j$$. The raised number in $$A^j$$ is a label saying which column, not a power. For the
+matrix above,
+
+```math
+A_1 = \begin{pmatrix} 3 & -1 & 0 \end{pmatrix}, \qquad A^1 = \begin{pmatrix} 3 \\ 5 \end{pmatrix}, \quad A^2 = \begin{pmatrix} -1 \\ 2 \end{pmatrix}, \quad A^3 = \begin{pmatrix} 0 \\ 7 \end{pmatrix}
+```
+
+A column with two entries is a point of the plane written upright: the column with entries $$x$$ and
+$$y$$ is the point $$(x, y)$$. In the same way a column with three entries is a point of space
+(:ref{#adding-and-scaling-points/space-operations}). The $$2$$ by $$2$$ matrices of
+:ref{#trigonometry/matrix} are the square matrices with two rows, and everything in this guide
+extends what you saw there.
+
+## Adding and scaling matrices
+
+Suppose the three receipts were last week's, and you have a second set of three for this week, with
+the same items in the same order. The counts for the fortnight come from adding the two grids place
+by place. If instead you doubled every order, every number in the grid would double.
+
+:::definition[Adding and scaling matrices]{#matrix-operations}
+
+Let $$A$$ and $$B$$ be $$m$$ by $$n$$ matrices, and $$c$$ a number.
+
+- The **sum** $$A + B$$ is the $$m$$ by $$n$$ matrix with entry $$a_{ij} + b_{ij}$$ in row $$i$$ and
+  column $$j$$.
+- The **multiple** $$cA$$ is the $$m$$ by $$n$$ matrix with entry $$ca_{ij}$$ in row $$i$$ and
+  column $$j$$.
+
+Two matrices can be added exactly when they have the same size.
+
+:::
+
+For example,
+
+```math
+\begin{pmatrix} 1 & 4 \\ -2 & 3 \end{pmatrix} + \begin{pmatrix} 5 & 0 \\ 1 & -1 \end{pmatrix} = \begin{pmatrix} 6 & 4 \\ -1 & 2 \end{pmatrix}, \qquad 3\begin{pmatrix} 1 & 4 \\ -2 & 3 \end{pmatrix} = \begin{pmatrix} 3 & 12 \\ -6 & 9 \end{pmatrix}
+```
+
+Look down the columns of the sum. Its first column, with entries $$6$$ and $$-1$$, is the point
+$$(1, -2) + (5, 1)$$, so columns add in the same way as points
+(:ref{#adding-and-scaling-points/point-sum}). Scaling a matrix scales each column as a point
+(:ref{#adding-and-scaling-points/scalar-multiple}). So in symbols, column $$j$$ of $$A + B$$ is
+$$A^j + B^j$$, and column $$j$$ of $$cA$$ is $$cA^j$$.
+
+Every rule for adding numbers carries over, because it holds in each place separately. For example
+$$A + B = B + A$$, since $$a_{ij} + b_{ij} = b_{ij} + a_{ij}$$ in every place. In the same way
+$$c(A + B) = cA + cB$$, and $$A - B$$ means $$A + (-1)B$$.
+
+## Turning rows into columns
+
+Sometimes the same table is more useful turned on its side, with the items down the side and the
+receipts across the top. Turning it this way swaps rows and columns, so that the first row becomes
+the first column, the second row the second column, and so on.
+
+:::definition[Transpose]{#transpose}
+
+The **transpose** of an $$m$$ by $$n$$ matrix $$A$$ is the $$n$$ by $$m$$ matrix $$A^{\mathsf T}$$,
+read "A transpose", whose entry in row $$i$$ and column $$j$$ is $$a_{ji}$$. So row $$i$$ of
+$$A^{\mathsf T}$$ is column $$i$$ of $$A$$, laid across.
+
+:::
+
+For the $$2$$ by $$3$$ matrix from earlier,
+
+```math
+\begin{pmatrix} 3 & -1 & 0 \\ 5 & 2 & 7 \end{pmatrix}^{\mathsf T} = \begin{pmatrix} 3 & 5 \\ -1 & 2 \\ 0 & 7 \end{pmatrix}
+```
+
+The entries on the diagonal of a square matrix, $$a_{11}$$, $$a_{22}$$ and so on, stay where they
+are. Every other entry swaps with its partner across that diagonal, as if the grid were flipped over
+it.
+
+:::proposition[Transposing]{#transpose-rules}
+
+For matrices $$A$$ and $$B$$ of the same size and every number $$c$$,
+
+```math
+(A^{\mathsf T})^{\mathsf T} = A, \qquad (A + B)^{\mathsf T} = A^{\mathsf T} + B^{\mathsf T}, \qquad (cA)^{\mathsf T} = cA^{\mathsf T}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Transpose#Properties"}
+
+Each rule compares two matrices of the same size, so it's enough to compare the entries in row $$i$$
+and column $$j$$ (:ref{#matrix-size}).
+
+**Transposing twice.** The entry of $$(A^{\mathsf T})^{\mathsf T}$$ in row $$i$$ and column $$j$$ is
+the entry of $$A^{\mathsf T}$$ in row $$j$$ and column $$i$$, by :ref{#transpose}. That is the entry
+of $$A$$ in row $$i$$ and column $$j$$, by :ref{#transpose} again.
+
+**A sum.** The entry of $$(A + B)^{\mathsf T}$$ in row $$i$$ and column $$j$$ is the entry of
+$$A + B$$ in row $$j$$ and column $$i$$, which is $$a_{ji} + b_{ji}$$ (:ref{#matrix-operations}).
+The same entry of $$A^{\mathsf T} + B^{\mathsf T}$$ is also $$a_{ji} + b_{ji}$$.
+
+**A multiple.** In the same way, both $$(cA)^{\mathsf T}$$ and $$cA^{\mathsf T}$$ have the entry
+$$ca_{ji}$$ in row $$i$$ and column $$j$$.
+
+:::
+
+## A matrix times a column
+
+Now suppose the shop's prices are 30p for an apple, 110p for a loaf and 90p for a bottle of milk.
+The total on the first receipt is $$4 \cdot 30 + 1 \cdot 110 + 2 \cdot 90 = 410$$ pence: the first
+row of counts, each count times its price, added up. Doing the same with each row gives the column
+of totals, so the grid of counts and the column of prices together make the column of totals.
+
+:::definition[A matrix times a column]{#matrix-times-column}
+
+Let $$A$$ be an $$m$$ by $$n$$ matrix and $$X$$ a column with $$n$$ entries $$x_1, \dots, x_n$$. The
+**product** $$AX$$, read "A times X", is the column with $$m$$ entries whose entry $$i$$ is
+
+```math
+a_{i1}x_1 + a_{i2}x_2 + \cdots + a_{in}x_n
+```
+
+In words, entry $$i$$ of $$AX$$ is row $$i$$ of $$A$$ times $$X$$, place by place, added up. The
+product makes sense exactly when $$A$$ has as many columns as $$X$$ has entries.
+
+:::
+
+For the receipts, the counts form a $$3$$ by $$3$$ matrix and the prices a column with three
+entries, and the product is the column of totals:
+
+```math
+\begin{pmatrix} 4 & 1 & 2 \\ 2 & 2 & 1 \\ 5 & 1 & 0 \end{pmatrix}\begin{pmatrix} 30 \\ 110 \\ 90 \end{pmatrix} = \begin{pmatrix} 4 \cdot 30 + 1 \cdot 110 + 2 \cdot 90 \\ 2 \cdot 30 + 2 \cdot 110 + 1 \cdot 90 \\ 5 \cdot 30 + 1 \cdot 110 + 0 \cdot 90 \end{pmatrix} = \begin{pmatrix} 410 \\ 370 \\ 260 \end{pmatrix}
+```
+
+The same product can be read down the columns instead of across the rows. The first column of the
+matrix holds the apples on each receipt, so $$30$$ times that column is what the apples cost on each
+receipt. Adding the cost of the apples, the bread and the milk gives the totals again:
+
+```math
+30\begin{pmatrix} 4 \\ 2 \\ 5 \end{pmatrix} + 110\begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix} + 90\begin{pmatrix} 2 \\ 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 120 \\ 60 \\ 150 \end{pmatrix} + \begin{pmatrix} 110 \\ 220 \\ 110 \end{pmatrix} + \begin{pmatrix} 180 \\ 90 \\ 0 \end{pmatrix} = \begin{pmatrix} 410 \\ 370 \\ 260 \end{pmatrix}
+```
+
+:::proposition[A combination of the columns]{#matrices-column-combination}
+
+Let $$A$$ be an $$m$$ by $$n$$ matrix with columns $$A^1, \dots, A^n$$, and $$X$$ a column with
+entries $$x_1, \dots, x_n$$. Then
+
+```math
+AX = x_1A^1 + x_2A^2 + \cdots + x_nA^n
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Row_and_column_spaces#Column_space"}
+
+Both sides are columns with $$m$$ entries, so compare entry $$i$$ of each.
+
+- Entry $$i$$ of the column $$A^j$$ is $$a_{ij}$$, so entry $$i$$ of $$x_jA^j$$ is $$x_ja_{ij}$$
+  (:ref{#matrix-operations}).
+- Columns add place by place, so entry $$i$$ of the right side is
+  $$x_1a_{i1} + x_2a_{i2} + \cdots + x_na_{in}$$.
+- That is $$a_{i1}x_1 + \cdots + a_{in}x_n$$, which is entry $$i$$ of $$AX$$
+  (:ref{#matrix-times-column}).
+
+:::
+
+In the plane, a combination of the columns is a walk: $$x_1$$ steps of the first column, then
+$$x_2$$ steps of the second. For the matrix with columns $$A^1 = (2, 1)$$ and $$A^2 = (-1, 1)$$, and
+the column $$X$$ with entries $$2$$ and $$1$$, the rows give $$2 \cdot 2 + (-1) \cdot 1 = 3$$ and
+$$1 \cdot 2 + 1 \cdot 1 = 3$$. The columns give the same point as a walk of two steps and one step.
+
+<ColumnSteps caption="The matrix with columns A¹ = (2, 1) and A² = (−1, 1), times the column X with entries 2 and 1: two steps of A¹ and then one step of A² reach AX = (3, 3)." />
+
+### A system as one equation
+
+The receipts can also be read backwards. Suppose you know the counts and the totals but not the
+prices, and call the prices $$x_1$$, $$x_2$$ and $$x_3$$. Then the receipts say
+
+```math
+\begin{aligned}
+4x_1 + x_2 + 2x_3 &= 410 \\
+2x_1 + 2x_2 + x_3 &= 370 \\
+5x_1 + x_2 &= 260
+\end{aligned}
+```
+
+That is a system of three linear equations in three unknowns (:ref{#linear-equations/linear-three}).
+Each left side is a row of the matrix of counts times the column $$X$$ of unknowns, so the whole
+system is the single equation
+
+```math
+AX = B, \qquad A = \begin{pmatrix} 4 & 1 & 2 \\ 2 & 2 & 1 \\ 5 & 1 & 0 \end{pmatrix}, \quad X = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix}, \quad B = \begin{pmatrix} 410 \\ 370 \\ 260 \end{pmatrix}
+```
+
+The same works for any system of linear equations (:ref{#linear-equations/system}): the coefficients
+make the matrix $$A$$, the unknowns the column $$X$$, and the right-hand sides the column $$B$$. The
+product we worked out earlier shows that the shop's prices $$30$$, $$110$$ and $$90$$ solve this
+system. Finding $$X$$ from $$A$$ and $$B$$ alone is the job of [Cramer's rule](./cramers-rule.mdx).
+
+### Where the unit columns go
+
+The plainest columns to multiply by are the ones with a single $$1$$ and every other entry $$0$$.
+Multiplying by one of these picks out one column of the matrix, so a matrix is a record of where
+these columns go.
+
+:::proposition[Columns are where the unit columns go]{#columns-images}
+
+For each $$j$$ from $$1$$ to $$n$$, let $$E^j$$ be the column with $$n$$ entries whose entry $$j$$
+is $$1$$ and whose other entries are $$0$$. For every $$m$$ by $$n$$ matrix $$A$$,
+
+```math
+AE^j = A^j
+```
+
+the $$j$$-th column of $$A$$. The columns $$E^1, \dots, E^n$$ are called the **unit columns**.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Matrix_(mathematics)#Linear_transformations"}
+
+By :ref{#matrices-column-combination}, $$AE^j$$ is the combination of the columns of $$A$$ with the
+entries of $$E^j$$ as the numbers. Every entry of $$E^j$$ is $$0$$ except entry $$j$$, which is
+$$1$$, so
+
+```math
+AE^j = 0A^1 + \cdots + 1A^j + \cdots + 0A^n = A^j
+```
+
+:::
+
+In the plane, $$E^1$$ and $$E^2$$ are the unit points $$E_1 = (1, 0)$$ and $$E_2 = (0, 1)$$ of
+:ref{#adding-and-scaling-points/unit-points}, written as columns. For example,
+
+```math
+\begin{pmatrix} 2 & -1 \\ 1 & 1 \end{pmatrix}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}, \qquad \begin{pmatrix} 2 & -1 \\ 1 & 1 \end{pmatrix}\begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} -1 \\ 1 \end{pmatrix}
+```
+
+We'll use this fact all through the chapter.
+
+## Multiplying matrices
+
+Now suppose a second shop sells apples at 25p, bread at 120p and milk at 80p. To compare the two
+shops, you multiply the matrix of counts by each column of prices in turn and set the two columns of
+totals side by side. That is multiplying the matrix of counts by a matrix of prices, one column at a
+time.
+
+:::definition[Product of matrices]{#matrix-product}
+
+Let $$A$$ be an $$m$$ by $$n$$ matrix and $$B$$ an $$n$$ by $$p$$ matrix. Their **product** $$AB$$
+is the $$m$$ by $$p$$ matrix whose column $$j$$ is $$A$$ times column $$j$$ of $$B$$:
+
+```math
+(AB)^j = AB^j
+```
+
+So the entry of $$AB$$ in row $$i$$ and column $$j$$ is row $$i$$ of $$A$$ times column $$j$$ of
+$$B$$:
+
+```math
+a_{i1}b_{1j} + a_{i2}b_{2j} + \cdots + a_{in}b_{nj}
+```
+
+The product makes sense exactly when $$A$$ has as many columns as $$B$$ has rows.
+
+:::
+
+For the two shops, the price lists are the columns of a $$3$$ by $$2$$ matrix, and the product is a
+$$3$$ by $$2$$ matrix of totals, one column for each shop:
+
+```math
+\begin{pmatrix} 4 & 1 & 2 \\ 2 & 2 & 1 \\ 5 & 1 & 0 \end{pmatrix}\begin{pmatrix} 30 & 25 \\ 110 & 120 \\ 90 & 80 \end{pmatrix} = \begin{pmatrix} 410 & 380 \\ 370 & 370 \\ 260 & 245 \end{pmatrix}
+```
+
+The second receipt costs the same at both shops, and the other two are cheaper at the second shop.
+For $$2$$ by $$2$$ matrices this is the product of :ref{#trigonometry/rotations-matrix-product},
+where each entry was a row dotted with a column.
+
+:::example[Multiplying two 3 by 3 matrices]
+
+Let
+
+```math
+A = \begin{pmatrix} 1 & 2 & 0 \\ 0 & 1 & -1 \\ 3 & 0 & 1 \end{pmatrix}, \qquad B = \begin{pmatrix} 2 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & -1 & 2 \end{pmatrix}
+```
+
+The entry of $$AB$$ in row 1 and column 1 is row 1 of $$A$$ times column 1 of $$B$$:
+$$1 \cdot 2 + 2 \cdot 1 + 0 \cdot 0 = 4$$. The entry in row 2 and column 3 is row 2 of $$A$$ times
+column 3 of $$B$$: $$0 \cdot 0 + 1 \cdot 1 + (-1) \cdot 2 = -1$$. Working out all nine entries the
+same way,
+
+```math
+AB = \begin{pmatrix} 4 & 1 & 2 \\ 1 & 1 & -1 \\ 6 & 2 & 2 \end{pmatrix}
+```
+
+:::
+
+### The identity matrix and the rules for products
+
+One square matrix plays the part that the number $$1$$ plays for numbers. Its columns are the unit
+columns $$E^1, \dots, E^n$$, so it has $$1$$ in each place on the diagonal and $$0$$ everywhere
+else:
+
+```math
+I = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+```
+
+This is the $$3$$ by $$3$$ **identity matrix**, and there is one of each size. Multiplying a column
+by it changes nothing, because entry $$i$$ of $$IX$$ is $$0x_1 + \cdots + 1x_i + \cdots + 0x_n$$,
+which is $$x_i$$. So the mapping $$X \mapsto IX$$ is the identity mapping, and sharing the letter
+$$I$$ with it causes no trouble.
+
+Products of matrices follow most of the rules that products of numbers do. The exception is swapping
+the order, which we come back to after the proof.
+
+:::proposition[Grouping and the identity matrix]{#matrix-product-rules}
+
+Let $$A$$, $$B$$ and $$C$$ be matrices and $$c$$ a number, with sizes for which each product below
+makes sense. Then:
+
+1. $$(AB)X = A(BX)$$ for every column $$X$$
+2. $$(AB)C = A(BC)$$
+3. $$AI = A$$ and $$IA = A$$, with identity matrices of the right sizes
+4. $$A(B + C) = AB + AC$$ and $$(B + C)A = BA + CA$$
+5. $$A(cB) = c(AB) = (cA)B$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Matrix_multiplication#General_properties"}
+
+Let $$A$$ be $$m$$ by $$n$$. Each matrix product is worked out one column at a time
+(:ref{#matrix-product}), so most parts compare columns.
+
+**A tool: $$A$$ respects adding and scaling.** For columns $$Y$$ and $$Z$$ with $$n$$ entries,
+$$A(Y + Z) = AY + AZ$$ and $$A(cY) = c(AY)$$. Entry $$i$$ of $$A(Y + Z)$$ is
+
+```math
+a_{i1}(y_1 + z_1) + \cdots + a_{in}(y_n + z_n) = (a_{i1}y_1 + \cdots + a_{in}y_n) + (a_{i1}z_1 + \cdots + a_{in}z_n)
+```
+
+which is entry $$i$$ of $$AY + AZ$$. In the same way, entry $$i$$ of $$A(cY)$$ is $$c$$ times entry
+$$i$$ of $$AY$$.
+
+**Part 1.** Let $$B$$ be $$n$$ by $$p$$ and $$X$$ a column with entries $$x_1, \dots, x_p$$. Then
+
+```math
+\begin{aligned}
+A(BX) &= A(x_1B^1 + \cdots + x_pB^p) && \text{a combination of the columns of } B \\
+&= x_1AB^1 + \cdots + x_pAB^p && \text{the tool, used for each term} \\
+&= x_1(AB)^1 + \cdots + x_p(AB)^p && \text{the columns of } AB \\
+&= (AB)X && \text{a combination of the columns of } AB
+\end{aligned}
+```
+
+The first and last steps are :ref{#matrices-column-combination}, and the third is
+:ref{#matrix-product}.
+
+**Part 2.** Column $$j$$ of $$(AB)C$$ is $$(AB)C^j$$, which is $$A(BC^j)$$ by part 1. And $$BC^j$$
+is column $$j$$ of $$BC$$, so $$A(BC^j)$$ is column $$j$$ of $$A(BC)$$. Every column agrees, so the
+two matrices are equal.
+
+**Part 3.** Column $$j$$ of $$AI$$ is $$AE^j$$, which is $$A^j$$ by :ref{#columns-images}. Column
+$$j$$ of $$IA$$ is $$IA^j$$, which is $$A^j$$ because multiplying a column by $$I$$ changes nothing.
+
+**Part 4.** Column $$j$$ of $$A(B + C)$$ is $$A(B^j + C^j)$$, which is $$AB^j + AC^j$$ by the tool:
+column $$j$$ of $$AB + AC$$. For the other order, the entry of $$(B + C)A$$ in row $$i$$ and column
+$$j$$ is
+
+```math
+(b_{i1} + c_{i1})a_{1j} + \cdots + (b_{in} + c_{in})a_{nj} = (b_{i1}a_{1j} + \cdots + b_{in}a_{nj}) + (c_{i1}a_{1j} + \cdots + c_{in}a_{nj})
+```
+
+which is the same entry of $$BA + CA$$.
+
+**Part 5.** Column $$j$$ of $$A(cB)$$ is $$A(cB^j) = c(AB^j)$$ by the tool, which is column $$j$$ of
+$$c(AB)$$. The entry of $$(cA)B$$ in row $$i$$ and column $$j$$ is
+$$ca_{i1}b_{1j} + \cdots + ca_{in}b_{nj}$$, which is $$c$$ times the same entry of $$AB$$.
+
+:::
+
+Part 2 means brackets can be left out of a product of three matrices, and $$ABC$$ has one meaning.
+The rule that's missing is $$AB = BA$$, and it is missing for good reason. Often only one of the two
+products makes sense: the matrix of counts times the matrix of prices is a $$3$$ by $$3$$ times a
+$$3$$ by $$2$$, but the other way round is a $$3$$ by $$2$$ times a $$3$$ by $$3$$, which doesn't
+fit. Even for square matrices of the same size, the two orders usually differ:
+
+```math
+\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix} = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}, \qquad \begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ 1 & 2 \end{pmatrix}
+```
+
+So when you multiply matrices, keep them in the order they were given.
+
+## A matrix moves the plane
+
+A $$2$$ by $$2$$ matrix $$A$$ turns each point $$X$$ of the plane, written as a column, into a new
+point $$AX$$. So $$X \mapsto AX$$ is a mapping from the plane to itself
+(:ref{#mappings-and-permutations/mapping}). By :ref{#columns-images} it sends $$E^1$$ to $$A^1$$ and
+$$E^2$$ to $$A^2$$, and by :ref{#matrices-column-combination} it sends the point $$(x, y)$$ to
+$$xA^1 + yA^2$$. So the whole mapping is decided by where the two unit points go.
+
+Picture the square grid of the plane. The grid line $$x = 1$$ is made of the points $$E^1 + tE^2$$,
+and these go to the points $$A^1 + tA^2$$, a line through $$A^1$$ running in the direction of
+$$A^2$$. Every grid line goes to a line in the same way, so the grid of squares becomes a grid of
+parallelograms. Try it below, and watch the F in the unit square: it comes out slanted, stretched,
+turned, or flipped over.
+
+<MatrixGrid />
+
+### The unit square goes to a parallelogram
+
+The unit square has corners $$O$$, $$E^1$$, $$E^1 + E^2$$ and $$E^2$$. Its points are the points
+$$sE^1 + tE^2 = (s, t)$$ with $$s$$ and $$t$$ each between $$0$$ and $$1$$. The same description
+with two other points in place of $$E^1$$ and $$E^2$$ gives a parallelogram.
+
+:::definition[The parallelogram on two points]{#matrices-parallelogram}
+
+Let $$P$$ and $$Q$$ be points of the plane. The **parallelogram on $$P$$ and $$Q$$** is the set of
+points
+
+```math
+sP + tQ \qquad\text{for all numbers } s \text{ and } t \text{ with } 0 \le s \le 1 \text{ and } 0 \le t \le 1
+```
+
+Its corners are $$O$$, $$P$$, $$P + Q$$ and $$Q$$.
+
+:::
+
+When $$O$$, $$P$$ and $$Q$$ don't lie on one line, this is the region inside the parallelogram with
+those four corners (:ref{#adding-and-scaling-points/parallelogram-law}). When they do lie on one
+line, it is squashed flat into a segment, or into the single point $$O$$ when $$P = Q = O$$.
+
+:::proposition[The unit square goes to the parallelogram on the columns]{#matrices-unit-square}
+
+Let $$A$$ be a $$2$$ by $$2$$ matrix. The mapping $$X \mapsto AX$$ sends the unit square to the
+parallelogram on the columns $$A^1$$ and $$A^2$$, each point $$(s, t)$$ to the point
+$$sA^1 + tA^2$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Matrix_(mathematics)#Linear_transformations"}
+
+By :ref{#matrices-column-combination}, the point $$(s, t)$$ goes to $$sA^1 + tA^2$$. As $$s$$ and
+$$t$$ run between $$0$$ and $$1$$, the points $$(s, t)$$ fill the unit square and the points
+$$sA^1 + tA^2$$ fill the parallelogram on $$A^1$$ and $$A^2$$ (:ref{#matrices-parallelogram}).
+
+:::
+
+How much area this parallelogram has, and whether the F inside it comes out flipped, is the subject
+of [Determinants of order 2](./order-two.mdx). In space, a $$3$$ by $$3$$ matrix sends the unit cube
+to a slanted box on its three columns in the same way, which is the subject of
+[Determinants of order 3](./order-three.mdx).
+
+### One mapping after another
+
+Moving the plane by $$B$$ and then moving the result by $$A$$ is again a mapping of the plane. It
+sends $$X$$ first to $$BX$$, and then to $$A(BX)$$. By part 1 of :ref{#matrix-product-rules},
+$$A(BX) = (AB)X$$. So the composite (:ref{#mappings-and-permutations/mapping-composite}) of
+"multiply by $$B$$" followed by "multiply by $$A$$" is "multiply by $$AB$$", with the matrix of the
+move done first on the right.
+
+That is why $$AB$$ and $$BA$$ can differ: doing two moves in the other order can end somewhere else.
+In the two products at the end of
+[The identity matrix and the rules for products](#the-identity-matrix-and-the-rules-for-products),
+the first matrix slides each point sideways by its height, and the second slides it up by its
+distance across. Sliding sideways first and then up sends $$E^2 = (0, 1)$$ to $$(1, 1)$$ and then to
+$$(1, 2)$$. Sliding up first sends $$E^2$$ to $$(0, 1)$$, unchanged, and then sideways to
+$$(1, 1)$$. Those are the second columns of the second product and of the first, in that order.
+
+## Exercises
+
+:::::accordion[Exercises on matrices, with solutions]
+
+::::exercise{#ex-matrices-entries}
+
+Let
+
+```math
+A = \begin{pmatrix} 2 & 0 \\ -3 & 5 \\ 1 & 4 \end{pmatrix}
+```
+
+1. Give the size of $$A$$, and its entries $$a_{21}$$, $$a_{12}$$ and $$a_{32}$$.
+2. Write down the column $$A^2$$, the row $$A_3$$ and the transpose $$A^{\mathsf T}$$.
+
+:::solution
+
+1. $$A$$ has three rows and two columns, so it is a $$3$$ by $$2$$ matrix. Row first, then column:
+   $$a_{21} = -3$$, $$a_{12} = 0$$ and $$a_{32} = 4$$.
+2. The second column and the third row are
+
+   ```math
+   A^2 = \begin{pmatrix} 0 \\ 5 \\ 4 \end{pmatrix}, \qquad A_3 = \begin{pmatrix} 1 & 4 \end{pmatrix}
+   ```
+
+   The rows of $$A^{\mathsf T}$$ are the columns of $$A$$ (:ref{#transpose}):
+
+   ```math
+   A^{\mathsf T} = \begin{pmatrix} 2 & -3 & 1 \\ 0 & 5 & 4 \end{pmatrix}
+   ```
+
+:::
+
+::::
+
+::::exercise{#ex-matrices-add-scale}
+
+Let
+
+```math
+A = \begin{pmatrix} 1 & -2 \\ 0 & 3 \end{pmatrix}, \qquad B = \begin{pmatrix} 4 & 1 \\ 2 & -1 \end{pmatrix}
+```
+
+Work out $$2A + 3B$$. Then work out $$(A + B)^{\mathsf T}$$ and $$A^{\mathsf T} + B^{\mathsf T}$$,
+and check that they agree.
+
+:::solution
+
+By :ref{#matrix-operations}, place by place,
+
+```math
+2A + 3B = \begin{pmatrix} 2 & -4 \\ 0 & 6 \end{pmatrix} + \begin{pmatrix} 12 & 3 \\ 6 & -3 \end{pmatrix} = \begin{pmatrix} 14 & -1 \\ 6 & 3 \end{pmatrix}
+```
+
+For the transposes,
+
+```math
+(A + B)^{\mathsf T} = \begin{pmatrix} 5 & -1 \\ 2 & 2 \end{pmatrix}^{\mathsf T} = \begin{pmatrix} 5 & 2 \\ -1 & 2 \end{pmatrix}, \qquad A^{\mathsf T} + B^{\mathsf T} = \begin{pmatrix} 1 & 0 \\ -2 & 3 \end{pmatrix} + \begin{pmatrix} 4 & 2 \\ 1 & -1 \end{pmatrix} = \begin{pmatrix} 5 & 2 \\ -1 & 2 \end{pmatrix}
+```
+
+They agree, as :ref{#transpose-rules} says they must.
+
+:::
+
+::::
+
+::::exercise{#ex-matrices-two-ways}
+
+Work out the product below twice: once row by row, and once as a combination of the columns.
+
+```math
+\begin{pmatrix} 1 & 3 & -2 \\ 4 & 0 & 1 \end{pmatrix}\begin{pmatrix} 2 \\ -1 \\ 3 \end{pmatrix}
+```
+
+:::solution
+
+**Row by row** (:ref{#matrix-times-column}): the first entry is
+$$1 \cdot 2 + 3 \cdot (-1) + (-2) \cdot 3 = 2 - 3 - 6 = -7$$, and the second is
+$$4 \cdot 2 + 0 \cdot (-1) + 1 \cdot 3 = 11$$.
+
+**By columns** (:ref{#matrices-column-combination}):
+
+```math
+2\begin{pmatrix} 1 \\ 4 \end{pmatrix} - 1\begin{pmatrix} 3 \\ 0 \end{pmatrix} + 3\begin{pmatrix} -2 \\ 1 \end{pmatrix} = \begin{pmatrix} 2 - 3 - 6 \\ 8 - 0 + 3 \end{pmatrix} = \begin{pmatrix} -7 \\ 11 \end{pmatrix}
+```
+
+Both give the column with entries $$-7$$ and $$11$$.
+
+:::
+
+::::
+
+::::exercise{#ex-matrices-system}
+
+Write the system
+
+```math
+\begin{aligned}
+2x + y - z &= 1 \\
+x - y + 2z &= 5 \\
+3x + 2y &= 7
+\end{aligned}
+```
+
+as one equation $$AX = B$$. Then use a product to decide whether $$x = 1$$, $$y = 2$$, $$z = 3$$ is
+a solution, and whether $$x = 2$$, $$y = 0$$, $$z = 3$$ is one.
+
+:::solution
+
+The coefficients make $$A$$, the unknowns $$X$$ and the right-hand sides $$B$$. The third equation
+has no $$z$$, so its last coefficient is $$0$$:
+
+```math
+\begin{pmatrix} 2 & 1 & -1 \\ 1 & -1 & 2 \\ 3 & 2 & 0 \end{pmatrix}\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 1 \\ 5 \\ 7 \end{pmatrix}
+```
+
+For the first guess, the product is
+
+```math
+\begin{pmatrix} 2 & 1 & -1 \\ 1 & -1 & 2 \\ 3 & 2 & 0 \end{pmatrix}\begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} = \begin{pmatrix} 2 + 2 - 3 \\ 1 - 2 + 6 \\ 3 + 4 + 0 \end{pmatrix} = \begin{pmatrix} 1 \\ 5 \\ 7 \end{pmatrix}
+```
+
+which is $$B$$, so it is a solution. For the second guess the product has entries $$4 + 0 - 3 = 1$$,
+$$2 - 0 + 6 = 8$$ and $$6 + 0 + 0 = 6$$. That isn't $$B$$, so the second guess is not a solution: it
+fits the first equation but not the other two.
+
+:::
+
+::::
+
+::::exercise{#ex-matrices-products}
+
+Let
+
+```math
+A = \begin{pmatrix} 2 & 1 \\ 0 & 3 \end{pmatrix}, \qquad B = \begin{pmatrix} 1 & -1 \\ 4 & 2 \end{pmatrix}, \qquad C = \begin{pmatrix} 1 & 0 & 2 \\ -1 & 1 & 0 \end{pmatrix}
+```
+
+Work out $$AB$$, $$BA$$ and $$AC$$. Explain why $$CA$$ doesn't make sense.
+
+:::solution
+
+Each entry is a row of the first matrix times a column of the second (:ref{#matrix-product}):
+
+```math
+AB = \begin{pmatrix} 2 + 4 & -2 + 2 \\ 0 + 12 & 0 + 6 \end{pmatrix} = \begin{pmatrix} 6 & 0 \\ 12 & 6 \end{pmatrix}, \qquad BA = \begin{pmatrix} 2 + 0 & 1 - 3 \\ 8 + 0 & 4 + 6 \end{pmatrix} = \begin{pmatrix} 2 & -2 \\ 8 & 10 \end{pmatrix}
+```
+
+So $$AB \neq BA$$. Next, $$A$$ is $$2$$ by $$2$$ and $$C$$ is $$2$$ by $$3$$, so $$AC$$ is $$2$$ by
+$$3$$:
+
+```math
+AC = \begin{pmatrix} 2 - 1 & 0 + 1 & 4 + 0 \\ 0 - 3 & 0 + 3 & 0 + 0 \end{pmatrix} = \begin{pmatrix} 1 & 1 & 4 \\ -3 & 3 & 0 \end{pmatrix}
+```
+
+For $$CA$$, each row of $$C$$ has three entries but each column of $$A$$ has only two, so there is
+nothing to pair the third entry with. The product needs $$C$$ to have as many columns as $$A$$ has
+rows, and $$3 \neq 2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-matrices-find-matrix}
+
+Find the $$2$$ by $$2$$ matrix $$A$$ for which the mapping $$X \mapsto AX$$ sends $$(1, 0)$$ to
+$$(3, -1)$$ and $$(0, 1)$$ to $$(2, 4)$$. Find where it sends $$(2, -3)$$, and the corners of the
+image of the unit square.
+
+:::solution
+
+By :ref{#columns-images}, the columns of $$A$$ are the images of the unit columns, so
+
+```math
+A = \begin{pmatrix} 3 & 2 \\ -1 & 4 \end{pmatrix}
+```
+
+By :ref{#matrices-column-combination}, $$(2, -3)$$ goes to
+$$2(3, -1) - 3(2, 4) = (6 - 6, -2 - 12) = (0, -14)$$. By :ref{#matrices-unit-square}, the unit
+square goes to the parallelogram on $$A^1 = (3, -1)$$ and $$A^2 = (2, 4)$$, with corners $$O$$,
+$$(3, -1)$$, $$(5, 3)$$ and $$(2, 4)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-matrices-transpose-product}
+
+Show that $$(AB)^{\mathsf T} = B^{\mathsf T}A^{\mathsf T}$$ whenever $$A$$ is $$m$$ by $$n$$ and
+$$B$$ is $$n$$ by $$p$$. Check it on the matrices $$A$$ and $$B$$ of the exercise on products, and
+say why $$A^{\mathsf T}B^{\mathsf T}$$ would be the wrong order in general.
+
+:::solution
+
+Both sides are $$p$$ by $$m$$, so compare the entries in row $$i$$ and column $$j$$.
+
+- By :ref{#transpose}, that entry of $$(AB)^{\mathsf T}$$ is the entry of $$AB$$ in row $$j$$ and
+  column $$i$$, which is $$a_{j1}b_{1i} + \cdots + a_{jn}b_{ni}$$ (:ref{#matrix-product}).
+- That entry of $$B^{\mathsf T}A^{\mathsf T}$$ is row $$i$$ of $$B^{\mathsf T}$$ times column $$j$$
+  of $$A^{\mathsf T}$$. Row $$i$$ of $$B^{\mathsf T}$$ has entries $$b_{1i}, \dots, b_{ni}$$, and
+  column $$j$$ of $$A^{\mathsf T}$$ has entries $$a_{j1}, \dots, a_{jn}$$. So the entry is
+  $$b_{1i}a_{j1} + \cdots + b_{ni}a_{jn}$$.
+
+The two sums have the same terms, each with its two factors swapped, so they are equal.
+
+For the matrices of the exercise on products, $$AB$$ has rows $$(6, 0)$$ and $$(12, 6)$$, so
+$$(AB)^{\mathsf T}$$ has rows $$(6, 12)$$ and $$(0, 6)$$. And
+
+```math
+B^{\mathsf T}A^{\mathsf T} = \begin{pmatrix} 1 & 4 \\ -1 & 2 \end{pmatrix}\begin{pmatrix} 2 & 0 \\ 1 & 3 \end{pmatrix} = \begin{pmatrix} 2 + 4 & 0 + 12 \\ -2 + 2 & 0 + 6 \end{pmatrix} = \begin{pmatrix} 6 & 12 \\ 0 & 6 \end{pmatrix}
+```
+
+The other order often doesn't even make sense: $$A^{\mathsf T}$$ is $$n$$ by $$m$$ and
+$$B^{\mathsf T}$$ is $$p$$ by $$n$$, so $$A^{\mathsf T}B^{\mathsf T}$$ needs $$m = p$$.
+
+:::
+
+::::
+
+::::exercise{#ex-matrices-shear-powers}
+
+Let $$S = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$$. Work out $$S^2 = SS$$ and $$S^3 = S^2S$$.
+Guess a matrix for $$S^n$$, and show that if your guess is right for $$S^n$$, it is right for
+$$S^{n + 1} = S^nS$$ too. Then describe what the mapping $$X \mapsto S^nX$$ does to the plane.
+
+:::solution
+
+Multiplying out (:ref{#matrix-product}),
+
+```math
+S^2 = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}, \qquad S^3 = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 3 \\ 0 & 1 \end{pmatrix}
+```
+
+The guess is that $$S^n$$ has $$1$$, $$n$$ in its first row and $$0$$, $$1$$ in its second. If that
+holds for $$S^n$$, then
+
+```math
+S^{n + 1} = \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 1 + n \\ 0 & 1 \end{pmatrix}
+```
+
+which is the guess for $$n + 1$$. Since the guess holds for $$n = 1$$, each step carries it on to
+the next, so it holds for every $$n \ge 1$$.
+
+The mapping sends $$(x, y)$$ to $$(x + ny, y)$$. Each point slides sideways by $$n$$ times its
+height, and points on the $$x$$-axis stay put, so the unit square leans over into the parallelogram
+on $$(1, 0)$$ and $$(n, 1)$$.
+
+:::
+
+::::
+
+:::::

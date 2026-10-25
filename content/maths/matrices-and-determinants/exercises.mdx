@@ -1,0 +1,211 @@
+---
+title: Exercises
+description: Exercises on the whole Matrices and determinants chapter, with worked solutions.
+---
+
+These exercises use the whole chapter, and most need ideas from more than one guide. They start
+gently and get harder towards the end. Try each one before you open its solution, and name the rule
+or result behind each step, as the guides do.
+
+One habit carries most of them: ask what the determinant measures before calculating it. Thinking of
+it as an area or a volume, with a sign for flipping, often tells you the answer, or at least whether
+it should be $$0$$, before any arithmetic.
+
+## Areas and products
+
+::::exercise{#ex-matrices-and-determinants-ch-triangle}
+
+Find the area of the triangle with corners $$(1, 2)$$, $$(4, 3)$$ and $$(2, 6)$$.
+
+:::solution
+
+Slide the first corner to $$O$$: the other two become $$(3, 1)$$ and $$(1, 4)$$, and sliding keeps
+area. The triangle is half of the parallelogram on those two points, whose area is
+$$\lvert \det \rvert$$ of the matrix with those columns (:ref{#signed-area}):
+
+```math
+\begin{vmatrix} 3 & 1 \\ 1 & 4 \end{vmatrix} = 12 - 1 = 11
+```
+
+So the triangle has area $$\frac{11}{2} = 5.5$$. The determinant is positive, so turning from
+$$(3, 1)$$ to $$(1, 4)$$ is anticlockwise.
+
+:::
+
+::::
+
+::::exercise{#ex-matrices-and-determinants-ch-product}
+
+Let $$A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$$ and
+$$B = \begin{pmatrix} 2 & 0 \\ 1 & 3 \end{pmatrix}$$. Work out $$AB$$, and check that
+$$\det(AB) = \det A \det B$$. Say what this means for areas.
+
+:::solution
+
+By :ref{#matrix-product}, row times column:
+
+```math
+AB = \begin{pmatrix} 1 \cdot 2 + 2 \cdot 1 & 1 \cdot 0 + 2 \cdot 3 \\ 3 \cdot 2 + 4 \cdot 1 & 3 \cdot 0 + 4 \cdot 3 \end{pmatrix} = \begin{pmatrix} 4 & 6 \\ 10 & 12 \end{pmatrix}
+```
+
+$$\det(AB) = 48 - 60 = -12$$, while $$\det A = 4 - 6 = -2$$ and $$\det B = 6 - 0 = 6$$, and
+$$(-2) \cdot 6 = -12$$ (:ref{#det2-product}). The mapping for $$B$$ multiplies areas by $$6$$, then
+the mapping for $$A$$ multiplies them by $$2$$ and flips the plane, so doing both multiplies areas
+by $$12$$ with one flip.
+
+:::
+
+::::
+
+::::exercise{#ex-matrices-and-determinants-ch-undo-itself}
+
+A 3 by 3 matrix $$A$$ has $$A^2 = I$$: doing its mapping twice puts every point back. Prove that
+$$\det A$$ is $$1$$ or $$-1$$, and give an example of each.
+
+:::solution
+
+By :ref{#det3-product}, $$(\det A)^2 = \det(AA) = \det I = 1$$, using D3 of :ref{#det3-properties}
+for $$\det I = 1$$. A number whose square is $$1$$ is $$1$$ or $$-1$$. The identity itself has
+$$I^2 = I$$ and determinant $$1$$. The mirror in the floor, with rows $$(1, 0, 0)$$, $$(0, 1, 0)$$
+and $$(0, 0, -1)$$, also undoes itself, and it is triangular with determinant
+$$1 \cdot 1 \cdot (-1) = -1$$ (:ref{#det3-triangular}). A mapping that undoes itself can't change
+volumes, but it may flip.
+
+:::
+
+::::
+
+## Three by three
+
+::::exercise{#ex-matrices-and-determinants-ch-line}
+
+Show that the points $$(x, y)$$ for which
+
+```math
+\begin{vmatrix} x & y & 1 \\ 1 & 2 & 1 \\ 3 & 5 & 1 \end{vmatrix} = 0
+```
+
+form the line through $$(1, 2)$$ and $$(3, 5)$$.
+
+:::solution
+
+Expand along the first row (:ref{#det3}):
+
+```math
+x(2 - 5) - y(1 - 3) + 1(5 - 6) = -3x + 2y - 1
+```
+
+So the condition is $$-3x + 2y - 1 = 0$$, the equation of a line. Putting in $$(1, 2)$$ gives
+$$-3 + 4 - 1 = 0$$, and $$(3, 5)$$ gives $$-9 + 10 - 1 = 0$$, so it is the line through both points.
+There is a reason to expect it without expanding: at $$(x, y) = (1, 2)$$ the first two rows are
+equal, and at $$(3, 5)$$ the first and third are, so the determinant is $$0$$ at both points (D4 for
+rows, :ref{#det3-properties} with :ref{#det3-transpose}).
+
+:::
+
+::::
+
+::::exercise{#ex-matrices-and-determinants-ch-cramer}
+
+Solve by Cramer's rule, and check your answer:
+
+```math
+\begin{aligned}
+x + 2y + z &= 8 \\
+2x - y + 3z &= 9 \\
+3x + y - z &= 2
+\end{aligned}
+```
+
+:::solution
+
+The determinant of the coefficients, expanded along the first row (:ref{#det3}):
+
+```math
+\begin{vmatrix} 1 & 2 & 1 \\ 2 & -1 & 3 \\ 3 & 1 & -1 \end{vmatrix} = 1(1 - 3) - 2(-2 - 9) + 1(2 + 3) = -2 + 22 + 5 = 25
+```
+
+It isn't $$0$$, so there is exactly one solution (:ref{#cramer}). Putting the right-hand column
+$$(8, 9, 2)$$ in place of each column in turn gives the numerators $$25$$, $$50$$ and $$75$$, so
+$$x = 1$$, $$y = 2$$ and $$z = 3$$. Check: $$1 + 4 + 3 = 8$$, $$2 - 2 + 9 = 9$$ and
+$$3 + 2 - 3 = 2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-matrices-and-determinants-ch-parameter}
+
+Find the numbers $$k$$ for which the system
+
+```math
+\begin{aligned}
+kx + y + z &= 1 \\
+x + ky + z &= 1 \\
+x + y + kz &= 1
+\end{aligned}
+```
+
+has exactly one solution, and say what happens for the other values.
+
+:::solution
+
+The determinant of the coefficients is
+
+```math
+\begin{vmatrix} k & 1 & 1 \\ 1 & k & 1 \\ 1 & 1 & k \end{vmatrix} = k(k^2 - 1) - (k - 1) + (1 - k) = k^3 - 3k + 2 = (k - 1)^2(k + 2)
+```
+
+expanding along the first row (:ref{#det3}); check the factoring at $$k = 0$$: both sides are $$2$$.
+By :ref{#cramer} there is exactly one solution when $$k \ne 1$$ and $$k \ne -2$$. For the other two
+values the determinant is $$0$$, so there is no solution or infinitely many
+(:ref{#cramer-converse}):
+
+- $$k = 1$$: all three equations are $$x + y + z = 1$$, which has infinitely many solutions.
+- $$k = -2$$: adding the three equations gives $$0 = 3$$, so there is no solution.
+
+:::
+
+::::
+
+## Proofs
+
+::::exercise{#ex-matrices-and-determinants-ch-skew}
+
+A 3 by 3 matrix $$A$$ has $$A^{\mathsf T} = -A$$. Prove that $$\det A = 0$$, and give an example of
+such a matrix that isn't all zeros.
+
+:::solution
+
+By :ref{#det3-transpose} and :ref{#properties-scale} with $$c = -1$$,
+
+```math
+\det A = \det A^{\mathsf T} = \det(-A) = (-1)^3 \det A = -\det A
+```
+
+So $$2\det A = 0$$ and $$\det A = 0$$. An example is the matrix with rows $$(0, 1, 2)$$,
+$$(-1, 0, 3)$$ and $$(-2, -3, 0)$$; expanding along the first row gives
+$$0 - 1(0 + 6) + 2(3 - 0) = 0$$. The same argument fails for 2 by 2 matrices, where
+$$\det(-A) = (-1)^2\det A = \det A$$: the matrix with rows $$(0, 1)$$ and $$(-1, 0)$$ has
+determinant $$1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-matrices-and-determinants-ch-flip}
+
+Let $$F$$ be the 3 by 3 matrix with rows $$(1, 0, 0)$$, $$(0, 1, 0)$$ and $$(0, 0, -1)$$, the mirror
+in the floor. Find $$\det F$$ and $$\det(FAF)$$ in terms of $$\det A$$, and explain the answer with
+volumes.
+
+:::solution
+
+$$F$$ is triangular, so $$\det F = 1 \cdot 1 \cdot (-1) = -1$$ (:ref{#det3-triangular}). By
+:ref{#det3-product} twice, $$\det(FAF) = (-1)\det A\,(-1) = \det A$$. The two reflections keep every
+volume and flip twice between them, so the change of volume and the orientation are the same as for
+$$A$$ (:ref{#signed-volume}).
+
+:::
+
+::::
