@@ -1,0 +1,233 @@
+---
+title: Exercises
+description: Exercises on the whole Complex numbers chapter, with worked solutions.
+---
+
+These exercises use the whole chapter, and most need ideas from more than one guide. They start
+gently and get harder towards the end. Try each one before you open its solution, and name the rule
+or result behind each step, as the guides do.
+
+One habit carries most of them: choose the form that suits the job. Adding and conjugating take the
+fewest steps with $$a + bi$$, while multiplying, dividing, powers and roots take the fewest in polar
+form $$re^{i\theta}$$. In several of the exercises below, switching between the two is the whole
+trick.
+
+## Arithmetic and the plane
+
+::::exercise{#ex-complex-numbers-ch-quadratic}
+
+Solve $$z^2 + 4z + 8 = 0$$. Write both solutions in polar form, and check that their product is
+$$8$$.
+
+:::solution
+
+The discriminant is $$16 - 32 = -16 < 0$$, so by :ref{#negative-discriminant} the solutions are
+
+```math
+z = \frac{-4 \pm i\sqrt{16}}{2} = -2 \pm 2i
+```
+
+Each has length $$\sqrt{4 + 4} = 2\sqrt2$$. The point $$-2 + 2i$$ lies on the line $$y = -x$$ in the
+second quarter of the plane, at angle $$\frac{3\pi}{4}$$, and its conjugate $$-2 - 2i$$ is at angle
+$$-\frac{3\pi}{4}$$ (:ref{#polar-divide}). So the solutions are $$2\sqrt2\,e^{\pm 3\pi i/4}$$
+(:ref{#polar-form}). Their product has length $$(2\sqrt2)^2 = 8$$ and angle
+$$\frac{3\pi}{4} - \frac{3\pi}{4} = 0$$ (:ref{#polar-multiply}), so it is $$8$$, which is
+$$\frac{c}{a}$$ as :ref{#every-quadratic-vieta} says.
+
+:::
+
+::::
+
+::::exercise{#ex-complex-numbers-ch-high-power}
+
+Write $$\frac{1 + i}{1 - i}$$ in the form $$a + bi$$, and use it to find
+$$\left(\frac{1 + i}{1 - i}\right)^{2025}$$.
+
+:::solution
+
+Multiply the top and bottom by the conjugate of the bottom (:ref{#complex-inverse}):
+
+```math
+\frac{1 + i}{1 - i} = \frac{(1 + i)(1 + i)}{(1 - i)(1 + i)} = \frac{1 + 2i + i^2}{1 - i^2} = \frac{2i}{2} = i
+```
+
+So the power is $$i^{2025}$$. Since $$2025 = 4 \cdot 506 + 1$$, :ref{#powers-of-i} gives
+$$i^{2025} = i^1 = i$$. In pictures: $$1 + i$$ and $$1 - i$$ have the same length and angles
+$$\pm\frac{\pi}{4}$$, so their quotient has length $$1$$ and angle $$\frac{\pi}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-complex-numbers-ch-unit-circle}
+
+Prove that a complex number $$z \ne 0$$ lies on the unit circle exactly when
+$$\frac{1}{z} = \bar z$$.
+
+:::solution
+
+By :ref{#complex-inverse}, $$\frac1z = \frac{\bar z}{\lvert z \rvert^2}$$. If
+$$\lvert z \rvert = 1$$ this is $$\bar z$$. Conversely, if $$\frac1z = \bar z$$, multiplying by
+$$z$$ gives $$1 = z\bar z = \lvert z \rvert^2$$ (:ref{#times-conjugate}), so
+$$\lvert z \rvert = 1$$, since lengths are never negative. In polar form: on the unit circle,
+$$\frac{1}{e^{i\theta}} = e^{-i\theta}$$, the mirror image in the real axis.
+
+:::
+
+::::
+
+::::exercise{#ex-complex-numbers-ch-parallelogram}
+
+Prove that
+$$\lvert z + w \rvert^2 + \lvert z - w \rvert^2 = 2\lvert z \rvert^2 + 2\lvert w \rvert^2$$ for all
+complex numbers $$z$$ and $$w$$, and say what it means for a parallelogram.
+
+:::solution
+
+Use $$\lvert u \rvert^2 = u\bar u$$ (:ref{#times-conjugate}) and :ref{#conjugate-rules}:
+
+```math
+\begin{aligned}
+\lvert z + w \rvert^2 &= (z + w)(\bar z + \bar w) = z\bar z + z\bar w + w\bar z + w\bar w \\
+\lvert z - w \rvert^2 &= (z - w)(\bar z - \bar w) = z\bar z - z\bar w - w\bar z + w\bar w
+\end{aligned}
+```
+
+Adding, the middle terms cancel and leave
+$$2z\bar z + 2w\bar w = 2\lvert z \rvert^2 + 2\lvert w \rvert^2$$. In the parallelogram with corners
+$$0$$, $$z$$, $$z + w$$ and $$w$$, the diagonals have lengths $$\lvert z + w \rvert$$ and
+$$\lvert z - w \rvert$$: the squares of the two diagonals add up to the squares of the four sides.
+
+:::
+
+::::
+
+## Multiplying, powers and roots
+
+::::exercise{#ex-complex-numbers-ch-equilateral}
+
+Find the third corner $$c$$ of an equilateral triangle with corners $$a = 1 + i$$ and
+$$b = 4 + 2i$$, taking $$c$$ on the left as you walk from $$a$$ to $$b$$. Check that all three sides
+have the same length.
+
+:::solution
+
+Turning the step $$b - a$$ by $$\frac{\pi}{3}$$ about $$a$$ gives the third corner, since the
+triangle's angle at $$a$$ is $$\frac{\pi}{3}$$ and a turn keeps length (:ref{#multiply-turn}). So
+
+```math
+\begin{aligned}
+c &= a + e^{i\pi/3}(b - a) = (1 + i) + \left(\tfrac12 + \tfrac{\sqrt3}{2}i\right)(3 + i) \\
+&= (1 + i) + \left(\tfrac32 - \tfrac{\sqrt3}{2}\right) + \left(\tfrac12 + \tfrac{3\sqrt3}{2}\right)i \\
+&= \left(\tfrac52 - \tfrac{\sqrt3}{2}\right) + \left(\tfrac32 + \tfrac{3\sqrt3}{2}\right)i
+\end{aligned}
+```
+
+about $$1.63 + 4.10i$$. Check: $$\lvert b - a \rvert^2 = 9 + 1 = 10$$. Next,
+$$c - a = e^{i\pi/3}(b - a)$$ has length $$1 \cdot \sqrt{10}$$ (:ref{#abs-product-complex}), so
+$$\lvert c - a \rvert^2 = 10$$. Last, $$c - b$$ has real part $$-\tfrac32 - \tfrac{\sqrt3}{2}$$ and
+imaginary part $$-\tfrac12 + \tfrac{3\sqrt3}{2}$$, so
+
+```math
+\lvert c - b \rvert^2 = \left(\tfrac32 + \tfrac{\sqrt3}{2}\right)^2 + \left(-\tfrac12 + \tfrac{3\sqrt3}{2}\right)^2 = \left(3 + \tfrac{3\sqrt3}{2}\right) + \left(7 - \tfrac{3\sqrt3}{2}\right) = 10
+```
+
+:::
+
+::::
+
+::::exercise{#ex-complex-numbers-ch-cube-conjugate}
+
+Find every complex number $$z$$ with $$z^3 = \bar z$$.
+
+:::solution
+
+Taking lengths, $$\lvert z \rvert^3 = \lvert \bar z \rvert = \lvert z \rvert$$
+(:ref{#abs-product-complex}), so $$\lvert z \rvert$$ is $$0$$ or $$1$$.
+
+- If $$\lvert z \rvert = 0$$, then $$z = 0$$, which works.
+- If $$\lvert z \rvert = 1$$, multiply both sides by $$z$$: $$z^4 = z\bar z = 1$$
+  (:ref{#times-conjugate}). So $$z$$ is a fourth root of unity: $$1$$, $$i$$, $$-1$$ or $$-i$$
+  (:ref{#roots-of-unity-polygon}). Each works; for example $$i^3 = -i = \bar i$$.
+
+So there are five solutions: $$0$$, $$1$$, $$i$$, $$-1$$ and $$-i$$.
+
+:::
+
+::::
+
+::::exercise{#ex-complex-numbers-ch-hexagon}
+
+A regular hexagon has its centre at $$2 + i$$ and one corner at $$4 + i$$. Find its other corners.
+
+:::solution
+
+Slide the centre to $$0$$: the corner becomes $$2$$, and the corners of a regular hexagon centred at
+$$0$$ with a corner at $$2$$ are $$2\omega_k$$, where $$\omega_k = e^{2\pi ik/6}$$ are the sixth
+roots of unity (:ref{#roots-of-unity-polygon}). These are $$\pm 1$$ and
+$$\pm\frac12 \pm \frac{\sqrt3}{2}i$$, so the corners about $$0$$ are $$\pm 2$$ and
+$$\pm 1 \pm \sqrt3\,i$$. Slide back by adding $$2 + i$$:
+
+```math
+4 + i, \quad 3 + (1 + \sqrt3)i, \quad 1 + (1 + \sqrt3)i, \quad i, \quad 1 + (1 - \sqrt3)i, \quad 3 + (1 - \sqrt3)i
+```
+
+Check: each is at distance $$2$$ from $$2 + i$$, for example
+$$\lvert 1 + \sqrt3\,i \rvert = \sqrt{1 + 3} = 2$$.
+
+:::
+
+::::
+
+## Polynomials
+
+::::exercise{#ex-complex-numbers-ch-cubic}
+
+Given that $$1 + 2i$$ is a root of $$z^3 - 3z^2 + 7z - 5$$, find the other two roots.
+
+:::solution
+
+The coefficients are real, so $$1 - 2i$$ is also a root (:ref{#conjugate-pairs}). By the factor
+theorem (:ref{#complex-root-bound}) twice, the polynomial has the factor
+
+```math
+(z - (1 + 2i))(z - (1 - 2i)) = (z - 1)^2 - (2i)^2 = z^2 - 2z + 5
+```
+
+Dividing, $$z^3 - 3z^2 + 7z - 5 = (z^2 - 2z + 5)(z - 1)$$; check by expanding:
+$$z^3 - 2z^2 + 5z - z^2 + 2z - 5$$. So the roots are $$1 + 2i$$, $$1 - 2i$$ and $$1$$, and there are
+no others (:ref{#complex-root-bound}).
+
+:::
+
+::::
+
+::::exercise{#ex-complex-numbers-ch-fourth}
+
+Find all four solutions of $$z^4 + 4 = 0$$, and use them to write $$z^4 + 4$$ as a product of two
+quadratics with real coefficients.
+
+:::solution
+
+We want the fourth roots of $$-4 = 4e^{i\pi}$$. By :ref{#nth-roots-complex} they are
+
+```math
+\sqrt[4]{4}\,e^{i(\pi + 2\pi k)/4} = \sqrt2\,e^{i\pi(2k + 1)/4} \qquad k = 0, 1, 2, 3
+```
+
+that is, $$1 + i$$, $$-1 + i$$, $$-1 - i$$ and $$1 - i$$. Check one: $$(1 + i)^2 = 2i$$, so
+$$(1 + i)^4 = (2i)^2 = -4$$. Pair each root with its conjugate:
+
+```math
+\begin{aligned}
+(z - (1 + i))(z - (1 - i)) &= z^2 - 2z + 2 \\
+(z - (-1 + i))(z - (-1 - i)) &= z^2 + 2z + 2
+\end{aligned}
+```
+
+So $$z^4 + 4 = (z^2 - 2z + 2)(z^2 + 2z + 2)$$. Check by expanding: the product is
+$$(z^2 + 2)^2 - (2z)^2 = z^4 + 4z^2 + 4 - 4z^2 = z^4 + 4$$.
+
+:::
+
+::::

@@ -262,6 +262,29 @@ import { PegChain } from "./mapping-illustrations/combining-and-undoing";
 import { TicketArrows } from "./mapping-illustrations/combining-and-undoing";
 import { CurveTracer } from "./interactive/curve-tracer";
 import { UndoChain } from "./interactive/undo-chain";
+import { QuarterTurns } from "./complex-illustrations/polar-form";
+import { TurnThenZoom } from "./complex-illustrations/polar-form";
+import { PowersOfOnePlusI } from "./complex-illustrations/powers-and-identities";
+import { ConjugateSum } from "./complex-illustrations/powers-and-identities";
+import { ComplexMultiply } from "./interactive/complex-multiply";
+import { PowerSpiral } from "./interactive/power-spiral";
+import { PizzaSlices } from "./complex-illustrations/roots";
+import { SquareRootsHalved } from "./complex-illustrations/roots";
+import { RootPolygons } from "./complex-illustrations/roots";
+import { CubeRootsEightI } from "./complex-illustrations/roots";
+import { ParabolaAndRoots } from "./complex-illustrations/every-quadratic";
+import { RootsOfUnity } from "./interactive/roots-of-unity";
+import { SquaresNeverNegative } from "./complex-illustrations/meeting-i";
+import { MultiplyPreview } from "./complex-illustrations/meeting-i";
+import { TimesITurns } from "./complex-illustrations/meeting-i";
+import { PowersOfI } from "./complex-illustrations/meeting-i";
+import { TreasureMap } from "./complex-illustrations/complex-plane";
+import { PointsInPlane } from "./complex-illustrations/complex-plane";
+import { SumParallelogram } from "./complex-illustrations/complex-plane";
+import { DifferenceStep } from "./complex-illustrations/complex-plane";
+import { ConjugateFlip } from "./complex-illustrations/complex-plane";
+import { AbsoluteCircle } from "./complex-illustrations/complex-plane";
+import { ComplexPlane } from "./interactive/complex-plane";
 import {
   Conjecture,
   Corollary,
@@ -397,6 +420,29 @@ export const mdxComponents = {
   HalfTurnPair,
   MoveExplorer,
   SpriteFrames,
+  ComplexPlane,
+  AbsoluteCircle,
+  ConjugateFlip,
+  DifferenceStep,
+  SumParallelogram,
+  PointsInPlane,
+  TreasureMap,
+  PowersOfI,
+  TimesITurns,
+  MultiplyPreview,
+  SquaresNeverNegative,
+  RootsOfUnity,
+  ParabolaAndRoots,
+  CubeRootsEightI,
+  RootPolygons,
+  SquareRootsHalved,
+  PizzaSlices,
+  PowerSpiral,
+  ComplexMultiply,
+  ConjugateSum,
+  PowersOfOnePlusI,
+  TurnThenZoom,
+  QuarterTurns,
   UndoChain,
   CurveTracer,
   TicketArrows,

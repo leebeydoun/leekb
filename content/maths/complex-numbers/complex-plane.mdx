@@ -1,0 +1,570 @@
+---
+title: The complex plane
+description:
+  Complex numbers as places on a map, adding and subtracting as steps, real and imaginary parts, the
+  conjugate as a flip, the absolute value as a distance, and dividing one complex number by another.
+---
+
+Imagine a treasure map with a grid drawn over it and an old oak tree marked near one corner. The
+first clue says: from the oak, walk 4 paces east and 1 pace north. The second clue says: from where
+the first clue left you, walk 1 pace west and 3 paces north. You end up 3 paces east and 4 paces
+north of the oak, and the two clues together work like one longer set of directions.
+
+<TreasureMap caption="The first clue (blue) walks 4 paces east and 1 north from the oak. The second clue (orange) walks 1 west and 3 north from there. Together they reach the treasure, 3 east and 4 north of the oak, which is 5 paces away in a straight line (dashed)." />
+
+Each place on the map is a pair of numbers, paces east and paces north, so each place is a complex
+number. The first clue is $$4 + i$$, the second is $$-1 + 3i$$, and following both is adding them:
+$$(4 + i) + (-1 + 3i) = 3 + 4i$$. The plane drawn this way, with each point read as a complex
+number, is called the **complex plane**. In this guide we'll read each operation on complex numbers
+as a move on this map, and then divide one complex number by another.
+
+## Complex numbers as points
+
+By :ref{#complex-number}, a complex number is a point of the plane, and by :ref{#i-squared} the
+point $$(a, b)$$ is the number $$a + bi$$. So $$3 + 2i$$ is the point three across and two up, and
+$$-2 + i$$ is two to the left and one up. The horizontal axis holds the numbers $$a + 0i$$, which
+are the real numbers (:ref{#complex-reals}), so it is called the **real axis**. The vertical axis
+holds the numbers $$bi$$, called **imaginary numbers**, so it is called the **imaginary axis**. The
+name "imaginary" is a leftover from the days when these numbers were distrusted. On the map, $$2i$$
+is a place two steps north of $$0$$, as definite as $$2$$, two steps east.
+
+<PointsInPlane caption="Five complex numbers as points. The real number 2 sits on the real axis, the imaginary number −2i sits on the imaginary axis, and 3 + 2i, −2 + i and −3 − 2i are off both axes." />
+
+## Adding is following directions
+
+On the treasure map, adding two complex numbers is taking one step and then the other. That is
+adding points, so the sum is the far corner of the parallelogram with sides $$z$$ and $$w$$
+(:ref{#adding-and-scaling-points/parallelogram-law}). Taking the steps in the other order, $$w$$
+first and then $$z$$, goes round the other two sides of the parallelogram to the same corner, which
+is $$z + w = w + z$$.
+
+<SumParallelogram caption="Adding z = 4 + i and w = −1 + 3i. Taking z and then w (solid blue, dashed orange) or w and then z (solid orange, dashed blue) reaches the same corner, z + w = 3 + 4i, at the end of the purple diagonal." />
+
+Subtracting runs a step backwards. With $$z = a + bi$$ and $$w = c + di$$, the difference is
+$$z - w = (a - c) + (b - d)i$$, the difference of points from
+:ref{#adding-and-scaling-points/point-difference}. It is the step that takes you from $$w$$ to
+$$z$$, because $$w + (z - w) = z$$. For example, with $$z = 4 + i$$ and $$w = 1 + 3i$$,
+
+```math
+z - w = (4 - 1) + (1 - 3)i = 3 - 2i
+```
+
+so from $$w$$ you walk 3 east and 2 south to reach $$z$$.
+
+<DifferenceStep caption="The difference z − w for z = 4 + i and w = 1 + 3i is the step from w to z (purple arrow): 3 across and 2 down. The same step taken from 0 (dashed) ends at z − w = 3 − 2i." />
+
+## Real and imaginary parts
+
+Each complex number has two numbers in it, how far across and how far up, and each gets a name.
+
+:::definition[Real and imaginary parts]{#real-imaginary-parts}
+
+Let $$z = a + bi$$ with $$a$$ and $$b$$ real. The **real part** of $$z$$ is
+$$\operatorname{Re} z = a$$, and the **imaginary part** of $$z$$ is $$\operatorname{Im} z = b$$.
+
+:::
+
+For example, $$\operatorname{Re}(3 - 2i) = 3$$ and $$\operatorname{Im}(3 - 2i) = -2$$. Notice that
+the imaginary part is the real number $$-2$$, not $$-2i$$: it is the number in front of $$i$$, how
+far up the point is. By part 2 of :ref{#i-squared}, two complex numbers are equal exactly when their
+real parts are equal and their imaginary parts are equal.
+
+Adding works one part at a time, so
+$$\operatorname{Re}(z + w) = \operatorname{Re} z + \operatorname{Re} w$$, and the same for imaginary
+parts. Multiplying does not. By the rule for multiplying,
+
+```math
+\operatorname{Re}(zw) = (\operatorname{Re} z)(\operatorname{Re} w) - (\operatorname{Im} z)(\operatorname{Im} w)
+```
+
+For example, $$(1 + 2i)(3 - i) = 5 + 5i$$, and $$1 \cdot 3 - 2 \cdot (-1) = 5$$ is its real part.
+
+## The conjugate: a flip in the real axis
+
+Hold a mirror along the real axis. The point $$3 + 2i$$, two above the axis, appears at $$3 - 2i$$,
+two below it, and a point on the axis stays where it is. Flipping a complex number in the real axis
+keeps its real part and changes the sign of its imaginary part.
+
+:::definition[Conjugate]{#conjugate}
+
+The **conjugate** of the complex number $$z = a + bi$$, with $$a$$ and $$b$$ real, is
+
+```math
+\bar z = a - bi
+```
+
+read "$$z$$ bar". As a map of the plane, $$z \mapsto \bar z$$ is the reflection
+$$(x, y) \mapsto (x, -y)$$ in the real axis (:ref{#adding-and-scaling-points/axis-reflections}).
+
+:::
+
+<ConjugateFlip caption="The conjugate is the mirror image in the real axis (purple). z = 3 + 2i flips to 3 − 2i, and w = −2 + 3i flips to −2 − 3i. The real number 1 lies on the mirror, so it is its own conjugate." />
+
+The conjugate changes the sign of the imaginary part only. So the conjugate of $$-3 + 2i$$ is
+$$-3 - 2i$$, and not $$3 - 2i$$, which would flip the real part as well. Conjugating also fits with
+adding and multiplying. With $$z = 3 + 2i$$ and $$w = -1 + 4i$$,
+
+```math
+zw = -3 + 12i - 2i + 8i^2 = -11 + 10i \qquad \bar z\,\bar w = (3 - 2i)(-1 - 4i) = -3 - 12i + 2i + 8i^2 = -11 - 10i
+```
+
+so the conjugate of the product is the product of the conjugates.
+
+:::proposition[Conjugates of sums and products]{#conjugate-rules}
+
+For all complex numbers $$z$$ and $$w$$:
+
+1. $$\overline{z + w} = \bar z + \bar w$$
+2. $$\overline{zw} = \bar z\,\bar w$$
+3. $$\overline{\bar z} = z$$
+4. $$z + \bar z = 2\operatorname{Re} z$$
+5. $$z - \bar z = 2i\operatorname{Im} z$$
+6. $$\bar z = z$$ exactly when $$z$$ is real
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Complex_conjugate#Properties"}
+
+Write $$z = a + bi$$ and $$w = c + di$$ with $$a$$, $$b$$, $$c$$ and $$d$$ real.
+
+1. $$z + w = (a + c) + (b + d)i$$, so its conjugate is
+   $$(a + c) - (b + d)i = (a - bi) + (c - di) = \bar z + \bar w$$.
+2. By the rule for multiplying, $$zw = (ac - bd) + (ad + bc)i$$, so
+   $$\overline{zw} = (ac - bd) - (ad + bc)i$$. The same rule, used on $$a + (-b)i$$ and
+   $$c + (-d)i$$, gives
+
+   ```math
+   \bar z\,\bar w = \big(ac - (-b)(-d)\big) + \big(a(-d) + (-b)c\big)i = (ac - bd) - (ad + bc)i
+   ```
+
+   using :ref{#numbers/two-minus} and :ref{#numbers/minus-in-product}. The two agree.
+
+3. $$\bar z = a + (-b)i$$, so its conjugate is $$a - (-b)i = a + bi = z$$.
+4. $$z + \bar z = (a + bi) + (a - bi) = 2a$$, and $$a = \operatorname{Re} z$$.
+5. $$z - \bar z = (a + bi) - (a - bi) = 2bi$$, and $$b = \operatorname{Im} z$$.
+6. $$\bar z = z$$ says $$a - bi = a + bi$$, which by part 2 of :ref{#i-squared} holds exactly when
+   $$-b = b$$, that is, $$b = 0$$. And $$b = 0$$ says that $$z = a$$ is real.
+
+:::
+
+Parts 4 and 5 give the two parts back from $$z$$ and $$\bar z$$:
+$$\operatorname{Re} z = \frac{z + \bar z}{2}$$ and $$\operatorname{Im} z = \frac{z - \bar z}{2i}$$,
+once we can divide by $$2i$$, which comes later in this guide.
+
+## The absolute value: a distance from 0
+
+The treasure at $$3 + 4i$$ lies 5 paces from the oak in a straight line. The walk 3 east and 4 north
+makes the two shorter sides of a right triangle, and the straight line is the long side, so by
+Pythagoras its length is $$\sqrt{3^2 + 4^2} = \sqrt{25} = 5$$. That distance from $$0$$ is the size
+of the complex number.
+
+:::definition[Absolute value]{#complex-abs}
+
+The **absolute value** of the complex number $$z = a + bi$$, with $$a$$ and $$b$$ real, is
+
+```math
+|z| = \sqrt{a^2 + b^2}
+```
+
+It is the length of the point $$(a, b)$$ (:ref{#adding-and-scaling-points/norm}), which is its
+distance from $$0$$. It is also called the **modulus** of $$z$$.
+
+:::
+
+<AbsoluteCircle caption="The absolute value of 3 + 4i is 5, the long side of the right triangle with sides 3 and 4. Every point on the circle of radius 5 about 0 has absolute value 5, including 5, −4 + 3i, −5i and 4 − 3i." />
+
+The absolute value of $$a + bi$$ is $$\sqrt{a^2 + b^2}$$, and not $$a + b$$. For $$3 + 4i$$ the slip
+gives $$3 + 4 = 7$$, which is the length of the walk along the grid lines, not the straight line.
+For a real number $$a = a + 0i$$, the definition gives $$\sqrt{a^2}$$, which is the old absolute
+value $$|a|$$ of :ref{#real-numbers/absolute-value}, by part 4 of :ref{#real-numbers/abs-basics}. So
+$$|-7| = 7$$ means the same thing for both kinds of number.
+
+Multiplying a number by its conjugate gives the square of its absolute value. With numbers,
+$$(3 + 4i)(3 - 4i) = 9 - 12i + 12i - 16i^2 = 9 + 16 = 25$$, which is $$5^2$$. The terms in $$i$$
+cancel, so the answer is real.
+
+:::proposition[A number times its conjugate]{#times-conjugate}
+
+For every complex number $$z$$, $$z\bar z = |z|^2$$. This is a real number, it is never negative,
+and it is $$0$$ exactly when $$z = 0$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Product_of_Complex_Number_with_Conjugate"}
+
+Write $$z = a + bi$$ with $$a$$ and $$b$$ real. By the rule for multiplying, used on $$a + bi$$ and
+$$a + (-b)i$$,
+
+```math
+\begin{aligned}
+z\bar z &= \big(a \cdot a - b(-b)\big) + \big(a(-b) + ba\big)i &&\qquad \text{rule for multiplying} \\
+&= (a^2 + b^2) + 0i &&\qquad \text{two minus signs, and } -ab + ab = 0 \\
+&= |z|^2 &&\qquad \text{the square of } \sqrt{a^2 + b^2} \text{ is } a^2 + b^2
+\end{aligned}
+```
+
+The last step is the definition of the square root (:ref{#real-numbers/square-root}). The number
+$$a^2 + b^2$$ is real and never negative by :ref{#real-numbers/squares-positive}, and by part 2 of
+the same corollary it is $$0$$ exactly when $$a = 0$$ and $$b = 0$$, that is, when $$z = 0$$.
+
+:::
+
+## Dividing
+
+To divide by a real number like $$5$$, you multiply by $$\frac{1}{5}$$, the number that multiplies
+$$5$$ to give $$1$$. For a complex number $$z$$ we want the same: a number that multiplies $$z$$ to
+give $$1$$. The conjugate nearly does it, since $$z\bar z = |z|^2$$ is a real number. Dividing that
+real number by $$|z|^2$$ leaves $$1$$.
+
+Here it is with numbers, for $$z = 1 + 2i$$. Its conjugate is $$1 - 2i$$, and
+$$|z|^2 = 1^2 + 2^2 = 5$$, so the inverse should be
+$$\frac{1}{5}(1 - 2i) = \frac{1}{5} - \frac{2}{5}i$$. As a check, $$(1 + 2i)(1 - 2i) = 1 + 4 = 5$$,
+so
+
+```math
+(1 + 2i) \cdot \tfrac{1}{5}(1 - 2i) = \tfrac{1}{5} \cdot 5 = 1
+```
+
+:::theorem[Dividing complex numbers]{#complex-inverse}
+
+Every complex number $$z \ne 0$$ has exactly one inverse: a complex number $$\frac{1}{z}$$, also
+written $$z^{-1}$$, with $$z \cdot \frac{1}{z} = 1$$. It is
+
+```math
+\frac{1}{z} = \frac{\bar z}{|z|^2} \qquad\text{that is,}\qquad \frac{1}{a + bi} = \frac{a}{a^2 + b^2} - \frac{b}{a^2 + b^2}\,i
+```
+
+For complex numbers $$w$$ and $$z \ne 0$$, the quotient is $$\frac{w}{z} = w \cdot \frac{1}{z}$$,
+which is $$\frac{w\bar z}{|z|^2}$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Inverse_for_Complex_Multiplication"}
+
+**There is one.** Since $$z \ne 0$$, the real number $$|z|^2$$ is not $$0$$, by
+:ref{#times-conjugate}. So it has a real inverse $$\frac{1}{|z|^2}$$, by rule 5 of
+:ref{#real-numbers/real-rules}. Let $$u = \frac{1}{|z|^2}\,\bar z$$. Then
+
+```math
+\begin{aligned}
+zu &= z\left(\tfrac{1}{|z|^2}\,\bar z\right) &&\qquad \text{the number } u \\
+&= \tfrac{1}{|z|^2}\,(z\bar z) &&\qquad \text{order and grouping don't matter} \\
+&= \tfrac{1}{|z|^2}\,|z|^2 &&\qquad \text{a number times its conjugate} \\
+&= 1 &&\qquad \text{a real number times its inverse}
+\end{aligned}
+```
+
+The second step uses rules 1 and 2 of :ref{#complex-arithmetic}, and the last is a product of real
+numbers, by part 2 of :ref{#complex-reals}. Writing $$z = a + bi$$, part 3 of :ref{#complex-reals}
+gives $$u = \frac{a}{a^2 + b^2} - \frac{b}{a^2 + b^2}\,i$$.
+
+**There is only one.** Suppose $$zv = 1$$ as well. Then, using :ref{#complex-arithmetic} at each
+step,
+
+```math
+\begin{aligned}
+v &= 1 \cdot v &&\qquad \text{one times anything} \\
+&= (uz)v &&\qquad uz = zu = 1 \\
+&= u(zv) &&\qquad \text{grouping doesn't matter} \\
+&= u \cdot 1 = u &&\qquad zv = 1
+\end{aligned}
+```
+
+**The quotient.** By definition
+$$\frac{w}{z} = w \cdot \frac{1}{z} = w \cdot \frac{1}{|z|^2}\,\bar z$$, and by order and grouping
+this is $$\frac{1}{|z|^2}\,w\bar z$$, which is written $$\frac{w\bar z}{|z|^2}$$.
+
+:::
+
+In practice you divide by multiplying the top and the bottom by the conjugate of the bottom. The
+bottom then becomes the real number $$|z|^2$$. For example,
+
+```math
+\begin{aligned}
+\frac{4 + 3i}{1 + 2i} &= \frac{(4 + 3i)(1 - 2i)}{(1 + 2i)(1 - 2i)} &&\qquad \text{multiply top and bottom by } 1 - 2i \\
+&= \frac{4 - 8i + 3i - 6i^2}{1 + 4} &&\qquad \text{multiply out} \\
+&= \frac{10 - 5i}{5} &&\qquad i^2 = -1 \\
+&= 2 - i &&\qquad \text{divide each part by } 5
+\end{aligned}
+```
+
+The first line is the quotient in :ref{#complex-inverse}, since $$\frac{w\bar z}{|z|^2}$$ has
+$$w\bar z$$ on top and $$z\bar z = |z|^2$$ on the bottom. As a check, multiply back:
+$$(2 - i)(1 + 2i) = 2 + 4i - i - 2i^2 = 4 + 3i$$. One more worth knowing is $$\frac{1}{i} = -i$$,
+since $$i(-i) = -i^2 = 1$$. So dividing by $$i$$ is multiplying by $$-i$$.
+
+With inverses, complex numbers obey all six rules of :ref{#real-numbers/real-rules}. So every result
+the Real numbers chapter proved from those six rules alone holds for complex numbers too. The one
+we'll need most is about products equal to zero.
+
+:::proposition[Products equal to zero]{#complex-zero-product}
+
+For complex numbers $$z$$ and $$w$$, if $$zw = 0$$, then $$z = 0$$ or $$w = 0$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Field_has_no_Proper_Zero_Divisors"}
+
+If $$z = 0$$ there is nothing to prove. Otherwise $$z$$ has an inverse, by :ref{#complex-inverse},
+and
+
+```math
+\begin{aligned}
+w &= 1 \cdot w &&\qquad \text{one times anything} \\
+&= \left(\tfrac{1}{z}\,z\right)w &&\qquad \tfrac{1}{z}\,z = 1 \\
+&= \tfrac{1}{z}\,(zw) &&\qquad \text{grouping doesn't matter} \\
+&= \tfrac{1}{z} \cdot 0 = 0 &&\qquad zw = 0, \text{ and zero times anything is zero}
+\end{aligned}
+```
+
+The last step is $$(c, d)(0, 0) = (0, 0)$$, straight from the rule for multiplying.
+
+:::
+
+This gives the second proof of :ref{#square-roots-minus-one} promised in
+[Meeting i](./meeting-i.mdx). By :ref{#numbers/square-formulas},
+$$(z - i)(z + i) = z^2 - i^2 = z^2 + 1$$. So $$z^2 = -1$$ exactly when $$(z - i)(z + i) = 0$$, and
+by :ref{#complex-zero-product} that happens exactly when $$z = i$$ or $$z = -i$$.
+
+## The absolute value of a product
+
+In [Meeting i](./meeting-i.mdx), the product $$(1 + 2i)(3 - i) = 5 + 5i$$ had length $$\sqrt{50}$$,
+which is $$\sqrt5 \cdot \sqrt{10}$$, the two lengths multiplied. That happens for every product, so
+multiplying by $$w$$ stretches every distance from $$0$$ by $$|w|$$. The guide
+[Multiplying is turning](./polar-form.mdx) shows what happens to the angles.
+
+:::proposition[Absolute value of a product]{#abs-product-complex}
+
+For all complex numbers $$z$$ and $$w$$,
+
+```math
+|zw| = |z|\,|w| \qquad\text{and, if } w \ne 0, \qquad \left|\frac{z}{w}\right| = \frac{|z|}{|w|}
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Complex_Modulus_of_Product_of_Complex_Numbers"}
+
+**The product.** Square the left side, and use :ref{#times-conjugate} and :ref{#conjugate-rules}:
+
+```math
+\begin{aligned}
+|zw|^2 &= (zw)\,\overline{zw} &&\qquad \text{a number times its conjugate} \\
+&= zw\,\bar z\,\bar w &&\qquad \text{the conjugate of a product} \\
+&= (z\bar z)(w\bar w) &&\qquad \text{order and grouping don't matter} \\
+&= |z|^2\,|w|^2 &&\qquad \text{a number times its conjugate, twice} \\
+&= \big(|z|\,|w|\big)^2 &&\qquad (xy)^2 = x^2y^2
+\end{aligned}
+```
+
+The last step is :ref{#numbers/power-rules} for the real numbers $$|z|$$ and $$|w|$$. Both $$|zw|$$
+and $$|z|\,|w|$$ are real and never negative, and they have the same square, so they are equal by
+:ref{#real-numbers/equal-squares}.
+
+**The quotient.** Since $$w \cdot \frac{z}{w} = z$$, the product part gives
+$$|w|\left|\frac{z}{w}\right| = |z|$$. The number $$|w|$$ is not $$0$$, because $$w \ne 0$$ (by
+:ref{#times-conjugate}), so dividing by it gives $$\left|\frac{z}{w}\right| = \frac{|z|}{|w|}$$.
+
+:::
+
+For example, $$|(3 + 4i)(5 - 12i)| = 5 \cdot 13 = 65$$ without multiplying out. As a check,
+$$(3 + 4i)(5 - 12i) = 15 - 36i + 20i - 48i^2 = 63 - 16i$$, and
+$$\sqrt{63^2 + 16^2} = \sqrt{3969 + 256} = \sqrt{4225} = 65$$.
+
+## The triangle inequality
+
+The two clues on the treasure map walk $$|4 + i| = \sqrt{17} \approx 4.12$$ paces and then
+$$|-1 + 3i| = \sqrt{10} \approx 3.16$$ paces, about $$7.3$$ in all. The straight line to the
+treasure is only $$|3 + 4i| = 5$$ paces. A detour is never shorter than the straight line, and the
+absolute value of a sum says so.
+
+:::theorem[The triangle inequality]{#complex-triangle}
+
+For all complex numbers $$z$$ and $$w$$:
+
+1. $$|z + w| \le |z| + |w|$$
+2. $$|z - w|$$ is the distance between the points $$z$$ and $$w$$
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Triangle_Inequality_for_Complex_Numbers"}
+
+By :ref{#complex-abs}, the absolute value of a complex number is the length of the point, and adding
+or subtracting complex numbers is adding or subtracting points. So part 1 is
+:ref{#adding-and-scaling-points/norm-triangle}, and part 2 is
+:ref{#adding-and-scaling-points/distance-norm}.
+
+:::
+
+Part 2 turns a distance into an absolute value. For example, the points at distance $$2$$ from
+$$1 + i$$ are the numbers $$z$$ with $$|z - (1 + i)| = 2$$, and they make up the circle of radius
+$$2$$ about $$1 + i$$ (:ref{#coordinates/circle-equation}).
+
+## Sums, steps, flips and lengths on one map
+
+Drag $$z$$ and $$w$$ around the grid, or move a point with the arrow keys once it has focus. Choose
+what to show: the sum as the corner of a parallelogram, the difference as the step from $$w$$ to
+$$z$$, the conjugate as a mirror image, or the absolute value as the radius of a circle. The readout
+works out each one in numbers.
+
+<ComplexPlane />
+
+## Exercises
+
+:::::accordion[Exercises on the complex plane, with solutions]
+
+::::exercise{#ex-complex-plane-parts}
+
+For each number, give its real part, its imaginary part, its conjugate and its absolute value, and
+say where it is in the plane.
+
+1. $$5 - 12i$$
+2. $$-8i$$
+3. $$-6$$
+
+:::solution
+
+1. $$\operatorname{Re} = 5$$, $$\operatorname{Im} = -12$$, conjugate $$5 + 12i$$, and
+   $$|5 - 12i| = \sqrt{25 + 144} = \sqrt{169} = 13$$. It is 5 to the right and 12 down.
+2. $$\operatorname{Re} = 0$$, $$\operatorname{Im} = -8$$, conjugate $$8i$$, and
+   $$|-8i| = \sqrt{0 + 64} = 8$$. It is on the imaginary axis, 8 below $$0$$.
+3. $$\operatorname{Re} = -6$$, $$\operatorname{Im} = 0$$, conjugate $$-6$$ (it is real, by part 6 of
+   :ref{#conjugate-rules}), and $$|-6| = \sqrt{36} = 6$$. It is on the real axis, 6 to the left of
+   $$0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-complex-plane-steps}
+
+Let $$z = 1 + 4i$$ and $$w = 3 - 2i$$. Work out $$z + w$$ and $$z - w$$, and find the distance
+between the points $$z$$ and $$w$$.
+
+:::solution
+
+$$z + w = (1 + 3) + (4 - 2)i = 4 + 2i$$, and $$z - w = (1 - 3) + (4 - (-2))i = -2 + 6i$$.
+
+By part 2 of :ref{#complex-triangle}, the distance is
+$$|z - w| = \sqrt{(-2)^2 + 6^2} = \sqrt{40} = 2\sqrt{10} \approx 6.32$$.
+
+:::
+
+::::
+
+::::exercise{#ex-complex-plane-divide}
+
+Write each quotient in the form $$a + bi$$, and check each answer by multiplying back.
+
+1. $$\frac{1}{3 + 4i}$$
+2. $$\frac{8 + i}{2 - i}$$
+3. $$\frac{5}{i}$$
+
+:::solution
+
+1. Multiply top and bottom by $$3 - 4i$$: the bottom becomes $$9 + 16 = 25$$, so
+   $$\frac{1}{3 + 4i} = \frac{3 - 4i}{25} = \frac{3}{25} - \frac{4}{25}i$$. As a check,
+   $$(3 + 4i)(3 - 4i) = 25$$, and $$\frac{25}{25} = 1$$.
+2. Multiply top and bottom by $$2 + i$$: the top is
+   $$(8 + i)(2 + i) = 16 + 8i + 2i + i^2 = 15 + 10i$$ and the bottom is $$4 + 1 = 5$$, so the
+   quotient is $$3 + 2i$$. As a check, $$(3 + 2i)(2 - i) = 6 - 3i + 4i - 2i^2 = 8 + i$$.
+3. Since $$\frac{1}{i} = -i$$, $$\frac{5}{i} = 5(-i) = -5i$$. As a check, $$(-5i)i = -5i^2 = 5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-complex-plane-solve}
+
+Find the complex number $$z$$ with $$(2 + i)z = 7 + i$$.
+
+:::solution
+
+Multiply both sides by $$\frac{1}{2 + i}$$, which exists by :ref{#complex-inverse}:
+
+```math
+\begin{aligned}
+z &= \frac{7 + i}{2 + i} = \frac{(7 + i)(2 - i)}{(2 + i)(2 - i)} &&\qquad \text{multiply top and bottom by } 2 - i \\
+&= \frac{14 - 7i + 2i - i^2}{4 + 1} &&\qquad \text{multiply out} \\
+&= \frac{15 - 5i}{5} = 3 - i &&\qquad i^2 = -1
+\end{aligned}
+```
+
+As a check, $$(2 + i)(3 - i) = 6 - 2i + 3i - i^2 = 7 + i$$.
+
+:::
+
+::::
+
+::::exercise{#ex-complex-plane-product-size}
+
+Find $$|(1 + i)(2 - 3i)(4 + 4i)|$$ without multiplying out, and then check your answer by
+multiplying out.
+
+:::solution
+
+By :ref{#abs-product-complex}, used twice, the absolute value is
+
+```math
+|1 + i|\,|2 - 3i|\,|4 + 4i| = \sqrt2 \cdot \sqrt{13} \cdot \sqrt{32} = \sqrt{2 \cdot 13 \cdot 32} = \sqrt{832} = 8\sqrt{13}
+```
+
+which is about $$28.84$$. To check, $$(1 + i)(4 + 4i) = 4 + 4i + 4i + 4i^2 = 8i$$, and
+$$8i(2 - 3i) = 16i - 24i^2 = 24 + 16i$$. Then $$|24 + 16i| = \sqrt{576 + 256} = \sqrt{832}$$, the
+same.
+
+:::
+
+::::
+
+::::exercise{#ex-complex-plane-pictures}
+
+Describe each set of points in the plane.
+
+1. The numbers $$z$$ with $$|z - (2 - i)| = 3$$.
+2. The numbers $$z$$ with $$|z - 1| = |z + 1|$$.
+3. The numbers $$z$$ with $$\bar z = -z$$.
+
+:::solution
+
+1. By part 2 of :ref{#complex-triangle}, $$|z - (2 - i)|$$ is the distance from $$z$$ to the point
+   $$2 - i$$. So this is the circle of radius $$3$$ about $$2 - i$$.
+2. $$|z + 1| = |z - (-1)|$$ is the distance from $$z$$ to $$-1$$, so these are the points as far
+   from $$1$$ as from $$-1$$. With $$z = x + yi$$, squaring both sides gives
+   $$(x - 1)^2 + y^2 = (x + 1)^2 + y^2$$, which simplifies to $$-2x = 2x$$, so $$x = 0$$. The set is
+   the imaginary axis.
+3. With $$z = a + bi$$, $$\bar z = -z$$ says $$a - bi = -a - bi$$. Comparing real parts gives
+   $$a = -a$$, so $$a = 0$$, and the imaginary parts agree for every $$b$$. The set is the imaginary
+   axis again: the numbers whose mirror image in the real axis is also their half turn about $$0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-complex-plane-parts-bound}
+
+Prove that $$|\operatorname{Re} z| \le |z|$$ and $$|\operatorname{Im} z| \le |z|$$ for every complex
+number $$z$$, and say what they mean in the picture.
+
+:::solution
+
+Write $$z = a + bi$$. By part 4 of :ref{#real-numbers/abs-basics}, $$|a| = \sqrt{a^2}$$, and
+$$|z| = \sqrt{a^2 + b^2}$$. If $$b = 0$$, these are equal. Otherwise $$b^2 > 0$$ by
+:ref{#real-numbers/squares-positive}, so $$0 \le a^2 < a^2 + b^2$$, and taking square roots keeps
+the order (:ref{#real-numbers/root-order}):
+
+```math
+|a| = \sqrt{a^2} < \sqrt{a^2 + b^2} = |z|
+```
+
+Either way $$|a| \le |z|$$. The same argument with $$a$$ and $$b$$ swapped gives $$|b| \le |z|$$.
+
+In the picture, $$|a|$$ and $$|b|$$ are the two shorter sides of the right triangle from $$0$$ to
+$$z$$, and $$|z|$$ is its long side. So each says that a shorter side is no longer than the long
+side.
+
+:::
+
+::::
+
+:::::

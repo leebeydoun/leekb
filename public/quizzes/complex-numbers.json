@@ -1,0 +1,538 @@
+{
+  "title": "Complex numbers",
+  "description": "Questions on complex numbers as points, conjugates and absolute value, polar form, powers, roots and quadratics.",
+  "questions": [
+    {
+      "id": "what",
+      "stars": 1,
+      "topic": "Meeting i",
+      "question": "What is a complex number, as this chapter builds it?",
+      "options": [
+        "A real number with a square root",
+        "A pair $$(a, b)$$ of real numbers, a point of the plane",
+        "Any number with $$i$$ in it",
+        "A number that can't be written down"
+      ],
+      "answer": 1,
+      "explanation": "Complex numbers are built as points, with a rule for multiplying them (:ref{#complex-number})."
+    },
+    {
+      "id": "multiply",
+      "stars": 1,
+      "topic": "Meeting i",
+      "question": "What is $$(1 + 2i)(3 - i)$$?",
+      "options": [
+        "$$5 + 5i$$",
+        "$$3 - 2i$$",
+        "$$1 + 5i$$",
+        "$$5 + 7i$$"
+      ],
+      "answer": 0,
+      "explanation": "$$3 - i + 6i - 2i^2 = 3 + 5i + 2 = 5 + 5i$$, using $$i^2 = -1$$ (:ref{#i-squared})."
+    },
+    {
+      "id": "i-power",
+      "stars": 2,
+      "topic": "Meeting i",
+      "question": "What is $$i^{27}$$?",
+      "options": [
+        "$$i$$",
+        "$$-1$$",
+        "$$1$$",
+        "$$-i$$"
+      ],
+      "answer": 3,
+      "explanation": "$$27 = 4 \\cdot 6 + 3$$, and $$i^3 = -i$$ (:ref{#powers-of-i})."
+    },
+    {
+      "id": "sqrt-minus-one",
+      "stars": 2,
+      "topic": "Meeting i",
+      "question": "Which complex numbers square to $$-1$$?",
+      "options": [
+        "Only $$i$$",
+        "None",
+        "Exactly $$i$$ and $$-i$$",
+        "Infinitely many"
+      ],
+      "answer": 2,
+      "explanation": "Comparing parts of $$(a + bi)^2 = -1$$ leaves only $$\\pm i$$ (:ref{#square-roots-minus-one})."
+    },
+    {
+      "id": "rules",
+      "stars": 2,
+      "topic": "Meeting i",
+      "question": "Why can you expand brackets with complex numbers as usual?",
+      "options": [
+        "They are taken as given",
+        "The rules of arithmetic are proved for them",
+        "Because $$i$$ is real",
+        "You can't"
+      ],
+      "answer": 1,
+      "explanation": "Grouping, order and distributivity are proved from the definition (:ref{#complex-arithmetic})."
+    },
+    {
+      "id": "conjugate",
+      "stars": 1,
+      "topic": "The complex plane",
+      "question": "What is the conjugate of $$3 - 4i$$, and what does conjugating do to the point?",
+      "options": [
+        "$$3 + 4i$$: a flip in the real axis",
+        "$$-3 + 4i$$: a half turn",
+        "$$-3 - 4i$$: a flip in the imaginary axis",
+        "$$4 - 3i$$: a swap"
+      ],
+      "answer": 0,
+      "explanation": "Only the sign of the imaginary part changes (:ref{#conjugate})."
+    },
+    {
+      "id": "abs",
+      "stars": 1,
+      "topic": "The complex plane",
+      "question": "What is $$\\lvert 3 + 4i \\rvert$$?",
+      "options": [
+        "$$7$$",
+        "$$25$$",
+        "$$1$$",
+        "$$5$$"
+      ],
+      "answer": 3,
+      "explanation": "$$\\sqrt{9 + 16} = 5$$, the distance from $$0$$ (:ref{#complex-abs}). Not $$3 + 4$$."
+    },
+    {
+      "id": "divide",
+      "stars": 2,
+      "topic": "The complex plane",
+      "question": "What is $$\\frac{4 + 3i}{1 + 2i}$$?",
+      "options": [
+        "$$4 + \\frac32 i$$",
+        "$$2 + i$$",
+        "$$2 - i$$",
+        "$$\\frac{4}{5} + \\frac{3}{5}i$$"
+      ],
+      "answer": 2,
+      "explanation": "Multiply top and bottom by $$1 - 2i$$: $$\\frac{10 - 5i}{5}$$ (:ref{#complex-inverse}). Check: $$(2 - i)(1 + 2i) = 4 + 3i$$."
+    },
+    {
+      "id": "z-zbar",
+      "stars": 2,
+      "topic": "The complex plane",
+      "question": "What is $$z\\bar z$$ for $$z = a + bi$$?",
+      "options": [
+        "$$a^2 - b^2$$",
+        "$$a^2 + b^2$$, a real number",
+        "$$2a$$",
+        "$$z^2$$"
+      ],
+      "answer": 1,
+      "explanation": "$$z\\bar z = \\lvert z \\rvert^2$$ (:ref{#times-conjugate}), which is how division works."
+    },
+    {
+      "id": "abs-product",
+      "stars": 2,
+      "topic": "The complex plane",
+      "question": "If $$\\lvert z \\rvert = 2$$ and $$\\lvert w \\rvert = 3$$, what is $$\\lvert zw \\rvert$$?",
+      "options": [
+        "$$6$$",
+        "$$5$$",
+        "$$\\sqrt{13}$$",
+        "It depends on the angles"
+      ],
+      "answer": 0,
+      "explanation": "Lengths multiply (:ref{#abs-product-complex})."
+    },
+    {
+      "id": "polar",
+      "stars": 2,
+      "topic": "Multiplying is turning",
+      "question": "What is $$-2 + 2i$$ in polar form?",
+      "options": [
+        "$$2\\sqrt2\\,e^{\\pi i/4}$$",
+        "$$4e^{3\\pi i/4}$$",
+        "$$2e^{-\\pi i/4}$$",
+        "$$2\\sqrt2\\,e^{3\\pi i/4}$$"
+      ],
+      "answer": 3,
+      "explanation": "Length $$\\sqrt{8} = 2\\sqrt2$$, and the point is in the second quarter on the line $$y = -x$$ (:ref{#polar-form})."
+    },
+    {
+      "id": "angles-add",
+      "stars": 1,
+      "topic": "Multiplying is turning",
+      "question": "When you multiply two complex numbers, what happens to their angles?",
+      "options": [
+        "They multiply",
+        "They stay the same",
+        "They add",
+        "They subtract"
+      ],
+      "answer": 2,
+      "explanation": "$$re^{i\\theta} \\cdot se^{i\\varphi} = rs\\,e^{i(\\theta + \\varphi)}$$: lengths multiply, angles add (:ref{#polar-multiply})."
+    },
+    {
+      "id": "times-i",
+      "stars": 1,
+      "topic": "Multiplying is turning",
+      "question": "What does multiplying by $$i$$ do to a point?",
+      "options": [
+        "Flips it in the real axis",
+        "Turns it a quarter turn about $$0$$",
+        "Doubles its length",
+        "Slides it up by $$1$$"
+      ],
+      "answer": 1,
+      "explanation": "$$i(x + yi) = -y + xi$$ (:ref{#multiply-by-i}). Two quarter turns make a half turn, so $$i^2 = -1$$."
+    },
+    {
+      "id": "e-i-theta",
+      "stars": 2,
+      "topic": "Multiplying is turning",
+      "question": "What does $$e^{i\\theta}$$ mean in this chapter?",
+      "options": [
+        "A shorthand for $$\\cos\\theta + i\\sin\\theta$$",
+        "$$e$$ multiplied by $$i\\theta$$",
+        "A real number",
+        "The number $$e$$ to a real power"
+      ],
+      "answer": 0,
+      "explanation": "It is a name chosen because it obeys the exponent rule (:ref{#e-i-theta}, :ref{#polar-multiply})."
+    },
+    {
+      "id": "de-moivre",
+      "stars": 2,
+      "topic": "Powers and identities",
+      "question": "What is $$(1 + i)^{10}$$?",
+      "options": [
+        "$$-32$$",
+        "$$1024$$",
+        "$$10 + 10i$$",
+        "$$32i$$"
+      ],
+      "answer": 3,
+      "explanation": "$$1 + i = \\sqrt2\\,e^{i\\pi/4}$$, so the power is $$32e^{10\\pi i/4} = 32e^{i\\pi/2}$$ (:ref{#de-moivre})."
+    },
+    {
+      "id": "triple",
+      "stars": 3,
+      "topic": "Powers and identities",
+      "question": "Expanding $$(\\cos\\theta + i\\sin\\theta)^3$$ and comparing real parts gives...",
+      "options": [
+        "$$\\cos 3\\theta = 3\\cos\\theta$$",
+        "$$\\cos 3\\theta = \\cos^3\\theta$$",
+        "$$\\cos 3\\theta = \\cos^3\\theta - 3\\cos\\theta\\sin^2\\theta$$",
+        "$$\\cos 3\\theta = \\cos^3\\theta + \\sin^3\\theta$$"
+      ],
+      "answer": 2,
+      "explanation": "By de Moivre the left side is $$\\cos 3\\theta + i\\sin 3\\theta$$; using $$\\sin^2 = 1 - \\cos^2$$ gives $$4\\cos^3\\theta - 3\\cos\\theta$$ (:ref{#triple-angle})."
+    },
+    {
+      "id": "slip-power",
+      "stars": 2,
+      "topic": "Powers and identities",
+      "question": "Is $$(\\cos\\theta + i\\sin\\theta)^2 = \\cos^2\\theta + i\\sin^2\\theta$$?",
+      "options": [
+        "Yes",
+        "No: it is $$\\cos 2\\theta + i\\sin 2\\theta$$",
+        "It equals $$\\cos 2\\theta - i\\sin 2\\theta$$",
+        "Yes, by de Moivre"
+      ],
+      "answer": 1,
+      "explanation": "Squaring a sum isn't squaring each part. De Moivre gives $$\\cos 2\\theta + i\\sin 2\\theta$$ (:ref{#de-moivre})."
+    },
+    {
+      "id": "sqrt",
+      "stars": 2,
+      "topic": "Roots of complex numbers",
+      "question": "What are the square roots of $$5 + 12i$$?",
+      "options": [
+        "$$\\pm(3 + 2i)$$",
+        "$$\\pm(\\sqrt5 + \\sqrt{12}i)$$",
+        "$$3 + 2i$$ only",
+        "$$\\pm 13$$"
+      ],
+      "answer": 0,
+      "explanation": "$$(3 + 2i)^2 = 9 - 4 + 12i$$, and every non-zero number has exactly two square roots (:ref{#complex-square-roots})."
+    },
+    {
+      "id": "unity-count",
+      "stars": 1,
+      "topic": "Roots of complex numbers",
+      "question": "How many complex numbers $$\\omega$$ have $$\\omega^6 = 1$$?",
+      "options": [
+        "$$2$$",
+        "$$1$$",
+        "Infinitely many",
+        "$$6$$"
+      ],
+      "answer": 3,
+      "explanation": "The sixth roots of unity are the corners of a regular hexagon (:ref{#roots-of-unity-polygon})."
+    },
+    {
+      "id": "unity-sum",
+      "stars": 2,
+      "topic": "Roots of complex numbers",
+      "question": "What do the fifth roots of unity add up to?",
+      "options": [
+        "$$1$$",
+        "$$5$$",
+        "$$0$$",
+        "$$-1$$"
+      ],
+      "answer": 2,
+      "explanation": "They are spread evenly round the circle, and for $$n \\ge 2$$ they add to $$0$$ (:ref{#roots-sum-zero})."
+    },
+    {
+      "id": "nth",
+      "stars": 2,
+      "topic": "Roots of complex numbers",
+      "question": "How many solutions does $$w^4 = -16$$ have?",
+      "options": [
+        "$$2$$",
+        "$$4$$",
+        "$$0$$",
+        "$$1$$"
+      ],
+      "answer": 1,
+      "explanation": "Every non-zero number has exactly $$n$$ $$n$$-th roots (:ref{#nth-roots-complex}): here $$\\sqrt2(\\pm 1 \\pm i)$$."
+    },
+    {
+      "id": "quad",
+      "stars": 1,
+      "topic": "Every quadratic has solutions",
+      "question": "What are the solutions of $$z^2 + 2z + 5 = 0$$?",
+      "options": [
+        "$$-1 \\pm 2i$$",
+        "$$1 \\pm 2i$$",
+        "$$-1 \\pm 4i$$",
+        "None"
+      ],
+      "answer": 0,
+      "explanation": "The discriminant is $$-16$$, so $$z = \\frac{-2 \\pm 4i}{2}$$ (:ref{#negative-discriminant})."
+    },
+    {
+      "id": "pairs",
+      "stars": 2,
+      "topic": "Every quadratic has solutions",
+      "question": "A polynomial with real coefficients has $$2 + 3i$$ as a root. What else must be a root?",
+      "options": [
+        "$$-2 - 3i$$",
+        "$$3 + 2i$$",
+        "Nothing else",
+        "$$2 - 3i$$"
+      ],
+      "answer": 3,
+      "explanation": "Conjugating the equation shows the conjugate is a root too (:ref{#conjugate-pairs})."
+    },
+    {
+      "id": "fta",
+      "stars": 2,
+      "topic": "Every quadratic has solutions",
+      "question": "What does the fundamental theorem of algebra say?",
+      "options": [
+        "Every polynomial has a real root",
+        "Every quadratic has two real solutions",
+        "Every complex polynomial of degree at least $$1$$ has a complex root",
+        "Complex numbers obey the rules of arithmetic"
+      ],
+      "answer": 2,
+      "explanation": "It is stated, not proved, and no proof here depends on it (:ref{#fundamental-theorem-algebra})."
+    },
+    {
+      "id": "promise",
+      "stars": 1,
+      "topic": "Every quadratic has solutions",
+      "question": "Which equations have solutions once complex numbers are allowed?",
+      "options": [
+        "Only those with positive discriminant",
+        "Every quadratic $$az^2 + bz + c = 0$$ with $$a \\ne 0$$",
+        "Only those with real coefficients",
+        "Only $$z^2 + 1 = 0$$"
+      ],
+      "answer": 1,
+      "explanation": "The quadratic formula works with complex square roots (:ref{#complex-quadratic-formula})."
+    },
+    {
+      "id": "real-inside",
+      "stars": 1,
+      "topic": "Meeting i",
+      "question": "How does the real number $$5$$ appear among the complex numbers?",
+      "options": [
+        "As the pair $$(5, 0)$$",
+        "As $$(0, 5)$$",
+        "As $$5i$$",
+        "It doesn't"
+      ],
+      "answer": 0,
+      "explanation": "Pairs $$(a, 0)$$ add and multiply exactly like the real numbers $$a$$ (:ref{#complex-reals})."
+    },
+    {
+      "id": "slip-roots",
+      "stars": 3,
+      "topic": "Meeting i",
+      "question": "Why is $$\\sqrt{-4}\\cdot\\sqrt{-9} = \\sqrt{36}$$ a slip?",
+      "options": [
+        "It isn't, both sides are $$6$$",
+        "Because $$\\sqrt{-4}$$ is $$-2$$",
+        "Because $$36$$ has no square root",
+        "The rule for multiplying square roots is only for numbers $$\\ge 0$$"
+      ],
+      "answer": 3,
+      "explanation": "$$2i \\cdot 3i = -6$$, not $$6$$. The product rule for roots needs non-negative numbers (:ref{#real-numbers/root-product})."
+    },
+    {
+      "id": "conj-product",
+      "stars": 2,
+      "topic": "The complex plane",
+      "question": "What is $$(2 + i)(2 - i)$$?",
+      "options": [
+        "$$4 - i$$",
+        "$$3$$",
+        "$$5$$",
+        "$$4 + 1 = 5i$$"
+      ],
+      "answer": 2,
+      "explanation": "A number times its conjugate is the square of its length: $$4 + 1$$ (:ref{#times-conjugate})."
+    },
+    {
+      "id": "abs-three",
+      "stars": 2,
+      "topic": "The complex plane",
+      "question": "What is $$\\lvert (1 + i)(2 - 3i)(4 + 4i) \\rvert$$?",
+      "options": [
+        "$$7$$",
+        "$$\\sqrt2 \\cdot \\sqrt{13} \\cdot 4\\sqrt2 = 8\\sqrt{13}$$",
+        "$$\\sqrt{2 + 13 + 32}$$",
+        "$$0$$"
+      ],
+      "answer": 1,
+      "explanation": "Lengths multiply (:ref{#abs-product-complex}), so there's no need to multiply out."
+    },
+    {
+      "id": "triangle",
+      "stars": 2,
+      "topic": "The complex plane",
+      "question": "What does $$\\lvert z - w \\rvert$$ measure?",
+      "options": [
+        "The distance between the points $$z$$ and $$w$$",
+        "$$\\lvert z \\rvert - \\lvert w \\rvert$$",
+        "The angle between them",
+        "The area between them"
+      ],
+      "answer": 0,
+      "explanation": "It is the length of the step from $$w$$ to $$z$$ (:ref{#complex-triangle})."
+    },
+    {
+      "id": "turn-point",
+      "stars": 2,
+      "topic": "Multiplying is turning",
+      "question": "What is $$e^{i\\pi/2}(3 + i)$$?",
+      "options": [
+        "$$3i + 1$$",
+        "$$-3 - i$$",
+        "$$1 - 3i$$",
+        "$$-1 + 3i$$"
+      ],
+      "answer": 3,
+      "explanation": "$$e^{i\\pi/2} = i$$, a quarter turn: $$i(3 + i) = 3i - 1$$ (:ref{#multiply-by-i})."
+    },
+    {
+      "id": "divide-angles",
+      "stars": 2,
+      "topic": "Multiplying is turning",
+      "question": "When you divide $$z$$ by $$w$$, what happens to the angles?",
+      "options": [
+        "They add",
+        "They divide",
+        "The angle of $$w$$ is subtracted from the angle of $$z$$",
+        "Nothing"
+      ],
+      "answer": 2,
+      "explanation": "$$\\frac{re^{i\\theta}}{se^{i\\varphi}} = \\frac rs e^{i(\\theta - \\varphi)}$$ (:ref{#polar-divide})."
+    },
+    {
+      "id": "power-real",
+      "stars": 2,
+      "topic": "Powers and identities",
+      "question": "What is $$(\\sqrt3 + i)^6$$?",
+      "options": [
+        "$$64$$",
+        "$$-64$$",
+        "$$64i$$",
+        "$$8$$"
+      ],
+      "answer": 1,
+      "explanation": "$$\\sqrt3 + i = 2e^{i\\pi/6}$$, so the power is $$64e^{i\\pi} = -64$$ (:ref{#de-moivre})."
+    },
+    {
+      "id": "rebuild",
+      "stars": 2,
+      "topic": "Powers and identities",
+      "question": "How do you rebuild the formula for $$\\sin 3\\theta$$?",
+      "options": [
+        "Expand $$(\\cos\\theta + i\\sin\\theta)^3$$ and compare imaginary parts",
+        "Multiply $$\\sin\\theta$$ by $$3$$",
+        "Cube $$\\sin\\theta$$",
+        "You have to memorise it"
+      ],
+      "answer": 0,
+      "explanation": "De Moivre gives $$\\cos 3\\theta + i\\sin 3\\theta$$ on one side, and the binomial theorem gives the other (:ref{#triple-angle})."
+    },
+    {
+      "id": "cos-from-e",
+      "stars": 3,
+      "topic": "Powers and identities",
+      "question": "Which expression equals $$\\cos\\theta$$?",
+      "options": [
+        "$$\\frac{e^{i\\theta} - e^{-i\\theta}}{2}$$",
+        "$$e^{i\\theta}$$",
+        "$$e^{i\\theta}e^{-i\\theta}$$",
+        "$$\\frac{e^{i\\theta} + e^{-i\\theta}}{2}$$"
+      ],
+      "answer": 3,
+      "explanation": "A number plus its conjugate is twice its real part (:ref{#cos-sin-from-e})."
+    },
+    {
+      "id": "cube-roots",
+      "stars": 2,
+      "topic": "Roots of complex numbers",
+      "question": "What are the cube roots of $$8i$$?",
+      "options": [
+        "$$2i$$ only",
+        "$$\\pm 2i$$",
+        "$$2e^{i\\pi/6}$$, $$2e^{5i\\pi/6}$$ and $$2e^{3i\\pi/2}$$",
+        "$$2e^{i\\pi/2}$$ three times"
+      ],
+      "answer": 2,
+      "explanation": "Take the cube root of the length and a third of the angle, then add thirds of a turn (:ref{#nth-roots-complex})."
+    },
+    {
+      "id": "polygon",
+      "stars": 1,
+      "topic": "Roots of complex numbers",
+      "question": "Where do the $$n$$-th roots of unity lie?",
+      "options": [
+        "On the real line",
+        "For $$n \\ge 3$$, at the corners of a regular $$n$$-gon on the unit circle, one at $$1$$",
+        "At $$1$$ and $$-1$$ only",
+        "Anywhere in the plane"
+      ],
+      "answer": 1,
+      "explanation": "They are $$e^{2\\pi ik/n}$$, equally spaced angles (:ref{#roots-of-unity-polygon})."
+    },
+    {
+      "id": "complex-coeff",
+      "stars": 3,
+      "topic": "Every quadratic has solutions",
+      "question": "Does $$z^2 + iz + 2 = 0$$ have $$-i$$ as a root because $$i$$ is one?",
+      "options": [
+        "No: conjugate pairs need real coefficients",
+        "Yes, always",
+        "Yes, by the quadratic formula",
+        "It has no roots"
+      ],
+      "answer": 0,
+      "explanation": "The coefficient $$i$$ isn't real, so :ref{#conjugate-pairs} doesn't apply. The roots are $$i$$ and $$-2i$$."
+    }
+  ]
+}

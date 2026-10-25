@@ -1,0 +1,128 @@
+---
+title: Introduction
+description:
+  Complex numbers built as points of the plane, adding as sliding and multiplying as turning, powers
+  and roots, and solutions for every quadratic.
+---
+
+Picture the number line as a road with no turnings. Every real number has its place on it, and yet
+the equation $$x^2 + 1 = 0$$ has nowhere to land, because no point on the road squares to a negative
+number. The way out is to step off the road into the plane around it. A **complex number** is a
+point of that plane, written $$a + bi$$, where $$i$$ is the point one step up from $$0$$ and
+$$i^2 = -1$$. In this chapter we'll build these numbers from scratch, see what adding and
+multiplying them do to the picture, and use them to solve every quadratic equation.
+
+One idea carries the chapter: a complex number is a point, adding points slides, and multiplying
+turns by the angle and stretches by the length. Multiplying by $$i$$ is a quarter turn, which is why
+$$i^2 = -1$$: two quarter turns face you the other way. The same idea turns the trigonometric
+identities into calculations you can redo whenever you need them.
+
+## What this chapter builds on
+
+Adding complex numbers is adding points, from
+[Adding and scaling points](../adding-and-scaling-points/introduction.mdx). Multiplying them uses
+polar coordinates and the addition formulas from [Trigonometry](../trigonometry/introduction.mdx),
+and the factor theorem from [Polynomials](../functions/polynomials.mdx) counts their roots.
+
+Nothing about complex numbers is taken as given: they are defined as pairs of real numbers, and the
+rules of arithmetic are proved for them (:ref{#complex-arithmetic}). One famous result, the
+fundamental theorem of algebra (:ref{#fundamental-theorem-algebra}), is stated at the end for its
+interest and used in no proof.
+
+Along the way the chapter keeps two promises from earlier chapters:
+
+- **Every quadratic has solutions**: [The discriminant](../quadratics/discriminant.mdx) said that a
+  larger number system would give every quadratic solutions, by the same formula. Here it does
+  (:ref{#complex-quadratic-formula}).
+- **Identities you can rebuild**: [Trigonometry](../trigonometry/addition-formulas.mdx) proved the
+  double-angle formulas from the addition formulas. Here they, and the triple-angle formulas, come
+  out of one calculation (:ref{#de-moivre}, :ref{#triple-angle}).
+
+## Guides in this chapter
+
+The chapter has eight guides:
+
+1. [Meeting i](./meeting-i.mdx): complex numbers as pairs, the number $$i$$, and the rules of
+   arithmetic
+2. [The complex plane](./complex-plane.mdx): real and imaginary parts, the conjugate, absolute
+   value, and dividing
+3. [Multiplying is turning](./polar-form.mdx): polar form, $$e^{i\theta}$$, and why lengths multiply
+   and angles add
+4. [Powers and identities](./powers-and-identities.mdx): de Moivre's formula, and rebuilding the
+   trigonometric identities
+5. [Roots of complex numbers](./roots.mdx): square roots, the roots of unity as a regular polygon,
+   and $$n$$-th roots
+6. [Every quadratic has solutions](./every-quadratic.mdx): the quadratic formula for complex
+   numbers, conjugate pairs, and the fundamental theorem of algebra
+7. [Test yourself](./test-yourself.mdx): a multiple choice quiz on the ideas in the chapter
+8. [Exercises](./exercises.mdx): exercises on the whole chapter, with worked solutions
+
+The summary below collects every definition and rule from the chapter, for reference while you read.
+
+{/* Keep this summary in sync with the guides whenever they change. */}
+
+:::accordion[Summary of definitions and rules]
+
+**Definitions**
+
+| Term                        | Meaning                                                                       |
+| --------------------------- | ----------------------------------------------------------------------------- |
+| :ref{#complex-number}       | A pair $$(a, b)$$ of real numbers, with $$(a, b)(c, d) = (ac - bd, ad + bc)$$ |
+| :ref{#i}                    | $$i = (0, 1)$$                                                                |
+| :ref{#real-imaginary-parts} | $$\operatorname{Re}(a + bi) = a$$ and $$\operatorname{Im}(a + bi) = b$$       |
+| :ref{#conjugate}            | $$\overline{a + bi} = a - bi$$, the flip in the real axis                     |
+| :ref{#complex-abs}          | $$\lvert a + bi \rvert = \sqrt{a^2 + b^2}$$, the distance from $$0$$          |
+| :ref{#polar-form}           | $$z = r(\cos\theta + i\sin\theta)$$ with $$r = \lvert z \rvert$$              |
+| :ref{#e-i-theta}            | $$e^{i\theta} = \cos\theta + i\sin\theta$$, a shorthand                       |
+| :ref{#roots-of-unity}       | Numbers $$\omega$$ with $$\omega^n = 1$$                                      |
+
+**Stated, not used in any proof**
+
+| Result                             | Statement                                                         |
+| ---------------------------------- | ----------------------------------------------------------------- |
+| :ref{#fundamental-theorem-algebra} | Every complex polynomial of degree $$n \ge 1$$ has a complex root |
+
+**Arithmetic and the plane**
+
+| Result                        | Statement                                                                     |
+| ----------------------------- | ----------------------------------------------------------------------------- |
+| :ref{#complex-reals}          | The pairs $$(a, 0)$$ add and multiply like the real numbers $$a$$             |
+| :ref{#i-squared}              | $$i^2 = -1$$, and every complex number is $$a + bi$$ in exactly one way       |
+| :ref{#complex-arithmetic}     | Complex numbers obey the rules of arithmetic                                  |
+| :ref{#square-roots-minus-one} | $$z^2 = -1$$ exactly when $$z = \pm i$$                                       |
+| :ref{#powers-of-i}            | $$i^n$$ depends on the remainder of $$n$$ on division by $$4$$                |
+| :ref{#conjugate-rules}        | $$\overline{z + w} = \bar z + \bar w$$ and $$\overline{zw} = \bar z\,\bar w$$ |
+| :ref{#times-conjugate}        | $$z\bar z = \lvert z \rvert^2$$                                               |
+| :ref{#complex-inverse}        | $$\frac1z = \frac{\bar z}{\lvert z \rvert^2}$$ for $$z \ne 0$$                |
+| :ref{#complex-zero-product}   | $$zw = 0$$ only when $$z = 0$$ or $$w = 0$$                                   |
+| :ref{#abs-product-complex}    | $$\lvert zw \rvert = \lvert z \rvert\lvert w \rvert$$                         |
+| :ref{#complex-triangle}       | $$\lvert z + w \rvert \le \lvert z \rvert + \lvert w \rvert$$                 |
+
+**Multiplying, powers and roots**
+
+| Result                        | Statement                                                                                                        |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| :ref{#polar-multiply}         | $$re^{i\theta} \cdot se^{i\varphi} = rs\,e^{i(\theta + \varphi)}$$                                               |
+| :ref{#multiply-turn}          | Multiplying by $$e^{i\varphi}$$ is the turn by $$\varphi$$ about $$0$$                                           |
+| :ref{#multiply-by-i}          | Multiplying by $$i$$ is the quarter turn                                                                         |
+| :ref{#polar-divide}           | Dividing divides lengths and subtracts angles; $$\overline{re^{i\theta}} = re^{-i\theta}$$                       |
+| :ref{#de-moivre}              | $$(\cos\theta + i\sin\theta)^n = \cos n\theta + i\sin n\theta$$                                                  |
+| :ref{#identities-double}      | $$\cos 2\theta = \cos^2\theta - \sin^2\theta$$ and $$\sin 2\theta = 2\sin\theta\cos\theta$$                      |
+| :ref{#triple-angle}           | $$\cos 3\theta = 4\cos^3\theta - 3\cos\theta$$ and $$\sin 3\theta = 3\sin\theta - 4\sin^3\theta$$                |
+| :ref{#cos-sin-from-e}         | $$\cos\theta = \frac{e^{i\theta} + e^{-i\theta}}{2}$$ and $$\sin\theta = \frac{e^{i\theta} - e^{-i\theta}}{2i}$$ |
+| :ref{#complex-square-roots}   | Every $$z \ne 0$$ has exactly two square roots, $$\pm\sqrt{r}\,e^{i\theta/2}$$                                   |
+| :ref{#complex-root-bound}     | The factor theorem holds, and a complex polynomial of degree $$n$$ has at most $$n$$ roots                       |
+| :ref{#roots-of-unity-polygon} | The $$n$$-th roots of unity are $$e^{2\pi ik/n}$$, the corners of a regular $$n$$-gon                            |
+| :ref{#roots-sum-zero}         | For $$n \ge 2$$ they add up to $$0$$                                                                             |
+| :ref{#nth-roots-complex}      | $$w^n = z$$ has exactly $$n$$ solutions $$\sqrt[n]{r}\,e^{i(\theta + 2\pi k)/n}$$                                |
+
+**Quadratics**
+
+| Result                           | Statement                                                                             |
+| -------------------------------- | ------------------------------------------------------------------------------------- |
+| :ref{#complex-quadratic-formula} | $$az^2 + bz + c = 0$$ has solutions $$\frac{-b \pm w}{2a}$$, with $$w^2 = b^2 - 4ac$$ |
+| :ref{#every-quadratic-vieta}     | The solutions add to $$-\frac{b}{a}$$ and multiply to $$\frac{c}{a}$$                 |
+| :ref{#negative-discriminant}     | A real quadratic with negative discriminant has two conjugate complex solutions       |
+| :ref{#conjugate-pairs}           | With real coefficients, if $$z$$ is a root then so is $$\bar z$$                      |
+
+:::

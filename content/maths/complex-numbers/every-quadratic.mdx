@@ -1,0 +1,535 @@
+---
+title: Every quadratic has solutions
+description:
+  The quadratic formula with complex numbers, conjugate pairs of solutions when the discriminant is
+  negative, factoring sums of squares, and the fundamental theorem of algebra.
+---
+
+Imagine the graph of $$y = x^2 + 2x + 5$$ drawn on squared paper. It is a U-shaped curve whose
+lowest point is $$(-1, 4)$$, four squares above the $$x$$-axis, and from there it climbs on both
+sides. Run a pencil along the $$x$$-axis and it never touches the curve. So the equation
+$$x^2 + 2x + 5 = 0$$ has no real solution, and its discriminant $$2^2 - 4 \cdot 5 = -16$$ is
+negative, as :ref{#quadratics/root-count} predicts.
+
+Now look off the line, in the complex plane. The numbers $$-1 + 2i$$ and $$-1 - 2i$$ both solve the
+equation. For the first, $$(-1 + 2i)^2 = 1 - 4i + 4i^2 = -3 - 4i$$, so
+$$x^2 + 2x + 5 = (-3 - 4i) + (-2 + 4i) + 5 = 0$$. The two solutions sit straight above and below
+$$-1$$, where the curve has its lowest point, and each is the mirror image of the other in the real
+axis.
+
+<ParabolaAndRoots caption="The graph of y = x² + 2x + 5, which never meets the x-axis, and the two solutions of x² + 2x + 5 = 0 in the complex plane, −1 + 2i and −1 − 2i, mirror images in the real axis." />
+
+The guide [The discriminant](../quadratics/discriminant.mdx) made a promise about equations like
+this one: among the complex numbers, every quadratic equation has solutions, given by the same
+formula. In this guide we'll keep that promise, for real coefficients and for complex ones, and see
+what it says about equations of higher degree.
+
+## The quadratic formula, with complex numbers
+
+The quadratic formula came from completing the square, and completing the square only adds,
+multiplies and divides by numbers other than $$0$$. Complex numbers obey all the same rules
+(:ref{#complex-arithmetic}). The one step that failed for a negative discriminant was taking a
+square root, and :ref{#complex-square-roots} says every complex number has one. So the formula works
+with no exceptions left.
+
+Here it is on the opening equation, with $$a = 1$$, $$b = 2$$ and $$c = 5$$. The discriminant is
+$$-16$$, and $$4i$$ is a square root of it, since $$(4i)^2 = 16i^2 = -16$$. Putting $$4i$$ where the
+formula had $$\sqrt{b^2 - 4ac}$$ gives
+
+```math
+z = \frac{-2 \pm 4i}{2} = -1 \pm 2i
+```
+
+These are the two solutions from the picture.
+
+:::theorem[The quadratic formula for complex numbers]{#complex-quadratic-formula}
+
+Let $$a$$, $$b$$ and $$c$$ be complex numbers with $$a \ne 0$$, and let $$w$$ be a square root of
+the discriminant $$b^2 - 4ac$$ (:ref{#complex-square-roots}). Then the solutions of
+$$az^2 + bz + c = 0$$ are exactly
+
+```math
+z = \frac{-b + w}{2a} \qquad\text{and}\qquad z = \frac{-b - w}{2a}
+```
+
+These are two different solutions when $$b^2 - 4ac \ne 0$$, and one solution, $$z = -\frac{b}{2a}$$,
+when $$b^2 - 4ac = 0$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Quadratic_Formula"}
+
+**Divide by a.** Since $$a \ne 0$$, it has an inverse (:ref{#complex-inverse}). Multiplying both
+sides by $$\frac{1}{a}$$, or back by $$a$$, keeps the solutions the same, so the equation has the
+same solutions as
+
+```math
+z^2 + \frac{b}{a}z + \frac{c}{a} = 0
+```
+
+**Complete the square.** The proof of :ref{#quadratics/complete-square} expands a square and moves a
+number to the other side, and nothing else. Those steps use only the rules of arithmetic, so they
+hold for complex numbers too (:ref{#complex-arithmetic}). With $$\frac{b}{a}$$ in place of $$b$$,
+the equation has the same solutions as
+
+```math
+\begin{aligned}
+\left(z + \frac{b}{2a}\right)^2 &= \frac{b^2}{4a^2} - \frac{c}{a} && \text{complete the square} \\
+&= \frac{b^2 - 4ac}{4a^2} && \text{over a common denominator} \\
+&= \left(\frac{w}{2a}\right)^2 && \text{since } w^2 = b^2 - 4ac
+\end{aligned}
+```
+
+**Solve.** Write $$u = z + \frac{b}{2a}$$ and $$v = \frac{w}{2a}$$, so the equation says
+$$u^2 = v^2$$. Multiplying out, $$(u - v)(u + v) = u^2 - v^2$$, so the equation says
+$$(u - v)(u + v) = 0$$. By :ref{#complex-zero-product}, that happens exactly when $$u = v$$ or
+$$u = -v$$, that is, when
+
+```math
+z = -\frac{b}{2a} + \frac{w}{2a} = \frac{-b + w}{2a} \qquad\text{or}\qquad z = -\frac{b}{2a} - \frac{w}{2a} = \frac{-b - w}{2a}
+```
+
+**Count.** The two answers are equal exactly when $$w = -w$$, which means $$2w = 0$$, so $$w = 0$$.
+And $$w = 0$$ exactly when $$b^2 - 4ac = w^2 = 0$$, by :ref{#complex-zero-product} applied to
+$$w \cdot w$$. When $$w = 0$$, both answers are $$-\frac{b}{2a}$$.
+
+:::
+
+This keeps the promise made in [The discriminant](../quadratics/discriminant.mdx). Over the real
+numbers, a negative discriminant meant no solution (:ref{#quadratics/root-count}). Over the complex
+numbers there is always a solution, and there are two exactly when the discriminant isn't $$0$$.
+
+It doesn't matter which square root of the discriminant you take. The other one is $$-w$$, and
+swapping $$w$$ for $$-w$$ swaps the two answers.
+
+:::example[A quadratic with complex coefficients]
+
+Solve $$z^2 - (3 + i)z + (2 + 2i) = 0$$.
+
+Here $$a = 1$$, $$b = -(3 + i)$$ and $$c = 2 + 2i$$. The discriminant is
+
+```math
+b^2 - 4ac = (3 + i)^2 - 4(2 + 2i) = (9 + 6i - 1) - 8 - 8i = -2i
+```
+
+For a square root $$x + iy$$ of $$-2i$$, compare parts as in
+[Roots of complex numbers](./roots.mdx): $$x^2 - y^2 = 0$$ and $$2xy = -2$$, with
+$$x^2 + y^2 = |-2i| = 2$$. So $$x^2 = y^2 = 1$$, and $$xy = -1$$, which gives $$w = 1 - i$$. Check:
+$$(1 - i)^2 = 1 - 2i + i^2 = -2i$$. By :ref{#complex-quadratic-formula},
+
+```math
+z = \frac{(3 + i) + (1 - i)}{2} = 2 \qquad z = \frac{(3 + i) - (1 - i)}{2} = 1 + i
+```
+
+As a check, putting in $$z = 2$$ gives $$4 - (6 + 2i) + 2 + 2i = 0$$.
+
+:::
+
+The two solutions of a real quadratic add up to $$-\frac{b}{a}$$ and multiply to $$\frac{c}{a}$$
+(:ref{#quadratics/vieta}). The same is true with complex numbers, and the proof is the one from the
+real case, with $$w$$ in place of the real square root. In the example, $$2 + (1 + i) = 3 + i$$ and
+$$2(1 + i) = 2 + 2i$$, which match.
+
+:::proposition[Sum and product of the solutions]{#every-quadratic-vieta}
+
+Let $$a$$, $$b$$, $$c$$ and $$w$$ be as in :ref{#complex-quadratic-formula}, and write
+$$z_1 = \frac{-b + w}{2a}$$ and $$z_2 = \frac{-b - w}{2a}$$. Then
+
+```math
+z_1 + z_2 = -\frac{b}{a} \qquad z_1 z_2 = \frac{c}{a}
+```
+
+and $$az^2 + bz + c = a(z - z_1)(z - z_2)$$ for every complex number $$z$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Vieta%27s_formulas"}
+
+**Sum.** The $$w$$'s cancel:
+$$z_1 + z_2 = \frac{-b + w - b - w}{2a} = \frac{-2b}{2a} = -\frac{b}{a}$$.
+
+**Product.** The top is a difference of two squares, $$(-b + w)(-b - w) = b^2 - w^2$$, and
+$$w^2 = b^2 - 4ac$$, so
+
+```math
+z_1 z_2 = \frac{b^2 - w^2}{4a^2} = \frac{b^2 - (b^2 - 4ac)}{4a^2} = \frac{4ac}{4a^2} = \frac{c}{a}
+```
+
+**Factors.** Multiplying out and then using the sum and the product,
+
+```math
+\begin{aligned}
+a(z - z_1)(z - z_2) &= a\big(z^2 - (z_1 + z_2)z + z_1 z_2\big) && \text{multiply out} \\
+&= a\left(z^2 + \frac{b}{a}z + \frac{c}{a}\right) && \text{the sum and the product} \\
+&= az^2 + bz + c
+\end{aligned}
+```
+
+:::
+
+## Real quadratics with a negative discriminant
+
+When $$a$$, $$b$$ and $$c$$ are real and the discriminant is negative, its square root needs no
+work. The number $$4ac - b^2$$ is positive, so it has a real square root, and multiplying that by
+$$i$$ gives a square root of the discriminant. The solutions then share the real part
+$$-\frac{b}{2a}$$ and have opposite imaginary parts, so they are mirror images in the real axis, as
+$$-1 \pm 2i$$ were in the opening picture.
+
+:::corollary[Real quadratics with negative discriminant]{#negative-discriminant}
+
+Let $$a$$, $$b$$ and $$c$$ be real numbers with $$a \ne 0$$ and $$b^2 - 4ac < 0$$. Then
+$$az^2 + bz + c = 0$$ has exactly two complex solutions,
+
+```math
+z = \frac{-b + i\sqrt{4ac - b^2}}{2a} \qquad\text{and}\qquad z = \frac{-b - i\sqrt{4ac - b^2}}{2a}
+```
+
+and each is the conjugate of the other.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Quadratic_equation#Discriminant"}
+
+Since $$b^2 - 4ac < 0$$, the number $$4ac - b^2$$ is positive, so it has a real square root
+$$s = \sqrt{4ac - b^2}$$ (:ref{#real-numbers/square-root}). Then
+
+```math
+(is)^2 = i^2 s^2 = -(4ac - b^2) = b^2 - 4ac
+```
+
+So $$w = is$$ is a square root of the discriminant, and :ref{#complex-quadratic-formula} gives the
+two solutions in the statement. They are different, since the discriminant isn't $$0$$.
+
+Both solutions have real part $$-\frac{b}{2a}$$, and their imaginary parts are $$\frac{s}{2a}$$ and
+$$-\frac{s}{2a}$$, all real numbers because $$a$$, $$b$$ and $$s$$ are real. Two numbers with the
+same real part and opposite imaginary parts are conjugates (:ref{#conjugate}).
+
+:::
+
+The real part $$-\frac{b}{2a}$$ is where the parabola $$y = ax^2 + bx + c$$ turns
+(:ref{#quadratics/vertex}). So the solutions always sit straight above and below that point of the
+real axis, as in the opening picture.
+
+:::example[Two real quadratics]
+
+**$$x^2 + 2x + 5 = 0$$.** Here $$4ac - b^2 = 20 - 4 = 16$$, and $$\sqrt{16} = 4$$, so
+$$z = \frac{-2 \pm 4i}{2} = -1 \pm 2i$$, the solutions from the start of the guide.
+
+**$$5x^2 + 2x + 1 = 0$$.** This is the equation in
+[The quadratic formula](../quadratics/quadratic-formula.mdx) found to have no real solution. Here
+$$4ac - b^2 = 20 - 4 = 16$$ again, so
+
+```math
+z = \frac{-2 \pm 4i}{10} = -\frac{1}{5} \pm \frac{2}{5}i
+```
+
+To check $$z = -\frac{1}{5} + \frac{2}{5}i$$, first
+$$z^2 = \frac{1}{25} - \frac{4}{25}i + \frac{4}{25}i^2 = -\frac{3}{25} - \frac{4}{25}i$$. Then
+
+```math
+5z^2 + 2z + 1 = \left(-\tfrac{3}{5} - \tfrac{4}{5}i\right) + \left(-\tfrac{2}{5} + \tfrac{4}{5}i\right) + 1 = 0
+```
+
+The sum and product agree with :ref{#every-quadratic-vieta}: the sum is
+$$-\frac{2}{5} = -\frac{b}{a}$$, and the product is
+$$z\bar z = \left(\frac{1}{5}\right)^2 + \left(\frac{2}{5}\right)^2 = \frac{1}{5} = \frac{c}{a}$$
+(:ref{#times-conjugate}).
+
+:::
+
+## Factoring sums of squares
+
+A sum of two squares such as $$x^2 + 9$$ can't be factored with real numbers. It is never $$0$$ for
+real $$x$$ (:ref{#real-numbers/squares-positive}), and a real factor $$x - c$$ would make it $$0$$
+at $$x = c$$. With complex numbers it becomes a difference of two squares, because $$9 = -(3i)^2$$:
+
+```math
+x^2 + 9 = x^2 - (3i)^2 = (x - 3i)(x + 3i)
+```
+
+As a check, $$(x - 3i)(x + 3i) = x^2 + 3ix - 3ix - 9i^2 = x^2 + 9$$. In the same way, for any $$u$$
+and $$v$$, $$u^2 + v^2 = (u - iv)(u + iv)$$.
+
+Every quadratic factors like this, by the last part of :ref{#every-quadratic-vieta}. For the opening
+equation, the solutions $$-1 \pm 2i$$ give
+
+```math
+x^2 + 2x + 5 = (x + 1 - 2i)(x + 1 + 2i)
+```
+
+and multiplying out the right side as a difference of two squares gives
+$$(x + 1)^2 - (2i)^2 = x^2 + 2x + 1 + 4$$, which is the left side.
+
+## Conjugate pairs
+
+The solutions of a real quadratic with a negative discriminant come as mirror images, $$z$$ and
+$$\bar z$$. The reason reaches beyond quadratics. The conjugate is the flip in the real axis, it
+respects adding and multiplying (:ref{#conjugate-rules}), and it leaves real numbers where they are.
+So flipping a true equation whose coefficients are real gives another true equation, now about
+$$\bar z$$.
+
+:::proposition[Conjugate pairs]{#conjugate-pairs}
+
+Let $$f(z) = a_n z^n + \cdots + a_1 z + a_0$$ be a complex polynomial whose coefficients
+$$a_0, \ldots, a_n$$ are all real numbers. If $$z$$ is a root of $$f$$, then so is $$\bar z$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Complex_conjugate_root_theorem"}
+
+By :ref{#conjugate-rules}, the conjugate of a product is the product of the conjugates. Using that
+$$k - 1$$ times, $$\overline{z^k} = \bar z^{\,k}$$. By the same proposition, $$\bar a = a$$ for
+every real number $$a$$. So
+
+```math
+\begin{aligned}
+\overline{f(z)} &= \overline{a_n}\,\overline{z^n} + \cdots + \overline{a_1}\,\bar z + \overline{a_0} && \text{conjugate of sums and products} \\
+&= a_n \bar z^{\,n} + \cdots + a_1 \bar z + a_0 && \text{the coefficients are real} \\
+&= f(\bar z)
+\end{aligned}
+```
+
+If $$f(z) = 0$$, then $$f(\bar z) = \overline{0} = 0$$.
+
+:::
+
+So the roots of a real polynomial that aren't real come in pairs, $$z$$ and $$\bar z$$. The
+coefficients do have to be real. In the example with complex coefficients, $$1 + i$$ is a root of
+$$z^2 - (3 + i)z + (2 + 2i)$$, but putting in $$1 - i$$ gives
+
+```math
+(1 - i)^2 - (3 + i)(1 - i) + 2 + 2i = -2i - (4 - 2i) + 2 + 2i = -2 + 2i
+```
+
+which isn't $$0$$.
+
+:::example[The roots of z³ − 1]
+
+The difference of two powers (:ref{#functions/polynomials-difference-of-powers}), which holds for
+complex numbers (:ref{#complex-root-bound}), gives
+
+```math
+z^3 - 1 = (z - 1)(z^2 + z + 1)
+```
+
+By :ref{#complex-zero-product}, the roots are $$1$$ and the solutions of $$z^2 + z + 1 = 0$$. That
+quadratic is the one [The discriminant](../quadratics/discriminant.mdx) found to have no real
+solution. Its discriminant is $$1 - 4 = -3$$, so by :ref{#negative-discriminant},
+
+```math
+z = \frac{-1 \pm i\sqrt{3}}{2} = -\frac{1}{2} \pm \frac{\sqrt3}{2}i
+```
+
+These are a conjugate pair, as :ref{#conjugate-pairs} says they must be. They are also the cube
+roots of unity $$e^{2\pi i/3}$$ and $$e^{4\pi i/3}$$ from :ref{#roots-of-unity-polygon}, so
+factoring and turning give the same three numbers: one real, and two that are mirror images.
+
+:::
+
+## Every polynomial has a root
+
+Going from the real numbers to the complex numbers gave every quadratic its solutions. You might
+expect cubics, or equations with $$z^5$$ in them, to need yet more new numbers. They don't, and that
+is the fundamental theorem of algebra.
+
+:::remark[The fundamental theorem of algebra]{#fundamental-theorem-algebra}
+
+Every complex polynomial $$f(z) = a_n z^n + \cdots + a_1 z + a_0$$ with $$n \ge 1$$ and
+$$a_n \ne 0$$ has at least one complex root. Using this and the factor theorem in
+:ref{#complex-root-bound} $$n$$ times, once for each factor, it follows that
+
+```math
+f(z) = a_n (z - c_1)(z - c_2) \cdots (z - c_n)
+```
+
+for some complex numbers $$c_1, \ldots, c_n$$, which need not be different. Every proof of the
+theorem needs ideas from beyond these notes, so it is taken as given here, and no proof in these
+notes uses it.
+
+::see-also{src="https://en.wikipedia.org/wiki/Fundamental_theorem_of_algebra"}
+
+:::
+
+For quadratics, this guide proved the theorem: :ref{#every-quadratic-vieta} gives
+$$az^2 + bz + c = a(z - z_1)(z - z_2)$$. For $$z^3 - 1$$ the factors are $$z - 1$$ and the two
+factors from the conjugate pair. To solve $$x^2 + 1 = 0$$, the real numbers needed new numbers
+added. The theorem says the complex numbers need none: every polynomial equation with complex
+coefficients already has all its solutions among them.
+
+## Exercises
+
+:::::accordion[Exercises on every quadratic having solutions, with solutions]
+
+::::exercise{#ex-every-quadratic-solve}
+
+Solve each equation, and check the sum and product of the solutions.
+
+1. $$z^2 + 4z + 13 = 0$$
+2. $$z^2 - 6z + 10 = 0$$
+
+:::solution
+
+Both have real coefficients and a negative discriminant, so use :ref{#negative-discriminant}.
+
+1. Here $$4ac - b^2 = 52 - 16 = 36$$, and $$\sqrt{36} = 6$$, so
+   $$z = \frac{-4 \pm 6i}{2} = -2 \pm 3i$$. The sum is $$-4 = -\frac{b}{a}$$, and the product is
+   $$(-2)^2 + 3^2 = 13 = \frac{c}{a}$$.
+2. Here $$4ac - b^2 = 40 - 36 = 4$$, and $$\sqrt{4} = 2$$, so $$z = \frac{6 \pm 2i}{2} = 3 \pm i$$.
+   The sum is $$6$$ and the product is $$3^2 + 1^2 = 10$$, matching $$-\frac{b}{a}$$ and
+   $$\frac{c}{a}$$.
+
+The product of a conjugate pair $$p \pm qi$$ is $$p^2 + q^2$$ (:ref{#times-conjugate}), which is why
+the products came out as sums of squares.
+
+:::
+
+::::
+
+::::exercise{#ex-every-quadratic-factor}
+
+Factor each expression into two factors of the form $$px + q$$ with complex numbers $$p$$ and $$q$$.
+
+1. $$x^2 + 16$$
+2. $$4x^2 + 25$$
+3. $$x^2 - 2x + 2$$
+
+:::solution
+
+1. $$x^2 + 16 = x^2 - (4i)^2 = (x - 4i)(x + 4i)$$.
+2. $$4x^2 + 25 = (2x)^2 - (5i)^2 = (2x - 5i)(2x + 5i)$$.
+3. The discriminant is $$4 - 8 = -4$$, so by :ref{#negative-discriminant} the solutions of
+   $$x^2 - 2x + 2 = 0$$ are $$\frac{2 \pm 2i}{2} = 1 \pm i$$. By :ref{#every-quadratic-vieta},
+   $$x^2 - 2x + 2 = (x - 1 - i)(x - 1 + i)$$. Check: the right side is
+   $$(x - 1)^2 - i^2 = x^2 - 2x + 1 + 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-every-quadratic-substitute}
+
+Show by substituting that $$2 - 3i$$ is a solution of $$z^2 - 4z + 13 = 0$$. Then find the other
+solution without using the formula.
+
+:::solution
+
+First $$(2 - 3i)^2 = 4 - 12i + 9i^2 = -5 - 12i$$. So
+
+```math
+z^2 - 4z + 13 = (-5 - 12i) - (8 - 12i) + 13 = -5 - 8 + 13 + (-12 + 12)i = 0
+```
+
+The coefficients are real, so by :ref{#conjugate-pairs} the conjugate $$2 + 3i$$ is a solution too.
+By :ref{#complex-quadratic-formula} there are at most two, so it is the other one. As a check, the
+sum is $$4 = -\frac{b}{a}$$ (:ref{#every-quadratic-vieta}).
+
+:::
+
+::::
+
+::::exercise{#ex-every-quadratic-build}
+
+Find a quadratic equation $$z^2 + bz + c = 0$$ with real $$b$$ and $$c$$ that has $$3 + 2i$$ as a
+solution. Check your answer with the formula.
+
+:::solution
+
+With real coefficients, the other solution has to be $$3 - 2i$$ (:ref{#conjugate-pairs}). The sum is
+$$6$$ and the product is $$3^2 + 2^2 = 13$$, so by :ref{#every-quadratic-vieta} the equation is
+$$z^2 - 6z + 13 = 0$$. Check: $$4ac - b^2 = 52 - 36 = 16$$, so $$z = \frac{6 \pm 4i}{2} = 3 \pm 2i$$
+(:ref{#negative-discriminant}).
+
+:::
+
+::::
+
+::::exercise{#ex-every-quadratic-complex}
+
+Solve $$z^2 + (1 - i)z - (2 + 2i) = 0$$, and check that the two solutions add up to $$-(1 - i)$$.
+
+:::solution
+
+The discriminant is $$(1 - i)^2 + 4(2 + 2i) = -2i + 8 + 8i = 8 + 6i$$. For a square root $$x + iy$$,
+compare parts: $$x^2 - y^2 = 8$$ and $$2xy = 6$$, with
+$$x^2 + y^2 = |8 + 6i| = \sqrt{64 + 36} = 10$$. So $$x^2 = 9$$ and $$y^2 = 1$$, with $$xy = 3$$, and
+$$w = 3 + i$$. Check: $$(3 + i)^2 = 9 + 6i - 1 = 8 + 6i$$. By :ref{#complex-quadratic-formula},
+
+```math
+z = \frac{-(1 - i) + (3 + i)}{2} = 1 + i \qquad z = \frac{-(1 - i) - (3 + i)}{2} = -2
+```
+
+Their sum is $$-1 + i = -(1 - i)$$, as :ref{#every-quadratic-vieta} says. The solutions are not a
+conjugate pair, and they don't need to be, since the coefficients aren't all real.
+
+:::
+
+::::
+
+::::exercise{#ex-every-quadratic-length}
+
+Let $$a$$, $$b$$ and $$c$$ be real with $$a \ne 0$$ and $$b^2 - 4ac < 0$$. Show that both solutions
+of $$az^2 + bz + c = 0$$ have length $$\sqrt{\frac{c}{a}}$$, so they lie on one circle centred at
+$$0$$. Check this for $$z^2 + 2z + 5 = 0$$.
+
+:::solution
+
+By :ref{#negative-discriminant}, the solutions are $$z_1$$ and $$z_2 = \bar z_1$$. By
+:ref{#every-quadratic-vieta} and :ref{#times-conjugate},
+
+```math
+\frac{c}{a} = z_1 z_2 = z_1 \bar z_1 = |z_1|^2
+```
+
+So $$\frac{c}{a} \ge 0$$, and $$|z_1| = \sqrt{\frac{c}{a}}$$. The conjugate has the same length,
+since flipping in the real axis keeps the distance from $$0$$, so $$|z_2| = |z_1|$$. For
+$$z^2 + 2z + 5 = 0$$, the solutions $$-1 \pm 2i$$ have length $$\sqrt{1 + 4} = \sqrt5$$, and
+$$\sqrt{\frac{c}{a}} = \sqrt5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-every-quadratic-cubic}
+
+Find all three solutions of $$z^3 = 27$$ by factoring $$z^3 - 27$$, and check that they are $$3$$
+times the cube roots of unity.
+
+:::solution
+
+By :ref{#functions/polynomials-difference-of-powers} with $$c = 3$$,
+$$z^3 - 27 = (z - 3)(z^2 + 3z + 9)$$. So the solutions are $$3$$ and the solutions of
+$$z^2 + 3z + 9 = 0$$ (:ref{#complex-zero-product}). That quadratic has $$4ac - b^2 = 36 - 9 = 27$$,
+and $$\sqrt{27} = 3\sqrt3$$, so by :ref{#negative-discriminant}
+
+```math
+z = \frac{-3 \pm 3\sqrt3\, i}{2} = 3\left(-\frac{1}{2} \pm \frac{\sqrt3}{2}i\right)
+```
+
+The cube roots of unity are $$1$$ and $$-\frac{1}{2} \pm \frac{\sqrt3}{2}i$$
+(:ref{#roots-of-unity-polygon}), so the three solutions are $$3$$ times them. This matches
+:ref{#nth-roots-complex}: $$27$$ has length $$27$$ and angle $$0$$, and $$\sqrt[3]{27} = 3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-every-quadratic-slip}
+
+A friend notices that $$i$$ is a solution of $$z^2 + iz + 2 = 0$$, and concludes that $$-i$$ must be
+one too, because solutions come in conjugate pairs. Test the claim, find the mistake, and find the
+second solution.
+
+:::solution
+
+Putting in $$i$$ gives $$i^2 + i \cdot i + 2 = -1 - 1 + 2 = 0$$, so $$i$$ is a solution. But putting
+in $$-i$$ gives $$(-i)^2 + i(-i) + 2 = -1 + 1 + 2 = 2$$, which isn't $$0$$. The mistake is that
+:ref{#conjugate-pairs} needs every coefficient to be real, and the coefficient $$i$$ of $$z$$ isn't.
+
+The sum of the solutions is $$-\frac{b}{a} = -i$$ (:ref{#every-quadratic-vieta}), so the second
+solution is $$-i - i = -2i$$. Check: $$(-2i)^2 + i(-2i) + 2 = -4 + 2 + 2 = 0$$.
+
+:::
+
+::::
+
+:::::

@@ -1,0 +1,611 @@
+---
+title: Multiplying is turning
+description:
+  A complex number by its length and its angle, the shorthand e to the i theta, and why multiplying
+  two complex numbers multiplies their lengths and adds their angles.
+---
+
+Imagine a drawing on a sheet of tracing paper, pinned to the table through one point. Turn the sheet
+a quarter turn anticlockwise about the pin. Every point of the drawing moves, but each one turns by
+the same quarter turn and stays the same distance from the pin. Now turn the sheet a second quarter.
+The drawing is upside down, and every point has ended up on the opposite side of the pin from where
+it started.
+
+Put the pin at $$0$$ in the complex plane, and the first quarter turn is what multiplying by $$i$$
+does to every point. The second quarter turn multiplies by $$i$$ again, and sending every point to
+the opposite side of $$0$$ is multiplying by $$-1$$. So two quarter turns make a half turn, and that
+is the picture behind $$i^2 = -1$$. In this guide we'll describe each complex number by its length
+and its angle, and see that multiplying two of them multiplies the lengths and adds the angles.
+
+## Multiplying by i is a quarter turn
+
+Start with numbers. Take $$z = 3 + 2i$$, the point $$(3, 2)$$, and multiply it by $$i$$, replacing
+$$i^2$$ by $$-1$$ as :ref{#i-squared} allows:
+
+```math
+i(3 + 2i) = 3i + 2i^2 = -2 + 3i
+```
+
+So the point $$(3, 2)$$ has gone to $$(-2, 3)$$. That is where the quarter turn
+$$G_{90}(x, y) = (-y, x)$$ of :ref{#adding-and-scaling-points/quarter-turn} sends it. Multiplying by
+$$i$$ once more gives $$i(-2 + 3i) = -2i + 3i^2 = -3 - 2i$$, which is $$-z$$, the point on the other
+side of $$0$$ (:ref{#adding-and-scaling-points/negative-half-turn}).
+
+Nothing about $$3 + 2i$$ was special. For every complex number $$x + yi$$,
+
+```math
+i(x + yi) = xi + yi^2 = -y + xi
+```
+
+so multiplying by $$i$$ sends each point $$(x, y)$$ to $$(-y, x)$$, all at once. The whole plane
+turns a quarter turn about $$0$$, like the sheet of tracing paper.
+
+<QuarterTurns caption="A flag with its tip at z = 3 + 2i (blue). Multiplying every point of it by i turns it a quarter turn about 0, to the orange flag with its tip at iz = −2 + 3i. Multiplying by i again gives the green flag, with its tip at −z = −3 − 2i." />
+
+Multiplying by a real number does something different. By :ref{#complex-reals},
+$$2(3 + 2i) = 6 + 4i$$ is the point $$(3, 2)$$ scaled by $$2$$
+(:ref{#adding-and-scaling-points/scalar-multiple}): a zoom about $$0$$ that doubles every distance
+from $$0$$. So $$i$$ turns and $$2$$ zooms. A number such as $$1 + i$$ does some of each, and to see
+how much, we need to describe it by how far it is from $$0$$ and in which direction.
+
+## Length and angle
+
+To reach a point of the plane from $$0$$, you can face in a direction and then walk a distance. The
+Trigonometry chapter calls the distance and the angle of the direction the point's polar coordinates
+(:ref{#trigonometry/polar-coordinates}). For a complex number, the distance is its absolute value,
+its length as a point (:ref{#complex-abs}).
+
+Take $$z = -2 + 2i$$. Its length is $$|z| = \sqrt{(-2)^2 + 2^2} = \sqrt8 = 2\sqrt2$$. The point
+$$(-2, 2)$$ sits on the diagonal line through the second quarter of the plane, at the angle
+$$\frac{3\pi}{4}$$ from the positive real axis. To check, $$\cos\frac{3\pi}{4} = -\frac{\sqrt2}{2}$$
+and $$\sin\frac{3\pi}{4} = \frac{\sqrt2}{2}$$, by :ref{#trigonometry/sin-cos-45} and
+:ref{#trigonometry/supplement-identities}. So
+
+```math
+2\sqrt2\cos\tfrac{3\pi}{4} = 2\sqrt2 \cdot \left(-\tfrac{\sqrt2}{2}\right) = -2 \qquad\text{and}\qquad 2\sqrt2\sin\tfrac{3\pi}{4} = 2\sqrt2 \cdot \tfrac{\sqrt2}{2} = 2
+```
+
+which are the two coordinates of $$z$$. In one line,
+$$-2 + 2i = 2\sqrt2\left(\cos\frac{3\pi}{4} + i\sin\frac{3\pi}{4}\right)$$.
+
+```plane
+scale 1.6
+point X1 -3 0 hidden
+point X2 2 0 hidden
+point Y1 0 -1 hidden
+point Y2 0 3 hidden
+point O 0 0 se
+point E 1 0 hidden
+point z -2 2 nw
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+segment O z color=blue label="2√2"
+angle E O z color=orange r=0.6 label="3π/4"
+caption "The number z = −2 + 2i is 2√2 from 0, in the direction at angle 3π/4 from the positive real axis"
+```
+
+:::definition[Polar form]{#polar-form}
+
+Let $$z = x + yi$$ be a complex number, and let $$r \ge 0$$ and $$\theta$$ be real numbers. Writing
+
+```math
+z = r(\cos\theta + i\sin\theta)
+```
+
+is a **polar form** of $$z$$ when $$r$$ and $$\theta$$ are polar coordinates of the point
+$$(x, y)$$, that is, when $$x = r\cos\theta$$ and $$y = r\sin\theta$$. The angle $$\theta$$ is then
+called an **argument** of $$z$$.
+
+:::
+
+The two descriptions match because $$r(\cos\theta + i\sin\theta) = r\cos\theta + (r\sin\theta)i$$,
+by :ref{#complex-arithmetic}. So the real part is $$r\cos\theta$$ and the imaginary part is
+$$r\sin\theta$$, as the definition asks.
+
+Every complex number has a polar form, because every point has polar coordinates
+(:ref{#trigonometry/polar-exist}). For $$z \ne 0$$, the length is always $$r = |z|$$, and exactly
+one argument lies in $$0 \le \theta < 2\pi$$. The others are $$\theta + 2\pi n$$ for whole numbers
+$$n$$, since a whole turn more or less lands on the same point. The number $$0$$ is the odd one out:
+its length is $$0$$ and every angle works.
+
+:::example[Polar forms you can read off the picture]
+
+Each of these numbers sits on an axis, so its angle is a quarter turn, a half turn or nothing at
+all, with the values of :ref{#trigonometry/quarter-values}:
+
+- $$3i$$ is $$3$$ up from $$0$$, so $$3i = 3\left(\cos\frac{\pi}{2} + i\sin\frac{\pi}{2}\right)$$
+- $$-5$$ is $$5$$ to the left of $$0$$, so $$-5 = 5(\cos\pi + i\sin\pi)$$
+- $$4$$ is $$4$$ to the right of $$0$$, so $$4 = 4(\cos 0 + i\sin 0)$$
+
+The length is never negative. The minus sign of $$-5$$ goes into the angle $$\pi$$, and
+$$-5(\cos 0 + i\sin 0)$$ is not a polar form, even though it equals $$-5$$.
+
+:::
+
+For a point that isn't on an axis or a diagonal, the angle comes from the tangent, as in
+:ref{#trigonometry/rotations-polar-angle}.
+
+## A shorthand: e to the i theta
+
+The bracket $$\cos\theta + i\sin\theta$$ is going to appear on almost every line from here on. It is
+the number of length $$1$$ at angle $$\theta$$, the point $$(\cos\theta, \sin\theta)$$ of the unit
+circle. A bracket used that often deserves a short name.
+
+:::definition[The shorthand e to the i theta]{#e-i-theta}
+
+For every real number $$\theta$$,
+
+```math
+e^{i\theta} = \cos\theta + i\sin\theta
+```
+
+Read $$e^{i\theta}$$ aloud as "e to the i theta". With it, a polar form is $$z = re^{i\theta}$$.
+
+:::
+
+Take this as a name and nothing more. Nobody is raising the number $$e$$ to a power here: it is a
+label for the bracket. The name is chosen because $$e^{i\theta}$$ obeys the rule for adding
+exponents, $$e^{i\theta}e^{i\varphi} = e^{i(\theta + \varphi)}$$, which we prove below, in the same
+way that $$a^x a^y = a^{x + y}$$ does in :ref{#functions/exponential-rules}. Calculus explains a
+deeper link with the number $$e$$, but this chapter doesn't use it.
+
+A few values, read from the unit circle:
+
+- $$e^{i0} = \cos 0 + i\sin 0 = 1$$
+- $$e^{i\pi/2} = \cos\frac{\pi}{2} + i\sin\frac{\pi}{2} = i$$
+- $$e^{i3\pi/4} = -\frac{\sqrt2}{2} + \frac{\sqrt2}{2}i$$, so $$-2 + 2i = 2\sqrt2\,e^{i3\pi/4}$$
+
+Every $$e^{i\theta}$$ has length $$1$$, since
+$$|e^{i\theta}| = \sqrt{\cos^2\theta + \sin^2\theta} = 1$$ by
+:ref{#trigonometry/pythagorean-identity}.
+
+## Lengths multiply and angles add
+
+Take $$z = 1 + i$$ and $$w = -1 + i$$. Both have length $$\sqrt{1 + 1} = \sqrt2$$, and their angles
+are $$\frac{\pi}{4}$$ and $$\frac{3\pi}{4}$$, so $$z = \sqrt2\,e^{i\pi/4}$$ and
+$$w = \sqrt2\,e^{i3\pi/4}$$. Multiplying them the long way,
+
+```math
+(1 + i)(-1 + i) = -1 + i - i + i^2 = -2
+```
+
+and $$-2 = 2e^{i\pi}$$. The length $$2$$ is $$\sqrt2 \cdot \sqrt2$$, the two lengths multiplied, and
+the angle $$\pi$$ is $$\frac{\pi}{4} + \frac{3\pi}{4}$$, the two angles added.
+
+```plane
+scale 2
+point X1 -2.6 0 hidden
+point X2 1.6 0 hidden
+point Y1 0 -0.6 hidden
+point Y2 0 1.6 hidden
+point O 0 0 s
+point E 1 0 hidden
+point z 1 1 ne
+point w -1 1 nw
+point zw -2 0 n
+segment X1 X2 color=muted
+segment Y1 Y2 color=muted
+segment O z color=blue
+segment O w color=green
+segment O zw color=orange
+angle E O z color=blue r=0.4 label="π/4"
+angle E O w color=green r=0.75 label="3π/4"
+angle E O zw color=orange r=1.15 label="π"
+caption "z = 1 + i at angle π/4 and w = −1 + i at angle 3π/4 multiply to zw = −2, at angle π/4 + 3π/4 = π, with length √2 · √2 = 2"
+```
+
+:::theorem[Multiplying in polar form]{#polar-multiply}
+
+For all real numbers $$\theta$$ and $$\varphi$$,
+
+```math
+e^{i\theta}e^{i\varphi} = e^{i(\theta + \varphi)}
+```
+
+So for all $$r, s \ge 0$$,
+
+```math
+(re^{i\theta})(se^{i\varphi}) = rs\,e^{i(\theta + \varphi)}
+```
+
+In words, the length of a product is the product of the lengths, and the angles add.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Complex_number#Polar_form"}
+
+Multiply out the two brackets, one step at a time:
+
+```math
+\begin{aligned}
+e^{i\theta}e^{i\varphi} &= (\cos\theta + i\sin\theta)(\cos\varphi + i\sin\varphi) &&\qquad \text{the shorthand} \\
+&= \cos\theta\cos\varphi + i\cos\theta\sin\varphi + i\sin\theta\cos\varphi + i^2\sin\theta\sin\varphi &&\qquad \text{multiply out} \\
+&= (\cos\theta\cos\varphi - \sin\theta\sin\varphi) + i(\sin\theta\cos\varphi + \cos\theta\sin\varphi) &&\qquad i^2 = -1\text{, and collect} \\
+&= \cos(\theta + \varphi) + i\sin(\theta + \varphi) &&\qquad \text{addition formulas} \\
+&= e^{i(\theta + \varphi)} &&\qquad \text{the shorthand}
+\end{aligned}
+```
+
+Multiplying out uses the rules of :ref{#complex-arithmetic}, the third line uses :ref{#i-squared},
+and the fourth uses :ref{#trigonometry/addition-formulas}. For the second sentence, the same rules
+let us reorder a product of four numbers, so
+$$(re^{i\theta})(se^{i\varphi}) = rs\,(e^{i\theta}e^{i\varphi}) = rs\,e^{i(\theta + \varphi)}$$.
+
+:::
+
+Look at where the trigonometry went in that proof: the fourth line, and nowhere else. So this
+theorem is the addition formulas for sine and cosine, packed into one line. Read the other way, it
+gives them back: if you remember only that angles add, multiplying out $$e^{i\theta}e^{i\varphi}$$
+and comparing the real parts and the imaginary parts rebuilds both formulas.
+[Powers and identities](./powers-and-identities.mdx) builds a whole method on that.
+
+The length half of the theorem is not new: :ref{#abs-product-complex} already says
+$$|zw| = |z||w|$$. The angle half is the new part, and it has a slip worth naming. Angles add when
+you multiply; they don't multiply. For $$z = 1 + i$$ and $$w = -1 + i$$, the product of the angles
+is $$\frac{\pi}{4} \cdot \frac{3\pi}{4} = \frac{3\pi^2}{16}$$, which is not an angle of $$-2$$.
+
+Drag $$z$$ and $$w$$ below. The arcs mark the three angles, so you can watch the angle of $$zw$$
+stay the sum of the other two.
+
+<ComplexMultiply />
+
+## Multiplying by a number of length 1 turns
+
+When $$|w| = 1$$, multiplying by $$w$$ leaves every length alone and adds the same angle to every
+direction. That is a turn about $$0$$, by the angle of $$w$$. The Trigonometry chapter has a formula
+for turning a point, and multiplying out shows it is the same formula.
+
+:::corollary[Multiplying by a number of length 1 turns]{#multiply-turn}
+
+Let $$\varphi$$ be a real number. For every complex number $$z = x + yi$$, the product
+$$e^{i\varphi}z$$ is the point $$G_\varphi(x, y)$$, where $$G_\varphi$$ is the turn by $$\varphi$$
+about $$0$$. So multiplying by $$e^{i\varphi}$$ turns the whole plane by $$\varphi$$ about $$0$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Rotation_(mathematics)#Two_dimensions"}
+
+Multiply out, and collect the real and imaginary parts:
+
+```math
+\begin{aligned}
+e^{i\varphi}(x + yi) &= (\cos\varphi + i\sin\varphi)(x + yi) &&\qquad \text{the shorthand} \\
+&= x\cos\varphi + iy\cos\varphi + ix\sin\varphi + i^2 y\sin\varphi &&\qquad \text{multiply out} \\
+&= (x\cos\varphi - y\sin\varphi) + (x\sin\varphi + y\cos\varphi)i &&\qquad i^2 = -1\text{, and collect}
+\end{aligned}
+```
+
+The point with these two parts is $$(x\cos\varphi - y\sin\varphi,\ x\sin\varphi + y\cos\varphi)$$.
+Line for line, that is the formula for $$G_\varphi(x, y)$$ in :ref{#trigonometry/rotation-formula}.
+
+:::
+
+:::corollary[Multiplying by i]{#multiply-by-i}
+
+Multiplying by $$i$$ is the quarter turn about $$0$$: for every complex number $$x + yi$$,
+$$i(x + yi) = -y + xi$$, the point $$G_{90}(x, y) = (-y, x)$$ of
+:ref{#adding-and-scaling-points/quarter-turn}.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Imaginary_unit#Quarter-turn_rotation"}
+
+By :ref{#trigonometry/quarter-values}, $$\cos\frac{\pi}{2} = 0$$ and $$\sin\frac{\pi}{2} = 1$$, so
+$$e^{i\pi/2} = 0 + 1 \cdot i = i$$. Putting $$\varphi = \frac{\pi}{2}$$ in :ref{#multiply-turn}
+gives
+
+```math
+i(x + yi) = (x \cdot 0 - y \cdot 1) + (x \cdot 1 + y \cdot 0)i = -y + xi
+```
+
+:::
+
+A number $$w$$ of any length $$s > 0$$ is $$w = se^{i\varphi}$$, so $$wz = s(e^{i\varphi}z)$$. In
+words, multiplying by $$w$$ turns by its angle $$\varphi$$, then zooms about $$0$$ by its length
+$$s$$, which is what multiplying by the real number $$s$$ does (:ref{#complex-reals}).
+
+:::example[Turning and stretching a triangle]
+
+Multiply each corner of the triangle with corners $$2$$, $$3 + i$$ and $$1 + 2i$$ by
+$$w = 1 + i = \sqrt2\,e^{i\pi/4}$$:
+
+```math
+2(1 + i) = 2 + 2i \qquad (3 + i)(1 + i) = 3 + 3i + i + i^2 = 2 + 4i \qquad (1 + 2i)(1 + i) = 1 + i + 2i + 2i^2 = -1 + 3i
+```
+
+The new triangle is the old one turned by $$\frac{\pi}{4}$$ about $$0$$ and zoomed by $$\sqrt2$$. As
+a check on the zoom, the side from $$2$$ to $$3 + i$$ has length $$|1 + i| = \sqrt2$$, and its new
+side from $$2 + 2i$$ to $$2 + 4i$$ has length $$|2i| = 2$$, which is $$\sqrt2$$ times as long.
+
+:::
+
+<TurnThenZoom caption="The triangle with corners 2, 3 + i and 1 + 2i (blue), turned by π/4 about 0 (dashed), then zoomed by √2 about 0 (orange). The orange triangle has corners 2 + 2i, 2 + 4i and −1 + 3i, which is the blue triangle multiplied by 1 + i." />
+
+## Dividing and conjugates
+
+Dividing by $$w$$ undoes multiplying by $$w$$, so it should undo the turn and the zoom: turn back by
+the angle, and zoom by $$1$$ over the length. The conjugate is a flip in the real axis
+(:ref{#conjugate}), which keeps the length and turns the angle $$\theta$$ into $$-\theta$$. Below,
+$$e^{-i\theta}$$ is short for $$e^{i(-\theta)}$$, the number of length $$1$$ at angle $$-\theta$$.
+
+:::proposition[Dividing and conjugates in polar form]{#polar-divide}
+
+For all real numbers $$\theta$$ and $$\varphi$$, and all $$r \ge 0$$ and $$s > 0$$,
+
+```math
+\frac{1}{se^{i\varphi}} = \frac{1}{s}e^{-i\varphi} \qquad \overline{re^{i\theta}} = re^{-i\theta} \qquad \frac{re^{i\theta}}{se^{i\varphi}} = \frac{r}{s}e^{i(\theta - \varphi)}
+```
+
+So dividing divides the lengths and subtracts the angles.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Complex_number#Polar_form"}
+
+**The inverse.** By :ref{#polar-multiply},
+
+```math
+(se^{i\varphi})\left(\tfrac{1}{s}e^{-i\varphi}\right) = \left(s \cdot \tfrac{1}{s}\right)e^{i(\varphi - \varphi)} = e^{i0} = \cos 0 + i\sin 0 = 1
+```
+
+The number $$se^{i\varphi}$$ is not $$0$$, since its length is $$s > 0$$. By :ref{#complex-inverse}
+it has exactly one inverse, so that inverse is $$\frac{1}{s}e^{-i\varphi}$$.
+
+**The conjugate.** The number $$re^{i\theta}$$ has real part $$r\cos\theta$$ and imaginary part
+$$r\sin\theta$$, so by :ref{#conjugate} and then :ref{#trigonometry/negative-angle},
+
+```math
+\overline{re^{i\theta}} = r\cos\theta - (r\sin\theta)i = r\big(\cos(-\theta) + i\sin(-\theta)\big) = re^{-i\theta}
+```
+
+**The quotient.** Dividing by a number is multiplying by its inverse (:ref{#complex-inverse}), so by
+the first part and :ref{#polar-multiply},
+
+```math
+\frac{re^{i\theta}}{se^{i\varphi}} = re^{i\theta} \cdot \tfrac{1}{s}e^{-i\varphi} = \frac{r}{s}e^{i(\theta - \varphi)}
+```
+
+:::
+
+:::example[Dividing −2 by 1 + i]
+
+In polar form $$-2 = 2e^{i\pi}$$ and $$1 + i = \sqrt2\,e^{i\pi/4}$$, so
+
+```math
+\frac{-2}{1 + i} = \frac{2}{\sqrt2}e^{i(\pi - \pi/4)} = \sqrt2\,e^{i3\pi/4} = -1 + i
+```
+
+using the value of $$e^{i3\pi/4}$$ found earlier. As a check, multiply back:
+$$(-1 + i)(1 + i) = -1 - i + i + i^2 = -2$$.
+
+:::
+
+## Turning about another point
+
+Multiplying by $$e^{i\varphi}$$ turns the plane about $$0$$. To turn about a point $$c$$ instead,
+slide $$c$$ to $$0$$, turn, and slide back. That is the recipe of
+:ref{#trigonometry/rotations-about-point}, and in complex numbers it fits in one line: the turn by
+$$\varphi$$ about $$c$$ sends $$z$$ to
+
+```math
+c + e^{i\varphi}(z - c)
+```
+
+:::example[Turning 3 + i by π/3 about 1 + i]
+
+The step from the centre $$c = 1 + i$$ to $$z = 3 + i$$ is $$z - c = 2$$. By
+:ref{#trigonometry/sin-cos-30-60}, $$e^{i\pi/3} = \frac{1}{2} + \frac{\sqrt3}{2}i$$, so the turned
+step is
+
+```math
+2e^{i\pi/3} = 1 + \sqrt3\,i
+```
+
+Sliding back adds $$c$$, and the turned point is $$(1 + i) + (1 + \sqrt3\,i) = 2 + (1 + \sqrt3)i$$,
+about $$2 + 2.73i$$. As a check, its distance from $$z$$ is
+$$|(2 - 3) + \sqrt3\,i| = \sqrt{1 + 3} = 2$$, the same as the distance from $$c$$ to $$z$$. So the
+centre, $$z$$ and the turned point make an equilateral triangle, as a turn by $$\frac{\pi}{3}$$
+should.
+
+:::
+
+## Exercises
+
+:::::accordion[Exercises on multiplying in polar form, with solutions]
+
+::::exercise{#ex-polar-form-read-off}
+
+Write each number in polar form $$re^{i\theta}$$, with $$r$$ its length:
+
+1. $$-7i$$
+2. $$-4$$
+3. $$1 - i$$
+
+:::solution
+
+1. The point $$(0, -7)$$ is $$7$$ down from $$0$$, at angle $$-\frac{\pi}{2}$$, since
+   $$\cos\left(-\frac{\pi}{2}\right) = 0$$ and $$\sin\left(-\frac{\pi}{2}\right) = -1$$. So
+   $$-7i = 7e^{-i\pi/2}$$, and $$7e^{i3\pi/2}$$ is the same number, a whole turn later.
+2. The point $$(-4, 0)$$ is $$4$$ to the left of $$0$$, at angle $$\pi$$, so $$-4 = 4e^{i\pi}$$.
+3. The length is $$\sqrt{1 + 1} = \sqrt2$$. The point $$(1, -1)$$ is on the diagonal below the
+   positive real axis, at angle $$-\frac{\pi}{4}$$, since
+   $$\cos\left(-\frac{\pi}{4}\right) = \frac{\sqrt2}{2}$$ and
+   $$\sin\left(-\frac{\pi}{4}\right) = -\frac{\sqrt2}{2}$$ (:ref{#trigonometry/negative-angle}). So
+   $$1 - i = \sqrt2\,e^{-i\pi/4}$$, and $$\sqrt2\,e^{i7\pi/4}$$ is the same number, a whole turn
+   later.
+
+:::
+
+::::
+
+::::exercise{#ex-polar-form-back}
+
+Write each number in the form $$a + bi$$:
+
+1. $$6e^{i5\pi/6}$$
+2. $$2e^{-i\pi/2}$$
+3. $$\sqrt2\,e^{i5\pi/4}$$
+
+:::solution
+
+1. By :ref{#trigonometry/supplement-identities} and :ref{#trigonometry/sin-cos-30-60},
+   $$\cos\frac{5\pi}{6} = -\frac{\sqrt3}{2}$$ and $$\sin\frac{5\pi}{6} = \frac{1}{2}$$. So
+   $$6e^{i5\pi/6} = 6\left(-\frac{\sqrt3}{2} + \frac{1}{2}i\right) = -3\sqrt3 + 3i$$.
+2. $$\cos\left(-\frac{\pi}{2}\right) = 0$$ and $$\sin\left(-\frac{\pi}{2}\right) = -1$$, so
+   $$2e^{-i\pi/2} = -2i$$, two down from $$0$$.
+3. The angle $$\frac{5\pi}{4}$$ is a half turn past $$\frac{\pi}{4}$$, so the point is opposite
+   $$\frac{\sqrt2}{2} + \frac{\sqrt2}{2}i$$, at $$-\frac{\sqrt2}{2} - \frac{\sqrt2}{2}i$$. Times
+   $$\sqrt2$$, that is $$-1 - i$$.
+
+:::
+
+::::
+
+::::exercise{#ex-polar-form-five-twelfths}
+
+Let $$z = \sqrt3 + i$$ and $$w = 1 + i$$.
+
+1. Find the length and an angle of $$z$$, of $$w$$ and of $$zw$$, without multiplying out.
+2. Multiply out $$zw$$, and use the two answers to find $$\cos\frac{5\pi}{12}$$ and
+   $$\sin\frac{5\pi}{12}$$.
+
+:::solution
+
+1. $$|z| = \sqrt{3 + 1} = 2$$ with angle $$\frac{\pi}{6}$$, since
+   $$2e^{i\pi/6} = 2\left(\frac{\sqrt3}{2} + \frac{1}{2}i\right) = \sqrt3 + i$$. And
+   $$w = \sqrt2\,e^{i\pi/4}$$. By :ref{#polar-multiply}, $$zw$$ has length $$2\sqrt2$$ and angle
+   $$\frac{\pi}{6} + \frac{\pi}{4} = \frac{5\pi}{12}$$.
+2. Multiplying out,
+
+   ```math
+   (\sqrt3 + i)(1 + i) = \sqrt3 + \sqrt3\,i + i + i^2 = (\sqrt3 - 1) + (\sqrt3 + 1)i
+   ```
+
+   By the first part this is $$2\sqrt2\left(\cos\frac{5\pi}{12} + i\sin\frac{5\pi}{12}\right)$$.
+   Equal complex numbers have equal real parts and equal imaginary parts (:ref{#complex-number}), so
+
+   ```math
+   \cos\frac{5\pi}{12} = \frac{\sqrt3 - 1}{2\sqrt2} = \frac{\sqrt6 - \sqrt2}{4} \approx 0.259 \qquad \sin\frac{5\pi}{12} = \frac{\sqrt3 + 1}{2\sqrt2} = \frac{\sqrt6 + \sqrt2}{4} \approx 0.966
+   ```
+
+   The second form multiplies top and bottom by $$\sqrt2$$. A calculator in radian mode agrees.
+
+:::
+
+::::
+
+::::exercise{#ex-polar-form-minus-i}
+
+Show that multiplying by $$-i$$ is the turn by $$-\frac{\pi}{2}$$, a quarter turn clockwise. Then
+find $$-i(3 + 2i)$$ and check that it is where three quarter turns anticlockwise take $$3 + 2i$$.
+
+:::solution
+
+Since $$\cos\left(-\frac{\pi}{2}\right) = 0$$ and $$\sin\left(-\frac{\pi}{2}\right) = -1$$, we have
+$$e^{-i\pi/2} = -i$$. So by :ref{#multiply-turn}, multiplying by $$-i$$ is the turn by
+$$-\frac{\pi}{2}$$. For the number,
+
+```math
+-i(3 + 2i) = -3i - 2i^2 = 2 - 3i
+```
+
+Three quarter turns anticlockwise multiply by $$i$$ three times. From the start of the guide,
+$$i(3 + 2i) = -2 + 3i$$ and $$i(-2 + 3i) = -3 - 2i$$, and once more,
+$$i(-3 - 2i) = -3i - 2i^2 = 2 - 3i$$. The two agree, as they should: three quarter turns one way end
+where one quarter turn the other way does.
+
+:::
+
+::::
+
+::::exercise{#ex-polar-form-divide}
+
+Find $$\dfrac{-3 + 3i}{1 + i}$$ in two ways: in polar form, and by multiplying the top and bottom by
+the conjugate of $$1 + i$$.
+
+:::solution
+
+**Polar form.** $$-3 + 3i = 3\sqrt2\,e^{i3\pi/4}$$, with length $$\sqrt{9 + 9} = 3\sqrt2$$, and
+$$1 + i = \sqrt2\,e^{i\pi/4}$$. By :ref{#polar-divide},
+
+```math
+\frac{-3 + 3i}{1 + i} = \frac{3\sqrt2}{\sqrt2}e^{i(3\pi/4 - \pi/4)} = 3e^{i\pi/2} = 3i
+```
+
+**The conjugate.** Multiply top and bottom by $$1 - i$$, as in :ref{#complex-inverse}:
+
+```math
+\frac{(-3 + 3i)(1 - i)}{(1 + i)(1 - i)} = \frac{-3 + 3i + 3i - 3i^2}{1 - i^2} = \frac{6i}{2} = 3i
+```
+
+As a check, $$3i(1 + i) = 3i + 3i^2 = -3 + 3i$$.
+
+:::
+
+::::
+
+::::exercise{#ex-polar-form-keeps-distance}
+
+Let $$w$$ be a complex number. Prove that multiplying by $$w$$ multiplies every distance by $$|w|$$:
+for all complex numbers $$z_1$$ and $$z_2$$, $$|wz_1 - wz_2| = |w|\,|z_1 - z_2|$$. Deduce that
+multiplying by a number of length $$1$$ keeps every distance.
+
+:::solution
+
+The distance between two points is the length of their difference
+(:ref{#adding-and-scaling-points/distance-norm}), so it is enough to prove the equation:
+
+```math
+\begin{aligned}
+|wz_1 - wz_2| &= |w(z_1 - z_2)| &&\qquad \text{distributive rule} \\
+&= |w|\,|z_1 - z_2| &&\qquad \text{length of a product}
+\end{aligned}
+```
+
+The first step uses :ref{#complex-arithmetic} and the second :ref{#abs-product-complex}. When
+$$|w| = 1$$, the right side is $$|z_1 - z_2|$$, so the distance is unchanged. That fits
+:ref{#multiply-turn}: a turn keeps every distance.
+
+:::
+
+::::
+
+::::exercise{#ex-polar-form-turn-about}
+
+Turn the point $$5 + 2i$$ by $$\frac{\pi}{2}$$ about the point $$2 + i$$. Check that the turned
+point is as far from $$2 + i$$ as $$5 + 2i$$ is.
+
+:::solution
+
+The step from the centre is $$(5 + 2i) - (2 + i) = 3 + i$$. Turning it by $$\frac{\pi}{2}$$ is
+multiplying by $$i$$ (:ref{#multiply-by-i}): $$i(3 + i) = 3i + i^2 = -1 + 3i$$. Sliding back adds
+the centre:
+
+```math
+(2 + i) + (-1 + 3i) = 1 + 4i
+```
+
+The two distances from $$2 + i$$ are $$|3 + i| = \sqrt{9 + 1} = \sqrt{10}$$ and
+$$|(1 + 4i) - (2 + i)| = |-1 + 3i| = \sqrt{1 + 9} = \sqrt{10}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-polar-form-slip}
+
+A friend writes $$\left(2e^{i\pi/3}\right)\left(3e^{i\pi/4}\right) = 6e^{i\pi^2/12}$$. Say what went
+wrong, and give the right answer in polar form.
+
+:::solution
+
+The lengths are right: $$2 \cdot 3 = 6$$. The slip is in the angles, which were multiplied:
+$$\frac{\pi}{3} \cdot \frac{\pi}{4} = \frac{\pi^2}{12}$$. By :ref{#polar-multiply}, angles add when
+you multiply, so the angle is $$\frac{\pi}{3} + \frac{\pi}{4} = \frac{7\pi}{12}$$, and the product
+is $$6e^{i7\pi/12}$$.
+
+:::
+
+::::
+
+:::::

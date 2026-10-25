@@ -1,0 +1,563 @@
+---
+title: Powers and identities
+description:
+  De Moivre's formula for powers in polar form, and how it rebuilds the double, triple and other
+  angle formulas as calculations you can redo whenever you need them.
+---
+
+Imagine you're halfway through a problem and need $$\cos 3\theta$$ written with $$\cos\theta$$
+alone. There is a formula for it, you've forgotten it, and there's no book to hand. A friend who
+never learned it takes a scrap of paper and writes down $$(\cos\theta + i\sin\theta)^3$$. She works
+it out two different ways, and a minute later the formula is on the page. Before using it, she puts
+in $$\theta = \frac{\pi}{6}$$ to check it.
+
+Her trick rests on the last guide: multiplying complex numbers adds their angles. So cubing the
+number at angle $$\theta$$ gives the number at angle $$3\theta$$, which is
+$$\cos 3\theta + i\sin 3\theta$$. Multiplying out the bracket gives a second answer, made of
+$$\cos\theta$$ and $$\sin\theta$$, and the two answers must have equal real parts. That fact about
+powers is called **de Moivre's formula**. In this guide we'll prove it, and then use it to rebuild
+trigonometric identities as calculations, so that none of them needs to be memorised.
+
+## Powers turn and stretch
+
+For a complex number $$z$$ and a whole number $$n \ge 1$$, the power $$z^n$$ is $$z$$ multiplied by
+itself $$n$$ times, and $$z^0 = 1$$. For $$z \ne 0$$, negative powers are
+$$z^{-n} = \frac{1}{z^n}$$. These are the definitions used for real numbers, and the rules for
+powers carry over too. The proofs of :ref{#numbers/power-rules} use only the rules of arithmetic,
+which complex numbers obey (:ref{#complex-arithmetic}), so for example $$(zw)^n = z^n w^n$$.
+
+Now picture the powers of $$1 + i = \sqrt2\,e^{i\pi/4}$$. Each power is the one before multiplied by
+$$1 + i$$, which turns it by $$\frac{\pi}{4}$$ and stretches it by $$\sqrt2$$
+(:ref{#polar-multiply}). So the angles go up by $$\frac{\pi}{4}$$ at every step, and the lengths are
+multiplied by $$\sqrt2$$:
+
+| Power         | Multiplied out | Length      | Angle              |
+| ------------- | -------------- | ----------- | ------------------ |
+| $$(1 + i)^0$$ | $$1$$          | $$1$$       | $$0$$              |
+| $$(1 + i)^1$$ | $$1 + i$$      | $$\sqrt2$$  | $$\frac{\pi}{4}$$  |
+| $$(1 + i)^2$$ | $$2i$$         | $$2$$       | $$\frac{\pi}{2}$$  |
+| $$(1 + i)^3$$ | $$-2 + 2i$$    | $$2\sqrt2$$ | $$\frac{3\pi}{4}$$ |
+| $$(1 + i)^4$$ | $$-4$$         | $$4$$       | $$\pi$$            |
+| $$(1 + i)^5$$ | $$-4 - 4i$$    | $$4\sqrt2$$ | $$\frac{5\pi}{4}$$ |
+
+Each entry in the second column is the one above it times $$1 + i$$. For example,
+$$2i(1 + i) = 2i + 2i^2 = -2 + 2i$$, and $$|-2 + 2i| = \sqrt{8} = 2\sqrt2$$, as the third column
+says.
+
+<PowersOfOnePlusI caption="The powers of 1 + i from the 0th to the 5th, joined in order. Each step turns by π/4 and stretches by √2, so the points spiral outwards: 1, 1 + i, 2i, −2 + 2i, −4 and −4 − 4i." />
+
+:::theorem[De Moivre's formula]{#de-moivre}
+
+For every real number $$\theta$$ and every integer $$n$$,
+
+```math
+(\cos\theta + i\sin\theta)^n = \cos n\theta + i\sin n\theta
+```
+
+In the shorthand, $$(e^{i\theta})^n = e^{in\theta}$$. So for $$r \ge 0$$ and every whole number
+$$n \ge 0$$,
+
+```math
+(re^{i\theta})^n = r^n e^{in\theta}
+```
+
+and the same holds for negative $$n$$ when $$r > 0$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/De_Moivre%27s_formula#Proof_by_induction"}
+
+**The power 0.** Both sides are $$1$$: the left side by the definition of $$z^0$$, and the right
+side because $$e^{i0} = \cos 0 + i\sin 0 = 1$$.
+
+**Positive powers.** We use induction (:ref{#basic-proofs/induction}) on the statement
+$$(e^{i\theta})^n = e^{in\theta}$$. For $$n = 1$$, both sides are $$e^{i\theta}$$. Now suppose the
+statement holds for some $$n = k \ge 1$$. Then
+
+```math
+\begin{aligned}
+(e^{i\theta})^{k + 1} &= (e^{i\theta})^k \, e^{i\theta} &&\qquad \text{one more factor} \\
+&= e^{ik\theta} \, e^{i\theta} &&\qquad \text{the statement for } k \\
+&= e^{i(k\theta + \theta)} &&\qquad \text{angles add} \\
+&= e^{i(k + 1)\theta} &&\qquad \text{collect the } \theta
+\end{aligned}
+```
+
+where adding the angles is :ref{#polar-multiply}. So the statement holds for $$k + 1$$, and by
+induction for every $$n \ge 1$$.
+
+**Negative powers.** Let $$n = -m$$ with $$m \ge 1$$. By the definition of a negative power, the
+positive case, and :ref{#polar-divide} with length $$1$$,
+
+```math
+(e^{i\theta})^{-m} = \frac{1}{(e^{i\theta})^m} = \frac{1}{e^{im\theta}} = e^{-im\theta} = e^{in\theta}
+```
+
+**Any length.** By the rule $$(zw)^n = z^n w^n$$, $$(re^{i\theta})^n = r^n(e^{i\theta})^n$$, and the
+first part turns this into $$r^n e^{in\theta}$$. For negative $$n$$ and $$r > 0$$, use
+:ref{#polar-divide} the same way:
+$$(re^{i\theta})^{-m} = \frac{1}{r^m e^{im\theta}} = r^{-m}e^{-im\theta}$$.
+
+:::
+
+In words: to raise a number to the $$n$$-th power, raise its length to the $$n$$-th power and
+multiply its angle by $$n$$. The angle is multiplied here because it is added to itself $$n$$ times.
+That is still the rule that angles add when you multiply.
+
+:::example[The tenth power of 1 + i]
+
+Multiplying out $$(1 + i)^{10}$$ by hand takes nine multiplications. In polar form,
+$$1 + i = \sqrt2\,e^{i\pi/4}$$, so by :ref{#de-moivre}
+
+```math
+(1 + i)^{10} = (\sqrt2)^{10} e^{i10\pi/4} = 32\,e^{i5\pi/2}
+```
+
+The angle $$\frac{5\pi}{2}$$ is $$2\pi + \frac{\pi}{2}$$, a whole turn and a quarter. A whole turn
+changes nothing (:ref{#trigonometry/periodic}), so $$e^{i5\pi/2} = e^{i\pi/2} = i$$, and
+$$(1 + i)^{10} = 32i$$.
+
+As a check by a different route, $$(1 + i)^2 = 1 + 2i + i^2 = 2i$$. So
+$$(1 + i)^{10} = (2i)^5 = 32i^5$$, and $$i^5 = i$$ by :ref{#powers-of-i}, giving $$32i$$ again.
+
+:::
+
+One slip is worth naming here. The power of the bracket is not the bracket of the powers:
+$$(\cos\theta + i\sin\theta)^2$$ is not $$\cos^2\theta + i\sin^2\theta$$. At
+$$\theta = \frac{\pi}{2}$$ the bracket is $$i$$, whose square is $$-1$$, while
+$$\cos^2\frac{\pi}{2} + i\sin^2\frac{\pi}{2} = i$$. De Moivre's formula puts the $$n$$ inside, on
+the angle.
+
+When the length $$r$$ is more than $$1$$, each power is further from $$0$$ than the last, and the
+powers spiral outwards, as the powers of $$1 + i$$ do. When $$r$$ is less than $$1$$, they spiral in
+towards $$0$$. When $$r = 1$$, every power stays on the unit circle and the points step round it by
+the same angle each time. Choose $$r$$ and $$\theta$$ below and watch which of the three happens.
+
+<PowerSpiral />
+
+## Double angles again
+
+De Moivre's formula gives each power two ways of being written. One way is
+$$\cos n\theta + i\sin n\theta$$. The other is whatever you get by multiplying out the bracket. Two
+equal complex numbers have equal real parts and equal imaginary parts (:ref{#complex-number}), so
+each power hands you two identities, one from each part. The smallest case, $$n = 2$$, gives
+formulas you have met before.
+
+Try it first with a number. At $$\theta = \frac{\pi}{6}$$ the bracket is
+$$\frac{\sqrt3}{2} + \frac{1}{2}i$$, and squaring it gives
+
+```math
+\left(\tfrac{\sqrt3}{2} + \tfrac{1}{2}i\right)^2 = \tfrac{3}{4} + 2 \cdot \tfrac{\sqrt3}{2} \cdot \tfrac{1}{2}\,i + \tfrac{1}{4}i^2 = \left(\tfrac{3}{4} - \tfrac{1}{4}\right) + \tfrac{\sqrt3}{2}\,i = \tfrac{1}{2} + \tfrac{\sqrt3}{2}\,i
+```
+
+That is $$\cos\frac{\pi}{3} + i\sin\frac{\pi}{3}$$, the number at twice the angle. Look at where the
+two parts came from. The real part is the cosine squared minus the sine squared,
+$$\frac{3}{4} - \frac{1}{4}$$. The imaginary part is twice the sine times the cosine. The same
+happens for every angle.
+
+:::corollary[Double angles again]{#identities-double}
+
+For every real number $$\theta$$,
+
+```math
+\cos 2\theta = \cos^2\theta - \sin^2\theta \qquad\qquad \sin 2\theta = 2\sin\theta\cos\theta
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/List_of_trigonometric_identities#Multiple-angle_formulae"}
+
+Multiply out the square of the bracket (:ref{#numbers/square-formulas}, whose proof uses only the
+rules of arithmetic, so it holds for complex numbers):
+
+```math
+\begin{aligned}
+(\cos\theta + i\sin\theta)^2 &= \cos^2\theta + 2i\sin\theta\cos\theta + i^2\sin^2\theta &&\qquad \text{square of a sum} \\
+&= (\cos^2\theta - \sin^2\theta) + (2\sin\theta\cos\theta)\,i &&\qquad i^2 = -1\text{, and sort into parts}
+\end{aligned}
+```
+
+By :ref{#de-moivre}, the same square is $$\cos 2\theta + i\sin 2\theta$$. The real parts are equal,
+which is the first formula, and the imaginary parts are equal, which is the second.
+
+:::
+
+These are the first two parts of :ref{#trigonometry/double-angle}, reached by a different road. Both
+roads go through the addition formulas, since :ref{#polar-multiply} was proved with them. So this is
+a way to rebuild the formulas when you've forgotten them, from one idea you're unlikely to forget:
+angles add.
+
+## Triple angles
+
+The cube works the same way, with one more term. To keep the lines short, write $$c = \cos\theta$$
+and $$s = \sin\theta$$, and use the powers of $$i$$: $$i^2 = -1$$ and $$i^3 = -i$$
+(:ref{#powers-of-i}).
+
+:::proposition[Triple angles]{#triple-angle}
+
+For every real number $$\theta$$,
+
+```math
+\cos 3\theta = 4\cos^3\theta - 3\cos\theta \qquad\qquad \sin 3\theta = 3\sin\theta - 4\sin^3\theta
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/List_of_trigonometric_identities#Triple-angle_formulae"}
+
+Multiply out the cube with the cube of a sum (:ref{#numbers/cube-formulas}, which again uses only
+the rules of arithmetic), taking $$a = c$$ and $$b = is$$:
+
+```math
+\begin{aligned}
+(c + is)^3 &= c^3 + 3c^2(is) + 3c(is)^2 + (is)^3 &&\qquad \text{cube of a sum} \\
+&= c^3 + 3ic^2 s + 3i^2 cs^2 + i^3 s^3 &&\qquad \text{powers of a product} \\
+&= c^3 + 3ic^2 s - 3cs^2 - is^3 &&\qquad i^2 = -1,\ i^3 = -i \\
+&= (c^3 - 3cs^2) + (3c^2 s - s^3)\,i &&\qquad \text{sort into parts}
+\end{aligned}
+```
+
+By :ref{#de-moivre} the cube is also $$\cos 3\theta + i\sin 3\theta$$, so comparing parts,
+
+```math
+\cos 3\theta = c^3 - 3cs^2 \qquad\qquad \sin 3\theta = 3c^2 s - s^3
+```
+
+To get cosines alone in the first, replace $$s^2$$ by $$1 - c^2$$
+(:ref{#trigonometry/pythagorean-identity}). To get sines alone in the second, replace $$c^2$$ by
+$$1 - s^2$$:
+
+```math
+\begin{aligned}
+c^3 - 3c(1 - c^2) &= c^3 - 3c + 3c^3 = 4c^3 - 3c \\
+3(1 - s^2)s - s^3 &= 3s - 3s^3 - s^3 = 3s - 4s^3
+\end{aligned}
+```
+
+:::
+
+Check both at $$\theta = \frac{\pi}{6}$$, where $$c = \frac{\sqrt3}{2}$$ and $$s = \frac{1}{2}$$
+(:ref{#trigonometry/sin-cos-30-60}). The angle $$3\theta$$ is $$\frac{\pi}{2}$$, with cosine $$0$$
+and sine $$1$$. On the right, $$4c^3 - 3c = 4 \cdot \frac{3\sqrt3}{8} - \frac{3\sqrt3}{2} = 0$$ and
+$$3s - 4s^3 = \frac{3}{2} - \frac{4}{8} = 1$$.
+
+[Working with identities](../trigonometry/working-with-identities.mdx) proved the formula for
+$$\sin 3\theta$$ from the addition formulas in seven lines, choosing the right form of
+$$\cos 2\theta$$ along the way. Here both triple angle formulas come out of one calculation, with no
+choices to make until the last step.
+
+## How to rebuild an identity
+
+The two proofs above follow the same steps, and those steps work for any multiple of an angle. When
+you need $$\cos n\theta$$ or $$\sin n\theta$$ in terms of $$\cos\theta$$ and $$\sin\theta$$:
+
+1. **Write the multiple angle as a power.** Start from $$(\cos\theta + i\sin\theta)^n$$, which is
+   $$\cos n\theta + i\sin n\theta$$ by de Moivre's formula.
+2. **Multiply out the power.** Square for $$n = 2$$, use the cube of a sum for $$n = 3$$, and square
+   twice for $$n = 4$$. Replace $$i^2$$ by $$-1$$, $$i^3$$ by $$-i$$ and $$i^4$$ by $$1$$.
+3. **Sort into parts.** Collect the terms without $$i$$ into the real part, and the terms with $$i$$
+   into the imaginary part.
+4. **Compare the parts.** The real part is $$\cos n\theta$$, and the imaginary part is
+   $$\sin n\theta$$.
+5. **Trade squares if you want one function.** Replace $$\sin^2\theta$$ by $$1 - \cos^2\theta$$, or
+   $$\cos^2\theta$$ by $$1 - \sin^2\theta$$.
+6. **Check with a number.** Put $$\theta = \frac{\pi}{6}$$ or $$\frac{\pi}{4}$$ into both sides.
+
+:::example[The cosine of four times an angle]
+
+Find $$\cos 4\theta$$ in terms of $$\cos\theta$$ alone.
+
+**Write it as a power, and multiply out.** As before, write $$c = \cos\theta$$ and
+$$s = \sin\theta$$. The fourth power is the square of the square, and the square is
+$$(c^2 - s^2) + 2cs\,i$$ from :ref{#identities-double}. Squaring that with the square of a sum,
+
+```math
+\begin{aligned}
+(c + is)^4 &= \big((c^2 - s^2) + 2cs\,i\big)^2 &&\qquad \text{the square, squared} \\
+&= (c^2 - s^2)^2 + 2(c^2 - s^2)(2cs)\,i + (2cs)^2 i^2 &&\qquad \text{square of a sum} \\
+&= \big((c^2 - s^2)^2 - 4c^2 s^2\big) + 4cs(c^2 - s^2)\,i &&\qquad i^2 = -1\text{, and sort into parts}
+\end{aligned}
+```
+
+**Compare the parts.** By :ref{#de-moivre} the fourth power is $$\cos 4\theta + i\sin 4\theta$$, so
+
+```math
+\cos 4\theta = (c^2 - s^2)^2 - 4c^2 s^2 \qquad\qquad \sin 4\theta = 4cs(c^2 - s^2)
+```
+
+**Trade squares.** Replace $$s^2$$ by $$1 - c^2$$. Then $$c^2 - s^2 = 2c^2 - 1$$, and
+
+```math
+\begin{aligned}
+\cos 4\theta &= (2c^2 - 1)^2 - 4c^2(1 - c^2) &&\qquad s^2 = 1 - c^2 \\
+&= 4c^4 - 4c^2 + 1 - 4c^2 + 4c^4 &&\qquad \text{multiply out} \\
+&= 8c^4 - 8c^2 + 1 &&\qquad \text{collect like terms}
+\end{aligned}
+```
+
+**Check with a number.** At $$\theta = \frac{\pi}{4}$$, $$c^2 = \frac{1}{2}$$ and
+$$c^4 = \frac{1}{4}$$, so the right side is $$2 - 4 + 1 = -1$$, and $$\cos\pi = -1$$. At
+$$\theta = \frac{\pi}{6}$$, $$c^2 = \frac{3}{4}$$ and $$c^4 = \frac{9}{16}$$, so the right side is
+$$\frac{9}{2} - 6 + 1 = -\frac{1}{2}$$, which is $$\cos\frac{2\pi}{3}$$.
+
+The imaginary part came for free:
+$$\sin 4\theta = 4\sin\theta\cos\theta(\cos^2\theta - \sin^2\theta)$$.
+
+:::
+
+## Going the other way: products into sums
+
+Sometimes you want to go the other way, and turn a product such as $$\cos\theta\cos\varphi$$ into a
+sum of single cosines. For that, write the cosine itself with $$e^{i\theta}$$. The numbers
+$$e^{i\theta}$$ and $$e^{-i\theta}$$ are mirror images in the real axis, since each is the conjugate
+of the other (:ref{#polar-divide}). Adding mirror images cancels the imaginary parts and doubles the
+real parts, so their sum lies on the real axis, at $$2\cos\theta$$.
+
+<ConjugateSum caption="The numbers eⁱᶿ and e⁻ⁱᶿ on the unit circle, mirror images in the real axis. Their sum is the far corner of the parallelogram they make with 0, and it lies on the real axis at 2 cos θ." />
+
+:::proposition[Cosine and sine from e to the i theta]{#cos-sin-from-e}
+
+For every real number $$\theta$$,
+
+```math
+\cos\theta = \frac{e^{i\theta} + e^{-i\theta}}{2} \qquad\qquad \sin\theta = \frac{e^{i\theta} - e^{-i\theta}}{2i}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euler%27s_formula#Relationship_to_trigonometry"}
+
+By :ref{#trigonometry/negative-angle},
+$$e^{-i\theta} = \cos(-\theta) + i\sin(-\theta) = \cos\theta - i\sin\theta$$. Adding and
+subtracting,
+
+```math
+\begin{aligned}
+e^{i\theta} + e^{-i\theta} &= (\cos\theta + i\sin\theta) + (\cos\theta - i\sin\theta) = 2\cos\theta \\
+e^{i\theta} - e^{-i\theta} &= (\cos\theta + i\sin\theta) - (\cos\theta - i\sin\theta) = 2i\sin\theta
+\end{aligned}
+```
+
+Dividing the first line by $$2$$, and the second by $$2i$$, which is not $$0$$, gives the two
+formulas.
+
+:::
+
+:::example[A product of two cosines]
+
+Write each cosine with :ref{#cos-sin-from-e}, multiply out, and add exponents with
+:ref{#polar-multiply}:
+
+```math
+\begin{aligned}
+\cos\theta\cos\varphi &= \tfrac{1}{4}(e^{i\theta} + e^{-i\theta})(e^{i\varphi} + e^{-i\varphi}) &&\qquad \text{cosines from } e^{i\theta} \\
+&= \tfrac{1}{4}\big(e^{i(\theta + \varphi)} + e^{i(\theta - \varphi)} + e^{-i(\theta - \varphi)} + e^{-i(\theta + \varphi)}\big) &&\qquad \text{multiply out, angles add} \\
+&= \tfrac{1}{4}\big(2\cos(\theta + \varphi) + 2\cos(\theta - \varphi)\big) &&\qquad \text{pair each angle with its negative} \\
+&= \tfrac{1}{2}\big(\cos(\theta + \varphi) + \cos(\theta - \varphi)\big)
+\end{aligned}
+```
+
+The third line uses :ref{#cos-sin-from-e} again, read backwards. As a check, take
+$$\theta = \varphi = \frac{\pi}{3}$$. The left side is
+$$\frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}$$, and the right side is
+$$\frac{1}{2}\left(\cos\frac{2\pi}{3} + \cos 0\right) = \frac{1}{2}\left(-\frac{1}{2} + 1\right) = \frac{1}{4}$$.
+
+With $$\varphi = \theta$$, the formula becomes $$\cos^2\theta = \frac{1}{2}(\cos 2\theta + 1)$$, the
+formula of :ref{#trigonometry/half-angle}.
+
+:::
+
+## Exercises
+
+:::::accordion[Exercises on powers and identities, with solutions]
+
+::::exercise{#ex-powers-and-identities-eighth}
+
+Use de Moivre's formula to find $$(1 - i)^8$$. Check your answer by first finding $$(1 - i)^2$$.
+
+:::solution
+
+In polar form, $$1 - i = \sqrt2\,e^{-i\pi/4}$$. By :ref{#de-moivre},
+
+```math
+(1 - i)^8 = (\sqrt2)^8 e^{-i8\pi/4} = 16\,e^{-i2\pi} = 16
+```
+
+since $$e^{-i2\pi} = \cos 2\pi - i\sin 2\pi = 1$$. For the check,
+$$(1 - i)^2 = 1 - 2i + i^2 = -2i$$, so $$(1 - i)^8 = (-2i)^4 = 16i^4 = 16$$.
+
+:::
+
+::::
+
+::::exercise{#ex-powers-and-identities-sixth}
+
+Find $$(\sqrt3 + i)^6$$ in polar form, then write it as a real number.
+
+:::solution
+
+The length is $$\sqrt{3 + 1} = 2$$ and the angle is $$\frac{\pi}{6}$$, since
+$$2\left(\cos\frac{\pi}{6} + i\sin\frac{\pi}{6}\right) = \sqrt3 + i$$
+(:ref{#trigonometry/sin-cos-30-60}). By :ref{#de-moivre},
+
+```math
+(\sqrt3 + i)^6 = 2^6 e^{i6\pi/6} = 64\,e^{i\pi} = -64
+```
+
+As a check, $$(\sqrt3 + i)^2 = 3 + 2\sqrt3\,i - 1 = 2 + 2\sqrt3\,i$$, and
+$$(\sqrt3 + i)^3 = (\sqrt3 + i)(2 + 2\sqrt3\,i) = 2\sqrt3 + 6i + 2i - 2\sqrt3 = 8i$$. Squaring,
+$$(8i)^2 = -64$$.
+
+:::
+
+::::
+
+::::exercise{#ex-powers-and-identities-bracket-slip}
+
+A friend writes $$(\cos\theta + i\sin\theta)^3 = \cos^3\theta + i\sin^3\theta$$. Test this at
+$$\theta = \frac{\pi}{2}$$, and say what the left side is.
+
+:::solution
+
+At $$\theta = \frac{\pi}{2}$$ the bracket is $$0 + 1 \cdot i = i$$, so the left side is
+$$i^3 = -i$$. The right side is $$0 + i \cdot 1 = i$$. They differ, so the equation is false. By
+:ref{#de-moivre}, the left side is $$\cos 3\theta + i\sin 3\theta$$: the $$3$$ goes on the angle,
+not on the cosine and the sine. At $$\theta = \frac{\pi}{2}$$ that is
+$$\cos\frac{3\pi}{2} + i\sin\frac{3\pi}{2} = -i$$, as it should be.
+
+:::
+
+::::
+
+::::exercise{#ex-powers-and-identities-when-real}
+
+Find every whole number $$n \ge 1$$ for which $$(1 + i)^n$$ is a positive real number. Then find the
+smallest such $$n$$ and the value of the power.
+
+:::solution
+
+By :ref{#de-moivre}, $$(1 + i)^n = (\sqrt2)^n e^{in\pi/4}$$. Its length is positive, so it is a
+positive real number exactly when $$e^{in\pi/4} = 1$$, that is, when $$\frac{n\pi}{4}$$ is a whole
+number of full turns (:ref{#trigonometry/working-with-identities-same-point}). That means
+$$\frac{n\pi}{4} = 2\pi k$$ for a whole number $$k$$, so $$n = 8k$$: the multiples of $$8$$. The
+smallest is $$n = 8$$, with $$(1 + i)^8 = (\sqrt2)^8 = 16$$. As a check,
+$$(1 + i)^8 = \left((1 + i)^4\right)^2 = (-4)^2 = 16$$, using the table at the start of the guide.
+
+:::
+
+::::
+
+::::exercise{#ex-powers-and-identities-cos-cubed}
+
+Use :ref{#cos-sin-from-e} to show that $$\cos^3\theta = \frac{1}{4}(\cos 3\theta + 3\cos\theta)$$,
+and check it at $$\theta = \frac{\pi}{3}$$.
+
+:::solution
+
+Write $$u = e^{i\theta}$$, so $$e^{-i\theta} = \frac{1}{u}$$ by :ref{#polar-divide}, and
+$$\cos\theta = \frac{1}{2}\left(u + \frac{1}{u}\right)$$. Cube with the cube of a sum
+(:ref{#numbers/cube-formulas}):
+
+```math
+\begin{aligned}
+\cos^3\theta &= \tfrac{1}{8}\left(u + \tfrac{1}{u}\right)^3 &&\qquad \text{cosine from } e^{i\theta} \\
+&= \tfrac{1}{8}\left(u^3 + 3u + \tfrac{3}{u} + \tfrac{1}{u^3}\right) &&\qquad \text{cube of a sum} \\
+&= \tfrac{1}{8}\left(\left(u^3 + \tfrac{1}{u^3}\right) + 3\left(u + \tfrac{1}{u}\right)\right) &&\qquad \text{pair each power with its inverse} \\
+&= \tfrac{1}{8}(2\cos 3\theta + 6\cos\theta) &&\qquad \text{cosines from } e^{i\theta}
+\end{aligned}
+```
+
+The last step uses $$u^3 = e^{i3\theta}$$ and $$\frac{1}{u^3} = e^{-i3\theta}$$, by
+:ref{#de-moivre}. Taking out the factor $$2$$ gives $$\frac{1}{4}(\cos 3\theta + 3\cos\theta)$$. At
+$$\theta = \frac{\pi}{3}$$, the left side is $$\frac{1}{8}$$ and the right side is
+$$\frac{1}{4}\left(-1 + \frac{3}{2}\right) = \frac{1}{8}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-powers-and-identities-sine-product}
+
+Use :ref{#cos-sin-from-e} to show that
+$$\sin\theta\sin\varphi = \frac{1}{2}\big(\cos(\theta - \varphi) - \cos(\theta + \varphi)\big)$$,
+and check it at $$\theta = \varphi = \frac{\pi}{4}$$.
+
+:::solution
+
+Each sine has $$2i$$ underneath, and $$(2i)^2 = -4$$:
+
+```math
+\begin{aligned}
+\sin\theta\sin\varphi &= \frac{(e^{i\theta} - e^{-i\theta})(e^{i\varphi} - e^{-i\varphi})}{(2i)^2} &&\qquad \text{sines from } e^{i\theta} \\
+&= -\tfrac{1}{4}\big(e^{i(\theta + \varphi)} - e^{i(\theta - \varphi)} - e^{-i(\theta - \varphi)} + e^{-i(\theta + \varphi)}\big) &&\qquad \text{multiply out, angles add} \\
+&= -\tfrac{1}{4}\big(2\cos(\theta + \varphi) - 2\cos(\theta - \varphi)\big) &&\qquad \text{pair each angle with its negative} \\
+&= \tfrac{1}{2}\big(\cos(\theta - \varphi) - \cos(\theta + \varphi)\big)
+\end{aligned}
+```
+
+At $$\theta = \varphi = \frac{\pi}{4}$$, the left side is
+$$\frac{\sqrt2}{2} \cdot \frac{\sqrt2}{2} = \frac{1}{2}$$, and the right side is
+$$\frac{1}{2}\left(\cos 0 - \cos\frac{\pi}{2}\right) = \frac{1}{2}(1 - 0) = \frac{1}{2}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-powers-and-identities-five}
+
+Use :ref{#numbers/binomial-theorem} with the row $$1, 5, 10, 10, 5, 1$$ of Pascal's triangle to show
+that $$\cos 5\theta = 16\cos^5\theta - 20\cos^3\theta + 5\cos\theta$$. Check it at
+$$\theta = \frac{\pi}{3}$$.
+
+:::solution
+
+Write $$c = \cos\theta$$ and $$s = \sin\theta$$. The binomial theorem uses only the rules of
+arithmetic, so it holds for complex numbers too. Only the terms with an even power of $$is$$ are
+real, and $$(is)^2 = -s^2$$, $$(is)^4 = s^4$$, so the real part of $$(c + is)^5$$ is
+
+```math
+c^5 + 10c^3(is)^2 + 5c(is)^4 = c^5 - 10c^3 s^2 + 5cs^4
+```
+
+By :ref{#de-moivre}, this real part is $$\cos 5\theta$$. Now replace $$s^2$$ by $$1 - c^2$$:
+
+```math
+\begin{aligned}
+\cos 5\theta &= c^5 - 10c^3(1 - c^2) + 5c(1 - c^2)^2 &&\qquad s^2 = 1 - c^2 \\
+&= c^5 - 10c^3 + 10c^5 + 5c - 10c^3 + 5c^5 &&\qquad \text{multiply out} \\
+&= 16c^5 - 20c^3 + 5c &&\qquad \text{collect like terms}
+\end{aligned}
+```
+
+At $$\theta = \frac{\pi}{3}$$, $$c = \frac{1}{2}$$, and the right side is
+$$\frac{16}{32} - \frac{20}{8} + \frac{5}{2} = \frac{1}{2}$$. The left side is
+$$\cos\frac{5\pi}{3} = \cos\left(2\pi - \frac{\pi}{3}\right) = \cos\frac{\pi}{3} = \frac{1}{2}$$, by
+:ref{#trigonometry/periodic} and :ref{#trigonometry/negative-angle}.
+
+:::
+
+::::
+
+::::exercise{#ex-powers-and-identities-conjugate}
+
+Prove that $$(\cos\theta - i\sin\theta)^n = \cos n\theta - i\sin n\theta$$ for every integer $$n$$.
+
+:::solution
+
+By :ref{#trigonometry/negative-angle},
+$$\cos\theta - i\sin\theta = \cos(-\theta) + i\sin(-\theta)$$, which is $$e^{i(-\theta)}$$. By
+:ref{#de-moivre} with $$-\theta$$ in place of $$\theta$$,
+
+```math
+(e^{i(-\theta)})^n = e^{i(-n\theta)} = \cos(-n\theta) + i\sin(-n\theta) = \cos n\theta - i\sin n\theta
+```
+
+using :ref{#trigonometry/negative-angle} once more for the last step. In the picture, the bracket is
+the mirror image of $$e^{i\theta}$$ in the real axis, so its powers are the mirror images of the
+powers of $$e^{i\theta}$$.
+
+:::
+
+::::
+
+:::::

@@ -1,0 +1,622 @@
+---
+title: Roots of complex numbers
+description:
+  Two square roots for every complex number other than 0, the n-th roots of unity at the corners of
+  a regular polygon, and the n solutions of wⁿ = z.
+---
+
+Imagine cutting a round pizza into six equal slices, every cut running straight from the centre to
+the crust. The cuts end at six points spaced evenly round the crust, and joining them up gives a
+hexagon. Turn the pizza by one slice and each cut lands where the next one was. Six of those turns
+make a full turn, and the pizza is back where it started.
+
+<PizzaSlices caption="A pizza cut into six equal slices. The ends of the cuts are spaced evenly round the crust, and turning the pizza by one slice moves each cut end onto the next." />
+
+Now lay the pizza on the complex plane, with its centre at $$0$$, its crust on the unit circle and
+one cut ending at $$1$$. Multiplying by a number of length $$1$$ turns the plane about $$0$$
+(:ref{#multiply-turn}), so multiplying by the number $$\omega$$ (the Greek letter omega) at the end
+of the next cut moves every cut end on by one slice. Six slices make a full turn, so
+$$\omega^6 = 1$$, and every other cut end has sixth power $$1$$ for the same reason.
+
+Numbers with a power equal to $$1$$ are called **roots of unity**, from an old word for one. In this
+guide we'll find the square roots of every complex number, then the solutions of $$w^n = z$$ for
+every $$n$$, and see why they always sit evenly spaced round a circle centred at $$0$$.
+
+## Square roots, by halving the angle
+
+Squaring a complex number multiplies it by itself, so it squares the length and doubles the angle
+(:ref{#polar-multiply}). To undo a square, take the square root of the length and halve the angle.
+Halving has a catch: the angles $$\theta$$ and $$\theta + 2\pi$$ name the same number, but their
+halves $$\frac{\theta}{2}$$ and $$\frac{\theta}{2} + \pi$$ differ by a half turn. So every number
+other than $$0$$ has two square roots, on opposite sides of $$0$$.
+
+Here it is with numbers. The number $$-8i$$ is $$8$$ steps down the imaginary axis, so its length is
+$$8$$ and its angle is $$\frac{3\pi}{2}$$ ($$270^\circ$$). In polar form (:ref{#polar-form}),
+$$-8i = 8e^{i3\pi/2}$$. Halving the angle and taking the square root of the length gives a number
+$$w$$ with angle $$\frac{3\pi}{4}$$ ($$135^\circ$$), where
+$$\cos\frac{3\pi}{4} = -\frac{\sqrt2}{2}$$ and $$\sin\frac{3\pi}{4} = \frac{\sqrt2}{2}$$
+(:ref{#trigonometry/symmetries-reference-values}):
+
+```math
+w = \sqrt{8}\, e^{i3\pi/4} = 2\sqrt{2}\left(-\frac{\sqrt2}{2} + \frac{\sqrt2}{2}\,i\right) = -2 + 2i
+```
+
+The other root is $$-w = 2 - 2i$$, half a turn round from $$w$$. As a check,
+$$(-2 + 2i)^2 = 4 - 8i + 4i^2 = 4 - 8i - 4 = -8i$$, and $$(2 - 2i)^2$$ is the same, since
+$$(-w)^2 = w^2$$.
+
+<SquareRootsHalved caption="The two square roots of z = −8i. The root w = −2 + 2i has half the angle of z, 3π/4 (135°) against 3π/2 (270°), and length √8 against 8. The other root, −w = 2 − 2i, is w turned half a turn about 0." />
+
+The same two steps work for every number other than $$0$$, and there are never more than two
+answers.
+
+:::theorem[Square roots of a complex number]{#complex-square-roots}
+
+Let $$z \ne 0$$ be a complex number with polar form $$z = re^{i\theta}$$, so that $$r = |z| > 0$$.
+Then $$z$$ has exactly two **square roots**, complex numbers whose square is $$z$$:
+
+```math
+w = \sqrt{r}\, e^{i\theta/2} \qquad\text{and}\qquad -w
+```
+
+The number $$0$$ has exactly one square root, $$0$$ itself.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Complex_number#Powers_and_roots"}
+
+**Both are square roots.** By :ref{#polar-multiply}, lengths multiply and angles add, so
+
+```math
+\begin{aligned}
+w^2 &= \sqrt{r}\, e^{i\theta/2} \cdot \sqrt{r}\, e^{i\theta/2} \\
+&= \sqrt{r}\sqrt{r}\; e^{i(\theta/2 + \theta/2)} && \text{lengths multiply, angles add} \\
+&= r e^{i\theta} = z && \text{since } \sqrt{r}\sqrt{r} = r
+\end{aligned}
+```
+
+The last step is the definition of $$\sqrt{r}$$ (:ref{#real-numbers/square-root}). By the rules of
+arithmetic (:ref{#complex-arithmetic}), $$(-w)^2 = (-1)^2 w^2 = w^2 = z$$ too.
+
+**They are different.** If $$w = -w$$, then $$2w = 0$$, and multiplying by $$\frac{1}{2}$$ gives
+$$w = 0$$. But $$w^2 = z \ne 0$$, so $$w \ne 0$$, and so $$w \ne -w$$.
+
+**There are no others.** Let $$u$$ be any number with $$u^2 = z$$. Then $$u^2 = w^2$$, and
+multiplying out,
+
+```math
+\begin{aligned}
+(u - w)(u + w) &= u^2 + uw - wu - w^2 && \text{multiply out} \\
+&= u^2 - w^2 && \text{since } uw = wu \\
+&= 0 && \text{since } u^2 = w^2
+\end{aligned}
+```
+
+By :ref{#complex-zero-product}, $$u - w = 0$$ or $$u + w = 0$$, so $$u = w$$ or $$u = -w$$.
+
+**Zero.** If $$u^2 = 0$$, then $$u \cdot u = 0$$, so $$u = 0$$ by :ref{#complex-zero-product}.
+
+:::
+
+The theorem halves one particular angle $$\theta$$ of $$z$$. Any other angle, such as
+$$\theta + 2\pi$$, leads to one of the same two roots: its half is $$\frac{\theta}{2} + \pi$$, and
+turning $$w$$ by a further half turn gives $$-w$$.
+
+## Square roots without angles
+
+Some numbers have an angle that isn't one of the special angles from trigonometry. The number
+$$5 + 12i$$ is one: its length is $$\sqrt{25 + 144} = 13$$, but its angle is about $$1.18$$, a
+number with no tidy name. Instead of halving it, write the unknown root as $$x + iy$$ and compare
+parts.
+
+We want $$(x + iy)^2 = 5 + 12i$$. Multiplying out gives
+$$(x + iy)^2 = x^2 + 2xyi + y^2 i^2 = (x^2 - y^2) + 2xy\,i$$. Two complex numbers are equal exactly
+when their real parts are equal and their imaginary parts are equal (:ref{#complex-number}), so
+
+```math
+x^2 - y^2 = 5 \qquad 2xy = 12
+```
+
+A third equation comes from lengths. By :ref{#abs-product-complex}, $$|w^2| = |w|^2$$, so
+$$x^2 + y^2 = |5 + 12i| = 13$$. Adding this to the first equation gives $$2x^2 = 18$$, so
+$$x^2 = 9$$, and $$x = 3$$ or $$x = -3$$. Then $$2xy = 12$$ says $$y = \frac{6}{x}$$, so $$x = 3$$
+goes with $$y = 2$$ and $$x = -3$$ with $$y = -2$$.
+
+So the square roots of $$5 + 12i$$ are $$3 + 2i$$ and $$-3 - 2i$$, which is $$\pm(3 + 2i)$$. As a
+check, $$(3 + 2i)^2 = 9 + 12i + 4i^2 = 9 + 12i - 4 = 5 + 12i$$. The same three equations work for
+any $$a + bi$$: they give $$x^2 = \frac{|z| + a}{2}$$ and $$y^2 = \frac{|z| - a}{2}$$, and the sign
+of $$b$$ says which signs of $$x$$ and $$y$$ go together.
+
+For a positive real number, the symbol $$\sqrt{\ }$$ picks the positive square root
+(:ref{#real-numbers/square-root}). A complex number has no positive side, so there is nothing to
+pick by, and $$\sqrt{z}$$ means nothing until you say which root you mean. That is why the slip
+$$\sqrt{-4}\cdot\sqrt{-9} = \sqrt{36} = 6$$ goes wrong: choosing the roots $$2i$$ and $$3i$$ gives
+$$2i \cdot 3i = 6i^2 = -6$$. The rule $$\sqrt{a}\sqrt{b} = \sqrt{ab}$$
+(:ref{#real-numbers/root-product}) is a rule for real numbers $$a, b \ge 0$$, and it stops there.
+
+## At most n roots, for complex numbers
+
+Square roots came with a proof that there are no others. For cube roots and beyond, we need the same
+kind of guarantee. The Functions chapter proved that a polynomial with top power $$x^n$$ has at most
+$$n$$ roots (:ref{#functions/root-bound}), and that proof used only the rules of arithmetic and the
+fact that a product is $$0$$ exactly when a factor is. Complex numbers have both, so the proof
+carries over.
+
+We write $$f(z) = a_n z^n + \cdots + a_1 z + a_0$$, where the **coefficients** $$a_0, \ldots, a_n$$
+are complex numbers, and call it a **complex polynomial**. A **root** of it is a complex number
+$$c$$ with $$f(c) = 0$$. For example, $$f(z) = z^2 - 5 - 12i$$ has the roots $$3 + 2i$$ and
+$$-3 - 2i$$ from the last section.
+
+:::proposition[At most n roots, for complex numbers]{#complex-root-bound}
+
+Let $$n \ge 1$$, and let $$f(z) = a_n z^n + \cdots + a_1 z + a_0$$ be a complex polynomial with
+$$a_n \ne 0$$.
+
+1. **The factor theorem**: if $$f(c) = 0$$, then $$f(z) = (z - c)g(z)$$ for every complex number
+   $$z$$, where $$g(z) = b_{n-1}z^{n-1} + \cdots + b_1 z + b_0$$ is a complex polynomial with
+   $$b_{n-1} = a_n$$
+2. **The root bound**: at most $$n$$ different complex numbers are roots of $$f$$
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Polynomial_over_Field_has_Finitely_Many_Roots"}
+
+We go through the three proofs in [Polynomials](../functions/polynomials.mdx) and check that every
+step holds for complex numbers.
+
+- **Difference of two powers** (:ref{#functions/polynomials-difference-of-powers}): the proof
+  multiplies a bracket by $$x$$ and by $$c$$, lines up the terms and cancels the ones that match.
+  That uses the commutative, associative and distributive laws, which complex numbers obey
+  (:ref{#complex-arithmetic}). So $$z^k - c^k = (z - c)(z^{k-1} + z^{k-2}c + \cdots + c^{k-1})$$ for
+  all complex $$z$$ and $$c$$.
+- **The factor theorem** (:ref{#functions/factor-theorem}): the proof subtracts $$f(c) = 0$$, groups
+  the terms by power, factors each $$z^k - c^k$$ by the difference of two powers, and takes out the
+  common factor $$z - c$$. Again only the rules of arithmetic are used, and that gives part
+  1.
+- **The root bound** (:ref{#functions/root-bound}): the proof is an induction on $$n$$. The base
+  case solves $$a_1 z + a_0 = 0$$ as $$z = -\frac{a_0}{a_1}$$, which needs an inverse of
+  $$a_1 \ne 0$$, and :ref{#complex-inverse} gives one. The inductive step uses part 1 and then
+  concludes from $$(d - c)g(d) = 0$$ that $$d - c = 0$$ or $$g(d) = 0$$, which is
+  :ref{#complex-zero-product}. That gives part 2.
+
+:::
+
+So $$z^3 = 8i$$ has at most three solutions, and $$z^{12} = 1$$ at most twelve. The next two
+sections find exactly that many.
+
+## Roots of unity
+
+Back to the pizza. With six slices, the cut ends are the numbers whose sixth power is $$1$$, and
+turning by one slice, a sixth of a full turn, steps from each to the next. With $$n$$ slices the
+same picture holds, with a turn by $$\frac{2\pi}{n}$$.
+
+Here are two small cases with numbers. For $$n = 4$$, the four numbers $$1$$, $$i$$, $$-1$$ and
+$$-i$$ all have fourth power $$1$$ (:ref{#powers-of-i}), and they sit at the corners of a square.
+For $$n = 3$$, take the point of the unit circle at angle $$\frac{2\pi}{3}$$ ($$120^\circ$$), which
+is $$\omega = -\frac{1}{2} + \frac{\sqrt3}{2}i$$ (:ref{#trigonometry/symmetries-reference-values}).
+Multiplying out,
+
+```math
+\begin{aligned}
+\omega^2 &= \tfrac{1}{4} - \tfrac{\sqrt3}{2}i + \tfrac{3}{4}i^2 = -\tfrac{1}{2} - \tfrac{\sqrt3}{2}i \\
+\omega^3 &= \omega \cdot \omega^2 = \left(-\tfrac{1}{2}\right)^2 - \left(\tfrac{\sqrt3}{2}i\right)^2 = \tfrac{1}{4} + \tfrac{3}{4} = 1
+\end{aligned}
+```
+
+The second line multiplies $$a + bi$$ by $$a - bi$$, which gives $$a^2 - (bi)^2 = a^2 + b^2$$. So
+$$1$$, $$\omega$$ and $$\omega^2$$ all have cube $$1$$, and they sit at the corners of an
+equilateral triangle.
+
+:::definition[Roots of unity]{#roots-of-unity}
+
+Let $$n \ge 1$$ be a whole number. An **$$n$$-th root of unity** is a complex number $$\omega$$ with
+$$\omega^n = 1$$.
+
+:::
+
+:::theorem[The n-th roots of unity]{#roots-of-unity-polygon}
+
+Let $$n \ge 1$$. There are exactly $$n$$ different $$n$$-th roots of unity, the numbers
+
+```math
+\omega_k = e^{2\pi i k/n} = \cos\frac{2\pi k}{n} + i\sin\frac{2\pi k}{n} \qquad k = 0, 1, \ldots, n - 1
+```
+
+They lie on the unit circle, starting from $$\omega_0 = 1$$, and multiplying by $$\omega_1$$ turns
+each one onto the next, and $$\omega_{n-1}$$ back onto $$1$$. So for $$n \ge 3$$ they are the
+corners of a regular polygon with $$n$$ corners (:ref{#isometries/regular-turns}).
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Root_of_unity#Elementary_properties"}
+
+**They are roots of unity.** By :ref{#de-moivre}, raising $$e^{i\varphi}$$ to the power $$n$$
+multiplies the angle by $$n$$. So
+
+```math
+\begin{aligned}
+\omega_k^{\,n} &= e^{2\pi i k} && \text{de Moivre's formula} \\
+&= \cos 2\pi k + i \sin 2\pi k && \text{the shorthand} \\
+&= \cos 0 + i \sin 0 = 1 && \text{sine and cosine repeat every } 2\pi
+\end{aligned}
+```
+
+The last line uses :ref{#trigonometry/periodic} and :ref{#trigonometry/quarter-values}.
+
+**They are different.** The angles $$\frac{2\pi k}{n}$$, for $$k = 0, 1, \ldots, n - 1$$, are all
+different, and all lie from $$0$$ up to, but not including, $$2\pi$$. By part 2 of
+:ref{#trigonometry/unit-circle-point}, each point of the unit circle comes from exactly one angle in
+that range, so different angles give different points. Two complex numbers are equal exactly when
+their parts are equal (:ref{#complex-number}), so the $$\omega_k$$ are $$n$$ different numbers.
+
+**There are no others.** Every $$n$$-th root of unity is a root of $$f(z) = z^n - 1$$, whose top
+coefficient is $$1 \ne 0$$. By :ref{#complex-root-bound}, $$f$$ has at most $$n$$ roots, and we have
+found $$n$$.
+
+**The polygon.** By :ref{#polar-multiply}, angles add, so
+$$\omega_1 \omega_k = e^{2\pi i(k + 1)/n} = \omega_{k+1}$$, and
+$$\omega_1 \omega_{n-1} = e^{2\pi i} = 1$$. By :ref{#multiply-turn}, multiplying by $$\omega_1$$ is
+the turn about $$0$$ by $$\frac{2\pi}{n}$$, which is $$\frac{360}{n}$$ degrees. So each corner is
+reached from the one before by that turn, which is the description of a regular shape in
+:ref{#isometries/regular-turns}.
+
+:::
+
+<RootPolygons caption="The roots of unity for n = 3, 4 and 6 on the unit circle, with ω₀ = 1 in orange. They are the corners of an equilateral triangle, a square and a regular hexagon, and multiplying by ω₁ turns each corner onto the next." />
+
+For $$n = 1$$ the only root is $$1$$, and for $$n = 2$$ the roots are $$1$$ and $$-1$$, at the two
+ends of a diameter. The theorem also corrects a slip that is natural after working with real
+numbers. Among the real numbers, $$1$$ is the only cube root of $$1$$
+(:ref{#functions/power-plus-minus-one}), so it's tempting to think it is the only one. Among the
+complex numbers there are three, and in general there are $$n$$ different $$n$$-th roots of $$1$$,
+not one.
+
+## The roots of unity add up to zero
+
+Picture $$n$$ people standing evenly round a ring, each pulling outwards on a rope tied to the
+centre with the same strength. The knot in the middle doesn't move, because the pulls balance.
+Adding the roots of unity is adding those pulls as steps
+(:ref{#adding-and-scaling-points/point-sum}), and the total is $$0$$.
+
+For $$n = 3$$, the numbers from the last section give
+$$1 + \left(-\frac{1}{2} + \frac{\sqrt3}{2}i\right) + \left(-\frac{1}{2} - \frac{\sqrt3}{2}i\right) = 0$$.
+For $$n = 4$$, $$1 + i + (-1) + (-i) = 0$$. The proof uses the picture: turning the whole set of
+roots by one step changes nothing, so it can't change their sum either.
+
+:::proposition[Roots of unity add to zero]{#roots-sum-zero}
+
+For every whole number $$n \ge 2$$, the $$n$$-th roots of unity add up to $$0$$:
+
+```math
+\omega_0 + \omega_1 + \cdots + \omega_{n-1} = 0
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Root_of_unity#Summation"}
+
+Write $$S$$ for the sum. By :ref{#roots-of-unity-polygon}, multiplying by $$\omega_1$$ sends each
+$$\omega_k$$ to $$\omega_{k+1}$$, and $$\omega_{n-1}$$ to $$\omega_0$$. So
+
+```math
+\begin{aligned}
+\omega_1 S &= \omega_1\omega_0 + \omega_1\omega_1 + \cdots + \omega_1\omega_{n-1} && \text{multiply out} \\
+&= \omega_1 + \omega_2 + \cdots + \omega_{n-1} + \omega_0 && \text{each moves on one} \\
+&= S && \text{the same numbers, in another order}
+\end{aligned}
+```
+
+So $$\omega_1 S - S = (\omega_1 - 1)S = 0$$. Since $$n \ge 2$$, the theorem says $$\omega_1$$ and
+$$\omega_0 = 1$$ are different, so $$\omega_1 - 1 \ne 0$$. By :ref{#complex-zero-product},
+$$S = 0$$.
+
+:::
+
+## The n-th roots of any number
+
+Raising a number to the power $$n$$ raises its length to the power $$n$$ and multiplies its angle by
+$$n$$ (:ref{#de-moivre}). To solve $$w^n = z$$, then, take the $$n$$-th root of the length of $$z$$
+and divide its angle by $$n$$. The angles $$\theta$$, $$\theta + 2\pi$$, $$\theta + 4\pi$$, and so
+on all name the same $$z$$, but after dividing by $$n$$ they are $$\frac{2\pi}{n}$$ apart. So they
+give $$n$$ different roots before they start to repeat.
+
+Here it is with numbers: the cube roots of $$8i$$. The number $$8i$$ has length $$8$$ and angle
+$$\frac{\pi}{2}$$, so $$8i = 8e^{i\pi/2}$$. The cube root of the length is $$\sqrt[3]{8} = 2$$
+(:ref{#real-numbers/nth-root}), and the three angles are
+
+```math
+\frac{\pi/2}{3} = \frac{\pi}{6} \qquad \frac{\pi/2 + 2\pi}{3} = \frac{5\pi}{6} \qquad \frac{\pi/2 + 4\pi}{3} = \frac{3\pi}{2}
+```
+
+With the values from :ref{#trigonometry/symmetries-reference-values}, the roots are
+
+```math
+2e^{i\pi/6} = \sqrt3 + i \qquad 2e^{i5\pi/6} = -\sqrt3 + i \qquad 2e^{i3\pi/2} = -2i
+```
+
+As a check, $$(-2i)^3 = -8i^3 = -8 \cdot (-i) = 8i$$. For the first one,
+$$(\sqrt3 + i)^2 = 3 + 2\sqrt3\,i - 1 = 2 + 2\sqrt3\,i$$, and multiplying by $$\sqrt3 + i$$ once
+more gives $$2\sqrt3 + 2i + 6i + 2\sqrt3\,i^2 = 8i$$.
+
+<CubeRootsEightI caption="The three cube roots of z = 8i: √3 + i, −√3 + i and −2i. They lie on the circle of radius 2, the cube root of 8, at the corners of an equilateral triangle, and the first has angle π/6, a third of the angle π/2 of z." />
+
+:::theorem[The n-th roots of any number]{#nth-roots-complex}
+
+Let $$n \ge 1$$, and let $$z \ne 0$$ have polar form $$z = re^{i\theta}$$, so that $$r = |z| > 0$$.
+Then the equation $$w^n = z$$ has exactly $$n$$ different solutions,
+
+```math
+w_k = \sqrt[n]{r}\; e^{i(\theta + 2\pi k)/n} \qquad k = 0, 1, \ldots, n - 1
+```
+
+Each is the first one times a root of unity, $$w_k = w_0\,\omega_k$$, so they lie evenly spaced
+round the circle of radius $$\sqrt[n]{r}$$ centred at $$0$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Roots_of_Complex_Number"}
+
+**They are solutions.** The $$n$$ factors of $$w_k^{\,n}$$ can be multiplied in any order
+(:ref{#complex-arithmetic}), so the lengths and the shorthands can be raised to the power $$n$$
+separately:
+
+```math
+\begin{aligned}
+w_k^{\,n} &= \left(\sqrt[n]{r}\right)^n \left(e^{i(\theta + 2\pi k)/n}\right)^n && \text{rearrange the factors} \\
+&= r\, e^{i(\theta + 2\pi k)} && \text{the } n\text{-th root, and de Moivre's formula} \\
+&= r e^{i\theta} = z && \text{sine and cosine repeat every } 2\pi
+\end{aligned}
+```
+
+The middle line uses :ref{#real-numbers/nth-root} and :ref{#de-moivre}, and the last line uses
+:ref{#trigonometry/periodic}.
+
+**One root times a root of unity.** By :ref{#polar-multiply}, lengths multiply and angles add, so
+$$w_0\,\omega_k = \sqrt[n]{r}\; e^{i(\theta/n + 2\pi k/n)} = w_k$$.
+
+**They are different.** The number $$w_0$$ has length $$\sqrt[n]{r} > 0$$, so it is not $$0$$ and
+has an inverse (:ref{#complex-inverse}). If $$w_0\,\omega_k = w_0\,\omega_l$$, multiplying both
+sides by $$\frac{1}{w_0}$$ gives $$\omega_k = \omega_l$$, so $$k = l$$ by
+:ref{#roots-of-unity-polygon}.
+
+**There are no others.** Every solution is a root of $$f(w) = w^n - z$$, whose top coefficient is
+$$1$$. By :ref{#complex-root-bound}, $$f$$ has at most $$n$$ roots.
+
+**Evenly spaced.** By :ref{#polar-multiply}, multiplying by $$w_0$$ turns by its angle
+$$\frac{\theta}{n}$$ and stretches by its length $$\sqrt[n]{r}$$. It carries the roots of unity,
+evenly spaced round the unit circle, to the $$w_k$$, evenly spaced round the circle of radius
+$$\sqrt[n]{r}$$.
+
+:::
+
+For $$n = 2$$ the theorem is :ref{#complex-square-roots} again, with the two angles
+$$\frac{\theta}{2}$$ and $$\frac{\theta}{2} + \pi$$. The second form, one root times each root of
+unity, is often the shorter way to work.
+
+:::example[The fourth roots of −16]
+
+The number $$-16$$ has length $$16$$ and angle $$\pi$$, so $$-16 = 16e^{i\pi}$$, and
+$$\sqrt[4]{16} = 2$$. The first root is
+$$w_0 = 2e^{i\pi/4} = 2\left(\frac{\sqrt2}{2} + \frac{\sqrt2}{2}i\right) = \sqrt2 + \sqrt2\,i$$
+(:ref{#trigonometry/sin-cos-45}).
+
+The fourth roots of unity are $$1$$, $$i$$, $$-1$$ and $$-i$$, so the four roots are $$w_0$$,
+$$iw_0$$, $$-w_0$$ and $$-iw_0$$:
+
+```math
+\sqrt2 + \sqrt2\,i \qquad -\sqrt2 + \sqrt2\,i \qquad -\sqrt2 - \sqrt2\,i \qquad \sqrt2 - \sqrt2\,i
+```
+
+As a check, $$(\sqrt2 + \sqrt2\,i)^2 = 2 + 4i + 2i^2 = 4i$$, and squaring again gives
+$$(4i)^2 = 16i^2 = -16$$.
+
+:::
+
+Try it below. Drag $$z$$ anywhere and change $$n$$: the roots always form a regular polygon about
+$$0$$, which turns as the angle of $$z$$ changes and grows as its length does. Put $$z$$ back at
+$$1$$ to see the roots of unity.
+
+<RootsOfUnity />
+
+## Exercises
+
+:::::accordion[Exercises on roots of complex numbers, with solutions]
+
+::::exercise{#ex-roots-square-roots}
+
+Find both square roots of each number, and check one of them by squaring it.
+
+1. $$-49$$
+2. $$15 + 8i$$
+
+:::solution
+
+1. The number $$-49$$ has length $$49$$ and angle $$\pi$$, so by :ref{#complex-square-roots} its
+   square roots are $$7e^{i\pi/2} = 7i$$ and $$-7i$$. Check: $$(7i)^2 = 49i^2 = -49$$.
+2. Write the root as $$x + iy$$. Comparing parts of $$(x + iy)^2 = 15 + 8i$$ gives
+   $$x^2 - y^2 = 15$$ and $$2xy = 8$$, and the length gives
+   $$x^2 + y^2 = |15 + 8i| = \sqrt{225 + 64} = \sqrt{289} = 17$$. Adding, $$2x^2 = 32$$, so
+   $$x = \pm 4$$, and $$y = \frac{4}{x}$$. So the roots are $$4 + i$$ and $$-4 - i$$. Check:
+   $$(4 + i)^2 = 16 + 8i + i^2 = 15 + 8i$$.
+
+:::
+
+::::
+
+::::exercise{#ex-roots-eighth}
+
+Write the eight eighth roots of unity in the form $$a + bi$$. Say which of them are also fourth
+roots of unity.
+
+:::solution
+
+By :ref{#roots-of-unity-polygon}, they are $$\omega_k = e^{2\pi i k/8} = e^{i\pi k/4}$$ for
+$$k = 0, \ldots, 7$$, at steps of $$\frac{\pi}{4}$$ ($$45^\circ$$) round the unit circle. Using
+:ref{#trigonometry/sin-cos-45} and the reference angles, they are
+
+```math
+1 \quad \tfrac{\sqrt2}{2} + \tfrac{\sqrt2}{2}i \quad i \quad -\tfrac{\sqrt2}{2} + \tfrac{\sqrt2}{2}i \quad -1 \quad -\tfrac{\sqrt2}{2} - \tfrac{\sqrt2}{2}i \quad -i \quad \tfrac{\sqrt2}{2} - \tfrac{\sqrt2}{2}i
+```
+
+By :ref{#de-moivre}, $$\omega_k^{\,4} = e^{i\pi k} = \cos \pi k + i \sin \pi k$$, which is $$1$$ for
+even $$k$$ and $$-1$$ for odd $$k$$. So the fourth roots of unity among them are the ones with even
+$$k$$: $$1$$, $$i$$, $$-1$$ and $$-i$$, every other corner of the octagon.
+
+:::
+
+::::
+
+::::exercise{#ex-roots-cube-minus-27}
+
+Find the three cube roots of $$-27$$ in the form $$a + bi$$. Show that the two that aren't real are
+conjugates of each other.
+
+:::solution
+
+The number $$-27$$ has length $$27$$ and angle $$\pi$$, and $$\sqrt[3]{27} = 3$$. By
+:ref{#nth-roots-complex}, the angles of the roots are $$\frac{\pi}{3}$$, $$\frac{3\pi}{3} = \pi$$
+and $$\frac{5\pi}{3}$$, so the roots are
+
+```math
+3e^{i\pi/3} = \tfrac{3}{2} + \tfrac{3\sqrt3}{2}i \qquad 3e^{i\pi} = -3 \qquad 3e^{i5\pi/3} = \tfrac{3}{2} - \tfrac{3\sqrt3}{2}i
+```
+
+Check: $$(-3)^3 = -27$$. The first and last have the same real part $$\frac{3}{2}$$ and imaginary
+parts of opposite sign, so each is the conjugate of the other (:ref{#conjugate}). In the picture,
+the triangle of roots is its own mirror image in the real axis.
+
+:::
+
+::::
+
+::::exercise{#ex-roots-sixth-minus-64}
+
+Solve $$w^6 = -64$$. Show that the three cube roots of $$8i$$ found in this guide are among the
+solutions, and explain why they have to be.
+
+:::solution
+
+The number $$-64$$ has length $$64$$ and angle $$\pi$$, and $$\sqrt[6]{64} = 2$$. By
+:ref{#nth-roots-complex}, the angles are $$\frac{\pi + 2\pi k}{6}$$ for $$k = 0, \ldots, 5$$, that
+is $$\frac{\pi}{6}$$, $$\frac{\pi}{2}$$, $$\frac{5\pi}{6}$$, $$\frac{7\pi}{6}$$, $$\frac{3\pi}{2}$$
+and $$\frac{11\pi}{6}$$. The six solutions are
+
+```math
+\sqrt3 + i \qquad 2i \qquad -\sqrt3 + i \qquad -\sqrt3 - i \qquad -2i \qquad \sqrt3 - i
+```
+
+The cube roots of $$8i$$, $$\sqrt3 + i$$, $$-\sqrt3 + i$$ and $$-2i$$, are the first, third and
+fifth. They have to be there: if $$w^3 = 8i$$, then $$w^6 = (w^3)^2 = (8i)^2 = 64i^2 = -64$$. The
+other three are the cube roots of $$-8i$$, since $$(-8i)^2 = -64$$ too. For example,
+$$(2i)^3 = 8i^3 = -8i$$.
+
+:::
+
+::::
+
+::::exercise{#ex-roots-square-corners}
+
+A square centred at $$0$$ has one corner at $$3 + i$$. Find its other three corners by multiplying
+by $$i$$, and show that the four corners are exactly the fourth roots of $$28 + 96i$$.
+
+:::solution
+
+Multiplying by $$i$$ is the quarter turn about $$0$$ (:ref{#multiply-by-i}), so each corner of the
+square is $$i$$ times the one before:
+
+```math
+(3 + i)i = -1 + 3i \qquad (-1 + 3i)i = -3 - i \qquad (-3 - i)i = 1 - 3i
+```
+
+Each corner is $$(3 + i)i^k$$ for $$k = 0, 1, 2, 3$$, and its fourth power is
+$$(3 + i)^4 (i^4)^k = (3 + i)^4$$, since $$i^4 = 1$$. Now $$(3 + i)^2 = 9 + 6i - 1 = 8 + 6i$$, and
+$$(8 + 6i)^2 = 64 + 96i - 36 = 28 + 96i$$. So all four corners are fourth roots of $$28 + 96i$$. By
+:ref{#nth-roots-complex}, that number has exactly four fourth roots, so these are all of them. This
+is the theorem's second form: one root, $$3 + i$$, times each fourth root of unity.
+
+:::
+
+::::
+
+::::exercise{#ex-roots-conjugate}
+
+Let $$n \ge 2$$ and $$\omega_k = e^{2\pi i k/n}$$. Show that for $$k = 1, \ldots, n - 1$$,
+
+```math
+\overline{\omega_k} = \frac{1}{\omega_k} = \omega_{n-k}
+```
+
+Say what this means for the polygon of roots of unity.
+
+:::solution
+
+By :ref{#polar-divide}, the conjugate and the inverse of $$e^{i\varphi}$$ are both
+$$e^{-i\varphi}$$, so $$\overline{\omega_k} = \frac{1}{\omega_k} = e^{-2\pi i k/n}$$. The angles
+$$-\frac{2\pi k}{n}$$ and $$\frac{2\pi(n - k)}{n} = 2\pi - \frac{2\pi k}{n}$$ differ by $$2\pi$$, so
+they give the same number (:ref{#trigonometry/periodic}), and that number is $$\omega_{n-k}$$.
+
+The conjugate is the flip in the real axis (:ref{#conjugate}). So the flip sends each corner of the
+polygon to another corner, and the polygon is its own mirror image in the real axis.
+
+:::
+
+::::
+
+::::exercise{#ex-roots-fifth-cosines}
+
+Let $$\omega = e^{2\pi i/5}$$. Use :ref{#roots-sum-zero} to show that
+
+```math
+\cos\frac{2\pi}{5} + \cos\frac{4\pi}{5} = -\frac{1}{2}
+```
+
+and check it with a calculator.
+
+:::solution
+
+The fifth roots of unity are $$1, \omega, \omega^2, \omega^3, \omega^4$$, and by
+:ref{#roots-sum-zero} they add up to $$0$$. The real part of $$\omega^k = e^{2\pi i k/5}$$ is
+$$\cos\frac{2\pi k}{5}$$ (:ref{#de-moivre}), and the real part of a sum is the sum of the real
+parts, so
+
+```math
+1 + \cos\tfrac{2\pi}{5} + \cos\tfrac{4\pi}{5} + \cos\tfrac{6\pi}{5} + \cos\tfrac{8\pi}{5} = 0
+```
+
+Now $$\frac{8\pi}{5} = 2\pi - \frac{2\pi}{5}$$ and $$\frac{6\pi}{5} = 2\pi - \frac{4\pi}{5}$$, and
+cosine is the same at $$-x$$ as at $$x$$ and repeats every $$2\pi$$
+(:ref{#trigonometry/negative-angle}, :ref{#trigonometry/periodic}). So
+$$\cos\frac{8\pi}{5} = \cos\frac{2\pi}{5}$$ and $$\cos\frac{6\pi}{5} = \cos\frac{4\pi}{5}$$, and the
+sum becomes $$1 + 2\cos\frac{2\pi}{5} + 2\cos\frac{4\pi}{5} = 0$$. Taking away $$1$$ and halving
+gives the result. A calculator in radian mode gives $$\cos 1.2566 \approx 0.309$$ and
+$$\cos 2.5133 \approx -0.809$$, which add up to $$-0.5$$.
+
+:::
+
+::::
+
+::::exercise{#ex-roots-slip}
+
+A friend says that $$z^4 = 16$$ has exactly two solutions, $$2$$ and $$-2$$. Say what is right and
+what is wrong about this, find every solution, and check one that your friend missed.
+
+:::solution
+
+Among the real numbers your friend is right. A real $$x$$ with $$x^4 = 16$$ has $$(x^2)^2 = 16$$, so
+$$x^2 = 4$$, since $$x^2$$ can't be $$-4$$ (:ref{#real-numbers/squares-positive}), and so $$x = 2$$
+or $$x = -2$$ (:ref{#real-numbers/square-root-count}). But by :ref{#nth-roots-complex}, there are
+four complex solutions. The number $$16$$ has length $$16$$ and angle $$0$$, and
+$$\sqrt[4]{16} = 2$$, so the solutions are $$2$$ times each fourth root of unity:
+
+```math
+2 \qquad 2i \qquad -2 \qquad -2i
+```
+
+Check: $$(2i)^4 = 2^4 i^4 = 16 \cdot 1 = 16$$. The two missed solutions sit on the imaginary axis,
+and the four together are the corners of a square.
+
+:::
+
+::::
+
+:::::

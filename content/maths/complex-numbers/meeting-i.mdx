@@ -1,0 +1,547 @@
+---
+title: Meeting i
+description:
+  A number whose square is minus one, complex numbers built as points of the plane, the rule for
+  multiplying them, the rules of arithmetic they obey, and the powers of i.
+---
+
+Imagine you are a mathematician in sixteenth-century Italy, holding a new formula for solving cubic
+equations. You try it on $$x^3 = 15x + 4$$, which you know has the solution $$x = 4$$, because
+$$4^3 = 64$$ and $$15 \cdot 4 + 4 = 64$$ too. Halfway through, the formula asks you for
+$$\sqrt{-121}$$, the square root of a negative number. No real number squares to $$-121$$, and yet
+the right answer is waiting at the end of the calculation.
+
+Gerolamo Cardano, who published the formula in 1545, met square roots like this one and could not
+get past them. In 1572 Rafael Bombelli did, on this equation: he calculated with square roots of
+negative numbers as if they obeyed the usual rules, and they cancelled out to leave $$4$$. Numbers
+built this way are called **complex numbers**. In this guide we'll build them as points of the
+plane, find the rule for multiplying them that the square of $$-1$$ forces on us, and prove that
+they obey the rules of arithmetic you already use.
+
+## No real number squares to −1
+
+Square any real number and you land at $$0$$ or to the right of it on the number line: $$2^2 = 4$$,
+$$(-2)^2 = 4$$, and $$(-0.1)^2 = 0.01$$. That is :ref{#real-numbers/squares-positive}: a square is
+never negative. So the graph of $$y = x^2$$ never dips below the $$x$$-axis.
+
+<SquaresNeverNegative caption="The graph of y = x² stays on or above the x-axis, because a square is never negative. So it never meets the dashed line at height −1, and no real number x has x² = −1." />
+
+So the equation $$x^2 + 1 = 0$$, which says $$x^2 = -1$$, has no real solution. The number line has
+run out of room. The same thing has happened before: $$2x = 3$$ has no solution among the integers,
+and fractions were brought in to solve it. Now we need a larger system that contains a number whose
+square is $$-1$$, and we'll find room for it by stepping off the number line into the plane.
+
+The chapter on quadratics promised exactly this, in
+[The discriminant](../quadratics/discriminant.mdx). The guide
+[Every quadratic has solutions](./every-quadratic.mdx) keeps that promise.
+
+## What multiplying must be
+
+Suppose for a moment that there were a number $$i$$ with $$i^2 = -1$$, and that it obeyed the usual
+rules of arithmetic. Then we could multiply expressions like $$1 + 2i$$ and $$3 - i$$ by multiplying
+out the brackets:
+
+```math
+\begin{aligned}
+(1 + 2i)(3 - i) &= 3 - i + 6i - 2i^2 &&\qquad \text{multiply out the brackets} \\
+&= 3 + 5i - 2i^2 &&\qquad \text{collect the terms in } i \\
+&= 3 + 5i + 2 &&\qquad i^2 = -1 \\
+&= 5 + 5i &&\qquad \text{collect the real numbers}
+\end{aligned}
+```
+
+Each of the two numbers we started with is made of two real numbers, $$1$$ and $$2$$, then $$3$$ and
+$$-1$$, and so is the answer, $$5$$ and $$5$$. The same steps work for any $$a + bi$$ and $$c + di$$
+with $$a$$, $$b$$, $$c$$ and $$d$$ real:
+
+```math
+\begin{aligned}
+(a + bi)(c + di) &= ac + adi + bci + bdi^2 &&\qquad \text{multiply out the brackets} \\
+&= (ac - bd) + (ad + bc)i &&\qquad i^2 = -1, \text{ and collect terms}
+\end{aligned}
+```
+
+So if such numbers exist at all, there is no choice about how to multiply them. But wishing for a
+number $$i$$ doesn't make one exist. Instead we build it: we take pairs of real numbers, define
+adding and multiplying by the formulas we found above, and then prove that $$i^2 = -1$$ and the
+usual rules hold.
+
+## Complex numbers as points
+
+A pair $$(a, b)$$ of real numbers is a point of the coordinate plane
+(:ref{#coordinates/coordinate-plane}). So the complex numbers are the points of the plane, with one
+new thing you can do to them: multiply.
+
+:::definition[Complex number]{#complex-number}
+
+A **complex number** is a pair $$(a, b)$$ of real numbers, that is, a point of the plane. The set of
+complex numbers is written $$\mathbb{C}$$. Two complex numbers $$(a, b)$$ and $$(c, d)$$ are equal
+exactly when $$a = c$$ and $$b = d$$. They are added and multiplied by the rules
+
+```math
+(a, b) + (c, d) = (a + c, b + d) \qquad\qquad (a, b)(c, d) = (ac - bd, ad + bc)
+```
+
+:::
+
+The sum is the sum of the two points from :ref{#adding-and-scaling-points/point-sum}, so adding
+complex numbers is taking one step and then another. The product is the new part. With the pairs
+from the calculation above,
+
+```math
+(1, 2)(3, -1) = \big(1 \cdot 3 - 2 \cdot (-1),\ 1 \cdot (-1) + 2 \cdot 3\big) = (5, 5)
+```
+
+which matches $$(1 + 2i)(3 - i) = 5 + 5i$$. The picture below shows the three points, with an arc
+for the angle of each. The product looks unrelated to the two numbers at first, but measure it. Its
+length is the two lengths multiplied, and its angle is the two angles added.
+
+<MultiplyPreview caption="The points 1 + 2i (blue), 3 − i (orange) and their product 5 + 5i (purple). The lengths are √5 ≈ 2.24, √10 ≈ 3.16 and √50 ≈ 7.07, and √5 × √10 = √50. The angles from the positive real axis are about 63°, about −18°, and 45°, and 63° − 18° = 45°." />
+
+That is the idea that carries this whole chapter: adding complex numbers slides points, and
+multiplying turns by the angle and stretches by the length. The guide
+[Multiplying is turning](./polar-form.mdx) proves it. Here we stay with the pairs.
+
+## Real numbers among the complex numbers
+
+The real numbers sit inside the complex numbers as the points $$(a, 0)$$ of the horizontal axis.
+Adding or multiplying two of them gives the same answer as adding or multiplying the real numbers,
+so nothing is lost by writing $$a$$ for $$(a, 0)$$. For example, $$(2, 0)(5, 0) = (10 - 0, 0 + 0)$$,
+which is $$(10, 0)$$.
+
+:::proposition[Real numbers inside the complex numbers]{#complex-reals}
+
+For all real numbers $$a$$, $$c$$ and $$d$$:
+
+1. $$(a, 0) + (c, 0) = (a + c, 0)$$
+2. $$(a, 0)(c, 0) = (ac, 0)$$
+3. $$(a, 0)(c, d) = (ac, ad)$$, which is the multiple $$a(c, d)$$ of the point $$(c, d)$$
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Real_Numbers_form_Subfield_of_Complex_Numbers"}
+
+Each part is the definition of :ref{#complex-number} with $$b = 0$$, together with $$0 \cdot x = 0$$
+for real numbers (:ref{#numbers/zero-times}).
+
+1. $$(a, 0) + (c, 0) = (a + c, 0 + 0) = (a + c, 0)$$.
+2. $$(a, 0)(c, 0) = (ac - 0 \cdot 0, a \cdot 0 + 0 \cdot c) = (ac, 0)$$.
+3. $$(a, 0)(c, d) = (ac - 0 \cdot d, ad + 0 \cdot c) = (ac, ad)$$, and $$(ac, ad)$$ is $$a(c, d)$$
+   by :ref{#adding-and-scaling-points/scalar-multiple}.
+
+:::
+
+From now on we write $$a$$ for the complex number $$(a, 0)$$. In particular $$0$$ is $$(0, 0)$$ and
+$$1$$ is $$(1, 0)$$. Part 3 says that multiplying a complex number by a real number scales the
+point: $$2(3, -1) = (6, -2)$$ is twice as far from $$0$$, in the same direction.
+
+## The number i
+
+The point one step up from $$0$$ is the number we were wishing for.
+
+:::definition[The number i]{#i}
+
+The complex number $$i$$ is the point $$(0, 1)$$.
+
+:::
+
+:::proposition[i squared]{#i-squared}
+
+1. $$i^2 = -1$$.
+2. Every complex number $$(a, b)$$ equals $$a + bi$$. If $$a + bi = c + di$$, with $$a$$, $$b$$,
+   $$c$$ and $$d$$ real, then $$a = c$$ and $$b = d$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Imaginary_unit#Definition"}
+
+**Part 1.** By the rule for multiplying,
+
+```math
+i^2 = (0, 1)(0, 1) = (0 \cdot 0 - 1 \cdot 1,\ 0 \cdot 1 + 1 \cdot 0) = (-1, 0)
+```
+
+and $$(-1, 0)$$ is the real number $$-1$$.
+
+**Part 2.** By part 3 of :ref{#complex-reals},
+$$bi = (b, 0)(0, 1) = (b \cdot 0, b \cdot 1) = (0, b)$$. So
+
+```math
+a + bi = (a, 0) + (0, b) = (a + 0, 0 + b) = (a, b)
+```
+
+If $$a + bi = c + di$$, this says $$(a, b) = (c, d)$$, so $$a = c$$ and $$b = d$$ by the meaning of
+equality in :ref{#complex-number}.
+
+:::
+
+Multiplying by $$i$$ has a picture. Multiplying $$1$$ by $$i$$ gives $$i$$, a quarter turn
+anticlockwise about $$0$$. Multiplying $$i$$ by $$i$$ gives $$-1$$, a second quarter turn. Two
+quarter turns make a half turn, and a half turn takes $$1$$ to $$-1$$, which is why $$i^2 = -1$$.
+
+<TimesITurns caption="Multiplying by i turns a quarter turn anticlockwise about 0: it takes 1 to i, and then i to −1. Two quarter turns make a half turn, so i · i = −1." />
+
+One slip catches nearly everyone once. Since a square is never negative, it can feel as though
+$$i^2$$ ought to be $$1$$. But that rule is about real numbers, and $$i$$ is not one. Its square is
+whatever the rule for multiplying says, and the rule says $$-1$$.
+
+Part 2 lets us write every complex number as $$a + bi$$, and that is how we'll write them from now
+on. So $$3 - i$$ is the point $$(3, -1)$$, the number $$5i$$ is $$(0, 5)$$, and $$-2$$ is
+$$(-2, 0)$$. Two complex numbers written this way are equal exactly when their real numbers match
+and their numbers in front of $$i$$ match.
+
+## The rules of arithmetic
+
+When we multiplied out $$(1 + 2i)(3 - i)$$ we assumed the usual rules: that brackets can be
+multiplied out, and that order and grouping don't matter. Now that complex numbers are defined, each
+of those rules has to be checked against the definition. They all hold, so every calculation with
+complex numbers can go as it does with real numbers.
+
+:::theorem[Complex numbers obey the rules of arithmetic]{#complex-arithmetic}
+
+For all complex numbers $$z$$, $$w$$ and $$u$$:
+
+1. **Order doesn't matter:** $$z + w = w + z$$ and $$zw = wz$$.
+2. **Grouping doesn't matter:** $$(z + w) + u = z + (w + u)$$ and $$(zw)u = z(wu)$$.
+3. **Zero and one:** $$z + 0 = z$$ and $$1 \cdot z = z$$, and $$0 \ne 1$$.
+4. **Opposites:** the number $$-z = (-a, -b)$$, for $$z = (a, b)$$, has $$z + (-z) = 0$$.
+5. **Distributivity:** $$z(w + u) = zw + zu$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Complex_Numbers_form_Field"}
+
+Write $$z = (a, b)$$, $$w = (c, d)$$ and $$u = (e, f)$$. Every step inside a pair is a step with
+real numbers, allowed by :ref{#real-numbers/real-rules}.
+
+**Adding.** Adding complex numbers is adding points, so the parts about $$+$$ in rules 1 to 4 are
+the four parts of :ref{#adding-and-scaling-points/sum-rules}, with $$O = (0, 0) = 0$$.
+
+**Order of multiplying.** $$zw = (ac - bd, ad + bc)$$ and $$wz = (ca - db, cb + da)$$. These are
+equal, because $$ac = ca$$, $$bd = db$$, $$ad = da$$ and $$bc = cb$$.
+
+**One, and zero is not one.** By part 3 of :ref{#complex-reals}, $$1 \cdot z = (1, 0)(a, b)$$ is
+$$(1 \cdot a, 1 \cdot b) = (a, b)$$. And $$0 = (0, 0)$$ differs from $$1 = (1, 0)$$, since their
+first parts $$0$$ and $$1$$ differ.
+
+**Grouping of multiplying.** Work out $$(zw)u$$ first, using $$zw = (ac - bd, ad + bc)$$:
+
+```math
+\begin{aligned}
+(zw)u &= (ac - bd, ad + bc)(e, f) &&\qquad \text{the product } zw \\
+&= \big((ac - bd)e - (ad + bc)f,\ (ac - bd)f + (ad + bc)e\big) &&\qquad \text{rule for multiplying} \\
+&= (ace - bde - adf - bcf,\ acf - bdf + ade + bce) &&\qquad \text{multiply out each part}
+\end{aligned}
+```
+
+Now $$z(wu)$$, using $$wu = (ce - df, cf + de)$$:
+
+```math
+\begin{aligned}
+z(wu) &= (a, b)(ce - df, cf + de) &&\qquad \text{the product } wu \\
+&= \big(a(ce - df) - b(cf + de),\ a(cf + de) + b(ce - df)\big) &&\qquad \text{rule for multiplying} \\
+&= (ace - adf - bcf - bde,\ acf + ade + bce - bdf) &&\qquad \text{multiply out each part}
+\end{aligned}
+```
+
+The first parts are made of the same four terms, $$ace$$, $$-bde$$, $$-adf$$ and $$-bcf$$, in a
+different order, and so are the second parts. So $$(zw)u = z(wu)$$.
+
+**Distributivity.** Here $$w + u = (c + e, d + f)$$, so
+
+```math
+\begin{aligned}
+z(w + u) &= (a, b)(c + e, d + f) &&\qquad \text{the sum } w + u \\
+&= \big(a(c + e) - b(d + f),\ a(d + f) + b(c + e)\big) &&\qquad \text{rule for multiplying} \\
+&= (ac + ae - bd - bf,\ ad + af + bc + be) &&\qquad \text{multiply out each part}
+\end{aligned}
+```
+
+On the other side, $$zw = (ac - bd, ad + bc)$$ and $$zu = (ae - bf, af + be)$$, so
+
+```math
+zw + zu = (ac - bd + ae - bf,\ ad + bc + af + be)
+```
+
+These have the same terms as before in each part, so $$z(w + u) = zw + zu$$.
+
+:::
+
+So the steps we took on trust at the start are allowed: to calculate with complex numbers, use the
+usual rules and replace $$i^2$$ by $$-1$$ wherever it appears. Every result that the Numbers chapter
+proved from these rules alone holds for complex numbers too, with the same proof. For example:
+
+- $$0 \cdot z = 0$$ (:ref{#numbers/zero-times}), and $$(-1)z = -z$$ (:ref{#numbers/minus-one})
+- $$(z + w)^2 = z^2 + 2zw + w^2$$, and the other formulas in :ref{#numbers/square-formulas}
+- the rules for powers, :ref{#numbers/power-rules}, where $$z^n$$ means $$n$$ copies of $$z$$
+  multiplied together, and $$z^0 = 1$$
+
+The rules for real numbers in :ref{#real-numbers/real-rules} include one more: every number except
+$$0$$ has an inverse. For complex numbers, that comes in [The complex plane](./complex-plane.mdx).
+Results about positive and negative numbers don't carry over, because a complex number like $$i$$ is
+never called positive or negative. Indeed $$i^2 = -1$$ shows that "a square is never negative" fails
+for complex numbers.
+
+## The square roots of −1
+
+The number $$i$$ squares to $$-1$$, and so does $$-i$$, since $$(-i)^2 = (-i)(-i) = i \cdot i = -1$$
+by :ref{#numbers/two-minus}. These two are the only ones. To see why, square a general $$a + bi$$
+and compare its two parts with those of $$-1 = -1 + 0i$$.
+
+:::proposition[The square roots of −1]{#square-roots-minus-one}
+
+For a complex number $$z$$, $$z^2 = -1$$ exactly when $$z = i$$ or $$z = -i$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Imaginary_unit"}
+
+Both $$i$$ and $$-i$$ square to $$-1$$, as shown above. Now suppose $$z^2 = -1$$, and write
+$$z = a + bi$$ with $$a$$ and $$b$$ real. By the rule for multiplying,
+
+```math
+z^2 = (a + bi)(a + bi) = (a^2 - b^2) + 2abi
+```
+
+This equals $$-1 + 0i$$, so by part 2 of :ref{#i-squared}, $$a^2 - b^2 = -1$$ and $$2ab = 0$$.
+
+From $$2ab = 0$$, either $$a = 0$$ or $$b = 0$$, by :ref{#numbers/zero-product} for real numbers. If
+$$b = 0$$, the first equation says $$a^2 = -1$$, which no real number does, by
+:ref{#real-numbers/squares-positive}. So $$a = 0$$, and the first equation says $$-b^2 = -1$$, that
+is, $$b^2 = 1$$. By :ref{#real-numbers/square-root-count}, $$b = 1$$ or $$b = -1$$. So $$z = i$$ or
+$$z = -i$$.
+
+:::
+
+The proof compares parts, so it only needs facts about real numbers. There is a second proof, by
+factoring $$z^2 + 1 = (z - i)(z + i)$$. It needs the fact that a product of complex numbers is $$0$$
+exactly when one of the factors is, and that fact is :ref{#complex-zero-product}, proved in the next
+guide once we can divide.
+
+The same comparison of parts finds the square roots of every negative real number. For instance,
+$$(2i)^2 = 4i^2 = -4$$ and $$(-2i)^2 = -4$$, so $$-4$$ has the two square roots $$2i$$ and $$-2i$$.
+
+## Square roots of negative numbers: a warning
+
+For a real number $$a \ge 0$$, the symbol $$\sqrt{a}$$ means the one square root that is not
+negative (:ref{#real-numbers/square-root}). A negative number has two square roots, like $$2i$$ and
+$$-2i$$ for $$-4$$, and neither of them is positive, so there is no rule that picks one. This
+chapter doesn't give $$\sqrt{-4}$$ a meaning.
+
+People who write $$\sqrt{-4} = 2i$$ anyway soon meet trouble with the rule
+$$\sqrt{a}\,\sqrt{b} = \sqrt{ab}$$. Taking $$\sqrt{-4} = 2i$$ and $$\sqrt{-9} = 3i$$, the left side
+is $$2i \cdot 3i = 6i^2 = -6$$. But the right side is $$\sqrt{(-4)(-9)} = \sqrt{36} = 6$$. The rule
+is :ref{#real-numbers/root-product}, and it is proved only for $$a \ge 0$$ and $$b \ge 0$$. Outside
+that range it fails, so don't use it there.
+
+The same slip gives a false argument that $$i^2 = 1$$:
+
+```math
+i^2 = \sqrt{-1}\,\sqrt{-1} = \sqrt{(-1)(-1)} = \sqrt{1} = 1
+```
+
+The second step is the product rule used on negative numbers. Bombelli's $$\sqrt{-121}$$ is a square
+root of $$-121$$, one of $$11i$$ and $$-11i$$.
+
+## Powers of i
+
+Each multiplication by $$i$$ is a quarter turn, and four quarter turns bring you back where you
+started. So the powers of $$i$$ should go round four points and repeat. Working them out one at a
+time, each from the one before:
+
+```math
+\begin{aligned}
+i^1 &= i \\
+i^2 &= -1 &&\qquad \text{part 1 of the proposition i squared} \\
+i^3 &= i^2 \cdot i = (-1)i = -i &&\qquad \text{multiplying by } -1 \\
+i^4 &= i^3 \cdot i = (-i)i = -i^2 = 1 &&\qquad \text{moving the minus sign} \\
+i^5 &= i^4 \cdot i = 1 \cdot i = i &&\qquad \text{back to the start}
+\end{aligned}
+```
+
+The fourth line uses :ref{#numbers/minus-in-product}. From $$i^5$$ on, the pattern $$i$$, $$-1$$,
+$$-i$$, $$1$$ repeats.
+
+<PowersOfI caption="The powers of i go round the four points 1, i, −1 and −i, one quarter turn each time. Each point is labelled with the powers of i that land on it." />
+
+So to find a power of $$i$$, you only need to know where you are in the cycle of four, which is the
+remainder when the exponent is divided by $$4$$.
+
+:::proposition[Powers of i]{#powers-of-i}
+
+Let $$n \ge 0$$ be a whole number, and write $$n = 4q + r$$ with $$0 \le r < 4$$, as in
+:ref{#numbers/division-remainder}. Then $$i^n = i^r$$. So $$i^n$$ is $$1$$, $$i$$, $$-1$$ or $$-i$$
+when $$r$$ is $$0$$, $$1$$, $$2$$ or $$3$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Powers_of_Imaginary_Unit"}
+
+If $$q = 0$$, then $$n = r$$ and there is nothing to prove. If $$r = 0$$ and $$q \ge 1$$, then
+$$i^n = (i^4)^q = 1^q = 1 = i^0$$, by the rule $$(a^m)^n = a^{mn}$$ in :ref{#numbers/power-rules}
+and $$i^4 = 1$$. Otherwise $$q \ge 1$$ and $$r \ge 1$$, and
+
+```math
+\begin{aligned}
+i^n &= i^{4q} \cdot i^r &&\qquad a^{m + n} = a^m a^n \\
+&= (i^4)^q \cdot i^r &&\qquad a^{mn} = (a^m)^n \\
+&= 1^q \cdot i^r &&\qquad i^4 = 1 \\
+&= i^r &&\qquad 1^q = 1
+\end{aligned}
+```
+
+The values of $$i^0$$, $$i^1$$, $$i^2$$ and $$i^3$$ are $$1$$, $$i$$, $$-1$$ and $$-i$$, as worked
+out above.
+
+:::
+
+For example, $$27 = 4 \cdot 6 + 3$$, so $$i^{27} = i^3 = -i$$. As a check with the picture, $$27$$
+quarter turns are $$6$$ full turns and $$3$$ quarter turns more, and three quarter turns from $$1$$
+land on $$-i$$. In the same way $$i^{100} = 1$$, since $$100 = 4 \cdot 25$$ leaves remainder $$0$$.
+
+## Exercises
+
+:::::accordion[Exercises on meeting i, with solutions]
+
+::::exercise{#ex-meeting-i-calculate}
+
+Write each answer in the form $$a + bi$$.
+
+1. $$(2 + 5i) + (4 - 3i)$$
+2. $$(2 + i)(3 + 4i)$$
+3. $$(1 - 3i)^2$$
+4. $$i(4 - 7i)$$
+
+:::solution
+
+1. Add the real numbers and the numbers in front of $$i$$ separately:
+   $$(2 + 4) + (5 - 3)i = 6 + 2i$$.
+2. Multiply out: $$6 + 8i + 3i + 4i^2 = 6 + 11i - 4 = 2 + 11i$$.
+3. Multiply out: $$(1 - 3i)(1 - 3i) = 1 - 3i - 3i + 9i^2 = 1 - 6i - 9 = -8 - 6i$$.
+4. Multiply out: $$4i - 7i^2 = 4i + 7 = 7 + 4i$$.
+
+:::
+
+::::
+
+::::exercise{#ex-meeting-i-pairs}
+
+1. Write $$(-3, 2)$$, $$(0, 5)$$ and $$(7, 0)$$ in the form $$a + bi$$.
+2. Use the rule $$(a, b)(c, d) = (ac - bd, ad + bc)$$ to work out $$(0, 2)(0, 3)$$, and check your
+   answer by working out $$2i \cdot 3i$$ instead.
+
+:::solution
+
+1. By part 2 of :ref{#i-squared}, $$(-3, 2) = -3 + 2i$$, $$(0, 5) = 5i$$ and $$(7, 0) = 7$$.
+2. $$(0, 2)(0, 3) = (0 \cdot 0 - 2 \cdot 3, 0 \cdot 3 + 2 \cdot 0) = (-6, 0)$$, which is the real
+   number $$-6$$. As a check, $$2i \cdot 3i = 6i^2 = -6$$.
+
+:::
+
+::::
+
+::::exercise{#ex-meeting-i-powers}
+
+Work out $$i^{10}$$, $$i^{35}$$ and $$i^{100}$$, and show that $$i + i^2 + i^3 + i^4 = 0$$.
+
+:::solution
+
+By :ref{#powers-of-i}:
+
+- $$10 = 4 \cdot 2 + 2$$, so $$i^{10} = i^2 = -1$$
+- $$35 = 4 \cdot 8 + 3$$, so $$i^{35} = i^3 = -i$$
+- $$100 = 4 \cdot 25 + 0$$, so $$i^{100} = i^0 = 1$$
+
+For the sum, $$i + i^2 + i^3 + i^4 = i + (-1) + (-i) + 1 = (-1 + 1) + (i - i) = 0$$. In the picture,
+the four points $$i$$, $$-1$$, $$-i$$ and $$1$$ are placed evenly round $$0$$, and adding them as
+steps brings you back to $$0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-meeting-i-bombelli}
+
+This exercise finishes Bombelli's calculation. The formula for $$x^3 = 15x + 4$$ gives $$x$$ as the
+sum of a cube root of $$2 + 11i$$ and a cube root of $$2 - 11i$$ (and $$11i$$ is a square root of
+$$-121$$).
+
+1. Show that $$(2 + i)^2 = 3 + 4i$$, and then that $$(2 + i)^3 = 2 + 11i$$.
+2. Show in the same way that $$(2 - i)^3 = 2 - 11i$$.
+3. Add $$2 + i$$ and $$2 - i$$, and check that the sum solves $$x^3 = 15x + 4$$.
+
+:::solution
+
+1. $$(2 + i)^2 = 4 + 2i + 2i + i^2 = 4 + 4i - 1 = 3 + 4i$$. Then
+   $$(2 + i)^3 = (3 + 4i)(2 + i) = 6 + 3i + 8i + 4i^2 = 6 + 11i - 4 = 2 + 11i$$.
+2. $$(2 - i)^2 = 4 - 4i + i^2 = 3 - 4i$$, and
+   $$(2 - i)^3 = (3 - 4i)(2 - i) = 6 - 3i - 8i + 4i^2 = 2 - 11i$$.
+3. $$(2 + i) + (2 - i) = 4$$. As a check, $$4^3 = 64$$ and $$15 \cdot 4 + 4 = 64$$. The square roots
+   of $$-121$$ appear halfway through and cancel at the end, as Bombelli found.
+
+:::
+
+::::
+
+::::exercise{#ex-meeting-i-minus-nine}
+
+Find every complex number $$z$$ with $$z^2 = -9$$, and prove there are no others.
+
+:::solution
+
+Both $$3i$$ and $$-3i$$ work: $$(3i)^2 = 9i^2 = -9$$, and $$(-3i)^2 = 9i^2 = -9$$ too.
+
+For the others, follow the proof of :ref{#square-roots-minus-one}. Write $$z = a + bi$$, so
+$$z^2 = (a^2 - b^2) + 2abi$$. If this is $$-9 + 0i$$, then $$a^2 - b^2 = -9$$ and $$2ab = 0$$. So
+$$a = 0$$ or $$b = 0$$. If $$b = 0$$, then $$a^2 = -9$$, which no real number does. So $$a = 0$$ and
+$$b^2 = 9$$, which gives $$b = 3$$ or $$b = -3$$ by :ref{#real-numbers/square-root-count}. So
+$$z = 3i$$ or $$z = -3i$$.
+
+:::
+
+::::
+
+::::exercise{#ex-meeting-i-quarter-turn}
+
+Show that multiplying a complex number $$a + bi$$ by $$i$$ gives $$-b + ai$$. Then explain why this
+says that multiplying by $$i$$ is the quarter turn of :ref{#adding-and-scaling-points/quarter-turn},
+and check it on $$3 + i$$.
+
+:::solution
+
+Multiplying out, $$i(a + bi) = ai + bi^2 = ai - b = -b + ai$$.
+
+As points, this sends $$(a, b)$$ to $$(-b, a)$$. That is the map $$G_{90}(x, y) = (-y, x)$$ of
+:ref{#adding-and-scaling-points/quarter-turn}, the quarter turn anticlockwise about $$0$$. For
+$$3 + i$$, the product is $$i(3 + i) = 3i + i^2 = -1 + 3i$$, and $$G_{90}(3, 1) = (-1, 3)$$, the
+same point.
+
+:::
+
+::::
+
+::::exercise{#ex-meeting-i-false-proof}
+
+A friend writes $$\sqrt{-1}$$ for $$i$$ and argues that $$1 = -1$$, like this:
+
+```math
+1 = \sqrt{1} = \sqrt{(-1)(-1)} = \sqrt{-1} \cdot \sqrt{-1} = i \cdot i = -1
+```
+
+Find the step that goes wrong, and say why.
+
+:::solution
+
+The step $$\sqrt{(-1)(-1)} = \sqrt{-1} \cdot \sqrt{-1}$$ uses the rule
+$$\sqrt{ab} = \sqrt{a}\,\sqrt{b}$$. That rule, :ref{#real-numbers/root-product}, is proved only for
+$$a \ge 0$$ and $$b \ge 0$$, and here $$a = b = -1$$. The first two steps are fine, since
+$$\sqrt{1} = 1$$ and $$(-1)(-1) = 1$$, and the last is $$i^2 = -1$$ from :ref{#i-squared}. It is the
+false argument for $$i^2 = 1$$ in
+[Square roots of negative numbers: a warning](#square-roots-of-negative-numbers-a-warning), run
+backwards.
+
+:::
+
+::::
+
+:::::
