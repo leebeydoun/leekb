@@ -1,0 +1,809 @@
+---
+title: Ellipses
+description:
+  The ellipse as a stretched circle moved about the plane, its equation, its two foci and the
+  gardener's loop of string, eccentricity, and where a line meets it.
+---
+
+Imagine a gardener marking out an oval flower bed. She knocks two pegs into the lawn, drops a loop
+of string over them, and pulls it tight with a stick. Then she walks the stick round, keeping the
+string taut, and the stick scratches a smooth oval into the soil. Pegs close together give a rounder
+bed, pegs far apart a longer and thinner one, and with both pegs in the same hole she draws a
+circle.
+
+<GardenerString caption="Two pegs, a loop of string and a stick. Keeping the string tight, the stick traces an oval round the pegs." />
+
+That oval is an **ellipse**. It is also the shape you get by stretching a circle evenly in one
+direction, the stretched disc of the [Stretching one way](../area-and-scaling/stretching.mdx) guide,
+so a pulled-out circle and a string round two pegs draw the same curve. In this guide we'll define
+the ellipse by its equation, prove that the gardener's string draws it, and use the equation to see
+how round it is and where a line meets it.
+
+## The stretched circle
+
+Start with the unit circle, and pull the plane out evenly: every point three times as far from the
+$$y$$-axis, and then twice as far from the $$x$$-axis. That is the stretch along the axes
+$$D_{3,2}(x, y) = (3x, 2y)$$ from :ref{#axis-stretch}, and the circle becomes an oval three across
+and two up. The equation changes in a way we can predict, because dividing by $$3$$ and $$2$$ undoes
+the stretch.
+
+Take the point $$(0.6, 0.8)$$ of the unit circle, which is on it because $$0.36 + 0.64 = 1$$. The
+stretch sends it to $$(1.8, 1.6)$$, which no longer fits $$x^2 + y^2 = 1$$, since
+$$3.24 + 2.56 = 5.8$$. Divide the coordinates by $$3$$ and $$2$$ first, and you are back at the
+circle: $$\left(\frac{1.8}{3}\right)^2 + \left(\frac{1.6}{2}\right)^2 = 0.36 + 0.64 = 1$$. So the
+stretched point fits $$\frac{x^2}{9} + \frac{y^2}{4} = 1$$.
+
+<StretchedCircle caption="The unit circle (dashed) stretched 3 times across and 2 times up. The point (0.6, 0.8) lands on (1.8, 1.6), and the circle becomes the curve x²/9 + y²/4 = 1." />
+
+:::theorem[The stretched circle]{#ellipse-equation}
+
+Let $$a > 0$$ and $$b > 0$$. The stretch along the axes $$D_{a,b}(x, y) = (ax, by)$$ sends:
+
+1. the unit circle onto the graph of $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$
+2. the disc of radius $$1$$ with centre $$O$$ onto the set of points with
+   $$\frac{x^2}{a^2} + \frac{y^2}{b^2} \le 1$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Ellipse#Standard_parametric_representation"}
+
+**Each point comes from exactly one point.** The point $$(x, y)$$ is $$D_{a,b}$$ of
+$$\left(\frac{x}{a}, \frac{y}{b}\right)$$, since $$a \cdot \frac{x}{a} = x$$ and
+$$b \cdot \frac{y}{b} = y$$. It comes from no other point: if $$D_{a,b}(u, v) = (x, y)$$, then
+$$au = x$$ and $$bv = y$$, so $$u = \frac{x}{a}$$ and $$v = \frac{y}{b}$$. So $$(x, y)$$ is in the
+image of a set exactly when $$\left(\frac{x}{a}, \frac{y}{b}\right)$$ is in the set.
+
+**Part 1.** By :ref{#coordinates/circle-equation}, the point
+$$\left(\frac{x}{a}, \frac{y}{b}\right)$$ is on the unit circle exactly when
+
+```math
+\begin{aligned}
+\left(\frac{x}{a}\right)^2 + \left(\frac{y}{b}\right)^2 &= 1 && \text{the circle with centre } O \text{ and radius } 1 \\
+\frac{x^2}{a^2} + \frac{y^2}{b^2} &= 1 && \text{square each fraction}
+\end{aligned}
+```
+
+**Part 2.** The disc is the set of points $$(u, v)$$ at distance at most $$1$$ from $$O$$. By
+:ref{#coordinates/distance-formula} that distance is $$\sqrt{u^2 + v^2}$$, and since square roots
+keep order (:ref{#real-numbers/root-order}) and $$\sqrt{1} = 1$$, it is at most $$1$$ exactly when
+$$u^2 + v^2 \le 1$$. The same two steps as in part 1, with $$\le$$ in place of $$=$$, turn this into
+$$\frac{x^2}{a^2} + \frac{y^2}{b^2} \le 1$$.
+
+:::
+
+Part 1 is :ref{#stretch-graph} for the unit circle: put $$\frac{x}{a}$$ and $$\frac{y}{b}$$ in place
+of $$x$$ and $$y$$. By :ref{#axis-stretch-two}, $$D_{a,b}$$ is the stretch by $$a$$ away from the
+$$y$$-axis followed by the stretch by $$b$$ away from the $$x$$-axis. So it is the pair of stretches
+of :ref{#area-and-scaling/ellipse}, with the $$y$$-axis as the first line and the $$x$$-axis as the
+second.
+
+So the stretched disc of that guide is the region $$\frac{x^2}{a^2} + \frac{y^2}{b^2} \le 1$$, and
+its edge is the curve $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$. Its area is $$\pi ab$$, by
+:ref{#area-and-scaling/ellipse-area}. For $$\frac{x^2}{9} + \frac{y^2}{4} = 1$$ that is
+$$6\pi \approx 18.85$$, six times the area $$\pi$$ of the disc it came from.
+
+The stretch also gives a way to list every point of the curve. Every point of the unit circle is
+$$(\cos t, \sin t)$$ for some angle $$t$$ (:ref{#trigonometry/unit-circle-point}), and the stretch
+sends it to $$(a\cos t, b\sin t)$$.
+
+:::proposition[Walking round the curve]{#ellipses-parametrisation}
+
+Let $$a > 0$$ and $$b > 0$$. For every number $$t$$, the point $$(a\cos t, b\sin t)$$ is on the
+graph of $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$. Every point of that graph is
+$$(a\cos t, b\sin t)$$ for exactly one $$t$$ with $$0 \le t < 2\pi$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Ellipse#Standard_parametric_representation"}
+
+By :ref{#trigonometry/unit-circle-point}, the point $$(\cos t, \sin t)$$ is on the unit circle, and
+every point of the unit circle is $$(\cos t, \sin t)$$ for exactly one $$t$$ with
+$$0 \le t < 2\pi$$. By part 1 of :ref{#ellipse-equation}, $$D_{a,b}$$ sends the unit circle onto the
+graph, and $$D_{a,b}(\cos t, \sin t) = (a\cos t, b\sin t)$$. Each point of the graph comes from
+exactly one point of the circle, as the proof of :ref{#ellipse-equation} showed, so it comes from
+exactly one $$t$$ too.
+
+:::
+
+For example, with $$a = 3$$, $$b = 2$$ and $$t = \frac{\pi}{3}$$, the point is
+$$\left(3 \cdot \frac{1}{2}, 2 \cdot \frac{\sqrt3}{2}\right) = (1.5, \sqrt3) \approx (1.5, 1.73)$$
+(:ref{#trigonometry/sin-cos-30-60}). As a check, $$\frac{2.25}{9} + \frac{3}{4} = 0.25 + 0.75 = 1$$.
+The number $$t$$ is the angle of the circle's point before the stretch, not the angle of the new
+point seen from $$O$$. Here the ray from $$O$$ to $$(1.5, 1.73)$$ makes about $$49.1^\circ$$ with
+the $$x$$-axis, not $$60^\circ$$.
+
+## What an ellipse is
+
+The curve $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$ has its centre at $$O$$ and its widths along the
+axes. A flower bed in a real garden can sit anywhere and point any way, but sliding or turning it
+doesn't change its shape. So we count every moved copy as an ellipse too, in the same way as the
+parabolas of :ref{#parabola-definition}.
+
+:::definition[Ellipse as a curve]{#ellipse-definition}
+
+An **ellipse** is the image (:ref{#isometries/image}) of the graph of
+
+```math
+\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1
+```
+
+under an isometry, for some numbers $$a > 0$$ and $$b > 0$$. For the graph itself:
+
+- **Centre**: the origin $$O$$
+- **Half-widths**: the numbers $$a$$ and $$b$$, also called the **semi-axes**
+- **Axes**: the segment from $$(-a, 0)$$ to $$(a, 0)$$, of length $$2a$$, and the segment from
+  $$(0, -b)$$ to $$(0, b)$$, of length $$2b$$. The longer one is the **major axis** and the shorter
+  one the **minor axis**
+
+For an ellipse moved by an isometry, the centre and axes are the images of these, and the
+half-widths are the same two numbers $$a$$ and $$b$$.
+
+:::
+
+<EllipseParts caption="The ellipse x²/25 + y²/9 = 1. Its major axis runs 5 each way from O along the x-axis, and its minor axis 3 each way up and down the y-axis." />
+
+An isometry keeps every distance (:ref{#isometries/isometry}), so a moved ellipse has axes of the
+same lengths $$2a$$ and $$2b$$. A circle of radius $$r$$ is the ellipse with $$a = b = r$$. With
+$$a = b = r$$ the equation becomes $$x^2 + y^2 = r^2$$, the circle with centre $$O$$ and radius
+$$r$$ (:ref{#coordinates/circle-equation}), and every other circle of radius $$r$$ is a slide of
+that one (:ref{#slide-graph}).
+
+When $$a < b$$ the ellipse is taller than it is wide. The flip $$S$$ in the line $$y = x$$ swaps the
+letters $$x$$ and $$y$$ in an equation (:ref{#flip-graph}), so it sends the graph of
+$$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$ to the graph of $$\frac{y^2}{a^2} + \frac{x^2}{b^2} = 1$$,
+which has the bigger number $$b^2$$ under $$x^2$$. For example,
+$$\frac{x^2}{4} + \frac{y^2}{9} = 1$$ is the flip of $$\frac{x^2}{9} + \frac{y^2}{4} = 1$$.
+
+A tall ellipse moved by an isometry $$G$$ is then the wide one moved by $$G \circ S$$, which is an
+isometry too (:ref{#isometries/composite-isometry}). So every ellipse is a moved copy of one with
+$$a \ge b$$. We call the graph of $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$ with $$a \ge b > 0$$ an
+ellipse in **standard position**.
+
+## Sliding an ellipse
+
+Moving an ellipse changes its equation in a way you can predict. By :ref{#slide-graph}, the slide by
+$$(h, k)$$ replaces $$x$$ by $$x - h$$ and $$y$$ by $$y - k$$. So sliding
+$$\frac{x^2}{9} + \frac{y^2}{4} = 1$$ by $$(2, -1)$$ gives
+
+```math
+\frac{(x - 2)^2}{9} + \frac{(y + 1)^2}{4} = 1
+```
+
+with centre $$(2, -1)$$. As a check, the point $$(5, -1)$$, three to the right of the new centre,
+gives $$\frac{9}{9} + 0 = 1$$.
+
+The signs are worth a second look. The bracket $$(x - 2)$$ means a slide 2 to the **right**, not the
+left: the new curve does at $$x$$ what the old one did at $$x - 2$$, two steps earlier. In the same
+way $$(y + 1)$$ is $$\big(y - (-1)\big)$$, a slide 1 down.
+
+<SlidEllipse caption="The ellipse x²/9 + y²/4 = 1 (dashed) slid by (2, −1). Its centre moves from O to (2, −1), and it still reaches 3 across and 2 up from the centre." />
+
+Multiplying out hides the centre. Multiply the slid equation by $$36$$ and expand, and it becomes
+$$4x^2 + 9y^2 - 16x + 18y - 11 = 0$$. Given only that expanded form, completing the square in $$x$$
+and in $$y$$ (:ref{#quadratics/complete-square}) brings the centre and half-widths back.
+
+:::example[Recognising an ellipse]
+
+Take $$4x^2 + 9y^2 - 16x + 18y - 11 = 0$$. Here $$x^2 - 4x = (x - 2)^2 - 4$$ and
+$$y^2 + 2y = (y + 1)^2 - 1$$, so
+
+```math
+\begin{aligned}
+4(x^2 - 4x) + 9(y^2 + 2y) &= 11 && \text{group the } x \text{ and } y \text{ terms, move } 11 \\
+4\big((x - 2)^2 - 4\big) + 9\big((y + 1)^2 - 1\big) &= 11 && \text{complete each square} \\
+4(x - 2)^2 + 9(y + 1)^2 &= 36 && \text{add } 16 + 9 \text{ to both sides} \\
+\frac{(x - 2)^2}{9} + \frac{(y + 1)^2}{4} &= 1 && \text{divide both sides by } 36
+\end{aligned}
+```
+
+So the curve is the ellipse with centre $$(2, -1)$$ and half-widths $$3$$ across and $$2$$ up. As a
+check, the point $$(2, 1)$$ at the top gives $$16 + 9 - 32 + 18 - 11 = 0$$.
+
+:::
+
+The last step matters most. From $$4(x - 2)^2 + 9(y + 1)^2 = 36$$ it's tempting to read off
+half-widths $$2$$ and $$3$$, from the $$4$$ and the $$9$$. Divide so that the right side is $$1$$:
+then $$\frac{4}{36} = \frac{1}{9}$$ sits with $$(x - 2)^2$$ and gives the half-width $$3$$ across.
+So the bigger number, $$9$$, goes with the narrower direction, up and down.
+
+Two other things can happen when you complete the squares. If the right side comes out as $$0$$, as
+in $$4(x - 2)^2 + 9(y + 1)^2 = 0$$, the only solution is the centre, since both squares must be
+$$0$$. If it comes out negative, no point fits at all. The guide
+[Recognising a curve from its equation](./general-equation.mdx) calls these degenerate cases
+(:ref{#degenerate-conic}), and also shows how to deal with an $$xy$$ term, which appears when an
+ellipse is turned (:ref{#remove-xy}).
+
+## The two foci
+
+Watch the gardener's string while the stick moves. The loop keeps its length, and the piece between
+the two pegs keeps its length too. So the other two pieces, from the stick to each peg, always add
+up to the same total. The bed is the set of points whose distances to two fixed points add up to a
+fixed number, and the theorem below says that this set is an ellipse.
+
+Here it is with numbers first. Take $$\frac{x^2}{25} + \frac{y^2}{9} = 1$$, so $$a = 5$$ and
+$$b = 3$$, and put two pegs at $$(-4, 0)$$ and $$(4, 0)$$, where $$4 = \sqrt{25 - 9}$$:
+
+- **The bottom point $$(0, -3)$$**: it is $$\sqrt{16 + 9} = 5$$ from each peg, and $$5 + 5 = 10$$
+- **The end $$(5, 0)$$**: it is $$9$$ from $$(-4, 0)$$ and $$1$$ from $$(4, 0)$$, and $$9 + 1 = 10$$
+- **The point $$(3, 2.4)$$**: it is on the curve, since
+  $$\frac{9}{25} + \frac{5.76}{9} = 0.36 + 0.64 = 1$$. It is
+  $$\sqrt{49 + 5.76} = \sqrt{54.76} = 7.4$$ from $$(-4, 0)$$ and
+  $$\sqrt{1 + 5.76} = \sqrt{6.76} = 2.6$$ from $$(4, 0)$$, and $$7.4 + 2.6 = 10$$
+
+Each time the total is $$10$$, which is $$2a$$, the length of the major axis.
+
+<EllipseFoci caption="The ellipse x²/25 + y²/9 = 1 with its foci F₁ = (−4, 0) and F₂ = (4, 0). From P = (3, 2.4) the distances are 7.4 and 2.6, and from Q = (0, −3) they are 5 and 5. Both pairs add up to 10." />
+
+:::theorem[The two foci]{#ellipse-foci}
+
+Let $$a \ge b > 0$$, let $$c = \sqrt{a^2 - b^2}$$, and let $$F_1 = (-c, 0)$$ and $$F_2 = (c, 0)$$. A
+point $$P$$ lies on the ellipse $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$ exactly when
+
+```math
+d(P, F_1) + d(P, F_2) = 2a
+```
+
+The points $$F_1$$ and $$F_2$$ are the **foci** of the ellipse, and each one is a **focus**.
+
+:::
+
+The number $$c$$ exists because $$a \ge b$$ makes $$a^2 - b^2 \ge 0$$. Also $$c < a$$, since
+$$c^2 = a^2 - b^2 < a^2$$ when $$b > 0$$, and square roots keep order. So the foci lie inside the
+major axis, $$c$$ on each side of the centre.
+
+:::proof{source="https://en.wikipedia.org/wiki/Ellipse#Standard_equation"}
+
+Write $$P = (x, y)$$, and $$r_1 = d(P, F_1)$$ and $$r_2 = d(P, F_2)$$ for the two lengths of string.
+By :ref{#coordinates/distance-formula},
+
+```math
+r_1^2 = (x + c)^2 + y^2 \qquad r_2^2 = (x - c)^2 + y^2
+```
+
+since $$x - (-c) = x + c$$. From $$c^2 = a^2 - b^2$$ we also have $$a^2 - b^2 = c^2$$ and
+$$b^2 + c^2 = a^2$$, and we'll use both.
+
+**Step 1: on the ellipse, find each distance.** Suppose $$P$$ is on the ellipse. Taking
+$$\frac{x^2}{a^2}$$ from both sides of its equation and multiplying by $$b^2$$ gives
+$$y^2 = b^2 - \frac{b^2x^2}{a^2}$$. Put that into $$r_2^2$$:
+
+```math
+\begin{aligned}
+r_2^2 &= x^2 - 2cx + c^2 + y^2 && \text{expand } (x - c)^2 \\
+&= x^2 - 2cx + c^2 + b^2 - \frac{b^2x^2}{a^2} && \text{put in } y^2 \\
+&= \frac{(a^2 - b^2)\,x^2}{a^2} - 2cx + (b^2 + c^2) && \text{collect the } x^2 \text{ terms} \\
+&= \frac{c^2x^2}{a^2} - 2cx + a^2 && \text{since } a^2 - b^2 = c^2 \text{ and } b^2 + c^2 = a^2 \\
+&= \left(a - \frac{cx}{a}\right)^2 && \text{a perfect square}
+\end{aligned}
+```
+
+The last line checks by expanding:
+$$\left(a - \frac{cx}{a}\right)^2 = a^2 - 2cx + \frac{c^2x^2}{a^2}$$. The same steps with $$x + c$$
+in place of $$x - c$$ change only the sign of $$2cx$$, and give
+$$r_1^2 = \left(a + \frac{cx}{a}\right)^2$$.
+
+Now take square roots, which needs the signs. Since $$\frac{y^2}{b^2} \ge 0$$, the equation gives
+$$\frac{x^2}{a^2} \le 1$$, so $$x^2 \le a^2$$. So $$|x| \le a$$: if $$|x|$$ were bigger than $$a$$,
+then $$x^2 = |x|^2$$ would be bigger than $$a^2$$. Then
+
+```math
+\left|\frac{cx}{a}\right| = \frac{c\,|x|}{a} \le \frac{c \cdot a}{a} = c < a
+```
+
+So $$a - \frac{cx}{a}$$ and $$a + \frac{cx}{a}$$ are both positive. Two numbers that are not
+negative and have equal squares are equal (:ref{#real-numbers/squaring-sides}), so
+
+```math
+r_1 = a + \frac{cx}{a} \qquad r_2 = a - \frac{cx}{a}
+```
+
+Adding, $$r_1 + r_2 = 2a$$.
+
+**Step 2: a total of 2a puts P on the ellipse.** Suppose $$r_1 + r_2 = 2a$$. Take the two squared
+distances away from each other:
+
+```math
+\begin{aligned}
+r_1^2 - r_2^2 &= (x + c)^2 - (x - c)^2 && \text{the } y^2 \text{ terms cancel} \\
+&= 4cx && \text{expand both squares}
+\end{aligned}
+```
+
+The left side is $$(r_1 - r_2)(r_1 + r_2) = 2a(r_1 - r_2)$$, a difference of two squares. So
+$$2a(r_1 - r_2) = 4cx$$, and dividing by $$2a$$, which is positive, gives
+$$r_1 - r_2 = \frac{2cx}{a}$$. Now we know both the sum and the difference of $$r_1$$ and $$r_2$$.
+Adding them gives $$2r_1 = 2a + \frac{2cx}{a}$$, so $$r_1 = a + \frac{cx}{a}$$. Square both sides
+and use the distance formula for $$r_1^2$$:
+
+```math
+\begin{aligned}
+(x + c)^2 + y^2 &= \left(a + \frac{cx}{a}\right)^2 && \text{both sides are } r_1^2 \\
+x^2 + 2cx + c^2 + y^2 &= a^2 + 2cx + \frac{c^2x^2}{a^2} && \text{expand both squares} \\
+x^2 - \frac{c^2x^2}{a^2} + y^2 &= a^2 - c^2 && \text{take } 2cx + c^2 + \tfrac{c^2x^2}{a^2} \text{ from both sides} \\
+\frac{(a^2 - c^2)\,x^2}{a^2} + y^2 &= a^2 - c^2 && \text{collect the } x^2 \text{ terms} \\
+\frac{b^2x^2}{a^2} + y^2 &= b^2 && \text{since } a^2 - c^2 = b^2 \\
+\frac{x^2}{a^2} + \frac{y^2}{b^2} &= 1 && \text{divide both sides by } b^2
+\end{aligned}
+```
+
+So $$P$$ is on the ellipse.
+
+:::
+
+Step 2 squares only an equation whose two sides are both $$r_1^2$$, so it can't let in a false
+solution, the danger that :ref{#real-numbers/squaring-sides} warns about. Step 1 also gives a
+formula worth keeping: on the ellipse, the distance from $$P = (x, y)$$ to $$F_2$$ is
+$$a - \frac{cx}{a}$$. For $$P = (3, 2.4)$$ on $$\frac{x^2}{25} + \frac{y^2}{9} = 1$$ that is
+$$5 - \frac{4 \cdot 3}{5} = 2.6$$, as we found with the distance formula.
+
+A circle fits the theorem too. With $$a = b$$, $$c = 0$$ and both foci sit at the centre $$O$$, so
+the theorem says $$2\,d(P, O) = 2a$$: the points at distance $$a$$ from $$O$$.
+
+For a moved ellipse, the foci move with it. If an isometry $$G$$ carries the ellipse $$C$$ in
+standard position to $$G(C)$$, the **foci** of $$G(C)$$ are $$G(F_1)$$ and $$G(F_2)$$. They lie on
+its major axis, $$c$$ on each side of its centre, because $$G$$ sends segments to segments and keeps
+distances (:ref{#isometries/isometry-segments}).
+
+:::corollary[The foci of a moved ellipse]{#ellipses-moved-foci}
+
+Let $$C$$ be the ellipse $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$ with $$a \ge b > 0$$ and foci
+$$F_1$$ and $$F_2$$, and let $$G$$ be an isometry. A point $$Q$$ lies on $$G(C)$$ exactly when
+
+```math
+d\big(Q, G(F_1)\big) + d\big(Q, G(F_2)\big) = 2a
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Ellipse#Definition_as_locus_of_points"}
+
+If $$Q$$ is on $$G(C)$$, then $$Q = G(P)$$ for a point $$P$$ of $$C$$ (:ref{#isometries/image}).
+Since $$G$$ keeps distances, $$d(Q, G(F_1)) = d(P, F_1)$$ and $$d(Q, G(F_2)) = d(P, F_2)$$, and
+these add up to $$2a$$ by :ref{#ellipse-foci}.
+
+Conversely, suppose the two distances from $$Q$$ add up to $$2a$$. By
+:ref{#isometries/isometry-inverse}, $$G$$ has an inverse $$G^{-1}$$, which is an isometry too. Let
+$$P = G^{-1}(Q)$$.
+
+Since $$G^{-1}$$ sends $$Q$$ to $$P$$ and $$G(F_1)$$ to $$F_1$$, keeping distances,
+$$d(P, F_1) = d(Q, G(F_1))$$, and in the same way for $$F_2$$. So $$d(P, F_1) + d(P, F_2) = 2a$$,
+and $$P$$ is on $$C$$ by :ref{#ellipse-foci}. Then $$Q = G(P)$$ is on $$G(C)$$.
+
+:::
+
+For example, the ellipse $$\frac{(x - 2)^2}{9} + \frac{(y + 1)^2}{4} = 1$$ is the slide by
+$$(2, -1)$$ of one with $$a = 3$$, $$b = 2$$ and $$c = \sqrt{9 - 4} = \sqrt5 \approx 2.24$$. So its
+foci are the slid points $$(2 - \sqrt5, -1)$$ and $$(2 + \sqrt5, -1)$$, and its points are those
+whose distances to these two add up to $$6$$.
+
+## Drawing an ellipse with string
+
+The theorem explains the gardener's method. She puts the pegs at the foci, $$2c$$ apart, and uses a
+loop of length $$2a + 2c$$. While the string is tight it makes a triangle with the pegs, and the
+side between the pegs takes $$2c$$ of the loop. So the two sides from the stick to the pegs add up
+to $$2a$$, and by :ref{#ellipse-foci} the stick is on the ellipse at every moment.
+
+Turn that round to plan a bed $$5$$ m long and $$3$$ m wide. The half-widths are $$a = 2.5$$ and
+$$b = 1.5$$, so $$c = \sqrt{6.25 - 2.25} = \sqrt4 = 2$$. The pegs go $$4$$ m apart, centred on the
+long line through the middle of the bed, and the loop is $$5 + 4 = 9$$ m long.
+
+As a check, at the far end of the bed the stick is $$4.5$$ m from one peg and $$0.5$$ m from the
+other: with the $$4$$ m between the pegs, that uses all $$9$$ m. The bed has area
+$$\pi \cdot 2.5 \cdot 1.5 \approx 11.78$$ square metres (:ref{#area-and-scaling/ellipse-area}).
+
+::see-also{src="https://en.wikipedia.org/wiki/Ellipse#Pins-and-string_method"}
+
+Try it below with the pegs at different places. The loop of string is always long enough for the two
+pieces from $$P$$ to add up to $$10$$, so $$a = 5$$ throughout.
+
+<EllipseString />
+
+## How round an ellipse is
+
+Moving the pegs is how the gardener controls the shape. With the pegs close together the bed comes
+out nearly round, and with the pegs near the ends of the bed it comes out long and thin. So the
+distance of each focus from the centre, measured as a share of the half-width $$a$$, says how round
+the ellipse is.
+
+:::definition[Eccentricity of an ellipse]{#ellipse-eccentricity}
+
+The **eccentricity** of an ellipse with half-widths $$a \ge b > 0$$ is
+
+```math
+e = \frac{c}{a} = \frac{\sqrt{a^2 - b^2}}{a}
+```
+
+Since $$0 \le c < a$$, the eccentricity satisfies $$0 \le e < 1$$.
+
+:::
+
+For $$\frac{x^2}{25} + \frac{y^2}{9} = 1$$, $$e = \frac{4}{5} = 0.8$$. The eccentricity is $$0$$
+exactly when $$c = 0$$, that is when $$a = b$$, so the circles are the ellipses with $$e = 0$$. In
+the other direction, $$e$$ fixes the ratio of the half-widths: dividing $$b^2 = a^2 - c^2$$ by
+$$a^2$$ gives $$\frac{b^2}{a^2} = 1 - e^2$$, so $$\frac{b}{a} = \sqrt{1 - e^2}$$. For $$e = 0.8$$
+that is $$\sqrt{0.36} = 0.6 = \frac{3}{5}$$, and as $$e$$ gets near $$1$$, $$\frac{b}{a}$$ gets near
+$$0$$ and the ellipse gets long and thin.
+
+Ellipses turn up in the sky. The planets move round the Sun on ellipses, with the Sun at one focus.
+This is a fact of physics, which Kepler found from careful measurements of the planets and Newton
+later explained with his law of gravity, and it's taken as given here. Two orbits show how different
+the eccentricity can be:
+
+- **The Earth**: $$e$$ is about $$0.0167$$, and $$a$$ is about $$149.6$$ million km. The Sun sits
+  about $$ea \approx 2.5$$ million km from the centre of the orbit. But $$\frac{b}{a}$$ is about
+  $$0.99986$$, so on a drawing with $$a = 10$$ cm, $$b$$ would be shorter by about $$0.01$$ mm,
+  while the Sun would sit about $$1.7$$ mm from the centre
+- **Halley's comet**: $$e$$ is about $$0.967$$, so $$\frac{b}{a}$$ is about $$0.25$$, and the orbit
+  is about four times as long as it is wide. At its closest the comet comes to about $$0.59$$ times
+  the Earth's distance from the Sun, and at its furthest it is about $$35$$ times as far
+
+::see-also{src="https://en.wikipedia.org/wiki/Earth%27s_orbit"}
+
+The eccentricity comes back in the guide [Slicing a cone](./slicing-a-cone.mdx), where one rule with
+a single number $$e$$ draws ellipses, parabolas and hyperbolas (:ref{#focus-directrix-e}).
+
+## Where a line meets an ellipse
+
+To find where a line meets an ellipse, use the method for a line and a circle
+(:ref{#segments-rays-and-lines/line-circle}). Put the line's equation into the ellipse's, and you
+get a quadratic in one letter. Its solutions are the meeting points, and its discriminant counts
+them (:ref{#quadratics/root-count}).
+
+:::example[Parallel lines and an ellipse]
+
+Take the ellipse $$\frac{x^2}{4} + y^2 = 1$$, or $$x^2 + 4y^2 = 4$$ after multiplying by $$4$$, and
+the lines $$x + 2y = k$$ for different numbers $$k$$.
+
+**The line $$x + 2y = 2$$.** Here $$x = 2 - 2y$$, and putting that into the ellipse gives
+
+```math
+\begin{aligned}
+(2 - 2y)^2 + 4y^2 &= 4 && \text{put in } x = 2 - 2y \\
+4 - 8y + 4y^2 + 4y^2 &= 4 && \text{expand the square} \\
+8y^2 - 8y &= 0 && \text{take } 4 \text{ from both sides} \\
+8y(y - 1) &= 0 && \text{factor}
+\end{aligned}
+```
+
+So $$y = 0$$ or $$y = 1$$, and the line meets the ellipse at $$(2, 0)$$ and $$(0, 1)$$.
+
+**Every line $$x + 2y = k$$.** Now $$x = k - 2y$$, and the same steps give
+
+```math
+\begin{aligned}
+(k - 2y)^2 + 4y^2 &= 4 && \text{put in } x = k - 2y \\
+8y^2 - 4ky + (k^2 - 4) &= 0 && \text{expand and collect}
+\end{aligned}
+```
+
+Its discriminant (:ref{#quadratics/discriminant}) is
+
+```math
+(-4k)^2 - 4 \cdot 8 \cdot (k^2 - 4) = 16k^2 - 32k^2 + 128 = 16(8 - k^2)
+```
+
+This is positive when $$k^2 < 8$$, zero when $$k = \pm 2\sqrt2 \approx \pm 2.83$$, and negative when
+$$k^2 > 8$$. So the line crosses the ellipse twice when $$-2\sqrt2 < k < 2\sqrt2$$, meets it once at
+$$k = \pm 2\sqrt2$$, and misses it otherwise. At $$k = 2\sqrt2$$ the one solution is
+$$y = \frac{4k}{16} = \frac{\sqrt2}{2}$$, and then $$x = 2\sqrt2 - \sqrt2 = \sqrt2$$. As a check,
+$$(\sqrt2)^2 + 4 \cdot \frac{1}{2} = 2 + 2 = 4$$.
+
+:::
+
+<EllipseLines caption="The ellipse x²/4 + y² = 1 and three of the lines x + 2y = k. The blue line (k = 2) crosses it twice, the green line (k = 2√2) touches it at (√2, √2/2), and the orange line (k = 3.5) misses it." />
+
+As for a circle (:ref{#segments-rays-and-lines/tangent-line}), a line that meets an ellipse in
+exactly one point is called a **tangent** to it. So $$x + 2y = 2\sqrt2$$ is the tangent to
+$$\frac{x^2}{4} + y^2 = 1$$ at $$\left(\sqrt2, \frac{\sqrt2}{2}\right)$$.
+
+## Ellipses come in different shapes
+
+All parabolas have the same shape: each one is a zoom of $$y = x^2$$ moved into place
+(:ref{#parabola-zoom}). Ellipses are different. A long thin oval and a round one can't be zoomed
+into each other, because a zoom enlarges every direction by the same factor. What a zoom keeps is
+the ratio $$\frac{b}{a}$$ of the half-widths.
+
+:::proposition[Zooming an ellipse]{#ellipses-zoom}
+
+Let $$a, b, r > 0$$. The zoom by $$r$$ about $$O$$ sends the graph of
+$$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$ onto the graph of
+
+```math
+\frac{x^2}{(ra)^2} + \frac{y^2}{(rb)^2} = 1
+```
+
+So it keeps the ratio $$\frac{b}{a}$$ and the eccentricity. Two ellipses in standard position whose
+half-widths have the same ratio are similar.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Similarity_(geometry)#Similar_curves"}
+
+The zoom by $$r$$ about $$O$$ sends $$(x, y)$$ to $$(rx, ry)$$ (:ref{#coordinates/origin-zoom}),
+which is the stretch along the axes $$D_{r,r}$$. By :ref{#stretch-graph} it sends the graph to the
+graph of
+
+```math
+\begin{aligned}
+\frac{(x/r)^2}{a^2} + \frac{(y/r)^2}{b^2} &= 1 && \text{put } \tfrac{x}{r}, \tfrac{y}{r} \text{ in place of } x, y \\
+\frac{x^2}{(ra)^2} + \frac{y^2}{(rb)^2} &= 1 && \text{since } r^2a^2 = (ra)^2 \text{ and } r^2b^2 = (rb)^2
+\end{aligned}
+```
+
+The new ratio is $$\frac{rb}{ra} = \frac{b}{a}$$, and since $$e = \sqrt{1 - (b/a)^2}$$, the
+eccentricity is kept too. Now take two ellipses in standard position with half-widths $$a, b$$ and
+$$a', b'$$, where $$\frac{b'}{a'} = \frac{b}{a}$$. Put $$r = \frac{a'}{a}$$. Then $$ra = a'$$ and
+$$rb = \frac{a'b}{a} = b'$$, so the zoom by $$r$$ sends the first ellipse exactly onto the second,
+and they are similar (:ref{#area-and-scaling/similar}).
+
+:::
+
+For example, $$\frac{x^2}{25} + \frac{y^2}{9} = 1$$ and $$\frac{x^2}{100} + \frac{y^2}{36} = 1$$
+both have $$\frac{b}{a} = 0.6$$, and the zoom by $$2$$ sends the first onto the second. But
+$$\frac{x^2}{4} + y^2 = 1$$ has $$\frac{b}{a} = 0.5$$, so no zoom about $$O$$ sends it onto either
+of them. The stronger statement, that ellipses with different ratios are not similar at all, is true
+too, but we take it from the picture here.
+
+## Reflecting off an ellipse
+
+An ellipse also has a mirror property, like the parabola's (:ref{#parabola-reflection}). Picture a
+room whose wall is an ellipse. A sound sent out from one focus bounces off the wall and passes
+through the other focus, whichever way it starts. Such rooms are called whispering galleries: stand
+at one focus and whisper, and a friend standing at the other focus hears you clearly.
+
+:::remark[The reflecting property]{#ellipses-reflection}
+
+A ray from one focus of an ellipse that reflects off the ellipse passes through the other focus. The
+proof uses the tangent line at the point where the ray meets the ellipse, as in
+:ref{#parabola-reflection}, and is not given here.
+
+::see-also{src="https://en.wikipedia.org/wiki/Ellipse#Focus-to-focus_reflection_property"}
+
+:::
+
+## Exercises
+
+:::::accordion[Exercises on ellipses, with solutions]
+
+::::exercise{#ex-ellipses-read-off}
+
+The ellipse $$\frac{(x + 1)^2}{16} + \frac{(y - 2)^2}{49} = 1$$ is drawn on a grid. Find its centre,
+its half-widths, and which way its major axis runs. Then find its foci, its eccentricity and its
+area.
+
+:::solution
+
+By :ref{#slide-graph}, $$x + 1 = x - (-1)$$ and $$y - 2$$ mean a slide by $$(-1, 2)$$: 1 to the left
+and 2 up. So the centre is $$(-1, 2)$$. The half-widths are $$\sqrt{16} = 4$$ across and
+$$\sqrt{49} = 7$$ up, so the major axis is vertical, of length $$14$$, and the minor axis is
+horizontal, of length $$8$$.
+
+The curve is the slide by $$(-1, 2)$$ of $$\frac{x^2}{16} + \frac{y^2}{49} = 1$$, which is the flip
+in $$y = x$$ of $$\frac{x^2}{49} + \frac{y^2}{16} = 1$$ (:ref{#flip-graph}). That one is in standard
+position with $$a = 7$$, $$b = 4$$ and $$c = \sqrt{49 - 16} = \sqrt{33} \approx 5.74$$, with foci
+$$(\pm\sqrt{33}, 0)$$. The flip sends them to $$(0, \pm\sqrt{33})$$, and the slide to
+$$(-1, 2 + \sqrt{33}) \approx (-1, 7.74)$$ and $$(-1, 2 - \sqrt{33}) \approx (-1, -3.74)$$, by
+:ref{#ellipses-moved-foci}.
+
+The eccentricity is $$\frac{\sqrt{33}}{7} \approx 0.82$$ (:ref{#ellipse-eccentricity}), and the area
+is $$\pi \cdot 7 \cdot 4 = 28\pi \approx 87.96$$ (:ref{#area-and-scaling/ellipse-area}). As a check,
+the point $$(3, 2)$$ at the right end of the minor axis is $$\sqrt{4^2 + 33} = \sqrt{49} = 7$$ from
+each focus, and $$7 + 7 = 14 = 2a$$.
+
+:::
+
+::::
+
+::::exercise{#ex-ellipses-check-point}
+
+Take the ellipse $$\frac{x^2}{169} + \frac{y^2}{25} = 1$$.
+
+1. Find $$c$$, the foci and the eccentricity.
+2. Check that $$P = \left(12, \frac{25}{13}\right)$$ is on the ellipse.
+3. Find the distance from $$P$$ to each focus with the distance formula, and check that they add up
+   to $$2a$$. Compare them with $$a + \frac{cx}{a}$$ and $$a - \frac{cx}{a}$$ from the proof of
+   :ref{#ellipse-foci}.
+
+:::solution
+
+1. Here $$a = 13$$ and $$b = 5$$, so $$c = \sqrt{169 - 25} = \sqrt{144} = 12$$. The foci are
+   $$(-12, 0)$$ and $$(12, 0)$$, and $$e = \frac{12}{13} \approx 0.92$$, a long thin ellipse.
+2. $$\frac{144}{169} + \frac{625}{169} \cdot \frac{1}{25} = \frac{144}{169} + \frac{25}{169} = 1$$.
+3. $$P$$ is straight above $$(12, 0)$$, so its distance to that focus is $$\frac{25}{13}$$. Its
+   distance to $$(-12, 0)$$ is
+
+   ```math
+   \sqrt{24^2 + \left(\tfrac{25}{13}\right)^2} = \sqrt{\tfrac{97344 + 625}{169}} = \sqrt{\tfrac{97969}{169}} = \tfrac{313}{13}
+   ```
+
+   since $$313^2 = 97969$$. The total is $$\frac{25 + 313}{13} = \frac{338}{13} = 26 = 2a$$. The
+   formulas agree: $$13 - \frac{12 \cdot 12}{13} = \frac{169 - 144}{13} = \frac{25}{13}$$ and
+   $$13 + \frac{144}{13} = \frac{313}{13}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-ellipses-complete-square}
+
+Complete the squares to find what each equation draws.
+
+1. $$9x^2 + 4y^2 + 54x - 8y + 49 = 0$$
+2. $$x^2 + 4y^2 - 2x + 1 = 0$$
+
+:::solution
+
+1. Here $$x^2 + 6x = (x + 3)^2 - 9$$ and $$y^2 - 2y = (y - 1)^2 - 1$$
+   (:ref{#quadratics/complete-square}), so
+
+   ```math
+   \begin{aligned}
+   9(x^2 + 6x) + 4(y^2 - 2y) &= -49 && \text{group the terms, move } 49 \\
+   9\big((x + 3)^2 - 9\big) + 4\big((y - 1)^2 - 1\big) &= -49 && \text{complete each square} \\
+   9(x + 3)^2 + 4(y - 1)^2 &= 36 && \text{add } 81 + 4 \text{ to both sides} \\
+   \frac{(x + 3)^2}{4} + \frac{(y - 1)^2}{9} &= 1 && \text{divide both sides by } 36
+   \end{aligned}
+   ```
+
+   This is the ellipse with centre $$(-3, 1)$$, half-width $$2$$ across and $$3$$ up, so it is
+   taller than it is wide. As a check, the top point $$(-3, 4)$$ gives
+   $$81 + 64 - 162 - 32 + 49 = 0$$.
+
+2. Here $$x^2 - 2x + 1 = (x - 1)^2$$ and $$4y^2 = (2y)^2$$, so the equation is
+   $$(x - 1)^2 + (2y)^2 = 0$$. By part 2 of :ref{#real-numbers/squares-positive}, $$x - 1 = 0$$ and
+   $$2y = 0$$. So the only point is $$(1, 0)$$: a degenerate case, not an ellipse.
+
+:::
+
+::::
+
+::::exercise{#ex-ellipses-garden}
+
+1. A gardener wants an oval bed $$6$$ m long and $$4$$ m wide. How far apart should the pegs be, how
+   long should the loop be, and what area will the bed have?
+2. Another gardener has a loop $$16$$ m long and puts the pegs $$6$$ m apart. How long and how wide
+   is the bed?
+3. With the pegs $$6$$ m apart, why can't a loop $$10$$ m long draw anything?
+
+:::solution
+
+1. The half-widths are $$a = 3$$ and $$b = 2$$, so $$c = \sqrt{9 - 4} = \sqrt5$$. The pegs go
+   $$2\sqrt5 \approx 4.47$$ m apart, and the loop is $$2a + 2c = 6 + 2\sqrt5 \approx 10.47$$ m. The
+   area is $$\pi \cdot 3 \cdot 2 = 6\pi \approx 18.85$$ square metres
+   (:ref{#area-and-scaling/ellipse-area}).
+2. Now $$2c = 6$$, so $$c = 3$$, and $$2a = 16 - 6 = 10$$, so $$a = 5$$. Then
+   $$b = \sqrt{25 - 9} = 4$$, and the bed is $$10$$ m long and $$8$$ m wide.
+3. The loop would leave $$10 - 6 = 4$$ m for the two pieces from the stick to the pegs. But by the
+   triangle inequality (:ref{#distance-and-angles/distance-rules}), those two pieces together are at
+   least the $$6$$ m between the pegs. So the string can't go round the stick and both pegs at all.
+   In the theorem this is the condition $$c < a$$, which fails here because $$a = 2$$ and $$c = 3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-ellipses-slip}
+
+A friend says that the foci of $$\frac{x^2}{9} + \frac{y^2}{25} = 1$$ are $$(4, 0)$$ and
+$$(-4, 0)$$, because $$\sqrt{25 - 9} = 4$$. Test the claim with the points $$(0, 5)$$ and $$(3, 0)$$
+of the ellipse, and find the correct foci.
+
+:::solution
+
+From $$(0, 5)$$ the distances to $$(\pm 4, 0)$$ are both $$\sqrt{16 + 25} = \sqrt{41}$$, a total of
+$$2\sqrt{41} \approx 12.81$$. From $$(3, 0)$$ they are $$1$$ and $$7$$, a total of $$8$$. The totals
+differ, so by :ref{#ellipses-moved-foci} these points can't be the foci.
+
+The bigger number, $$25$$, is under $$y^2$$, so the major axis runs up the $$y$$-axis, with
+$$a = 5$$. The ellipse is the flip in $$y = x$$ of $$\frac{x^2}{25} + \frac{y^2}{9} = 1$$
+(:ref{#flip-graph}), whose foci are $$(\pm 4, 0)$$. The flip swaps coordinates, so the foci are
+$$(0, 4)$$ and $$(0, -4)$$.
+
+As a check, from $$(0, 5)$$ the distances are $$1$$ and $$9$$, and from $$(3, 0)$$ they are both
+$$\sqrt{9 + 16} = 5$$. Both totals are $$10 = 2a$$.
+
+:::
+
+::::
+
+::::exercise{#ex-ellipses-line}
+
+For which numbers $$k$$ does the line $$y = x + k$$ cross the ellipse
+$$\frac{x^2}{9} + \frac{y^2}{4} = 1$$ twice, touch it once, or miss it? Find the point where it
+touches when $$k > 0$$.
+
+:::solution
+
+Multiplying by $$36$$, the ellipse is $$4x^2 + 9y^2 = 36$$. Put in $$y = x + k$$:
+
+```math
+\begin{aligned}
+4x^2 + 9(x + k)^2 &= 36 && \text{put in } y = x + k \\
+13x^2 + 18kx + (9k^2 - 36) &= 0 && \text{expand and collect}
+\end{aligned}
+```
+
+The discriminant is
+
+```math
+(18k)^2 - 4 \cdot 13 \cdot (9k^2 - 36) = 324k^2 - 468k^2 + 1872 = 144(13 - k^2)
+```
+
+By :ref{#quadratics/root-count}, the line crosses twice when $$k^2 < 13$$, that is
+$$-\sqrt{13} < k < \sqrt{13}$$ (about $$\pm 3.61$$), touches once when $$k = \pm\sqrt{13}$$, and
+misses when $$k^2 > 13$$.
+
+At $$k = \sqrt{13}$$ the one solution is
+$$x = -\frac{18k}{2 \cdot 13} = -\frac{9\sqrt{13}}{13} = -\frac{9}{\sqrt{13}} \approx -2.50$$, and
+$$y = x + k = \frac{-9 + 13}{\sqrt{13}} = \frac{4}{\sqrt{13}} \approx 1.11$$. As a check,
+$$4 \cdot \frac{81}{13} + 9 \cdot \frac{16}{13} = \frac{324 + 144}{13} = \frac{468}{13} = 36$$.
+
+:::
+
+::::
+
+::::exercise{#ex-ellipses-orbit}
+
+Let $$P = (x, y)$$ move round the ellipse $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$ with
+$$a > b > 0$$, and let $$F_2 = (c, 0)$$.
+
+1. Use the formula $$d(P, F_2) = a - \frac{cx}{a}$$ from the proof of :ref{#ellipse-foci} to show
+   that $$P$$ is closest to $$F_2$$ at $$(a, 0)$$, at distance $$a - c$$, and furthest at
+   $$(-a, 0)$$, at distance $$a + c$$.
+2. The Earth's orbit has $$a$$ about $$149.6$$ million km and $$e$$ about $$0.0167$$, with the Sun
+   at a focus. Find the Earth's closest and furthest distances from the Sun.
+
+:::solution
+
+1. Here $$c > 0$$ because $$a > b$$. Every point of the ellipse has $$-a \le x \le a$$, as the proof
+   showed. Multiplying by $$\frac{c}{a} > 0$$ gives $$-c \le \frac{cx}{a} \le c$$, so
+
+   ```math
+   a - c \le a - \frac{cx}{a} \le a + c
+   ```
+
+   The distance is $$a - c$$ exactly when $$x = a$$, and the only point of the ellipse with
+   $$x = a$$ is $$(a, 0)$$, since then $$\frac{y^2}{b^2} = 0$$. In the same way the distance is
+   $$a + c$$ exactly at $$(-a, 0)$$.
+
+2. Here $$c = ea \approx 0.0167 \times 149.6 \approx 2.50$$ million km. So the closest distance is
+   about $$149.6 - 2.5 = 147.1$$ million km and the furthest about $$149.6 + 2.5 = 152.1$$ million
+   km. The two differ by $$2c$$, about $$5$$ million km, even though the orbit looks like a circle.
+
+:::
+
+::::
+
+::::exercise{#ex-ellipses-longest}
+
+Let $$P$$ and $$Q$$ be any two points of the ellipse $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$ with
+$$a \ge b > 0$$. Prove that $$d(P, Q) \le 2a$$, and find two points of the ellipse that are exactly
+$$2a$$ apart.
+
+:::solution
+
+Let $$F_1$$ and $$F_2$$ be the foci. By the triangle inequality
+(:ref{#distance-and-angles/distance-rules}), going from $$P$$ to $$Q$$ by way of a focus is never
+shorter than going straight:
+
+```math
+d(P, Q) \le d(P, F_1) + d(F_1, Q) \qquad d(P, Q) \le d(P, F_2) + d(F_2, Q)
+```
+
+Adding the two and grouping the distances from each point,
+
+```math
+2\,d(P, Q) \le \big(d(P, F_1) + d(P, F_2)\big) + \big(d(Q, F_1) + d(Q, F_2)\big) = 2a + 2a
+```
+
+by :ref{#ellipse-foci}, used once for $$P$$ and once for $$Q$$. Dividing by $$2$$,
+$$d(P, Q) \le 2a$$.
+
+The ends of the major axis, $$(-a, 0)$$ and $$(a, 0)$$, are on the ellipse and exactly $$2a$$ apart.
+So the major axis is the longest segment that fits between two points of the ellipse.
+
+:::
+
+::::
+
+:::::

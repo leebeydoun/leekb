@@ -1,0 +1,280 @@
+---
+title: Exercises
+description:
+  Exercises on the whole Parabolas, ellipses and hyperbolas chapter, with worked solutions.
+---
+
+These exercises use the whole chapter, and most need ideas from more than one guide. They start
+gently and get harder towards the end. Try each one before you open its solution, and name the rule
+or result behind each step, as the guides do.
+
+One habit carries most of them. Tidy the equation until it looks like a standard one, by completing
+squares, factoring or turning, and then read off what the standard curve tells you, remembering how
+it was moved.
+
+## Reading curves off their equations
+
+::::exercise{#ex-conics-ch-parabola}
+
+The graph of $$y = 2x^2 - 12x + 13$$ is a parabola.
+
+1. Find its vertex and its axis.
+2. Find its focus and its directrix.
+
+:::solution
+
+1. Complete the square:
+   $$2x^2 - 12x + 13 = 2(x^2 - 6x) + 13 = 2(x - 3)^2 - 18 + 13 = 2(x - 3)^2 - 5$$. So the graph is
+   the graph of $$y = 2x^2$$ slid by $$(3, -5)$$ (:ref{#quadratic-parabola}), with vertex
+   $$(3, -5)$$ and axis the line $$x = 3$$. Check: at $$x = 3$$, $$18 - 36 + 13 = -5$$.
+2. The graph of $$y = 2x^2$$ has focus $$(0, \frac18)$$ and directrix $$y = -\frac18$$
+   (:ref{#parabola-focus-exists}, with $$\frac{1}{4a} = \frac18$$). The slide carries both along
+   (:ref{#focus-and-directrix-moves}), so the focus is $$(3, -5 + \frac18) = (3, -\frac{39}{8})$$
+   and the directrix is the line $$y = -\frac{41}{8}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-conics-ch-name}
+
+Name the graph of each equation, and give its centre or vertex.
+
+1. $$9x^2 + 4y^2 = 36$$
+2. $$4x^2 - 9y^2 = 36$$
+3. $$y^2 = 8x$$
+4. $$x^2 + y^2 + 2x + 1 = 0$$
+
+:::solution
+
+1. Divide by $$36$$: $$\frac{x^2}{4} + \frac{y^2}{9} = 1$$. This is an ellipse with centre $$O$$,
+   reaching $$2$$ across and $$3$$ up (:ref{#ellipse-definition}). Its long axis is upright, so it
+   is the standard ellipse $$\frac{x^2}{9} + \frac{y^2}{4} = 1$$ flipped in the line $$y = x$$
+   (:ref{#flip-graph}).
+2. Divide by $$36$$: $$\frac{x^2}{9} - \frac{y^2}{4} = 1$$, the standard hyperbola with $$a = 3$$
+   and $$b = 2$$, centre $$O$$ and vertices $$(\pm 3, 0)$$ (:ref{#hyperbola-definition}).
+3. $$x = \frac{y^2}{8}$$ is the parabola $$y = \frac{x^2}{8}$$ with the letters swapped, so it is
+   that parabola flipped in $$y = x$$ (:ref{#flip-graph}). It opens to the right, with vertex $$O$$.
+   Since $$\frac{x^2}{8} = \frac{x^2}{4 \cdot 2}$$, the unflipped one has focus $$(0, 2)$$
+   (:ref{#focus-parabola}), so this one has focus $$(2, 0)$$.
+4. Complete the square: $$(x + 1)^2 + y^2 = 0$$. A sum of two squares is $$0$$ exactly when both are
+   $$0$$, so the only point is $$(-1, 0)$$. This is a degenerate case, a single point
+   (:ref{#degenerate-conic}).
+
+:::
+
+::::
+
+::::exercise{#ex-conics-ch-ellipse}
+
+An ellipse has its foci at $$(-3, 0)$$ and $$(3, 0)$$ and passes through $$(0, 4)$$. Find its
+equation, its eccentricity and its area.
+
+:::solution
+
+The point $$(0, 4)$$ is $$\sqrt{9 + 16} = 5$$ from each focus, so the total distance is $$10$$ and
+$$2a = 10$$, $$a = 5$$ (:ref{#ellipse-foci}). Then $$c = 3$$ and $$b^2 = a^2 - c^2 = 16$$, so the
+equation is
+
+```math
+\frac{x^2}{25} + \frac{y^2}{16} = 1
+```
+
+Check: $$(0, 4)$$ gives $$0 + 1 = 1$$. The eccentricity is $$e = \frac{c}{a} = \frac35$$
+(:ref{#ellipse-eccentricity}), and the area is $$\pi ab = 20\pi \approx 62.8$$
+(:ref{#area-and-scaling/ellipse-area}).
+
+:::
+
+::::
+
+::::exercise{#ex-conics-ch-hyperbola}
+
+A hyperbola has centre $$O$$, vertices $$(\pm 4, 0)$$ and foci $$(\pm 5, 0)$$. Find its equation,
+its asymptotes and its eccentricity.
+
+:::solution
+
+Here $$a = 4$$ and $$c = 5$$, and $$c^2 = a^2 + b^2$$ (:ref{#hyperbola-foci}), so $$b^2 = 9$$ and
+$$b = 3$$. The equation is $$\frac{x^2}{16} - \frac{y^2}{9} = 1$$, the asymptotes are
+$$y = \pm\frac34 x$$ (:ref{#hyperbola-asymptotes}), and the eccentricity is $$e = \frac54$$
+(:ref{#hyperbola-eccentricity}).
+
+:::
+
+::::
+
+::::exercise{#ex-conics-ch-product}
+
+Show that the graph of $$xy - 2x + 4y - 5 = 0$$ is a slid copy of a graph $$xy = c$$. Find its
+centre and its asymptotes.
+
+:::solution
+
+Multiplying out $$(x + 4)(y - 2)$$ gives $$xy - 2x + 4y - 8$$. So the equation is
+$$(x + 4)(y - 2) - 8 + 5 = 0$$, that is
+
+```math
+(x + 4)(y - 2) = -3
+```
+
+as :ref{#hyperbolas-moved-product} gives with $$p = -2$$, $$q = 4$$, $$r = -5$$. By
+:ref{#slide-graph} this is the graph of $$xy = -3$$ slid by $$(-4, 2)$$. Its centre is $$(-4, 2)$$,
+and its asymptotes are the slid axes, the lines $$x = -4$$ and $$y = 2$$.
+
+:::
+
+::::
+
+## Lines and curves
+
+::::exercise{#ex-conics-ch-tangent}
+
+Find the tangent to $$y = x^2$$ that is parallel to the line $$y = 4x + 1$$.
+
+:::solution
+
+Parallel lines have the same slope, $$4$$. The tangent at $$(p, p^2)$$ has slope $$2p$$
+(:ref{#parabola-tangent}), so $$p = 2$$, the point of contact is $$(2, 4)$$, and the tangent is
+$$y = 4x - 4$$. Check: $$x^2 = 4x - 4$$ is $$(x - 2)^2 = 0$$, which has the one solution $$x = 2$$.
+
+:::
+
+::::
+
+::::exercise{#ex-conics-ch-line-ellipse}
+
+Find where the line $$y = x + 1$$ meets the ellipse $$\frac{x^2}{4} + y^2 = 1$$.
+
+:::solution
+
+Put $$y = x + 1$$ into the equation of the ellipse:
+
+```math
+\begin{aligned}
+\frac{x^2}{4} + (x + 1)^2 &= 1 && \\
+\frac{x^2}{4} + x^2 + 2x + 1 &= 1 && \text{multiply out the square} \\
+\frac54 x^2 + 2x &= 0 && \text{take } 1 \text{ from both sides} \\
+x\left(\frac54 x + 2\right) &= 0 && \text{take out } x
+\end{aligned}
+```
+
+So $$x = 0$$ or $$x = -\frac85$$, giving the points $$(0, 1)$$ and $$(-\frac85, -\frac35)$$. Check
+the second: $$\frac{64}{25} \cdot \frac14 + \frac{9}{25} = \frac{16}{25} + \frac{9}{25} = 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-conics-ch-lines-hyperbola}
+
+For which numbers $$k$$ does the line $$y = k - x$$ meet the hyperbola $$xy = 1$$? For which does it
+touch it at one point only?
+
+:::solution
+
+A point of both has $$x(k - x) = 1$$, that is $$x^2 - kx + 1 = 0$$. This has solutions exactly when
+its discriminant $$k^2 - 4$$ is at least $$0$$ (:ref{#quadratics/root-count}), so exactly when
+$$k \ge 2$$ or $$k \le -2$$. It has exactly one solution when $$k^2 = 4$$: for $$k = 2$$ the line
+touches at $$(1, 1)$$, and for $$k = -2$$ at $$(-1, -1)$$. For $$-2 < k < 2$$, including the line
+$$y = -x$$, the line passes between the two branches.
+
+:::
+
+::::
+
+## Turning, cones and eccentricity
+
+::::exercise{#ex-conics-ch-turn}
+
+Show that the graph of $$7x^2 + 2\sqrt3\,xy + 5y^2 = 16$$ is an ellipse, find the angle it has been
+turned by, and find its half-widths. Check one point.
+
+:::solution
+
+Here $$A = 7$$, $$B = 2\sqrt3$$ and $$C = 5$$. The discriminant is
+$$B^2 - 4AC = 12 - 140 = -128 < 0$$, so the graph is an ellipse, a point or empty
+(:ref{#conic-discriminant}). To see which, turn away the $$xy$$ term (:ref{#remove-xy}). Now
+$$\tan 2\theta = \frac{2\sqrt3}{7 - 5} = \sqrt3$$, and the angle between $$0$$ and $$\pi$$ with that
+tangent is $$\frac{\pi}{3}$$. So $$\theta = \frac{\pi}{6}$$, with $$\cos^2\theta = \frac34$$,
+$$\sin^2\theta = \frac14$$ and $$\sin\theta\cos\theta = \frac{\sqrt3}{4}$$. Then
+
+```math
+\begin{aligned}
+A' &= 7 \cdot \tfrac34 + 2\sqrt3 \cdot \tfrac{\sqrt3}{4} + 5 \cdot \tfrac14 = \tfrac{21 + 6 + 5}{4} = 8 \\
+C' &= 7 \cdot \tfrac14 - 2\sqrt3 \cdot \tfrac{\sqrt3}{4} + 5 \cdot \tfrac34 = \tfrac{7 - 6 + 15}{4} = 4
+\end{aligned}
+```
+
+The equation in $$u$$ and $$v$$ is $$8u^2 + 4v^2 = 16$$, which is
+$$\frac{u^2}{2} + \frac{v^2}{4} = 1$$ after dividing by $$16$$. So the graph is the ellipse with
+half-widths $$\sqrt2$$ and $$2$$ turned by $$\frac{\pi}{6}$$. The discriminant agrees:
+$$-4 \cdot 8 \cdot 4 = -128$$.
+
+Check with a point: the top $$(0, 2)$$ of the untilted ellipse turns to
+$$G_{\pi/6}(0, 2) = \big({-1}, \sqrt3\big)$$ by :ref{#trigonometry/rotation-formula}, and
+$$7 \cdot 1 + 2\sqrt3 \cdot (-\sqrt3) + 5 \cdot 3 = 7 - 6 + 15 = 16$$.
+
+:::
+
+::::
+
+::::exercise{#ex-conics-ch-twice}
+
+Find the points that are twice as far from the origin $$O$$ as from the line $$x = -6$$. Name the
+curve, and find its centre and its foci.
+
+:::solution
+
+This is the rule of :ref{#focus-directrix-e} with $$e = 2$$, so the curve is a hyperbola with
+eccentricity $$2$$. The distance from $$(x, y)$$ to the line is $$\lvert x + 6 \rvert$$
+(:ref{#segments-rays-and-lines/distance-to-line}). Square both sides of
+$$\sqrt{x^2 + y^2} = 2\lvert x + 6 \rvert$$:
+
+```math
+\begin{aligned}
+x^2 + y^2 &= 4(x + 6)^2 && \text{square both sides} \\
+x^2 + y^2 &= 4x^2 + 48x + 144 && \text{expand the square} \\
+3x^2 + 48x - y^2 + 144 &= 0 && \text{take } x^2 + y^2 \text{ from both sides} \\
+3(x + 8)^2 - 192 - y^2 + 144 &= 0 && \text{complete the square: } 3(x + 8)^2 = 3x^2 + 48x + 192 \\
+3(x + 8)^2 - y^2 &= 48 && \text{add } 48 \\
+\frac{(x + 8)^2}{16} - \frac{y^2}{48} &= 1 && \text{divide by } 48
+\end{aligned}
+```
+
+It is the standard hyperbola with $$a = 4$$ and $$b = \sqrt{48} = 4\sqrt3$$ slid by $$(-8, 0)$$, so
+its centre is $$(-8, 0)$$. Then $$c = \sqrt{16 + 48} = 8$$, so its foci are $$(-8 \pm 8, 0)$$: the
+origin, as it should be, and $$(-16, 0)$$. Check: $$\frac{c}{a} = 2 = e$$, and the vertex
+$$(-4, 0)$$ is $$4$$ from $$O$$ and $$2$$ from the line.
+
+:::
+
+::::
+
+::::exercise{#ex-conics-ch-cone}
+
+The plane $$z = \frac{x}{\sqrt3} + 1$$ is tilted at $$30^\circ$$. Show that it cuts the double cone
+in an ellipse with eccentricity $$\frac{1}{\sqrt2}$$.
+
+:::solution
+
+Here $$m = \frac{1}{\sqrt3} < 1$$, so the slice is an ellipse (:ref{#cone-slices}). To find it, put
+$$z = mx + 1$$ into $$x^2 + y^2 = z^2$$: $$(1 - m^2)x^2 - 2mx + y^2 = 1$$, which with
+$$m^2 = \frac13$$ is $$\frac23 x^2 - \frac{2}{\sqrt3}x + y^2 = 1$$. Completing the square,
+
+```math
+\frac{\left(x - \frac{\sqrt3}{2}\right)^2}{9/4} + \frac{y^2}{3/2} = 1
+```
+
+In flat coordinates $$u = kx$$ with $$k = \sqrt{1 + m^2} = \frac{2}{\sqrt3}$$
+(:ref{#slicing-a-cone-flat-coordinates}), the half-width across is $$k \cdot \frac32 = \sqrt3$$, and
+the half-width along $$v = y$$ is $$\sqrt{3/2}$$. So $$a = \sqrt3$$, $$b^2 = \frac32$$,
+$$c^2 = 3 - \frac32 = \frac32$$, and
+
+```math
+e = \frac{c}{a} = \frac{\sqrt{3/2}}{\sqrt3} = \frac{1}{\sqrt2} \approx 0.707
+```
+
+:::
+
+::::

@@ -1,0 +1,789 @@
+---
+title: Recognising a curve from its equation
+description:
+  Any equation in x², xy, y², x and y draws an ellipse, a parabola, a hyperbola or a degenerate
+  case. Completing squares, turning away the xy term, and the number B² − 4AC that sorts them.
+---
+
+Imagine the coin sorter at a bank. You tip a jar of mixed coins into the top, and a moment later
+they sit in neat stacks, one stack for each kind of coin. The machine never reads what is stamped on
+a coin. It measures one thing, the width, and that one measurement tells every kind of coin from
+every other.
+
+Equations of curves can be sorted in the same way. Suppose someone hands you the equation
+$$5x^2 - 6xy + 5y^2 = 8$$ and asks what it draws. It looks like none of the standard equations of
+this chapter, but three of its numbers, the ones in front of $$x^2$$, $$xy$$ and $$y^2$$, are enough
+to say that its graph is an ellipse. In this guide we'll tidy any equation of this kind into a
+standard one by sliding and turning, and then find the single number that tells the family at a
+glance.
+
+## Equations of the second degree
+
+Every curve in this chapter has an equation made of the same few pieces: $$x^2$$, $$xy$$, $$y^2$$,
+$$x$$, $$y$$ and a number. The circle of radius $$3$$ about $$(1, 0)$$ is the graph of
+$$(x - 1)^2 + y^2 = 9$$ (:ref{#coordinates/circle-equation}), and multiplying out gives
+$$x^2 + y^2 - 2x - 8 = 0$$. The parabola $$y = x^2$$ can be written $$x^2 - y = 0$$, and the
+hyperbola $$xy = 1$$ can be written $$xy - 1 = 0$$.
+
+:::definition[Second-degree equation]{#general-equation-second-degree}
+
+A **second-degree equation** in $$x$$ and $$y$$ is an equation
+
+```math
+Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0
+```
+
+where $$A, B, C, D, E, F$$ are numbers and $$A$$, $$B$$, $$C$$ are not all $$0$$. The number
+$$B^2 - 4AC$$ is its **discriminant**.
+
+:::
+
+In this guide $$F$$ is the number at the end of the equation, not a focus. For the circle
+$$x^2 + y^2 - 2x - 8 = 0$$, $$A = C = 1$$, $$B = 0$$, $$D = -2$$, $$E = 0$$ and $$F = -8$$. For
+$$xy - 1 = 0$$, the only numbers that aren't $$0$$ are $$B = 1$$ and $$F = -1$$.
+
+Moving a curve keeps its equation of this kind. By :ref{#slide-graph}, :ref{#flip-graph} and
+:ref{#turn-graph}, a move puts first-degree expressions such as $$x - 3$$ or
+$$x\cos\varphi + y\sin\varphi$$ in place of $$x$$ and $$y$$, so multiplying out never makes a power
+higher than $$2$$.
+
+The squared terms can't all cancel either. If they did, the new equation would have no $$x^2$$,
+$$xy$$ or $$y^2$$ at all. Undoing the move puts first-degree expressions in again, which would give
+back an equation with no squared terms, and not the one we started from.
+
+So every ellipse, parabola and hyperbola has a second-degree equation. The three curves together are
+called **conics**, after the cone, whose slices give all three (:ref{#cone-slices}). The rest of
+this guide goes the other way, from the equation to the curve.
+
+## Equations with no xy term
+
+When $$B = 0$$, the equation splits into an $$x$$ part and a $$y$$ part that don't mix. Completing
+the square in each part (:ref{#quadratics/complete-square}) gathers each letter into one bracket,
+such as $$(x - 3)^2$$. Then :ref{#slide-graph} reads the brackets as a slide: $$x - 3$$ means the
+curve has been slid $$3$$ to the right. What is left is a standard equation from the earlier guides,
+and the numbers in the brackets say where it went.
+
+:::example[An ellipse]
+
+Take $$x^2 + 4y^2 - 6x + 8y + 9 = 0$$. Gather the $$x$$ terms and the $$y$$ terms, and complete each
+square:
+
+```math
+\begin{aligned}
+(x^2 - 6x) + 4(y^2 + 2y) + 9 &= 0 &&\qquad \text{group the } x \text{ terms and the } y \text{ terms} \\
+\big((x - 3)^2 - 9\big) + 4\big((y + 1)^2 - 1\big) + 9 &= 0 &&\qquad \text{complete each square} \\
+(x - 3)^2 + 4(y + 1)^2 - 4 &= 0 &&\qquad -9 - 4 + 9 = -4 \\
+(x - 3)^2 + 4(y + 1)^2 &= 4 &&\qquad \text{add } 4 \text{ to both sides} \\
+\frac{(x - 3)^2}{4} + \frac{(y + 1)^2}{1} &= 1 &&\qquad \text{divide both sides by } 4
+\end{aligned}
+```
+
+By :ref{#slide-graph}, this is the ellipse $$\frac{x^2}{4} + y^2 = 1$$ slid by $$(3, -1)$$: an
+ellipse centred at $$(3, -1)$$, reaching $$2$$ either side across and $$1$$ up and down. As a check,
+the point $$(5, -1)$$ is $$2$$ to the right of the centre, and $$25 + 4 - 30 - 8 + 9 = 0$$.
+
+:::
+
+The last step matters. The standard equation of an ellipse has $$1$$ on the right
+(:ref{#ellipse-definition}), and only after dividing by $$4$$ can you read the half-widths
+$$\sqrt4 = 2$$ and $$\sqrt1 = 1$$. Reading them off $$(x - 3)^2 + 4(y + 1)^2 = 4$$ instead gives
+wrong numbers.
+
+:::example[A hyperbola opening up and down]
+
+Take $$9x^2 - 4y^2 + 18x + 16y + 29 = 0$$. This time the $$y^2$$ term has a minus sign:
+
+```math
+\begin{aligned}
+9(x^2 + 2x) - 4(y^2 - 4y) + 29 &= 0 &&\qquad \text{group the } x \text{ terms and the } y \text{ terms} \\
+9\big((x + 1)^2 - 1\big) - 4\big((y - 2)^2 - 4\big) + 29 &= 0 &&\qquad \text{complete each square} \\
+9(x + 1)^2 - 4(y - 2)^2 + 36 &= 0 &&\qquad -9 + 16 + 29 = 36 \\
+9(x + 1)^2 - 4(y - 2)^2 &= -36 &&\qquad \text{subtract } 36 \\
+\frac{(y - 2)^2}{9} - \frac{(x + 1)^2}{4} &= 1 &&\qquad \text{divide both sides by } -36
+\end{aligned}
+```
+
+Dividing by $$-36$$ changes both signs, so the minus sign moves to the $$x$$ term. By
+:ref{#flip-graph}, swapping the letters in $$\frac{x^2}{9} - \frac{y^2}{4} = 1$$ gives the flip of
+that hyperbola in the line $$y = x$$, which opens up and down. Then :ref{#slide-graph} slides it by
+$$(-1, 2)$$. So the curve is a hyperbola centred at $$(-1, 2)$$ with its vertices $$3$$ above and
+below the centre, at $$(-1, 5)$$ and $$(-1, -1)$$. As a check, $$(-1, 5)$$ gives
+$$9 - 100 - 18 + 80 + 29 = 0$$.
+
+:::
+
+:::example[A sideways parabola]
+
+Take $$y^2 - 4x + 2y + 9 = 0$$. There is no $$x^2$$ term, so only the $$y$$ square needs completing:
+
+```math
+\begin{aligned}
+(y^2 + 2y) - 4x + 9 &= 0 &&\qquad \text{group the } y \text{ terms} \\
+(y + 1)^2 - 1 - 4x + 9 &= 0 &&\qquad \text{complete the square} \\
+(y + 1)^2 &= 4x - 8 = 4(x - 2) &&\qquad \text{add } 4x - 8 \text{ to both sides} \\
+x - 2 &= \frac{(y + 1)^2}{4} &&\qquad \text{divide by } 4 \text{ and swap the sides}
+\end{aligned}
+```
+
+The graph of $$x = \frac{y^2}{4}$$ is the flip of $$y = \frac{x^2}{4}$$ in the line $$y = x$$
+(:ref{#flip-graph}), a parabola opening to the right. Sliding it by $$(2, -1)$$ gives our curve,
+with its vertex at $$(2, -1)$$. As a check, the point $$(3, 1)$$ gives $$1 - 12 + 2 + 9 = 0$$.
+
+:::
+
+### When the curve falls apart
+
+Keep the $$x^2 + 4y^2 - 6x + 8y$$ of the first example, but change the number at the end to $$c$$.
+The same steps give $$(x - 3)^2 + 4(y + 1)^2 = 13 - c$$, so changing $$c$$ changes only the right
+side. For $$c = 9$$ the right side is $$4$$, and we have the ellipse from before. As $$c$$ grows the
+right side shrinks, and the ellipse shrinks with it about the same centre.
+
+<ShrinkingEllipse caption="The graphs of x² + 4y² − 6x + 8y + c = 0 for four values of c. Each is (x − 3)² + 4(y + 1)² = 13 − c, so they share the centre (3, −1). At c = 13 only the centre is left, and from c = 14 on there are no points at all." />
+
+At $$c = 13$$ the right side is $$0$$. A sum of two squares is $$0$$ exactly when both squares are
+$$0$$, so the only point is $$(3, -1)$$. At $$c = 14$$ the right side is $$-1$$, and a sum of
+squares is never negative, so no point fits and the graph is empty. Both still count as graphs of
+second-degree equations, so they get a name.
+
+:::definition[Degenerate cases]{#degenerate-conic}
+
+The **degenerate cases** of a second-degree equation are the graphs that are not conics. They are:
+
+- the empty set, with no points
+- a single point
+- one line
+- two parallel lines
+- two lines crossing at a point
+
+:::
+
+By :ref{#no-xy-term} and :ref{#conic-discriminant} below, these are the only graphs a second-degree
+equation can have besides the conics. Each case has a short equation of its own:
+
+- $$x^2 + y^2 = 0$$ holds only at $$(0, 0)$$, so its graph is the single point $$O$$
+- $$x^2 + y^2 = -1$$ has no solutions, since squares are never negative, so its graph is empty
+- $$x^2 - y^2 = 0$$ says $$(x - y)(x + y) = 0$$, and a product is $$0$$ exactly when one of its
+  factors is, so its graph is the two lines $$y = x$$ and $$y = -x$$
+- $$x^2 = 4$$ holds exactly when $$x = 2$$ or $$x = -2$$, so its graph is two vertical lines
+- $$x^2 - 2x + 1 = 0$$ says $$(x - 1)^2 = 0$$, so its graph is the one line $$x = 1$$
+
+<DegenerateCases caption="Four degenerate cases: x² + y² = 0 is the point O, x² + y² = −1 has no points, x² − y² = 0 is the lines y = x and y = −x, and x² = 4 is the lines x = 2 and x = −2." />
+
+The ellipse, hyperbola and parabola examples already show the rule. When $$A$$ and $$C$$ had the
+same sign, we got an ellipse. Opposite signs gave a hyperbola, and with $$A = 0$$ we got a parabola.
+
+:::proposition[No xy term: complete the squares]{#no-xy-term}
+
+Let $$A$$ and $$C$$ be numbers, not both $$0$$, and let $$D$$, $$E$$, $$F$$ be any numbers. The
+graph of $$Ax^2 + Cy^2 + Dx + Ey + F = 0$$ is:
+
+1. an ellipse, a single point or empty, when $$A$$ and $$C$$ have the same sign
+2. a hyperbola or two crossing lines, when $$A$$ and $$C$$ have opposite signs
+3. a parabola, two parallel lines, one line or empty, when one of $$A$$ and $$C$$ is $$0$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Degenerate_conic#Classification"}
+
+Multiplying both sides of an equation by $$-1$$ doesn't change its solutions, so we may assume that
+$$A > 0$$, or that $$A = 0$$ and $$C > 0$$.
+
+**Neither is 0.** By :ref{#quadratics/complete-square} with $$\frac{D}{A}$$ in place of $$b$$,
+
+```math
+Ax^2 + Dx = A\Big(x^2 + \frac{D}{A}x\Big) = A\Big(x + \frac{D}{2A}\Big)^2 - \frac{D^2}{4A}
+```
+
+and in the same way $$Cy^2 + Ey = C\big(y + \frac{E}{2C}\big)^2 - \frac{E^2}{4C}$$. Write
+$$h = -\frac{D}{2A}$$, $$k = -\frac{E}{2C}$$ and $$K = \frac{D^2}{4A} + \frac{E^2}{4C} - F$$. Then
+the equation says $$A(x - h)^2 + C(y - k)^2 = K$$, so by :ref{#slide-graph} its graph is the slide
+by $$(h, k)$$ of the graph of $$Ax^2 + Cy^2 = K$$. A slide is an isometry
+(:ref{#adding-and-scaling-points/formula-isometries}), and an isometry after an isometry is one
+(:ref{#isometries/composite-isometry}). So a slide sends ellipses to ellipses, hyperbolas to
+hyperbolas, a point to a point and lines to lines (:ref{#isometries/isometry-lines}), and it is
+enough to sort the graph of $$Ax^2 + Cy^2 = K$$.
+
+_Same signs_, so $$A > 0$$ and $$C > 0$$. If $$K > 0$$, dividing by $$K$$ gives
+
+```math
+\frac{x^2}{K/A} + \frac{y^2}{K/C} = 1
+```
+
+the ellipse with half-widths $$\sqrt{K/A}$$ and $$\sqrt{K/C}$$ (:ref{#ellipse-definition}). If
+$$K = 0$$, the left side is a sum of two terms that are never negative, so it is $$0$$ exactly when
+$$x = y = 0$$: one point. If $$K < 0$$, no point fits.
+
+_Opposite signs_, so $$A > 0$$ and $$C < 0$$. Write $$C = -c$$ with $$c > 0$$. If $$K > 0$$,
+dividing by $$K$$ gives $$\frac{x^2}{K/A} - \frac{y^2}{K/c} = 1$$, a hyperbola
+(:ref{#hyperbola-definition}). If $$K < 0$$, dividing by $$K$$ gives
+
+```math
+\frac{y^2}{-K/c} - \frac{x^2}{-K/A} = 1
+```
+
+which by :ref{#flip-graph} is the flip in $$y = x$$ of the hyperbola
+$$\frac{x^2}{-K/c} - \frac{y^2}{-K/A} = 1$$, so a hyperbola again. If $$K = 0$$, the equation is
+$$Ax^2 - cy^2 = 0$$, which factorises as
+
+```math
+\big(\sqrt{A}\,x - \sqrt{c}\,y\big)\big(\sqrt{A}\,x + \sqrt{c}\,y\big) = 0
+```
+
+A product is $$0$$ exactly when a factor is, so the graph is the two lines
+$$\sqrt{A}\,x = \sqrt{c}\,y$$ and $$\sqrt{A}\,x = -\sqrt{c}\,y$$
+(:ref{#segments-rays-and-lines/equation-line}). Their slopes $$\sqrt{A/c}$$ and $$-\sqrt{A/c}$$
+differ, and both pass through $$O$$, so they cross there.
+
+**One of them is 0.** Say $$C = 0$$, so $$A > 0$$ and the equation is $$Ax^2 + Dx + Ey + F = 0$$. If
+$$E \ne 0$$, it says
+
+```math
+y = -\frac{A}{E}x^2 - \frac{D}{E}x - \frac{F}{E}
+```
+
+whose graph is a parabola by :ref{#quadratic-parabola}. If $$E = 0$$, the equation
+$$Ax^2 + Dx + F = 0$$ doesn't involve $$y$$. By :ref{#quadratics/root-count} it has two solutions,
+one or none, and the graph is the vertical lines through them: two parallel lines, one line, or
+nothing. The case $$A = 0$$ is the same with the letters swapped, which by :ref{#flip-graph} flips
+everything in $$y = x$$. That flip is an isometry
+(:ref{#adding-and-scaling-points/diagonal-reflection}), so it sends a parabola to a parabola and
+parallel lines to parallel lines.
+
+:::
+
+## Turning away the xy term
+
+An $$xy$$ term means the curve is tilted. The curves in the standard equations have their axes along
+the $$x$$-axis and the $$y$$-axis, and an $$xy$$ term appears when the curve has been turned off
+them, as in :ref{#hyperbola-turn}, where turning $$xy = c$$ by $$\frac{\pi}{4}$$ gave
+$$y^2 - x^2 = 2c$$. So the plan is to turn the curve back until its axes line up again. In the
+equation, that means new letters $$u$$ and $$v$$ measured along turned axes.
+
+<TurnedEllipse caption="The graph of 5x² − 6xy + 5y² = 8, in blue, is the dashed ellipse x²/4 + y² = 1 turned by π/4. The green u-axis and v-axis are the x-axis and y-axis turned by π/4. The end (2, 0) of the dashed ellipse turns to (√2, √2) on the blue one." />
+
+Here is the opening equation $$5x^2 - 6xy + 5y^2 = 8$$ worked with numbers. Put in
+
+```math
+x = \frac{u - v}{\sqrt2} \qquad y = \frac{u + v}{\sqrt2}
+```
+
+which is $$(x, y) = G_{\pi/4}(u, v)$$, the point $$(u, v)$$ turned by $$\frac{\pi}{4}$$ about $$O$$,
+by :ref{#trigonometry/rotation-formula} with
+$$\cos\frac{\pi}{4} = \sin\frac{\pi}{4} = \frac{1}{\sqrt2}$$. Then the three squared terms are
+
+```math
+\begin{aligned}
+x^2 &= \tfrac{1}{2}(u^2 - 2uv + v^2) &&\qquad \text{square } u - v \text{ and divide by } 2 \\
+xy &= \tfrac{1}{2}(u^2 - v^2) &&\qquad (u - v)(u + v) = u^2 - v^2 \\
+y^2 &= \tfrac{1}{2}(u^2 + 2uv + v^2) &&\qquad \text{square } u + v \text{ and divide by } 2
+\end{aligned}
+```
+
+and the equation becomes
+
+```math
+\begin{aligned}
+5x^2 + 5y^2 - 6xy &= \tfrac{5}{2}(2u^2 + 2v^2) - 3(u^2 - v^2) &&\qquad \text{the } uv \text{ terms of } x^2 \text{ and } y^2 \text{ cancel} \\
+&= 5u^2 + 5v^2 - 3u^2 + 3v^2 &&\qquad \text{multiply out} \\
+&= 2u^2 + 8v^2 &&\qquad \text{collect}
+\end{aligned}
+```
+
+So the equation in $$u$$ and $$v$$ is $$2u^2 + 8v^2 = 8$$, or $$\frac{u^2}{4} + v^2 = 1$$ after
+dividing by $$8$$. The $$uv$$ term is gone. By :ref{#remove-xy} below, the curve is the ellipse
+$$\frac{x^2}{4} + y^2 = 1$$ turned by $$\frac{\pi}{4}$$, with half-widths $$2$$ and $$1$$ and its
+long axis along the line $$y = x$$.
+
+Check it with a point. The end $$(2, 0)$$ of the untilted ellipse turns to
+$$G_{\pi/4}(2, 0) = (\sqrt2, \sqrt2)$$, and $$5 \cdot 2 - 6 \cdot 2 + 5 \cdot 2 = 8$$. The top
+$$(0, 1)$$ turns to $$\big({-\frac{\sqrt2}{2}}, \frac{\sqrt2}{2}\big)$$, and
+$$\frac{5}{2} + 3 + \frac{5}{2} = 8$$. Both fit.
+
+Which way the turn goes is the place to be careful. Putting $$(x, y) = G_\theta(u, v)$$ into the
+equation describes the curve turned **back** by $$\theta$$, so the curve we were given is the tidy
+one turned **forward** by $$\theta$$. Mixing up the signs in the substitution gives the turn the
+other way, and a point checked in the original equation catches that at once.
+
+:::theorem[Turning away the xy term]{#remove-xy}
+
+Let $$f(x, y) = Ax^2 + Bxy + Cy^2 + Dx + Ey + F$$ with $$B \ne 0$$, and choose $$\theta$$ as
+follows:
+
+1. if $$A = C$$, then $$\theta = \frac{\pi}{4}$$
+2. if $$A \ne C$$, then $$2\theta$$ is an angle with $$0 < 2\theta < \pi$$ and
+   $$\tan 2\theta = \frac{B}{A - C}$$, which exists by the proof below
+
+Then $$0 < \theta < \frac{\pi}{2}$$, and
+
+```math
+f(u\cos\theta - v\sin\theta,\ u\sin\theta + v\cos\theta) = A'u^2 + C'v^2 + D'u + E'v + F
+```
+
+with no $$uv$$ term, where
+
+```math
+\begin{aligned}
+A' &= A\cos^2\theta + B\sin\theta\cos\theta + C\sin^2\theta \\
+C' &= A\sin^2\theta - B\sin\theta\cos\theta + C\cos^2\theta \\
+D' &= D\cos\theta + E\sin\theta \\
+E' &= -D\sin\theta + E\cos\theta
+\end{aligned}
+```
+
+The graph of $$f(x, y) = 0$$ is the turn $$G_\theta$$ about $$O$$ of the graph of
+$$A'x^2 + C'y^2 + D'x + E'y + F = 0$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Rotation_of_axes_in_two_dimensions#Rotation_of_conic_sections"}
+
+Write $$c = \cos\theta$$ and $$s = \sin\theta$$ for short, and $$x = uc - vs$$, $$y = us + vc$$.
+
+**The new equation.** Multiplying out the squared terms,
+
+```math
+\begin{aligned}
+x^2 &= u^2c^2 - 2uv\,cs + v^2s^2 &&\qquad \text{square } uc - vs \\
+xy &= u^2cs + uv(c^2 - s^2) - v^2cs &&\qquad \text{multiply } (uc - vs)(us + vc) \\
+y^2 &= u^2s^2 + 2uv\,cs + v^2c^2 &&\qquad \text{square } us + vc
+\end{aligned}
+```
+
+Multiply these by $$A$$, $$B$$ and $$C$$ and add. The $$u^2$$ terms give $$A'u^2$$ and the $$v^2$$
+terms give $$C'v^2$$. The $$uv$$ terms give
+
+```math
+\begin{aligned}
+&-2A\,cs + B(c^2 - s^2) + 2C\,cs &&\qquad \text{one } uv \text{ term from each line} \\
+&= (C - A)\cdot 2cs + B(c^2 - s^2) &&\qquad \text{collect the } cs \text{ terms} \\
+&= (C - A)\sin 2\theta + B\cos 2\theta &&\qquad \text{double angles}
+\end{aligned}
+```
+
+where the last step is :ref{#trigonometry/double-angle}. The first-degree terms give
+$$Dx + Ey = (Dc + Es)u + (-Ds + Ec)v = D'u + E'v$$, and $$F$$ stays as it is.
+
+**The uv term is 0.** If $$A = C$$, then $$C - A = 0$$ and $$\cos 2\theta = \cos\frac{\pi}{2} = 0$$
+(:ref{#trigonometry/quarter-values}), so both parts of the $$uv$$ coefficient are $$0$$, and
+$$\theta = \frac{\pi}{4}$$ is between $$0$$ and $$\frac{\pi}{2}$$.
+
+If $$A \ne C$$, the number $$t = \frac{B}{A - C}$$ is not $$0$$. By
+:ref{#trigonometry/tangent-one-angle} there is exactly one angle $$\beta$$ with
+$$-\frac{\pi}{2} < \beta < \frac{\pi}{2}$$ and $$\tan\beta = t$$, and $$\beta \ne 0$$. If
+$$\beta > 0$$, take $$2\theta = \beta$$. If $$\beta < 0$$, take $$2\theta = \beta + \pi$$, which has
+the same tangent, since by :ref{#trigonometry/half-turn-identities} adding $$\pi$$ changes the sign
+of both the sine and the cosine. So an angle $$2\theta$$ with $$0 < 2\theta < \pi$$ and tangent
+$$t$$ exists. For any such angle, $$\cos 2\theta \ne 0$$ because the tangent is defined there, and
+
+```math
+\begin{aligned}
+\frac{\sin 2\theta}{\cos 2\theta} &= \frac{B}{A - C} &&\qquad \text{the choice of } \theta \\
+(A - C)\sin 2\theta &= B\cos 2\theta &&\qquad \text{multiply both sides by } (A - C)\cos 2\theta \\
+(C - A)\sin 2\theta + B\cos 2\theta &= 0 &&\qquad \text{subtract } (A - C)\sin 2\theta
+\end{aligned}
+```
+
+**The two graphs.** Write $$g(u, v) = A'u^2 + C'v^2 + D'u + E'v + F$$, so that
+$$g(u, v) = f\big(G_\theta(u, v)\big)$$ by :ref{#trigonometry/rotation-formula}. By
+:ref{#turn-graph}, the turn $$G_\theta$$ sends the graph of $$g(x, y) = 0$$ onto the graph of
+
+```math
+g(x\cos\theta + y\sin\theta,\ -x\sin\theta + y\cos\theta) = 0
+```
+
+The point $$(x\cos\theta + y\sin\theta,\ -x\sin\theta + y\cos\theta)$$ is $$G_{-\theta}(x, y)$$, by
+:ref{#trigonometry/rotation-formula} with $$-\theta$$ and :ref{#trigonometry/negative-angle}. By
+:ref{#trigonometry/radian-turns}, $$G_\theta \circ G_{-\theta} = G_0$$, which leaves every point
+where it is. So
+
+```math
+g\big(G_{-\theta}(x, y)\big) = f\big(G_\theta(G_{-\theta}(x, y))\big) = f(x, y)
+```
+
+and $$G_\theta$$ sends the graph of $$g(x, y) = 0$$ onto the graph of $$f(x, y) = 0$$.
+
+:::
+
+To find $$2\theta$$ in practice, press $$\tan^{-1}$$ on $$\frac{B}{A - C}$$
+(:ref{#trigonometry/inverse-tan}), and add $$\pi$$ if the answer is negative. Then halve it.
+
+:::example[The hyperbola xy = 1 again]
+
+Here $$A = C = 0$$ and $$B = 1$$, so $$\theta = \frac{\pi}{4}$$, with
+$$\cos\theta = \sin\theta = \frac{1}{\sqrt2}$$. The formulas give $$A' = \frac{1}{2}$$ and
+$$C' = -\frac{1}{2}$$, and $$D' = E' = 0$$, so the equation in $$u$$ and $$v$$ is
+
+```math
+\frac{u^2}{2} - \frac{v^2}{2} = 1
+```
+
+So $$xy = 1$$ is the hyperbola $$\frac{x^2}{2} - \frac{y^2}{2} = 1$$ turned by $$\frac{\pi}{4}$$.
+Its vertex $$(\sqrt2, 0)$$ turns to $$G_{\pi/4}(\sqrt2, 0) = (1, 1)$$, and $$1 \cdot 1 = 1$$.
+
+This agrees with part 2 of :ref{#hyperbola-turn}, which turns $$x^2 - y^2 = 2$$ by $$\frac{\pi}{4}$$
+onto $$xy = 1$$.
+
+:::
+
+<TurnedHyperbola caption="The graph of x² + √3xy = 3, in blue, is the hyperbola u²/2 − v²/6 = 1 drawn on the green axes turned by π/6. Its asymptotes, dashed in orange, are the y-axis and the line x + √3y = 0." />
+
+:::example[A turn by π/6]
+
+Take $$x^2 + \sqrt3\,xy = 3$$, so $$A = 1$$, $$B = \sqrt3$$ and $$C = 0$$. Now $$A \ne C$$, and
+$$\tan 2\theta = \frac{\sqrt3}{1 - 0} = \sqrt3$$. The angle between $$0$$ and $$\pi$$ with tangent
+$$\sqrt3$$ is $$\frac{\pi}{3}$$, so $$\theta = \frac{\pi}{6}$$, with
+$$\cos\theta = \frac{\sqrt3}{2}$$ and $$\sin\theta = \frac{1}{2}$$
+(:ref{#trigonometry/sin-cos-30-60}). Then
+
+```math
+\begin{aligned}
+A' &= 1 \cdot \tfrac{3}{4} + \sqrt3 \cdot \tfrac{\sqrt3}{4} + 0 = \tfrac{3}{4} + \tfrac{3}{4} = \tfrac{3}{2} \\
+C' &= 1 \cdot \tfrac{1}{4} - \sqrt3 \cdot \tfrac{\sqrt3}{4} + 0 = \tfrac{1}{4} - \tfrac{3}{4} = -\tfrac{1}{2}
+\end{aligned}
+```
+
+The equation in $$u$$ and $$v$$ is $$\frac{3}{2}u^2 - \frac{1}{2}v^2 = 3$$, and dividing by $$3$$
+gives $$\frac{u^2}{2} - \frac{v^2}{6} = 1$$. So the curve is a hyperbola with $$a = \sqrt2$$ and
+$$b = \sqrt6$$, turned by $$\frac{\pi}{6}$$. Its vertex $$(\sqrt2, 0)$$ turns to
+
+```math
+G_{\pi/6}(\sqrt2, 0) = \Big(\sqrt2 \cdot \tfrac{\sqrt3}{2},\ \sqrt2 \cdot \tfrac{1}{2}\Big) = \Big(\tfrac{\sqrt6}{2},\ \tfrac{\sqrt2}{2}\Big)
+```
+
+and
+$$x^2 + \sqrt3\,xy = \frac{6}{4} + \sqrt3 \cdot \frac{\sqrt{12}}{4} = \frac{3}{2} + \frac{6}{4} = 3$$.
+
+:::
+
+## One number sorts the curve
+
+Turning the curve takes several lines of algebra, more than you need when all you want is its
+family. The coin sorter measured one thing, and a second-degree equation has one number that plays
+the same part: its discriminant $$B^2 - 4AC$$. Turning changes $$A$$, $$B$$ and $$C$$, but it leaves
+this number alone, and once the $$xy$$ term is gone the number is $$-4A'C'$$, whose sign says
+whether $$A'$$ and $$C'$$ agree.
+
+Check it on the two examples with $$\theta = \frac{\pi}{4}$$. For $$5x^2 - 6xy + 5y^2 = 8$$, the
+discriminant is $$36 - 100 = -64$$, and after the turn it is $$0 - 4 \cdot 2 \cdot 8 = -64$$. For
+$$xy = 1$$ it is $$1 - 0 = 1$$, and after the turn it is
+$$0 - 4 \cdot \frac{1}{2} \cdot \big({-\frac{1}{2}}\big) = 1$$.
+
+:::theorem[The discriminant tells the family]{#conic-discriminant}
+
+Take a second-degree equation $$Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$$.
+
+1. For every angle $$\theta$$, putting $$x = u\cos\theta - v\sin\theta$$ and
+   $$y = u\sin\theta + v\cos\theta$$ gives an equation $$A'u^2 + B'uv + C'v^2 + \dots = 0$$ with
+   $$B'^2 - 4A'C' = B^2 - 4AC$$.
+2. If $$B^2 - 4AC < 0$$, the graph is an ellipse, a single point or empty.
+3. If $$B^2 - 4AC = 0$$, the graph is a parabola, two parallel lines, one line or empty.
+4. If $$B^2 - 4AC > 0$$, the graph is a hyperbola or two crossing lines.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Conic_section#Invariants"}
+
+**Part 1.** In the proof of :ref{#remove-xy}, the substitution gave $$A'$$ and $$C'$$ as in that
+theorem and $$B' = (C - A)\sin 2\theta + B\cos 2\theta$$, for every $$\theta$$. Write $$c$$ and
+$$s$$ for $$\cos\theta$$ and $$\sin\theta$$ again. Adding and subtracting the formulas for $$A'$$
+and $$C'$$,
+
+```math
+\begin{aligned}
+A' + C' &= A(c^2 + s^2) + C(s^2 + c^2) = A + C &&\qquad \cos^2\theta + \sin^2\theta = 1 \\
+A' - C' &= (A - C)(c^2 - s^2) + 2B\,sc = (A - C)\cos 2\theta + B\sin 2\theta &&\qquad \text{double angles}
+\end{aligned}
+```
+
+using :ref{#trigonometry/pythagorean-identity} and :ref{#trigonometry/double-angle}. Square
+$$A' - C'$$ and $$B'$$ and add. The two cross terms are $$2(A - C)B\cos 2\theta\sin 2\theta$$ and
+its negative, so they cancel:
+
+```math
+\begin{aligned}
+(A' - C')^2 + B'^2 &= (A - C)^2(\cos^2 2\theta + \sin^2 2\theta) + B^2(\sin^2 2\theta + \cos^2 2\theta) &&\qquad \text{cross terms cancel} \\
+&= (A - C)^2 + B^2 &&\qquad \cos^2 2\theta + \sin^2 2\theta = 1
+\end{aligned}
+```
+
+Now $$4A'C' = (A' + C')^2 - (A' - C')^2$$, since multiplying out the right side leaves $$4A'C'$$. So
+
+```math
+\begin{aligned}
+B'^2 - 4A'C' &= B'^2 + (A' - C')^2 - (A' + C')^2 &&\qquad 4A'C' = (A' + C')^2 - (A' - C')^2 \\
+&= (A - C)^2 + B^2 - (A + C)^2 &&\qquad \text{the sum, and the sum of squares} \\
+&= B^2 - 4AC &&\qquad (A - C)^2 - (A + C)^2 = -4AC
+\end{aligned}
+```
+
+**Parts 2 to 4 when B = 0.** The discriminant is $$-4AC$$. It is negative exactly when $$AC > 0$$,
+when $$A$$ and $$C$$ have the same sign. It is $$0$$ exactly when one of them is $$0$$, and positive
+exactly when they have opposite signs. So :ref{#no-xy-term} gives each part.
+
+**Parts 2 to 4 when B ≠ 0.** Choose $$\theta$$ as in :ref{#remove-xy}, so that $$B' = 0$$, and by
+part 1, $$B^2 - 4AC = -4A'C'$$. The numbers $$A'$$ and $$C'$$ are not both $$0$$: the sum of squares
+in part 1 gives $$(A' - C')^2 = (A - C)^2 + B^2 > 0$$, so $$A' \ne C'$$. So :ref{#no-xy-term} sorts
+the graph of $$A'x^2 + C'y^2 + D'x + E'y + F = 0$$ by the sign of $$-4A'C'$$, which is the sign of
+$$B^2 - 4AC$$.
+
+By :ref{#remove-xy}, the graph we want is the turn $$G_\theta$$ of that graph. A turn is an isometry
+(:ref{#isometries/basic-isometries}), so by :ref{#isometries/composite-isometry} it sends an
+ellipse, a parabola or a hyperbola to another of the same kind, and it sends a point to a point and
+lines to lines (:ref{#isometries/isometry-lines}). Two different points stay different, because
+their distance is kept. So lines that cross at one point still cross at one point, parallel lines,
+which have no point in common, still have none, and the empty set stays empty.
+
+:::
+
+The name echoes the discriminant $$b^2 - 4ac$$ of a quadratic $$ax^2 + bx + c = 0$$
+(:ref{#quadratics/discriminant}), where the sign counts the solutions. The two are relatives rather
+than the same thing: here the sign of $$B^2 - 4AC$$ sorts a curve into its family, and the numbers
+$$D$$, $$E$$, $$F$$ then decide between the conic and its degenerate cases.
+
+In the next diagram, the sliders set $$A$$, $$B$$ and $$C$$ in $$Ax^2 + Bxy + Cy^2 = 4$$, and the
+green dashed lines are the $$u$$-axis and the $$v$$-axis of the turn that removes the $$xy$$ term.
+It starts at $$2.5x^2 - 3xy + 2.5y^2 = 4$$, the opening equation divided by $$2$$. Since
+$$D = E = 0$$ here, the parabola family can only show up as two parallel lines or as nothing: try
+$$A = 1$$, $$B = 2$$, $$C = 1$$, where the left side is $$(x + y)^2$$.
+
+<ConicSorter />
+
+## A method for any second-degree equation
+
+Putting the pieces together gives a method that recognises and draws the graph of any second-degree
+equation:
+
+1. **Read off the numbers** $$A$$, $$B$$, $$C$$, $$D$$, $$E$$, $$F$$, with signs.
+2. **Find the family** from the sign of $$B^2 - 4AC$$ (:ref{#conic-discriminant}).
+3. **Turn away the xy term** if $$B \ne 0$$: find $$\theta$$ and the numbers $$A'$$, $$C'$$, $$D'$$,
+   $$E'$$ from :ref{#remove-xy}.
+4. **Complete the squares** in the equation without an $$xy$$ term, and divide so that the right
+   side is $$1$$ (:ref{#no-xy-term}).
+5. **Draw it**: draw the standard curve slid by the numbers in the brackets, then turn the picture
+   by $$\theta$$.
+6. **Check a point** of the drawing in the original equation.
+
+:::example[A tilted parabola]
+
+Take $$x^2 + 2xy + y^2 + x - y = 0$$.
+
+1. The numbers are $$A = 1$$, $$B = 2$$, $$C = 1$$, $$D = 1$$, $$E = -1$$ and $$F = 0$$.
+2. The discriminant is $$4 - 4 \cdot 1 \cdot 1 = 0$$, so the graph is a parabola or a degenerate
+   case.
+3. Since $$A = C$$, $$\theta = \frac{\pi}{4}$$, and $$\cos\theta = \sin\theta = \frac{\sqrt2}{2}$$.
+   The formulas give $$A' = \frac{1}{2} + 1 + \frac{1}{2} = 2$$,
+   $$C' = \frac{1}{2} - 1 + \frac{1}{2} = 0$$, $$D' = \frac{\sqrt2}{2} - \frac{\sqrt2}{2} = 0$$ and
+   $$E' = -\frac{\sqrt2}{2} - \frac{\sqrt2}{2} = -\sqrt2$$.
+4. The equation in $$u$$ and $$v$$ is $$2u^2 - \sqrt2\,v = 0$$, which is $$v = \sqrt2\,u^2$$. There
+   is no square left to complete, so there is no slide.
+5. The graph of $$y = \sqrt2\,x^2$$ is a parabola with its vertex at $$O$$, opening up. Turned by
+   $$\frac{\pi}{4}$$, its axis lies along the $$v$$-axis, the line $$y = -x$$, and it opens up and
+   to the left.
+6. The point $$(1, \sqrt2)$$ is on $$y = \sqrt2\,x^2$$, and it turns to
+   $$G_{\pi/4}(1, \sqrt2) = \big(\frac{\sqrt2}{2} - 1, \frac{\sqrt2}{2} + 1\big)$$. For this point
+   $$x + y = \sqrt2$$ and $$x - y = -2$$. The first three terms of the equation are
+   $$(x + y)^2 = 2$$, and the last two are $$x - y = -2$$, so the left side is $$0$$.
+
+:::
+
+<TurnedParabola caption="The graph of x² + 2xy + y² + x − y = 0, in blue, is the parabola v = √2u² on the green axes turned by π/4. It opens along the v-axis, the line y = −x. The marked point P is (√2/2 − 1, √2/2 + 1)." />
+
+## Exercises
+
+:::::accordion[Exercises on recognising a curve from its equation, with solutions]
+
+::::exercise{#ex-general-equation-circle}
+
+Complete the squares in $$x^2 + y^2 + 4x - 6y - 12 = 0$$ and say what its graph is. Check your
+answer with one point.
+
+:::solution
+
+Group the terms and complete each square (:ref{#quadratics/complete-square}):
+
+```math
+\begin{aligned}
+(x^2 + 4x) + (y^2 - 6y) - 12 &= 0 &&\qquad \text{group} \\
+(x + 2)^2 - 4 + (y - 3)^2 - 9 - 12 &= 0 &&\qquad \text{complete each square} \\
+(x + 2)^2 + (y - 3)^2 &= 25 &&\qquad 4 + 9 + 12 = 25
+\end{aligned}
+```
+
+By :ref{#coordinates/circle-equation}, this is the circle of radius $$5$$ about $$(-2, 3)$$. The
+point $$(3, 3)$$ is $$5$$ to the right of the centre, and $$9 + 9 + 12 - 18 - 12 = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-general-equation-sort}
+
+Use the discriminant to name the family of each graph. Don't draw them.
+
+1. $$3x^2 + 2xy + y^2 = 5$$
+2. $$x^2 + 4xy + y^2 = 1$$
+3. $$4x^2 - 4xy + y^2 + 3x = 0$$
+4. $$xy + 2x = 7$$
+
+:::solution
+
+By :ref{#conic-discriminant}:
+
+1. $$B^2 - 4AC = 4 - 12 = -8 < 0$$: an ellipse, a point or nothing. Putting $$x = 0$$ gives
+   $$y^2 = 5$$, so the two points $$(0, \sqrt5)$$ and $$(0, -\sqrt5)$$ fit. A graph with two points
+   is neither empty nor a single point, so it is an ellipse.
+2. $$B^2 - 4AC = 16 - 4 = 12 > 0$$: a hyperbola or two crossing lines.
+3. $$B^2 - 4AC = 16 - 16 = 0$$: a parabola or a degenerate case.
+4. Here $$A = C = 0$$ and $$B = 1$$, so $$B^2 - 4AC = 1 > 0$$: a hyperbola or two crossing lines.
+
+:::
+
+::::
+
+::::exercise{#ex-general-equation-degenerate}
+
+Find the graph of each equation.
+
+1. $$x^2 - 4y^2 - 2x + 1 = 0$$
+2. $$x^2 + 2y^2 + 2x + 3 = 0$$
+
+:::solution
+
+1. The $$x$$ terms complete to $$(x - 1)^2 - 1$$, so the equation is $$(x - 1)^2 - 4y^2 = 0$$. The
+   left side factorises as $$(x - 1 - 2y)(x - 1 + 2y)$$, and a product is $$0$$ exactly when a
+   factor is. So the graph is the two lines $$x - 2y = 1$$ and $$x + 2y = 1$$, crossing at
+   $$(1, 0)$$. As a check, $$(3, 1)$$ is on the first line, and $$9 - 4 - 6 + 1 = 0$$.
+2. The $$x$$ terms complete to $$(x + 1)^2 - 1$$, so the equation is $$(x + 1)^2 + 2y^2 = -2$$. The
+   left side is never negative, so no point fits, and the graph is empty.
+
+:::
+
+::::
+
+::::exercise{#ex-general-equation-last-number}
+
+For which numbers $$k$$ is the graph of $$x^2 + 4y^2 - 2x + k = 0$$ an ellipse, a single point, or
+empty?
+
+:::solution
+
+Completing the square in $$x$$ gives $$(x - 1)^2 - 1 + 4y^2 + k = 0$$, so
+
+```math
+(x - 1)^2 + 4y^2 = 1 - k
+```
+
+The left side is never negative, and it is $$0$$ exactly at $$(1, 0)$$. So by the proof of
+:ref{#no-xy-term}:
+
+- for $$k < 1$$ the right side is positive, and the graph is an ellipse centred at $$(1, 0)$$
+- for $$k = 1$$ it is the single point $$(1, 0)$$
+- for $$k > 1$$ it is empty
+
+For example, $$k = -3$$ gives $$\frac{(x - 1)^2}{4} + y^2 = 1$$, an ellipse with half-widths $$2$$
+and $$1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-general-equation-quarter-turn}
+
+Show that the graph of $$3x^2 - 2xy + 3y^2 = 8$$ is an ellipse turned by $$\frac{\pi}{4}$$, and find
+its half-widths. Check one point.
+
+:::solution
+
+Here $$A = C = 3$$ and $$B = -2$$, so :ref{#remove-xy} takes $$\theta = \frac{\pi}{4}$$, with
+$$\cos\theta = \sin\theta = \frac{\sqrt2}{2}$$, so
+$$\cos^2\theta = \sin^2\theta = \sin\theta\cos\theta = \frac{1}{2}$$. Then
+
+```math
+A' = \tfrac{3}{2} - 1 + \tfrac{3}{2} = 2 \qquad C' = \tfrac{3}{2} + 1 + \tfrac{3}{2} = 4
+```
+
+and the equation in $$u$$ and $$v$$ is $$2u^2 + 4v^2 = 8$$, or
+$$\frac{u^2}{4} + \frac{v^2}{2} = 1$$. So the graph is the ellipse with half-widths $$2$$ and
+$$\sqrt2$$ turned by $$\frac{\pi}{4}$$. The discriminant agrees:
+$$4 - 36 = -32 = -4 \cdot 2 \cdot 4$$. As a check, the end $$(2, 0)$$ turns to $$(\sqrt2, \sqrt2)$$,
+and $$6 - 4 + 6 = 8$$.
+
+:::
+
+::::
+
+::::exercise{#ex-general-equation-sixth-turn}
+
+Find the angle $$\theta$$ that removes the $$xy$$ term from $$11x^2 + 10\sqrt3\,xy + y^2 = 16$$, and
+show that the graph is a hyperbola. Check one point.
+
+:::solution
+
+Here $$A = 11$$, $$B = 10\sqrt3$$ and $$C = 1$$, so
+$$\tan 2\theta = \frac{10\sqrt3}{11 - 1} = \sqrt3$$. The angle between $$0$$ and $$\pi$$ with that
+tangent is $$\frac{\pi}{3}$$, so $$\theta = \frac{\pi}{6}$$, with $$\cos^2\theta = \frac{3}{4}$$,
+$$\sin^2\theta = \frac{1}{4}$$ and $$\sin\theta\cos\theta = \frac{\sqrt3}{4}$$. By :ref{#remove-xy},
+
+```math
+\begin{aligned}
+A' &= \tfrac{33}{4} + 10\sqrt3 \cdot \tfrac{\sqrt3}{4} + \tfrac{1}{4} = \tfrac{33 + 30 + 1}{4} = 16 \\
+C' &= \tfrac{11}{4} - 10\sqrt3 \cdot \tfrac{\sqrt3}{4} + \tfrac{3}{4} = \tfrac{11 - 30 + 3}{4} = -4
+\end{aligned}
+```
+
+The equation in $$u$$ and $$v$$ is $$16u^2 - 4v^2 = 16$$, or $$u^2 - \frac{v^2}{4} = 1$$: a
+hyperbola with $$a = 1$$ and $$b = 2$$, turned by $$\frac{\pi}{6}$$. The discriminant agrees:
+$$300 - 44 = 256 = -4 \cdot 16 \cdot (-4)$$. As a check, the vertex $$(1, 0)$$ turns to
+$$\big(\frac{\sqrt3}{2}, \frac{1}{2}\big)$$, and
+$$11 \cdot \frac{3}{4} + 10\sqrt3 \cdot \frac{\sqrt3}{4} + \frac{1}{4} = \frac{33 + 30 + 1}{4} = 16$$.
+
+:::
+
+::::
+
+::::exercise{#ex-general-equation-without-turning}
+
+The proof of :ref{#conic-discriminant} showed that a turn keeps $$A + C$$, as well as $$B^2 - 4AC$$.
+Use these two facts, without doing the turn, to find the numbers $$A'$$ and $$C'$$ for
+$$5x^2 - 6xy + 5y^2 = 8$$ after the $$xy$$ term has been turned away. Compare with the guide.
+
+:::solution
+
+After the turn $$B' = 0$$, so
+
+```math
+A' + C' = A + C = 10 \qquad -4A'C' = B^2 - 4AC = 36 - 100 = -64
+```
+
+So $$A'C' = 16$$. Two numbers with sum $$10$$ and product $$16$$ are the solutions of
+$$t^2 - 10t + 16 = 0$$ (:ref{#quadratics/vieta}), which factorises as $$(t - 2)(t - 8) = 0$$. So
+$$A'$$ and $$C'$$ are $$2$$ and $$8$$ in some order, and with $$\theta = \frac{\pi}{4}$$ the guide
+found $$A' = 2$$ and $$C' = 8$$.
+
+:::
+
+::::
+
+::::exercise{#ex-general-equation-always-ellipse}
+
+Let $$A > 0$$ and $$B^2 - 4AC < 0$$. Prove that the graph of $$Ax^2 + Bxy + Cy^2 = 1$$ is an
+ellipse, never a single point or empty.
+
+:::solution
+
+First, $$C > 0$$: we have $$4AC > B^2 \ge 0$$, so $$AC > 0$$, and $$A > 0$$. If $$B = 0$$, the
+equation is $$Ax^2 + Cy^2 = 1$$ with both numbers positive, which is the ellipse
+$$\frac{x^2}{1/A} + \frac{y^2}{1/C} = 1$$.
+
+If $$B \ne 0$$, turn by the $$\theta$$ of :ref{#remove-xy}. The equation becomes
+$$A'u^2 + C'v^2 = 1$$, since $$D = E = 0$$ gives $$D' = E' = 0$$. By :ref{#conic-discriminant},
+$$-4A'C' = B^2 - 4AC < 0$$, so $$A'C' > 0$$ and the two have the same sign. Their sum is
+$$A' + C' = A + C > 0$$, so both are positive. Then $$A'u^2 + C'v^2 = 1$$ is an ellipse, and by
+:ref{#remove-xy} our graph is that ellipse turned by $$\theta$$, which is an ellipse
+(:ref{#isometries/composite-isometry}).
+
+:::
+
+::::
+
+:::::

@@ -1,0 +1,146 @@
+---
+title: Introduction
+description:
+  Parabolas, ellipses and hyperbolas as equations moved into place, their foci, the cone they all
+  come from, and how to tell them apart from an equation.
+---
+
+Imagine shining a torch at a wall in a dark room. Pointed straight at the wall, the patch of light
+is a circle. Tilt the torch and the circle stretches into an oval, and tilt it further still and the
+patch runs off along the wall without end, its edge opening out like the arms of a U. The edge of
+that patch traces the three curves of this chapter: the **ellipse**, the **parabola** and the
+**hyperbola**. In this chapter we'll find their equations, prove what makes each one special, and
+see why the torch beam produces all three.
+
+One idea carries the chapter: changing an equation moves its graph in a way you can predict. Replace
+$$x$$ by $$x - 3$$ and the graph slides $$3$$ to the right. Replace $$x$$ by $$\frac{x}{2}$$ and it
+stretches to twice its width. So we only need to understand three standard equations well. Every
+other parabola, ellipse or hyperbola is one of them slid, turned or flipped into place, and its
+equation tells you how.
+
+## What this chapter builds on
+
+The curves live in the coordinate plane of [Coordinates](../coordinates/introduction.mdx), and the
+moves come from [Adding and scaling points](../adding-and-scaling-points/introduction.mdx) and the
+formula for a turn in [Trigonometry](../trigonometry/rotations.mdx). The only new fact taken as
+given is a piece of physics, the law of reflection for mirrors (:ref{#reflection-law}), which the
+chapter uses to explain satellite dishes. Everything else is proved.
+
+Along the way the chapter keeps two promises from earlier chapters:
+
+- **The graph of a quadratic**: [Quadratics](../quadratics/parabolas.mdx) took from the picture that
+  the graph of $$y = ax^2 + bx + c$$ is a U-shaped curve with an axis of symmetry and a lowest or
+  highest point. Here it is proved (:ref{#quadratic-parabola}, :ref{#parabolas-remark-proved}).
+- **The ellipse**: [Stretching](../area-and-scaling/stretching.mdx) built the ellipse by stretching
+  a disc and found its area. Here we find the equation of its edge (:ref{#ellipse-equation}) and
+  prove the gardener's two-peg description (:ref{#ellipse-foci}).
+
+## Guides in this chapter
+
+The chapter has nine guides:
+
+1. [Sliding and stretching graphs](./sliding-and-stretching.mdx): what slides, stretches, flips and
+   turns do to an equation
+2. [Parabolas](./parabolas.mdx): every quadratic graph is $$y = ax^2$$ slid into place, all
+   parabolas have the same shape, and tangent lines
+3. [The focus of a parabola](./focus-and-directrix.mdx): the points equally far from a point and a
+   line, and why a satellite dish sends every signal to one spot
+4. [Ellipses](./ellipses.mdx): the stretched circle, the gardener's loop of string, and eccentricity
+5. [Hyperbolas](./hyperbolas.mdx): $$xy = c$$, turning it into a standard form, asymptotes and foci
+6. [Slicing a cone](./slicing-a-cone.mdx): why the torch beam gives all three curves, and one rule
+   with a focus and a line that covers them all
+7. [Recognising a curve from its equation](./general-equation.mdx): any equation with $$x^2$$,
+   $$xy$$ and $$y^2$$, turning away the $$xy$$ term, and the number that names the family
+8. [Test yourself](./test-yourself.mdx): a multiple choice quiz on the ideas in the chapter
+9. [Exercises](./exercises.mdx): exercises on the whole chapter, with worked solutions
+
+The summary below collects every definition and rule from the chapter, for reference while you read.
+
+{/* Keep this summary in sync with the guides whenever they change. */}
+
+:::accordion[Summary of definitions and rules]
+
+**Definitions**
+
+| Term                                  | Meaning                                                                          |
+| ------------------------------------- | -------------------------------------------------------------------------------- |
+| :ref{#axis-stretch}                   | $$D_{a,b}(x, y) = (ax, by)$$, a stretch by $$a$$ across and $$b$$ up             |
+| :ref{#parabola-definition}            | The graph of $$y = ax^2$$ moved by an isometry; the image of $$O$$ is the vertex |
+| :ref{#parabola-tangent-def}           | A line meeting a parabola exactly once, not parallel to its axis                 |
+| :ref{#focus-directrix}                | The points $$P$$ with $$d(P, F) = d(P, L)$$                                      |
+| :ref{#ellipse-definition}             | The graph of $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$ moved by an isometry      |
+| :ref{#ellipse-eccentricity}           | $$e = \frac{c}{a}$$ with $$c = \sqrt{a^2 - b^2}$$, so $$0 \le e < 1$$            |
+| :ref{#hyperbola-definition}           | The graph of $$\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$$ moved by an isometry      |
+| :ref{#hyperbola-eccentricity}         | $$e = \frac{c}{a}$$ with $$c = \sqrt{a^2 + b^2}$$, so $$e > 1$$                  |
+| :ref{#cone}                           | The points of space with $$x^2 + y^2 = z^2$$                                     |
+| :ref{#general-equation-second-degree} | $$Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$$, with discriminant $$B^2 - 4AC$$         |
+| :ref{#degenerate-conic}               | Nothing, one point, one line, two parallel lines or two crossing lines           |
+
+**Taken as given**
+
+| Rule                  | Statement                                                           |
+| --------------------- | ------------------------------------------------------------------- |
+| :ref{#reflection-law} | A mirror sends light along the mirror image of its straight-on path |
+
+**Moving graphs**
+
+| Result                                    | Statement                                                                                      |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| :ref{#slide-graph}                        | The slide by $$(h, k)$$ sends the graph of $$E(x, y)$$ to the graph of $$E(x - h, y - k)$$     |
+| :ref{#sliding-and-stretching-point-slope} | The line through $$(h, k)$$ with slope $$m$$ is $$y - k = m(x - h)$$                           |
+| :ref{#axis-stretch-two}                   | $$D_{a,b}$$ is a stretch away from the $$y$$-axis then one away from the $$x$$-axis            |
+| :ref{#stretch-graph}                      | $$D_{a,b}$$ sends the graph of $$E(x, y)$$ to the graph of $$E(\frac{x}{a}, \frac{y}{b})$$     |
+| :ref{#flip-graph}                         | The flips give $$E(-x, y)$$, $$E(x, -y)$$ and $$E(y, x)$$                                      |
+| :ref{#turn-graph}                         | The turn by $$\varphi$$ gives $$E(x\cos\varphi + y\sin\varphi, -x\sin\varphi + y\cos\varphi)$$ |
+
+**Parabolas**
+
+| Result                                      | Statement                                                                                      |
+| ------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| :ref{#quadratic-parabola}                   | $$y = ax^2 + bx + c$$ is $$y = ax^2$$ slid by $$(-\frac{b}{2a}, c - \frac{b^2}{4a})$$          |
+| :ref{#parabolas-remark-proved}              | It is symmetric in $$x = h$$, with lowest point when $$a > 0$$ and highest when $$a < 0$$      |
+| :ref{#parabola-zoom}                        | Every parabola is similar to $$y = x^2$$                                                       |
+| :ref{#line-parabola}                        | A line meets a parabola in $$2$$, $$1$$ or $$0$$ points, by a discriminant                     |
+| :ref{#parabola-tangent}                     | The tangent to $$y = ax^2$$ at $$(p, ap^2)$$ is $$y = 2apx - ap^2$$                            |
+| :ref{#parabolas-vertex-axis}                | However a parabola is placed, its vertex and axis come out the same                            |
+| :ref{#focus-parabola}                       | The points equally far from $$(0, p)$$ and $$y = -p$$ form $$y = \frac{x^2}{4p}$$              |
+| :ref{#focus-and-directrix-moves}            | An isometry carries a focus and directrix along with the curve                                 |
+| :ref{#parabola-focus-exists}                | Every parabola has a focus and a directrix, and every such curve is a parabola                 |
+| :ref{#focus-and-directrix-tangent}          | The tangent at $$P$$ is the perpendicular bisector of $$F$$ and the foot $$N$$                 |
+| :ref{#parabola-reflection}                  | Light arriving parallel to the axis reflects through the focus                                 |
+| :ref{#focus-and-directrix-every-tangent}    | On any parabola the tangent at $$P$$ is the perpendicular bisector of $$F$$ and the foot $$N$$ |
+| :ref{#focus-and-directrix-every-reflection} | On any parabola, light arriving parallel to the axis reflects through the focus                |
+
+**Ellipses**
+
+| Result                          | Statement                                                                       |
+| ------------------------------- | ------------------------------------------------------------------------------- |
+| :ref{#ellipse-equation}         | $$D_{a,b}$$ sends the unit circle to $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$  |
+| :ref{#ellipses-parametrisation} | The points of the ellipse are $$(a\cos t, b\sin t)$$                            |
+| :ref{#ellipse-foci}             | $$d(P, F_1) + d(P, F_2) = 2a$$ exactly on the ellipse, with foci $$(\pm c, 0)$$ |
+| :ref{#ellipses-moved-foci}      | A moved ellipse keeps the sum property with its moved foci                      |
+| :ref{#ellipses-zoom}            | A zoom keeps $$\frac{b}{a}$$, and the same ratio means similar                  |
+| :ref{#ellipses-reflection}      | A ray from one focus reflects through the other (not proved here)               |
+
+**Hyperbolas**
+
+| Result                          | Statement                                                                    |
+| ------------------------------- | ---------------------------------------------------------------------------- |
+| :ref{#hyperbolas-moved-product} | $$xy + px + qy + r = 0$$ is $$(x + q)(y + p) = pq - r$$                      |
+| :ref{#hyperbola-turn}           | The turn by $$\frac{\pi}{4}$$ sends $$xy = c$$ to $$y^2 - x^2 = 2c$$         |
+| :ref{#hyperbola-asymptotes}     | The curve never meets $$y = \pm\frac{b}{a}x$$ and comes as close as you like |
+| :ref{#hyperbola-foci}           | $$\lvert d(P, F_1) - d(P, F_2) \rvert = 2a$$ exactly on the hyperbola        |
+
+**The cone and the general equation**
+
+| Result                                 | Statement                                                                                                                       |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| :ref{#slicing-a-cone-flat-coordinates} | $$u = x\sqrt{1 + m^2}$$, $$v = y$$ are distance-keeping coordinates on $$z = mx + 1$$                                           |
+| :ref{#cone-slices}                     | The plane $$z = mx + 1$$ cuts a circle, an ellipse, a parabola or a hyperbola as $$m = 0$$, $$0 < m < 1$$, $$m = 1$$, $$m > 1$$ |
+| :ref{#slicing-a-cone-move-into-place}  | An isometry moves a point to $$O$$ and a line not through it to $$x = -d$$, keeping distances to the line                       |
+| :ref{#focus-directrix-e}               | $$d(P, F) = e \cdot d(P, L)$$ gives an ellipse, a parabola or a hyperbola as $$e < 1$$, $$e = 1$$, $$e > 1$$                    |
+| :ref{#no-xy-term}                      | Without an $$xy$$ term, the signs of $$A$$ and $$C$$ name the family                                                            |
+| :ref{#remove-xy}                       | Turning by $$\theta$$ with $$\tan 2\theta = \frac{B}{A - C}$$ removes the $$xy$$ term                                           |
+| :ref{#conic-discriminant}              | $$B^2 - 4AC$$ is unchanged by turns: negative ellipse, zero parabola, positive hyperbola, or a degenerate case                  |
+
+:::

@@ -1,0 +1,839 @@
+---
+title: Slicing a cone
+description:
+  The double cone in space, its slices by tilted planes (circles, ellipses, parabolas and
+  hyperbolas), and one rule with a focus, a line and a ratio e that draws all three curves.
+---
+
+Imagine standing in a dark room and shining a torch straight at a wall. The patch of light is a
+round disc. Now tilt the torch upwards, a little at a time. The patch stretches into an oval, and
+the oval grows longer the more you tilt. Tilt until the top edge of the beam runs parallel to the
+wall, and the patch no longer closes up: it runs up the wall without end. Tilt further and its edge
+opens out even more widely.
+
+The beam of light is a cone, and the wall slices through it. The edges of the patches are the curves
+of this chapter: a circle, then ellipses, then a parabola at the moment the beam's edge is parallel
+to the wall, and then a hyperbola. In this guide we'll prove that slicing a cone gives exactly these
+curves, and then find one rule, with a single number $$e$$, that draws all three.
+
+## A cone in space
+
+Picture two ice-cream cones balanced tip to tip, with their axes on one upright line, and imagine
+each one going on upwards or downwards forever. That is a **double cone**. Cut it across at any
+height and the cut is a circle, which grows as you move away from the tip. In the cone we'll use,
+the radius of that circle equals the height above or below the tip.
+
+Put the tip at the origin $$O$$ of space (:ref{#coordinates/coordinate-space}) and the axis along
+the $$z$$-axis. At height $$z$$ the cut is the circle of radius $$\lvert z \rvert$$ around the axis,
+and by :ref{#coordinates/circle-equation} its points are the $$(x, y, z)$$ with $$x^2 + y^2 = z^2$$.
+
+:::definition[The double cone]{#cone}
+
+The **double cone** is the set of all points $$(x, y, z)$$ of space with
+
+```math
+x^2 + y^2 = z^2
+```
+
+The points with $$z \ge 0$$ form the **upper half** and the points with $$z \le 0$$ the **lower
+half**. The two halves meet at the **tip** $$O = (0, 0, 0)$$.
+
+:::
+
+As a check, the point $$(3, 4, 5)$$ is on the cone, since $$9 + 16 = 25$$, and so is $$(3, 4, -5)$$
+on the lower half. The point $$(1, 1, 1)$$ is not, since $$1 + 1 = 2$$ and $$1^2 = 1$$.
+
+The torch beam is one half of a double cone, with the bulb at the tip. In the cone of the
+definition, each side line climbs one unit for each unit it moves away from the axis: the points
+$$(x, 0, x)$$ make a line of slope $$1$$, at $$45^\circ$$ to the floor. The pictures below cut the
+cone with three tilted planes, and each cut is one of the curves we have met.
+
+<ConeSlices caption="The double cone x² + y² = z² cut by three tilted planes. The plane less steep than the cone's side cuts an ellipse; the plane as steep as the side cuts a parabola; the steeper plane cuts both halves, in the two branches of a hyperbola. Dashed parts run round the back of the cone." />
+
+## Laying a tilted plane flat
+
+A tilted sheet of card can be lifted off and laid flat on the table without bending or stretching
+it. A curve drawn on the card keeps its shape when you do that. So to see what shape a slice of the
+cone is, we lay the slicing plane flat, and read off the curve in ordinary coordinates of the plane
+$$\mathbb{R}^2$$.
+
+The planes we slice with are tilted like a ramp: they climb as you move in the $$x$$ direction and
+stay level in the $$y$$ direction. For a number $$m$$, the points $$(x, y, z)$$ with $$z = mx + 1$$
+make the **plane** $$z = mx + 1$$. It passes $$1$$ unit above the tip, and it climbs $$m$$ units for
+each unit along $$x$$, so $$m$$ is its slope, as for a line.
+
+Distances on a ramp are longer than on the floor below it. Take $$m = \frac{1}{2}$$ and the two
+points $$P = (0, 0, 1)$$ and $$Q = (2, 0, 2)$$ of the plane. On the floor they are $$2$$ apart
+across, but by :ref{#coordinates/space-distance}
+
+```math
+d(P, Q) = \sqrt{2^2 + 0^2 + 1^2} = \sqrt{5} = 2 \cdot \frac{\sqrt5}{2}
+```
+
+So every step along $$x$$ on this ramp is $$\frac{\sqrt5}{2} \approx 1.12$$ times as long as its
+shadow on the floor. In general the factor is $$\sqrt{1 + m^2}$$, and measuring with it gives
+coordinates on the plane that keep distances.
+
+:::lemma[Flat coordinates on a tilted plane]{#slicing-a-cone-flat-coordinates}
+
+Let $$m$$ be a number and $$k = \sqrt{1 + m^2}$$. Give each point $$(x, y, mx + 1)$$ of the plane
+$$z = mx + 1$$ the **flat coordinates**
+
+```math
+u = kx \qquad v = y
+```
+
+Then:
+
+1. **One point for each pair**: each pair $$(u, v)$$ is the flat coordinates of exactly one point of
+   the plane, namely $$\left(\frac{u}{k}, v, \frac{mu}{k} + 1\right)$$
+2. **Distances kept**: for any two points $$P$$ and $$Q$$ of the plane, the distance from $$P$$ to
+   $$Q$$ in space equals the distance between their flat coordinates in $$\mathbb{R}^2$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_distance#Higher_dimensions"}
+
+**Part 1.** Since $$k > 0$$, the equation $$u = kx$$ has the one solution $$x = \frac{u}{k}$$, and
+then $$y = v$$ and $$z = mx + 1 = \frac{mu}{k} + 1$$.
+
+**Part 2.** Let $$P = (x_1, y_1, mx_1 + 1)$$ and $$Q = (x_2, y_2, mx_2 + 1)$$. The difference of
+their heights is $$(mx_2 + 1) - (mx_1 + 1) = m(x_2 - x_1)$$. By :ref{#coordinates/space-distance},
+
+```math
+\begin{aligned}
+d(P, Q)^2 &= (x_2 - x_1)^2 + (y_2 - y_1)^2 + m^2(x_2 - x_1)^2 && \text{distance in space} \\
+&= (1 + m^2)(x_2 - x_1)^2 + (y_2 - y_1)^2 && \text{collect the } x \text{ terms} \\
+&= (kx_2 - kx_1)^2 + (y_2 - y_1)^2 && \text{since } k^2 = 1 + m^2 \\
+&= (u_2 - u_1)^2 + (v_2 - v_1)^2 && \text{flat coordinates}
+\end{aligned}
+```
+
+The last line is the square of the distance between $$(u_1, v_1)$$ and $$(u_2, v_2)$$, by
+:ref{#coordinates/distance-formula}. Both distances are not negative, so they are equal.
+
+:::
+
+So a slice of the cone, written in flat coordinates, is a curve in $$\mathbb{R}^2$$ with exactly the
+distances of the slice itself. From here on, "the slice is an ellipse" means that in flat
+coordinates it is the graph of an ellipse (:ref{#ellipse-definition}), and the same for the other
+curves.
+
+## Three slices with numbers
+
+**Less steep than the side.** Take $$m = \frac{1}{2}$$. A point $$(x, y, \frac{x}{2} + 1)$$ of the
+plane is on the cone exactly when $$x^2 + y^2 = \left(\frac{x}{2} + 1\right)^2$$:
+
+```math
+\begin{aligned}
+x^2 + y^2 &= \tfrac{1}{4}x^2 + x + 1 && \text{expand the square} \\
+\tfrac{3}{4}x^2 - x + y^2 &= 1 && \text{take } \tfrac{1}{4}x^2 + x \text{ from both sides} \\
+\tfrac{3}{4}\left(x - \tfrac{2}{3}\right)^2 - \tfrac{1}{3} + y^2 &= 1 && \text{complete the square} \\
+\tfrac{3}{4}\left(x - \tfrac{2}{3}\right)^2 + y^2 &= \tfrac{4}{3} && \text{add } \tfrac{1}{3} \\
+\frac{\left(x - \frac{2}{3}\right)^2}{16/9} + \frac{y^2}{4/3} &= 1 && \text{divide by } \tfrac{4}{3}
+\end{aligned}
+```
+
+The last step is the one people tend to skip. An ellipse's equation has $$1$$ on the right, so
+divide by whatever is there first. Now switch to flat coordinates. Here $$k = \frac{\sqrt5}{2}$$, so
+$$x = \frac{2u}{\sqrt5}$$, and
+$$x - \frac{2}{3} = \frac{2}{\sqrt5}\left(u - \frac{\sqrt5}{3}\right)$$. Squaring brings a factor
+$$\frac{4}{5}$$, which turns $$\frac{16}{9}$$ into
+$$\frac{16}{9} \cdot \frac{5}{4} = \frac{20}{9}$$:
+
+```math
+\frac{\left(u - \frac{\sqrt5}{3}\right)^2}{20/9} + \frac{v^2}{4/3} = 1
+```
+
+By :ref{#slide-graph}, this is the ellipse with half-widths $$a = \frac{2\sqrt5}{3} \approx 1.49$$
+and $$b = \frac{2}{\sqrt3} \approx 1.15$$, slid right by $$\frac{\sqrt5}{3}$$. As a check, the ends
+of the long axis are where $$y = 0$$, so $$\frac{3}{4}x^2 - x - 1 = 0$$, that is
+$$(3x + 2)(x - 2) = 0$$. They are $$(2, 0, 2)$$ and $$\left(-\frac{2}{3}, 0, \frac{2}{3}\right)$$,
+and by :ref{#coordinates/space-distance} their distance apart is
+
+```math
+\sqrt{\left(\tfrac{8}{3}\right)^2 + \left(\tfrac{4}{3}\right)^2} = \sqrt{\tfrac{80}{9}} = \tfrac{4\sqrt5}{3} = 2a
+```
+
+**Steeper than the side.** Take $$m = 2$$. The same steps give
+
+```math
+\begin{aligned}
+x^2 + y^2 &= 4x^2 + 4x + 1 && \text{the cone, with } z = 2x + 1 \\
+-3x^2 - 4x + y^2 &= 1 && \text{take } 4x^2 + 4x \text{ from both sides} \\
+-3\left(x + \tfrac{2}{3}\right)^2 + \tfrac{4}{3} + y^2 &= 1 && \text{complete the square} \\
+9\left(x + \tfrac{2}{3}\right)^2 - 3y^2 &= 1 && \text{take } \tfrac{4}{3} \text{, multiply by } -3
+\end{aligned}
+```
+
+Here $$k = \sqrt5$$ and $$x = \frac{u}{\sqrt5}$$, so $$9\left(x + \frac{2}{3}\right)^2$$ becomes
+$$\frac{9}{5}\left(u + \frac{2\sqrt5}{3}\right)^2$$, and the slice in flat coordinates is
+
+```math
+\frac{\left(u + \frac{2\sqrt5}{3}\right)^2}{5/9} - \frac{v^2}{1/3} = 1
+```
+
+That is a hyperbola (:ref{#hyperbola-definition}), with $$a = \frac{\sqrt5}{3}$$ and
+$$b = \frac{1}{\sqrt3}$$, slid left by $$\frac{2\sqrt5}{3}$$. Its two vertices are where $$y = 0$$:
+$$3x^2 + 4x + 1 = 0$$ gives $$x = -\frac{1}{3}$$ or $$x = -1$$, at the points
+$$\left(-\frac{1}{3}, 0, \frac{1}{3}\right)$$ and $$(-1, 0, -1)$$. One is on the upper half of the
+cone and one on the lower half. The steep plane cuts both halves, and each half holds one branch.
+
+**As steep as the side.** Take $$m = 1$$. Now the $$x^2$$ terms cancel:
+
+```math
+\begin{aligned}
+x^2 + y^2 &= x^2 + 2x + 1 && \text{the cone, with } z = x + 1 \\
+y^2 &= 2x + 1 && \text{take } x^2 \text{ from both sides}
+\end{aligned}
+```
+
+With $$k = \sqrt2$$, put $$x = \frac{u}{\sqrt2}$$ and $$y = v$$: then $$v^2 = \sqrt2\,u + 1$$, so
+$$u = \frac{v^2 - 1}{\sqrt2}$$, a parabola lying on its side. As a check, $$(4, 3, 5)$$ is on the
+cone and on the plane $$z = x + 1$$. Its flat coordinates are $$u = 4\sqrt2$$ and $$v = 3$$, and
+$$\frac{9 - 1}{\sqrt2} = \frac{8}{\sqrt2} = 4\sqrt2$$.
+
+The torch scene fits these numbers. The torch lights only one half of the cone, so the patch on the
+wall shows one branch of the hyperbola. The other branch would need light shining backwards out of
+the torch.
+
+## Every slice
+
+The three cases follow one pattern, decided by how $$m$$ compares with $$1$$, the slope of the
+cone's side. Changing $$m$$ changes the equation, and the picture changes in the way the equation
+predicts: the sign in front of $$x^2$$ flips as $$m$$ passes $$1$$.
+
+You can see the three cases side on. In the upright plane $$y = 0$$ the cone is $$x^2 = z^2$$, the
+two lines $$z = x$$ and $$z = -x$$, and the plane $$z = mx + 1$$ is the line of slope $$m$$ through
+$$(0, 1)$$. For $$m = \frac{1}{2}$$, the line crosses the two sides at $$(2, 2)$$ and
+$$\left(-\frac{2}{3}, \frac{2}{3}\right)$$, the ends of the long axis we found with numbers.
+
+```plane
+scale 1.1
+point X1 -3.4 0 hidden
+point X2 3.4 0 hidden
+point Z1 0 -3.3 hidden
+point Z2 0 3.4 hidden
+point O 0 0 se
+point C1 -3.3 -3.3 hidden
+point C2 3.3 3.3 hidden
+point C3 -3.3 3.3 hidden
+point C4 3.3 -3.3 hidden
+point A1 -3.4 -0.7 hidden
+point A2 3.4 2.7 hidden
+point B1 -3.4 -2.4 hidden
+point B2 2.3 3.3 hidden
+point H1 -2.15 -3.3 hidden
+point H2 1.15 3.3 hidden
+segment X1 X2 color=muted
+segment Z1 Z2 color=muted
+segment C1 C2 color=orange
+segment C3 C4 color=orange
+segment A1 A2 color=blue
+segment B1 B2 color=purple
+segment H1 H2 color=green
+text 3.7 0.3 "x"
+text 0.3 3.5 "z"
+text 3.75 2.35 "m = ½"
+text 2.85 3.6 "m = 1"
+text 1.45 3.6 "m = 2"
+text -2.6 3.6 "cone"
+caption "The cone and the slicing planes seen side on, in the upright plane y = 0. The cone's sides are the lines z = x and z = −x (orange), and each plane z = mx + 1 is a line of slope m crossing the z-axis at 1. The line with m = ½ meets both sides above the tip, the line with m = 1 is parallel to one side, and the line with m = 2 meets one side above the tip and one below."
+```
+
+:::theorem[Slices of a cone]{#cone-slices}
+
+Let $$m \ge 0$$, let $$k = \sqrt{1 + m^2}$$, and give the plane $$z = mx + 1$$ the flat coordinates
+$$(u, v)$$ of :ref{#slicing-a-cone-flat-coordinates}. For $$m \ne 1$$ write
+$$u_0 = \frac{km}{1 - m^2}$$. In flat coordinates, the points where the plane meets the double cone
+(:ref{#cone}) make:
+
+1. **When m = 0**: the circle $$u^2 + v^2 = 1$$
+2. **When 0 < m < 1**: an ellipse, the graph of $$\frac{(u - u_0)^2}{a^2} + \frac{v^2}{b^2} = 1$$
+   with $$a = \frac{k}{1 - m^2}$$ and $$b = \frac{1}{\sqrt{1 - m^2}}$$, where $$a \ge b$$
+3. **When m = 1**: a parabola, the graph of $$u = \frac{v^2 - 1}{\sqrt2}$$
+4. **When m > 1**: a hyperbola, the graph of $$\frac{(u - u_0)^2}{a^2} - \frac{v^2}{b^2} = 1$$ with
+   $$a = \frac{k}{m^2 - 1}$$ and $$b = \frac{1}{\sqrt{m^2 - 1}}$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Conic_section#Definition"}
+
+**Step 1: the equation of the slice.** A point of the plane is $$(x, y, mx + 1)$$, and by
+:ref{#cone} it is on the cone exactly when
+
+```math
+\begin{aligned}
+x^2 + y^2 &= (mx + 1)^2 && \text{the cone, with } z = mx + 1 \\
+x^2 + y^2 &= m^2x^2 + 2mx + 1 && \text{expand the square} \\
+(1 - m^2)x^2 - 2mx + y^2 &= 1 && \text{take } m^2x^2 + 2mx \text{ from both sides}
+\end{aligned}
+```
+
+**Step 2: the level plane.** When $$m = 0$$, $$k = 1$$, so $$u = x$$ and $$v = y$$, and the equation
+is $$u^2 + v^2 = 1$$. By :ref{#coordinates/circle-equation} that is the circle with centre
+$$(0, 0)$$ and radius $$1$$.
+
+**Step 3: the plane as steep as the side.** When $$m = 1$$, the equation is $$-2x + y^2 = 1$$. Put
+$$x = \frac{u}{\sqrt2}$$ and $$y = v$$:
+
+```math
+\begin{aligned}
+-\sqrt2\,u + v^2 &= 1 && \text{since } 2x = \sqrt2\,u \\
+u &= \frac{v^2 - 1}{\sqrt2} && \text{solve for } u
+\end{aligned}
+```
+
+Swapping the letters gives $$v = \frac{u^2}{\sqrt2} - \frac{1}{\sqrt2}$$, which by
+:ref{#slide-graph} is the graph of $$v = \frac{u^2}{\sqrt2}$$ slid down by $$\frac{1}{\sqrt2}$$. By
+:ref{#flip-graph}, the slice is the image of that graph under the flip in the line $$v = u$$. So the
+slice is the graph of $$v = \frac{u^2}{\sqrt2}$$ moved by a slide and then a flip, which is a
+parabola (:ref{#parabola-definition}).
+
+**Step 4: complete the square.** From now on $$m \ne 1$$, so $$1 - m^2 \ne 0$$. Write
+$$h = \frac{m}{1 - m^2}$$, so that $$2m = 2h(1 - m^2)$$. Then
+
+```math
+\begin{aligned}
+(1 - m^2)x^2 - 2mx &= (1 - m^2)(x^2 - 2hx) && \text{take out } 1 - m^2 \\
+&= (1 - m^2)(x - h)^2 - (1 - m^2)h^2 && \text{complete the square} \\
+&= (1 - m^2)(x - h)^2 - \frac{m^2}{1 - m^2} && \text{since } (1 - m^2)h^2 = \frac{m^2}{1 - m^2}
+\end{aligned}
+```
+
+Put this into the equation from step 1, and use $$1 + \frac{m^2}{1 - m^2} = \frac{1}{1 - m^2}$$:
+
+```math
+\begin{aligned}
+(1 - m^2)(x - h)^2 + y^2 &= \frac{1}{1 - m^2} && \text{add } \frac{m^2}{1 - m^2} \\
+(1 - m^2)^2(x - h)^2 + (1 - m^2)y^2 &= 1 && \text{multiply by } 1 - m^2
+\end{aligned}
+```
+
+**Step 5: into flat coordinates.** Put $$x = \frac{u}{k}$$ and $$y = v$$. Since $$u_0 = kh$$,
+$$x - h = \frac{u - u_0}{k}$$, and
+
+```math
+(1 - m^2)^2(x - h)^2 = \frac{(1 - m^2)^2}{k^2}(u - u_0)^2 = \frac{(u - u_0)^2}{a^2}
+\qquad \text{where } a = \frac{k}{\lvert 1 - m^2 \rvert}
+```
+
+So the slice is the graph of
+
+```math
+\frac{(u - u_0)^2}{a^2} + (1 - m^2)v^2 = 1
+```
+
+**Step 6: less steep than the side.** When $$0 < m < 1$$, $$1 - m^2 > 0$$ and
+$$1 - m^2 = \frac{1}{b^2}$$ with $$b = \frac{1}{\sqrt{1 - m^2}}$$. The equation is
+$$\frac{(u - u_0)^2}{a^2} + \frac{v^2}{b^2} = 1$$, and by :ref{#slide-graph} its graph is the slide
+by $$(u_0, 0)$$ of the graph of $$\frac{u^2}{a^2} + \frac{v^2}{b^2} = 1$$. A slide is an isometry,
+so the slice is an ellipse (:ref{#ellipse-definition}). Also $$a \ge b$$, since
+$$a^2 = \frac{1 + m^2}{(1 - m^2)^2}$$ and $$b^2 = \frac{1 - m^2}{(1 - m^2)^2}$$.
+
+**Step 7: steeper than the side.** When $$m > 1$$, $$1 - m^2 = -(m^2 - 1)$$ is negative and equals
+$$-\frac{1}{b^2}$$ with $$b = \frac{1}{\sqrt{m^2 - 1}}$$. The equation is
+$$\frac{(u - u_0)^2}{a^2} - \frac{v^2}{b^2} = 1$$, the slide by $$(u_0, 0)$$ of the graph of
+$$\frac{u^2}{a^2} - \frac{v^2}{b^2} = 1$$. So the slice is a hyperbola
+(:ref{#hyperbola-definition}).
+
+:::
+
+With $$m = \frac{1}{2}$$ the theorem gives $$k = \frac{\sqrt5}{2}$$,
+$$u_0 = \frac{\sqrt5}{2} \cdot \frac{1}{2} \cdot \frac{4}{3} = \frac{\sqrt5}{3}$$ and
+$$a = \frac{\sqrt5}{2} \cdot \frac{4}{3} = \frac{2\sqrt5}{3}$$, as we found with numbers. The
+theorem only uses slopes $$m \ge 0$$, and that loses nothing: a plane sloping the other way is the
+mirror image of one of these in the upright plane $$x = 0$$, and the cone is its own mirror image
+there, since $$(-x)^2 = x^2$$.
+
+The level plane, $$m = 0$$, is the torch held straight at the wall. As $$m$$ grows towards $$1$$ the
+ellipse gets longer: its half-width $$a = \frac{k}{1 - m^2}$$ grows without limit, because
+$$1 - m^2$$ shrinks towards $$0$$. At $$m = 1$$ the ellipse has, in effect, run off to infinity and
+become a parabola, which is the moment in the scene when the beam's top edge runs parallel to the
+wall.
+
+## Slices through the tip
+
+A plane through the tip itself cuts something smaller. Take the plane $$z = mx$$, with $$m \ge 0$$.
+A point $$(x, y, mx)$$ is on the cone exactly when $$x^2 + y^2 = m^2x^2$$, that is,
+$$(1 - m^2)x^2 + y^2 = 0$$. When $$m < 1$$ both terms are at least $$0$$, so both are $$0$$, and the
+slice is the tip alone. When $$m = 1$$ the equation is $$y^2 = 0$$, and the slice is the line of
+points $$(x, 0, x)$$, one of the cone's side lines. When $$m > 1$$ it is $$y^2 = (m^2 - 1)x^2$$, so
+$$y = \sqrt{m^2 - 1}\,x$$ or $$y = -\sqrt{m^2 - 1}\,x$$: two lines crossing at the tip. These are
+the **degenerate** slices, and they turn up again in :ref{#degenerate-conic}.
+
+## One rule for all three
+
+The guide [The focus of a parabola](./focus-and-directrix.mdx) drew a parabola from a point $$F$$,
+its focus, and a line $$L$$, its directrix: the parabola is the set of points equally far from both
+(:ref{#focus-directrix}). Now loosen the rule. Ask for the points whose distance to $$F$$ is half
+their distance to $$L$$, or twice it. A single number, the ratio of the two distances, then picks
+the curve.
+
+Here it is with numbers. Put $$F = (0, 0)$$ and let $$L$$ be the line $$x = -3$$. By
+:ref{#segments-rays-and-lines/distance-to-line}, the distance from $$(x, y)$$ to $$L$$ is
+$$\lvert x + 3 \rvert$$. For the points whose distance to $$F$$ is half their distance to $$L$$,
+square both sides of $$\sqrt{x^2 + y^2} = \frac{1}{2}\lvert x + 3 \rvert$$:
+
+```math
+\begin{aligned}
+x^2 + y^2 &= \tfrac{1}{4}(x + 3)^2 && \text{square both sides} \\
+4x^2 + 4y^2 &= x^2 + 6x + 9 && \text{multiply by } 4 \text{ and expand} \\
+3x^2 - 6x + 4y^2 &= 9 && \text{take } x^2 + 6x \text{ from both sides} \\
+3(x - 1)^2 + 4y^2 &= 12 && \text{complete the square} \\
+\frac{(x - 1)^2}{4} + \frac{y^2}{3} &= 1 && \text{divide by } 12
+\end{aligned}
+```
+
+That is an ellipse with $$a = 2$$ and $$b = \sqrt3$$, slid right by $$1$$. Its $$c$$ is
+$$\sqrt{4 - 3} = 1$$, so its foci are $$1$$ either side of the centre $$(1, 0)$$, and one of them is
+$$F$$. Its eccentricity is $$\frac{c}{a} = \frac{1}{2}$$ (:ref{#ellipse-eccentricity}), the ratio we
+started with. As a check, the point $$(1, \sqrt3)$$ is on it, at distance $$\sqrt{1 + 3} = 2$$ from
+$$F$$ and $$1 + 3 = 4$$ from $$L$$.
+
+Ask instead for distance to $$F$$ equal to twice the distance to $$L$$. The same steps give
+
+```math
+\begin{aligned}
+x^2 + y^2 &= 4(x + 3)^2 && \text{square both sides} \\
+3x^2 + 24x - y^2 + 36 &= 0 && \text{expand and collect on the right} \\
+3(x + 4)^2 - y^2 &= 12 && \text{complete the square} \\
+\frac{(x + 4)^2}{4} - \frac{y^2}{12} &= 1 && \text{divide by } 12
+\end{aligned}
+```
+
+a hyperbola with $$a = 2$$ and $$b = 2\sqrt3$$, slid left by $$4$$. Its $$c$$ is
+$$\sqrt{4 + 12} = 4$$, so $$F$$ is a focus again, and $$\frac{c}{a} = 2$$ is the ratio once more.
+The vertex $$(-2, 0)$$ is $$2$$ from $$F$$ and $$1$$ from $$L$$; the vertex $$(-6, 0)$$, on the
+other branch, is $$6$$ from $$F$$ and $$3$$ from $$L$$.
+
+To prove this for every ratio, we first move $$F$$ and $$L$$ into the position of the examples. An
+isometry can do that, and it keeps the distance from each point to the line as well as to $$F$$.
+
+The guide [The focus of a parabola](./focus-and-directrix.mdx) did the same kind of move, with a
+slide and a turn that put the directrix level below the focus. Its lemma
+:ref{#focus-and-directrix-moves} showed that every isometry keeps distances to a line. Here we want
+the line upright instead, on the left of the focus.
+
+:::lemma[Moving a point and a line into place]{#slicing-a-cone-move-into-place}
+
+Let $$F$$ be a point and $$L$$ a line not through $$F$$, and let $$d$$ be the distance from $$F$$ to
+$$L$$ (:ref{#distance-and-angles/point-line-distance}). There is an isometry $$M$$ with $$M(F) = O$$
+and $$M(L)$$ the line $$x = -d$$. For every point $$P$$, the distance from $$M(P)$$ to $$M(L)$$
+equals the distance from $$P$$ to $$L$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Euclidean_plane_isometry#Classification"}
+
+**Step 1: slide F to O.** Let $$N$$ be the foot of the perpendicular from $$F$$ to $$L$$, so
+$$d(F, N) = d$$, and $$d > 0$$ since $$F$$ is not on $$L$$. The slide $$T_{-F}$$ sends $$F$$ to
+$$O$$ (:ref{#adding-and-scaling-points/slide-formula}). Write $$N_1 = (p, q)$$ for the image of
+$$N$$. Slides keep distances (:ref{#isometries/basic-isometries}), so $$d(O, N_1) = d$$ and
+$$p^2 + q^2 = d^2$$.
+
+**Step 2: turn N₁ onto the x-axis.** The point $$U = \left(\frac{p}{d}, \frac{q}{d}\right)$$ has
+$$\frac{p^2 + q^2}{d^2} = 1$$, so it is on the unit circle, and by
+:ref{#trigonometry/unit-circle-point} it is $$(\cos t, \sin t) = G_t(E_1)$$ for some $$t$$
+(:ref{#trigonometry/sine-cosine}). By parts 1 and 5 of :ref{#trigonometry/radian-turns},
+
+```math
+G_{\pi - t}(U) = G_{\pi - t}\big(G_t(E_1)\big) = G_\pi(E_1) = (-1, 0)
+```
+
+In :ref{#trigonometry/rotation-formula}, multiplying both coordinates of a point by $$d$$ multiplies
+both coordinates of its image by $$d$$. The point $$N_1 = (p, q)$$ is $$U$$ with both coordinates
+multiplied by $$d$$, so $$G_{\pi - t}(N_1) = (-d, 0)$$.
+
+**Step 3: the line.** Let $$M = G_{\pi - t} \circ T_{-F}$$. It is an isometry, since turns and
+slides are (:ref{#isometries/basic-isometries}) and so are composites
+(:ref{#isometries/composite-isometry}). It sends $$F$$ to $$O$$ and $$N$$ to $$(-d, 0)$$. By
+:ref{#isometries/isometry-lines}, it sends $$L$$ to a line through $$(-d, 0)$$, and the line $$FN$$
+to the line through $$O$$ and $$(-d, 0)$$, which is the $$x$$-axis. The lines $$FN$$ and $$L$$ are
+perpendicular, so their images are too (:ref{#isometries/isometry-perpendicular}). The line
+$$x = -d$$ passes through $$(-d, 0)$$ and is perpendicular to the $$x$$-axis
+(:ref{#coordinates/coordinate-rules}). By rule 1 of :ref{#distance-and-angles/perpendicular-rules},
+it is the only line through $$(-d, 0)$$ perpendicular to the $$x$$-axis. So $$M(L)$$ is the line
+$$x = -d$$.
+
+**Step 4: distances to the line.** Part 1 of :ref{#focus-and-directrix-moves} says that every
+isometry keeps the distance from a point to a line. So for every point $$P$$, the distance from
+$$M(P)$$ to $$M(L)$$ equals the distance from $$P$$ to $$L$$.
+
+:::
+
+Now the theorem. Its proof is the two examples above, with $$e$$ and $$d$$ in place of the numbers.
+
+:::theorem[One rule for all three]{#focus-directrix-e}
+
+Let $$e > 0$$, let $$F$$ be a point and $$L$$ a line not through $$F$$, and let $$C$$ be the set of
+points $$P$$ whose distance to $$F$$ is $$e$$ times their distance to $$L$$. Then $$C$$ is
+
+1. an ellipse with eccentricity $$e$$ when $$e < 1$$
+2. a parabola when $$e = 1$$
+3. a hyperbola with eccentricity $$e$$ when $$e > 1$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Conic_section#Eccentricity,_focus_and_directrix"}
+
+**Step 1: move into place.** Let $$d$$ be the distance from $$F$$ to $$L$$, and $$M$$ the isometry
+of :ref{#slicing-a-cone-move-into-place}. It keeps the distance to $$F$$, since
+$$d(M(P), O) = d(M(P), M(F)) = d(P, F)$$, and the lemma says it keeps the distance to $$L$$. Every
+point is $$M(P)$$ for exactly one $$P$$ (:ref{#isometries/isometry-inverse}). So $$M(C)$$ is the set
+of points whose distance to $$O$$ is $$e$$ times their distance to the line $$x = -d$$. If $$M(C)$$
+is an ellipse, the image of a standard ellipse under an isometry $$J$$, then $$C$$ is its image
+under $$M^{-1}$$, an isometry too (:ref{#isometries/inverse-isometry}). So $$C$$ is the image of the
+standard ellipse under $$M^{-1} \circ J$$, an isometry by :ref{#isometries/composite-isometry}, and
+$$C$$ is an ellipse. The same goes for the other two curves.
+
+**Step 2: the equation.** By :ref{#segments-rays-and-lines/distance-to-line}, the distance from
+$$(x, y)$$ to the line $$x = -d$$ is $$\lvert x + d \rvert$$. Both distances are not negative, so
+$$(x, y)$$ is in $$M(C)$$ exactly when their squares match:
+
+```math
+\begin{aligned}
+x^2 + y^2 &= e^2(x + d)^2 && \text{square both distances} \\
+x^2 + y^2 &= e^2x^2 + 2e^2dx + e^2d^2 && \text{expand the square} \\
+(1 - e^2)x^2 - 2e^2dx + y^2 &= e^2d^2 && \text{take } e^2x^2 + 2e^2dx \text{ from both sides}
+\end{aligned}
+```
+
+**Step 3: e = 1.** The equation is $$-2dx + y^2 = d^2$$, so $$x = \frac{y^2}{2d} - \frac{d}{2}$$.
+Swapping the letters gives $$y = \frac{x^2}{2d} - \frac{d}{2}$$, the graph of $$y = \frac{x^2}{2d}$$
+slid down by $$\frac{d}{2}$$ (:ref{#slide-graph}). By :ref{#flip-graph}, $$M(C)$$ is its image under
+the flip in $$y = x$$, so it is a parabola (:ref{#parabola-definition}).
+
+**Step 4: complete the square.** From now on $$e \ne 1$$. Write $$h = \frac{e^2d}{1 - e^2}$$, so
+that $$2e^2d = 2h(1 - e^2)$$. As in step 4 of :ref{#cone-slices},
+
+```math
+\begin{aligned}
+(1 - e^2)(x - h)^2 - \frac{e^4d^2}{1 - e^2} + y^2 &= e^2d^2 && \text{complete the square} \\
+(1 - e^2)(x - h)^2 + y^2 &= \frac{e^2d^2}{1 - e^2} && \text{since } e^2d^2 + \frac{e^4d^2}{1 - e^2} = \frac{e^2d^2}{1 - e^2} \\
+\frac{(x - h)^2}{e^2d^2/(1 - e^2)^2} + \frac{y^2}{e^2d^2/(1 - e^2)} &= 1 && \text{divide by } \frac{e^2d^2}{1 - e^2}
+\end{aligned}
+```
+
+**Step 5: e < 1.** Both bottoms are positive, so this is the graph of
+$$\frac{(x - h)^2}{a^2} + \frac{y^2}{b^2} = 1$$ with
+
+```math
+a = \frac{ed}{1 - e^2} \qquad b = \frac{ed}{\sqrt{1 - e^2}}
+```
+
+By :ref{#slide-graph} it is a slid ellipse, and $$a \ge b$$ since $$1 - e^2 \le \sqrt{1 - e^2}$$.
+Then
+
+```math
+c^2 = a^2 - b^2 = \frac{e^2d^2 - e^2d^2(1 - e^2)}{(1 - e^2)^2} = \frac{e^4d^2}{(1 - e^2)^2}
+```
+
+so $$c = \frac{e^2d}{1 - e^2}$$, and $$\frac{c}{a} = \frac{e^2d}{ed} = e$$. The eccentricity is
+$$e$$ (:ref{#ellipse-eccentricity}).
+
+**Step 6: e > 1.** Now $$1 - e^2 < 0$$, so the second bottom is negative. Writing
+$$\frac{y^2}{e^2d^2/(1 - e^2)} = -\frac{y^2}{e^2d^2/(e^2 - 1)}$$, the equation is
+$$\frac{(x - h)^2}{a^2} - \frac{y^2}{b^2} = 1$$ with
+
+```math
+a = \frac{ed}{e^2 - 1} \qquad b = \frac{ed}{\sqrt{e^2 - 1}}
+```
+
+a slid hyperbola. Then
+
+```math
+c^2 = a^2 + b^2 = \frac{e^2d^2 + e^2d^2(e^2 - 1)}{(e^2 - 1)^2} = \frac{e^4d^2}{(e^2 - 1)^2}
+```
+
+so $$c = \frac{e^2d}{e^2 - 1}$$, and $$\frac{c}{a} = e$$ again (:ref{#hyperbola-eccentricity}).
+
+:::
+
+The proof also shows where $$F$$ sits. For $$e < 1$$ the centre is $$(h, 0)$$ with $$h = c$$, so
+$$F = O$$ is $$c$$ to the left of the centre, at a focus. For $$e > 1$$, $$h = -c$$, and $$F$$ is
+$$c$$ to the right of the centre, again at a focus. For $$e = 1$$ the vertex
+$$\left(-\frac{d}{2}, 0\right)$$ is halfway between $$F$$ and $$L$$, as in :ref{#focus-parabola}:
+the focus-and-directrix parabola is the case $$e = 1$$ of this rule.
+
+So eccentricity has a second meaning. Besides $$\frac{c}{a}$$, a measure of how stretched the curve
+is, it is the ratio of two distances, and it sorts the three curves: below $$1$$ an ellipse, exactly
+$$1$$ a parabola, above $$1$$ a hyperbola. Turn the dial below through $$1$$ and watch the curve
+change.
+
+<EccentricityDial />
+
+As $$e$$ grows towards $$1$$, the ellipse stretches to the right without limit, and at $$e = 1$$ it
+opens into a parabola. Past $$1$$, a second branch appears on the far side of $$L$$. That is the
+same story the cone told as the slicing plane steepened, and one of the exercises finds the
+eccentricity of each slice from its slope.
+
+## Comets
+
+A comet moving under the pull of the Sun follows one of these curves, with the Sun at a focus. That
+is a fact of physics, which Newton proved from his law of gravity, and we take it as given here.
+Which curve it is depends on the comet's eccentricity, and it decides whether the comet ever comes
+back.
+
+Halley's comet has an orbit of eccentricity about $$0.967$$: an ellipse, long and thin, since
+$$0.967$$ is close to $$1$$. An ellipse closes up, so the comet returns, about every $$75$$ years.
+In 2017 astronomers tracked an object called 'Oumuamua passing the Sun on a path of eccentricity
+about $$1.2$$. That is a hyperbola, which never closes, so 'Oumuamua came in from between the stars,
+swung once round the Sun, and left for good.
+
+## Exercises
+
+:::::accordion[Exercises on slicing a cone, with solutions]
+
+::::exercise{#ex-slicing-a-cone-on-the-cone}
+
+Which of these points are on the double cone? For those that are, say which half.
+
+1. $$(6, 8, 10)$$
+2. $$(-5, 12, -13)$$
+3. $$(1, 2, 2)$$
+4. $$(0, 0, 0)$$
+
+:::solution
+
+By :ref{#cone}, check whether $$x^2 + y^2 = z^2$$:
+
+1. $$36 + 64 = 100 = 10^2$$, so it is on the cone, on the upper half since $$z = 10 > 0$$
+2. $$25 + 144 = 169 = (-13)^2$$, so it is on the cone, on the lower half since $$z = -13 < 0$$
+3. $$1 + 4 = 5$$ but $$2^2 = 4$$, so it is not on the cone
+4. $$0 + 0 = 0 = 0^2$$, so it is on the cone: it is the tip, on both halves
+
+:::
+
+::::
+
+::::exercise{#ex-slicing-a-cone-name-the-slice}
+
+Name the slice of the double cone made by each plane:
+
+1. $$z = 1$$
+2. $$z = 0.3x + 1$$
+3. $$z = x + 1$$
+4. $$z = 3x + 1$$
+5. $$z = \frac{1}{2}x$$
+6. $$z = 2x$$
+
+:::solution
+
+The first four planes are $$z = mx + 1$$, so :ref{#cone-slices} names them by comparing $$m$$ with
+$$1$$. The last two pass through the tip, and the section
+[Slices through the tip](#slices-through-the-tip) names them:
+
+1. $$m = 0$$: a circle of radius $$1$$
+2. $$m = 0.3 < 1$$: an ellipse
+3. $$m = 1$$: a parabola
+4. $$m = 3 > 1$$: a hyperbola, one branch on each half of the cone
+5. $$m = \frac{1}{2} < 1$$ through the tip: the tip alone, since $$\frac{3}{4}x^2 + y^2 = 0$$ forces
+   $$x = y = 0$$
+6. $$m = 2 > 1$$ through the tip: $$y^2 = 3x^2$$, the two lines $$y = \sqrt3\,x$$ and
+   $$y = -\sqrt3\,x$$ (with $$z = 2x$$), crossing at the tip
+
+:::
+
+::::
+
+::::exercise{#ex-slicing-a-cone-three-quarters}
+
+Slice the cone with the plane $$z = \frac{3}{4}x + 1$$.
+
+1. Show that the slice is $$\frac{7}{16}x^2 - \frac{3}{2}x + y^2 = 1$$, and complete the square.
+2. Write it in flat coordinates and find the half-widths $$a$$ and $$b$$.
+3. Find the two ends of the long axis as points of space, and check that they are $$2a$$ apart.
+
+:::solution
+
+1. Here $$(mx + 1)^2 = \frac{9}{16}x^2 + \frac{3}{2}x + 1$$, so $$x^2 + y^2 = (mx + 1)^2$$ becomes
+   $$\frac{7}{16}x^2 - \frac{3}{2}x + y^2 = 1$$. With $$h = \frac{3/4}{7/16} = \frac{12}{7}$$,
+
+   ```math
+   \begin{aligned}
+   \tfrac{7}{16}\left(x - \tfrac{12}{7}\right)^2 - \tfrac{9}{7} + y^2 &= 1 && \text{complete the square} \\
+   \tfrac{7}{16}\left(x - \tfrac{12}{7}\right)^2 + y^2 &= \tfrac{16}{7} && \text{add } \tfrac{9}{7}
+   \end{aligned}
+   ```
+
+2. Here $$k = \sqrt{1 + \frac{9}{16}} = \frac{5}{4}$$, so $$x = \frac{4u}{5}$$ and
+   $$x - \frac{12}{7} = \frac{4}{5}\left(u - \frac{15}{7}\right)$$. Then
+   $$\frac{7}{16} \cdot \frac{16}{25}\left(u - \frac{15}{7}\right)^2 = \frac{7}{25}\left(u - \frac{15}{7}\right)^2$$,
+   and dividing by $$\frac{16}{7}$$ gives
+
+   ```math
+   \frac{\left(u - \frac{15}{7}\right)^2}{400/49} + \frac{v^2}{16/7} = 1
+   ```
+
+   So $$a = \frac{20}{7} \approx 2.86$$ and $$b = \frac{4}{\sqrt7} \approx 1.51$$. These agree with
+   :ref{#cone-slices}: $$a = \frac{5/4}{7/16} = \frac{20}{7}$$ and
+   $$b = \frac{1}{\sqrt{7/16}} = \frac{4}{\sqrt7}$$.
+
+3. With $$y = 0$$: $$\frac{7}{16}x^2 - \frac{3}{2}x - 1 = 0$$, so $$7x^2 - 24x - 16 = 0$$, which is
+   $$(7x + 4)(x - 4) = 0$$. The ends are $$(4, 0, 4)$$ and
+   $$\left(-\frac{4}{7}, 0, \frac{4}{7}\right)$$. Their differences are $$\frac{32}{7}$$ across and
+   $$\frac{24}{7}$$ up, so by :ref{#coordinates/space-distance} they are
+   $$\frac{\sqrt{32^2 + 24^2}}{7} = \frac{40}{7}$$ apart, which is $$2a$$.
+
+:::
+
+::::
+
+::::exercise{#ex-slicing-a-cone-eccentricity-of-slice}
+
+Let $$m \ge 0$$ with $$m \ne 1$$. Use :ref{#cone-slices} to show that the slice by the plane
+$$z = mx + 1$$ has eccentricity
+
+```math
+e = \frac{\sqrt2\,m}{\sqrt{1 + m^2}}
+```
+
+Check it against the slices with $$m = \frac{1}{2}$$ and $$m = 2$$ worked in the guide. What does
+the formula give at $$m = 1$$, and which number does $$e$$ stay below however steep the plane?
+
+:::solution
+
+In both cases $$a^2 = \frac{1 + m^2}{(1 - m^2)^2}$$. For an ellipse
+$$b^2 = \frac{1}{1 - m^2} = \frac{1 - m^2}{(1 - m^2)^2}$$, and $$c^2 = a^2 - b^2$$. For a hyperbola
+$$b^2 = \frac{1}{m^2 - 1} = \frac{m^2 - 1}{(1 - m^2)^2}$$, and $$c^2 = a^2 + b^2$$. Either way
+
+```math
+c^2 = \frac{(1 + m^2) - (1 - m^2)}{(1 - m^2)^2} = \frac{2m^2}{(1 - m^2)^2}
+\qquad
+e^2 = \frac{c^2}{a^2} = \frac{2m^2}{1 + m^2}
+```
+
+and $$e$$ is the positive square root.
+
+For $$m = \frac{1}{2}$$: $$e = \frac{\sqrt2/2}{\sqrt5/2} = \sqrt{\frac{2}{5}} \approx 0.63$$. From
+the guide, $$a^2 = \frac{20}{9}$$ and $$b^2 = \frac{4}{3} = \frac{12}{9}$$, so $$c^2 = \frac{8}{9}$$
+and $$\frac{c^2}{a^2} = \frac{8}{20} = \frac{2}{5}$$. For $$m = 2$$:
+$$e = \frac{2\sqrt2}{\sqrt5} \approx 1.26$$. From the guide, $$a^2 = \frac{5}{9}$$ and
+$$b^2 = \frac{1}{3} = \frac{3}{9}$$, so $$c^2 = \frac{8}{9}$$ and $$\frac{c^2}{a^2} = \frac{8}{5}$$.
+
+At $$m = 1$$ the formula gives $$\frac{\sqrt2}{\sqrt2} = 1$$, the parabola's place in
+:ref{#focus-directrix-e}. Since $$m^2 < 1 + m^2$$, $$e^2 = \frac{2m^2}{1 + m^2} < 2$$, so
+$$e < \sqrt2 \approx 1.41$$ for every slope.
+
+:::
+
+::::
+
+::::exercise{#ex-slicing-a-cone-one-third}
+
+Let $$F = (0, 0)$$ and let $$L$$ be the line $$x = -4$$. Find the equation of the set of points
+whose distance to $$F$$ is a third of their distance to $$L$$. Name the curve, find $$a$$, $$b$$ and
+$$c$$, and check that $$\frac{c}{a} = \frac{1}{3}$$.
+
+:::solution
+
+The distance to $$L$$ is $$\lvert x + 4 \rvert$$ (:ref{#segments-rays-and-lines/distance-to-line}).
+Square both sides of $$\sqrt{x^2 + y^2} = \frac{1}{3}\lvert x + 4 \rvert$$:
+
+```math
+\begin{aligned}
+9x^2 + 9y^2 &= x^2 + 8x + 16 && \text{square, multiply by } 9 \\
+8x^2 - 8x + 9y^2 &= 16 && \text{take } x^2 + 8x \text{ from both sides} \\
+8\left(x - \tfrac{1}{2}\right)^2 + 9y^2 &= 18 && \text{complete the square} \\
+\frac{\left(x - \frac{1}{2}\right)^2}{9/4} + \frac{y^2}{2} &= 1 && \text{divide by } 18
+\end{aligned}
+```
+
+An ellipse with $$a = \frac{3}{2}$$, $$b = \sqrt2$$ and centre $$\left(\frac{1}{2}, 0\right)$$. Then
+$$c = \sqrt{\frac{9}{4} - 2} = \frac{1}{2}$$, and $$\frac{c}{a} = \frac{1}{3}$$, as
+:ref{#focus-directrix-e} says. As a check, the vertex $$(2, 0)$$ is $$2$$ from $$F$$ and $$6$$ from
+$$L$$.
+
+:::
+
+::::
+
+::::exercise{#ex-slicing-a-cone-directrix-of-ellipse}
+
+The ellipse $$\frac{x^2}{25} + \frac{y^2}{9} = 1$$ has $$a = 5$$, $$b = 3$$, $$c = 4$$ and
+$$e = \frac{4}{5}$$. Let $$F = (4, 0)$$ and let $$L$$ be the line $$x = \frac{25}{4}$$. Show that
+every point $$P$$ of the ellipse has distance to $$F$$ equal to $$\frac{4}{5}$$ of its distance to
+$$L$$. (Use $$y^2 = 9 - \frac{9x^2}{25}$$ on the ellipse.)
+
+:::solution
+
+Let $$P = (x, y)$$ be on the ellipse. Then
+
+```math
+\begin{aligned}
+d(P, F)^2 &= (x - 4)^2 + y^2 && \text{distance formula} \\
+&= x^2 - 8x + 16 + 9 - \tfrac{9}{25}x^2 && \text{put in } y^2 \\
+&= \tfrac{16}{25}x^2 - 8x + 25 && \text{collect terms} \\
+&= \left(5 - \tfrac{4}{5}x\right)^2 && \text{a perfect square}
+\end{aligned}
+```
+
+On the ellipse $$\frac{x^2}{25} \le 1$$, so $$x \le 5$$ and $$5 - \frac{4}{5}x \ge 5 - 4 > 0$$. So
+$$d(P, F) = 5 - \frac{4}{5}x = \frac{4}{5}\left(\frac{25}{4} - x\right)$$. Also
+$$x \le 5 < \frac{25}{4}$$, so the distance from $$P$$ to $$L$$ is $$\frac{25}{4} - x$$. Hence the
+distance to $$F$$ is $$\frac{4}{5}$$ of the distance to $$L$$. The line
+$$x = \frac{a}{e} = \frac{25}{4}$$ is a directrix of the ellipse.
+
+:::
+
+::::
+
+::::exercise{#ex-slicing-a-cone-comet}
+
+A comet moves on an ellipse with eccentricity $$0.8$$, with the Sun at a focus. At its closest it is
+$$1$$ unit from the Sun. How far is it from the Sun at its farthest? (Take the ellipse as
+$$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$ with the Sun at $$(c, 0)$$, and show as in the last
+exercise that a point of the ellipse is $$a - \frac{c}{a}x$$ from the Sun.)
+
+:::solution
+
+On the ellipse, $$y^2 = b^2 - \frac{b^2}{a^2}x^2$$ and $$b^2 = a^2 - c^2$$, so
+
+```math
+\begin{aligned}
+(x - c)^2 + y^2 &= x^2 - 2cx + c^2 + b^2 - \tfrac{b^2}{a^2}x^2 && \text{put in } y^2 \\
+&= \tfrac{c^2}{a^2}x^2 - 2cx + a^2 && \text{since } 1 - \tfrac{b^2}{a^2} = \tfrac{c^2}{a^2},\ c^2 + b^2 = a^2 \\
+&= \left(a - \tfrac{c}{a}x\right)^2 && \text{a perfect square}
+\end{aligned}
+```
+
+Since $$\lvert x \rvert \le a$$ and $$c < a$$, $$a - \frac{c}{a}x > 0$$, so the distance is
+$$a - \frac{c}{a}x$$. It is smallest at $$x = a$$, where it is $$a - c$$, and largest at $$x = -a$$,
+where it is $$a + c$$.
+
+With $$c = 0.8a$$, the closest distance is $$a - 0.8a = 0.2a = 1$$, so $$a = 5$$ and $$c = 4$$. The
+farthest distance is $$a + c = 9$$ units.
+
+:::
+
+::::
+
+::::exercise{#ex-slicing-a-cone-shadow}
+
+A friend works out the slice of the cone by the plane $$z = \frac{1}{2}x + 1$$, gets
+$$\frac{(x - 2/3)^2}{16/9} + \frac{y^2}{4/3} = 1$$, and says the slice is an ellipse with long
+half-width $$\frac{4}{3}$$.
+
+1. Explain what your friend's ellipse is a picture of, and why its long half-width is too short.
+2. Show that the eccentricity of your friend's ellipse is $$\frac{1}{2}$$, while the slice has
+   eccentricity $$\sqrt{\frac{2}{5}} \approx 0.63$$.
+
+:::solution
+
+1. Your friend used $$x$$ and $$y$$ as coordinates on the tilted plane. Their ellipse is the set of
+   points $$(x, y)$$ on the floor straight below the slice: its shadow, with the light overhead.
+   Along $$y$$ the plane is level, so widths in that direction are right. Along $$x$$ the plane
+   climbs, and each step is $$k = \frac{\sqrt5}{2}$$ times as long as its shadow
+   (:ref{#slicing-a-cone-flat-coordinates}). So the true long half-width is
+   $$\frac{4}{3} \cdot \frac{\sqrt5}{2} = \frac{2\sqrt5}{3} \approx 1.49$$, as in the guide.
+2. For the shadow, $$a^2 = \frac{16}{9}$$ and $$b^2 = \frac{4}{3} = \frac{12}{9}$$, so
+   $$c^2 = \frac{4}{9}$$, $$c = \frac{2}{3}$$ and $$\frac{c}{a} = \frac{2/3}{4/3} = \frac{1}{2}$$.
+   For the slice, $$a^2 = \frac{20}{9}$$ and $$b^2 = \frac{12}{9}$$, so $$c^2 = \frac{8}{9}$$ and
+   $$\frac{c^2}{a^2} = \frac{2}{5}$$. The shadow is rounder than the slice.
+
+:::
+
+::::
+
+:::::

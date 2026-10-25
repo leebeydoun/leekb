@@ -1,0 +1,728 @@
+---
+title: Hyperbolas
+description:
+  The graph of xy = c and its two branches, turning it by an eighth of a turn, the standard
+  hyperbola, the lines its branches approach, its two foci and its eccentricity.
+---
+
+Imagine ordering a £12 pizza and splitting the bill equally. Eat alone and you pay £12. Two of you
+pay £6 each, three pay £4, and twelve pay £1. Twice the people means half each, so the number of
+people times the share is always 12.
+
+Now mark each pair as a dot, with the number of people across and the share up. You'd notice the
+dots don't lie on a line. They fall steeply at first, then level out, creeping towards the bottom
+axis without ever reaching it, since nobody's share is ever £0.
+
+<PizzaShares caption="Each dot is (people, pounds each) for a £12 bill. Every dot has people × share = 12, so all of them lie on the graph of xy = 12." />
+
+The curve through the dots is the graph of $$xy = 12$$, and it is a **hyperbola** seen from an
+unusual angle: turned by an eighth of a turn, its equation becomes one of the form
+$$\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$$. In this guide we'll get to know the graph of $$xy = c$$,
+turn it to find the standard hyperbola, and then find the lines its branches approach and its two
+foci.
+
+## The graph of xy = c
+
+The graph of $$xy = 12$$ is the set of points whose two coordinates multiply to $$12$$
+(:ref{#linear-equations/graph}). Whole-number points are the place to start, since you can check
+each one by multiplying:
+
+| $$x$$ | $$1$$  | $$2$$ | $$3$$ | $$4$$ | $$6$$ | $$12$$ |
+| ----- | ------ | ----- | ----- | ----- | ----- | ------ |
+| $$y$$ | $$12$$ | $$6$$ | $$4$$ | $$3$$ | $$2$$ | $$1$$  |
+
+The pizza only allowed a positive number of people, but the equation allows any numbers. A negative
+times a negative is positive, so $$(-3, -4)$$ is on the graph as well, since $$(-3)(-4) = 12$$.
+Putting a minus sign in front of every entry of the table gives six more points, in the bottom left
+quarter of the plane. So the graph comes in two pieces, called **branches**, one in the top right
+quarter and one in the bottom left.
+
+<ProductBranches caption="The graph of xy = 12 has two branches. The half turn about O sends (3, 4) to (−3, −4), and the flip in y = x sends it to (4, 3): both images are on the graph too." />
+
+It's tempting to draw only the top right branch, because that is the one the pizza drew. But the
+bottom left branch belongs to the graph as much, and leaving it out is a slip worth watching for:
+every hyperbola in this guide has two branches.
+
+The two branches are mirror images of each other in two ways. The half turn about $$O$$ sends
+$$(x, y)$$ to $$(-x, -y)$$, and $$(-x)(-y) = xy$$, so it sends every point of the graph to another
+point of the graph. Swapping the coordinates, the flip $$S$$ in the line $$y = x$$
+(:ref{#adding-and-scaling-points/diagonal-reflection}), does the same, since $$yx = xy$$. By
+:ref{#flip-graph}, the flip $$S$$ sends the graph of $$xy = 12$$ onto the graph of $$yx = 12$$,
+which is the same equation, so $$S$$ is a symmetry of the graph (:ref{#isometries/symmetry}).
+
+### Close to the axes, never on them
+
+Go far to the right and the share gets tiny. At $$x = 1000$$ the point on the graph has
+$$y = \frac{12}{1000} = 0.012$$, and at $$x = 1\,000\,000$$ it has $$y = 0.000012$$. To get within
+any distance you name of the $$x$$-axis, go far enough right: to be within $$0.001$$, any $$x$$
+bigger than $$12\,000$$ will do, since then $$y = \frac{12}{x}$$ is less than
+$$\frac{12}{12\,000} = 0.001$$.
+
+The curve never reaches the axis, though. A point of the $$x$$-axis has $$y = 0$$, so $$xy = 0$$,
+which is not $$12$$. The same goes for the $$y$$-axis, which the branch approaches as $$x$$ gets
+close to $$0$$. A line that a curve gets as close as you like to, far out, without meeting it, is
+called an **asymptote** of the curve. So the two axes are the asymptotes of $$xy = 12$$.
+
+Everything here works for any number $$c \ne 0$$ in place of $$12$$. For $$c > 0$$ the branches sit
+in the top right and bottom left quarters, as for $$xy = 12$$. For $$c < 0$$ one coordinate must be
+negative and the other positive, so the branches sit in the top left and bottom right quarters.
+
+## Sliding the graph of xy = c
+
+Slide the graph of $$xy = 6$$ by $$(-2, 3)$$, two to the left and three up. By :ref{#slide-graph},
+the new graph has the equation we get by putting $$x - (-2) = x + 2$$ in place of $$x$$ and
+$$y - 3$$ in place of $$y$$:
+
+```math
+(x + 2)(y - 3) = 6
+```
+
+The asymptotes slide with it, onto the lines $$x = -2$$ and $$y = 3$$, which cross at the **centre**
+$$(-2, 3)$$. Notice the sign: $$x + 2$$ means a slide 2 to the **left**. The new curve at $$x$$ does
+what the old one did at $$x + 2$$, two steps further right, so everything has moved left.
+
+<MovedProduct caption="The graph of (x + 2)(y − 3) = 6, the graph of xy = 6 (faint) slid 2 to the left and 3 up. Its asymptotes are the dashed lines x = −2 and y = 3, and its centre is (−2, 3)." />
+
+As a check, put $$x = 1$$ into $$(x + 2)(y - 3) = 6$$: then $$3(y - 3) = 6$$, so $$y - 3 = 2$$ and
+$$y = 5$$. The point $$(1, 5)$$ is the point $$(3, 2)$$ of $$xy = 6$$ moved two left and three up,
+and $$3 \cdot 2 = 6$$. Dividing by $$x + 2$$ gives the same curve as a formula for $$y$$:
+
+```math
+y = 3 + \frac{6}{x + 2} \qquad (x \ne -2)
+```
+
+### Recognising one from its equation
+
+Multiply out $$(x + 2)(y - 3) = 6$$ and you get $$xy - 3x + 2y - 6 = 6$$, which is
+$$xy - 3x + 2y - 12 = 0$$. Someone handing you that last equation has hidden the slide. To find it
+again, factor the first three terms back into a product of two brackets.
+
+:::proposition[Spotting a slid copy of xy = c]{#hyperbolas-moved-product}
+
+For any numbers $$p$$, $$q$$ and $$r$$, the equation $$xy + px + qy + r = 0$$ has the same graph as
+
+```math
+(x + q)(y + p) = pq - r
+```
+
+When $$pq - r \ne 0$$, this is the graph of $$xy = pq - r$$ slid by $$(-q, -p)$$, with centre
+$$(-q, -p)$$ and asymptotes $$x = -q$$ and $$y = -p$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Hyperbola#Hyperbola_with_equation_y_.3D_A.2Fx"}
+
+Multiply out the brackets: $$(x + q)(y + p) = xy + px + qy + pq$$. So
+
+```math
+\begin{aligned}
+xy + px + qy + r = 0 &\iff xy + px + qy + pq = pq - r && \text{add } pq - r \text{ to both sides} \\
+&\iff (x + q)(y + p) = pq - r && \text{the brackets multiply out to the left side}
+\end{aligned}
+```
+
+The two equations have the same solutions, so the same graph. Writing $$x + q$$ as $$x - (-q)$$ and
+$$y + p$$ as $$y - (-p)$$, :ref{#slide-graph} says this is the graph of $$xy = pq - r$$ slid by
+$$(-q, -p)$$. The slide carries the axes, the asymptotes of $$xy = pq - r$$, onto the lines
+$$x = -q$$ and $$y = -p$$.
+
+:::
+
+For $$xy - 3x + 2y - 12 = 0$$ we have $$p = -3$$, $$q = 2$$ and $$r = -12$$, so
+$$pq - r = -6 + 12 = 6$$, and the equation is $$(x + 2)(y - 3) = 6$$, as it should be. When
+$$pq - r = 0$$ the equation says a product is $$0$$, so one bracket is $$0$$: the graph is the two
+lines $$x = -q$$ and $$y = -p$$, and there is no curve at all.
+
+## Turning xy = c by an eighth of a turn
+
+The graph of $$xy = 2$$ is symmetric in the line $$y = x$$, and each branch comes nearest the origin
+where it crosses that line, at $$(\sqrt2, \sqrt2)$$ and $$(-\sqrt2, -\sqrt2)$$. Picture turning the
+whole graph anticlockwise by $$\frac{\pi}{4}$$ ($$45^\circ$$). The line $$y = x$$ swings up onto the
+$$y$$-axis, so the branches end up opening upwards and downwards, symmetric in the $$y$$-axis. The
+axes, the asymptotes, swing onto the diagonals $$y = x$$ and $$y = -x$$.
+
+Try it with one point first. The point $$(1, 2)$$ is on $$xy = 2$$. The turn by $$\frac{\pi}{4}$$
+has $$\cos\frac{\pi}{4} = \sin\frac{\pi}{4} = \frac{1}{\sqrt2}$$ (:ref{#trigonometry/sin-cos-45}),
+so by :ref{#trigonometry/rotation-formula} it sends $$(1, 2)$$ to
+
+```math
+\left(\frac{1 - 2}{\sqrt2},\ \frac{1 + 2}{\sqrt2}\right) = \left(-\frac{1}{\sqrt2},\ \frac{3}{\sqrt2}\right)
+```
+
+The squares of those coordinates are $$\frac12$$ and $$\frac92$$, and $$\frac92 - \frac12 = 4$$. So
+the turned point satisfies $$y^2 - x^2 = 4$$, and $$4$$ is twice the $$2$$ in $$xy = 2$$. The
+theorem says this happens for every point.
+
+:::theorem[Turning xy = c]{#hyperbola-turn}
+
+Let $$c \ne 0$$, and let $$G_{\pi/4}$$ be the turn about $$O$$ by $$\frac{\pi}{4}$$.
+
+1. $$G_{\pi/4}$$ sends the graph of $$xy = c$$ onto the graph of $$y^2 - x^2 = 2c$$
+2. $$G_{\pi/4}$$ sends the graph of $$x^2 - y^2 = 2c$$ onto the graph of $$xy = c$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Hyperbola#Hyperbola_with_equation_y_.3D_A.2Fx"}
+
+By :ref{#turn-graph}, the turn by $$\varphi$$ sends the graph of an equation in $$x$$ and $$y$$ onto
+the graph of the equation we get by putting $$x\cos\varphi + y\sin\varphi$$ in place of $$x$$ and
+$$-x\sin\varphi + y\cos\varphi$$ in place of $$y$$. That is the point turned back by $$\varphi$$.
+For $$\varphi = \frac{\pi}{4}$$, both $$\cos\varphi$$ and $$\sin\varphi$$ are $$\frac{1}{\sqrt2}$$,
+so we put
+
+```math
+\frac{x + y}{\sqrt2} \text{ in place of } x \qquad \frac{-x + y}{\sqrt2} \text{ in place of } y
+```
+
+**Part 1.** Making those replacements in $$xy = c$$ gives
+
+```math
+\begin{aligned}
+\frac{x + y}{\sqrt2} \cdot \frac{y - x}{\sqrt2} &= c && \text{the replacements, with } -x + y \text{ written } y - x \\
+\frac{(y + x)(y - x)}{2} &= c && \text{since } \sqrt2 \cdot \sqrt2 = 2 \\
+\frac{y^2 - x^2}{2} &= c && \text{multiplying out the brackets} \\
+y^2 - x^2 &= 2c && \text{doubling both sides}
+\end{aligned}
+```
+
+**Part 2.** Making the same replacements in $$x^2 - y^2 = 2c$$ gives
+
+```math
+\begin{aligned}
+\frac{(x + y)^2}{2} - \frac{(y - x)^2}{2} &= 2c && \text{the replacements, squared} \\
+\frac{(x^2 + 2xy + y^2) - (y^2 - 2xy + x^2)}{2} &= 2c && \text{multiplying out both squares} \\
+\frac{4xy}{2} &= 2c && \text{the } x^2 \text{ and } y^2 \text{ terms cancel} \\
+xy &= c && \text{dividing both sides by } 2
+\end{aligned}
+```
+
+:::
+
+The signs are where things go wrong, so it's worth checking part 1 against the point from before.
+The turned point $$\left(-\frac{1}{\sqrt2}, \frac{3}{\sqrt2}\right)$$ satisfies $$y^2 - x^2 = 4$$,
+as part 1 says for $$c = 2$$. Notice that :ref{#turn-graph} puts in the point turned **back**, which
+is why its signs are the other way round from the formula for the turn itself.
+
+Drag the slider to turn the graph of $$xy = 2$$ from $$0$$ to $$\frac{\pi}{2}$$. The blue curve is
+the turned graph and the faint dashed curve is where it started. The orange dashed lines are the
+turned axes, and the purple dot is the turned point $$(\sqrt2, \sqrt2)$$. At $$\frac{\pi}{4}$$ the
+$$xy$$ term vanishes from the equation, and at $$\frac{\pi}{2}$$ the graph has become $$xy = -2$$.
+
+<HyperbolaTurn />
+
+## The hyperbola
+
+Part 2 of :ref{#hyperbola-turn} says that $$xy = c$$ is the turned copy of a curve whose equation
+has a square of $$x$$ minus a square of $$y$$. Curves of that kind, moved by any isometry, are the
+hyperbolas.
+
+:::definition[Hyperbola]{#hyperbola-definition}
+
+A **hyperbola** is the image, under an isometry, of the graph of
+
+```math
+\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1
+```
+
+for some numbers $$a > 0$$ and $$b > 0$$. This graph itself is the **standard hyperbola** with those
+numbers. Its **centre** is $$O$$ and its **vertices** are $$(a, 0)$$ and $$(-a, 0)$$, and for a
+moved hyperbola they are the images of these points.
+
+:::
+
+Here is the standard hyperbola with $$a = 3$$ and $$b = 4$$, the graph of
+$$\frac{x^2}{9} - \frac{y^2}{16} = 1$$. As a check, put in the point $$(3, 0)$$:
+$$\frac{9}{9} - 0 = 1$$. For a point off the axis, put in $$\left(5, \frac{16}{3}\right)$$:
+$$\frac{25}{9} - \frac{256}{9 \cdot 16} = \frac{25}{9} - \frac{16}{9} = 1$$.
+
+<StandardHyperbola caption="The standard hyperbola x²/9 − y²/16 = 1, with vertices (±3, 0) and foci F₁ and F₂ at (±5, 0). The dashed lines through the corners of the box from (−3, −4) to (3, 4) are y = ±4x/3, the lines the branches approach." />
+
+The standard hyperbola has two branches for the same reason as $$xy = 12$$. Rearranged, its equation
+says $$\frac{x^2}{a^2} = 1 + \frac{y^2}{b^2}$$, which is at least $$1$$. So $$x^2 \ge a^2$$, and
+every point has $$x \ge a$$ or $$x \le -a$$. No point of the graph lies in the strip between
+$$x = -a$$ and $$x = a$$, so the graph comes in two pieces: the **right branch**, with $$x \ge a$$,
+and the **left branch**, with $$x \le -a$$.
+
+### The graph of xy = c is a hyperbola
+
+For $$c > 0$$, divide both sides of $$x^2 - y^2 = 2c$$ by $$2c$$:
+
+```math
+\frac{x^2}{2c} - \frac{y^2}{2c} = 1
+```
+
+This is the standard hyperbola with $$a^2 = b^2 = 2c$$, so $$a = b = \sqrt{2c}$$. By part 2 of
+:ref{#hyperbola-turn}, the turn $$G_{\pi/4}$$ sends it onto the graph of $$xy = c$$, and turns keep
+distances (:ref{#isometries/basic-isometries}). So the graph of $$xy = c$$ is a hyperbola. Its
+vertices are where the turn sends $$(\pm\sqrt{2c}, 0)$$, and by :ref{#trigonometry/rotation-formula}
+the turn sends $$(\sqrt{2c}, 0)$$ to
+
+```math
+\left(\frac{\sqrt{2c}}{\sqrt2},\ \frac{\sqrt{2c}}{\sqrt2}\right) = (\sqrt{c}, \sqrt{c})
+```
+
+That fits: $$\sqrt c \cdot \sqrt c = c$$. For $$xy = 12$$, $$a = b = \sqrt{24} = 2\sqrt6$$, and the
+vertices are $$(2\sqrt3, 2\sqrt3) \approx (3.46, 3.46)$$ and $$(-2\sqrt3, -2\sqrt3)$$. For
+$$c < 0$$, the number $$-c$$ is positive, so the graph of $$xy = -c$$ is a hyperbola. The flip in
+the $$y$$-axis sends it onto the graph of $$(-x)y = -c$$ by :ref{#flip-graph}, which is $$xy = c$$.
+A turn followed by a flip is an isometry (:ref{#isometries/composite-isometry}), so $$xy = c$$ is a
+hyperbola for every $$c \ne 0$$.
+
+One slip is worth naming here. The equation $$x^2 - y^2 = 4$$ is a hyperbola, but to read off $$a$$
+and $$b$$ you first divide by $$4$$ to get $$1$$ on the right:
+$$\frac{x^2}{4} - \frac{y^2}{4} = 1$$, so $$a = b = 2$$, not $$1$$.
+
+### Hyperbolas that open up and down
+
+The graph of $$y^2 - x^2 = 4$$ from part 1 of :ref{#hyperbola-turn} opens up and down, not left and
+right. It is a hyperbola too. By :ref{#flip-graph}, swapping the letters $$x$$ and $$y$$ is the flip
+in $$y = x$$, and swapping them in $$\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$$ gives
+$$\frac{y^2}{a^2} - \frac{x^2}{b^2} = 1$$. So every equation of that second shape is a flipped
+standard hyperbola, with vertices $$(0, \pm a)$$ on the $$y$$-axis.
+
+Dividing $$y^2 - x^2 = 4$$ by $$4$$ gives $$\frac{y^2}{4} - \frac{x^2}{4} = 1$$, so $$a = b = 2$$
+and the vertices are $$(0, 2)$$ and $$(0, -2)$$. As a check, $$(0, 2)$$ gives $$2^2 - 0^2 = 4$$.
+
+## The lines the branches approach
+
+Far out along the standard hyperbola, $$x$$ and $$y$$ are large, and the $$1$$ on the right of
+$$\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$$ is tiny next to them. Without it, the equation would say
+$$\frac{y^2}{b^2} = \frac{x^2}{a^2}$$, which is $$y = \pm\frac{b}{a}x$$. So far out, the curve
+should look almost like those two lines. They are the dashed lines through the corners of the box in
+the picture under [The hyperbola](#the-hyperbola).
+
+With numbers, take $$a = 3$$ and $$b = 4$$, and go out to $$x = 30$$. The right branch has
+$$y = \frac43\sqrt{30^2 - 9} = \frac43\sqrt{891} \approx 39.80$$ there, and the line
+$$y = \frac43 x$$ has $$y = 40$$. The gap between them is about $$0.20$$, small next to $$40$$.
+
+:::proposition[The asymptotes]{#hyperbola-asymptotes}
+
+Let $$a, b > 0$$, and write $$C$$ for the graph of $$\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$$.
+
+1. $$C$$ never meets either of the lines $$y = \frac{b}{a}x$$ and $$y = -\frac{b}{a}x$$
+2. For $$x \ge a$$, the point of $$C$$ above $$x$$ with $$y \ge 0$$ lies below the line
+   $$y = \frac{b}{a}x$$, by a vertical gap of
+
+   ```math
+   \frac{b}{a}\left(x - \sqrt{x^2 - a^2}\right) = \frac{ab}{x + \sqrt{x^2 - a^2}}
+   ```
+
+3. That gap is at most $$\frac{ab}{x}$$. So for any positive number $$g$$, at every $$x$$ bigger
+   than both $$a$$ and $$\frac{ab}{g}$$ the gap is less than $$g$$
+
+These two lines are the asymptotes of $$C$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Hyperbola#Asymptotes"}
+
+**Part 1.** Put a point $$\left(x, \pm\frac{b}{a}x\right)$$ of either line into the left side of the
+equation:
+
+```math
+\frac{x^2}{a^2} - \frac{1}{b^2} \cdot \frac{b^2x^2}{a^2} = \frac{x^2}{a^2} - \frac{x^2}{a^2} = 0
+```
+
+That is $$0$$, not $$1$$, so no point of either line is on $$C$$.
+
+**Part 2.** For a point $$(x, y)$$ of $$C$$ with $$y \ge 0$$, solve the equation for $$y$$:
+
+```math
+\begin{aligned}
+\frac{y^2}{b^2} &= \frac{x^2}{a^2} - 1 && \text{moving the terms across} \\
+y^2 &= \frac{b^2}{a^2}\left(x^2 - a^2\right) && \text{multiplying by } b^2 \text{ and taking out } \tfrac{1}{a^2} \\
+y &= \frac{b}{a}\sqrt{x^2 - a^2} && \text{the square root, since } y \ge 0
+\end{aligned}
+```
+
+The line is at height $$\frac{b}{a}x$$, so the gap is $$\frac{b}{a}x - y$$. Multiply and divide by
+$$x + \sqrt{x^2 - a^2}$$, which is positive since $$x \ge a > 0$$:
+
+```math
+\begin{aligned}
+\frac{b}{a}x - y &= \frac{b}{a}\left(x - \sqrt{x^2 - a^2}\right) && \text{taking out } \tfrac{b}{a} \\
+&= \frac{b}{a} \cdot \frac{\left(x - \sqrt{x^2 - a^2}\right)\left(x + \sqrt{x^2 - a^2}\right)}{x + \sqrt{x^2 - a^2}} && \text{multiplying and dividing by the same number} \\
+&= \frac{b}{a} \cdot \frac{x^2 - (x^2 - a^2)}{x + \sqrt{x^2 - a^2}} && (u - v)(u + v) = u^2 - v^2 \\
+&= \frac{b}{a} \cdot \frac{a^2}{x + \sqrt{x^2 - a^2}} = \frac{ab}{x + \sqrt{x^2 - a^2}} && \text{cancelling one } a
+\end{aligned}
+```
+
+This gap is positive, so the point of $$C$$ lies below the line.
+
+**Part 3.** The square root is at least $$0$$, so the bottom of the fraction is at least $$x$$, and
+dividing by a bigger number gives a smaller answer. So the gap is at most $$\frac{ab}{x}$$. If also
+$$x > \frac{ab}{g}$$, then $$\frac{ab}{x} < g$$, and the gap is less than $$g$$.
+
+:::
+
+Here are the gaps for $$a = 3$$ and $$b = 4$$, where $$ab = 12$$:
+
+| $$x$$                                 | $$5$$    | $$30$$   | $$300$$   | $$3000$$   |
+| ------------------------------------- | -------- | -------- | --------- | ---------- |
+| gap $$\frac{12}{x + \sqrt{x^2 - 9}}$$ | $$1.33$$ | $$0.20$$ | $$0.020$$ | $$0.0020$$ |
+| bound $$\frac{12}{x}$$                | $$2.4$$  | $$0.4$$  | $$0.04$$  | $$0.004$$  |
+
+Each time $$x$$ is ten times bigger, the gap is about ten times smaller. To be within $$0.001$$ of
+the line, part 3 says any $$x$$ bigger than $$\frac{12}{0.001} = 12\,000$$ will do. That is what "as
+close as you like" means: name any gap, however small, and far enough out the curve is closer than
+that.
+
+<AsymptoteGap caption="The upper part of the right branch of x²/9 − y²/16 = 1 and the asymptote y = 4x/3. The gap between them shrinks from 1.81 at x = 4 to 0.78 at x = 8 and 0.51 at x = 12, and it is never 0." />
+
+The other three quarters behave the same way. Swapping $$x$$ for $$-x$$, or $$y$$ for $$-y$$, leaves
+the equation unchanged, so by :ref{#flip-graph} the flips in the two axes are symmetries of $$C$$.
+Each flip swaps the two asymptotes, so the same gaps appear in every quarter. For $$xy = c$$ the
+asymptotes are the axes: the turn by $$\frac{\pi}{4}$$ carries the lines $$y = \pm x$$, the
+asymptotes of $$x^2 - y^2 = 2c$$ (where $$\frac{b}{a} = 1$$), onto the two axes, as the orange lines
+in the turning diagram show.
+
+## The two foci
+
+An ellipse has two foci, and the distances from them to a point of the ellipse add up to the same
+number everywhere (:ref{#ellipse-foci}). A hyperbola has two foci as well, but now the
+**difference** of the two distances stays the same. Points near one focus are far from the other,
+and moving out along a branch makes both distances grow at almost the same rate.
+
+Take $$a = 3$$ and $$b = 4$$ again. The foci will be $$F_1 = (-5, 0)$$ and $$F_2 = (5, 0)$$, where
+$$5 = \sqrt{3^2 + 4^2}$$. The vertex $$(3, 0)$$ is $$8$$ from $$F_1$$ and $$2$$ from $$F_2$$, a
+difference of $$6$$. The point $$P = \left(5, \frac{16}{3}\right)$$ sits straight above $$F_2$$, so
+it is $$\frac{16}{3}$$ from $$F_2$$, and by :ref{#coordinates/distance-formula} it is
+$$\sqrt{10^2 + \left(\frac{16}{3}\right)^2} = \sqrt{\frac{1156}{9}} = \frac{34}{3}$$ from $$F_1$$.
+The difference is $$\frac{34}{3} - \frac{16}{3} = 6$$ again, and $$6 = 2a$$.
+
+<FocalDistances caption="The point P = (5, 16/3) on x²/9 − y²/16 = 1 is 34/3 from F₁ = (−5, 0) and 16/3 from F₂ = (5, 0). The difference is 6, twice the distance from the centre to a vertex." />
+
+:::theorem[The two foci of a hyperbola]{#hyperbola-foci}
+
+Let $$a, b > 0$$ and $$c = \sqrt{a^2 + b^2}$$, and let $$F_1 = (-c, 0)$$ and $$F_2 = (c, 0)$$. A
+point $$P$$ lies on the graph of $$\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$$ exactly when
+
+```math
+\big|\,d(P, F_1) - d(P, F_2)\,\big| = 2a
+```
+
+The points $$F_1$$ and $$F_2$$ are the **foci** of the standard hyperbola. On the right branch
+$$d(P, F_1) - d(P, F_2) = 2a$$, and on the left branch $$d(P, F_2) - d(P, F_1) = 2a$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Hyperbola#Equation"}
+
+Write $$P = (x, y)$$, $$d_1 = d(P, F_1)$$ and $$d_2 = d(P, F_2)$$. By
+:ref{#coordinates/distance-formula},
+
+```math
+d_1^2 = (x + c)^2 + y^2 \qquad d_2^2 = (x - c)^2 + y^2
+```
+
+We use one fact about $$c$$ throughout: $$c^2 = a^2 + b^2$$, so $$c^2 - b^2 = a^2$$ and
+$$c^2 - a^2 = b^2$$.
+
+**On the curve, the distances.** Suppose $$P$$ is on the graph. Then
+$$y^2 = \frac{b^2x^2}{a^2} - b^2$$, from the equation multiplied by $$b^2$$. Put that into
+$$d_2^2$$:
+
+```math
+\begin{aligned}
+d_2^2 &= x^2 - 2cx + c^2 + \frac{b^2x^2}{a^2} - b^2 && \text{multiplying out, and the value of } y^2 \\
+&= x^2\left(1 + \frac{b^2}{a^2}\right) - 2cx + a^2 && \text{since } c^2 - b^2 = a^2 \\
+&= \frac{c^2x^2}{a^2} - 2cx + a^2 && \text{since } 1 + \frac{b^2}{a^2} = \frac{a^2 + b^2}{a^2} = \frac{c^2}{a^2} \\
+&= \left(\frac{cx}{a} - a\right)^2 && \text{a perfect square: } (u - v)^2 = u^2 - 2uv + v^2
+\end{aligned}
+```
+
+So $$d_2 = \left|\frac{cx}{a} - a\right|$$, and the same steps with $$+c$$ in place of $$-c$$ give
+$$d_1 = \left|\frac{cx}{a} + a\right|$$.
+
+**On the curve, the difference.** Every point of the graph has $$x \ge a$$ or $$x \le -a$$, as we
+saw under [The hyperbola](#the-hyperbola). Also $$c > a$$, since $$c^2 = a^2 + b^2 > a^2$$.
+
+- **Right branch**: $$x \ge a$$ gives $$\frac{cx}{a} \ge c > a$$, so both $$\frac{cx}{a} + a$$ and
+  $$\frac{cx}{a} - a$$ are positive. Then
+  $$d_1 - d_2 = \left(\frac{cx}{a} + a\right) - \left(\frac{cx}{a} - a\right) = 2a$$
+- **Left branch**: $$x \le -a$$ gives $$\frac{cx}{a} \le -c < -a$$, so both are negative. Then
+  $$d_1 = -\frac{cx}{a} - a$$ and $$d_2 = -\frac{cx}{a} + a$$, so $$d_2 - d_1 = 2a$$
+
+Either way $$|d_1 - d_2| = 2a$$.
+
+**The other way round.** Now suppose $$|d_1 - d_2| = 2a$$. Then $$d_1 - d_2 = 2a\varepsilon$$, where
+$$\varepsilon$$ (read "epsilon") is $$1$$ or $$-1$$. Subtracting the two squares above, the $$x^2$$
+and $$y^2$$ and $$c^2$$ cancel:
+
+```math
+d_1^2 - d_2^2 = (x + c)^2 - (x - c)^2 = 4cx
+```
+
+Since $$d_1^2 - d_2^2 = (d_1 - d_2)(d_1 + d_2)$$, and $$d_1 - d_2 = 2a\varepsilon$$ is not $$0$$, we
+can divide. Using $$\frac{1}{\varepsilon} = \varepsilon$$:
+
+```math
+\begin{aligned}
+d_1 + d_2 &= \frac{4cx}{2a\varepsilon} = \frac{2cx\varepsilon}{a} && \text{dividing } d_1^2 - d_2^2 \text{ by } d_1 - d_2 \\
+2d_1 &= 2a\varepsilon + \frac{2cx\varepsilon}{a} && \text{adding } d_1 - d_2 = 2a\varepsilon \\
+d_1 &= \varepsilon\left(a + \frac{cx}{a}\right) && \text{halving, and taking out } \varepsilon
+\end{aligned}
+```
+
+Squaring both sides, with $$\varepsilon^2 = 1$$, gives $$d_1^2 = \left(a + \frac{cx}{a}\right)^2$$.
+Now write $$d_1^2$$ out and rearrange:
+
+```math
+\begin{aligned}
+x^2 + 2cx + c^2 + y^2 &= a^2 + 2cx + \frac{c^2x^2}{a^2} && \text{both sides multiplied out} \\
+x^2 - \frac{c^2x^2}{a^2} + y^2 &= a^2 - c^2 && \text{taking } 2cx + c^2 + \tfrac{c^2x^2}{a^2} \text{ from both sides} \\
+-\frac{b^2x^2}{a^2} + y^2 &= -b^2 && \text{since } 1 - \frac{c^2}{a^2} = -\frac{b^2}{a^2} \text{ and } a^2 - c^2 = -b^2 \\
+\frac{x^2}{a^2} - \frac{y^2}{b^2} &= 1 && \text{dividing both sides by } -b^2
+\end{aligned}
+```
+
+So $$P$$ is on the graph.
+
+:::
+
+For the point $$P = \left(5, \frac{16}{3}\right)$$, the formula from the proof gives
+$$d_2 = \frac{5 \cdot 5}{3} - 3 = \frac{16}{3}$$ and $$d_1 = \frac{25}{3} + 3 = \frac{34}{3}$$, the
+two distances we measured. An isometry keeps distances, so a moved hyperbola has foci too: the
+images of $$F_1$$ and $$F_2$$, with the same difference $$2a$$.
+
+### How wide the branches open
+
+For an ellipse the foci are inside, at distance $$c < a$$ from the centre. For a hyperbola they sit
+beyond the vertices, at $$c > a$$. The ratio of the two says how widely the branches open.
+
+:::definition[Eccentricity of a hyperbola]{#hyperbola-eccentricity}
+
+The **eccentricity** of the standard hyperbola $$\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$$, and of
+every hyperbola moved from it, is
+
+```math
+e = \frac{c}{a} = \frac{\sqrt{a^2 + b^2}}{a}
+```
+
+Since $$c > a$$, every hyperbola has $$e > 1$$.
+
+:::
+
+For $$a = 3$$ and $$b = 4$$ the eccentricity is $$\frac{5}{3} \approx 1.67$$. For $$xy = c$$, with
+$$a = b$$, it is $$\frac{\sqrt{2a^2}}{a} = \sqrt2 \approx 1.41$$, whatever $$c$$ is. Squaring
+$$e = \frac{c}{a}$$ gives $$e^2 = 1 + \frac{b^2}{a^2}$$, so the asymptotes have slopes
+$$\pm\frac{b}{a} = \pm\sqrt{e^2 - 1}$$. An eccentricity close to $$1$$ means flat asymptotes and
+narrow branches, and a large eccentricity means steep asymptotes and branches opened wide. The guide
+[Slicing a cone](./slicing-a-cone.mdx) shows how eccentricity sorts ellipses, parabolas and
+hyperbolas into one family (:ref{#focus-directrix-e}).
+
+## Finding a ship from two radio signals
+
+Before satellite positioning, ships found their place at sea with radio stations on the coast, in a
+system called LORAN. In its plainest form, two stations $$A$$ and $$B$$, $$100$$ km apart, send out
+a pulse at the same instant. A radio signal covers about $$300\,000$$ km a second, which is $$0.3$$
+km each millionth of a second. A ship hears $$B$$'s pulse $$200$$ millionths of a second before
+$$A$$'s, so it is $$200 \times 0.3 = 60$$ km nearer to $$B$$ than to $$A$$.
+
+Put the coastline on the $$x$$-axis with $$A = (-50, 0)$$ and $$B = (50, 0)$$, measuring in km. The
+ship's distances to $$A$$ and $$B$$ differ by $$60$$, so by :ref{#hyperbola-foci} it lies on the
+hyperbola with foci $$A$$ and $$B$$ and $$2a = 60$$. That gives $$a = 30$$ and $$c = 50$$, so
+$$b = \sqrt{50^2 - 30^2} = 40$$, and the ship is on the right branch, the one nearer $$B$$, of
+
+```math
+\frac{x^2}{900} - \frac{y^2}{1600} = 1
+```
+
+<RadioStations caption="Stations A and B are 100 km apart. Every point of the blue branch is 60 km nearer B than A; the ship at (34, 21.3) is 86.7 km from A and 26.7 km from B." />
+
+One such point is $$\left(34, \frac{64}{3}\right) \approx (34, 21.3)$$, which is
+$$\sqrt{84^2 + \left(\frac{64}{3}\right)^2} = \frac{260}{3} \approx 86.7$$ km from $$A$$ and
+$$\sqrt{16^2 + \left(\frac{64}{3}\right)^2} = \frac{80}{3} \approx 26.7$$ km from $$B$$, a
+difference of $$\frac{180}{3} = 60$$. One pair of stations puts the ship somewhere on this branch,
+but not where on it. A second pair gives a second hyperbola, and the ship is where the two cross.
+
+## Exercises
+
+:::::accordion[Exercises on hyperbolas, with solutions]
+
+::::exercise{#ex-hyperbolas-product-table}
+
+1. Find all the points with whole-number coordinates on the top right branch of $$xy = 20$$.
+2. Is $$(-4, -5)$$ on the graph? Is $$(-4, 5)$$?
+3. What are the asymptotes of $$xy = 20$$, and how far right must you go before the curve is within
+   $$0.01$$ of the $$x$$-axis?
+
+:::solution
+
+1. The whole numbers that multiply to $$20$$ in pairs are $$1 \cdot 20$$, $$2 \cdot 10$$ and
+   $$4 \cdot 5$$, in either order. So the points are $$(1, 20)$$, $$(2, 10)$$, $$(4, 5)$$,
+   $$(5, 4)$$, $$(10, 2)$$ and $$(20, 1)$$.
+2. $$(-4)(-5) = 20$$, so $$(-4, -5)$$ is on the graph, on the bottom left branch. But
+   $$(-4) \cdot 5 = -20$$, so $$(-4, 5)$$ is not on it. It is on the graph of $$xy = -20$$.
+3. The asymptotes are the two axes. The height of the curve at $$x > 0$$ is $$y = \frac{20}{x}$$,
+   which is less than $$0.01$$ exactly when $$x > \frac{20}{0.01} = 2000$$.
+
+:::
+
+::::
+
+::::exercise{#ex-hyperbolas-moved}
+
+Show that the graph of $$xy + 4x - y - 10 = 0$$ is a slid copy of the graph of $$xy = c$$ for some
+$$c$$. Find $$c$$, the centre and the asymptotes, write $$y$$ as a formula in $$x$$, and check your
+answer at $$x = 4$$.
+
+:::solution
+
+Here $$p = 4$$, $$q = -1$$ and $$r = -10$$, so by :ref{#hyperbolas-moved-product} the equation is
+
+```math
+(x - 1)(y + 4) = pq - r = -4 + 10 = 6
+```
+
+Multiplying out checks it: $$(x - 1)(y + 4) = xy + 4x - y - 4$$, and $$xy + 4x - y - 4 = 6$$ is the
+original equation. So $$c = 6$$, and the graph is $$xy = 6$$ slid by $$(1, -4)$$: centre
+$$(1, -4)$$, asymptotes $$x = 1$$ and $$y = -4$$. Dividing by $$x - 1$$ gives
+$$y = -4 + \frac{6}{x - 1}$$ for $$x \ne 1$$.
+
+At $$x = 4$$ the formula gives $$y = -4 + 2 = -2$$. In the original equation,
+$$4 \cdot (-2) + 4 \cdot 4 - (-2) - 10 = -8 + 16 + 2 - 10 = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-hyperbolas-read-off}
+
+For the hyperbola $$\frac{x^2}{16} - \frac{y^2}{9} = 1$$, find the vertices, the foci, the
+asymptotes and the eccentricity. Then check :ref{#hyperbola-foci} at the point
+$$\left(5, \frac94\right)$$.
+
+:::solution
+
+Here $$a = 4$$ and $$b = 3$$, so $$c = \sqrt{16 + 9} = 5$$. The vertices are $$(\pm 4, 0)$$, the
+foci are $$(\pm 5, 0)$$, the asymptotes are $$y = \pm\frac34 x$$, and the eccentricity is
+$$e = \frac54$$.
+
+The point is on the curve: $$\frac{25}{16} - \frac{81/16}{9} = \frac{25}{16} - \frac{9}{16} = 1$$.
+It sits straight above $$(5, 0)$$, so it is $$\frac94$$ from that focus. From $$(-5, 0)$$ it is
+$$\sqrt{10^2 + \left(\frac94\right)^2} = \sqrt{\frac{1681}{16}} = \frac{41}{4}$$. The difference is
+$$\frac{41}{4} - \frac{9}{4} = 8 = 2a$$, as the theorem says.
+
+:::
+
+::::
+
+::::exercise{#ex-hyperbolas-turn-negative}
+
+1. Use :ref{#hyperbola-turn} to find the equation of the graph of $$xy = -3$$ turned by
+   $$\frac{\pi}{4}$$. Check your answer with the point $$(1, -3)$$.
+2. Find $$a$$ and $$b$$ for the turned curve, and use them to find the vertices of $$xy = -3$$.
+
+:::solution
+
+1. By part 1 of :ref{#hyperbola-turn} with $$c = -3$$, the turned graph is $$y^2 - x^2 = -6$$, which
+   is $$x^2 - y^2 = 6$$. The turn sends $$(1, -3)$$ to
+   $$\left(\frac{1 + 3}{\sqrt2}, \frac{1 - 3}{\sqrt2}\right) = (2\sqrt2, -\sqrt2)$$ by
+   :ref{#trigonometry/rotation-formula}, and $$(2\sqrt2)^2 - (-\sqrt2)^2 = 8 - 2 = 6$$.
+2. Dividing by $$6$$ gives $$\frac{x^2}{6} - \frac{y^2}{6} = 1$$, so $$a = b = \sqrt6$$ and the
+   turned curve has vertices $$(\pm\sqrt6, 0)$$. To get back to $$xy = -3$$, turn by
+   $$-\frac{\pi}{4}$$, which undoes the turn (:ref{#trigonometry/radian-turns}). With
+   $$\cos\left(-\frac{\pi}{4}\right) = \frac{1}{\sqrt2}$$ and
+   $$\sin\left(-\frac{\pi}{4}\right) = -\frac{1}{\sqrt2}$$, it sends $$(\sqrt6, 0)$$ to
+   $$\left(\frac{\sqrt6}{\sqrt2}, -\frac{\sqrt6}{\sqrt2}\right) = (\sqrt3, -\sqrt3)$$. So the
+   vertices of $$xy = -3$$ are $$(\sqrt3, -\sqrt3)$$ and $$(-\sqrt3, \sqrt3)$$. Check:
+   $$\sqrt3 \cdot (-\sqrt3) = -3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-hyperbolas-gap}
+
+For the hyperbola $$x^2 - y^2 = 1$$, work out the gap between the upper right branch and the line
+$$y = x$$ at $$x = 2$$, both directly and from the formula in :ref{#hyperbola-asymptotes}. How far
+right must you go to be sure the gap is less than $$0.001$$?
+
+:::solution
+
+Here $$a = b = 1$$. At $$x = 2$$ the curve has $$y = \sqrt{4 - 1} = \sqrt3 \approx 1.732$$, and the
+line has $$y = 2$$, so the gap is $$2 - \sqrt3 \approx 0.268$$. The formula gives
+$$\frac{1}{2 + \sqrt3} \approx 0.268$$ too, and in fact
+$$\frac{1}{2 + \sqrt3} = \frac{2 - \sqrt3}{(2 + \sqrt3)(2 - \sqrt3)} = \frac{2 - \sqrt3}{4 - 3} = 2 - \sqrt3$$.
+
+By part 3 of the proposition the gap is at most $$\frac{ab}{x} = \frac1x$$, which is less than
+$$0.001$$ once $$x > 1000$$. At $$x = 1000$$ itself the gap is
+$$\frac{1}{1000 + \sqrt{999\,999}} \approx 0.0005$$.
+
+:::
+
+::::
+
+::::exercise{#ex-hyperbolas-lines-through-centre}
+
+Let $$m$$ be a number. Show that the line $$y = mx$$ meets the hyperbola
+$$\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$$ exactly when $$m^2 < \frac{b^2}{a^2}$$, and that it then
+meets it in two points. Describe the answer in a picture.
+
+:::solution
+
+A point $$(x, mx)$$ of the line is on the hyperbola exactly when
+
+```math
+\frac{x^2}{a^2} - \frac{m^2x^2}{b^2} = 1, \quad \text{which is} \quad x^2\left(\frac{1}{a^2} - \frac{m^2}{b^2}\right) = 1
+```
+
+If the bracket is $$0$$ or negative, the left side is $$0$$ or negative for every $$x$$, so there is
+no solution. If the bracket is positive, there are two solutions,
+$$x = \pm\frac{1}{\sqrt{1/a^2 - m^2/b^2}}$$. The bracket is positive exactly when
+$$\frac{m^2}{b^2} < \frac{1}{a^2}$$, which is $$m^2 < \frac{b^2}{a^2}$$.
+
+In the picture: the lines through the centre that are less steep than the asymptotes cross both
+branches, once each. The asymptotes themselves, and every line through the centre steeper than them,
+miss the hyperbola altogether.
+
+:::
+
+::::
+
+::::exercise{#ex-hyperbolas-perpendicular-asymptotes}
+
+Show that the asymptotes of $$\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$$ are perpendicular exactly when
+$$a = b$$. Then explain why the asymptotes of every graph $$xy = c$$ are perpendicular, in two ways.
+
+:::solution
+
+The asymptotes have slopes $$\frac{b}{a}$$ and $$-\frac{b}{a}$$. By
+:ref{#segments-rays-and-lines/perpendicular-slopes}, they are perpendicular exactly when
+$$\frac{b}{a} \cdot \left(-\frac{b}{a}\right) = -1$$, which is $$b^2 = a^2$$. Both are positive, so
+this is $$a = b$$.
+
+For $$xy = c$$, the asymptotes are the two axes, which are perpendicular. The second way: the graph
+of $$xy = c$$ is a turned or flipped copy of a standard hyperbola with $$a = b = \sqrt{2|c|}$$, as
+under [The graph of xy = c is a hyperbola](#the-graph-of-xy--c-is-a-hyperbola), so its asymptotes
+are the images of two perpendicular lines. An isometry keeps angles
+(:ref{#isometries/isometry-angles}), so they are perpendicular.
+
+:::
+
+::::
+
+::::exercise{#ex-hyperbolas-radio}
+
+Two radio stations are $$100$$ km apart and send a pulse at the same instant. A ship hears one pulse
+$$\frac{80}{0.3} \approx 267$$ millionths of a second before the other, so it is $$80$$ km nearer to
+one station. With the stations at $$(\pm 50, 0)$$, find the equation of the hyperbola the ship is
+on. If the ship is due north of the nearer station, how far is it from each station?
+
+:::solution
+
+By :ref{#hyperbola-foci}, $$2a = 80$$, so $$a = 40$$, and $$c = 50$$, so
+$$b = \sqrt{2500 - 1600} = 30$$. The hyperbola is $$\frac{x^2}{1600} - \frac{y^2}{900} = 1$$.
+
+Suppose the nearer station is $$(50, 0)$$, so the ship is at $$(50, y)$$ with $$y > 0$$. Then
+$$\frac{2500}{1600} - \frac{y^2}{900} = 1$$, so $$y^2 = 900 \cdot \frac{900}{1600} = 506.25$$ and
+$$y = 22.5$$. The ship is $$22.5$$ km from the nearer station, and
+$$\sqrt{100^2 + 22.5^2} = \sqrt{10\,506.25} = 102.5$$ km from the other. The difference is
+$$102.5 - 22.5 = 80$$, as it should be.
+
+:::
+
+::::
+
+:::::

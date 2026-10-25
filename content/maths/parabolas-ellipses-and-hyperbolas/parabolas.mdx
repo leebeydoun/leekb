@@ -1,0 +1,697 @@
+---
+title: Parabolas
+description:
+  A parabola as the graph of y = ax² moved into place, every quadratic graph as one, why all
+  parabolas have the same shape, parabolas on their side, and the lines that touch a parabola.
+---
+
+Imagine a fountain in a park, with jets of water leaping out of one nozzle and falling back into the
+basin. Watch a single jet. The water climbs, slows as it rises, turns over at the top and falls, and
+the falling half of the arc is the rising half seen in a mirror. The steep jets make tall, narrow
+arcs and the flat ones make low, wide arcs, but they all look like the same kind of curve.
+
+<FountainJets caption="Jets of water from one nozzle. Each arc falls on one side of its top the same way it rose on the other, and the dashed line through the top of one jet is its mirror." />
+
+That curve is a **parabola**. You met it as the graph of a quadratic in
+[Parabolas](../quadratics/parabolas.mdx), where its mirror line and its lowest point were read off
+the picture. In this guide we'll say exactly what a parabola is, prove that every quadratic draws
+one, and find the lines that touch it.
+
+## What a parabola is
+
+The graph of $$y = x^2$$ is the U shape you know, with its lowest point at the origin and the
+$$y$$-axis as its mirror. The graph of $$y = 3x^2$$ is a narrower U and the graph of $$y = -x^2$$ is
+a U upside down. Now pick any of these curves up, like a stencil, and put it down somewhere else
+without bending or stretching it. Wherever it lands, we call it a parabola.
+
+Putting a stencil down somewhere else is an isometry: a move of the plane that keeps every distance
+(:ref{#isometries/isometry}). By :ref{#isometries/classification}, every isometry is built from
+slides, turns and flips, and [Sliding and stretching graphs](./sliding-and-stretching.mdx) shows how
+each of those changes the equation of a graph.
+
+:::definition[Parabola]{#parabola-definition}
+
+A **parabola** is the image of the graph of $$y = ax^2$$, for some number $$a \ne 0$$, under an
+isometry. The image of the origin $$O$$ is the **vertex** of the parabola, and the image of the
+$$y$$-axis is its **axis**.
+
+:::
+
+Here is one with numbers. Slide the graph of $$y = x^2$$ by $$(3, 1)$$, that is, $$3$$ to the right
+and $$1$$ up. By :ref{#slide-graph}, we replace $$x$$ by $$x - 3$$ and $$y$$ by $$y - 1$$, so the
+new curve is the graph of $$y - 1 = (x - 3)^2$$, or $$y = (x - 3)^2 + 1$$. Its vertex is where $$O$$
+lands, $$(3, 1)$$, and its axis is where the $$y$$-axis lands, the vertical line $$x = 3$$. As a
+check, the point $$(1, 1)$$ on $$y = x^2$$ slides to $$(4, 2)$$, and $$(4 - 3)^2 + 1 = 2$$.
+
+The same parabola can come from more than one move. The flip in the $$y$$-axis sends the graph of
+$$y = ax^2$$ onto itself (:ref{#flip-graph} turns $$y = ax^2$$ into $$y = a(-x)^2$$, the same
+equation), so flipping first and then moving gives the same curve as moving alone. Every such choice
+gives the same vertex and the same axis. We take that from the picture for now, and prove it in
+[One vertex and one axis](#one-vertex-and-one-axis) once we have tangents.
+
+## Every quadratic graph is a parabola
+
+Completing the square writes a quadratic as a number times a square plus a number, such as
+$$3(x + 2)^2 - 5$$. That is exactly the shape of the equation you get by sliding the graph of
+$$y = 3x^2$$: the $$x + 2$$ inside the square slides it sideways, and the $$-5$$ outside slides it
+down. So the graph of a quadratic is the graph of $$y = ax^2$$ slid into place.
+
+Take $$y = 3x^2 + 12x + 7$$. Taking out $$3$$ and completing the square
+(:ref{#quadratics/complete-square}),
+
+```math
+\begin{aligned}
+3x^2 + 12x + 7 &= 3(x^2 + 4x) + 7 && \text{take out } 3 \\
+&= 3\big((x + 2)^2 - 4\big) + 7 && \text{complete the square} \\
+&= 3(x + 2)^2 - 5 && \text{multiply back by } 3
+\end{aligned}
+```
+
+Now slide the graph of $$y = 3x^2$$ by $$(-2, -5)$$. By :ref{#slide-graph}, replace $$x$$ by
+$$x + 2$$ and $$y$$ by $$y + 5$$: the new curve is the graph of $$y + 5 = 3(x + 2)^2$$, which is
+$$y = 3(x + 2)^2 - 5$$, the same equation. Notice the signs: the slide is to the left, and the
+equation has $$x + 2$$. Check a point: $$(1, 3)$$ on $$y = 3x^2$$ slides to $$(-1, -2)$$, and
+$$3 \cdot 1 - 12 + 7 = -2$$.
+
+<SlidParabola caption="The graph of y = 3x² slid by (−2, −5). The origin lands on the vertex V = (−2, −5), the point (1, 3) lands on (−1, −2), and the y-axis lands on the dashed axis x = −2." />
+
+:::theorem[Every quadratic graph is a parabola]{#quadratic-parabola}
+
+Let $$a \ne 0$$, and let
+
+```math
+h = -\frac{b}{2a} \qquad k = c - \frac{b^2}{4a}
+```
+
+Then the graph of $$y = ax^2 + bx + c$$ is the slide of the graph of $$y = ax^2$$ by $$(h, k)$$. So
+it is a parabola, with vertex $$(h, k)$$ and axis the vertical line $$x = h$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Quadratic_function#Graph_of_the_univariate_function"}
+
+The graph of $$y = ax^2$$ is the graph of the equation $$y - ax^2 = 0$$. By :ref{#slide-graph}, the
+slide by $$(h, k)$$ sends it onto the graph of the equation we get by putting $$x - h$$ for $$x$$
+and $$y - k$$ for $$y$$:
+
+```math
+\begin{aligned}
+(y - k) - a(x - h)^2 &= 0 && \text{replace } x \text{ and } y \\
+y &= a(x - h)^2 + k && \text{add } a(x - h)^2 + k \text{ to both sides}
+\end{aligned}
+```
+
+By :ref{#quadratics/vertex}, with $$s = h$$, we have $$a(x - h)^2 + k = ax^2 + bx + c$$ for every
+number $$x$$. So a point $$(x, y)$$ satisfies $$y = a(x - h)^2 + k$$ exactly when it satisfies
+$$y = ax^2 + bx + c$$, and the two equations have the same graph.
+
+A slide is an isometry (:ref{#adding-and-scaling-points/formula-isometries}), so this graph is a
+parabola. The slide sends $$O$$ to $$(h, k)$$, which is the vertex. It sends each point $$(0, t)$$
+of the $$y$$-axis to $$(h, t + k)$$, and as $$t$$ runs through every number, so does $$t + k$$. So
+the image of the $$y$$-axis is the line $$x = h$$, which is the axis.
+
+:::
+
+The numbers agree with the worked case: $$a = 3$$, $$b = 12$$ and $$c = 7$$ give
+$$h = -\frac{12}{6} = -2$$ and $$k = 7 - \frac{144}{12} = -5$$.
+
+The [Quadratics](../quadratics/parabolas.mdx) chapter said the graph of a quadratic is the same on
+both sides of a vertical line, and has a lowest or highest point, taking both from the picture. Now
+we can prove them. The mirror is the flip in the line $$x = h$$, which sends each point $$(x, y)$$
+to the point $$(2h - x, y)$$ at the same height on the other side of the line.
+
+:::corollary[The parabola remark proved]{#parabolas-remark-proved}
+
+Let $$a \ne 0$$, and let $$h$$ and $$k$$ be as in :ref{#quadratic-parabola}.
+
+1. The flip in the line $$x = h$$ sends the graph of $$y = ax^2 + bx + c$$ onto itself.
+2. If $$a > 0$$, the parabola opens upwards: $$(h, k)$$ is its lowest point, and every other point
+   of it is higher.
+3. If $$a < 0$$, the parabola opens downwards: $$(h, k)$$ is its highest point, and every other
+   point of it is lower.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Quadratic_function#Vertex"}
+
+**The flip.** Write $$M(x, y) = (2h - x, y)$$. If $$x = h$$, then $$M$$ keeps $$(x, y)$$ where it
+is. Otherwise the segment from $$(x, y)$$ to $$(2h - x, y)$$ is horizontal, and its midpoint is
+$$(h, y)$$, on the vertical line $$x = h$$. So the line $$x = h$$ is the perpendicular bisector of
+the segment, and $$M$$ is the reflection in that line (:ref{#isometries/reflection}).
+
+By :ref{#quadratic-parabola}, the graph is the graph of $$y = a(x - h)^2 + k$$. Take a point
+$$(x, y)$$ on it. Its image $$(2h - x, y)$$ is on it too, because
+
+```math
+\begin{aligned}
+a\big((2h - x) - h\big)^2 + k &= a(h - x)^2 + k && \text{tidy the bracket} \\
+&= a(x - h)^2 + k && \text{a number and its negative have the same square} \\
+&= y && \text{since } (x, y) \text{ is on the graph}
+\end{aligned}
+```
+
+Also $$M(M(x, y)) = (2h - (2h - x), y) = (x, y)$$, so every point $$P$$ of the graph is the image
+$$M(M(P))$$ of the point $$M(P)$$, which is on the graph. So $$M$$ sends the graph onto itself.
+
+**Lowest and highest points.** These are parts 1 and 2 of :ref{#quadratics/vertex}: when $$a > 0$$,
+the value of $$ax^2 + bx + c$$ is at least $$k$$ and equals $$k$$ only at $$x = h$$, and when
+$$a < 0$$ it is at most $$k$$ and equals $$k$$ only at $$x = h$$.
+
+:::
+
+This proves :ref{#quadratics/parabola}, which the Quadratics chapter took from the picture, and it
+agrees with the vertex found there by :ref{#quadratics/vertex}. The arms also climb without end when
+$$a > 0$$: the points a distance $$t$$ either side of the axis have height $$k + at^2$$, which
+passes any height you like once $$t$$ is large enough.
+
+## All parabolas have the same shape
+
+Look again at the fountain. The tall jets seem narrower than the low ones, so you might expect
+parabolas to come in different shapes, the way rectangles do. They don't. The graph of $$y = 4x^2$$,
+seen through a magnifying glass that makes everything $$4$$ times bigger, is the graph of
+$$y = x^2$$.
+
+Try it with points. The zoom by $$\frac{1}{4}$$ about $$O$$ sends $$(1, 1)$$ to
+$$(\frac{1}{4}, \frac{1}{4})$$ and $$(2, 4)$$ to $$(\frac{1}{2}, 1)$$. Both land on $$y = 4x^2$$:
+$$4 \cdot \frac{1}{16} = \frac{1}{4}$$ and $$4 \cdot \frac{1}{4} = 1$$. So shrinking the graph of
+$$y = x^2$$ by $$4$$ gives the graph of $$y = 4x^2$$, and enlarging that by $$4$$ gives the first
+curve back.
+
+<SameShape caption="On the left, y = x² for x from −2 to 2. On the right, y = 4x² for x from −1/2 to 1/2, drawn 4 times larger. The two curves are identical; only the numbers on the axes differ." />
+
+:::proposition[All parabolas have the same shape]{#parabola-zoom}
+
+1. For $$a > 0$$, the zoom by $$\frac{1}{a}$$ about $$O$$ sends the graph of $$y = x^2$$ onto the
+   graph of $$y = ax^2$$.
+2. Every parabola is similar to the graph of $$y = x^2$$ (:ref{#area-and-scaling/similar}).
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Parabola#Similarity_to_the_unit_parabola"}
+
+**Part 1.** The zoom by $$\frac{1}{a}$$ about $$O$$ is the stretch along the axes $$D_{1/a,\,1/a}$$
+(:ref{#axis-stretch-two}). By :ref{#stretch-graph}, it sends the graph of $$y - x^2 = 0$$ onto the
+graph of the equation we get by putting $$ax$$ for $$x$$ and $$ay$$ for $$y$$, since dividing by
+$$\frac{1}{a}$$ is multiplying by $$a$$:
+
+```math
+\begin{aligned}
+ay - (ax)^2 &= 0 && \text{replace } x \text{ by } ax \text{ and } y \text{ by } ay \\
+ay &= a^2x^2 && \text{add } a^2x^2 \text{ to both sides} \\
+y &= ax^2 && \text{divide by } a \text{, which is not } 0
+\end{aligned}
+```
+
+**Part 2.** A parabola is $$F(C)$$ for an isometry $$F$$, where $$C$$ is the graph of $$y = ax^2$$
+with $$a \ne 0$$. If $$a > 0$$, part 1 says $$C$$ is a zoom of the graph of $$y = x^2$$, so $$F(C)$$
+is congruent to a zoom of that graph (:ref{#isometries/congruent}).
+
+If $$a < 0$$, then $$-a > 0$$, and part 1 gives the graph of $$y = -ax^2$$ as a zoom of the graph of
+$$y = x^2$$. The flip $$R_1$$ in the $$x$$-axis sends that onto the graph of $$-y = -ax^2$$
+(:ref{#flip-graph}), which is $$C$$. So $$F(C)$$ is the image of a zoom of the graph of $$y = x^2$$
+under the isometry $$F \circ R_1$$ (:ref{#adding-and-scaling-points/formula-isometries}). Either
+way, the parabola is similar to the graph of $$y = x^2$$.
+
+:::
+
+So the tall, narrow jets and the low, wide ones are the same curve at different sizes. What makes
+$$y = 4x^2$$ look narrow on a grid from $$-2$$ to $$2$$ is that we are seeing more of it: that
+window shows the same as a window from $$-8$$ to $$8$$ on $$y = x^2$$. Two upward parabolas
+$$y = ax^2$$ and $$y = a'x^2$$ are also zooms of each other directly: by
+:ref{#area-and-scaling/zoom-twice}, the zoom by $$\frac{a}{a'}$$ sends the first onto the second.
+
+Not every family of curves behaves like this. A circle squashed into a flat oval is a different
+shape from one squashed only a little, and [Ellipses](./ellipses.mdx) shows that no zoom turns one
+into the other.
+
+## Parabolas on their side
+
+Turn the fountain picture on its side and the arcs open to the right instead of upwards. A parabola
+like that is no longer the graph of a quadratic in $$x$$, since a vertical line can meet it twice.
+Instead, its equation has $$x$$ as a quadratic in $$y$$.
+
+The move that lays a parabola on its side is the flip $$S$$ in the line $$y = x$$. By
+:ref{#flip-graph}, it swaps the letters $$x$$ and $$y$$ in the equation. So the graph of
+$$x = ay^2 + by + c$$ is the flip of the graph of $$y = ax^2 + bx + c$$, which is a parabola by
+:ref{#quadratic-parabola}. The flip of a parabola is again a parabola, since an isometry followed by
+an isometry is an isometry (:ref{#isometries/composite-isometry}).
+
+:::example[A parabola on its side]
+
+Take $$x = y^2 - 4y + 1$$. It is the flip in $$y = x$$ of the graph of $$y = x^2 - 4x + 1$$, and
+completing the square gives $$x^2 - 4x + 1 = (x - 2)^2 - 3$$, so that graph has vertex $$(2, -3)$$
+and axis $$x = 2$$ (:ref{#quadratic-parabola}). The flip $$S(x, y) = (y, x)$$ sends the vertex to
+$$(-3, 2)$$ and the line $$x = 2$$ to the line $$y = 2$$.
+
+So $$x = y^2 - 4y + 1 = (y - 2)^2 - 3$$ is a parabola with vertex $$(-3, 2)$$ and axis $$y = 2$$.
+The square is never negative, so $$x \ge -3$$ at every point, and the parabola opens to the right.
+As a check of the mirror, $$y = 0$$ and $$y = 4$$ both give $$x = 1$$, so $$(1, 0)$$ and $$(1, 4)$$
+are on the curve, $$2$$ below and $$2$$ above the axis.
+
+:::
+
+<SidewaysParabola caption="The faint parabola y = x² − 4x + 1 flipped in the dashed line y = x gives x = y² − 4y + 1, which opens to the right with vertex (−3, 2) and axis y = 2." />
+
+When the number in front of $$y^2$$ is negative, as in $$x = -y^2$$, the parabola opens to the left
+instead.
+
+## Where a line meets a parabola
+
+To find where a line meets a parabola, put the line's height into the parabola's equation. That
+leaves a quadratic equation in $$x$$, and a quadratic has two, one or no solutions, which the
+discriminant decides. [Lines and parabolas](../quadratics/parabolas.mdx#lines-and-parabolas) did
+this once with factors. Here is the general rule.
+
+Try three parallel lines against $$y = x^2 - 2x + 3$$. The line $$y = 2x$$ meets it where
+$$x^2 - 2x + 3 = 2x$$, that is $$x^2 - 4x + 3 = 0$$, with discriminant $$16 - 12 = 4$$: two points,
+$$(1, 2)$$ and $$(3, 6)$$. The line $$y = 2x - 1$$ gives $$x^2 - 4x + 4 = 0$$, with discriminant
+$$0$$: one point, $$(2, 3)$$. The line $$y = 2x - 2$$ gives $$x^2 - 4x + 5 = 0$$, with discriminant
+$$-4$$: no points at all.
+
+:::proposition[Where a line meets a parabola]{#line-parabola}
+
+Let $$a \ne 0$$, and let $$C$$ be the graph of $$y = ax^2 + bx + c$$.
+
+1. The line $$y = mx + k$$ meets $$C$$ at the points $$(x, mx + k)$$ for which
+   ```math
+   ax^2 + (b - m)x + (c - k) = 0
+   ```
+   So it meets $$C$$ in two points when $$(b - m)^2 - 4a(c - k) > 0$$, in one point when it is
+   $$0$$, and nowhere when it is negative.
+2. Every vertical line $$x = r$$ meets $$C$$ in exactly one point, $$(r, ar^2 + br + c)$$.
+
+:::
+
+:::proof{source="https://www.mathsisfun.com/algebra/systems-linear-quadratic-equations.html"}
+
+**Part 1.** A point $$(x, y)$$ is on both graphs exactly when $$y = mx + k$$ and
+$$y = ax^2 + bx + c$$. Then the two right sides are equal:
+
+```math
+\begin{aligned}
+ax^2 + bx + c &= mx + k && \text{both equal } y \\
+ax^2 + (b - m)x + (c - k) &= 0 && \text{take } mx + k \text{ from both sides}
+\end{aligned}
+```
+
+Conversely, if $$x$$ solves this equation, the point $$(x, mx + k)$$ is on the line, and on $$C$$
+because $$mx + k = ax^2 + bx + c$$. Different solutions $$x$$ give different points. Since
+$$a \ne 0$$, the equation is a quadratic with discriminant $$(b - m)^2 - 4a(c - k)$$, and
+:ref{#quadratics/root-count} counts its solutions.
+
+**Part 2.** A point $$(x, y)$$ is on both exactly when $$x = r$$ and $$y = ar^2 + br + c$$, which is
+one point.
+
+:::
+
+## Tangents to a parabola
+
+A tangent should touch the parabola at one point and stay on one side of it, the way a ruler rests
+against the outside of a bowl. For a circle, "meets it exactly once" was enough
+(:ref{#segments-rays-and-lines/tangent-line}). For a parabola it is not, because of part 2 of
+:ref{#line-parabola}: a vertical line meets the graph of a quadratic exactly once, yet it cuts
+straight through.
+
+Picture $$y = x^2$$ and the vertical line $$x = 1$$, which meets it only at $$(1, 1)$$. Call the
+region above the curve the inside of the parabola. Below $$(1, 1)$$ the line runs outside, and above
+it the line runs inside, so it crosses the curve rather than touching it. The line $$y = 2x - 1$$
+also meets the curve only at $$(1, 1)$$, but it stays outside: the gap between curve and line is
+$$x^2 - (2x - 1) = (x - 1)^2$$, which is never negative.
+
+<TangentOrVertical caption="The line y = 2x − 1 touches y = x² at (1, 1) and lies below it everywhere else. The vertical line x = 1 meets the curve at the same point but passes from outside to inside." />
+
+A vertical line is parallel to the axis of $$y = x^2$$. So the lines we leave out are the ones
+parallel to the axis.
+
+:::definition[Tangent to a parabola]{#parabola-tangent-def}
+
+A **tangent** to a parabola is a line that meets it in exactly one point and is not parallel to its
+axis. The point where they meet is the **point of contact**. For the graph of $$y = ax^2 + bx + c$$,
+whose axis is vertical, the tangents are the lines $$y = mx + k$$ that meet it exactly once.
+
+:::
+
+Slide the line $$y = 2x + k$$ up and down below. The parabola is $$y = x^2$$, so by
+:ref{#line-parabola} the meeting points come from $$x^2 - 2x - k = 0$$, whose discriminant is
+$$4 + 4k$$. Exactly one value of $$k$$ makes it $$0$$.
+
+<ParabolaTangent />
+
+At each point of a parabola there is exactly one tangent, and for $$y = ax^2$$ its slope is $$2a$$
+times the first coordinate of the point. At $$(1, 1)$$ on $$y = x^2$$ that is $$2$$, which is why
+$$k = -1$$ was the only touching position above.
+
+:::proposition[The tangent at a point]{#parabola-tangent}
+
+Let $$a \ne 0$$ and let $$p$$ be a number. The graph of $$y = ax^2$$ has exactly one tangent with
+point of contact $$(p, ap^2)$$. It is the line
+
+```math
+y = 2apx - ap^2
+```
+
+with slope $$2ap$$.
+
+:::
+
+:::proof{source="https://math.libretexts.org/Bookshelves/Calculus/CLP-1_Differential_Calculus_(Feldman_Rechnitzer_and_Yeager)/03%3A_Derivatives/3.01%3A_Revisiting_Tangent_Lines"}
+
+A tangent is not vertical, so it has a slope $$m$$ (:ref{#linear-equations/slope}). It passes
+through $$(p, ap^2)$$, so it is the line $$y - ap^2 = m(x - p)$$, the slide of $$y = mx$$ by
+$$(p, ap^2)$$ (:ref{#slide-graph}). A point $$(x, y)$$ is on both this line and the parabola exactly
+when $$y = ax^2$$ and
+
+```math
+\begin{aligned}
+ax^2 - ap^2 &= m(x - p) && \text{put } y = ax^2 \text{ into the line} \\
+a(x - p)(x + p) - m(x - p) &= 0 && \text{difference of two squares} \\
+(x - p)\big(a(x + p) - m\big) &= 0 && \text{take out } x - p
+\end{aligned}
+```
+
+A product is $$0$$ exactly when one of its factors is (:ref{#numbers/zero-product}). So the meeting
+points have $$x = p$$ or $$a(x + p) = m$$, that is, $$x = \frac{m}{a} - p$$. These are the same
+point exactly when $$\frac{m}{a} - p = p$$, which is when $$m = 2ap$$. So the line meets the
+parabola exactly once exactly when $$m = 2ap$$, and then it is
+
+```math
+y = 2ap(x - p) + ap^2 = 2apx - 2ap^2 + ap^2 = 2apx - ap^2
+```
+
+:::
+
+The discriminant tells the same story. Written as $$ax^2 - mx + (mp - ap^2) = 0$$, the equation for
+the meeting points has discriminant $$m^2 - 4amp + 4a^2p^2 = (m - 2ap)^2$$, which is $$0$$ exactly
+when $$m = 2ap$$.
+
+For $$y = x^2$$ at $$(1, 1)$$, the tangent is $$y = 2x - 1$$, as in the picture above. For
+$$y = \frac{1}{2}x^2$$ at $$(-2, 2)$$, the slope is $$2 \cdot \frac{1}{2} \cdot (-2) = -2$$ and the
+tangent is $$y = -2x - 2$$. Check: $$\frac{1}{2}x^2 = -2x - 2$$ means $$x^2 + 4x + 4 = 0$$, which is
+$$(x + 2)^2 = 0$$, one solution.
+
+The slope of the tangent changes from point to point: on $$y = x^2$$ it is $$2p$$ at the point with
+first coordinate $$p$$. Measuring how the slope of a curve's tangent changes along it is the job of
+calculus, where this number is called the derivative.
+
+## One vertex and one axis
+
+[What a parabola is](#what-a-parabola-is) left one thing to the picture: when a parabola comes from
+more than one move, every move gives the same vertex and the same axis. Tangents settle it. Each
+point of $$y = x^2$$ has two lines through it that meet the curve there and nowhere else, the
+vertical line and the tangent. At the vertex these two lines are square to each other, and at every
+other point they are not. A move keeps lines, meeting points and right angles, so it has to send the
+vertex to the vertex.
+
+Check it at two points. At $$(1, 1)$$ the two lines are $$x = 1$$ and $$y = 2x - 1$$, with
+directions $$(0, 1)$$ and $$(1, 2)$$. Their dot product is $$0 \cdot 1 + 1 \cdot 2 = 2$$, so they
+are not perpendicular. At $$O$$ the two lines are $$x = 0$$ and $$y = 0$$, the two axes, which are
+perpendicular.
+
+:::proposition[The vertex and the axis don't depend on the move]{#parabolas-vertex-axis}
+
+Let $$C$$ and $$C'$$ be the graphs of $$y = ax^2$$ and $$y = a'x^2$$, with $$a \ne 0$$ and
+$$a' \ne 0$$, and let $$M$$ and $$M'$$ be isometries with $$M(C) = M'(C')$$. Then $$M(O) = M'(O)$$,
+and $$M$$ and $$M'$$ send the $$y$$-axis onto the same line.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Parabola#Axis_of_symmetry_parallel_to_the_y_axis"}
+
+**The lines that meet C once.** Take a point $$P = (p, ap^2)$$ of $$C$$. The vertical line $$x = p$$
+meets $$C$$ only at $$P$$, by part 2 of :ref{#line-parabola}. Every other line through $$P$$ has a
+slope, and the proof of :ref{#parabola-tangent} shows that it meets $$C$$ only at $$P$$ exactly when
+its slope is $$2ap$$. So exactly two lines through $$P$$ meet $$C$$ there and nowhere else. They
+have directions $$(0, 1)$$ and $$(1, 2ap)$$ (:ref{#segments-rays-and-lines/equation-line}), with dot
+product $$2ap$$. That is $$0$$ exactly when $$p = 0$$, so the two lines are perpendicular exactly
+when $$P = O$$ (:ref{#segments-rays-and-lines/perpendicular-formula}). At $$O$$ they are the
+$$y$$-axis and the $$x$$-axis. All of this holds for $$C'$$ too, with $$a'$$ in place of $$a$$.
+
+**Moving between the two curves.** Let $$G = M'^{-1} \circ M$$. It is an isometry
+(:ref{#isometries/isometry-inverse}, :ref{#isometries/composite-isometry}), and
+$$G(C) = M'^{-1}(M'(C')) = C'$$. Both $$G$$ and its inverse send lines onto lines
+(:ref{#isometries/isometry-lines}) and keep right angles (:ref{#isometries/isometry-perpendicular}).
+An isometry sends different points to different points, since it keeps their distance. So a line
+$$K$$ meets $$C$$ only at $$P$$ exactly when the line $$G(K)$$ meets $$C'$$ only at $$G(P)$$. The
+two lines through $$G(P)$$ that meet $$C'$$ only there are therefore the images of the two lines
+through $$P$$.
+
+**The vertex.** The two lines through $$O$$ are perpendicular, so their images through $$G(O)$$ are
+perpendicular too. By the first step, $$O$$ is the only point of $$C'$$ where the two lines are
+perpendicular, so $$G(O) = O$$.
+
+**The axis.** So $$G$$ sends the two axes onto the two axes, in some order. Write $$K$$ for the
+image of the $$x$$-axis. A line perpendicular to the $$x$$-axis has a direction $$(u, v)$$ with
+$$u \cdot 1 + v \cdot 0 = 0$$, so $$u = 0$$ and the line is vertical, and it meets $$C$$ once. Since
+$$G$$ and its inverse keep right angles, every line perpendicular to $$K$$ is the image of a line
+perpendicular to the $$x$$-axis, so it meets $$C'$$ once. The $$y$$-axis fails this test for $$C'$$,
+because the line $$y = a'$$ is perpendicular to it and meets $$C'$$ twice, at $$(1, a')$$ and
+$$(-1, a')$$. So $$K$$ is the $$x$$-axis, and $$G$$ sends the $$y$$-axis onto the $$y$$-axis.
+
+**Back to M and M′.** Now $$M = M' \circ G$$, so $$M(O) = M'(G(O)) = M'(O)$$, and $$M$$ sends the
+$$y$$-axis onto the line that $$M'$$ sends it onto.
+
+:::
+
+So the vertex and the axis of a parabola belong to the curve itself, not to the move that put it in
+place. The definition of a tangent above, which leaves out the lines parallel to the axis, is safe
+to use for every parabola.
+
+## The path of a thrown ball
+
+Throw a ball and it follows an arc like a jet of the fountain. The reason is that its motion splits
+into two parts, one across and one up. Across, nothing pushes the ball, so it keeps a steady speed.
+Up and down, gravity pulls it, so its height is a quadratic in time.
+
+Physics gives the numbers, if we ignore the air and round the pull of gravity, about $$9.8$$ m/s²,
+to $$10$$. A ball thrown from ground level at $$10$$ m/s across and $$10$$ m/s up is, after $$t$$
+seconds, $$x = 10t$$ metres across and $$y = 10t - 5t^2$$ metres up. Putting $$t = \frac{x}{10}$$
+into the height gives the path itself:
+
+```math
+y = 10 \cdot \frac{x}{10} - 5\left(\frac{x}{10}\right)^2 = x - \frac{x^2}{20}
+```
+
+That is a quadratic in $$x$$, so the path is a parabola, opening downwards since the number in front
+of $$x^2$$ is $$-\frac{1}{20}$$. Completing the square finds its top:
+
+```math
+\begin{aligned}
+x - \frac{x^2}{20} &= -\frac{1}{20}\left(x^2 - 20x\right) && \text{take out } -\tfrac{1}{20} \\
+&= -\frac{1}{20}\left((x - 10)^2 - 100\right) && \text{complete the square} \\
+&= -\frac{1}{20}(x - 10)^2 + 5 && \text{multiply back}
+\end{aligned}
+```
+
+So the highest point is $$(10, 5)$$: the ball rises $$5$$ m, at $$10$$ m across, after $$1$$ second.
+By :ref{#parabolas-remark-proved}, the path is the same on both sides of the line $$x = 10$$, so the
+ball lands $$20$$ m away, after $$2$$ seconds.
+
+<BallPath caption="The path y = x − x²/20 of a ball thrown at 10 m/s across and 10 m/s up, with a dot every 0.2 seconds. The dots are 2 m apart across, and they bunch up in height near the top, where the ball is slowest upwards." />
+
+## Exercises
+
+:::::accordion[Exercises on parabolas, with solutions]
+
+::::exercise{#ex-parabolas-slide}
+
+Write $$y = x^2 + 6x + 5$$ as the graph of $$y = x^2$$ slid by some $$(h, k)$$. Give the vertex and
+the axis, and check your answer with one point.
+
+:::solution
+
+Completing the square, $$x^2 + 6x + 5 = (x + 3)^2 - 9 + 5 = (x + 3)^2 - 4$$. By
+:ref{#quadratic-parabola}, the graph is the slide of $$y = x^2$$ by $$(-3, -4)$$, that is, $$3$$ to
+the left and $$4$$ down. The formulas agree: $$h = -\frac{6}{2} = -3$$ and
+$$k = 5 - \frac{36}{4} = -4$$.
+
+So the vertex is $$(-3, -4)$$ and the axis is the line $$x = -3$$. Check: the point $$(2, 4)$$ on
+$$y = x^2$$ slides to $$(-1, 0)$$, and $$(-1)^2 + 6 \cdot (-1) + 5 = 1 - 6 + 5 = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-parabolas-parallel-lines}
+
+For which numbers $$k$$ does the line $$y = 3x + k$$ meet the parabola $$y = x^2$$ twice, once, or
+not at all? For the value where it meets once, find the point of contact, and check it with
+:ref{#parabola-tangent}.
+
+:::solution
+
+By :ref{#line-parabola} with $$a = 1$$, $$b = c = 0$$ and $$m = 3$$, the meeting points come from
+$$x^2 - 3x - k = 0$$, with discriminant $$9 + 4k$$. So the line meets the parabola twice when
+$$k > -\frac{9}{4}$$, once when $$k = -\frac{9}{4}$$, and not at all when $$k < -\frac{9}{4}$$.
+
+When $$k = -\frac{9}{4}$$, the equation is $$x^2 - 3x + \frac{9}{4} = (x - \frac{3}{2})^2 = 0$$, so
+$$x = \frac{3}{2}$$ and the point of contact is $$(\frac{3}{2}, \frac{9}{4})$$. By
+:ref{#parabola-tangent} with $$a = 1$$ and $$p = \frac{3}{2}$$, the tangent there has slope
+$$2 \cdot \frac{3}{2} = 3$$ and is $$y = 3x - \frac{9}{4}$$, the same line.
+
+:::
+
+::::
+
+::::exercise{#ex-parabolas-sideways}
+
+Find the vertex and axis of the parabola $$x = -y^2 + 2y + 3$$, and say which way it opens. Where
+does it cross the $$y$$-axis?
+
+:::solution
+
+Completing the square,
+$$-y^2 + 2y + 3 = -(y^2 - 2y) + 3 = -\big((y - 1)^2 - 1\big) + 3 = -(y - 1)^2 + 4$$. This is the
+flip in $$y = x$$ of the graph of $$y = -(x - 1)^2 + 4$$, which has vertex $$(1, 4)$$ and axis
+$$x = 1$$ (:ref{#quadratic-parabola}). The flip swaps the coordinates (:ref{#flip-graph}), so our
+parabola has vertex $$(4, 1)$$ and axis $$y = 1$$. The term $$-(y - 1)^2$$ is never positive, so
+$$x \le 4$$ at every point, and it opens to the left.
+
+It crosses the $$y$$-axis where $$x = 0$$: $$-y^2 + 2y + 3 = 0$$, that is
+$$y^2 - 2y - 3 = (y - 3)(y + 1) = 0$$. So it crosses at $$(0, 3)$$ and $$(0, -1)$$, which are $$2$$
+above and $$2$$ below the axis $$y = 1$$, as the mirror says they should be.
+
+:::
+
+::::
+
+::::exercise{#ex-parabolas-zoom}
+
+1. Which zoom about $$O$$ sends the graph of $$y = x^2$$ onto the graph of $$y = \frac{1}{3}x^2$$?
+   Check with the point $$(2, 4)$$.
+2. Which zoom about $$O$$ sends the graph of $$y = 2x^2$$ onto the graph of $$y = 5x^2$$? Check with
+   the point $$(1, 2)$$.
+
+:::solution
+
+1. By :ref{#parabola-zoom} with $$a = \frac{1}{3}$$, the zoom by $$\frac{1}{a} = 3$$. It sends
+   $$(2, 4)$$ to $$(6, 12)$$, and $$\frac{1}{3} \cdot 6^2 = 12$$.
+2. The zoom by $$\frac{1}{2}$$ sends $$y = x^2$$ onto $$y = 2x^2$$, so the zoom by $$2$$ sends
+   $$y = 2x^2$$ back onto $$y = x^2$$ (:ref{#area-and-scaling/zoom-twice}). Then the zoom by
+   $$\frac{1}{5}$$ sends that onto $$y = 5x^2$$. Together they make the zoom by
+   $$2 \cdot \frac{1}{5} = \frac{2}{5}$$, again by :ref{#area-and-scaling/zoom-twice}. It sends
+   $$(1, 2)$$ to $$(\frac{2}{5}, \frac{4}{5})$$, and $$5 \cdot \frac{4}{25} = \frac{4}{5}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-parabolas-slid-tangent}
+
+Find the tangent to $$y = x^2 - 4x + 7$$ at the point $$(3, 4)$$ by sliding the tangent to
+$$y = x^2$$ at $$(1, 1)$$. Then check that your line meets the parabola exactly once.
+
+:::solution
+
+Completing the square, $$x^2 - 4x + 7 = (x - 2)^2 + 3$$, so the parabola is the slide of $$y = x^2$$
+by $$(2, 3)$$ (:ref{#quadratic-parabola}). That slide sends $$(1, 1)$$ to $$(3, 4)$$.
+
+The slide sends lines to lines (:ref{#segments-rays-and-lines/moves-keep-lines}). It sends vertical
+lines to vertical lines and slanted lines to slanted lines, since it moves every point the same
+amount across. It moves different points to different points, so a line meeting $$y = x^2$$ exactly
+once lands on a line meeting the slid parabola exactly once. So it sends the tangent $$y = 2x - 1$$
+at $$(1, 1)$$ (:ref{#parabola-tangent}) to the tangent at $$(3, 4)$$. By :ref{#slide-graph}, that
+tangent is
+
+```math
+y - 3 = 2(x - 2) - 1, \quad\text{that is,}\quad y = 2x - 2
+```
+
+Check: $$x^2 - 4x + 7 = 2x - 2$$ means $$x^2 - 6x + 9 = (x - 3)^2 = 0$$, so $$x = 3$$ is the only
+meeting point, and $$2 \cdot 3 - 2 = 4$$.
+
+:::
+
+::::
+
+::::exercise{#ex-parabolas-ball}
+
+A ball is thrown from a height of $$2$$ m, at $$8$$ m/s across and $$6$$ m/s up, so that after $$t$$
+seconds it is $$x = 8t$$ metres across and $$y = 2 + 6t - 5t^2$$ metres up. Write its path as $$y$$
+in terms of $$x$$, find its highest point, and find how far across it lands, to the nearest
+centimetre.
+
+:::solution
+
+Put $$t = \frac{x}{8}$$ into the height:
+
+```math
+y = 2 + 6 \cdot \frac{x}{8} - 5 \cdot \frac{x^2}{64} = -\frac{5}{64}x^2 + \frac{3}{4}x + 2
+```
+
+By :ref{#quadratic-parabola}, with $$a = -\frac{5}{64}$$ and $$b = \frac{3}{4}$$,
+
+```math
+h = -\frac{3/4}{2 \cdot (-5/64)} = \frac{3}{4} \cdot \frac{64}{10} = 4.8 \qquad
+k = 2 - \frac{9/16}{4 \cdot (-5/64)} = 2 + \frac{9}{16} \cdot \frac{64}{20} = 3.8
+```
+
+Since $$a < 0$$, the highest point is $$(4.8, 3.8)$$ (:ref{#parabolas-remark-proved}): $$3.8$$ m up,
+$$4.8$$ m across, after $$t = 0.6$$ seconds.
+
+It lands when $$y = 0$$, that is, $$5t^2 - 6t - 2 = 0$$. By the quadratic formula
+(:ref{#quadratics/quadratic-formula}), $$t = \frac{6 \pm \sqrt{36 + 40}}{10}$$, and the positive
+solution is $$t = \frac{6 + \sqrt{76}}{10} \approx 1.4718$$. Then $$x = 8t \approx 11.77$$ m. The
+landing point is not $$2 \cdot 4.8$$ m away, because the ball starts $$2$$ m up and lands lower than
+it started.
+
+:::
+
+::::
+
+::::exercise{#ex-parabolas-tangent-axes}
+
+Let $$a > 0$$ and $$p \ne 0$$, and let $$P = (p, ap^2)$$ on the graph of $$y = ax^2$$. Show that the
+tangent at $$P$$ crosses the $$y$$-axis at $$(0, -ap^2)$$, as far below the vertex as $$P$$ is above
+it, and crosses the $$x$$-axis at $$(\frac{p}{2}, 0)$$. Use this to draw the tangent to $$y = x^2$$
+at $$(3, 9)$$ without working out its slope.
+
+:::solution
+
+By :ref{#parabola-tangent}, the tangent is $$y = 2apx - ap^2$$. At $$x = 0$$ it gives $$y = -ap^2$$,
+so it crosses the $$y$$-axis at $$(0, -ap^2)$$. The vertex is $$O$$, and $$P$$ is $$ap^2$$ above the
+$$x$$-axis, so this point is the same distance below.
+
+It crosses the $$x$$-axis where $$2apx - ap^2 = 0$$, that is, $$2apx = ap^2$$. Dividing by $$2ap$$,
+which is not $$0$$, gives $$x = \frac{p}{2}$$.
+
+For $$y = x^2$$ at $$(3, 9)$$: join $$(3, 9)$$ to $$(0, -9)$$, or to $$(\frac{3}{2}, 0)$$. Both lie
+on the tangent $$y = 6x - 9$$, and $$6 \cdot \frac{3}{2} - 9 = 0$$.
+
+:::
+
+::::
+
+::::exercise{#ex-parabolas-two-tangents}
+
+Let $$p \ne q$$. Show that the tangents to $$y = x^2$$ at $$(p, p^2)$$ and $$(q, q^2)$$ meet at the
+point $$(\frac{p + q}{2}, pq)$$. Check with $$p = 1$$ and $$q = 3$$. Then show that when the two
+tangents are perpendicular, they meet on the line $$y = -\frac{1}{4}$$.
+
+:::solution
+
+By :ref{#parabola-tangent} with $$a = 1$$, the tangents are $$y = 2px - p^2$$ and $$y = 2qx - q^2$$.
+They have different slopes, so they meet at exactly one point, where
+
+```math
+\begin{aligned}
+2px - p^2 &= 2qx - q^2 && \text{equal heights} \\
+2(p - q)x &= p^2 - q^2 && \text{rearrange} \\
+2(p - q)x &= (p - q)(p + q) && \text{difference of two squares} \\
+x &= \frac{p + q}{2} && \text{divide by } 2(p - q) \ne 0
+\end{aligned}
+```
+
+Then $$y = 2p \cdot \frac{p + q}{2} - p^2 = p^2 + pq - p^2 = pq$$. With $$p = 1$$ and $$q = 3$$, the
+tangents are $$y = 2x - 1$$ and $$y = 6x - 9$$; they meet where $$2x - 1 = 6x - 9$$, at $$x = 2$$
+and $$y = 3$$, and indeed $$\frac{1 + 3}{2} = 2$$ and $$1 \cdot 3 = 3$$.
+
+The slopes are $$2p$$ and $$2q$$, and by :ref{#segments-rays-and-lines/perpendicular-slopes} the
+lines are perpendicular exactly when $$2p \cdot 2q = -1$$, that is, $$pq = -\frac{1}{4}$$. Then the
+meeting point has $$y = pq = -\frac{1}{4}$$. That line has a name: it is the directrix of
+$$y = x^2$$, which [The focus of a parabola](./focus-and-directrix.mdx) introduces.
+
+:::
+
+::::
+
+:::::

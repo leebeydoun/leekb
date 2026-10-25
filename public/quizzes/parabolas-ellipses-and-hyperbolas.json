@@ -1,0 +1,538 @@
+{
+  "title": "Parabolas, ellipses and hyperbolas",
+  "description": "Questions on moving graphs, parabolas and their focus, ellipses, hyperbolas, cones and the general equation.",
+  "questions": [
+    {
+      "id": "slide-direction",
+      "stars": 1,
+      "topic": "Sliding and stretching graphs",
+      "question": "How does the graph of $$y = (x - 3)^2$$ sit compared with the graph of $$y = x^2$$?",
+      "options": [
+        "Slid $$3$$ to the left",
+        "Slid $$3$$ to the right",
+        "Slid $$3$$ up",
+        "Stretched by $$3$$"
+      ],
+      "answer": 1,
+      "explanation": "Replacing $$x$$ by $$x - 3$$ slides the graph by $$(3, 0)$$ (:ref{#slide-graph}). The new curve at $$x$$ does what the old one did at $$x - 3$$, three steps earlier."
+    },
+    {
+      "id": "slide-circle",
+      "stars": 1,
+      "topic": "Sliding and stretching graphs",
+      "question": "What is the equation of the circle $$x^2 + y^2 = 4$$ slid by $$(3, -1)$$?",
+      "options": [
+        "$$(x - 3)^2 + (y + 1)^2 = 4$$",
+        "$$(x + 3)^2 + (y - 1)^2 = 4$$",
+        "$$(x - 3)^2 + (y - 1)^2 = 4$$",
+        "$$x^2 + y^2 = 4 + 3 - 1$$"
+      ],
+      "answer": 0,
+      "explanation": "Replace $$x$$ by $$x - 3$$ and $$y$$ by $$y - (-1) = y + 1$$ (:ref{#slide-graph})."
+    },
+    {
+      "id": "stretch",
+      "stars": 2,
+      "topic": "Sliding and stretching graphs",
+      "question": "The stretch $$D_{3,2}(x, y) = (3x, 2y)$$ sends the unit circle onto which graph?",
+      "options": [
+        "$$9x^2 + 4y^2 = 1$$",
+        "$$3x^2 + 2y^2 = 1$$",
+        "$$\\frac{x^2}{3} + \\frac{y^2}{2} = 1$$",
+        "$$\\frac{x^2}{9} + \\frac{y^2}{4} = 1$$"
+      ],
+      "answer": 3,
+      "explanation": "Replace $$x$$ by $$\\frac{x}{3}$$ and $$y$$ by $$\\frac{y}{2}$$ (:ref{#stretch-graph}): $$\\left(\\frac{x}{3}\\right)^2 + \\left(\\frac{y}{2}\\right)^2 = 1$$."
+    },
+    {
+      "id": "flip-swap",
+      "stars": 2,
+      "topic": "Sliding and stretching graphs",
+      "question": "Swapping $$x$$ and $$y$$ in an equation does what to its graph?",
+      "options": [
+        "Turns it a quarter turn",
+        "Flips it in the $$x$$-axis",
+        "Flips it in the line $$y = x$$",
+        "Nothing"
+      ],
+      "answer": 2,
+      "explanation": "The flip in $$y = x$$ sends $$(x, y)$$ to $$(y, x)$$ (:ref{#flip-graph}). So $$x = y^2$$ is $$y = x^2$$ flipped, opening to the right."
+    },
+    {
+      "id": "turn",
+      "stars": 3,
+      "topic": "Sliding and stretching graphs",
+      "question": "To turn a graph by $$\\varphi$$ about $$O$$, what do you put into its equation?",
+      "options": [
+        "The point turned on by $$\\varphi$$",
+        "The point turned back by $$\\varphi$$",
+        "The point slid by $$\\varphi$$",
+        "$$\\varphi$$ in place of $$x$$"
+      ],
+      "answer": 1,
+      "explanation": "A point is on the turned graph exactly when turning it back by $$\\varphi$$ lands on the old graph (:ref{#turn-graph}). The same backwards rule is why $$x - 3$$ slides right."
+    },
+    {
+      "id": "vertex",
+      "stars": 1,
+      "topic": "Parabolas",
+      "question": "What is the vertex of $$y = 2x^2 - 12x + 13$$?",
+      "options": [
+        "$$(3, -5)$$",
+        "$$(-3, -5)$$",
+        "$$(3, 13)$$",
+        "$$(6, 13)$$"
+      ],
+      "answer": 0,
+      "explanation": "$$2x^2 - 12x + 13 = 2(x - 3)^2 - 5$$, so the graph is $$y = 2x^2$$ slid by $$(3, -5)$$ (:ref{#quadratic-parabola})."
+    },
+    {
+      "id": "same-shape",
+      "stars": 2,
+      "topic": "Parabolas",
+      "question": "How do the graphs of $$y = x^2$$ and $$y = 4x^2$$ compare?",
+      "options": [
+        "They have different shapes, one is narrower",
+        "They are the same curve",
+        "One is an ellipse",
+        "They have the same shape: a zoom takes one onto the other"
+      ],
+      "answer": 3,
+      "explanation": "The zoom by $$\\frac14$$ about $$O$$ sends $$y = x^2$$ onto $$y = 4x^2$$ (:ref{#parabola-zoom}). In the same way every parabola has the shape of $$y = x^2$$."
+    },
+    {
+      "id": "line-meets",
+      "stars": 2,
+      "topic": "Parabolas",
+      "question": "How many points does a vertical line have in common with $$y = x^2$$?",
+      "options": [
+        "Exactly one, so it is a tangent",
+        "Two",
+        "Exactly one, but it is not a tangent",
+        "None"
+      ],
+      "answer": 2,
+      "explanation": "Each $$x$$ gives one $$y$$, so a vertical line meets the parabola once (:ref{#line-parabola}). It is parallel to the axis and crosses into the inside, so it is not counted as a tangent (:ref{#parabola-tangent-def})."
+    },
+    {
+      "id": "tangent",
+      "stars": 2,
+      "topic": "Parabolas",
+      "question": "What is the tangent to $$y = x^2$$ at $$(2, 4)$$?",
+      "options": [
+        "$$y = 2x$$",
+        "$$y = 4x - 4$$",
+        "$$y = 4x + 4$$",
+        "$$y = 2x + 4$$"
+      ],
+      "answer": 1,
+      "explanation": "The tangent at $$(p, p^2)$$ is $$y = 2px - p^2$$ (:ref{#parabola-tangent}). Check: $$x^2 - 4x + 4 = (x - 2)^2$$ has one root."
+    },
+    {
+      "id": "remark",
+      "stars": 2,
+      "topic": "Parabolas",
+      "question": "Why is the graph of $$y = ax^2 + bx + c$$ symmetric about a vertical line?",
+      "options": [
+        "It is $$y = ax^2$$ slid into place, and $$y = ax^2$$ is symmetric about the $$y$$-axis",
+        "Every graph is",
+        "Because $$c$$ is a constant",
+        "It is taken from the picture"
+      ],
+      "answer": 0,
+      "explanation": "Completing the square shows it is a slide of $$y = ax^2$$ (:ref{#quadratic-parabola}), which is unchanged by $$x \\mapsto -x$$. This proves what Quadratics took from the picture (:ref{#parabolas-remark-proved})."
+    },
+    {
+      "id": "focus-def",
+      "stars": 1,
+      "topic": "The focus of a parabola",
+      "question": "Which points make up the curve with focus $$F$$ and directrix $$L$$?",
+      "options": [
+        "The points on $$L$$",
+        "The points at distance $$1$$ from $$F$$",
+        "The points twice as far from $$F$$ as from $$L$$",
+        "The points equally far from $$F$$ and from $$L$$"
+      ],
+      "answer": 3,
+      "explanation": "That is the definition (:ref{#focus-directrix}). It gives a parabola (:ref{#parabola-focus-exists})."
+    },
+    {
+      "id": "focus-y-x2",
+      "stars": 2,
+      "topic": "The focus of a parabola",
+      "question": "Where is the focus of $$y = x^2$$?",
+      "options": [
+        "$$(0, 1)$$",
+        "$$(0, 4)$$",
+        "$$(0, \\frac14)$$",
+        "$$(\\frac14, 0)$$"
+      ],
+      "answer": 2,
+      "explanation": "$$y = ax^2$$ has focus $$(0, \\frac{1}{4a})$$ (:ref{#parabola-focus-exists}). With $$a = 1$$ that is $$(0, \\frac14)$$, and the directrix is $$y = -\\frac14$$."
+    },
+    {
+      "id": "check-point",
+      "stars": 2,
+      "topic": "The focus of a parabola",
+      "question": "On $$y = \\frac{x^2}{4}$$, with focus $$(0, 1)$$ and directrix $$y = -1$$, how far is the point $$(2, 1)$$ from each?",
+      "options": [
+        "$$1$$ and $$2$$",
+        "$$2$$ from both",
+        "$$2$$ and $$3$$",
+        "$$\\sqrt5$$ and $$2$$"
+      ],
+      "answer": 1,
+      "explanation": "$$(2, 1)$$ is $$2$$ across from $$(0, 1)$$, and $$1 - (-1) = 2$$ above the directrix (:ref{#focus-parabola})."
+    },
+    {
+      "id": "dish",
+      "stars": 2,
+      "topic": "The focus of a parabola",
+      "question": "Why do satellite dishes have a parabola as their cross-section?",
+      "options": [
+        "Signals arriving parallel to the axis all reflect through the focus",
+        "It is the strongest shape",
+        "It is the shape a dish sags into",
+        "It makes the dish lighter"
+      ],
+      "answer": 0,
+      "explanation": "The reflecting property (:ref{#parabola-reflection}) sends every incoming ray parallel to the axis to the focus, where the receiver sits."
+    },
+    {
+      "id": "reflect-why",
+      "stars": 3,
+      "topic": "The focus of a parabola",
+      "question": "In the proof of the reflecting property, what is the tangent at $$P$$?",
+      "options": [
+        "The line through $$F$$ and $$N$$",
+        "The directrix",
+        "The axis",
+        "The perpendicular bisector of the focus $$F$$ and the foot $$N$$ on the directrix"
+      ],
+      "answer": 3,
+      "explanation": "$$PF = PN$$, and the tangent is the perpendicular bisector of $$FN$$ (:ref{#focus-and-directrix-tangent}). The flip in it swaps $$N$$ and $$F$$, so the straight-on ray towards $$N$$ reflects towards $$F$$."
+    },
+    {
+      "id": "ellipse-read",
+      "stars": 1,
+      "topic": "Ellipses",
+      "question": "How far across and how far up does $$\\frac{x^2}{25} + \\frac{y^2}{9} = 1$$ reach from its centre?",
+      "options": [
+        "$$25$$ across and $$9$$ up",
+        "$$3$$ across and $$5$$ up",
+        "$$5$$ across and $$3$$ up",
+        "$$\\frac15$$ across and $$\\frac13$$ up"
+      ],
+      "answer": 2,
+      "explanation": "At $$y = 0$$, $$x^2 = 25$$; at $$x = 0$$, $$y^2 = 9$$. It is the unit circle stretched by $$5$$ across and $$3$$ up (:ref{#ellipse-equation})."
+    },
+    {
+      "id": "foci",
+      "stars": 2,
+      "topic": "Ellipses",
+      "question": "Where are the foci of $$\\frac{x^2}{25} + \\frac{y^2}{9} = 1$$?",
+      "options": [
+        "$$(\\pm 5, 0)$$",
+        "$$(\\pm 4, 0)$$",
+        "$$(\\pm 3, 0)$$",
+        "$$(0, \\pm 4)$$"
+      ],
+      "answer": 1,
+      "explanation": "$$c = \\sqrt{a^2 - b^2} = \\sqrt{25 - 9} = 4$$ (:ref{#ellipse-foci}), on the long axis."
+    },
+    {
+      "id": "string",
+      "stars": 2,
+      "topic": "Ellipses",
+      "question": "For $$\\frac{x^2}{25} + \\frac{y^2}{9} = 1$$, what is the total distance from any of its points to the two foci?",
+      "options": [
+        "$$10$$",
+        "$$8$$",
+        "$$5$$",
+        "It depends on the point"
+      ],
+      "answer": 0,
+      "explanation": "The total is $$2a = 10$$ for every point (:ref{#ellipse-foci}). For example $$(0, 3)$$ is $$5$$ from each focus."
+    },
+    {
+      "id": "eccentricity",
+      "stars": 2,
+      "topic": "Ellipses",
+      "question": "What is the eccentricity of $$\\frac{x^2}{25} + \\frac{y^2}{16} = 1$$?",
+      "options": [
+        "$$\\frac45$$",
+        "$$\\frac{16}{25}$$",
+        "$$1$$",
+        "$$\\frac35$$"
+      ],
+      "answer": 3,
+      "explanation": "$$c = \\sqrt{25 - 16} = 3$$ and $$e = \\frac{c}{a} = \\frac35$$ (:ref{#ellipse-eccentricity})."
+    },
+    {
+      "id": "circle-e",
+      "stars": 1,
+      "topic": "Ellipses",
+      "question": "Which ellipses have eccentricity $$0$$?",
+      "options": [
+        "Long thin ones",
+        "None",
+        "Circles",
+        "Those through the origin"
+      ],
+      "answer": 2,
+      "explanation": "$$e = 0$$ exactly when $$c = 0$$, that is $$a = b$$ (:ref{#ellipse-eccentricity})."
+    },
+    {
+      "id": "area",
+      "stars": 2,
+      "topic": "Ellipses",
+      "question": "What is the area inside $$\\frac{x^2}{25} + \\frac{y^2}{9} = 1$$?",
+      "options": [
+        "$$25\\pi$$",
+        "$$15\\pi$$",
+        "$$8\\pi$$",
+        "$$34\\pi$$"
+      ],
+      "answer": 1,
+      "explanation": "Its inside is the unit disc stretched by $$5$$ and $$3$$ (:ref{#ellipse-equation}), so its area is $$\\pi \\cdot 5 \\cdot 3$$ (:ref{#area-and-scaling/ellipse-area})."
+    },
+    {
+      "id": "branches",
+      "stars": 1,
+      "topic": "Hyperbolas",
+      "question": "How many pieces does the graph of $$xy = 12$$ have?",
+      "options": [
+        "Two branches, one top right and one bottom left",
+        "One",
+        "Four",
+        "It is a pair of lines"
+      ],
+      "answer": 0,
+      "explanation": "$$x$$ and $$y$$ must have the same sign, and neither can be $$0$$, so the curve has two separate branches. Turned by $$\\frac{\\pi}{4}$$ it becomes a standard hyperbola (:ref{#hyperbola-turn}), and every hyperbola has two branches."
+    },
+    {
+      "id": "turn-xy",
+      "stars": 2,
+      "topic": "Hyperbolas",
+      "question": "Turning the graph of $$xy = 2$$ by $$\\frac{\\pi}{4}$$ about $$O$$ gives which graph?",
+      "options": [
+        "$$x^2 - y^2 = 4$$",
+        "$$x^2 + y^2 = 4$$",
+        "$$xy = -2$$",
+        "$$y^2 - x^2 = 4$$"
+      ],
+      "answer": 3,
+      "explanation": "The turn by $$\\frac{\\pi}{4}$$ sends $$xy = c$$ to $$y^2 - x^2 = 2c$$ (:ref{#hyperbola-turn})."
+    },
+    {
+      "id": "asymptotes",
+      "stars": 2,
+      "topic": "Hyperbolas",
+      "question": "What are the asymptotes of $$\\frac{x^2}{9} - \\frac{y^2}{16} = 1$$?",
+      "options": [
+        "$$y = \\pm\\frac34 x$$",
+        "$$y = \\pm\\frac{16}{9}x$$",
+        "$$y = \\pm\\frac43 x$$",
+        "$$x = \\pm 3$$"
+      ],
+      "answer": 2,
+      "explanation": "The asymptotes are $$y = \\pm\\frac{b}{a}x$$ with $$a = 3$$ and $$b = 4$$ (:ref{#hyperbola-asymptotes})."
+    },
+    {
+      "id": "hyperbola-foci",
+      "stars": 2,
+      "topic": "Hyperbolas",
+      "question": "Where are the foci of $$\\frac{x^2}{9} - \\frac{y^2}{16} = 1$$?",
+      "options": [
+        "$$(\\pm\\sqrt7, 0)$$",
+        "$$(\\pm 5, 0)$$",
+        "$$(\\pm 3, 0)$$",
+        "$$(0, \\pm 5)$$"
+      ],
+      "answer": 1,
+      "explanation": "For a hyperbola $$c = \\sqrt{a^2 + b^2} = \\sqrt{9 + 16} = 5$$ (:ref{#hyperbola-foci}). An ellipse would use $$a^2 - b^2$$ instead."
+    },
+    {
+      "id": "difference",
+      "stars": 3,
+      "topic": "Hyperbolas",
+      "question": "For any point of $$\\frac{x^2}{9} - \\frac{y^2}{16} = 1$$, what is the difference of its distances to the two foci?",
+      "options": [
+        "$$6$$, in size",
+        "$$10$$",
+        "$$8$$",
+        "It depends on the point"
+      ],
+      "answer": 0,
+      "explanation": "The difference is $$2a = 6$$ for every point (:ref{#hyperbola-foci}). This is how navigation by timing radio signals locates a ship on a hyperbola."
+    },
+    {
+      "id": "moved-product",
+      "stars": 3,
+      "topic": "Hyperbolas",
+      "question": "What is the centre of the graph of $$xy - 2x + 4y - 5 = 0$$?",
+      "options": [
+        "$$(2, -4)$$",
+        "$$(4, -2)$$",
+        "$$(0, 0)$$",
+        "$$(-4, 2)$$"
+      ],
+      "answer": 3,
+      "explanation": "It is $$(x + 4)(y - 2) = -3$$ (:ref{#hyperbolas-moved-product}), the graph of $$xy = -3$$ slid by $$(-4, 2)$$."
+    },
+    {
+      "id": "torch",
+      "stars": 1,
+      "topic": "Slicing a cone",
+      "question": "Tilting a torch further and further from the wall, which order of curves does the edge of its light trace?",
+      "options": [
+        "Parabola, ellipse, circle, hyperbola",
+        "Circle, hyperbola, ellipse, parabola",
+        "Circle, ellipse, parabola, hyperbola",
+        "It stays a circle"
+      ],
+      "answer": 2,
+      "explanation": "The plane $$z = mx + 1$$ cuts the cone in a circle at $$m = 0$$, an ellipse for $$m < 1$$, a parabola at $$m = 1$$ and a hyperbola for $$m > 1$$ (:ref{#cone-slices})."
+    },
+    {
+      "id": "parabola-slice",
+      "stars": 2,
+      "topic": "Slicing a cone",
+      "question": "What is special about a plane that cuts the cone in a parabola?",
+      "options": [
+        "It passes through the tip",
+        "It is parallel to a line of the cone, tilted exactly as steeply as its side",
+        "It is level",
+        "It is upright"
+      ],
+      "answer": 1,
+      "explanation": "The cone's sides have slope $$1$$, and the slice is a parabola exactly when $$m = 1$$ (:ref{#cone-slices})."
+    },
+    {
+      "id": "e-rule",
+      "stars": 2,
+      "topic": "Slicing a cone",
+      "question": "The points whose distance to $$F$$ is $$e$$ times their distance to a line $$L$$ form a hyperbola when",
+      "options": [
+        "$$e > 1$$",
+        "$$e < 1$$",
+        "$$e = 1$$",
+        "$$e = 0$$"
+      ],
+      "answer": 0,
+      "explanation": "$$e < 1$$ gives an ellipse, $$e = 1$$ a parabola and $$e > 1$$ a hyperbola (:ref{#focus-directrix-e})."
+    },
+    {
+      "id": "comet",
+      "stars": 2,
+      "topic": "Slicing a cone",
+      "question": "A comet's path has eccentricity about $$0.97$$. What does that say?",
+      "options": [
+        "It passes once and never returns",
+        "It moves in a circle",
+        "It moves in a straight line",
+        "It is a long ellipse, so the comet keeps coming back"
+      ],
+      "answer": 3,
+      "explanation": "Eccentricity less than $$1$$ means an ellipse (:ref{#ellipse-eccentricity}), a closed path. Halley's comet has $$e \\approx 0.967$$ and returns about every $$75$$ years."
+    },
+    {
+      "id": "tip",
+      "stars": 3,
+      "topic": "Slicing a cone",
+      "question": "What can a plane through the tip of the cone cut out?",
+      "options": [
+        "Always a circle",
+        "Always two parallel lines",
+        "A single point, one line or two crossing lines",
+        "Always nothing"
+      ],
+      "answer": 2,
+      "explanation": "These are some of the degenerate cases (:ref{#degenerate-conic}), the slices through the tip."
+    },
+    {
+      "id": "discriminant",
+      "stars": 1,
+      "topic": "Recognising a curve from its equation",
+      "question": "For $$Ax^2 + Bxy + Cy^2 + \\dots = 0$$, which number tells the family of the curve?",
+      "options": [
+        "$$A + C$$",
+        "$$B^2 - 4AC$$",
+        "$$D^2 + E^2$$",
+        "$$F$$"
+      ],
+      "answer": 1,
+      "explanation": "$$B^2 - 4AC$$ is unchanged when the axes are turned, and its sign names the family (:ref{#conic-discriminant})."
+    },
+    {
+      "id": "sort-ellipse",
+      "stars": 2,
+      "topic": "Recognising a curve from its equation",
+      "question": "What does $$x^2 + xy + y^2 = 3$$ draw?",
+      "options": [
+        "An ellipse",
+        "A hyperbola",
+        "A parabola",
+        "Two lines"
+      ],
+      "answer": 0,
+      "explanation": "$$B^2 - 4AC = 1 - 4 = -3 < 0$$, so an ellipse, a point or nothing (:ref{#conic-discriminant}); the point $$(1, 1)$$ fits, and it is an ellipse."
+    },
+    {
+      "id": "sort-xy",
+      "stars": 2,
+      "topic": "Recognising a curve from its equation",
+      "question": "What is $$B^2 - 4AC$$ for $$xy = 1$$, and what does it say?",
+      "options": [
+        "$$0$$: a parabola",
+        "$$-4$$: an ellipse",
+        "$$1$$: an ellipse",
+        "$$1$$: a hyperbola"
+      ],
+      "answer": 3,
+      "explanation": "Here $$A = C = 0$$ and $$B = 1$$, so $$B^2 - 4AC = 1 > 0$$ (:ref{#conic-discriminant}), as :ref{#hyperbola-turn} showed."
+    },
+    {
+      "id": "remove",
+      "stars": 3,
+      "topic": "Recognising a curve from its equation",
+      "question": "For $$5x^2 - 6xy + 5y^2 = 8$$, by what angle do you turn to remove the $$xy$$ term?",
+      "options": [
+        "$$\\frac{\\pi}{6}$$",
+        "$$\\frac{\\pi}{3}$$",
+        "$$\\frac{\\pi}{4}$$, since $$A = C$$",
+        "You can't remove it"
+      ],
+      "answer": 2,
+      "explanation": "When $$A = C$$, the turn by $$\\frac{\\pi}{4}$$ works (:ref{#remove-xy}). It gives $$\\frac{u^2}{4} + v^2 = 1$$, an ellipse."
+    },
+    {
+      "id": "degenerate",
+      "stars": 2,
+      "topic": "Recognising a curve from its equation",
+      "question": "What is the graph of $$x^2 - y^2 = 0$$?",
+      "options": [
+        "A hyperbola",
+        "The two lines $$y = x$$ and $$y = -x$$",
+        "The origin only",
+        "Nothing"
+      ],
+      "answer": 1,
+      "explanation": "$$x^2 - y^2 = (x - y)(x + y)$$ is $$0$$ exactly when one factor is $$0$$. It is a degenerate case (:ref{#degenerate-conic})."
+    },
+    {
+      "id": "empty",
+      "stars": 2,
+      "topic": "Recognising a curve from its equation",
+      "question": "What is the graph of $$x^2 + y^2 = -1$$?",
+      "options": [
+        "Nothing: no point fits",
+        "A circle of radius $$-1$$",
+        "The origin",
+        "A hyperbola"
+      ],
+      "answer": 0,
+      "explanation": "A sum of squares is never negative, so no point fits. The discriminant says ellipse family, and this is its empty case (:ref{#no-xy-term})."
+    }
+  ]
+}

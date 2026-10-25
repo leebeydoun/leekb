@@ -1,0 +1,652 @@
+---
+title: Sliding and stretching graphs
+description:
+  Moving a graph by a slide, a stretch, a flip or a turn, the matching change to its equation, and
+  the line through a point with a given slope.
+---
+
+Imagine drawing round a plastic circle stencil on squared paper, with its centre on the origin and
+its radius $$2$$ squares. Now slide the stencil $$3$$ squares to the right and $$1$$ square down,
+and draw round it again. The second circle is the same size and shape as the first, but the
+equations are different. The first circle is $$x^2 + y^2 = 4$$, and the second is
+$$(x - 3)^2 + (y + 1)^2 = 4$$, so the numbers that appeared in the equation are the numbers of the
+slide.
+
+That is the idea behind this whole chapter: moving a graph changes its equation in a way you can
+predict. In this guide we'll find the change for each kind of move, and prove that it always works.
+
+## Graphs and their equations
+
+The graph of an equation in $$x$$ and $$y$$ is the set of all points $$(x, y)$$ whose coordinates
+solve it (:ref{#linear-equations/graph}). For example, $$(0, 2)$$ is on the graph of
+$$x^2 + y^2 = 4$$ because $$0^2 + 2^2 = 4$$, and $$(1, 1)$$ is not, because $$1^2 + 1^2 = 2$$. By
+:ref{#coordinates/circle-equation}, this graph is the circle with centre $$O$$ and radius $$2$$.
+
+We'll talk about any equation at all, so we need a name for one. Write $$E(x, y)$$, read "$$E$$ of
+$$x$$ and $$y$$", for an equation in $$x$$ and $$y$$, such as $$x^2 + y^2 = 4$$. Then
+$$E(x - 3, y + 1)$$ means the same equation with $$x - 3$$ put in place of every $$x$$ and $$y + 1$$
+in place of every $$y$$, which here is $$(x - 3)^2 + (y + 1)^2 = 4$$. In the same way, $$E(2, 0)$$
+is the equation with the numbers $$2$$ and $$0$$ put in, $$2^2 + 0^2 = 4$$, which is true. So a
+point $$(p, q)$$ is on the graph of $$E(x, y)$$ exactly when $$E(p, q)$$ is true.
+
+Moving a graph by a map $$F$$ gives its image: the set of all the points $$F(P)$$ for $$P$$ on the
+graph (:ref{#isometries/image}). Each result in this guide says that this image is the graph of a
+new equation. Two sets are equal exactly when each is a subset of the other
+(:ref{#basic-proofs/set-equality}), so every proof has two halves: every moved point fits the new
+equation, and every point that fits the new equation is a moved point.
+
+## Sliding a graph
+
+Here is the stencil in numbers. The slide by $$(3, -1)$$ moves every point $$3$$ right and $$1$$
+down: it sends $$(x, y)$$ to $$(x + 3, y - 1)$$ (:ref{#adding-and-scaling-points/slide-formula}).
+The point $$(2, 0)$$ is on the circle $$x^2 + y^2 = 4$$, and the slide sends it to $$(5, -1)$$.
+Putting $$x = 5$$ and $$y = -1$$ into $$(x - 3)^2 + (y + 1)^2 = 4$$ gives
+
+```math
+(5 - 3)^2 + (-1 + 1)^2 = 4 + 0 = 4
+```
+
+so the moved point fits the new equation. Subtracting $$3$$ from $$5$$ gives back the $$2$$ we
+started from, and adding $$1$$ to $$-1$$ gives back the $$0$$. The new equation takes each point
+back to where it came from and asks whether that point was on the old circle.
+
+```plane
+point O 0 0 sw
+point P 2 0 n
+point C 3 -1 s
+point P' 5 -1 e
+circle O 2 color=blue dashed
+circle C 2 color=blue
+segment P P' color=orange dashed
+segment O C color=orange dashed
+caption "The circle x² + y² = 4 (dashed) and its slide by (3, −1), the circle (x − 3)² + (y + 1)² = 4. The slide moves O to the new centre C = (3, −1), and P = (2, 0) to P' = (5, −1)."
+```
+
+The same check works for any equation and any slide. To slide a graph by $$(h, k)$$, put $$x - h$$
+in place of $$x$$ and $$y - k$$ in place of $$y$$.
+
+:::theorem[Sliding a graph]{#slide-graph}
+
+Let $$h$$ and $$k$$ be numbers. The slide by $$(h, k)$$ sends the graph of an equation $$E(x, y)$$
+onto the graph of
+
+```math
+E(x - h,\ y - k)
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Translation_of_axes"}
+
+Write $$T$$ for the slide by $$(h, k)$$, so $$T(x, y) = (x + h, y + k)$$. Let $$C$$ be the graph of
+$$E(x, y)$$ and $$C'$$ the graph of $$E(x - h, y - k)$$. We show that $$T(C) = C'$$ by showing that
+each is a subset of the other (:ref{#basic-proofs/set-equality}).
+
+**Every moved point is on C′.** Take a point of $$T(C)$$. It is $$T(P)$$ for some point
+$$P = (p, q)$$ of $$C$$, so $$E(p, q)$$ is true. Now $$T(P) = (p + h, q + k)$$. Put $$x = p + h$$
+and $$y = q + k$$ into $$E(x - h, y - k)$$:
+
+```math
+\begin{aligned}
+E\big((p + h) - h,\ (q + k) - k\big) &= E(p, q) && \text{the } h \text{ and the } k \text{ cancel}
+\end{aligned}
+```
+
+and $$E(p, q)$$ is true. So $$T(P)$$ is on $$C'$$.
+
+**Every point of C′ is a moved point.** Take a point $$Q = (u, v)$$ of $$C'$$, so
+$$E(u - h, v - k)$$ is true. That says the point $$P = (u - h, v - k)$$ is on $$C$$. And the slide
+sends $$P$$ to
+
+```math
+T(P) = \big((u - h) + h,\ (v - k) + k\big) = (u, v) = Q
+```
+
+So $$Q$$ is $$T(P)$$ for a point $$P$$ of $$C$$, which means $$Q$$ is in $$T(C)$$.
+
+:::
+
+With the circle, $$E(x, y)$$ is $$x^2 + y^2 = 4$$, and $$(h, k) = (3, -1)$$. Then $$x - h$$ is
+$$x - 3$$, and $$y - k = y - (-1)$$ is $$y + 1$$. That gives $$(x - 3)^2 + (y + 1)^2 = 4$$, the
+circle with centre $$(3, -1)$$ and radius $$2$$, as :ref{#coordinates/circle-equation} says it
+should be.
+
+### Why x − 3 slides right
+
+The minus sign trips almost everyone up the first time, because $$x - 3$$ looks as if it should move
+things left. Take the parabola $$y = x^2$$ and slide it by $$(3, 0)$$. By :ref{#slide-graph} the new
+curve is $$y = (x - 3)^2$$. At $$x = 5$$ it has height $$(5 - 3)^2 = 4$$, which is the height the
+old curve had at $$x = 2$$. At $$x = 3$$ it has height $$0$$, the height the old curve had at
+$$x = 0$$.
+
+So the new curve at $$x$$ does what the old one did at $$x - 3$$, three steps earlier. Everything
+happens $$3$$ later along the $$x$$-axis, which means $$3$$ further right. In the same way,
+$$y + 1$$ in place of $$y$$ moves a graph down by $$1$$, since $$y + 1 = y - (-1)$$.
+
+<SlideRight caption="The parabola y = x² (dashed) and its slide by (3, 0), the parabola y = (x − 3)². Each point moves 3 to the right: (0, 0) to (3, 0), (1, 1) to (4, 1) and (2, 4) to (5, 4)." />
+
+## Lines, slid into place
+
+Lines are the first place the rule pays off. The graph of $$y = mx$$ is the line through $$O$$ with
+slope $$m$$: it passes through $$(0, 0)$$, and each step of $$1$$ to the right takes it up by $$m$$
+(:ref{#linear-equations/slope}). Sliding that line moves it without turning it, so the slope stays
+$$m$$ and only the position changes.
+
+Slide $$y = mx$$ by $$(0, k)$$, straight up by $$k$$. By :ref{#slide-graph} the new equation is
+$$y - k = mx$$, which is $$y = mx + k$$. So the line $$y = mx + k$$ is the line $$y = mx$$ lifted by
+$$k$$. Written as $$mx - y = 0$$ and $$mx - y = -k$$, the two equations pass the test of
+:ref{#segments-rays-and-lines/parallel-equations}, since $$m \cdot (-1) - m \cdot (-1) = 0$$. So
+they are parallel, as the picture of a slide says.
+
+Now slide $$y = mx$$ by $$(h, k)$$ instead. The slide takes $$O$$ to $$(h, k)$$, so the new line
+goes through $$(h, k)$$ with the same slope $$m$$. Its equation, by :ref{#slide-graph}, is
+$$y - k = m(x - h)$$. For example, the line through $$(2, 5)$$ with slope $$3$$ is
+$$y - 5 = 3(x - 2)$$, which is $$y = 3x - 1$$. Check: at $$x = 2$$ it gives $$y = 6 - 1 = 5$$.
+
+::graph{lines="y = 3x; y = 3x - 1" points="0, 0; 2, 5" x="-2 4" y="-3 7" caption="Slid by (2, 5)"}
+
+:::corollary[The line through a point with a given slope]{#sliding-and-stretching-point-slope}
+
+Let $$h$$, $$k$$ and $$m$$ be numbers. The line through $$(h, k)$$ with slope $$m$$ is the graph of
+
+```math
+y - k = m(x - h)
+```
+
+and it is the slide of the line $$y = mx$$ by $$(h, k)$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Linear_equation"}
+
+A line with slope $$m$$ has an equation $$y = mx + c$$ for some number $$c$$
+(:ref{#linear-equations/slope}). It goes through $$(h, k)$$ exactly when $$k = mh + c$$, that is,
+when $$c = k - mh$$. So the line is
+
+```math
+\begin{aligned}
+y &= mx + k - mh && \text{put in } c = k - mh \\
+y - k &= mx - mh && \text{take } k \text{ from both sides} \\
+y - k &= m(x - h) && \text{take out the factor } m
+\end{aligned}
+```
+
+By :ref{#slide-graph}, the slide by $$(h, k)$$ sends the graph of $$y = mx$$ onto the graph of
+$$y - k = m(x - h)$$, which is this line.
+
+:::
+
+Everything else about lines and their equations is in the Linear equations and Segments, rays and
+lines chapters: the slope in :ref{#linear-equations/slope}, and the equation of the line through a
+point in any direction in :ref{#segments-rays-and-lines/line-equation}.
+
+## Stretching along the axes
+
+Slides keep a curve's shape. To turn a circle into an oval we need a move that changes shape, and
+the stretches of the Area and scaling chapter do that. Picture a rubber sheet with the circle drawn
+on it, pulled out sideways so that every point ends up $$3$$ times as far from the $$y$$-axis, and
+then pulled upwards so that every point ends up $$2$$ times as far from the $$x$$-axis. In
+coordinates, the first pull multiplies $$x$$ by $$3$$ and the second multiplies $$y$$ by $$2$$.
+
+:::definition[Stretch along the axes]{#axis-stretch}
+
+Let $$a > 0$$ and $$b > 0$$ be numbers. The **stretch along the axes** by $$a$$ and $$b$$ is the map
+
+```math
+D_{a,b}(x, y) = (ax, by)
+```
+
+read "$$D$$ $$a$$ $$b$$". It stretches by $$a$$ across and by $$b$$ up.
+
+:::
+
+For example, $$D_{3,2}$$ sends $$(1, 0)$$ to $$(3, 0)$$, $$(0, 1)$$ to $$(0, 2)$$ and $$(0.6, 0.8)$$
+to $$(1.8, 1.6)$$. A number below $$1$$ squashes instead: $$D_{0.5,1}$$ halves every first
+coordinate and leaves every second coordinate alone.
+
+:::proposition[Two stretches away from the axes]{#axis-stretch-two}
+
+Let $$a > 0$$ and $$b > 0$$. The map $$D_{a,b}$$ is the stretch by $$a$$ away from the $$y$$-axis
+followed by the stretch by $$b$$ away from the $$x$$-axis (:ref{#area-and-scaling/stretch}). When
+$$a = b$$, it is the zoom $$Z_a$$ about $$O$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Scaling_(geometry)"}
+
+**The stretch by a away from the y-axis is (x, y) ↦ (ax, y).** Take $$P = (x, y)$$. If $$x = 0$$,
+then $$P$$ is on the $$y$$-axis and stays where it is, and $$(a \cdot 0, y) = (0, y) = P$$. If
+$$x \ne 0$$, the horizontal line through $$P$$ is perpendicular to the $$y$$-axis and meets it at
+$$F = (0, y)$$ (rule 3 of :ref{#coordinates/coordinate-rules}). So $$F$$ is the foot of the
+perpendicular from $$P$$, and $$d(F, P) = |x|$$ by part 2 of :ref{#coordinates/line-distance}. The
+stretch moves $$P$$ along that horizontal line, on the same side of the $$y$$-axis, to $$a$$ times
+that distance from $$F$$. The point $$(ax, y)$$ does this: $$ax$$ has the same sign as $$x$$, since
+$$a > 0$$, and its distance from $$F$$ is $$|ax| = a\,|x|$$.
+
+**The stretch by b away from the x-axis is (x, y) ↦ (x, by).** This is the same argument with the
+axes swapped, and it is worked out in
+[Stretching away from the x-axis](../coordinates/geometry-from-numbers.mdx#stretching-away-from-the-x-axis).
+
+**One after the other.** The first stretch sends $$(x, y)$$ to $$(ax, y)$$, and the second sends
+that to $$(ax, by)$$, which is $$D_{a,b}(x, y)$$. When $$a = b$$, this is $$(ax, ay) = a(x, y)$$,
+the zoom $$Z_a$$ about $$O$$ (:ref{#adding-and-scaling-points/zoom-formula}).
+
+:::
+
+A stretch is undone by the stretch the other way: $$D_{1/a,1/b}$$ sends $$(ax, by)$$ back to
+$$(x, y)$$. So, as with slides, the new equation takes each point back and asks whether it was on
+the old curve. Taking a point back means dividing $$x$$ by $$a$$ and $$y$$ by $$b$$.
+
+:::theorem[Stretching a graph]{#stretch-graph}
+
+Let $$a > 0$$ and $$b > 0$$. The stretch $$D_{a,b}$$ sends the graph of an equation $$E(x, y)$$ onto
+the graph of
+
+```math
+E\!\left(\frac{x}{a},\ \frac{y}{b}\right)
+```
+
+:::
+
+:::proof{source="https://www.mathsisfun.com/sets/function-transformations.html"}
+
+Let $$C$$ be the graph of $$E(x, y)$$ and $$C'$$ the graph of $$E(\frac{x}{a}, \frac{y}{b})$$. As in
+:ref{#slide-graph}, we show that $$D_{a,b}(C) = C'$$ by showing each is a subset of the other.
+
+**Every stretched point is on C′.** Take $$P = (p, q)$$ on $$C$$, so $$E(p, q)$$ is true. Then
+$$D_{a,b}(P) = (ap, bq)$$. Putting $$x = ap$$ and $$y = bq$$ into the new equation gives
+
+```math
+\begin{aligned}
+E\!\left(\frac{ap}{a},\ \frac{bq}{b}\right) &= E(p, q) && \text{cancel, since } a \ne 0 \text{ and } b \ne 0
+\end{aligned}
+```
+
+which is true. So $$D_{a,b}(P)$$ is on $$C'$$.
+
+**Every point of C′ is a stretched point.** Take $$Q = (u, v)$$ on $$C'$$, so
+$$E(\frac{u}{a}, \frac{v}{b})$$ is true. That says the point $$P = (\frac{u}{a}, \frac{v}{b})$$ is
+on $$C$$. Then
+
+```math
+D_{a,b}(P) = \left(a \cdot \frac{u}{a},\ b \cdot \frac{v}{b}\right) = (u, v) = Q
+```
+
+So $$Q$$ is in $$D_{a,b}(C)$$.
+
+:::
+
+Stretch the unit circle $$x^2 + y^2 = 1$$ by $$3$$ across and $$2$$ up. By :ref{#stretch-graph}, put
+$$\frac{x}{3}$$ for $$x$$ and $$\frac{y}{2}$$ for $$y$$:
+
+```math
+\left(\frac{x}{3}\right)^2 + \left(\frac{y}{2}\right)^2 = 1
+\qquad\text{which is}\qquad
+\frac{x^2}{9} + \frac{y^2}{4} = 1
+```
+
+Check with a point: $$(0.6, 0.8)$$ is on the unit circle, since $$0.36 + 0.64 = 1$$. The stretch
+sends it to $$(1.8, 1.6)$$, and putting that point into the new equation gives
+
+```math
+\frac{1.8^2}{9} + \frac{1.6^2}{4} = \frac{3.24}{9} + \frac{2.56}{4} = 0.36 + 0.64 = 1
+```
+
+<StretchCircle caption="The unit circle (dashed blue) stretched by 3 away from the y-axis gives the dashed purple oval x²/9 + y² = 1, and stretching that by 2 away from the x-axis gives the ellipse x²/9 + y²/4 = 1. The point (0.6, 0.8) moves across to (1.8, 0.8) and then up to (1.8, 1.6)." />
+
+This curve is the edge of an ellipse from the Area and scaling chapter. There, an ellipse is the
+unit disc stretched by $$a$$ away from one line and by $$b$$ away from a line square on to it
+(:ref{#area-and-scaling/ellipse}). The proof of :ref{#stretch-graph} never used that $$E$$ was an
+equation, only that each point either fits it or doesn't. So it works for the condition
+$$x^2 + y^2 \le 1$$ too, and $$D_{3,2}$$ sends the unit disc onto the region where
+$$\frac{x^2}{9} + \frac{y^2}{4} \le 1$$. The [Ellipses](./ellipses.mdx) guide takes these curves
+further (:ref{#ellipse-equation}).
+
+Try stretching and sliding each of the three starting curves below. The bold curve is the starting
+curve stretched first and then slid, and the readout gives its equation from :ref{#stretch-graph}
+and then :ref{#slide-graph}. The marked point $$P$$ moves to $$P'$$, and the readout puts $$P'$$
+into the new equation to check it fits.
+
+<GraphMover />
+
+## Flipping a graph
+
+Fold a sheet of squared paper along the $$y$$-axis, and the graph on one side lands on its mirror
+image on the other. The flip in the $$y$$-axis is $$R_2(x, y) = (-x, y)$$, the flip in the
+$$x$$-axis is $$R_1(x, y) = (x, -y)$$ (:ref{#adding-and-scaling-points/axis-reflections}), and the
+flip in the line $$y = x$$ is $$S(x, y) = (y, x)$$
+(:ref{#adding-and-scaling-points/diagonal-reflection}). Each flip undoes itself: doing it twice puts
+every point back. So to take a point back you do the same flip again, and the new equation is the
+old one with the flip done to $$x$$ and $$y$$.
+
+:::proposition[Flipping a graph]{#flip-graph}
+
+Let $$E(x, y)$$ be an equation.
+
+1. The flip $$R_2$$ in the $$y$$-axis sends its graph onto the graph of $$E(-x, y)$$
+2. The flip $$R_1$$ in the $$x$$-axis sends its graph onto the graph of $$E(x, -y)$$
+3. The flip $$S$$ in the line $$y = x$$ sends its graph onto the graph of $$E(y, x)$$: swap the
+   letters
+
+:::
+
+:::proof{source="https://www.purplemath.com/modules/fcntrans.htm"}
+
+Let $$C$$ be the graph of $$E(x, y)$$. We prove part 1, and parts 2 and 3 are the same argument with
+$$R_1$$ or $$S$$ in place of $$R_2$$. Let $$C'$$ be the graph of $$E(-x, y)$$. First,
+$$R_2(R_2(x, y)) = R_2(-x, y) = (x, y)$$, so $$R_2$$ undoes itself.
+
+**Every flipped point is on C′.** Take $$P = (p, q)$$ on $$C$$, so $$E(p, q)$$ is true. Then
+$$R_2(P) = (-p, q)$$, and putting $$x = -p$$ and $$y = q$$ into $$E(-x, y)$$ gives
+$$E(-(-p), q) = E(p, q)$$, which is true. So $$R_2(P)$$ is on $$C'$$.
+
+**Every point of C′ is a flipped point.** Take $$Q = (u, v)$$ on $$C'$$, so $$E(-u, v)$$ is true.
+Then $$P = (-u, v)$$ is on $$C$$, and $$R_2(P) = (u, v) = Q$$. So $$Q$$ is in $$R_2(C)$$.
+
+For part 2 the same steps work, since $$R_1(R_1(x, y)) = (x, y)$$ and $$E(p, -(-q)) = E(p, q)$$. For
+part 3 they work since $$S(S(x, y)) = S(y, x) = (x, y)$$, and putting $$x = q$$ and $$y = p$$ into
+$$E(y, x)$$ gives $$E(p, q)$$.
+
+:::
+
+Flip the parabola $$y = x^2$$ in the line $$y = x$$. Swapping the letters gives $$x = y^2$$, a
+parabola lying on its side and opening to the right. The point $$(2, 4)$$ is on $$y = x^2$$, and the
+flip sends it to $$(4, 2)$$, which fits $$x = y^2$$ since $$4 = 2^2$$.
+
+<FlipParabola caption="The parabola y = x² (dashed) and its flip in the line y = x, the parabola x = y². The flip sends (2, 4) to (4, 2)." />
+
+Flipping $$y = x^2$$ in the $$y$$-axis instead gives $$y = (-x)^2$$, which is $$y = x^2$$ again. The
+flip sends the parabola onto itself, so the flip in the $$y$$-axis is a symmetry of the parabola
+(:ref{#isometries/symmetry}). Flipping it in the $$x$$-axis gives $$-y = x^2$$, which is
+$$y = -x^2$$: the same cup, upside down.
+
+## Turning a graph
+
+A turn works the same way, with one more step: to take a point back after a turn by $$\varphi$$, you
+turn it by $$-\varphi$$, the same amount the other way. By :ref{#trigonometry/rotation-formula} with
+$$-\varphi$$ in place of $$\varphi$$, and $$\cos(-\varphi) = \cos\varphi$$ and
+$$\sin(-\varphi) = -\sin\varphi$$ from :ref{#trigonometry/negative-angle},
+
+```math
+G_{-\varphi}(x, y) = (x\cos\varphi + y\sin\varphi,\ -x\sin\varphi + y\cos\varphi)
+```
+
+As in the Trigonometry chapter, $$G_\varphi$$ is the turn about $$O$$ by $$\varphi$$ radians,
+anticlockwise when $$\varphi > 0$$ (:ref{#trigonometry/radians-turn-notation}).
+
+:::theorem[Turning a graph]{#turn-graph}
+
+Let $$\varphi$$ be a number. The turn $$G_\varphi$$ about $$O$$ sends the graph of an equation
+$$E(x, y)$$ onto the graph of
+
+```math
+E(x\cos\varphi + y\sin\varphi,\ -x\sin\varphi + y\cos\varphi)
+```
+
+That is, put in the point turned back by $$\varphi$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Rotation_of_axes"}
+
+Let $$C$$ be the graph of $$E(x, y)$$ and $$C'$$ the graph of the new equation. By the formula for
+$$G_{-\varphi}$$ above, a point $$Q$$ is on $$C'$$ exactly when $$G_{-\varphi}(Q)$$ is on $$C$$.
+Turns add, and the turn by $$0$$ is the identity $$I$$ (parts 1 and 2 of
+:ref{#trigonometry/radian-turns}), so
+
+```math
+G_{-\varphi} \circ G_\varphi = G_0 = I \qquad G_\varphi \circ G_{-\varphi} = G_0 = I
+```
+
+**Every turned point is on C′.** Take $$P$$ on $$C$$. Then $$G_{-\varphi}(G_\varphi(P)) = P$$, which
+is on $$C$$. So $$G_\varphi(P)$$ is on $$C'$$.
+
+**Every point of C′ is a turned point.** Take $$Q$$ on $$C'$$, and let $$P = G_{-\varphi}(Q)$$,
+which is on $$C$$. Then $$G_\varphi(P) = G_\varphi(G_{-\varphi}(Q)) = Q$$. So $$Q$$ is in
+$$G_\varphi(C)$$.
+
+:::
+
+Turn $$y = x^2$$ a quarter turn anticlockwise, $$\varphi = \frac{\pi}{2}$$. Here
+$$\cos\frac{\pi}{2} = 0$$ and $$\sin\frac{\pi}{2} = 1$$, so the turned-back point is
+
+```math
+(x \cdot 0 + y \cdot 1,\ -x \cdot 1 + y \cdot 0) = (y, -x)
+```
+
+In $$y = x^2$$, the first letter is the one squared and the second stands alone. Putting $$y$$ for
+the first and $$-x$$ for the second gives $$-x = y^2$$, which is $$x = -y^2$$: a parabola opening to
+the left. That matches the picture of a cup tipped over a quarter turn anticlockwise, which ends up
+with its opening facing left.
+
+Check with a point. The point $$(1, 1)$$ is on $$y = x^2$$. The quarter turn sends it to $$(-1, 1)$$
+(part 4 of :ref{#trigonometry/radian-turns}), and $$-y^2 = -1$$, so $$(-1, 1)$$ fits $$x = -y^2$$.
+The same turn sends $$(2, 4)$$ to $$(-4, 2)$$, and $$-2^2 = -4$$.
+
+<TurnParabola caption="The parabola y = x² (dashed) turned a quarter turn anticlockwise about O becomes x = −y², opening to the left. The point (1, 1) turns to (−1, 1), and (2, 4) to (−4, 2)." />
+
+## The recipe for every move
+
+Each rule in this guide follows one pattern: to move a graph, put in the point moved back. The table
+gathers them, with what each does to the parabola $$y = x^2$$.
+
+| Move                            | Formula                                                         | Put in place of $$x$$           | Put in place of $$y$$            | $$y = x^2$$ becomes                           |
+| ------------------------------- | --------------------------------------------------------------- | ------------------------------- | -------------------------------- | --------------------------------------------- |
+| Slide by $$(h, k)$$             | $$(x + h, y + k)$$                                              | $$x - h$$                       | $$y - k$$                        | $$y - k = (x - h)^2$$                         |
+| Stretch $$D_{a,b}$$             | $$(ax, by)$$                                                    | $$\frac{x}{a}$$                 | $$\frac{y}{b}$$                  | $$\frac{y}{b} = \frac{x^2}{a^2}$$             |
+| Flip in the $$y$$-axis, $$R_2$$ | $$(-x, y)$$                                                     | $$-x$$                          | $$y$$                            | $$y = x^2$$                                   |
+| Flip in the $$x$$-axis, $$R_1$$ | $$(x, -y)$$                                                     | $$x$$                           | $$-y$$                           | $$y = -x^2$$                                  |
+| Flip in $$y = x$$, $$S$$        | $$(y, x)$$                                                      | $$y$$                           | $$x$$                            | $$x = y^2$$                                   |
+| Turn $$G_\varphi$$ about $$O$$  | $$(x\cos\varphi - y\sin\varphi,\ x\sin\varphi + y\cos\varphi)$$ | $$x\cos\varphi + y\sin\varphi$$ | $$-x\sin\varphi + y\cos\varphi$$ | for $$\varphi = \frac{\pi}{2}$$, $$x = -y^2$$ |
+
+Two moves one after the other means two rules one after the other. Stretch the unit circle by $$3$$
+across and $$2$$ up, giving $$\frac{x^2}{9} + \frac{y^2}{4} = 1$$, and then slide it by $$(2, -1)$$.
+The slide puts $$x - 2$$ for $$x$$ and $$y + 1$$ for $$y$$:
+
+```math
+\frac{(x - 2)^2}{9} + \frac{(y + 1)^2}{4} = 1
+```
+
+The order matters, because the stretch also stretches any slide done before it.
+:ref{#ex-sliding-and-stretching-order} shows what happens the other way round.
+
+Every later guide in this chapter uses these rules. Each curve starts from one standard equation,
+and every other curve of the same kind is that one moved by slides, turns and flips.
+
+## Exercises
+
+:::::accordion[Exercises on sliding and stretching graphs, with solutions]
+
+::::exercise{#ex-sliding-and-stretching-circle}
+
+Slide the circle $$x^2 + y^2 = 9$$ by $$(-2, 4)$$. Write down the new equation, and check it with
+the points $$(3, 0)$$ and $$(0, 3)$$ of the first circle.
+
+:::solution
+
+By :ref{#slide-graph}, put $$x - (-2) = x + 2$$ for $$x$$ and $$y - 4$$ for $$y$$:
+
+```math
+(x + 2)^2 + (y - 4)^2 = 9
+```
+
+This is the circle with centre $$(-2, 4)$$ and radius $$3$$. The slide sends $$(3, 0)$$ to
+$$(1, 4)$$, and $$(1 + 2)^2 + (4 - 4)^2 = 9 + 0 = 9$$. It sends $$(0, 3)$$ to $$(-2, 7)$$, and
+$$(-2 + 2)^2 + (7 - 4)^2 = 0 + 9 = 9$$. Both moved points fit.
+
+:::
+
+::::
+
+::::exercise{#ex-sliding-and-stretching-which-slide}
+
+Which slide sends the graph of $$y = x^2$$ onto the graph of $$y = (x + 1)^2 - 5$$? Where does the
+lowest point $$(0, 0)$$ go?
+
+:::solution
+
+Add $$5$$ to both sides: $$y + 5 = (x + 1)^2$$. This is $$y - k = (x - h)^2$$ with $$x - h = x + 1$$
+and $$y - k = y + 5$$, so $$h = -1$$ and $$k = -5$$. By :ref{#slide-graph}, it is the slide by
+$$(-1, -5)$$: $$1$$ left and $$5$$ down.
+
+The lowest point $$(0, 0)$$ goes to $$(-1, -5)$$, and indeed $$(-1 + 1)^2 - 5 = -5$$. As a second
+check, $$(1, 1)$$ goes to $$(0, -4)$$, and $$(0 + 1)^2 - 5 = -4$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sliding-and-stretching-line}
+
+Find the equation of the line through $$(-1, 4)$$ with slope $$-2$$, in the form $$y = mx + c$$.
+Which slide of which line through $$O$$ is it, and where does it cross the $$y$$-axis?
+
+:::solution
+
+By :ref{#sliding-and-stretching-point-slope}, the line is
+
+```math
+\begin{aligned}
+y - 4 &= -2(x + 1) && h = -1,\ k = 4,\ m = -2 \\
+y - 4 &= -2x - 2 && \text{multiply out} \\
+y &= -2x + 2 && \text{add } 4 \text{ to both sides}
+\end{aligned}
+```
+
+It is the slide of $$y = -2x$$ by $$(-1, 4)$$. Check: at $$x = -1$$, $$y = 2 + 2 = 4$$. It crosses
+the $$y$$-axis where $$x = 0$$, at $$(0, 2)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sliding-and-stretching-stretch}
+
+1. Stretch the line $$x + y = 1$$ by $$D_{4,2}$$. Find the new equation and where it crosses the
+   axes.
+2. Stretch the parabola $$y = x^2$$ by $$D_{2,3}$$. Write the new equation in the form $$y = cx^2$$,
+   and check it with the point $$(1, 1)$$.
+
+:::solution
+
+1. By :ref{#stretch-graph}, put $$\frac{x}{4}$$ for $$x$$ and $$\frac{y}{2}$$ for $$y$$:
+   $$\frac{x}{4} + \frac{y}{2} = 1$$. Putting $$y = 0$$ gives $$x = 4$$, and putting $$x = 0$$ gives
+   $$y = 2$$, so it crosses the axes at $$(4, 0)$$ and $$(0, 2)$$. These are where the stretch sends
+   $$(1, 0)$$ and $$(0, 1)$$, the crossings of the first line.
+2. By :ref{#stretch-graph}, $$\frac{y}{3} = \left(\frac{x}{2}\right)^2 = \frac{x^2}{4}$$, and
+   multiplying by $$3$$ gives $$y = \frac{3}{4}x^2$$. The stretch sends $$(1, 1)$$ to $$(2, 3)$$,
+   and $$\frac{3}{4} \cdot 2^2 = 3$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sliding-and-stretching-order}
+
+Start with the unit circle $$x^2 + y^2 = 1$$.
+
+1. Stretch it by $$D_{2,1}$$ and then slide by $$(3, 0)$$. Find the equation and the centre.
+2. Slide it by $$(3, 0)$$ first and then stretch by $$D_{2,1}$$. Find the equation and the centre.
+
+:::solution
+
+1. The stretch gives $$\frac{x^2}{4} + y^2 = 1$$ (:ref{#stretch-graph}), and the slide gives
+   $$\frac{(x - 3)^2}{4} + y^2 = 1$$ (:ref{#slide-graph}). The centre $$O$$ goes to $$(0, 0)$$ and
+   then to $$(3, 0)$$.
+2. The slide gives $$(x - 3)^2 + y^2 = 1$$. The stretch then puts $$\frac{x}{2}$$ for $$x$$:
+
+   ```math
+   \begin{aligned}
+   \left(\frac{x}{2} - 3\right)^2 + y^2 &= 1 && \text{put } \tfrac{x}{2} \text{ for } x \\
+   \left(\frac{x - 6}{2}\right)^2 + y^2 &= 1 && \tfrac{x}{2} - 3 = \tfrac{x - 6}{2} \\
+   \frac{(x - 6)^2}{4} + y^2 &= 1 && \text{square the top and the bottom}
+   \end{aligned}
+   ```
+
+   The centre $$O$$ goes to $$(3, 0)$$ and then to $$(6, 0)$$: the stretch doubled the slide too.
+   Check: $$(1, 0)$$ slides to $$(4, 0)$$ and stretches to $$(8, 0)$$, and
+   $$\frac{(8 - 6)^2}{4} + 0 = 1$$.
+
+The two ovals have the same shape but different centres, so the order matters.
+
+:::
+
+::::
+
+::::exercise{#ex-sliding-and-stretching-flips}
+
+Take the parabola $$y = (x - 2)^2$$. Find the equation of its flip in the $$y$$-axis, in the
+$$x$$-axis and in the line $$y = x$$. Check each with the image of the point $$(3, 1)$$.
+
+:::solution
+
+By :ref{#flip-graph}:
+
+- **In the y-axis**: $$y = (-x - 2)^2$$, which is $$y = (x + 2)^2$$, since
+  $$(-x - 2)^2 = (x + 2)^2$$. The point goes to $$(-3, 1)$$, and $$(-3 + 2)^2 = 1$$
+- **In the x-axis**: $$-y = (x - 2)^2$$, which is $$y = -(x - 2)^2$$. The point goes to $$(3, -1)$$,
+  and $$-(3 - 2)^2 = -1$$
+- **In y = x**: $$x = (y - 2)^2$$. The point goes to $$(1, 3)$$, and $$(3 - 2)^2 = 1$$
+
+The first is the slide of $$y = x^2$$ by $$(-2, 0)$$: the flip in the $$y$$-axis moved the lowest
+point from $$(2, 0)$$ to $$(-2, 0)$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sliding-and-stretching-turn-axis}
+
+Use :ref{#turn-graph} to turn the $$x$$-axis, the graph of $$y = 0$$, by $$\frac{\pi}{4}$$ about
+$$O$$. Then show that for any $$\varphi$$ with $$\cos\varphi \ne 0$$ the turned axis is the line
+$$y = (\tan\varphi)\,x$$.
+
+:::solution
+
+Here $$E(x, y)$$ is $$y = 0$$, which only involves the second letter. By :ref{#turn-graph}, the
+turned graph is $$-x\sin\varphi + y\cos\varphi = 0$$. With $$\varphi = \frac{\pi}{4}$$,
+$$\cos\varphi = \sin\varphi = \frac{\sqrt2}{2}$$, so
+
+```math
+\begin{aligned}
+\tfrac{\sqrt2}{2}(-x + y) &= 0 && \text{take out } \tfrac{\sqrt2}{2} \\
+y &= x && \text{divide by } \tfrac{\sqrt2}{2} \ne 0 \text{ and add } x
+\end{aligned}
+```
+
+Check: the turn sends $$(1, 0)$$ to $$(\cos\frac{\pi}{4}, \sin\frac{\pi}{4})$$, which has equal
+coordinates. For any $$\varphi$$ with $$\cos\varphi \ne 0$$, divide $$y\cos\varphi = x\sin\varphi$$
+by $$\cos\varphi$$ to get $$y = \frac{\sin\varphi}{\cos\varphi}x = (\tan\varphi)\,x$$
+(:ref{#trigonometry/tangent}). The turned axis climbs $$\tan\varphi$$ for each step right, as
+:ref{#trigonometry/tangent-slope} says.
+
+:::
+
+::::
+
+::::exercise{#ex-sliding-and-stretching-turn-circle}
+
+Use :ref{#turn-graph} to show that every turn about $$O$$ sends the unit circle onto itself.
+
+:::solution
+
+Write $$c = \cos\varphi$$ and $$s = \sin\varphi$$. By :ref{#turn-graph}, the turn sends the graph of
+$$x^2 + y^2 = 1$$ onto the graph of $$(xc + ys)^2 + (-xs + yc)^2 = 1$$. Multiply out the left side:
+
+```math
+\begin{aligned}
+(xc + ys)^2 + (-xs + yc)^2
+&= x^2c^2 + 2xycs + y^2s^2 + x^2s^2 - 2xycs + y^2c^2 && \text{multiply out} \\
+&= x^2(c^2 + s^2) + y^2(s^2 + c^2) && \text{the } xy \text{ terms cancel} \\
+&= x^2 + y^2 && c^2 + s^2 = 1
+\end{aligned}
+```
+
+The last step is :ref{#trigonometry/pythagorean-identity}. So the new equation is $$x^2 + y^2 = 1$$
+again, and the turned circle is the unit circle.
+
+:::
+
+::::
+
+:::::

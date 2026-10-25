@@ -147,6 +147,45 @@ import { TriangleLaws } from "./interactive/triangle-laws";
 import { RotateShape } from "./interactive/rotate-shape";
 import { IdentityChecker } from "./interactive/identity-checker";
 import { IdentityTree } from "./trig-illustrations/identity-tree";
+import { HyperbolaTurn } from "./interactive/hyperbola-turn";
+import { PizzaShares } from "./conic-illustrations/hyperbolas";
+import { ProductBranches } from "./conic-illustrations/hyperbolas";
+import { MovedProduct } from "./conic-illustrations/hyperbolas";
+import { StandardHyperbola } from "./conic-illustrations/hyperbolas";
+import { AsymptoteGap } from "./conic-illustrations/hyperbolas";
+import { FocalDistances } from "./conic-illustrations/hyperbolas";
+import { RadioStations } from "./conic-illustrations/hyperbolas";
+import { GraphMover } from "./interactive/graph-mover";
+import { SlideRight } from "./conic-illustrations/sliding-and-stretching";
+import { StretchCircle } from "./conic-illustrations/sliding-and-stretching";
+import { FlipParabola } from "./conic-illustrations/sliding-and-stretching";
+import { TurnParabola } from "./conic-illustrations/sliding-and-stretching";
+import { ParabolaFocus } from "./interactive/parabola-focus";
+import { DishFocus } from "./conic-illustrations/focus-and-directrix";
+import { EqualDistances } from "./conic-illustrations/focus-and-directrix";
+import { ReflectionStep } from "./conic-illustrations/focus-and-directrix";
+import { ParabolaTangent } from "./interactive/parabola-tangent";
+import { FountainJets } from "./conic-illustrations/parabolas";
+import { SlidParabola } from "./conic-illustrations/parabolas";
+import { SameShape } from "./conic-illustrations/parabolas";
+import { SidewaysParabola } from "./conic-illustrations/parabolas";
+import { TangentOrVertical } from "./conic-illustrations/parabolas";
+import { BallPath } from "./conic-illustrations/parabolas";
+import { ConeSlices } from "./conic-illustrations/cone";
+import { EccentricityDial } from "./interactive/eccentricity-dial";
+import { EllipseString } from "./interactive/ellipse-string";
+import { GardenerString } from "./conic-illustrations/ellipses";
+import { StretchedCircle } from "./conic-illustrations/ellipses";
+import { EllipseParts } from "./conic-illustrations/ellipses";
+import { SlidEllipse } from "./conic-illustrations/ellipses";
+import { EllipseFoci } from "./conic-illustrations/ellipses";
+import { EllipseLines } from "./conic-illustrations/ellipses";
+import { ConicSorter } from "./interactive/conic-sorter";
+import { ShrinkingEllipse } from "./conic-illustrations/general-equation";
+import { DegenerateCases } from "./conic-illustrations/general-equation";
+import { TurnedEllipse } from "./conic-illustrations/general-equation";
+import { TurnedHyperbola } from "./conic-illustrations/general-equation";
+import { TurnedParabola } from "./conic-illustrations/general-equation";
 import {
   Conjecture,
   Corollary,
@@ -282,6 +321,45 @@ export const mdxComponents = {
   HalfTurnPair,
   MoveExplorer,
   SpriteFrames,
+  TurnedParabola,
+  TurnedHyperbola,
+  TurnedEllipse,
+  DegenerateCases,
+  ShrinkingEllipse,
+  ConicSorter,
+  EllipseLines,
+  EllipseFoci,
+  SlidEllipse,
+  EllipseParts,
+  StretchedCircle,
+  GardenerString,
+  EllipseString,
+  EccentricityDial,
+  ConeSlices,
+  BallPath,
+  TangentOrVertical,
+  SidewaysParabola,
+  SameShape,
+  SlidParabola,
+  FountainJets,
+  ParabolaTangent,
+  ReflectionStep,
+  EqualDistances,
+  DishFocus,
+  ParabolaFocus,
+  TurnParabola,
+  FlipParabola,
+  StretchCircle,
+  SlideRight,
+  GraphMover,
+  RadioStations,
+  FocalDistances,
+  AsymptoteGap,
+  StandardHyperbola,
+  MovedProduct,
+  ProductBranches,
+  PizzaShares,
+  HyperbolaTurn,
   IdentityTree,
   IdentityChecker,
   RotateShape,

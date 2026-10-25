@@ -1,0 +1,714 @@
+---
+title: The focus of a parabola
+description:
+  A parabola as the points equally far from a point and a line, the focus of every parabola, and why
+  a parabolic dish sends every straight-on ray to its focus.
+---
+
+Imagine a satellite dish on a roof, pointed at a satellite far out in space. Its signal arrives as a
+bundle of parallel rays, and each ray strikes the bowl at a different place. Yet the small receiver
+on its arm in front of the bowl picks up all of them. The bowl bounces every ray to that one spot.
+
+<DishFocus caption="A dish seen from the side, pointed straight up. Rays of signal come straight down, hit the bowl at different places, and all bounce back up through the receiver." />
+
+The cross-section of the bowl is a parabola, and the spot where the rays meet is its **focus**. The
+focus comes with a partner line, the **directrix**, and together they describe the parabola without
+any equation at all. In this guide we'll find the focus and directrix of every parabola, and then
+prove that a parabola sends every straight-on ray to its focus.
+
+## A point and a line
+
+Pick a point $$F$$ and a line $$L$$ that misses it. Some points of the plane are closer to $$F$$
+than to $$L$$, and some are closer to $$L$$. Between the two kinds lies a curve of points that are
+equally far from both, and that curve turns out to be a parabola.
+
+Here it is with numbers. Take $$F = (0, 1)$$ and let $$L$$ be the line $$y = -1$$. The distance from
+a point to $$L$$ is the length of the perpendicular dropped onto $$L$$
+(:ref{#distance-and-angles/point-line-distance}), and for a horizontal line that is how far above or
+below it the point sits. So:
+
+- $$(0, 0)$$ is $$1$$ from $$F$$ and $$1$$ above $$L$$
+- $$(2, 1)$$ is $$2$$ from $$F$$, straight across, and $$2$$ above $$L$$
+- $$(4, 4)$$ is $$\sqrt{4^2 + 3^2} = 5$$ from $$F$$ and $$5$$ above $$L$$
+
+The point $$(-2, 1)$$ works in the same way as $$(2, 1)$$. All four points lie on the graph of
+$$y = \frac{x^2}{4}$$: for example $$\frac{4^2}{4} = 4$$.
+
+To find more such points, draw circles about $$F$$ and lines parallel to $$L$$. The circle of radius
+$$r$$ about $$F$$ holds the points $$r$$ from $$F$$, and the line $$r$$ above $$L$$ holds the points
+$$r$$ from $$L$$. So wherever the two meet, the point is $$r$$ from both.
+
+<EqualDistances caption="F = (0, 1) and L is the line y = −1. Each circle about F meets the dashed line of its colour at points that are r from F and r from L. The dots all lie on the faint curve y = x²/4." />
+
+:::definition[Focus and directrix]{#focus-directrix}
+
+Let $$F$$ be a point and $$L$$ a line that does not pass through $$F$$. The **curve with focus**
+$$F$$ **and directrix** $$L$$ is the set of points $$P$$ with
+
+```math
+d(P, F) = d(P, L)
+```
+
+where $$d(P, L)$$ is the distance from $$P$$ to the line $$L$$
+(:ref{#distance-and-angles/point-line-distance}). The point $$F$$ is the **focus** and the line
+$$L$$ is the **directrix**.
+
+:::
+
+The word "focus" is Latin for "fireplace": a parabolic mirror facing the sun gathers its heat at
+that point. The circles and lines in the picture are one way to draw the curve point by point, and
+the directrix is the line they are measured from.
+
+## The focus of y = x²/(4p)
+
+The four points in [A point and a line](#a-point-and-a-line) all fitted $$y = \frac{x^2}{4}$$. The
+reason shows up when you write both distances with the distance formula and square them: the $$y^2$$
+terms cancel and leave a parabola. The same happens with the focus at any height $$p$$ above the
+origin and the directrix the same distance below it.
+
+:::theorem[The focus of y = x²/(4p)]{#focus-parabola}
+
+Let $$p \ne 0$$, let $$F = (0, p)$$, and let $$L$$ be the line $$y = -p$$. A point lies on the curve
+with focus $$F$$ and directrix $$L$$ exactly when it lies on the graph of
+
+```math
+y = \frac{x^2}{4p}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Parabola#Axis_of_symmetry_parallel_to_the_y_axis"}
+
+Let $$P = (x, y)$$. By :ref{#coordinates/distance-formula}, $$d(P, F) = \sqrt{x^2 + (y - p)^2}$$.
+The line $$L$$ is $$0x + 1y = -p$$, so by :ref{#segments-rays-and-lines/distance-to-line},
+
+```math
+d(P, L) = \frac{|0x + 1y - (-p)|}{\sqrt{0^2 + 1^2}} = |y + p|
+```
+
+Both distances are at least $$0$$, so they are equal exactly when their squares are equal. Each line
+below is equivalent to the one before:
+
+```math
+\begin{aligned}
+x^2 + (y - p)^2 &= (y + p)^2 && \text{square both distances} \\
+x^2 + y^2 - 2py + p^2 &= y^2 + 2py + p^2 && \text{multiply out the brackets} \\
+x^2 - 2py &= 2py && \text{take } y^2 + p^2 \text{ from both sides} \\
+x^2 &= 4py && \text{add } 2py \text{ to both sides} \\
+\frac{x^2}{4p} &= y && \text{divide by } 4p \ne 0
+\end{aligned}
+```
+
+The last line says that $$P$$ is on the graph of $$y = \frac{x^2}{4p}$$.
+
+:::
+
+With $$p = 1$$ this is the example we started with: focus $$(0, 1)$$, directrix $$y = -1$$, and the
+curve $$y = \frac{x^2}{4}$$. Check one more point, $$(6, 9)$$, which is on the curve since
+$$\frac{36}{4} = 9$$. It is $$\sqrt{6^2 + 8^2} = 10$$ from $$(0, 1)$$ and $$9 + 1 = 10$$ above the
+line $$y = -1$$.
+
+When $$p$$ is negative, the focus $$(0, p)$$ is below the origin and the directrix is above it, and
+$$\frac{1}{4p}$$ is negative, so the parabola opens downwards. Either way the focus sits inside the
+bowl of the parabola, a distance $$|p|$$ from the vertex, and the directrix runs outside it, the
+same distance from the vertex on the other side.
+
+## Every parabola has a focus
+
+A parabola is the graph of $$y = ax^2$$ moved by an isometry (:ref{#parabola-definition}). The graph
+of $$y = ax^2$$ is the graph of $$y = \frac{x^2}{4p}$$ with $$p = \frac{1}{4a}$$, so it has a focus
+and a directrix. Moving the graph carries its focus and directrix along with it, because an isometry
+keeps the distance between two points and also the distance from a point to a line.
+
+:::lemma[Moves carry the focus and the directrix]{#focus-and-directrix-moves}
+
+Let $$M$$ be an isometry, $$F$$ a point and $$L$$ a line that does not pass through $$F$$. Then:
+
+1. $$M(L)$$ is a line, it does not pass through $$M(F)$$, and $$d(M(P), M(L)) = d(P, L)$$ for every
+   point $$P$$
+2. $$M$$ sends the curve with focus $$F$$ and directrix $$L$$ onto the curve with focus $$M(F)$$ and
+   directrix $$M(L)$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Isometry"}
+
+**Part 1.** By :ref{#isometries/isometry-lines}, $$M(L)$$ is a line, and each of its points is
+$$M(Y)$$ for a point $$Y$$ of $$L$$. Since $$M$$ keeps distances, $$d(M(P), M(Y)) = d(P, Y)$$. So
+the distances from $$M(P)$$ to the points of $$M(L)$$ are exactly the distances from $$P$$ to the
+points of $$L$$. The distance to a line is the smallest of these
+(:ref{#distance-and-angles/shortest-distance}, :ref{#distance-and-angles/point-line-distance}), so
+it is the same for both.
+
+If $$M(F)$$ were on $$M(L)$$, it would be $$M(Y)$$ for some $$Y$$ on $$L$$, and then
+$$d(F, Y) = d(M(F), M(Y)) = 0$$. That would put $$F = Y$$ on $$L$$, which it is not.
+
+**Part 2.** Write $$C$$ for the curve with focus $$F$$ and directrix $$L$$, and $$C'$$ for the curve
+with focus $$M(F)$$ and directrix $$M(L)$$.
+
+- **Points of $$C$$ land on $$C'$$.** If $$P$$ is on $$C$$, then by part 1,
+  $$d(M(P), M(F)) = d(P, F) = d(P, L) = d(M(P), M(L))$$, so $$M(P)$$ is on $$C'$$.
+- **Every point of $$C'$$ is reached.** Let $$Q$$ be on $$C'$$. By
+  :ref{#isometries/isometry-inverse}, $$M$$ can be undone, so $$Q = M(P)$$ with $$P = M^{-1}(Q)$$.
+  Then $$d(P, F) = d(Q, M(F)) = d(Q, M(L)) = d(P, L)$$, using part 1 for the last step, so $$P$$ is
+  on $$C$$.
+
+:::
+
+The other direction holds too: the curve for any point and any line not through it is a parabola. To
+see this, we move the point and the line, by a slide and a turn, until the directrix is horizontal
+with the focus straight above the origin. The figure shows the pieces we use.
+
+```plane
+point A -1.5 3.5 hidden
+point B 3.8 -1.8 hidden
+point F 3 3 ne
+point Q 1 1 sw
+point V 2 2 se
+line A B color=red label="L"
+segment F Q dashed
+right F Q B
+ticks F V 1
+ticks V Q 1
+caption "Q is the foot of the perpendicular from F to the directrix L, and V is the midpoint of FQ. A slide takes V to the origin, and a turn about the origin then puts F straight above it."
+```
+
+:::corollary[Every parabola has a focus and a directrix]{#parabola-focus-exists}
+
+1. For every $$a \ne 0$$, the graph of $$y = ax^2$$ is the curve with focus
+   $$\left(0, \frac{1}{4a}\right)$$ and directrix $$y = -\frac{1}{4a}$$.
+2. Every parabola is the curve with some focus $$F$$ and directrix $$L$$, where $$L$$ does not pass
+   through $$F$$.
+3. For every point $$F$$ and line $$L$$ not through $$F$$, the curve with focus $$F$$ and directrix
+   $$L$$ is a parabola.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Parabola#General_position"}
+
+**Part 1.** Let $$p = \frac{1}{4a}$$, which is not $$0$$. Then $$\frac{1}{4p} = a$$, so
+$$\frac{x^2}{4p} = ax^2$$, and :ref{#focus-parabola} with this $$p$$ is part 1.
+
+**Part 2.** By :ref{#parabola-definition}, a parabola is $$M(C)$$ for an isometry $$M$$ and the
+graph $$C$$ of some $$y = ax^2$$. By part 1, $$C$$ is the curve with a focus $$F_0$$ and a directrix
+$$L_0$$. By :ref{#focus-and-directrix-moves}, $$M(C)$$ is the curve with focus $$M(F_0)$$ and
+directrix $$M(L_0)$$, and $$M(L_0)$$ does not pass through $$M(F_0)$$.
+
+**Part 3.** We build an isometry $$M$$ that sends $$F$$ to $$(0, p)$$ and $$L$$ to the line
+$$y = -p$$, for a number $$p > 0$$.
+
+**Step 1: the pieces.** Let $$Q$$ be the foot of the perpendicular from $$F$$ to $$L$$, so that
+$$d(F, L) = d(F, Q)$$, which is positive since $$F$$ is not on $$L$$. Let
+$$V = F + \frac{1}{2}(Q - F) = \frac{1}{2}(F + Q)$$, the point halfway along $$FQ$$, and let
+$$p = \frac{1}{2}d(F, Q)$$. By :ref{#segments-rays-and-lines/fraction-along} with
+$$t = \frac{1}{2}$$, $$d(F, V) = p$$. Also
+
+```math
+Q - V = \tfrac{1}{2}(Q - F) = -\big(F - V\big)
+```
+
+**Step 2: slide.** The slide $$T$$ by $$-V$$ sends each point $$X$$ to $$X - V$$
+(:ref{#adding-and-scaling-points/slide-formula}). Write $$F_1 = T(F) = F - V$$. By step 1,
+$$T(Q) = Q - V = -F_1$$, and $$|F_1| = d(F, V) = p$$
+(:ref{#adding-and-scaling-points/distance-norm}).
+
+**Step 3: turn.** By :ref{#trigonometry/polar-exist}, $$F_1 = (p\cos\theta, p\sin\theta)$$ for some
+angle $$\theta$$. Let $$G$$ be the turn about $$O$$ by $$\frac{\pi}{2} - \theta$$. By
+:ref{#trigonometry/polar-turn} and :ref{#trigonometry/quarter-values},
+
+```math
+G(F_1) = \left(p\cos\tfrac{\pi}{2},\ p\sin\tfrac{\pi}{2}\right) = (0, p)
+```
+
+In the formula for a turn (:ref{#trigonometry/rotation-formula}), changing the signs of $$x$$ and
+$$y$$ changes the signs of both new coordinates, so $$G(-X) = -G(X)$$ for every point $$X$$. So
+$$G(-F_1) = (0, -p)$$.
+
+**Step 4: the moved focus and directrix.** Let $$M = G \circ T$$, which is an isometry by
+:ref{#isometries/basic-isometries} and :ref{#isometries/composite-isometry}. By steps 2 and 3,
+$$M(F) = (0, p)$$ and $$M(Q) = (0, -p)$$. The line $$M(L)$$ passes through $$M(Q) = (0, -p)$$. The
+line $$L$$ is perpendicular to the line $$FQ$$, so $$M(L)$$ is perpendicular to the line through
+$$(0, p)$$ and $$(0, -p)$$, which is the $$y$$-axis (:ref{#isometries/isometry-perpendicular}). The
+line $$y = -p$$ also passes through $$(0, -p)$$ and is perpendicular to the $$y$$-axis, since its
+direction $$(1, 0)$$ has dot product $$0$$ with $$(0, 1)$$
+(:ref{#segments-rays-and-lines/perpendicular-formula}). There is only one such line, by rule 1 of
+:ref{#distance-and-angles/perpendicular-rules}, so $$M(L)$$ is the line $$y = -p$$.
+
+**Step 5: the curve.** Let $$C$$ be the curve with focus $$F$$ and directrix $$L$$. By
+:ref{#focus-and-directrix-moves} and step 4, $$M$$ sends $$C$$ onto the curve with focus $$(0, p)$$
+and directrix $$y = -p$$. By :ref{#focus-parabola}, that is the graph $$C_0$$ of
+$$y = \frac{x^2}{4p}$$. Undoing $$M$$ (:ref{#isometries/isometry-inverse}) gives
+$$C = M^{-1}(C_0)$$, the graph of $$y = ax^2$$ with $$a = \frac{1}{4p}$$ moved by the isometry
+$$M^{-1}$$. So $$C$$ is a parabola by :ref{#parabola-definition}.
+
+:::
+
+For example, $$y = x^2$$ has $$a = 1$$, so its focus is $$\left(0, \frac{1}{4}\right)$$ and its
+directrix is $$y = -\frac{1}{4}$$. Check the point $$(1, 1)$$: it is
+$$\sqrt{1^2 + \left(\frac{3}{4}\right)^2} = \frac{5}{4}$$ from the focus and
+$$1 + \frac{1}{4} = \frac{5}{4}$$ above the directrix. The bigger $$a$$ is, the narrower the bowl
+and the closer the focus sits to the vertex.
+
+:::example[The focus of a quadratic graph]
+
+Take $$y = x^2 - 4x + 7$$. Completing the square gives $$x^2 - 4x + 7 = (x - 2)^2 + 3$$, so by
+:ref{#quadratic-parabola} the graph is the graph of $$y = x^2$$ slid by $$(2, 3)$$. The slide moves
+the focus $$\left(0, \frac{1}{4}\right)$$ to $$\left(2, \frac{13}{4}\right)$$, and it moves the line
+$$y = -\frac{1}{4}$$ up by $$3$$ to the line $$y = \frac{11}{4}$$. By
+:ref{#focus-and-directrix-moves}, these are the focus and directrix of the moved graph.
+
+Check with the point $$(4, 7)$$, which is on the graph since $$16 - 16 + 7 = 7$$. Its distance to
+the focus is
+
+```math
+\sqrt{(4 - 2)^2 + \left(7 - \tfrac{13}{4}\right)^2} = \sqrt{4 + \tfrac{225}{16}} = \sqrt{\tfrac{289}{16}} = \tfrac{17}{4}
+```
+
+and its distance to the directrix is $$7 - \frac{11}{4} = \frac{17}{4}$$.
+
+:::
+
+In general, $$y = ax^2 + bx + c$$ is $$y = ax^2$$ slid by $$(h, k)$$, with $$h = -\frac{b}{2a}$$ and
+$$k = c - \frac{b^2}{4a}$$ (:ref{#quadratic-parabola}). So its focus is
+$$\left(h, k + \frac{1}{4a}\right)$$ and its directrix is the line $$y = k - \frac{1}{4a}$$: the
+vertex $$(h, k)$$ sits halfway between them.
+
+## The reflecting property
+
+Now back to the dish. A ray of signal comes straight down onto the bowl at a point $$P$$. Had the
+bowl not been there, the ray would have carried straight on down to the directrix, meeting it at a
+point we call $$N$$. The bowl bounces it instead, and the claim is that it bounces to the focus. The
+proof turns on one picture: at $$P$$, the tangent to the parabola is the perpendicular bisector of
+$$F$$ and $$N$$, so it acts as a mirror that swaps them.
+
+Here is that picture with numbers first. On $$y = \frac{x^2}{4}$$ (so $$p = 1$$), take
+$$P = \left(3, \frac{9}{4}\right)$$. Straight below it on the directrix $$y = -1$$ is
+$$N = (3, -1)$$, and $$P$$ is $$\frac{13}{4}$$ from both $$F = (0, 1)$$ and $$N$$. The midpoint of
+$$FN$$ is $$\left(\frac{3}{2}, 0\right)$$. The tangent at $$P$$ is
+$$y = \frac{3}{2}x - \frac{9}{4}$$ (:ref{#parabola-tangent} with $$a = \frac{1}{4}$$ and the point
+over $$x = 3$$), and putting in $$x = \frac{3}{2}$$ gives $$\frac{9}{4} - \frac{9}{4} = 0$$, so it
+passes through that midpoint. Its slope is $$\frac{3}{2}$$ and the slope of $$FN$$ is
+$$\frac{-1 - 1}{3 - 0} = -\frac{2}{3}$$, and $$\frac{3}{2} \cdot \left(-\frac{2}{3}\right) = -1$$,
+so they are perpendicular (:ref{#segments-rays-and-lines/perpendicular-slopes}).
+
+<ReflectionStep
+  step={1}
+  caption="Step 1. P is as far from F as from N, the point straight below it on the directrix. The tangent T at P passes through the midpoint M of FN and crosses FN square on: it is the perpendicular bisector of FN."
+/>
+
+:::lemma[The tangent is a perpendicular bisector]{#focus-and-directrix-tangent}
+
+Let $$p \ne 0$$ and let $$P = \left(q, \frac{q^2}{4p}\right)$$ be a point of the graph of
+$$y = \frac{x^2}{4p}$$. Let $$F = (0, p)$$ and $$N = (q, -p)$$, the point of the directrix straight
+below or above $$P$$. Then $$F \ne N$$, and the tangent to the graph at $$P$$ is the perpendicular
+bisector of $$FN$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Parabola#Tangent_bisection_property"}
+
+The points $$F$$ and $$N$$ are different, since their second coordinates $$p$$ and $$-p$$ differ
+when $$p \ne 0$$.
+
+**The tangent.** The graph is $$y = ax^2$$ with $$a = \frac{1}{4p}$$. By :ref{#parabola-tangent},
+its tangent at the point over $$x = q$$ is $$y = 2aqx - aq^2$$, that is,
+
+```math
+y = \frac{q}{2p}\,x - \frac{q^2}{4p}
+```
+
+**The perpendicular bisector.** By :ref{#distance-and-angles/perpendicular-bisector-rule}, a point
+$$X = (x, y)$$ is on the perpendicular bisector of $$FN$$ exactly when $$d(X, F) = d(X, N)$$.
+Squaring both sides as in the proof of :ref{#focus-parabola}, each line below is equivalent to the
+one before:
+
+```math
+\begin{aligned}
+x^2 + (y - p)^2 &= (x - q)^2 + (y + p)^2 && \text{square both distances} \\
+x^2 + y^2 - 2py + p^2 &= x^2 - 2qx + q^2 + y^2 + 2py + p^2 && \text{multiply out the brackets} \\
+-2py &= -2qx + q^2 + 2py && \text{take } x^2 + y^2 + p^2 \text{ from both sides} \\
+4py &= 2qx - q^2 && \text{add } 2qx + 2py \text{ to both sides} \\
+y &= \frac{q}{2p}\,x - \frac{q^2}{4p} && \text{divide by } 4p \ne 0
+\end{aligned}
+```
+
+This is the equation of the tangent, so the two lines are the same.
+
+:::
+
+The second ingredient is not mathematics at all. How light bounces off a mirror is a fact about the
+physical world, found by experiment, and we take it as given. Picture the path the ray would have
+taken with no mirror. The mirror folds that path over, as if the mirror line were a crease.
+
+<ReflectionStep
+  step={2}
+  caption="Step 2, the law of reflection. A ray hits a curved mirror at P. With no mirror it would have carried on to X. The reflected ray leaves P through X′, the mirror image of X in the tangent line T at P."
+/>
+
+:::remark[Rules for reflection]{#reflection-law}
+
+In a plane containing the ray of light:
+
+1. **Flat mirrors**: a ray that hits a flat mirror at $$P$$ leaves along the mirror image of the
+   path it would have taken with no mirror. If $$X \ne P$$ is a point of that straight-on path past
+   $$P$$, the reflected ray is the ray from $$P$$ through $$R(X)$$, where $$R$$ is the reflection in
+   the mirror's line (:ref{#isometries/reflection})
+2. **Curved mirrors**: a ray that hits a curved mirror at $$P$$ reflects as it would off a flat
+   mirror along the tangent line at $$P$$
+3. **Paths run backwards**: a ray sent back along the reflected ray leaves along the path it came in
+   by, the other way
+
+These are taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Specular_reflection#Law_of_reflection"}
+
+:::
+
+Physics books state rule 1 as "the angle of incidence equals the angle of reflection". The two say
+the same thing. The reflection $$R$$ keeps the point $$P$$ on the mirror and keeps every angle
+(:ref{#isometries/isometry-angles}), so the incoming and outgoing rays make equal angles with the
+mirror.
+
+:::theorem[The reflecting property]{#parabola-reflection}
+
+Let $$p > 0$$, and let $$P$$ be a point of the graph of $$y = \frac{x^2}{4p}$$, whose focus is
+$$F = (0, p)$$. A ray of light coming straight down onto the inside of the curve at $$P$$ reflects
+along the ray from $$P$$ through $$F$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Parabola#Proof_of_the_reflective_property"}
+
+Write $$P = \left(q, \frac{q^2}{4p}\right)$$ and $$N = (q, -p)$$. Let $$T$$ be the tangent at $$P$$
+and $$R$$ the reflection in $$T$$.
+
+**Step 1: the straight-on path.** The ray comes down the vertical line $$x = q$$. That line meets
+the graph only at $$P$$, since the graph has one height for each $$x$$, so the ray reaches $$P$$
+without touching the curve before. With no mirror, it would carry on down the same line to $$N$$,
+which is below $$P$$ because $$\frac{q^2}{4p} \ge 0 > -p$$. So $$N$$ is a point of the straight-on
+path past $$P$$.
+
+**Step 2: the mirror.** By rule 2 of :ref{#reflection-law}, the ray reflects as it would off a flat
+mirror along $$T$$. By :ref{#focus-and-directrix-tangent}, $$T$$ is the perpendicular bisector of
+$$FN$$.
+
+**Step 3: the flip.** The point $$N$$ is not on $$T$$: every point of $$T$$ is as far from $$F$$ as
+from $$N$$ (:ref{#distance-and-angles/perpendicular-bisector-rule}), and $$d(N, N) = 0$$ while
+$$d(N, F) > 0$$. So by :ref{#isometries/reflection}, $$R(N)$$ is the one point for which $$T$$ is
+the perpendicular bisector of the segment from $$N$$ to it. Step 2 says $$F$$ is that point, so
+$$R(N) = F$$.
+
+**Step 4: the reflected ray.** By rule 1 of :ref{#reflection-law} with $$X = N$$, the reflected ray
+is the ray from $$P$$ through $$R(N) = F$$.
+
+:::
+
+<ReflectionStep
+  step={3}
+  caption="Step 3. The ray comes straight down to P, and with no mirror it would carry on to N. The tangent T is the perpendicular bisector of FN, so the reflection in T sends N to F, and the reflected ray runs from P through F."
+/>
+
+When $$P$$ is the vertex, $$q = 0$$ and the ray passes down through $$F$$ before it reaches the
+curve. The tangent there is the $$x$$-axis, $$N = (0, -p)$$ flips to $$F$$, and the ray bounces
+straight back up through $$F$$. Slide $$P$$ along the curve below and watch the two distances stay
+equal while the ray always lands on $$F$$.
+
+<ParabolaFocus />
+
+## Every parabola sends rays to its focus
+
+The theorem talks about $$y = \frac{x^2}{4p}$$ only, but a real dish can point any way. Tip the
+dish, and the curve, the focus, the directrix and every tangent tip with it. The proof used one fact
+about the curve, that the tangent at $$P$$ is the perpendicular bisector of $$F$$ and $$N$$. That
+fact is about distances, and a move keeps distances, so it holds for every parabola.
+
+On $$y = \frac{x^2}{4p}$$ the rays came straight down, square on to the directrix. For a tipped dish
+they still travel square on to the directrix, so that is how we describe them.
+
+:::lemma[Every tangent is a perpendicular bisector]{#focus-and-directrix-every-tangent}
+
+Let $$C$$ be the curve with focus $$F$$ and directrix $$L$$, let $$P$$ be a point of $$C$$, and let
+$$N$$ be the foot of the perpendicular from $$P$$ to $$L$$. Then $$C$$ has exactly one tangent at
+$$P$$ (:ref{#parabola-tangent-def}), and it is the perpendicular bisector of $$FN$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Parabola#Tangent_bisection_property"}
+
+**The standard picture.** The proof of part 3 of :ref{#parabola-focus-exists} builds an isometry
+$$M$$ and a number $$p > 0$$ with $$M(F) = (0, p)$$ and $$M(L)$$ the line $$y = -p$$. By
+:ref{#focus-and-directrix-moves} and :ref{#focus-parabola}, $$M$$ sends $$C$$ onto the graph $$C_0$$
+of $$y = \frac{x^2}{4p}$$. Write $$M(P) = \left(q, \frac{q^2}{4p}\right)$$.
+
+**Where N goes.** The point $$P$$ is not on $$L$$, since otherwise $$d(P, F) = d(P, L) = 0$$ would
+put $$F = P$$ on $$L$$. So the line $$PN$$ is the perpendicular from $$P$$ to $$L$$. The isometry
+sends it to a line through $$M(P)$$ perpendicular to $$y = -p$$, meeting it at $$M(N)$$
+(:ref{#isometries/isometry-lines}, :ref{#isometries/isometry-perpendicular}). The vertical line
+$$x = q$$ is such a line (rule 3 of :ref{#coordinates/coordinate-rules}), and there is only one, by
+rule 1 of :ref{#distance-and-angles/perpendicular-rules}. So $$M(N) = (q, -p)$$. Also $$N \ne F$$,
+since $$N$$ is on $$L$$ and $$F$$ is not.
+
+**The perpendicular bisector.** By :ref{#focus-and-directrix-tangent}, the tangent $$T_0$$ to
+$$C_0$$ at $$M(P)$$ is the perpendicular bisector of $$(0, p)$$ and $$(q, -p)$$, which are $$M(F)$$
+and $$M(N)$$. Let $$T$$ be the line that $$M^{-1}$$ sends $$T_0$$ onto
+(:ref{#isometries/isometry-inverse}). A point $$X$$ is on $$T$$ exactly when $$M(X)$$ is on $$T_0$$,
+that is, when $$d(M(X), M(F)) = d(M(X), M(N))$$. Since $$M$$ keeps distances, that says
+$$d(X, F) = d(X, N)$$. So $$T$$ is the perpendicular bisector of $$FN$$
+(:ref{#distance-and-angles/perpendicular-bisector-rule}).
+
+**The only tangent.** Since $$M$$ is one-to-one and sends $$C$$ onto $$C_0$$ and lines onto lines, a
+line $$K$$ meets $$C$$ only at $$P$$ exactly when $$M(K)$$ meets $$C_0$$ only at $$M(P)$$. The axis
+of $$C$$ is the line that $$M^{-1}$$ sends the $$y$$-axis onto (:ref{#parabola-definition},
+:ref{#parabolas-vertex-axis}). By :ref{#segments-rays-and-lines/line-intersection}, two lines are
+not parallel exactly when they meet in exactly one point, so $$K$$ is not parallel to the axis of
+$$C$$ exactly when $$M(K)$$ is not parallel to the $$y$$-axis. So $$K$$ is a tangent to $$C$$ at
+$$P$$ exactly when $$M(K)$$ is a tangent to $$C_0$$ at $$M(P)$$. By :ref{#parabola-tangent} the only
+one is $$T_0$$, so the only tangent to $$C$$ at $$P$$ is $$T$$.
+
+:::
+
+:::corollary[The reflecting property for every parabola]{#focus-and-directrix-every-reflection}
+
+Let $$C$$ be the curve with focus $$F$$ and directrix $$L$$, and let $$P$$ be a point of $$C$$. A
+ray of light travelling towards $$L$$, along the line through $$P$$ perpendicular to $$L$$, that
+reaches the curve at $$P$$ reflects along the ray from $$P$$ through $$F$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Parabola#Proof_of_the_reflective_property"}
+
+Let $$N$$ be the foot of the perpendicular from $$P$$ to $$L$$. With no mirror, the ray would carry
+on along the line $$PN$$ to $$N$$, so $$N$$ is a point of the straight-on path past $$P$$. Let $$T$$
+be the tangent at $$P$$ and $$R$$ the reflection in $$T$$. By rule 2 of :ref{#reflection-law}, the
+ray reflects as it would off a flat mirror along $$T$$.
+
+By :ref{#focus-and-directrix-every-tangent}, $$T$$ is the perpendicular bisector of $$FN$$. Steps 3
+and 4 of the proof of :ref{#parabola-reflection} now go through word for word: $$N$$ is not on
+$$T$$, so $$R(N) = F$$, and by rule 1 of :ref{#reflection-law} the reflected ray is the ray from
+$$P$$ through $$F$$.
+
+:::
+
+## Dishes, headlights and cookers
+
+A real dish is a bowl whose every cross-section through the middle is the same parabola, so the
+reflecting property works in each of those slices. To place the receiver, you need the focus. Say a
+dish is $$60$$ cm across and $$10$$ cm deep. Put its lowest point at the origin, so its rim is at
+$$(30, 10)$$ on a graph $$y = \frac{x^2}{4p}$$ measured in centimetres. Then
+
+```math
+10 = \frac{30^2}{4p} = \frac{900}{4p} \quad\text{so}\quad 4p = 90 \quad\text{and}\quad p = 22.5
+```
+
+So the receiver goes $$22.5$$ cm above the bottom of the bowl, well beyond the $$10$$ cm rim. That
+is why it sits out in front of the dish on an arm, as in the picture at the start of this guide.
+
+A car headlight uses the same curve the other way round. The bulb sits at the focus, and light from
+it hits the mirror behind and leaves along the reverse of the path in :ref{#parabola-reflection}, by
+rule 3 of :ref{#reflection-law}. So every ray leaves parallel to the axis, and the light goes out as
+a beam instead of spreading in all directions.
+
+A solar cooker is a dish that faces the sun. The sun is so far away that its rays arrive close to
+parallel, so the bowl gathers them close to the focus, where the pot sits. That is the fireplace the
+word "focus" is named after.
+
+## Exercises
+
+:::::accordion[Exercises on the focus of a parabola, with solutions]
+
+::::exercise{#ex-focus-and-directrix-read-off}
+
+Find the focus and directrix of the graph of $$y = \frac{x^2}{8}$$. Then check that the point
+$$(4, 2)$$ on the graph is as far from the focus as from the directrix.
+
+:::solution
+
+Here $$\frac{x^2}{8} = \frac{x^2}{4p}$$ with $$4p = 8$$, so $$p = 2$$. By :ref{#focus-parabola} the
+focus is $$(0, 2)$$ and the directrix is $$y = -2$$.
+
+The point $$(4, 2)$$ is on the graph since $$\frac{16}{8} = 2$$. It is level with the focus, $$4$$
+across from it, so its distance to the focus is $$4$$. It is $$2 - (-2) = 4$$ above the directrix.
+
+:::
+
+::::
+
+::::exercise{#ex-focus-and-directrix-steep}
+
+Find the focus and directrix of the graph of $$y = 3x^2$$, and check your answer with the point
+$$(1, 3)$$.
+
+:::solution
+
+By part 1 of :ref{#parabola-focus-exists} with $$a = 3$$, the focus is
+$$\left(0, \frac{1}{12}\right)$$ and the directrix is $$y = -\frac{1}{12}$$.
+
+The point $$(1, 3)$$ is on the graph. Its distance to the focus is
+
+```math
+\sqrt{1^2 + \left(3 - \tfrac{1}{12}\right)^2} = \sqrt{1 + \tfrac{1225}{144}} = \sqrt{\tfrac{1369}{144}} = \tfrac{37}{12}
+```
+
+and its distance to the directrix is $$3 + \frac{1}{12} = \frac{37}{12}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-focus-and-directrix-downwards}
+
+Find an equation for the curve with focus $$(0, -3)$$ and directrix $$y = 3$$. Which way does it
+open? Check that $$(6, -3)$$ is on it.
+
+:::solution
+
+This is :ref{#focus-parabola} with $$p = -3$$, so the curve is the graph of
+
+```math
+y = \frac{x^2}{4 \cdot (-3)} = -\frac{x^2}{12}
+```
+
+The number in front of $$x^2$$ is negative, so it opens downwards, away from the directrix above it.
+The point $$(6, -3)$$ fits, since $$-\frac{36}{12} = -3$$. It is level with the focus and $$6$$
+across from it, and it is $$3 - (-3) = 6$$ below the directrix.
+
+:::
+
+::::
+
+::::exercise{#ex-focus-and-directrix-quadratic}
+
+Find the focus and directrix of the graph of $$y = 2x^2 + 8x + 5$$. Check your answer with the point
+$$(-1, -1)$$.
+
+:::solution
+
+Completing the square, $$2x^2 + 8x + 5 = 2(x^2 + 4x) + 5 = 2(x + 2)^2 - 8 + 5 = 2(x + 2)^2 - 3$$. So
+by :ref{#quadratic-parabola} the graph is $$y = 2x^2$$ slid by $$(-2, -3)$$, with vertex
+$$(-2, -3)$$. With $$a = 2$$, $$\frac{1}{4a} = \frac{1}{8}$$, so the focus is
+$$\left(-2, -3 + \frac{1}{8}\right) = \left(-2, -\frac{23}{8}\right)$$ and the directrix is
+$$y = -3 - \frac{1}{8} = -\frac{25}{8}$$.
+
+The point $$(-1, -1)$$ is on the graph, since $$2 - 8 + 5 = -1$$. Its distance to the focus is
+
+```math
+\sqrt{1^2 + \left(-1 + \tfrac{23}{8}\right)^2} = \sqrt{1 + \tfrac{225}{64}} = \sqrt{\tfrac{289}{64}} = \tfrac{17}{8}
+```
+
+and its distance to the directrix is $$-1 + \frac{25}{8} = \frac{17}{8}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-focus-and-directrix-sideways}
+
+Find an equation for the curve with focus $$(2, 0)$$ and directrix $$x = -2$$, and check it with the
+point $$(2, 4)$$. Which graph of the form $$y = \frac{x^2}{4p}$$ is it the flip of, and in which
+line?
+
+:::solution
+
+The distance from $$(x, y)$$ to the line $$x = -2$$ is $$|x + 2|$$, by
+:ref{#segments-rays-and-lines/distance-to-line}. Squaring both distances as in the proof of
+:ref{#focus-parabola}:
+
+```math
+\begin{aligned}
+(x - 2)^2 + y^2 &= (x + 2)^2 && \text{square both distances} \\
+x^2 - 4x + 4 + y^2 &= x^2 + 4x + 4 && \text{multiply out the brackets} \\
+y^2 &= 8x && \text{take } x^2 - 4x + 4 \text{ from both sides} \\
+x &= \frac{y^2}{8} && \text{divide by } 8
+\end{aligned}
+```
+
+The point $$(2, 4)$$ fits, since $$\frac{16}{8} = 2$$. It is $$4$$ straight above the focus, and
+$$2 - (-2) = 4$$ to the right of the directrix.
+
+Swapping the letters in $$y = \frac{x^2}{8}$$ gives $$x = \frac{y^2}{8}$$, so by :ref{#flip-graph}
+the curve is the flip of $$y = \frac{x^2}{8}$$ in the line $$y = x$$. The flip swaps the coordinates
+of every point, so it also sends the focus $$(0, 2)$$ of $$y = \frac{x^2}{8}$$ to $$(2, 0)$$ and the
+directrix $$y = -2$$ to $$x = -2$$, as :ref{#focus-and-directrix-moves} says it must.
+
+:::
+
+::::
+
+::::exercise{#ex-focus-and-directrix-cooker}
+
+A solar cooker is a parabolic dish $$1.2$$ m across, with its focus $$0.3$$ m above the bottom of
+the bowl. How deep is the dish? Is the pot at the focus inside the bowl or above its rim?
+
+:::solution
+
+Put the bottom of the bowl at the origin, so its cross-section is $$y = \frac{x^2}{4p}$$ with
+$$p = 0.3$$, by :ref{#focus-parabola}. The rim is $$0.6$$ m from the middle, so its height is
+
+```math
+\frac{0.6^2}{4 \times 0.3} = \frac{0.36}{1.2} = 0.3 \text{ m}
+```
+
+The dish is $$0.3$$ m deep, so the focus is level with the rim: the pot sits exactly in the opening
+of the bowl.
+
+:::
+
+::::
+
+::::exercise{#ex-focus-and-directrix-chord}
+
+Let $$p > 0$$. Show that the chord of $$y = \frac{x^2}{4p}$$ through the focus, parallel to the
+directrix, has length $$4p$$. Do it in two ways: with the equation, and with the definition of
+:ref{#focus-directrix} alone.
+
+:::solution
+
+**With the equation.** The chord lies on the line $$y = p$$, through the focus $$(0, p)$$. A point
+$$(x, p)$$ is on the graph when $$\frac{x^2}{4p} = p$$, that is, when $$x^2 = 4p^2$$, so $$x = 2p$$
+or $$x = -2p$$. The chord runs from $$(-2p, p)$$ to $$(2p, p)$$, which has length $$4p$$.
+
+**With the definition.** Every point $$P$$ on the line $$y = p$$ is $$2p$$ above the directrix
+$$y = -p$$. So $$P$$ is on the curve exactly when $$d(P, F) = 2p$$. The points of the line $$y = p$$
+at distance $$2p$$ from $$F$$, which is on that line, are the two points $$2p$$ either side of it.
+They are $$4p$$ apart.
+
+For $$y = \frac{x^2}{4}$$ this chord runs from $$(-2, 1)$$ to $$(2, 1)$$, two of the points from
+[A point and a line](#a-point-and-a-line).
+
+:::
+
+::::
+
+::::exercise{#ex-focus-and-directrix-isosceles}
+
+Let $$p > 0$$ and $$q \ne 0$$, and let $$P = \left(q, \frac{q^2}{4p}\right)$$ on
+$$y = \frac{x^2}{4p}$$, with focus $$F = (0, p)$$. The tangent at $$P$$ crosses the $$y$$-axis at a
+point $$K$$. Show that $$d(F, K) = d(F, P)$$, and check it for $$p = 1$$, $$q = 3$$. Explain how
+this gives another view of the reflecting property.
+
+:::solution
+
+By :ref{#parabola-tangent}, the tangent is $$y = \frac{q}{2p}x - \frac{q^2}{4p}$$, so putting
+$$x = 0$$ gives $$K = \left(0, -\frac{q^2}{4p}\right)$$. Both $$F$$ and $$K$$ are on the $$y$$-axis,
+with $$F$$ above $$K$$, so
+
+```math
+d(F, K) = p + \frac{q^2}{4p}
+```
+
+The point $$P$$ is on the curve, so $$d(F, P) = d(P, L)$$, where $$L$$ is the directrix $$y = -p$$.
+That distance is $$\frac{q^2}{4p} + p$$, the same number. For $$p = 1$$ and $$q = 3$$,
+$$K = \left(0, -\frac{9}{4}\right)$$ and both distances are $$1 + \frac{9}{4} = \frac{13}{4}$$.
+
+So the triangle $$FPK$$ has two equal sides, and its angles at $$P$$ and $$K$$ are equal
+(:ref{#isometries/isosceles}). The angle at $$K$$ is the angle between the tangent and the axis. The
+incoming ray is parallel to the axis, so it meets the tangent at that same angle, as the picture in
+step 3 shows. The equal angles at $$P$$ then say that the ray to $$F$$ leaves the tangent at the
+angle the incoming ray arrived at, which is the "angle of incidence equals angle of reflection" form
+of the law.
+
+:::
+
+::::
+
+:::::
