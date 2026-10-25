@@ -1,0 +1,496 @@
+{
+  "title": "Induction and sums",
+  "description": "Questions on strong induction, sums of powers, areas and volumes from sums, and which endless sums settle.",
+  "questions": [
+    {
+      "id": "strong",
+      "stars": 2,
+      "topic": "Induction in practice",
+      "question": "In strong induction, what may you assume when proving $$P(k + 1)$$?",
+      "options": [
+        "Only $$P(k)$$",
+        "$$P(1)$$, $$P(2)$$, …, $$P(k)$$ all at once",
+        "$$P(k + 1)$$ itself",
+        "Nothing"
+      ],
+      "answer": 1,
+      "explanation": "That is the strong inductive step (:ref{#strong-induction}), used for factorising into primes."
+    },
+    {
+      "id": "prime",
+      "stars": 1,
+      "topic": "Induction in practice",
+      "question": "Which number is prime?",
+      "options": [
+        "$$29$$",
+        "$$27$$",
+        "$$1$$",
+        "$$51$$"
+      ],
+      "answer": 0,
+      "explanation": "$$29$$ has no divisors but $$1$$ and itself; $$27 = 3^3$$, $$51 = 3 \\cdot 17$$, and $$1$$ isn't prime by definition (:ref{#prime})."
+    },
+    {
+      "id": "stamps",
+      "stars": 2,
+      "topic": "Induction in practice",
+      "question": "Why do the 4p and 5p stamp proofs need four base cases (12p to 15p)?",
+      "options": [
+        "Four is a lucky number",
+        "Because $$4 \\cdot 5 = 20$$",
+        "They don't",
+        "Each amount is built by adding a 4p stamp to the amount four less"
+      ],
+      "answer": 3,
+      "explanation": "The step goes from $$n - 4$$ to $$n$$, so four starting amounts are needed (:ref{#stamps})."
+    },
+    {
+      "id": "bernoulli",
+      "stars": 2,
+      "topic": "Induction in practice",
+      "question": "What does Bernoulli's inequality say about $$1.01^{100}$$?",
+      "options": [
+        "It is at most $$2$$",
+        "It equals $$2$$",
+        "It is at least $$2$$",
+        "Nothing"
+      ],
+      "answer": 2,
+      "explanation": "$$(1 + h)^n \\ge 1 + nh = 1 + 100 \\cdot 0.01$$ (:ref{#bernoulli})."
+    },
+    {
+      "id": "mappings",
+      "stars": 2,
+      "topic": "Induction in practice",
+      "question": "How many mappings are there from a set of $$5$$ elements to a set of $$2$$?",
+      "options": [
+        "$$10$$",
+        "$$32$$",
+        "$$25$$",
+        "$$7$$"
+      ],
+      "answer": 1,
+      "explanation": "Each of the $$5$$ elements has $$2$$ choices: $$2^5$$ (:ref{#counting-mappings})."
+    },
+    {
+      "id": "sum-int",
+      "stars": 1,
+      "topic": "Adding up powers",
+      "question": "What is $$1 + 2 + \\cdots + 10$$?",
+      "options": [
+        "$$55$$",
+        "$$50$$",
+        "$$100$$",
+        "$$45$$"
+      ],
+      "answer": 0,
+      "explanation": "$$\\frac{10 \\cdot 11}{2}$$ (:ref{#sum-integers})."
+    },
+    {
+      "id": "pyramid",
+      "stars": 2,
+      "topic": "Adding up powers",
+      "question": "How many oranges are in a square pyramid $$10$$ layers high?",
+      "options": [
+        "$$100$$",
+        "$$55$$",
+        "$$1000$$",
+        "$$385$$"
+      ],
+      "answer": 3,
+      "explanation": "$$1^2 + \\cdots + 10^2 = \\frac{10 \\cdot 11 \\cdot 21}{6}$$ (:ref{#sum-squares})."
+    },
+    {
+      "id": "odd",
+      "stars": 1,
+      "topic": "Adding up powers",
+      "question": "What is $$1 + 3 + 5 + \\cdots + 13$$?",
+      "options": [
+        "$$42$$",
+        "$$56$$",
+        "$$49$$",
+        "$$36$$"
+      ],
+      "answer": 2,
+      "explanation": "The first $$7$$ odd numbers add to $$7^2$$ (:ref{#sum-odd})."
+    },
+    {
+      "id": "cubes",
+      "stars": 2,
+      "topic": "Adding up powers",
+      "question": "What is $$1^3 + 2^3 + \\cdots + 5^3$$?",
+      "options": [
+        "$$125$$",
+        "$$225$$",
+        "$$55$$",
+        "$$15$$"
+      ],
+      "answer": 1,
+      "explanation": "The sum of the first $$n$$ cubes is $$(1 + \\cdots + n)^2 = 15^2$$ (:ref{#sum-cubes})."
+    },
+    {
+      "id": "telescope",
+      "stars": 2,
+      "topic": "Adding up powers",
+      "question": "What is $$\\frac{1}{1 \\cdot 2} + \\frac{1}{2 \\cdot 3} + \\cdots + \\frac{1}{9 \\cdot 10}$$?",
+      "options": [
+        "$$\\frac{9}{10}$$",
+        "$$1$$",
+        "$$\\frac{1}{10}$$",
+        "$$\\frac{1}{90}$$"
+      ],
+      "answer": 0,
+      "explanation": "$$\\frac{1}{k(k + 1)} = \\frac1k - \\frac{1}{k + 1}$$, and the sum telescopes to $$1 - \\frac{1}{10}$$ (:ref{#telescoping})."
+    },
+    {
+      "id": "parabola",
+      "stars": 1,
+      "topic": "Areas and volumes from sums",
+      "question": "What is the area under $$y = x^2$$ from $$x = 0$$ to $$x = 1$$?",
+      "options": [
+        "$$\\frac12$$",
+        "$$1$$",
+        "$$\\frac14$$",
+        "$$\\frac13$$"
+      ],
+      "answer": 3,
+      "explanation": "Inner and outer strips squeeze it to exactly $$\\frac13$$ (:ref{#parabola-area})."
+    },
+    {
+      "id": "squeeze",
+      "stars": 3,
+      "topic": "Areas and volumes from sums",
+      "question": "Why does $$\\lvert A - \\frac13 \\rvert \\le \\frac1n$$ for every $$n$$ prove $$A = \\frac13$$?",
+      "options": [
+        "Because $$\\frac1n = 0$$",
+        "It doesn't, it only gets close",
+        "Any gap would be bigger than $$\\frac1n$$ for some $$n$$",
+        "By the binomial theorem"
+      ],
+      "answer": 2,
+      "explanation": "If $$A \\ne \\frac13$$, pick $$n$$ larger than $$\\frac{1}{\\lvert A - 1/3 \\rvert}$$ for a contradiction (:ref{#areas-and-volumes-squeeze})."
+    },
+    {
+      "id": "cone",
+      "stars": 1,
+      "topic": "Areas and volumes from sums",
+      "question": "What is the volume of a cone with base radius $$r$$ and height $$h$$?",
+      "options": [
+        "$$\\pi r^2 h$$",
+        "$$\\frac13\\pi r^2 h$$",
+        "$$\\frac12\\pi r^2 h$$",
+        "$$\\frac43\\pi r^3$$"
+      ],
+      "answer": 1,
+      "explanation": "A third of the cylinder around it (:ref{#cone-volume})."
+    },
+    {
+      "id": "ball",
+      "stars": 1,
+      "topic": "Areas and volumes from sums",
+      "question": "What is the volume of a ball of radius $$r$$?",
+      "options": [
+        "$$\\frac43\\pi r^3$$",
+        "$$4\\pi r^2$$",
+        "$$\\pi r^3$$",
+        "$$\\frac13\\pi r^3$$"
+      ],
+      "answer": 0,
+      "explanation": "Found by slicing a half ball into cylinders (:ref{#ball-volume})."
+    },
+    {
+      "id": "geo-sum",
+      "stars": 1,
+      "topic": "Geometric series",
+      "question": "What is $$1 + \\frac13 + \\frac19 + \\cdots$$?",
+      "options": [
+        "$$\\frac43$$",
+        "$$3$$",
+        "It never settles",
+        "$$\\frac32$$"
+      ],
+      "answer": 3,
+      "explanation": "$$\\frac{1}{1 - c}$$ with $$c = \\frac13$$ (:ref{#geometric-series})."
+    },
+    {
+      "id": "alternating",
+      "stars": 2,
+      "topic": "Geometric series",
+      "question": "What does $$1 - \\frac12 + \\frac14 - \\frac18 + \\cdots$$ settle towards?",
+      "options": [
+        "$$2$$",
+        "$$\\frac12$$",
+        "$$\\frac23$$",
+        "$$0$$"
+      ],
+      "answer": 2,
+      "explanation": "$$c = -\\frac12$$, so the sum is $$\\frac{1}{1 + 1/2}$$ (:ref{#geometric-series})."
+    },
+    {
+      "id": "decimal",
+      "stars": 2,
+      "topic": "Geometric series",
+      "question": "Which fraction is $$0.363636\\ldots$$?",
+      "options": [
+        "$$\\frac{36}{100}$$",
+        "$$\\frac{4}{11}$$",
+        "$$\\frac{9}{25}$$",
+        "$$\\frac{3}{8}$$"
+      ],
+      "answer": 1,
+      "explanation": "$$\\frac{36}{99} = \\frac{4}{11}$$ (:ref{#repeating-decimals})."
+    },
+    {
+      "id": "settles",
+      "stars": 2,
+      "topic": "Geometric series",
+      "question": "What does it mean that $$s_n$$ settles towards $$L$$?",
+      "options": [
+        "For every margin, from some point on every $$s_n$$ is within it of $$L$$",
+        "Some $$s_n$$ equals $$L$$",
+        "The $$s_n$$ get closer each time",
+        "$$s_n$$ reaches $$L$$ at infinity"
+      ],
+      "answer": 0,
+      "explanation": "That is the definition (:ref{#settles-towards}); \\\"infinity\\\" is not a number."
+    },
+    {
+      "id": "big-c",
+      "stars": 2,
+      "topic": "Geometric series",
+      "question": "Does $$1 + 2 + 4 + 8 + \\cdots$$ settle?",
+      "options": [
+        "Yes, towards $$-1$$",
+        "Yes, towards $$2$$",
+        "Yes, towards $$0$$",
+        "No: the sums grow without bound"
+      ],
+      "answer": 3,
+      "explanation": "The formula $$\\frac{1}{1 - c}$$ needs $$\\lvert c \\rvert < 1$$ (:ref{#geometric-series})."
+    },
+    {
+      "id": "harmonic",
+      "stars": 2,
+      "topic": "Sums that never settle",
+      "question": "Does $$1 + \\frac12 + \\frac13 + \\frac14 + \\cdots$$ settle?",
+      "options": [
+        "Yes, towards $$2$$",
+        "Yes, because the terms shrink to $$0$$",
+        "No: it grows past every number, slowly",
+        "Yes, towards $$e$$"
+      ],
+      "answer": 2,
+      "explanation": "Grouping shows the sum up to $$\\frac{1}{2^m}$$ is at least $$1 + \\frac m2$$ (:ref{#harmonic-unbounded}). Shrinking terms aren't enough."
+    },
+    {
+      "id": "squares-bound",
+      "stars": 2,
+      "topic": "Sums that never settle",
+      "question": "What can you say about $$1 + \\frac14 + \\frac19 + \\cdots + \\frac{1}{n^2}$$?",
+      "options": [
+        "It grows without bound",
+        "It stays below $$2$$ for every $$n$$",
+        "It equals $$2$$",
+        "It is negative"
+      ],
+      "answer": 1,
+      "explanation": "Comparing with $$\\frac{1}{(k - 1)k}$$ and telescoping gives at most $$2 - \\frac1n$$ (:ref{#reciprocal-squares-bounded})."
+    },
+    {
+      "id": "bounded",
+      "stars": 2,
+      "topic": "Sums that never settle",
+      "question": "Why do the reciprocal squares settle towards a number?",
+      "options": [
+        "The sums only grow and stay below $$2$$",
+        "The terms shrink to $$0$$",
+        "They are a geometric series",
+        "By the binomial theorem"
+      ],
+      "answer": 0,
+      "explanation": "Increasing sums with an upper bound settle, taken as given (:ref{#bounded-increasing})."
+    },
+    {
+      "id": "base-cases",
+      "stars": 2,
+      "topic": "Induction in practice",
+      "question": "An induction step only works from $$k \\ge 4$$. What must you check?",
+      "options": [
+        "Only $$P(1)$$",
+        "Nothing more",
+        "That $$P(4)$$ is false",
+        "$$P(4)$$ as the base case; the step then carries it to every $$n \\ge 4$$"
+      ],
+      "answer": 3,
+      "explanation": "Induction can start at any number (:ref{#basic-proofs/induction}); the base case must be where the step begins to work. Cases below $$4$$ must be checked by hand if you want them."
+    },
+    {
+      "id": "crayons",
+      "stars": 2,
+      "topic": "Induction in practice",
+      "question": "A \\\"proof\\\" that all crayons in a box share a colour breaks where?",
+      "options": [
+        "At the base case",
+        "At $$100$$ crayons",
+        "Going from $$1$$ crayon to $$2$$: the two groups don't overlap",
+        "It doesn't break"
+      ],
+      "answer": 2,
+      "explanation": "The step needs a crayon in both groups, which fails when $$k = 1$$."
+    },
+    {
+      "id": "factorise",
+      "stars": 1,
+      "topic": "Induction in practice",
+      "question": "Which is $$360$$ as a product of primes?",
+      "options": [
+        "$$6^2 \\cdot 10$$",
+        "$$2^3 \\cdot 3^2 \\cdot 5$$",
+        "$$2 \\cdot 180$$",
+        "$$3^3 \\cdot 5 \\cdot 2$$"
+      ],
+      "answer": 1,
+      "explanation": "$$8 \\cdot 9 \\cdot 5 = 360$$, with only primes (:ref{#prime-factorisation})."
+    },
+    {
+      "id": "split",
+      "stars": 2,
+      "topic": "Adding up powers",
+      "question": "What is $$1 \\cdot 2 + 2 \\cdot 3 + 3 \\cdot 4$$?",
+      "options": [
+        "$$20$$",
+        "$$12$$",
+        "$$24$$",
+        "$$18$$"
+      ],
+      "answer": 0,
+      "explanation": "$$2 + 6 + 12$$; in general it is $$\\frac{n(n + 1)(n + 2)}{3}$$, from the sums of squares and numbers (:ref{#sum-squares})."
+    },
+    {
+      "id": "slip-square",
+      "stars": 2,
+      "topic": "Adding up powers",
+      "question": "Is $$(1 + 2 + \\cdots + n)^2$$ equal to $$1^2 + 2^2 + \\cdots + n^2$$?",
+      "options": [
+        "Yes",
+        "Only for $$n = 2$$",
+        "It equals $$n^2$$",
+        "Not for $$n \\ge 2$$; it equals $$1^3 + 2^3 + \\cdots + n^3$$"
+      ],
+      "answer": 3,
+      "explanation": "At $$n = 2$$: $$9$$ against $$5$$. The square of the sum is the sum of cubes (:ref{#sum-cubes})."
+    },
+    {
+      "id": "strips",
+      "stars": 2,
+      "topic": "Areas and volumes from sums",
+      "question": "Under $$y = x^2$$ on $$[0, 1]$$ with $$n$$ strips, how far apart are the inner and outer totals?",
+      "options": [
+        "$$\\frac{1}{n^2}$$",
+        "$$\\frac13$$",
+        "$$\\frac1n$$",
+        "$$0$$"
+      ],
+      "answer": 2,
+      "explanation": "The difference is the tallest outer rectangle, $$1 \\cdot \\frac1n$$ (:ref{#areas-and-volumes-strip-sums})."
+    },
+    {
+      "id": "up-to-b",
+      "stars": 2,
+      "topic": "Areas and volumes from sums",
+      "question": "What is the area under $$y = x^2$$ from $$0$$ to $$3$$?",
+      "options": [
+        "$$3$$",
+        "$$9$$",
+        "$$27$$",
+        "$$1$$"
+      ],
+      "answer": 1,
+      "explanation": "$$\\frac{b^3}{3}$$ with $$b = 3$$ (:ref{#areas-and-volumes-parabola-to-b})."
+    },
+    {
+      "id": "cylinder",
+      "stars": 2,
+      "topic": "Areas and volumes from sums",
+      "question": "Which fact about volume is taken as given in the slicing arguments?",
+      "options": [
+        "A cylinder's volume is its base area times its height",
+        "A ball's volume",
+        "A cone's volume",
+        "Nothing"
+      ],
+      "answer": 0,
+      "explanation": "Cylinders are the slices, and their volume is taken as given (:ref{#areas-and-volumes-cylinder})."
+    },
+    {
+      "id": "daily-dose",
+      "stars": 2,
+      "topic": "Geometric series",
+      "question": "A dose $$D$$ is taken daily and a fraction $$f < 1$$ remains each day. What does the amount settle towards?",
+      "options": [
+        "$$Df$$",
+        "$$\\frac{D}{f}$$",
+        "It grows forever",
+        "$$\\frac{D}{1 - f}$$"
+      ],
+      "answer": 3,
+      "explanation": "The amount is $$D(1 + f + f^2 + \\cdots)$$, a geometric series (:ref{#geometric-series})."
+    },
+    {
+      "id": "three-quarters",
+      "stars": 1,
+      "topic": "Geometric series",
+      "question": "What is $$1 + \\frac34 + \\left(\\frac34\\right)^2 + \\cdots$$?",
+      "options": [
+        "$$\\frac43$$",
+        "$$3$$",
+        "$$4$$",
+        "It never settles"
+      ],
+      "answer": 2,
+      "explanation": "$$\\frac{1}{1 - 3/4}$$ (:ref{#geometric-series})."
+    },
+    {
+      "id": "shrink",
+      "stars": 2,
+      "topic": "Geometric series",
+      "question": "Why do the powers $$c^n$$ shrink to $$0$$ when $$0 < c < 1$$?",
+      "options": [
+        "Because $$c < 1$$ means $$c^n = 0$$",
+        "Write $$\\frac1c = 1 + h$$; Bernoulli makes $$\\frac{1}{c^n} \\ge 1 + nh$$ grow",
+        "By the binomial theorem only",
+        "They don't"
+      ],
+      "answer": 1,
+      "explanation": "So $$c^n \\le \\frac{1}{1 + nh}$$, which gets as small as you like (:ref{#powers-shrink}, :ref{#bernoulli})."
+    },
+    {
+      "id": "harmonic-4",
+      "stars": 1,
+      "topic": "Sums that never settle",
+      "question": "What is $$1 + \\frac12 + \\frac13 + \\frac14$$?",
+      "options": [
+        "$$\\frac{25}{12}$$",
+        "$$\\frac{4}{10}$$",
+        "$$2$$",
+        "$$\\frac{10}{4}$$"
+      ],
+      "answer": 0,
+      "explanation": "Over the common denominator $$12$$: $$\\frac{12 + 6 + 4 + 3}{12}$$. These partial sums grow without bound (:ref{#harmonic-unbounded})."
+    },
+    {
+      "id": "rearrange",
+      "stars": 3,
+      "topic": "Sums that never settle",
+      "question": "What goes wrong with $$1 - 1 + 1 - 1 + \\cdots$$?",
+      "options": [
+        "It equals $$0$$",
+        "It equals $$1$$",
+        "It equals $$\\frac12$$ exactly",
+        "The partial sums jump between $$1$$ and $$0$$, so it doesn't settle"
+      ],
+      "answer": 3,
+      "explanation": "Grouping it two ways gives $$0$$ or $$1$$; a series that doesn't settle has no sum (:ref{#series})."
+    }
+  ]
+}

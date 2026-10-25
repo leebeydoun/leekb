@@ -1,0 +1,535 @@
+---
+title: Adding up powers
+description:
+  Formulas for adding up the first n numbers, odd numbers, squares and cubes, the pictures behind
+  them, sums that collapse, and working with sigma notation.
+---
+
+Imagine a grocer stacking oranges into a pyramid with a square base. There is one orange on top,
+four in the layer under it, nine under those, then sixteen, each layer a square one orange wider
+than the layer above. A pyramid four layers high holds $$1 + 4 + 9 + 16 = 30$$ oranges. For a
+pyramid ten layers high you'd have to add up ten squares, and that gives $$385$$.
+
+<OrangePyramid caption="A pyramid of oranges four layers high. From the front you see 1, 2, 3 and 4 oranges; from above, each layer is a square of 1, 4, 9 and 16, and together they make 30." />
+
+The count of oranges is a **sum of powers**: here the squares $$1^2 + 2^2 + \cdots + n^2$$. Sums
+like this have formulas that give the answer straight from $$n$$, without adding term by term. In
+this guide we'll find those formulas, and prove that they work for every $$n$$.
+
+## Adding up 1 to n
+
+Build a staircase of squares, with $$1$$ square in the first column, $$2$$ in the second, up to
+$$n$$ in the last. Now take a second copy, turn it upside down, and fit it on top of the first. The
+two staircases fill a rectangle $$n$$ squares wide and $$n + 1$$ squares tall, because every column
+holds $$n + 1$$ squares in all.
+
+<StaircaseRectangle caption="Two staircases of 1 + 2 + 3 + 4 squares, the orange one turned over on top of the blue one, fill a rectangle 4 wide and 5 tall. The rectangle has 20 squares, so each staircase has 10." />
+
+The rectangle has $$n(n + 1)$$ squares, and each staircase is half of it. With $$n = 4$$ that gives
+$$\frac{4 \cdot 5}{2} = 10$$, which is $$1 + 2 + 3 + 4$$.
+
+:::proposition[The sum of the first n numbers]{#sum-integers}
+
+For every positive integer $$n$$,
+
+```math
+1 + 2 + \cdots + n = \frac{n(n + 1)}{2}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Triangular_number#Formula"}
+
+Call the sum $$S$$, and write it out twice, once forwards and once backwards:
+
+```math
+\begin{aligned}
+S &= 1 + 2 + \cdots + (n - 1) + n \\
+S &= n + (n - 1) + \cdots + 2 + 1
+\end{aligned}
+```
+
+Add the two lines one column at a time. The first column gives $$1 + n$$, the second
+$$2 + (n - 1) = n + 1$$, and each column after that also gives $$n + 1$$, since one number goes up
+by $$1$$ as the other goes down by $$1$$. There are $$n$$ columns, so $$2S = n(n + 1)$$, and
+dividing by $$2$$ gives the formula.
+
+:::
+
+The columns in the proof are the columns of the rectangle, and writing the sum backwards is turning
+the staircase over. Pairing the columns this way works for odd $$n$$ too, since no number is left
+over in the middle. The guide [Proof by induction](../basic-proofs/induction.mdx) proves the same
+formula by induction instead.
+
+## Adding up odd numbers
+
+Add up the odd numbers in order and watch the totals: $$1$$, then $$1 + 3 = 4$$, then
+$$1 + 3 + 5 = 9$$, then $$1 + 3 + 5 + 7 = 16$$. Every total is a square, and a picture shows why.
+The odd number $$2k - 1$$ is an L-shape of squares that wraps round a square of side $$k - 1$$ and
+turns it into a square of side $$k$$. The diagram after the proof draws these layers.
+
+:::proposition[The sum of the first n odd numbers]{#sum-odd}
+
+For every positive integer $$n$$,
+
+```math
+1 + 3 + 5 + \cdots + (2n - 1) = n^2
+```
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Odd_Number_Theorem"}
+
+Let $$P(n)$$ be the statement of the proposition, and use induction (:ref{#basic-proofs/induction}).
+
+**Base case.** $$P(1)$$ says $$1 = 1^2$$, which is true.
+
+**Inductive step.** Suppose $$P(k)$$ is true, so the first $$k$$ odd numbers add to $$k^2$$. The
+next odd number is $$2(k + 1) - 1 = 2k + 1$$, so
+
+```math
+\begin{aligned}
+1 + 3 + \cdots + (2k - 1) + (2k + 1) &= k^2 + (2k + 1) &&\qquad \text{by } P(k) \\
+&= (k + 1)^2 &&\qquad \text{multiplying out } (k + 1)^2 = k^2 + 2k + 1
+\end{aligned}
+```
+
+which is $$P(k + 1)$$.
+
+**Conclusion.** By induction, $$P(n)$$ is true for every positive integer $$n$$.
+
+:::
+
+The inductive step is the L-shape: $$2k + 1$$ squares wrapped round a $$k$$ by $$k$$ square make a
+$$k + 1$$ by $$k + 1$$ square. The tabs below show both pictures so far, and the pyramid of oranges
+that comes next, for any $$n$$ up to $$12$$.
+
+<SumPictures start="odd" />
+
+## Adding up squares
+
+Back to the oranges. Before looking for a formula, it helps to list the totals for small pyramids,
+and to set a guess beside them:
+
+| Layers $$n$$                   | $$1$$ | $$2$$ | $$3$$  | $$4$$  | $$5$$  | $$6$$  |
+| ------------------------------ | ----- | ----- | ------ | ------ | ------ | ------ |
+| $$1^2 + \cdots + n^2$$         | $$1$$ | $$5$$ | $$14$$ | $$30$$ | $$55$$ | $$91$$ |
+| $$\frac{n(n + 1)(2n + 1)}{6}$$ | $$1$$ | $$5$$ | $$14$$ | $$30$$ | $$55$$ | $$91$$ |
+
+The two rows agree for every $$n$$ in the table. For example, at $$n = 4$$ the formula gives
+$$\frac{4 \cdot 5 \cdot 9}{6} = \frac{180}{6} = 30$$. Agreement in six cases is good evidence but
+not a proof, so here is the proof.
+
+:::proposition[The sum of the first n squares]{#sum-squares}
+
+For every positive integer $$n$$,
+
+```math
+1^2 + 2^2 + \cdots + n^2 = \frac{n(n + 1)(2n + 1)}{6}
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Square_pyramidal_number#Formula"}
+
+Let $$P(n)$$ be the statement of the proposition, and use induction (:ref{#basic-proofs/induction}).
+
+**Base case.** $$P(1)$$ says $$1 = \frac{1 \cdot 2 \cdot 3}{6}$$, which is true.
+
+**Inductive step.** Suppose $$P(k)$$ is true. The sum for $$k + 1$$ is the sum for $$k$$ plus
+$$(k + 1)^2$$, and $$P(k + 1)$$ asks for $$\frac{(k + 1)(k + 2)(2k + 3)}{6}$$:
+
+```math
+\begin{aligned}
+1^2 + \cdots + k^2 + (k + 1)^2 &= \frac{k(k + 1)(2k + 1)}{6} + (k + 1)^2 &&\qquad \text{by } P(k) \\
+&= \frac{(k + 1)\big(k(2k + 1) + 6(k + 1)\big)}{6} &&\qquad \text{taking out } k + 1 \\
+&= \frac{(k + 1)(2k^2 + 7k + 6)}{6} &&\qquad \text{multiplying out} \\
+&= \frac{(k + 1)(k + 2)(2k + 3)}{6} &&\qquad 2k^2 + 7k + 6 = (k + 2)(2k + 3)
+\end{aligned}
+```
+
+That is $$P(k + 1)$$, since $$2(k + 1) + 1 = 2k + 3$$.
+
+**Conclusion.** By induction, $$P(n)$$ is true for every positive integer $$n$$.
+
+:::
+
+So the pyramid ten layers high holds $$\frac{10 \cdot 11 \cdot 21}{6} = \frac{2310}{6} = 385$$
+oranges, as promised. The proof checks the formula, but it gives no hint of where the formula came
+from. The section on sums that collapse, further down, shows a way to find it.
+
+## Adding up cubes
+
+The cubes give the most striking pattern of all. Put the totals beside the sums of numbers from the
+first section:
+
+| $$n$$                  | $$1$$ | $$2$$ | $$3$$  | $$4$$   | $$5$$   |
+| ---------------------- | ----- | ----- | ------ | ------- | ------- |
+| $$1^3 + \cdots + n^3$$ | $$1$$ | $$9$$ | $$36$$ | $$100$$ | $$225$$ |
+| $$1 + \cdots + n$$     | $$1$$ | $$3$$ | $$6$$  | $$10$$  | $$15$$  |
+
+Each total in the first row is the square of the number under it: $$9 = 3^2$$, $$36 = 6^2$$,
+$$100 = 10^2$$. So adding up cubes gives the square of the sum of the numbers.
+
+<CubesSquare caption="A square of side 1 + 2 + 3 + 4 = 10, cut into L-shaped bands around one corner. The bands hold 1, 8, 27 and 64 unit squares, which are the cubes 1³, 2³, 3³ and 4³, so the cubes add to 10² = 100." />
+
+:::proposition[The sum of the first n cubes]{#sum-cubes}
+
+For every positive integer $$n$$,
+
+```math
+1^3 + 2^3 + \cdots + n^3 = \left(\frac{n(n + 1)}{2}\right)^2 = (1 + 2 + \cdots + n)^2
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Squared_triangular_number#Proofs"}
+
+The second equals sign is :ref{#sum-integers}, so it is enough to prove the first. Let $$P(n)$$ be
+the statement $$1^3 + \cdots + n^3 = \frac{n^2(n + 1)^2}{4}$$, and use induction
+(:ref{#basic-proofs/induction}).
+
+**Base case.** $$P(1)$$ says $$1 = \frac{1 \cdot 4}{4}$$, which is true.
+
+**Inductive step.** Suppose $$P(k)$$ is true. Then
+
+```math
+\begin{aligned}
+1^3 + \cdots + k^3 + (k + 1)^3 &= \frac{k^2(k + 1)^2}{4} + (k + 1)^3 &&\qquad \text{by } P(k) \\
+&= \frac{(k + 1)^2\big(k^2 + 4(k + 1)\big)}{4} &&\qquad \text{taking out } (k + 1)^2 \\
+&= \frac{(k + 1)^2(k + 2)^2}{4} &&\qquad k^2 + 4k + 4 = (k + 2)^2
+\end{aligned}
+```
+
+which is $$P(k + 1)$$.
+
+**Conclusion.** By induction, $$P(n)$$ is true for every positive integer $$n$$.
+
+:::
+
+One slip is worth naming here, because the cubes make it tempting. The square of the sum,
+$$(1 + 2 + \cdots + n)^2$$, is not the sum of the squares $$1^2 + 2^2 + \cdots + n^2$$. At $$n = 3$$
+the first is $$6^2 = 36$$ and the second is $$14$$. The square of the sum equals the sum of the
+**cubes**, as :ref{#sum-cubes} shows.
+
+## Sums that collapse
+
+Picture a hike with an altimeter. You start at $$100$$ metres, reach $$250$$ at the first
+checkpoint, drop to $$180$$ at the second, and finish at $$400$$. The changes are $$+150$$, $$-70$$
+and $$+220$$, and they add to $$300$$. That is the finish minus the start, $$400 - 100$$, because
+every height in the middle is added once and taken away once.
+
+:::proposition[Telescoping sums]{#telescoping}
+
+For any numbers $$a_0, a_1, \ldots, a_n$$, with $$n \ge 1$$,
+
+```math
+(a_1 - a_0) + (a_2 - a_1) + \cdots + (a_n - a_{n - 1}) = a_n - a_0
+```
+
+In sum notation (:ref{#basic-proofs/sum-notation}),
+$$\sum_{k=1}^{n} (a_k - a_{k - 1}) = a_n - a_0$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Telescoping_series#Definition"}
+
+Let $$P(n)$$ be the statement for $$n$$ terms, and use induction (:ref{#basic-proofs/induction}).
+
+**Base case.** For $$n = 1$$ the left side is the single term $$a_1 - a_0$$, which is the right
+side.
+
+**Inductive step.** Suppose the first $$k$$ terms add to $$a_k - a_0$$. Adding the next term,
+
+```math
+(a_k - a_0) + (a_{k + 1} - a_k) = a_{k + 1} - a_0
+```
+
+since $$a_k$$ appears once with each sign. That is $$P(k + 1)$$.
+
+**Conclusion.** By induction, $$P(n)$$ is true for every $$n \ge 1$$.
+
+:::
+
+The name comes from a telescope that folds up: the long sum collapses to its two ends. To use it,
+you write each term of a sum as a difference of neighbours. The first example below does this with
+fractions, and it comes back in [Sums that never settle](./sums-that-never-settle.mdx).
+
+:::example[Adding up 1/(k(k + 1))]
+
+Add up $$\frac{1}{1 \cdot 2} + \frac{1}{2 \cdot 3} + \cdots + \frac{1}{n(n + 1)}$$.
+
+Each term splits as a difference: $$\frac{1}{k} - \frac{1}{k + 1} = \frac{(k + 1) - k}{k(k + 1)}$$,
+which is $$\frac{1}{k(k + 1)}$$. So the sum is
+
+```math
+\left(1 - \frac{1}{2}\right) + \left(\frac{1}{2} - \frac{1}{3}\right) + \cdots + \left(\frac{1}{n} - \frac{1}{n + 1}\right) = 1 - \frac{1}{n + 1}
+```
+
+Every fraction in the middle cancels. This is :ref{#telescoping} with $$a_k = -\frac{1}{k + 1}$$,
+since then $$a_k - a_{k - 1} = \frac{1}{k} - \frac{1}{k + 1}$$. Check at $$n = 4$$:
+$$\frac{1}{2} + \frac{1}{6} + \frac{1}{12} + \frac{1}{20} = \frac{48}{60}$$, which is
+$$\frac{4}{5} = 1 - \frac{1}{5}$$.
+
+:::
+
+A collapsing sum also finds the formulas from earlier, instead of only checking them. Take the
+squares: $$(k + 1)^2 - k^2 = 2k + 1$$. Adding this up for $$k = 1$$ to $$n$$, the left side
+collapses to $$(n + 1)^2 - 1 = n^2 + 2n$$, while the right side is $$2(1 + \cdots + n) + n$$.
+Setting the two equal, $$2(1 + \cdots + n) = n^2 + 2n - n = n(n + 1)$$, which is :ref{#sum-integers}
+again.
+
+:::example[Where the formula for squares comes from]
+
+Write $$Q$$ for $$1^2 + 2^2 + \cdots + n^2$$. Multiplying out a cube gives
+
+```math
+(k + 1)^3 - k^3 = 3k^2 + 3k + 1
+```
+
+Add this up for $$k = 1$$ to $$n$$. The left side collapses to $$(n + 1)^3 - 1$$ by
+:ref{#telescoping}. On the right, :ref{#basic-proofs/notation-sum-rules} splits the sum into three:
+$$3Q$$, then $$3(1 + \cdots + n) = \frac{3n(n + 1)}{2}$$ by :ref{#sum-integers}, then $$n$$ ones. So
+
+```math
+\begin{aligned}
+3Q &= (n + 1)^3 - 1 - \frac{3n(n + 1)}{2} - n &&\qquad \text{rearranging} \\
+&= (n + 1)^3 - (n + 1) - \frac{3n(n + 1)}{2} &&\qquad \text{since } 1 + n = n + 1 \\
+&= (n + 1)\left(n^2 + 2n - \frac{3n}{2}\right) &&\qquad \text{taking out } n + 1 \\
+&= \frac{n(n + 1)(2n + 1)}{2} &&\qquad n^2 + 2n - \frac{3n}{2} = n^2 + \frac{n}{2} = \frac{n(2n + 1)}{2}
+\end{aligned}
+```
+
+Dividing by $$3$$ gives $$Q = \frac{n(n + 1)(2n + 1)}{6}$$, the formula in :ref{#sum-squares}. Check
+at $$n = 2$$: $$(3^3 - 1) - 9 - 2 = 15$$, which is $$3 \cdot 5$$, three times $$1 + 4$$.
+
+:::
+
+The same trick with $$(k + 1)^4 - k^4$$ finds the formula for cubes, and with higher powers it finds
+the sum of any power you like. Induction is the tool for checking a formula you already have, and a
+collapsing sum is the tool for finding one.
+
+## Working with sigma notation
+
+Sums of powers get long to write, so sigma notation (:ref{#basic-proofs/sum-notation}) is the usual
+shorthand. Three moves come up all the time:
+
+- **Splitting off a term**: $$\sum_{k=1}^{n + 1} x_k = \sum_{k=1}^{n} x_k + x_{n + 1}$$. This is the
+  first line of every inductive step above.
+- **Taking out constants and splitting sums**: $$\sum (c x_k + y_k) = c \sum x_k + \sum y_k$$, by
+  :ref{#basic-proofs/notation-sum-rules}.
+- **Shifting the index**: $$\sum_{k=11}^{20} x_k = \sum_{j=1}^{10} x_{j + 10}$$, putting
+  $$k = j + 10$$. Both sides list $$x_{11}$$ to $$x_{20}$$.
+
+The first and last moves come from writing the sums out in full, as :ref{#basic-proofs/sum-notation}
+defines them.
+
+:::example[Two sums worked with sigma notation]
+
+**A sum that doesn't start at 1.** To find $$\sum_{k=11}^{20} k$$, shift the index with
+$$k = j + 10$$:
+
+```math
+\sum_{k=11}^{20} k = \sum_{j=1}^{10} (j + 10) = \sum_{j=1}^{10} j + \sum_{j=1}^{10} 10 = 55 + 100 = 155
+```
+
+using :ref{#sum-integers} for $$1 + \cdots + 10 = 55$$. Another way: take the numbers up to $$10$$
+away from the numbers up to $$20$$, giving $$210 - 55 = 155$$.
+
+**A sum of squares in disguise.** To find $$\sum_{k=1}^{n} (2k + 3)^2$$, multiply out the square and
+split the sum into three:
+
+```math
+\sum_{k=1}^{n} (4k^2 + 12k + 9) = 4\sum_{k=1}^{n} k^2 + 12\sum_{k=1}^{n} k + 9n
+```
+
+Now :ref{#sum-squares} and :ref{#sum-integers} give each piece:
+
+```math
+\frac{4n(n + 1)(2n + 1)}{6} + 6n(n + 1) + 9n = \frac{n(4n^2 + 24n + 47)}{3}
+```
+
+To simplify, put everything over $$3$$: $$2n(n + 1)(2n + 1) + 18n(n + 1) + 27n$$ has the factor
+$$n$$, and what's left is $$4n^2 + 6n + 2 + 18n + 18 + 27 = 4n^2 + 24n + 47$$. Check at $$n = 2$$:
+the sum is $$5^2 + 7^2 = 74$$, and the formula gives $$\frac{2 \cdot 111}{3} = 74$$.
+
+:::
+
+## Exercises
+
+:::::accordion[Exercises on adding up powers, with solutions]
+
+::::exercise{#ex-adding-up-powers-first}
+
+Use the formulas in this guide to work out:
+
+1. $$1 + 2 + \cdots + 50$$
+2. $$1 + 3 + 5 + \cdots + 99$$
+3. $$1^3 + 2^3 + \cdots + 10^3$$
+
+:::solution
+
+1. By :ref{#sum-integers}, $$\frac{50 \cdot 51}{2} = 1275$$.
+2. The odd numbers up to $$99$$ are $$2k - 1$$ for $$k = 1$$ to $$50$$, since
+   $$2 \cdot 50 - 1 = 99$$. By :ref{#sum-odd} they add to $$50^2 = 2500$$.
+3. By :ref{#sum-cubes}, $$\left(\frac{10 \cdot 11}{2}\right)^2 = 55^2 = 3025$$.
+
+:::
+
+::::
+
+::::exercise{#ex-adding-up-powers-pyramids}
+
+Count the oranges in a square pyramid 6 layers high, and in one 20 layers high, without adding the
+layers one by one.
+
+:::solution
+
+The layers hold $$1^2, 2^2, \ldots, n^2$$ oranges, so by :ref{#sum-squares}:
+
+- 6 layers: $$\frac{6 \cdot 7 \cdot 13}{6} = 91$$ oranges
+- 20 layers: $$\frac{20 \cdot 21 \cdot 41}{6} = \frac{17220}{6} = 2870$$ oranges
+
+:::
+
+::::
+
+::::exercise{#ex-adding-up-powers-middle-squares}
+
+Find $$21^2 + 22^2 + \cdots + 40^2$$ without adding twenty squares.
+
+:::solution
+
+It is the squares up to $$40$$ with the squares up to $$20$$ taken away. By :ref{#sum-squares},
+
+```math
+\frac{40 \cdot 41 \cdot 81}{6} - \frac{20 \cdot 21 \cdot 41}{6} = 22140 - 2870 = 19270
+```
+
+:::
+
+::::
+
+::::exercise{#ex-adding-up-powers-odd-squares}
+
+Find a formula for $$1^2 + 3^2 + 5^2 + \cdots + (2n - 1)^2$$, and check it at $$n = 2$$.
+
+:::solution
+
+Multiply out and split the sum, using :ref{#basic-proofs/notation-sum-rules}:
+
+```math
+\sum_{k=1}^{n} (2k - 1)^2 = 4\sum_{k=1}^{n} k^2 - 4\sum_{k=1}^{n} k + n
+```
+
+By :ref{#sum-squares} and :ref{#sum-integers} this is
+
+```math
+\frac{2n(n + 1)(2n + 1)}{3} - 2n(n + 1) + n = \frac{n(4n^2 + 6n + 2 - 6n - 6 + 3)}{3} = \frac{n(4n^2 - 1)}{3}
+```
+
+Since $$4n^2 - 1 = (2n - 1)(2n + 1)$$, the sum is $$\frac{n(2n - 1)(2n + 1)}{3}$$. Check at
+$$n = 2$$: $$1 + 9 = 10$$, and $$\frac{2 \cdot 3 \cdot 5}{3} = 10$$.
+
+:::
+
+::::
+
+::::exercise{#ex-adding-up-powers-telescope-odd}
+
+Show that
+$$\frac{1}{(2k - 1)(2k + 1)} = \frac{1}{2}\left(\frac{1}{2k - 1} - \frac{1}{2k + 1}\right)$$, and
+use it to add up
+$$\frac{1}{1 \cdot 3} + \frac{1}{3 \cdot 5} + \cdots + \frac{1}{(2n - 1)(2n + 1)}$$. Check your
+answer at $$n = 3$$.
+
+:::solution
+
+Over a common denominator,
+$$\frac{1}{2k - 1} - \frac{1}{2k + 1} = \frac{(2k + 1) - (2k - 1)}{(2k - 1)(2k + 1)}$$, and the top
+is $$2$$. Halving gives the first claim.
+
+So the sum is half of
+$$\left(1 - \frac{1}{3}\right) + \left(\frac{1}{3} - \frac{1}{5}\right) + \cdots + \left(\frac{1}{2n - 1} - \frac{1}{2n + 1}\right)$$,
+which collapses to $$1 - \frac{1}{2n + 1}$$ by :ref{#telescoping}. Halving,
+
+```math
+\frac{1}{2}\left(1 - \frac{1}{2n + 1}\right) = \frac{1}{2} \cdot \frac{2n}{2n + 1} = \frac{n}{2n + 1}
+```
+
+Check at $$n = 3$$:
+$$\frac{1}{3} + \frac{1}{15} + \frac{1}{35} = \frac{35 + 7 + 3}{105} = \frac{45}{105} = \frac{3}{7}$$,
+and $$\frac{3}{7}$$ is the formula's value.
+
+:::
+
+::::
+
+::::exercise{#ex-adding-up-powers-factorials}
+
+Show that $$(k + 1)! - k! = k \cdot k!$$ (:ref{#numbers/factorial}), and use it to prove that
+$$1 \cdot 1! + 2 \cdot 2! + \cdots + n \cdot n! = (n + 1)! - 1$$.
+
+:::solution
+
+Since $$(k + 1)! = (k + 1) \cdot k!$$, the difference is $$(k + 1) \cdot k! - k! = k \cdot k!$$.
+
+So each term $$k \cdot k!$$ is $$a_k - a_{k - 1}$$ with $$a_k = (k + 1)!$$, and by
+:ref{#telescoping} the sum is $$a_n - a_0 = (n + 1)! - 1! = (n + 1)! - 1$$. Check at $$n = 3$$:
+$$1 + 4 + 18 = 23$$, and $$4! - 1 = 23$$.
+
+:::
+
+::::
+
+::::exercise{#ex-adding-up-powers-cannonballs}
+
+Cannonballs are stacked in a pyramid with a triangular base: the layer $$k$$ from the top is a
+triangle of $$1 + 2 + \cdots + k$$ balls. Find a formula for the number of balls in a pyramid of
+$$n$$ layers, and check it for $$n = 4$$.
+
+:::solution
+
+Layer $$k$$ holds $$\frac{k(k + 1)}{2} = \frac{1}{2}(k^2 + k)$$ balls, by :ref{#sum-integers}. So
+the total is
+
+```math
+\frac{1}{2}\left(\sum_{k=1}^{n} k^2 + \sum_{k=1}^{n} k\right) = \frac{1}{2}\left(\frac{n(n + 1)(2n + 1)}{6} + \frac{n(n + 1)}{2}\right)
+```
+
+using :ref{#sum-squares} and :ref{#sum-integers}. Taking out $$\frac{n(n + 1)}{6}$$ inside the
+bracket leaves $$(2n + 1) + 3 = 2n + 4$$, so the total is
+$$\frac{n(n + 1)(2n + 4)}{12} = \frac{n(n + 1)(n + 2)}{6}$$.
+
+Check for $$n = 4$$: the layers hold $$1$$, $$3$$, $$6$$ and $$10$$ balls, $$20$$ in all, and
+$$\frac{4 \cdot 5 \cdot 6}{6} = 20$$.
+
+:::
+
+::::
+
+::::exercise{#ex-adding-up-powers-square-of-sum}
+
+A student writes $$(1 + 2 + \cdots + n)^2 = 1^2 + 2^2 + \cdots + n^2$$. Test this at $$n = 2$$, say
+which sum the left side does equal, and explain why the left side is the bigger one for every
+$$n \ge 2$$.
+
+:::solution
+
+At $$n = 2$$ the left side is $$(1 + 2)^2 = 9$$ and the right side is $$1 + 4 = 5$$, so the claim is
+false. Squaring a sum is not the same as adding the squares, since $$(1 + 2)^2$$ also contains the
+cross terms $$2 \cdot 1 \cdot 2 = 4$$.
+
+The left side is the sum of the **cubes**: $$1^3 + 2^3 = 9$$, and :ref{#sum-cubes} shows that
+$$(1 + \cdots + n)^2 = 1^3 + \cdots + n^3$$ for every $$n$$.
+
+For any $$n \ge 2$$, multiplying out $$(1 + 2 + \cdots + n)^2$$ gives every square $$k^2$$ once,
+plus a cross term $$2jk$$ for each pair of different numbers $$j < k$$. The cross terms are
+positive, and there is at least one, $$2 \cdot 1 \cdot 2$$, so the left side is always bigger than
+$$1^2 + \cdots + n^2$$.
+
+:::
+
+::::
+
+:::::

@@ -1,0 +1,595 @@
+---
+title: Geometric series
+description:
+  Adding up 1 + c + c² + ⋯, what it means for endless sums to settle towards a number, and repeating
+  decimals, a bouncing ball and a daily medicine worked out exactly.
+---
+
+Imagine dropping a tennis ball from 2 metres onto a hard floor. Each time it lands, it bounces back
+up to three quarters of the height it fell from: 1.5 metres, then 1.125, then about 0.84. The
+bounces get lower and come faster, until the ball seems to buzz against the floor and lie still. In
+this picture the ball never quite stops bouncing, yet the distance it travels doesn't run away: add
+up the falls and rises, and the total creeps towards 14 metres without ever passing it.
+
+<BouncingBall caption="A ball dropped from 2 metres, drawn moving to the right so the bounces don't overlap. Each bounce rises to three quarters of the height before it: 1.5 m, 1.125 m, about 0.84 m and so on." />
+
+Each bounce is the one before it multiplied by the same number, three quarters. A sum built like
+that, where every term is the last one times a fixed number, is called a **geometric series**. In
+this guide we'll add up these sums exactly, and say precisely what it means for an endless sum to
+settle towards a number.
+
+## Adding up powers of one number
+
+Before the endless sum, take one that stops. Start at $$1$$ and keep multiplying by $$3$$:
+$$1 + 3 + 9 + 27 = 40$$. There is a shortcut. Multiplying the whole sum by $$3$$ moves every term
+along one place, to $$3 + 9 + 27 + 81$$, so the two sums share their middle terms. Taking the first
+sum from the second, those cancel and leave $$81 - 1 = 80$$. That is three times the sum minus the
+sum, which is twice the sum, so the sum is $$80 \div 2 = 40$$.
+
+The same trick works whatever number you multiply by, as long as it isn't $$1$$. The table checks
+the formula it leads to, $$\frac{1 - c^{n+1}}{1 - c}$$, on four sums.
+
+| Multiplier $$c$$ | Last power $$c^n$$             | The sum, added up                                | $$\frac{1 - c^{n+1}}{1 - c}$$                           |
+| ---------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------------- |
+| $$3$$            | $$3^3$$                        | $$1 + 3 + 9 + 27 = 40$$                          | $$\frac{1 - 81}{1 - 3} = 40$$                           |
+| $$2$$            | $$2^4$$                        | $$1 + 2 + 4 + 8 + 16 = 31$$                      | $$\frac{1 - 32}{1 - 2} = 31$$                           |
+| $$-2$$           | $$(-2)^3$$                     | $$1 - 2 + 4 - 8 = -5$$                           | $$\frac{1 - 16}{1 + 2} = -5$$                           |
+| $$\frac{1}{3}$$  | $$\left(\frac{1}{3}\right)^2$$ | $$1 + \frac{1}{3} + \frac{1}{9} = \frac{13}{9}$$ | $$\frac{1 - \frac{1}{27}}{\frac{2}{3}} = \frac{13}{9}$$ |
+
+:::proposition[Finite geometric sums]{#geometric-sum}
+
+For every number $$c \ne 1$$ and every whole number $$n \ge 0$$,
+
+```math
+1 + c + c^2 + \cdots + c^n = \frac{1 - c^{n+1}}{1 - c}
+```
+
+The same holds, word for word, for every complex number $$c \ne 1$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Sum_of_Geometric_Sequence"}
+
+Call the sum $$S$$. Multiplying it by $$c$$ moves every term along one place, so
+
+```math
+\begin{aligned}
+cS &= c + c^2 + \cdots + c^n + c^{n+1} &&\qquad \text{multiply each term by } c \\
+S - cS &= 1 - c^{n+1} &&\qquad \text{the powers } c \text{ to } c^n \text{ cancel} \\
+(1 - c)S &= 1 - c^{n+1} &&\qquad \text{take out the common factor } S \\
+S &= \frac{1 - c^{n+1}}{1 - c} &&\qquad \text{divide by } 1 - c \text{, which is not } 0
+\end{aligned}
+```
+
+The cancelling in the second line is a telescoping sum. With $$a_k = -c^k$$, the difference
+$$a_{k+1} - a_k$$ is $$c^k - c^{k+1}$$, and adding these up for $$k = 0$$ to $$n$$ leaves
+$$a_{n+1} - a_0 = 1 - c^{n+1}$$, by :ref{#telescoping}.
+
+Every step uses only the rules of arithmetic. Complex numbers obey the same rules, by
+:ref{#complex-numbers/complex-arithmetic}, so the proof works for them too.
+
+:::
+
+The Numbers chapter proved the same formula for fractions as :ref{#numbers/sum-of-powers}, written
+there as $$\frac{x^n - 1}{x - 1}$$. Multiplying both sides by a number $$a$$ handles a sum that
+starts at $$a$$ instead of $$1$$:
+
+```math
+a + ac + ac^2 + \cdots + ac^n = \frac{a(1 - c^{n+1})}{1 - c}
+```
+
+## Settling towards a number
+
+Now back to the ball. It falls 2 metres, then each bounce goes up and comes down again, so the first
+bounce adds $$2 \cdot 1.5 = 3$$ metres, the second $$2 \cdot 1.125 = 2.25$$ metres, and so on. The
+table shows the total distance after each bounce, and how far it still is from 14 metres.
+
+| Bounces | Total distance (metres) | Gap to 14 metres |
+| ------- | ----------------------- | ---------------- |
+| $$0$$   | $$2$$                   | $$12$$           |
+| $$1$$   | $$5$$                   | $$9$$            |
+| $$2$$   | $$7.25$$                | $$6.75$$         |
+| $$3$$   | $$8.9375$$              | $$5.0625$$       |
+| $$4$$   | $$10.203125$$           | $$3.796875$$     |
+| $$5$$   | $$11.15234375$$         | $$2.84765625$$   |
+
+Each gap is three quarters of the one above it. The formula for a finite geometric sum, in the form
+that starts at $$a = 3$$, confirms it: after $$n$$ bounces the total is
+
+```math
+2 + 3 + 2.25 + \cdots + 3\left(\tfrac{3}{4}\right)^{n - 1} = 2 + \frac{3\left(1 - \left(\frac{3}{4}\right)^n\right)}{1 - \frac{3}{4}} = 14 - 12\left(\tfrac{3}{4}\right)^n
+```
+
+metres. So the totals never reach 14, and the gap keeps shrinking. Pick a margin, and from some
+bounce on every total is within it:
+
+- within 1 metre of 14 from the 9th bounce on
+- within 10 centimetres from the 17th bounce on
+- within 1 centimetre from the 25th bounce on
+- within 1 millimetre from the 33rd bounce on
+
+That is what "the totals settle towards 14" means. No margin is too small: a smaller margin needs
+more bounces, but some number of bounces always does it.
+
+:::definition[Settling towards a number]{#settles-towards}
+
+A list of numbers $$s_1, s_2, s_3, \ldots$$ **settles towards** a number $$L$$ when, for every
+positive number $$\varepsilon$$, there is a whole number $$N$$ with
+
+```math
+|s_n - L| < \varepsilon \qquad \text{for every } n \ge N
+```
+
+The number $$L$$ is then called the **limit** of the list.
+
+:::
+
+The Greek letter $$\varepsilon$$, read "epsilon", is the margin, and $$|s_n - L|$$ is the gap
+between $$s_n$$ and $$L$$ (:ref{#real-numbers/absolute-value}). So the definition says: whatever
+margin you name, however small, from some point on in the list every number is within that margin of
+$$L$$. The same definition works for a list of complex numbers, with $$|s_n - L|$$ the distance
+between the two points (:ref{#complex-numbers/complex-abs}).
+
+The bank account in [The number e and using logarithms](../functions/the-number-e.mdx) used this
+idea in words. There, :ref{#functions/e-exists} says the totals come as close to $$e$$ as you like
+by taking $$n$$ large enough, and the definition above makes that exact.
+
+:::example[The fractions 1/n settle towards 0]
+
+Take the list $$1, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \ldots$$, so $$s_n = \frac{1}{n}$$. For
+the margin $$0.01$$, every $$\frac{1}{n}$$ with $$n \ge 101$$ is less than $$\frac{1}{100}$$, so
+$$N = 101$$ works.
+
+For any margin $$\varepsilon > 0$$, part 2 of :ref{#real-numbers/no-gaps} gives a whole number $$N$$
+bigger than $$\frac{1}{\varepsilon}$$. Then for every $$n \ge N$$, $$n > \frac{1}{\varepsilon}$$,
+and so $$\frac{1}{n} < \varepsilon$$ by :ref{#real-numbers/reciprocal-order}. That is
+$$\left|\frac{1}{n} - 0\right| < \varepsilon$$ for every $$n \ge N$$, so the list settles towards
+$$0$$.
+
+:::
+
+A list can't settle towards two different numbers at once, since from some point on its numbers
+would have to be close to both. That matters, because it lets us talk about _the_ limit.
+
+:::proposition[A list has at most one limit]{#geometric-series-one-limit}
+
+If a list of real numbers settles towards $$L$$ and also towards $$M$$, then $$L = M$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Convergent_Real_Sequence_has_Unique_Limit"}
+
+Suppose instead that $$L \ne M$$, and take the margin $$\varepsilon = \frac{1}{2}|L - M|$$, which is
+positive. From some point on every $$s_n$$ is within $$\varepsilon$$ of $$L$$, and from some point
+on every $$s_n$$ is within $$\varepsilon$$ of $$M$$. Take an $$n$$ past both points. Then
+
+```math
+\begin{aligned}
+|L - M| &\le |L - s_n| + |s_n - M| &&\qquad \text{the triangle inequality for distances} \\
+&< \varepsilon + \varepsilon = |L - M| &&\qquad \text{both gaps are less than } \varepsilon
+\end{aligned}
+```
+
+The first step is :ref{#real-numbers/distance-triangle}. A number can't be less than itself, so the
+supposition was false, and $$L = M$$.
+
+:::
+
+## Powers of a number below 1 shrink to 0
+
+Multiply $$1$$ by $$0.9$$ again and again. Each step takes away a tenth of what is left:
+$$0.9^{10} \approx 0.349$$, then $$0.9^{50} \approx 0.00515$$, and $$0.9^{100} \approx 0.0000266$$.
+The powers shrink towards $$0$$, slowly at first. A table of cases is not a proof, though, and the
+gap to the limit of a geometric series turns out to be a power like these. So we need to know for
+certain that the powers get below every margin.
+
+:::proposition[Powers of a number below 1 shrink to 0]{#powers-shrink}
+
+If $$|c| < 1$$, then the powers $$c, c^2, c^3, \ldots$$ settle towards $$0$$. This holds for real
+and for complex numbers $$c$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Sequence_of_Powers_of_Number_less_than_One"}
+
+If $$c = 0$$, every power is $$0$$. Otherwise $$0 < |c| < 1$$, so $$\frac{1}{|c|} > 1$$ by
+:ref{#real-numbers/reciprocal-order}, and we can write $$\frac{1}{|c|} = 1 + h$$ with $$h > 0$$.
+Then for every $$n \ge 1$$,
+
+```math
+\begin{aligned}
+(1 + h)^n &\ge 1 + nh > nh &&\qquad \text{Bernoulli's inequality, then drop the } 1 \\
+|c|^n = \frac{1}{(1 + h)^n} &< \frac{1}{nh} &&\qquad \text{reciprocals reverse the order}
+\end{aligned}
+```
+
+The first line is :ref{#bernoulli}, which applies since $$h \ge -1$$. The gap between $$c^n$$ and
+$$0$$ is $$|c^n|$$, which is $$|c|^n$$ by using :ref{#real-numbers/abs-product} $$n$$ times, or
+:ref{#complex-numbers/abs-product-complex} when $$c$$ is complex.
+
+Now name a margin $$\varepsilon > 0$$. By part 2 of :ref{#real-numbers/no-gaps}, there is a whole
+number $$N$$ bigger than $$\frac{1}{h\varepsilon}$$. For every $$n \ge N$$, $$nh\varepsilon > 1$$,
+so $$\frac{1}{nh} < \varepsilon$$, and the gap $$|c|^n$$ is less than $$\varepsilon$$.
+
+:::
+
+With $$c = 0.9$$, $$\frac{1}{0.9} = 1 + \frac{1}{9}$$, so $$h = \frac{1}{9}$$ and the proof gives
+$$0.9^n < \frac{9}{n}$$. For the margin $$0.01$$, it promises that every power from $$0.9^{901}$$ on
+is below $$0.01$$. That is generous: the powers are below $$0.01$$ from $$0.9^{44}$$ on. The bound
+isn't sharp, but it is guaranteed, and a guarantee is what the definition asks for.
+
+## The geometric series
+
+Put the two pieces together. The sum $$1 + c + \cdots + c^n$$ is $$\frac{1 - c^{n+1}}{1 - c}$$, and
+when $$|c| < 1$$ the power $$c^{n+1}$$ shrinks towards $$0$$. So the sums should settle towards
+$$\frac{1}{1 - c}$$, with a gap that is a shrinking power divided by a fixed number.
+
+:::theorem[The geometric series]{#geometric-series}
+
+Let $$|c| < 1$$, real or complex. Then the sums
+
+```math
+1, \quad 1 + c, \quad 1 + c + c^2, \quad 1 + c + c^2 + c^3, \quad \ldots
+```
+
+settle towards $$\frac{1}{1 - c}$$. More generally, for every number $$a$$, the sums
+$$a + ac + \cdots + ac^n$$ settle towards $$\frac{a}{1 - c}$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Geometric_series#Proof_of_convergence"}
+
+The second statement with $$a = 1$$ is the first, so we prove the second. If $$a = 0$$, every sum
+and the limit are $$0$$. Otherwise, write $$s_n = a + ac + \cdots + ac^n$$ and
+$$L = \frac{a}{1 - c}$$. Since $$|c| < 1$$, $$c \ne 1$$, and
+
+```math
+\begin{aligned}
+s_n - L &= \frac{a(1 - c^{n+1})}{1 - c} - \frac{a}{1 - c} &&\qquad \text{finite geometric sums} \\
+&= \frac{-ac^{n+1}}{1 - c} &&\qquad \text{the two } \tfrac{a}{1 - c} \text{ cancel} \\
+|s_n - L| &= \frac{|a|}{|1 - c|} \, |c|^{n+1} &&\qquad \text{absolute value of products and quotients}
+\end{aligned}
+```
+
+The first line is :ref{#geometric-sum}. Now name a margin $$\varepsilon > 0$$. The number
+$$\frac{|1 - c|}{|a|}\varepsilon$$ is positive, so by :ref{#powers-shrink} there is an $$N$$ with
+$$|c|^m < \frac{|1 - c|}{|a|}\varepsilon$$ for every $$m \ge N$$. For every $$n \ge N$$, also
+$$n + 1 \ge N$$, so $$|s_n - L| < \varepsilon$$.
+
+:::
+
+We write the theorem in shorthand as
+
+```math
+1 + c + c^2 + c^3 + \cdots = \frac{1}{1 - c} \qquad \text{when } |c| < 1
+```
+
+Read it with care. Nobody carries out infinitely many additions here: the dots and the equals sign
+together mean "the sums settle towards". The proof also gives the gap after the term $$c^n$$
+exactly, as $$\frac{|c|^{n+1}}{|1 - c|}$$.
+
+The ball fits this. Its bounces rise $$1.5 + 1.125 + \cdots$$ metres, a series starting at
+$$a = 1.5$$ with $$c = \frac{3}{4}$$, which settles towards $$\frac{1.5}{1/4} = 6$$. Each rise is
+matched by a fall, so the total distance settles towards $$2 + 2 \cdot 6 = 14$$ metres, as the table
+in [Settling towards a number](#settling-towards-a-number) suggested.
+
+Try other values of $$c$$ in the diagram below. Each term is drawn as a bar starting where the last
+one ended, so the bars march towards the limit, and for a negative $$c$$ they step back and forth
+across it.
+
+<GeometricBars />
+
+## Repeating decimals are fractions
+
+The decimal $$0.272727\ldots$$ is $$0.27 + 0.0027 + 0.000027 + \cdots$$. Each piece is the one
+before it divided by $$100$$, so this is a geometric series with $$a = \frac{27}{100}$$ and
+$$c = \frac{1}{100}$$. It settles towards
+
+```math
+\frac{27/100}{1 - 1/100} = \frac{27/100}{99/100} = \frac{27}{99} = \frac{3}{11}
+```
+
+and long division confirms that $$\frac{3}{11} = 0.272727\ldots$$. The same idea turns every
+repeating decimal into a fraction.
+
+:::proposition[Repeating decimals are fractions]{#repeating-decimals}
+
+Let $$D$$ be a block of $$k$$ digits, read as a whole number. The decimal $$0.DDD\ldots$$, with the
+block repeated forever, stands for the fraction $$\frac{D}{10^k - 1}$$. Every decimal whose digits
+repeat one block forever from some point on stands for a rational number.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Repeating_decimal"}
+
+Let $$x$$ be the number that $$0.DDD\ldots$$ stands for. Cut off after $$j$$ blocks, the decimal is
+
+```math
+t_j = \frac{D}{10^k} + \frac{D}{10^{2k}} + \cdots + \frac{D}{10^{jk}}
+```
+
+a geometric sum with $$a = \frac{D}{10^k}$$ and $$c = \frac{1}{10^k}$$. By :ref{#geometric-series},
+the numbers $$t_j$$ settle towards
+
+```math
+\frac{a}{1 - c} = \frac{D/10^k}{1 - 1/10^k} = \frac{D}{10^k - 1}
+```
+
+They also settle towards $$x$$. By part 1 of :ref{#real-numbers/no-gaps}, $$x$$ lies between $$t_j$$
+and $$t_j + \frac{1}{10^{jk}}$$, so the gap $$|x - t_j|$$ is at most $$c^j$$. By
+:ref{#powers-shrink}, $$c^j$$ is below any margin from some point on, and so is the gap. By
+:ref{#geometric-series-one-limit}, the two limits are equal: $$x = \frac{D}{10^k - 1}$$.
+
+For a decimal that starts with $$m$$ other digits $$e_1 \ldots e_m$$ before the repeating begins,
+shifting the decimal point $$m$$ places gives $$10^m x = E + y$$, where $$E$$ is the whole number
+$$e_1 \ldots e_m$$ and $$y = 0.DDD\ldots$$. So
+$$x = \frac{1}{10^m}\left(E + \frac{D}{10^k - 1}\right)$$, which is a fraction.
+
+:::
+
+With $$D = 9$$ and $$k = 1$$, the proposition says $$0.999\ldots = \frac{9}{9} = 1$$, which is
+:ref{#real-numbers/point-nine} again. A decimal with a start before the repeating works the same
+way. Since $$0.1666\ldots$$ is one tenth of $$1.666\ldots = 1 + \frac{6}{9}$$, it is
+$$\frac{1}{10} \cdot \frac{15}{9} = \frac{1}{6}$$.
+
+## Walking to a wall and a daily dose
+
+A geometric series turns up whenever each step is a fixed fraction of the step before. Here are two
+more, each worked with numbers and a gap you can make as small as you like.
+
+:::example[Walking to a wall]
+
+You stand 9 metres from a wall. Each stride covers two thirds of the distance that is left: 6
+metres, then 2, then $$\frac{2}{3}$$, and so on. Over twenty-four centuries ago, the Greek
+philosopher Zeno argued about walks like this: you take infinitely many strides, so it seemed to him
+that you could never arrive.
+
+The strides make a geometric series with $$a = 6$$ and $$c = \frac{1}{3}$$, which settles towards
+$$\frac{6}{1 - 1/3} = 9$$ metres, the whole distance. After $$n$$ strides, the distance left is
+$$\frac{9}{3^n}$$ metres: 3 metres after one stride, 1 after two, about 1.2 centimetres after six.
+Infinitely many strides add up to a finite distance, because their sums settle.
+
+:::
+
+<ZenoWalk caption="Walking 9 metres to a wall, each stride two thirds of the distance left. The strides are 6 m, 2 m, 2/3 m and so on, and after n of them the distance left is 9/3ⁿ metres." />
+
+:::example[A daily dose]
+
+A patient takes 100 mg of a medicine every morning, and by the next morning a fifth of what was in
+the body is left. Right after the first dose there is 100 mg. Right after the second there is the
+new 100 mg plus a fifth of the first, 120 mg. Right after the third there is $$100 + 20 + 4 = 124$$
+mg.
+
+Right after the $$n$$-th dose, the amount is $$100 + 100 \cdot 0.2 + \cdots + 100 \cdot 0.2^{n-1}$$,
+a geometric series with $$a = 100$$ and $$c = 0.2$$. It settles towards
+$$\frac{100}{1 - 0.2} = 125$$ mg, and the formula for a finite geometric sum puts the gap at
+$$125 \cdot 0.2^n$$ mg: 1 mg after three doses, 0.04 mg after five. In this model the level climbs
+towards 125 mg but always stays a little below it, however long the patient keeps taking the
+medicine.
+
+:::
+
+<DoseBuildUp caption="The medicine in the body over the first six days. Each morning's dose adds 100 mg, and by the next morning a fifth of the amount is left, so the peaks are 100, 120, 124, 124.8 mg and so on, settling towards the dashed line at 125 mg. Days run across and milligrams up, and the grid isn't square: 20 mg up is drawn as long as one day across." />
+
+## When the sums don't settle
+
+The theorem needs $$|c| < 1$$, and without it the sums behave differently. Three examples show how:
+
+- **$$c = 1$$**: the sums are $$1, 2, 3, 4, \ldots$$, since $$1 + 1 + \cdots + 1$$ with $$n + 1$$
+  ones is $$n + 1$$. They grow past every number.
+- **$$c = -1$$**: the sums are $$1, 0, 1, 0, \ldots$$. They never settle, because no number $$L$$ is
+  within $$\frac{1}{2}$$ of both $$0$$ and $$1$$: that would make
+  $$1 = |1 - 0| \le |1 - L| + |L - 0| < 1$$.
+- **$$c = 2$$**: the sums are $$1, 3, 7, 15, \ldots$$, which is $$2^{n+1} - 1$$, and they double and
+  more at each step.
+
+So the shorthand $$\frac{1}{1 - c}$$ belongs to $$|c| < 1$$ alone. Putting $$c = 2$$ into it gives
+$$1 + 2 + 4 + 8 + \cdots = -1$$, a negative answer for a sum of positive numbers, and that nonsense
+is a sign that the sums never settled in the first place. An exercise shows that the sums fail to
+settle for every real $$c$$ with $$|c| \ge 1$$.
+
+## Roots of unity add up to zero
+
+The finite formula works for complex numbers too, and it gives a neat fact about the roots of unity,
+the numbers $$w$$ with $$w^n = 1$$ (:ref{#complex-numbers/roots-of-unity}). Take $$w = i$$, a fourth
+root of unity. Its powers go round the square $$1, i, -1, -i$$, and they add up to
+$$1 + i - 1 - i = 0$$.
+
+:::example[Roots of unity add up to zero]
+
+Let $$n \ge 2$$ and let $$w = e^{2\pi i/n}$$ (:ref{#complex-numbers/e-i-theta}), so $$w^n = 1$$ and
+$$w \ne 1$$. By :ref{#geometric-sum}, with $$n - 1$$ as the last power,
+
+```math
+1 + w + w^2 + \cdots + w^{n-1} = \frac{1 - w^n}{1 - w} = \frac{1 - 1}{1 - w} = 0
+```
+
+The numbers $$1, w, \ldots, w^{n-1}$$ are the corners of a regular polygon around $$0$$ with a
+corner at $$1$$, so the corners of every such polygon add up to $$0$$. For the triangle,
+$$w = -\frac{1}{2} + \frac{\sqrt{3}}{2}i$$ and $$w^2 = -\frac{1}{2} - \frac{\sqrt{3}}{2}i$$, and
+$$1 + w + w^2 = 0$$ as promised.
+
+This is a second proof of :ref{#complex-numbers/roots-sum-zero}, straight from the formula for a
+finite geometric sum.
+
+:::
+
+## Exercises
+
+:::::accordion[Exercises on geometric series, with solutions]
+
+::::exercise{#ex-geometric-series-doubling}
+
+Use :ref{#geometric-sum} to add up $$1 + 2 + 4 + \cdots + 2^9$$, and check your answer by adding the
+ten terms.
+
+:::solution
+
+Here $$c = 2$$ and the last power is $$2^9$$, so
+
+```math
+1 + 2 + \cdots + 2^9 = \frac{1 - 2^{10}}{1 - 2} = \frac{1 - 1024}{-1} = 1023
+```
+
+Adding the terms, $$1 + 2 + 4 + 8 + 16 + 32 + 64 + 128 + 256 + 512 = 1023$$.
+
+:::
+
+::::
+
+::::exercise{#ex-geometric-series-decimals}
+
+Write each decimal as a fraction in lowest terms.
+
+1. $$0.454545\ldots$$
+2. $$0.8333\ldots$$
+3. $$0.123123123\ldots$$
+
+:::solution
+
+By :ref{#repeating-decimals}, a block $$D$$ of $$k$$ digits repeated forever is
+$$\frac{D}{10^k - 1}$$.
+
+1. $$D = 45$$ and $$k = 2$$, so $$0.4545\ldots = \frac{45}{99} = \frac{5}{11}$$.
+2. $$0.8333\ldots$$ is one tenth of $$8.333\ldots = 8 + \frac{3}{9}$$, so it is
+   $$\frac{1}{10} \cdot \frac{75}{9} = \frac{75}{90} = \frac{5}{6}$$.
+3. $$D = 123$$ and $$k = 3$$, so $$0.123123\ldots = \frac{123}{999} = \frac{41}{333}$$.
+
+:::
+
+::::
+
+::::exercise{#ex-geometric-series-alternating}
+
+The sums $$1 - \frac{1}{3} + \frac{1}{9} - \frac{1}{27} + \cdots$$ have $$c = -\frac{1}{3}$$. Find
+the number they settle towards, and find how many terms you need before every later sum is within
+$$0.001$$ of it.
+
+:::solution
+
+By :ref{#geometric-series}, the sums settle towards
+$$\frac{1}{1 - (-1/3)} = \frac{1}{4/3} = \frac{3}{4}$$. By the proof of that theorem, the gap after
+the term $$c^n$$ is
+
+```math
+\frac{|c|^{n+1}}{|1 - c|} = \frac{(1/3)^{n+1}}{4/3} = \frac{3}{4} \cdot \frac{1}{3^{n+1}}
+```
+
+For $$n = 5$$ that is $$\frac{3}{4 \cdot 729} \approx 0.00103$$, a little too big, and for $$n = 6$$
+it is $$\frac{3}{4 \cdot 2187} \approx 0.00034$$. The gaps only shrink after that, so from seven
+terms, $$1$$ up to $$c^6$$, on, every sum is within $$0.001$$ of $$\frac{3}{4}$$. As a check, the
+sum of those seven terms is $$\frac{547}{729} \approx 0.75034$$.
+
+:::
+
+::::
+
+::::exercise{#ex-geometric-series-ball}
+
+A ball is dropped from 1.8 metres, and each bounce rises to two thirds of the height before it. Find
+the total distance it travels, and the distance after three bounces.
+
+:::solution
+
+The rises are $$1.2 + 0.8 + \cdots$$ metres, a geometric series with $$a = 1.2$$ and
+$$c = \frac{2}{3}$$, which settles towards $$\frac{1.2}{1/3} = 3.6$$ metres. Each rise is matched by
+a fall, so the total settles towards $$1.8 + 2 \cdot 3.6 = 9$$ metres.
+
+After three bounces, the rises are $$1.2$$, $$0.8$$ and $$\frac{8}{15} \approx 0.533$$ metres, so
+the distance is $$1.8 + 2(1.2 + 0.8 + 0.533) \approx 6.87$$ metres, still $$2.13$$ metres short
+of 9.
+
+:::
+
+::::
+
+::::exercise{#ex-geometric-series-dose}
+
+A patient takes 80 mg of a medicine every day, and a day later 60% of what was in the body is left.
+Find the level the amount right after a dose settles towards, and the first dose after which it is
+within 1 mg of that level.
+
+:::solution
+
+Right after the $$n$$-th dose, the amount is $$80 + 80 \cdot 0.6 + \cdots + 80 \cdot 0.6^{n-1}$$,
+which by :ref{#geometric-sum} is $$\frac{80(1 - 0.6^n)}{0.4} = 200(1 - 0.6^n)$$ mg. It settles
+towards $$200$$ mg, with a gap of $$200 \cdot 0.6^n$$ mg.
+
+After 10 doses the gap is $$200 \cdot 0.6^{10} \approx 1.21$$ mg, and after 11 it is
+$$200 \cdot 0.6^{11} \approx 0.73$$ mg. So the 11th dose is the first after which the amount, about
+$$199.27$$ mg, is within 1 mg of $$200$$.
+
+:::
+
+::::
+
+::::exercise{#ex-geometric-series-bernoulli-bound}
+
+For $$c = 0.99$$, find the whole number $$N$$ that the proof of :ref{#powers-shrink} gives for the
+margin $$0.01$$. Then use a calculator to find the first power of $$0.99$$ below $$0.01$$.
+
+:::solution
+
+Here $$\frac{1}{0.99} = 1 + \frac{1}{99}$$, so $$h = \frac{1}{99}$$ and the proof gives
+$$0.99^n < \frac{1}{nh} = \frac{99}{n}$$. That is below $$0.01$$ when $$n > 9900$$, so the proof
+gives $$N = 9901$$.
+
+On a calculator, $$0.99^{458} \approx 0.01002$$ and $$0.99^{459} \approx 0.00992$$, so the powers
+drop below $$0.01$$ at $$0.99^{459}$$. The proof's $$N$$ is more than twenty times too large, but it
+comes with a guarantee, and every power from $$0.99^{9901}$$ on is certainly below $$0.01$$.
+
+:::
+
+::::
+
+::::exercise{#ex-geometric-series-big-ratio}
+
+Let $$c$$ be a real number with $$|c| \ge 1$$. Prove that the sums $$s_n = 1 + c + \cdots + c^n$$
+don't settle towards any number. (Hint: if they settled towards $$L$$, look at $$s_n - s_{n-1}$$
+with the margin $$\frac{1}{2}$$.)
+
+:::solution
+
+Suppose the sums settled towards some number $$L$$. With the margin $$\frac{1}{2}$$, there is an
+$$N$$ with $$|s_n - L| < \frac{1}{2}$$ for every $$n \ge N$$. Take $$n = N + 1$$, so that both
+$$s_n$$ and $$s_{n-1}$$ are within $$\frac{1}{2}$$ of $$L$$. Then
+
+```math
+\begin{aligned}
+|c|^n = |c^n| &= |s_n - s_{n-1}| &&\qquad \text{the two sums differ by the term } c^n \\
+&\le |s_n - L| + |L - s_{n-1}| &&\qquad \text{the triangle inequality for distances} \\
+&< \tfrac{1}{2} + \tfrac{1}{2} = 1 &&\qquad \text{both are within } \tfrac{1}{2} \text{ of } L
+\end{aligned}
+```
+
+The second step is :ref{#real-numbers/distance-triangle}. But $$|c| \ge 1$$, so $$|c|^n \ge 1$$ by
+:ref{#real-numbers/power-order} (or because both are $$1$$ when $$|c| = 1$$). That contradicts
+$$|c|^n < 1$$, so the sums don't settle.
+
+:::
+
+::::
+
+::::exercise{#ex-geometric-series-complex}
+
+Find the number that the sums $$1 + \frac{i}{2} + \left(\frac{i}{2}\right)^2 + \cdots$$ settle
+towards, in the form $$a + bi$$, and check it against the first six terms.
+
+:::solution
+
+Here $$c = \frac{i}{2}$$ and $$|c| = \frac{1}{2} < 1$$, so by :ref{#geometric-series} the sums
+settle towards
+
+```math
+\frac{1}{1 - i/2} = \frac{1 + i/2}{(1 - i/2)(1 + i/2)} = \frac{1 + i/2}{1 + 1/4} = \frac{4}{5}\left(1 + \frac{i}{2}\right) = 0.8 + 0.4i
+```
+
+The terms are $$1$$, $$0.5i$$, $$-0.25$$, $$-0.125i$$, $$0.0625$$ and $$0.03125i$$, so the sums are
+$$1$$, $$1 + 0.5i$$, $$0.75 + 0.5i$$, $$0.75 + 0.375i$$, $$0.8125 + 0.375i$$ and
+$$0.8125 + 0.40625i$$. They close in on $$0.8 + 0.4i$$ from alternate sides, in each part.
+
+:::
+
+::::
+
+:::::

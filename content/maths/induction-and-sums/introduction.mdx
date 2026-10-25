@@ -1,0 +1,127 @@
+---
+title: Introduction
+description:
+  Strong induction, formulas for sums of powers, exact areas and volumes from sums, and which
+  endless sums settle towards a number.
+---
+
+Picture a grocer building a pyramid of oranges on a square tray: one orange on top, four under it,
+nine under those. Counting the oranges in a pyramid ten layers high is a chore. You could count
+every layer, but a formula that works for every height would be better, and proving it means knowing
+it for infinitely many heights at once. That is what **induction** is for: show a statement starts,
+and that each case hands it on to the next. In this chapter we'll use induction to add up long sums
+exactly, to find areas and volumes that no ruler could measure, and to decide when a sum that never
+ends still has a total.
+
+One idea carries the chapter: to know something for every $$n$$, show that it starts and that each
+case passes it on; to add up many terms, find a pattern you can pass on in the same way. When the
+terms go on forever, "the total" means a number that the running totals get as close to as you like,
+and every such claim here comes with the gap written down.
+
+## What this chapter builds on
+
+[Induction](../basic-proofs/induction.mdx) in Basic proofs introduced the method with gentle
+examples, and [Notation](../basic-proofs/notation.mdx) set up sum notation. This chapter puts both
+to work. [Area and scaling](../area-and-scaling/introduction.mdx) gave the rules for area and volume
+that the slicing arguments rely on, and the [sum of consecutive powers](../numbers/inverses.mdx)
+from Numbers grows here into the geometric series.
+
+Two facts are taken as given: that a cylinder's volume is its base area times its height
+(:ref{#areas-and-volumes-cylinder}), and that running totals which keep growing but stay below some
+number settle towards a number (:ref{#bounded-increasing}), which is the real line having no gaps in
+another form. Everything else is proved, apart from two results mentioned for interest and marked as
+such: the overhang of a stack of books, and the exact total $$\frac{\pi^2}{6}$$ of the reciprocal
+squares.
+
+Along the way the chapter keeps two promises from earlier chapters:
+
+- **Settling towards a number**: [The number e](../functions/the-number-e.mdx) used the idea
+  informally. Here it gets a definition you can check (:ref{#settles-towards}).
+- **Volumes**: [Volume](../area-and-scaling/volume.mdx) found how volume scales but not the volume
+  of a curved solid. Here the cone (:ref{#cone-volume}) and the ball (:ref{#ball-volume}) are
+  proved.
+
+## Guides in this chapter
+
+The chapter has seven guides:
+
+1. [Induction in practice](./induction-in-practice.mdx): strong induction, primes, stamps,
+   Bernoulli's inequality and counting mappings
+2. [Adding up powers](./adding-up-powers.mdx): sums of numbers, odd numbers, squares and cubes, and
+   telescoping sums
+3. [Areas and volumes from sums](./areas-and-volumes.mdx): the exact area under a parabola, and the
+   volumes of a cone and a ball
+4. [Geometric series](./geometric-series.mdx): settling towards a number, and endless sums with a
+   total
+5. [Sums that never settle](./sums-that-never-settle.mdx): the harmonic series, and why the
+   reciprocal squares stay below 2
+6. [Test yourself](./test-yourself.mdx): a multiple choice quiz on the ideas in the chapter
+7. [Exercises](./exercises.mdx): exercises on the whole chapter, with worked solutions
+
+The summary below collects every definition and rule from the chapter, for reference while you read.
+
+{/* Keep this summary in sync with the guides whenever they change. */}
+
+:::accordion[Summary of definitions and rules]
+
+**Definitions**
+
+| Term                          | Meaning                                                                                                |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------ |
+| :ref{#prime}                  | A whole number $$p \ge 2$$ whose only positive divisors are $$1$$ and $$p$$                            |
+| :ref{#areas-and-volumes-cone} | The points with $$0 \le z \le h$$ and distance from the axis at most $$\frac{r(h - z)}{h}$$            |
+| :ref{#settles-towards}        | Every margin $$\varepsilon > 0$$ is beaten from some point on: $$\lvert s_n - L \rvert < \varepsilon$$ |
+| :ref{#series}                 | An endless sum, which settles when its partial sums do                                                 |
+
+**Taken as given**
+
+| Rule                              | Statement                                                                     |
+| --------------------------------- | ----------------------------------------------------------------------------- |
+| :ref{#areas-and-volumes-cylinder} | A cylinder of radius $$a$$ and height $$t$$ has volume $$\pi a^2 t$$          |
+| :ref{#bounded-increasing}         | Running totals that only grow and stay below a number settle towards a number |
+
+**Induction**
+
+| Result                     | Statement                                                                                          |
+| -------------------------- | -------------------------------------------------------------------------------------------------- |
+| :ref{#strong-induction}    | If $$P(1)$$ holds and $$P(1), \ldots, P(k)$$ together give $$P(k + 1)$$, then every $$P(n)$$ holds |
+| :ref{#prime-factorisation} | Every whole number $$n \ge 2$$ is a prime or a product of primes                                   |
+| :ref{#stamps}              | Every amount from 12p up can be made from 4p and 5p stamps                                         |
+| :ref{#bernoulli}           | $$(1 + h)^n \ge 1 + nh$$ for $$h \ge -1$$                                                          |
+| :ref{#additive-integers}   | If $$f(x + y) = f(x) + f(y)$$, then $$f(n) = n f(1)$$                                              |
+| :ref{#counting-mappings}   | There are $$m^n$$ mappings from a set of $$n$$ elements to a set of $$m$$                          |
+
+**Sums**
+
+| Result              | Statement                                                |
+| ------------------- | -------------------------------------------------------- |
+| :ref{#sum-integers} | $$1 + 2 + \cdots + n = \frac{n(n + 1)}{2}$$              |
+| :ref{#sum-odd}      | $$1 + 3 + \cdots + (2n - 1) = n^2$$                      |
+| :ref{#sum-squares}  | $$1^2 + \cdots + n^2 = \frac{n(n + 1)(2n + 1)}{6}$$      |
+| :ref{#sum-cubes}    | $$1^3 + \cdots + n^3 = (1 + 2 + \cdots + n)^2$$          |
+| :ref{#telescoping}  | $$(a_1 - a_0) + \cdots + (a_n - a_{n - 1}) = a_n - a_0$$ |
+
+**Areas and volumes**
+
+| Result                                 | Statement                                                                                          |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| :ref{#areas-and-volumes-strip-sums}    | The inner and outer strip totals under $$y = x^2$$ differ by $$\frac1n$$, with $$\frac13$$ between |
+| :ref{#areas-and-volumes-squeeze}       | If $$\lvert A - B \rvert \le \frac{c}{n}$$ for every $$n$$, then $$A = B$$                         |
+| :ref{#parabola-area}                   | The area under $$y = x^2$$ from $$0$$ to $$1$$ is $$\frac13$$                                      |
+| :ref{#areas-and-volumes-parabola-to-b} | The area under $$y = x^2$$ from $$0$$ to $$b$$ is $$\frac{b^3}{3}$$                                |
+| :ref{#cone-volume}                     | A cone has volume $$\frac13\pi r^2h$$                                                              |
+| :ref{#ball-volume}                     | A ball has volume $$\frac43\pi r^3$$                                                               |
+
+**Endless sums**
+
+| Result                            | Statement                                                                                |
+| --------------------------------- | ---------------------------------------------------------------------------------------- |
+| :ref{#geometric-sum}              | $$1 + c + \cdots + c^n = \frac{1 - c^{n+1}}{1 - c}$$ for $$c \ne 1$$                     |
+| :ref{#geometric-series-one-limit} | A list has at most one limit                                                             |
+| :ref{#powers-shrink}              | If $$\lvert c \rvert < 1$$, the powers $$c^n$$ settle towards $$0$$                      |
+| :ref{#geometric-series}           | If $$\lvert c \rvert < 1$$, $$1 + c + c^2 + \cdots$$ settles towards $$\frac{1}{1 - c}$$ |
+| :ref{#repeating-decimals}         | A repeating decimal is a fraction                                                        |
+| :ref{#harmonic-unbounded}         | $$1 + \frac12 + \frac13 + \cdots$$ grows past every number                               |
+| :ref{#reciprocal-squares-bounded} | $$1 + \frac14 + \cdots + \frac{1}{n^2} \le 2 - \frac1n$$                                 |
+
+:::

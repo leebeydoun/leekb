@@ -1,0 +1,648 @@
+---
+title: Areas and volumes from sums
+description:
+  Trapping a curved area or a volume between rectangles or cylinders that fit inside and outside,
+  and using sums of squares to find the area under a parabola and the volumes of a cone and a ball.
+---
+
+Imagine building a model of a hill for a school project. You trace each contour line onto a sheet of
+cardboard, cut the layers out and glue them in a stack, the biggest at the bottom. With four thick
+layers the model looks like a set of steps. With twelve thin ones the steps are so small that the
+stack looks almost smooth, and its volume comes close to the volume of the hill it copies.
+
+<LayerModels caption="The same cone copied in cardboard twice: with 4 thick layers the steps stick out, and with 12 thin layers the stack is already close to the smooth cone." />
+
+Each layer is a flat slab, whose volume is its base area times its thickness. So the volume of the
+whole stack is a sum, one term for each layer. Trapping a curved shape between a stack that fits
+inside it and a stack that reaches outside it is one of the oldest ways of measuring, and Archimedes
+found the volume of a ball with an argument in this spirit more than two thousand years ago. In this
+guide we'll use the sums of squares from [Adding up powers](./adding-up-powers.mdx) to find the
+exact area under a parabola, and the exact volumes of a cone and a ball.
+
+## What we may use
+
+Every argument in this guide does two things with shapes: it compares them and it adds them up. A
+region inside another has no more area, and the areas of pieces that don't overlap add up. Volume
+follows the same two rules, and the earlier chapters already state them:
+
+- **Area**: a rectangle with sides $$a$$ and $$b$$ has area $$ab$$, and the areas of pieces that
+  don't overlap add (:ref{#distance-and-angles/area-rules}); a region inside another has no more
+  area (rule 1 of :ref{#area-and-scaling/area-compare})
+- **Volume**: the volumes of pieces that don't overlap add, and a solid inside another has no more
+  volume (rules 2 and 3 of :ref{#area-and-scaling/volume-rules})
+
+The pieces we add will touch each other. Two rectangles side by side meet along an edge, and a
+segment covers no area, so they don't overlap; the proof of :ref{#area-and-scaling/grid-squeeze}
+treats grid squares the same way. Similarly, two cylinders stacked one on the other meet in a flat
+disc, which fills no space, so they don't overlap either.
+
+The pieces of our stacks are cylinders, and the Area and scaling chapter gives the volume of a box
+but not of a cylinder. A box has volume equal to the area of its base times its height, and a
+cylinder should behave the same way. Picture a pile of identical paper discs: every sheet has the
+area of the base, and the height says how many sheets there are. Making that exact needs the little
+cubes of rule 6 of :ref{#area-and-scaling/volume-rules}, stood in columns on the squares of a grid
+laid over the base, so we take it as given.
+
+:::remark[Rules for cylinders]{#areas-and-volumes-cylinder}
+
+A **cylinder** with radius $$a$$ and height $$t$$ is the solid swept out when a disc of radius $$a$$
+slides straight up through a distance $$t$$. Its volume is the area of its base times its height:
+
+```math
+\text{volume} = \pi a^2 t
+```
+
+The disc has area $$\pi a^2$$ by :ref{#area-and-scaling/disc-area-formula}. A cylinder of radius
+$$0$$ is a segment, with volume $$0$$.
+
+This is taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Cylinder#Volume"}
+
+:::
+
+## The area under a parabola
+
+Picture the curve $$y = x^2$$ from $$x = 0$$ to $$x = 1$$. Together with the $$x$$-axis and the line
+$$x = 1$$, it closes off a curved region shaped like a ramp that gets steeper as it goes. No grid of
+squares fits it neatly, but thin strips almost do. Cut the region into strips of equal width: in
+each strip the curve climbs from left to right, so a rectangle as tall as the curve at the strip's
+left edge fits under it, and a rectangle as tall as the curve at the right edge covers it.
+
+In symbols, the region is the set of points $$(x, y)$$ with $$0 \le x \le 1$$ and
+$$0 \le y \le x^2$$. Call it $$R$$, and call its area $$A$$. With $$4$$ strips, each $$\frac{1}{4}$$
+wide, the curve's heights at the strip edges $$0, \frac{1}{4}, \frac{2}{4}, \frac{3}{4}, 1$$ are
+$$0, \frac{1}{16}, \frac{4}{16}, \frac{9}{16}, 1$$.
+
+<ParabolaStrips caption="The region under y = x² cut into 4 strips of width 1/4, drawn twice. The blue rectangles fit under the curve and total 14/64; the orange rectangles cover the region and total 30/64." />
+
+The blue rectangles have heights $$0, \frac{1}{16}, \frac{4}{16}, \frac{9}{16}$$ and width
+$$\frac{1}{4}$$, so together they have area
+
+```math
+\frac{0 + 1 + 4 + 9}{64} = \frac{14}{64} \approx 0.219
+```
+
+The orange rectangles have heights $$\frac{1}{16}, \frac{4}{16}, \frac{9}{16}, \frac{16}{16}$$, so
+they total $$\frac{1 + 4 + 9 + 16}{64} = \frac{30}{64} \approx 0.469$$. So the area $$A$$ lies
+between $$0.219$$ and $$0.469$$.
+
+With $$n$$ strips, each $$\frac{1}{n}$$ wide, the same counting works. Strip number $$k$$ runs from
+$$x = \frac{k - 1}{n}$$ to $$x = \frac{k}{n}$$, its inner rectangle has height
+$$\left(\frac{k - 1}{n}\right)^2$$ and its outer rectangle has height
+$$\left(\frac{k}{n}\right)^2$$. Each height is a square over $$n^2$$, and each width is
+$$\frac{1}{n}$$, so the totals are
+
+```math
+L_n = \frac{0^2 + 1^2 + \cdots + (n - 1)^2}{n^3} \qquad U_n = \frac{1^2 + 2^2 + \cdots + n^2}{n^3}
+```
+
+Read $$L_n$$ as "L sub n", for the lower total, and $$U_n$$ as "U sub n", for the upper total. Here
+they are for four values of $$n$$:
+
+| Strips $$n$$ | Inner total $$L_n$$ | Outer total $$U_n$$ | Gap $$U_n - L_n$$ |
+| ------------ | ------------------- | ------------------- | ----------------- |
+| $$2$$        | $$0.125$$           | $$0.625$$           | $$0.5$$           |
+| $$4$$        | $$0.21875$$         | $$0.46875$$         | $$0.25$$          |
+| $$10$$       | $$0.285$$           | $$0.385$$           | $$0.1$$           |
+| $$100$$      | $$0.32835$$         | $$0.33835$$         | $$0.01$$          |
+
+Two patterns stand out. The gap is exactly $$\frac{1}{n}$$, and both totals close in on
+$$0.333\ldots$$, which suggests the area is $$\frac{1}{3}$$. A table with four rows can't prove
+that, and neither could one with a million rows, so the next step is to find the totals for every
+$$n$$ at once.
+
+:::lemma[The strip totals]{#areas-and-volumes-strip-sums}
+
+For every whole number $$n \ge 1$$:
+
+1. $$L_n = \frac{(n - 1)(2n - 1)}{6n^2}$$ and $$U_n = \frac{(n + 1)(2n + 1)}{6n^2}$$
+2. $$U_n - L_n = \frac{1}{n}$$
+3. $$L_n \le \frac{1}{3} \le U_n$$
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Riemann_sum#Example"}
+
+**Part 1.** By :ref{#sum-squares}, $$1^2 + 2^2 + \cdots + m^2 = \frac{m(m + 1)(2m + 1)}{6}$$ for
+every $$m \ge 1$$. With $$m = n$$, dividing by $$n^3$$ gives
+
+```math
+U_n = \frac{n(n + 1)(2n + 1)}{6n^3} = \frac{(n + 1)(2n + 1)}{6n^2}
+```
+
+With $$m = n - 1$$ the same steps give $$L_n = \frac{(n - 1)(2n - 1)}{6n^2}$$. When $$n = 1$$ the
+sum in $$L_1$$ has the single term $$0^2$$, so $$L_1 = 0$$, and the formula gives $$0$$ too.
+
+**Part 2.** Multiplying out, $$(n + 1)(2n + 1) = 2n^2 + 3n + 1$$ and
+$$(n - 1)(2n - 1) = 2n^2 - 3n + 1$$. Their difference is $$6n$$, so
+
+```math
+U_n - L_n = \frac{6n}{6n^2} = \frac{1}{n}
+```
+
+**Part 3.** Write $$\frac{1}{3} = \frac{2n^2}{6n^2}$$. Since $$n \ge 1$$, both $$3n + 1$$ and
+$$3n - 1$$ are positive, so
+
+```math
+2n^2 - 3n + 1 \le 2n^2 \le 2n^2 + 3n + 1
+```
+
+Dividing through by the positive number $$6n^2$$ (:ref{#real-numbers/inequality-rules}) gives
+$$L_n \le \frac{1}{3} \le U_n$$.
+
+:::
+
+Subtracting $$\frac{1}{3}$$ from each formula in part 1 shows how far each total is from
+$$\frac{1}{3}$$: $$U_n - \frac{1}{3} = \frac{3n + 1}{6n^2}$$ and
+$$\frac{1}{3} - L_n = \frac{3n - 1}{6n^2}$$. For $$n = 10$$ these are
+$$\frac{31}{600} \approx 0.052$$ and $$\frac{29}{600} \approx 0.048$$, and both are less than the
+gap $$\frac{1}{10}$$.
+
+Drag the slider below to change the number of strips. The blue rectangles always fit under the curve
+and the orange ones always cover the region, and as $$n$$ grows the orange rim between them thins
+out.
+
+<RectangleSqueeze />
+
+## Pinning a number down
+
+The area $$A$$ and the number $$\frac{1}{3}$$ both lie between $$L_n$$ and $$U_n$$, for every $$n$$.
+Two numbers inside a stretch of length $$\frac{1}{n}$$ are at most $$\frac{1}{n}$$ apart, so $$A$$
+and $$\frac{1}{3}$$ are within $$\frac{1}{10}$$ of each other, within $$\frac{1}{100}$$, and within
+$$\frac{1}{1\,000\,000}$$. The only way for two numbers to be that close for every $$n$$ is to be
+equal.
+
+We'll call this argument **the squeeze**, and it is the whole method of this guide. It never
+mentions infinitely many strips or a limit: every step looks at a finite number of rectangles, and
+the conclusion comes from the fact that no positive number is smaller than every $$\frac{1}{n}$$.
+
+:::lemma[The squeeze]{#areas-and-volumes-squeeze}
+
+Let $$A$$, $$B$$ and $$c$$ be numbers with $$c \ge 0$$. If
+
+```math
+|A - B| \le \frac{c}{n}
+```
+
+for every whole number $$n \ge 1$$, then $$A = B$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Archimedean_property"}
+
+Suppose instead that $$A \ne B$$ (:ref{#basic-proofs/contradiction}). Then $$d = |A - B|$$ is
+positive, so $$\frac{c}{d}$$ is a number that is not negative.
+
+By part 2 of :ref{#real-numbers/no-gaps}, there is an integer $$m$$ with
+$$m \le \frac{c}{d} < m + 1$$. Let $$N = m + 1$$. Then $$N > \frac{c}{d} \ge 0$$, so $$N$$ is a
+whole number with $$N \ge 1$$.
+
+Multiplying $$N > \frac{c}{d}$$ by the positive number $$\frac{d}{N}$$
+(:ref{#real-numbers/inequality-rules}) gives $$d > \frac{c}{N}$$. But the condition with $$n = N$$
+says $$d = |A - B| \le \frac{c}{N}$$. These can't both hold, so $$A = B$$.
+
+:::
+
+:::theorem[The area under a parabola]{#parabola-area}
+
+The region under $$y = x^2$$ from $$x = 0$$ to $$x = 1$$ has area exactly $$\frac{1}{3}$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Riemann_sum#Example"}
+
+Let $$R$$ be the region and $$A$$ its area, and fix a whole number $$n \ge 1$$.
+
+**The inner rectangles fit inside.** Take a point $$(x, y)$$ of inner rectangle $$k$$, so
+$$\frac{k - 1}{n} \le x \le \frac{k}{n}$$ and $$0 \le y \le \left(\frac{k - 1}{n}\right)^2$$. Since
+$$0 \le \frac{k - 1}{n} \le x$$, squaring keeps the order (:ref{#real-numbers/power-order}), so
+$$y \le \left(\frac{k - 1}{n}\right)^2 \le x^2$$. So the point is in $$R$$. The inner rectangles
+meet only along edges, so together they make a region of area $$L_n$$ inside $$R$$, and
+$$L_n \le A$$.
+
+**The outer rectangles cover.** Take a point $$(x, y)$$ of $$R$$. Its $$x$$ lies in some strip
+$$k$$, with $$\frac{k - 1}{n} \le x \le \frac{k}{n}$$. Then
+$$y \le x^2 \le \left(\frac{k}{n}\right)^2$$, by :ref{#real-numbers/power-order} again, so the point
+is in outer rectangle $$k$$. So $$R$$ lies inside the region made by the outer rectangles, which has
+area $$U_n$$, and $$A \le U_n$$.
+
+**The squeeze.** Now $$A$$ and $$\frac{1}{3}$$ both lie between $$L_n$$ and $$U_n$$, by part 3 of
+:ref{#areas-and-volumes-strip-sums}. Two numbers between $$L_n$$ and $$U_n$$ differ by at most
+$$U_n - L_n$$, which is $$\frac{1}{n}$$ by part 2, so
+
+```math
+\left|A - \frac{1}{3}\right| \le \frac{1}{n}
+```
+
+This holds for every $$n \ge 1$$, so :ref{#areas-and-volumes-squeeze} with $$c = 1$$ gives
+$$A = \frac{1}{3}$$.
+
+:::
+
+So the curved region fills exactly a third of the square with corners $$(0, 0)$$ and $$(1, 1)$$. The
+method used only rectangles, the order of numbers and one sum from
+[Adding up powers](./adding-up-powers.mdx).
+
+### Going further along the curve
+
+The region under $$y = x^2$$ from $$0$$ to $$2$$ looks like the region from $$0$$ to $$1$$ pulled
+out sideways by $$2$$ and upwards by $$4$$. A stretch multiplies area by its factor
+(:ref{#area-and-scaling/stretch-area}), so the area should be $$2 \cdot 4 \cdot \frac{1}{3}$$. The
+same holds for any width $$b$$ in place of $$2$$.
+
+:::corollary[The area under a parabola up to b]{#areas-and-volumes-parabola-to-b}
+
+For every number $$b > 0$$, the region under $$y = x^2$$ from $$x = 0$$ to $$x = b$$ has area
+$$\frac{b^3}{3}$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Riemann_sum#Example"}
+
+Let $$R$$ be the region for $$1$$ and $$R_b$$ the region for $$b$$, so $$R_b$$ is the set of points
+$$(x, y)$$ with $$0 \le x \le b$$ and $$0 \le y \le x^2$$.
+
+**Two stretches.** In the stretch by $$b$$ away from the $$y$$-axis
+(:ref{#area-and-scaling/stretch}), a point $$(x, y)$$ with $$x \ge 0$$ has its foot at $$(0, y)$$,
+at distance $$x$$, so it moves to $$(bx, y)$$; a point with $$x = 0$$ is on the axis and stays put,
+which fits the same rule. The stretch by $$b^2$$ away from the $$x$$-axis sends $$(x, y)$$ to
+$$(x, b^2 y)$$. One after the other, they send $$(x, y)$$ to $$(bx, b^2 y)$$.
+
+**They carry $$R$$ onto $$R_b$$.** If $$(x, y)$$ is in $$R$$, then $$0 \le bx \le b$$ and
+$$0 \le b^2 y \le b^2 x^2 = (bx)^2$$, so $$(bx, b^2 y)$$ is in $$R_b$$. In the other direction, if
+$$(X, Y)$$ is in $$R_b$$, then $$\left(\frac{X}{b}, \frac{Y}{b^2}\right)$$ is in $$R$$, since
+$$\frac{Y}{b^2} \le \frac{X^2}{b^2} = \left(\frac{X}{b}\right)^2$$, and the two stretches send it to
+$$(X, Y)$$.
+
+**The areas.** By :ref{#area-and-scaling/stretch-area}, the first stretch multiplies area by $$b$$
+and the second by $$b^2$$. So the area of $$R_b$$ is
+$$b \cdot b^2 \cdot \frac{1}{3} = \frac{b^3}{3}$$, using :ref{#parabola-area}.
+
+:::
+
+For $$b = 2$$ the area is $$\frac{8}{3} \approx 2.667$$. As a check, cut the region into $$4$$
+strips of width $$\frac{1}{2}$$. The curve's heights at $$0, \frac{1}{2}, 1, \frac{3}{2}, 2$$ are
+$$0, 0.25, 1, 2.25, 4$$, so the inner rectangles total $$\frac{1}{2}(0 + 0.25 + 1 + 2.25) = 1.75$$
+and the outer ones total $$\frac{1}{2}(0.25 + 1 + 2.25 + 4) = 3.75$$. The area $$2.667$$ lies
+between them, as it must.
+
+The same squeeze works for the curve $$y = x^3$$, with :ref{#sum-cubes} in place of
+:ref{#sum-squares}. With $$n$$ strips the inner and outer totals come to $$\frac{(n - 1)^2}{4n^2}$$
+and $$\frac{(n + 1)^2}{4n^2}$$, whose gap is $$\frac{1}{n}$$, and $$\frac{1}{4} = \frac{n^2}{4n^2}$$
+lies between them. So the region under $$y = x^3$$ from $$0$$ to $$1$$ has area exactly
+$$\frac{1}{4}$$. For $$n = 10$$ the totals are $$0.2025$$ and $$0.3025$$.
+
+## The volume of a cone
+
+Now go back to the cardboard hill, shaped like a cone standing on its base. Cut it by level planes
+into $$n$$ slabs of equal thickness. Each slab is narrower at its top than at its bottom, so a
+cylinder as wide as the slab's top fits inside it, and a cylinder as wide as its bottom holds it.
+The two stacks of cylinders trap the cone, and their volumes are sums of squares again.
+
+To describe the cone exactly, use coordinates in space (:ref{#coordinates/space-coordinate-rules})
+with the base on the floor, $$z = 0$$, centred at the origin, and the tip straight above it at
+$$(0, 0, h)$$. A point $$(x, y, z)$$ is at distance $$\sqrt{x^2 + y^2}$$ from the point
+$$(0, 0, z)$$ of the axis (:ref{#coordinates/space-distance}). The side of the cone slopes straight
+up from the rim to the tip, so a level slice is a disc centred on the axis whose radius shrinks
+steadily from $$r$$ at the floor to $$0$$ at the tip. Halfway up, the radius is $$\frac{r}{2}$$.
+
+:::definition[Cone]{#areas-and-volumes-cone}
+
+The **cone** with base radius $$r$$ and height $$h$$ is the set of points $$(x, y, z)$$ with
+$$0 \le z \le h$$ and
+
+```math
+\sqrt{x^2 + y^2} \le \frac{r(h - z)}{h}
+```
+
+So its slice at height $$z$$ is a disc of radius $$\frac{r(h - z)}{h}$$.
+
+:::
+
+<ConeStacks caption="The same cone cut into 5 slabs of equal thickness, drawn twice. Each blue cylinder is as wide as the cone at the top of its slab, so it fits inside. Each orange cylinder is as wide as the cone at the bottom of its slab, so together they hold the cone." />
+
+:::theorem[The volume of a cone]{#cone-volume}
+
+A cone with base radius $$r$$ and height $$h$$ has volume $$\frac{1}{3}\pi r^2 h$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Cone#Volume"}
+
+Let $$V$$ be the volume of the cone, and fix a whole number $$n \ge 1$$. Cut the cone by the planes
+$$z = \frac{h}{n}, \frac{2h}{n}, \ldots$$, so that slab $$k$$ is the part with
+$$\frac{(k - 1)h}{n} \le z \le \frac{kh}{n}$$, for $$k = 1, 2, \ldots, n$$.
+
+**Inner cylinders.** In slab $$k$$, stand a cylinder of radius $$\frac{r(n - k)}{n}$$ on the axis,
+filling the slab's height. A point $$(x, y, z)$$ of it has $$z \le \frac{kh}{n}$$, so
+$$\frac{h - z}{h} \ge \frac{n - k}{n}$$, and
+
+```math
+\sqrt{x^2 + y^2} \le \frac{r(n - k)}{n} \le \frac{r(h - z)}{h}
+```
+
+So the point is in the cone. Each cylinder has height $$\frac{h}{n}$$, so by
+:ref{#areas-and-volumes-cylinder} their volumes add up to
+
+```math
+\frac{\pi r^2 h}{n^3}\big((n - 1)^2 + (n - 2)^2 + \cdots + 1^2 + 0^2\big) = \pi r^2 h \, L_n
+```
+
+since these are the squares in $$L_n$$ in the opposite order. The cylinders don't overlap and lie
+inside the cone, so $$\pi r^2 h \, L_n \le V$$ (:ref{#area-and-scaling/volume-rules}).
+
+**Outer cylinders.** In slab $$k$$, stand a cylinder of radius $$\frac{r(n - k + 1)}{n}$$ instead. A
+point of the cone in slab $$k$$ has $$z \ge \frac{(k - 1)h}{n}$$, so
+
+```math
+\sqrt{x^2 + y^2} \le \frac{r(h - z)}{h} \le \frac{r(n - k + 1)}{n}
+```
+
+and the point is in this cylinder. So the cone lies inside the stack of outer cylinders, whose
+volumes add up to $$\frac{\pi r^2 h}{n^3}(n^2 + \cdots + 1^2) = \pi r^2 h \, U_n$$. So
+$$V \le \pi r^2 h \, U_n$$.
+
+**The squeeze.** Multiplying part 3 of :ref{#areas-and-volumes-strip-sums} by the positive number
+$$\pi r^2 h$$ puts $$\frac{1}{3}\pi r^2 h$$ between $$\pi r^2 h \, L_n$$ and $$\pi r^2 h \, U_n$$
+too. By part 2 these two are $$\frac{\pi r^2 h}{n}$$ apart, so
+
+```math
+\left|V - \frac{1}{3}\pi r^2 h\right| \le \frac{\pi r^2 h}{n}
+```
+
+for every $$n \ge 1$$. By :ref{#areas-and-volumes-squeeze} with $$c = \pi r^2 h$$,
+$$V = \frac{1}{3}\pi r^2 h$$.
+
+:::
+
+The cylinder that fits round the cone, with the same base and the same height, has volume
+$$\pi r^2 h$$. So every cone fills exactly a third of its cylinder, however tall or squat it is. The
+numbers $$L_n$$ and $$U_n$$ turned up again because the cone's slices shrink in proportion to the
+distance from the tip, so their areas go like squares, as the heights of the parabola did.
+
+:::example[A paper cup]
+
+A paper cup from a water cooler is a cone $$10$$ cm deep with a rim of radius $$3$$ cm. It holds
+
+```math
+\frac{1}{3}\pi \cdot 3^2 \cdot 10 = 30\pi \approx 94.2 \text{ cm}^3
+```
+
+which is about $$94$$ millilitres. A cylindrical cup of the same width and depth would hold
+$$90\pi \approx 282.7$$ cm$$^3$$, three times as much. With $$10$$ slabs, the inner and outer stacks
+of cylinders hold $$90\pi \cdot 0.285 \approx 80.6$$ and $$90\pi \cdot 0.385 \approx 108.9$$
+cm$$^3$$, and $$94.2$$ lies between them.
+
+:::
+
+## The volume of a ball
+
+A ball cut by level planes falls into slices too, and the same squeeze finds its volume. This time
+the slices shrink in a different way: a slice near the middle is almost as wide as the ball, and the
+slices narrow faster and faster towards the top. Pythagoras says how wide each one is.
+
+Put the centre at the origin. By :ref{#coordinates/sphere-equation}, the ball of radius $$r$$
+(:ref{#coordinates/sphere}) is the set of points with $$x^2 + y^2 + z^2 \le r^2$$. A point at height
+$$z$$ is in it exactly when $$x^2 + y^2 \le r^2 - z^2$$, so the slice at height $$z$$ is a disc of
+radius $$\sqrt{r^2 - z^2}$$, centred on the axis. For a ball of radius $$5$$, the slice at height
+$$3$$ has radius $$\sqrt{25 - 9} = 4$$.
+
+<HalfBallStacks caption="The top half of a ball cut into 5 slabs of equal thickness, drawn twice. The blue cylinders are as wide as the ball at the top of each slab and fit inside. The orange cylinders are as wide as it at the bottom of each slab and hold it." />
+
+:::theorem[The volume of a ball]{#ball-volume}
+
+A ball of radius $$r$$ has volume $$\frac{4}{3}\pi r^3$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Sphere#Enclosed_volume"}
+
+Let $$H$$ be the top half, the points of the ball with $$z \ge 0$$, and let $$V_H$$ be its volume.
+Fix a whole number $$n \ge 1$$, and cut $$H$$ into slabs of thickness $$\frac{r}{n}$$, slab $$k$$
+being the part with $$\frac{(k - 1)r}{n} \le z \le \frac{kr}{n}$$.
+
+**Inner cylinders.** In slab $$k$$, stand a cylinder of radius
+$$\sqrt{r^2 - \left(\frac{kr}{n}\right)^2}$$ on the axis. A point $$(x, y, z)$$ of it has
+$$0 \le z \le \frac{kr}{n}$$, so $$z^2 \le \left(\frac{kr}{n}\right)^2$$
+(:ref{#real-numbers/power-order}) and
+
+```math
+x^2 + y^2 \le r^2 - \left(\frac{kr}{n}\right)^2 \le r^2 - z^2
+```
+
+So the point is in $$H$$. Cylinder $$k$$ has volume
+$$\pi\left(r^2 - \frac{k^2 r^2}{n^2}\right)\frac{r}{n}$$ (:ref{#areas-and-volumes-cylinder}). Adding
+these for $$k = 1$$ to $$n$$, the $$n$$ copies of $$\frac{\pi r^3}{n}$$ make $$\pi r^3$$, and from
+that we take away $$\pi r^3$$ times $$\frac{1^2 + \cdots + n^2}{n^3}$$. So the inner stack has
+volume $$\pi r^3 (1 - U_n)$$, and $$\pi r^3 (1 - U_n) \le V_H$$.
+
+**Outer cylinders.** In slab $$k$$, stand a cylinder of radius
+$$\sqrt{r^2 - \left(\frac{(k - 1)r}{n}\right)^2}$$ instead. A point of $$H$$ in slab $$k$$ has
+$$z \ge \frac{(k - 1)r}{n} \ge 0$$, so
+$$x^2 + y^2 \le r^2 - z^2 \le r^2 - \left(\frac{(k - 1)r}{n}\right)^2$$, and it is in this cylinder.
+The same adding up, with the squares $$0^2, \ldots, (n - 1)^2$$, gives the outer stack the volume
+$$\pi r^3 (1 - L_n)$$, so $$V_H \le \pi r^3 (1 - L_n)$$.
+
+**The squeeze.** Part 3 of :ref{#areas-and-volumes-strip-sums} gives
+$$1 - U_n \le \frac{2}{3} \le 1 - L_n$$, so $$\frac{2}{3}\pi r^3$$ lies between the two stacks as
+well. The stacks are $$\pi r^3 (U_n - L_n) = \frac{\pi r^3}{n}$$ apart, so
+
+```math
+\left|V_H - \frac{2}{3}\pi r^3\right| \le \frac{\pi r^3}{n}
+```
+
+for every $$n \ge 1$$, and :ref{#areas-and-volumes-squeeze} gives $$V_H = \frac{2}{3}\pi r^3$$.
+
+**The whole ball.** The flip in the floor sends $$(x, y, z)$$ to $$(x, y, -z)$$. It keeps
+$$x^2 + y^2 + z^2$$ the same, so it carries the top half onto the bottom half, and flipping keeps
+volume (:ref{#area-and-scaling/volume-rules}). The two halves meet only in the flat disc $$z = 0$$,
+so the ball has volume $$\frac{2}{3}\pi r^3 + \frac{2}{3}\pi r^3 = \frac{4}{3}\pi r^3$$.
+
+:::
+
+:::example[A football]
+
+A full-size football has a radius of about $$11$$ cm. Its volume is about
+
+```math
+\frac{4}{3}\pi \cdot 11^3 = \frac{5324}{3}\pi \approx 5575 \text{ cm}^3
+```
+
+which is about $$5.6$$ litres of air. The smallest box it fits in is a cube of side $$22$$ cm, with
+volume $$22^3 = 10\,648$$ cm$$^3$$, so the ball fills a little over half of its box.
+
+:::
+
+Now fit a cylinder round the ball, touching it all the way round the middle and at the top and
+bottom. It has radius $$r$$ and height $$2r$$, so its volume is $$\pi r^2 \cdot 2r = 2\pi r^3$$, and
+the ball fills $$\frac{4}{3}\pi r^3 \div 2\pi r^3 = \frac{2}{3}$$ of it. Archimedes proved this, and
+the story goes that he asked for a ball inside a cylinder to be carved on his tomb.
+
+<InsideTheCylinder caption="A cone fills a third of the cylinder with the same base and height, and a ball fills two thirds of the cylinder that fits round it." />
+
+## Exercises
+
+:::::accordion[Exercises on areas and volumes from sums, with solutions]
+
+::::exercise{#ex-areas-and-volumes-five-strips}
+
+Cut the region under $$y = x^2$$ from $$0$$ to $$1$$ into $$5$$ strips. Find the inner total $$L_5$$
+and the outer total $$U_5$$, and check that their gap is $$\frac{1}{5}$$ and that $$\frac{1}{3}$$
+lies between them.
+
+:::solution
+
+The strips have width $$\frac{1}{5}$$, and the curve's heights at $$0, \frac{1}{5}, \ldots, 1$$ are
+$$\frac{0}{25}, \frac{1}{25}, \frac{4}{25}, \frac{9}{25}, \frac{16}{25}, \frac{25}{25}$$. So
+
+```math
+L_5 = \frac{0 + 1 + 4 + 9 + 16}{125} = \frac{30}{125} = 0.24 \qquad U_5 = \frac{1 + 4 + 9 + 16 + 25}{125} = \frac{55}{125} = 0.44
+```
+
+The gap is $$0.44 - 0.24 = 0.2 = \frac{1}{5}$$, and $$0.24 \le 0.333\ldots \le 0.44$$. The formulas
+of :ref{#areas-and-volumes-strip-sums} agree: $$\frac{4 \cdot 9}{150} = 0.24$$ and
+$$\frac{6 \cdot 11}{150} = 0.44$$.
+
+:::
+
+::::
+
+::::exercise{#ex-areas-and-volumes-sand-pile}
+
+A pile of sand at a building site is a cone $$1.2$$ m high, with a base of radius $$1.5$$ m. Find
+its volume, to two decimal places.
+
+:::solution
+
+By :ref{#cone-volume}, the volume is
+
+```math
+\frac{1}{3}\pi \cdot 1.5^2 \cdot 1.2 = \frac{1}{3}\pi \cdot 2.25 \cdot 1.2 = 0.9\pi \approx 2.83 \text{ m}^3
+```
+
+:::
+
+::::
+
+::::exercise{#ex-areas-and-volumes-average}
+
+For the region under $$y = x^2$$ from $$0$$ to $$1$$, a natural guess is the average of the two
+totals, $$\frac{L_n + U_n}{2}$$.
+
+1. Show that $$\frac{L_n + U_n}{2} = \frac{1}{3} + \frac{1}{6n^2}$$, and check it for $$n = 10$$.
+2. Find the smallest $$n$$ for which the average is within $$0.0001$$ of $$\frac{1}{3}$$.
+
+:::solution
+
+1. By :ref{#areas-and-volumes-strip-sums}, the numerators of $$L_n$$ and $$U_n$$ over $$6n^2$$ are
+   $$2n^2 - 3n + 1$$ and $$2n^2 + 3n + 1$$. They add up to $$4n^2 + 2$$, so
+
+   ```math
+   \frac{L_n + U_n}{2} = \frac{4n^2 + 2}{12n^2} = \frac{1}{3} + \frac{2}{12n^2} = \frac{1}{3} + \frac{1}{6n^2}
+   ```
+
+   For $$n = 10$$: $$\frac{0.285 + 0.385}{2} = 0.335$$, and $$\frac{1}{3} + \frac{1}{600} = 0.335$$.
+
+2. You need $$\frac{1}{6n^2} \le 0.0001$$, that is $$6n^2 \ge 10\,000$$, or $$n^2 \ge 1666.7$$.
+   Since $$40^2 = 1600$$ and $$41^2 = 1681$$, the smallest is $$n = 41$$. The outer total alone
+   needs far more strips: $$U_n - \frac{1}{3} = \frac{3n + 1}{6n^2}$$ first drops to $$0.0001$$ at
+   $$n = 5001$$.
+
+:::
+
+::::
+
+::::exercise{#ex-areas-and-volumes-between-curves}
+
+For $$0 \le x \le 1$$, the line $$y = x$$ lies on or above the curve $$y = x^2$$. Show this, and
+find the area of the region between them.
+
+:::solution
+
+For $$0 \le x \le 1$$, multiplying $$x \le 1$$ by the number $$x \ge 0$$ gives $$x^2 \le x$$
+(:ref{#real-numbers/inequality-rules}).
+
+The region under the line from $$0$$ to $$1$$ is a right triangle with legs $$1$$ and $$1$$, with
+area $$\frac{1}{2}$$ (:ref{#distance-and-angles/right-triangle-area}). Since $$x^2 \le x$$, the
+region under the curve lies inside it, and the curve cuts the triangle into that region and the
+region between the line and the curve. They meet only along the curve, which covers no area, so by
+:ref{#distance-and-angles/area-rules} and :ref{#parabola-area},
+
+```math
+\frac{1}{2} = \frac{1}{3} + (\text{area between}) \qquad\text{so}\qquad \text{area between} = \frac{1}{6}
+```
+
+:::
+
+::::
+
+::::exercise{#ex-areas-and-volumes-bowl}
+
+A mixing bowl is half of a ball with inner radius $$9$$ cm. Find how many litres it holds when full
+to the brim, to two decimal places. A litre is $$1000$$ cm$$^3$$.
+
+:::solution
+
+The proof of :ref{#ball-volume} shows that half a ball of radius $$r$$ has volume
+$$\frac{2}{3}\pi r^3$$. With $$r = 9$$:
+
+```math
+\frac{2}{3}\pi \cdot 729 = 486\pi \approx 1526.8 \text{ cm}^3
+```
+
+which is about $$1.53$$ litres.
+
+:::
+
+::::
+
+::::exercise{#ex-areas-and-volumes-lampshade}
+
+A lampshade is a cone with its top cut off by a level plane: it is $$6$$ cm tall, the bottom rim has
+radius $$6$$ cm and the top rim has radius $$3$$ cm. Find the volume it encloses, by completing it
+to a whole cone.
+
+:::solution
+
+Extend the sides upwards until they meet. The radius halves over the lampshade's $$6$$ cm of height,
+and in a cone the radius shrinks in proportion to height (:ref{#areas-and-volumes-cone}), so the
+whole cone has radius $$6$$ and height $$12$$: at height $$6$$ its slice has radius
+$$\frac{6(12 - 6)}{12} = 3$$, as required.
+
+The part of that cone above height $$6$$ is a cone with base radius $$3$$ and height $$6$$, and it
+doesn't overlap the lampshade. So by :ref{#area-and-scaling/volume-rules} and :ref{#cone-volume},
+
+```math
+\text{lampshade} = \frac{1}{3}\pi \cdot 6^2 \cdot 12 - \frac{1}{3}\pi \cdot 3^2 \cdot 6 = 144\pi - 18\pi = 126\pi \approx 395.8 \text{ cm}^3
+```
+
+:::
+
+::::
+
+::::exercise{#ex-areas-and-volumes-cylinder-minus-ball}
+
+A ball of radius $$r$$ sits in the cylinder that fits round it, with radius $$r$$ and height $$2r$$.
+Show that the space left over has the same volume as two cones, each with base radius $$r$$ and
+height $$r$$.
+
+:::solution
+
+The cylinder has volume $$\pi r^2 \cdot 2r = 2\pi r^3$$ (:ref{#areas-and-volumes-cylinder}) and the
+ball has volume $$\frac{4}{3}\pi r^3$$ (:ref{#ball-volume}). The ball lies inside the cylinder, so
+the space left over has volume
+
+```math
+2\pi r^3 - \frac{4}{3}\pi r^3 = \frac{2}{3}\pi r^3
+```
+
+Each cone has volume $$\frac{1}{3}\pi r^2 \cdot r = \frac{1}{3}\pi r^3$$ (:ref{#cone-volume}), so
+two of them make $$\frac{2}{3}\pi r^3$$, the same amount. So the ball, the cylinder and the two
+cones have volumes in the ratio $$2 : 3 : 1$$.
+
+:::
+
+::::
+
+:::::

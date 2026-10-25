@@ -1,0 +1,278 @@
+---
+title: Exercises
+description: Exercises on the whole Induction and sums chapter, with worked solutions.
+---
+
+These exercises use the whole chapter, and most need ideas from more than one guide. They start
+gently and get harder towards the end. Try each one before you open its solution, and name the rule
+or result behind each step, as the guides do.
+
+One habit carries most of them: work out the first few cases by hand before reaching for a proof. A
+small table shows you the pattern, tells you what the inductive step has to do, and gives you a
+check at the end.
+
+## Induction
+
+::::exercise{#ex-induction-and-sums-ch-nine}
+
+Prove that $$9$$ divides $$4^n + 15n - 1$$ for every whole number $$n \ge 1$$.
+
+:::solution
+
+Check first: $$n = 1, 2, 3$$ give $$18$$, $$45$$ and $$108$$, all multiples of $$9$$.
+
+**Base case.** For $$n = 1$$, $$4 + 15 - 1 = 18 = 9 \cdot 2$$.
+
+**Inductive step.** Suppose $$9$$ divides $$4^k + 15k - 1$$. Going from $$4^k$$ to $$4^{k + 1}$$
+multiplies by $$4$$, so bring in four copies of the number we know about:
+
+```math
+\begin{aligned}
+4^{k + 1} + 15(k + 1) - 1 &= 4 \cdot 4^k + 15k + 14 && \text{expand} \\
+&= 4(4^k + 15k - 1) - 60k + 4 + 15k + 14 && \text{add and take away } 4(15k - 1) \\
+&= 4(4^k + 15k - 1) - 45k + 18 && \text{collect terms}
+\end{aligned}
+```
+
+The first term is $$4$$ times a multiple of $$9$$ by assumption, and $$45k = 9 \cdot 5k$$ and
+$$18 = 9 \cdot 2$$ are multiples of $$9$$, so the whole is a multiple of $$9$$
+(:ref{#numbers/multiples}). By :ref{#basic-proofs/induction}, the claim holds for every $$n \ge 1$$.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-and-sums-ch-factorial}
+
+Prove that $$n! > 2^n$$ for every whole number $$n \ge 4$$.
+
+:::solution
+
+Check first: $$4! = 24 > 16$$, $$5! = 120 > 32$$.
+
+**Base case.** $$n = 4$$: $$24 > 16$$.
+
+**Inductive step.** Let $$k \ge 4$$ and suppose $$k! > 2^k$$. Then
+
+```math
+\begin{aligned}
+(k + 1)! &= (k + 1) \cdot k! && \text{definition of the factorial} \\
+&> (k + 1) \cdot 2^k && \text{the assumption, times } k + 1 > 0 \\
+&> 2 \cdot 2^k = 2^{k + 1} && \text{since } k + 1 \ge 5 > 2
+\end{aligned}
+```
+
+The first step is :ref{#numbers/factorial}, and multiplying an inequality by a positive number keeps
+it (:ref{#real-numbers/inequality-rules}). Induction from $$4$$, as in
+[Induction](../basic-proofs/induction.mdx#starting-somewhere-else), proves the claim.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-and-sums-ch-binary}
+
+Prove that every whole number $$n \ge 1$$ is a sum of different powers of $$2$$, for example
+$$13 = 8 + 4 + 1$$.
+
+:::solution
+
+Use strong induction (:ref{#strong-induction}). For $$n = 1$$, $$1 = 2^0$$.
+
+Suppose every number from $$1$$ to $$k$$ is a sum of different powers of $$2$$, and look at
+$$k + 1$$. Let $$2^m$$ be the largest power of $$2$$ with $$2^m \le k + 1$$, so
+$$k + 1 < 2^{m + 1}$$. If $$k + 1 = 2^m$$ we are done. Otherwise $$r = k + 1 - 2^m$$ is between
+$$1$$ and $$k$$, so by assumption $$r$$ is a sum of different powers of $$2$$. Each of them is less
+than $$2^m$$, because $$r < 2^{m + 1} - 2^m = 2^m$$. So $$k + 1 = 2^m + r$$ is a sum of different
+powers of $$2$$, with $$2^m$$ not repeated.
+
+Check with $$13$$: the largest power of $$2$$ up to $$13$$ is $$8$$, leaving $$5$$; the largest up
+to $$5$$ is $$4$$, leaving $$1$$. So $$13 = 8 + 4 + 1$$.
+
+:::
+
+::::
+
+## Sums
+
+::::exercise{#ex-induction-and-sums-ch-triple-products}
+
+Show that $$k(k + 1)(k + 2)(k + 3) - (k - 1)k(k + 1)(k + 2) = 4k(k + 1)(k + 2)$$, and use it to find
+a formula for $$1 \cdot 2 \cdot 3 + 2 \cdot 3 \cdot 4 + \cdots + n(n + 1)(n + 2)$$. Check it at
+$$n = 3$$.
+
+:::solution
+
+Both products on the left share the factor $$k(k + 1)(k + 2)$$. Taking it out leaves
+$$(k + 3) - (k - 1) = 4$$, which gives the first claim.
+
+So with $$a_k = \frac{k(k + 1)(k + 2)(k + 3)}{4}$$, each term $$k(k + 1)(k + 2)$$ is
+$$a_k - a_{k - 1}$$. Here $$a_0 = 0$$, so by :ref{#telescoping},
+
+```math
+1 \cdot 2 \cdot 3 + 2 \cdot 3 \cdot 4 + \cdots + n(n + 1)(n + 2) = a_n - a_0 = \frac{n(n + 1)(n + 2)(n + 3)}{4}
+```
+
+Check at $$n = 3$$: $$6 + 24 + 60 = 90$$, and $$\frac{3 \cdot 4 \cdot 5 \cdot 6}{4} = 90$$. The same
+trick with two factors gives $$1 \cdot 2 + \cdots + n(n + 1) = \frac{n(n + 1)(n + 2)}{3}$$, with no
+sum of squares needed.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-and-sums-ch-roots}
+
+Find $$\displaystyle \sum_{k=1}^{99} \frac{1}{\sqrt{k} + \sqrt{k + 1}}$$ exactly.
+
+:::solution
+
+Multiply the top and bottom of each term by $$\sqrt{k + 1} - \sqrt{k}$$:
+
+```math
+\frac{1}{\sqrt{k} + \sqrt{k + 1}} = \frac{\sqrt{k + 1} - \sqrt{k}}{(k + 1) - k} = \sqrt{k + 1} - \sqrt{k}
+```
+
+So the sum telescopes (:ref{#telescoping}) with $$a_k = \sqrt{k + 1}$$, and equals
+$$\sqrt{100} - \sqrt{1} = 9$$. Check the first term: $$\frac{1}{1 + \sqrt2} \approx 0.414$$ and
+$$\sqrt2 - 1 \approx 0.414$$.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-and-sums-ch-weighted}
+
+Prove that $$1 \cdot 2 + 2 \cdot 2^2 + 3 \cdot 2^3 + \cdots + n \cdot 2^n = (n - 1)2^{n + 1} + 2$$
+for every $$n \ge 1$$.
+
+:::solution
+
+Check: for $$n = 3$$, $$2 + 8 + 24 = 34$$ and $$2 \cdot 16 + 2 = 34$$.
+
+**Base case.** $$n = 1$$: $$2 = 0 + 2$$.
+
+**Inductive step.** Suppose the formula holds for $$k$$. Adding the next term:
+
+```math
+\begin{aligned}
+(k - 1)2^{k + 1} + 2 + (k + 1)2^{k + 1} &= 2k \cdot 2^{k + 1} + 2 && \text{collect the powers} \\
+&= k \cdot 2^{k + 2} + 2
+\end{aligned}
+```
+
+which is the formula for $$k + 1$$, since $$((k + 1) - 1)2^{(k + 1) + 1} = k \cdot 2^{k + 2}$$. By
+:ref{#basic-proofs/induction}, it holds for every $$n \ge 1$$.
+
+:::
+
+::::
+
+## Areas, volumes and endless sums
+
+::::exercise{#ex-induction-and-sums-ch-band}
+
+Find the area of the region under $$y = x^2$$ between $$x = 1$$ and $$x = 2$$.
+
+:::solution
+
+The region under the curve from $$0$$ to $$2$$ is made of the region from $$0$$ to $$1$$ and the
+region from $$1$$ to $$2$$, which don't overlap except along the line $$x = 1$$. So, by
+:ref{#areas-and-volumes-parabola-to-b} and the rule that areas of pieces add
+(:ref{#distance-and-angles/area-rules}),
+
+```math
+\text{area} = \frac{2^3}{3} - \frac{1^3}{3} = \frac{7}{3}
+```
+
+Check: the region lies between the rectangles of height $$1$$ and $$4$$ on a base of width $$1$$,
+and $$1 < \frac73 \approx 2.33 < 4$$.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-and-sums-ch-skin}
+
+An orange is a ball of radius $$4$$ cm, and its peel is the outer $$0.5$$ cm. Find the fraction of
+the orange's volume that is peel, and the fraction of a ball of radius $$10$$ that lies within $$1$$
+of its surface.
+
+:::solution
+
+By :ref{#ball-volume}, the whole orange has volume $$\frac43\pi \cdot 4^3$$ and the part inside the
+peel, a ball of radius $$3.5$$, has volume $$\frac43\pi \cdot 3.5^3$$. The $$\frac43\pi$$ cancels in
+the fraction:
+
+```math
+\frac{4^3 - 3.5^3}{4^3} = \frac{64 - 42.875}{64} = \frac{21.125}{64} \approx 0.33
+```
+
+So about a third of the orange is peel, even though the peel is only an eighth of the radius. For
+the ball of radius $$10$$, the fraction is $$\frac{1000 - 729}{1000} = 0.271$$: more than a quarter
+of a ball lies within a tenth of its radius from the surface.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-and-sums-ch-snowflake}
+
+Start with an equilateral triangle of area $$A$$ and sides of length $$s$$. At each step, stick a
+new equilateral triangle on the middle third of every edge, pointing outwards, with side a third of
+that edge. After step $$n$$ the shape has $$3 \cdot 4^n$$ edges, each of length $$\frac{s}{3^n}$$.
+
+1. Show that the perimeter grows past every number.
+2. Show that the area settles towards $$\frac{8}{5}A$$.
+
+:::solution
+
+1. The perimeter after step $$n$$ is $$3 \cdot 4^n \cdot \frac{s}{3^n} = 3s\left(\frac43\right)^n$$.
+   By :ref{#bernoulli} with $$h = \frac13$$, $$\left(\frac43\right)^n \ge 1 + \frac{n}{3}$$, so the
+   perimeter is at least $$3s\left(1 + \frac{n}{3}\right) = 3s + ns$$, which passes any number once
+   $$n$$ is large enough.
+2. A triangle with side a third as long has $$\frac19$$ of the area
+   (:ref{#area-and-scaling/area-scaling}). Step $$k$$ adds one triangle on each of the
+   $$3 \cdot 4^{k - 1}$$ edges there were before it, each of area $$\frac{A}{9^k}$$. So after step
+   $$n$$ the area is
+
+   ```math
+   A + \sum_{k=1}^{n} 3 \cdot 4^{k - 1} \cdot \frac{A}{9^k} = A + \frac{A}{3}\sum_{k=1}^{n}\left(\frac49\right)^{k - 1}
+   ```
+
+   The sum is a geometric sum with $$c = \frac49$$, which settles towards
+   $$\frac{1}{1 - 4/9} = \frac95$$ (:ref{#geometric-series}). So the area settles towards
+   $$A + \frac{A}{3} \cdot \frac95 = \frac85 A$$. By :ref{#geometric-sum}, the gap after step $$n$$
+   is exactly $$\frac{3A}{5}\left(\frac49\right)^n$$. So the shape keeps a finite area while its
+   edge grows past every length.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-and-sums-ch-halves}
+
+1. Show that $$\frac{1}{n + 1} + \frac{1}{n + 2} + \cdots + \frac{1}{2n} \ge \frac12$$ for every
+   $$n \ge 1$$.
+2. Use part 1 and the definition of settling (:ref{#settles-towards}) to give a second proof that
+   the harmonic series doesn't settle, without grouping it into blocks.
+
+:::solution
+
+1. There are $$n$$ terms, and each is at least the smallest, $$\frac{1}{2n}$$. So the sum is at
+   least $$n \cdot \frac{1}{2n} = \frac12$$.
+2. Write $$H_n = 1 + \frac12 + \cdots + \frac1n$$, so part 1 says $$H_{2n} - H_n \ge \frac12$$.
+   Suppose the partial sums settled towards some $$L$$. With the margin $$\frac14$$, there is an
+   $$N$$ with $$|H_n - L| < \frac14$$ for every $$n \ge N$$. Both $$N$$ and $$2N$$ are at least
+   $$N$$, so by :ref{#real-numbers/distance-triangle},
+
+   ```math
+   |H_{2N} - H_N| \le |H_{2N} - L| + |L - H_N| < \tfrac14 + \tfrac14 = \tfrac12
+   ```
+
+   But part 1 with $$n = N$$ says $$H_{2N} - H_N \ge \frac12$$. These can't both hold, so the
+   harmonic series doesn't settle, as :ref{#harmonic-unbounded} showed by grouping.
+
+:::
+
+::::

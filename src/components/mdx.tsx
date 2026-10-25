@@ -262,12 +262,34 @@ import { PegChain } from "./mapping-illustrations/combining-and-undoing";
 import { TicketArrows } from "./mapping-illustrations/combining-and-undoing";
 import { CurveTracer } from "./interactive/curve-tracer";
 import { UndoChain } from "./interactive/undo-chain";
+import { LayerModels } from "./sum-illustrations/areas-and-volumes";
+import { ParabolaStrips } from "./sum-illustrations/areas-and-volumes";
+import { ConeStacks } from "./sum-illustrations/areas-and-volumes";
+import { HalfBallStacks } from "./sum-illustrations/areas-and-volumes";
+import { InsideTheCylinder } from "./sum-illustrations/areas-and-volumes";
+import { RectangleSqueeze } from "./interactive/rectangle-squeeze";
 import { QuarterTurns } from "./complex-illustrations/polar-form";
 import { TurnThenZoom } from "./complex-illustrations/polar-form";
 import { PowersOfOnePlusI } from "./complex-illustrations/powers-and-identities";
 import { ConjugateSum } from "./complex-illustrations/powers-and-identities";
 import { ComplexMultiply } from "./interactive/complex-multiply";
 import { PowerSpiral } from "./interactive/power-spiral";
+import { FoggyLadder } from "./sum-illustrations/induction-in-practice";
+import { FactorTree } from "./sum-illustrations/induction-in-practice";
+import { PaintedDoors } from "./sum-illustrations/induction-in-practice";
+import { CrayonBoxes } from "./sum-illustrations/induction-in-practice";
+import { OrangePyramid } from "./sum-illustrations/adding-up-powers";
+import { StaircaseRectangle } from "./sum-illustrations/adding-up-powers";
+import { CubesSquare } from "./sum-illustrations/adding-up-powers";
+import { StampMaker } from "./interactive/stamp-maker";
+import { SumPictures } from "./interactive/sum-pictures";
+import { BouncingBall } from "./sum-illustrations/geometric-series";
+import { ZenoWalk } from "./sum-illustrations/geometric-series";
+import { DoseBuildUp } from "./sum-illustrations/geometric-series";
+import { BookStack } from "./sum-illustrations/sums-that-never-settle";
+import { HarmonicBlocks } from "./sum-illustrations/sums-that-never-settle";
+import { GeometricBars } from "./interactive/geometric-bars";
+import { PartialSums } from "./interactive/partial-sums";
 import { PizzaSlices } from "./complex-illustrations/roots";
 import { SquareRootsHalved } from "./complex-illustrations/roots";
 import { RootPolygons } from "./complex-illustrations/roots";
@@ -437,12 +459,34 @@ export const mdxComponents = {
   RootPolygons,
   SquareRootsHalved,
   PizzaSlices,
+  PartialSums,
+  GeometricBars,
+  HarmonicBlocks,
+  BookStack,
+  DoseBuildUp,
+  ZenoWalk,
+  BouncingBall,
+  SumPictures,
+  StampMaker,
+  CubesSquare,
+  StaircaseRectangle,
+  OrangePyramid,
+  CrayonBoxes,
+  PaintedDoors,
+  FactorTree,
+  FoggyLadder,
   PowerSpiral,
   ComplexMultiply,
   ConjugateSum,
   PowersOfOnePlusI,
   TurnThenZoom,
   QuarterTurns,
+  RectangleSqueeze,
+  InsideTheCylinder,
+  HalfBallStacks,
+  ConeStacks,
+  ParabolaStrips,
+  LayerModels,
   UndoChain,
   CurveTracer,
   TicketArrows,

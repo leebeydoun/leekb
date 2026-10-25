@@ -1,0 +1,564 @@
+---
+title: Induction in practice
+description:
+  Strong induction, primes, amounts made from stamps, Bernoulli's inequality, counting mappings, and
+  how to find the broken step in a false induction proof.
+---
+
+Imagine climbing a tall ladder in fog so thick that you can't see the top or count the rungs. You
+can still be sure of reaching any rung you like, as long as two things hold. You can get onto the
+bottom rung, and from whichever rung you're standing on, you can reach the one above. Nobody has to
+tell you how tall the ladder is, because those two facts carry you past rung 10, rung 1000 and every
+rung after.
+
+<FoggyLadder caption="A ladder whose top is lost in fog. The bottom rung is the base case, and the arrows are the step: from any rung you can reach the next, so every rung gets reached." />
+
+That way of reaching every rung is **induction**. The guide
+[Proof by induction](../basic-proofs/induction.mdx) set it out as :ref{#basic-proofs/induction},
+with the bottom rung as the base case and the climb from one rung to the next as the inductive step.
+It proved the formula for $$1 + 2 + \cdots + n$$, a fact about divisibility, and an inequality that
+only starts at $$n = 5$$. In this guide we'll use induction on harder statements, including ones
+where a step needs more than the rung right below it, and learn to find the broken step in a proof
+that only looks right.
+
+## Leaning on every rung below
+
+Think about how you'd show that every whole number from $$2$$ on can be built by multiplying primes,
+the numbers like $$2$$, $$3$$, $$5$$ and $$7$$ that don't split. To build $$360$$, you split it as
+$$8 \cdot 45$$ and then build $$8$$ and $$45$$. Knowing about $$359$$, the number right below, is no
+help at all. What you need is every number below $$360$$, since the pieces could be any of them.
+
+On the ladder this changes nothing. By the time you're on rung $$k$$, you've stood on every rung
+below it too, so you may lean on any of them. The theorem below says the same for statements, and
+its proof is ordinary induction applied to the whole climb so far.
+
+:::theorem[Strong induction]{#strong-induction}
+
+Suppose that for each positive integer $$n$$ there is a statement $$P(n)$$, and that:
+
+1. **Base case:** $$P(1)$$ is true.
+2. **Strong inductive step:** for every positive integer $$k$$, if $$P(1)$$, $$P(2)$$, …, $$P(k)$$
+   are all true, then $$P(k + 1)$$ is true.
+
+Then $$P(n)$$ is true for every positive integer $$n$$. The same holds with any whole number $$n_0$$
+in place of $$1$$: if $$P(n_0)$$ is true, and for every $$k \ge n_0$$ the truth of $$P(n_0)$$, …,
+$$P(k)$$ gives $$P(k + 1)$$, then $$P(n)$$ is true for every $$n \ge n_0$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Mathematical_induction#Complete_(strong)_induction"}
+
+Let $$Q(n)$$ be the statement "$$P(1)$$, $$P(2)$$, …, $$P(n)$$ are all true". We prove $$Q(n)$$ for
+every positive integer $$n$$ by ordinary induction (:ref{#basic-proofs/induction}).
+
+**Base case.** $$Q(1)$$ says that $$P(1)$$ is true, which is part 1.
+
+**Inductive step.** Suppose $$Q(k)$$ is true for some positive integer $$k$$.
+
+1. Then $$P(1)$$, …, $$P(k)$$ are all true, because that is what $$Q(k)$$ says.
+2. So $$P(k + 1)$$ is true, by part 2.
+3. So $$P(1)$$, …, $$P(k + 1)$$ are all true, which is $$Q(k + 1)$$.
+
+**Conclusion.** By induction, $$Q(n)$$ is true for every $$n$$. Each $$Q(n)$$ includes $$P(n)$$, so
+$$P(n)$$ is true for every $$n$$.
+
+For a start at $$n_0$$, let $$Q(n)$$ say "$$P(n_0)$$, …, $$P(n)$$ are all true" and run the same
+argument as an induction that starts at $$n_0$$, as in
+[Starting somewhere else](../basic-proofs/induction.mdx#starting-somewhere-else).
+
+:::
+
+So strong induction proves nothing that ordinary induction can't. It lets you write the step the way
+the problem wants it: to reach $$P(k + 1)$$, use whichever earlier cases help.
+
+## Primes, the pieces every number is built from
+
+Try splitting the numbers from $$2$$ to $$12$$ into smaller factors. Some split, like
+$$6 = 2 \cdot 3$$ and $$12 = 3 \cdot 4$$. Others, like $$7$$ and $$11$$, don't split at all: the
+only way to write $$7$$ as a product of two positive whole numbers is $$1 \cdot 7$$. Numbers that
+don't split are the building blocks.
+
+:::definition[Prime]{#prime}
+
+A **prime** is a whole number $$p \ge 2$$ whose only positive divisors (:ref{#numbers/divides}) are
+$$1$$ and $$p$$. A whole number $$n \ge 2$$ that is not prime is called **composite**.
+
+:::
+
+The primes up to $$30$$ are $$2$$, $$3$$, $$5$$, $$7$$, $$11$$, $$13$$, $$17$$, $$19$$, $$23$$ and
+$$29$$. The number $$1$$ is left out on purpose. Leaving it out keeps the factor lists below from
+filling up with $$1$$s, which would change nothing in a product.
+
+<FactorTree caption="A factor tree for 360. Each number that isn't prime splits into two smaller factors, and the branches stop at primes (green). Reading off the ends of the branches, 360 = 2 · 2 · 2 · 3 · 3 · 5." />
+
+The factor tree for $$360$$ is strong induction at work. To build $$360$$ we split it as
+$$8 \cdot 45$$ and built each piece, and to build $$8$$ we split it as $$2 \cdot 4$$. Every split
+leans on numbers far below the one being split. So the proof that every number has a tree like this
+needs every rung below, not only the last one.
+
+:::theorem[Every number is a product of primes]{#prime-factorisation}
+
+Every whole number $$n \ge 2$$ is a prime or a product of primes.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Mathematical_induction#Example:_prime_factorization"}
+
+Let $$P(n)$$ be the statement "$$n$$ is a prime or a product of primes". We use strong induction
+(:ref{#strong-induction}) starting at $$n_0 = 2$$.
+
+**Base case.** The only positive divisors of $$2$$ are $$1$$ and $$2$$, so $$2$$ is prime, and
+$$P(2)$$ is true.
+
+**Strong inductive step.** Let $$k \ge 2$$, and suppose $$P(2)$$, …, $$P(k)$$ are all true. If
+$$k + 1$$ is prime, then $$P(k + 1)$$ is true. Otherwise $$k + 1$$ has a positive divisor $$d$$
+other than $$1$$ and $$k + 1$$, so $$k + 1 = de$$ for a whole number $$e$$.
+
+1. $$d \ge 2$$, since $$d$$ is positive and not $$1$$.
+2. $$e \ge 2$$. Indeed $$e$$ is positive, since $$d$$ and $$de$$ are. And $$e = 1$$ would make
+   $$d = k + 1$$, which we ruled out.
+3. $$d \le k$$ and $$e \le k$$. From $$e \ge 2$$, $$k + 1 = de \ge 2d > d$$, and in the same way
+   $$k + 1 \ge 2e > e$$.
+
+So $$d$$ and $$e$$ both lie between $$2$$ and $$k$$, and $$P(d)$$ and $$P(e)$$ are among the cases
+we may assume. Each of $$d$$ and $$e$$ is a prime or a product of primes. Writing the primes for
+$$d$$ next to the primes for $$e$$ gives $$k + 1 = de$$ as a product of primes, which is
+$$P(k + 1)$$.
+
+**Conclusion.** By strong induction, $$P(n)$$ is true for every $$n \ge 2$$.
+
+:::
+
+Grouping the primes for $$360$$ with powers gives $$360 = 2^3 \cdot 3^2 \cdot 5$$. You can check it:
+$$8 \cdot 9 = 72$$ and $$72 \cdot 5 = 360$$. Splitting $$360$$ another way, as $$10 \cdot 36$$, ends
+with the same primes, $$2 \cdot 5 \cdot 2 \cdot 2 \cdot 3 \cdot 3$$. That the primes always come out
+the same, apart from their order, is true, but its proof needs another fact about primes, and we
+don't prove it here.
+
+## Making amounts from stamps
+
+Imagine a post office machine that sells only 4p and 5p stamps, and a parcel that needs a given
+amount exactly. Some amounts are out of reach. You can make $$8$$, $$9$$ and $$10$$ (as $$4 + 4$$,
+$$4 + 5$$ and $$5 + 5$$), but there is no way to make $$11$$. Writing out the amounts from $$1$$ to
+$$16$$ shows a pattern:
+
+| Amount              | Made from 4p and 5p | Amount | Made from 4p and 5p |
+| ------------------- | ------------------- | ------ | ------------------- |
+| $$1$$, $$2$$, $$3$$ | no                  | $$10$$ | $$5 + 5$$           |
+| $$4$$               | $$4$$               | $$11$$ | no                  |
+| $$5$$               | $$5$$               | $$12$$ | $$4 + 4 + 4$$       |
+| $$6$$, $$7$$        | no                  | $$13$$ | $$4 + 4 + 5$$       |
+| $$8$$               | $$4 + 4$$           | $$14$$ | $$4 + 5 + 5$$       |
+| $$9$$               | $$4 + 5$$           | $$15$$ | $$5 + 5 + 5$$       |
+
+From $$12$$ on, four amounts in a row can be made: $$12$$, $$13$$, $$14$$ and $$15$$. Adding one 4p
+stamp to each gives the next four, $$16$$ to $$19$$, and adding another gives $$20$$ to $$23$$. So
+the gaps stop at $$11$$, and each new amount leans on the amount four below it, not the one right
+below. That is a job for strong induction.
+
+:::proposition[Stamps of 4 and 5]{#stamps}
+
+Every whole number $$n \ge 12$$ can be written as $$n = 4a + 5b$$ for whole numbers $$a \ge 0$$ and
+$$b \ge 0$$. So every amount from 12p up can be made exactly from 4p and 5p stamps.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Mathematical_induction#Example:_forming_dollar_amounts_by_coins"}
+
+Let $$P(n)$$ be the statement "$$n = 4a + 5b$$ for some whole numbers $$a, b \ge 0$$". We use strong
+induction (:ref{#strong-induction}) starting at $$n_0 = 12$$.
+
+**Base case.** $$12 = 4 \cdot 3 + 5 \cdot 0$$, so $$P(12)$$ is true.
+
+**Strong inductive step.** Let $$k \ge 12$$, and suppose $$P(12)$$, …, $$P(k)$$ are all true. We
+show $$P(k + 1)$$, in two cases.
+
+- **If $$k + 1$$ is $$13$$, $$14$$ or $$15$$**, it is in the table: $$13 = 4 \cdot 2 + 5 \cdot 1$$,
+  $$14 = 4 \cdot 1 + 5 \cdot 2$$ and $$15 = 4 \cdot 0 + 5 \cdot 3$$.
+- **If $$k + 1 \ge 16$$**, then $$k + 1 - 4 = k - 3$$ is at least $$12$$ and at most $$k$$, so
+  $$P(k - 3)$$ is one of the cases we may assume. It gives $$k - 3 = 4a + 5b$$ with $$a, b \ge 0$$.
+  Adding $$4$$ to both sides, $$k + 1 = 4(a + 1) + 5b$$, which is $$P(k + 1)$$.
+
+**Conclusion.** By strong induction, $$P(n)$$ is true for every $$n \ge 12$$.
+
+:::
+
+The amounts $$12$$ to $$15$$ act as four base cases. The step reaches back four places, so the first
+amount it can handle is $$16$$, and every amount below that has to be checked by hand. Pick an
+amount in the stamp maker below, and watch the chain of steps run back to one of those four.
+
+<StampMaker />
+
+## Bernoulli's inequality
+
+Picture savings that grow by $$1\%$$ every year. Each year the amount is multiplied by $$1.01$$, so
+after $$n$$ years the starting amount has been multiplied by $$1.01^n$$. Each year also adds $$1\%$$
+of the current amount, which is at least $$1\%$$ of the starting amount. So after $$n$$ years the
+savings have grown by at least $$n\%$$, and $$1.01^n \ge 1 + 0.01n$$.
+
+The same holds for any growth rate $$h$$, and even for a loss, as long as you never lose more than
+everything. In the inequality below, $$h$$ is the fraction gained each year, and a negative $$h$$ is
+a fraction lost. The guide [Geometric series](./geometric-series.mdx) uses it to show that the
+powers of a number between $$0$$ and $$1$$ shrink to $$0$$.
+
+:::proposition[Bernoulli's inequality]{#bernoulli}
+
+For every number $$h \ge -1$$ and every whole number $$n \ge 0$$,
+
+```math
+(1 + h)^n \ge 1 + nh
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Bernoulli%27s_inequality"}
+
+Fix $$h \ge -1$$, and use induction on $$n$$, starting at $$n = 0$$.
+
+**Base case.** For $$n = 0$$ both sides are $$1$$, since $$(1 + h)^0 = 1$$ and
+$$1 + 0 \cdot h = 1$$.
+
+**Inductive step.** Let $$k \ge 0$$ and suppose $$(1 + h)^k \ge 1 + kh$$.
+
+1. The number $$1 + h$$ is at least $$0$$, because $$h \ge -1$$.
+2. So multiplying both sides by $$1 + h$$ keeps the direction:
+   $$(1 + h)^{k + 1} \ge (1 + kh)(1 + h)$$. When $$1 + h > 0$$ this is part 4 of
+   :ref{#real-numbers/inequality-rules}, and when $$1 + h = 0$$ both sides are $$0$$.
+3. Multiplying out, $$(1 + kh)(1 + h) = 1 + (k + 1)h + kh^2$$.
+4. The last term $$kh^2$$ is at least $$0$$, so the right side is at least $$1 + (k + 1)h$$.
+
+Putting steps 2 to 4 together, $$(1 + h)^{k + 1} \ge 1 + (k + 1)h$$.
+
+**Conclusion.** By induction, $$(1 + h)^n \ge 1 + nh$$ for every $$n \ge 0$$.
+
+:::
+
+With $$h = 0.01$$ and $$n = 100$$, the inequality says $$1.01^{100} \ge 1 + 100 \cdot 0.01 = 2$$. So
+savings growing by $$1\%$$ a year at least double in a century. In fact
+$$1.01^{100} \approx 2.705$$, so the inequality is far from tight here, but it needs no calculator.
+The case $$h \ge 0$$ was an exercise in the induction guide
+(:ref{#basic-proofs/ex-induction-bernoulli}), and the proof above also covers losses.
+
+The condition $$h \ge -1$$ is needed for step 1. With $$h = -4$$ and $$n = 3$$, the left side is
+$$(-3)^3 = -27$$ and the right side is $$1 - 12 = -11$$, and $$-27$$ is smaller.
+
+## Functions that turn adding into adding
+
+Imagine a shop that sells rice by weight, where the price of $$x$$ kilos and $$y$$ kilos bought
+together is the price of $$x$$ kilos plus the price of $$y$$ kilos. Then 3 kilos cost the same as 1
+kilo three times over: $$f(3) = f(1 + 1 + 1) = f(1) + f(1) + f(1)$$. Induction turns that into a
+statement for every whole number.
+
+:::proposition[Additive functions on whole numbers]{#additive-integers}
+
+Let $$f$$ be a function from the numbers to the numbers (:ref{#functions/function}) with
+$$f(x + y) = f(x) + f(y)$$ for all numbers $$x$$ and $$y$$. Then $$f(0) = 0$$, and $$f(n) = n f(1)$$
+for every whole number $$n \ge 1$$.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Cauchy%27s_functional_equation#Solutions_over_the_rational_numbers"}
+
+**The value at 0.** Put $$x = y = 0$$: $$f(0) = f(0 + 0) = f(0) + f(0)$$. Subtracting $$f(0)$$ from
+both sides gives $$0 = f(0)$$.
+
+**Whole numbers.** Let $$P(n)$$ be the statement "$$f(n) = n f(1)$$", and use induction on $$n$$.
+
+- **Base case.** $$P(1)$$ says $$f(1) = 1 \cdot f(1)$$, which is true.
+- **Inductive step.** Suppose $$f(k) = k f(1)$$. Then
+
+  ```math
+  \begin{aligned}
+  f(k + 1) &= f(k) + f(1) &&\qquad \text{the rule, with } x = k \text{ and } y = 1 \\
+  &= k f(1) + f(1) &&\qquad \text{the assumption } P(k) \\
+  &= (k + 1) f(1) &&\qquad \text{taking out the factor } f(1)
+  \end{aligned}
+  ```
+
+  which is $$P(k + 1)$$.
+
+**Conclusion.** By induction, $$f(n) = n f(1)$$ for every whole number $$n \ge 1$$.
+
+:::
+
+So if 1 kilo of rice costs £2, the rule forces 7 kilos to cost seven times £2, which is £14. One of
+the exercises below carries this on to negative whole numbers.
+
+## Counting mappings
+
+Imagine painting a row of three doors, each one blue or orange. A painting gives each door one
+colour, so it is a mapping from the set of doors to the set of colours
+(:ref{#mappings-and-permutations/mapping}). Door 1 has 2 choices, door 2 has 2, and door 3 has 2, so
+there are $$2 \cdot 2 \cdot 2 = 8$$ paintings. Sorting them by the colour of the last door shows
+where the doubling comes from.
+
+<PaintedDoors caption="The eight ways to paint three doors blue or orange. Each group fixes the colour of door 3, and within it doors 1 and 2 run through their four paintings. So each new door doubles the count." />
+
+Each group holds a full copy of the four ways to paint doors 1 and 2. Adding one more door with
+$$m$$ colours multiplies the count by $$m$$, and that step from $$k$$ doors to $$k + 1$$ doors is
+exactly an inductive step. Counting here means listing each mapping exactly once, as in
+:ref{#mappings-and-permutations/one-to-one-and-onto-count}.
+
+:::theorem[Counting mappings]{#counting-mappings}
+
+Let $$T$$ be a set with $$m \ge 1$$ elements. For every $$n \ge 1$$, if $$S$$ is a set with $$n$$
+elements, there are exactly $$m^n$$ mappings from $$S$$ to $$T$$.
+
+:::
+
+:::proof{source="https://proofwiki.org/wiki/Cardinality_of_Set_of_All_Mappings"}
+
+Let $$P(n)$$ be the statement "every set with $$n$$ elements has exactly $$m^n$$ mappings to $$T$$",
+and use induction on $$n$$.
+
+**Base case.** Let $$S = \{x_1\}$$. A mapping from $$S$$ to $$T$$ is fixed by the one value
+$$f(x_1)$$, which can be any element of $$T$$. So there is one mapping for each element of $$T$$,
+and that is $$m = m^1$$ mappings.
+
+**Inductive step.** Suppose $$P(k)$$ is true, and let $$S$$ have $$k + 1$$ elements, listed as
+$$x_1, \ldots, x_{k + 1}$$. Let $$S'$$ be the set $$\{x_1, \ldots, x_k\}$$, which has $$k$$
+elements.
+
+1. A mapping $$f: S \to T$$ is fixed by two things: what it does on $$S'$$, which is a mapping
+   $$g: S' \to T$$, and the value $$f(x_{k + 1})$$, which is some $$t$$ in $$T$$.
+2. In the other direction, any mapping $$g: S' \to T$$ and any $$t$$ in $$T$$ give exactly one
+   mapping $$f$$: send each $$x_i$$ in $$S'$$ to $$g(x_i)$$, and send $$x_{k + 1}$$ to $$t$$.
+3. So for each $$t$$ in $$T$$, the mappings $$f$$ with $$f(x_{k + 1}) = t$$ match the mappings
+   $$g: S' \to T$$ one for one. By $$P(k)$$ there are $$m^k$$ of those.
+4. Every mapping $$f$$ has exactly one value at $$x_{k + 1}$$, so listing the $$m$$ groups one after
+   another lists every mapping exactly once. That makes $$m \cdot m^k = m^{k + 1}$$ mappings.
+
+So $$P(k + 1)$$ is true.
+
+**Conclusion.** By induction, $$P(n)$$ is true for every $$n \ge 1$$.
+
+:::
+
+A quiz with 4 questions, each answered A, B, C or D, has an answer sheet that is a mapping from the
+4 questions to the 4 letters. So there are $$4^4 = 256$$ possible answer sheets. The mappings from
+$$\{1, 2, 3\}$$ to itself number $$3^3 = 27$$, and only $$3! = 6$$ of those are permutations
+(:ref{#mappings-and-permutations/permutation-count}). The other 21 send two numbers to the same
+place.
+
+## A proof that goes wrong
+
+Every induction proof has the same two parts, so a false one has to hide its mistake in one of them.
+Here is a "proof" of something plainly false. Read it once and see whether it convinces you, before
+we find the broken step.
+
+> **Claim.** In every box of $$n$$ crayons, all the crayons are the same colour.
+>
+> **Base case.** A box of $$1$$ crayon has only one colour in it.
+>
+> **Inductive step.** Suppose every box of $$k$$ crayons is all one colour, and take a box of
+> $$k + 1$$. Lift out one crayon, A. The other $$k$$ are one colour, by the assumption. Put A back
+> and lift out a different crayon, B. Again the other $$k$$ are one colour. The crayons other than A
+> and B were in both groups, so the two groups share a colour, and all $$k + 1$$ crayons match.
+
+The step sounds right for big boxes, and it is right for them. The trouble is the sentence "the
+crayons other than A and B were in both groups". Count them: there are $$k - 1$$, and when $$k = 1$$
+there are none.
+
+<CrayonBoxes caption="In a box of 4 crayons, leaving out B and leaving out A gives two groups of 3 that share the two middle crayons, so the groups must match. In a box of 2, the groups are A alone and B alone, nothing joins them, and A and B can differ." />
+
+So the step from $$1$$ crayon to $$2$$ fails. The base case holds, and every later step works from
+$$k = 2$$ on, but the ladder is missing its second rung, so nothing above the first rung is ever
+reached. A box with one blue and one orange crayon breaks the claim, and the step from $$1$$ to
+$$2$$ is exactly where.
+
+The crayon proof and the slips named in the induction guide suggest what to check in any induction
+proof of your own:
+
+1. **Say exactly what $$P(n)$$ is**, and the number it starts from.
+2. **Check every base case the step needs.** A step that reaches back four places, as with the
+   stamps, needs four base cases.
+3. **Test the step at its smallest $$k$$ with real numbers.** The crayon step looks fine in general
+   and fails at $$k = 1$$.
+4. **Assume $$P(k)$$ and prove $$P(k + 1)$$.** In the step you may assume $$P(k)$$, or for strong
+   induction every case up to $$k$$, but never $$P(k + 1)$$ itself, which is what you are trying to
+   reach.
+5. **Don't stop at examples.** Checking the first few cases, however many, tells you what to prove.
+   It isn't a proof.
+
+## Exercises
+
+:::::accordion[Exercises on induction in practice, with solutions]
+
+::::exercise{#ex-induction-in-practice-factor}
+
+Write $$84$$ and $$1001$$ as products of primes, showing each split you make. Then write each answer
+with powers.
+
+:::solution
+
+Split off a small factor each time, as in the factor tree for $$360$$:
+
+- $$84 = 2 \cdot 42 = 2 \cdot 2 \cdot 21 = 2 \cdot 2 \cdot 3 \cdot 7$$, so
+  $$84 = 2^2 \cdot 3 \cdot 7$$. Check: $$4 \cdot 3 \cdot 7 = 84$$.
+- $$1001$$ has no factor $$2$$, $$3$$ or $$5$$, but trying $$7$$ works: $$1001 = 7 \cdot 143$$, and
+  $$143 = 11 \cdot 13$$. So $$1001 = 7 \cdot 11 \cdot 13$$, with every prime appearing once. Check:
+  $$7 \cdot 11 = 77$$ and $$77 \cdot 13 = 1001$$.
+
+Each of $$2$$, $$3$$, $$7$$, $$11$$ and $$13$$ is prime (:ref{#prime}), so the splitting stops
+there.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-in-practice-two-ways}
+
+Make $$29$$p from 4p and 5p stamps in two different ways. Then show that $$11$$p can't be made at
+all.
+
+:::solution
+
+- $$29 = 4 \cdot 6 + 5 = 24 + 5$$: six 4p stamps and one 5p stamp.
+- $$29 = 4 + 5 \cdot 5 = 4 + 25$$: one 4p stamp and five 5p stamps.
+
+For $$11$$p, the number of 5p stamps can only be $$0$$, $$1$$ or $$2$$, since three would already
+make $$15$$p. That leaves $$11$$, $$6$$ or $$1$$ pence to make from 4p stamps, and none of these is
+a multiple of $$4$$. So $$11$$p can't be made, which is why :ref{#stamps} starts at $$12$$.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-in-practice-bernoulli-numbers}
+
+Use :ref{#bernoulli} to show that $$1.05^{20} \ge 2$$ and that $$0.98^{10} \ge 0.8$$. Then find both
+powers on a calculator and compare.
+
+:::solution
+
+1. With $$h = 0.05$$ and $$n = 20$$: $$1.05^{20} \ge 1 + 20 \cdot 0.05 = 2$$. A calculator gives
+   $$1.05^{20} \approx 2.653$$.
+2. With $$h = -0.02$$, which is at least $$-1$$, and $$n = 10$$:
+   $$0.98^{10} \ge 1 + 10 \cdot (-0.02) = 0.8$$. A calculator gives $$0.98^{10} \approx 0.817$$.
+
+In both cases the true power is a little above the bound. In money terms, losing $$2\%$$ a year for
+ten years leaves at least $$80\%$$ of what you started with.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-in-practice-three-seven}
+
+Prove that every amount of at least 12p can be made from 3p and 7p stamps. Say how many base cases
+you need, and why.
+
+:::solution
+
+Let $$P(n)$$ say "$$n = 3a + 7b$$ for whole numbers $$a, b \ge 0$$". The step will add one 3p stamp
+to the amount three below, so it reaches back three places and needs three base cases:
+
+- $$12 = 3 \cdot 4$$
+- $$13 = 3 \cdot 2 + 7$$
+- $$14 = 7 \cdot 2$$
+
+**Strong inductive step.** Let $$k \ge 14$$ and suppose $$P(12)$$, …, $$P(k)$$ are true. Then
+$$k + 1 \ge 15$$, so $$k - 2$$ is between $$12$$ and $$k$$, and $$P(k - 2)$$ gives
+$$k - 2 = 3a + 7b$$. Adding $$3$$, $$k + 1 = 3(a + 1) + 7b$$.
+
+**Conclusion.** By :ref{#strong-induction} with the three base cases, $$P(n)$$ holds for every
+$$n \ge 12$$. The amount $$11$$ is out of reach: with no 7p stamp, $$11$$ pence are left for 3p
+stamps, and with one, $$4$$ pence are left, and neither is a multiple of $$3$$. So $$12$$ is the
+right place to start.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-in-practice-negative}
+
+Let $$f$$ be a function with $$f(x + y) = f(x) + f(y)$$ for all numbers $$x$$ and $$y$$. Using
+:ref{#additive-integers}, show that $$f(-n) = -n f(1)$$ for every whole number $$n \ge 1$$.
+
+:::solution
+
+Put $$x = n$$ and $$y = -n$$ into the rule:
+
+```math
+f(n) + f(-n) = f(n + (-n)) = f(0) = 0
+```
+
+using $$f(0) = 0$$ from :ref{#additive-integers}. So $$f(-n) = -f(n)$$, and since $$f(n) = n f(1)$$,
+this gives $$f(-n) = -n f(1)$$. So $$f(n) = n f(1)$$ holds for every whole number $$n$$, positive,
+zero or negative.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-in-practice-mappings}
+
+1. A bike lock has 4 dials, each showing a digit from 0 to 9. Count its settings.
+2. Count the mappings from $$\{1, 2, 3\}$$ to itself, and count how many of them are not one to one.
+
+:::solution
+
+1. A setting gives each of the 4 dials one of 10 digits, so it is a mapping from a set of 4 dials to
+   a set of 10 digits. By :ref{#counting-mappings} there are $$10^4 = 10000$$ settings.
+2. There are $$3^3 = 27$$ mappings, by :ref{#counting-mappings}. The one to one mappings from
+   $$\{1, 2, 3\}$$ to itself are the permutations, and there are $$3! = 6$$ of them
+   (:ref{#mappings-and-permutations/permutation-count}). So $$27 - 6 = 21$$ mappings are not one to
+   one.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-in-practice-find-the-flaw}
+
+Here is a "proof" that every amount from 4p up can be made from 4p and 5p stamps. Find the amount
+where the claim fails, and the exact place where the proof goes wrong.
+
+> **Base case.** $$4 = 4$$. **Strong step.** Suppose every amount from $$4$$ to $$k$$ can be made.
+> Then $$k + 1 = (k - 3) + 4$$, and $$k - 3$$ can be made by the assumption, so adding a 4p stamp
+> makes $$k + 1$$.
+
+:::solution
+
+The claim fails at $$6$$p: one 5p stamp leaves $$1$$p, and no 5p stamps leaves $$6$$p, and neither
+is a multiple of $$4$$.
+
+The proof uses $$P(k - 3)$$, but the assumption only covers amounts from $$4$$ to $$k$$. For
+$$k + 1 = 5$$, $$6$$ or $$7$$, the amount $$k - 3$$ is $$1$$, $$2$$ or $$3$$, which is below $$4$$,
+so the assumption says nothing about it. The step reaches back four places, so it needs four base
+cases in a row, and that is why :ref{#stamps} starts at $$12$$ with the base cases $$12$$ to $$15$$.
+
+:::
+
+::::
+
+::::exercise{#ex-induction-in-practice-fibonacci}
+
+The numbers $$F_1 = 1$$, $$F_2 = 1$$ and $$F_{n + 1} = F_n + F_{n - 1}$$ for $$n \ge 2$$ begin
+$$1, 1, 2, 3, 5, 8, 13$$. Prove by strong induction that $$F_n \le 2^n$$ for every $$n \ge 1$$.
+
+:::solution
+
+Let $$P(n)$$ say "$$F_n \le 2^n$$". The step uses the two cases before it, so check two base cases:
+$$F_1 = 1 \le 2$$ and $$F_2 = 1 \le 4$$.
+
+**Strong inductive step.** Let $$k \ge 2$$ and suppose $$P(1)$$, …, $$P(k)$$ are true. Then
+
+```math
+\begin{aligned}
+F_{k + 1} &= F_k + F_{k - 1} &&\qquad \text{the rule for the numbers} \\
+&\le 2^k + 2^{k - 1} &&\qquad P(k) \text{ and } P(k - 1) \\
+&\le 2^k + 2^k = 2^{k + 1} &&\qquad 2^{k - 1} \le 2^k
+\end{aligned}
+```
+
+which is $$P(k + 1)$$. Here $$k - 1 \ge 1$$, so $$P(k - 1)$$ is one of the cases assumed.
+
+**Conclusion.** By :ref{#strong-induction}, $$F_n \le 2^n$$ for every $$n \ge 1$$. For example,
+$$F_7 = 13 \le 128$$.
+
+:::
+
+::::
+
+:::::

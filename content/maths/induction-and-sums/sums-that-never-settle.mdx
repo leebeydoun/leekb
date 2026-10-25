@@ -1,0 +1,422 @@
+---
+title: Sums that never settle
+description:
+  Series and partial sums, why 1 + ½ + ⅓ + ⋯ grows past every number while 1 + ¼ + ⅑ + ⋯ stays below
+  2, and what an endless sum does and doesn't mean.
+---
+
+Imagine stacking identical books at the edge of a table, each one pushed out a little further than
+the one beneath it, so that the top book leans out over the floor. With four books, you can make the
+top one stick out more than a whole book length past the edge, with nothing under it but air. Add
+more books underneath and the overhang keeps growing, though each new book adds less than the one
+before it did.
+
+<BookStack caption="Four books stacked at the edge of a table, each pushed out as far as it can go without the stack tipping. The top book sticks out half a book length past the one below it, and the books underneath stick out a quarter, a sixth and an eighth, so the top book ends 25/24 of a book length past the table edge." />
+
+Balancing the stack is a calculation from physics, which we take on trust here: with one book on
+each level, the top of $$n$$ books can stick out at most
+$$\frac{1}{2}\left(1 + \frac{1}{2} + \cdots + \frac{1}{n}\right)$$ book lengths past the edge. The
+endless sum $$1 + \frac{1}{2} + \frac{1}{3} + \cdots$$ is called the **harmonic series**. Its terms
+shrink towards $$0$$, yet its sums grow past every number, so with enough books the overhang is as
+large as you like. In this guide we'll prove that, contrast it with a sum that does settle, and pin
+down what an endless sum means.
+
+## Series and partial sums
+
+[Geometric series](./geometric-series.mdx) added up endless sums like $$1 + c + c^2 + \cdots$$ by
+watching the sums of the first few terms close in on a number. The same idea works for any endless
+sum. You add the terms one at a time, keep a running total, and ask whether the totals settle.
+
+:::definition[Series and partial sums]{#series}
+
+An endless sum $$a_1 + a_2 + a_3 + \cdots$$ is called a **series**, and $$a_1, a_2, \ldots$$ are its
+**terms**. Its **partial sums** are the running totals
+
+```math
+s_1 = a_1, \qquad s_2 = a_1 + a_2, \qquad s_n = a_1 + a_2 + \cdots + a_n
+```
+
+The series **settles** when its partial sums settle towards a number (:ref{#settles-towards}), and
+that number is called the **sum** of the series.
+
+:::
+
+A list settles towards at most one number, by :ref{#geometric-series-one-limit}, so a series that
+settles has exactly one sum. A series that doesn't settle has no sum at all. For the harmonic series
+the partial sums are $$s_1 = 1$$, $$s_2 = \frac{3}{2}$$, $$s_3 = \frac{11}{6}$$ and
+$$s_4 = \frac{25}{12}$$, and the question is whether these settle.
+
+## The harmonic series grows without bound
+
+The partial sums of the harmonic series grow slowly. The table gives a few, rounded to three decimal
+places.
+
+| Terms $$n$$       | $$1 + \frac{1}{2} + \cdots + \frac{1}{n}$$ |
+| ----------------- | ------------------------------------------ |
+| $$10$$            | $$2.929$$                                  |
+| $$100$$           | $$5.187$$                                  |
+| $$1000$$          | $$7.485$$                                  |
+| $$1{,}000{,}000$$ | $$14.393$$                                 |
+
+Going from a thousand terms to a million adds less than 7, and it can look as if the sums are
+levelling off. They aren't, and the reason shows up when you group the terms in blocks that double
+in length. The block $$\frac{1}{3} + \frac{1}{4}$$ is at least
+$$\frac{1}{4} + \frac{1}{4} = \frac{1}{2}$$. The next block, $$\frac{1}{5}$$ to $$\frac{1}{8}$$, has
+four terms, each at least $$\frac{1}{8}$$, so it is at least $$\frac{1}{2}$$ too. Every block adds
+at least a half, and the blocks never run out.
+
+<HarmonicBlocks caption="The terms 1, 1/2, 1/3, …, 1/16 as bars. In each block, from 1/3 to 1/4, 1/5 to 1/8 and 1/9 to 1/16, the dashed line marks the smallest term, and the bars reach at least that high, so each block adds up to at least 1/2. The grid isn't square: a height of 1 is drawn six times as long as one step across." />
+
+:::theorem[The harmonic series grows without bound]{#harmonic-unbounded}
+
+For every whole number $$m \ge 0$$,
+
+```math
+1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{2^m} \ge 1 + \frac{m}{2}
+```
+
+So for every number $$M$$, from some point on every partial sum
+$$1 + \frac{1}{2} + \cdots + \frac{1}{n}$$ is bigger than $$M$$, and the harmonic series doesn't
+settle.
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Harmonic_series_(mathematics)#Comparison_test"}
+
+Write $$H_n$$ for $$1 + \frac{1}{2} + \cdots + \frac{1}{n}$$. We prove
+$$H_{2^m} \ge 1 + \frac{m}{2}$$ by induction on $$m$$ (:ref{#basic-proofs/induction}).
+
+**Base case.** For $$m = 0$$, $$H_1 = 1 = 1 + \frac{0}{2}$$.
+
+**Inductive step.** Suppose $$H_{2^k} \ge 1 + \frac{k}{2}$$ for some $$k \ge 0$$. Going from
+$$H_{2^k}$$ to $$H_{2^{k+1}}$$ adds the block $$\frac{1}{2^k + 1} + \cdots + \frac{1}{2^{k+1}}$$. It
+has $$2^{k+1} - 2^k = 2^k$$ terms, and the smallest is the last, $$\frac{1}{2^{k+1}}$$. So
+
+```math
+\begin{aligned}
+H_{2^{k+1}} &= H_{2^k} + \left(\frac{1}{2^k + 1} + \cdots + \frac{1}{2^{k+1}}\right) &&\qquad \text{add the next block} \\
+&\ge H_{2^k} + 2^k \cdot \frac{1}{2^{k+1}} &&\qquad 2^k \text{ terms, each at least } \tfrac{1}{2^{k+1}} \\
+&= H_{2^k} + \frac{1}{2} &&\qquad \text{cancel } 2^k \\
+&\ge 1 + \frac{k}{2} + \frac{1}{2} = 1 + \frac{k + 1}{2} &&\qquad \text{the assumption for } k
+\end{aligned}
+```
+
+By induction, $$H_{2^m} \ge 1 + \frac{m}{2}$$ for every $$m \ge 0$$.
+
+Now take any number $$M$$. By part 2 of :ref{#real-numbers/no-gaps}, there is a whole number
+$$m > 2M$$ (if $$M$$ is negative, $$m = 0$$ will do), and then $$H_{2^m} \ge 1 + \frac{m}{2} > M$$.
+Every term is positive, so the partial sums only grow, and $$H_n \ge H_{2^m} > M$$ for every
+$$n \ge 2^m$$.
+
+Finally, suppose the partial sums settled towards some $$L$$. With the margin $$1$$, from some point
+on every $$H_n$$ would be less than $$L + 1$$. But with $$M = L + 1$$, from some point on every
+$$H_n$$ is bigger than $$L + 1$$. Any $$n$$ past both points gives a contradiction, so the series
+doesn't settle.
+
+:::
+
+The terms $$\frac{1}{n}$$ settle towards $$0$$, as the first example in
+[Geometric series](./geometric-series.mdx#settling-towards-a-number) showed, and still the sums
+don't settle. That is a slip worth naming: a series whose terms shrink to $$0$$ needn't settle. The
+terms must shrink to $$0$$ for a series to settle, as an exercise proves, but that alone isn't
+enough.
+
+## Back to the books
+
+Now the overhang of the book stack can be worked out with numbers. The top of $$n$$ books sticks out
+by up to $$\frac{1}{2}H_n$$ book lengths:
+
+| Books | Overhang (book lengths)                  |
+| ----- | ---------------------------------------- |
+| $$1$$ | $$\frac{1}{2} = 0.5$$                    |
+| $$2$$ | $$\frac{1}{2} \cdot \frac{3}{2} = 0.75$$ |
+| $$3$$ | $$\frac{11}{12} \approx 0.917$$          |
+| $$4$$ | $$\frac{25}{24} \approx 1.042$$          |
+| $$5$$ | $$\frac{137}{120} \approx 1.142$$        |
+
+Four books are the fewest that put the top one a whole book length out, since
+$$H_4 = \frac{25}{12}$$ is the first partial sum of at least $$2$$. Two book lengths needs
+$$H_n \ge 4$$, which first happens at $$n = 31$$, and three book lengths needs $$227$$ books.
+
+The number of books needed grows fast. With books 20 centimetres long, an overhang of a whole metre
+is five book lengths, so it needs $$H_n \ge 10$$, and that first happens at $$n = 12{,}367$$. If
+each book is 3 centimetres thick, the stack is about 371 metres tall. By :ref{#harmonic-unbounded},
+though, some stack reaches every overhang you name.
+
+## The reciprocal squares stay below 2
+
+Squaring the denominators makes the terms shrink much faster:
+$$1 + \frac{1}{4} + \frac{1}{9} + \frac{1}{16} + \cdots$$. The partial sums still grow, but they
+look as if they are levelling off for real this time.
+
+| Terms $$n$$ | $$1 + \frac{1}{4} + \cdots + \frac{1}{n^2}$$ |
+| ----------- | -------------------------------------------- |
+| $$1$$       | $$1$$                                        |
+| $$2$$       | $$1.25$$                                     |
+| $$3$$       | $$1.3611$$                                   |
+| $$4$$       | $$1.4236$$                                   |
+| $$10$$      | $$1.5498$$                                   |
+| $$100$$     | $$1.6350$$                                   |
+| $$1000$$    | $$1.6439$$                                   |
+
+To show they never pass $$2$$, compare each term with a slightly bigger one whose sum you can work
+out. The term $$\frac{1}{4}$$ is less than $$\frac{1}{1 \cdot 2} = 1 - \frac{1}{2}$$, the term
+$$\frac{1}{9}$$ is less than $$\frac{1}{2 \cdot 3} = \frac{1}{2} - \frac{1}{3}$$, and so on. The
+bigger terms cancel in a chain, leaving a total you can write down.
+
+:::theorem[The sum of the reciprocal squares stays below 2]{#reciprocal-squares-bounded}
+
+For every whole number $$n \ge 1$$,
+
+```math
+1 + \frac{1}{4} + \frac{1}{9} + \cdots + \frac{1}{n^2} \le 2 - \frac{1}{n} < 2
+```
+
+:::
+
+:::proof{source="https://en.wikipedia.org/wiki/Basel_problem#The_Riemann_zeta_function"}
+
+For $$n = 1$$ the sum is $$1 = 2 - \frac{1}{1}$$. Now let $$n \ge 2$$, and take any $$k$$ from $$2$$
+to $$n$$. Since $$k > k - 1 > 0$$, multiplying by $$k$$ gives $$k^2 > (k - 1)k > 0$$, so by
+:ref{#real-numbers/reciprocal-order},
+
+```math
+\frac{1}{k^2} < \frac{1}{(k - 1)k} = \frac{k - (k - 1)}{(k - 1)k} = \frac{1}{k - 1} - \frac{1}{k}
+```
+
+Adding these for $$k = 2$$ to $$n$$,
+
+```math
+\begin{aligned}
+\frac{1}{2^2} + \cdots + \frac{1}{n^2} &< \left(1 - \frac{1}{2}\right) + \left(\frac{1}{2} - \frac{1}{3}\right) + \cdots + \left(\frac{1}{n - 1} - \frac{1}{n}\right) &&\qquad \text{each term is smaller} \\
+&= 1 - \frac{1}{n} &&\qquad \text{the middle terms cancel}
+\end{aligned}
+```
+
+The cancelling is :ref{#telescoping}, with $$a_k = -\frac{1}{k}$$ and the differences
+$$a_k - a_{k-1}$$ for $$k = 2$$ to $$n$$, which leave $$a_n - a_1 = 1 - \frac{1}{n}$$. Adding the
+first term, $$1$$, to both sides gives a total less than $$2 - \frac{1}{n}$$.
+
+:::
+
+At $$n = 10$$, for example, the bound is $$1.9$$ and the partial sum is about $$1.5498$$. The bound
+is loose, but it holds for every $$n$$, and that is all we need.
+
+## Increasing sums that stay below a ceiling
+
+The partial sums of the reciprocal squares only ever grow, since every term is positive, and they
+never pass $$2$$. Picture them as points on the number line, creeping to the right but stuck to the
+left of $$2$$. They have to bunch up somewhere, and because the real line has no gaps, there is a
+number for them to settle towards.
+
+:::remark[Increasing and bounded sums settle]{#bounded-increasing}
+
+If $$s_1 \le s_2 \le s_3 \le \cdots$$ and there is a number $$B$$ with $$s_n \le B$$ for every
+$$n$$, then the list settles towards a number, and that number is at most $$B$$.
+
+It is the absence of gaps in the real line (:ref{#real-numbers/no-gaps}) in another form. This is
+taken as given.
+
+::see-also{src="https://en.wikipedia.org/wiki/Monotone_convergence_theorem"}
+
+:::
+
+So the series $$1 + \frac{1}{4} + \frac{1}{9} + \cdots$$ settles, and its sum is at most $$2$$. In
+1734 Leonhard Euler found the sum exactly: it is $$\frac{\pi^2}{6} \approx 1.6449$$. The proof needs
+more than this chapter has, so we state it without proof; the
+[Basel problem](https://en.wikipedia.org/wiki/Basel_problem) page tells the story.
+
+The harmonic series also only grows, but it has no ceiling, so the remark says nothing about it. The
+diagram below plots the partial sums of four series from this guide and the last, one at a time, so
+you can compare how they behave.
+
+<PartialSums />
+
+## Why infinity isn't a number
+
+The shorthand for a series uses the sign $$\infty$$, read "infinity":
+
+```math
+\sum_{k=1}^{\infty} \frac{1}{k^2} = \frac{\pi^2}{6}
+```
+
+This extends the sum notation of :ref{#basic-proofs/sum-notation}, but the $$\infty$$ on top isn't a
+last value of $$k$$. No term $$\frac{1}{\infty^2}$$ gets added, and there is no last step. The whole
+line is shorthand for one statement: the partial sums $$\sum_{k=1}^{n} \frac{1}{k^2}$$ settle
+towards $$\frac{\pi^2}{6}$$. For a series that doesn't settle, the shorthand stands for nothing at
+all.
+
+Two slips come from forgetting that, and both treat a series that doesn't settle as if it had a sum:
+
+- **Grouping**: the series $$1 - 1 + 1 - 1 + \cdots$$ grouped as $$(1 - 1) + (1 - 1) + \cdots$$
+  looks like $$0 + 0 + \cdots = 0$$, but grouped as $$1 + (-1 + 1) + (-1 + 1) + \cdots$$ it looks
+  like $$1$$. Neither is right. The partial sums are $$1, 0, 1, 0, \ldots$$, which never settle, and
+  each grouping picks out only some of them.
+- **A formula used outside its range**: putting $$c = 2$$ into $$\frac{1}{1 - c}$$ gives
+  $$1 + 2 + 4 + \cdots = -1$$. The formula comes from :ref{#geometric-series}, which needs
+  $$|c| < 1$$, and here the partial sums $$2^{n+1} - 1$$ grow past every number.
+
+For a series that settles, grouping terms is safe. The grouped series has as its partial sums some
+of the original partial sums, further and further along, so the margin that works for the original
+sums from the $$N$$-th on works for them too, and they settle towards the same sum.
+
+## Exercises
+
+:::::accordion[Exercises on sums that never settle, with solutions]
+
+::::exercise{#ex-sums-that-never-settle-fractions}
+
+Work out the partial sums $$H_n = 1 + \frac{1}{2} + \cdots + \frac{1}{n}$$ as fractions for
+$$n = 1$$ to $$6$$, and check that $$H_2$$ and $$H_4$$ obey the bound in :ref{#harmonic-unbounded}.
+
+:::solution
+
+Adding one term at a time over a common denominator,
+
+```math
+H_1 = 1, \quad H_2 = \frac{3}{2}, \quad H_3 = \frac{11}{6}, \quad H_4 = \frac{25}{12}, \quad H_5 = \frac{137}{60}, \quad H_6 = \frac{49}{20}
+```
+
+For example, $$H_4 = \frac{11}{6} + \frac{1}{4} = \frac{22}{12} + \frac{3}{12} = \frac{25}{12}$$.
+The bound with $$m = 1$$ says $$H_2 \ge 1 + \frac{1}{2} = \frac{3}{2}$$, which holds with equality.
+With $$m = 2$$ it says $$H_4 \ge 2$$, and $$\frac{25}{12} \approx 2.083$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sums-that-never-settle-five}
+
+Use :ref{#harmonic-unbounded} to find a number of terms $$n$$ for which $$H_n \ge 5$$ is guaranteed.
+A computer finds that $$H_{82} \approx 4.990$$ and $$H_{83} \approx 5.002$$; compare your $$n$$ with
+that.
+
+:::solution
+
+The theorem gives $$H_{2^m} \ge 1 + \frac{m}{2}$$, which is $$5$$ when $$m = 8$$. So
+$$H_{256} \ge 5$$, and since the partial sums only grow, so is every later one. The first partial
+sum that reaches $$5$$ is $$H_{83}$$, so the theorem's $$256$$ is about three times as many terms as
+needed. The grouping throws away a lot, since most terms in each block are bigger than the smallest
+one.
+
+:::
+
+::::
+
+::::exercise{#ex-sums-that-never-settle-coasters}
+
+Beer mats 10 centimetres across are stacked at the edge of a table, one on each level, as far out as
+balance allows. Find how far past the edge the top one can reach with 6 mats, and how many mats are
+needed before it reaches 15 centimetres past the edge.
+
+:::solution
+
+The top of $$n$$ mats reaches $$\frac{1}{2}H_n$$ mat widths, which is $$5H_n$$ centimetres. With 6
+mats, $$H_6 = \frac{49}{20}$$, so the overhang is $$5 \cdot \frac{49}{20} = 12.25$$ centimetres.
+
+Reaching 15 centimetres needs $$5H_n \ge 15$$, that is $$H_n \ge 3$$. From the table,
+$$H_{10} \approx 2.929 < 3$$, and adding the next term, $$H_{11} \approx 2.929 + 0.091 = 3.020$$. So
+eleven mats are needed, reaching about $$15.10$$ centimetres.
+
+:::
+
+::::
+
+::::exercise{#ex-sums-that-never-settle-cubes}
+
+Prove that the partial sums of $$1 + \frac{1}{8} + \frac{1}{27} + \cdots + \frac{1}{n^3}$$ stay
+below $$2$$, and that the series settles.
+
+:::solution
+
+For every whole number $$k \ge 1$$, $$k^3 = k^2 \cdot k \ge k^2 > 0$$, so
+$$\frac{1}{k^3} \le \frac{1}{k^2}$$ by :ref{#real-numbers/reciprocal-order} (with equality at
+$$k = 1$$). Adding these for $$k = 1$$ to $$n$$,
+
+```math
+1 + \frac{1}{8} + \cdots + \frac{1}{n^3} \le 1 + \frac{1}{4} + \cdots + \frac{1}{n^2} < 2
+```
+
+by :ref{#reciprocal-squares-bounded}. Every term is positive, so the partial sums increase, and they
+stay below $$2$$. By :ref{#bounded-increasing}, the series settles, to a number at most $$2$$. (Its
+sum is about $$1.202$$.)
+
+:::
+
+::::
+
+::::exercise{#ex-sums-that-never-settle-terms}
+
+Prove that if a series $$a_1 + a_2 + \cdots$$ settles, then its terms $$a_n$$ settle towards $$0$$.
+Explain why the harmonic series shows that the reverse is false.
+
+:::solution
+
+Let the partial sums $$s_n$$ settle towards $$L$$, and name a margin $$\varepsilon > 0$$. Using the
+margin $$\frac{\varepsilon}{2}$$, there is an $$N$$ with $$|s_n - L| < \frac{\varepsilon}{2}$$ for
+every $$n \ge N$$. For every $$n \ge N + 1$$, both $$s_n$$ and $$s_{n-1}$$ are that close to $$L$$,
+so
+
+```math
+\begin{aligned}
+|a_n - 0| &= |s_n - s_{n-1}| &&\qquad \text{the two sums differ by the term } a_n \\
+&\le |s_n - L| + |L - s_{n-1}| &&\qquad \text{the triangle inequality for distances} \\
+&< \tfrac{\varepsilon}{2} + \tfrac{\varepsilon}{2} = \varepsilon &&\qquad \text{both are within } \tfrac{\varepsilon}{2} \text{ of } L
+\end{aligned}
+```
+
+The second step is :ref{#real-numbers/distance-triangle}. So the terms settle towards $$0$$.
+
+The reverse would say that a series whose terms settle towards $$0$$ settles. The harmonic series
+has terms $$\frac{1}{n}$$ settling towards $$0$$, but by :ref{#harmonic-unbounded} it doesn't
+settle.
+
+:::
+
+::::
+
+::::exercise{#ex-sums-that-never-settle-roots}
+
+Prove that $$\frac{1}{\sqrt{1}} + \frac{1}{\sqrt{2}} + \cdots + \frac{1}{\sqrt{n}} \ge \sqrt{n}$$
+for every $$n \ge 1$$, check it at $$n = 4$$, and deduce that the partial sums grow past every
+number.
+
+:::solution
+
+For each $$k$$ from $$1$$ to $$n$$, $$\sqrt{k} \le \sqrt{n}$$, so
+$$\frac{1}{\sqrt{k}} \ge \frac{1}{\sqrt{n}}$$ by :ref{#real-numbers/reciprocal-order}. The sum has
+$$n$$ terms, each at least $$\frac{1}{\sqrt{n}}$$, so it is at least
+$$n \cdot \frac{1}{\sqrt{n}} = \sqrt{n}$$.
+
+At $$n = 4$$, the sum is about $$1 + 0.7071 + 0.5774 + 0.5 = 2.7845$$, and $$\sqrt{4} = 2$$.
+
+Take any number $$M > 0$$ (for $$M \le 0$$ every partial sum is already bigger). Part 2 of
+:ref{#real-numbers/no-gaps} gives a whole number $$N > M^2$$. For every $$n \ge N$$,
+$$\sqrt{n} \ge \sqrt{N} > M$$, so the partial sum is bigger than $$M$$.
+
+:::
+
+::::
+
+::::exercise{#ex-sums-that-never-settle-doubling}
+
+Here is an argument that $$1 + 2 + 4 + 8 + \cdots = -1$$. Call the sum $$S$$. Then
+$$2S = 2 + 4 + 8 + \cdots$$, which is $$S - 1$$, so $$2S = S - 1$$ and $$S = -1$$. Find the step
+that fails, and say what is true about the partial sums instead.
+
+:::solution
+
+The first step fails: it calls the series a number $$S$$. The partial sums are
+$$s_n = 1 + 2 + \cdots + 2^n = 2^{n+1} - 1$$, by :ref{#geometric-sum}, and they grow past every
+number, so the series has no sum to call $$S$$.
+
+What is true is a statement about each partial sum: doubling $$s_n$$ gives
+$$2 + 4 + \cdots + 2^{n+1} = s_{n+1} - 1$$. Check it with $$n = 2$$: $$2 \cdot 7 = 14 = 15 - 1$$.
+That equation links two different partial sums, so it can't be solved for a single number, and it
+fits sums that keep growing.
+
+:::
+
+::::
+
+:::::
