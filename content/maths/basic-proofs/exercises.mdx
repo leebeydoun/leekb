@@ -704,17 +704,29 @@ The last sum adds $$1$$ twenty times, so it is $$20$$, not $$1$$.
 
 ::::exercise{#ex-sum-of-products}
 
-Find numbers $$x_1, x_2, y_1, y_2$$ for which
+The rules for sums (:ref{#notation-sum-rules}) say that a sum of sums splits into two sums. It is
+tempting to think a sum of products splits the same way, into a product of two sums:
 
 ```math
-\sum_{i=1}^{2} x_i y_i \neq \left(\sum_{i=1}^{2} x_i\right)\left(\sum_{i=1}^{2} y_i\right).
+\sum_{i=1}^{2} x_i y_i \overset{?}{=} \left(\sum_{i=1}^{2} x_i\right)\left(\sum_{i=1}^{2} y_i\right)
 ```
+
+This exercise shows that it doesn't.
+
+1. Write out both sides without the sum sign. The left side multiplies the terms in pairs and then
+   adds; the right side adds each list first and then multiplies.
+2. Find numbers $$x_1$$, $$x_2$$, $$y_1$$ and $$y_2$$ that make the two sides different. One example
+   is enough to show the rule is false (:ref{#counterexample}).
 
 :::solution
 
-Take every number to be $$1$$. The left side is $$1 \cdot 1 + 1 \cdot 1 = 2$$, and the right side is
-$$(1 + 1)(1 + 1) = 4$$. So a sum of products can't be split into a product of sums: multiplying out
-$$(x_1 + x_2)(y_1 + y_2)$$ also gives the cross terms $$x_1 y_2 + x_2 y_1$$.
+1. The left side is $$x_1 y_1 + x_2 y_2$$. The right side is $$(x_1 + x_2)(y_1 + y_2)$$.
+2. Take every number to be $$1$$. The left side is $$1 \cdot 1 + 1 \cdot 1 = 2$$, and the right side
+   is $$(1 + 1)(1 + 1) = 4$$. These are different, so the rule is false.
+
+The reason is the cross terms. Multiplying out the right side gives
+$$x_1 y_1 + x_1 y_2 + x_2 y_1 + x_2 y_2$$, which is the left side plus $$x_1 y_2 + x_2 y_1$$. The
+two sides agree only for numbers that make those extra terms add to $$0$$.
 
 :::
 
