@@ -144,7 +144,7 @@ export function ParabolaCrossings({
     roots.length === 2
       ? `positive, so it crosses twice, at ${at(roots[0]!)} and ${at(roots[1]!)}`
       : roots.length === 1
-        ? `zero, so it just touches the x-axis, at x = ${format(roots[0]!)}`
+        ? `zero, so it touches the x-axis, at x = ${format(roots[0]!)}`
         : "negative, so it never reaches the x-axis";
 
   return (

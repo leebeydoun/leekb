@@ -441,12 +441,7 @@
       "stars": 1,
       "topic": "Congruence",
       "question": "Which statement says the same as $$n \\equiv 0 \\pmod{d}$$?",
-      "options": [
-        "$$n = 0$$",
-        "$$n = d$$",
-        "$$d \\mid n$$",
-        "$$n \\mid d$$"
-      ],
+      "options": ["$$n = 0$$", "$$n = d$$", "$$d \\mid n$$", "$$n \\mid d$$"],
       "answer": 2,
       "explanation": "$$n \\equiv 0$$ means $$d \\mid n - 0$$, which is $$d \\mid n$$ (:ref{#congruence}). So “divisible by $$d$$” and “congruent to $$0$$ modulo $$d$$” are the same thing."
     },
@@ -525,12 +520,7 @@
       "stars": 1,
       "topic": "Rational numbers",
       "question": "Which of these is **not** a rational number?",
-      "options": [
-        "$$\\frac{-5}{2}$$",
-        "$$7$$",
-        "$$0.03$$",
-        "$$\\frac{5}{0}$$"
-      ],
+      "options": ["$$\\frac{-5}{2}$$", "$$7$$", "$$0.03$$", "$$\\frac{5}{0}$$"],
       "answer": 3,
       "explanation": "A rational number is $$\\frac{m}{n}$$ with $$m$$, $$n$$ integers and $$n \\neq 0$$ (:ref{#rational}). $$7 = \\frac{7}{1}$$ and $$0.03 = \\frac{3}{100}$$ are rational, but $$\\frac{5}{0}$$ has no meaning: no number multiplied by $$0$$ gives $$5$$."
     },
@@ -875,12 +865,7 @@
       "stars": 1,
       "topic": "Inverses and division",
       "question": "What is assumed about $$x$$ whenever $$\\frac{1}{x - 2}$$ appears?",
-      "options": [
-        "$$x \\neq 2$$",
-        "$$x \\neq 0$$",
-        "$$x > 2$$",
-        "Nothing"
-      ],
+      "options": ["$$x \\neq 2$$", "$$x \\neq 0$$", "$$x > 2$$", "Nothing"],
       "answer": 0,
       "explanation": "A denominator can never be $$0$$ (:ref{#quotient}), so letters in denominators only take values that keep every denominator non-zero."
     },
@@ -945,12 +930,7 @@
       "stars": 2,
       "topic": "Divisibility",
       "question": "What is the remainder when $$-17$$ is divided by $$5$$?",
-      "options": [
-        "$$-2$$",
-        "$$2$$",
-        "$$3$$",
-        "$$-3$$"
-      ],
+      "options": ["$$-2$$", "$$2$$", "$$3$$", "$$-3$$"],
       "answer": 2,
       "explanation": "The remainder must satisfy $$0 \\le r < 5$$ (:ref{#division-remainder}), and $$-17 = 5 \\cdot (-4) + 3$$. Writing $$-17 = 5 \\cdot (-3) - 2$$ doesn't count, because $$-2$$ is not between $$0$$ and $$4$$."
     },
@@ -961,12 +941,12 @@
       "question": "Why can't an integer have two different remainders when divided by $$d$$?",
       "options": [
         "Because division always gives one answer",
-        "A remainder between $$0$$ and $$d - 1$$ forces $$dq \\le n < dq + d$$, and $$n$$ lies between only one such pair of neighbouring multiples, so $$q$$, and then $$r$$, is fixed",
+        "Two different quotients give leftovers at least $$d$$ apart, but two allowed remainders are less than $$d$$ apart",
         "Because the remainder is defined to be the smallest one",
         "It can; the remainder depends on how the division is done"
       ],
       "answer": 1,
-      "explanation": "From $$n = dq + r$$ with $$0 \\le r < d$$, it follows that $$dq \\le n < dq + d$$: $$n$$ sits in the stretch starting at the multiple $$dq$$. It sits in only one stretch, so $$q$$ is fixed, and so is $$r = n - dq$$ (:ref{#division-remainder})."
+      "explanation": "If $$n = dq + r = dq' + r'$$, then $$d(q - q') = r' - r$$. Different quotients differ by at least $$1$$, so the remainders would differ by at least $$d$$. Two numbers from $$0$$ to $$d - 1$$ are less than $$d$$ apart, so the quotients are equal, and then so are the remainders (:ref{#division-remainder})."
     },
     {
       "id": "gcd-meaning",
@@ -1071,12 +1051,7 @@
       "stars": 1,
       "topic": "Inverses and division",
       "question": "What is $$2^{-3}$$?",
-      "options": [
-        "$$-8$$",
-        "$$-6$$",
-        "$$\\frac{1}{8}$$",
-        "$$\\frac{1}{6}$$"
-      ],
+      "options": ["$$-8$$", "$$-6$$", "$$\\frac{1}{8}$$", "$$\\frac{1}{6}$$"],
       "answer": 2,
       "explanation": "A negative power means a power of the inverse: $$2^{-3} = \\left(\\frac{1}{2}\\right)^3 = \\frac{1}{8}$$ (:ref{#negative-powers}). A negative exponent doesn't make the answer negative."
     },

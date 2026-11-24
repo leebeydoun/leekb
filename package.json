@@ -4,9 +4,9 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "dev": "fumapress dev",
+    "dev": "fumapress --port 4000 dev",
     "build": "fumapress build",
-    "start": "fumapress start",
+    "start": "fumapress --port 4000 start",
     "types:check": "tsc --noEmit",
     "format": "prettier --write \"content/**/*.{md,mdx}\"",
     "format:check": "prettier --check \"content/**/*.{md,mdx}\""

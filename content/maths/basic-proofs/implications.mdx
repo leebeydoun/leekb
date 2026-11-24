@@ -23,6 +23,18 @@ Many statements have the form "**if** $$P$$, **then** $$Q$$". Here $$P$$ is call
 statement promises only one thing: whenever $$P$$ is true, $$Q$$ is true too. It says nothing about
 what happens when $$P$$ is false.
 
+There are four possible situations. Only one breaks the promise:
+
+| Hypothesis $$P$$ | Conclusion $$Q$$ | Does this break “if $$P$$, then $$Q$$”? |
+| ---------------- | ---------------- | --------------------------------------- |
+| true             | true             | no                                      |
+| true             | false            | **yes**                                 |
+| false            | true             | no promise was made                     |
+| false            | false            | no promise was made                     |
+
+This table is the safest way to interpret a conditional: first ask whether the hypothesis occurred;
+only then ask whether the promised conclusion followed.
+
 Two other statements are built from the same parts, and it is important to keep them apart. The
 converse swaps the two parts round. The contrapositive swaps them and also denies both: if the
 promise is "score over $$90$$ means an A", the contrapositive is "no A means you didn't score over
@@ -36,6 +48,20 @@ For a statement "if $$P$$, then $$Q$$":
 - its **contrapositive** is "if not $$Q$$, then not $$P$$"
 
 :::
+
+Keep the transformations separate:
+
+```math
+\begin{array}{rcl}
+\text{original}      &:& P \longrightarrow Q \\
+\text{converse}      &:& Q \longrightarrow P \qquad \text{(swap)} \\
+\text{contrapositive}&:& \text{not }Q \longrightarrow \text{not }P
+                         \qquad \text{(swap and negate)}
+\end{array}
+```
+
+The converse is a new claim. The contrapositive is the original promise described from the other
+end: both fail in exactly the situation where $$P$$ is true and $$Q$$ is false.
 
 Take the true statement "if $$n$$ is a multiple of $$4$$, then $$n$$ is even".
 
@@ -55,7 +81,21 @@ true. Its converse, "if $$x^2 > 4$$, then $$x > 2$$", is false: $$x = -3$$ has $
 is not greater than $$2$$. So knowing a statement is true tells you nothing about its converse; the
 converse needs its own proof, or its own counterexample.
 
-The contrapositive, on the other hand, is always true or false along with the original.
+:::example[Pause and transform]
+
+For “if an integer is divisible by $$6$$, then it is even”:
+
+- the hypothesis is “divisible by $$6$$”;
+- the conclusion is “even”;
+- the converse is “if it is even, then it is divisible by $$6$$”;
+- the contrapositive is “if it is not even, then it is not divisible by $$6$$”.
+
+The converse is false because $$4$$ is even but not divisible by $$6$$. The contrapositive is true
+with the original.
+
+:::
+
+The contrapositive is always true or false along with the original.
 
 :::proposition[A statement agrees with its contrapositive]{#contrapositive-equivalent}
 
@@ -66,24 +106,44 @@ both true or both false.
 
 :::proof{source="https://en.wikipedia.org/wiki/Contraposition#Simple_proof_by_contradiction"}
 
-There are two things to show: if the original is true then so is the contrapositive, and the other
-way round.
+**Plan.** The proposition says that the two statements always have the same truth value. We must
+therefore prove two directions: the original implies the contrapositive, and the contrapositive
+implies the original.
 
-**If the original is true, so is the contrapositive.** Suppose "if $$P$$, then $$Q$$" is true, and
-suppose $$Q$$ fails. If $$P$$ held, the original statement would make $$Q$$ hold too, but $$Q$$
-fails. So $$P$$ doesn't hold. The argument started from "not $$Q$$" and reached "not $$P$$", which
-is exactly what the contrapositive says.
+**First direction: assume the original is true.** Our goal is to prove the contrapositive: if $$Q$$
+is false, then $$P$$ is false.
 
-**If the contrapositive is true, so is the original.** Take the contrapositive of the
-contrapositive. The contrapositive of "if not $$Q$$, then not $$P$$" is "if not not $$P$$, then not
-not $$Q$$", and since saying "not" twice cancels out, that is "if $$P$$, then $$Q$$": the original.
-Now apply the first half, with the contrapositive playing the part of the original: if the
-contrapositive is true, so is its own contrapositive, which is the original statement.
+Suppose $$Q$$ is false. If $$P$$ were true, the original statement “if $$P$$, then $$Q$$” would
+force $$Q$$ to be true. That contradicts our assumption that $$Q$$ is false. Therefore $$P$$ must be
+false. We started with “not $$Q$$” and reached “not $$P$$”, so the contrapositive is true.
+
+**Second direction: assume the contrapositive is true.** Our goal is to prove the original. The
+contrapositive of “if not $$Q$$, then not $$P$$” is
+
+```math
+\text{if not-not }P,\text{ then not-not }Q.
+```
+
+Saying “not” twice cancels out, so this is “if $$P$$, then $$Q$$”, the original statement. The first
+direction already showed that a true statement has a true contrapositive. Apply it now to the
+assumed statement “if not $$Q$$, then not $$P$$”: its contrapositive, the original statement, must
+also be true.
+
+**Conclusion.** Each statement implies the other, so an implication and its contrapositive are
+always true or false together.
 
 :::
 
 This gives a second way to prove an "if, then" statement: prove its contrapositive instead. It helps
 whenever "not $$Q$$" gives more to work with than $$P$$.
+
+Use the same routine each time:
+
+1. Name the hypothesis $$P$$ and conclusion $$Q$$.
+2. Write “not $$Q$$” carefully, including its domain and quantifiers.
+3. Write “not $$P$$”. This is the target.
+4. Prove the direct statement “if not $$Q$$, then not $$P$$”.
+5. State that the original follows because it is equivalent to its contrapositive.
 
 :::example[Proving the contrapositive]
 
@@ -92,16 +152,21 @@ whenever "not $$Q$$" gives more to work with than $$P$$.
 Trying this directly is awkward: knowing $$3n + 2 = 2k + 1$$ gives $$3n = 2k - 1$$, and there is no
 clear route from there to $$n$$. The contrapositive takes one line.
 
-**Contrapositive.** If $$n$$ is **not** odd, then $$3n + 2$$ is **not** odd. In other words: if
-$$n$$ is even, then $$3n + 2$$ is even.
+**Choose the method.** A direct proof does not give an obvious route to the goal. We instead prove
+the equivalent contrapositive: if $$n$$ is even, then $$3n+2$$ is even.
 
-**Proof of the contrapositive.** Write $$n = 2k$$. Then
+**Assume.** Let $$n$$ be even. Then $$n=2k$$ for some integer $$k$$.
+
+**Goal.** Show that $$3n+2$$ is even, so we need to write it as $$2$$ times an integer.
+
+**Reasoning.** Substitute $$n=2k$$ and factor out $$2$$:
 
 ```math
-3n + 2 = 6k + 2 = 2(3k + 1)
+3n+2=3(2k)+2=6k+2=2(3k+1).
 ```
 
-which is even. By :ref{#contrapositive-equivalent}, the original claim is true too.
+Since $$3k+1$$ is an integer, $$3n+2$$ is even. This proves the contrapositive. By
+:ref{#contrapositive-equivalent}, the original claim is therefore true as well.
 
 :::
 
@@ -153,15 +218,91 @@ thing. Proving an "exactly when" statement therefore takes **two** proofs, one i
 and a proof that only does one of them is only half finished. It helps to label the two halves
 clearly.
 
+:::example[The last-digit test, proved both ways]
+
+**Claim.** A whole number $$n$$ is even exactly when its last digit is one of $$0,2,4,6,8$$.
+
+The words **exactly when** ask us to prove two separate promises:
+
+1. starting with an even number, we can show that its last digit is in the list; and
+2. starting with a number whose last digit is in the list, we can show that the number is even.
+
+We will use the fact that every whole number can be written as
+
+```math
+n=10q+r,
+```
+
+where $$q$$ is a whole number and $$r$$ is the last digit. For example, $$246=10(24)+6$$, so
+$$q=24$$ and its last digit is $$r=6$$. Because $$r$$ is a digit, it must be one of
+$$0,1,2,3,4,5,6,7,8,9$$.
+
+**First direction: start by assuming that $$n$$ is even.**
+
+Our goal in this direction is to prove that the last digit $$r$$ is one of $$0,2,4,6,8$$. This is
+the result we are trying to reach, not something we are assuming.
+
+Because $$n$$ is even, we can write $$n=2k$$ for some whole number $$k$$. We also know that
+$$n=10q+r$$. Therefore,
+
+```math
+\begin{aligned}
+  r &= n-10q            && \text{rearrange }n=10q+r,\\
+    &= 2k-10q           && \text{because }n=2k,\\
+    &= 2(k-5q).         && \text{factor out }2
+\end{aligned}
+```
+
+This shows that $$r$$ is divisible by $$2$$, so the last digit is even. The only even digits are
+$$0,2,4,6,8$$. We have reached our goal for the first direction.
+
+**Second direction: start by assuming that the last digit is one of $$0,2,4,6,8$$.**
+
+Our goal is now to prove that $$n$$ is even. Every digit in the list is even, so its last digit
+$$r$$ can be written as $$r=2s$$ for some whole number $$s$$. Substitute this into $$n=10q+r$$:
+
+```math
+\begin{aligned}
+  n &= 10q+r,\\
+    &= 10q+2s           && \text{because }r=2s,\\
+    &= 2(5q+s).         && \text{factor out }2
+\end{aligned}
+```
+
+This writes $$n$$ as $$2$$ times a whole number, which is exactly what it means for $$n$$ to be
+even. We have reached our goal for the second direction.
+
+We assumed a different fact in each direction and derived the other one. Both implications have now
+been proved, so the two descriptions pick out exactly the same whole numbers.
+
+:::
+
 :::example[Two directions]
 
 **Claim.** An integer $$n$$ is even exactly when $$n + 1$$ is odd.
 
-**If $$n$$ is even, then $$n + 1$$ is odd.** Write $$n = 2k$$. Then $$n + 1 = 2k + 1$$, which is
-odd.
+The words **exactly when** require two directions.
 
-**If $$n + 1$$ is odd, then $$n$$ is even.** Write $$n + 1 = 2k + 1$$. Subtracting $$1$$ from both
-sides gives $$n = 2k$$, which is even.
+**First direction: assume that $$n$$ is even.** Our goal is to show that $$n+1$$ is odd. Since $$n$$
+is even, $$n=2k$$ for some integer $$k$$. Therefore
+
+```math
+n+1=2k+1.
+```
+
+This has the form $$2\times(\text{an integer})+1$$, so $$n+1$$ is odd.
+
+**Second direction: assume that $$n+1$$ is odd.** Our goal is to show that $$n$$ is even. Since
+$$n+1$$ is odd, $$n+1=2k+1$$ for some integer $$k$$. Subtract $$1$$ from both sides:
+
+```math
+n=2k.
+```
+
+This writes $$n$$ as $$2$$ times an integer, so $$n$$ is even.
+
+**Conclusion.** Each assumption led to the other description, so $$n$$ is even exactly when $$n+1$$
+is odd.
 
 :::
 
@@ -229,14 +370,21 @@ Prove that if $$n^2 + 2n$$ is odd, then $$n$$ is odd. (Hint: a direct proof is a
 
 :::solution
 
-Prove the contrapositive: if $$n$$ is even, then $$n^2 + 2n$$ is even. Write $$n = 2k$$. Then
+**Choose the method.** We prove the equivalent contrapositive: if $$n$$ is even, then $$n^2+2n$$ is
+even.
+
+**Assume.** Let $$n$$ be even, so $$n=2k$$ for some integer $$k$$.
+
+**Goal.** Write $$n^2+2n$$ as $$2$$ times an integer.
+
+**Reasoning.** Substitute $$n=2k$$ and factor out $$2$$:
 
 ```math
-n^2 + 2n = 4k^2 + 4k = 2(2k^2 + 2k),
+n^2+2n=(2k)^2+2(2k)=4k^2+4k=2(2k^2+2k).
 ```
 
-which is even. A statement and its contrapositive are both true or both false
-(:ref{#contrapositive-equivalent}), so the original is true.
+Since $$2k^2+2k$$ is an integer, the expression is even. This proves the contrapositive, so the
+original claim follows from :ref{#contrapositive-equivalent}.
 
 :::
 
@@ -248,12 +396,21 @@ Prove that if $$ab$$ is odd, then $$a$$ and $$b$$ are both odd, for integers $$a
 
 :::solution
 
-The opposite of "$$a$$ and $$b$$ are both odd" is "at least one of $$a$$ and $$b$$ is even". So the
-contrapositive is: if at least one of $$a$$ and $$b$$ is even, then $$ab$$ is even.
+**Choose the method.** The conclusion is “$$a$$ and $$b$$ are both odd.” Its negation is “at least
+one of $$a$$ and $$b$$ is even.” Therefore the contrapositive is:
 
-Suppose $$a$$ is even, say $$a = 2k$$. Then $$ab = 2(kb)$$, which is even. If instead $$b$$ is even,
-say $$b = 2l$$, then $$ab = 2(al)$$, which is even. So the contrapositive is true, and so is the
-original (:ref{#contrapositive-equivalent}).
+> If at least one of $$a$$ and $$b$$ is even, then $$ab$$ is even.
+
+We prove this statement by considering which factor is even.
+
+**Case 1: assume that $$a$$ is even.** Then $$a=2k$$ for some integer $$k$$, so $$ab=2(kb)$$. Since
+$$kb$$ is an integer, $$ab$$ is even.
+
+**Case 2: assume that $$b$$ is even.** Then $$b=2l$$ for some integer $$l$$, so $$ab=2(al)$$. Since
+$$al$$ is an integer, $$ab$$ is even.
+
+In either possible case, the product is even. Thus the contrapositive is true, and therefore the
+original claim is true by :ref{#contrapositive-equivalent}.
 
 :::
 
@@ -287,13 +444,28 @@ Prove that for an integer $$n$$, the number $$5n + 3$$ is even exactly when $$n$
 
 :::solution
 
-There are two directions (:ref{#exactly-when}).
+The words **exactly when** require two directions (:ref{#exactly-when}).
 
-**If $$n$$ is odd, then $$5n + 3$$ is even.** Write $$n = 2k + 1$$. Then
-$$5n + 3 = 10k + 8 = 2(5k + 4)$$, which is even.
+**First direction: assume that $$n$$ is odd.** Our goal is to show that $$5n+3$$ is even. Since
+$$n=2k+1$$ for some integer $$k$$,
 
-**If $$5n + 3$$ is even, then $$n$$ is odd.** Prove the contrapositive: if $$n$$ is even, then
-$$5n + 3$$ is odd. Write $$n = 2k$$. Then $$5n + 3 = 10k + 3 = 2(5k + 1) + 1$$, which is odd.
+```math
+5n+3=5(2k+1)+3=10k+8=2(5k+4).
+```
+
+Because $$5k+4$$ is an integer, $$5n+3$$ is even.
+
+**Second direction: assume that $$5n+3$$ is even.** Our goal is to prove that $$n$$ is odd. We prove
+this implication by its contrapositive: assume that $$n$$ is even and show that $$5n+3$$ is odd.
+Write $$n=2k$$. Then
+
+```math
+5n+3=5(2k)+3=10k+3=2(5k+1)+1,
+```
+
+which is odd. This proves the contrapositive and hence the second direction.
+
+**Conclusion.** Both directions hold, so $$5n+3$$ is even exactly when $$n$$ is odd.
 
 :::
 
@@ -306,19 +478,35 @@ $$16$$", and proves it like this: "if $$n = 4k$$, then $$n^2 = 16k^2$$." What is
 
 :::solution
 
-The student proved one direction only. An "exactly when" statement also needs the converse: if
-$$n^2$$ is a multiple of $$16$$, then $$n$$ is a multiple of $$4$$ (:ref{#exactly-when}).
+The student proved only the direction
 
-Prove it by contrapositive: if $$n$$ is not a multiple of $$4$$, then $$n^2$$ is not a multiple of
-$$16$$. Dividing by $$4$$ (:ref{#numbers/division-remainder}), such an $$n$$ is $$4k + 1$$,
-$$4k + 2$$ or $$4k + 3$$:
+```math
+n\text{ is a multiple of }4 \quad\Longrightarrow\quad n^2\text{ is a multiple of }16.
+```
 
-- **$$n = 4k + 1$$ or $$4k + 3$$:** $$n$$ is odd, say $$n = 2m + 1$$. Then
-  $$n^2 = 2(2m^2 + 2m) + 1$$ is odd, and an odd number is not a multiple of $$16$$.
-- **$$n = 4k + 2$$:** $$n^2 = 16k^2 + 16k + 4 = 16(k^2 + k) + 4$$, which leaves remainder $$4$$ when
-  divided by $$16$$.
+An “exactly when” statement also needs the reverse direction
 
-In every case $$n^2$$ is not a multiple of $$16$$, so both directions hold and the claim is true.
+```math
+n^2\text{ is a multiple of }16 \quad\Longrightarrow\quad n\text{ is a multiple of }4.
+```
+
+We now prove this missing direction by its contrapositive.
+
+**Assume.** Let $$n$$ not be a multiple of $$4$$.
+
+**Goal.** Show that $$n^2$$ is not a multiple of $$16$$.
+
+When divided by $$4$$, the number $$n$$ must leave remainder $$1$$, $$2$$ or $$3$$
+(:ref{#numbers/division-remainder}). We check these exhaustive cases:
+
+- **If $$n=4k+1$$ or $$n=4k+3$$,** then $$n$$ is odd. Write $$n=2m+1$$. Its square has the form
+  $$n^2=2(2m^2+2m)+1$$, so it is odd; an odd number cannot be a multiple of $$16$$.
+- **If $$n=4k+2$$,** then $$n^2=16k^2+16k+4=16(k^2+k)+4$$, which leaves remainder $$4$$ when divided
+  by $$16$$ and is therefore not a multiple of $$16$$.
+
+In every possible case, $$n^2$$ is not a multiple of $$16$$. This proves the contrapositive and
+therefore the missing reverse direction. Both directions now hold, so the original “exactly when”
+claim is proved.
 
 :::
 

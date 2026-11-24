@@ -7,8 +7,9 @@ Suppose a shop tells you that two pens and a notebook cost £5, and then that fo
 notebooks cost £9. Both can't be true, because buying the first lot twice should cost £10. Two
 equations can clash like this, so that no numbers satisfy both, or one can repeat the other in
 disguise, so that infinitely many do. In this guide we'll see how each case shows up while solving,
-and find a single number, worked out from the coefficients, that tells you in advance whether there
-is exactly one solution.
+and connect each algebraic result to the crossing, parallel and coincident lines from the previous
+guide. A deeper extension then introduces a single number—the determinant—that predicts whether a
+unique solution is possible.
 
 ## When the equations contradict each other
 
@@ -98,7 +99,36 @@ For example $$t = 0$$ gives $$(3, 0)$$, $$t = 1$$ gives $$(1, 1)$$ and $$t = -2$
 Describing the solutions with a free letter such as $$t$$ is how "infinitely many" is written down
 exactly.
 
-## A test that tells in advance
+## The core classification
+
+Elimination and the graph tell the same story:
+
+| What elimination leaves | What the lines do       | Solution set                                         |
+| ----------------------- | ----------------------- | ---------------------------------------------------- |
+| $$x=c$$ or $$y=c$$      | cross once              | one ordered pair                                     |
+| $$0=c$$ with $$c\ne0$$  | distinct parallel lines | no solutions                                         |
+| $$0=0$$                 | coincide                | infinitely many pairs, described by a free parameter |
+
+The lines guide explains the picture (:ref{#graph}). Algebra gives the exact classification and,
+when there are infinitely many solutions, the parameter describes every point on the shared line.
+
+:::example[Classify from the final line]
+
+- If elimination leaves $$4x=12$$, continue to $$x=3$$ and recover the other unknown: there is one
+  solution.
+- If it leaves $$0=7$$, the conditions contradict each other: there is no solution.
+- If it leaves $$0=0$$, one condition was redundant. Return to a remaining equation and describe its
+  infinitely many solutions with a free parameter.
+
+The line $$0=0$$ is not itself an answer; it tells you how much information remains.
+
+:::
+
+At this point you can recognise, solve and describe all three cases. The remainder of the guide is a
+**deeper extension**: it predicts uniqueness directly from the coefficients and proves why that test
+works.
+
+## Deeper extension: a test that tells in advance
 
 Whether a system has exactly one solution depends only on its coefficients, not on its right-hand
 sides. In both examples so far, the left side of one equation is a multiple of the other's, so
@@ -228,7 +258,7 @@ The formula is worth knowing, but for particular numbers elimination usually tak
 invites fewer slips. The formula's main value is the test: a non-zero determinant guarantees exactly
 one solution.
 
-## When the determinant is zero
+### When the determinant is zero
 
 A zero determinant means the two left-hand sides are tied together, one a multiple of the other.
 Then the two equations make claims about the same quantity. Either the claims agree, and the second
@@ -288,14 +318,14 @@ In both examples on this page, one left-hand side is a multiple of the other. In
 $$x + 2y$$; in the second, $$3x + 6y = 3(x + 2y)$$. What decides between the two cases is the
 right-hand sides. If they are related by the same multiple, as $$9 = 3 \cdot 3$$ is, the second
 equation repeats the first and there are infinitely many solutions. If not, as with $$3$$ and $$5$$,
-the equations contradict each other and there are none. The [next page](./lines.mdx) shows the
+the equations contradict each other and there are none. The [previous guide](./lines.mdx) shows the
 picture: a zero determinant means the two lines are parallel or the same.
 
 Try it: change the second equation and watch the determinant decide the case.
 
 <TwoLines a={1} b={2} u={3} c={3} d={6} v={9} />
 
-## When both right-hand sides are zero
+### When both right-hand sides are zero
 
 A system whose right-hand sides are both $$0$$ always has at least one solution, $$x = y = 0$$. The
 test says when that is the only one.

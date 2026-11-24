@@ -3,9 +3,20 @@ title: Exercises
 description: Exercises on the whole chapter, with worked solutions.
 ---
 
-These exercises run in the same order as the chapter, from a single equation up to systems of three.
-Some ask for an answer and some ask why something is true. Have a go at each one before you open its
-solution, and check your answer by putting it back into the original equations.
+These exercises are the written competence path for the chapter. The concept check can show whether
+you recognise an idea; these problems ask you to carry out, explain, repair, choose and model a
+method yourself.
+
+Work in three passes:
+
+1. **Execute and check** within each named topic.
+2. **Explain and repair** why transformations preserve—or fail to preserve—the solution set.
+3. **Choose and model** in the mixed sections, where the method is not named for you.
+
+Before opening a solution, use two hints of your own. First write the invariant and target: which
+solutions must be preserved, and which variable or form should come next? Then look for a structural
+cue—an isolated variable, matching coefficients, a graph, or a contradiction. Always check answers
+in the original equations and, for a context, against units and restrictions.
 
 ## Equations in one unknown
 
@@ -518,6 +529,50 @@ there are infinitely many.
 
 ::::
 
+## Mixed method choice
+
+The headings above named the method. These problems do not. Inspect the structure, choose a method
+and explain the choice before calculating.
+
+::::exercise{#ex-mixed-method-choice}
+
+Solve each system using an efficient exact method. State why your method fits.
+
+1. $$y=3x-4$$ and $$2x+y=16$$.
+2. $$4x+3y=11$$ and $$2x-3y=1$$.
+3. $$x+2y=5$$ and $$2x+4y=12$$.
+
+:::solution
+
+1. **Substitution** fits because $$y$$ is isolated. Then $$2x+(3x-4)=16$$, so $$5x=20$$, $$x=4$$ and
+   $$y=8$$.
+2. **Elimination** fits because the $$y$$-coefficients are opposite. Adding gives $$6x=12$$, so
+   $$x=2$$; then $$8+3y=11$$ gives $$y=1$$.
+3. Elimination gives a **special case**. Twice the first equation would have right side $$10$$, but
+   the second has right side $$12$$. Subtracting twice the first from the second gives $$0=2$$, so
+   there is no solution.
+
+Each answer should be checked in both original equations.
+
+:::
+
+::::
+
+::::exercise{#ex-repair-lost-equation}
+
+A student adds the equations $$x+y=5$$ and $$x-y=1$$, obtains $$2x=6$$ and concludes that the system
+has solution $$x=3$$. Explain what information was lost and finish the solution correctly.
+
+:::solution
+
+The new equation determines only $$x$$. Elimination replaces one equation but must keep enough of
+the system to recover the other unknown. Keep, for example, $$x+y=5$$. Substituting $$x=3$$ gives
+$$y=2$$, so the solution pair is $$(3,2)$$. It checks in both originals.
+
+:::
+
+::::
+
 ## Equations as lines
 
 ::::exercise{#ex-slope-intercepts}
@@ -580,6 +635,46 @@ line is $$y = -2x + 7$$.
 ::::
 
 ## Word problems
+
+Use the same modelling routine every time:
+
+1. List the **quantities and units**.
+2. Define one variable for each unknown quantity.
+3. Translate one relationship at a time into an equation.
+4. Check that there are enough independent equations.
+5. Choose a method from the structure, solve and check the original equations.
+6. Interpret the values in a sentence and test contextual restrictions such as positivity, whole
+   numbers, totals or capacity.
+
+The model is part of the answer. Correct algebra cannot rescue equations that describe the wrong
+relationships.
+
+::::exercise{#ex-word-build-model}
+
+A theatre sold $$120$$ tickets. Adult tickets cost £12, child tickets cost £7, and the total income
+was £1190. Define variables and write a system that models the situation, but do not solve it. State
+the contextual restrictions on the variables.
+
+:::solution
+
+Let $$a$$ and $$c$$ be the numbers of adult and child tickets sold. Counting tickets gives
+
+```math
+a+c=120,
+```
+
+and counting income in pounds gives
+
+```math
+12a+7c=1190.
+```
+
+Because $$a$$ and $$c$$ count tickets, they must be non-negative whole numbers. Writing and checking
+the model is the skill being assessed here; solving it is a separate stage.
+
+:::
+
+::::
 
 ::::exercise{#ex-word-cinema}
 

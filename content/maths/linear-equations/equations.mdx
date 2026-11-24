@@ -17,6 +17,18 @@ freely. Everything here works in the same way for the
 
 ## Equations and their solutions
 
+Keep four related ideas separate:
+
+| Object       | Example                          | What it is                                                    |
+| ------------ | -------------------------------- | ------------------------------------------------------------- |
+| expression   | $$3x+5$$                         | a value once $$x$$ is chosen; it makes no claim by itself     |
+| equation     | $$3x+5=11$$                      | a claim that may be true for some values and false for others |
+| identity     | $$2(x+1)=2x+2$$                  | an equation true for every allowed value                      |
+| solution set | $$\{2\}$$ for the first equation | all values that make that equation true                       |
+
+Read the equals sign as “has the same value as,” not “the answer comes next.” Thus $$11=3x+5$$ says
+exactly the same thing as $$3x+5=11$$.
+
 An equation like $$3x + 5 = 11$$ is a statement with a gap in it. The letter $$x$$ is the gap, and
 until a number is put in its place the statement is neither true nor false. Putting in $$x = 2$$
 gives $$3 \cdot 2 + 5 = 11$$, which is true. Putting in $$x = 1$$ gives $$8 = 11$$, which is false.
@@ -69,7 +81,49 @@ The chain
 is a solution written out in full. Each equation has the same solutions as the next, so the first
 has exactly the solutions of the last, and the only solution of $$x = 2$$ is $$2$$.
 
-The next proposition lists the steps that are always safe.
+### The practical solving routine
+
+For a linear equation, use the same routine each time:
+
+1. **Simplify** each side by expanding brackets and collecting like terms.
+2. **Choose an inverse operation** that moves you towards isolating the unknown.
+3. **Apply it to both sides** and write the resulting equivalent equation.
+4. Repeat until the unknown is isolated.
+5. **Check** the answer in the original equation.
+
+Avoid the shortcut “move it across and change its sign.” What really preserves the solution set is
+performing the same operation on both sides.
+
+:::example[One equation, with the invariant visible]
+
+Solve $$5x-7=2x+8$$.
+
+```math
+\begin{aligned}
+5x-7 &= 2x+8 \\
+3x-7 &= 8      && \text{subtract }2x\text{ from both sides}\\
+3x &= 15       && \text{add }7\text{ to both sides}\\
+x &= 5         && \text{divide both sides by }3.
+\end{aligned}
+```
+
+Each line looks different, but every line has the same solution set. Checking the original gives
+$$5\cdot5-7=18$$ and $$2\cdot5+8=18$$.
+
+:::
+
+:::example[Pause before the proof]
+
+For $$4(x-1)+3=2x+9$$, first expand to $$4x-1=2x+9$$. A useful next move is to subtract $$2x$$ from
+both sides, giving $$2x-1=9$$. Continue to obtain $$x=5$$, then check it in the unexpanded original
+equation.
+
+:::
+
+The method is now usable. The next proposition explains in general why these steps preserve every
+solution and introduce none.
+
+### Why the safe steps work
 
 :::proposition[Safe steps for equations]{#safe-steps}
 
@@ -135,6 +189,14 @@ Other common moves keep every solution but can't be undone, so they may add fals
 
 These moves are sometimes useful, but after using them every answer must be checked in the
 **original** equation, and false ones thrown away.
+
+Use this boundary test:
+
+| Kind of move                  | Example                                                       | What to do                         |
+| ----------------------------- | ------------------------------------------------------------- | ---------------------------------- |
+| always reversible             | add the same expression; multiply by a known non-zero number  | solutions are preserved            |
+| reversible with a restriction | cancel $$x$$ when $$x\ne0$$                                   | state the restriction first        |
+| not generally reversible      | square both sides; multiply by an expression that may be zero | check every result in the original |
 
 ## Linear equations in one unknown
 

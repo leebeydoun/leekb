@@ -33,11 +33,26 @@ $$(1, 4)$$, $$(2, 3)$$, $$(\frac{1}{2}, \frac{9}{2})$$, $$(-10, 15)$$ and so on.
 can be chosen, and then $$y = 5 - x$$ is forced. So one equation in two unknowns has infinitely many
 solutions.
 
+A table makes that family visible:
+
+| $$x$$ | $$y=5-x$$ | solution pair |
+| ----- | --------- | ------------- |
+| $$0$$ | $$5$$     | $$(0,5)$$     |
+| $$1$$ | $$4$$     | $$(1,4)$$     |
+| $$3$$ | $$2$$     | $$(3,2)$$     |
+| $$6$$ | $$-1$$    | $$(6,-1)$$    |
+
+The pair is one object: $$(x,y)$$. Its order matters because the first coordinate is the value of
+$$x$$ and the second is the value of $$y$$.
+
 ## Systems of equations
 
 Each equation is a condition the unknowns must meet, and a solution has to meet all of them at once.
 So a second equation cuts the possibilities down. Of all the solutions of $$x + y = 5$$, only one
 also solves $$x - y = 1$$, namely $$(3, 2)$$, as this page will show.
+
+In the table above, $$(3,2)$$ is the row that also passes the second test: $$3-2=1$$. A system asks
+for the overlap of two sets of possible pairs.
 
 :::definition[Systems of equations]{#system}
 
@@ -79,6 +94,16 @@ Two things need checking before this can be trusted:
    sides are the numbers $$5$$ and $$1$$, so their sum is $$6$$.
 2. **No solution is missed, and $$(3, 2)$$ isn't a false one.** The next proposition shows this, as
    long as each step can be undone.
+
+Before reading the general proof, practise the useful idea. For $$2x+y=7$$ and $$3x-y=8$$, adding
+the equations removes $$y$$ and gives $$5x=15$$. Therefore $$x=3$$; substituting back gives $$y=1$$.
+Checking $$(3,1)$$ in both originals confirms the solution.
+
+### Why combining equations preserves the solution pair
+
+The following proposition is the deeper justification. On a first pass, it is enough to know the
+invariant: keep one equation and replace the other by a reversible combination, so the same pairs
+solve both systems.
 
 :::proposition[Combining equations]{#combining}
 
@@ -139,6 +164,14 @@ Usually neither unknown cancels straight away. The fix is to multiply the equati
 one unknown has matching coefficients. Multiplying an equation by a number other than 0 doesn't
 change what it says. If one coffee and three teas cost £8.50, then four coffees and twelve teas cost
 £34: it is the same fact, for an order four times the size.
+
+Before calculating, inspect the coefficients and predict the cheapest target. Ask:
+
+- Does one variable already have equal or opposite coefficients?
+- Can one equation be multiplied once to make that happen?
+- If both equations need multiplying, which variable gives the smaller numbers?
+
+Choosing the target is part of the method, not an arithmetic afterthought.
 
 :::remark[Solving by elimination]{#elimination}
 

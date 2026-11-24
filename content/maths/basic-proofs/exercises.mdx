@@ -3,10 +3,22 @@ title: Exercises
 description: Exercises on the whole chapter, with worked solutions.
 ---
 
-These exercises follow the chapter in order, from statements to notation. Most ask for a short
-proof, a counterexample, or the reason an argument works or fails, rather than a number. Have a go
-at each one before opening its solution, since the practice is in saying exactly what's claimed and
-then backing it up.
+These exercises are the proof-writing assessment for the chapter. The multiple-choice concept check
+can show whether you recognise an idea; these problems ask you to explain, repair and construct an
+argument yourself.
+
+Work through them in three passes:
+
+1. **Foundations:** translate statements, identify proof obligations and expand notation.
+2. **Guided construction:** complete, explain or repair arguments within each topic.
+3. **Mixed practice:** choose a method without being told which topic it tests.
+
+Before opening a solution, give yourself two hints. First write the exact obligation—what is given
+and what must be shown. If you are still stuck, write the definition or proof pattern most closely
+connected to the target. Only then compare your work with the full solution.
+
+Audit every proof with the same questions: Were all letters introduced? Did every line have a
+reason? Were all cases covered? Did the final line establish the exact target?
 
 ## Statements
 
@@ -137,19 +149,23 @@ Prove that the sum of two odd numbers is even.
 
 :::solution
 
-**Given.** $$a$$ and $$b$$ are odd, so $$a = 2k + 1$$ and $$b = 2l + 1$$ for some integers $$k$$ and
-$$l$$ (:ref{#numbers/even-odd}). Two different letters are needed, since $$a$$ and $$b$$ needn't be
-equal.
+**Assume.** Let $$a$$ and $$b$$ be arbitrary odd integers. Then $$a=2k+1$$ and $$b=2l+1$$ for some
+integers $$k$$ and $$l$$ (:ref{#numbers/even-odd}). We need two witnesses because $$a$$ and $$b$$
+need not be equal.
 
-**Want.** $$a + b = 2 \times (\text{some integer})$$.
+**Goal.** Show that $$a+b$$ is even by writing it as $$2$$ times an integer.
 
-**Bridge.**
+**Reasoning.** Substitute the two expressions and factor out $$2$$:
 
 ```math
-a + b = (2k + 1) + (2l + 1) = 2k + 2l + 2 = 2(k + l + 1)
+\begin{aligned}
+a+b&=(2k+1)+(2l+1)\\
+   &=2k+2l+2\\
+   &=2(k+l+1).
+\end{aligned}
 ```
 
-and $$k + l + 1$$ is an integer, so $$a + b$$ is even.
+Since $$k+l+1$$ is an integer, the last line has the required form. Therefore $$a+b$$ is even.
 
 :::
 
@@ -161,14 +177,19 @@ Prove that the product of two odd numbers is odd.
 
 :::solution
 
-Write $$a = 2k + 1$$ and $$b = 2l + 1$$ for integers $$k$$ and $$l$$. The target is
-$$ab = 2 \times (\text{some integer}) + 1$$. Multiplying out,
+**Assume.** Let $$a$$ and $$b$$ be arbitrary odd integers. Then $$a=2k+1$$ and $$b=2l+1$$ for some
+integers $$k$$ and $$l$$.
+
+**Goal.** Show that $$ab$$ is odd by writing it as $$2$$ times an integer, plus $$1$$.
+
+**Reasoning.** Multiply and then collect the even terms:
 
 ```math
 ab = (2k + 1)(2l + 1) = 4kl + 2k + 2l + 1 = 2(2kl + k + l) + 1
 ```
 
-and $$2kl + k + l$$ is an integer, so $$ab$$ is odd.
+Since $$2kl+k+l$$ is an integer, the final expression has the form required for an odd number.
+Therefore $$ab$$ is odd.
 
 :::
 
@@ -203,10 +224,16 @@ Prove by contradiction that there is no smallest positive fraction.
 
 :::solution
 
-**Suppose not:** suppose there is a smallest positive fraction, and call it $$q$$. Then
-$$\frac{q}{2}$$ is also a fraction, and it is positive. But $$\frac{q}{2} < q$$, since $$q$$ is
-positive. So $$q$$ is not the smallest positive fraction after all, which contradicts the choice of
-$$q$$ (:ref{#contradiction}). So there is no smallest positive fraction.
+**Goal.** Show that no positive fraction can be smaller than every other positive fraction.
+
+**Assume the opposite.** Suppose, for a contradiction, that a smallest positive fraction exists.
+Call it $$q$$. By assumption, no positive fraction can be smaller than $$q$$.
+
+**Reach a contradiction.** The number $$q/2$$ is also a fraction. Since $$q>0$$, we have $$q/2>0$$
+and $$q/2<q$$. Thus $$q/2$$ is a positive fraction smaller than the supposedly smallest one.
+
+**Conclusion.** This contradicts the choice of $$q$$. Therefore there is no smallest positive
+fraction (:ref{#contradiction}).
 
 As with "there is no largest integer", the supposition hands you a particular number, $$q$$, to work
 with. Halving it gives the contradiction at once.
@@ -222,15 +249,17 @@ $$3$$. Deduce that no square is of the form $$3k + 2$$.
 
 :::solution
 
-Every integer $$n$$ is $$3k$$, $$3k + 1$$ or $$3k + 2$$ for some integer $$k$$
-(:ref{#numbers/division-remainder}), so three cases cover everything.
+**Plan.** Let $$n$$ be an arbitrary integer. Division by $$3$$ gives exactly one of the forms
+$$3k$$, $$3k+1$$ or $$3k+2$$ (:ref{#numbers/division-remainder}). These cases cover every integer.
+Our goal in each case is to find the remainder of $$n^2$$ after division by $$3$$.
 
-- **$$n = 3k$$:** $$n^2 = 9k^2 = 3(3k^2)$$, a multiple of $$3$$.
-- **$$n = 3k + 1$$:** $$n^2 = 9k^2 + 6k + 1 = 3(3k^2 + 2k) + 1$$.
-- **$$n = 3k + 2$$:** $$n^2 = 9k^2 + 12k + 4 = 3(3k^2 + 4k + 1) + 1$$.
+- **Case 1: $$n=3k$$.** Then $$n^2=9k^2=3(3k^2)$$, so the remainder is $$0$$.
+- **Case 2: $$n=3k+1$$.** Then $$n^2=9k^2+6k+1=3(3k^2+2k)+1$$, so the remainder is $$1$$.
+- **Case 3: $$n=3k+2$$.** Then $$n^2=9k^2+12k+4=3(3k^2+4k+1)+1$$, so the remainder is $$1$$.
 
-In every case $$n^2$$ leaves remainder $$0$$ or $$1$$ when divided by $$3$$. A number of the form
-$$3k + 2$$ leaves remainder $$2$$, and the remainder is unique, so it can't be a square.
+**Conclusion.** In every possible case, $$n^2$$ leaves remainder $$0$$ or $$1$$. A number of the
+form $$3k+2$$ leaves remainder $$2$$. Since a number has only one remainder, no square can have that
+form.
 
 :::
 
@@ -316,15 +345,21 @@ contrapositive.)
 
 :::solution
 
-The contrapositive is: if $$n$$ is **not** even, then $$n^2$$ is **not** even, that is, if $$n$$ is
-odd then $$n^2$$ is odd. Write $$n = 2k + 1$$. Then
+**Choose the method.** The contrapositive is: if $$n$$ is odd, then $$n^2$$ is odd. Proving this
+equivalent statement gives us a usable expression for $$n$$.
+
+**Assume.** Let $$n$$ be odd, so $$n=2k+1$$ for some integer $$k$$.
+
+**Goal.** Show that $$n^2$$ is odd by writing it as $$2$$ times an integer, plus $$1$$.
+
+**Reasoning.** Square the expression for $$n$$ and collect the even terms:
 
 ```math
 n^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1
 ```
 
-which is odd. A statement and its contrapositive are both true or both false
-(:ref{#contrapositive-equivalent}), so if $$n^2$$ is even then $$n$$ is even.
+Since $$2k^2+2k$$ is an integer, $$n^2$$ is odd. This proves the contrapositive. Therefore the
+original claim follows from :ref{#contrapositive-equivalent}.
 
 Going directly would start from $$n^2 = 2m$$, and there is no clear route from there to $$n$$
 itself. Starting from $$n$$, as the contrapositive does, gives a formula for $$n^2$$ straight away.
@@ -339,16 +374,18 @@ Prove that an integer $$n$$ is even exactly when $$3n$$ is even.
 
 :::solution
 
-There are two directions (:ref{#exactly-when}).
+The words **exactly when** require two directions (:ref{#exactly-when}).
 
-**If $$n$$ is even, then $$3n$$ is even.** Write $$n = 2k$$. Then $$3n = 6k = 2(3k)$$, which is
-even.
+**First direction: assume that $$n$$ is even.** Our goal is to show that $$3n$$ is even. Write
+$$n=2k$$. Then $$3n=3(2k)=2(3k)$$. Since $$3k$$ is an integer, $$3n$$ is even.
 
-**If $$3n$$ is even, then $$n$$ is even.** Prove the contrapositive: if $$n$$ is odd, then $$3n$$ is
-odd. Write $$n = 2k + 1$$. Then $$3n = 6k + 3 = 2(3k + 1) + 1$$, which is odd.
+**Second direction: assume that $$3n$$ is even.** Our goal is to show that $$n$$ is even. We prove
+this implication by its contrapositive: assume that $$n$$ is odd and show that $$3n$$ is odd. If
+$$n=2k+1$$, then $$3n=6k+3=2(3k+1)+1$$, which is odd. This proves the contrapositive and hence the
+second direction.
 
-The first half is direct and the second is by contrapositive: each direction can use whichever
-method suits it.
+**Conclusion.** Both directions hold, so $$n$$ is even exactly when $$3n$$ is even. The first half
+was direct and the second was by contrapositive; each direction may use the method that suits it.
 
 :::
 
@@ -385,21 +422,26 @@ Let $$P(n)$$ be the statement $$1 + 3 + \cdots + (2n - 1) = n^2$$.
 
 **Base case.** $$P(1)$$ says $$1 = 1^2$$, which is true.
 
-**Inductive step.** Suppose $$P(k)$$ is true for some positive integer $$k$$.
+**Inductive step.** Let $$k$$ be an arbitrary positive integer.
 
-- **Know:** $$1 + 3 + \cdots + (2k - 1) = k^2$$.
-- **Want:** $$1 + 3 + \cdots + (2k - 1) + (2k + 1) = (k + 1)^2$$. The next odd number after
-  $$2k - 1$$ is $$2k + 1$$.
+- **Assume:** $$P(k)$$ is true, so $$1+3+\cdots+(2k-1)=k^2$$.
+- **Goal:** prove $$P(k+1)$$, namely $$1+3+\cdots+(2k-1)+(2k+1)=(k+1)^2$$. The added term is
+  $$2k+1$$ because it is the next odd number after $$2k-1$$.
 
-The sum you want is the sum you know plus one more term:
+Use the inductive hypothesis to replace the known part of the new sum:
 
 ```math
-1 + 3 + \cdots + (2k - 1) + (2k + 1) = k^2 + 2k + 1 = (k + 1)^2
+\begin{aligned}
+1+3+\cdots+(2k-1)+(2k+1)
+  &=k^2+2k+1 && \text{use }P(k)\\
+  &=(k+1)^2.
+\end{aligned}
 ```
 
-which is $$P(k + 1)$$.
+This is exactly $$P(k+1)$$, so the inductive step is complete.
 
-**Conclusion.** By induction (:ref{#induction}), $$P(n)$$ is true for every positive integer $$n$$.
+**Conclusion.** The base case and inductive step are both proved. Therefore, by induction
+(:ref{#induction}), $$P(n)$$ is true for every positive integer $$n$$.
 
 :::
 
@@ -411,18 +453,30 @@ Prove by induction that $$5$$ divides $$6^n - 1$$ for every positive integer $$n
 
 :::solution
 
-**Base case.** $$6^1 - 1 = 5$$, which $$5$$ divides.
+Let $$P(n)$$ be the statement “$$5$$ divides $$6^n-1$$.”
 
-**Inductive step.** Suppose $$6^k - 1 = 5m$$ for some integer $$m$$. To find $$6^k - 1$$ inside
-$$6^{k + 1} - 1$$, write $$6^{k + 1} = 6 \cdot 6^k$$ and rearrange:
+**Base case.** Since $$6^1-1=5$$, $$P(1)$$ is true.
+
+**Inductive step.** Let $$k$$ be an arbitrary positive integer.
+
+- **Assume:** $$P(k)$$ is true, so $$6^k-1=5m$$ for some integer $$m$$.
+- **Goal:** write $$6^{k+1}-1$$ as $$5$$ times an integer.
+
+Rewrite the next case so that the known expression $$6^k-1$$ appears:
 
 ```math
-6^{k + 1} - 1 = 6 \cdot 6^k - 6 + 5 = 6(6^k - 1) + 5 = 6 \cdot 5m + 5 = 5(6m + 1)
+\begin{aligned}
+6^{k+1}-1
+  &=6\cdot6^k-1\\
+  &=6(6^k-1)+5\\
+  &=6(5m)+5 && \text{use }P(k)\\
+  &=5(6m+1).
+\end{aligned}
 ```
 
-which is a multiple of $$5$$.
+Since $$6m+1$$ is an integer, this is a multiple of $$5$$. Thus $$P(k+1)$$ is true.
 
-**Conclusion.** By induction, $$5 \mid 6^n - 1$$ for every positive integer $$n$$.
+**Conclusion.** By induction, $$5\mid6^n-1$$ for every positive integer $$n$$.
 
 :::
 
@@ -434,23 +488,31 @@ Prove by induction that $$3^n \ge 2n + 1$$ for every positive integer $$n$$.
 
 :::solution
 
-**Base case.** For $$n = 1$$: $$3^1 = 3$$ and $$2 \cdot 1 + 1 = 3$$, and $$3 \ge 3$$.
+Let $$P(n)$$ be the inequality $$3^n\ge2n+1$$.
 
-**Inductive step.** Suppose $$3^k \ge 2k + 1$$. Going from $$3^k$$ to $$3^{k + 1}$$ means
-multiplying by $$3$$, so multiply both sides of what you know by $$3$$:
+**Base case.** For $$n=1$$, both sides equal $$3$$, so $$P(1)$$ is true.
+
+**Inductive step.** Let $$k$$ be an arbitrary positive integer.
+
+- **Assume:** $$3^k\ge2k+1$$.
+- **Goal:** prove $$3^{k+1}\ge2(k+1)+1=2k+3$$.
+
+Going from $$3^k$$ to $$3^{k+1}$$ means multiplying by $$3$$. Multiply the assumed inequality by
+this positive number:
 
 ```math
 3^{k + 1} = 3 \cdot 3^k \ge 3(2k + 1) = 6k + 3
 ```
 
-The target is $$3^{k + 1} \ge 2(k + 1) + 1 = 2k + 3$$. Since $$k$$ is positive,
-$$6k + 3 \ge 2k + 3$$, so
+Since $$k$$ is positive, $$6k+3\ge2k+3$$. Therefore
 
 ```math
 3^{k + 1} \ge 6k + 3 \ge 2k + 3.
 ```
 
-**Conclusion.** By induction, $$3^n \ge 2n + 1$$ for every positive integer $$n$$.
+The last expression is the target, so the inductive step is complete.
+
+**Conclusion.** By induction, $$3^n\ge2n+1$$ for every positive integer $$n$$.
 
 :::
 
@@ -491,17 +553,38 @@ $$n = 4$$ on, which the induction shows.
 
 **Base case.** $$3^4 = 81 > 64 = 4^3$$.
 
-**Inductive step.** Let $$k \ge 4$$ and suppose $$3^k > k^3$$. Then
-$$3^{k + 1} = 3 \cdot 3^k > 3k^3$$, so it is enough to show $$3k^3 \ge (k + 1)^3$$. The difference
-is
+**Inductive step.** Let $$k\ge4$$ be arbitrary.
+
+- **Assume:** $$3^k>k^3$$.
+- **Goal:** prove $$3^{k+1}>(k+1)^3$$.
+
+Multiplying the assumed inequality by $$3$$ gives
+
+```math
+3^{k+1}=3\cdot3^k>3k^3.
+```
+
+It is therefore enough to show that $$3k^3>(k+1)^3$$. To compare them, subtract:
 
 ```math
 3k^3 - (k + 1)^3 = 2k^3 - 3k^2 - 3k - 1 = k\bigl(k(2k - 3) - 3\bigr) - 1.
 ```
 
-Here $$k \ge 4$$ gets used: it makes $$2k - 3 \ge 5$$, so $$k(2k - 3) - 3 \ge 4 \cdot 5 - 3 = 17$$,
-and the difference is at least $$4 \cdot 17 - 1 = 67$$, which is positive. So
-$$3^{k + 1} > 3k^3 > (k + 1)^3$$.
+Here the condition $$k\ge4$$ matters. It gives $$2k-3\ge5$$, and hence
+
+```math
+k\bigl(k(2k-3)-3\bigr)-1
+\ge4(4\cdot5-3)-1
+=67>0.
+```
+
+Thus $$3k^3>(k+1)^3$$. Combining this with the inequality obtained from the inductive hypothesis,
+
+```math
+3^{k+1}>3k^3>(k+1)^3.
+```
+
+This is exactly the goal, so the inductive step is complete.
 
 **Conclusion.** By induction, $$3^n > n^3$$ for every $$n \ge 4$$. Together with the table, it holds
 for every positive integer except $$3$$. The base case can't be $$n = 1$$, because the chain would
@@ -542,11 +625,18 @@ Prove that $$A \subseteq B$$, and show that $$B$$ is not a subset of $$A$$.
 
 :::solution
 
-**$$A \subseteq B$$.** Take any $$n \in A$$. Then $$n = 6k$$ for some integer $$k$$, so
-$$n = 2(3k)$$ with $$3k$$ an integer. So $$n$$ is even, that is, $$n \in B$$.
+**First, prove that $$A\subseteq B$$.**
 
-**$$B$$ is not a subset of $$A$$.** The number $$2$$ is even, so $$2 \in B$$, but it is not a
-multiple of $$6$$, so $$2 \notin A$$. One element of $$B$$ outside $$A$$ is enough.
+- **Assume:** take an arbitrary $$n\in A$$. Then $$n=6k$$ for some integer $$k$$.
+- **Goal:** show that $$n\in B$$, meaning that $$n$$ is even.
+- **Reasoning:** rewrite $$n=6k=2(3k)$$. Since $$3k$$ is an integer, $$n$$ is even and therefore
+  belongs to $$B$$.
+
+This proves $$A\subseteq B$$.
+
+**Next, prove that $$B\nsubseteq A$$.** We need one element of $$B$$ that is not in $$A$$. The
+number $$2$$ is even, so $$2\in B$$, but it is not a multiple of $$6$$, so $$2\notin A$$. This
+counterexample proves that $$B$$ is not a subset of $$A$$.
 
 :::
 
@@ -558,18 +648,27 @@ Prove that $$\{n \in \mathbb{Z} : n^2 < 5\} = \{-2, -1, 0, 1, 2\}$$.
 
 :::solution
 
-Call the first set $$A$$ and the second $$B$$. By :ref{#set-equality}, show each is a subset of the
-other.
+Call the first set $$A$$ and the second $$B$$. By :ref{#set-equality}, we must prove two subset
+directions.
 
-**$$B \subseteq A$$.** Check each element: $$(-2)^2 = 2^2 = 4$$, $$(-1)^2 = 1^2 = 1$$ and
-$$0^2 = 0$$, all less than $$5$$.
+**First direction: prove that $$B\subseteq A$$.**
 
-**$$A \subseteq B$$.** This says: if $$n^2 < 5$$, then $$n \in B$$. Prove the contrapositive: if an
-integer $$n$$ is not in $$B$$, then $$n^2 \ge 5$$. An integer not in $$B$$ has $$n \ge 3$$ or
-$$n \le -3$$. If $$n \ge 3$$ then $$n^2 \ge 9$$, and if $$n \le -3$$ then $$-n \ge 3$$ and
-$$n^2 = (-n)^2 \ge 9$$. Either way $$n^2 \ge 9 \ge 5$$.
+- **Assume:** take an arbitrary $$n\in B$$. Then $$n$$ is one of $$-2,-1,0,1,2$$.
+- **Goal:** show that $$n^2<5$$, so that $$n\in A$$.
+- **Reasoning:** the possible squares are $$(-2)^2=2^2=4$$, $$(-1)^2=1^2=1$$ and $$0^2=0$$. All are
+  less than $$5$$. Therefore every element of $$B$$ belongs to $$A$$.
 
-So $$A = B$$.
+**Second direction: prove that $$A\subseteq B$$.** Directly, this would mean starting from $$n^2<5$$
+and locating $$n$$ in the list. We instead prove the contrapositive.
+
+- **Assume:** let the integer $$n$$ not belong to $$B$$. Then $$n\ge3$$ or $$n\le-3$$.
+- **Goal:** show that $$n\notin A$$ by proving $$n^2\ge5$$.
+- **Reasoning:** if $$n\ge3$$, then $$n^2\ge9$$. If $$n\le-3$$, then $$-n\ge3$$ and
+  $$n^2=(-n)^2\ge9$$. Thus in either case $$n^2\ge9\ge5$$, so $$n\notin A$$.
+
+This proves the contrapositive and hence $$A\subseteq B$$.
+
+**Conclusion.** Both subset directions hold, so $$A=B$$.
 
 :::
 
@@ -607,10 +706,16 @@ Prove that if $$A \subseteq B$$ and $$B \subseteq C$$, then $$A \subseteq C$$.
 
 :::solution
 
-Take any $$x \in A$$. Since $$A \subseteq B$$, $$x \in B$$. Since $$B \subseteq C$$, $$x \in C$$. So
-every element of $$A$$ is in $$C$$, which is $$A \subseteq C$$ (:ref{#subset}). This is how
-$$\mathbb{Z} \subseteq \mathbb{Q}$$ and $$\mathbb{Q} \subseteq \mathbb{R}$$ give
-$$\mathbb{Z} \subseteq \mathbb{R}$$.
+**Assume.** Let $$A\subseteq B$$ and $$B\subseteq C$$.
+
+**Goal.** Prove that every element of $$A$$ belongs to $$C$$.
+
+**Reasoning.** Take an arbitrary $$x\in A$$. Since $$A\subseteq B$$, this gives $$x\in B$$. Since
+$$B\subseteq C$$, it then gives $$x\in C$$.
+
+**Conclusion.** The argument works for every element of $$A$$, so $$A\subseteq C$$ (:ref{#subset}).
+This is how $$\mathbb Z\subseteq\mathbb Q$$ and $$\mathbb Q\subseteq\mathbb R$$ give
+$$\mathbb Z\subseteq\mathbb R$$.
 
 :::
 
@@ -623,13 +728,16 @@ Then find $$A \cap B$$ and $$A \cup B$$ for $$A = \{1, 2, 4\}$$ and $$B = \{2, 3
 
 :::solution
 
-Both are subset statements, so take any element of the smaller set and show it is in the bigger one
-(:ref{#subset}).
+Both are subset statements, so in each proof we take an arbitrary element of the set on the left and
+show that it belongs to the set on the right (:ref{#subset}).
 
-- **$$A \cap B \subseteq A$$.** Take any $$x \in A \cap B$$. Then $$x$$ is in both $$A$$ and $$B$$
-  (:ref{#union-intersection}), so in particular $$x \in A$$.
-- **$$A \subseteq A \cup B$$.** Take any $$x \in A$$. Then $$x$$ is in $$A$$ or in $$B$$, so
-  $$x \in A \cup B$$.
+**Prove that $$A\cap B\subseteq A$$.** Assume that $$x\in A\cap B$$. By the definition of
+intersection, $$x$$ belongs to both $$A$$ and $$B$$, so in particular $$x\in A$$. This works for
+every element of $$A\cap B$$, proving the subset relation.
+
+**Prove that $$A\subseteq A\cup B$$.** Assume that $$x\in A$$. Then the statement “$$x$$ is in $$A$$
+or in $$B$$” is true because its first part is true. By the definition of union, $$x\in A\cup B$$.
+This works for every element of $$A$$, proving the second subset relation.
 
 For the two sets given, $$A \cap B = \{2, 4\}$$ and $$A \cup B = \{1, 2, 3, 4, 5\}$$. As the proof
 says, $$\{2, 4\} \subseteq \{1, 2, 4\} \subseteq \{1, 2, 3, 4, 5\}$$.
@@ -756,25 +864,141 @@ Prove by induction that for every positive integer $$n$$,
 
 :::solution
 
-**Base case.** For $$n = 1$$ the left side is $$1^2 = 1$$ and the right side is
-$$\frac{1 \cdot 2 \cdot 3}{6} = 1$$.
+Let $$P(n)$$ be the displayed formula.
 
-**Inductive step.** Suppose $$\sum_{i=1}^{k} i^2 = \frac{k(k + 1)(2k + 1)}{6}$$. The sum up to
-$$k + 1$$ is the sum up to $$k$$ plus one more term:
+**Base case.** For $$n=1$$, the left side is $$1^2=1$$ and the right side is
+$$\frac{1\cdot2\cdot3}{6}=1$$. Thus $$P(1)$$ is true.
+
+**Inductive step.** Let $$k$$ be an arbitrary positive integer.
+
+- **Assume:** $$P(k)$$ is true, so $$\sum_{i=1}^k i^2=\frac{k(k+1)(2k+1)}6$$.
+- **Goal:** prove $$\sum_{i=1}^{k+1}i^2=\frac{(k+1)(k+2)(2k+3)}6$$, which is $$P(k+1)$$.
+
+The sum up to $$k+1$$ is the known sum plus the new term $$(k+1)^2$$:
 
 ```math
 \begin{aligned}
-\sum_{i=1}^{k + 1} i^2 &= \frac{k(k + 1)(2k + 1)}{6} + (k + 1)^2 \\
-&= \frac{(k + 1)\bigl(k(2k + 1) + 6(k + 1)\bigr)}{6} \\
-&= \frac{(k + 1)(2k^2 + 7k + 6)}{6} \\
-&= \frac{(k + 1)(k + 2)(2k + 3)}{6}
+\sum_{i=1}^{k+1}i^2
+  &=\frac{k(k+1)(2k+1)}6+(k+1)^2 && \text{use }P(k)\\
+  &=\frac{(k+1)\bigl(k(2k+1)+6(k+1)\bigr)}6\\
+  &=\frac{(k+1)(2k^2+7k+6)}6\\
+  &=\frac{(k+1)(k+2)(2k+3)}6.
 \end{aligned}
 ```
 
-since $$(k + 2)(2k + 3) = 2k^2 + 7k + 6$$. That is the formula with $$k + 1$$ in place of $$n$$,
-because $$2(k + 1) + 1 = 2k + 3$$.
+The last factorisation uses $$(k+2)(2k+3)=2k^2+7k+6$$. The final line is exactly the target because
+$$2(k+1)+1=2k+3$$. Thus $$P(k+1)$$ is true.
 
-**Conclusion.** By induction (:ref{#induction}), the formula holds for every positive integer $$n$$.
+**Conclusion.** The base case and inductive step are complete. By induction (:ref{#induction}), the
+formula holds for every positive integer $$n$$.
+
+:::
+
+::::
+
+## Mixed proof practice
+
+These problems do not name the method. Begin by writing the domain, quantifier and shape of the
+claim, followed by **Given → Want → Bridge**. Part of the task is deciding what kind of argument
+fits.
+
+::::exercise{#ex-mixed-choose-method}
+
+For each claim, choose a promising first method—direct proof, counterexample, contrapositive,
+contradiction, cases or induction—and explain why its shape suggests that method. Do not prove the
+claims yet.
+
+1. If an integer $$n^2$$ is odd, then $$n$$ is odd.
+2. Every prime number is odd.
+3. There are no integers $$a$$ and $$b$$ with $$4a+6b=9$$.
+4. For every positive integer $$n$$, $$1+3+\cdots+(2n-1)=n^2$$.
+
+:::solution
+
+1. **Contrapositive:** assuming $$n$$ is not odd means it is even, which gives a usable formula
+   $$n=2k$$ to square.
+2. **Counterexample:** the claim is universal and false; the prime number $$2$$ is not odd.
+3. **Contradiction:** the claim says that certain integers do not exist. Assuming they do makes the
+   left side even while the right side is odd.
+4. **Induction:** the statement is indexed by every positive integer, and the case $$n+1$$ adds one
+   new odd term to the case $$n$$.
+
+Other valid methods may exist. The point is to connect the structure of the claim to a useful
+starting move.
+
+:::
+
+::::
+
+::::exercise{#ex-mixed-repair-proof}
+
+A student tries to prove: “The product of two odd integers is odd.”
+
+> Let $$a=2k+1$$ and $$b=2k+1$$. Then $$ab=(2k+1)^2=2(2k^2+2k)+1$$, so the product is odd.
+
+Identify the gap, then repair the proof.
+
+:::solution
+
+The same witness $$k$$ was used for both odd numbers, which silently assumes $$a=b$$. Different
+letters may take equal values, but two arbitrary odd integers need independent witnesses.
+
+**Assume.** Let $$a$$ and $$b$$ be arbitrary odd integers. Write $$a=2k+1$$ and $$b=2l+1$$ for
+integers $$k$$ and $$l$$.
+
+**Goal.** Show that $$ab$$ has the form $$2\times(\text{an integer})+1$$.
+
+**Reasoning.**
+
+```math
+ab=(2k+1)(2l+1)=4kl+2k+2l+1=2(2kl+k+l)+1.
+```
+
+Since $$2kl+k+l$$ is an integer, the product has the required form. Therefore $$ab$$ is odd.
+
+:::
+
+::::
+
+::::exercise{#ex-mixed-independent-proof}
+
+Let
+
+```math
+A=\{n\in\mathbb Z:n\text{ is a multiple of }6\},
+\qquad
+B=\{n\in\mathbb Z:n\text{ is even and a multiple of }3\}.
+```
+
+Prove that $$A=B$$. Label the two directions and use **Given → Want → Bridge** in your planning.
+
+:::solution
+
+To prove that the sets are equal, we prove both subset directions (:ref{#set-equality}).
+
+**First direction: prove that $$A\subseteq B$$.**
+
+- **Assume:** take an arbitrary $$n\in A$$. Then $$n=6k$$ for some integer $$k$$.
+- **Goal:** show that $$n$$ is both even and a multiple of $$3$$, so that $$n\in B$$.
+- **Reasoning:** since $$n=6k=2(3k)$$, it is even. Since $$n=6k=3(2k)$$, it is also a multiple of
+  $$3$$. Therefore $$n\in B$$ and $$A\subseteq B$$.
+
+**Second direction: prove that $$B\subseteq A$$.**
+
+- **Assume:** take an arbitrary $$n\in B$$. Then $$n$$ is even and is a multiple of $$3$$. Write
+  $$n=3s$$ for some integer $$s$$.
+- **Goal:** show that $$n$$ is a multiple of $$6$$, so that $$n\in A$$.
+- **Reasoning:** we first show that $$s$$ is even. If $$s$$ were odd, then $$3s$$ would be a product
+  of two odd integers and would therefore be odd. But $$3s=n$$, and our assumption says that $$n$$
+  is even. This contradiction shows that $$s$$ must be even. Write $$s=2k$$. Then
+
+  ```math
+  n=3s=3(2k)=6k.
+  ```
+
+  Thus $$n$$ is a multiple of $$6$$, so $$n\in A$$ and $$B\subseteq A$$.
+
+**Conclusion.** Both inclusions hold, so $$A=B$$.
 
 :::
 

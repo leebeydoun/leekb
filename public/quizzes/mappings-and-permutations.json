@@ -35,12 +35,7 @@
       "stars": 2,
       "topic": "Mappings",
       "question": "What is the image of the interval $$[-2, 1]$$ under $$x \\mapsto x^2$$?",
-      "options": [
-        "$$[1, 4]$$",
-        "$$[4, 1]$$",
-        "$$[-4, 1]$$",
-        "$$[0, 4]$$"
-      ],
+      "options": ["$$[1, 4]$$", "$$[4, 1]$$", "$$[-4, 1]$$", "$$[0, 4]$$"],
       "answer": 3,
       "explanation": "Squares of numbers from $$-2$$ to $$1$$ run from $$0$$ (at $$0$$) up to $$4$$ (at $$-2$$) (:ref{#image-of-set}). The ends of an interval don't always go to the ends of its image."
     },
@@ -77,12 +72,7 @@
       "stars": 1,
       "topic": "Curves traced by mappings",
       "question": "Where is $$C(t) = (1 + 2t,\\ 3 - t)$$ at $$t = 2$$?",
-      "options": [
-        "$$(5, 1)$$",
-        "$$(3, 2)$$",
-        "$$(5, 5)$$",
-        "$$(4, 1)$$"
-      ],
+      "options": ["$$(5, 1)$$", "$$(3, 2)$$", "$$(5, 5)$$", "$$(4, 1)$$"],
       "answer": 0,
       "explanation": "Put $$t = 2$$ into each coordinate (:ref{#parametrised-curve}): $$1 + 4 = 5$$ and $$3 - 2 = 1$$."
     },
@@ -161,12 +151,7 @@
       "stars": 2,
       "topic": "One to one and onto",
       "question": "Is $$x \\mapsto x^2$$ from all numbers to all numbers one to one, onto, both or neither?",
-      "options": [
-        "Both",
-        "One to one only",
-        "Neither",
-        "Onto only"
-      ],
+      "options": ["Both", "One to one only", "Neither", "Onto only"],
       "answer": 2,
       "explanation": "$$3$$ and $$-3$$ share the value $$9$$, and $$-1$$ is never a value (:ref{#injective}, :ref{#surjective}). On the numbers $$\\ge 0$$ it is both."
     },
@@ -231,12 +216,7 @@
       "stars": 1,
       "topic": "Combining and undoing mappings",
       "question": "For $$f(x) = x + 2$$ and $$g(x) = 3x$$, what is $$(g \\circ f)(1)$$?",
-      "options": [
-        "$$5$$",
-        "$$9$$",
-        "$$6$$",
-        "$$3$$"
-      ],
+      "options": ["$$5$$", "$$9$$", "$$6$$", "$$3$$"],
       "answer": 1,
       "explanation": "Do $$f$$ first: $$f(1) = 3$$, then $$g(3) = 9$$ (:ref{#mapping-composite}). Doing $$g$$ first would give $$5$$."
     },
@@ -301,26 +281,16 @@
       "stars": 2,
       "topic": "Combining and undoing mappings",
       "question": "If $$h$$ has an inverse and $$h \\circ f = h \\circ g$$, what follows?",
-      "options": [
-        "$$f = g$$",
-        "$$h = I$$",
-        "$$f = h$$",
-        "Nothing"
-      ],
+      "options": ["$$f = g$$", "$$h = I$$", "$$f = h$$", "Nothing"],
       "answer": 0,
-      "explanation": "Compose both sides on the left with $$h^{-1}$$ (:ref{#mapping-cancel}), just as you divide both sides of an equation by a non-zero number."
+      "explanation": "Compose both sides on the left with $$h^{-1}$$ (:ref{#mapping-cancel}), in the same way that you divide both sides of an equation by a non-zero number."
     },
     {
       "id": "power-add5",
       "stars": 1,
       "topic": "Repeating a mapping",
       "question": "For $$f(x) = x + 5$$, what is $$f^4(x)$$?",
-      "options": [
-        "$$x + 625$$",
-        "$$4x + 5$$",
-        "$$(x + 5)^4$$",
-        "$$x + 20$$"
-      ],
+      "options": ["$$x + 625$$", "$$4x + 5$$", "$$(x + 5)^4$$", "$$x + 20$$"],
       "answer": 3,
       "explanation": "Each step adds $$5$$, so four steps add $$20$$ (:ref{#mapping-powers}). The power counts repeats, not multiplication of values."
     },
@@ -357,12 +327,7 @@
       "stars": 2,
       "topic": "Repeating a mapping",
       "question": "If $$f^6 = I$$, what is $$f^{-1}$$?",
-      "options": [
-        "$$f^5$$",
-        "$$f^6$$",
-        "$$f^{-6}$$",
-        "$$f$$"
-      ],
+      "options": ["$$f^5$$", "$$f^6$$", "$$f^{-6}$$", "$$f$$"],
       "answer": 0,
       "explanation": "$$f \\circ f^5 = f^6 = I$$, and the same on the other side (:ref{#repeating-inverse})."
     },
@@ -371,12 +336,7 @@
       "stars": 3,
       "topic": "Repeating a mapping",
       "question": "$$f$$ has an inverse, $$f^4 = I$$ and $$f^6 = I$$. What is the smallest power you can be sure is $$I$$?",
-      "options": [
-        "$$f^{10}$$",
-        "$$f^{24}$$",
-        "$$f^1$$",
-        "$$f^2$$"
-      ],
+      "options": ["$$f^{10}$$", "$$f^{24}$$", "$$f^1$$", "$$f^2$$"],
       "answer": 3,
       "explanation": "$$f^2 = f^6 \\circ f^{-4} = I \\circ I = I$$ (:ref{#powers-add-integers}). A turn by $$\\pi$$ shows $$f$$ itself needn't be $$I$$."
     },
@@ -427,12 +387,7 @@
       "stars": 2,
       "topic": "Permutations",
       "question": "If $$\\sigma(1) = 2$$, $$\\sigma(2) = 4$$, $$\\sigma(3) = 1$$, $$\\sigma(4) = 3$$, what is $$\\sigma^{-1}(1)$$?",
-      "options": [
-        "$$2$$",
-        "$$4$$",
-        "$$1$$",
-        "$$3$$"
-      ],
+      "options": ["$$2$$", "$$4$$", "$$1$$", "$$3$$"],
       "answer": 3,
       "explanation": "$$\\sigma^{-1}(1)$$ is the number $$\\sigma$$ sends to $$1$$ (:ref{#permutation-inverse}), which is $$3$$. The value $$\\sigma(1) = 2$$ answers a different question."
     },
@@ -441,12 +396,7 @@
       "stars": 1,
       "topic": "Permutations",
       "question": "How many permutations of $$\\{1, 2, 3, 4, 5\\}$$ are there?",
-      "options": [
-        "$$25$$",
-        "$$3125$$",
-        "$$120$$",
-        "$$60$$"
-      ],
+      "options": ["$$25$$", "$$3125$$", "$$120$$", "$$60$$"],
       "answer": 2,
       "explanation": "$$5! = 120$$ (:ref{#permutation-count}): five places for where $$5$$ goes, then $$4!$$ for the rest."
     },
@@ -462,7 +412,7 @@
         "About $$2^{52}$$"
       ],
       "answer": 1,
-      "explanation": "$$52!$$ has $$68$$ digits (:ref{#permutation-count}), so a well-shuffled deck is very likely in an order never seen before."
+      "explanation": "$$52!$$ has $$68$$ digits (:ref{#permutation-count}), so the other three estimates are far too small."
     },
     {
       "id": "cycle-read",
@@ -511,12 +461,7 @@
       "stars": 1,
       "topic": "Cycles",
       "question": "A permutation has cycles of lengths $$2$$, $$3$$ and $$4$$. What is its order?",
-      "options": [
-        "$$24$$",
-        "$$12$$",
-        "$$9$$",
-        "$$4$$"
-      ],
+      "options": ["$$24$$", "$$12$$", "$$9$$", "$$4$$"],
       "answer": 1,
       "explanation": "Every cycle must come home together: the least common multiple of $$2$$, $$3$$ and $$4$$ is $$12$$ (:ref{#permutation-order})."
     },
@@ -539,12 +484,7 @@
       "stars": 2,
       "topic": "Cycles",
       "question": "How many perfect out-shuffles bring a $$52$$-card deck back to its starting order?",
-      "options": [
-        "$$52$$",
-        "$$26$$",
-        "$$2$$",
-        "$$8$$"
-      ],
+      "options": ["$$52$$", "$$26$$", "$$2$$", "$$8$$"],
       "answer": 3,
       "explanation": "Its cycles have lengths $$1$$, $$1$$, $$2$$ and six $$8$$s, whose least common multiple is $$8$$ (:ref{#permutation-order})."
     },
@@ -567,12 +507,7 @@
       "stars": 2,
       "topic": "Swaps and the sign of a permutation",
       "question": "How many swaps does it take to make a cycle of length $$6$$?",
-      "options": [
-        "$$6$$",
-        "$$5$$",
-        "$$3$$",
-        "$$15$$"
-      ],
+      "options": ["$$6$$", "$$5$$", "$$3$$", "$$15$$"],
       "answer": 1,
       "explanation": "A cycle of length $$k$$ is a chain of $$k - 1$$ swaps (:ref{#swaps-and-sign-cycle})."
     },
@@ -595,12 +530,7 @@
       "stars": 2,
       "topic": "Swaps and the sign of a permutation",
       "question": "What is the sign of $$[1, 2, 3, 4]$$ as a permutation of $$\\{1, \\ldots, 5\\}$$?",
-      "options": [
-        "$$+1$$",
-        "$$4$$",
-        "$$0$$",
-        "$$-1$$"
-      ],
+      "options": ["$$+1$$", "$$4$$", "$$0$$", "$$-1$$"],
       "answer": 3,
       "explanation": "It has $$2$$ orbits among $$5$$ numbers, so the sign is $$(-1)^{5 - 2} = -1$$ (:ref{#sign-from-cycles}). A $$4$$-cycle is $$3$$ swaps."
     },
@@ -609,12 +539,7 @@
       "stars": 1,
       "topic": "Swaps and the sign of a permutation",
       "question": "Is a cycle of length $$3$$ even or odd?",
-      "options": [
-        "Odd",
-        "Neither",
-        "Even",
-        "It depends on $$n$$"
-      ],
+      "options": ["Odd", "Neither", "Even", "It depends on $$n$$"],
       "answer": 2,
       "explanation": "It is $$2$$ swaps (:ref{#swaps-and-sign-cycle}), so its sign is $$(-1)^2 = +1$$ (:ref{#permutation-sign})."
     },
@@ -623,12 +548,7 @@
       "stars": 2,
       "topic": "Swaps and the sign of a permutation",
       "question": "$$\\sigma$$ is odd and $$\\tau$$ is odd. What is $$\\sigma\\tau$$?",
-      "options": [
-        "Odd",
-        "Even",
-        "Either",
-        "The identity"
-      ],
+      "options": ["Odd", "Even", "Either", "The identity"],
       "answer": 1,
       "explanation": "Signs multiply: $$(-1)(-1) = +1$$ (:ref{#sign-product})."
     },
@@ -637,12 +557,7 @@
       "stars": 2,
       "topic": "Swaps and the sign of a permutation",
       "question": "How many of the $$24$$ permutations of $$\\{1, 2, 3, 4\\}$$ are even?",
-      "options": [
-        "$$12$$",
-        "$$6$$",
-        "$$8$$",
-        "$$16$$"
-      ],
+      "options": ["$$12$$", "$$6$$", "$$8$$", "$$16$$"],
       "answer": 0,
       "explanation": "For $$n \\ge 2$$, exactly half are even (:ref{#half-even}): composing with $$[1, 2]$$ matches the even ones with the odd ones."
     },
@@ -650,7 +565,7 @@
       "id": "fifteen",
       "stars": 3,
       "topic": "Swaps and the sign of a permutation",
-      "question": "Why can't the 15 puzzle swap just the 14 and 15 tiles?",
+      "question": "Why can't the 15 puzzle swap only the 14 and 15 tiles?",
       "options": [
         "The tiles are glued",
         "It needs too many moves",

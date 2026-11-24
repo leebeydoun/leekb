@@ -5,31 +5,32 @@ description:
   equal and equivalent mean.
 ---
 
-Think of a statement as a claim you could bet on. "It will rain in Paris tomorrow" is one: nobody
-knows the answer yet, but tomorrow will settle the bet. "Close the window" is not, because there is
-nothing to win or lose. Mathematics deals in claims of the first kind, and a proof settles the bet
-for certain.
+Imagine two classmates reading "the square of a number is positive". One thinks of $$3$$, whose
+square is positive. The other thinks of $$0$$, whose square is not. The sentence never says which
+numbers it covers, so the classmates are checking different claims.
 
-A bet only works if both sides agree on what was claimed. In everyday speech, a loose sentence is
-usually fine, because the listener fills in what you meant. In mathematics, one missing word can
-change who wins. "The square of a number is positive" is false, because $$0^2 = 0$$, but "the square
-of a non-zero number is positive" is true.
+Mathematics avoids that ambiguity by using statements whose meaning is fixed. Adding a few words
+does the job here: "the square of every whole number other than $$0$$ is positive". In this guide
+we'll learn how to read and write claims with that level of care.
 
-In this guide we'll see what makes a sentence a statement, and then look at the places where one
-slip changes who wins:
+For any claim containing a letter, ask the same three questions:
 
-- the words "for every" and "there is"
-- how to state the opposite of a claim
-- the difference between equal and equivalent
+1. **Domain:** what kind of object may the letter represent?
+2. **Quantifier:** does the claim concern every object, at least one object, or no objects?
+3. **Property:** what must those objects satisfy?
+
+For example, in "every integer $$n$$ has $$n^2 \ge 0$$", the domain is the integers, the quantifier
+is "every", and the property is $$n^2 \ge 0$$. A proof cannot begin reliably until all three are
+clear.
 
 ## What a statement is
 
-Mathematical statements work like bets, except that reasoning settles them instead of waiting to
-see. "$$7$$ is bigger than $$4$$" is a true statement, and "$$7$$ is even" is a false one. Each is a
-statement before you check it, because it makes a definite claim.
+A mathematical statement makes a definite claim. "$$7$$ is bigger than $$4$$" is a true statement,
+and "$$7$$ is even" is a false one. Both count as statements before you check them because each must
+have one of those two answers.
 
-Letters are the usual reason a sentence makes no claim yet. You can't bet on $$x + 3 = 7$$ on its
-own, because it doesn't say what $$x$$ is. It is true when $$x$$ is $$4$$ and false otherwise, so
+Letters are the usual reason a sentence makes no claim yet. You can't decide whether $$x + 3 = 7$$
+is true until you know what $$x$$ is. It is true when $$x$$ is $$4$$ and false otherwise, so
 something still has to be said about $$x$$ before it becomes a statement.
 
 :::definition[Statement]{#statement}
@@ -46,6 +47,14 @@ meaning hasn't been fixed, like $$x + 3 = 7$$ on its own, is not yet a statement
 - "Every whole number is even" is a false statement, because $$3$$ is not even.
 - "Is $$15$$ a multiple of $$4$$?" is a question, not a statement.
 - "$$n$$ is a multiple of $$4$$" is not yet a statement, because $$n$$ hasn't been given a meaning.
+
+:::
+
+:::example[Pause and classify]
+
+The line "$$n^2$$ is even" is not yet a statement: the letter $$n$$ has no fixed meaning. "For every
+even integer $$n$$, $$n^2$$ is even" is a statement. Its domain is the even integers, its quantifier
+is "every", and its property is "the square is even".
 
 :::
 
@@ -81,6 +90,21 @@ These phrases are called **quantifiers**, because they say how many values the c
 
 :::
 
+Before using the symbols $$\forall$$ and $$\exists$$, be able to say the claim completely in words.
+The symbols shorten a meaning; they do not replace it.
+
+:::example[Same property, different quantifier]
+
+For integers $$n$$, consider the property "$$n^2 = 4$$".
+
+- "For every integer $$n$$, $$n^2 = 4$$" is false.
+- "There is an integer $$n$$ with $$n^2 = 4$$" is true; $$n = 2$$ is a witness.
+- "There is no integer $$n$$ with $$n^2 = 4$$" is false.
+
+A **witness** is a particular value that proves a "there is" statement.
+
+:::
+
 ## The opposite of a statement
 
 To state the opposite of a "for every" or "there is" claim, you swap the quantifier. The opposite of
@@ -104,6 +128,13 @@ every" claim is false, you only need one case where it fails.
 its opposite is "at least one of $$m$$ and $$n$$ is odd", not "both are odd". In general, the
 opposite of "$$P$$ and $$Q$$" is "not $$P$$, or not $$Q$$".
 
+:::example["Not every" does not mean "none"]
+
+The opposite of "every integer is even" is "there is an integer that is not even". The number $$1$$
+settles the opposite. Saying "no integer is even" would be much stronger, and false.
+
+:::
+
 :ref{#contradiction} starts by supposing that a statement is false. So it works exactly when you
 state the opposite correctly.
 
@@ -123,8 +154,8 @@ When there is any doubt, say it.
 
 ## Writing maths in full sentences
 
-Because a bare equation isn't a statement, mathematics is written in complete sentences, with the
-symbols as part of them. Compare these two lines:
+A line of equations may leave the connection between them unclear. Mathematics uses complete
+sentences to make that connection explicit. Compare these two lines:
 
 ```math
 x^2 = 9 \qquad x = 3
@@ -142,10 +173,13 @@ Instructions need the same care. "Solve $$x^2 = 9$$" means: find every number $$
 $$x^2 = 9$$ is true. Finding $$3$$ is not enough. A full answer is "$$x = 3$$ or $$x = -3$$",
 together with a reason why there are no others.
 
-## Equal and equivalent
+## A preview: equal and equivalent
 
 "Equal" and "equivalent" sound alike, but they compare different kinds of thing. Equal compares two
 numbers. Equivalent compares two statements.
+
+The next guide explains how to prove that two statements work in both directions. Here the goal is
+only to keep the two words apart.
 
 ### Equal means the same number
 
@@ -196,7 +230,22 @@ equations are true for exactly the same values of $$x$$. The table puts the two 
 | Written  | $$=$$                                | "exactly when", or "is equivalent to"        |
 | Example  | $$4 \cdot 3 = 20 - 8$$               | "$$x + 3 = 7$$" is equivalent to "$$x = 4$$" |
 
-## Different letters can name the same number
+## The roles played by letters
+
+A letter can have several different jobs:
+
+- An **arbitrary value** is chosen without any special property beyond the stated domain. Proving
+  the result for it proves the result for every allowed value.
+- A **witness** is one particular value introduced to establish a "there is" claim.
+- An **unknown** is a value to be found by solving an equation.
+- A **bound index**, such as $$i$$ in a sum, is a temporary counter whose meaning ends with the
+  expression that binds it.
+
+Confusing these roles causes common proof errors. An arbitrary value may not be chosen because it is
+convenient, while a witness must be specific enough to check. The [Notation](./notation.mdx) guide
+returns to indices and scope.
+
+### Different letters can name the same number
 
 A statement that begins "let $$x$$ and $$y$$ be numbers" allows $$x$$ and $$y$$ to be equal.
 Different letters are different names, and two names can belong to the same number. So a rule proved
@@ -278,7 +327,7 @@ at least one integer to check. The reverse fails, as the first sentence shows.
 Write down the opposite of each statement without starting with "it is not true that". Then say
 which of the two is true.
 
-1. Every student in the class owns a phone and a laptop.
+1. Every whole number is even and a multiple of $$3$$.
 2. There is a prime number that is even.
 3. For every real number $$x$$, $$x^2 \ge x$$.
 
@@ -287,9 +336,9 @@ which of the two is true.
 By :ref{#statement-negation}, "every" turns into "some … fails", and "there is" turns into "there is
 no".
 
-1. Opposite: "some student in the class doesn't own a phone, or doesn't own a laptop". The opposite
-   of "$$P$$ and $$Q$$" is "not $$P$$, or not $$Q$$", so one missing item is enough. Which is true
-   depends on the class.
+1. Opposite: "some whole number is not even, or is not a multiple of $$3$$". The opposite of "$$P$$
+   and $$Q$$" is "not $$P$$, or not $$Q$$", so either failure is enough. The opposite is true: $$1$$
+   is not even and is not a multiple of $$3$$.
 2. Opposite: "no prime number is even", that is, "every prime number is odd". The original is true,
    since $$2$$ is prime and even.
 3. Opposite: "there is a real number $$x$$ with $$x^2 < x$$". The opposite is true:
@@ -379,14 +428,26 @@ It is false. Different letters may name the same number, and when $$a = b$$ the 
 $$0$$ and has no value.
 
 The statement "for any distinct numbers $$a$$ and $$b$$,
-$$\frac{a^3 - b^3}{a - b} = a^2 + ab + b^2$$" is true. Multiplying out,
+$$\frac{a^3 - b^3}{a - b} = a^2 + ab + b^2$$" is true.
+
+**Assume.** Let $$a$$ and $$b$$ be distinct numbers. Then $$a-b\ne0$$, so division by $$a-b$$ is
+allowed.
+
+**Goal.** Prove that the fraction equals $$a^2+ab+b^2$$.
+
+**Reasoning.** Factor the numerator by multiplying the proposed factorisation back out:
 
 ```math
 (a - b)(a^2 + ab + b^2) = a^3 + a^2 b + ab^2 - a^2 b - ab^2 - b^3 = a^3 - b^3.
 ```
 
-Since $$a \neq b$$, the number $$a - b$$ is not $$0$$, so dividing both sides by it gives the
-formula.
+Since $$a-b\ne0$$, divide both sides by $$a-b$$. This gives
+
+```math
+\frac{a^3-b^3}{a-b}=a^2+ab+b^2,
+```
+
+which is exactly the claim.
 
 :::
 

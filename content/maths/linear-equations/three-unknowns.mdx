@@ -5,8 +5,8 @@ description: Reducing three equations in three unknowns to two, and what can go 
 
 Suppose a bakery sells bread, cakes and pies, and you know the totals for three different orders.
 With three unknown prices you need three facts, and the three orders give you exactly that. Finding
-the prices needs no new idea: eliminating one unknown turns three equations into two, which you
-already know how to solve. In this guide we'll see how to organise the work so it stays manageable.
+the prices uses the same elimination idea as before, but the bookkeeping is genuinely harder. In
+this guide we'll organise the work around a visible target so that every elimination has a purpose.
 
 ## Linear equations in three unknowns
 
@@ -40,6 +40,19 @@ The plan is to peel off one unknown at a time. Getting rid of one unknown turns 
 equations in two unknowns, which you already know how to solve. That takes two new equations, both
 free of the same unknown. Each should be built from a different pair of the original equations, so
 that together with one original kept aside, they still carry everything the three originals said.
+
+The destination is a **triangular system**:
+
+```math
+\begin{aligned}
+ax+by+cz &= p,\\
+\phantom{ax+{}}b'y+c'z &= q,\\
+\phantom{ax+by+{}}c''z &= r.
+\end{aligned}
+```
+
+The last equation gives $$z$$, the middle then gives $$y$$, and the first gives $$x$$. Ordinary
+elimination builds this staircase from the original system.
 
 :::remark[Solving three equations in three unknowns]{#three-method}
 
@@ -85,6 +98,24 @@ and $$x = 1$$. Then $$y = 5 - 3 = 2$$.
 
 **Check.** (1): $$1 + 2 + 3 = 6$$. (2): $$2 - 2 + 3 = 3$$. (3): $$1 + 4 - 3 = 2$$. The solution is
 $$(1, 2, 3)$$.
+
+:::
+
+:::example[Pause and plan the pairs]
+
+For
+
+```math
+\begin{aligned}
+x+y+z&=4 &(1)\\
+2x-y+z&=1 &(2)\\
+x+3y-z&=2 &(3),
+\end{aligned}
+```
+
+choose to eliminate $$z$$. Use two **different** pairs: subtract (1) from (2), and add (1) to (3).
+Before solving, verify that both resulting equations contain only $$x$$ and $$y$$. This planning
+check prevents the most common 3×3 error: removing different unknowns in the two derived equations.
 
 :::
 

@@ -60,7 +60,7 @@ differs is trigonometry, where $$\sin^2 x$$ means $$(\sin x)^2$$.
 
 ## Powers you can work out
 
-Each of the mappings below has a formula for $$f^k$$. You find it by doing $$f$$ a few times and
+Each of the next mappings has a formula for $$f^k$$. You find it by doing $$f$$ a few times and
 spotting the pattern, and then induction (:ref{#basic-proofs/induction}) proves the pattern holds
 for every $$k$$.
 
@@ -247,7 +247,7 @@ $$g^{k + 1} = g^k \circ g$$. So
 
 ```math
 \begin{aligned}
-f^{k + 1} \circ g^{k + 1} &= (f \circ f^k) \circ (g^k \circ g) && \text{the two facts just given} \\
+f^{k + 1} \circ g^{k + 1} &= (f \circ f^k) \circ (g^k \circ g) && \text{the definitions of the two powers} \\
 &= f \circ (f^k \circ g^k) \circ g && \text{grouping doesn't matter} \\
 &= f \circ I_S \circ g && \text{the assumption} \\
 &= f \circ g = I_S && \text{the identity, then } g \text{ is the inverse of } f
@@ -405,11 +405,11 @@ the guide [Cycles](./cycles.mdx).
 
 ## Following a point
 
-The mapping below acts on the plane, and each press of "apply again" adds the next point $$f^k(X)$$
-to the trail. The turn by $$\frac{2\pi}{5}$$ and the mapping $$(x, y) \mapsto (y, -x)$$, which is
-the quarter turn clockwise, come home after $$5$$ and $$4$$ presses. The slide moves the point the
-same step further each time, and the zoom by $$\frac12$$ halves its distance to $$O$$ each time, so
-neither ever returns.
+The plane iterator applies one mapping repeatedly, and each press of "apply again" adds the next
+point $$f^k(X)$$ to the trail. The turn by $$\frac{2\pi}{5}$$ and the mapping
+$$(x, y) \mapsto (y, -x)$$, which is the quarter turn clockwise, come home after $$5$$ and $$4$$
+presses. The slide moves the point the same step further each time, and the zoom by $$\frac12$$
+halves its distance to $$O$$ each time, so neither ever returns.
 
 <IterateMap />
 

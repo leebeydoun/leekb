@@ -5,15 +5,28 @@ description:
 ---
 
 Imagine writing down the scores of $$30$$ players in a game. Giving each one its own letter runs out
-after $$26$$, and long before then you'd forget which letter was whose. Mathematicians get round
-this with a few habits:
+after $$26$$, and long before then you'd forget which letter was whose. Labelling them
+$$x_1, x_2, \dots, x_{30}$$ keeps the scores together and still gives each one a name. If you want
+their total, one large $$\Sigma$$ can replace the whole line of additions.
 
-- naming many numbers at once with subscripts
-- writing long sums compactly with $$\Sigma$$
-- keeping to the same kinds of letter for the same kinds of thing
+These marks don't add new mathematics. They make long pieces of mathematics shorter and more
+readable. Every later chapter uses them, so in this guide we'll set out what they mean and how to
+read them.
 
-None of this is new mathematics, but every later chapter uses it, so in this guide we'll set it out
-once.
+## Letter roles and scope
+
+Before decoding subscripts or sums, decide what job each letter has:
+
+| Role            | Example                               | How it behaves                                      |
+| --------------- | ------------------------------------- | --------------------------------------------------- |
+| arbitrary value | “let $$n$$ be any integer”            | no special value may be chosen                      |
+| witness         | “there is an integer $$k$$ such that” | one value whose existence is asserted               |
+| unknown         | “solve for $$x$$”                     | its value is to be found                            |
+| bound index     | $$\sum_{i=1}^{n}x_i$$                 | $$i$$ is a temporary counter inside this expression |
+
+The **scope** of a letter is the part of the statement or expression in which its meaning applies.
+For instance, $$i$$ is bound by the sum sign in $$\sum_{i=1}^{n}x_i$$ and has no meaning after the
+sum ends. By contrast, $$n$$ must have been introduced outside the sum and keeps that meaning.
 
 ## Subscripts
 
@@ -68,6 +81,17 @@ read "the sum of $$x_i$$ for $$i$$ from $$1$$ to $$n$$". The letter $$i$$ runs t
 numbers from the one written below to the one written above, and for each value the expression after
 $$\Sigma$$ is worked out and added on.
 
+Read the notation in four pieces:
+
+| Piece       | In $$\sum_{i=2}^{5}(2i-1)$$ | Job                                |
+| ----------- | --------------------------- | ---------------------------------- |
+| index       | $$i$$                       | the counter that changes           |
+| lower bound | $$2$$                       | its first value                    |
+| upper bound | $$5$$                       | its last value                     |
+| summand     | $$2i-1$$                    | the expression evaluated and added |
+
+There are $$5-2+1=4$$ terms, not three. Expanding gives $$3+5+7+9$$.
+
 :::definition[Sum notation]{#sum-notation}
 
 For whole numbers $$m \le n$$,
@@ -91,6 +115,15 @@ letter not already in use would do equally well: $$\sum_{j=m}^{n} x_j$$ is the s
 
 :::
 
+Renaming a bound index does not change a sum:
+
+```math
+\sum_{i=1}^{4} i^2 = \sum_{j=1}^{4} j^2 = 1 + 4 + 9 + 16.
+```
+
+The letters $$i$$ and $$j$$ only count the same four positions. This is different from changing a
+letter that was introduced outside the sum.
+
 The sum notation makes long statements short. The formula for adding up $$1$$ to $$n$$, proved by
 induction on the [Induction](./induction.mdx) page, becomes
 
@@ -107,6 +140,18 @@ it. Two of them come up in almost every calculation with sums:
   adding the totals.
 - A number that multiplies every term can be taken outside the sum.
 
+See both rules with three terms before reading their general forms:
+
+```math
+\begin{aligned}
+(x_1+y_1)+(x_2+y_2)+(x_3+y_3)
+  &= (x_1+x_2+x_3)+(y_1+y_2+y_3),\\
+cx_1+cx_2+cx_3 &= c(x_1+x_2+x_3).
+\end{aligned}
+```
+
+The $$\Sigma$$ notation below compresses exactly these familiar rearrangements.
+
 :::proposition[Rules for sums]{#notation-sum-rules}
 
 For numbers $$x_1, \dots, x_n$$ and $$y_1, \dots, y_n$$, and any number $$c$$,
@@ -121,18 +166,40 @@ For numbers $$x_1, \dots, x_n$$ and $$y_1, \dots, y_n$$, and any number $$c$$,
 
 :::proof{source="https://en.wikipedia.org/wiki/Summation#General_identities"}
 
-Written out, the left side of the first rule is
+There are two identities to prove, so we handle them one at a time.
+
+**First identity.** Our goal is to show that adding the pairs $$x_i+y_i$$ gives the same result as
+adding all the $$x_i$$ values and all the $$y_i$$ values separately. Expand the sigma notation on
+the left:
 
 ```math
 (x_1 + y_1) + (x_2 + y_2) + \dots + (x_n + y_n).
 ```
 
-Addition can be done in any order and grouped in any way (:ref{#numbers/addition-rules}), so this
-equals $$(x_1 + x_2 + \dots + x_n) + (y_1 + y_2 + \dots + y_n)$$, which is the right side.
+Addition can be reordered and regrouped (:ref{#numbers/addition-rules}), so collect the $$x$$ terms
+and the $$y$$ terms:
 
-For the second rule, the left side is $$cx_1 + cx_2 + \dots + cx_n$$. By distributivity
-(:ref{#numbers/multiplication-rules}), applied once for each extra term, this equals
-$$c(x_1 + x_2 + \dots + x_n)$$, which is the right side.
+```math
+(x_1+x_2+\dots+x_n)+(y_1+y_2+\dots+y_n)
+=\sum_{i=1}^n x_i+\sum_{i=1}^n y_i.
+```
+
+This is exactly the right side of the first identity.
+
+**Second identity.** Our goal is to show that a common factor $$c$$ can be moved outside a sum.
+Expand the sigma notation:
+
+```math
+\sum_{i=1}^n cx_i=cx_1+cx_2+\dots+cx_n.
+```
+
+Apply distributivity (:ref{#numbers/multiplication-rules}) in reverse to factor out $$c$$:
+
+```math
+cx_1+cx_2+\dots+cx_n=c(x_1+x_2+\dots+x_n)=c\sum_{i=1}^n x_i.
+```
+
+This is exactly the right side of the second identity, so both rules have been proved.
 
 :::
 
@@ -146,7 +213,7 @@ Using $$\sum_{i=1}^{n} i = \frac{n(n + 1)}{2}$$,
 
 :::
 
-## Which letter for what
+## Conventions for choosing letters
 
 A letter means whatever it is said to mean, so in principle any letter could stand for anything. In
 practice, keeping to a few habits lets a reader guess correctly before being told:
@@ -306,18 +373,44 @@ The fix is a new letter: $$n = 2k$$ and $$m = 2l$$ for some integers $$k$$ and $
 
 :::solution
 
-1. Written out, the sum is
+1. **Goal.** Show that the expanded sum equals $$(n+1)^2-1$$.
+
+   **Reasoning.** Written out, the sum is
 
    ```math
    (2^2 - 1^2) + (3^2 - 2^2) + \cdots + \bigl((n + 1)^2 - n^2\bigr).
    ```
 
    Each square after $$1^2$$ appears once added and once taken away, so everything cancels except
-   $$(n + 1)^2 - 1^2 = n^2 + 2n$$.
+   $$(n+1)^2-1^2=(n+1)^2-1$$. This is exactly the required expression.
 
-2. $$(i + 1)^2 - i^2 = 2i + 1$$, so by :ref{#notation-sum-rules} the sum is
-   $$2\sum_{i=1}^{n} i + \sum_{i=1}^{n} 1 = 2\sum_{i=1}^{n} i + n$$. Setting this equal to
-   $$n^2 + 2n$$ gives $$2\sum_{i=1}^{n} i = n^2 + n$$, so $$\sum_{i=1}^{n} i = \frac{n(n + 1)}{2}$$.
+2. **Goal.** Use the same sum to find a formula for $$\sum_{i=1}^n i$$.
+
+   First expand one term:
+
+   ```math
+   (i+1)^2-i^2=i^2+2i+1-i^2=2i+1.
+   ```
+
+   Therefore, by :ref{#notation-sum-rules}, the whole sum is
+
+   ```math
+   \sum_{i=1}^n(2i+1)=2\sum_{i=1}^n i+\sum_{i=1}^n1
+   =2\sum_{i=1}^n i+n.
+   ```
+
+   Part 1 showed that the same sum equals $$(n+1)^2-1=n^2+2n$$. Equate the two expressions and
+   solve:
+
+   ```math
+   2\sum_{i=1}^n i+n=n^2+2n
+   \quad\Longrightarrow\quad
+   2\sum_{i=1}^n i=n^2+n
+   \quad\Longrightarrow\quad
+   \sum_{i=1}^n i=\frac{n(n+1)}2.
+   ```
+
+   This is the desired formula.
 
 This is a second proof of the formula proved by induction on the [Induction](./induction.mdx) page.
 

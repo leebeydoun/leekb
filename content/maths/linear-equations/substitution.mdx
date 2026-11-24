@@ -61,11 +61,35 @@ $$(2, 1)$$.
 The brackets in step 2 matter. Without them, $$4x + 3 \cdot 2x - 3$$ would multiply only the $$2x$$
 by $$3$$, and the answer would come out wrong.
 
-## Why it works
+:::example[Repair the substitution]
+
+A student replaces $$y$$ in $$5x-2y=4$$ using $$y=3x+1$$ and writes $$5x-2\cdot3x+1=4$$. The
+expression replacing $$y$$ must be treated as one object:
+
+```math
+5x-2(3x+1)=4.
+```
+
+The brackets ensure that both terms in $$3x+1$$ are multiplied by $$-2$$.
+
+:::
+
+## Why it works: a deeper pass
 
 Substitution looks different from elimination, but it rests on the same idea: each step replaces the
 system by an equivalent one. Once $$y = 2x - 3$$ holds, $$y$$ and $$2x - 3$$ are two names for the
 same number. Swapping one name for the other can't change whether a statement is true.
+
+The linking equation must remain. The old and new systems are
+
+```math
+\left\{\begin{aligned}y&=E\\L(x,y)&=R(x,y)\end{aligned}\right.
+\qquad\longleftrightarrow\qquad
+\left\{\begin{aligned}y&=E\\L(x,E)&=R(x,E).\end{aligned}\right.
+```
+
+Only an occurrence of $$y$$ has been replaced. Discarding $$y=E$$ would lose the information needed
+to recover $$y$$.
 
 :::proposition[Substitution gives an equivalent system]{#substitution-works}
 
@@ -141,6 +165,17 @@ by what the equations look like:
 | Some unknown has coefficient $$1$$ or $$-1$$                  | Substitution |
 | Coefficients of one unknown are equal, opposite, or multiples | Elimination  |
 | Everything has awkward coefficients                           | Elimination  |
+
+Use an **inspect first** routine rather than choosing by habit:
+
+1. Is a variable already isolated, or does it have coefficient $$1$$ or $$-1$$? Try substitution.
+2. Are coefficients equal, opposite or small multiples? Try elimination.
+3. Which choice avoids fractions and large numbers?
+4. Do you need an exact algebraic answer, a visual estimate, or both?
+
+For example, $$y=4x-1$$ with $$2x+3y=25$$ invites substitution, while $$3x+2y=7$$ with $$5x-2y=9$$
+invites elimination. The method name should follow from the structure, not from the heading of an
+exercise.
 
 Substitution has one more advantage: it works when the second equation isn't linear. Solving
 $$y = x + 1$$ together with $$xy = 6$$ by substitution gives $$x(x + 1) = 6$$, an equation in $$x$$

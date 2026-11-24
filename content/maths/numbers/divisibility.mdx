@@ -9,12 +9,8 @@ numbers come down to a fact like this. You can tell that $$37 \cdot 41 + 12$$ is
 without multiplying anything, because an odd number times an odd number is odd and adding $$12$$
 keeps it odd.
 
-In this guide we'll build the language for questions like these:
-
-- even and odd
-- divisibility
-- remainders
-- common divisors
+In this guide we'll turn observations like these into precise tests. The language we build will let
+us tell when one number divides another and describe what is left when it does not.
 
 The next guide, [Congruence](./congruence.mdx), turns that language into a way of calculating.
 
@@ -307,90 +303,93 @@ and there is only one such pair. The number $$q$$ is called the **quotient** and
 
 :::
 
+The theorem says two things: a quotient and remainder **exist**, and there is **only one** such
+pair. Both come from one idea. Each guess for the quotient $$q$$ leaves a leftover of $$n - dq$$,
+and raising the guess by $$1$$ takes another $$d$$ off the leftover. For $$n = 17$$ and $$d = 5$$:
+
+| Quotient $$q$$       | $$0$$  | $$1$$  | $$2$$ | $$3$$ | $$4$$  | $$5$$  |
+| -------------------- | ------ | ------ | ----- | ----- | ------ | ------ |
+| Leftover $$17 - 5q$$ | $$17$$ | $$12$$ | $$7$$ | $$2$$ | $$-3$$ | $$-8$$ |
+
+The leftovers go down in steps of $$5$$. The allowed remainders $$0, 1, 2, 3, 4$$ form a window of
+exactly $$5$$ integers in a row, shaded here, with the leftovers marked as points:
+
+::number-line{from=-8 to=17 points="-8, -3, 2, 7, 12, 17" intervals="[0, 5)"}
+
+Steps of $$5$$ can't jump over a window $$5$$ wide, so one leftover lands inside it. The next step
+takes away another $$5$$ and leaves the window below $$0$$, so no second leftover lands inside. The
+same happens for any $$n$$ and $$d$$, with steps of $$d$$ and a window of $$d$$ integers. The proof
+turns each half of this into algebra.
+
 :::proof{source="https://en.wikipedia.org/wiki/Euclidean_division#Proof"}
 
-The theorem makes two claims: that a quotient and remainder **exist**, and that there is **only
-one** possible pair. The proof handles them separately.
+**Part 1: there is such a pair.** Choose $$q$$ to be the **largest** quotient whose leftover
+$$n - dq$$ is still $$0$$ or more. In the table this is $$q = 3$$, the last column before the
+leftovers turn negative. In terms of multiples, $$dq$$ is the largest multiple of $$d$$ that is not
+bigger than $$n$$.
 
-**Part 1: there is such a pair.** The idea is the number line picture of $$17$$ between the
-multiples of $$5$$, now for any $$n$$ and $$d$$.
+Such a largest $$q$$ always exists, because the leftovers run down in steps of $$d$$ from as large
+as you like to as negative as you like. So there is a last one that is $$0$$ or more. This is clear
+from the picture, and it is taken as a basic fact about the integers rather than proved, in the same
+way as induction (:ref{#basic-proofs/induction}).
 
-The multiples of $$d$$,
+Now call that leftover $$r$$, so $$r = n - dq$$. Adding $$dq$$ to both sides gives $$n = dq + r$$,
+and it remains to check that $$r$$ is an allowed remainder:
 
-```math
-\dots, \; -2d, \; -d, \; 0, \; d, \; 2d, \; 3d, \; \dots
-```
+First, $$r$$ is $$0$$ or more, because $$q$$ was chosen so that its leftover is $$0$$ or more.
 
-are spaced $$d$$ apart and go on forever in both directions. Between them, they cut the whole number
-line into stretches of length $$d$$, each starting at a multiple and stopping before the next one.
-Every integer $$n$$ lands in one of these stretches. This is clear from the picture. It is taken as
-a basic fact about the integers rather than proved, in the same way as induction
-(:ref{#basic-proofs/induction}). (Part 2 shows that $$n$$ can't land in two stretches.)
-
-Call the multiple at the start of $$n$$'s stretch $$dq$$. In other words, $$dq$$ is the largest
-multiple of $$d$$ that is not bigger than $$n$$, so
+Second, $$r$$ is less than $$d$$. The next quotient $$q + 1$$ is too large, so its leftover is
+negative, and that leftover is $$d$$ less than $$r$$:
 
 ```math
-dq \le n < dq + d
+n - d(q + 1) = n - dq - d = r - d
 ```
 
-Now let $$r = n - dq$$, which is how many steps $$n$$ is past the start of its stretch. Subtracting
-$$dq$$ from each part of $$dq \le n < dq + d$$ (:ref{#order-rules}) gives
+So $$r - d < 0$$, and adding $$d$$ to both sides gives $$r < d$$ (:ref{#order-rules}).
+
+For $$n = 17$$ and $$d = 5$$, this gives $$q = 3$$ and $$r = 2$$. The next leftover is
+$$2 - 5 = -3$$, which is negative, and that is what shows $$2 < 5$$.
+
+**Part 2: there is only one pair.** In words: two different quotients differ by at least $$1$$, so
+their leftovers differ by at least $$d$$. But two numbers in the window from $$0$$ to $$d - 1$$ are
+less than $$d$$ apart, so they can't both be allowed remainders.
+
+To write this out, suppose $$n = dq + r$$ and $$n = dq' + r'$$, where both remainders are $$0$$ or
+more and less than $$d$$. The dash marks the second pair. Name the pairs so that $$q$$ is the larger
+quotient, or they are equal, so $$q \ge q'$$. We'll suppose $$q > q'$$ and reach something
+impossible (:ref{#basic-proofs/contradiction}).
+
+**Step 1: compare the two pairs.** Both right sides equal $$n$$, so they equal each other. Subtract
+$$dq'$$ and $$r$$ from both sides, and take out the common factor $$d$$ with distributivity:
 
 ```math
-0 \le r < d
+\begin{aligned}
+dq + r &= dq' + r' \\
+dq - dq' &= r' - r \\
+d(q - q') &= r' - r
+\end{aligned}
 ```
 
-and $$r = n - dq$$ rearranges to $$n = dq + r$$. So $$q$$ and $$r$$ are the pair needed.
+So the remainders differ by $$d$$ times the difference of the quotients.
 
-For example, with $$n = 17$$ and $$d = 5$$, the stretch containing $$17$$ runs from $$15$$ up to
-(but not including) $$20$$. So $$dq = 15$$, $$q = 3$$, and $$r = 17 - 15 = 2$$.
-
-**Part 2: there is only one pair.** First, an example of why. With $$n = 17$$ and $$d = 5$$, every
-choice of quotient gives some remainder, but only one of them lands between $$0$$ and $$4$$:
-
-| Quotient $$q$$           | $$2$$       | $$3$$ | $$4$$        |
-| ------------------------ | ----------- | ----- | ------------ |
-| Remainder $$17 - 5q$$    | $$7$$       | $$2$$ | $$-3$$       |
-| Between $$0$$ and $$4$$? | no, too big | yes   | no, negative |
-
-Taking one fewer $$5$$ leaves too much over, and taking one more $$5$$ overshoots. The proof shows
-the same thing happens in general, using the stretches from Part 1.
-
-Suppose $$n = dq + r$$ for some integers $$q$$ and $$r$$ with $$0 \le r < d$$. This could be any
-such pair, not necessarily the one from Part 1. The two facts about $$r$$ say where $$n$$ sits:
-
-- $$r \ge 0$$ means $$n = dq + r$$ is **at least** $$dq$$.
-- $$r < d$$ means $$n = dq + r$$ is **less than** $$dq + d$$.
-
-Together, $$dq \le n < dq + d$$: $$n$$ lies in the stretch that starts at the multiple $$dq$$.
-
-So any valid pair puts $$n$$ in a stretch. The last thing to check is that $$n$$ can't be in two
-different stretches, because the stretches don't overlap. Suppose two pairs put $$n$$ in the
-stretches starting at $$dq$$ and $$dq'$$, so
+**Step 2: that difference is at least $$d$$.** Since $$q > q'$$, the integer $$q - q'$$ is at least
+$$1$$, because no integer lies strictly between $$0$$ and $$1$$. If $$q - q' = 1$$, then
+$$d(q - q') = d$$. If $$q - q' > 1$$, then multiplying by the positive number $$d$$ keeps the order
+(:ref{#order-multiply}), so $$d(q - q') > d$$. Either way, Step 1 gives
 
 ```math
-dq \le n < dq + d \qquad \text{and} \qquad dq' \le n < dq' + d
+r' - r \ge d
 ```
 
-If $$q < q'$$, then $$q' \ge q + 1$$, because there is no integer strictly between $$q$$ and
-$$q + 1$$. From this, $$dq' \ge d(q + 1) = dq + d$$:
+**Step 3: so $$r'$$ is too big.** Adding $$r$$ to both sides gives $$r' \ge d + r$$, and $$d + r$$
+is at least $$d$$ because $$r$$ is $$0$$ or more. So $$r' \ge d$$, but $$r'$$ was supposed to be
+less than $$d$$. This is impossible, so $$q > q'$$ is false, and $$q = q'$$. For example, with
+$$n = 17$$ and $$d = 5$$, the quotients $$q = 3$$ and $$q' = 2$$ give $$r = 2$$ and
+$$r' = 2 + 5 = 7$$, which is too big to be a remainder.
 
-- if $$q' = q + 1$$, then $$dq' = d(q + 1)$$, so the two sides are equal;
-- if $$q' > q + 1$$, then multiplying by the positive number $$d$$ keeps the inequality
-  (:ref{#order-multiply}), so $$dq' > d(q + 1)$$.
-
-In words, the second stretch starts at or after the point where the first one ends. But $$n$$ is
-before the end of the first stretch and at or after the start of the second:
-
-```math
-n < dq + d \le dq' \le n
-```
-
-which says $$n < n$$, which is impossible. Swapping the roles of the two pairs rules out $$q' < q$$
-in the same way. So $$q = q'$$: every valid pair has the same quotient.
-
-Once $$q$$ is fixed, so is $$r$$, because it has to be $$n - dq$$. So there is only one pair.
+**Step 4: the remainders match too.** Each remainder is what is left of $$n$$ after taking away
+$$d$$ times its quotient, and the quotients are equal, so $$r = n - dq = n - dq' = r'$$. So there is
+only one pair.
 
 :::
 
@@ -553,14 +552,43 @@ Prove that if $$d \mid a$$ and $$d \mid a + b$$, then $$d \mid b$$.
 
 :::solution
 
-The number $$b$$ is the difference of the two numbers you know about:
+In terms of rows of $$d$$: $$a + b$$ is a whole number of rows, and so is $$a$$. Taking the rows of
+$$a$$ away from the rows of $$a + b$$ leaves $$b$$, so $$b$$ is a whole number of rows too. For
+example, $$7 \mid 14$$ and $$7 \mid 14 + 21$$, and the $$21$$ left over is $$3$$ rows of $$7$$.
+
+To write this out, unpack both facts with :ref{#divides}. There are integers $$k$$ and $$l$$ with
 
 ```math
-b = (a + b) - a
+a = dk \qquad \text{and} \qquad a + b = dl
 ```
 
-Both $$a + b$$ and $$a$$ are multiples of $$d$$, and by :ref{#multiples} the difference of two
-multiples of $$d$$ is a multiple of $$d$$. So $$d \mid b$$.
+The goal is to write $$b$$ as $$d$$ times an integer. Subtract $$a$$ from both sides of the second
+equation, replace $$a$$ with $$dk$$, and take out the common factor $$d$$ with distributivity:
+
+```math
+\begin{aligned}
+b &= dl - a \\
+&= dl - dk \\
+&= d(l - k)
+\end{aligned}
+```
+
+Since $$l$$ and $$k$$ are integers, so is $$l - k$$. So $$b$$ is $$d$$ times an integer, which means
+$$d \mid b$$.
+
+There is also a shorter proof that uses :ref{#multiples}. That lemma says: if $$d$$ divides two
+numbers $$m$$ and $$n$$, then $$d$$ divides their difference $$m - n$$. So look for two numbers you
+already know $$d$$ divides, whose difference is $$b$$. The two you know about are $$a + b$$ and
+$$a$$, and taking one from the other leaves $$b$$:
+
+```math
+(a + b) - a = b
+```
+
+So use the lemma with $$m = a + b$$ and $$n = a$$. Both are divisible by $$d$$, so their difference
+$$b$$ is divisible by $$d$$. This isn't a different argument. The lemma's proof does the same
+subtraction, $$dl - dk = d(l - k)$$, for any two multiples of $$d$$, so quoting the lemma saves
+writing it out again.
 
 :::
 

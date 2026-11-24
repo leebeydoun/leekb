@@ -26,6 +26,7 @@ import { GrowingSquare } from "./interactive/growing-square";
 import { RectangleFence } from "./interactive/rectangle-fence";
 import { ClockArithmetic } from "./interactive/clock";
 import { RowsOfDots } from "./interactive/dots";
+import { DotGrid } from "./interactive/dot-grid";
 import { TwoLines } from "./interactive/two-lines";
 import { SlopeExplorer } from "./interactive/slope";
 import { FractionBars } from "./interactive/fraction-bars";
@@ -389,6 +390,7 @@ export const mdxComponents = {
   RectangleFence,
   ClockArithmetic,
   RowsOfDots,
+  DotGrid,
   TwoLines,
   SlopeExplorer,
   FractionBars,

@@ -38,6 +38,15 @@ Take $$2x + y = 4$$. Some of its solutions are $$(0, 4)$$, $$(1, 2)$$ and $$(2, 
 them shows they lie in a straight line. So do all the others, like $$(\frac{1}{2}, 3)$$ and
 $$(3, -2)$$:
 
+| choose $$x$$ | calculate $$y=4-2x$$ | ordered pair | point on graph |
+| ------------ | -------------------- | ------------ | -------------- |
+| $$0$$        | $$4$$                | $$(0,4)$$    | yes            |
+| $$1$$        | $$2$$                | $$(1,2)$$    | yes            |
+| $$2$$        | $$0$$                | $$(2,0)$$    | yes            |
+
+Each row, ordered pair and plotted point carries the same information in a different representation.
+The complete line represents every solution, not only the three displayed rows.
+
 ::graph{lines="2x + y = 4" points="0, 4; 1, 2; 2, 0; 3, -2" x="-2 5" y="-3 5"}
 
 :::remark[Linear equations draw lines]{#line}
@@ -63,6 +72,10 @@ they cross.
 
 ::graph{lines="x + y = 5; x - y = 1" points="3, 2" x="-2 6" y="-2 6"}
 
+The pair $$(3,2)$$ passes both algebraic tests, appears in both value tables and is the common point
+on the graph. Elimination, substitution and graphing are therefore answering the same question in
+three representations.
+
 Solving by elimination finds the crossing point exactly, even when it is somewhere awkward like
 $$(\frac{31}{38}, -\frac{8}{19})$$ that no drawing could read off. The picture explains what is
 going on; the algebra gets the answer.
@@ -84,7 +97,15 @@ solution, which is why there are infinitely many.
 
 ::graph{lines="x + 2y = 3; 3x + 6y = 9" points="3, 0; 1, 1; -1, 2" x="-3 6" y="-2 4"}
 
-## Slope
+:::example[Translate before calculating]
+
+For $$x+y=4$$, the pairs $$(0,4)$$, $$(2,2)$$ and $$(4,0)$$ are table rows and points on one line.
+The point $$(1,1)$$ is not on that line because $$1+1\ne4$$. Checking a point means substituting its
+coordinates into the equation.
+
+:::
+
+## Deeper view: slope and parallel lines
 
 How steeply a line climbs is measured by a single number. Walk along a straight line from left to
 right. Because it is straight, each step of $$1$$ to the right takes you up, or down, by the same
@@ -114,6 +135,12 @@ which says $$x = \frac{c}{a}$$: a vertical line, which has no slope.
 Two different lines are parallel exactly when they have the same slope, or are both vertical. This
 is taken from the picture here, and it is what the determinant detects. The Segments, rays and lines
 chapter proves it (:ref{#segments-rays-and-lines/parallel-equations}).
+
+### Optional bridge to determinants
+
+The next guide defines determinants and uses them to classify systems. On a first pass, you may stop
+here. Return to the proposition below after meeting the determinant: it proves that the algebraic
+test and the equal-slope picture say the same thing.
 
 :::proposition[Zero determinant means parallel or equal]{#parallel-test}
 

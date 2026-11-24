@@ -3,12 +3,12 @@
   "pages": [
     "introduction",
     "statements",
-    "proofs",
     "implications",
-    "induction",
+    "proofs",
     "sets",
     "notation",
-    "test-yourself",
-    "exercises"
+    "induction",
+    "exercises",
+    "test-yourself"
   ]
 }

@@ -12,6 +12,10 @@ name for such a collection.
 In this guide we'll learn a few symbols that make statements about sets short and exact, and a
 standard way to check whether two descriptions give the same set.
 
+The guide has two passes. First learn the language of elements, subsets and the empty set. Then use
+that language to construct proofs about set equality, union and intersection. Keep asking one
+question: **what would an arbitrary object have to satisfy to belong to this set?**
+
 ## Sets and elements
 
 Think of a set as a bag of things. All that matters about a bag is what is in it: there is no first
@@ -110,11 +114,17 @@ counterexample (:ref{#counterexample}).
 
 Let $$A = \{x \in \mathbb{R} : x > 5\}$$ and $$B = \{x \in \mathbb{R} : x > 2\}$$.
 
-**$$A \subseteq B$$.** Take any $$x \in A$$. Then $$x > 5$$, and $$5 > 2$$, so $$x > 2$$. That means
-$$x \in B$$.
+**Prove that $$A\subseteq B$$.**
 
-**$$B$$ is not a subset of $$A$$.** The number $$3$$ is in $$B$$, since $$3 > 2$$, but not in $$A$$,
-since $$3$$ is not bigger than $$5$$.
+- **Assume:** take an arbitrary element $$x\in A$$. By the definition of $$A$$, this means $$x>5$$.
+- **Goal:** show that the same $$x$$ belongs to $$B$$, which means showing $$x>2$$.
+- **Reasoning:** since $$x>5$$ and $$5>2$$, transitivity gives $$x>2$$. Therefore $$x\in B$$.
+
+The argument works for any element of $$A$$, so $$A\subseteq B$$.
+
+**Prove that $$B$$ is not a subset of $$A$$.** We need one counterexample: an element of $$B$$ that
+is not in $$A$$. Choose $$3$$. It belongs to $$B$$ because $$3>2$$, but it does not belong to $$A$$
+because $$3\ngtr5$$. Therefore $$B\nsubseteq A$$.
 
 :::
 
@@ -122,6 +132,16 @@ Keep "element of" and "subset of" apart. The number $$2$$ is an **element** of $
 while the set $$\{2\}$$, a bag holding only $$2$$, is a **subset** of it. So $$2 \in \{1, 2, 3\}$$
 and $$\{2\} \subseteq \{1, 2, 3\}$$, but $$2$$ is not a subset of anything, since it is a number,
 not a set.
+
+:::example[Element or subset?]
+
+Let $$S = \{1, \{1\}, 2\}$$. Then $$1 \in S$$ and $$\{1\} \in S$$ because both objects appear in the
+list. Also $$\{1\} \subseteq S$$ because the only element of $$\{1\}$$ is $$1$$, which belongs to
+$$S$$. However, $$\{\{1\}\} \subseteq S$$ for a different reason: its only element is the set
+$$\{1\}$$, which also belongs to $$S$$. Always identify the object on each side before choosing
+$$\in$$ or $$\subseteq$$.
+
+:::
 
 ## The empty set
 
@@ -160,13 +180,32 @@ For every set $$A$$, $$\varnothing \subseteq A$$.
 
 :::proof{source="https://en.wikipedia.org/wiki/Set_(mathematics)#Properties_of_containment"}
 
-Suppose $$\varnothing$$ were not a subset of $$A$$. Then some element of $$\varnothing$$ would not
-be in $$A$$. But $$\varnothing$$ has no elements, so this is impossible (:ref{#contradiction}).
-Hence $$\varnothing \subseteq A$$.
+**Goal.** Prove that every element of $$\varnothing$$ belongs to $$A$$.
+
+**Assume the opposite.** Suppose, for a contradiction, that $$\varnothing$$ is not a subset of
+$$A$$. By the definition of “not a subset”, there would then be some object $$x$$ such that
+$$x\in\varnothing$$ but $$x\notin A$$.
+
+**Reach a contradiction.** The statement $$x\in\varnothing$$ is impossible because the empty set has
+no elements.
+
+**Conclusion.** No counterexample to the subset statement can exist. Therefore
+$$\varnothing\subseteq A$$. Since $$A$$ was arbitrary, the empty set is a subset of every set.
 
 :::
 
-## Proving two sets are equal
+## Proof applications
+
+The definitions now become proof instructions:
+
+- To prove $$A \subseteq B$$, take an arbitrary $$x \in A$$ and bridge to $$x \in B$$.
+- To disprove $$A \subseteq B$$, give one witness with $$x \in A$$ but $$x \notin B$$.
+- To prove $$A = B$$, prove both subset directions separately.
+
+This is the same **Given → Want → Bridge** structure used for direct proofs. Membership in the first
+set is the given; membership in the second is the target.
+
+### Proving two sets are equal
 
 A set can be described in different ways: by a list, by a test, or by two tests that look quite
 different. When two descriptions might give the same set, the way to check is to compare contents in
@@ -182,15 +221,21 @@ For sets $$A$$ and $$B$$, $$A = B$$ exactly when $$A \subseteq B$$ and $$B \subs
 
 :::proof{source="https://en.wikipedia.org/wiki/Set_(mathematics)#Properties_of_containment"}
 
-This is an "exactly when" statement, so there are two directions to prove (:ref{#exactly-when}).
+**Plan.** This is an “exactly when” statement, so we must prove two directions
+(:ref{#exactly-when}).
 
-**If $$A = B$$, then $$A \subseteq B$$ and $$B \subseteq A$$.** Equal sets have the same elements
-(:ref{#set}). So every element of $$A$$ is an element of $$B$$, which is $$A \subseteq B$$, and
-every element of $$B$$ is an element of $$A$$, which is $$B \subseteq A$$.
+**First direction: assume that $$A=B$$.** Our goal is to prove both subset statements. Equal sets
+have exactly the same elements (:ref{#set}). Therefore every element of $$A$$ is in $$B$$, which
+proves $$A\subseteq B$$. The same fact, read in the other direction, says that every element of
+$$B$$ is in $$A$$, which proves $$B\subseteq A$$.
 
-**If $$A \subseteq B$$ and $$B \subseteq A$$, then $$A = B$$.** By the first, every element of $$A$$
-is in $$B$$. By the second, every element of $$B$$ is in $$A$$. So an object is in $$A$$ exactly
-when it is in $$B$$: the two sets have the same elements, and so they are equal.
+**Second direction: assume that $$A\subseteq B$$ and $$B\subseteq A$$.** Our goal is to prove that
+the sets are equal. The first assumption says that every element of $$A$$ is in $$B$$. The second
+says that every element of $$B$$ is in $$A$$. Thus an object belongs to $$A$$ exactly when it
+belongs to $$B$$. The sets have the same elements, so $$A=B$$.
+
+**Conclusion.** Equality gives both subset relations, and both subset relations give equality.
+Therefore the two conditions are equivalent.
 
 :::
 
@@ -198,13 +243,30 @@ when it is in $$B$$: the two sets have the same elements, and so they are equal.
 
 Let $$A = \{n \in \mathbb{Z} : n^2 = n\}$$ and $$B = \{0, 1\}$$. Here is a proof that $$A = B$$.
 
-**$$A \subseteq B$$.** Take any $$n \in A$$, so $$n^2 = n$$. Then $$n^2 - n = 0$$, that is,
-$$n(n - 1) = 0$$. If a product is $$0$$, one of its factors is (:ref{#numbers/zero-product}), so
-$$n = 0$$ or $$n - 1 = 0$$. Either way $$n \in B$$.
+To prove that two sets are equal, we show that each is a subset of the other.
 
-**$$B \subseteq A$$.** Both elements of $$B$$ pass the test: $$0^2 = 0$$ and $$1^2 = 1$$.
+**First direction: prove that $$A\subseteq B$$.**
 
-So $$A = B$$ by :ref{#set-equality}.
+- **Assume:** take an arbitrary $$n\in A$$. By the definition of $$A$$, $$n^2=n$$.
+- **Goal:** prove that $$n\in B$$, which means proving that $$n=0$$ or $$n=1$$.
+- **Reasoning:** rearrange and factor the equation:
+
+  ```math
+  n^2=n \quad\Longrightarrow\quad n^2-n=0 \quad\Longrightarrow\quad n(n-1)=0.
+  ```
+
+  If a product is $$0$$, at least one factor is $$0$$ (:ref{#numbers/zero-product}). Hence $$n=0$$
+  or $$n-1=0$$, so $$n=0$$ or $$n=1$$. In either case $$n\in B$$. Since the argument works for every
+  $$n\in A$$, we have proved $$A\subseteq B$$.
+
+**Second direction: prove that $$B\subseteq A$$.**
+
+- **Assume:** take an arbitrary $$n\in B$$. Since $$B=\{0,1\}$$, either $$n=0$$ or $$n=1$$.
+- **Goal:** prove that $$n\in A$$, which means checking that $$n^2=n$$.
+- **Reasoning:** if $$n=0$$, then $$0^2=0$$; if $$n=1$$, then $$1^2=1$$. Thus either possible
+  element of $$B$$ satisfies the defining equation for $$A$$. Therefore $$B\subseteq A$$.
+
+**Conclusion.** Both subset directions hold, so $$A=B$$ by :ref{#set-equality}.
 
 :::
 
@@ -215,7 +277,7 @@ every candidate is a solution. Only both together show that the list is exactly 
 The check matters because some steps, like squaring both sides, can add candidates that are not
 solutions.
 
-## Union and intersection
+### Union and intersection
 
 Two sets can be put together in two ways: everything in either one, or only what they share. A class
 trip lists the pupils who chose the museum and the pupils who chose the zoo. The pupils on at least
@@ -322,13 +384,19 @@ $$A \subseteq B$$, and show that $$B$$ is not a subset of $$A$$.
 
 :::solution
 
-**$$A \subseteq B$$.** Take any $$x \in A$$, so $$x > 3$$. Multiplying $$x > 3$$ by the positive
-number $$x$$ gives $$x^2 > 3x$$, and multiplying $$x > 3$$ by $$3$$ gives $$3x > 9$$ (part 4 of
-:ref{#real-numbers/inequality-rules}). Chaining these, $$x^2 > 9$$, so $$x \in B$$.
+**First, prove that $$A\subseteq B$$.**
 
-**$$B$$ is not a subset of $$A$$.** The number $$-4$$ has $$(-4)^2 = 16 > 9$$, so $$-4 \in B$$, but
-$$-4$$ is not bigger than $$3$$, so $$-4 \notin A$$. One element of $$B$$ outside $$A$$ is a
-counterexample (:ref{#counterexample}).
+- **Assume:** take an arbitrary $$x\in A$$. Then $$x>3$$.
+- **Goal:** show that $$x\in B$$, which means proving $$x^2>9$$.
+- **Reasoning:** because $$x>3>0$$, both $$x$$ and $$3$$ are positive. Multiplying $$x>3$$ by $$x$$
+  gives $$x^2>3x$$, while multiplying it by $$3$$ gives $$3x>9$$ (part 4 of
+  :ref{#real-numbers/inequality-rules}). Hence $$x^2>3x>9$$, so $$x\in B$$.
+
+This works for every $$x\in A$$, so $$A\subseteq B$$.
+
+**Next, prove that $$B\nsubseteq A$$.** We need one element of $$B$$ that is not in $$A$$. Choose
+$$-4$$. Since $$(-4)^2=16>9$$, we have $$-4\in B$$. But $$-4\ngtr3$$, so $$-4\notin A$$. This
+counterexample proves that $$B$$ is not a subset of $$A$$ (:ref{#counterexample}).
 
 :::
 
@@ -361,18 +429,42 @@ Prove that $$\{x \in \mathbb{R} : x(x - 2) = 3\} = \{-1, 3\}$$.
 
 :::solution
 
-Call the first set $$A$$ and the second $$B$$. By :ref{#set-equality}, show each is a subset of the
-other.
+Call the first set $$A$$ and the second $$B$$. By :ref{#set-equality}, we must prove two subset
+directions.
 
-**$$A \subseteq B$$.** Take any $$x \in A$$, so $$x(x - 2) = 3$$. Then $$x^2 - 2x - 3 = 0$$, which
-factors as $$(x - 3)(x + 1) = 0$$. A product is $$0$$ exactly when one of its factors is
-(:ref{#numbers/zero-product}), so $$x = 3$$ or $$x = -1$$. Either way $$x \in B$$.
+**First direction: prove that $$A\subseteq B$$.**
 
-**$$B \subseteq A$$.** Check both elements: $$(-1)(-1 - 2) = (-1)(-3) = 3$$ and
-$$3 \cdot (3 - 2) = 3$$.
+- **Assume:** take an arbitrary $$x\in A$$, so $$x(x-2)=3$$.
+- **Goal:** show that $$x\in B$$, meaning $$x=-1$$ or $$x=3$$.
+- **Reasoning:** rearrange and factor:
 
-So $$A = B$$. The first half shows every solution is on the list, and the second shows every number
-on the list is a solution.
+  ```math
+  x(x-2)=3
+  \quad\Longrightarrow\quad
+  x^2-2x-3=0
+  \quad\Longrightarrow\quad
+  (x-3)(x+1)=0.
+  ```
+
+  By the zero-product rule (:ref{#numbers/zero-product}), $$x-3=0$$ or $$x+1=0$$. Thus $$x=3$$ or
+  $$x=-1$$, so $$x\in B$$. This proves $$A\subseteq B$$.
+
+**Second direction: prove that $$B\subseteq A$$.**
+
+- **Assume:** take an arbitrary $$x\in B$$. Then $$x=-1$$ or $$x=3$$.
+- **Goal:** show that $$x(x-2)=3$$, which will place $$x$$ in $$A$$.
+- **Reasoning:** check both possibilities:
+
+  ```math
+  (-1)(-1-2)=(-1)(-3)=3,
+  \qquad
+  3(3-2)=3.
+  ```
+
+  Both elements of $$B$$ satisfy the defining equation for $$A$$, so $$B\subseteq A$$.
+
+**Conclusion.** Both subset directions hold, so $$A=B$$. The first half shows every solution is on
+the list, and the second shows every number on the list is a solution.
 
 :::
 
@@ -387,16 +479,41 @@ $$m^2$$ is even then $$m$$ is even.
 
 :::solution
 
-By :ref{#set-equality}, show each is a subset of the other.
+By :ref{#set-equality}, we prove each set is a subset of the other.
 
-**$$A \subseteq B$$.** Take any $$n \in A$$, so $$n = 4k$$. Then $$n^2 = 16k^2 = 8(2k^2)$$, a
-multiple of $$8$$, so $$n \in B$$.
+**First direction: prove that $$A\subseteq B$$.**
 
-**$$B \subseteq A$$.** Take any $$n \in B$$, so $$n^2 = 8j$$ for some integer $$j$$. Then $$n^2$$ is
-even, so $$n$$ is even: $$n = 2m$$. Now $$4m^2 = 8j$$, so $$m^2 = 2j$$ is even, and so $$m$$ is even
-too: $$m = 2l$$. That makes $$n = 4l$$, a multiple of $$4$$, so $$n \in A$$.
+- **Assume:** take an arbitrary $$n\in A$$. Then $$n=4k$$ for some integer $$k$$.
+- **Goal:** show that $$n^2$$ is a multiple of $$8$$, so that $$n\in B$$.
+- **Reasoning:**
 
-So $$A = B$$, although the two tests look quite different.
+  ```math
+  n^2=(4k)^2=16k^2=8(2k^2).
+  ```
+
+  Since $$2k^2$$ is an integer, $$n^2$$ is a multiple of $$8$$. Therefore $$n\in B$$, proving
+  $$A\subseteq B$$.
+
+**Second direction: prove that $$B\subseteq A$$.**
+
+- **Assume:** take an arbitrary $$n\in B$$. Then $$n^2=8j$$ for some integer $$j$$.
+- **Goal:** show that $$n$$ is a multiple of $$4$$, so that $$n\in A$$.
+- **Reasoning:** the equation $$n^2=8j$$ shows first that $$n^2$$ is even. By the stated fact, $$n$$
+  is therefore even, so $$n=2m$$ for some integer $$m$$. Substitute this:
+
+  ```math
+  (2m)^2=8j
+  \quad\Longrightarrow\quad
+  4m^2=8j
+  \quad\Longrightarrow\quad
+  m^2=2j.
+  ```
+
+  Now $$m^2$$ is even, so the same fact tells us that $$m$$ is even. Write $$m=2l$$. Then
+  $$n=2m=2(2l)=4l$$, so $$n$$ is a multiple of $$4$$. Therefore $$n\in A$$ and $$B\subseteq A$$.
+
+**Conclusion.** Both subset directions hold, so $$A=B$$, although the two tests look quite
+different.
 
 :::
 
